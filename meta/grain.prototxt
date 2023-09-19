@@ -1,0 +1,29 @@
+paper {
+  title: "Gradient-based Intra-attention Pruning on Pre-trained Language Models"
+  abbr: "GRAIN"
+  url: "https://arxiv.org/abs/2212.07634"
+  authors: "Ziqing Yang"
+  authors: "Yiming Cui"
+  authors: "Xin Yao"
+  authors: "Shijin Wang"
+  institutions: "Harbin Institute of Technology"
+  institutions: "iFLYTEK Research"
+}
+pub {
+  where: "arXiv"
+  year: 0
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/airaria/GRAIN"
+}
+note {
+  url: "grain/index.md"
+}
+keyword {
+  words: working
+  words: sparse_pruning
+}
+cover {
+  url: "grain/grain.jpg"
+}

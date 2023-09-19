@@ -2,10 +2,10 @@ paper {
   title: "Knowledge-preserving Pruning for Pre-trained Language Models without Retraining"
   abbr: "K-pruning"
   url: "https://arxiv.org/abs/2308.03449"
-  authors: "Name1"
-  authors: "Name2"
-  institutions: "inst1"
-  institutions: "inst2"
+  authors: "Seungcheol Park"
+  authors: "Hojun Choi"
+  authors: "U Kang"
+  institutions: "Seoul National University"
 }
 pub {
   where: "arXiv"
@@ -16,11 +16,12 @@ code {
   url: ""
 }
 note {
-  url: ""
+  url: "k_pruning/note.md"
 }
 keyword {
-  words: none
+  words: working
+  words: sparse_pruning
 }
 cover {
-  url: ""
+  url: "k_pruning/kp.jpg"
 }
