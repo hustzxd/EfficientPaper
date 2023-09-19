@@ -1,0 +1,26 @@
+paper {
+  title: "Knowledge-preserving Pruning for Pre-trained Language Models without Retraining"
+  abbr: "K-pruning"
+  url: "https://arxiv.org/abs/2308.03449"
+  authors: "Name1"
+  authors: "Name2"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}

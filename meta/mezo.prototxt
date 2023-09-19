@@ -1,0 +1,20 @@
+paper {
+  title: "Fine-Tuning Language Models with Just Forward Passes"
+  abbr: "MeZO"
+  url: "https://arxiv.org/pdf/2305.17333.pdf"
+  authors: "Sadhika Malladi"
+  authors: "Sanjeev Arora"
+  institutions: "Princeton University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/princeton-nlp/MeZO"
+}
+note {
+  url: "https://confluence.xilinx.com/display/aialgo/Fine-Tuning+Language+Models+with+Just+Forward+Passes"
+}
+

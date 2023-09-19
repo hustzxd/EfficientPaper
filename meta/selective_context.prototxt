@@ -1,0 +1,24 @@
+paper {
+  title: "Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering"
+  abbr: "Selective Context"
+  url: "https://arxiv.org/abs/2304.12102"
+  authors: "Yucheng Li"
+  institutions: "University of Surrey, UK"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/liyucheng09/Selective_Context"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "selective_context/selective_context.jpg"
+}

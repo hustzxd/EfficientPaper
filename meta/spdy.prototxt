@@ -1,0 +1,26 @@
+paper {
+  title: "SPDY: Accurate Pruning with Speedup Guarantees"
+  abbr: "SPDY"
+  url: "https://arxiv.org/abs/2201.13096"
+  authors: "Elias Frantar"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "ICML"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/IST-DASLab/spdy"
+}
+note {
+  url: "spdy/index.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "spdy/cover.jpg"
+}

@@ -1,0 +1,23 @@
+paper {
+  title: "A Simple and Effective Pruning Approach for Large Language Models"
+  abbr: "Wanda"
+  url: "https://arxiv.org/pdf/2306.11695.pdf"
+  authors: "Mingjie Sun"
+  authors: "J. Zico Kolter"
+  institutions: "Carnegie Mellon University"
+  institutions: "Meta"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/locuslab/wanda"
+}
+note {
+  url: "https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models"
+}
+keyword {
+  words: sparse_pruning
+}

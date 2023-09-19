@@ -1,0 +1,23 @@
+paper {
+  title: "A Fast Post-Training Pruning Framework for Transformers"
+  abbr: ""
+  url: "https://arxiv.org/abs/2204.09656"
+  authors: "Woosuk Kwon"
+  authors: "Amir Gholami"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "NeurIPS"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/WoosukKwon/retraining-free-pruning"
+}
+note {
+  url: "https://confluence.xilinx.com/pages/viewpage.action?pageId=969271620"
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}

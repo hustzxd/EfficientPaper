@@ -1,0 +1,23 @@
+paper {
+  title: "The Optimal BERT Surgeon: Scalable and Accurate Second-Order Pruning for Large Language Models"
+  abbr: "oBERT"
+  url: "https://arxiv.org/pdf/2203.07259.pdf"
+  authors: "Eldar Kurtic"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "arXiv"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/neuralmagic/sparseml/blob/main/research/optimal_BERT_surgeon_oBERT/README.md"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

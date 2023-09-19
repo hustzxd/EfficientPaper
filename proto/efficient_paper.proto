@@ -1,0 +1,51 @@
+syntax = "proto2";
+
+package efficient_paper;
+
+message PaperInfo {
+    optional Paper paper = 1;
+    optional Publication pub = 2;
+    optional Code code = 3;
+    optional Note note = 4;
+    optional Keyword keyword = 5;
+    optional Cover cover = 6;
+}
+
+message Paper {
+    optional string title = 1 [default="paper title"];
+    optional string abbr = 2 [default=""];
+    optional string url = 3;
+    repeated string authors = 4;
+    repeated string institutions = 5;
+}
+
+message Publication {
+    optional string where = 1 [default="arXiv"];
+    optional int32 year = 2;
+}
+
+message Code {
+    optional string type = 1 [default="Pytorch"];
+    optional string url = 2;
+}
+
+message Note {
+    optional string url = 1;
+}
+
+message Cover {
+    optional string url = 1;
+}
+
+message Keyword {
+    repeated Word words = 1;
+    enum Word {
+        none = 1;
+        sparse_pruning = 2;
+        quantization = 3;
+        survey = 4;
+        low_rank = 5;
+        working = 6;
+        // TODO: please add your key words here.
+    }
+}

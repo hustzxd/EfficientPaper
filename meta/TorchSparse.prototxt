@@ -1,0 +1,25 @@
+paper {
+  title: "TorchSparse++: Efficient Point Cloud Engine"
+  abbr: "TorchSparse++"
+  url: "https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf"
+  authors: "Haotian Tang"
+  authors: "Song Han"
+  institutions: "MIT"
+}
+pub {
+  where: "CVPR workshop"
+  year: 2023
+}
+code {
+  type: "mit.edu"
+  url: "https://github.com/mit-han-lab/torchsparse"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

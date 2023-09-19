@@ -1,0 +1,22 @@
+paper {
+  title: "ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation"
+  abbr: "ZeroQuant-V2"
+  url: "https://arxiv.org/abs/2303.08302"
+  authors: "Zhewei Yao"
+  authors: "Yuxiong He"
+  institutions: "Microsoft"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "DeepSpeed"
+  url: "https://github.com/microsoft/DeepSpeed"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

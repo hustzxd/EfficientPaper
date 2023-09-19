@@ -1,0 +1,22 @@
+paper {
+  title: "ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training"
+  abbr: "ActNN"
+  url: "https://arxiv.org/pdf/2104.14129.pdf"
+  authors: "Jianfei Chen"
+  authors: "Joseph E. Gonzalez"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "ICML"
+  year: 2019
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ucbrise/actnn"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

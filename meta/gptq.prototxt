@@ -1,0 +1,23 @@
+paper {
+  title: "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers"
+  abbr: "GPTQ"
+  url: "https://arxiv.org/pdf/2210.17323.pdf"
+  authors: "Elias Frantar"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "ICLR"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/IST-DASLab/gptq"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

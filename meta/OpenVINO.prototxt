@@ -1,0 +1,22 @@
+paper {
+  title: "Post-training deep neural network pruning via layer-wise calibration"
+  abbr: "OpenVINO"
+  url: "https://openaccess.thecvf.com/content/ICCV2021W/LPCV/papers/Lazarevich_Post-Training_Deep_Neural_Network_Pruning_via_Layer-Wise_Calibration_ICCVW_2021_paper.pdf"
+  authors: "Ivan Lazarevich"
+  authors: "Nikita Malinin"
+  institutions: "Intel Corporation"
+}
+pub {
+  where: "ICCV workshop"
+  year: 2021
+}
+code {
+  type: "EfficientCNN"
+  url: "https://gitenterprise.xilinx.com/xiandong/EfficientCNN/tree/post-training-sparsity"
+}
+note {
+  url: "https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974"
+}
+keyword {
+  words: sparse_pruning
+}

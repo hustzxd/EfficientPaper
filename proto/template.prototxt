@@ -1,0 +1,26 @@
+paper {
+  title: "paper title"
+  abbr: ""
+  url: ""
+  authors: "Name1"
+  authors: "Name2"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 0
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}

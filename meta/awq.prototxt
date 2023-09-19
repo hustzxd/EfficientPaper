@@ -1,0 +1,23 @@
+paper {
+  title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration"
+  abbr: "AWQ"
+  url: "https://arxiv.org/pdf/2306.00978.pdf"
+  authors: "Ji Lin"
+  authors: "Song Han"
+  institutions: "MIT"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/llm-awq"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

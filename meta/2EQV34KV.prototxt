@@ -1,0 +1,23 @@
+paper {
+  title: "Creating Sparse GPT-3 Models with Iterative Pruning"
+  abbr: ""
+  url: "https://www.cerebras.net/blog/creating-sparse-gpt-3-models-with-iterative-pruning"
+  authors: "Anshul Samar"
+}
+pub {
+  where: "Blog"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,23 @@
+paper {
+  title: "Inducing and Exploiting Activation Sparsity for Fast Neural Network Inference"
+  abbr: ""
+  url: "http://proceedings.mlr.press/v119/kurtz20a/kurtz20a.pdf"
+  authors: "Mark Kurtz"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "ICML"
+  year: 2020
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

@@ -1,0 +1,21 @@
+paper {
+  title: "DSD: Dense-Sparse-Dense Training for Deep Neural Networks"
+  abbr: "DSD"
+  url: "https://arxiv.org/pdf/1607.04381.pdf"
+  authors: "Song Han"
+  institutions: "Stanford University"
+}
+pub {
+  where: "ICLR"
+  year: 2017
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "https://confluence.xilinx.com/display/aialgo/DSD%3A+Dense-Sparse-Dense+Training+for+Deep+Neural+Networks"
+}
+keyword {
+  words: sparse_pruning
+}

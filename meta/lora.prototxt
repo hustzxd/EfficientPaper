@@ -1,0 +1,26 @@
+paper {
+  title: "LoRA: Low-rank adaptation of large language models"
+  abbr: "LoRA"
+  url: "https://arxiv.org/abs/2106.09685"
+  authors: "Edward Hu"
+  authors: "Yelong Shen"
+  authors: "Weizhu Chen"
+  institutions: "Microsoft"
+}
+pub {
+  where: "ICLR"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/LoRA"
+}
+note {
+  url: ""
+}
+keyword {
+  words: low_rank
+}
+cover {
+  url: ""
+}

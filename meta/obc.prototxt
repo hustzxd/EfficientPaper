@@ -1,0 +1,24 @@
+paper {
+  title: "Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning"
+  abbr: "OBC"
+  url: "https://openreview.net/pdf?id=ksVGCOlOEba"
+  authors: "Elias Frantar"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "NeurIPS"
+  year: 2022
+}
+code {
+  type: "IST-DASLab/OBC"
+  url: "https://github.com/IST-DASLab/OBC"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: quantization
+}

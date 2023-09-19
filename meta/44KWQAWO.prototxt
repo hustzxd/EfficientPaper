@@ -1,0 +1,25 @@
+paper {
+  title: "An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers"
+  abbr: "STA"
+  url: "https://arxiv.org/abs/2208.06118"
+  authors: "Chao Fang"
+  authors: "Zhongfeng Wang"
+  institutions: "Nanjing University"
+}
+pub {
+  where: "VLSI"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

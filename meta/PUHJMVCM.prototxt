@@ -1,0 +1,22 @@
+paper {
+  title: "Accelerating Sparse Deep Neural Networks"
+  abbr: "NMSparse"
+  url: "https://arxiv.org/abs/2104.08378"
+  authors: "Asit Mishra"
+  authors: "Paulius Micikevicius"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2021
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

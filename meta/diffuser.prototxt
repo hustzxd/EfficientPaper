@@ -1,0 +1,25 @@
+paper {
+  title: "Diffuser: Efficient Transformers with Multi-hop Attention Diffusion for Long Sequences"
+  abbr: "Diffuser"
+  url: "https://arxiv.org/abs/2210.11794"
+  authors: "Aosong Feng"
+  authors: "Rex Ying"
+  institutions: "Yale University"
+}
+pub {
+  where: "AAAI"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/asFeng/Diffuser"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "diffuser/diffuser.jpg"
+}

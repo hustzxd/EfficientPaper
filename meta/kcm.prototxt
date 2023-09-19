@@ -1,0 +1,25 @@
+paper {
+  title: "Gradient-Free Structured Pruning with Unlabeled Data"
+  abbr: "KCM"
+  url: "https://arxiv.org/abs/2303.04185"
+  authors: "Azade Nova"
+  authors: "Dale Schuurmans"
+  institutions: "Google"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "https://confluence.xilinx.com/display/aialgo/Gradient-Free+Structured+Pruning+with+Unlabeled+Data?moved=true"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "kcm/kcm.jpg"
+}

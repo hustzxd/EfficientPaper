@@ -1,0 +1,26 @@
+paper {
+  title: "OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models"
+  abbr: "OmniQuant"
+  url: "https://arxiv.org/abs/2308.13137"
+  authors: "Wenqi Shao"
+  authors: "Ping Luo"
+  institutions: "OpenGVLab"
+  institutions: "The University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/OpenGVLab/OmniQuant"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "omniquant/omniquant.png"
+}

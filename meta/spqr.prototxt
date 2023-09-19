@@ -1,0 +1,23 @@
+paper {
+  title: "SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression"
+  abbr: "SpQR"
+  url: "https://arxiv.org/pdf/2306.03078.pdf"
+  authors: "Tim Dettmers"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Vahe1994/SpQR"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

@@ -1,0 +1,27 @@
+paper {
+  title: "ZipLM: Inference-Aware Structured Pruning of Language Models"
+  abbr: "ZipLM"
+  url: "https://openreview.net/pdf?id=bPFFPueAxm"
+  authors: "Eldar Kurtic"
+  authors: "Elias Frantar"
+  authors: "Dan Alistarh"
+  institutions: "IST"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "ICML"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

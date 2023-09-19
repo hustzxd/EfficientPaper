@@ -1,0 +1,26 @@
+paper {
+  title: "QLoRA: Efficient Finetuning of Quantized LLMs"
+  abbr: "QLoRA"
+  url: "https://arxiv.org/abs/2305.14314"
+  authors: "Tim Dettmers"
+  authors: "Artidoro Pagnoni"
+  institutions: "University of Washington"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/artidoro/qlora"
+}
+note {
+  url: ""
+}
+keyword {
+  words: low_rank
+  words: quantization
+}
+cover {
+  url: ""
+}

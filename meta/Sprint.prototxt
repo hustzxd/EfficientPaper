@@ -1,0 +1,25 @@
+paper {
+  title: "Sparse Attention Acceleration with Synergistic In-Memory Pruning and On-Chip Recomputation"
+  abbr: "Sprint"
+  url: "https://arxiv.org/abs/2209.00606"
+  authors: "Amir Yazdanbakhsh"
+  authors: "Mingu Kang"
+  institutions: "Google"
+}
+pub {
+  where: "MICRO"
+  year: 2022
+}
+code {
+  type: "none"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,25 @@
+paper {
+  title: "Pruning Pre-trained Language Models with Principled Importance and Self-regularization"
+  abbr: "PINS"
+  url: "https://aclanthology.org/2023.findings-acl.573/"
+  authors: "Siyu Ren"
+  authors: "Kenny Q. Zhu"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "ACL Findings"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/drsy/pins"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

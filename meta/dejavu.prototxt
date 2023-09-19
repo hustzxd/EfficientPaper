@@ -1,0 +1,28 @@
+paper {
+  title: "Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time"
+  abbr: "Deja Vu"
+  url: "https://openreview.net/forum?id=wIPIhHd00i"
+  authors: "Zichang Liu"
+  authors: "Beidi Chen"
+  institutions: "Rice University"
+  institutions: "Zhe Jiang University"
+  institutions: "Stanford University"
+}
+pub {
+  where: "ICML"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FMInference/DejaVu"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "dejavu/dejavu.jpg"
+}

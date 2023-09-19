@@ -1,0 +1,23 @@
+paper {
+  title: "SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot."
+  abbr: "SparseGPT"
+  url: "https://arxiv.org/pdf/2301.00774.pdf"
+  authors: "Elias Frantar"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/IST-DASLab/sparsegpt"
+}
+note {
+  url: "SparseGPT.md"
+}
+keyword {
+  words: sparse_pruning
+}

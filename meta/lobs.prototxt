@@ -1,0 +1,22 @@
+paper {
+  title: "Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon"
+  abbr: "L-OBS"
+  url: "https://arxiv.org/pdf/1705.07565.pdf"
+  authors: "Xin Dong"
+  authors: "Sinno Jialin Pan"
+  institutions: "Nanyang Technological University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2017
+}
+code {
+  type: "Pytorch/TF"
+  url: "https://github.com/csyhhu/L-OBS"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

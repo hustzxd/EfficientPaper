@@ -1,0 +1,19 @@
+paper {
+  title: "Optimal Brain Surgeon and general network pruning"
+  abbr: "OBS"
+  url: "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=298572&tag=1"
+}
+pub {
+  where: ""
+  year: 1993
+}
+code {
+  type: "None"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

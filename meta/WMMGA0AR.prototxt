@@ -1,0 +1,26 @@
+paper {
+  title: "The Lazy Neuron Phenomenon: On Emergence of Activation Sparsity in Transformers"
+  abbr: ""
+  url: "https://openreview.net/forum?id=TJ2nxciYCk-"
+  authors: "Zonglin Li"
+  authors: "Chong You"
+  authors: "Sanjiv Kumar"
+  institutions: "Google Research"
+}
+pub {
+  where: "ICLR"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

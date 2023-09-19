@@ -1,0 +1,22 @@
+paper {
+  title: "A Greedy Algorithm for Quantizing Neural Networks"
+  abbr: "GPFQ"
+  url: "https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf"
+  authors: "Eric Lybrand"
+  authors: "Rayan Saab"
+  institutions: "UCSD"
+}
+pub {
+  where: "JMLR"
+  year: 2021
+}
+code {
+  type: "Pytorch"
+  url: "https://gitenterprise.xilinx.com/xiandong/GPFA"
+}
+note {
+  url: "https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974"
+}
+keyword {
+  words: quantization
+}

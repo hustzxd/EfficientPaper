@@ -1,0 +1,25 @@
+paper {
+  title: "ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers"
+  abbr: "ZeroQuant"
+  url: "https://openreview.net/forum?id=f-fVCElZ-G1"
+  authors: "Zhewei Yao"
+  authors: "Yuxiong He"
+  institutions: "Microsoft"
+}
+pub {
+  where: "NeurIPS"
+  year: 2022
+}
+code {
+  type: "DeepSpeed"
+  url: "https://github.com/microsoft/DeepSpeed"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}

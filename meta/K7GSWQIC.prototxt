@@ -1,0 +1,23 @@
+paper {
+  title: "Channel Permutations for N:M Sparsity"
+  abbr: ""
+  url: "https://proceedings.neurips.cc/paper/2021/hash/6e8404c3b93a9527c8db241a1846599a-Abstract.html"
+  authors: "Jeff Pool"
+  authors: "Chong Yu"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "NeurIPS"
+  year: 2021
+}
+code {
+  type: "Pytorch"
+  # url: "https://github.com/NVIDIA/apex/tree/master/apex/contrib/sparsity"
+  url: "https://gitenterprise.xilinx.com/xiandong/permutation_nm_sparse"
+}
+note {
+  url: "https://confluence.xilinx.com/display/aialgo/Channel+Permutation+for+N%3AM+Sparsity"
+}
+keyword {
+  words: sparse_pruning
+}
