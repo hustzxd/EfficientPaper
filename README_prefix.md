@@ -1,17 +1,19 @@
 # EfficientPaper
 Pruning, Quantization and efficient-inference/training paper list.
 
-> Hi there,
-> 
-> To make it easier for everyone to manage the paper list and contribute paper information to the repository, we have implemented a template. This template allows us to collect the necessary information for a paper in a structured manner. Once the information is added, the repository will automatically refresh the readme file to display the paper list, categorized by year, authors, and other relevant criteria. This way, it becomes effortless to maintain an organized and up-to-date paper collection.
-
 ## Table of Contents
 - [EfficientPaper](#efficientpaper)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
+  - [Optimization Hierarchy for LLM](#optimization-hierarchy-for-llm)
+  - [:sparkles: Paper List](#paper-list)
+    - [keyword](#keyword)
+    - [year](#year)
+    - [publication](#publication)
+    - [instution](#instution)
+    - [author](#author)
+  - [Reference](#reference)
 
-</p>
-</details>
 
 ## Getting Started
 1. Add paper information by `./add_paper_info.sh` or  `./add_paper_info.sh <name>`
@@ -49,4 +51,8 @@ keyword {
 </p>
 </details>
 
+## Optimization Hierarchy for LLM
 
+<p align="center">
+  <img src="./notes/survey/optimization_hierarchy.jpg" width="600" title="hierarchy">
+</p>

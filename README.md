@@ -1,17 +1,19 @@
 # EfficientPaper
 Pruning, Quantization and efficient-inference/training paper list.
 
-> Hi there,
-> 
-> To make it easier for everyone to manage the paper list and contribute paper information to the repository, we have implemented a template. This template allows us to collect the necessary information for a paper in a structured manner. Once the information is added, the repository will automatically refresh the readme file to display the paper list, categorized by year, authors, and other relevant criteria. This way, it becomes effortless to maintain an organized and up-to-date paper collection.
-
 ## Table of Contents
 - [EfficientPaper](#efficientpaper)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
+  - [Optimization Hierarchy for LLM](#optimization-hierarchy-for-llm)
+  - [:sparkles: Paper List](#paper-list)
+    - [keyword](#keyword)
+    - [year](#year)
+    - [publication](#publication)
+    - [instution](#instution)
+    - [author](#author)
+  - [Reference](#reference)
 
-</p>
-</details>
 
 ## Getting Started
 1. Add paper information by `./add_paper_info.sh` or  `./add_paper_info.sh <name>`
@@ -49,7 +51,11 @@ keyword {
 </p>
 </details>
 
+## Optimization Hierarchy for LLM
 
+<p align="center">
+  <img src="./notes/survey/optimization_hierarchy.jpg" width="600" title="hierarchy">
+</p>
 
 
 
@@ -64,18 +70,19 @@ keyword {
 <details open><summary><b>0 Working</b></summary> 
 <p>
 
-|    | meta                                    | title                                                                                                                          | publication   |   year | code                                                             | note                                                                                                                  | cover                                                             |
-|---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:-----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|
-|  0 | [GRAIN](./meta/grain.prototxt)          | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634)                      | arXiv         |      0 | [Pytorch](https://github.com/airaria/GRAIN)                      | [note](./notes/grain/index.md)                                                                                        | <img width='400' alt='image' src='./notes/grain/grain.jpg'>       |
-|  1 | [m](./meta/QA8XN7TU.prototxt)           | [A Fast Post-Training Pruning Framework for Transformers](https://arxiv.org/abs/2204.09656)                                    | NeurIPS       |   2022 | [Pytorch](https://github.com/WoosukKwon/retraining-free-pruning) | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=969271620)                                          |                                                                   |
-|  2 | [SMP](./meta/smp.prototxt)              | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf)                       | ACL           |   2023 | [Pytorch](https://github.com/kongds/SMP)                         |                                                                                                                       | <img width='400' alt='image' src='./notes/smp/smp.jpg'>           |
-|  3 | [SIMPLE](./meta/simple.prototxt)        | [Structured Pruning for Efficient Generative Pre-trained Language Models](https://aclanthology.org/2023.findings-acl.692.pdf)  | ACL Findings  |   2023 |                                                                  |                                                                                                                       |                                                                   |
-|  4 | [Deja Vu](./meta/dejavu.prototxt)       | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i)                | ICML          |   2023 | [Pytorch](https://github.com/FMInference/DejaVu)                 |                                                                                                                       | <img width='400' alt='image' src='./notes/dejavu/dejavu.jpg'>     |
-|  5 | [LoSparse](./meta/LoSparse.prototxt)    | [Structured Compression of Large Language Models based on Low-Rank and Sparse Approximation](https://arxiv.org/abs/2306.11222) | ICML          |   2023 | [Pytorch](https://github.com/yxli2123/LoSparse)                  |                                                                                                                       | <img width='400' alt='image' src='./notes/losparse/losparse.jpg'> |
-|  6 | [ZipLM](./meta/ZipLM.prototxt)          | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                       | ICML          |   2023 |                                                                  |                                                                                                                       |                                                                   |
-|  7 | [K-pruning](./meta/k_pruning.prototxt)  | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449)            | arXiv         |   2023 |                                                                  | [note](./notes/k_pruning/note.md)                                                                                     | <img width='400' alt='image' src='./notes/k_pruning/kp.jpg'>      |
-|  8 | [LLM-Pruner](./meta/llmpruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](https://arxiv.org/abs/2305.11627)                             | arXiv         |   2023 | [Pytorch](https://github.com/horseee/LLM-Pruner)                 | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |                                                                   |
-|  9 | [GBDT](./meta/gbdt.prototxt)            | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507)                                       | arXiv         |   2023 |                                                                  |                                                                                                                       | <img width='400' alt='image' src='./notes/gbdt/gbdt.jpg'>         |</p>
+|    | meta                                    | title                                                                                                                                                   | publication   |   year | code                                                              | note                                                                                                                  | cover                                                             |
+|---:|:----------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|
+|  0 | [GRAIN](./meta/grain.prototxt)          | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634)                                               | arXiv         |      0 | [Pytorch](https://github.com/airaria/GRAIN)                       | [note](./notes/grain/index.md)                                                                                        | <img width='400' alt='image' src='./notes/grain/grain.jpg'>       |
+|  1 | [m](./meta/QA8XN7TU.prototxt)           | [A Fast Post-Training Pruning Framework for Transformers](https://arxiv.org/abs/2204.09656)                                                             | NeurIPS       |   2022 | [Pytorch](https://github.com/WoosukKwon/retraining-free-pruning)  | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=969271620)                                          |                                                                   |
+|  2 | [SMP](./meta/smp.prototxt)              | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf)                                                | ACL           |   2023 | [Pytorch](https://github.com/kongds/SMP)                          |                                                                                                                       | <img width='400' alt='image' src='./notes/smp/smp.jpg'>           |
+|  3 | [SIMPLE](./meta/simple.prototxt)        | [Structured Pruning for Efficient Generative Pre-trained Language Models](https://aclanthology.org/2023.findings-acl.692.pdf)                           | ACL Findings  |   2023 |                                                                   |                                                                                                                       |                                                                   |
+|  4 | [Deja Vu](./meta/dejavu.prototxt)       | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i)                                         | ICML          |   2023 | [Pytorch](https://github.com/FMInference/DejaVu)                  |                                                                                                                       | <img width='400' alt='image' src='./notes/dejavu/dejavu.jpg'>     |
+|  5 | [LoSparse](./meta/LoSparse.prototxt)    | [Structured Compression of Large Language Models based on Low-Rank and Sparse Approximation](https://arxiv.org/abs/2306.11222)                          | ICML          |   2023 | [Pytorch](https://github.com/yxli2123/LoSparse)                   |                                                                                                                       | <img width='400' alt='image' src='./notes/losparse/losparse.jpg'> |
+|  6 | [ZipLM](./meta/ZipLM.prototxt)          | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                                                | ICML          |   2023 |                                                                   |                                                                                                                       |                                                                   |
+|  7 | [K-pruning](./meta/k_pruning.prototxt)  | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449)                                     | arXiv         |   2023 |                                                                   | [note](./notes/k_pruning/note.md)                                                                                     | <img width='400' alt='image' src='./notes/k_pruning/kp.jpg'>      |
+|  8 | [LLM-Pruner](./meta/llmpruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](https://arxiv.org/abs/2305.11627)                                                      | arXiv         |   2023 | [Pytorch](https://github.com/horseee/LLM-Pruner)                  | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |                                                                   |
+|  9 | [GBDT](./meta/gbdt.prototxt)            | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507)                                                                | arXiv         |   2023 |                                                                   |                                                                                                                       | <img width='400' alt='image' src='./notes/gbdt/gbdt.jpg'>         |
+| 10 | [Flash-LLM](./meta/flash_llm.prototxt)  | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md)                                                                                    |                                                                   |</p>
 </details>
 <details open><summary><b>Low Rank Decomposition</b></summary> 
 <p>
@@ -159,7 +166,8 @@ keyword {
 | 41 | [SparseGPT](./meta/sparsegpt.prototxt)                                     | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf)                                                                                                                         | arXiv         |   2023 | [Pytorch](https://github.com/IST-DASLab/sparsegpt)                                                         | [note](./notes/SparseGPT.md)                                                                                                    |                                                                                                         |
 | 42 | [m](./meta/AYB1XUO5.prototxt)                                              | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596)                                                                                            | arXiv         |   2023 |                                                                                                            |                                                                                                                                 |                                                                                                         |
 | 43 | [Essential Sparsity](./meta/EssentialSparsity.prototxt)                    | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                                                                                                             | arXiv         |   2023 | [Pytorch](https://github.com/VITA-Group/essential_sparsity/tree/main)                                      |                                                                                                                                 |                                                                                                         |
-| 44 | [Selective Context](./meta/selective_context.prototxt)                     | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102)                                                                            | arXiv         |   2023 | [Pytorch](https://github.com/liyucheng09/Selective_Context)                                                |                                                                                                                                 | <img width='400' alt='image' src='./notes/selective_context/selective_context.jpg'>                     |</p>
+| 44 | [Selective Context](./meta/selective_context.prototxt)                     | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102)                                                                            | arXiv         |   2023 | [Pytorch](https://github.com/liyucheng09/Selective_Context)                                                |                                                                                                                                 | <img width='400' alt='image' src='./notes/selective_context/selective_context.jpg'>                     |
+| 45 | [Flash-LLM](./meta/flash_llm.prototxt)                                     | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285)                                                                                  | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main)                                          | [note](./notes/flash_llm/index.md)                                                                                              |                                                                                                         |</p>
 </details>
 <details open><summary><b>Survey</b></summary> 
 <p>
@@ -302,6 +310,13 @@ keyword {
 | 33 | [Selective Context](./meta/selective_context.prototxt)                     | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102)                | arXiv         |   2023 | [Pytorch](https://github.com/liyucheng09/Selective_Context)            |                                                                                                                                 | <img width='400' alt='image' src='./notes/selective_context/selective_context.jpg'>                     |
 | 34 | [ZeroQuant-V2](./meta/ZeroQuant-V2.prototxt)                               | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302)                             | arXiv         |   2023 | [DeepSpeed](https://github.com/microsoft/DeepSpeed)                    |                                                                                                                                 |                                                                                                         |</p>
 </details>
+<details><summary><b>2024</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 </p>
 </details>
 
@@ -425,6 +440,13 @@ keyword {
 |  7 | [OBC](./meta/obc.prototxt)                           | [Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning](https://openreview.net/pdf?id=ksVGCOlOEba)    | NeurIPS       |   2022 | [IST-DASLab/OBC](https://github.com/IST-DASLab/OBC)                        |                                                                                             |                                                                          |
 |  8 | [ZeroQuant](./meta/zeroquant.prototxt)               | [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1) | NeurIPS       |   2022 | [DeepSpeed](https://github.com/microsoft/DeepSpeed)                        |                                                                                             |                                                                          |</p>
 </details>
+<details><summary><b>VLDB</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>VLSI</b></summary> 
 <p>
 
@@ -474,6 +496,13 @@ keyword {
 </summary> 
 <p>
 
+<details><summary><b>Alibaba Group</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>Beihang University</b></summary> 
 <p>
 
@@ -775,6 +804,13 @@ keyword {
 |  0 | [GPFQ](./meta/gpfq.prototxt)     | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) | JMLR          |   2021 | [Pytorch](https://gitenterprise.xilinx.com/xiandong/GPFA) | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974) |         |
 |  1 | [GPFQv2](./meta/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf)     | arXiv         |   2023 | [Pytorch](https://gitenterprise.xilinx.com/xiandong/GPFA) | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974) |         |</p>
 </details>
+<details><summary><b>Univeristy of Sydney</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>University of Basel</b></summary> 
 <p>
 
@@ -1038,6 +1074,13 @@ keyword {
 |---:|:------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------------|:-------|:--------|
 |  0 | [m](./meta/XZBX1Z9G.prototxt) | [Sparse Progressive Distillation: Resolving Overfitting under Pretrain-and-Finetune Paradigm](https://aclanthology.org/2022.acl-long.16/) | ACL           |   2022 | [Pytorch](https://github.com/shaoyiHusky/SparseProgressiveDistillation) |        |         |</p>
 </details>
+<details><summary><b>Donglin Zhuang</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>Edward Hu</b></summary> 
 <p>
 
@@ -1098,6 +1141,13 @@ keyword {
 |    | meta                          | title                                                                          | publication   |   year | code                                                                   | note   | cover   |
 |---:|:------------------------------|:-------------------------------------------------------------------------------|:--------------|-------:|:-----------------------------------------------------------------------|:-------|:--------|
 |  0 | [m](./meta/23LQ9SVH.prototxt) | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987) | arXiv         |   2023 | [pytorch-CUDA](https://github.com/xijiu9/Train_Transformers_with_INT4) |        |         |</p>
+</details>
+<details><summary><b>Haojun Xia</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
 </details>
 <details><summary><b>Haotian Tang</b></summary> 
 <p>
@@ -1361,6 +1411,13 @@ keyword {
 |  0 | [m](./meta/AYB1XUO5.prototxt)                           | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) | arXiv         |   2023 |                                                                       |        |         |
 |  1 | [Essential Sparsity](./meta/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                  | arXiv         |   2023 | [Pytorch](https://github.com/VITA-Group/essential_sparsity/tree/main) |        |         |</p>
 </details>
+<details><summary><b>Shuaiwen Leon Song</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>Sinno Jialin Pan</b></summary> 
 <p>
 
@@ -1466,6 +1523,13 @@ keyword {
 |---:|:-----------------------------------------------------|:---------------------------------------------------------------------------------------|:--------------|-------:|:-----------------------------------------------------------------|:-------|:--------------------------------------------------------------------|
 |  0 | [Movement Pruning](./meta/movement_pruning.prototxt) | [Movement Pruning: Adaptive Sparsity by Fine-Tuning](https://arxiv.org/abs/2005.07683) | NeurIPS       |   2020 | [Pytorch](https://github.com/huggingface/block_movement_pruning) |        | <img width='400' alt='image' src='./notes/movement_pruning/mp.jpg'> |</p>
 </details>
+<details><summary><b>Wei Lin</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>Weizhu Chen</b></summary> 
 <p>
 
@@ -1493,6 +1557,13 @@ keyword {
 |    | meta                          | title                                                                                       | publication   |   year | code                                                             | note                                                                         | cover   |
 |---:|:------------------------------|:--------------------------------------------------------------------------------------------|:--------------|-------:|:-----------------------------------------------------------------|:-----------------------------------------------------------------------------|:--------|
 |  0 | [m](./meta/QA8XN7TU.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](https://arxiv.org/abs/2204.09656) | NeurIPS       |   2022 | [Pytorch](https://github.com/WoosukKwon/retraining-free-pruning) | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=969271620) |         |</p>
+</details>
+<details><summary><b>Xiafei Qiu</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
 </details>
 <details><summary><b>Xin Dong</b></summary> 
 <p>
@@ -1571,6 +1642,20 @@ keyword {
 |---:|:-------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------|:-------|:------------------------------------------------------------------|
 |  0 | [LoSparse](./meta/LoSparse.prototxt) | [Structured Compression of Large Language Models based on Low-Rank and Sparse Approximation](https://arxiv.org/abs/2306.11222) | ICML          |   2023 | [Pytorch](https://github.com/yxli2123/LoSparse) |        | <img width='400' alt='image' src='./notes/losparse/losparse.jpg'> |</p>
 </details>
+<details><summary><b>Yong Li</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
+<details><summary><b>Yuchao Li</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>Yucheng Li</b></summary> 
 <p>
 
@@ -1608,6 +1693,13 @@ keyword {
 |  0 | [m](./meta/AYB1XUO5.prototxt)                           | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) | arXiv         |   2023 |                                                                       |        |         |
 |  1 | [Essential Sparsity](./meta/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                  | arXiv         |   2023 | [Pytorch](https://github.com/VITA-Group/essential_sparsity/tree/main) |        |         |</p>
 </details>
+<details><summary><b>Zhen Zheng</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
+</details>
 <details><summary><b>Zhewei Yao</b></summary> 
 <p>
 
@@ -1636,6 +1728,13 @@ keyword {
 |    | meta                            | title                                                                                                                     | publication   |   year | code   | note   | cover   |
 |---:|:--------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:-------|:-------|:--------|
 |  0 | [STA](./meta/44KWQAWO.prototxt) | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) | VLSI          |   2022 |        |        |         |</p>
+</details>
+<details><summary><b>Zhongzhu Zhou</b></summary> 
+<p>
+
+|    | meta                                   | title                                                                                                                                                   | publication   |   year | code                                                              | note                               | cover   |
+|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------|:-----------------------------------|:--------|
+|  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | VLDB          |   2024 | [Pytorch](https://github.com/AlibabaResearch/flash-llm/tree/main) | [note](./notes/flash_llm/index.md) |         |</p>
 </details>
 <details><summary><b>Zichang Liu</b></summary> 
 <p>
@@ -1670,3 +1769,4 @@ keyword {
 5. https://github.com/chester256/Model-Compression-Papers
 6. https://github.com/horseee/Awesome-Efficient-LLM
 
+[:arrow_up: Back to top](#efficientpaper)

@@ -1,0 +1,34 @@
+paper {
+  title: "Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity"
+  abbr: "Flash-LLM"
+  url: "https://arxiv.org/abs/2309.10285"
+  authors: "Haojun Xia"
+  authors: "Zhen Zheng"
+  authors: "Yuchao Li"
+  authors: "Donglin Zhuang"
+  authors: "Zhongzhu Zhou"
+  authors: "Xiafei Qiu"
+  authors: "Yong Li"
+  authors: "Wei Lin"
+  authors: "Shuaiwen Leon Song"
+  institutions: "Univeristy of Sydney"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "VLDB"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/AlibabaResearch/flash-llm/tree/main"
+}
+note {
+  url: "flash_llm/index.md"
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: ""
+}
