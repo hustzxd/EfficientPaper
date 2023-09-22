@@ -41,7 +41,7 @@ where $\lambda = \\{0.00025, 1\\}$ and $\mu = 64$.
 
 - 不同层之间的score是可以互相比较的吗？
   - 对于MLP， $\lambda$ 取值非常小，只看predictive loss，可以跨层比较
-  - 但是对于MHA，$\lambda$ 取值比较大，predictive/representational 都看，两者兼顾
+  - 但是对于MHA， $\lambda$ 取值比较大，predictive/representational 都看，两者兼顾
 - MHA 与 MLP 也可以互相比较？
   - 通过配比 $\mu$ 来实现
 

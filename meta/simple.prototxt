@@ -16,12 +16,12 @@ code {
   url: ""
 }
 note {
-  url: ""
+  url: "simple/index.md"
 }
 keyword {
   words: sparse_pruning
   words: working
 }
 cover {
-  url: ""
+  url: "simple/cover.jpg"
 }

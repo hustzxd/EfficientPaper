@@ -13,8 +13,6 @@ if not os.path.exists('timeline'):
         f.write(str(current_time))
 timeline = os.path.getmtime('timeline')
 
-
-
 def check_ssh(ip, user, key_file, initial_wait=0, interval=0, retries=1):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -28,8 +26,6 @@ def check_ssh(ip, user, key_file, initial_wait=0, interval=0, retries=1):
         except Exception:
             time.sleep(interval)
     return False
-
-success = check_ssh('10.130.252.65', 'xiandong', '/home/xiandong/.ssh/id_rsa.pub')
 
 for f in os.listdir('meta'):
     f_time = os.path.getmtime('meta/{}'.format(f))
@@ -45,6 +41,10 @@ for d in os.listdir('notes'):
         if f_time > timeline:
             print(f)
             os.system("scp -r notes/{} v100_190194:projects/EfficientPaper/notes/".format(d))
+
+success = False
+print('checking ssh connection ...')
+success = check_ssh('10.130.252.65', 'xiandong', '/home/xiandong/.ssh/id_rsa.pub')
 
 if success:
     os.remove('timeline')
