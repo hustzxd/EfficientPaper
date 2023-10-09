@@ -6,5 +6,6 @@
 5. https://github.com/chester256/Model-Compression-Papers
 6. https://github.com/horseee/Awesome-Efficient-LLM
 7. https://github.com/AmberLJC/LLMSys-PaperList
+8. https://github.com/Hannibal046/Awesome-LLM
 
 [:arrow_up: Back to top](#efficientpaper)

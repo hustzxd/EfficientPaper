@@ -16,7 +16,9 @@ code {
 note {
   url: ""
 }
-
+keyword {
+  words: fusion
+}
 cover {
   url: ""
 }

@@ -32,6 +32,9 @@ word_pb2str = {
     eppb.Keyword.Word.quantization: "Quantization",
     eppb.Keyword.Word.survey: "Survey",
     eppb.Keyword.Word.low_rank: "Low Rank Decomposition",
+    eppb.Keyword.Word.fusion: "Layer Fusion (Reduce IO)",
+    eppb.Keyword.Word.tool: "Tool",
+    eppb.Keyword.Word.cache: "Cache Optimization",
     eppb.Keyword.Word.working: "0 Working"
 }
 

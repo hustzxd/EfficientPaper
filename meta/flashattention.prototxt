@@ -18,6 +18,9 @@ note {
   url: ""
 }
 
+keyword {
+  words: fusion
+}
 cover {
   url: ""
 }

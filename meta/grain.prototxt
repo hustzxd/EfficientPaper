@@ -10,8 +10,8 @@ paper {
   institutions: "iFLYTEK Research"
 }
 pub {
-  where: "arXiv"
-  year: 0
+  where: "ACL"
+  year: 2023
 }
 code {
   type: "Pytorch"
