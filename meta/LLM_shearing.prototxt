@@ -1,0 +1,26 @@
+paper {
+  title: "Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning"
+  abbr: "LLM-shearing"
+  url: "https://xiamengzhou.github.io/sheared-llama/"
+  authors: "Mengzhou Xia"
+  authors: "Tianyu Gao"
+  institutions: "Princeton University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Soon"
+  url: "https://github.com/princeton-nlp/LLM-Shearing"
+}
+note {
+  url: "llm_shearing/note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "llm_shearing/cover.jpg"
+}
