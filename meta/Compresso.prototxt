@@ -1,0 +1,29 @@
+paper {
+  title: "Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models"
+  abbr: "Compresso"
+  url: "https://arxiv.org/abs/2310.05015"
+  authors: "Song Guo"
+  authors: "Jiahang Xu"
+  authors: "Li Lyna Zhang"
+  authors: "Mao Yang"
+  institutions: "Microsoft Research"
+  institutions: "Xiamen University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Release soon"
+  url: "https://github.com/microsoft/Moonlit/blob/main/Compresso/README.md"
+}
+note {
+  url: "compresso/note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "compresso/cover.jpg"
+}

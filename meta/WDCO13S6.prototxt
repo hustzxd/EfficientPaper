@@ -1,0 +1,28 @@
+paper {
+  title: "Structural Pruning of Large Language Models via Neural Architecture Search"
+  abbr: ""
+  url: "https://openreview.net/forum?id=SHlZcInS6C"
+  authors: "Aaron Klein"
+  authors: "Jacek Golebiowski"
+  authors: "Xingchen Ma"
+  authors: "Valerio Perrone" 
+  authors: "Cedric Archambeau"
+  institutions: "AWS AI Labs"
+}
+pub {
+  where: "AutoML Workshop"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/awslabs/syne-tune/tree/nas/benchmarking/nursery/nas_llm"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "nas_pruning/nas_pruning.jpg"
+}

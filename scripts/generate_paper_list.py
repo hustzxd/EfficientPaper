@@ -43,11 +43,11 @@ def main():
     columns = [
         "meta",
         "title",  # (abbr) [title](url)
-        "publication",  # ICLR
+        "pub",  # ICLR
         "year",  # 2022
         "code",  # [type](url)
         "note",  # [](url)
-        "cover",
+        "ccccccccccccccccccover",
     ]
     pinfos = readMeta()
     data_list = []
@@ -138,7 +138,7 @@ def main():
         data_list.append(data)
 
     df = pd.DataFrame(data_list, columns=columns)
-    df = df.sort_values(by=["year", "publication", "title"], ascending=True).reset_index(drop=True)
+    df = df.sort_values(by=["year", "pub", "title"], ascending=True).reset_index(drop=True)
     with open("README_prefix.md") as rf:
         markdown = rf.read()
     markdown += "\n\n"
@@ -174,7 +174,7 @@ def gen_table(out_cls, columns, cls_name, is_open=False):
         markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
     for key, data in out_cls.items():
         df_ = pd.DataFrame(data, columns=columns)
-        df_ = df_.sort_values(by=["year", "publication", "title"], ascending=True).reset_index(drop=True)
+        df_ = df_.sort_values(by=["year", "pub", "title"], ascending=True).reset_index(drop=True)
         if is_open:
             markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         else:
