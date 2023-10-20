@@ -1,0 +1,37 @@
+paper {
+  title: "Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity"
+  abbr: "OWL"
+  url: "https://arxiv.org/pdf/2310.05175.pdf"
+  authors: "Lu Yin"
+  authors: "You Wu"
+  authors: "Zhenyu Zhang"
+  authors: "Cheng-Yu Hsieh"
+  authors: "Yaqing Wang"
+  authors: "Yiling Jia"
+  authors: "Mykola Pechenizkiy"
+  authors: "Yi Liang"
+  authors: "Zhangyang Wang"
+  authors: "Shiwei Liu"
+  institutions: "Eindhoven University of Technology"
+  institutions: "University of Texas at Austin"
+  institutions: "Google Research"
+  institutions: "University of Washington"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/luuyin/OWL"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "owl/cover.jpg"
+}

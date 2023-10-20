@@ -5,7 +5,7 @@ paper {
   authors: "Eldar Kurtic"
   authors: "Elias Frantar"
   authors: "Dan Alistarh"
-  institutions: "IST"
+  institutions: "IST Austria"
   institutions: "Neural Magic"
 }
 pub {
@@ -24,5 +24,5 @@ keyword {
   words: working
 }
 cover {
-  url: ""
+  url: "ziplm/cover.jpg"
 }

@@ -1,0 +1,30 @@
+paper {
+  title: "Sparse Fine-tuning for Inference Acceleration of Large Language Models"
+  abbr: "SquareHead"
+  url: "https://arxiv.org/pdf/2310.06927.pdf"
+  authors: "Eldar Kurtic"
+  authors: "Denis Kuznedelev"
+  authors: "Elias Frantar"
+  authors: "Michael Goin"
+  authors: "Dan Alistarh"
+  institutions: "IST Austria"
+  institutions: "Neural Magic"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/IST-DASLab/SparseFinetuning"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "squarehead/cover.png"
+}

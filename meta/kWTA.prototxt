@@ -1,0 +1,27 @@
+paper {
+  title: "Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks"
+  abbr: "k-WTA"
+  url: "https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a"
+  authors: "Kevin Hunter"
+  authors: "Lawrence Spracklen"
+  authors: "Subutai Ahmad"
+  institutions: "Numenta"
+}
+pub {
+  where: "Neuromorphic Computing and Engineering"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "https://www.numenta.com/blog/2022/02/07/a-tale-of-two-sparsities/"
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "kWTA/cover.jpg"
+}

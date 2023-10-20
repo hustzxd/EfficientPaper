@@ -1,6 +1,6 @@
 paper {
   title: "A Fast Post-Training Pruning Framework for Transformers"
-  abbr: ""
+  abbr: "FisherPruning"
   url: "https://arxiv.org/abs/2204.09656"
   authors: "Woosuk Kwon"
   authors: "Amir Gholami"
@@ -20,4 +20,7 @@ note {
 keyword {
   words: sparse_pruning
   words: working
+}
+cover {
+  url: "fisher_pruning/cover.jpg"
 }

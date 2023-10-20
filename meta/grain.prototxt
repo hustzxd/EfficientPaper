@@ -21,7 +21,6 @@ note {
   url: "grain/index.md"
 }
 keyword {
-  words: working
   words: sparse_pruning
 }
 cover {
