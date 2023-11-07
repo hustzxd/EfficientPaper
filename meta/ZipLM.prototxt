@@ -9,12 +9,12 @@ paper {
   institutions: "Neural Magic"
 }
 pub {
-  where: "ICML"
+  where: "NeurIPS"
   year: 2023
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/IST-DASLab/ZipLM"
 }
 note {
   url: ""

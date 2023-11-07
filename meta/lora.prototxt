@@ -22,5 +22,5 @@ keyword {
   words: low_rank
 }
 cover {
-  url: ""
+  url: "lora/lora.jpg"
 }

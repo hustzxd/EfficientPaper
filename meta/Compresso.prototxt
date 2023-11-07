@@ -14,8 +14,8 @@ pub {
   year: 2023
 }
 code {
-  type: "Release soon"
-  url: "https://github.com/microsoft/Moonlit/blob/main/Compresso/README.md"
+  type: "PyTorch"
+  url: "https://github.com/microsoft/Moonlit/blob/main/Compresso"
 }
 note {
   url: "compresso/note.md"

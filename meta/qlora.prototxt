@@ -22,5 +22,5 @@ keyword {
   words: quantization
 }
 cover {
-  url: ""
+  url: "qlora/qlora.jpg"
 }
