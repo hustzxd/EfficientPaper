@@ -11,7 +11,7 @@ pub {
   year: 2023
 }
 code {
-  type: "Soon"
+  type: "PyTorch"
   url: "https://github.com/princeton-nlp/LLM-Shearing"
 }
 note {
