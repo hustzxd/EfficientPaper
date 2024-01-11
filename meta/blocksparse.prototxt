@@ -1,7 +1,7 @@
 paper {
   title: "GPU Kernels for Block-Sparse Weights"
   abbr: "blocksparse"
-  url: "https://cdn.openai.com/blocksparse/blocksparsepaper.pdfs"
+  url: "https://cdn.openai.com/blocksparse/blocksparsepaper.pdf"
   authors: "Scott Gray"
   authors: "Diederik P. Kingma"
   institutions: "OpenAI"

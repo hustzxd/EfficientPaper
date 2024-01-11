@@ -1,0 +1,26 @@
+paper {
+  title: "LLM in a flash: Efficient Large Language Model Inference with Limited Memory"
+  abbr: "LLM in a flash"
+  url: "https://arxiv.org/abs/2312.11514"
+  authors: "Keivan Alizadeh"
+  authors: "Iman Mirzadeh"
+  institutions: "Apple"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: working
+  words: sparse_pruning
+}
+cover {
+  url: "llm_in_a_flash/llm_in_a_flash.jpg"
+}
