@@ -1,0 +1,27 @@
+paper {
+  title: "Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models"
+  abbr: "Plug-and-Play"
+  url: "https://openreview.net/forum?id=Tr0lPx9woF"
+  authors: "Name1"
+  authors: "Name2"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: ""
+}

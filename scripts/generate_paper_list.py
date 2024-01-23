@@ -158,7 +158,7 @@ def main():
     markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
     markdown += gen_table(year_cls, columns, "year")
     markdown += gen_table(pub_cls, columns, "publication")
-    # markdown += gen_table(inst_cls, columns, "instution")
+    markdown += gen_table(inst_cls, columns, "instution")
     # markdown += gen_table(author_cls, columns, "author")
 
     with open("README_suffix.md") as rf:
