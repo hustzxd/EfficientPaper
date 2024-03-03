@@ -35,7 +35,8 @@ word_pb2str = {
     eppb.Keyword.Word.fusion: "Layer Fusion (Reduce IO)",
     eppb.Keyword.Word.tool: "Tool",
     eppb.Keyword.Word.cache: "Cache Optimization",
-    eppb.Keyword.Word.working: "0 Working"
+    eppb.Keyword.Word.working: "0 Working",
+    eppb.Keyword.Word.training: "Efficient Training",
 }
 
 TITLE = "ttttttttttttttttttttttttttttttitle"

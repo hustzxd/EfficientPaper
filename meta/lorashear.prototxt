@@ -19,7 +19,8 @@ note {
   url: ""
 }
 keyword {
-  words: none
+  words: sparse_pruning
+  words: low_rank
 }
 cover {
   url: ""
