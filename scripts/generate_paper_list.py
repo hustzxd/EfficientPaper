@@ -79,7 +79,13 @@ def main():
         codetype = pinfo.code.type if pinfo.code.type else "code"
 
         if pinfo.code.url:
-            code = "[{}]({})".format(codetype, pinfo.code.url)
+            if "github.com" in pinfo.code.url: # https://github.com/artidoro/qlora
+                # ![GitHub Repo stars](https://img.shields.io/github/stars/hustzxd/LSQuantization)
+                [user_id, repo] = pinfo.code.url.split("/")[-2:]
+                code = f"![GitHub Repo stars](https://img.shields.io/github/stars/{user_id}/{repo})"
+            else:
+                code = "[{}]({})".format(codetype, pinfo.code.url)
+
 
         note = ""
         if pinfo.note.url:
