@@ -49,7 +49,7 @@ def main():
         COVER,
         "pub",  # ICLR
         "year",  # 2022
-        "code",  # [type](url)
+        "codeeeee",  # [type](url)
         "note",  # [](url)
     ]
     pinfos = readMeta()
