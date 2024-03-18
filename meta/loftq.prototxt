@@ -1,0 +1,25 @@
+paper {
+  title: "LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models"
+  abbr: "LoftQ"
+  url: "https://arxiv.org/abs/2310.08659"
+  authors: "Yixiao Li, Yifan Yu, Chen Liang, Pengcheng He, Nikos Karampatziakis, Weizhu Chen, Tuo Zhao"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 0
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}

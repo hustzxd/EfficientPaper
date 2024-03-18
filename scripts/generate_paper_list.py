@@ -1,7 +1,7 @@
 import os
 import shutil
 import sys
-
+import argparse
 import google.protobuf as pb
 import google.protobuf.text_format
 import ipdb
@@ -10,6 +10,12 @@ import pandas as pd
 from proto import efficient_paper_pb2 as eppb
 
 sys.path.append("./")
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Generate Paper INFO")
+    parser.add_argument("-d", "--detail", action="store_true", default=False, help="Whether to display information in a detail way.")
+    args = parser.parse_args()
+    return args
 
 
 def readMeta():
@@ -43,6 +49,7 @@ TITLE = "ttttttttttttttttttttttttttttttitle"
 COVER = "ccccccccccccccccccover"
 
 def main():
+    args = parse_args()
     columns = [
         "meta",
         TITLE,  # (abbr) [title](url)
@@ -130,12 +137,15 @@ def main():
                     inst_cls[inst] = [data]
 
         if pinfo.paper.authors:
-            for author in pinfo.paper.authors:
+            for authors in pinfo.paper.authors:
                 # author = author.replace(" ", "-")
-                if author in author_cls:
-                    author_cls[author].append(data)
-                else:
-                    author_cls[author] = [data]
+                authors = authors.split(',')
+                for author in authors:
+                    author = author.strip()
+                    if author in author_cls:
+                        author_cls[author].append(data)
+                    else:
+                        author_cls[author] = [data]
 
         if pinfo.keyword.words:
             for word in pinfo.keyword.words:
@@ -156,17 +166,12 @@ def main():
 
     markdown += "\n## Paper List\n\n"
 
-    # keyword_cls = {}
-    # year_cls = {}
-    # pub_cls = {}
-    # inst_cls = {}
-    # author_cls = {}
-
     markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
     markdown += gen_table(year_cls, columns, "year")
     markdown += gen_table(pub_cls, columns, "publication")
     markdown += gen_table(inst_cls, columns, "instution")
-    # markdown += gen_table(author_cls, columns, "author")
+    if args.detail:
+        markdown += gen_table(author_cls, columns, "author")
 
     with open("README_suffix.md") as rf:
         markdown += rf.read()

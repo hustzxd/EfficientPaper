@@ -8,8 +8,10 @@ python proto/gene_template.py
 python scripts/generate_paper_list.py
 
 if [ -z "$1" ]; then
+    python scripts/generate_paper_list.py
     echo "Refresh Readme Done"
 else
+    python scripts/generate_paper_list.py -d
     echo "Refresh Readme Done"
     echo "Upload changes to github"
     git add .
