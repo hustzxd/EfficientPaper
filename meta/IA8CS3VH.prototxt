@@ -2,10 +2,10 @@ paper {
   title: "Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models"
   abbr: "Plug-and-Play"
   url: "https://openreview.net/forum?id=Tr0lPx9woF"
-  authors: "Name1"
-  authors: "Name2"
-  institutions: "inst1"
-  institutions: "inst2"
+  authors: "Yingtao Zhang, Haoli Bai, Haokun Lin, Jialin Zhao, Lu Hou, Carlo Vittorio Cannistraci"
+  institutions: "Tsinghua University"
+  institutions: "Institute of Automation, Chinese Academy of Sciences"
+  institutions: "Huawei Noah's Ark Lab"
 }
 pub {
   where: "ICLR"
@@ -13,7 +13,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/biomedical-cybernetics/Relative-importance-and-activation-pruning"
 }
 note {
   url: ""
@@ -23,5 +23,5 @@ keyword {
   words: working
 }
 cover {
-  url: ""
+  url: "Plug-and-Play.jpg"
 }

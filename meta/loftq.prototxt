@@ -3,23 +3,25 @@ paper {
   abbr: "LoftQ"
   url: "https://arxiv.org/abs/2310.08659"
   authors: "Yixiao Li, Yifan Yu, Chen Liang, Pengcheng He, Nikos Karampatziakis, Weizhu Chen, Tuo Zhao"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Georgia Tech"
+  institutions: "Microsoft Azure"
 }
 pub {
   where: "arXiv"
-  year: 0
+  year: 2023
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/yxli2123/LoftQ"
 }
 note {
-  url: ""
+  url: "loftq/note.md"
 }
 keyword {
-  words: none
+  words: working
+  words: quantization
+  words: low_rank
 }
 cover {
-  url: ""
+  url: "loftq/loftq.jpg"
 }
