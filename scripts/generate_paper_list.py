@@ -179,7 +179,7 @@ def main():
     print("Generate README.md done")
     cls_dict = {"year": year_cls, "publication": pub_cls, "instution": inst_cls, "author": author_cls}
     for cls_name in ["year", "publication", "instution", "author"]:
-        with open(f"cls/{cls_name}.md", "w") as wf:
+        with open(f"{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True))
 
 
