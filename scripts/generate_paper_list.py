@@ -167,11 +167,9 @@ def main():
     markdown += "\n## Paper List\n\n"
 
     markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
-    markdown += gen_table(year_cls, columns, "year")
-    markdown += gen_table(pub_cls, columns, "publication")
-    markdown += gen_table(inst_cls, columns, "instution")
-    if args.detail:
-        markdown += gen_table(author_cls, columns, "author")
+    
+    # if args.detail:
+    #     markdown += gen_table(author_cls, columns, "author")
 
     with open("README_suffix.md") as rf:
         markdown += rf.read()
@@ -179,6 +177,10 @@ def main():
     with open("README.md", "w") as wf:
         wf.write(markdown)
     print("Generate README.md done")
+    cls_dict = {"year": year_cls, "publication": pub_cls, "instution": inst_cls, "author": author_cls}
+    for cls_name in ["year", "publication", "instution", "author"]:
+        with open(f"cls/{cls_name}.md", "w") as wf:
+            wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True))
 
 
 def gen_table(out_cls, columns, cls_name, is_open=False):

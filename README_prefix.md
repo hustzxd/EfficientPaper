@@ -8,11 +8,12 @@ Pruning, Quantization and efficient-inference/training paper list.
   - [Optimization Hierarchy for LLM](#optimization-hierarchy-for-llm)
   - [:sparkles: Paper List](#paper-list)
     - [keyword](#keyword)
-    - [year](#year)
-    - [publication](#publication)
-    - [instution](#instution)
-    - [author](#author)
+    - [year](cls/year.md)
+    - [publication](cls/publication.md)
+    - [instution](cls/instution.md)
+    - [author](cls/authors.md)
   - [Reference](#reference)
+
 
 
 ## Getting Started
