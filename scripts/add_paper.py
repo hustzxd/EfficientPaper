@@ -40,7 +40,7 @@ def main():
     if os.path.exists(os.path.join(root_dir, "meta", "{}.prototxt".format(name))):
         print("The file `{}` already exists, please use another name".format(name))
         return
-    
+
     with open(os.path.join(root_dir, "meta", "{}.prototxt".format(name)), "w") as wf:
         print(pinfo)
         print("Writing paper information into {}/meta/{}.prototxt".format(root_dir, name))
@@ -49,7 +49,9 @@ def main():
     if args.note:
         os.makedirs(f"notes/{name}", exist_ok=True)
         if not os.path.exists(f"notes/{name}/note.md"):
-            note_content = f"""# {name}\n\n<p align="center">\n<img src="../blank.jpg" width="600" title="blank">\n</p>\n"""
+            note_content = (
+                f"""# {name}\n\n<p align="center">\n<img src="../blank.jpg" width="600" title="blank">\n</p>\n"""
+            )
             with open(f"notes/{name}/note.md", "w") as wf:
                 wf.write(note_content)
 

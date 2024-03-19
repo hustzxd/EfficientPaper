@@ -1,7 +1,8 @@
+import argparse
 import os
 import shutil
 import sys
-import argparse
+
 import google.protobuf as pb
 import google.protobuf.text_format
 import ipdb
@@ -11,9 +12,12 @@ from proto import efficient_paper_pb2 as eppb
 
 sys.path.append("./")
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate Paper INFO")
-    parser.add_argument("-d", "--detail", action="store_true", default=False, help="Whether to display information in a detail way.")
+    parser.add_argument(
+        "-d", "--detail", action="store_true", default=False, help="Whether to display information in a detail way."
+    )
     args = parser.parse_args()
     return args
 
@@ -47,6 +51,7 @@ word_pb2str = {
 
 TITLE = "ttttttttttttttttttttttttttttttitle"
 COVER = "ccccccccccccccccccover"
+
 
 def main():
     args = parse_args()
@@ -86,13 +91,12 @@ def main():
         codetype = pinfo.code.type if pinfo.code.type else "code"
 
         if pinfo.code.url:
-            if "github.com" in pinfo.code.url: # https://github.com/artidoro/qlora
+            if "github.com" in pinfo.code.url:  # https://github.com/artidoro/qlora
                 # ![GitHub Repo stars](https://img.shields.io/github/stars/hustzxd/LSQuantization)
                 [user_id, repo] = pinfo.code.url.split("/")[3:5]
                 code = f"![GitHub Repo stars](https://img.shields.io/github/stars/{user_id}/{repo})"
             else:
                 code = "[{}]({})".format(codetype, pinfo.code.url)
-
 
         note = ""
         if pinfo.note.url:
@@ -112,7 +116,6 @@ def main():
 
         # data = [meta, title, pub, year, code, note, cover]
         data = [meta, title, cover, pub, year, code, note]
-
 
         if pinfo.pub.year:
             if pinfo.pub.year in year_cls:
@@ -139,7 +142,7 @@ def main():
         if pinfo.paper.authors:
             for authors in pinfo.paper.authors:
                 # author = author.replace(" ", "-")
-                authors = authors.split(',')
+                authors = authors.split(",")
                 for author in authors:
                     author = author.strip()
                     if author in author_cls:
@@ -167,7 +170,7 @@ def main():
     markdown += "\n## Paper List\n\n"
 
     markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
-    
+
     # if args.detail:
     #     markdown += gen_table(author_cls, columns, "author")
 
@@ -179,13 +182,13 @@ def main():
     print("Generate README.md done")
     cls_dict = {"year": year_cls, "publication": pub_cls, "instution": inst_cls, "author": author_cls}
     for cls_name in ["year", "publication", "instution", "author"]:
-        with open(f"{cls_name}.md", "w") as wf:
-            wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True))
+        with open(f"cls_{cls_name}.md", "w") as wf:
+            wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
 
 
-def gen_table(out_cls, columns, cls_name, is_open=False):
+def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
     markdown = ""
-    out_cls = dict(sorted(out_cls.items(), reverse=False))
+    out_cls = dict(sorted(out_cls.items(), reverse=reverse))
     if is_open:
         markdown += """<details open><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
     else:

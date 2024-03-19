@@ -7,7 +7,7 @@ paper {
   institutions: "Apple"
 }
 pub {
-  where: "ILCR oral"
+  where: "ICLR oral"
   year: 2024
 }
 code {

@@ -23,7 +23,7 @@
 
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub       |   year | codeeeee                                                                        | note                                                                                                                              |
 |---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:----------|-------:|:--------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
-|  0 | [ReLU Strikes Back](./meta/HMR7HKFV.prototxt) | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)   | <img width='400' alt='image' src='./notes/ReLU_Strikes_Back.jpg'>             | ILCR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) | [note](https://confluence.xilinx.com/display/aialgo/ReLU+Strikes+Back%3A+Exploiting+Activation+Sparsity+in+Large+Language+Models) |
+|  0 | [ReLU Strikes Back](./meta/HMR7HKFV.prototxt) | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)   | <img width='400' alt='image' src='./notes/ReLU_Strikes_Back.jpg'>             | ICLR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) | [note](https://confluence.xilinx.com/display/aialgo/ReLU+Strikes+Back%3A+Exploiting+Activation+Sparsity+in+Large+Language+Models) |
 |  1 | [LLM in a flash](./meta/5JWFQDDP.prototxt)    | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv     |   2024 |                                                                                 | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb)                                                             |</p>
 </details>
 <details open><summary><b>Beihang University</b></summary> 
@@ -138,6 +138,13 @@
 |    | meta                         | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                    | note   |
 |---:|:-----------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [RPTQ](./meta/RPTQ.prototxt) | [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) |        |</p>
+</details>
+<details open><summary><b>Huawei</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                            |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------|
+|  0 | [QA-LoRA](./meta/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/QA-LoRA/note.md) |</p>
 </details>
 <details open><summary><b>Huawei Noah's Ark Lab</b></summary> 
 <p>
@@ -549,18 +556,16 @@
 <details open><summary><b>inst1</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                            |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------|
-|  0 | [QA-LoRA](./meta/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717)                        | <img width='400' alt='image' src='./notes/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/QA-LoRA/note.md) |
-|  1 | [L4Q](./meta/L4Q.prototxt)         | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'>        | arXiv |   2024 |                                                                               | [note](./notes/L4Q/note.md)     |</p>
+|    | meta                       | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                  | pub   |   year | codeeeee   | note                        |
+|---:|:---------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:------|-------:|:-----------|:----------------------------|
+|  0 | [L4Q](./meta/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/L4Q/note.md) |</p>
 </details>
 <details open><summary><b>inst2</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                            |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------|
-|  0 | [QA-LoRA](./meta/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717)                        | <img width='400' alt='image' src='./notes/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/QA-LoRA/note.md) |
-|  1 | [L4Q](./meta/L4Q.prototxt)         | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'>        | arXiv |   2024 |                                                                               | [note](./notes/L4Q/note.md)     |</p>
+|    | meta                       | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                  | pub   |   year | codeeeee   | note                        |
+|---:|:---------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:------|-------:|:-----------|:----------------------------|
+|  0 | [L4Q](./meta/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/L4Q/note.md) |</p>
 </details>
 </p>
 </details>
