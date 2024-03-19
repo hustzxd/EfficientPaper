@@ -11,7 +11,7 @@ Pruning, Quantization and efficient-inference/training paper list.
     - [year](cls_year.md)
     - [publication](cls_publication.md)
     - [instution](cls_instution.md)
-    - [author](cls_authors.md)
+    - [author](cls_author.md)
   - [Reference](#reference)
 
 

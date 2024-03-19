@@ -3,8 +3,8 @@ paper {
   abbr: "L4Q"
   url: "https://arxiv.org/abs/2402.04902"
   authors: "Hyesung Jeon, Yulhwa Kim, Jae-joon Kim"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Seoul National University"
+  institutions: "Sungkyunkwan University"
 }
 pub {
   where: "arXiv"

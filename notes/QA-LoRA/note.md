@@ -10,3 +10,8 @@ QLoRA主要用于减少finetuning时的memory cost，相较于LoRA，它的性�
 <p align="center">
 <img src="IMG_0448.PNG" width="600" title="blank">
 </p>
+
+实验结果对比，比QLoRA差一点，也算正常
+<p align="center">
+<img src="qa_lora_result.jpg" width="600" title="blank">
+</p>

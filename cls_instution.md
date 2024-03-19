@@ -88,16 +88,10 @@
 <details open><summary><b>Georgia Institute of Technology</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                          | pub   |   year | codeeeee                                                                      | note   |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
-|  0 | [AdaLoRA](./meta/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |        |</p>
-</details>
-<details open><summary><b>Georgia Tech</b></summary> 
-<p>
-
-|    | meta                           | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                      | pub   |   year | codeeeee                                                                 | note                          |
-|---:|:-------------------------------|:---------------------------------------------------------------------------------------------------------|:------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:------------------------------|
-|  0 | [LoftQ](./meta/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/loftq/loftq.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/loftq/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                          | pub   |   year | codeeeee                                                                      | note                          |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------|
+|  0 | [AdaLoRA](./meta/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |                               |
+|  1 | [LoftQ](./meta/loftq.prototxt)     | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659)        | <img width='400' alt='image' src='./notes/loftq/loftq.jpg'>     | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ)      | [note](./notes/loftq/note.md) |</p>
 </details>
 <details open><summary><b>Google</b></summary> 
 <p>
@@ -371,9 +365,10 @@
 <details open><summary><b>Seoul National University</b></summary> 
 <p>
 
-|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                              |
-|---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
-|  0 | [K-pruning](./meta/k_pruning.prototxt) | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449) | <img width='400' alt='image' src='./notes/k_pruning/kp.jpg'> | arXiv |   2023 |            | [note](./notes/k_pruning/note.md) |</p>
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                              |
+|---:|:---------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
+|  0 | [K-pruning](./meta/k_pruning.prototxt) | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449)                 | <img width='400' alt='image' src='./notes/k_pruning/kp.jpg'> | arXiv |   2023 |            | [note](./notes/k_pruning/note.md) |
+|  1 | [L4Q](./meta/L4Q.prototxt)             | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'>      | arXiv |   2024 |            | [note](./notes/L4Q/note.md)       |</p>
 </details>
 <details open><summary><b>Shanghai Jiao Tong University</b></summary> 
 <p>
@@ -393,6 +388,13 @@
 |  2 | [FlashAttention](./meta/flashattention.prototxt)    | [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135)                                  | <img width='400' alt='image' src='./notes/flashattention/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |                                                                                                                  |
 |  3 | [Deja Vu](./meta/dejavu.prototxt)                   | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i)                                  | <img width='400' alt='image' src='./notes/dejavu/dejavu.jpg'>        | ICML    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/DejaVu)        |                                                                                                                  |
 |  4 | [FlashAttention-2](./meta/flashattention2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691)                             |                                                                      | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |                                                                                                                  |</p>
+</details>
+<details open><summary><b>Sungkyunkwan University</b></summary> 
+<p>
+
+|    | meta                       | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                  | pub   |   year | codeeeee   | note                        |
+|---:|:---------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:------|-------:|:-----------|:----------------------------|
+|  0 | [L4Q](./meta/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/L4Q/note.md) |</p>
 </details>
 <details open><summary><b>Tencent AI Lab</b></summary> 
 <p>
@@ -552,20 +554,6 @@
 |    | meta                           | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                      | pub   |   year | codeeeee                                                                | note                           |
 |---:|:-------------------------------|:----------------------------------------------------------------------------------------------------------|:------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------|:-------------------------------|
 |  0 | [GRAIN](./meta/grain.prototxt) | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634) | <img width='400' alt='image' src='./notes/grain/grain.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/GRAIN) | [note](./notes/grain/index.md) |</p>
-</details>
-<details open><summary><b>inst1</b></summary> 
-<p>
-
-|    | meta                       | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                  | pub   |   year | codeeeee   | note                        |
-|---:|:---------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:------|-------:|:-----------|:----------------------------|
-|  0 | [L4Q](./meta/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/L4Q/note.md) |</p>
-</details>
-<details open><summary><b>inst2</b></summary> 
-<p>
-
-|    | meta                       | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                  | pub   |   year | codeeeee   | note                        |
-|---:|:---------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:------|-------:|:-----------|:----------------------------|
-|  0 | [L4Q](./meta/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/L4Q/note.md) |</p>
 </details>
 </p>
 </details>

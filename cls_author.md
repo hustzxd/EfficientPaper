@@ -631,6 +631,13 @@
 |---:|:---------------------------|:-----------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/relu2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) |                          | arXiv |   2024 |            |        |</p>
 </details>
+<details open><summary><b>Marat Dukhan</b></summary> 
+<p>
+
+|    | meta                          | ttttttttttttttttttttttttttttttitle                                                                                            | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note   |
+|---:|:------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |                          | CVPR  |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020) |        |</p>
+</details>
 <details open><summary><b>Marcos Treviso</b></summary> 
 <p>
 
@@ -1019,6 +1026,13 @@
 |    | meta                          | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
 |---:|:------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/ITZS3TU3.prototxt) | [Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks](https://arxiv.org/abs/2102.00554) |                          | arXiv |   2021 |            |        |</p>
+</details>
+<details open><summary><b>Trevor Gale</b></summary> 
+<p>
+
+|    | meta                          | ttttttttttttttttttttttttttttttitle                                                                                            | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note   |
+|---:|:------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |                          | CVPR  |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020) |        |</p>
 </details>
 <details open><summary><b>Tri Dao</b></summary> 
 <p>

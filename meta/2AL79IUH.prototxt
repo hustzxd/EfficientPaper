@@ -2,8 +2,7 @@ paper {
   title: "Fast Sparse ConvNets"
   abbr: ""
   url: "https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf"
-  authors: "Erich Elsen"
-  authors: "Karen Simonyan"
+  authors: "Erich Elsen, Marat Dukhan, Trevor Gale, Karen Simonyan"
   institutions: "Google"
   institutions: "DeepMind"
 }

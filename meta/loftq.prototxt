@@ -3,7 +3,7 @@ paper {
   abbr: "LoftQ"
   url: "https://arxiv.org/abs/2310.08659"
   authors: "Yixiao Li, Yifan Yu, Chen Liang, Pengcheng He, Nikos Karampatziakis, Weizhu Chen, Tuo Zhao"
-  institutions: "Georgia Tech"
+  institutions: "Georgia Institute of Technology"
   institutions: "Microsoft Azure"
 }
 pub {
