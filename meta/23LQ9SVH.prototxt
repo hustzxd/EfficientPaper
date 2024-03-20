@@ -2,8 +2,7 @@ paper {
   title: "Training Transformers with 4-bit Integers"
   abbr: ""
   url: "https://arxiv.org/abs//2306.11987"
-  authors: "Haocheng Xi"
-  authors: "Jun Zhu"
+  authors: "Haocheng Xi, Changhao Li, Jianfei Chen, Jun Zhu"
   institutions: "Tsinghua University"
 }
 pub {

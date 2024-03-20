@@ -1,9 +1,8 @@
 paper {
   title: "ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training"
   abbr: "ActNN"
-  url: "https://arxiv.org/pdf/2104.14129.pdf"
-  authors: "Jianfei Chen"
-  authors: "Joseph E. Gonzalez"
+  url: "https://arxiv.org/abs/2104.14129"
+  authors: "Jianfei Chen, Lianmin Zheng, Zhewei Yao, Dequan Wang, Ion Stoica, Michael W. Mahoney, Joseph E. Gonzalez"
   institutions: "UC Berkeley"
 }
 pub {

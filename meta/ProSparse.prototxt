@@ -1,0 +1,27 @@
+paper {
+  title: "ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models"
+  abbr: "ProSparse"
+  url: "https://arxiv.org/abs/2402.13516"
+  authors: "Chenyang Song, Xu Han, Zhengyan Zhang, Shengding Hu, Xiyu Shi, Kuai Li, Chen Chen, Zhiyuan Liu, Guangli Li, Tao Yang, Maosong Sun"
+  institutions: "Tsinghua University"
+  institutions: "Institute of Computing Technology, Chinese Academy of Sciences"
+  institutions: "Tencent Machine Learning Platform"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "ProSparse/note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: working
+}
+cover {
+  url: "ProSparse/prosparse.jpg"
+}

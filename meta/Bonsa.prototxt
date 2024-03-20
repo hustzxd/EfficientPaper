@@ -2,9 +2,7 @@ paper {
   title: "Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes"
   abbr: "Bonsa"
   url: "https://arxiv.org/abs/2402.05406"
-  authors: "Lucio Dery"
-  authors: "Steven Kolawole"
-  authors: "Ameet Talwalkar"
+  authors: "Lucio Dery, Steven Kolawole, Jean-François Kagy, Virginia Smith, Graham Neubig, Ameet Talwalkar"
   institutions: "Carnegie Mellon University"
   institutions: "Google Research"
 }
