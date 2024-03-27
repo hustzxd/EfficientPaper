@@ -424,6 +424,13 @@
 |---:|:------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>The Hong Kong University of Science and Technology</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
+</details>
 <details open><summary><b>The University of Hong Kong</b></summary> 
 <p>
 
@@ -503,6 +510,13 @@
 |    | meta                           | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:-------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>University of Illinois Urbana-Champaign</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
 </details>
 <details open><summary><b>University of Surrey, UK</b></summary> 
 <p>

@@ -237,6 +237,13 @@
 |  0 | [ProSparse](./meta/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/ProSparse/note.md) |
 |  1 | [ReLU2](./meta/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/ReLU2/activation.png'>    | arXiv |   2024 |            | [note](./notes/ReLU2/note.md)     |</p>
 </details>
+<details open><summary><b>Chi Han</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
+</details>
 <details open><summary><b>Chong You</b></summary> 
 <p>
 
@@ -698,6 +705,13 @@
 |---:|:-----------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
+<details open><summary><b>Jipeng Zhang</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
+</details>
 <details open><summary><b>Jiucai Liu</b></summary> 
 <p>
 
@@ -1101,6 +1115,13 @@
 |  0 | [GPFQ](./meta/gpfq.prototxt)     | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 | [Pytorch](https://gitenterprise.xilinx.com/xiandong/GPFA) | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974) |
 |  1 | [GPFQv2](./meta/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf)     |                          | arXiv |   2023 | [Pytorch](https://gitenterprise.xilinx.com/xiandong/GPFA) | [note](https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974) |</p>
 </details>
+<details open><summary><b>Renjie Pi</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
+</details>
 <details open><summary><b>Rex Ying</b></summary> 
 <p>
 
@@ -1114,6 +1135,13 @@
 |    | meta                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
 |---:|:------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Rui Pan</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
 </details>
 <details open><summary><b>Ruihao Gong</b></summary> 
 <p>
@@ -1235,6 +1263,13 @@
 |  0 | [OWL](./meta/owl.prototxt)                              | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf)    | <img width='400' alt='image' src='./notes/owl/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL)                    |        |
 |  1 | [m](./meta/AYB1XUO5.prototxt)                           | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) |                                                           | arXiv |   2023 |                                                                                         |        |
 |  2 | [Essential Sparsity](./meta/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                  |                                                           | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) |        |</p>
+</details>
+<details open><summary><b>Shizhe Diao</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
 </details>
 <details open><summary><b>Shreyas Saxena</b></summary> 
 <p>
@@ -1383,6 +1418,13 @@
 |---:|:---------------------------|:---------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [SMP](./meta/smp.prototxt) | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf) | <img width='400' alt='image' src='./notes/smp/smp.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/kongds/SMP) |        |</p>
 </details>
+<details open><summary><b>Tong Zhang</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
+</details>
 <details open><summary><b>Torsten Hoefler</b></summary> 
 <p>
 
@@ -1507,6 +1549,13 @@
 |    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                          | pub   |   year | codeeeee                                                                            | note                               |
 |---:|:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [Flash-LLM](./meta/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/flash_llm/index.md) |</p>
+</details>
+<details open><summary><b>Xiang Liu</b></summary> 
+<p>
+
+|    | meta                         | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
+|  0 | [LISA](./meta/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            |        |</p>
 </details>
 <details open><summary><b>Xiaopeng Zhang</b></summary> 
 <p>
