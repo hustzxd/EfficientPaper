@@ -24,14 +24,16 @@ def parse_args():
 
 def readMeta():
     pinfos = []
-    for f in os.listdir("./meta"):
-        pinfo = eppb.PaperInfo()
-        try:
-            with open(os.path.join("./meta", f), "r") as rf:
-                pb.text_format.Merge(rf.read(), pinfo)
-            pinfos.append((pinfo, f))
-        except:
-            print("read error in {}".format(f))
+    for year in os.listdir("./meta"):
+        for f in os.listdir(f"./meta/{year}"):
+            # todo: add year dir
+            pinfo = eppb.PaperInfo()
+            try:
+                with open(os.path.join("./meta", year, f), "r") as rf:
+                    pb.text_format.Merge(rf.read(), pinfo)
+                pinfos.append((pinfo, f))
+            except:
+                print("read error in {}".format(f))
 
     return pinfos
 
@@ -74,10 +76,12 @@ def main():
     author_cls = {}
 
     for pinfo, f in pinfos:
+        file_name = f.replace(".prototxt", "")
+        year = pinfo.pub.year
         if pinfo.paper.abbr:
-            meta = "[{}](./meta/{})".format(pinfo.paper.abbr, f)
+            meta = f"[{pinfo.paper.abbr}](./meta/{year}/{f})"
         else:
-            meta = "[m](./meta/{})".format(f)
+            meta = f"[m](./meta/{year}/{f})"
 
         title = ""
         title += pinfo.paper.title
@@ -85,7 +89,6 @@ def main():
             title = "[{}]({})".format(title, pinfo.paper.url)
 
         pub = pinfo.pub.where
-        year = pinfo.pub.year
 
         code = ""
         codetype = pinfo.code.type if pinfo.code.type else "code"
@@ -100,15 +103,22 @@ def main():
 
         note = ""
         if pinfo.note.url:
-            if pinfo.note.url.endswith(".md"):
+            if os.path.exists(f"./notes/{pinfo.note.url}"):
                 note = "[note](./notes/{})".format(pinfo.note.url)
+            elif os.path.exists(f"./notes/{year}/{pinfo.note.url}"):
+                note = f"[note](./notes/{year}/{pinfo.note.url})"
+
+            elif os.path.exists(f"./notes/{year}/{file_name}/{pinfo.note.url}"):
+                note = f"[note](./notes/{year}/{file_name}/{pinfo.note.url})"
             else:
                 note = "[note]({})".format(pinfo.note.url)
 
         cover = ""
         if pinfo.cover.url:
-            if not pinfo.cover.url.startswith("http"):
-                cover = "./notes/{}".format(pinfo.cover.url)
+            if os.path.exists(f"./notes/{pinfo.cover.url}"):
+                cover = f"./notes/{pinfo.cover.url}"
+            elif os.path.exists(f"./notes/{year}/{pinfo.cover.url}"):
+                cover = f"./notes/{year}/{pinfo.cover.url}"
             else:
                 cover = pinfo.cover.url
 

@@ -22,11 +22,6 @@ def get_hash_code(message):
 
 
 def main():
-    # parser = argparse.ArgumentParser(description="Paper Info")
-    # parser.add_argument("--name", type=str, help="Please add short name for a paper")
-    # parser.add_argument("--note", action="store_true", help="Whether to setup the note directory.")
-    # parser.add_argument("--arxiv_id", type=str, help="The arxiv number of paper")
-    # args = parser.parse_args()
 
     name = input("Please add short name for a paper (Default: random code) \n abbr name: ")
     if len(name) == 0:
@@ -68,7 +63,7 @@ def main():
         else:
             title = name
         note_content = (
-            f"""# {title}\n\n<p align="center">\n<img src="../blank.jpg" width="600" title="blank">\n</p>\n"""
+            f"""# {title}\n\n<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n## Abstract\n\n{paper.summary}\n"""
         )
         with open(f"notes/{name}/note.md", "w") as wf:
             wf.write(note_content)

@@ -5,6 +5,7 @@ export PYTHONPATH=$PYTHONPATH:${CURRENT_DIR}
 protoc -I=${CURRENT_DIR}/proto --python_out=${CURRENT_DIR}/proto ${CURRENT_DIR}/proto/efficient_paper.proto
 python proto/gene_template.py
 
+python scripts/split_by_year.py
 
 if [ -z "$1" ]; then
     python scripts/generate_paper_list.py

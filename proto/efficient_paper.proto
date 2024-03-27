@@ -30,7 +30,7 @@ message Code {
 }
 
 message Note {
-    optional string url = 1;
+    optional string url = 1 [default="note.md"];
 }
 
 message Cover {

@@ -16,7 +16,7 @@ code {
   url: ""
 }
 note {
-  url: ""
+  url: "note.md"
 }
 keyword {
   words: none

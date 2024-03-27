@@ -1,8 +1,13 @@
 paper {
   title: "Fine-Tuning Language Models with Just Forward Passes"
   abbr: "MeZO"
-  url: "https://arxiv.org/pdf/2305.17333.pdf"
+  url: "http://arxiv.org/abs/2305.17333v3"
   authors: "Sadhika Malladi"
+  authors: "Tianyu Gao"
+  authors: "Eshaan Nichani"
+  authors: "Alex Damian"
+  authors: "Jason D. Lee"
+  authors: "Danqi Chen"
   authors: "Sanjeev Arora"
   institutions: "Princeton University"
 }
@@ -15,8 +20,12 @@ code {
   url: "https://github.com/princeton-nlp/MeZO"
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/Fine-Tuning+Language+Models+with+Just+Forward+Passes"
+  url: "note.md"
+  # https://confluence.xilinx.com/display/aialgo/Fine-Tuning+Language+Models+with+Just+Forward+Passes
 }
 keyword {
   words: training
+}
+cover {
+  url: ""
 }
