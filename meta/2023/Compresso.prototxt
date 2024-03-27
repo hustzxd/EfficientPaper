@@ -18,12 +18,12 @@ code {
   url: "https://github.com/microsoft/Moonlit/blob/main/Compresso"
 }
 note {
-  url: "compresso/note.md"
+  url: "note.md"
 }
 keyword {
   words: sparse_pruning
   words: working
 }
 cover {
-  url: "compresso/cover.jpg"
+  url: "cover.jpg"
 }

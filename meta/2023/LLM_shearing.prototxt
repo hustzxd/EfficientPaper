@@ -15,12 +15,12 @@ code {
   url: "https://github.com/princeton-nlp/LLM-Shearing"
 }
 note {
-  url: "llm_shearing/note.md"
+  url: "note.md"
 }
 keyword {
   words: sparse_pruning
   words: working
 }
 cover {
-  url: "llm_shearing/cover.jpg"
+  url: "cover.jpg"
 }

@@ -26,5 +26,5 @@ keyword {
   words: working
 }
 cover {
-  url: "squarehead/cover.png"
+  url: "cover.png"
 }

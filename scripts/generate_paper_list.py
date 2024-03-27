@@ -119,6 +119,8 @@ def main():
                 cover = f"./notes/{pinfo.cover.url}"
             elif os.path.exists(f"./notes/{year}/{pinfo.cover.url}"):
                 cover = f"./notes/{year}/{pinfo.cover.url}"
+            elif os.path.exists(f"./notes/{year}/{file_name}/{pinfo.cover.url}"):
+                cover = f"./notes/{year}/{file_name}/{pinfo.cover.url}"
             else:
                 cover = pinfo.cover.url
 

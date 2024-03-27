@@ -21,5 +21,5 @@ keyword {
   words: sparse_pruning
 }
 cover {
-  url: "sparsevit/sparsevit.jpg"
+  url: "sparsevit.jpg"
 }
