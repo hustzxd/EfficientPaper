@@ -1,10 +1,15 @@
 paper {
   title: "A Fast Post-Training Pruning Framework for Transformers"
   abbr: "FisherPruning"
-  url: "https://arxiv.org/abs/2204.09656"
+  url: "http://arxiv.org/abs/2204.09656v2"
   authors: "Woosuk Kwon"
+  authors: "Sehoon Kim"
+  authors: "Michael W. Mahoney"
+  authors: "Joseph Hassoun"
+  authors: "Kurt Keutzer"
   authors: "Amir Gholami"
-  institutions: "UC Berkeley"
+  institutions: "inst1"
+  institutions: "inst2"
 }
 pub {
   where: "NeurIPS"
@@ -15,12 +20,12 @@ code {
   url: "https://github.com/WoosukKwon/retraining-free-pruning"
 }
 note {
-  url: "https://confluence.xilinx.com/pages/viewpage.action?pageId=969271620"
+  url: "note.md"
 }
 keyword {
   words: sparse_pruning
   words: working
 }
 cover {
-  url: "fisher_pruning/cover.jpg"
+  url: "cover.jpg"
 }

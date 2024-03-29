@@ -42,7 +42,11 @@ def main():
         pinfo.paper.title = paper.title
         pinfo.paper.url = paper.entry_id
         authors = [author.name for author in paper.authors]
-        pinfo.paper.authors.clear()
+        try:
+            pinfo.paper.authors.clear()
+        except:
+            pinfo.paper.authors.pop()
+            pinfo.paper.authors.pop()
         pinfo.paper.authors.extend(authors)
         pinfo.pub.year = paper.published.year
 

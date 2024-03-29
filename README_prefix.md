@@ -17,7 +17,7 @@ Pruning, Quantization and efficient-inference/training paper list.
 
 
 ## Getting Started
-1. Add paper information by `./add_paper_info.sh` or  `./add_paper_info.sh <name>`
+1. Add paper information by `./add_paper_info.sh`
 2. Run `./refresh_readme.sh`
 
 <details><summary><b>sparsegpt.prototxt</b></summary>	
