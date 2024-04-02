@@ -354,6 +354,13 @@
 |---:|:---------------------------------------|:----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:-------|
 |  0 | [Deja Vu](./meta/2023/dejavu.prototxt) | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i) | <img width='400' alt='image' src='./notes/2023/dejavu/dejavu.jpg'> | ICML  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/DejaVu) |        |</p>
 </details>
+<details open><summary><b>Samsung</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
+|---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
+</details>
 <details open><summary><b>School of Cyber Security, University of Chinese Academy of Sciences</b></summary> 
 <p>
 
@@ -469,10 +476,12 @@
 <details open><summary><b>UC Berkeley</b></summary> 
 <p>
 
-|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note   |
-|---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)           | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)           |        |
-|  1 | [SqueezeLLM](./meta/2023/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](https://arxiv.org/abs/2306.07629)                                          |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) |        |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                 | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129)   |                                                                          | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                      |                                            |
+|  1 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
+|  2 | [SqueezeLLM](./meta/2023/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](https://arxiv.org/abs/2306.07629)                                            |                                                                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            |                                            |
+|  3 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
 </details>
 <details open><summary><b>UCSD</b></summary> 
 <p>
@@ -583,19 +592,12 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------|:------------------------------------|
 |  0 | [GRAIN](./meta/2023/grain.prototxt) | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634) | <img width='400' alt='image' src='./notes/2023/grain/grain.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/GRAIN) | [note](./notes/2023/grain/index.md) |</p>
 </details>
-<details open><summary><b>inst1</b></summary> 
-<p>
-
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
-</details>
 <details open><summary><b>inst2</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                 |
+|---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |</p>
 </details>
 </p>
 </details>

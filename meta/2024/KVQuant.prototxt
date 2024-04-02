@@ -1,0 +1,32 @@
+paper {
+  title: "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization"
+  abbr: "KVQuant"
+  url: "http://arxiv.org/abs/2401.18079v2"
+  authors: "Coleman Hooper"
+  authors: "Sehoon Kim"
+  authors: "Hiva Mohammadzadeh"
+  authors: "Michael W. Mahoney"
+  authors: "Yakun Sophia Shao"
+  authors: "Kurt Keutzer"
+  authors: "Amir Gholami"
+  institutions: "UC Berkeley"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/SqueezeAILab/KVQuant"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: cache
+}
+cover {
+  url: ""
+}

@@ -8,8 +8,8 @@ paper {
   authors: "Joseph Hassoun"
   authors: "Kurt Keutzer"
   authors: "Amir Gholami"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "UC Berkeley"
+  institutions: "Samsung"
 }
 pub {
   where: "NeurIPS"

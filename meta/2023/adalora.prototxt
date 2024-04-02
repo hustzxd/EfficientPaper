@@ -26,6 +26,7 @@ note {
 }
 keyword {
   words: low_rank
+  words: training
 }
 cover {
   url: "adalora/adalora.jpg"
