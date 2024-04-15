@@ -11,6 +11,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
+<details open><summary><b>Adam Santoro</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
+</details>
 <details open><summary><b>Ajay Jaiswal</b></summary> 
 <p>
 
@@ -145,6 +152,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                    | note            |
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------|:----------------|
 |  0 | [RPTQ](./meta/2023/RPTQ.prototxt) | [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) | [note](note.md) |</p>
+</details>
+<details open><summary><b>Blake Richards</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
 <details open><summary><b>Brian Chmiel</b></summary> 
 <p>
@@ -345,6 +359,13 @@
 |---:|:--------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [Adaptively Sparse Attention](./meta/2023/adaptively_sparse_attention.prototxt) | [Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers](https://arxiv.org/abs/2305.15805) | <img width='400' alt='image' src='./notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>David Raposo</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
+</details>
 <details open><summary><b>Denis Kuznedelev</b></summary> 
 <p>
 
@@ -484,6 +505,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                             | note   |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [SMP](./meta/2023/smp.prototxt) | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf) | <img width='400' alt='image' src='./notes/2023/smp/smp.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/kongds/SMP) |        |</p>
+</details>
+<details open><summary><b>Gongfan Fang</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                     | note                                                                                                                  |
+|---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
+|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |</p>
 </details>
 <details open><summary><b>Graham Neubig</b></summary> 
 <p>
@@ -686,10 +714,9 @@
 <details open><summary><b>Ji Lin</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                      | note                                               |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:------------------------------------------------------------------------------|:---------------------------------------------------|
-|  0 | [m](./meta/2022/QZ2EJHG9.prototxt) | [On-Device Training Under 256KB Memory](https://arxiv.org/abs/2206.15472)                                          | <img width='400' alt='image' src='./notes/on-device-training/cover.jpg'> | NeurIPS |   2022 | [mit.edu](https://tinyml.mit.edu/on-device-training/)                         | [note](https://tinyml.mit.edu/on-device-training/) |
-|  1 | [AWQ](./meta/2023/awq.prototxt)    | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                                                                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                                    |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note   |
+|---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
+|  0 | [AWQ](./meta/2023/awq.prototxt) | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |        |</p>
 </details>
 <details open><summary><b>Ji-Ung Lee</b></summary> 
 <p>
@@ -1119,6 +1146,13 @@
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |                                    |
 |  1 | [LoftQ](./meta/2023/loftq.prototxt)     | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659)        | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'>     | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ)      | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Peter Conway Humphreys</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
+</details>
 <details open><summary><b>Peter Milder</b></summary> 
 <p>
 
@@ -1217,6 +1251,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                     | note                              |
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
 |  0 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |</p>
+</details>
+<details open><summary><b>Sam Ritter</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
 <details open><summary><b>Sanjeev Arora</b></summary> 
 <p>
@@ -1370,10 +1411,9 @@
 |---:|:---------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|
 |  0 | [Deep Compression](./meta/2016/deepcompression.prototxt) | [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://arxiv.org/pdf/1510.00149.pdf)                             |                                                                          | ICLR          |   2016 |                                                                                   |                                                                                                                  |
 |  1 | [DSD](./meta/2017/dsd.prototxt)                          | [DSD: Dense-Sparse-Dense Training for Deep Neural Networks](https://arxiv.org/pdf/1607.04381.pdf)                                                                            |                                                                          | ICLR          |   2017 |                                                                                   | [note](https://confluence.xilinx.com/display/aialgo/DSD%3A+Dense-Sparse-Dense+Training+for+Deep+Neural+Networks) |
-|  2 | [m](./meta/2022/QZ2EJHG9.prototxt)                       | [On-Device Training Under 256KB Memory](https://arxiv.org/abs/2206.15472)                                                                                                    | <img width='400' alt='image' src='./notes/on-device-training/cover.jpg'> | NeurIPS       |   2022 | [mit.edu](https://tinyml.mit.edu/on-device-training/)                             | [note](https://tinyml.mit.edu/on-device-training/)                                                               |
-|  3 | [SparseViT](./meta/2023/SparseViT.prototxt)              | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605)                                               | <img width='400' alt='image' src='./notes/2023/SparseViT/sparsevit.jpg'> | CVPR          |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit)   | [note](sparsevit/index.md)                                                                                       |
-|  4 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse) |                                                                                                                  |
-|  5 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)     |                                                                                                                  |</p>
+|  2 | [SparseViT](./meta/2023/SparseViT.prototxt)              | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605)                                               | <img width='400' alt='image' src='./notes/2023/SparseViT/sparsevit.jpg'> | CVPR          |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit)   | [note](sparsevit/index.md)                                                                                       |
+|  3 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse) |                                                                                                                  |
+|  4 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)     |                                                                                                                  |</p>
 </details>
 <details open><summary><b>Sotiris Anagnostidis</b></summary> 
 <p>
@@ -1467,6 +1507,13 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-------|
 |  0 | [QLoRA](./meta/2023/qlora.prototxt) | [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)                                        | <img width='400' alt='image' src='./notes/2023/qlora/qlora.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/artidoro/qlora) |        |
 |  1 | [SpQR](./meta/2023/spqr.prototxt)   | [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/pdf/2306.03078.pdf) |                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Vahe1994/SpQR)  |        |</p>
+</details>
+<details open><summary><b>Timothy Lillicrap</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
 <details open><summary><b>Ting Jiang</b></summary> 
 <p>
@@ -1652,9 +1699,9 @@
 <details open><summary><b>Xinchao Wang</b></summary> 
 <p>
 
-|    | meta                                         | ttttttttttttttttttttttttttttttitle                                                                 | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                     | note                                                                                                                  |
-|---:|:---------------------------------------------|:---------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
-|  0 | [LLM-Pruner](./meta/2023/llmpruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](https://arxiv.org/abs/2305.11627) | <img width='400' alt='image' src='./notes/llm_pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                     | note                                                                                                                  |
+|---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
+|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |</p>
 </details>
 <details open><summary><b>Xing Xie</b></summary> 
 <p>
@@ -1680,9 +1727,9 @@
 <details open><summary><b>Xinyin Ma</b></summary> 
 <p>
 
-|    | meta                                         | ttttttttttttttttttttttttttttttitle                                                                 | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                     | note                                                                                                                  |
-|---:|:---------------------------------------------|:---------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
-|  0 | [LLM-Pruner](./meta/2023/llmpruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](https://arxiv.org/abs/2305.11627) | <img width='400' alt='image' src='./notes/llm_pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                     | note                                                                                                                  |
+|---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
+|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models) |</p>
 </details>
 <details open><summary><b>Xiyu Shi</b></summary> 
 <p>

@@ -1,8 +1,9 @@
 paper {
   title: "LLM-Pruner: On the Structural Pruning of Large Language Models"
   abbr: "LLM-Pruner"
-  url: "https://arxiv.org/abs/2305.11627"
+  url: "http://arxiv.org/abs/2305.11627v3"
   authors: "Xinyin Ma"
+  authors: "Gongfan Fang"
   authors: "Xinchao Wang"
   institutions: "National University of Singapore"
 }
@@ -15,6 +16,7 @@ code {
   url: "https://github.com/horseee/LLM-Pruner"
 }
 note {
+  # url: "note.md"
   url: "https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models"
 }
 keyword {
@@ -22,5 +24,5 @@ keyword {
   words: working
 }
 cover {
-  url: "llm_pruner/cover.jpg"
+  url: "cover.jpg"
 }

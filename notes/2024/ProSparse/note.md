@@ -14,7 +14,11 @@ There are three stages of ProSparse:
     - Progressively increase the regularization factor for better performace.
     - Enhance higher sparsity.
 3. Activation threshold shifting
-    - Modify the vanilla ReLU with shift ReLU.
+    - Modify the vanilla ReLU with FAT ReLU.
+
+<p align="center">
+<img src="activation.png" width="600" title="blank">
+</p>
 
 This paper provides two models [prosparse-llama-2-7b](https://huggingface.co/SparseLLM/prosparse-llama-2-7b) and [prosparse-llama-2-13b](https://huggingface.co/SparseLLM/prosparse-llama-2-13b) in Huggingface.
 

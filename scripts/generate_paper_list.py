@@ -49,6 +49,7 @@ word_pb2str = {
     eppb.Keyword.Word.cache: "Cache Optimization",
     eppb.Keyword.Word.working: "0 Working",
     eppb.Keyword.Word.training: "Efficient Training",
+    eppb.Keyword.Word.structure_design: "Network Structure Design",
 }
 
 TITLE = "ttttttttttttttttttttttttttttttitle"
