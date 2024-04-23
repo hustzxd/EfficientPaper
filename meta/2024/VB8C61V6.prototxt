@@ -1,0 +1,32 @@
+paper {
+  title: "Compressing LLMs: The Truth is Rarely Pure and Never Simple"
+  abbr: "LLM-KICK"
+  url: "http://arxiv.org/abs/2310.01382v2"
+  authors: "Ajay Jaiswal"
+  authors: "Zhe Gan"
+  authors: "Xianzhi Du"
+  authors: "Bowen Zhang"
+  authors: "Zhangyang Wang"
+  authors: "Yinfei Yang"
+  institutions: "University of Texas at Austin"
+  institutions: "Apple"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/VITA-Group/llm-kick"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: working
+  words: sparse_pruning
+  words: survey
+}
+cover {
+  url: "llm-kick.jpg"
+}
