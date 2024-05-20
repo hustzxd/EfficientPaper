@@ -920,6 +920,13 @@
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |</p>
 </details>
+<details open><summary><b>Liqun Ma</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 |            | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+</details>
 <details open><summary><b>Lorenzo Noci</b></summary> 
 <p>
 
@@ -1067,10 +1074,11 @@
 <details open><summary><b>Mingjie Sun</b></summary> 
 <p>
 
-|    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                                                                                                            |
-|---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
-|  0 | [Wanda](./meta/2023/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf) |                                                                                      | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
-|  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                         | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md)                                                                                |</p>
+|    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                                                                                                            |
+|---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
+|  0 | [Wanda](./meta/2023/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf)        |                                                                                      | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
+|  1 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 |                                                                                        | [note](./notes/2023/GBLM-Pruner/note.md)                                                                                        |
+|  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md)                                                                                |</p>
 </details>
 <details open><summary><b>Mingu Kang</b></summary> 
 <p>
@@ -1241,6 +1249,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note   |
 |---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-------|
 |  0 | [Diffuser](./meta/2023/diffuser.prototxt) | [Diffuser: Efficient Transformers with Multi-hop Attention Diffusion for Long Sequences](https://arxiv.org/abs/2210.11794) | <img width='400' alt='image' src='./notes/2023/diffuser/diffuser.jpg'> | AAAI  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/asFeng/Diffuser) |        |</p>
+</details>
+<details open><summary><b>Rocktim Jyoti Das</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 |            | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
 <details open><summary><b>Roy Schwartz</b></summary> 
 <p>
@@ -2101,6 +2116,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                    | note            |
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------|:----------------|
 |  0 | [RPTQ](./meta/2023/RPTQ.prototxt) | [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) | [note](note.md) |</p>
+</details>
+<details open><summary><b>Zhiqiang Shen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 |            | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
 <details open><summary><b>Zhiyuan Liu</b></summary> 
 <p>
