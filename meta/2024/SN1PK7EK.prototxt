@@ -1,0 +1,37 @@
+paper {
+  title: "Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark"
+  abbr: ""
+  url: "http://arxiv.org/abs/2402.11592v2"
+  authors: "Yihua Zhang"
+  authors: "Pingzhi Li"
+  authors: "Junyuan Hong"
+  authors: "Jiaxiang Li"
+  authors: "Yimeng Zhang"
+  authors: "Wenqing Zheng"
+  authors: "Pin-Yu Chen"
+  authors: "Jason D. Lee"
+  authors: "Wotao Yin"
+  authors: "Mingyi Hong"
+  authors: "Zhangyang Wang"
+  authors: "Sijia Liu"
+  authors: "Tianlong Chen"
+  institutions: "Michigan State University"
+  institutions: "The University of North Carolina"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: " https://github.com/ZO-Bench/ZO-LLM"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: training
+}
+cover {
+  url: ""
+}

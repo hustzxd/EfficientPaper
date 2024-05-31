@@ -306,9 +306,10 @@
 <details open><summary><b>Chuang Gan</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note   |
-|---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
-|  0 | [AWQ](./meta/2023/awq.prototxt) | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |        |</p>
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                 |
+|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [AWQ](./meta/2023/awq.prototxt)        | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                      |
+|  1 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)   |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                             | [note](./notes/2024/QServer/note.md) |</p>
 </details>
 <details open><summary><b>Coleman Hooper</b></summary> 
 <p>
@@ -546,9 +547,10 @@
 <details open><summary><b>Guangxuan Xiao</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
-|---:|:----------------------------------------------------|:----------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4) | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                    | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
+|  1 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Haocheng Xi</b></summary> 
 <p>
@@ -581,10 +583,11 @@
 <details open><summary><b>Haotian Tang</b></summary> 
 <p>
 
-|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                                                                           | ccccccccccccccccccover   | pub           |   year | codeeeee                                                                          | note   |
-|---:|:--------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------------|-------:|:----------------------------------------------------------------------------------|:-------|
-|  0 | [TorchSparse++](./meta/2023/TorchSparse.prototxt) | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse) |        |
-|  1 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)     |        |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                                                                           | ccccccccccccccccccover   | pub           |   year | codeeeee                                                                          | note                                 |
+|---:|:--------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [TorchSparse++](./meta/2023/TorchSparse.prototxt) | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse) |                                      |
+|  1 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)     |                                      |
+|  2 | [QServe](./meta/2024/QServer.prototxt)            | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                 | [note](./notes/2024/QServer/note.md) |</p>
 </details>
 <details open><summary><b>Heng Chang</b></summary> 
 <p>
@@ -689,9 +692,10 @@
 <details open><summary><b>Jason D. Lee</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                     | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
-|  0 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [MeZO](./meta/2023/MeZO.prototxt)  | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                   |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md)     |
+|  1 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM)    | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Jean-François Kagy</b></summary> 
 <p>
@@ -778,6 +782,13 @@
 |  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |        |
 |  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |        |</p>
 </details>
+<details open><summary><b>Jiaxiang Li</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
 <details open><summary><b>Jinjie Zhang</b></summary> 
 <p>
 
@@ -826,6 +837,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                      | note   |
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/23LQ9SVH.prototxt) | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |        |</p>
+</details>
+<details open><summary><b>Junyuan Hong</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Karen Khatamifard</b></summary> 
 <p>
@@ -923,9 +941,9 @@
 <details open><summary><b>Liqun Ma</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                     |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------|
-|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 |            | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                       | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
 <details open><summary><b>Lorenzo Noci</b></summary> 
 <p>
@@ -1077,7 +1095,7 @@
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                                                                                                            |
 |---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
 |  0 | [Wanda](./meta/2023/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf)        |                                                                                      | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
-|  1 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 |                                                                                        | [note](./notes/2023/GBLM-Pruner/note.md)                                                                                        |
+|  1 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)         | [note](./notes/2023/GBLM-Pruner/note.md)                                                                                        |
 |  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md)                                                                                |</p>
 </details>
 <details open><summary><b>Mingu Kang</b></summary> 
@@ -1086,6 +1104,13 @@
 |    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
 |---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [Sprint](./meta/2022/Sprint.prototxt) | [Sparse Attention Acceleration with Synergistic In-Memory Pruning and On-Chip Recomputation](https://arxiv.org/abs/2209.00606) |                          | MICRO |   2022 |            |        |</p>
+</details>
+<details open><summary><b>Mingyi Hong</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Minshuo Chen</b></summary> 
 <p>
@@ -1193,12 +1218,26 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Pin-Yu Chen</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
 <details open><summary><b>Ping Luo</b></summary> 
 <p>
 
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                      | note   |
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [OmniQuant](./meta/2023/omniquant.prototxt) | [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) | <img width='400' alt='image' src='./notes/2023/omniquant/omniquant.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) |        |</p>
+</details>
+<details open><summary><b>Pingzhi Li</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Qi Tian</b></summary> 
 <p>
@@ -1253,9 +1292,9 @@
 <details open><summary><b>Rocktim Jyoti Das</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                     |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------|
-|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 |            | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                       | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
 <details open><summary><b>Roy Schwartz</b></summary> 
 <p>
@@ -1360,9 +1399,10 @@
 <details open><summary><b>Shang Yang</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note   |
-|---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
-|  0 | [AWQ](./meta/2023/awq.prototxt) | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |        |</p>
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                 |
+|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [AWQ](./meta/2023/awq.prototxt)        | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                      |
+|  1 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)   |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                             | [note](./notes/2024/QServer/note.md) |</p>
 </details>
 <details open><summary><b>Shaoyi Huang</b></summary> 
 <p>
@@ -1423,6 +1463,13 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
 </details>
+<details open><summary><b>Sijia Liu</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
 <details open><summary><b>Sinno Jialin Pan</b></summary> 
 <p>
 
@@ -1454,7 +1501,8 @@
 |  2 | [SparseViT](./meta/2023/SparseViT.prototxt)              | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605)                                               | <img width='400' alt='image' src='./notes/2023/SparseViT/sparsevit.jpg'> | CVPR          |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit)     | [note](sparsevit/index.md)                                                                                       |
 |  3 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse)   |                                                                                                                  |
 |  4 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                                                                                                  |
-|  5 | [streaming-llm](./meta/2024/streaming-llm.prototxt)      | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                                                                | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md)                                                                       |</p>
+|  5 | [streaming-llm](./meta/2024/streaming-llm.prototxt)      | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                                                                | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md)                                                                       |
+|  6 | [QServe](./meta/2024/QServer.prototxt)                   | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)                                                                             |</p>
 </details>
 <details open><summary><b>Sotiris Anagnostidis</b></summary> 
 <p>
@@ -1511,6 +1559,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Tianlong Chen</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Tianyi Chen</b></summary> 
 <p>
@@ -1674,6 +1729,13 @@
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [OmniQuant](./meta/2023/omniquant.prototxt) | [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) | <img width='400' alt='image' src='./notes/2023/omniquant/omniquant.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) |        |</p>
 </details>
+<details open><summary><b>Wenqing Zheng</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
 <details open><summary><b>William J. Dally</b></summary> 
 <p>
 
@@ -1687,6 +1749,13 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
 |---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
+</details>
+<details open><summary><b>Wotao Yin</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Xiafei Qiu</b></summary> 
 <p>
@@ -1899,12 +1968,26 @@
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoftQ](./meta/2023/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Yihua Zhang</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
 <details open><summary><b>Yiling Jia</b></summary> 
 <p>
 
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                                         | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                             | note   |
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2023/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2023/owl/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
+</details>
+<details open><summary><b>Yimeng Zhang</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Yiming Cui</b></summary> 
 <p>
@@ -2012,6 +2095,13 @@
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |</p>
 </details>
+<details open><summary><b>Yujun Lin</b></summary> 
+<p>
+
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee                                          | note                                 |
+|---:|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------|:-------------------------------------|
+|  0 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve) | [note](./notes/2024/QServer/note.md) |</p>
+</details>
 <details open><summary><b>Yulhwa Kim</b></summary> 
 <p>
 
@@ -2056,7 +2146,8 @@
 |  0 | [OWL](./meta/2023/owl.prototxt)                              | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf)    | <img width='400' alt='image' src='./notes/2023/owl/cover.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL)                    |                                       |
 |  1 | [m](./meta/2023/AYB1XUO5.prototxt)                           | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) |                                                                        | arXiv |   2023 |                                                                                         |                                       |
 |  2 | [Essential Sparsity](./meta/2023/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                  |                                                                        | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) |                                       |
-|  3 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt)                    | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2)                                              | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick)           | [note](./notes/2024/VB8C61V6/note.md) |</p>
+|  3 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt)                    | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2)                                              | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick)           | [note](./notes/2024/VB8C61V6/note.md) |
+|  4 | [m](./meta/2024/SN1PK7EK.prototxt)                           | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2)                   |                                                                        | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM)               | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
 <details open><summary><b>Zhe Gan</b></summary> 
 <p>
@@ -2064,6 +2155,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                               | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                      | note                                  |
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt) | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2) | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick) | [note](./notes/2024/VB8C61V6/note.md) |</p>
+</details>
+<details open><summary><b>Zhekai Zhang</b></summary> 
+<p>
+
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee                                          | note                                 |
+|---:|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------|:-------------------------------------|
+|  0 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve) | [note](./notes/2024/QServer/note.md) |</p>
 </details>
 <details open><summary><b>Zhen Zheng</b></summary> 
 <p>
@@ -2120,9 +2218,9 @@
 <details open><summary><b>Zhiqiang Shen</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                     |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------|
-|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 |            | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                       | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
 <details open><summary><b>Zhiyuan Liu</b></summary> 
 <p>

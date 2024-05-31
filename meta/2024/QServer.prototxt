@@ -1,0 +1,31 @@
+paper {
+  title: "QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving"
+  abbr: "QServe"
+  url: "http://arxiv.org/abs/2405.04532v2"
+  authors: "Yujun Lin"
+  authors: "Haotian Tang"
+  authors: "Shang Yang"
+  authors: "Zhekai Zhang"
+  authors: "Guangxuan Xiao"
+  authors: "Chuang Gan"
+  authors: "Song Han"
+  institutions: "MIT"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://hanlab.mit.edu/projects/qserve"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}
