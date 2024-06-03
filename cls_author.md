@@ -225,6 +225,13 @@
 |---:|:-------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [STA](./meta/2022/44KWQAWO.prototxt) | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                          | VLSI  |   2022 |            |        |</p>
 </details>
+<details open><summary><b>Chao Zhang</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                  | note                               |
+|---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |</p>
+</details>
 <details open><summary><b>Chaofan Tao</b></summary> 
 <p>
 
@@ -495,6 +502,13 @@
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------|:-------|
 |  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt) | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                          | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA) |        |</p>
 </details>
+<details open><summary><b>Fangyun Wei</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                  | note                               |
+|---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |</p>
+</details>
 <details open><summary><b>Feng Xia</b></summary> 
 <p>
 
@@ -624,6 +638,13 @@
 |---:|:--------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |        |</p>
 </details>
+<details open><summary><b>Hongyang Zhang</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                  | note                               |
+|---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |</p>
+</details>
 <details open><summary><b>Huizi Mao</b></summary> 
 <p>
 
@@ -688,6 +709,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [L4Q](./meta/2024/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/2024/L4Q/note.md) |</p>
+</details>
+<details open><summary><b>James Hensman</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                   | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
 </details>
 <details open><summary><b>Jason D. Lee</b></summary> 
 <p>
@@ -1016,6 +1044,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2020/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |                          | CVPR  |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020) |        |</p>
 </details>
+<details open><summary><b>Marcelo Gennari do Nascimento</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                   | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
+</details>
 <details open><summary><b>Marcos Treviso</b></summary> 
 <p>
 
@@ -1036,6 +1071,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                              | note                                                                                                                         |
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|
 |  0 | [SMS](./meta/2023/sms.prototxt) | [Sparse Model Soups: A Recipe for Improved Pruning via Model Averaging](https://arxiv.org/abs/2306.16788) | <img width='400' alt='image' src='./notes/2023/sms/sms.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZIB-IOL/SMS) | [note](https://confluence.xilinx.com/display/aialgo/Sparse+Model+Soups%3A+A+Recipe+for+Improved+Pruning+via+Model+Averaging) |</p>
+</details>
+<details open><summary><b>Maximilian L. Croci</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                   | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
 </details>
 <details open><summary><b>Mehrdad Farajtabar</b></summary> 
 <p>
@@ -1330,6 +1372,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                     | note                              |
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
 |  0 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |</p>
+</details>
+<details open><summary><b>Saleh Ashkboos</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                   | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
 </details>
 <details open><summary><b>Sam Ritter</b></summary> 
 <p>
@@ -1628,9 +1677,10 @@
 <details open><summary><b>Torsten Hoefler</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2021/ITZS3TU3.prototxt) | [Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks](https://arxiv.org/abs/2102.00554) |                          | arXiv |   2021 |            |        |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                   | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2021/ITZS3TU3.prototxt)        | [Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks](https://arxiv.org/abs/2102.00554) |                                                                        | arXiv |   2021 |                                                                                            |                                       |
+|  1 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2)                                | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
 </details>
 <details open><summary><b>Trevor Gale</b></summary> 
 <p>
@@ -2087,6 +2137,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Yuhui Li</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                  | note                               |
+|---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |</p>
 </details>
 <details open><summary><b>Yuhui Xu</b></summary> 
 <p>

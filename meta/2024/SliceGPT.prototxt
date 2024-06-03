@@ -23,8 +23,8 @@ note {
 }
 keyword {
   words: working
-  works: sparsity_pruning
+  words: sparse_pruning
 }
 cover {
-  url: ""
+  url: "sliceGPT.jpg"
 }

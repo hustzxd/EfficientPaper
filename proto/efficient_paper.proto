@@ -50,6 +50,7 @@ message Keyword {
         cache = 8;
         training = 9;
         structure_design = 10;
+        sampling = 11;
         // TODO: please add your key words here.
         working = 100;
     }

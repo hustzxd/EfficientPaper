@@ -50,6 +50,7 @@ word_pb2str = {
     eppb.Keyword.Word.working: "0 Working",
     eppb.Keyword.Word.training: "Efficient Training",
     eppb.Keyword.Word.structure_design: "Network Structure Design",
+    eppb.Keyword.Word.sampling: "Efficient Sampling"
 }
 
 TITLE = "ttttttttttttttttttttttttttttttitle"
