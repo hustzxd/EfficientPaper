@@ -64,10 +64,12 @@ def main():
     if not os.path.exists(f"notes/{name}/note.md"):
         if paper is not None:
             title = paper.title
+            summary = paper.summary
         else:
             title = name
+            summary = ""
         note_content = (
-            f"""# {title}\n\n<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n## Abstract\n\n{paper.summary}\n"""
+            f"""# {title}\n\n<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n## Abstract\n\n{summary}\n"""
         )
         with open(f"notes/{name}/note.md", "w") as wf:
             wf.write(note_content)

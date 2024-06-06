@@ -1,0 +1,24 @@
+paper {
+  title: "SAS: Structured Activation Spasification"
+  abbr: "SAS"
+  url: "https://openreview.net/forum?id=vZfi5to2Xl"
+  authors: "Yusuke Sekikawa, Shingo Yashima"
+  institutions: "DENSO IT Lab"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/DensoITLab/sas_"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "sas.jpg"
+}

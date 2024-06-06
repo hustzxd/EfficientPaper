@@ -1481,6 +1481,13 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------|:------------------------------------|
 |  0 | [GRAIN](./meta/2023/grain.prototxt) | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634) | <img width='400' alt='image' src='./notes/2023/grain/grain.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/GRAIN) | [note](./notes/2023/grain/index.md) |</p>
 </details>
+<details open><summary><b>Shingo Yashima</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
+</details>
 <details open><summary><b>Shiwei Liu</b></summary> 
 <p>
 
@@ -2179,6 +2186,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                       | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note   |
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | <img width='400' alt='image' src='./notes/2023/gbdt/gbdt.jpg'> | arXiv |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Yusuke Sekikawa</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
 </details>
 <details open><summary><b>Yuxiong He</b></summary> 
 <p>

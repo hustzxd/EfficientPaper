@@ -67,6 +67,13 @@
 |  0 | [Movement Pruning](./meta/2020/movement_pruning.prototxt) | [Movement Pruning: Adaptive Sparsity by Fine-Tuning](https://arxiv.org/abs/2005.07683) | <img width='400' alt='image' src='./notes/2020/movement_pruning/mp.jpg'> | NeurIPS |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/huggingface/block_movement_pruning) |        |
 |  1 | [QuIP](./meta/2023/QuIP.prototxt)                         | [QuIP: Quantization with Incoherence Processing](https://arxiv.org/pdf/2307.13304.pdf) |                                                                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/jerry-chee/QuIP)                    |        |</p>
 </details>
+<details open><summary><b>DENSO IT Lab</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
+</details>
 <details open><summary><b>DeepMind</b></summary> 
 <p>
 
