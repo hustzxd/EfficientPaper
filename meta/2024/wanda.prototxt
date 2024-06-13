@@ -8,8 +8,8 @@ paper {
   institutions: "Meta"
 }
 pub {
-  where: "arXiv"
-  year: 2023
+  where: "ICLR"
+  year: 2024
 }
 code {
   type: "Pytorch"
