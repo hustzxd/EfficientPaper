@@ -1,0 +1,32 @@
+paper {
+  title: "Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters"
+  abbr: "Turbo Sparse"
+  url: "http://arxiv.org/abs/2406.05955v2"
+  authors: "Yixin Song"
+  authors: "Haotong Xie"
+  authors: "Zhengyan Zhang"
+  authors: "Bo Wen"
+  authors: "Li Ma"
+  authors: "Zeyu Mi"
+  authors: "Haibo Chen"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Tsinghua University"
+  institutions: "Shanghai Artificial Intelligence Laboratory"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://huggingface.co/PowerInfer"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

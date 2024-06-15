@@ -163,6 +163,13 @@
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
+<details open><summary><b>Bo Wen</b></summary> 
+<p>
+
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                     | note                                     |
+|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------|:-----------------------------------------|
+|  0 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer) | [note](./notes/2024/TurboSparse/note.md) |</p>
+</details>
 <details open><summary><b>Bowen Zhang</b></summary> 
 <p>
 
@@ -567,6 +574,15 @@
 |  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                    | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
 |  1 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
+<details open><summary><b>Haibo Chen</b></summary> 
+<p>
+
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note                                      |
+|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
+|  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
+|  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+</details>
 <details open><summary><b>Haocheng Xi</b></summary> 
 <p>
 
@@ -603,6 +619,14 @@
 |  0 | [TorchSparse++](./meta/2023/TorchSparse.prototxt) | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse) |                                      |
 |  1 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)     |                                      |
 |  2 | [QServe](./meta/2024/QServer.prototxt)            | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                 | [note](./notes/2024/QServer/note.md) |</p>
+</details>
+<details open><summary><b>Haotong Xie</b></summary> 
+<p>
+
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note                                     |
+|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)  |
+|  1 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md) |</p>
 </details>
 <details open><summary><b>Heng Chang</b></summary> 
 <p>
@@ -695,7 +719,7 @@
 
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                                                                                                            |
 |---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
-|  0 | [Wanda](./meta/2023/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf) |                                                                                      | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
+|  0 | [Wanda](./meta/2024/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf) |                                                                                      | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
 |  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                         | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md)                                                                                |</p>
 </details>
 <details open><summary><b>Jacek Golebiowski</b></summary> 
@@ -947,6 +971,13 @@
 |---:|:---------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:---------------------------------------|-------:|:-----------|:---------------------------------------------------|
 |  0 | [Complementary Sparsity](./meta/2022/ComplementarySparsity.prototxt) | [Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks](https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a) | <img width='400' alt='image' src='./notes/2022/ComplementarySparsity/cover.jpg'> | Neuromorphic Computing and Engineering |   2022 |            | [note](./notes/2022/ComplementarySparsity/note.md) |</p>
 </details>
+<details open><summary><b>Le Chen</b></summary> 
+<p>
+
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
+|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
+|  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
+</details>
 <details open><summary><b>Leon Derczynski</b></summary> 
 <p>
 
@@ -960,6 +991,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                    | note                                   |
 |---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [Compresso](./meta/2023/Compresso.prototxt) | [Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models](https://arxiv.org/abs/2310.05015) | <img width='400' alt='image' src='./notes/2023/Compresso/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/Moonlit) | [note](./notes/2023/Compresso/note.md) |</p>
+</details>
+<details open><summary><b>Li Ma</b></summary> 
+<p>
+
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                     | note                                     |
+|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------|:-----------------------------------------|
+|  0 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer) | [note](./notes/2024/TurboSparse/note.md) |</p>
 </details>
 <details open><summary><b>Lianmin Zheng</b></summary> 
 <p>
@@ -1159,8 +1197,8 @@
 
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                                                                                                            |
 |---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|
-|  0 | [Wanda](./meta/2023/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf)        |                                                                                      | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
-|  1 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)         | [note](./notes/2023/GBLM-Pruner/note.md)                                                                                        |
+|  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)         | [note](./notes/2023/GBLM-Pruner/note.md)                                                                                        |
+|  1 | [Wanda](./meta/2024/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf)        |                                                                                      | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models) |
 |  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md)                                                                                |</p>
 </details>
 <details open><summary><b>Mingu Kang</b></summary> 
@@ -2144,9 +2182,12 @@
 <details open><summary><b>Yixin Song</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                | pub   |   year | codeeeee   | note                               |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------|
-|  0 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md) |</p>
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                        | note                                      |
+|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                                                                       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
+|  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
+|  2 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
+|  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
 <details open><summary><b>Yong Li</b></summary> 
 <p>
@@ -2189,6 +2230,13 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
 |---:|:----------------------------------------------------|:----------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4) | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |</p>
+</details>
+<details open><summary><b>Yubin Xia</b></summary> 
+<p>
+
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
+|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
+|  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
 </details>
 <details open><summary><b>Yuchao Li</b></summary> 
 <p>
@@ -2286,9 +2334,12 @@
 <details open><summary><b>Zeyu Mi</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                | pub   |   year | codeeeee   | note                               |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------|
-|  0 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md) |</p>
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                        | note                                      |
+|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                                                                       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
+|  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
+|  2 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
+|  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
 <details open><summary><b>Zhangyang Wang</b></summary> 
 <p>
@@ -2332,10 +2383,18 @@
 <details open><summary><b>Zhengyan Zhang</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |
-|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md)     |</p>
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                     | note                                     |
+|---:|:-------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------|:-----------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt)      | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |                                              | [note](./notes/2024/ProSparse/note.md)   |
+|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                              | [note](./notes/2024/ReLU2/note.md)       |
+|  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2)                 |                                                                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer) | [note](./notes/2024/TurboSparse/note.md) |</p>
+</details>
+<details open><summary><b>Zhenliang Xue</b></summary> 
+<p>
+
+|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
+|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
+|  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
 </details>
 <details open><summary><b>Zhenyu Zhang</b></summary> 
 <p>
