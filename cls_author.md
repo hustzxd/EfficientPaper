@@ -86,10 +86,11 @@
 <details open><summary><b>Aojun Zhou</b></summary> 
 <p>
 
-|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                        | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                      | note   |
-|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
-|  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s)    | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |        |
-|  1 | [STA](./meta/2022/44KWQAWO.prototxt)  | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                                                                    | VLSI  |   2022 |                                                                               |        |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                        | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                      | note                             |
+|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s)    | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |                                  |
+|  1 | [STA](./meta/2022/44KWQAWO.prototxt)  | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                                                                    | VLSI  |   2022 |                                                                               |                                  |
+|  2 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1)    |                                                                    | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Aosong Feng</b></summary> 
 <p>
@@ -634,9 +635,10 @@
 <details open><summary><b>Hongsheng Li</b></summary> 
 <p>
 
-|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                      | note   |
-|---:|:--------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
-|  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |        |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                      | note                             |
+|---:|:--------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |                                  |
+|  1 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                                                                    | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Hongyang Zhang</b></summary> 
 <p>
@@ -716,6 +718,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                   | note                                  |
 |---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
+</details>
+<details open><summary><b>Jared Tanner</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
 <details open><summary><b>Jason D. Lee</b></summary> 
 <p>
@@ -973,6 +982,13 @@
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
+<details open><summary><b>Lirui Zhao</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
+</details>
 <details open><summary><b>Lorenzo Noci</b></summary> 
 <p>
 
@@ -1131,6 +1147,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
+<details open><summary><b>Mingbao Lin</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
+</details>
 <details open><summary><b>Mingjie Sun</b></summary> 
 <p>
 
@@ -1231,6 +1254,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Peng Gao</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
+</details>
 <details open><summary><b>Peng Hu</b></summary> 
 <p>
 
@@ -1324,6 +1354,13 @@
 |---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:----------------------------------|
 |  0 | [LISA](./meta/2024/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            | [note](./notes/2024/LISA/note.md) |</p>
 </details>
+<details open><summary><b>Renrui Zhang</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
+</details>
 <details open><summary><b>Rex Ying</b></summary> 
 <p>
 
@@ -1337,6 +1374,13 @@
 |    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                       | note                                     |
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+</details>
+<details open><summary><b>Rongrong Ji</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
 <details open><summary><b>Roy Schwartz</b></summary> 
 <p>
@@ -1491,11 +1535,12 @@
 <details open><summary><b>Shiwei Liu</b></summary> 
 <p>
 
-|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                                                            | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                                | note   |
-|---:|:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:-------|
-|  0 | [OWL](./meta/2023/owl.prototxt)                              | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf)    | <img width='400' alt='image' src='./notes/2023/owl/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL)                    |        |
-|  1 | [m](./meta/2023/AYB1XUO5.prototxt)                           | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) |                                                                | arXiv |   2023 |                                                                                         |        |
-|  2 | [Essential Sparsity](./meta/2023/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                  |                                                                | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) |        |</p>
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                                                            | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                                | note                               |
+|---:|:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [OWL](./meta/2023/owl.prototxt)                              | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf)    | <img width='400' alt='image' src='./notes/2023/owl/cover.jpg'>   | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL)                    |                                    |
+|  1 | [m](./meta/2023/AYB1XUO5.prototxt)                           | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) |                                                                  | arXiv |   2023 |                                                                                         |                                    |
+|  2 | [Essential Sparsity](./meta/2023/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805)                  |                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) |                                    |
+|  3 | [DSnoT](./meta/2024/DSnoT.prototxt)                          | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3)                                    | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT)                  | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
 <details open><summary><b>Shizhe Diao</b></summary> 
 <p>
@@ -1891,6 +1936,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
+<details open><summary><b>Xingjia Han</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
+</details>
 <details open><summary><b>Xingyu Dang</b></summary> 
 <p>
 
@@ -1947,6 +1999,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                        | note                       |
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:---------------------------|
 |  0 | [SparseViT](./meta/2023/SparseViT.prototxt) | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605) | <img width='400' alt='image' src='./notes/2023/SparseViT/sparsevit.jpg'> | CVPR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit) | [note](sparsevit/index.md) |</p>
+</details>
+<details open><summary><b>Xudong Lu</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Xunyu Zhu</b></summary> 
 <p>
@@ -2067,6 +2126,13 @@
 |---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
 |  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
+<details open><summary><b>Yiwu Yao</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
+</details>
 <details open><summary><b>Yixiao Li</b></summary> 
 <p>
 
@@ -2155,9 +2221,10 @@
 <details open><summary><b>Yuhui Xu</b></summary> 
 <p>
 
-|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                      | note                                 |
-|---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
-|  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |</p>
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                      | note                                 |
+|---:|:----------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717)           | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |
+|  1 | [SPP](./meta/2024/SPP.prototxt)         | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                                                                     | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md)     |</p>
 </details>
 <details open><summary><b>Yujun Lin</b></summary> 
 <p>
@@ -2172,6 +2239,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [L4Q](./meta/2024/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/2024/L4Q/note.md) |</p>
+</details>
+<details open><summary><b>Yunyun Sun</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
 <details open><summary><b>Yupeng Chang</b></summary> 
 <p>
@@ -2193,6 +2267,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
+</details>
+<details open><summary><b>Yuxin Zhang</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
+|  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
 <details open><summary><b>Yuxiong He</b></summary> 
 <p>

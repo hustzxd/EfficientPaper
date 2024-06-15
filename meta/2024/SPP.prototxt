@@ -1,0 +1,33 @@
+paper {
+  title: "SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models"
+  abbr: "SPP"
+  url: "http://arxiv.org/abs/2405.16057v1"
+  authors: "Xudong Lu"
+  authors: "Aojun Zhou"
+  authors: "Yuhui Xu"
+  authors: "Renrui Zhang"
+  authors: "Peng Gao"
+  authors: "Hongsheng Li"
+  institutions: "Multimedia Laboratory (MMLab)"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "Salesforce AI Research"
+  institutions: "Shanghai Artificial Intelligence Laboratorys"
+  institutions: "CPII under InnoHK"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Lucky-Lance/SPP"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

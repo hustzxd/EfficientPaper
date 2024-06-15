@@ -1,0 +1,35 @@
+paper {
+  title: "Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs"
+  abbr: "DSnoT"
+  url: "http://arxiv.org/abs/2310.08915v3"
+  authors: "Yuxin Zhang"
+  authors: "Lirui Zhao"
+  authors: "Mingbao Lin"
+  authors: "Yunyun Sun"
+  authors: "Yiwu Yao"
+  authors: "Xingjia Han"
+  authors: "Jared Tanner"
+  authors: "Shiwei Liu"
+  authors: "Rongrong Ji"
+  institutions: "Key Laboratory of Multimedia Trusted Perception and Efficient Computing"
+  institutions: "Ministry of Education of China, Xiamen University"
+  institutions: "Tencent Youtu Lab"
+  institutions: "Huawei Technologies"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/zyxxmu/DSnoT"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "dsnot.png"
+}
