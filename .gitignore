@@ -3,3 +3,4 @@ __pycache__
 git_push.sh
 git_pull.sh
 pdfs
+.DS_Store
