@@ -12,10 +12,10 @@ pub {
 }
 code {
   type: "EfficientCNN"
-  url: "https://gitenterprise.xilinx.com/xiandong/EfficientCNN/tree/post-training-sparsity"
+  url: ""
 }
 note {
-  url: "https://confluence.xilinx.com/pages/viewpage.action?pageId=1005133974"
+  url: ""
 }
 keyword {
   words: sparse_pruning

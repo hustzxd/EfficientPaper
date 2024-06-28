@@ -5,9 +5,8 @@ Pruning, Quantization and efficient-inference/training paper list.
 - [EfficientPaper](#efficientpaper)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
-  - [Optimization Hierarchy for LLM](#optimization-hierarchy-for-llm)
   - [:sparkles: Paper List](#paper-list)
-    - [keyword](#keyword)
+    - [keyword](cls_keyword.md)
     - [year](cls_year.md)
     - [publication](cls_publication.md)
     - [institution](cls_institution.md)
@@ -45,15 +44,10 @@ note {
   url: "SparseGPT.md"
 }
 keyword {
-  words: "sparsity"
+  words: sparse_pruning
 }
 ```
 
 </p>
 </details>
 
-## Optimization Hierarchy for LLM
-
-<p align="center">
-  <img src="./notes/survey/optimization_hierarchy.jpg" width="600" title="hierarchy">
-</p>

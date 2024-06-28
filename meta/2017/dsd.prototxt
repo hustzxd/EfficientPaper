@@ -14,7 +14,7 @@ code {
   url: ""
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/DSD%3A+Dense-Sparse-Dense+Training+for+Deep+Neural+Networks"
+  url: ""
 }
 keyword {
   words: sparse_pruning

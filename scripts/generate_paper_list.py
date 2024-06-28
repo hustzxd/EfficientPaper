@@ -183,7 +183,8 @@ def main():
 
     markdown += "\n## Paper List\n\n"
 
-    markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
+    # markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
+    markdown += gen_list(year_cls, columns, "year", is_open=True, reverse=True)
 
     # if args.detail:
     #     markdown += gen_table(author_cls, columns, "author")
@@ -194,8 +195,8 @@ def main():
     with open("README.md", "w") as wf:
         wf.write(markdown)
     print("Generate README.md done")
-    cls_dict = {"year": year_cls, "publication": pub_cls, "institution": inst_cls, "author": author_cls}
-    for cls_name in ["year", "publication", "institution", "author"]:
+    cls_dict = {"keyword": keyword_cls, "year": year_cls, "publication": pub_cls, "institution": inst_cls, "author": author_cls}
+    for cls_name in ["keyword", "year", "publication", "institution", "author"]:
         with open(f"cls_{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
 
@@ -217,6 +218,29 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
         markdown += df_.to_markdown()
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n"
+    return markdown
+
+
+def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
+    markdown = ""
+    out_cls = dict(sorted(out_cls.items(), reverse=reverse))
+    if is_open:
+        markdown += """<details open><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+    else:
+        markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+    for key, data in out_cls.items():
+        df_ = pd.DataFrame(data, columns=columns)
+        df_ = df_.sort_values(by=["year", "pub", TITLE], ascending=True).reset_index(drop=True)
+        if is_open:
+            markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+        else:
+            markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+        # markdown += df_.to_markdown()
+        for index, row in df_.iterrows():
+            line_ = f"{index}. {row["meta"]} {row[TITLE]} [{row["pub"]} {row["year"]}] {row["codeeeee"]} {row["note"]} \n\n"
+            markdown += line_
+        markdown += "</p>\n</details>\n"
+    markdown += "</p>\n</details>\n\n" 
     return markdown
 
 

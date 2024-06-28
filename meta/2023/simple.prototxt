@@ -20,7 +20,6 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: working
 }
 cover {
   url: "simple/cover.jpg"

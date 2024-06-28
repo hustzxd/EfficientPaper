@@ -16,12 +16,10 @@ code {
   url: "https://github.com/horseee/LLM-Pruner"
 }
 note {
-  # url: "note.md"
-  url: "https://confluence.xilinx.com/display/aialgo/LLM-Pruner%3A+On+the+Structural+Pruning+of+Large+Language+Models"
+  url: "note.md"
 }
 keyword {
   words: sparse_pruning
-  words: working
 }
 cover {
   url: "cover.jpg"

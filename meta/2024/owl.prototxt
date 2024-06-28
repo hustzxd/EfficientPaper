@@ -18,8 +18,8 @@ paper {
   institutions: "University of Washington"
 }
 pub {
-  where: "arXiv"
-  year: 2023
+  where: "ICML"
+  year: 2024
 }
 code {
   type: "Pytorch"

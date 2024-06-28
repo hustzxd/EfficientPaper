@@ -12,11 +12,10 @@ pub {
 }
 code {
   type: "Pytorch"
-  # url: "https://github.com/NVIDIA/apex/tree/master/apex/contrib/sparsity"
-  url: "https://gitenterprise.xilinx.com/xiandong/permutation_nm_sparse"
+  url: "https://github.com/NVIDIA/apex/tree/master/apex/contrib/sparsity"
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/Channel+Permutation+for+N%3AM+Sparsity"
+  url: ""
 }
 keyword {
   words: sparse_pruning

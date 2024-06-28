@@ -19,7 +19,7 @@ note {
   url: ""
 }
 keyword {
-  words: working
+  words: sparse_pruning
 }
 cover {
   url: ""

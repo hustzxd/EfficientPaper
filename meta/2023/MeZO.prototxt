@@ -21,7 +21,6 @@ code {
 }
 note {
   url: "note.md"
-  # https://confluence.xilinx.com/display/aialgo/Fine-Tuning+Language+Models+with+Just+Forward+Passes
 }
 keyword {
   words: training
