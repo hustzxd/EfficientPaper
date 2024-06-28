@@ -1,11 +1,9 @@
 import argparse
 import os
-import shutil
 import sys
 
 import google.protobuf as pb
 import google.protobuf.text_format
-import ipdb
 import pandas as pd
 
 from proto import efficient_paper_pb2 as eppb
@@ -50,7 +48,7 @@ word_pb2str = {
     eppb.Keyword.Word.working: "0 Working",
     eppb.Keyword.Word.training: "Efficient Training",
     eppb.Keyword.Word.structure_design: "Network Structure Design",
-    eppb.Keyword.Word.sampling: "Efficient Sampling"
+    eppb.Keyword.Word.sampling: "Efficient Sampling",
 }
 
 TITLE = "ttttttttttttttttttttttttttttttitle"
@@ -195,7 +193,13 @@ def main():
     with open("README.md", "w") as wf:
         wf.write(markdown)
     print("Generate README.md done")
-    cls_dict = {"keyword": keyword_cls, "year": year_cls, "publication": pub_cls, "institution": inst_cls, "author": author_cls}
+    cls_dict = {
+        "keyword": keyword_cls,
+        "year": year_cls,
+        "publication": pub_cls,
+        "institution": inst_cls,
+        "author": author_cls,
+    }
     for cls_name in ["keyword", "year", "publication", "institution", "author"]:
         with open(f"cls_{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
@@ -240,7 +244,7 @@ def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
             line_ = f"{index+1}. {row[TITLE]} [{row["pub"]} {row["year"]}] {row["codeeeee"]} \n"
             markdown += line_
         markdown += "</p>\n</details>\n"
-    markdown += "</p>\n</details>\n\n" 
+    markdown += "</p>\n</details>\n\n"
     return markdown
 
 

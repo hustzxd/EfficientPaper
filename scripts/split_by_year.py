@@ -1,10 +1,12 @@
 import os
+import shutil
 import sys
+
 import google.protobuf as pb
 import google.protobuf.text_format
-from proto import efficient_paper_pb2 as eppb
 import ipdb
-import shutil
+
+from proto import efficient_paper_pb2 as eppb
 
 sys.path.append("./")
 
@@ -31,4 +33,3 @@ for f in os.listdir("./meta"):
                 os.makedirs(f"./notes/{year}", exist_ok=True)
                 print(f"Move ./notes/{note_name} to ./notes/{year}/{note_name}")
                 shutil.move(f"./notes/{note_name}", f"./notes/{year}/{note_name}")
-    

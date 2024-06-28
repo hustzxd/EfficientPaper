@@ -1,15 +1,12 @@
-import argparse
 import hashlib
 import os
 import random
-import shutil
 import string
 import sys
-import arxiv
 
+import arxiv
 import google.protobuf as pb
 import google.protobuf.text_format
-import ipdb
 
 sys.path.append("./")
 
@@ -68,9 +65,7 @@ def main():
         else:
             title = name
             summary = ""
-        note_content = (
-            f"""# {title}\n\n<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n## Abstract\n\n{summary}\n"""
-        )
+        note_content = f"""# {title}\n\n<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n## Abstract\n\n{summary}\n"""
         with open(f"notes/{name}/note.md", "w") as wf:
             wf.write(note_content)
 
