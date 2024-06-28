@@ -1,0 +1,26 @@
+paper {
+  title: "LoRA+: Efficient Low Rank Adaptation of Large Models"
+  abbr: "LoRA+"
+  url: "http://arxiv.org/abs/2402.12354v1"
+  authors: "Soufiane Hayou"
+  authors: "Nikhil Ghosh"
+  authors: "Bin Yu"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/nikhil-ghosh-berkeley/loraplus"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: training
+}
+cover {
+  url: ""
+}

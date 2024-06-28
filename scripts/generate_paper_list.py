@@ -44,7 +44,7 @@ word_pb2str = {
     eppb.Keyword.Word.low_rank: "Low Rank Decomposition",
     eppb.Keyword.Word.fusion: "Layer Fusion (Reduce IO)",
     eppb.Keyword.Word.tool: "Tool",
-    eppb.Keyword.Word.cache: "Cache Optimization",
+    eppb.Keyword.Word.kv_cache: "KV Cache Optimization",
     eppb.Keyword.Word.working: "0 Working",
     eppb.Keyword.Word.training: "Efficient Training",
     eppb.Keyword.Word.structure_design: "Network Structure Design",

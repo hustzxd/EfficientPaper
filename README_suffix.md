@@ -5,6 +5,7 @@
 2. https://github.com/AmberLJC/LLMSys-PaperList
 3. https://github.com/Hannibal046/Awesome-LLM
 4. https://github.com/AmadeusChan/Awesome-LLM-System-Papers
+5. https://github.com/KnowingNothing/compiler-and-arch
 
 ### Cold
 1. https://github.com/he-y/Awesome-Pruning

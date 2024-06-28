@@ -1,0 +1,29 @@
+paper {
+  title: "Sparse is Enough in Fine-tuning Pre-trained Large Language Models"
+  abbr: "SIFT"
+  url: "http://arxiv.org/abs/2312.11875v3"
+  authors: "Weixi Song"
+  authors: "Zuchao Li"
+  authors: "Lefei Zhang"
+  authors: "Hai Zhao"
+  authors: "Bo Du"
+  institutions: "Wuhan University"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/song-wx/SIFT"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: training
+}
+cover {
+  url: ""
+}

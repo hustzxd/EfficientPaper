@@ -47,7 +47,7 @@ message Keyword {
         low_rank = 5;
 	    fusion = 6;
         tool = 7;
-        cache = 8;
+        kv_cache = 8;
         training = 9;
         structure_design = 10;
         sampling = 11;

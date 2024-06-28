@@ -1,0 +1,31 @@
+paper {
+  title: "Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference"
+  abbr: "Quest"
+  url: "http://arxiv.org/abs/2406.10774v1"
+  authors: "Jiaming Tang"
+  authors: "Yilong Zhao"
+  authors: "Kan Zhu"
+  authors: "Guangxuan Xiao"
+  authors: "Baris Kasikci"
+  authors: "Song Han"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "MIT"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/quest"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+}
+cover {
+  url: "quest.png"
+}

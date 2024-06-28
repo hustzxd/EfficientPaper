@@ -1,0 +1,29 @@
+paper {
+  title: "Accelerating Transformer Pre-training with 2:4 Sparsity"
+  abbr: ""
+  url: "http://arxiv.org/abs/2404.01847v2"
+  authors: "Yuezhou Hu"
+  authors: "Kang Zhao"
+  authors: "Weiyu Huang"
+  authors: "Jianfei Chen"
+  authors: "Jun Zhu"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/huyz2023/2by4-pretrain/tree/main"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: training
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

@@ -17,7 +17,7 @@ Pruning, Quantization and efficient-inference/training paper list.
 
 ## Getting Started
 ```bash
-pip install protobuf==3.20.0 pandas arxiv 
+pip install protobuf==5.27.2 pandas arxiv 
 ```
 1. Add paper information by `./add_paper_info.sh`
 2. Run `./refresh_readme.sh`

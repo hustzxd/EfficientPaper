@@ -24,7 +24,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: cache
+  words: kv_cache
   words: sparse_pruning
 }
 cover {

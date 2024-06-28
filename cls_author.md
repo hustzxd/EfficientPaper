@@ -11,6 +11,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
+<details open><summary><b>Abhay Gupta</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                    | pub   |   year | codeeeee                                                                              | note                                    |
+|---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [Sparse-IFT](./meta/2024/Sparse-IFT.prototxt) | [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) | <img width='400' alt='image' src='./notes/2024/Sparse-IFT/sparseIFT.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](./notes/2024/Sparse-IFT/note.md) |</p>
+</details>
 <details open><summary><b>Adam Santoro</b></summary> 
 <p>
 
@@ -127,6 +134,13 @@
 |---:|:--------------------------------|:-----------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------------------------------------------------------------------------------|
 |  0 | [KCM](./meta/2023/kcm.prototxt) | [Gradient-Free Structured Pruning with Unlabeled Data](https://arxiv.org/abs/2303.04185) | <img width='400' alt='image' src='./notes/2023/kcm/kcm.jpg'> | arXiv |   2023 |            | [note](https://confluence.xilinx.com/display/aialgo/Gradient-Free+Structured+Pruning+with+Unlabeled+Data?moved=true) |</p>
 </details>
+<details open><summary><b>Baris Kasikci</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+</details>
 <details open><summary><b>Beidi Chen</b></summary> 
 <p>
 
@@ -149,6 +163,13 @@
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------|:-------|
 |  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt) | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                          | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA) |        |</p>
 </details>
+<details open><summary><b>Bin Yu</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                 | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [LoRA+](./meta/2024/LoRA+.prototxt) | [LoRA+: Efficient Low Rank Adaptation of Large Models](http://arxiv.org/abs/2402.12354v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/nikhil-ghosh-berkeley/loraplus) | [note](./notes/2024/LoRA+/note.md) |</p>
+</details>
 <details open><summary><b>Bingzhe Wu</b></summary> 
 <p>
 
@@ -162,6 +183,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
+</details>
+<details open><summary><b>Bo Du</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
+|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
+|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
 </details>
 <details open><summary><b>Bo Wen</b></summary> 
 <p>
@@ -211,6 +239,13 @@
 |    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
 |---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
 |  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+</details>
+<details open><summary><b>Cecilia Mascolo</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
 </details>
 <details open><summary><b>Cedric Archambeau</b></summary> 
 <p>
@@ -572,7 +607,8 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
 |---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                    | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  1 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
+|  1 | [Quest](./meta/2024/Quest.prototxt)                 | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1)        | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
+|  2 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Guohao Dai</b></summary> 
 <p>
@@ -580,6 +616,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Hai Zhao</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
+|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
+|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
 </details>
 <details open><summary><b>Haibo Chen</b></summary> 
 <p>
@@ -743,6 +786,13 @@
 |---:|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [L4Q](./meta/2024/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/2024/L4Q/note.md) |</p>
 </details>
+<details open><summary><b>Jagmohan Chauhan</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
+</details>
 <details open><summary><b>James Hensman</b></summary> 
 <p>
 
@@ -831,9 +881,10 @@
 <details open><summary><b>Jiaming Tang</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note   |
-|---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
-|  0 | [AWQ](./meta/2023/awq.prototxt) | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |        |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                      | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [AWQ](./meta/2023/awq.prototxt)     | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                    |
+|  1 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1)          | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)   | [note](./notes/2024/Quest/note.md) |</p>
 </details>
 <details open><summary><b>Jiaming Xu</b></summary> 
 <p>
@@ -852,10 +903,11 @@
 <details open><summary><b>Jianfei Chen</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                      | note   |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:-------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |        |
-|  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |        |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                      | note                                  |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |                                       |
+|  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
+|  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |</p>
 </details>
 <details open><summary><b>Jiaxiang Li</b></summary> 
 <p>
@@ -909,9 +961,10 @@
 <details open><summary><b>Jun Zhu</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                      | note   |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2023/23LQ9SVH.prototxt) | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                      | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2023/23LQ9SVH.prototxt) | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)               |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
+|  1 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |</p>
 </details>
 <details open><summary><b>Junyuan Hong</b></summary> 
 <p>
@@ -919,6 +972,20 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>Kan Zhu</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+</details>
+<details open><summary><b>Kang Zhao</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |</p>
 </details>
 <details open><summary><b>Karen Khatamifard</b></summary> 
 <p>
@@ -998,6 +1065,13 @@
 |    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
 |---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
 |  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
+</details>
+<details open><summary><b>Lefei Zhang</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
+|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
+|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
 </details>
 <details open><summary><b>Leon Derczynski</b></summary> 
 <p>
@@ -1278,6 +1352,20 @@
 |---:|:--------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:-------------|-------:|:-----------|:-------------------------------------|
 |  0 | [SIMPLE](./meta/2023/simple.prototxt) | [Structured Pruning for Efficient Generative Pre-trained Language Models](https://aclanthology.org/2023.findings-acl.692.pdf) | <img width='400' alt='image' src='./notes/2023/simple/cover.jpg'> | ACL Findings |   2023 |            | [note](./notes/2023/simple/index.md) |</p>
 </details>
+<details open><summary><b>Nicholas D. Lane</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
+</details>
+<details open><summary><b>Nikhil Ghosh</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                 | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [LoRA+](./meta/2024/LoRA+.prototxt) | [LoRA+: Efficient Low Rank Adaptation of Large Models](http://arxiv.org/abs/2402.12354v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/nikhil-ghosh-berkeley/loraplus) | [note](./notes/2024/LoRA+/note.md) |</p>
+</details>
 <details open><summary><b>Nikita Malinin</b></summary> 
 <p>
 
@@ -1455,6 +1543,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Rui Li</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
+</details>
 <details open><summary><b>Rui Pan</b></summary> 
 <p>
 
@@ -1528,9 +1623,10 @@
 <details open><summary><b>Sean Lie</b></summary> 
 <p>
 
-|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                              | note                                                                                                                    |
-|---:|:----------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|
-|  0 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency) |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                    | pub   |   year | codeeeee                                                                              | note                                                                                                                    |
+|---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|
+|  0 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525)              |                                                                           | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency) |
+|  1 | [Sparse-IFT](./meta/2024/Sparse-IFT.prototxt) | [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) | <img width='400' alt='image' src='./notes/2024/Sparse-IFT/sparseIFT.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](./notes/2024/Sparse-IFT/note.md)                                                                                 |</p>
 </details>
 <details open><summary><b>Sebastian Pokutta</b></summary> 
 <p>
@@ -1632,10 +1728,11 @@
 <details open><summary><b>Shreyas Saxena</b></summary> 
 <p>
 
-|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                              | note                                                                                                                             |
-|---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|
-|  0 | [SPDF](./meta/2023/spdf.prototxt)             | [SPDF: Sparse Pre-training and Dense Fine-tuning for Large Language Models](https://arxiv.org/abs/2303.10464) |                          | UAI   |   2023 |                                                                                       | [note](https://confluence.amd.com/display/~xiandong/SPDF%3A+Sparse+Pre-training+and+Dense+Fine-tuning+for+Large+Language+Models) |
-|  1 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency)          |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                    | pub   |   year | codeeeee                                                                              | note                                                                                                                             |
+|---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|
+|  0 | [SPDF](./meta/2023/spdf.prototxt)             | [SPDF: Sparse Pre-training and Dense Fine-tuning for Large Language Models](https://arxiv.org/abs/2303.10464)       |                                                                           | UAI   |   2023 |                                                                                       | [note](https://confluence.amd.com/display/~xiandong/SPDF%3A+Sparse+Pre-training+and+Dense+Fine-tuning+for+Large+Language+Models) |
+|  1 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525)              |                                                                           | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency)          |
+|  2 | [Sparse-IFT](./meta/2024/Sparse-IFT.prototxt) | [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) | <img width='400' alt='image' src='./notes/2024/Sparse-IFT/sparseIFT.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](./notes/2024/Sparse-IFT/note.md)                                                                                          |</p>
 </details>
 <details open><summary><b>Shuaiwen Leon Song</b></summary> 
 <p>
@@ -1683,7 +1780,8 @@
 |  3 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse)   |                                            |
 |  4 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                            |
 |  5 | [streaming-llm](./meta/2024/streaming-llm.prototxt)      | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                                                                | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  6 | [QServe](./meta/2024/QServer.prototxt)                   | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
+|  6 | [Quest](./meta/2024/Quest.prototxt)                      | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1)                                                                    | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
+|  7 | [QServe](./meta/2024/QServer.prototxt)                   | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Sotiris Anagnostidis</b></summary> 
 <p>
@@ -1692,12 +1790,26 @@
 |---:|:--------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [Adaptively Sparse Attention](./meta/2023/adaptively_sparse_attention.prototxt) | [Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers](https://arxiv.org/abs/2305.15805) | <img width='400' alt='image' src='./notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Soufiane Hayou</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                 | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [LoRA+](./meta/2024/LoRA+.prototxt) | [LoRA+: Efficient Low Rank Adaptation of Large Models](http://arxiv.org/abs/2402.12354v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/nikhil-ghosh-berkeley/loraplus) | [note](./notes/2024/LoRA+/note.md) |</p>
+</details>
 <details open><summary><b>Steven Kolawole</b></summary> 
 <p>
 
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) |        |</p>
+</details>
+<details open><summary><b>Stylianos I. Venieris</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
 </details>
 <details open><summary><b>Subutai Ahmad</b></summary> 
 <p>
@@ -1876,10 +1988,11 @@
 <details open><summary><b>Vithursan Thangarasa</b></summary> 
 <p>
 
-|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                              | note                                                                                                                             |
-|---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|
-|  0 | [SPDF](./meta/2023/spdf.prototxt)             | [SPDF: Sparse Pre-training and Dense Fine-tuning for Large Language Models](https://arxiv.org/abs/2303.10464) |                          | UAI   |   2023 |                                                                                       | [note](https://confluence.amd.com/display/~xiandong/SPDF%3A+Sparse+Pre-training+and+Dense+Fine-tuning+for+Large+Language+Models) |
-|  1 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency)          |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                    | pub   |   year | codeeeee                                                                              | note                                                                                                                             |
+|---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|
+|  0 | [SPDF](./meta/2023/spdf.prototxt)             | [SPDF: Sparse Pre-training and Dense Fine-tuning for Large Language Models](https://arxiv.org/abs/2303.10464)       |                                                                           | UAI   |   2023 |                                                                                       | [note](https://confluence.amd.com/display/~xiandong/SPDF%3A+Sparse+Pre-training+and+Dense+Fine-tuning+for+Large+Language+Models) |
+|  1 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525)              |                                                                           | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency)          |
+|  2 | [Sparse-IFT](./meta/2024/Sparse-IFT.prototxt) | [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) | <img width='400' alt='image' src='./notes/2024/Sparse-IFT/sparseIFT.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](./notes/2024/Sparse-IFT/note.md)                                                                                          |</p>
 </details>
 <details open><summary><b>Wei Lin</b></summary> 
 <p>
@@ -1901,6 +2014,20 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Weixi Song</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
+|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
+|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
+</details>
+<details open><summary><b>Weiyu Huang</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |</p>
 </details>
 <details open><summary><b>Weizhu Chen</b></summary> 
 <p>
@@ -2206,6 +2333,13 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Yilong Zhao</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+</details>
 <details open><summary><b>Yimeng Zhang</b></summary> 
 <p>
 
@@ -2287,6 +2421,13 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Young D. Kwon</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
+</details>
 <details open><summary><b>Yu Cheng</b></summary> 
 <p>
 
@@ -2328,6 +2469,13 @@
 |    | meta                                                        | ttttttttttttttttttttttttttttttitle                                                                                                                            | ccccccccccccccccccover                                                                   | pub   |   year | codeeeee                                                                                | note   |
 |---:|:------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:-------|
 |  0 | [Selective Context](./meta/2023/selective_context.prototxt) | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) | <img width='400' alt='image' src='./notes/2023/selective_context/selective_context.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context) |        |</p>
+</details>
+<details open><summary><b>Yuezhou Hu</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |</p>
 </details>
 <details open><summary><b>Yuhan Dong</b></summary> 
 <p>
@@ -2582,6 +2730,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/WMMGA0AR.prototxt) | [The Lazy Neuron Phenomenon: On Emergence of Activation Sparsity in Transformers](https://openreview.net/forum?id=TJ2nxciYCk-) |                          | ICLR  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Zuchao Li</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
+|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
+|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
 </details>
 </p>
 </details>
