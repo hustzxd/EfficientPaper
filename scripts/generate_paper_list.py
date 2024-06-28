@@ -237,7 +237,7 @@ def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
             markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         # markdown += df_.to_markdown()
         for index, row in df_.iterrows():
-            line_ = f"{index}. {row["meta"]} {row[TITLE]} [{row["pub"]} {row["year"]}] {row["codeeeee"]} {row["note"]} \n\n"
+            line_ = f"{index+1}. {row[TITLE]} [{row["pub"]} {row["year"]}] {row["codeeeee"]} \n\n"
             markdown += line_
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n" 
