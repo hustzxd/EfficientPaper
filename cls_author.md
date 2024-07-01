@@ -233,6 +233,13 @@
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
 |  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
 </details>
+<details open><summary><b>Carlo Luschi</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
+</details>
 <details open><summary><b>Carlo Vittorio Cannistraci</b></summary> 
 <p>
 
@@ -288,6 +295,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                | pub   |   year | codeeeee   | note                               |
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------|
 |  0 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md) |</p>
+</details>
+<details open><summary><b>Charlie Blake</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
 <details open><summary><b>Chen Chen</b></summary> 
 <p>
@@ -474,6 +488,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                            | note                                    |
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
+</details>
+<details open><summary><b>Douglas Orr</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
 <details open><summary><b>Edward Hu</b></summary> 
 <p>
@@ -756,6 +777,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Ivan Chelombiev</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
 <details open><summary><b>Ivan Lazarevich</b></summary> 
 <p>
@@ -1156,6 +1184,20 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) |        |</p>
+</details>
+<details open><summary><b>Luka Ribar</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
+</details>
+<details open><summary><b>Luke Hudlass-Galley</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
 <details open><summary><b>Luming Liang</b></summary> 
 <p>

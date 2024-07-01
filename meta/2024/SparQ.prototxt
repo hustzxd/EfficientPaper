@@ -1,0 +1,30 @@
+paper {
+  title: "SparQ Attention: Bandwidth-Efficient LLM Inference"
+  abbr: "SparQ"
+  url: "http://arxiv.org/abs/2312.04985v3"
+  authors: "Luka Ribar"
+  authors: "Ivan Chelombiev"
+  authors: "Luke Hudlass-Galley"
+  authors: "Charlie Blake"
+  authors: "Carlo Luschi"
+  authors: "Douglas Orr"
+  institutions: "Graphcore Research"
+  institutions: "Synthesia"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}
