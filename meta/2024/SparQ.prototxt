@@ -21,6 +21,7 @@ code {
 }
 note {
   url: "note.md"
+  # https://github.com/vllm-project/vllm/issues/2039
 }
 keyword {
   words: sparse_pruning

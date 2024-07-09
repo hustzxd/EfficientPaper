@@ -64,10 +64,11 @@
 <details open><summary><b>Amir Gholami</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
-|  1 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                     | pub     |   year | codeeeee                                                                                     | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'>   | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
+|  1 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4)                                           | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML    |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            | [note](./notes/2024/SqueezeLLM/note.md)    |
+|  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                            | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
 </details>
 <details open><summary><b>Amir Yazdanbakhsh</b></summary> 
 <p>
@@ -378,9 +379,10 @@
 <details open><summary><b>Coleman Hooper</b></summary> 
 <p>
 
-|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                 |
-|---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------|
-|  0 | [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4)                                           | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |
+|  1 | [KVQuant](./meta/2024/KVQuant.prototxt)       | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                            | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)    | [note](./notes/2024/KVQuant/note.md)    |</p>
 </details>
 <details open><summary><b>Colin Raffel</b></summary> 
 <p>
@@ -698,6 +700,13 @@
 |---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)  |
 |  1 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md) |</p>
+</details>
+<details open><summary><b>Harshavardhan Adepu</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
 </details>
 <details open><summary><b>Heng Chang</b></summary> 
 <p>
@@ -1074,11 +1083,11 @@
 <details open><summary><b>Kurt Keutzer</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
-|  1 | [SqueezeLLM](./meta/2023/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](https://arxiv.org/abs/2306.07629)                                            |                                                                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            |                                            |
-|  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                     | pub     |   year | codeeeee                                                                                     | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'>   | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
+|  1 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4)                                           | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML    |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            | [note](./notes/2024/SqueezeLLM/note.md)    |
+|  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                            | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
 </details>
 <details open><summary><b>Lawrence Spracklen</b></summary> 
 <p>
@@ -1121,6 +1130,13 @@
 |    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                     | note                                     |
 |---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------|:-----------------------------------------|
 |  0 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer) | [note](./notes/2024/TurboSparse/note.md) |</p>
+</details>
+<details open><summary><b>Li Zhang</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
 </details>
 <details open><summary><b>Lianmin Zheng</b></summary> 
 <p>
@@ -1309,11 +1325,12 @@
 <details open><summary><b>Michael W. Mahoney</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                 | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129)   |                                                                          | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                      |                                            |
-|  1 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
-|  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                     | pub     |   year | codeeeee                                                                                     | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                 | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129)   |                                                                            | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                      |                                            |
+|  1 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'>   | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
+|  2 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4)                                           | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML    |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            | [note](./notes/2024/SqueezeLLM/note.md)    |
+|  3 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                            | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
 </details>
 <details open><summary><b>Mike Lewis</b></summary> 
 <p>
@@ -1680,11 +1697,11 @@
 <details open><summary><b>Sehoon Kim</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
-|  1 | [SqueezeLLM](./meta/2023/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](https://arxiv.org/abs/2306.07629)                                            |                                                                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            |                                            |
-|  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                     | pub     |   year | codeeeee                                                                                     | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                             | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'>   | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
+|  1 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4)                                           | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML    |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            | [note](./notes/2024/SqueezeLLM/note.md)    |
+|  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                            | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
 </details>
 <details open><summary><b>Seungcheol Park</b></summary> 
 <p>
@@ -1707,6 +1724,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                            | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2022/XZBX1Z9G.prototxt) | [Sparse Progressive Distillation: Resolving Overfitting under Pretrain-and-Finetune Paradigm](https://aclanthology.org/2022.acl-long.16/) |                          | ACL   |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/shaoyiHusky/SparseProgressiveDistillation) |        |</p>
+</details>
+<details open><summary><b>Sheng Shen</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                             | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:-------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4) | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |</p>
 </details>
 <details open><summary><b>Shengding Hu</b></summary> 
 <p>
@@ -2020,6 +2044,13 @@
 |---:|:----------------------------------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------|
 |  0 | [Movement Pruning](./meta/2020/movement_pruning.prototxt) | [Movement Pruning: Adaptive Sparsity by Fine-Tuning](https://arxiv.org/abs/2005.07683) | <img width='400' alt='image' src='./notes/2020/movement_pruning/mp.jpg'> | NeurIPS |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/huggingface/block_movement_pruning) |        |</p>
 </details>
+<details open><summary><b>Vikas Singh</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
+</details>
 <details open><summary><b>Virginia Smith</b></summary> 
 <p>
 
@@ -2233,6 +2264,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Xiuyu Li</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                             | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:-------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4) | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |</p>
 </details>
 <details open><summary><b>Xiyu Shi</b></summary> 
 <p>
@@ -2633,6 +2671,13 @@
 |  3 | [OWL](./meta/2024/owl.prototxt)                              | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf)    | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'>         | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL)                    |                                       |
 |  4 | [m](./meta/2024/SN1PK7EK.prototxt)                           | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2)                   |                                                                        | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM)               | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Zhanpeng Zeng</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
+</details>
 <details open><summary><b>Zhe Gan</b></summary> 
 <p>
 
@@ -2646,6 +2691,13 @@
 |    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee                                          | note                                 |
 |---:|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------|:-------------------------------------|
 |  0 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve) | [note](./notes/2024/QServer/note.md) |</p>
+</details>
+<details open><summary><b>Zhen Dong</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                             | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
+|---:|:----------------------------------------------|:-------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4) | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |</p>
 </details>
 <details open><summary><b>Zhen Zheng</b></summary> 
 <p>

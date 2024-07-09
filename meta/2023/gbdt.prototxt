@@ -21,7 +21,6 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: working
 }
 cover {
   url: "gbdt/gbdt.jpg"

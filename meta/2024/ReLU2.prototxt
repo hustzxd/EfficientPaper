@@ -18,7 +18,6 @@ note {
   url: "ReLU2/note.md"
 }
 keyword {
-  words: working
   words: sparse_pruning
 }
 cover {

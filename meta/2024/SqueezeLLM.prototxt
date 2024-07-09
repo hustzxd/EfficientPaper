@@ -1,0 +1,32 @@
+paper {
+  title: "SqueezeLLM: Dense-and-Sparse Quantization"
+  abbr: "SqueezeLLM"
+  url: "http://arxiv.org/abs/2306.07629v4"
+  authors: "Sehoon Kim"
+  authors: "Coleman Hooper"
+  authors: "Amir Gholami"
+  authors: "Zhen Dong"
+  authors: "Xiuyu Li"
+  authors: "Sheng Shen"
+  authors: "Michael W. Mahoney"
+  authors: "Kurt Keutzer"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/SqueezeAILab/SqueezeLLM"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "squeezeLLM.png"
+}
