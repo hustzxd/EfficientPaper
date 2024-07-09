@@ -1,0 +1,30 @@
+paper {
+  title: "OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization"
+  abbr: "OSSCAR"
+  url: "http://arxiv.org/abs/2403.12983v1"
+  authors: "Xiang Meng"
+  authors: "Shibal Ibrahim"
+  authors: "Kayhan Behdin"
+  authors: "Hussein Hazimeh"
+  authors: "Natalia Ponomareva"
+  authors: "Rahul Mazumder"
+  institutions: "Massachusetts Institute of Technology"
+  institutions: "Google Research"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mazumder-lab/OSSCAR"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

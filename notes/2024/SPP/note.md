@@ -1,7 +1,7 @@
 # SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="spp.png" width="600" title="blank">
 </p>
 
 ## Abstract

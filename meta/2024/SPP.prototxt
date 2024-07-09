@@ -29,5 +29,5 @@ keyword {
   words: sparse_pruning
 }
 cover {
-  url: ""
+  url: "spp.png"
 }

@@ -98,7 +98,7 @@
 |---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s)    | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |                                  |
 |  1 | [STA](./meta/2022/44KWQAWO.prototxt)  | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                                                                    | VLSI  |   2022 |                                                                               |                                  |
-|  2 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1)    |                                                                    | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
+|  2 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1)    | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'>       | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Aosong Feng</b></summary> 
 <p>
@@ -742,7 +742,7 @@
 |    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                      | note                             |
 |---:|:--------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |                                  |
-|  1 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                                                                    | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
+|  1 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'>       | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Hongyang Zhang</b></summary> 
 <p>
@@ -757,6 +757,13 @@
 |    | meta                                                     | ttttttttttttttttttttttttttttttitle                                                                                                               | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
 |---:|:---------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [Deep Compression](./meta/2016/deepcompression.prototxt) | [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://arxiv.org/pdf/1510.00149.pdf) |                          | ICLR  |   2016 |            |        |</p>
+</details>
+<details open><summary><b>Hussein Hazimeh</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
 </details>
 <details open><summary><b>Hyesung Jeon</b></summary> 
 <p>
@@ -1037,6 +1044,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                            | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2020/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |                          | CVPR  |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020) |        |</p>
+</details>
+<details open><summary><b>Kayhan Behdin</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
 </details>
 <details open><summary><b>Ke Hong</b></summary> 
 <p>
@@ -1404,6 +1418,13 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Natalia Ponomareva</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
+</details>
 <details open><summary><b>Ngai Wong</b></summary> 
 <p>
 
@@ -1470,9 +1491,9 @@
 <details open><summary><b>Peng Gao</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                             |
-|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
-|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Peng Hu</b></summary> 
 <p>
@@ -1552,6 +1573,13 @@
 |---:|:----------------------------------------|:----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |        |</p>
 </details>
+<details open><summary><b>Rahul Mazumder</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
+</details>
 <details open><summary><b>Rayan Saab</b></summary> 
 <p>
 
@@ -1570,9 +1598,9 @@
 <details open><summary><b>Renrui Zhang</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                             |
-|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
-|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Rex Ying</b></summary> 
 <p>
@@ -1752,6 +1780,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Shibal Ibrahim</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
 </details>
 <details open><summary><b>Shijin Wang</b></summary> 
 <p>
@@ -2160,6 +2195,13 @@
 |---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:----------------------------------|
 |  0 | [LISA](./meta/2024/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            | [note](./notes/2024/LISA/note.md) |</p>
 </details>
+<details open><summary><b>Xiang Meng</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
+</details>
 <details open><summary><b>Xianzhi Du</b></summary> 
 <p>
 
@@ -2311,9 +2353,9 @@
 <details open><summary><b>Xudong Lu</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                             |
-|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
-|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
+|---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
+|  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
 </details>
 <details open><summary><b>Xuefei Ning</b></summary> 
 <p>
@@ -2584,7 +2626,7 @@
 |    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                      | note                                 |
 |---:|:----------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717)           | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |
-|  1 | [SPP](./meta/2024/SPP.prototxt)         | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) |                                                                     | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md)     |</p>
+|  1 | [SPP](./meta/2024/SPP.prototxt)         | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'>        | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md)     |</p>
 </details>
 <details open><summary><b>Yujun Lin</b></summary> 
 <p>
