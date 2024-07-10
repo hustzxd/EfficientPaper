@@ -16,7 +16,7 @@ code {
   url: "https://github.com/locuslab/wanda"
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/Wanda%3A+A+Simple+and+Effective+Pruning+Approach+for+Large+Language+Models"
+  url: ""
 }
 keyword {
   words: sparse_pruning

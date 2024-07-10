@@ -16,7 +16,7 @@ code {
   url: "https://github.com/CerebrasResearch/Sparse-IFT"
 }
 note {
-  url: "https://confluence.amd.com/display/~xiandong/Sparse+Iso-FLOP+Transformations+for+Maximizing+Training+Efficiency"
+  url: ""
 }
 keyword {
   words: sparse_pruning

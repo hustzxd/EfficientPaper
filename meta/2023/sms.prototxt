@@ -14,7 +14,7 @@ code {
   url: "https://github.com/ZIB-IOL/SMS"
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/Sparse+Model+Soups%3A+A+Recipe+for+Improved+Pruning+via+Model+Averaging"
+  url: ""
 }
 keyword {
   words: sparse_pruning

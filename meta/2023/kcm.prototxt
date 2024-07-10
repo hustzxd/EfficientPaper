@@ -15,7 +15,7 @@ code {
   url: ""
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/Gradient-Free+Structured+Pruning+with+Unlabeled+Data?moved=true"
+  url: ""
 }
 keyword {
   words: sparse_pruning

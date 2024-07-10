@@ -15,10 +15,9 @@ code {
   url: "https://github.com/sjtu-ipads/powerinfer"
 }
 note {
-  url: "https://confluence.xilinx.com/display/aialgo/ReLU+Strikes+Back%3A+Exploiting+Activation+Sparsity+in+Large+Language+Models"
+  url: ""
 }
 keyword {
-  words: working
   words: sparse_pruning
 }
 cover {

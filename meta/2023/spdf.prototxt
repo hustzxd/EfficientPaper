@@ -15,7 +15,7 @@ code {
   url: ""
 }
 note {
-  url: "https://confluence.amd.com/display/~xiandong/SPDF%3A+Sparse+Pre-training+and+Dense+Fine-tuning+for+Large+Language+Models"
+  url: ""
 }
 keyword {
   words: sparse_pruning
