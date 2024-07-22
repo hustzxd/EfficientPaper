@@ -1,0 +1,29 @@
+paper {
+  title: "Q-Sparse: All Large Language Models can be Fully Sparsely-Activated"
+  abbr: "Q-Sparse"
+  url: "http://arxiv.org/abs/2407.10969v1"
+  authors: "Hongyu Wang"
+  authors: "Shuming Ma"
+  authors: "Ruiping Wang"
+  authors: "Furu Wei"
+  institutions: "Microsoft Research"
+  institutions: "University of Chinese Academy of Sciences"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: sparse_pruning
+}
+cover {
+  url: "q-sparse.png"
+}

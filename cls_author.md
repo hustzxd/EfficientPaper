@@ -307,9 +307,9 @@
 <details open><summary><b>Chen Chen</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
 <details open><summary><b>Chen Liang</b></summary> 
 <p>
@@ -328,10 +328,10 @@
 <details open><summary><b>Chenyang Song</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |
-|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md)     |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
+|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)     |</p>
 </details>
 <details open><summary><b>Chi Han</b></summary> 
 <p>
@@ -589,6 +589,13 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
 </details>
+<details open><summary><b>Furu Wei</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
+</details>
 <details open><summary><b>Fuzhen Zhuang</b></summary> 
 <p>
 
@@ -620,9 +627,9 @@
 <details open><summary><b>Guangli Li</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
 <details open><summary><b>Guangxuan Xiao</b></summary> 
 <p>
@@ -750,6 +757,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                  | note                               |
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |</p>
+</details>
+<details open><summary><b>Hongyu Wang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
 </details>
 <details open><summary><b>Huizi Mao</b></summary> 
 <p>
@@ -1090,9 +1104,9 @@
 <details open><summary><b>Kuai Li</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
 <details open><summary><b>Kurt Keutzer</b></summary> 
 <p>
@@ -1260,10 +1274,10 @@
 <details open><summary><b>Maosong Sun</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |
-|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md)     |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
+|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)     |</p>
 </details>
 <details open><summary><b>Marat Dukhan</b></summary> 
 <p>
@@ -1651,6 +1665,13 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
 </details>
+<details open><summary><b>Ruiping Wang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
+</details>
 <details open><summary><b>Ruobing Xie</b></summary> 
 <p>
 
@@ -1763,9 +1784,9 @@
 <details open><summary><b>Shengding Hu</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
 <details open><summary><b>Shengen Yan</b></summary> 
 <p>
@@ -1841,6 +1862,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                            | note                                    |
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
+</details>
+<details open><summary><b>Shuming Ma</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
 </details>
 <details open><summary><b>Sijia Liu</b></summary> 
 <p>
@@ -1922,9 +1950,9 @@
 <details open><summary><b>Tao Yang</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
 <details open><summary><b>Tao Yu</b></summary> 
 <p>
@@ -2317,17 +2345,17 @@
 <details open><summary><b>Xiyu Shi</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
 <details open><summary><b>Xu Han</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |
-|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md)     |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
+|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)     |</p>
 </details>
 <details open><summary><b>Xu Tan</b></summary> 
 <p>
@@ -2758,11 +2786,11 @@
 <details open><summary><b>Zhengyan Zhang</b></summary> 
 <p>
 
-|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                     | note                                     |
-|---:|:-------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------|:-----------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt)      | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |                                              | [note](./notes/2024/ProSparse/note.md)   |
-|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                              | [note](./notes/2024/ReLU2/note.md)       |
-|  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2)                 |                                                                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer) | [note](./notes/2024/TurboSparse/note.md) |</p>
+|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                     |
+|---:|:-------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt)      | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md)   |
+|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)       |
+|  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2)                 |                                                                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                                   | [note](./notes/2024/TurboSparse/note.md) |</p>
 </details>
 <details open><summary><b>Zhenliang Xue</b></summary> 
 <p>
@@ -2812,10 +2840,10 @@
 <details open><summary><b>Zhiyuan Liu</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
-|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 |            | [note](./notes/2024/ProSparse/note.md) |
-|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md)     |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                                       | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
+|  1 | [ReLU2](./meta/2024/ReLU2.prototxt)         | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)     |</p>
 </details>
 <details open><summary><b>Zhongfeng Wang</b></summary> 
 <p>

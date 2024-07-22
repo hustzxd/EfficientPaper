@@ -13,14 +13,13 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/raincleared-song/sparse_gpu_operator"
 }
 note {
   url: "ProSparse/note.md"
 }
 keyword {
   words: sparse_pruning
-  words: working
 }
 cover {
   url: "ProSparse/prosparse.jpg"
