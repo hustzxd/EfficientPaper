@@ -30,3 +30,5 @@ structured pruning的方式与之前方法相同，layer-by-layer优化每层的
 如何搜索mask，从而最小化loss，是一个问题。首先是loss的计算比较耗时，论文中给出使用历史的计算和变化的mask位置来减少loss计算开销，这个也容易理解，只需要计算差值就好。因此，论文中给出一个local search的搜索方法。
 
 文中没有说是否为unform pruning ratio，只给了加速比，通过代码发现每一层配置的pruning ratio是一致的。
+
+$\hat{w}$

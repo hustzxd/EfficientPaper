@@ -543,9 +543,9 @@
 <details open><summary><b>Eric Lybrand</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
-|---:|:----------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
-|  0 | [GPFQ](./meta/2021/gpfq.prototxt) | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 |            |        |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                       | note   |
+|---:|:----------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:-------|
+|  0 | [GPFQ](./meta/2021/gpfq.prototxt) | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |</p>
 </details>
 <details open><summary><b>Erich Elsen</b></summary> 
 <p>
@@ -977,9 +977,9 @@
 <details open><summary><b>Jinjie Zhang</b></summary> 
 <p>
 
-|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
-|---:|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
-|  0 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) |                          | arXiv |   2023 |            |        |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                       | note   |
+|---:|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:-------|
+|  0 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |</p>
 </details>
 <details open><summary><b>Jinqiao Wang</b></summary> 
 <p>
@@ -1597,10 +1597,10 @@
 <details open><summary><b>Rayan Saab</b></summary> 
 <p>
 
-|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
-|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
-|  0 | [GPFQ](./meta/2021/gpfq.prototxt)     | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 |            |        |
-|  1 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf)     |                          | arXiv |   2023 |            |        |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                       | note   |
+|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:-------|
+|  0 | [GPFQ](./meta/2021/gpfq.prototxt)     | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |
+|  1 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf)     |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |</p>
 </details>
 <details open><summary><b>Renjie Pi</b></summary> 
 <p>
@@ -2129,6 +2129,13 @@
 |  0 | [SPDF](./meta/2023/spdf.prototxt)             | [SPDF: Sparse Pre-training and Dense Fine-tuning for Large Language Models](https://arxiv.org/abs/2303.10464)       |                                                                           | UAI   |   2023 |                                                                                       |                                         |
 |  1 | [Sparse-IFT](./meta/2023/Sparse-IFT.prototxt) | [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525)              |                                                                           | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) |                                         |
 |  2 | [Sparse-IFT](./meta/2024/Sparse-IFT.prototxt) | [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) | <img width='400' alt='image' src='./notes/2024/Sparse-IFT/sparseIFT.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) | [note](./notes/2024/Sparse-IFT/note.md) |</p>
+</details>
+<details open><summary><b>Vladimír Boža</b></summary> 
+<p>
+
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [ADMM-pruning](./meta/2024/ADMM-pruning.prototxt) | [Fast and Effective Weight Update for Pruned Large Language Models](http://arxiv.org/abs/2401.02938v2) |                          | TMLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/fmfi-compbio/admm-pruning) | [note](./notes/2024/ADMM-pruning/note.md) |</p>
 </details>
 <details open><summary><b>Wei Lin</b></summary> 
 <p>

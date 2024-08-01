@@ -12,7 +12,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/YixuanSeanZhou/Quantized_Neural_Nets"
 }
 note {
   url: ""

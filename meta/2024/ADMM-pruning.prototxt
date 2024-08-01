@@ -1,0 +1,24 @@
+paper {
+  title: "Fast and Effective Weight Update for Pruned Large Language Models"
+  abbr: "ADMM-pruning"
+  url: "http://arxiv.org/abs/2401.02938v2"
+  authors: "Vladimír Boža"
+  institutions: "Comenius University"
+}
+pub {
+  where: "TMLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/fmfi-compbio/admm-pruning"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

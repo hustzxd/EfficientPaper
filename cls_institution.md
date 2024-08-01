@@ -66,6 +66,13 @@
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | <img width='400' alt='image' src='./notes/2023/gbdt/gbdt.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Comenius University</b></summary> 
+<p>
+
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [ADMM-pruning](./meta/2024/ADMM-pruning.prototxt) | [Fast and Effective Weight Update for Pruned Large Language Models](http://arxiv.org/abs/2401.02938v2) |                          | TMLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/fmfi-compbio/admm-pruning) | [note](./notes/2024/ADMM-pruning/note.md) |</p>
+</details>
 <details open><summary><b>Cornell University</b></summary> 
 <p>
 
@@ -661,10 +668,10 @@
 <details open><summary><b>UCSD</b></summary> 
 <p>
 
-|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
-|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
-|  0 | [GPFQ](./meta/2021/gpfq.prototxt)     | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 |            |        |
-|  1 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf)     |                          | arXiv |   2023 |            |        |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                       | note   |
+|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:-------|
+|  0 | [GPFQ](./meta/2021/gpfq.prototxt)     | [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) |                          | JMLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |
+|  1 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf)     |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |</p>
 </details>
 <details open><summary><b>Univeristy of Sydney</b></summary> 
 <p>

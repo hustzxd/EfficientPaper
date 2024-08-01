@@ -91,22 +91,23 @@ keyword {
 21. [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) [ICML 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) 
 22. [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4) [ICML 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) 
 23. [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) [ICML 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) 
-24. [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) [VLDB 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) 
-25. [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) [arXiv 2024]  
-26. [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) 
-27. [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) 
-28. [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) [arXiv 2024]  
-29. [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) [arXiv 2024]  
-30. [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) [arXiv 2024]  
-31. [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) 
-32. [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) [arXiv 2024]  
-33. [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) [arXiv 2024] [Website](https://powerinfer.ai/v2/) 
-34. [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) 
-35. [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) [arXiv 2024]  
-36. [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) [arXiv 2024] [Pytorch](https://hanlab.mit.edu/projects/qserve) 
-37. [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) [arXiv 2024]  
-38. [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) 
-39. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
+24. [Fast and Effective Weight Update for Pruned Large Language Models](http://arxiv.org/abs/2401.02938v2) [TMLR 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/fmfi-compbio/admm-pruning) 
+25. [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) [VLDB 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) 
+26. [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) [arXiv 2024]  
+27. [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) 
+28. [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) 
+29. [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) [arXiv 2024]  
+30. [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) [arXiv 2024]  
+31. [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) [arXiv 2024]  
+32. [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) 
+33. [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) [arXiv 2024]  
+34. [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) [arXiv 2024] [Website](https://powerinfer.ai/v2/) 
+35. [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) 
+36. [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) [arXiv 2024]  
+37. [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) [arXiv 2024] [Pytorch](https://hanlab.mit.edu/projects/qserve) 
+38. [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) [arXiv 2024]  
+39. [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) 
+40. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
 </p>
 </details>
 <details open><summary><b>2023</b></summary> 
@@ -144,7 +145,7 @@ keyword {
 30. [LoRAShear: Efficient Large Language Model Structured Pruning and Knowledge Recovery](https://arxiv.org/abs/2310.18356) [arXiv 2023]  
 31. [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) 
 32. [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) 
-33. [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) [arXiv 2023]  
+33. [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) 
 34. [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) 
 35. [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) [arXiv 2023]  
 36. [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/artidoro/qlora) 
@@ -188,7 +189,7 @@ keyword {
 1. [Post-training deep neural network pruning via layer-wise calibration](https://openaccess.thecvf.com/content/ICCV2021W/LPCV/papers/Lazarevich_Post-Training_Deep_Neural_Network_Pruning_via_Layer-Wise_Calibration_ICCVW_2021_paper.pdf) [ICCV workshop 2021]  
 2. [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) [ICLR 2021] ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) 
 3. [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) [ICLR 2021] ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) 
-4. [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) [JMLR 2021]  
+4. [A Greedy Algorithm for Quantizing Neural Networks](https://jmlr.csail.mit.edu/papers/volume22/20-1233/20-1233.pdf) [JMLR 2021] ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) 
 5. [Channel Permutations for N:M Sparsity](https://proceedings.neurips.cc/paper/2021/hash/6e8404c3b93a9527c8db241a1846599a-Abstract.html) [NeurIPS 2021] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/apex) 
 6. [Accelerating Sparse Deep Neural Networks](https://arxiv.org/abs/2104.08378) [arXiv 2021]  
 7. [Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks](https://arxiv.org/abs/2102.00554) [arXiv 2021]  
