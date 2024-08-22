@@ -10,8 +10,7 @@ paper {
   authors: "Sheng Shen"
   authors: "Michael W. Mahoney"
   authors: "Kurt Keutzer"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "UC Berkeley"
 }
 pub {
   where: "ICML"

@@ -1,6 +1,6 @@
 paper {
   title: "Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models"
-  abbr: "Plug-and-Play"
+  abbr: "RIA"
   url: "https://openreview.net/forum?id=Tr0lPx9woF"
   authors: "Yingtao Zhang, Haoli Bai, Haokun Lin, Jialin Zhao, Lu Hou, Carlo Vittorio Cannistraci"
   institutions: "Tsinghua University"
@@ -20,7 +20,6 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: working
 }
 cover {
   url: "Plug-and-Play.jpg"

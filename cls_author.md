@@ -121,6 +121,13 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-------|
 |  0 | [QLoRA](./meta/2023/qlora.prototxt) | [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314) | <img width='400' alt='image' src='./notes/2023/qlora/qlora.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/artidoro/qlora) |        |</p>
 </details>
+<details open><summary><b>Ashish Sirasao</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Asit Mishra</b></summary> 
 <p>
 
@@ -251,9 +258,9 @@
 <details open><summary><b>Carlo Vittorio Cannistraci</b></summary> 
 <p>
 
-|    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Cecilia Mascolo</b></summary> 
 <p>
@@ -498,6 +505,13 @@
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
 |  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
 </details>
+<details open><summary><b>Dong Li</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Dongkuan Xu</b></summary> 
 <p>
 
@@ -560,6 +574,13 @@
 |  3 | [ZipLM](./meta/2023/ZipLM.prototxt)           | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                                | <img width='400' alt='image' src='./notes/2023/ZipLM/cover.jpg'>      | NeurIPS |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/ZipLM)            |                                    |
 |  4 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf)                          | <img width='400' alt='image' src='./notes/2023/SquareHead/cover.png'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) |                                    |
 |  5 | [SparseGPT](./meta/2023/sparsegpt.prototxt)   | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf)                        |                                                                       | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/sparsegpt)        | [note](./notes/SparseGPT.md)       |</p>
+</details>
+<details open><summary><b>Emad Barsoum</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Emma Strubell</b></summary> 
 <p>
@@ -645,6 +666,13 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) |        |</p>
 </details>
+<details open><summary><b>Guanchen Li</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Guanghui Yu</b></summary> 
 <p>
 
@@ -708,16 +736,16 @@
 <details open><summary><b>Haokun Lin</b></summary> 
 <p>
 
-|    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Haoli Bai</b></summary> 
 <p>
 
-|    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Haotian Tang</b></summary> 
 <p>
@@ -832,9 +860,10 @@
 <details open><summary><b>Ion Stoica</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                | note   |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------|:-------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn) |        |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                   | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Iryna Gurevych</b></summary> 
 <p>
@@ -863,7 +892,7 @@
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
 |---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
 |  0 | [Wanda](./meta/2024/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf) |                                                                                      | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               |                                                  |
-|  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                         | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+|  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                         | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Jacek Golebiowski</b></summary> 
 <p>
@@ -967,9 +996,9 @@
 <details open><summary><b>Jialin Zhao</b></summary> 
 <p>
 
-|    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Jiaming Tang</b></summary> 
 <p>
@@ -1009,6 +1038,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Jie He</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Jinjie Zhang</b></summary> 
 <p>
 
@@ -1040,9 +1076,10 @@
 <details open><summary><b>Joseph E. Gonzalez</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                | note   |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------|:-------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn) |        |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                   | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Joseph Hassoun</b></summary> 
 <p>
@@ -1201,12 +1238,20 @@
 |---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
 </details>
+<details open><summary><b>Lian Liu</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Lianmin Zheng</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                | note   |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------|:-------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn) |        |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                   | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Lili Qiu</b></summary> 
 <p>
@@ -1246,9 +1291,16 @@
 <details open><summary><b>Lu Hou</b></summary> 
 <p>
 
-|    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+</details>
+<details open><summary><b>Lu Tian</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Lu Yin</b></summary> 
 <p>
@@ -1430,7 +1482,7 @@
 |---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)         | [note](./notes/2023/GBLM-Pruner/note.md)         |
 |  1 | [Wanda](./meta/2024/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf)        |                                                                                      | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               |                                                  |
-|  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+|  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Mingu Kang</b></summary> 
 <p>
@@ -1919,6 +1971,13 @@
 |---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
 </details>
+<details open><summary><b>Shuo Yang</b></summary> 
+<p>
+
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+</details>
 <details open><summary><b>Sijia Liu</b></summary> 
 <p>
 
@@ -2279,6 +2338,13 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
 </details>
+<details open><summary><b>Xiandong Zhao</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Xiang Liu</b></summary> 
 <p>
 
@@ -2382,7 +2448,7 @@
 
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
 |---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
-|  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+|  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Xinyin Ma</b></summary> 
 <p>
@@ -2581,12 +2647,19 @@
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt) | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2) | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick) | [note](./notes/2024/VB8C61V6/note.md) |</p>
 </details>
+<details open><summary><b>Ying Sheng</b></summary> 
+<p>
+
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+</details>
 <details open><summary><b>Yingtao Zhang</b></summary> 
 <p>
 
-|    | meta                                           | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [Plug-and-Play](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Yiwu Yao</b></summary> 
 <p>
@@ -2798,6 +2871,13 @@
 |  0 | [ZeroQuant](./meta/2022/zeroquant.prototxt)       | [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1)       |                          | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |
 |  1 | [ZeroQuant-V2](./meta/2023/ZeroQuant-V2.prototxt) | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) |                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |</p>
 </details>
+<details open><summary><b>Zeping Li</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
 <details open><summary><b>Zeyu Mi</b></summary> 
 <p>
 
@@ -2949,7 +3029,7 @@
 
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
 |---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
-|  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v1) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+|  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Zichang Liu</b></summary> 
 <p>
