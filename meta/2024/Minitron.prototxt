@@ -1,0 +1,32 @@
+paper {
+  title: "Compact Language Models via Pruning and Knowledge Distillation"
+  abbr: "Minitron"
+  url: "http://arxiv.org/abs/2407.14679v1"
+  authors: "Saurav Muralidharan"
+  authors: "Sharath Turuvekere Sreenivas"
+  authors: "Raviraj Joshi"
+  authors: "Marcin Chochowski"
+  authors: "Mostofa Patwary"
+  authors: "Mohammad Shoeybi"
+  authors: "Bryan Catanzaro"
+  authors: "Jan Kautz"
+  authors: "Pavlo Molchanov"
+  institutions: "nvidia"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVlabs/Minitron"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "minitron.png"
+}

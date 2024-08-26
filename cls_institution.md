@@ -163,7 +163,7 @@
 
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
-|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v5) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
 <details open><summary><b>Habana Labs</b></summary> 
 <p>
@@ -582,7 +582,7 @@
 
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                               |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
-|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v3) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
+|  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v5) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
 <details open><summary><b>Tencent AI Lab</b></summary> 
 <p>
@@ -853,6 +853,13 @@
 |  1 | [TinyTrain](./meta/2024/TinyTrain.prototxt)                     | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                                                                                      | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain)       | [note](./notes/2024/TinyTrain/note.md)           |
 |  2 | [KVQuant](./meta/2024/KVQuant.prototxt)                         | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2)     |                                                                                      | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)         | [note](./notes/2024/KVQuant/note.md)             |
 |  3 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                                            | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+</details>
+<details open><summary><b>nvidia</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 </p>
 </details>
