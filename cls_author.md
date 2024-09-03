@@ -1341,6 +1341,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
 </details>
+<details open><summary><b>Lu Ye</b></summary> 
+<p>
+
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee                                                                            | note                                        |
+|---:|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ACL   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |</p>
+</details>
 <details open><summary><b>Lu Yin</b></summary> 
 <p>
 
@@ -2645,6 +2652,13 @@
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |</p>
 </details>
+<details open><summary><b>Yang Li</b></summary> 
+<p>
+
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee                                                                            | note                                        |
+|---:|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ACL   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |</p>
+</details>
 <details open><summary><b>Yang Yang</b></summary> 
 <p>
 
@@ -2796,6 +2810,13 @@
 |  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
 |  2 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
 |  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+</details>
+<details open><summary><b>Yong Huang</b></summary> 
+<p>
+
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee                                                                            | note                                        |
+|---:|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ACL   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |</p>
 </details>
 <details open><summary><b>Yong Li</b></summary> 
 <p>
@@ -2981,6 +3002,13 @@
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [ZeroQuant](./meta/2022/zeroquant.prototxt)       | [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1)       |                          | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |
 |  1 | [ZeroQuant-V2](./meta/2023/ZeroQuant-V2.prototxt) | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) |                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |</p>
+</details>
+<details open><summary><b>Ze Tao</b></summary> 
+<p>
+
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee                                                                            | note                                        |
+|---:|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ACL   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |</p>
 </details>
 <details open><summary><b>Zeping Li</b></summary> 
 <p>
