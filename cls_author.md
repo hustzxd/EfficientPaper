@@ -713,9 +713,10 @@
 <details open><summary><b>Hai Zhao</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
-|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
-|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |
+|  1 | [SIFT](./meta/2024/SIFT.prototxt)  | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3)               |                                                                        | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT)                  | [note](./notes/2024/SIFT/note.md)     |</p>
 </details>
 <details open><summary><b>Haibo Chen</b></summary> 
 <p>
@@ -820,6 +821,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                  | note                               |
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |</p>
+</details>
+<details open><summary><b>Hongyi Zhang</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |</p>
 </details>
 <details open><summary><b>Hongyu Wang</b></summary> 
 <p>
@@ -1364,6 +1372,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Luohe Shi</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |</p>
 </details>
 <details open><summary><b>Manuel R. Ciosici</b></summary> 
 <p>
@@ -2633,6 +2648,13 @@
 |---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:-------|
 |  0 | [ADMM-pruning](./meta/2018/Z9R72EAT.prototxt) | [A Systematic DNN Weight Pruning Framework using Alternating Direction Method of Multipliers](https://arxiv.org/abs/1804.03294) |                          | ECCV  |   2018 | ![GitHub Repo stars](https://img.shields.io/github/stars/bzantium/pytorch-admm-pruning) |        |</p>
 </details>
+<details open><summary><b>Yao Yao</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |</p>
+</details>
 <details open><summary><b>Yaqing Wang</b></summary> 
 <p>
 
@@ -3126,9 +3148,10 @@
 <details open><summary><b>Zuchao Li</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
-|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
-|  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
+|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |
+|  1 | [SIFT](./meta/2024/SIFT.prototxt)  | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3)               |                                                                        | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT)                  | [note](./notes/2024/SIFT/note.md)     |</p>
 </details>
 </p>
 </details>

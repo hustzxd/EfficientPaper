@@ -1,0 +1,30 @@
+paper {
+  title: "Keep the Cost Down: A Review on Methods to Optimize LLM\' s KV-Cache Consumption"
+  abbr: ""
+  url: "http://arxiv.org/abs/2407.18003v3"
+  authors: "Luohe Shi"
+  authors: "Hongyi Zhang"
+  authors: "Yao Yao"
+  authors: "Zuchao Li"
+  authors: "Hai Zhao"
+  institutions: "Wuhan University"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "COLM"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/zcli-charlie/Awesome-KV-Cache"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: survey
+}
+cover {
+  url: "overview.png"
+}

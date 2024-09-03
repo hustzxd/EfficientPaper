@@ -27,7 +27,6 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: working
 }
 cover {
   url: "flash_llm/cover.jpg"
