@@ -177,6 +177,13 @@
 |---:|:---------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:---------------------------------------|-------:|:-----------|:---------------------------------------------------|
 |  0 | [Complementary Sparsity](./meta/2022/ComplementarySparsity.prototxt) | [Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks](https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a) | <img width='400' alt='image' src='./notes/2022/ComplementarySparsity/cover.jpg'> | Neuromorphic Computing and Engineering |   2022 |            | [note](./notes/2022/ComplementarySparsity/note.md) |</p>
 </details>
+<details open><summary><b>SOSP</b></summary> 
+<p>
+
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                    | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
+</details>
 <details open><summary><b>TACL</b></summary> 
 <p>
 

@@ -411,6 +411,13 @@
 |  0 | [AWQ](./meta/2023/awq.prototxt)        | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                      |
 |  1 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)   |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                             | [note](./notes/2024/QServer/note.md) |</p>
 </details>
+<details open><summary><b>Cody Hao Yu</b></summary> 
+<p>
+
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                    | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
+</details>
 <details open><summary><b>Coleman Hooper</b></summary> 
 <p>
 
@@ -727,6 +734,13 @@
 |  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
 |  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
+<details open><summary><b>Hao Zhang</b></summary> 
+<p>
+
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                    | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
+</details>
 <details open><summary><b>Haocheng Xi</b></summary> 
 <p>
 
@@ -875,10 +889,11 @@
 <details open><summary><b>Ion Stoica</b></summary> 
 <p>
 
-|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                   | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
-|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  2 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Iryna Gurevych</b></summary> 
 <p>
@@ -1098,10 +1113,11 @@
 <details open><summary><b>Joseph E. Gonzalez</b></summary> 
 <p>
 
-|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                   | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
-|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  2 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Joseph Hassoun</b></summary> 
 <p>
@@ -1270,10 +1286,11 @@
 <details open><summary><b>Lianmin Zheng</b></summary> 
 <p>
 
-|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                   | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
-|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  2 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Lili Qiu</b></summary> 
 <p>
@@ -2077,6 +2094,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:-------------|-------:|:--------------------------------------------------------------------|:-------|
 |  0 | [PINS](./meta/2023/PINS.prototxt) | [Pruning Pre-trained Language Models with Principled Importance and Self-regularization](https://aclanthology.org/2023.findings-acl.573/) |                          | ACL Findings |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/drsy/pins) |        |</p>
 </details>
+<details open><summary><b>Siyuan Zhuang</b></summary> 
+<p>
+
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                    | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
+</details>
 <details open><summary><b>Song Guo</b></summary> 
 <p>
 
@@ -2398,9 +2422,10 @@
 <details open><summary><b>Woosuk Kwon</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
-|---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt)    | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2)                          | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md)  |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)                  | [note](./notes/2023/PagedAttention/note.md) |</p>
 </details>
 <details open><summary><b>Wotao Yin</b></summary> 
 <p>
@@ -2735,9 +2760,10 @@
 <details open><summary><b>Ying Sheng</b></summary> 
 <p>
 
-|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:------------------------------------------------------|:-----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  1 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                              |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Yingtao Zhang</b></summary> 
 <p>
@@ -3115,6 +3141,13 @@
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
 |---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
 |  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+</details>
+<details open><summary><b>Zhuohan Li</b></summary> 
+<p>
+
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                    | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
 </details>
 <details open><summary><b>Zichang Liu</b></summary> 
 <p>

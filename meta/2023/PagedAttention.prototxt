@@ -1,0 +1,33 @@
+paper {
+  title: "Efficient Memory Management for Large Language Model Serving with PagedAttention"
+  abbr: "Paged Attention"
+  url: "http://arxiv.org/abs/2309.06180v1"
+  authors: "Woosuk Kwon"
+  authors: "Zhuohan Li"
+  authors: "Siyuan Zhuang"
+  authors: "Ying Sheng"
+  authors: "Lianmin Zheng"
+  authors: "Cody Hao Yu"
+  authors: "Joseph E. Gonzalez"
+  authors: "Hao Zhang"
+  authors: "Ion Stoica"
+  institutions: "UC Berkeley"
+  institutions: "Stanford University"
+}
+pub {
+  where: "SOSP"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/vllm-project/vllm"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: "vllm.png"
+}
