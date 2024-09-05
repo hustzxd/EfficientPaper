@@ -1,7 +1,7 @@
 paper {
   title: "Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference"
   abbr: "Quest"
-  url: "http://arxiv.org/abs/2406.10774v1"
+  url: "http://arxiv.org/abs/2406.10774"
   authors: "Jiaming Tang"
   authors: "Yilong Zhao"
   authors: "Kan Zhu"

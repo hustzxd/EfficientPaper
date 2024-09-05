@@ -1,0 +1,30 @@
+paper {
+  title: "Transformers are Multi-State RNNs"
+  abbr: "TOVA"
+  url: "http://arxiv.org/abs/2401.06104v2"
+  authors: "Matanel Oren"
+  authors: "Michael Hassid"
+  authors: "Nir Yarden"
+  authors: "Yossi Adi"
+  authors: "Roy Schwartz"
+  institutions: "The Hebrew University of Jerusalem"
+  institutions: "FAIR"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/schwartz-lab-NLP/TOVA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+}
+cover {
+  url: "tova.png"
+}

@@ -152,9 +152,9 @@
 <details open><summary><b>Baris Kasikci</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
-|---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
-|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                      | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
+|---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
 </details>
 <details open><summary><b>Beidi Chen</b></summary> 
 <p>
@@ -707,7 +707,7 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
 |---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                    | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  1 | [Quest](./meta/2024/Quest.prototxt)                 | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1)        | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
+|  1 | [Quest](./meta/2024/Quest.prototxt)                 | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)          | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
 |  2 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Guohao Dai</b></summary> 
@@ -1043,7 +1043,7 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                      | note                               |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [AWQ](./meta/2023/awq.prototxt)     | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                    |
-|  1 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1)          | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)   | [note](./notes/2024/Quest/note.md) |</p>
+|  1 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)            | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)   | [note](./notes/2024/Quest/note.md) |</p>
 </details>
 <details open><summary><b>Jiaming Xu</b></summary> 
 <p>
@@ -1144,9 +1144,9 @@
 <details open><summary><b>Kan Zhu</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
-|---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
-|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                      | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
+|---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
 </details>
 <details open><summary><b>Kang Zhao</b></summary> 
 <p>
@@ -1461,6 +1461,13 @@
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2020/V3MFIRLV.prototxt) | [Inducing and Exploiting Activation Sparsity for Fast Neural Network Inference](http://proceedings.mlr.press/v119/kurtz20a/kurtz20a.pdf) |                          | ICML  |   2020 |            |        |</p>
 </details>
+<details open><summary><b>Matanel Oren</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                     | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TOVA](./meta/2024/TOVA.prototxt) | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
+</details>
 <details open><summary><b>Max Zimmer</b></summary> 
 <p>
 
@@ -1500,9 +1507,10 @@
 <details open><summary><b>Michael Hassid</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
+|  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>       | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
 </details>
 <details open><summary><b>Michael W. Mahoney</b></summary> 
 <p>
@@ -1641,6 +1649,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                 | note                               |
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoftQ](./meta/2023/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/2023/loftq/note.md) |</p>
+</details>
+<details open><summary><b>Nir Yarden</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                     | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TOVA](./meta/2024/TOVA.prototxt) | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
 </details>
 <details open><summary><b>Niranjan Balasubramanian</b></summary> 
 <p>
@@ -1829,9 +1844,10 @@
 <details open><summary><b>Roy Schwartz</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
+|  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>       | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
 </details>
 <details open><summary><b>Rui Li</b></summary> 
 <p>
@@ -2126,7 +2142,7 @@
 |  3 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse)   |                                            |
 |  4 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                            |
 |  5 | [streaming-llm](./meta/2024/streaming-llm.prototxt)      | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                                                                | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  6 | [Quest](./meta/2024/Quest.prototxt)                      | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1)                                                                    | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
+|  6 | [Quest](./meta/2024/Quest.prototxt)                      | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                                                                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
 |  7 | [QServe](./meta/2024/QServer.prototxt)                   | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Sotiris Anagnostidis</b></summary> 
@@ -2746,9 +2762,9 @@
 <details open><summary><b>Yilong Zhao</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
-|---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
-|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774v1) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                      | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
+|---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
 </details>
 <details open><summary><b>Yimeng Zhang</b></summary> 
 <p>
@@ -2838,6 +2854,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                               | pub   |   year | codeeeee                                                                     | note                                                                  |
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+</details>
+<details open><summary><b>Yossi Adi</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                     | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TOVA](./meta/2024/TOVA.prototxt) | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
 </details>
 <details open><summary><b>You Wu</b></summary> 
 <p>
