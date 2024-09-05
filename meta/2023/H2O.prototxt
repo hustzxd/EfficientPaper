@@ -1,0 +1,41 @@
+paper {
+  title: "H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models"
+  abbr: "H2O"
+  url: "http://arxiv.org/abs/2306.14048"
+  authors: "Zhenyu Zhang"
+  authors: "Ying Sheng"
+  authors: "Tianyi Zhou"
+  authors: "Tianlong Chen"
+  authors: "Lianmin Zheng"
+  authors: "Ruisi Cai"
+  authors: "Zhao Song"
+  authors: "Yuandong Tian"
+  authors: "Christopher Ré"
+  authors: "Clark Barrett"
+  authors: "Zhangyang Wang"
+  authors: "Beidi Chen"
+  institutions: "University of Texas at Austin"
+  institutions: "Stanford University"
+  institutions: "University of California, San Diego"
+  institutions: "University of California, Berkeley"
+  institutions: "Meta AI (FAIR)"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FMInference/H2O"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+}
+cover {
+  url: "h2o.png"
+}
