@@ -1,0 +1,37 @@
+paper {
+  title: "Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment"
+  abbr: ""
+  url: "http://arxiv.org/abs/2405.03594v1"
+  authors: "Abhinav Agarwalla"
+  authors: "Abhay Gupta"
+  authors: "Alexandre Marques"
+  authors: "Shubhra Pandit"
+  authors: "Michael Goin"
+  authors: "Eldar Kurtic"
+  authors: "Kevin Leong"
+  authors: "Tuan Nguyen"
+  authors: "Mahmoud Salem"
+  authors: "Dan Alistarh"
+  authors: "Sean Lie"
+  authors: "Mark Kurtz"
+  institutions: "Neural Magic"
+  institutions: "Cerebras Systems"
+  institutions: "IST Austria"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/neuralmagic/nm-vllm"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}
