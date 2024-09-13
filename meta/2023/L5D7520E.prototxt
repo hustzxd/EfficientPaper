@@ -26,5 +26,5 @@ keyword {
   words: survey
 }
 cover {
-  url: "survey/compression_LLM.jpg"
+  url: "del/survey/compression_LLM.jpg"
 }

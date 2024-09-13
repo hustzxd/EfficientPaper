@@ -8,7 +8,7 @@ paper {
   institutions: "Neural Magic"
 }
 pub {
-  where: "arXiv"
+  where: "ICML"
   year: 2023
 }
 code {
@@ -16,7 +16,7 @@ code {
   url: "https://github.com/IST-DASLab/sparsegpt"
 }
 note {
-  url: "SparseGPT.md"
+  url: ""
 }
 keyword {
   words: sparse_pruning

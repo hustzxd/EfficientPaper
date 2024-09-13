@@ -1,8 +1,10 @@
 paper {
   title: "A Simple and Effective Pruning Approach for Large Language Models"
   abbr: "Wanda"
-  url: "https://arxiv.org/pdf/2306.11695.pdf"
+  url: "http://arxiv.org/abs/2306.11695"
   authors: "Mingjie Sun"
+  authors: "Zhuang Liu"
+  authors: "Anna Bair"
   authors: "J. Zico Kolter"
   institutions: "Carnegie Mellon University"
   institutions: "Meta"
@@ -16,8 +18,11 @@ code {
   url: "https://github.com/locuslab/wanda"
 }
 note {
-  url: ""
+  url: "note.md"
 }
 keyword {
   words: sparse_pruning
+}
+cover {
+  url: "wanda.png"
 }

@@ -1,6 +1,6 @@
 paper {
   title: "PowerInfer-2: Fast Large Language Model Inference on a Smartphone"
-  abbr: ""
+  abbr: "PowerInfer-2"
   url: "http://arxiv.org/abs/2406.06282v2"
   authors: "Zhenliang Xue"
   authors: "Yixin Song"

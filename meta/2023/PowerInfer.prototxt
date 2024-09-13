@@ -1,6 +1,6 @@
 paper {
   title: "PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU"
-  abbr: ""
+  abbr: "PowerInfer"
   url: "http://arxiv.org/abs/2312.12456v1"
   authors: "Yixin Song"
   authors: "Zeyu Mi"

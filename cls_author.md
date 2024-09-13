@@ -7,9 +7,9 @@
 <details open><summary><b>Aaron Klein</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                  | pub             |   year | codeeeee                                                                    | note   |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                       | pub             |   year | codeeeee                                                                    | note   |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
 <details open><summary><b>Abhay Gupta</b></summary> 
 <p>
@@ -102,9 +102,16 @@
 <details open><summary><b>André F. T. Martins</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Anna Bair</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                 | note                               |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
+|  0 | [Wanda](./meta/2024/Wanda.prototxt) | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda) | [note](./notes/2024/Wanda/note.md) |</p>
 </details>
 <details open><summary><b>Anshul Samar</b></summary> 
 <p>
@@ -183,9 +190,9 @@
 <details open><summary><b>Betty van Aken</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Bin Lin</b></summary> 
 <p>
@@ -260,16 +267,16 @@
 <details open><summary><b>Can Ma</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Carlo C Del Mundo</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee   | note                                                                  |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
-|  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
 <details open><summary><b>Carlo Luschi</b></summary> 
 <p>
@@ -281,9 +288,9 @@
 <details open><summary><b>Carlo Vittorio Cannistraci</b></summary> 
 <p>
 
-|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Cecilia Mascolo</b></summary> 
 <p>
@@ -295,9 +302,9 @@
 <details open><summary><b>Cedric Archambeau</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                  | pub             |   year | codeeeee                                                                    | note   |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                       | pub             |   year | codeeeee                                                                    | note   |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
 <details open><summary><b>Changhao Li</b></summary> 
 <p>
@@ -459,9 +466,9 @@
 <details open><summary><b>Colin Raffel</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Dale Schuurmans</b></summary> 
 <p>
@@ -481,10 +488,10 @@
 |  3 | [OBC](./meta/2022/obc.prototxt)               | [Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning](https://openreview.net/pdf?id=ksVGCOlOEba)   |                                                                       | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/OBC)              |                                       |
 |  4 | [oBERT](./meta/2022/oBERT.prototxt)           | [The Optimal BERT Surgeon: Scalable and Accurate Second-Order Pruning for Large Language Models](https://arxiv.org/pdf/2203.07259.pdf)    |                                                                       | arXiv   |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/sparseml)        |                                       |
 |  5 | [GPTQ](./meta/2023/gptq.prototxt)             | [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](https://arxiv.org/pdf/2210.17323.pdf)                 |                                                                       | ICLR    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/gptq)             |                                       |
-|  6 | [ZipLM](./meta/2023/ZipLM.prototxt)           | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                                  | <img width='400' alt='image' src='./notes/2023/ZipLM/cover.jpg'>      | NeurIPS |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/ZipLM)            |                                       |
-|  7 | [SpQR](./meta/2023/spqr.prototxt)             | [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/pdf/2306.03078.pdf)                  |                                                                       | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Vahe1994/SpQR)               |                                       |
-|  8 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf)                            | <img width='400' alt='image' src='./notes/2023/SquareHead/cover.png'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) |                                       |
-|  9 | [SparseGPT](./meta/2023/sparsegpt.prototxt)   | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf)                          |                                                                       | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/sparsegpt)        | [note](./notes/SparseGPT.md)          |
+|  6 | [SparseGPT](./meta/2023/sparsegpt.prototxt)   | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf)                          |                                                                       | ICML    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/sparsegpt)        |                                       |
+|  7 | [ZipLM](./meta/2023/ZipLM.prototxt)           | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                                  | <img width='400' alt='image' src='./notes/2023/ZipLM/cover.jpg'>      | NeurIPS |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/ZipLM)            |                                       |
+|  8 | [SpQR](./meta/2023/spqr.prototxt)             | [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/pdf/2306.03078.pdf)                  |                                                                       | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Vahe1994/SpQR)               |                                       |
+|  9 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf)                            | <img width='400' alt='image' src='./notes/2023/SquareHead/cover.png'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) |                                       |
 | 10 | [m](./meta/2024/ULY1AZGY.prototxt)            | [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1)           |                                                                       | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm)         | [note](./notes/2024/ULY1AZGY/note.md) |</p>
 </details>
 <details open><summary><b>Daniel Soudry</b></summary> 
@@ -546,9 +553,9 @@
 <details open><summary><b>Dmitry Belenko</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee   | note                                                                  |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
-|  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
 <details open><summary><b>Dong Li</b></summary> 
 <p>
@@ -595,9 +602,9 @@
 <details open><summary><b>Edwin Simpson</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Eldar Kurtic</b></summary> 
 <p>
@@ -617,9 +624,9 @@
 |  0 | [SPDY](./meta/2022/spdy.prototxt)             | [SPDY: Accurate Pruning with Speedup Guarantees](https://arxiv.org/abs/2201.13096)                                                      | <img width='400' alt='image' src='./notes/2022/spdy/cover.jpg'>       | ICML    |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/spdy)             | [note](./notes/2022/spdy/index.md) |
 |  1 | [OBC](./meta/2022/obc.prototxt)               | [Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning](https://openreview.net/pdf?id=ksVGCOlOEba) |                                                                       | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/OBC)              |                                    |
 |  2 | [GPTQ](./meta/2023/gptq.prototxt)             | [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](https://arxiv.org/pdf/2210.17323.pdf)               |                                                                       | ICLR    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/gptq)             |                                    |
-|  3 | [ZipLM](./meta/2023/ZipLM.prototxt)           | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                                | <img width='400' alt='image' src='./notes/2023/ZipLM/cover.jpg'>      | NeurIPS |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/ZipLM)            |                                    |
-|  4 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf)                          | <img width='400' alt='image' src='./notes/2023/SquareHead/cover.png'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) |                                    |
-|  5 | [SparseGPT](./meta/2023/sparsegpt.prototxt)   | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf)                        |                                                                       | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/sparsegpt)        | [note](./notes/SparseGPT.md)       |</p>
+|  3 | [SparseGPT](./meta/2023/sparsegpt.prototxt)   | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf)                        |                                                                       | ICML    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/sparsegpt)        |                                    |
+|  4 | [ZipLM](./meta/2023/ZipLM.prototxt)           | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm)                                | <img width='400' alt='image' src='./notes/2023/ZipLM/cover.jpg'>      | NeurIPS |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/ZipLM)            |                                    |
+|  5 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf)                          | <img width='400' alt='image' src='./notes/2023/SquareHead/cover.png'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) |                                    |</p>
 </details>
 <details open><summary><b>Emad Barsoum</b></summary> 
 <p>
@@ -631,9 +638,9 @@
 <details open><summary><b>Emma Strubell</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Eric Lybrand</b></summary> 
 <p>
@@ -760,11 +767,11 @@
 <details open><summary><b>Haibo Chen</b></summary> 
 <p>
 
-|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note                                      |
-|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
-|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
-|  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
-|  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note                                      |
+|---:|:--------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)     | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
+|  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
+|  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
 <details open><summary><b>Hao Zhang</b></summary> 
 <p>
@@ -790,16 +797,16 @@
 <details open><summary><b>Haokun Lin</b></summary> 
 <p>
 
-|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Haoli Bai</b></summary> 
 <p>
 
-|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Haotian Tang</b></summary> 
 <p>
@@ -815,7 +822,7 @@
 
 |    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                        | note                                     |
 |---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-----------------------------------------|
-|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)  |
+|  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)    | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)  |
 |  1 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md) |</p>
 </details>
 <details open><summary><b>Harshavardhan Adepu</b></summary> 
@@ -913,10 +920,10 @@
 <details open><summary><b>Iman Mirzadeh</b></summary> 
 <p>
 
-|    | meta                                               | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub       |   year | codeeeee                                                                        | note                                                                  |
-|---:|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:----------|-------:|:--------------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [ReLU Strikes Back](./meta/2024/HMR7HKFV.prototxt) | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)   | <img width='400' alt='image' src='./notes/ReLU_Strikes_Back.jpg'>             | ICLR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) |                                                                       |
-|  1 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt)    | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv     |   2024 |                                                                                 | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                          | pub       |   year | codeeeee                                                                        | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------|:----------|-------:|:--------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'>     | arXiv     |   2023 |                                                                                 | [note](./notes/2023/LLM_in_a_flash/note.md) |
+|  1 | [ReLU Strikes Back](./meta/2024/HMR7HKFV.prototxt)    | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)  | <img width='400' alt='image' src='./notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg'> | ICLR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) |                                             |</p>
 </details>
 <details open><summary><b>Ion Stoica</b></summary> 
 <p>
@@ -930,9 +937,9 @@
 <details open><summary><b>Iryna Gurevych</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Ivan Chelombiev</b></summary> 
 <p>
@@ -951,17 +958,17 @@
 <details open><summary><b>J. Zico Kolter</b></summary> 
 <p>
 
-|    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
-|---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
-|  0 | [Wanda](./meta/2024/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf) |                                                                                      | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               |                                                  |
-|  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                         | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+|    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
+|---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
+|  0 | [Wanda](./meta/2024/Wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'>                     | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](./notes/2024/Wanda/note.md)               |
+|  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                    | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Jacek Golebiowski</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                  | pub             |   year | codeeeee                                                                    | note   |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                       | pub             |   year | codeeeee                                                                    | note   |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
 <details open><summary><b>Jae-joon Kim</b></summary> 
 <p>
@@ -1030,16 +1037,16 @@
 <details open><summary><b>Jesse Dodge</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Jessica Zosa Forde</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Ji Lin</b></summary> 
 <p>
@@ -1051,9 +1058,9 @@
 <details open><summary><b>Ji-Ung Lee</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Jiahang Xu</b></summary> 
 <p>
@@ -1065,9 +1072,9 @@
 <details open><summary><b>Jialin Zhao</b></summary> 
 <p>
 
-|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Jiaming Tang</b></summary> 
 <p>
@@ -1087,9 +1094,9 @@
 <details open><summary><b>Jian Li</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Jianfei Chen</b></summary> 
 <p>
@@ -1124,9 +1131,9 @@
 <details open><summary><b>Jinqiao Wang</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                               | pub   |   year | codeeeee                                                                     | note                                                                  |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
+|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
 <details open><summary><b>Jipeng Zhang</b></summary> 
 <p>
@@ -1190,9 +1197,9 @@
 <details open><summary><b>Karen Khatamifard</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee   | note                                                                  |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
-|  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
 <details open><summary><b>Karen Simonyan</b></summary> 
 <p>
@@ -1218,16 +1225,16 @@
 <details open><summary><b>Keivan Alizadeh</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee   | note                                                                  |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
-|  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
 <details open><summary><b>Kenneth Heafield</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Kenny Q. Zhu</b></summary> 
 <p>
@@ -1276,9 +1283,9 @@
 <details open><summary><b>Le Chen</b></summary> 
 <p>
 
-|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
-|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
-|  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
+|---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
+|  0 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
 </details>
 <details open><summary><b>Lefei Zhang</b></summary> 
 <p>
@@ -1290,9 +1297,9 @@
 <details open><summary><b>Leon Derczynski</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Li Lyna Zhang</b></summary> 
 <p>
@@ -1370,9 +1377,9 @@
 <details open><summary><b>Lu Hou</b></summary> 
 <p>
 
-|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Lu Tian</b></summary> 
 <p>
@@ -1454,9 +1461,9 @@
 <details open><summary><b>Manuel R. Ciosici</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Mao Yang</b></summary> 
 <p>
@@ -1497,9 +1504,9 @@
 <details open><summary><b>Marcos Treviso</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Mark Kurtz</b></summary> 
 <p>
@@ -1533,10 +1540,10 @@
 <details open><summary><b>Mehrdad Farajtabar</b></summary> 
 <p>
 
-|    | meta                                               | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub       |   year | codeeeee                                                                        | note                                                                  |
-|---:|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:----------|-------:|:--------------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [ReLU Strikes Back](./meta/2024/HMR7HKFV.prototxt) | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)   | <img width='400' alt='image' src='./notes/ReLU_Strikes_Back.jpg'>             | ICLR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) |                                                                       |
-|  1 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt)    | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv     |   2024 |                                                                                 | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                          | pub       |   year | codeeeee                                                                        | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------|:----------|-------:|:--------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'>     | arXiv     |   2023 |                                                                                 | [note](./notes/2023/LLM_in_a_flash/note.md) |
+|  1 | [ReLU Strikes Back](./meta/2024/HMR7HKFV.prototxt)    | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)  | <img width='400' alt='image' src='./notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg'> | ICLR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) |                                             |</p>
 </details>
 <details open><summary><b>Mengzhou Xia</b></summary> 
 <p>
@@ -1556,10 +1563,10 @@
 <details open><summary><b>Michael Hassid</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                        | note                              |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
-|  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>       | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
+|  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>           | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
 </details>
 <details open><summary><b>Michael W. Mahoney</b></summary> 
 <p>
@@ -1581,9 +1588,9 @@
 <details open><summary><b>Ming Tang</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                               | pub   |   year | codeeeee                                                                     | note                                                                  |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
+|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
 <details open><summary><b>Mingbao Lin</b></summary> 
 <p>
@@ -1598,7 +1605,7 @@
 |    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
 |---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)         | [note](./notes/2023/GBLM-Pruner/note.md)         |
-|  1 | [Wanda](./meta/2024/wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](https://arxiv.org/pdf/2306.11695.pdf)        |                                                                                      | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               |                                                  |
+|  1 | [Wanda](./meta/2024/Wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695)             | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'>                     | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](./notes/2024/Wanda/note.md)               |
 |  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Mingu Kang</b></summary> 
@@ -1625,16 +1632,16 @@
 <details open><summary><b>Minsik Cho</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee   | note                                                                  |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
-|  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
 <details open><summary><b>Mohammad Rastegari</b></summary> 
 <p>
 
-|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee   | note                                                                  |
-|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------------------------------------------|
-|  0 | [LLM in a flash](./meta/2024/5JWFQDDP.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](https://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/llm_in_a_flash/llm_in_a_flash.jpg'> | arXiv |   2024 |            | [note](https://z6oqkldvmo.feishu.cn/docx/GBVrdR4iyotc83xMU1Hc9ZOGntb) |</p>
+|    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
+|---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
+|  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
 <details open><summary><b>Mohammad Shoeybi</b></summary> 
 <p>
@@ -1709,16 +1716,16 @@
 <details open><summary><b>Niranjan Balasubramanian</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Noam Slonim</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Paulius Micikevicius</b></summary> 
 <p>
@@ -1737,9 +1744,9 @@
 <details open><summary><b>Pedro H. Martins</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Peng Gao</b></summary> 
 <p>
@@ -1773,9 +1780,9 @@
 <details open><summary><b>Peter Milder</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Pin-Yu Chen</b></summary> 
 <p>
@@ -1822,9 +1829,9 @@
 <details open><summary><b>Qingqing Cao</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Qingru Zhang</b></summary> 
 <p>
@@ -1893,10 +1900,10 @@
 <details open><summary><b>Roy Schwartz</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                        | note                              |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
-|  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>       | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                        | note                              |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
+|  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>           | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
 </details>
 <details open><summary><b>Rui Li</b></summary> 
 <p>
@@ -1978,9 +1985,9 @@
 <details open><summary><b>Sara Hooker</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Saurav Muralidharan</b></summary> 
 <p>
@@ -2261,9 +2268,9 @@
 <details open><summary><b>Tao Yu</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                               | pub   |   year | codeeeee                                                                     | note                                                                  |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
+|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
 <details open><summary><b>Thomas Hofmann</b></summary> 
 <p>
@@ -2282,9 +2289,9 @@
 <details open><summary><b>Tianchu Ji</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Tianlong Chen</b></summary> 
 <p>
@@ -2415,9 +2422,9 @@
 <details open><summary><b>Valerio Perrone</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                  | pub             |   year | codeeeee                                                                    | note   |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                       | pub             |   year | codeeeee                                                                    | note   |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
 <details open><summary><b>Victor Sanh</b></summary> 
 <p>
@@ -2473,9 +2480,9 @@
 <details open><summary><b>Weiping Wang</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Weixi Song</b></summary> 
 <p>
@@ -2623,16 +2630,16 @@
 <details open><summary><b>Xing Xie</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                  | ccccccccccccccccccover                                          | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/ELILXDQG.prototxt) | [A Survey on Evaluation of Large Language Models](https://arxiv.org/abs/2307.03109) | <img width='400' alt='image' src='./notes/survey/eval_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                  | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/ELILXDQG.prototxt) | [A Survey on Evaluation of Large Language Models](https://arxiv.org/abs/2307.03109) | <img width='400' alt='image' src='./notes/del/survey/eval_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Xingchen Ma</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                  | pub             |   year | codeeeee                                                                    | note   |
-|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                       | pub             |   year | codeeeee                                                                    | note   |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
+|  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
 <details open><summary><b>Xingjia Han</b></summary> 
 <p>
@@ -2701,9 +2708,9 @@
 <details open><summary><b>Xu Zhao</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                               | pub   |   year | codeeeee                                                                     | note                                                                  |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
+|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
 <details open><summary><b>Xuanyao Chen</b></summary> 
 <p>
@@ -2736,9 +2743,9 @@
 <details open><summary><b>Xunyu Zhu</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Yakun Sophia Shao</b></summary> 
 <p>
@@ -2878,9 +2885,9 @@
 <details open><summary><b>Yingtao Zhang</b></summary> 
 <p>
 
-|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                                                    | note   |
-|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
-|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
+|    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note   |
+|---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
 <details open><summary><b>Yiwu Yao</b></summary> 
 <p>
@@ -2900,12 +2907,12 @@
 <details open><summary><b>Yixin Song</b></summary> 
 <p>
 
-|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                        | note                                      |
-|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
-|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                                                                       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
-|  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
-|  2 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
-|  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                        | note                                      |
+|---:|:--------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)     | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                                                                       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
+|  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
+|  2 | [ReLU2](./meta/2024/ReLU2.prototxt)               | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
+|  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
 <details open><summary><b>Yong Huang</b></summary> 
 <p>
@@ -2924,16 +2931,16 @@
 <details open><summary><b>Yong Liu</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Yongqi An</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                               | pub   |   year | codeeeee                                                                     | note                                                                  |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
-|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
+|  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
 <details open><summary><b>Yossi Adi</b></summary> 
 <p>
@@ -2981,9 +2988,9 @@
 <details open><summary><b>Yubin Xia</b></summary> 
 <p>
 
-|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
-|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
-|  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
+|---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
+|  0 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
 </details>
 <details open><summary><b>Yuchao Li</b></summary> 
 <p>
@@ -3067,9 +3074,9 @@
 <details open><summary><b>Yupeng Chang</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                  | ccccccccccccccccccover                                          | pub   |   year | codeeeee   | note   |
-|---:|:-----------------------------------|:------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:-----------|:-------|
-|  0 | [m](./meta/2023/ELILXDQG.prototxt) | [A Survey on Evaluation of Large Language Models](https://arxiv.org/abs/2307.03109) | <img width='400' alt='image' src='./notes/survey/eval_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                  | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note   |
+|---:|:-----------------------------------|:------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:-------|
+|  0 | [m](./meta/2023/ELILXDQG.prototxt) | [A Survey on Evaluation of Large Language Models](https://arxiv.org/abs/2307.03109) | <img width='400' alt='image' src='./notes/del/survey/eval_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
 <details open><summary><b>Yupeng Ji</b></summary> 
 <p>
@@ -3124,12 +3131,12 @@
 <details open><summary><b>Zeyu Mi</b></summary> 
 <p>
 
-|    | meta                                             | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                        | note                                      |
-|---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
-|  0 | [m](./meta/2023/PowerInfer.prototxt)             | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                                                                       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
-|  1 | [m](./meta/2024/PowerInfer-2.prototxt)           | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
-|  2 | [ReLU2](./meta/2024/ReLU2.prototxt)              | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
-|  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                        | note                                      |
+|---:|:--------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)     | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                                                                       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
+|  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
+|  2 | [ReLU2](./meta/2024/ReLU2.prototxt)               | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
+|  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
 <details open><summary><b>Zhangyang Wang</b></summary> 
 <p>
@@ -3211,9 +3218,9 @@
 <details open><summary><b>Zhenliang Xue</b></summary> 
 <p>
 
-|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
-|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
-|  0 | [m](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                             | note                                      |
+|---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
+|  0 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
 </details>
 <details open><summary><b>Zhenyu Zhang</b></summary> 
 <p>
@@ -3279,9 +3286,10 @@
 <details open><summary><b>Zhuang Liu</b></summary> 
 <p>
 
-|    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
-|---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
-|  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+|    | meta                                                            | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                               | pub   |   year | codeeeee                                                                               | note                                             |
+|---:|:----------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
+|  0 | [Wanda](./meta/2024/Wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'>                     | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](./notes/2024/Wanda/note.md)               |
+|  1 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                    | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
 <details open><summary><b>Zhuohan Li</b></summary> 
 <p>
