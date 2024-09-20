@@ -5,19 +5,23 @@ import arxiv
 today = DT.date.today()
 week_ago = today - DT.timedelta(days=7)
 
-key_words = ["sparse", "pruning", "sparsity", "quantize", "quantization", "low-bit", "LLM"]
+key_words = ["sparse", "pruning", "sparsity", "quantize", "quantization", "low-bit"]
 
 query = ""
 for i, k in enumerate(key_words):
     if i == 0:
         query = f"abs:{k}"
-    query += f" AND abs:{k}"
+    query += f" OR abs:{k}"
+query = f"({query}) AND (LLM OR attention)"
+query = query.replace("(", "%28")
+query = query.replace(")", "%29")
+print(query)
 # Construct the default API client.
 client = arxiv.Client()
 
 # Search for the 10 most recent articles matching the keyword "quantum."
 search = arxiv.Search(
-    query="abs:sparse AND abs:quantization AND abs:sparsity AND abs:quantize",
+    query=query,
     max_results=100,
     sort_by=arxiv.SortCriterion.SubmittedDate,
 )
