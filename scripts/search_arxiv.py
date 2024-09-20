@@ -35,6 +35,7 @@ for paper in client.results(search):
         summary = paper.summary
         markdown_content += f"# {title}\n\n"
         markdown_content += f">Authors: {authors}\n\n"
+        markdown_content += f">{date}\n\n"
         markdown_content += f"> {url}\n\n"
         markdown_content += f"{summary}\n\n\n"
 
