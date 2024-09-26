@@ -13,7 +13,7 @@ for i, k in enumerate(key_words):
     if i == 0:
         query = f"abs:{k}"
     query += f" OR abs:{k}"
-query = f"({query}) AND (LLM OR LLMs OR attention OR language)"
+query = f"({query}) AND (LLM OR LLMs OR attention OR transformer) ANDNOT (abs:spiking)"
 query = query.replace("(", "%28")
 query = query.replace(")", "%29")
 print(query)

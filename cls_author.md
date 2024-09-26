@@ -187,6 +187,13 @@
 |  1 | [H2O](./meta/2023/H2O.prototxt)                     | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)           | [note](./notes/2023/H2O/note.md)           |
 |  2 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                              | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |</p>
 </details>
+<details open><summary><b>Ben Athiwaratkun</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+</details>
 <details open><summary><b>Betty van Aken</b></summary> 
 <p>
 
@@ -253,9 +260,9 @@
 <details open><summary><b>Bryan Catanzaro</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Caiwen Ding</b></summary> 
 <p>
@@ -440,6 +447,13 @@
 |---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [AWQ](./meta/2023/awq.prototxt)        | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                      |
 |  1 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)   |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                             | [note](./notes/2024/QServer/note.md) |</p>
+</details>
+<details open><summary><b>Chun Jason Xue</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
 <details open><summary><b>Clark Barrett</b></summary> 
 <p>
@@ -773,6 +787,13 @@
 |  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
 |  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
+<details open><summary><b>Han Guo</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+</details>
 <details open><summary><b>Hao Zhang</b></summary> 
 <p>
 
@@ -991,12 +1012,19 @@
 |---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
 </details>
+<details open><summary><b>James Liu</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+</details>
 <details open><summary><b>Jan Kautz</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Jared Tanner</b></summary> 
 <p>
@@ -1172,6 +1200,13 @@
 |---:|:-----------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2023/23LQ9SVH.prototxt) | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)               |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
 |  1 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |</p>
+</details>
+<details open><summary><b>Junhui He</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
 <details open><summary><b>Junyuan Hong</b></summary> 
 <p>
@@ -1497,9 +1532,9 @@
 <details open><summary><b>Marcin Chochowski</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Marcos Treviso</b></summary> 
 <p>
@@ -1646,16 +1681,16 @@
 <details open><summary><b>Mohammad Shoeybi</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Mostofa Patwary</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Mykola Pechenizkiy</b></summary> 
 <p>
@@ -1737,9 +1772,9 @@
 <details open><summary><b>Pavlo Molchanov</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Pedro H. Martins</b></summary> 
 <p>
@@ -1805,6 +1840,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Pragaash Ponnusamy</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+</details>
 <details open><summary><b>Qi Tian</b></summary> 
 <p>
 
@@ -1825,6 +1867,13 @@
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub   |   year | codeeeee                                                                       | note                                    |
 |---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |</p>
+</details>
+<details open><summary><b>Qingan Li</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
 <details open><summary><b>Qingqing Cao</b></summary> 
 <p>
@@ -1850,9 +1899,9 @@
 <details open><summary><b>Raviraj Joshi</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Rayan Saab</b></summary> 
 <p>
@@ -1992,9 +2041,9 @@
 <details open><summary><b>Saurav Muralidharan</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Scott Gray</b></summary> 
 <p>
@@ -2043,6 +2092,13 @@
 |  0 | [AWQ](./meta/2023/awq.prototxt)        | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                      |
 |  1 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)   |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                             | [note](./notes/2024/QServer/note.md) |</p>
 </details>
+<details open><summary><b>Shangyu Wu</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
+</details>
 <details open><summary><b>Shaoyi Huang</b></summary> 
 <p>
 
@@ -2053,9 +2109,9 @@
 <details open><summary><b>Sharath Turuvekere Sreenivas</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Sheng Shen</b></summary> 
 <p>
@@ -2293,6 +2349,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Tianle Cai</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+</details>
 <details open><summary><b>Tianlong Chen</b></summary> 
 <p>
 
@@ -2476,6 +2539,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Weidong Wen</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
 <details open><summary><b>Weiping Wang</b></summary> 
 <p>
@@ -2941,6 +3011,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+</details>
+<details open><summary><b>Yoon Kim</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Yossi Adi</b></summary> 
 <p>

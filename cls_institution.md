@@ -75,6 +75,13 @@
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | <img width='400' alt='image' src='./notes/2023/gbdt/gbdt.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>City University of Hong Kong</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
+</details>
 <details open><summary><b>Comenius University</b></summary> 
 <p>
 
@@ -285,6 +292,13 @@
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
 |  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
+<details open><summary><b>MBZUAI</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
+|  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
+</details>
 <details open><summary><b>MIT</b></summary> 
 <p>
 
@@ -302,7 +316,8 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
 |---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                          | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  1 | [OSSCAR](./meta/2024/OSSCAR.prototxt)               | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                                                                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR)       | [note](./notes/2024/OSSCAR/note.md)        |</p>
+|  1 | [OSSCAR](./meta/2024/OSSCAR.prototxt)               | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                                                                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR)       | [note](./notes/2024/OSSCAR/note.md)        |
+|  2 | [TEAL](./meta/2024/TEAL.prototxt)                   | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                        |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)       | [note](./notes/2024/TEAL/note.md)          |</p>
 </details>
 <details open><summary><b>Meta</b></summary> 
 <p>
@@ -490,7 +505,8 @@
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt)           | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf)                | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'>    | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA)        |                                           |
 |  1 | [MeZO](./meta/2023/MeZO.prototxt)                 | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                      |                                                                         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO)         | [note](./notes/2023/MeZO/note.md)         |
-|  2 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | <img width='400' alt='image' src='./notes/2023/LLM_shearing/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |</p>
+|  2 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | <img width='400' alt='image' src='./notes/2023/LLM_shearing/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |
+|  3 | [TEAL](./meta/2024/TEAL.prototxt)                 | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                |                                                                         | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)        | [note](./notes/2024/TEAL/note.md)         |</p>
 </details>
 <details open><summary><b>Rice University</b></summary> 
 <p>
@@ -677,6 +693,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/AYB1XUO5.prototxt) | [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) |                          | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Together AI</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+</details>
 <details open><summary><b>Tongji University</b></summary> 
 <p>
 
@@ -841,10 +864,11 @@
 <details open><summary><b>Wuhan University</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
-|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |
-|  1 | [SIFT](./meta/2024/SIFT.prototxt)  | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3)               |                                                                        | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT)                  | [note](./notes/2024/SIFT/note.md)     |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
+|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/JSHWEV0S.prototxt)  | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3)     | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |
+|  1 | [SIFT](./meta/2024/SIFT.prototxt)   | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3)                   |                                                                        | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT)                  | [note](./notes/2024/SIFT/note.md)     |
+|  2 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                                                                        | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md)                       | [note](./notes/2024/CHESS/note.md)    |</p>
 </details>
 <details open><summary><b>Xiamen University</b></summary> 
 <p>
@@ -903,9 +927,9 @@
 <details open><summary><b>nvidia</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](http://arxiv.org/abs/2407.14679v1) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 </p>
 </details>

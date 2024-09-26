@@ -1,7 +1,7 @@
 paper {
   title: "Compact Language Models via Pruning and Knowledge Distillation"
   abbr: "Minitron"
-  url: "http://arxiv.org/abs/2407.14679v1"
+  url: "https://arxiv.org/abs/2408.11796v2"
   authors: "Saurav Muralidharan"
   authors: "Sharath Turuvekere Sreenivas"
   authors: "Raviraj Joshi"

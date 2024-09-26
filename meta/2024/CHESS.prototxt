@@ -1,0 +1,30 @@
+paper {
+  title: "Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification"
+  abbr: "CHESS"
+  url: "http://arxiv.org/abs/2409.01366v1"
+  authors: "Junhui He"
+  authors: "Shangyu Wu"
+  authors: "Weidong Wen"
+  authors: "Chun Jason Xue"
+  authors: "Qingan Li"
+  institutions: "Wuhan University"
+  institutions: "MBZUAI"
+  institutions: "City University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://anonymous.4open.science/r/CHESS-BA40/README.md"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,31 @@
+paper {
+  title: "Training-Free Activation Sparsity in Large Language Models"
+  abbr: "TEAL"
+  url: "http://arxiv.org/abs/2408.14690v1"
+  authors: "James Liu"
+  authors: "Pragaash Ponnusamy"
+  authors: "Tianle Cai"
+  authors: "Han Guo"
+  authors: "Yoon Kim"
+  authors: "Ben Athiwaratkun"
+  institutions: "Massachusetts Institute of Technology"
+  institutions: "Together AI"
+  institutions: "Princeton University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FasterDecoding/TEAL"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}
