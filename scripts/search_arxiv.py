@@ -38,7 +38,7 @@ for paper in client.results(search):
         authors = ", ".join(authors)
         url = paper.entry_id
         summary = paper.summary
-        markdown_content += f"## {title}\n\n"
+        markdown_content += f"## {title}\n\n".replace(":", "")
         markdown_content += f">Authors: {authors}\n\n"
         markdown_content += f">{date}\n\n"
         markdown_content += f"> {url}\n\n"
