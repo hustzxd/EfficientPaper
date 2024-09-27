@@ -31,7 +31,7 @@ markdown_content = f"# {today}\n\n"
 # `results` is a generator; you can iterate over its elements one by one...
 for paper in client.results(search):
     date = paper.published.date()
-    if date > week_ago:
+    if date >= week_ago:
         title = paper.title
         print(title)
         authors = [author.name for author in paper.authors]
