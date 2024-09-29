@@ -13,7 +13,7 @@ for i, k in enumerate(key_words):
     if i == 0:
         query = f"abs:{k}"
     query += f" OR abs:{k}"
-query = f"({query}) AND (LLM OR LLMs OR attention OR transformer) ANDNOT (abs:spiking)"
+query = f"({query}) AND (abs:LLM OR abs:LLMs OR abs:attention OR abs:transformer) ANDNOT (abs:spiking)"
 query = query.replace("(", "%28")
 query = query.replace(")", "%29")
 print(query)
@@ -23,7 +23,7 @@ client = arxiv.Client()
 # Search for the 10 most recent articles matching the keyword "quantum."
 search = arxiv.Search(
     query=query,
-    max_results=200,
+    max_results=400,
     sort_by=arxiv.SortCriterion.SubmittedDate,
 )
 
