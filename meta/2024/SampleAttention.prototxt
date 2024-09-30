@@ -1,0 +1,39 @@
+paper {
+  title: "SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention"
+  abbr: "SampleAttention"
+  url: "http://arxiv.org/abs/2406.15486v2"
+  authors: "Qianchao Zhu"
+  authors: "Jiangfei Duan"
+  authors: "Chang Chen"
+  authors: "Siran Liu"
+  authors: "Xiuhong Li"
+  authors: "Guanyu Feng"
+  authors: "Xin Lv"
+  authors: "Huanqi Cao"
+  authors: "Xiao Chuanfu"
+  authors: "Xingcheng Zhang"
+  authors: "Dahua Lin"
+  authors: "Chao Yang"
+  institutions: "Peking University"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "Zhipu.AI"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+}
+cover {
+  url: "cover.png"
+}

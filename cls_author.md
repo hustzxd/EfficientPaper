@@ -313,6 +313,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
+<details open><summary><b>Chang Chen</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
 <details open><summary><b>Changhao Li</b></summary> 
 <p>
 
@@ -326,6 +333,13 @@
 |    | meta                                 | ttttttttttttttttttttttttttttttitle                                                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee   | note   |
 |---:|:-------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [STA](./meta/2022/44KWQAWO.prototxt) | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                          | VLSI  |   2022 |            |        |</p>
+</details>
+<details open><summary><b>Chao Yang</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Chao Zhang</b></summary> 
 <p>
@@ -483,6 +497,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Dahua Lin</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Dale Schuurmans</b></summary> 
 <p>
@@ -763,6 +784,13 @@
 |  1 | [Quest](./meta/2024/Quest.prototxt)                 | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)          | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
 |  2 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
+<details open><summary><b>Guanyu Feng</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
 <details open><summary><b>Guohao Dai</b></summary> 
 <p>
 
@@ -909,6 +937,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
 |---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
+</details>
+<details open><summary><b>Huanqi Cao</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Huiqiang Jiang</b></summary> 
 <p>
@@ -1134,6 +1169,13 @@
 |  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |                                       |
 |  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
 |  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |</p>
+</details>
+<details open><summary><b>Jiangfei Duan</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Jiaxiang Li</b></summary> 
 <p>
@@ -1861,6 +1903,13 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
 </details>
+<details open><summary><b>Qianchao Zhu</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
 <details open><summary><b>Qianhui Wu</b></summary> 
 <p>
 
@@ -2236,6 +2285,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub     |   year | codeeeee                                                               | note   |
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |                          | NeurIPS |   2017 | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS) |        |</p>
+</details>
+<details open><summary><b>Siran Liu</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Siyu Ren</b></summary> 
 <p>
@@ -2648,6 +2704,13 @@
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt) | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2) | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick) | [note](./notes/2024/VB8C61V6/note.md) |</p>
 </details>
+<details open><summary><b>Xiao Chuanfu</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
 <details open><summary><b>Xiao-Ping Zhang</b></summary> 
 <p>
 
@@ -2683,6 +2746,13 @@
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |                          | NeurIPS |   2017 | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS) |        |</p>
 </details>
+<details open><summary><b>Xin Lv</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
 <details open><summary><b>Xin Yao</b></summary> 
 <p>
 
@@ -2710,6 +2780,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                                       | pub             |   year | codeeeee                                                                    | note   |
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
+</details>
+<details open><summary><b>Xingcheng Zhang</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Xingjia Han</b></summary> 
 <p>
@@ -2742,9 +2819,10 @@
 <details open><summary><b>Xiuhong Li</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
+|  0 | [m](./meta/2024/DHIB73MC.prototxt)                      | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                                                           | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md)        |
+|  1 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'>       | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
 <details open><summary><b>Xiuyu Li</b></summary> 
 <p>
