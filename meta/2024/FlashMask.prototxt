@@ -1,0 +1,34 @@
+paper {
+  title: "FlashMask: Efficient and Rich Mask Extension of FlashAttention"
+  abbr: "FlashMask"
+  url: "http://arxiv.org/abs/2410.01359v1"
+  authors: "Guoxia Wang"
+  authors: "Jinle Zeng"
+  authors: "Xiyuan Xiao"
+  authors: "Siming Wu"
+  authors: "Jiabin Yang"
+  authors: "Lujing Zheng"
+  authors: "Zeyu Chen"
+  authors: "Jiang Bian"
+  authors: "Dianhai Yu"
+  authors: "Haifeng Wang"
+  institutions: "baidu"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/PaddlePaddle/PaddleNLP/tree/develop"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+}
+cover {
+  url: "flashmask.png"
+}

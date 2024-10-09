@@ -33,6 +33,13 @@
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
+<details open><summary><b>Ahmed F AbouElhamayed</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
+</details>
 <details open><summary><b>Ajay Jaiswal</b></summary> 
 <p>
 
@@ -54,6 +61,13 @@
 |    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                      | note   |
 |---:|:----------------------------------------|:----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |        |</p>
+</details>
+<details open><summary><b>Alexander M Rush</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
 <details open><summary><b>Alexander M. Rush</b></summary> 
 <p>
@@ -578,6 +592,13 @@
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------|:-------|
 |  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn) |        |</p>
 </details>
+<details open><summary><b>Dianhai Yu</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Diederik P. Kingma</b></summary> 
 <p>
 
@@ -806,6 +827,13 @@
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
 </details>
+<details open><summary><b>Guoxia Wang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Hai Zhao</b></summary> 
 <p>
 
@@ -822,6 +850,13 @@
 |  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)     | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)   |
 |  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
 |  2 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+</details>
+<details open><summary><b>Haifeng Wang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
 </details>
 <details open><summary><b>Han Guo</b></summary> 
 <p>
@@ -1142,6 +1177,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Jiabin Yang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Jiahang Xu</b></summary> 
 <p>
 
@@ -1187,6 +1229,13 @@
 |  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
 |  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |</p>
 </details>
+<details open><summary><b>Jiang Bian</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Jiangfei Duan</b></summary> 
 <p>
 
@@ -1215,6 +1264,13 @@
 |---:|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:-------|
 |  0 | [GPFQv2](./meta/2023/gpfqv2.prototxt) | [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) |        |</p>
 </details>
+<details open><summary><b>Jinle Zeng</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Jinqiao Wang</b></summary> 
 <p>
 
@@ -1235,6 +1291,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                       | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note   |
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | <img width='400' alt='image' src='./notes/2023/gbdt/gbdt.jpg'> | arXiv |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Jordan Dotzel</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
 <details open><summary><b>Joseph E. Gonzalez</b></summary> 
 <p>
@@ -1510,6 +1573,13 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) |        |</p>
 </details>
+<details open><summary><b>Lujing Zheng</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Luka Ribar</b></summary> 
 <p>
 
@@ -1729,6 +1799,13 @@
 |    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                        |
 |---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
 |  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
+</details>
+<details open><summary><b>Mohamed S Abdelfattah</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
 <details open><summary><b>Mohammad Rastegari</b></summary> 
 <p>
@@ -2070,6 +2147,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
 |  0 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |</p>
 </details>
+<details open><summary><b>Safeen Huda</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
+</details>
 <details open><summary><b>Saleh Ashkboos</b></summary> 
 <p>
 
@@ -2297,6 +2381,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>Siming Wu</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
 </details>
 <details open><summary><b>Sinno Jialin Pan</b></summary> 
 <p>
@@ -2858,6 +2949,13 @@
 |---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |</p>
 </details>
+<details open><summary><b>Xiyuan Xiao</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Xu Han</b></summary> 
 <p>
 
@@ -2970,6 +3068,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                                         | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                             | note   |
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
+</details>
+<details open><summary><b>Yash Akhauri</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
 <details open><summary><b>Yelong Shen</b></summary> 
 <p>
@@ -3303,6 +3408,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
 </details>
+<details open><summary><b>Zeyu Chen</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
+|---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
 <details open><summary><b>Zeyu Mi</b></summary> 
 <p>
 
@@ -3435,6 +3547,13 @@
 |    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                       | note                                     |
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+</details>
+<details open><summary><b>Zhiru Zhang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                             | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
 <details open><summary><b>Zhiyuan Liu</b></summary> 
 <p>
