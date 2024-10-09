@@ -743,9 +743,10 @@
 <details open><summary><b>Gongfan Fang</b></summary> 
 <p>
 
-|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                     | note                                    |
-|---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------|
-|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                | pub     |   year | codeeeee                                                                     | note                                    |
+|---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3)        | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |
+|  1 | [MaskLLM](./meta/2024/MaskLLM.prototxt)       | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'>  | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)     | [note](./notes/2024/MaskLLM/note.md)    |</p>
 </details>
 <details open><summary><b>Graham Neubig</b></summary> 
 <p>
@@ -753,6 +754,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) |        |</p>
+</details>
+<details open><summary><b>Greg Heinrich</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                               | pub     |   year | codeeeee                                                                 | note                                 |
+|---:|:----------------------------------------|:-----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [MaskLLM](./meta/2024/MaskLLM.prototxt) | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM) | [note](./notes/2024/MaskLLM/note.md) |</p>
 </details>
 <details open><summary><b>Guanchen Li</b></summary> 
 <p>
@@ -917,6 +925,13 @@
 |  0 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |                                  |
 |  1 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'>       | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
 </details>
+<details open><summary><b>Hongxu Yin</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                               | pub     |   year | codeeeee                                                                 | note                                 |
+|---:|:----------------------------------------|:-----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [MaskLLM](./meta/2024/MaskLLM.prototxt) | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM) | [note](./notes/2024/MaskLLM/note.md) |</p>
+</details>
 <details open><summary><b>Hongyang Zhang</b></summary> 
 <p>
 
@@ -1057,9 +1072,10 @@
 <details open><summary><b>Jan Kautz</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub     |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:--------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [MaskLLM](./meta/2024/MaskLLM.prototxt)   | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'>   | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)  | [note](./notes/2024/MaskLLM/note.md)  |
+|  1 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2)       | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Jared Tanner</b></summary> 
 <p>
@@ -1086,9 +1102,10 @@
 <details open><summary><b>Jeff Pool</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                              | note   |
-|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:----------------------------------------------------------------------|:-------|
-|  0 | [m](./meta/2021/K7GSWQIC.prototxt) | [Channel Permutations for N:M Sparsity](https://proceedings.neurips.cc/paper/2021/hash/6e8404c3b93a9527c8db241a1846599a-Abstract.html) |                          | NeurIPS |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/apex) |        |</p>
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover                                               | pub     |   year | codeeeee                                                                 | note                                 |
+|---:|:----------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [m](./meta/2021/K7GSWQIC.prototxt)      | [Channel Permutations for N:M Sparsity](https://proceedings.neurips.cc/paper/2021/hash/6e8404c3b93a9527c8db241a1846599a-Abstract.html) |                                                                      | NeurIPS |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/apex)    |                                      |
+|  1 | [MaskLLM](./meta/2024/MaskLLM.prototxt) | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1)                             | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM) | [note](./notes/2024/MaskLLM/note.md) |</p>
 </details>
 <details open><summary><b>Jerry Chee</b></summary> 
 <p>
@@ -1814,9 +1831,10 @@
 <details open><summary><b>Pavlo Molchanov</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub     |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:--------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [MaskLLM](./meta/2024/MaskLLM.prototxt)   | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'>   | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)  | [note](./notes/2024/MaskLLM/note.md)  |
+|  1 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2)       | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Pedro H. Martins</b></summary> 
 <p>
@@ -2090,9 +2108,10 @@
 <details open><summary><b>Saurav Muralidharan</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                 | pub     |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:--------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [MaskLLM](./meta/2024/MaskLLM.prototxt)   | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'>   | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)  | [note](./notes/2024/MaskLLM/note.md)  |
+|  1 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2)       | <img width='400' alt='image' src='./notes/2024/Minitron/minitron.png'> | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |</p>
 </details>
 <details open><summary><b>Scott Gray</b></summary> 
 <p>
@@ -2763,9 +2782,10 @@
 <details open><summary><b>Xinchao Wang</b></summary> 
 <p>
 
-|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                     | note                                    |
-|---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------|
-|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |</p>
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                | pub     |   year | codeeeee                                                                     | note                                    |
+|---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3)        | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |
+|  1 | [MaskLLM](./meta/2024/MaskLLM.prototxt)       | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'>  | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)     | [note](./notes/2024/MaskLLM/note.md)    |</p>
 </details>
 <details open><summary><b>Xing Xie</b></summary> 
 <p>
