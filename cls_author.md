@@ -397,6 +397,13 @@
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoftQ](./meta/2023/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Chen Ling</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
+</details>
 <details open><summary><b>Cheng-Yu Hsieh</b></summary> 
 <p>
 
@@ -796,6 +803,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                                | pub   |   year | codeeeee   | note                               |
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------|
 |  0 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |            | [note](./notes/2024/ReLU2/note.md) |</p>
+</details>
+<details open><summary><b>Guangji Bai</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
 </details>
 <details open><summary><b>Guangli Li</b></summary> 
 <p>
@@ -1414,6 +1428,13 @@
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/ULY1AZGY.prototxt) | [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) | [note](./notes/2024/ULY1AZGY/note.md) |</p>
 </details>
+<details open><summary><b>Kibaek Kim</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
+</details>
 <details open><summary><b>Kuai Li</b></summary> 
 <p>
 
@@ -1485,6 +1506,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
+<details open><summary><b>Liang Zhao</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
 </details>
 <details open><summary><b>Lianmin Zheng</b></summary> 
 <p>
@@ -3110,6 +3138,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>Yijiang Li</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
 </details>
 <details open><summary><b>Yiling Jia</b></summary> 
 <p>

@@ -41,7 +41,7 @@ message Keyword {
     repeated Word words = 1;
     enum Word {
         none = 1;
-        sparse_pruning = 2;
+        sparse_pruning = 2;        
         quantization = 3;
         survey = 4;
         low_rank = 5;
@@ -51,6 +51,10 @@ message Keyword {
         training = 9;
         structure_design = 10;
         sampling = 11;
+        weight_sparsity = 12;
+        activation_sparsity = 13;
+        attention_sparsity = 14;
+        structured_sparsity = 15;
         // TODO: please add your key words here.
         working = 100;
     }

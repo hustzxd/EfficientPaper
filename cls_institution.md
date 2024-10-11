@@ -126,6 +126,13 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Emory University</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
+</details>
 <details open><summary><b>FAIR</b></summary> 
 <p>
 

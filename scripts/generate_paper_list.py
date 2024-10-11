@@ -49,6 +49,10 @@ word_pb2str = {
     eppb.Keyword.Word.training: "Efficient Training",
     eppb.Keyword.Word.structure_design: "Network Structure Design",
     eppb.Keyword.Word.sampling: "Efficient Sampling",
+    eppb.Keyword.Word.weight_sparsity: "Sparsity (Weight)",
+    eppb.Keyword.Word.activation_sparsity: "Sparsity (Activation)",
+    eppb.Keyword.Word.attention_sparsity: "Sparsity (Activation)",
+    eppb.Keyword.Word.structured_sparsity: "Sparsity (Structured)",
 }
 
 TITLE = "ttttttttttttttttttttttttttttttitle"
