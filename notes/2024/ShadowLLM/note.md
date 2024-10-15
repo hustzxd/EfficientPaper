@@ -24,4 +24,4 @@ parameters. Our code is available at
 \href{https://github.com/abdelfattah-lab/shadow_llm/}{ShadowLLM}.
 
 
-Dejavu 的改进版
+Dejavu 的改进版，predictor 使用了piqa来训练，使用piqa来测试，所以结果提升很大，如果使用通用的测试集，提升可能就有限。
