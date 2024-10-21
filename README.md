@@ -118,10 +118,11 @@ keyword {
 48. [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) [arXiv 2024]  
 49. [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) 
 50. [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) [arXiv 2024]  
-51. [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) 
-52. [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) 
-53. [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) 
-54. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
+51. [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) 
+52. [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) 
+53. [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) 
+54. [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) 
+55. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
 </p>
 </details>
 <details open><summary><b>2023</b></summary> 

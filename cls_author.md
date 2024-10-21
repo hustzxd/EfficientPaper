@@ -578,6 +578,13 @@
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
+<details open><summary><b>Dayou Du</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+</details>
 <details open><summary><b>Denis Kuznedelev</b></summary> 
 <p>
 
@@ -729,9 +736,10 @@
 <details open><summary><b>Fan Yang</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                   | note   |
-|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------|:-------|
-|  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt) | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                          | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA) |        |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt)           | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                          | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA)        |                                            |
+|  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                                                            |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Fangyun Wei</b></summary> 
 <p>
@@ -937,6 +945,13 @@
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
 |---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
+</details>
+<details open><summary><b>Hayden Kwok-Hay So</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Heng Chang</b></summary> 
 <p>
@@ -1660,9 +1675,10 @@
 <details open><summary><b>Mao Yang</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                    | note                                   |
-|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [Compresso](./meta/2023/Compresso.prototxt) | [Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models](https://arxiv.org/abs/2310.05015) | <img width='400' alt='image' src='./notes/2023/Compresso/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/Moonlit) | [note](./notes/2023/Compresso/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [Compresso](./meta/2023/Compresso.prototxt)         | [Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models](https://arxiv.org/abs/2310.05015) | <img width='400' alt='image' src='./notes/2023/Compresso/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/Moonlit)       | [note](./notes/2023/Compresso/note.md)     |
+|  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                |                                                                      | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Maosong Sun</b></summary> 
 <p>
@@ -2328,6 +2344,13 @@
 |---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
 |  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
 </details>
+<details open><summary><b>Shijie Cao</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+</details>
 <details open><summary><b>Shijin Wang</b></summary> 
 <p>
 
@@ -2615,6 +2638,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
+</details>
+<details open><summary><b>Ting Cao</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Ting Jiang</b></summary> 
 <p>
@@ -3222,6 +3252,13 @@
 |  2 | [ReLU2](./meta/2024/ReLU2.prototxt)               | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
 |  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
 </details>
+<details open><summary><b>Yizhao Gao</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+</details>
 <details open><summary><b>Yong Huang</b></summary> 
 <p>
 
@@ -3560,6 +3597,13 @@
 |  0 | [ActNN](./meta/2019/actnn.prototxt)               | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129)                           |                          | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)       |        |
 |  1 | [ZeroQuant](./meta/2022/zeroquant.prototxt)       | [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1)       |                          | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |
 |  2 | [ZeroQuant-V2](./meta/2023/ZeroQuant-V2.prototxt) | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) |                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |</p>
+</details>
+<details open><summary><b>Zhichen Zeng</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Zhigang Chen</b></summary> 
 <p>
