@@ -35,6 +35,7 @@ note {
 keyword {
   words: kv_cache
   words: sparse_pruning
+  words: attention_sparsity
 }
 cover {
   url: "h2o.png"
