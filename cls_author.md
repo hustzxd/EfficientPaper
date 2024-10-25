@@ -348,6 +348,13 @@
 |---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
 |  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
+<details open><summary><b>Chang Gao</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+</details>
 <details open><summary><b>Changhao Li</b></summary> 
 <p>
 
@@ -901,6 +908,13 @@
 |---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
 </details>
+<details open><summary><b>Han Bao</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+</details>
 <details open><summary><b>Han Guo</b></summary> 
 <p>
 
@@ -1277,7 +1291,8 @@
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |                                       |
 |  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
-|  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |</p>
+|  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |
+|  3 | [m](./meta/2024/0Y41U1N2.prototxt)  | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1)  |                          | arXiv |   2024 |                                                                                               | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Jiang Bian</b></summary> 
 <p>
@@ -1397,9 +1412,10 @@
 <details open><summary><b>Kang Zhao</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                  |
-|---:|:-----------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                          |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |
+|  1 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |                                                                                  | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Karen Khatamifard</b></summary> 
 <p>
@@ -1573,6 +1589,13 @@
 |    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                      | note                                 |
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |</p>
+</details>
+<details open><summary><b>Liping Jing</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Liqun Ma</b></summary> 
 <p>
@@ -2580,6 +2603,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
+<details open><summary><b>Tao Yuan</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+</details>
 <details open><summary><b>Thomas Hofmann</b></summary> 
 <p>
 
@@ -3559,6 +3589,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [H2O](./meta/2023/H2O.prototxt) | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md) |</p>
 </details>
+<details open><summary><b>Zhaofeng Sun</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+</details>
 <details open><summary><b>Zhe Gan</b></summary> 
 <p>
 
@@ -3586,6 +3623,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                            | note                                    |
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
+</details>
+<details open><summary><b>Zhenfeng Su</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Zhengsu Chen</b></summary> 
 <p>
@@ -3713,6 +3757,13 @@
 |    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                     | note   |
 |---:|:---------------------------------------|:----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:-------|
 |  0 | [Deja Vu](./meta/2023/dejavu.prototxt) | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i) | <img width='400' alt='image' src='./notes/2023/dejavu/dejavu.jpg'> | ICML  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/DejaVu) |        |</p>
+</details>
+<details open><summary><b>Zichen Liang</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Ziqing Yang</b></summary> 
 <p>
