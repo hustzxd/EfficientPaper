@@ -351,9 +351,9 @@
 <details open><summary><b>Chang Gao</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Changhao Li</b></summary> 
 <p>
@@ -911,9 +911,9 @@
 <details open><summary><b>Han Bao</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Han Guo</b></summary> 
 <p>
@@ -1287,12 +1287,12 @@
 <details open><summary><b>Jianfei Chen</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                      | note                                  |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |                                       |
-|  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
-|  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |
-|  3 | [m](./meta/2024/0Y41U1N2.prototxt)  | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1)  |                          | arXiv |   2024 |                                                                                               | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                                      | note                                  |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                     | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)                       |                                       |
+|  1 | [m](./meta/2023/23LQ9SVH.prototxt)  | [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987)                                         |                                                                     | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) |                                       |
+|  2 | [m](./meta/2024/HYPL7G37.prototxt)  | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                           |                                                                     | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain)              | [note](./notes/2024/HYPL7G37/note.md) |
+|  3 | [m](./meta/2024/0Y41U1N2.prototxt)  | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1)  | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |                                                                                               | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Jiang Bian</b></summary> 
 <p>
@@ -1412,10 +1412,10 @@
 <details open><summary><b>Kang Zhao</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                         | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                          |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |
-|  1 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |                                                                                  | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                         | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/HYPL7G37.prototxt) | [Accelerating Transformer Pre-training with 2:4 Sparsity](http://arxiv.org/abs/2404.01847v2)                          |                                                                     | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/huyz2023/2by4-pretrain) | [note](./notes/2024/HYPL7G37/note.md) |
+|  1 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |                                                                                  | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Karen Khatamifard</b></summary> 
 <p>
@@ -1593,9 +1593,9 @@
 <details open><summary><b>Liping Jing</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Liqun Ma</b></summary> 
 <p>
@@ -2606,9 +2606,9 @@
 <details open><summary><b>Tao Yuan</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Thomas Hofmann</b></summary> 
 <p>
@@ -3592,9 +3592,9 @@
 <details open><summary><b>Zhaofeng Sun</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Zhe Gan</b></summary> 
 <p>
@@ -3627,9 +3627,9 @@
 <details open><summary><b>Zhenfeng Su</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Zhengsu Chen</b></summary> 
 <p>
@@ -3761,9 +3761,9 @@
 <details open><summary><b>Zichen Liang</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                  |
-|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) |                          | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
 <details open><summary><b>Ziqing Yang</b></summary> 
 <p>

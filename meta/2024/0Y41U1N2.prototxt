@@ -30,5 +30,5 @@ keyword {
   words: weight_sparsity
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
