@@ -18,7 +18,7 @@ paper {
   institutions: "University of Surrey"
 }
 pub {
-  where: "arXiv"
+  where: "NeurIPS"
   year: 2024
 }
 code {
