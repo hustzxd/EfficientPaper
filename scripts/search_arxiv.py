@@ -17,14 +17,30 @@ def main():
         return
     # week_ago = today - DT.timedelta(days=7)
 
+    bg_words = ["LLM", "LLMs", "attention", "transformer"]
     key_words = ["sparse", "pruning", "sparsity", "quantize", "quantization", "low-bit"]
+    exclude_words = ["spiking", "BEV"]
 
-    query = ""
+    bg_query = ""
+    for i, k in enumerate(bg_words):
+        if i == 0:
+            bg_query = f"abs:{k}"
+        bg_query += f" OR abs:{k}"
+
+    key_query = ""
     for i, k in enumerate(key_words):
         if i == 0:
-            query = f"abs:{k}"
-        query += f" OR abs:{k}"
-    query = f"({query}) AND (abs:LLM OR abs:LLMs OR abs:attention OR abs:transformer) ANDNOT (abs:spiking)"
+            key_query = f"abs:{k}"
+        key_query += f" OR abs:{k}"
+
+    exclude_query = ""
+    for i, k in enumerate(exclude_words):
+        if i == 0:
+            exclude_query = f"abs:{k}"
+        exclude_query += f" OR abs:{k}"
+
+    query = f"({key_query}) AND ({bg_query}) ANDNOT ({exclude_query})"
+
     query = query.replace("(", "%28")
     query = query.replace(")", "%29")
     print(query)
@@ -49,6 +65,9 @@ def main():
             authors = ", ".join(authors)
             url = paper.entry_id
             summary = paper.summary
+            for k in key_words:
+                if k in summary:
+                    summary = summary.replace(k, f"**{k}**")
             markdown_content += f"## {title}\n\n".replace(":", "")
             markdown_content += f">Authors: {authors}\n\n"
             markdown_content += f">{date}\n\n"
