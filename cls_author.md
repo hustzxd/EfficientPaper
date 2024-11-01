@@ -213,7 +213,8 @@
 |---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [Deja Vu](./meta/2023/dejavu.prototxt)              | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i)            | <img width='400' alt='image' src='./notes/2023/dejavu/dejavu.jpg'>       | ICML  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/DejaVu)        |                                            |
 |  1 | [H2O](./meta/2023/H2O.prototxt)                     | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)           | [note](./notes/2023/H2O/note.md)           |
-|  2 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                              | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |</p>
+|  2 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                              | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
+|  3 | [ShadowKV](./meta/2024/ShadowKV.prototxt)           | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1)          | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'>   | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV)        | [note](./notes/2024/ShadowKV/note.md)      |</p>
 </details>
 <details open><summary><b>Ben Athiwaratkun</b></summary> 
 <p>
@@ -602,9 +603,9 @@
 <details open><summary><b>Dayou Du</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Denis Kuznedelev</b></summary> 
 <p>
@@ -764,10 +765,10 @@
 <details open><summary><b>Fan Yang</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt)           | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                          | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA)        |                                            |
-|  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                                                            |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                                              | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt)           | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                                                                                  | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA)        |                                            |
+|  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                                                            | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Fangyun Wei</b></summary> 
 <p>
@@ -857,11 +858,12 @@
 <details open><summary><b>Guangxuan Xiao</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                            | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                    | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  1 | [Quest](./meta/2024/Quest.prototxt)                 | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)          | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
-|  2 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |                                                                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                       |
+|---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                              | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'>       | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
+|  1 | [Quest](./meta/2024/Quest.prototxt)                 | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                    | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>               | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
+|  2 | [DuoAttention](./meta/2024/DuoAttention.prototxt)   | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md)  |
+|  3 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)           |                                                                                | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Guanyu Feng</b></summary> 
 <p>
@@ -922,6 +924,20 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
 |  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
+<details open><summary><b>Hancheng Ye</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
+<details open><summary><b>Hanshi Sun</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
+</details>
 <details open><summary><b>Hao Zhang</b></summary> 
 <p>
 
@@ -960,11 +976,12 @@
 <details open><summary><b>Haotian Tang</b></summary> 
 <p>
 
-|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                                                                           | ccccccccccccccccccover   | pub           |   year | codeeeee                                                                          | note                                 |
-|---:|:--------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------|
-|  0 | [TorchSparse++](./meta/2023/TorchSparse.prototxt) | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse) |                                      |
-|  1 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)     |                                      |
-|  2 | [QServe](./meta/2024/QServer.prototxt)            | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                 | [note](./notes/2024/QServer/note.md) |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                                                                           | ccccccccccccccccccover                                                         | pub           |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [TorchSparse++](./meta/2023/TorchSparse.prototxt) | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                                | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse)   |                                           |
+|  1 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                                | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                           |
+|  2 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1)                                                   | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv         |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |
+|  3 | [QServe](./meta/2024/QServer.prototxt)            | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                                | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)      |</p>
 </details>
 <details open><summary><b>Haotong Xie</b></summary> 
 <p>
@@ -973,6 +990,13 @@
 |---:|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)    | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)  |
 |  1 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md) |</p>
+</details>
+<details open><summary><b>Harry Dong</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
 </details>
 <details open><summary><b>Harshavardhan Adepu</b></summary> 
 <p>
@@ -984,9 +1008,9 @@
 <details open><summary><b>Hayden Kwok-Hay So</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Heng Chang</b></summary> 
 <p>
@@ -1265,10 +1289,11 @@
 <details open><summary><b>Jiaming Tang</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                      | note                               |
-|---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-----------------------------------|
-|  0 | [AWQ](./meta/2023/awq.prototxt)     | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                    |
-|  1 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)            | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)   | [note](./notes/2024/Quest/note.md) |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)         |                                                                                | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                           |
+|  1 | [Quest](./meta/2024/Quest.prototxt)               | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                    | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>               | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)        |
+|  2 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
 </details>
 <details open><summary><b>Jiaming Xu</b></summary> 
 <p>
@@ -1308,6 +1333,20 @@
 |---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
 |  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
+<details open><summary><b>Jianyang Gu</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
+<details open><summary><b>Jianyi Zhang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
 <details open><summary><b>Jiaxiang Li</b></summary> 
 <p>
 
@@ -1321,6 +1360,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+</details>
+<details open><summary><b>Jingwei Zuo</b></summary> 
+<p>
+
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
 </details>
 <details open><summary><b>Jinjie Zhang</b></summary> 
 <p>
@@ -1394,6 +1440,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
 |  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
+</details>
+<details open><summary><b>Junxian Guo</b></summary> 
+<p>
+
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
 </details>
 <details open><summary><b>Junyuan Hong</b></summary> 
 <p>
@@ -1551,6 +1604,13 @@
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                     | pub   |   year | codeeeee                                                                          | note                                    |
 |---:|:----------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [FrameQuant](./meta/2024/FrameQuant.prototxt) | [FrameQuant: Flexible Low-Bit Quantization for Transformers](http://arxiv.org/abs/2403.06082v1) | <img width='400' alt='image' src='./notes/2024/FrameQuant/framequant.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/vsingh-group/FrameQuant) | [note](./notes/2024/FrameQuant/note.md) |</p>
+</details>
+<details open><summary><b>Li-Wen Chang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
 </details>
 <details open><summary><b>Lian Liu</b></summary> 
 <p>
@@ -1719,10 +1779,10 @@
 <details open><summary><b>Mao Yang</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [Compresso](./meta/2023/Compresso.prototxt)         | [Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models](https://arxiv.org/abs/2310.05015) | <img width='400' alt='image' src='./notes/2023/Compresso/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/Moonlit)       | [note](./notes/2023/Compresso/note.md)     |
-|  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                |                                                                      | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [Compresso](./meta/2023/Compresso.prototxt)         | [Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models](https://arxiv.org/abs/2310.05015) | <img width='400' alt='image' src='./notes/2023/Compresso/cover.jpg'>             | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/Moonlit)       | [note](./notes/2023/Compresso/note.md)     |
+|  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Maosong Sun</b></summary> 
 <p>
@@ -1965,6 +2025,13 @@
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoftQ](./meta/2023/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Ningxin Zheng</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
+</details>
 <details open><summary><b>Nir Yarden</b></summary> 
 <p>
 
@@ -2121,6 +2188,13 @@
 |---:|:----------------------------------------|:----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |        |</p>
 </details>
+<details open><summary><b>Qinsi Wang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
 <details open><summary><b>Rahul Mazumder</b></summary> 
 <p>
 
@@ -2242,6 +2316,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
 |  0 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |</p>
 </details>
+<details open><summary><b>Saeed Vahidian</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
 <details open><summary><b>Safeen Huda</b></summary> 
 <p>
 
@@ -2334,10 +2415,11 @@
 <details open><summary><b>Shang Yang</b></summary> 
 <p>
 
-|    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                 |
-|---:|:---------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
-|  0 | [AWQ](./meta/2023/awq.prototxt)        | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq) |                                      |
-|  1 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)   |                          | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                             | [note](./notes/2024/QServer/note.md) |</p>
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [AWQ](./meta/2023/awq.prototxt)                   | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)         |                                                                                | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                           |
+|  1 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |
+|  2 | [QServe](./meta/2024/QServer.prototxt)            | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)           |                                                                                | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)      |</p>
 </details>
 <details open><summary><b>Shangyu Wu</b></summary> 
 <p>
@@ -2398,9 +2480,9 @@
 <details open><summary><b>Shijie Cao</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Shijin Wang</b></summary> 
 <p>
@@ -2519,6 +2601,13 @@
 |---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
 |  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
 </details>
+<details open><summary><b>Size Zheng</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
+</details>
 <details open><summary><b>Song Guo</b></summary> 
 <p>
 
@@ -2529,16 +2618,17 @@
 <details open><summary><b>Song Han</b></summary> 
 <p>
 
-|    | meta                                                     | ttttttttttttttttttttttttttttttitle                                                                                                                                           | ccccccccccccccccccover                                                   | pub           |   year | codeeeee                                                                            | note                                       |
-|---:|:---------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [Deep Compression](./meta/2016/deepcompression.prototxt) | [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://arxiv.org/pdf/1510.00149.pdf)                             |                                                                          | ICLR          |   2016 |                                                                                     |                                            |
-|  1 | [DSD](./meta/2017/dsd.prototxt)                          | [DSD: Dense-Sparse-Dense Training for Deep Neural Networks](https://arxiv.org/pdf/1607.04381.pdf)                                                                            |                                                                          | ICLR          |   2017 |                                                                                     |                                            |
-|  2 | [SparseViT](./meta/2023/SparseViT.prototxt)              | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605)                                               | <img width='400' alt='image' src='./notes/2023/SparseViT/sparsevit.jpg'> | CVPR          |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit)     | [note](./notes/2023/sparsevit/index.md)    |
-|  3 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                          | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse)   |                                            |
-|  4 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                          | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                            |
-|  5 | [streaming-llm](./meta/2024/streaming-llm.prototxt)      | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                                                                | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
-|  6 | [Quest](./meta/2024/Quest.prototxt)                      | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                                                                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>         | ICML          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
-|  7 | [QServe](./meta/2024/QServer.prototxt)                   | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                          | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
+|    | meta                                                     | ttttttttttttttttttttttttttttttitle                                                                                                                                           | ccccccccccccccccccover                                                         | pub           |   year | codeeeee                                                                            | note                                       |
+|---:|:---------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:--------------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [Deep Compression](./meta/2016/deepcompression.prototxt) | [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://arxiv.org/pdf/1510.00149.pdf)                             |                                                                                | ICLR          |   2016 |                                                                                     |                                            |
+|  1 | [DSD](./meta/2017/dsd.prototxt)                          | [DSD: Dense-Sparse-Dense Training for Deep Neural Networks](https://arxiv.org/pdf/1607.04381.pdf)                                                                            |                                                                                | ICLR          |   2017 |                                                                                     |                                            |
+|  2 | [SparseViT](./meta/2023/SparseViT.prototxt)              | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605)                                               | <img width='400' alt='image' src='./notes/2023/SparseViT/sparsevit.jpg'>       | CVPR          |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit)     | [note](./notes/2023/sparsevit/index.md)    |
+|  3 | [TorchSparse++](./meta/2023/TorchSparse.prototxt)        | [TorchSparse++: Efficient Point Cloud Engine](https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf) |                                                                                | CVPR workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/torchsparse)   |                                            |
+|  4 | [AWQ](./meta/2023/awq.prototxt)                          | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978)                                                           |                                                                                | arXiv         |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)       |                                            |
+|  5 | [streaming-llm](./meta/2024/streaming-llm.prototxt)      | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                                                                | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'>       | ICLR          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
+|  6 | [Quest](./meta/2024/Quest.prototxt)                      | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                                                                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>               | ICML          |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)         | [note](./notes/2024/Quest/note.md)         |
+|  7 | [DuoAttention](./meta/2024/DuoAttention.prototxt)        | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1)                                                   | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv         |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md)  |
+|  8 | [QServe](./meta/2024/QServer.prototxt)                   | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)                                                             |                                                                                | arXiv         |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
 <details open><summary><b>Sotiris Anagnostidis</b></summary> 
 <p>
@@ -2707,9 +2797,9 @@
 <details open><summary><b>Ting Cao</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Ting Jiang</b></summary> 
 <p>
@@ -2867,6 +2957,13 @@
 |  1 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |                                    |
 |  2 | [LoftQ](./meta/2023/loftq.prototxt)     | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659)        | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'>     | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ)      | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Wenlei Bao</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
+</details>
 <details open><summary><b>Wenqi Shao</b></summary> 
 <p>
 
@@ -2979,6 +3076,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub     |   year | codeeeee                                                               | note   |
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |                          | NeurIPS |   2017 | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS) |        |</p>
+</details>
+<details open><summary><b>Xin Liu</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
 </details>
 <details open><summary><b>Xin Lv</b></summary> 
 <p>
@@ -3179,6 +3283,13 @@
 |---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:-------|
 |  0 | [ADMM-pruning](./meta/2018/Z9R72EAT.prototxt) | [A Systematic DNN Weight Pruning Framework using Alternating Direction Method of Multipliers](https://arxiv.org/abs/1804.03294) |                          | ECCV  |   2018 | ![GitHub Repo stars](https://img.shields.io/github/stars/bzantium/pytorch-admm-pruning) |        |</p>
 </details>
+<details open><summary><b>Yao Fu</b></summary> 
+<p>
+
+|    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                      |
+|---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
+|  0 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
+</details>
 <details open><summary><b>Yao Yao</b></summary> 
 <p>
 
@@ -3293,6 +3404,13 @@
 |---:|:-------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:-------|
 |  0 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |        |</p>
 </details>
+<details open><summary><b>Yiran Chen</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
 <details open><summary><b>Yiwu Yao</b></summary> 
 <p>
 
@@ -3321,9 +3439,9 @@
 <details open><summary><b>Yizhao Gao</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Yong Huang</b></summary> 
 <p>
@@ -3424,6 +3542,13 @@
 |---:|:------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|:--------|-------:|:----------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Selective Context](./meta/2023/selective_context.prototxt) | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) | <img width='400' alt='image' src='./notes/2023/selective_context/selective_context.jpg'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context) |                                         |
 |  1 | [MInference](./meta/2024/MInference.prototxt)               | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1)                              | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'>        | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)          | [note](./notes/2024/MInference/note.md) |</p>
+</details>
+<details open><summary><b>Yuejie Chi</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
 </details>
 <details open><summary><b>Yuezhou Hu</b></summary> 
 <p>
@@ -3681,9 +3806,9 @@
 <details open><summary><b>Zhichen Zeng</b></summary> 
 <p>
 
-|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                          | note                                       |
-|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
-|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
+|---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
 <details open><summary><b>Zhigang Chen</b></summary> 
 <p>

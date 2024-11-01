@@ -18,6 +18,7 @@ note {
 }
 keyword {
   words: sparse_pruning
+  words: activation_sparsity
 }
 cover {
   url: "sas.jpg"

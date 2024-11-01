@@ -23,6 +23,7 @@ note {
 keyword {
   words: quantization
   words: sparse_pruning
+  words: activation_sparsity
 }
 cover {
   url: "q-sparse.png"

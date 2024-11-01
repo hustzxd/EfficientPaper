@@ -1,0 +1,31 @@
+paper {
+  title: "CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation"
+  abbr: "CoreInfer"
+  url: "http://arxiv.org/abs/2410.18311v1"
+  authors: "Qinsi Wang"
+  authors: "Saeed Vahidian"
+  authors: "Hancheng Ye"
+  authors: "Jianyang Gu"
+  authors: "Jianyi Zhang"
+  authors: "Yiran Chen"
+  institutions: "Duke University"
+  institutions: "Ohio State University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/wangqinsi1/CoreInfer"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: ""
+}
