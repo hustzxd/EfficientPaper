@@ -18,7 +18,7 @@ def main():
     # week_ago = today - DT.timedelta(days=7)
 
     bg_words = ["LLM", "LLMs", "attention", "transformer"]
-    key_words = ["sparse", "pruning", "sparsity", "quantize", "quantization", "low-bit"]
+    key_words = ["sparse", "pruning", "sparsity", "quantize", "quantization", "low-bit", "acceleration"]
     exclude_words = ["spiking", "BEV"]
 
     bg_query = ""
