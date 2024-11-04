@@ -1,7 +1,14 @@
 import datetime as DT
 import os
+import sys
 
+import google.protobuf as pb
+import google.protobuf.text_format
 import arxiv
+
+sys.path.append("/Users/xiandong/projects/EfficientPaper")
+
+from proto import efficient_paper_pb2 as eppb
 
 
 def main():
@@ -17,9 +24,16 @@ def main():
         return
     # week_ago = today - DT.timedelta(days=7)
 
-    bg_words = ["LLM", "LLMs", "attention", "transformer"]
-    key_words = ["sparse", "pruning", "sparsity", "quantize", "quantization", "low-bit", "acceleration"]
-    exclude_words = ["spiking", "BEV"]
+    search_words = eppb.SearchWord()
+    try:
+        with open(os.path.join("/Users/xiandong/projects/EfficientPaper/meta", "search", "efficient_keywords.prototxt"), "r") as rf:
+            pb.text_format.Merge(rf.read(), search_words)
+    except:
+        print("read error")
+
+    bg_words = search_words.background_words
+    key_words = search_words.key_words
+    exclude_words = search_words.exclude_words
 
     bg_query = ""
     for i, k in enumerate(bg_words):

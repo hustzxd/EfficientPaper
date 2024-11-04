@@ -59,3 +59,9 @@ message Keyword {
         working = 100;
     }
 }
+
+message SearchWord {
+    repeated string background_words = 1;
+    repeated string key_words = 2;
+    repeated string exclude_words = 3;
+}

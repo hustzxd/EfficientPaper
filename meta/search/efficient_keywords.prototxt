@@ -1,0 +1,16 @@
+background_words: "LLM"
+background_words: "LLMs"
+background_words: "attention"
+background_words: "transformer"
+
+key_words: "sparse"
+key_words: "pruning"
+key_words: "sparsity"
+key_words: "quantization"
+key_words: "quantize"
+key_words: "low-bit"
+key_words: "acceleration"
+key_words: "KV"
+
+exclude_words: "spiking"
+exclude_words: "BEV"
