@@ -927,9 +927,9 @@
 <details open><summary><b>Hancheng Ye</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
 <details open><summary><b>Hanshi Sun</b></summary> 
 <p>
@@ -1336,16 +1336,16 @@
 <details open><summary><b>Jianyang Gu</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
 <details open><summary><b>Jianyi Zhang</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
 <details open><summary><b>Jiaxiang Li</b></summary> 
 <p>
@@ -2191,9 +2191,9 @@
 <details open><summary><b>Qinsi Wang</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
 <details open><summary><b>Rahul Mazumder</b></summary> 
 <p>
@@ -2319,9 +2319,9 @@
 <details open><summary><b>Saeed Vahidian</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
 <details open><summary><b>Safeen Huda</b></summary> 
 <p>
@@ -3407,9 +3407,9 @@
 <details open><summary><b>Yiran Chen</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
+|---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
 <details open><summary><b>Yiwu Yao</b></summary> 
 <p>

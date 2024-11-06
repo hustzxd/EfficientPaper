@@ -2,9 +2,9 @@ import datetime as DT
 import os
 import sys
 
+import arxiv
 import google.protobuf as pb
 import google.protobuf.text_format
-import arxiv
 
 sys.path.append("/Users/xiandong/projects/EfficientPaper")
 
@@ -26,7 +26,9 @@ def main():
 
     search_words = eppb.SearchWord()
     try:
-        with open(os.path.join("/Users/xiandong/projects/EfficientPaper/meta", "search", "efficient_keywords.prototxt"), "r") as rf:
+        with open(
+            os.path.join("/Users/xiandong/projects/EfficientPaper/meta", "search", "efficient_keywords.prototxt"), "r"
+        ) as rf:
             pb.text_format.Merge(rf.read(), search_words)
     except:
         print("read error")
@@ -55,9 +57,10 @@ def main():
 
     query = f"({key_query}) AND ({bg_query}) ANDNOT ({exclude_query})"
 
+    print(query)
     query = query.replace("(", "%28")
     query = query.replace(")", "%29")
-    print(query)
+
     # Construct the default API client.
     client = arxiv.Client()
 
@@ -92,8 +95,8 @@ def main():
     with open(file_name, "w") as wf:
         wf.write(markdown_content)
 
-
     os.system(f"/Users/xiandong/miniconda3/bin/markdown-toc {file_name}")
+
 
 if __name__ == "__main__":
     main()
