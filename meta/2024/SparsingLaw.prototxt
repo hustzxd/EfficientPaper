@@ -1,0 +1,31 @@
+paper {
+  title: "Sparsing Law: Towards Large Language Models with Greater Activation Sparsity"
+  abbr: "SparsingLaw"
+  url: "http://arxiv.org/abs/2411.02335v1"
+  authors: "Yuqi Luo"
+  authors: "Chenyang Song"
+  authors: "Xu Han"
+  authors: "Yingfa Chen"
+  authors: "Chaojun Xiao"
+  authors: "Zhiyuan Liu"
+  authors: "Maosong Sun"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thunlp/SparsingLaw"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "fig4.png"
+}
