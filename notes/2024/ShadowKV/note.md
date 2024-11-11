@@ -1,7 +1,7 @@
 # ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference
 
 <p align="center">
-<img src="shadowkv.png" width="600" title="blank">
+<img src="shadowkv.png" width="800" title="blank">
 </p>
 
 ## Abstract
@@ -27,3 +27,36 @@ sizes and boost throughput by up to 3.04$\times$ on an A100 GPU without
 sacrificing accuracy, even surpassing the performance achievable with infinite
 batch size under the assumption of infinite GPU memory. The code is available
 at https://github.com/bytedance/ShadowKV.
+
+## 两个 Observation
+
+- Pre-RoPE keys 可以通过SVD分解方式，压缩6倍，且没有精度损失
+- Post-RePE keys 邻近 tokens具有相似性，去除一些outlier后，并按照chunk对其进行mean reduce，观察到非常好的 cosine 相似度，因此把mean reduce后的key 当作 landmarks
+
+## ShadowKV
+
+### Pre-filling
+
+<p align="center">
+<img src="fig4.png" width="800" title="blank">
+</p>
+
+- 对Pre-RoPE的K进行SVD分解，
+- 对Post-RoPE的K 按照chunk进行分组，每组保留mean
+- 如果组内的 cosine 相似度很低，那么这组作为outlier来单独保存。
+
+### Decoding
+
+<p align="center">
+<img src="fig5.png" width="800" title="blank">
+</p>
+
+- 根据K的landmark与Q进行计算，得到softmax的score，
+- 选择最高的几个score对应的index，根据index选择稀疏V
+- 根据index和prefill保存的SVD小矩阵，合并为稀疏K
+- 是否需要根据sparse K sparse V计算attention? 应该是需要的，算法写的有些不完整
+
+
+所有的V都保存下来了，K的SVD分解其实也可以不做，也可以像V一样存在CPU Memoy中，根据landmark进行计算；除了SVD分解的思路，landmark的思想其实和MInference是一样的，也就是通过间隔的计算来评估哪部分的kv重要，从而将dense attention转化为 sparse attention，进而加速整个计算过程。
+
+K的临近相似相和可以分解的特性。
