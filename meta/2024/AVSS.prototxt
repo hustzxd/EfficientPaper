@@ -1,0 +1,27 @@
+paper {
+  title: "AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis"
+  abbr: "AVSS"
+  url: "http://arxiv.org/abs/2411.02117v1"
+  authors: "Zichen Song"
+  authors: "Yuxin Wu"
+  authors: "Sitan Huang"
+  authors: "Zhongfeng Kang"
+  institutions: "Lanzhou University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "avss.png"
+}

@@ -2642,6 +2642,13 @@
 |---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
 |  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
+<details open><summary><b>Sitan Huang</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
+|  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |            | [note](./notes/2024/AVSS/note.md) |</p>
+</details>
 <details open><summary><b>Siyu Ren</b></summary> 
 <p>
 
@@ -3743,6 +3750,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
 </details>
+<details open><summary><b>Yuxin Wu</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
+|  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |            | [note](./notes/2024/AVSS/note.md) |</p>
+</details>
 <details open><summary><b>Yuxin Zhang</b></summary> 
 <p>
 
@@ -3949,6 +3963,13 @@
 |  1 | [ReLU2](./meta/2024/ReLU2.prototxt)             | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)       |
 |  2 | [SparsingLaw](./meta/2024/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1)                   | <img width='400' alt='image' src='./notes/2024/SparsingLaw/fig4.png'>    | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw)                   | [note](./notes/2024/SparsingLaw/note.md) |</p>
 </details>
+<details open><summary><b>Zhongfeng Kang</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
+|  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |            | [note](./notes/2024/AVSS/note.md) |</p>
+</details>
 <details open><summary><b>Zhongfeng Wang</b></summary> 
 <p>
 
@@ -3991,6 +4012,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
+</details>
+<details open><summary><b>Zichen Song</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
+|  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |            | [note](./notes/2024/AVSS/note.md) |</p>
 </details>
 <details open><summary><b>Ziqing Yang</b></summary> 
 <p>

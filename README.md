@@ -99,37 +99,38 @@ keyword {
 29. [Fast and Effective Weight Update for Pruned Large Language Models](http://arxiv.org/abs/2401.02938v2) [TMLR 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/fmfi-compbio/admm-pruning) 
 30. [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) [VLDB 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) 
 31. [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) [arXiv 2024]  
-32. [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) 
-33. [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) [arXiv 2024]  
-34. [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) 
-35. [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) 
-36. [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) 
-37. [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) 
-38. [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) [arXiv 2024]  
-39. [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) 
-40. [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) 
-41. [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) 
-42. [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) [arXiv 2024]  
-43. [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) [arXiv 2024]  
-44. [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) 
-45. [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) [arXiv 2024]  
-46. [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) 
-47. [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) [arXiv 2024] [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) 
-48. [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) 
-49. [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) [arXiv 2024] [Website](https://powerinfer.ai/v2/) 
-50. [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) 
-51. [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) [arXiv 2024]  
-52. [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) [arXiv 2024] [Pytorch](https://hanlab.mit.edu/projects/qserve) 
-53. [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) [arXiv 2024]  
-54. [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) 
-55. [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) [arXiv 2024]  
-56. [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) 
-57. [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) 
-58. [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) 
-59. [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) 
-60. [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) 
-61. [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) 
-62. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
+32. [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) [arXiv 2024]  
+33. [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) 
+34. [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) [arXiv 2024]  
+35. [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron) 
+36. [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) 
+37. [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) 
+38. [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) 
+39. [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) [arXiv 2024]  
+40. [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) 
+41. [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) 
+42. [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) 
+43. [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) [arXiv 2024]  
+44. [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) [arXiv 2024]  
+45. [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) 
+46. [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) [arXiv 2024]  
+47. [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) 
+48. [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) [arXiv 2024] [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) 
+49. [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) 
+50. [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) [arXiv 2024] [Website](https://powerinfer.ai/v2/) 
+51. [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) 
+52. [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) [arXiv 2024]  
+53. [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) [arXiv 2024] [Pytorch](https://hanlab.mit.edu/projects/qserve) 
+54. [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) [arXiv 2024]  
+55. [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) 
+56. [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) [arXiv 2024]  
+57. [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) 
+58. [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) 
+59. [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) 
+60. [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) 
+61. [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) 
+62. [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) 
+63. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
 </p>
 </details>
 <details open><summary><b>2023</b></summary> 

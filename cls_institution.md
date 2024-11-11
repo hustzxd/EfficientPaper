@@ -331,6 +331,13 @@
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
 |  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
+<details open><summary><b>Lanzhou University</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
+|  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |            | [note](./notes/2024/AVSS/note.md) |</p>
+</details>
 <details open><summary><b>MBZUAI</b></summary> 
 <p>
 
