@@ -1,0 +1,41 @@
+paper {
+  title: "MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression"
+  abbr: "MoA"
+  url: "http://arxiv.org/abs/2406.14909v2"
+  authors: "Tianyu Fu"
+  authors: "Haofeng Huang"
+  authors: "Xuefei Ning"
+  authors: "Genghan Zhang"
+  authors: "Boju Chen"
+  authors: "Tianqi Wu"
+  authors: "Hongyi Wang"
+  authors: "Zixiao Huang"
+  authors: "Shiyao Li"
+  authors: "Shengen Yan"
+  authors: "Guohao Dai"
+  authors: "Huazhong Yang"
+  authors: "Yu Wang"
+  institutions: "Tsinghua University"
+  institutions: "Infinigence-AI"
+  institutions: "Stanford University"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-nics/MoA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "moa.png"
+}
