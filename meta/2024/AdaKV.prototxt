@@ -1,0 +1,30 @@
+paper {
+  title: "Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference"
+  abbr: "AdaKV"
+  url: "http://arxiv.org/abs/2407.11550v3"
+  authors: "Yuan Feng"
+  authors: "Junlin Lv"
+  authors: "Yukun Cao"
+  authors: "Xike Xie"
+  authors: "S. Kevin Zhou"
+  institutions: "University of Science and Technology of China"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FFY0/AdaKV"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}
