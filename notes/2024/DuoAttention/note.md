@@ -29,4 +29,4 @@ quantization, DuoAttention enables Llama-3-8B decoding with 3.3 million context
 length on a single A100 GPU. Code is provided in
 https://github.com/mit-han-lab/duo-attention.
 
-每个head设置一个$\alpha$，用来确定是否选择所有的kv cache或者采用streaming 策略。$\alpha$需要training来进行确定。
+每个head设置一个 $\alpha$ ，用来确定是否选择所有的kv cache或者采用streaming 策略。 $\alpha$ 需要training来进行确定。
