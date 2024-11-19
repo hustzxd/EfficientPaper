@@ -1,0 +1,30 @@
+paper {
+  title: "Recycled Attention: Efficient inference for long-context language models"
+  abbr: "Recycled Attention"
+  url: "http://arxiv.org/abs/2411.05787v1"
+  authors: "Fangyuan Xu"
+  authors: "Tanya Goyal"
+  authors: "Eunsol Choi"
+  institutions: "New York University"
+  institutions: "Cornell University"
+  institutions: "The University of Texas at Austin"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

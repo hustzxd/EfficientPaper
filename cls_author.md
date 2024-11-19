@@ -771,6 +771,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
 |  0 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |</p>
 </details>
+<details open><summary><b>Eunsol Choi</b></summary> 
+<p>
+
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                           |
+|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------------|
+|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/RecycledAttention/note.md) |</p>
+</details>
 <details open><summary><b>Fan Yang</b></summary> 
 <p>
 
@@ -778,6 +785,13 @@
 |---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt)           | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                                                                                  | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA)        |                                            |
 |  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                                                            | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+</details>
+<details open><summary><b>Fangyuan Xu</b></summary> 
+<p>
+
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                           |
+|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------------|
+|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
 <details open><summary><b>Fangyun Wei</b></summary> 
 <p>
@@ -2740,6 +2754,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                | note                               |
 |---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [VENOM](./meta/2023/VENOM.prototxt) | [VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores](http://arxiv.org/abs/2310.02065v1) | <img width='400' alt='image' src='./notes/2023/VENOM/vnm.png'> | SC    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/UDC-GAC/venom) | [note](./notes/2023/VENOM/note.md) |</p>
+</details>
+<details open><summary><b>Tanya Goyal</b></summary> 
+<p>
+
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                           |
+|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------------|
+|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
 <details open><summary><b>Tao Yang</b></summary> 
 <p>
