@@ -2,11 +2,13 @@
 
 ### Hot
 1. https://github.com/horseee/Awesome-Efficient-LLM
-2. https://github.com/AmberLJC/LLMSys-PaperList
-3. https://github.com/Hannibal046/Awesome-LLM
-4. https://github.com/AmadeusChan/Awesome-LLM-System-Papers
-5. https://github.com/KnowingNothing/compiler-and-arch
-6. https://papercopilot.com/paper-list
+2. https://github.com/DefTruth/Awesome-Diffusion-Inference
+3. https://github.com/DefTruth/Awesome-LLM-Inference
+4. https://github.com/AmberLJC/LLMSys-PaperList
+5. https://github.com/Hannibal046/Awesome-LLM
+6. https://github.com/AmadeusChan/Awesome-LLM-System-Papers
+7. https://github.com/KnowingNothing/compiler-and-arch
+8. https://papercopilot.com/paper-list
 
 ### Cold
 1. https://github.com/he-y/Awesome-Pruning
