@@ -48,6 +48,13 @@
 |  0 | [Essential Sparsity](./meta/2023/EssentialSparsity.prototxt) | [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805) |                                                                        | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) |                                       |
 |  1 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt)                    | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2)                             | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick)           | [note](./notes/2024/VB8C61V6/note.md) |</p>
 </details>
+<details open><summary><b>Akshat Sharma</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------|
+|  0 | [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077v2) | <img width='400' alt='image' src='./notes/2024/MiniKV/minikv.png'> | arXiv |   2024 |            | [note](./notes/2024/MiniKV/note.md) |</p>
+</details>
 <details open><summary><b>Alex Damian</b></summary> 
 <p>
 
@@ -774,9 +781,9 @@
 <details open><summary><b>Eunsol Choi</b></summary> 
 <p>
 
-|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                           |
-|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------------|
-|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/RecycledAttention/note.md) |</p>
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee                                                                             | note                                           |
+|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:-----------------------------------------------|
+|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
 <details open><summary><b>Fan Yang</b></summary> 
 <p>
@@ -789,9 +796,9 @@
 <details open><summary><b>Fangyuan Xu</b></summary> 
 <p>
 
-|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                           |
-|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------------|
-|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/RecycledAttention/note.md) |</p>
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee                                                                             | note                                           |
+|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:-----------------------------------------------|
+|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
 <details open><summary><b>Fangyun Wei</b></summary> 
 <p>
@@ -961,6 +968,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
 |---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
+<details open><summary><b>Hangliang Ding</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------|
+|  0 | [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077v2) | <img width='400' alt='image' src='./notes/2024/MiniKV/minikv.png'> | arXiv |   2024 |            | [note](./notes/2024/MiniKV/note.md) |</p>
 </details>
 <details open><summary><b>Hanshi Sun</b></summary> 
 <p>
@@ -1384,6 +1398,13 @@
 |    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
 |---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
 |  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
+<details open><summary><b>Jianping Li</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------|
+|  0 | [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077v2) | <img width='400' alt='image' src='./notes/2024/MiniKV/minikv.png'> | arXiv |   2024 |            | [note](./notes/2024/MiniKV/note.md) |</p>
 </details>
 <details open><summary><b>Jianyang Gu</b></summary> 
 <p>
@@ -1994,6 +2015,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Minjia Zhang</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------|
+|  0 | [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077v2) | <img width='400' alt='image' src='./notes/2024/MiniKV/minikv.png'> | arXiv |   2024 |            | [note](./notes/2024/MiniKV/note.md) |</p>
+</details>
 <details open><summary><b>Minshuo Chen</b></summary> 
 <p>
 
@@ -2049,6 +2077,13 @@
 |    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
 |---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
 |  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
+</details>
+<details open><summary><b>Neel Dani</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------|
+|  0 | [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077v2) | <img width='400' alt='image' src='./notes/2024/MiniKV/minikv.png'> | arXiv |   2024 |            | [note](./notes/2024/MiniKV/note.md) |</p>
 </details>
 <details open><summary><b>Ngai Wong</b></summary> 
 <p>
@@ -2758,9 +2793,9 @@
 <details open><summary><b>Tanya Goyal</b></summary> 
 <p>
 
-|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee   | note                                           |
-|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:-----------------------------------------------|
-|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/RecycledAttention/note.md) |</p>
+|    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee                                                                             | note                                           |
+|---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:-----------------------------------------------|
+|  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
 <details open><summary><b>Tao Yang</b></summary> 
 <p>
