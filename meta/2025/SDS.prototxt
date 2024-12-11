@@ -14,8 +14,8 @@ paper {
   institutions: "AMD"
 }
 pub {
-  where: "arXiv"
-  year: 2024
+  where: "Coling"
+  year: 2025
 }
 code {
   type: "Pytorch"

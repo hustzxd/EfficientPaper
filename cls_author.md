@@ -174,9 +174,9 @@
 <details open><summary><b>Ashish Sirasao</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Asit Mishra</b></summary> 
 <p>
@@ -675,9 +675,9 @@
 <details open><summary><b>Dong Li</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Dongkuan Xu</b></summary> 
 <p>
@@ -746,9 +746,9 @@
 <details open><summary><b>Emad Barsoum</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Emma Strubell</b></summary> 
 <p>
@@ -867,9 +867,9 @@
 <details open><summary><b>Guanchen Li</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Guanghui Yu</b></summary> 
 <p>
@@ -1430,9 +1430,9 @@
 <details open><summary><b>Jie He</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Jingwei Zuo</b></summary> 
 <p>
@@ -1695,9 +1695,9 @@
 <details open><summary><b>Lian Liu</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Liang Zhao</b></summary> 
 <p>
@@ -1768,9 +1768,9 @@
 <details open><summary><b>Lu Tian</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Lu Ye</b></summary> 
 <p>
@@ -3136,9 +3136,9 @@
 <details open><summary><b>Xiandong Zhao</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Xiang Liu</b></summary> 
 <p>
@@ -3838,9 +3838,9 @@
 <details open><summary><b>Zeping Li</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>Zeyu Chen</b></summary> 
 <p>

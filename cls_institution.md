@@ -7,9 +7,9 @@
 <details open><summary><b>AMD</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [SDS](./meta/2024/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2024/SDS/sds.png'> | arXiv |   2024 |            | [note](./notes/2024/SDS/note.md) |</p>
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
+|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
 <details open><summary><b>AWS AI Labs</b></summary> 
 <p>
