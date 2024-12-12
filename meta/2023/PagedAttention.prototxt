@@ -27,6 +27,7 @@ note {
 }
 keyword {
   words: kv_cache
+  words: deployment
 }
 cover {
   url: "vllm.png"

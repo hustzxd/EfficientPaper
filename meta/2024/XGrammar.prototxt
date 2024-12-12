@@ -1,0 +1,33 @@
+paper {
+  title: "XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models"
+  abbr: ""
+  url: "http://arxiv.org/abs/2411.15100v2"
+  authors: "Yixin Dong"
+  authors: "Charlie F. Ruan"
+  authors: "Yaxing Cai"
+  authors: "Ruihang Lai"
+  authors: "Ziyi Xu"
+  authors: "Yilong Zhao"
+  authors: "Tianqi Chen"
+  institutions: "Carnegie Mellon University"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "NVIDIA"
+  institutions: "University of California, Berkeley"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mlc-ai/xgrammar"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: ""
+}

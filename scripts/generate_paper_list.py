@@ -53,6 +53,7 @@ word_pb2str = {
     eppb.Keyword.Word.activation_sparsity: "Sparsity (Activation)",
     eppb.Keyword.Word.attention_sparsity: "Sparsity (Attention)",
     eppb.Keyword.Word.structured_sparsity: "Sparsity (Structured)",
+    eppb.Keyword.Word.deployment: "LLM Deployment",
 }
 
 TITLE = "ttttttttttttttttttttttttttttttitle"

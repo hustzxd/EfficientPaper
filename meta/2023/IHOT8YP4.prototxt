@@ -1,0 +1,25 @@
+paper {
+  title: "Efficient Guided Generation for Large Language Models"
+  abbr: ""
+  url: "http://arxiv.org/abs/2307.09702v4"
+  authors: "Brandon T. Willard"
+  authors: "Rémi Louf"
+  institutions: "Normal Computing"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: "fig1.png"
+}

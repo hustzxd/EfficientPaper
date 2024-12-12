@@ -293,6 +293,13 @@
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt) | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2) | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick) | [note](./notes/2024/VB8C61V6/note.md) |</p>
 </details>
+<details open><summary><b>Brandon T. Willard</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                         | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2023/IHOT8YP4.prototxt) | [Efficient Guided Generation for Large Language Models](http://arxiv.org/abs/2307.09702v4) | <img width='400' alt='image' src='./notes/2023/IHOT8YP4/fig1.png'> | arXiv |   2023 |            | [note](./notes/2023/IHOT8YP4/note.md) |</p>
+</details>
 <details open><summary><b>Brian Chmiel</b></summary> 
 <p>
 
@@ -420,6 +427,13 @@
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------|
 |  0 | [SparQ](./meta/2024/SparQ.prototxt) | [SparQ Attention: Bandwidth-Efficient LLM Inference](http://arxiv.org/abs/2312.04985v5) |                          | ICML  |   2024 |            | [note](./notes/2024/SparQ/note.md) |</p>
 </details>
+<details open><summary><b>Charlie F. Ruan</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+</details>
 <details open><summary><b>Chen Chen</b></summary> 
 <p>
 
@@ -513,6 +527,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [H2O](./meta/2023/H2O.prototxt) | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md) |</p>
 </details>
+<details open><summary><b>Christos Kozyrakis</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
+</details>
 <details open><summary><b>Chuang Gan</b></summary> 
 <p>
 
@@ -528,19 +549,28 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
 |  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
+<details open><summary><b>Chuyue Sun</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
+</details>
 <details open><summary><b>Clark Barrett</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
-|  0 | [H2O](./meta/2023/H2O.prototxt) | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md) |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [H2O](./meta/2023/H2O.prototxt)       | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>     | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)    | [note](./notes/2023/H2O/note.md)    |
+|  1 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                     | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
 </details>
 <details open><summary><b>Cody Hao Yu</b></summary> 
 <p>
 
-|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                    | note                                        |
-|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                    | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                     | note                                        |
+|---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)  | [note](./notes/2023/PagedAttention/note.md) |
+|  1 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md)         |</p>
 </details>
 <details open><summary><b>Coleman Hooper</b></summary> 
 <p>
@@ -1188,11 +1218,12 @@
 <details open><summary><b>Ion Stoica</b></summary> 
 <p>
 
-|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
-|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
-|  2 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  2 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                 | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)       | [note](./notes/2024/SGLang/note.md)         |
+|  3 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Iryna Gurevych</b></summary> 
 <p>
@@ -1287,6 +1318,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai) |        |</p>
+</details>
+<details open><summary><b>Jeff Huang</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
 </details>
 <details open><summary><b>Jeff Pool</b></summary> 
 <p>
@@ -1486,11 +1524,12 @@
 <details open><summary><b>Joseph E. Gonzalez</b></summary> 
 <p>
 
-|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
-|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
-|  2 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |                                                                          | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)  | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  2 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                 | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)       | [note](./notes/2024/SGLang/note.md)         |
+|  3 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                               |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Joseph Hassoun</b></summary> 
 <p>
@@ -1706,15 +1745,23 @@
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
 </details>
+<details open><summary><b>Liangsheng Yin</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
+</details>
 <details open><summary><b>Lianmin Zheng</b></summary> 
 <p>
 
-|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129)     |                                                                          | ICML  |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
-|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)      | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
-|  2 | [H2O](./meta/2023/H2O.prototxt)                        | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)          | [note](./notes/2023/H2O/note.md)            |
-|  3 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                                   |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [ActNN](./meta/2019/actnn.prototxt)                    | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129)     |                                                                          | ICML    |   2019 | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn)            |                                             |
+|  1 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)      | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  2 | [H2O](./meta/2023/H2O.prototxt)                        | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)          | [note](./notes/2023/H2O/note.md)            |
+|  3 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                     | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)       | [note](./notes/2024/SGLang/note.md)         |
+|  4 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                                   |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Lili Qiu</b></summary> 
 <p>
@@ -2376,6 +2423,13 @@
 |---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:----------------------------------|
 |  0 | [LISA](./meta/2024/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            | [note](./notes/2024/LISA/note.md) |</p>
 </details>
+<details open><summary><b>Ruihang Lai</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+</details>
 <details open><summary><b>Ruihao Gong</b></summary> 
 <p>
 
@@ -2403,6 +2457,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                             | note   |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [SMP](./meta/2023/smp.prototxt) | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf) | <img width='400' alt='image' src='./notes/2023/smp/smp.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/kongds/SMP) |        |</p>
+</details>
+<details open><summary><b>Rémi Louf</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                         | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:-----------------------------------|:-------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [m](./meta/2023/IHOT8YP4.prototxt) | [Efficient Guided Generation for Large Language Models](http://arxiv.org/abs/2307.09702v4) | <img width='400' alt='image' src='./notes/2023/IHOT8YP4/fig1.png'> | arXiv |   2023 |            | [note](./notes/2023/IHOT8YP4/note.md) |</p>
 </details>
 <details open><summary><b>S. Kevin Zhou</b></summary> 
 <p>
@@ -2618,6 +2679,13 @@
 |---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                       | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |                                                                        | [note](./notes/2024/DHIB73MC/note.md) |
 |  1 | [MoA](./meta/2024/MoA.prototxt)    | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>                     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md)      |</p>
+</details>
+<details open><summary><b>Shiyi Cao</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
 </details>
 <details open><summary><b>Shizhe Diao</b></summary> 
 <p>
@@ -2853,6 +2921,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [H2O](./meta/2023/H2O.prototxt)    | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048)  | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md)      |
 |  1 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                                                              | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>Tianqi Chen</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Tianqi Wu</b></summary> 
 <p>
@@ -3446,6 +3521,13 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
+<details open><summary><b>Yaxing Cai</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+</details>
 <details open><summary><b>Yelong Shen</b></summary> 
 <p>
 
@@ -3498,9 +3580,10 @@
 <details open><summary><b>Yilong Zhao</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                      | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
-|---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
-|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                                  |
+|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md)    |
+|  1 | [m](./meta/2024/XGrammar.prototxt)  | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                                                                  | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)   | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Yimeng Zhang</b></summary> 
 <p>
@@ -3526,11 +3609,12 @@
 <details open><summary><b>Ying Sheng</b></summary> 
 <p>
 
-|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                           | note                                        |
-|---:|:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
-|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)      | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
-|  1 | [H2O](./meta/2023/H2O.prototxt)                        | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)          | [note](./notes/2023/H2O/note.md)            |
-|  2 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                                   |                                                                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+|    | meta                                                   | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                           | note                                        |
+|---:|:-------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------------|:--------------------------------------------|
+|  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)      | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)        | [note](./notes/2023/PagedAttention/note.md) |
+|  1 | [H2O](./meta/2023/H2O.prototxt)                        | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)          | [note](./notes/2023/H2O/note.md)            |
+|  2 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                     | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)       | [note](./notes/2024/SGLang/note.md)         |
+|  3 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                                   |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
 <details open><summary><b>Yingfa Chen</b></summary> 
 <p>
@@ -3567,6 +3651,13 @@
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoSparse](./meta/2023/LoSparse.prototxt) | [Structured Compression of Large Language Models based on Low-Rank and Sparse Approximation](https://arxiv.org/abs/2306.11222) | <img width='400' alt='image' src='./notes/2023/LoSparse/losparse.jpg'> | ICML  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoSparse) |                                    |
 |  1 | [LoftQ](./meta/2023/loftq.prototxt)       | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659)                       | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'>       | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ)    | [note](./notes/2023/loftq/note.md) |</p>
+</details>
+<details open><summary><b>Yixin Dong</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Yixin Song</b></summary> 
 <p>
@@ -4003,6 +4094,13 @@
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
 </details>
+<details open><summary><b>Zhiqiang Xie</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover                                           | pub     |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
+</details>
 <details open><summary><b>Zhiru Zhang</b></summary> 
 <p>
 
@@ -4097,6 +4195,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Ziyi Xu</b></summary> 
+<p>
+
+|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Zonglin Li</b></summary> 
 <p>
