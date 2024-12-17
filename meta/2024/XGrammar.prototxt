@@ -1,6 +1,6 @@
 paper {
   title: "XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models"
-  abbr: ""
+  abbr: "XGrammar"
   url: "http://arxiv.org/abs/2411.15100v2"
   authors: "Yixin Dong"
   authors: "Charlie F. Ruan"
@@ -29,5 +29,5 @@ keyword {
   words: deployment
 }
 cover {
-  url: ""
+  url: "fig1.png"
 }

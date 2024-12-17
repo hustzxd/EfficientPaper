@@ -430,9 +430,9 @@
 <details open><summary><b>Charlie F. Ruan</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Chen Chen</b></summary> 
 <p>
@@ -2426,9 +2426,9 @@
 <details open><summary><b>Ruihang Lai</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Ruihao Gong</b></summary> 
 <p>
@@ -2925,9 +2925,9 @@
 <details open><summary><b>Tianqi Chen</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Tianqi Wu</b></summary> 
 <p>
@@ -3524,9 +3524,9 @@
 <details open><summary><b>Yaxing Cai</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Yelong Shen</b></summary> 
 <p>
@@ -3580,10 +3580,10 @@
 <details open><summary><b>Yilong Zhao</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                                  |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md)    |
-|  1 | [m](./meta/2024/XGrammar.prototxt)  | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                                                                  | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)   | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                    | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt)       | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>   | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md)    |
+|  1 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)   | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Yimeng Zhang</b></summary> 
 <p>
@@ -3655,9 +3655,9 @@
 <details open><summary><b>Yixin Dong</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Yixin Song</b></summary> 
 <p>
@@ -4199,9 +4199,9 @@
 <details open><summary><b>Ziyi Xu</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
 </details>
 <details open><summary><b>Zonglin Li</b></summary> 
 <p>
