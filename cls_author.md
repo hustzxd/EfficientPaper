@@ -199,6 +199,13 @@
 |---:|:--------------------------------|:-----------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [KCM](./meta/2023/kcm.prototxt) | [Gradient-Free Structured Pruning with Unlabeled Data](https://arxiv.org/abs/2303.04185) | <img width='400' alt='image' src='./notes/2023/kcm/kcm.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Azalia Mirhoseini</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
 <details open><summary><b>Baris Kasikci</b></summary> 
 <p>
 
@@ -709,6 +716,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
+<details open><summary><b>Donghyun Lee</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
 <details open><summary><b>Dongkuan Xu</b></summary> 
 <p>
 
@@ -868,9 +882,10 @@
 <details open><summary><b>Genghan Zhang</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                               | note                             |
-|---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:---------------------------------|
-|  0 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4)     | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |
+|  1 | [MoA](./meta/2024/MoA.prototxt)   | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>   | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)             | [note](./notes/2024/MoA/note.md)  |</p>
 </details>
 <details open><summary><b>Gongfan Fang</b></summary> 
 <p>
@@ -1115,6 +1130,13 @@
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |</p>
 </details>
+<details open><summary><b>Hoeseok Yang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
+</details>
 <details open><summary><b>Hojun Choi</b></summary> 
 <p>
 
@@ -1312,6 +1334,13 @@
 |  0 | [MeZO](./meta/2023/MeZO.prototxt)  | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                   |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md)     |
 |  1 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM)    | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Je-Yong Lee</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
 <details open><summary><b>Jean-François Kagy</b></summary> 
 <p>
 
@@ -1471,6 +1500,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                       | pub    |   year | codeeeee   | note                             |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
+</details>
+<details open><summary><b>Jiho Shin</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
 </details>
 <details open><summary><b>Jingwei Zuo</b></summary> 
 <p>
@@ -2083,6 +2119,13 @@
 |---:|:------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------------|
 |  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'> | arXiv |   2023 |            | [note](./notes/2023/LLM_in_a_flash/note.md) |</p>
 </details>
+<details open><summary><b>Mo Tiwari</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
 <details open><summary><b>Mohamed S Abdelfattah</b></summary> 
 <p>
 
@@ -2166,6 +2209,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                 | note                               |
 |---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoftQ](./meta/2023/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/2023/loftq/note.md) |</p>
+</details>
+<details open><summary><b>Nilesh Jain</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                 | note                              |
+|---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
+|  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
 </details>
 <details open><summary><b>Ningxin Zheng</b></summary> 
 <p>
@@ -3107,6 +3157,13 @@
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [ADMM-pruning](./meta/2024/ADMM-pruning.prototxt) | [Fast and Effective Weight Update for Pruned Large Language Models](http://arxiv.org/abs/2401.02938v2) |                          | TMLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/fmfi-compbio/admm-pruning) | [note](./notes/2024/ADMM-pruning/note.md) |</p>
 </details>
+<details open><summary><b>Vui Seng Chua</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                 | note                              |
+|---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
+|  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
+</details>
 <details open><summary><b>Wei Lin</b></summary> 
 <p>
 
@@ -3732,6 +3789,13 @@
 |---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |</p>
 </details>
+<details open><summary><b>Youngmin Yi</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
+</details>
 <details open><summary><b>Yu Cheng</b></summary> 
 <p>
 
@@ -3826,6 +3890,13 @@
 |---:|:----------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717)           | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |
 |  1 | [SPP](./meta/2024/SPP.prototxt)         | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'>        | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md)     |</p>
+</details>
+<details open><summary><b>Yujie Pan</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                 | note                              |
+|---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
+|  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
 </details>
 <details open><summary><b>Yujun Lin</b></summary> 
 <p>

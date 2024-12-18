@@ -319,6 +319,13 @@
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Intel</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                 | note                              |
+|---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
+|  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
+</details>
 <details open><summary><b>Intel Corporation</b></summary> 
 <p>
 
@@ -565,6 +572,13 @@
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [OmniQuant](./meta/2023/omniquant.prototxt) | [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) | <img width='400' alt='image' src='./notes/2023/omniquant/omniquant.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) |        |</p>
 </details>
+<details open><summary><b>Oxford University</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
 <details open><summary><b>Peking University</b></summary> 
 <p>
 
@@ -604,6 +618,13 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
 |---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
+</details>
+<details open><summary><b>Santa Clara University</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
 </details>
 <details open><summary><b>School of Cyber Security, University of Chinese Academy of Sciences</b></summary> 
 <p>
@@ -667,6 +688,13 @@
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
 </details>
+<details open><summary><b>Sogang University</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
+</details>
 <details open><summary><b>Stanford</b></summary> 
 <p>
 
@@ -686,8 +714,9 @@
 |  4 | [Paged Attention](./meta/2023/PagedAttention.prototxt)   | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1)                            | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'>  | SOSP    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)         | [note](./notes/2023/PagedAttention/note.md) |
 |  5 | [FlashAttention-2](./meta/2023/flashattention2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691)                             |                                                                           | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |                                             |
 |  6 | [H2O](./meta/2023/H2O.prototxt)                          | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048)                       | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>              | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)           | [note](./notes/2023/H2O/note.md)            |
-|  7 | [SGLang](./meta/2024/SGLang.prototxt)                    | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                                           | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)        | [note](./notes/2024/SGLang/note.md)         |
-|  8 | [MoA](./meta/2024/MoA.prototxt)                          | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2)                             | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>              | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)              | [note](./notes/2024/MoA/note.md)            |</p>
+|  7 | [CATS](./meta/2024/CATS.prototxt)                        | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4)                                 | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'>            | COLM    |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS)  | [note](./notes/2024/CATS/note.md)           |
+|  8 | [SGLang](./meta/2024/SGLang.prototxt)                    | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                                           | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)        | [note](./notes/2024/SGLang/note.md)         |
+|  9 | [MoA](./meta/2024/MoA.prototxt)                          | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2)                             | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>              | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)              | [note](./notes/2024/MoA/note.md)            |</p>
 </details>
 <details open><summary><b>Sungkyunkwan University</b></summary> 
 <p>
@@ -847,6 +876,13 @@
 |---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [VENOM](./meta/2023/VENOM.prototxt) | [VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores](http://arxiv.org/abs/2310.02065v1) | <img width='400' alt='image' src='./notes/2023/VENOM/vnm.png'> | SC    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/UDC-GAC/venom) | [note](./notes/2023/VENOM/note.md) |</p>
 </details>
+<details open><summary><b>University College London</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
 <details open><summary><b>University of Basel</b></summary> 
 <p>
 
@@ -910,6 +946,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                          | pub   |   year | codeeeee                                                             | note                               |
 |---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-----------------------------------|
 |  0 | [AdaKV](./meta/2024/AdaKV.prototxt) | [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) | <img width='400' alt='image' src='./notes/2024/AdaKV/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) | [note](./notes/2024/AdaKV/note.md) |</p>
+</details>
+<details open><summary><b>University of Seoul</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
 </details>
 <details open><summary><b>University of Surrey</b></summary> 
 <p>

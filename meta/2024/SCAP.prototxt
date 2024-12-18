@@ -1,0 +1,27 @@
+paper {
+  title: "Post-Training Statistical Calibration for Higher Activation Sparsity"
+  abbr: "SCAP"
+  url: "http://arxiv.org/abs/2412.07174v1"
+  authors: "Vui Seng Chua"
+  authors: "Yujie Pan"
+  authors: "Nilesh Jain"
+  institutions: "Intel"
+}
+pub {
+  where: "ENLSP"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/IntelLabs/SCAP"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "fig2.png"
+}

@@ -37,6 +37,7 @@ def main():
 
     if paper is not None:
         pinfo.paper.title = paper.title
+        pinfo.paper.abbr = name
         pinfo.paper.url = paper.entry_id
         authors = [author.name for author in paper.authors]
         try:

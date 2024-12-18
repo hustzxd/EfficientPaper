@@ -50,7 +50,8 @@
 
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
 |---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |</p>
+|  0 | [CATS](./meta/2024/CATS.prototxt)  | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4)     | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'>         | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS)      | [note](./notes/2024/CATS/note.md)     |
+|  1 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |</p>
 </details>
 <details open><summary><b>CVPR</b></summary> 
 <p>
@@ -74,12 +75,26 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
+<details open><summary><b>DATE</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
+|---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
+|  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
+</details>
 <details open><summary><b>ECCV</b></summary> 
 <p>
 
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                | note   |
 |---:|:----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:-------|
 |  0 | [ADMM-pruning](./meta/2018/Z9R72EAT.prototxt) | [A Systematic DNN Weight Pruning Framework using Alternating Direction Method of Multipliers](https://arxiv.org/abs/1804.03294) |                          | ECCV  |   2018 | ![GitHub Repo stars](https://img.shields.io/github/stars/bzantium/pytorch-admm-pruning) |        |</p>
+</details>
+<details open><summary><b>ENLSP</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                 | note                              |
+|---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
+|  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
 </details>
 <details open><summary><b>ICCV workshop</b></summary> 
 <p>

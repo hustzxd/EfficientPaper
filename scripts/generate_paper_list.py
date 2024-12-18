@@ -23,6 +23,8 @@ def parse_args():
 def readMeta():
     pinfos = []
     for year in os.listdir("./meta"):
+        if year == "search":
+            continue
         for f in os.listdir(f"./meta/{year}"):
             # todo: add year dir
             pinfo = eppb.PaperInfo()
