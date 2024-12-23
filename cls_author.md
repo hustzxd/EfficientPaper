@@ -134,6 +134,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Aniruddha Nrusimha</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                    | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [CLA](./meta/2024/CLA.prototxt) | [Reducing Transformer Key-Value Cache Size with Cross-Layer Attention](http://arxiv.org/abs/2405.12981v1) | <img width='400' alt='image' src='./notes/2024/CLA/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/JerryYin777/Cross-Layer-Attention) | [note](./notes/2024/CLA/note.md) |</p>
+</details>
 <details open><summary><b>Anna Bair</b></summary> 
 <p>
 
@@ -1550,6 +1557,13 @@
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | <img width='400' alt='image' src='./notes/2023/gbdt/gbdt.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Jonathan Ragan Kelly</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                    | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [CLA](./meta/2024/CLA.prototxt) | [Reducing Transformer Key-Value Cache Size with Cross-Layer Attention](http://arxiv.org/abs/2405.12981v1) | <img width='400' alt='image' src='./notes/2024/CLA/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/JerryYin777/Cross-Layer-Attention) | [note](./notes/2024/CLA/note.md) |</p>
+</details>
 <details open><summary><b>Jordan Dotzel</b></summary> 
 <p>
 
@@ -2013,6 +2027,13 @@
 |---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | <img width='400' alt='image' src='./notes/2024/SliceGPT/sliceGPT.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |</p>
 </details>
+<details open><summary><b>Mayank Mishra</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                    | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [CLA](./meta/2024/CLA.prototxt) | [Reducing Transformer Key-Value Cache Size with Cross-Layer Attention](http://arxiv.org/abs/2405.12981v1) | <img width='400' alt='image' src='./notes/2024/CLA/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/JerryYin777/Cross-Layer-Attention) | [note](./notes/2024/CLA/note.md) |</p>
+</details>
 <details open><summary><b>Mehrdad Farajtabar</b></summary> 
 <p>
 
@@ -2393,6 +2414,13 @@
 |    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                |
 |---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
 |  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
+</details>
+<details open><summary><b>Rameswar Panda</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                    | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [CLA](./meta/2024/CLA.prototxt) | [Reducing Transformer Key-Value Cache Size with Cross-Layer Attention](http://arxiv.org/abs/2405.12981v1) | <img width='400' alt='image' src='./notes/2024/CLA/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/JerryYin777/Cross-Layer-Attention) | [note](./notes/2024/CLA/note.md) |</p>
 </details>
 <details open><summary><b>Raviraj Joshi</b></summary> 
 <p>
@@ -3235,6 +3263,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>William Brandon</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                        | pub   |   year | codeeeee                                                                                    | note                             |
+|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------------|:---------------------------------|
+|  0 | [CLA](./meta/2024/CLA.prototxt) | [Reducing Transformer Key-Value Cache Size with Cross-Layer Attention](http://arxiv.org/abs/2405.12981v1) | <img width='400' alt='image' src='./notes/2024/CLA/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/JerryYin777/Cross-Layer-Attention) | [note](./notes/2024/CLA/note.md) |</p>
 </details>
 <details open><summary><b>William J. Dally</b></summary> 
 <p>
