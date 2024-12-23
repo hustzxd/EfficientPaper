@@ -28,5 +28,5 @@ keyword {
   words: activation_sparsity
 }
 cover {
-  url: ""
+  url: "fig1.png"
 }

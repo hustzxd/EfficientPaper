@@ -233,9 +233,9 @@
 <details open><summary><b>Ben Athiwaratkun</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Betty van Aken</b></summary> 
 <p>
@@ -1003,9 +1003,9 @@
 <details open><summary><b>Han Guo</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Hancheng Ye</b></summary> 
 <p>
@@ -1307,9 +1307,9 @@
 <details open><summary><b>James Liu</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Jan Kautz</b></summary> 
 <p>
@@ -2327,9 +2327,9 @@
 <details open><summary><b>Pragaash Ponnusamy</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Qi Tian</b></summary> 
 <p>
@@ -2960,9 +2960,9 @@
 <details open><summary><b>Tianle Cai</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Tianlong Chen</b></summary> 
 <p>
@@ -3764,9 +3764,9 @@
 <details open><summary><b>Yoon Kim</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                              |
-|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
+|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Yossi Adi</b></summary> 
 <p>

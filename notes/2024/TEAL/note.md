@@ -1,7 +1,7 @@
 # Training-Free Activation Sparsity in Large Language Models
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="fig1.png" width="600" title="blank">
 </p>
 
 ## Abstract
