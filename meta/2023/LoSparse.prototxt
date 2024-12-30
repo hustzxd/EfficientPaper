@@ -20,6 +20,7 @@ note {
 keyword {
   words: sparse_pruning
   words: low_rank
+  words: structured_sparsity
 }
 cover {
   url: "losparse.jpg"

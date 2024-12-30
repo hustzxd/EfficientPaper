@@ -961,6 +961,13 @@
 |---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
 |  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
 </details>
+<details open><summary><b>Gui Ling</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                    | ccccccccccccccccccover                                            | pub     |   year | codeeeee   | note                                 |
+|---:|:----------------------------------------|:------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:--------|-------:|:-----------|:-------------------------------------|
+|  0 | [SlimGPT](./meta/2024/SlimGPT.prototxt) | [SlimGPT: Layer-wise Structured Pruning for Large Language Models](http://arxiv.org/abs/2412.18110v1) | <img width='400' alt='image' src='./notes/2024/SlimGPT/fig1.png'> | NeurIPS |   2024 |            | [note](./notes/2024/SlimGPT/note.md) |</p>
+</details>
 <details open><summary><b>Guohao Dai</b></summary> 
 <p>
 
@@ -2400,6 +2407,13 @@
 |    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                      | note   |
 |---:|:----------------------------------------|:----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------|
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |        |</p>
+</details>
+<details open><summary><b>Qingwen Liu</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                    | ccccccccccccccccccover                                            | pub     |   year | codeeeee   | note                                 |
+|---:|:----------------------------------------|:------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:--------|-------:|:-----------|:-------------------------------------|
+|  0 | [SlimGPT](./meta/2024/SlimGPT.prototxt) | [SlimGPT: Layer-wise Structured Pruning for Large Language Models](http://arxiv.org/abs/2412.18110v1) | <img width='400' alt='image' src='./notes/2024/SlimGPT/fig1.png'> | NeurIPS |   2024 |            | [note](./notes/2024/SlimGPT/note.md) |</p>
 </details>
 <details open><summary><b>Qinsi Wang</b></summary> 
 <p>
@@ -3954,6 +3968,13 @@
 |---:|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [L4Q](./meta/2024/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'> | arXiv |   2024 |            | [note](./notes/2024/L4Q/note.md) |</p>
 </details>
+<details open><summary><b>Yuliang Yan</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                    | ccccccccccccccccccover                                            | pub     |   year | codeeeee   | note                                 |
+|---:|:----------------------------------------|:------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:--------|-------:|:-----------|:-------------------------------------|
+|  0 | [SlimGPT](./meta/2024/SlimGPT.prototxt) | [SlimGPT: Layer-wise Structured Pruning for Large Language Models](http://arxiv.org/abs/2412.18110v1) | <img width='400' alt='image' src='./notes/2024/SlimGPT/fig1.png'> | NeurIPS |   2024 |            | [note](./notes/2024/SlimGPT/note.md) |</p>
+</details>
 <details open><summary><b>Yuming Lou</b></summary> 
 <p>
 
@@ -4301,6 +4322,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Ziyang Wang</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                    | ccccccccccccccccccover                                            | pub     |   year | codeeeee   | note                                 |
+|---:|:----------------------------------------|:------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:--------|-------:|:-----------|:-------------------------------------|
+|  0 | [SlimGPT](./meta/2024/SlimGPT.prototxt) | [SlimGPT: Layer-wise Structured Pruning for Large Language Models](http://arxiv.org/abs/2412.18110v1) | <img width='400' alt='image' src='./notes/2024/SlimGPT/fig1.png'> | NeurIPS |   2024 |            | [note](./notes/2024/SlimGPT/note.md) |</p>
 </details>
 <details open><summary><b>Ziyi Xu</b></summary> 
 <p>

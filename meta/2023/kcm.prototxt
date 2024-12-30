@@ -19,6 +19,7 @@ note {
 }
 keyword {
   words: sparse_pruning
+  words: structured_sparsity
 }
 cover {
   url: "kcm/kcm.jpg"

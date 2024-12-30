@@ -1,0 +1,28 @@
+paper {
+  title: "SlimGPT: Layer-wise Structured Pruning for Large Language Models"
+  abbr: "SlimGPT"
+  url: "http://arxiv.org/abs/2412.18110v1"
+  authors: "Gui Ling"
+  authors: "Ziyang Wang"
+  authors: "Yuliang Yan"
+  authors: "Qingwen Liu"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig1.png"
+}
