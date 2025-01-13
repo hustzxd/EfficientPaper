@@ -1,0 +1,34 @@
+paper {
+  title: "Instruction-Following Pruning for Large Language Models"
+  abbr: "IFPruning"
+  url: "http://arxiv.org/abs/2501.02086v2"
+  authors: "Bairu Hou"
+  authors: "Qibin Chen"
+  authors: "Jianyu Wang"
+  authors: "Guoli Yin"
+  authors: "Chong Wang"
+  authors: "Nan Du"
+  authors: "Ruoming Pang"
+  authors: "Shiyu Chang"
+  authors: "Tao Lei"
+  institutions: "Apple"
+  institutions: "UC Santa Barbara"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "fig1.png"
+}

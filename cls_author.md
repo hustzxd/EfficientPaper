@@ -213,6 +213,13 @@
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
 |  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
 </details>
+<details open><summary><b>Bairu Hou</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
+</details>
 <details open><summary><b>Baris Kasikci</b></summary> 
 <p>
 
@@ -505,6 +512,13 @@
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
 |---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |</p>
+</details>
+<details open><summary><b>Chong Wang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
 <details open><summary><b>Chong You</b></summary> 
 <p>
@@ -975,6 +989,13 @@
 |---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                       | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |                                                                        | [note](./notes/2024/DHIB73MC/note.md) |
 |  1 | [MoA](./meta/2024/MoA.prototxt)    | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>                     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md)      |</p>
+</details>
+<details open><summary><b>Guoli Yin</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
 <details open><summary><b>Guoxia Wang</b></summary> 
 <p>
@@ -1500,6 +1521,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
 |---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
+<details open><summary><b>Jianyu Wang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
 <details open><summary><b>Jiaxiang Li</b></summary> 
 <p>
@@ -2189,6 +2217,13 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Nan Du</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
+</details>
 <details open><summary><b>Natalia Ponomareva</b></summary> 
 <p>
 
@@ -2387,6 +2422,13 @@
 |---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |</p>
 </details>
+<details open><summary><b>Qibin Chen</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
+</details>
 <details open><summary><b>Qingan Li</b></summary> 
 <p>
 
@@ -2549,6 +2591,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                             | note   |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [SMP](./meta/2023/smp.prototxt) | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf) | <img width='400' alt='image' src='./notes/2023/smp/smp.jpg'> | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/kongds/SMP) |        |</p>
+</details>
+<details open><summary><b>Ruoming Pang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
 <details open><summary><b>Rémi Louf</b></summary> 
 <p>
@@ -2779,6 +2828,13 @@
 |---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:--------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
 |  0 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |</p>
 </details>
+<details open><summary><b>Shiyu Chang</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
+</details>
 <details open><summary><b>Shizhe Diao</b></summary> 
 <p>
 
@@ -2956,6 +3012,13 @@
 |    | meta                                                         | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                      | pub   |   year | codeeeee                                                                             | note                                           |
 |---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:-----------------------------------------------|
 |  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |</p>
+</details>
+<details open><summary><b>Tao Lei</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
+|  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
 <details open><summary><b>Tao Yang</b></summary> 
 <p>
