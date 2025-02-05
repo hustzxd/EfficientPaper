@@ -7,10 +7,11 @@
 <details open><summary><b>2025</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                              | pub    |   year | codeeeee   | note                                   |
-|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------------|
-|  0 | [SDS](./meta/2025/SDS.prototxt)             | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>        | Coling |   2025 |            | [note](./notes/2025/SDS/note.md)       |
-|  1 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2)                                     | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv  |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                              | pub    |   year | codeeeee   | note                                   |
+|---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt)             | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1)      | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>        | Coling |   2025 |            | [note](./notes/2025/SDS/note.md)       |
+|  1 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt)   | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'>  | arXiv  |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md)  |
+|  2 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2)                                          | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv  |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
 <details open><summary><b>2024</b></summary> 
 <p>

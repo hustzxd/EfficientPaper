@@ -1,0 +1,37 @@
+paper {
+  title: "Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores"
+  abbr: "Acc-SpMM"
+  url: "http://arxiv.org/abs/2501.09251v1"
+  authors: "Haisha Zhao"
+  authors: "San Li"
+  authors: "Jiaheng Wang"
+  authors: "Chunbao Zhou"
+  authors: "Jue Wang"
+  authors: "Zhikuang Xin"
+  authors: "Shunde Li"
+  authors: "Zhiqiang Liang"
+  authors: "Zhijie Pan"
+  authors: "Fang Liu"
+  authors: "Yan Zeng"
+  authors: "Yangang Wang"
+  authors: "Xuebin Chi"
+  institutions: "Computer Network Information Center, Chinese Academy of Sciences"
+  institutions: "Renmin University of China"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "fig3.png"
+}

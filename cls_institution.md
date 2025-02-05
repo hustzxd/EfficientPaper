@@ -100,6 +100,13 @@
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [ADMM-pruning](./meta/2024/ADMM-pruning.prototxt) | [Fast and Effective Weight Update for Pruned Large Language Models](http://arxiv.org/abs/2401.02938v2) |                          | TMLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/fmfi-compbio/admm-pruning) | [note](./notes/2024/ADMM-pruning/note.md) |</p>
 </details>
+<details open><summary><b>Computer Network Information Center, Chinese Academy of Sciences</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Cornell University</b></summary> 
 <p>
 
@@ -607,6 +614,13 @@
 |  1 | [MeZO](./meta/2023/MeZO.prototxt)                 | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                      |                                                                         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO)         | [note](./notes/2023/MeZO/note.md)         |
 |  2 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | <img width='400' alt='image' src='./notes/2023/LLM_shearing/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |
 |  3 | [TEAL](./meta/2024/TEAL.prototxt)                 | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'>          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)        | [note](./notes/2024/TEAL/note.md)         |</p>
+</details>
+<details open><summary><b>Renmin University of China</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
 <details open><summary><b>Rice University</b></summary> 
 <p>

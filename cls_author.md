@@ -577,6 +577,13 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
 |  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
+<details open><summary><b>Chunbao Zhou</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Chuyue Sun</b></summary> 
 <p>
 
@@ -858,6 +865,13 @@
 |  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt)           | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                                                                                  | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA)        |                                            |
 |  1 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2)                                                                            | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
 </details>
+<details open><summary><b>Fang Liu</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Fangyuan Xu</b></summary> 
 <p>
 
@@ -1027,6 +1041,13 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
 |---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
+<details open><summary><b>Haisha Zhao</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
 <details open><summary><b>Han Bao</b></summary> 
 <p>
@@ -1447,6 +1468,13 @@
 |---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [Compresso](./meta/2023/Compresso.prototxt) | [Compresso: Structured Pruning with Collaborative Prompting Learns Compact Large Language Models](https://arxiv.org/abs/2310.05015) | <img width='400' alt='image' src='./notes/2023/Compresso/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/Moonlit) | [note](./notes/2023/Compresso/note.md) |</p>
 </details>
+<details open><summary><b>Jiaheng Wang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Jialin Zhao</b></summary> 
 <p>
 
@@ -1622,6 +1650,13 @@
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                           | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note                                       |
 |---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |</p>
+</details>
+<details open><summary><b>Jue Wang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
 <details open><summary><b>Jun Zhu</b></summary> 
 <p>
@@ -2648,6 +2683,13 @@
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
+<details open><summary><b>San Li</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Sanjeev Arora</b></summary> 
 <p>
 
@@ -2871,6 +2913,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
 |---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
+</details>
+<details open><summary><b>Shunde Li</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
 <details open><summary><b>Shuo Yang</b></summary> 
 <p>
@@ -3598,6 +3647,13 @@
 |---:|:--------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |</p>
 </details>
+<details open><summary><b>Xuebin Chi</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Xuefei Ning</b></summary> 
 <p>
 
@@ -3627,6 +3683,13 @@
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |</p>
 </details>
+<details open><summary><b>Yan Zeng</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
 <details open><summary><b>Yang Li</b></summary> 
 <p>
 
@@ -3640,6 +3703,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Yangang Wang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
 <details open><summary><b>Yankai Lin</b></summary> 
 <p>
@@ -4276,6 +4346,27 @@
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [RPTQ](./meta/2023/RPTQ.prototxt)  | [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) |                                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) | [note](note.md)                       |
 |  1 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                   | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |                                                                             | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Zhijie Pan</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
+<details open><summary><b>Zhikuang Xin</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
+<details open><summary><b>Zhiqiang Liang</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
 <details open><summary><b>Zhiqiang Shen</b></summary> 
 <p>
