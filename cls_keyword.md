@@ -92,9 +92,10 @@
 <details open><summary><b>Network Structure Design</b></summary> 
 <p>
 
-|    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                       | pub   |   year | codeeeee   | note                             |
-|---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
-|  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5)     | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
+|  1 | [MoD](./meta/2024/MoD.prototxt)                 | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'>          | arXiv |   2024 |                                                                                   | [note](./notes/2024/MoD/note.md)         |</p>
 </details>
 <details open><summary><b>None</b></summary> 
 <p>

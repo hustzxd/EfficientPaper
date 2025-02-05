@@ -131,6 +131,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2020/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |                          | CVPR  |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020) |        |</p>
 </details>
+<details open><summary><b>DeepSeek-AI</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Duke University</b></summary> 
 <p>
 

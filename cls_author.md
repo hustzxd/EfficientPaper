@@ -40,6 +40,13 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | <img width='400' alt='image' src='./notes/2024/ShadowLLM/shadowLLM.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |</p>
 </details>
+<details open><summary><b>Aixin Liu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Ajay Jaiswal</b></summary> 
 <p>
 
@@ -234,6 +241,13 @@
 |---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [VENOM](./meta/2023/VENOM.prototxt) | [VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores](http://arxiv.org/abs/2310.02065v1) | <img width='400' alt='image' src='./notes/2023/VENOM/vnm.png'> | SC    |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/UDC-GAC/venom) | [note](./notes/2023/VENOM/note.md) |</p>
 </details>
+<details open><summary><b>Bei Feng</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Beidi Chen</b></summary> 
 <p>
 
@@ -265,12 +279,26 @@
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:---------------------------------------------------------------------------|:-------|
 |  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt) | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                          | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA) |        |</p>
 </details>
+<details open><summary><b>Bin Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Bin Yu</b></summary> 
 <p>
 
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                 | note                               |
 |---:|:------------------------------------|:------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [LoRA+](./meta/2024/LoRA+.prototxt) | [LoRA+: Efficient Low Rank Adaptation of Large Models](http://arxiv.org/abs/2402.12354v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/nikhil-ghosh-berkeley/loraplus) | [note](./notes/2024/LoRA+/note.md) |</p>
+</details>
+<details open><summary><b>Bingxuan Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Bingzhe Wu</b></summary> 
 <p>
@@ -292,6 +320,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note                              |
 |---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
 |  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
+</details>
+<details open><summary><b>Bo Liu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Bo Wen</b></summary> 
 <p>
@@ -483,6 +518,20 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Chenggang Zhao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Chengqi Dengr</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Chengruidong Zhang</b></summary> 
 <p>
 
@@ -512,6 +561,13 @@
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
 |---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |</p>
+</details>
+<details open><summary><b>Chong Ruan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Chong Wang</b></summary> 
 <p>
@@ -636,6 +692,13 @@
 |---:|:--------------------------------|:-----------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [KCM](./meta/2023/kcm.prototxt) | [Gradient-Free Structured Pruning with Unlabeled Data](https://arxiv.org/abs/2303.04185) | <img width='400' alt='image' src='./notes/2023/kcm/kcm.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Damai Dai</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Dan Alistarh</b></summary> 
 <p>
 
@@ -681,12 +744,40 @@
 |---:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------|
 |  0 | [MoD](./meta/2024/MoD.prototxt) | [Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](http://arxiv.org/abs/2404.02258v1) | <img width='400' alt='image' src='./notes/2024/MoD/mod.jpg'> | arXiv |   2024 |            | [note](./notes/2024/MoD/note.md) |</p>
 </details>
+<details open><summary><b>Daya Guo</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Dayou Du</b></summary> 
 <p>
 
 |    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                                           | pub   |   year | codeeeee                                                                          | note                                       |
 |---:|:----------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |</p>
+</details>
+<details open><summary><b>DeepSeek-AI</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Dejian Yang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Deli Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Denis Kuznedelev</b></summary> 
 <p>
@@ -750,6 +841,13 @@
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                           | note                              |
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------|
 |  0 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |</p>
+</details>
+<details open><summary><b>Dongjie Ji</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Dongkuan Xu</b></summary> 
 <p>
@@ -829,6 +927,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Erhang Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Eric Lybrand</b></summary> 
 <p>
 
@@ -879,6 +984,13 @@
 |---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:-----------------------------------------------|
 |  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
+<details open><summary><b>Fangyun Lin</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Fangyun Wei</b></summary> 
 <p>
 
@@ -899,6 +1011,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Fuli Luo</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Furu Wei</b></summary> 
 <p>
@@ -951,6 +1070,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:-------|-------:|:-----------|:---------------------------------|
 |  0 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'> | Coling |   2025 |            | [note](./notes/2025/SDS/note.md) |</p>
 </details>
+<details open><summary><b>Guangbo Hao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Guanghui Yu</b></summary> 
 <p>
 
@@ -982,6 +1108,13 @@
 |  2 | [DuoAttention](./meta/2024/DuoAttention.prototxt)   | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md)  |
 |  3 | [QServe](./meta/2024/QServer.prototxt)              | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)           |                                                                                | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)       |</p>
 </details>
+<details open><summary><b>Guanting Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Guanyu Feng</b></summary> 
 <p>
 
@@ -1011,12 +1144,26 @@
 |---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
 |  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
+<details open><summary><b>Guowei Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Guoxia Wang</b></summary> 
 <p>
 
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                         | note                                   |
 |---:|:--------------------------------------------|:----------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [FlashMask](./meta/2024/FlashMask.prototxt) | [FlashMask: Efficient and Rich Mask Extension of FlashAttention](http://arxiv.org/abs/2410.01359v1) | <img width='400' alt='image' src='./notes/2024/FlashMask/flashmask.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP) | [note](./notes/2024/FlashMask/note.md) |</p>
+</details>
+<details open><summary><b>H. Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Hai Zhao</b></summary> 
 <p>
@@ -1084,6 +1231,20 @@
 |---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
 </details>
+<details open><summary><b>Hanwei Xu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Hao Yang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Hao Zhang</b></summary> 
 <p>
 
@@ -1144,6 +1305,13 @@
 |  0 | [PowerInfer](./meta/2023/PowerInfer.prototxt)    | [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1)        |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) | [note](./notes/2023/PowerInfer/note.md)  |
 |  1 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                          | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md) |</p>
 </details>
+<details open><summary><b>Haowei Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Harry Dong</b></summary> 
 <p>
 
@@ -1200,6 +1368,13 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
 |  0 | [K-pruning](./meta/2023/k_pruning.prototxt) | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449) | <img width='400' alt='image' src='./notes/2023/k_pruning/kp.jpg'> | arXiv |   2023 |            | [note](./notes/2023/k_pruning/note.md) |</p>
 </details>
+<details open><summary><b>Honghui Ding</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Hongsheng Li</b></summary> 
 <p>
 
@@ -1243,6 +1418,13 @@
 |---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
 </details>
+<details open><summary><b>Huajian Xin</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Huanqi Cao</b></summary> 
 <p>
 
@@ -1256,6 +1438,27 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                               | note                             |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:---------------------------------|
 |  0 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |</p>
+</details>
+<details open><summary><b>Huazuo Gao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Hui Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Hui Qu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Huiqiang Jiang</b></summary> 
 <p>
@@ -1323,6 +1526,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                                                                                                                       | ccccccccccccccccccover   | pub           |   year | codeeeee   | note   |
 |---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------------|-------:|:-----------|:-------|
 |  0 | [OpenVINO](./meta/2021/OpenVINO.prototxt) | [Post-training deep neural network pruning via layer-wise calibration](https://openaccess.thecvf.com/content/ICCV2021W/LPCV/papers/Lazarevich_Post-Training_Deep_Neural_Network_Pruning_via_Layer-Wise_Calibration_ICCVW_2021_paper.pdf) |                          | ICCV workshop |   2021 |            |        |</p>
+</details>
+<details open><summary><b>J. L. Cai</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>J. Zico Kolter</b></summary> 
 <p>
@@ -1505,6 +1715,13 @@
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Jian Liang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Jianfei Chen</b></summary> 
 <p>
 
@@ -1557,6 +1774,27 @@
 |---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
 |  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
+<details open><summary><b>Jianzhong Guo</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Jiaqi Ni</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Jiashi Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Jiaxiang Li</b></summary> 
 <p>
 
@@ -1578,12 +1816,26 @@
 |---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
 |  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
 </details>
+<details open><summary><b>Jin Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Jingwei Zuo</b></summary> 
 <p>
 
 |    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                                         | pub   |   year | codeeeee                                                                            | note                                      |
 |---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
+</details>
+<details open><summary><b>Jingyang Yuan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Jinjie Zhang</b></summary> 
 <p>
@@ -1673,6 +1925,13 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
 |  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
+<details open><summary><b>Junjie Qiu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Junlin Lv</b></summary> 
 <p>
 
@@ -1687,6 +1946,13 @@
 |---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
 </details>
+<details open><summary><b>Junxiao Song</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Junyuan Hong</b></summary> 
 <p>
 
@@ -1694,12 +1960,33 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Kai Dong</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Kaige Gao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Kan Zhu</b></summary> 
 <p>
 
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                      | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                    | note                               |
 |---:|:------------------------------------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:-----------------------------------|
 |  0 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |</p>
+</details>
+<details open><summary><b>Kang Guan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Kang Zhao</b></summary> 
 <p>
@@ -1809,6 +2096,20 @@
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-------------------------------------|:------------------------------------------|
 |  0 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2) |                          | arXiv |   2024 | [Website](https://powerinfer.ai/v2/) | [note](./notes/2024/PowerInfer-2/note.md) |</p>
 </details>
+<details open><summary><b>Lean Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Lecong Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Lefei Zhang</b></summary> 
 <p>
 
@@ -1816,12 +2117,26 @@
 |---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:----------------------------------|
 |  0 | [SIFT](./meta/2024/SIFT.prototxt) | [Sparse is Enough in Fine-tuning Pre-trained Large Language Models](http://arxiv.org/abs/2312.11875v3) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/song-wx/SIFT) | [note](./notes/2024/SIFT/note.md) |</p>
 </details>
+<details open><summary><b>Lei Xu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Leon Derczynski</b></summary> 
 <p>
 
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Leyi Xia</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Li Lyna Zhang</b></summary> 
 <p>
@@ -1861,9 +2176,10 @@
 <details open><summary><b>Liang Zhao</b></summary> 
 <p>
 
-|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                     | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                       | note                                   |
-|---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
-|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub     |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:--------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt)     | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3)                  |                                                                       | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM)    | [note](./notes/2024/SparseLLM/note.md)   |
+|  1 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Liangsheng Yin</b></summary> 
 <p>
@@ -1917,6 +2233,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                         | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                               | note                               |
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
 |  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
+</details>
+<details open><summary><b>Liyue Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Lorenzo Noci</b></summary> 
 <p>
@@ -2112,12 +2435,26 @@
 |  0 | [LLM in a flash](./meta/2023/LLM_in_a_flash.prototxt) | [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) | <img width='400' alt='image' src='./notes/2023/LLM_in_a_flash/windows.png'>     | arXiv     |   2023 |                                                                                 | [note](./notes/2023/LLM_in_a_flash/note.md) |
 |  1 | [ReLU Strikes Back](./meta/2024/HMR7HKFV.prototxt)    | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564)  | <img width='400' alt='image' src='./notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg'> | ICLR oral |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer) |                                             |</p>
 </details>
+<details open><summary><b>Meng Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Mengzhou Xia</b></summary> 
 <p>
 
 |    | meta                                              | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover                                                  | pub   |   year | codeeeee                                                                             | note                                      |
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | <img width='400' alt='image' src='./notes/2023/LLM_shearing/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |</p>
+</details>
+<details open><summary><b>Miaojun Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Michael Goin</b></summary> 
 <p>
@@ -2166,6 +2503,27 @@
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
 |  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
+<details open><summary><b>Mingchuan Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Minghua Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Minghui Tang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Mingjie Sun</b></summary> 
 <p>
 
@@ -2174,6 +2532,13 @@
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt)                 | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'>         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)         | [note](./notes/2023/GBLM-Pruner/note.md)         |
 |  1 | [Wanda](./meta/2024/Wanda.prototxt)                             | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695)             | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'>                     | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)               | [note](./notes/2024/Wanda/note.md)               |
 |  2 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2)                                | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
+</details>
+<details open><summary><b>Mingming Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Mingu Kang</b></summary> 
 <p>
@@ -2315,6 +2680,13 @@
 |---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
 |  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
 </details>
+<details open><summary><b>Ning Tian</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Ningxin Zheng</b></summary> 
 <p>
 
@@ -2343,6 +2715,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Panpan Huang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Paulius Micikevicius</b></summary> 
 <p>
 
@@ -2365,6 +2744,13 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Peiyi Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Peng Gao</b></summary> 
 <p>
 
@@ -2378,6 +2764,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Peng Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Pengcheng He</b></summary> 
 <p>
@@ -2464,6 +2857,13 @@
 |---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
 |  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
+<details open><summary><b>Qihao Zhu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Qingan Li</b></summary> 
 <p>
 
@@ -2498,6 +2898,34 @@
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                             | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                       | note                                   |
 |---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
+</details>
+<details open><summary><b>Qinyu Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Qiushi Du</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>R. J. Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>R. L. Jin</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Rahul Mazumder</b></summary> 
 <p>
@@ -2613,12 +3041,33 @@
 |---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
 </details>
+<details open><summary><b>Ruiqi Ge</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Ruisi Cai</b></summary> 
 <p>
 
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                         | ccccccccccccccccccover                                       | pub   |   year | codeeeee                                                                  | note                             |
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [H2O](./meta/2023/H2O.prototxt) | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md) |</p>
+</details>
+<details open><summary><b>Ruizhe Pan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Runxin Xu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Ruobing Xie</b></summary> 
 <p>
@@ -2634,6 +3083,13 @@
 |---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
 |  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
+<details open><summary><b>Ruyi Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Rémi Louf</b></summary> 
 <p>
 
@@ -2647,6 +3103,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                          | pub   |   year | codeeeee                                                             | note                               |
 |---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-----------------------------------|
 |  0 | [AdaKV](./meta/2024/AdaKV.prototxt) | [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) | <img width='400' alt='image' src='./notes/2024/AdaKV/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) | [note](./notes/2024/AdaKV/note.md) |</p>
+</details>
+<details open><summary><b>S. S. Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Sadhika Malladi</b></summary> 
 <p>
@@ -2767,12 +3230,40 @@
 |  1 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |
 |  2 | [QServe](./meta/2024/QServer.prototxt)            | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2)           |                                                                                | arXiv |   2024 | [Pytorch](https://hanlab.mit.edu/projects/qserve)                                   | [note](./notes/2024/QServer/note.md)      |</p>
 </details>
+<details open><summary><b>Shanghao Lu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Shangyan Zhou</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Shangyu Wu</b></summary> 
 <p>
 
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee                                                          | note                               |
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
 |  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
+</details>
+<details open><summary><b>Shanhuang Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Shaoqing Wu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Shaoyi Huang</b></summary> 
 <p>
@@ -2810,6 +3301,13 @@
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                       | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |                                                                        | [note](./notes/2024/DHIB73MC/note.md) |
 |  1 | [MoA](./meta/2024/MoA.prototxt)    | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>                     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md)      |</p>
 </details>
+<details open><summary><b>Shengfeng Ye</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Shi Gu</b></summary> 
 <p>
 
@@ -2845,6 +3343,13 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
 </details>
+<details open><summary><b>Shirong Ma</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Shiwei Liu</b></summary> 
 <p>
 
@@ -2877,6 +3382,13 @@
 |---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------|
 |  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/IFPruning/note.md) |</p>
 </details>
+<details open><summary><b>Shiyu Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Shizhe Diao</b></summary> 
 <p>
 
@@ -2900,12 +3412,26 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
 </details>
+<details open><summary><b>Shuang Zhou</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Shubhra Pandit</b></summary> 
 <p>
 
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                              | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                      | note                                  |
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/ULY1AZGY.prototxt) | [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) | [note](./notes/2024/ULY1AZGY/note.md) |</p>
+</details>
+<details open><summary><b>Shuiping Yu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Shuming Ma</b></summary> 
 <p>
@@ -2920,6 +3446,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
+<details open><summary><b>Shunfeng Zhou</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Shuo Yang</b></summary> 
 <p>
@@ -2980,9 +3513,10 @@
 <details open><summary><b>Size Zheng</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
-|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'>  | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
+|  1 | [ShadowKV](./meta/2024/ShadowKV.prototxt)       | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1)       | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV)      | [note](./notes/2024/ShadowKV/note.md)    |</p>
 </details>
 <details open><summary><b>Song Guo</b></summary> 
 <p>
@@ -3048,6 +3582,13 @@
 |---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |</p>
 </details>
+<details open><summary><b>T. Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Tal Ben-Nun</b></summary> 
 <p>
 
@@ -3103,6 +3644,20 @@
 |    | meta                                                      | ttttttttttttttttttttttttttttttitle                                                     | ccccccccccccccccccover                                                   | pub     |   year | codeeeee                                                                                     | note   |
 |---:|:----------------------------------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:--------|-------:|:---------------------------------------------------------------------------------------------|:-------|
 |  0 | [Movement Pruning](./meta/2020/movement_pruning.prototxt) | [Movement Pruning: Adaptive Sparsity by Fine-Tuning](https://arxiv.org/abs/2005.07683) | <img width='400' alt='image' src='./notes/2020/movement_pruning/mp.jpg'> | NeurIPS |   2020 | ![GitHub Repo stars](https://img.shields.io/github/stars/huggingface/block_movement_pruning) |        |</p>
+</details>
+<details open><summary><b>Tian Pei</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Tian Yuan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Tianchu Ji</b></summary> 
 <p>
@@ -3176,6 +3731,13 @@
 |---:|:--------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [MeZO](./meta/2023/MeZO.prototxt)                 | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                      |                                                                         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO)         | [note](./notes/2023/MeZO/note.md)         |
 |  1 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | <img width='400' alt='image' src='./notes/2023/LLM_shearing/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |</p>
+</details>
+<details open><summary><b>Tianyu Sun</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Tianyun Zhang</b></summary> 
 <p>
@@ -3318,6 +3880,27 @@
 |---:|:----------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:----------------------------------|
 |  0 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | <img width='400' alt='image' src='./notes/2024/SCAP/fig2.png'> | ENLSP |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |</p>
 </details>
+<details open><summary><b>W. L. Xiao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Wangding Zeng</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Wei An</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Wei Lin</b></summary> 
 <p>
 
@@ -3369,6 +3952,27 @@
 |  1 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |                                    |
 |  2 | [LoftQ](./meta/2023/loftq.prototxt)     | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659)        | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'>     | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ)      | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Wen Liu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Wenfeng Liang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Wenjun Gao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Wenlei Bao</b></summary> 
 <p>
 
@@ -3389,6 +3993,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                  | note                                  |
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>Wentao Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>William Brandon</b></summary> 
 <p>
@@ -3419,6 +4030,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>X. Q. Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xiafei Qiu</b></summary> 
 <p>
 
@@ -3447,12 +4065,33 @@
 |---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------|:------------------------------------|
 |  0 | [OSSCAR](./meta/2024/OSSCAR.prototxt) | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR) | [note](./notes/2024/OSSCAR/note.md) |</p>
 </details>
+<details open><summary><b>Xiangyue Jin</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xianzhi Du</b></summary> 
 <p>
 
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                               | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                      | note                                  |
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt) | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2) | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick) | [note](./notes/2024/VB8C61V6/note.md) |</p>
+</details>
+<details open><summary><b>Xianzu Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xiao Bi</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Xiao Chuanfu</b></summary> 
 <p>
@@ -3468,6 +4107,34 @@
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
 </details>
+<details open><summary><b>Xiaodong Liu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xiaohan Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xiaojin Shen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xiaokang Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xiaopeng Zhang</b></summary> 
 <p>
 
@@ -3475,12 +4142,40 @@
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |</p>
 </details>
+<details open><summary><b>Xiaosha Chen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xiaotao Gu</b></summary> 
 <p>
 
 |    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                           | ccccccccccccccccccover                                              | pub   |   year | codeeeee                                                                      | note                                 |
 |---:|:----------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:-------------------------------------|
 |  0 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | <img width='400' alt='image' src='./notes/2024/QA-LoRA/qalora.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |</p>
+</details>
+<details open><summary><b>Xiaotao Nie</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xiaowen Sun</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xiaoxiang Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Xike Xie</b></summary> 
 <p>
@@ -3506,9 +4201,10 @@
 <details open><summary><b>Xin Liu</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                     | note                                  |
-|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [ShadowKV](./meta/2024/ShadowKV.prototxt) | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) | [note](./notes/2024/ShadowKV/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'>  | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
+|  1 | [ShadowKV](./meta/2024/ShadowKV.prototxt)       | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1)       | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV)      | [note](./notes/2024/ShadowKV/note.md)    |</p>
 </details>
 <details open><summary><b>Xin Lv</b></summary> 
 <p>
@@ -3516,6 +4212,13 @@
 |    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                                                       | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note                                         |
 |---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:---------------------------------------------|
 |  0 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/SampleAttention/note.md) |</p>
+</details>
+<details open><summary><b>Xin Xie</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Xin Yao</b></summary> 
 <p>
@@ -3560,6 +4263,13 @@
 |---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------|:-----------------------------------|
 |  0 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | <img width='400' alt='image' src='./notes/2024/DSnoT/dsnot.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |</p>
 </details>
+<details open><summary><b>Xingkai Yu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xingyu Dang</b></summary> 
 <p>
 
@@ -3574,12 +4284,33 @@
 |---:|:----------------------------------------------------------------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------------------|:-------------------------------------------------|
 |  0 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | <img width='400' alt='image' src='./notes/2024/massive-activations/massive_act.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |</p>
 </details>
+<details open><summary><b>Xinnan Song</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Xinyi Zhou</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xinyin Ma</b></summary> 
 <p>
 
 |    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                  | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                     | note                                    |
 |---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |</p>
+</details>
+<details open><summary><b>Xinyu Yang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Xiuhong Li</b></summary> 
 <p>
@@ -3633,6 +4364,13 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
 </details>
+<details open><summary><b>Xuan Lu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Xuanyao Chen</b></summary> 
 <p>
 
@@ -3653,6 +4391,13 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
+<details open><summary><b>Xuecheng Su</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Xuefei Ning</b></summary> 
 <p>
@@ -3675,6 +4420,34 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                                     | pub   |   year | codeeeee   | note   |
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Y. K. Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Y. Wu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Y. X. Wei</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Y. X. Zhu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yakun Sophia Shao</b></summary> 
 <p>
@@ -3711,6 +4484,13 @@
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
 </details>
+<details open><summary><b>Yanhong Xu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yankai Lin</b></summary> 
 <p>
 
@@ -3724,6 +4504,13 @@
 |    | meta                            | ttttttttttttttttttttttttttttttitle                                                                                            | ccccccccccccccccccover   | pub     |   year | codeeeee   | note   |
 |---:|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-----------|:-------|
 |  0 | [OBD](./meta/1989/obd.prototxt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |                          | NeurIPS |   1989 |            |        |</p>
+</details>
+<details open><summary><b>Yanping Huang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yanzhi Wang</b></summary> 
 <p>
@@ -3739,12 +4526,47 @@
 |---:|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:------------------------------------------|
 |  0 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | <img width='400' alt='image' src='./notes/2024/DuoAttention/duoattention.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |</p>
 </details>
+<details open><summary><b>Yao Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yao Yao</b></summary> 
 <p>
 
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                 | pub   |   year | codeeeee                                                                                | note                                  |
 |---:|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | COLM  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |</p>
+</details>
+<details open><summary><b>Yao Zhao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Yaofeng Sun</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Yaohui Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Yaohui Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yaqing Wang</b></summary> 
 <p>
@@ -3781,12 +4603,26 @@
 |---:|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-------|
 |  0 | [OWL](./meta/2024/owl.prototxt) | [Outlier Weighed Layerwise Sparsity (OWL): A Missing Secret Sauce for Pruning LLMs to High Sparsity](https://arxiv.org/pdf/2310.05175.pdf) | <img width='400' alt='image' src='./notes/2024/owl/cover.jpg'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/luuyin/OWL) |        |</p>
 </details>
+<details open><summary><b>Yi Zheng</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yibo Cao</b></summary> 
 <p>
 
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                       | ccccccccccccccccccover                                         | pub   |   year | codeeeee   | note   |
 |---:|:----------------------------------|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | <img width='400' alt='image' src='./notes/2023/gbdt/gbdt.jpg'> | arXiv |   2023 |            |        |</p>
+</details>
+<details open><summary><b>Yichao Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yifan Yu</b></summary> 
 <p>
@@ -3809,6 +4645,13 @@
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [SparseLLM](./meta/2024/SparseLLM.prototxt) | [SparseLLM: Towards Global Pruning for Pre-trained Language Models](http://arxiv.org/abs/2402.17946v3) |                          | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/BaiTheBest/SparseLLM) | [note](./notes/2024/SparseLLM/note.md) |</p>
 </details>
+<details open><summary><b>Yiliang Xiong</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yiling Jia</b></summary> 
 <p>
 
@@ -3819,10 +4662,11 @@
 <details open><summary><b>Yilong Zhao</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                    | note                                  |
-|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [Quest](./meta/2024/Quest.prototxt)       | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>   | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md)    |
-|  1 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)   | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt)             | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                      | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'>      | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)       | [note](./notes/2024/Quest/note.md)       |
+|  1 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5)      | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
+|  2 | [XGrammar](./meta/2024/XGrammar.prototxt)       | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'>    | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)         | [note](./notes/2024/XGrammar/note.md)    |</p>
 </details>
 <details open><summary><b>Yimeng Zhang</b></summary> 
 <p>
@@ -3845,6 +4689,13 @@
 |---:|:------------------------------------------|:-------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [LLM-KICK](./meta/2024/VB8C61V6.prototxt) | [Compressing LLMs: The Truth is Rarely Pure and Never Simple](http://arxiv.org/abs/2310.01382v2) | <img width='400' alt='image' src='./notes/2024/VB8C61V6/llm-kick.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/llm-kick) | [note](./notes/2024/VB8C61V6/note.md) |</p>
 </details>
+<details open><summary><b>Ying He</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Ying Sheng</b></summary> 
 <p>
 
@@ -3854,6 +4705,13 @@
 |  1 | [H2O](./meta/2023/H2O.prototxt)                        | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'>             | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)          | [note](./notes/2023/H2O/note.md)            |
 |  2 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                     | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)       | [note](./notes/2024/SGLang/note.md)         |
 |  3 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                                   |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
+</details>
+<details open><summary><b>Ying Tang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yingfa Chen</b></summary> 
 <p>
@@ -3876,6 +4734,13 @@
 |---:|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [CoreInfer](./meta/2024/CoreInfer.prototxt) | [CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation](http://arxiv.org/abs/2410.18311v1) | <img width='400' alt='image' src='./notes/2024/CoreInfer/framework.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/wangqinsi1/CoreInfer) | [note](./notes/2024/CoreInfer/note.md) |</p>
 </details>
+<details open><summary><b>Yishi Piao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yiwu Yao</b></summary> 
 <p>
 
@@ -3894,9 +4759,10 @@
 <details open><summary><b>Yixin Dong</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                  | note                                  |
-|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
-|  0 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |</p>
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5)      | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
+|  1 | [XGrammar](./meta/2024/XGrammar.prototxt)       | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'>    | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)         | [note](./notes/2024/XGrammar/note.md)    |</p>
 </details>
 <details open><summary><b>Yixin Song</b></summary> 
 <p>
@@ -3907,6 +4773,20 @@
 |  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
 |  2 | [ReLU2](./meta/2024/ReLU2.prototxt)               | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
 |  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+</details>
+<details open><summary><b>Yixuan Tan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Yiyuan Liu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yizhao Gao</b></summary> 
 <p>
@@ -3936,12 +4816,26 @@
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>Yongji Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yongqi An</b></summary> 
 <p>
 
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                                          | ccccccccccccccccccover                                   | pub   |   year | codeeeee                                                                     | note                                                                  |
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------------------------------------------|
 |  0 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |</p>
+</details>
+<details open><summary><b>Yongqiang Guo</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yoon Kim</b></summary> 
 <p>
@@ -4022,6 +4916,13 @@
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
 </details>
+<details open><summary><b>Yuchen Zhu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yucheng Li</b></summary> 
 <p>
 
@@ -4029,6 +4930,13 @@
 |---:|:------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|:--------|-------:|:----------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Selective Context](./meta/2023/selective_context.prototxt) | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) | <img width='400' alt='image' src='./notes/2023/selective_context/selective_context.jpg'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context) |                                         |
 |  1 | [MInference](./meta/2024/MInference.prototxt)               | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1)                              | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'>        | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)          | [note](./notes/2024/MInference/note.md) |</p>
+</details>
+<details open><summary><b>Yuduan Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yuejie Chi</b></summary> 
 <p>
@@ -4057,6 +4965,13 @@
 |    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                          | ccccccccccccccccccover   | pub   |   year | codeeeee                                                               | note   |
 |---:|:------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------------------------------------------------------------------|:-------|
 |  0 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |                          | ICLR  |   2021 | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |        |</p>
+</details>
+<details open><summary><b>Yuheng Zou</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yuhui Li</b></summary> 
 <p>
@@ -4094,6 +5009,13 @@
 |---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-----------------------------------|
 |  0 | [AdaKV](./meta/2024/AdaKV.prototxt) | [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) | <img width='400' alt='image' src='./notes/2024/AdaKV/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) | [note](./notes/2024/AdaKV/note.md) |</p>
 </details>
+<details open><summary><b>Yukun Zha</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yulhwa Kim</b></summary> 
 <p>
 
@@ -4114,6 +5036,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>Yunxian Ma</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Yunyun Sun</b></summary> 
 <p>
@@ -4157,6 +5086,20 @@
 |---:|:--------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:---------------------------------|
 |  0 | [SAS](./meta/2024/SAS.prototxt) | [SAS: Structured Activation Spasification](https://openreview.net/forum?id=vZfi5to2Xl) | <img width='400' alt='image' src='./notes/2024/SAS/sas.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/DensoITLab/sas_) | [note](./notes/2024/SAS/note.md) |</p>
 </details>
+<details open><summary><b>Yuting Yan</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Yuxiang You</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Yuxin Wu</b></summary> 
 <p>
 
@@ -4179,12 +5122,33 @@
 |  0 | [ZeroQuant](./meta/2022/zeroquant.prototxt)       | [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1)       |                          | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |
 |  1 | [ZeroQuant-V2](./meta/2023/ZeroQuant-V2.prototxt) | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) |                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |</p>
 </details>
+<details open><summary><b>Yuxuan Liu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Z. Z. Ren</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Ze Tao</b></summary> 
 <p>
 
 |    | meta                                                  | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                        | pub   |   year | codeeeee                                                                            | note                                        |
 |---:|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:--------------------------------------------|
 |  0 | [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ACL   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |</p>
+</details>
+<details open><summary><b>Zehui Ren</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Zeping Li</b></summary> 
 <p>
@@ -4209,6 +5173,13 @@
 |  1 | [PowerInfer-2](./meta/2024/PowerInfer-2.prototxt) | [PowerInfer-2: Fast Large Language Model Inference on a Smartphone](http://arxiv.org/abs/2406.06282v2)              |                                                                       | arXiv |   2024 | [Website](https://powerinfer.ai/v2/)                                            | [note](./notes/2024/PowerInfer-2/note.md) |
 |  2 | [ReLU2](./meta/2024/ReLU2.prototxt)               | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                                 | [note](./notes/2024/ReLU2/note.md)        |
 |  3 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)  | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |                                                                       | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                    | [note](./notes/2024/TurboSparse/note.md)  |</p>
+</details>
+<details open><summary><b>Zhangli Sha</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Zhangyang Wang</b></summary> 
 <p>
@@ -4243,6 +5214,13 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | arXiv |   2024 |            | [note](./notes/2024/0Y41U1N2/note.md) |</p>
 </details>
+<details open><summary><b>Zhe Fu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Zhe Gan</b></summary> 
 <p>
 
@@ -4264,12 +5242,33 @@
 |---:|:----------------------------------------------|:-------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4) | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |</p>
 </details>
+<details open><summary><b>Zhen Huang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Zhen Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Zhen Zheng</b></summary> 
 <p>
 
 |    | meta                                        | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                               | pub   |   year | codeeeee                                                                            | note                                    |
 |---:|:--------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt) | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'> | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md) |</p>
+</details>
+<details open><summary><b>Zhenda Xie</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Zhenfeng Su</b></summary> 
 <p>
@@ -4325,6 +5324,13 @@
 |  1 | [ZeroQuant](./meta/2022/zeroquant.prototxt)       | [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1)       |                          | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |
 |  2 | [ZeroQuant-V2](./meta/2023/ZeroQuant-V2.prototxt) | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) |                          | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |        |</p>
 </details>
+<details open><summary><b>Zhewen Hao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Zhichen Zeng</b></summary> 
 <p>
 
@@ -4347,6 +5353,13 @@
 |  0 | [RPTQ](./meta/2023/RPTQ.prototxt)  | [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) |                                                                                  | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) | [note](note.md)                       |
 |  1 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                   | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |                                                                             | [note](./notes/2024/DHIB73MC/note.md) |</p>
 </details>
+<details open><summary><b>Zhihong Shao</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Zhijie Pan</b></summary> 
 <p>
 
@@ -4360,6 +5373,20 @@
 |    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
 |---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+</details>
+<details open><summary><b>Zhiniu Wen</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Zhipeng Xu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Zhiqiang Liang</b></summary> 
 <p>
@@ -4412,6 +5439,13 @@
 |---:|:-------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-------|
 |  0 | [STA](./meta/2022/44KWQAWO.prototxt) | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                          | VLSI  |   2022 |            |        |</p>
 </details>
+<details open><summary><b>Zhongyu Zhang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Zhongzhu Zhou</b></summary> 
 <p>
 
@@ -4434,6 +5468,13 @@
 |---:|:-------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------|:--------------------------------------------|
 |  0 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | SOSP  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |</p>
 </details>
+<details open><summary><b>Zhuoshu Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Zichang Liu</b></summary> 
 <p>
 
@@ -4455,6 +5496,27 @@
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------|:----------------------------------|
 |  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |            | [note](./notes/2024/AVSS/note.md) |</p>
 </details>
+<details open><summary><b>Zihan Wang</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Zihui Gu</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
+<details open><summary><b>Zilin Li</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
+</details>
 <details open><summary><b>Ziqing Yang</b></summary> 
 <p>
 
@@ -4462,6 +5524,13 @@
 |---:|:----------------------------------------------|:----------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
 |  0 | [TextPruner](./meta/2022/TextPruner.prototxt) | [TextPruner: A Model Pruning Toolkit for Pre-Trained Language Models](https://arxiv.org/abs/2203.15996)   | <img width='400' alt='image' src='./notes/2022/TextPruner/textpruner.jpg'> | ACL   |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/TextPruner) |                                     |
 |  1 | [GRAIN](./meta/2023/grain.prototxt)           | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634) | <img width='400' alt='image' src='./notes/2023/grain/grain.jpg'>           | ACL   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/GRAIN)      | [note](./notes/2023/grain/index.md) |</p>
+</details>
+<details open><summary><b>Ziwei Xie</b></summary> 
+<p>
+
+|    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                                | pub   |   year | codeeeee                                                                          | note                                     |
+|---:|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------|:-----------------------------------------|
+|  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |</p>
 </details>
 <details open><summary><b>Zixiao Huang</b></summary> 
 <p>
