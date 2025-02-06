@@ -200,6 +200,14 @@ def main():
     with open("README.md", "w") as wf:
         wf.write(markdown)
     print("Generate README.md done")
+    
+    del_keys = []
+    for k, v in author_cls.items():
+        if len(v) == 1:
+            del_keys.append(k)
+    for k in del_keys:
+        author_cls.pop(k)
+
     cls_dict = {
         "keyword": keyword_cls,
         "year": year_cls,
