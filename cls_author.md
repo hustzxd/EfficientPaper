@@ -99,6 +99,14 @@
 |  0 | [ReLU2](./meta/2024/ReLU2.prototxt)             | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)        | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | arXiv |   2024 |                                                                              | [note](./notes/2024/ReLU2/note.md)       |
 |  1 | [SparsingLaw](./meta/2024/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1) | <img width='400' alt='image' src='./notes/2024/SparsingLaw/fig4.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2024/SparsingLaw/note.md) |</p>
 </details>
+<details open><summary><b>Chen Chen</b></summary> 
+<p>
+
+|    | meta                                                          | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                                       | note                                            |
+|---:|:--------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:------------------------------------------------|
+|  0 | [ProSparse](./meta/2024/ProSparse.prototxt)                   | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'>     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md)          |
+|  1 | [AttentionPredictor](./meta/2025/AttentionPredictor.prototxt) | [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1)                       | <img width='400' alt='image' src='./notes/2025/AttentionPredictor/fig1.png'> | arXiv |   2025 |                                                                                                | [note](./notes/2025/AttentionPredictor/note.md) |</p>
+</details>
 <details open><summary><b>Chengda Lu</b></summary> 
 <p>
 

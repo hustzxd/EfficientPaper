@@ -549,6 +549,13 @@
 |---:|:-------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------------|:-----------------------------------------------|
 |  0 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | <img width='400' alt='image' src='./notes/2024/RecycledAttention/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |</p>
 </details>
+<details open><summary><b>Noah’s Ark Lab, Huawei Technologies</b></summary> 
+<p>
+
+|    | meta                                                          | ttttttttttttttttttttttttttttttitle                                                                            | ccccccccccccccccccover                                                       | pub   |   year | codeeeee   | note                                            |
+|---:|:--------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------------------|
+|  0 | [AttentionPredictor](./meta/2025/AttentionPredictor.prototxt) | [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) | <img width='400' alt='image' src='./notes/2025/AttentionPredictor/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/AttentionPredictor/note.md) |</p>
+</details>
 <details open><summary><b>Normal Computing</b></summary> 
 <p>
 
@@ -983,9 +990,10 @@
 <details open><summary><b>University of Science and Technology of China</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                          | pub   |   year | codeeeee                                                             | note                               |
-|---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:-----------------------------------|
-|  0 | [AdaKV](./meta/2024/AdaKV.prototxt) | [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) | <img width='400' alt='image' src='./notes/2024/AdaKV/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) | [note](./notes/2024/AdaKV/note.md) |</p>
+|    | meta                                                          | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                             | note                                            |
+|---:|:--------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------|:------------------------------------------------|
+|  0 | [AdaKV](./meta/2024/AdaKV.prototxt)                           | [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) | <img width='400' alt='image' src='./notes/2024/AdaKV/fig2.png'>              | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV) | [note](./notes/2024/AdaKV/note.md)              |
+|  1 | [AttentionPredictor](./meta/2025/AttentionPredictor.prototxt) | [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1)                       | <img width='400' alt='image' src='./notes/2025/AttentionPredictor/fig1.png'> | arXiv |   2025 |                                                                      | [note](./notes/2025/AttentionPredictor/note.md) |</p>
 </details>
 <details open><summary><b>University of Seoul</b></summary> 
 <p>

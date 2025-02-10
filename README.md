@@ -70,8 +70,9 @@ keyword {
 
 1. [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) [Coling 2025]  
 2. [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) [arXiv 2025]  
-3. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
-4. [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) [arXiv 2025]  
+3. [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) [arXiv 2025]  
+4. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
+5. [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) [arXiv 2025]  
 </p>
 </details>
 <details open><summary><b>2024</b></summary> 
