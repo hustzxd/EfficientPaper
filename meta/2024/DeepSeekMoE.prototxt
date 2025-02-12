@@ -19,8 +19,9 @@ paper {
   authors: "Chong Ruan"
   authors: "Zhifang Sui"
   authors: "Wenfeng Liang"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "DeepSeek-AI"
+  institutions: "Tsinghua University"
+  institutions: "Nanjing University"
 }
 pub {
   where: "arXiv"

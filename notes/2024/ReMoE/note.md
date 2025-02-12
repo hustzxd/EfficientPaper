@@ -1,0 +1,23 @@
+# ReMoE: Fully Differentiable Mixture-of-Experts with ReLU Routing
+
+<p align="center">
+<img src="fig1.png" width="600" title="blank">
+</p>
+
+## Abstract
+
+Sparsely activated Mixture-of-Experts (MoE) models are widely adopted to
+scale up model capacity without increasing the computation budget. However,
+vanilla TopK routers are trained in a discontinuous, non-differentiable way,
+limiting their performance and scalability. To address this issue, we propose
+ReMoE, a fully differentiable MoE architecture that offers a simple yet
+effective drop-in replacement for the conventional TopK+Softmax routing,
+utilizing ReLU as the router instead. We further propose methods to regulate
+the router's sparsity while balancing the load among experts. ReMoE's
+continuous nature enables efficient dynamic allocation of computation across
+tokens and layers, while also exhibiting domain specialization. Our experiments
+demonstrate that ReMoE consistently outperforms vanilla TopK-routed MoE across
+various model sizes, expert counts, and levels of granularity. Furthermore,
+ReMoE exhibits superior scalability with respect to the number of experts,
+surpassing traditional MoE architectures. The implementation based on
+Megatron-LM is available at https://github.com/thu-ml/ReMoE.
