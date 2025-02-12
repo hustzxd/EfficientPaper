@@ -2198,6 +2198,14 @@
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Yulhwa Kim</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                  | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                   | note                                |
+|---:|:--------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------|:------------------------------------|
+|  0 | [L4Q](./meta/2024/L4Q.prototxt)       | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'>     | arXiv |   2024 |                                                                            | [note](./notes/2024/L4Q/note.md)    |
+|  1 | [FastKV](./meta/2025/FastKV.prototxt) | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | <img width='400' alt='image' src='./notes/2025/FastKV/fig2.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md) |</p>
+</details>
 <details open><summary><b>Yunfan Xiong</b></summary> 
 <p>
 
