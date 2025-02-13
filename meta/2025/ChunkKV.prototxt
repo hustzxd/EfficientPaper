@@ -1,0 +1,32 @@
+paper {
+  title: "ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference"
+  abbr: "ChunkKV"
+  url: "http://arxiv.org/abs/2502.00299v1"
+  authors: "Xiang Liu"
+  authors: "Zhenheng Tang"
+  authors: "Peijie Dong"
+  authors: "Zeyu Li"
+  authors: "Bo Li"
+  authors: "Xuming Hu"
+  authors: "Xiaowen Chu"
+  institutions: "The Hong Kong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}
