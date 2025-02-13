@@ -1,0 +1,37 @@
+paper {
+  title: "Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity"
+  abbr: "PoD"
+  url: "http://arxiv.org/abs/2412.02252v1"
+  authors: "Da Ma"
+  authors: "Lu Chen"
+  authors: "Situo Zhang"
+  authors: "Yuxun Miao"
+  authors: "Su Zhu"
+  authors: "Zhi Chen"
+  authors: "Hongshen Xu"
+  authors: "Hanqi Li"
+  authors: "Shuai Fan"
+  authors: "Lei Pan"
+  authors: "Kai Yu"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "ByteDance"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}
