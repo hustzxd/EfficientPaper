@@ -1,0 +1,40 @@
+paper {
+  title: "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention"
+  abbr: "NSA"
+  url: "http://arxiv.org/abs/2502.11089v1"
+  authors: "Jingyang Yuan"
+  authors: "Huazuo Gao"
+  authors: "Damai Dai"
+  authors: "Junyu Luo"
+  authors: "Liang Zhao"
+  authors: "Zhengyan Zhang"
+  authors: "Zhenda Xie"
+  authors: "Y. X. Wei"
+  authors: "Lean Wang"
+  authors: "Zhiping Xiao"
+  authors: "Yuqing Wang"
+  authors: "Chong Ruan"
+  authors: "Ming Zhang"
+  authors: "Wenfeng Liang"
+  authors: "Wangding Zeng"
+  institutions: "DeepSeek-AI"
+  institutions: "Peking University"
+  institutions: "University of Washington"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig2.png"
+}
