@@ -34,6 +34,7 @@ note {
 }
 keyword {
   words: structure_design
+  words: attention_sparsity
 }
 cover {
   url: "fig2.png"
