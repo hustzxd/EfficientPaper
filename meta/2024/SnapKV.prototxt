@@ -1,0 +1,36 @@
+paper {
+  title: "SnapKV: LLM Knows What You are Looking for Before Generation"
+  abbr: "SnapKV"
+  url: "http://arxiv.org/abs/2404.14469v2"
+  authors: "Yuhong Li"
+  authors: "Yingbing Huang"
+  authors: "Bowen Yang"
+  authors: "Bharat Venkitesh"
+  authors: "Acyr Locatelli"
+  authors: "Hanchen Ye"
+  authors: "Tianle Cai"
+  authors: "Patrick Lewis"
+  authors: "Deming Chen"
+  institutions: "University of Illinois Urbana-Champaign"
+  institutions: "Cohere"
+  institutions: "Princeton University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FasterDecoding/SnapKV"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

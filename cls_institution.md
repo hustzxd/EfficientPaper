@@ -94,6 +94,13 @@
 |---:|:------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------|:-----------------------------------|
 |  0 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |                          | arXiv |   2024 | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |</p>
 </details>
+<details open><summary><b>Cohere</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                        | note                                |
+|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SnapKV](./meta/2024/SnapKV.prototxt) | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) | <img width='400' alt='image' src='./notes/2024/SnapKV/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV) | [note](./notes/2024/SnapKV/note.md) |</p>
+</details>
 <details open><summary><b>Comenius University</b></summary> 
 <p>
 
@@ -402,7 +409,7 @@
 |---:|:----------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
 |  0 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4)                                          | <img width='400' alt='image' src='./notes/2024/streaming-llm/cover.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
 |  1 | [OSSCAR](./meta/2024/OSSCAR.prototxt)               | [OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization](http://arxiv.org/abs/2403.12983v1) |                                                                          | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mazumder-lab/OSSCAR)       | [note](./notes/2024/OSSCAR/note.md)        |
-|  2 | [TEAL](./meta/2024/TEAL.prototxt)                   | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                        | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'>           | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)       | [note](./notes/2024/TEAL/note.md)          |</p>
+|  2 | [TEAL](./meta/2025/TEAL.prototxt)                   | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                        | <img width='400' alt='image' src='./notes/2025/TEAL/fig1.png'>           | ICLR  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)       | [note](./notes/2025/TEAL/note.md)          |</p>
 </details>
 <details open><summary><b>Meta</b></summary> 
 <p>
@@ -485,6 +492,13 @@
 |    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                                       | pub   |   year | codeeeee                                                                       | note                                     |
 |---:|:------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------------|:-----------------------------------------|
 |  0 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | <img width='400' alt='image' src='./notes/2023/GBLM-Pruner/gblm-pruner.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |</p>
+</details>
+<details open><summary><b>Moonshot AI</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                  | note                              |
+|---:|:----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:----------------------------------|
+|  0 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | <img width='400' alt='image' src='./notes/2025/MoBA/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |</p>
 </details>
 <details open><summary><b>Multimedia Laboratory (MMLab)</b></summary> 
 <p>
@@ -634,7 +648,8 @@
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt)           | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf)                | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'>    | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA)        |                                           |
 |  1 | [MeZO](./meta/2023/MeZO.prototxt)                 | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                      |                                                                         | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO)         | [note](./notes/2023/MeZO/note.md)         |
 |  2 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | <img width='400' alt='image' src='./notes/2023/LLM_shearing/cover.jpg'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |
-|  3 | [TEAL](./meta/2024/TEAL.prototxt)                 | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'>          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)        | [note](./notes/2024/TEAL/note.md)         |</p>
+|  3 | [SnapKV](./meta/2024/SnapKV.prototxt)             | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2)                              | <img width='400' alt='image' src='./notes/2024/SnapKV/fig1.png'>        | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV)      | [note](./notes/2024/SnapKV/note.md)       |
+|  4 | [TEAL](./meta/2025/TEAL.prototxt)                 | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)                                | <img width='400' alt='image' src='./notes/2025/TEAL/fig1.png'>          | ICLR  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)        | [note](./notes/2025/TEAL/note.md)         |</p>
 </details>
 <details open><summary><b>Renmin University of China</b></summary> 
 <p>
@@ -858,7 +873,7 @@
 
 |    | meta                              | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                      | note                              |
 |---:|:----------------------------------|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:----------------------------------|
-|  0 | [TEAL](./meta/2024/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2024/TEAL/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2024/TEAL/note.md) |</p>
+|  0 | [TEAL](./meta/2025/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | <img width='400' alt='image' src='./notes/2025/TEAL/fig1.png'> | ICLR  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) | [note](./notes/2025/TEAL/note.md) |</p>
 </details>
 <details open><summary><b>Tongji University</b></summary> 
 <p>
@@ -888,7 +903,8 @@
 | 13 | [ReMoE](./meta/2024/ReMoE.prototxt)                      | [ReMoE: Fully Differentiable Mixture-of-Experts with ReLU Routing](http://arxiv.org/abs/2412.14711v1)                                                                           | <img width='400' alt='image' src='./notes/2024/ReMoE/fig1.png'>                  | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/ReMoE)                                                      | [note](./notes/2024/ReMoE/note.md)           |
 | 14 | [SampleAttention](./meta/2024/SampleAttention.prototxt)  | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2)                        | <img width='400' alt='image' src='./notes/2024/SampleAttention/cover.png'>       | arXiv |   2024 |                                                                                                                             | [note](./notes/2024/SampleAttention/note.md) |
 | 15 | [SparsingLaw](./meta/2024/SparsingLaw.prototxt)          | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1)                                                               | <img width='400' alt='image' src='./notes/2024/SparsingLaw/fig4.png'>            | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw)                                                | [note](./notes/2024/SparsingLaw/note.md)     |
-| 16 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)         | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2)                                                             |                                                                                  | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                                                                | [note](./notes/2024/TurboSparse/note.md)     |</p>
+| 16 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt)         | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2)                                                             |                                                                                  | arXiv |   2024 | [Pytorch](https://huggingface.co/PowerInfer)                                                                                | [note](./notes/2024/TurboSparse/note.md)     |
+| 17 | [MoBA](./meta/2025/MoBA.prototxt)                        | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1)                                                                                     | <img width='400' alt='image' src='./notes/2025/MoBA/fig1.png'>                   | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)                                                   | [note](./notes/2025/MoBA/note.md)            |</p>
 </details>
 <details open><summary><b>UC Berkeley</b></summary> 
 <p>
@@ -993,9 +1009,10 @@
 <details open><summary><b>University of Illinois Urbana-Champaign</b></summary> 
 <p>
 
-|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                              |
-|---:|:----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:----------------------------------|
-|  0 | [LISA](./meta/2024/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                          | arXiv |   2024 |            | [note](./notes/2024/LISA/note.md) |</p>
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                             | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                        | note                                |
+|---:|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [LISA](./meta/2024/LISA.prototxt)     | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |                                                                  | arXiv |   2024 |                                                                                 | [note](./notes/2024/LISA/note.md)   |
+|  1 | [SnapKV](./meta/2024/SnapKV.prototxt) | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2)                              | <img width='400' alt='image' src='./notes/2024/SnapKV/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV) | [note](./notes/2024/SnapKV/note.md) |</p>
 </details>
 <details open><summary><b>University of Science and Technology of China</b></summary> 
 <p>
@@ -1104,6 +1121,13 @@
 |    | meta                                   | ttttttttttttttttttttttttttttttitle                                                                              | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                     | note   |
 |---:|:---------------------------------------|:----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:-------|
 |  0 | [Deja Vu](./meta/2023/dejavu.prototxt) | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i) | <img width='400' alt='image' src='./notes/2023/dejavu/dejavu.jpg'> | ICML  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/DejaVu) |        |</p>
+</details>
+<details open><summary><b>Zhejiang University</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                  | note                              |
+|---:|:----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:----------------------------------|
+|  0 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | <img width='400' alt='image' src='./notes/2025/MoBA/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |</p>
 </details>
 <details open><summary><b>Zhipu.AI</b></summary> 
 <p>

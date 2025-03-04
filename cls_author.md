@@ -1401,6 +1401,14 @@
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Tianle Cai</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                        | note                                |
+|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SnapKV](./meta/2024/SnapKV.prototxt) | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) | <img width='400' alt='image' src='./notes/2024/SnapKV/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV) | [note](./notes/2024/SnapKV/note.md) |
+|  1 | [TEAL](./meta/2025/TEAL.prototxt)     | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1)   | <img width='400' alt='image' src='./notes/2025/TEAL/fig1.png'>   | ICLR  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)   | [note](./notes/2025/TEAL/note.md)   |</p>
+</details>
 <details open><summary><b>Tianlong Chen</b></summary> 
 <p>
 
@@ -2265,6 +2273,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Yuxin Wu</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                  | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:----------------------------------|
+|  0 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | <img width='400' alt='image' src='./notes/2024/AVSS/avss.png'> | arXiv |   2024 |                                                                           | [note](./notes/2024/AVSS/note.md) |
+|  1 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1)                                               | <img width='400' alt='image' src='./notes/2025/MoBA/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |</p>
 </details>
 <details open><summary><b>Yuxiong He</b></summary> 
 <p>
