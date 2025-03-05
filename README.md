@@ -69,16 +69,19 @@ keyword {
 <p>
 
 1. [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) [Coling 2025]  
-2. [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) [ICLR 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) 
-3. [Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity](http://arxiv.org/abs/2412.02252v1) [ICML 2025]  
-4. [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) [arXiv 2025]  
-5. [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) [arXiv 2025]  
-6. [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) [arXiv 2025]  
-7. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
-8. [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV) 
-9. [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) [arXiv 2025]  
-10. [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) 
-11. [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) [arXiv 2025]  
+2. [FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference](http://arxiv.org/abs/2502.20766v1) [ICLR 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/FlexPrefill) 
+3. [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) [ICLR 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL) 
+4. [Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity](http://arxiv.org/abs/2412.02252v1) [ICML 2025]  
+5. [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) [arXiv 2025]  
+6. [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) [arXiv 2025]  
+7. [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) [arXiv 2025]  
+8. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
+9. [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1) [arXiv 2025]  
+10. [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV) 
+11. [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) [arXiv 2025]  
+12. [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) 
+13. [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) [arXiv 2025]  
+14. [SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference](http://arxiv.org/abs/2502.18137v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SpargeAttn) 
 </p>
 </details>
 <details open><summary><b>2024</b></summary> 

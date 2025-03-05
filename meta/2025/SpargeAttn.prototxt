@@ -1,0 +1,33 @@
+paper {
+  title: "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
+  abbr: "SpargeAttn"
+  url: "http://arxiv.org/abs/2502.18137v1"
+  authors: "Jintao Zhang"
+  authors: "Chendong Xiang"
+  authors: "Haofeng Huang"
+  authors: "Jia Wei"
+  authors: "Haocheng Xi"
+  authors: "Jun Zhu"
+  authors: "Jianfei Chen"
+  institutions: "Tsinghua University"
+  institutions: "University of California, Berkeley"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-ml/SpargeAttn"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig3.png"
+}
