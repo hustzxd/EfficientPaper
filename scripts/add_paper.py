@@ -3,6 +3,7 @@ import os
 import random
 import string
 import sys
+import datetime
 
 import arxiv
 import google.protobuf as pb
@@ -47,9 +48,18 @@ def main():
             pinfo.paper.authors.pop()
         pinfo.paper.authors.extend(authors)
         pinfo.pub.year = paper.published.year
+    else:
+        current_year = datetime.date.today().year
+        year = input(f"Please input the public year of this paper (Default: {current_year}) \n Year: ")
+        if len(year) != 0:
+            assert 1990 <= int(year) <= 2030
+            year = int(year)
+        else:
+            year = 2025
+        pinfo.pub.year = year
 
     root_dir = "./"
-    if os.path.exists(os.path.join(root_dir, "meta", "{}.prototxt".format(name))):
+    if os.path.exists(os.path.join(root_dir, "meta", f"{pinfo.pub.year}", f"{name}.prototxt")) or os.path.exists(os.path.join(root_dir, "meta", f"{name}.prototxt")):
         print("The file `{}` already exists, please use another name".format(name))
         return
 
