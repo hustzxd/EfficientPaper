@@ -18,6 +18,7 @@ note {
 }
 keyword {
   words: sparse_pruning
+  words: weight_sparsity
 }
 cover {
   url: ""
