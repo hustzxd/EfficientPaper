@@ -1,0 +1,28 @@
+paper {
+  title: "Adaptive Layer-skipping in Pre-trained LLMs"
+  abbr: "FlexiDepth"
+  url: "http://arxiv.org/abs/2503.23798v1"
+  authors: "Xuan Luo"
+  authors: "Weizhi Wang"
+  authors: "Xifeng Yan"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig2.png"
+}
