@@ -18,6 +18,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------|-------:|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | AutoML Workshop |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
+<details open><summary><b>Alibaba Cloud</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [07NWF4VE](./meta/2025/07NWF4VE.prototxt) | [Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching](http://arxiv.org/abs/2504.06319v1) | <img width='400' alt='image' src='./notes/2025/07NWF4VE/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/07NWF4VE/note.md) |</p>
+</details>
 <details open><summary><b>Alibaba Group</b></summary> 
 <p>
 
@@ -78,6 +85,13 @@
 |  4 | [Bonsa](./meta/2024/Bonsa.prototxt)                 | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406)                 |                                                                              | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai)              |                                            |
 |  5 | [ShadowKV](./meta/2024/ShadowKV.prototxt)           | [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1)            | <img width='400' alt='image' src='./notes/2024/ShadowKV/shadowkv.png'>       | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV)        | [note](./notes/2024/ShadowKV/note.md)      |
 |  6 | [XGrammar](./meta/2024/XGrammar.prototxt)           | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'>           | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)           | [note](./notes/2024/XGrammar/note.md)      |</p>
+</details>
+<details open><summary><b>Central South University</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                               | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
+|  0 | [07NWF4VE](./meta/2025/07NWF4VE.prototxt) | [Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching](http://arxiv.org/abs/2504.06319v1) | <img width='400' alt='image' src='./notes/2025/07NWF4VE/fig1.png'> | arXiv |   2025 |            | [note](./notes/2025/07NWF4VE/note.md) |</p>
 </details>
 <details open><summary><b>Cerebras Systems</b></summary> 
 <p>
@@ -1068,6 +1082,13 @@
 |    | meta                                            | ttttttttttttttttttttttttttttttitle                                                                                       | ccccccccccccccccccover   | pub   |   year | codeeeee   | note                                     |
 |---:|:------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:-----------|:-----------------------------------------|
 |  0 | [SparseInfer](./meta/2024/SparseInfer.prototxt) | [SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference](http://arxiv.org/abs/2411.12692v1) |                          | DATE  |   2024 |            | [note](./notes/2024/SparseInfer/note.md) |</p>
+</details>
+<details open><summary><b>University of St Andrews</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                    | ccccccccccccccccccover                                           | pub   |   year | codeeeee   | note                                |
+|---:|:--------------------------------------|:------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------|:------------------------------------|
+|  0 | [Mosaic](./meta/2025/Mosaic.prototxt) | [Mosaic: Composite Projection Pruning for Resource-efficient LLMs](http://arxiv.org/abs/2504.06323v1) | <img width='400' alt='image' src='./notes/2025/Mosaic/fig6.png'> | arXiv |   2025 |            | [note](./notes/2025/Mosaic/note.md) |</p>
 </details>
 <details open><summary><b>University of Surrey</b></summary> 
 <p>
