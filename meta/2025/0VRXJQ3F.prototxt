@@ -1,0 +1,33 @@
+paper {
+  title: "Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving"
+  abbr: "0VRXJQ3F"
+  url: "http://arxiv.org/abs/2503.24000v1"
+  authors: "Wei Gao"
+  authors: "Xinyu Zhou"
+  authors: "Peng Sun"
+  authors: "Tianwei Zhang"
+  authors: "Yonggang Wen"
+  institutions: "Nanyang Technological University"
+  institutions: "Shanghai AI Laboratory"
+  institutions: "SenseTime"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/LLMkvsys/rethink-kv-compression"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+  words: survey
+}
+cover {
+  url: ""
+}

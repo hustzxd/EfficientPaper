@@ -572,9 +572,10 @@
 <details open><summary><b>Nanyang Technological University</b></summary> 
 <p>
 
-|    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                  | ccccccccccccccccccover   | pub     |   year | codeeeee                                                               | note   |
-|---:|:-----------------------------------|:--------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:-----------------------------------------------------------------------|:-------|
-|  0 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |                          | NeurIPS |   2017 | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS) |        |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover   | pub     |   year | codeeeee                                                                                  | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-------------------------|:--------|-------:|:------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [L-OBS](./meta/2017/lobs.prototxt)        | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf)     |                          | NeurIPS |   2017 | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS)                    |                                       |
+|  1 | [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) |                          | arXiv   |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |</p>
 </details>
 <details open><summary><b>National University of Singapore</b></summary> 
 <p>
@@ -742,6 +743,13 @@
 |---:|:-----------------------------------|:--------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------|:------|-------:|:-----------|:-------|
 |  0 | [m](./meta/2023/L5D7520E.prototxt) | [A Survey on Model Compression for Large Language Models](https://arxiv.org/abs/2308.07633) | <img width='400' alt='image' src='./notes/del/survey/compression_LLM.jpg'> | arXiv |   2023 |            |        |</p>
 </details>
+<details open><summary><b>SenseTime</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                  | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) |                          | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |</p>
+</details>
 <details open><summary><b>SenseTime Research</b></summary> 
 <p>
 
@@ -758,6 +766,13 @@
 |  0 | [K-pruning](./meta/2023/k_pruning.prototxt) | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449)                 | <img width='400' alt='image' src='./notes/2023/k_pruning/kp.jpg'> | arXiv |   2023 |                                                                            | [note](./notes/2023/k_pruning/note.md) |
 |  1 | [L4Q](./meta/2024/L4Q.prototxt)             | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'>      | arXiv |   2024 |                                                                            | [note](./notes/2024/L4Q/note.md)       |
 |  2 | [FastKV](./meta/2025/FastKV.prototxt)       | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | <img width='400' alt='image' src='./notes/2025/FastKV/fig2.png'>  | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md)    |</p>
+</details>
+<details open><summary><b>Shanghai AI Laboratory</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                  | note                                  |
+|---:|:------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:------------------------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) |                          | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |</p>
 </details>
 <details open><summary><b>Shanghai Artificial Intelligence Laboratory</b></summary> 
 <p>
