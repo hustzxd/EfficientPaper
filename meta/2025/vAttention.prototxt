@@ -1,0 +1,30 @@
+paper {
+  title: "vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention"
+  abbr: "vAttention"
+  url: "http://arxiv.org/abs/2405.04437v3"
+  authors: "Ramya Prabhu"
+  authors: "Ajay Nayak"
+  authors: "Jayashree Mohan"
+  authors: "Ramachandran Ramjee"
+  authors: "Ashish Panwar"
+  institutions: "Microsoft Research"
+  institutions: "Indian Institute of Science"
+}
+pub {
+  where: "ASPLOS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/vattention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: deployment
+}
+cover {
+  url: "fig5.png"
+}
