@@ -25,3 +25,5 @@ page selection policy that dynamically prunes KV pages based on query-centric
 similarity. On average, LServe accelerates LLM prefilling by up to 2.9x and
 decoding by 1.3-2.1x over vLLM, maintaining long-context accuracy. Code is
 released at https://github.com/mit-han-lab/omniserve.
+
+An efficient serving system for long sequence LLMs that leverages hybrid sparse attention.

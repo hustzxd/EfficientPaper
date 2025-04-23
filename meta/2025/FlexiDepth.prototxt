@@ -5,8 +5,7 @@ paper {
   authors: "Xuan Luo"
   authors: "Weizhi Wang"
   authors: "Xifeng Yan"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "UC Santa Barbara"
 }
 pub {
   where: "arXiv"

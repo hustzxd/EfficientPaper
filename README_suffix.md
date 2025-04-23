@@ -9,6 +9,8 @@
 6. https://github.com/AmadeusChan/Awesome-LLM-System-Papers
 7. https://github.com/KnowingNothing/compiler-and-arch
 8. https://papercopilot.com/paper-list
+9. https://github.com/TreeAI-Lab/Awesome-KV-Cache-Management
+10. https://github.com/October2001/Awesome-KV-Cache-Compression
 
 ### Cold
 1. https://github.com/he-y/Awesome-Pruning

@@ -11,7 +11,7 @@ paper {
   authors: "Bryan Catanzaro"
   authors: "Jan Kautz"
   authors: "Pavlo Molchanov"
-  institutions: "nvidia"
+  institutions: "NVIDIA"
 }
 pub {
   where: "arXiv"
