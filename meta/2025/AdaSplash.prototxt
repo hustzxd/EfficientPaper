@@ -1,0 +1,28 @@
+paper {
+  title: "AdaSplash: Adaptive Sparse Flash Attention"
+  abbr: "AdaSplash"
+  url: "http://arxiv.org/abs/2502.12082v1"
+  authors: "Nuno Gonçalves"
+  authors: "Marcos Treviso"
+  authors: "André F. T. Martins"
+  institutions: "Universidade de Lisboa"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/deep-spin/adasplash"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

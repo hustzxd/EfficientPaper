@@ -1,0 +1,35 @@
+paper {
+  title: "SCBench: A KV Cache-Centric Analysis of Long-Context Methods"
+  abbr: "SCBench"
+  url: "http://arxiv.org/abs/2412.10319v2"
+  authors: "Yucheng Li"
+  authors: "Huiqiang Jiang"
+  authors: "Qianhui Wu"
+  authors: "Xufang Luo"
+  authors: "Surin Ahn"
+  authors: "Chengruidong Zhang"
+  authors: "Amir H. Abdi"
+  authors: "Dongsheng Li"
+  authors: "Jianfeng Gao"
+  authors: "Yuqing Yang"
+  authors: "Lili Qiu"
+  institutions: "Microsoft"
+  institutions: "University of Surrey"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/MInference/tree/main/scbench"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: tool
+}
+cover {
+  url: ""
+}

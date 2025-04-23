@@ -76,26 +76,30 @@ keyword {
 6. [Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity](http://arxiv.org/abs/2412.02252v1) [ICML 2025]  
 7. [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) [arXiv 2025]  
 8. [Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching](http://arxiv.org/abs/2504.06319v1) [arXiv 2025]  
-9. [Adaptive Computation Pruning for the Forgetting Transformer](http://arxiv.org/abs/2504.06949v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/zhixuan-lin/arctic-fox) 
-10. [Adaptive Layer-skipping in Pre-trained LLMs](http://arxiv.org/abs/2503.23798v1) [arXiv 2025]  
-11. [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) [arXiv 2025]  
-12. [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) [arXiv 2025]  
-13. [DBudgetKV: Dynamic Budget in KV Cache Compression for Ensuring Optimal Performance](http://arxiv.org/abs/2502.16886v1) [arXiv 2025]  
-14. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
-15. [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1) [arXiv 2025]  
-16. [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV) 
-17. [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) [arXiv 2025]  
-18. [KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse](http://arxiv.org/abs/2502.16002v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/UCSB-NLP-Chang/KVLink) 
-19. [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve) 
-20. [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) 
-21. [Mosaic: Composite Projection Pruning for Resource-efficient LLMs](http://arxiv.org/abs/2504.06323v1) [arXiv 2025]  
-22. [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) [arXiv 2025]  
-23. [PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention](http://arxiv.org/abs/2503.03588v1) [arXiv 2025]  
-24. [Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving](http://arxiv.org/abs/2503.00392v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/PSAttention) 
-25. [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) 
-26. [SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference](http://arxiv.org/abs/2502.18137v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SpargeAttn) 
-27. [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) 
-28. kvpress [github 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) 
+9. [AdaSplash: Adaptive Sparse Flash Attention](http://arxiv.org/abs/2502.12082v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deep-spin/adasplash) 
+10. [Adaptive Computation Pruning for the Forgetting Transformer](http://arxiv.org/abs/2504.06949v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/zhixuan-lin/arctic-fox) 
+11. [Adaptive Layer-skipping in Pre-trained LLMs](http://arxiv.org/abs/2503.23798v1) [arXiv 2025]  
+12. [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) [arXiv 2025]  
+13. [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) [arXiv 2025]  
+14. [DBudgetKV: Dynamic Budget in KV Cache Compression for Ensuring Optimal Performance](http://arxiv.org/abs/2502.16886v1) [arXiv 2025]  
+15. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
+16. [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1) [arXiv 2025]  
+17. [Exploiting Sparsity for Long Context Inference: Million Token Contexts on Commodity GPUs](http://arxiv.org/abs/2502.06766v2) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/ryansynk/topk-decoding) 
+18. [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV) 
+19. [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer) 
+20. [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) [arXiv 2025]  
+21. [KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse](http://arxiv.org/abs/2502.16002v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/UCSB-NLP-Chang/KVLink) 
+22. [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve) 
+23. [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) 
+24. [Mosaic: Composite Projection Pruning for Resource-efficient LLMs](http://arxiv.org/abs/2504.06323v1) [arXiv 2025]  
+25. [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) [arXiv 2025]  
+26. [PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention](http://arxiv.org/abs/2503.03588v1) [arXiv 2025]  
+27. [Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving](http://arxiv.org/abs/2503.00392v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/PSAttention) 
+28. [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) 
+29. [SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference](http://arxiv.org/abs/2502.18137v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SpargeAttn) 
+30. [Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads](http://arxiv.org/abs/2501.15113v1) [arXiv 2025]  
+31. [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) 
+32. kvpress [github 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) 
 </p>
 </details>
 <details open><summary><b>2024</b></summary> 
@@ -170,15 +174,18 @@ keyword {
 67. [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention) 
 68. [Reducing Transformer Key-Value Cache Size with Cross-Layer Attention](http://arxiv.org/abs/2405.12981v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/JerryYin777/Cross-Layer-Attention) 
 69. [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) 
-70. [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) [arXiv 2024]  
-71. [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) 
-72. [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) 
-73. [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) 
-74. [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV) 
-75. [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) 
-76. [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) 
-77. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
-78. [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) 
+70. [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) 
+71. [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) [arXiv 2024]  
+72. [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) 
+73. [ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference](http://arxiv.org/abs/2410.21465v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/ShadowKV) 
+74. [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm) 
+75. [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV) 
+76. [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) 
+77. [Star Attention: Efficient LLM Inference over Long Sequences](http://arxiv.org/abs/2411.17116v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/Star-Attention) 
+78. [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) 
+79. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [arXiv 2024] [Pytorch](https://huggingface.co/PowerInfer) 
+80. [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) [arXiv 2024] ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) 
+81. [ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty](http://arxiv.org/abs/2412.09036v1) [arXiv 2024]  
 </p>
 </details>
 <details open><summary><b>2023</b></summary> 
@@ -212,32 +219,33 @@ keyword {
 26. [Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers](https://arxiv.org/abs/2305.15805) [arXiv 2023]  
 27. [Efficient Guided Generation for Large Language Models](http://arxiv.org/abs/2307.09702v4) [arXiv 2023]  
 28. [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) 
-29. [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) 
-30. [Gradient-Free Structured Pruning with Unlabeled Data](https://arxiv.org/abs/2303.04185) [arXiv 2023]  
-31. [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) 
-32. [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449) [arXiv 2023]  
-33. [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) [arXiv 2023]  
-34. [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) 
-35. [LoRAShear: Efficient Large Language Model Structured Pruning and Knowledge Recovery](https://arxiv.org/abs/2310.18356) [arXiv 2023]  
-36. [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) 
-37. [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) 
-38. [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) 
-39. [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) 
-40. [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) [arXiv 2023]  
-41. [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/artidoro/qlora) 
-42. [QuIP: Quantization with Incoherence Processing](https://arxiv.org/pdf/2307.13304.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/jerry-chee/QuIP) 
-43. [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) 
-44. [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) 
-45. [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/pdf/2306.03078.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/Vahe1994/SpQR) 
-46. [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) 
-47. [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) 
-48. [Sparse Model Soups: A Recipe for Improved Pruning via Model Averaging](https://arxiv.org/abs/2306.16788) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/ZIB-IOL/SMS) 
-49. [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) [arXiv 2023]  
-50. [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) 
-51. [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) 
-52. [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context) 
-53. [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) 
-54. [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) [github 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/FasterTransformer) 
+29. [Flash-Decoding for long-context inference](https://crfm.stanford.edu/2023/10/12/flashdecoding.html) [arXiv 2023]  
+30. [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) 
+31. [Gradient-Free Structured Pruning with Unlabeled Data](https://arxiv.org/abs/2303.04185) [arXiv 2023]  
+32. [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) 
+33. [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449) [arXiv 2023]  
+34. [LLM in a flash: Efficient Large Language Model Inference with Limited Memory](http://arxiv.org/abs/2312.11514) [arXiv 2023]  
+35. [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) 
+36. [LoRAShear: Efficient Large Language Model Structured Pruning and Knowledge Recovery](https://arxiv.org/abs/2310.18356) [arXiv 2023]  
+37. [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) 
+38. [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) 
+39. [Post-training Quantization for Neural Networks with Provable Guarantees](https://arxiv.org/pdf/2201.11113.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/YixuanSeanZhou/Quantized_Neural_Nets) 
+40. [PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU](http://arxiv.org/abs/2312.12456v1) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/SJTU-IPADS/PowerInfer) 
+41. [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) [arXiv 2023]  
+42. [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/artidoro/qlora) 
+43. [QuIP: Quantization with Incoherence Processing](https://arxiv.org/pdf/2307.13304.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/jerry-chee/QuIP) 
+44. [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/pdf/2304.01089.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/hahnyuan/RPTQ4LLM) 
+45. [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing) 
+46. [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/pdf/2306.03078.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/Vahe1994/SpQR) 
+47. [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) 
+48. [Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](https://arxiv.org/abs/2303.11525) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT) 
+49. [Sparse Model Soups: A Recipe for Improved Pruning via Model Averaging](https://arxiv.org/abs/2306.16788) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/ZIB-IOL/SMS) 
+50. [Ten Lessons We Have Learned in the New Sparseland: A Short Handbook for Sparse Neural Network Researchers](https://arxiv.org/abs/2302.02596) [arXiv 2023]  
+51. [The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter](https://arxiv.org/abs/2306.03805) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/VITA-Group/essential_sparsity) 
+52. [Training Transformers with 4-bit Integers](https://arxiv.org/abs//2306.11987) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/xijiu9/Train_Transformers_with_INT4) 
+53. [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context) 
+54. [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) [arXiv 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) 
+55. [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) [github 2023] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/FasterTransformer) 
 </p>
 </details>
 <details open><summary><b>2022</b></summary> 

@@ -1,0 +1,28 @@
+paper {
+  title: "Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads"
+  abbr: "Task-KV"
+  url: "http://arxiv.org/abs/2501.15113v1"
+  authors: "Xingyang He"
+  authors: "Jie Liu"
+  authors: "Shaowei Chen"
+  institutions: "NanKai University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig6.png"
+}

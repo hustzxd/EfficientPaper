@@ -46,6 +46,22 @@
 |  1 | [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt)       | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4)                                           | <img width='400' alt='image' src='./notes/2024/SqueezeLLM/squeezeLLM.png'> | ICML    |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)            | [note](./notes/2024/SqueezeLLM/note.md)    |
 |  2 | [KVQuant](./meta/2024/KVQuant.prototxt)             | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |                                                                            | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)               | [note](./notes/2024/KVQuant/note.md)       |</p>
 </details>
+<details open><summary><b>Amir H. Abdi</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
+</details>
+<details open><summary><b>André F. T. Martins</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                      | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt)          | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                               |                                        |
+|  1 | [AdaSplash](./meta/2025/AdaSplash.prototxt) | [AdaSplash: Adaptive Sparse Flash Attention](http://arxiv.org/abs/2502.12082v1)                 |                                                                          | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deep-spin/adasplash) | [note](./notes/2025/AdaSplash/note.md) |</p>
+</details>
 <details open><summary><b>Aojun Zhou</b></summary> 
 <p>
 
@@ -62,6 +78,14 @@
 |---:|:--------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:---------------------------------------|
 |  0 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2)                 | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | arXiv |   2025 |                                                                                 | [note](./notes/2025/IFPruning/note.md) |
 |  1 | [KVLink](./meta/2025/KVLink.prototxt)       | [KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse](http://arxiv.org/abs/2502.16002v1) | <img width='400' alt='image' src='./notes/2025/KVLink/fig1.png'>    | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/UCSB-NLP-Chang/KVLink) | [note](./notes/2025/KVLink/note.md)    |</p>
+</details>
+<details open><summary><b>Baris Kasikci</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                     | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                           | note                                    |
+|---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [Quest](./meta/2024/Quest.prototxt)           | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774)                | <img width='400' alt='image' src='./notes/2024/Quest/quest.png'> | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)        | [note](./notes/2024/Quest/note.md)      |
+|  1 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2) |                                                                  | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |</p>
 </details>
 <details open><summary><b>Bei Feng</b></summary> 
 <p>
@@ -149,6 +173,14 @@
 |  0 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                              | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)  | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  1 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | <img width='400' alt='image' src='./notes/2024/DeepSeekMoE/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1)        | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)  | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Chengruidong Zhang</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
 </details>
 <details open><summary><b>Chenyang Song</b></summary> 
 <p>
@@ -283,6 +315,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Dongsheng Li</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
 </details>
 <details open><summary><b>Eldar Kurtic</b></summary> 
 <p>
@@ -564,6 +604,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Huiqiang Jiang</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
 </details>
 <details open><summary><b>Iman Mirzadeh</b></summary> 
 <p>
@@ -908,6 +956,14 @@
 |  3 | [SGLang](./meta/2024/SGLang.prototxt)                  | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2)                     | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'>         | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)       | [note](./notes/2024/SGLang/note.md)         |
 |  4 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt)  | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2)                                   |                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |</p>
 </details>
+<details open><summary><b>Lili Qiu</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
+</details>
 <details open><summary><b>Litong Wang</b></summary> 
 <p>
 
@@ -941,6 +997,14 @@
 |  0 | [ProSparse](./meta/2024/ProSparse.prototxt)     | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md)   |
 |  1 | [ReLU2](./meta/2024/ReLU2.prototxt)             | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804)                          | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'>    | arXiv |   2024 |                                                                                                | [note](./notes/2024/ReLU2/note.md)       |
 |  2 | [SparsingLaw](./meta/2024/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](http://arxiv.org/abs/2411.02335v1)                   | <img width='400' alt='image' src='./notes/2024/SparsingLaw/fig4.png'>    | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw)                   | [note](./notes/2024/SparsingLaw/note.md) |</p>
+</details>
+<details open><summary><b>Marcos Treviso</b></summary> 
+<p>
+
+|    | meta                                        | ttttttttttttttttttttttttttttttitle                                                              | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                      | note                                   |
+|---:|:--------------------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------|:---------------------------------------|
+|  0 | [m](./meta/2023/68I8KKBV.prototxt)          | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                               |                                        |
+|  1 | [AdaSplash](./meta/2025/AdaSplash.prototxt) | [AdaSplash: Adaptive Sparse Flash Attention](http://arxiv.org/abs/2502.12082v1)                 |                                                                          | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deep-spin/adasplash) | [note](./notes/2025/AdaSplash/note.md) |</p>
 </details>
 <details open><summary><b>Mark Kurtz</b></summary> 
 <p>
@@ -1108,6 +1172,14 @@
 |  0 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  1 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Qianhui Wu</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
+</details>
 <details open><summary><b>Qihao Zhu</b></summary> 
 <p>
 
@@ -1168,6 +1240,14 @@
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:----------------------------------|
 |  0 | [m](./meta/2023/68I8KKBV.prototxt) | [Efficient Methods for Natural Language Processing: A Survey](https://arxiv.org/abs/2209.00099) | <img width='400' alt='image' src='./notes/del/survey/efficient_NLP.jpg'> | TACL  |   2023 |                                                                                 |                                   |
 |  1 | [TOVA](./meta/2024/TOVA.prototxt)  | [Transformers are Multi-State RNNs](http://arxiv.org/abs/2401.06104v2)                          | <img width='400' alt='image' src='./notes/2024/TOVA/tova.png'>           | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/schwartz-lab-NLP/TOVA) | [note](./notes/2024/TOVA/note.md) |</p>
+</details>
+<details open><summary><b>Ruihang Lai</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                           | note                                    |
+|---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt)     | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)          | [note](./notes/2024/XGrammar/note.md)   |
+|  1 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2)       |                                                                    | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |</p>
 </details>
 <details open><summary><b>Ruiqi Ge</b></summary> 
 <p>
@@ -1442,6 +1522,14 @@
 |  9 | [LServer](./meta/2025/LServer.prototxt)                  | [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1)                                                               | <img width='400' alt='image' src='./notes/2025/LServer/fig5.png'>              | arXiv         |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve)     | [note](./notes/2025/LServer/note.md)       |
 | 10 | [XAttention](./meta/2025/XAttention.prototxt)            | [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1)                                                                            | <img width='400' alt='image' src='./notes/2025/XAttention/fig1.png'>           | arXiv         |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention)   | [note](./notes/2025/XAttention/note.md)    |</p>
 </details>
+<details open><summary><b>Surin Ahn</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
+</details>
 <details open><summary><b>T. Wang</b></summary> 
 <p>
 
@@ -1483,6 +1571,14 @@
 |---:|:-----------------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------|:--------------------------------------|
 |  0 | [H2O](./meta/2023/H2O.prototxt)    | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048)  | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md)      |
 |  1 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                                                              | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |</p>
+</details>
+<details open><summary><b>Tianqi Chen</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                           | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                           | note                                    |
+|---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [XGrammar](./meta/2024/XGrammar.prototxt)     | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | <img width='400' alt='image' src='./notes/2024/XGrammar/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)          | [note](./notes/2024/XGrammar/note.md)   |
+|  1 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2)       |                                                                    | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |</p>
 </details>
 <details open><summary><b>Tianyu Fu</b></summary> 
 <p>
@@ -1529,10 +1625,11 @@
 <details open><summary><b>Tri Dao</b></summary> 
 <p>
 
-|    | meta                                                     | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                    | pub     |   year | codeeeee                                                                            | note   |
-|---:|:---------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|:--------|-------:|:------------------------------------------------------------------------------------|:-------|
-|  0 | [FlashAttention](./meta/2022/flashattention.prototxt)    | [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135)      | <img width='400' alt='image' src='./notes/2022/flashattention/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |        |
-|  1 | [FlashAttention-2](./meta/2023/flashattention2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) |                                                                           | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |        |</p>
+|    | meta                                                     | ttttttttttttttttttttttttttttttitle                                                                                   | ccccccccccccccccccover                                                    | pub     |   year | codeeeee                                                                            | note                                       |
+|---:|:---------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|:--------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [FlashAttention](./meta/2022/flashattention.prototxt)    | [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135)      | <img width='400' alt='image' src='./notes/2022/flashattention/cover.jpg'> | NeurIPS |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |                                            |
+|  1 | [Flash-Decoding](./meta/2023/FlashDecoding.prototxt)     | [Flash-Decoding for long-context inference](https://crfm.stanford.edu/2023/10/12/flashdecoding.html)                 |                                                                           | arXiv   |   2023 |                                                                                     | [note](./notes/2023/FlashDecoding/note.md) |
+|  2 | [FlashAttention-2](./meta/2023/flashattention2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) |                                                                           | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention) |                                            |</p>
 </details>
 <details open><summary><b>Tuo Zhao</b></summary> 
 <p>
@@ -1930,6 +2027,14 @@
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2)                       | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |                                                                        | [note](./notes/2024/DHIB73MC/note.md) |
 |  1 | [MoA](./meta/2024/MoA.prototxt)    | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>                     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md)      |</p>
 </details>
+<details open><summary><b>Xufang Luo</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
+</details>
 <details open><summary><b>Xuheng Lin</b></summary> 
 <p>
 
@@ -2261,7 +2366,8 @@
 |    | meta                                                        | ttttttttttttttttttttttttttttttitle                                                                                                                            | ccccccccccccccccccover                                                                   | pub     |   year | codeeeee                                                                                | note                                    |
 |---:|:------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|:--------|-------:|:----------------------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [Selective Context](./meta/2023/selective_context.prototxt) | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) | <img width='400' alt='image' src='./notes/2023/selective_context/selective_context.jpg'> | arXiv   |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context) |                                         |
-|  1 | [MInference](./meta/2024/MInference.prototxt)               | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1)                              | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'>        | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)          | [note](./notes/2024/MInference/note.md) |</p>
+|  1 | [MInference](./meta/2024/MInference.prototxt)               | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1)                              | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'>        | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)          | [note](./notes/2024/MInference/note.md) |
+|  2 | [SCBench](./meta/2024/SCBench.prototxt)                     | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                                             |                                                                                          | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)          | [note](./notes/2024/SCBench/note.md)    |</p>
 </details>
 <details open><summary><b>Yuduan Wang</b></summary> 
 <p>
@@ -2346,6 +2452,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Yuqing Yang</b></summary> 
+<p>
+
+|    | meta                                          | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                                            | pub     |   year | codeeeee                                                                       | note                                    |
+|---:|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------|-------:|:-------------------------------------------------------------------------------|:----------------------------------------|
+|  0 | [MInference](./meta/2024/MInference.prototxt) | [MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention](http://arxiv.org/abs/2407.02490v1) | <img width='400' alt='image' src='./notes/2024/MInference/MInference_3shape.PNG'> | NeurIPS |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/MInference/note.md) |
+|  1 | [SCBench](./meta/2024/SCBench.prototxt)       | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2)                                |                                                                                   | arXiv   |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference) | [note](./notes/2024/SCBench/note.md)    |</p>
 </details>
 <details open><summary><b>Yuting Yan</b></summary> 
 <p>
