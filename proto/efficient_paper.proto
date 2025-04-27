@@ -45,7 +45,7 @@ message Keyword {
         quantization = 3;
         survey = 4;
         low_rank = 5;
-	    fusion = 6;
+        fusion = 6;
         tool = 7;
         kv_cache = 8;
         training = 9;
