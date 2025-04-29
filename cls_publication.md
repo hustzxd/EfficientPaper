@@ -169,6 +169,13 @@
 | 18 | [TinyTrain](./meta/2024/TinyTrain.prototxt)   | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2)               |                                                                            | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain)         | [note](./notes/2024/TinyTrain/note.md)  |
 | 19 | [PoD](./meta/2025/PoD.prototxt)               | [Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity](http://arxiv.org/abs/2412.02252v1)             | <img width='400' alt='image' src='./notes/2025/PoD/fig2.png'>              | ICML  |   2025 |                                                                                          | [note](./notes/2025/PoD/note.md)        |</p>
 </details>
+<details open><summary><b>ISCA</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                      | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                     | note                                |
+|---:|:--------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:------------------------------------|
+|  0 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | <img width='400' alt='image' src='./notes/2025/SpecEE/fig9.png'> | ISCA  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |</p>
+</details>
 <details open><summary><b>JMLR</b></summary> 
 <p>
 
