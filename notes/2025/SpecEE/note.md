@@ -28,11 +28,11 @@ speedup with Llama2-7B on cloud and PC scenarios respectively.
 
 - 使用Eagle的draft model生成topk的token
 - 大模型的每一层都经过 topk 的小lm_head，
-  - 生成Speculative Token Logits
-  - 再生成Local Probabilities
-  - 与上一层的Local Probabilities进行对比，得到Probability variation
+  - 特征1: 生成Speculative Token Logits
+  - 特征2: 再生成Local Probabilities
+  - 特征3: 与上一层的Local Probabilities进行对比，得到Probability variation
   - 根据三个特征，经过预测期预测是否要Early Exit
-    - 确定Early Exit，计算大lm_head，判断是否与小lm_head的top1一致
-      - 一致，推理提前技术
+    - 是: 确定Early Exit，计算大lm_head，判断是否与小lm_head的top1一致
+      - 一致，推理提前退出
       - 不一致，继续算下一层
-    - 继续算下一层
+    - 否: 继续算下一层

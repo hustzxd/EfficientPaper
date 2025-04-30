@@ -1,0 +1,34 @@
+paper {
+  title: "KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference"
+  abbr: "KeepKV"
+  url: "http://arxiv.org/abs/2504.09936v1"
+  authors: "Yuxuan Tian"
+  authors: "Zihan Wang"
+  authors: "Yebo Peng"
+  authors: "Aomufei Yuan"
+  authors: "Zhiming Wang"
+  authors: "Bairen Yi"
+  authors: "Xin Liu"
+  authors: "Yong Cui"
+  authors: "Tong Yang"
+  institutions: "Peking University"
+  institutions: "ByteDance"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: "fig1.png"
+}
