@@ -402,6 +402,13 @@
 |  0 | [FLAP](./meta/2024/flap.prototxt)    | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983)                      | <img width='400' alt='image' src='./notes/del/flap.jpg'>          | AAAI  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP)                                                | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |
 |  1 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |                                                                       |</p>
 </details>
+<details open><summary><b>Institute of Computing Technology</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                          | pub    |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------|:----------------------------------------------------------------|:-------|-------:|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1) | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ASPLOS |   2025 |            | [note](./notes/2025/COMET/note.md) |</p>
+</details>
 <details open><summary><b>Institute of Computing Technology, Chinese Academy of Sciences</b></summary> 
 <p>
 
@@ -700,6 +707,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2023/IHOT8YP4.prototxt) | [Efficient Guided Generation for Large Language Models](http://arxiv.org/abs/2307.09702v4) | <img width='400' alt='image' src='./notes/2023/IHOT8YP4/fig1.png'> | arXiv |   2023 |            | [note](./notes/2023/IHOT8YP4/note.md) |</p>
 </details>
+<details open><summary><b>North China Electric Power University</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                          | pub    |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------|:----------------------------------------------------------------|:-------|-------:|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1) | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ASPLOS |   2025 |            | [note](./notes/2025/COMET/note.md) |</p>
+</details>
 <details open><summary><b>Northeastern University</b></summary> 
 <p>
 
@@ -908,6 +922,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                             | ccccccccccccccccccover                                                           | pub   |   year | codeeeee   | note                                  |
 |---:|:-----------------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
 |  0 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | <img width='400' alt='image' src='./notes/2024/DHIB73MC/efficientinference.png'> | arXiv |   2024 |            | [note](./notes/2024/DHIB73MC/note.md) |</p>
+</details>
+<details open><summary><b>ShanghaiTech University</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                          | pub    |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:----------------------------------------------------------------------------------|:----------------------------------------------------------------|:-------|-------:|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1) | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ASPLOS |   2025 |            | [note](./notes/2025/COMET/note.md) |</p>
 </details>
 <details open><summary><b>Sogang University</b></summary> 
 <p>
@@ -1166,9 +1187,10 @@
 <details open><summary><b>University of Chinese Academy of Sciences</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub   |   year | codeeeee   | note                                  |
-|---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                       | ccccccccccccccccccover                                                 | pub    |   year | codeeeee   | note                                  |
+|---:|:------------------------------------------|:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:-------|-------:|:-----------|:--------------------------------------|
+|  0 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | <img width='400' alt='image' src='./notes/2024/Q-Sparse/q-sparse.png'> | arXiv  |   2024 |            | [note](./notes/2024/Q-Sparse/note.md) |
+|  1 | [COMET](./meta/2025/COMET.prototxt)       | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                        | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'>        | ASPLOS |   2025 |            | [note](./notes/2025/COMET/note.md)    |</p>
 </details>
 <details open><summary><b>University of Connecticut</b></summary> 
 <p>

@@ -959,6 +959,14 @@
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Lian Liu</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                          | pub    |   year | codeeeee   | note                               |
+|---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:-------|-------:|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ASPLOS |   2025 |            | [note](./notes/2025/COMET/note.md) |
+|  1 | [SDS](./meta/2025/SDS.prototxt)     | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>    | Coling |   2025 |            | [note](./notes/2025/SDS/note.md)   |</p>
+</details>
 <details open><summary><b>Liang Zhao</b></summary> 
 <p>
 
