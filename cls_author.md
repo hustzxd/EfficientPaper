@@ -71,6 +71,14 @@
 |  1 | [STA](./meta/2022/44KWQAWO.prototxt)  | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |                                                                    | VLSI  |   2022 |                                                                               |                                  |
 |  2 | [SPP](./meta/2024/SPP.prototxt)       | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1)    | <img width='400' alt='image' src='./notes/2024/SPP/spp.png'>       | ICML  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)     | [note](./notes/2024/SPP/note.md) |</p>
 </details>
+<details open><summary><b>Ashish Panwar</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                                  | pub    |   year | codeeeee                                                                       | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
+|  1 | [vAttention](./meta/2025/vAttention.prototxt)       | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'>    | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md)    |</p>
+</details>
 <details open><summary><b>Bairu Hou</b></summary> 
 <p>
 
@@ -665,6 +673,14 @@
 |  0 | [MeZO](./meta/2023/MeZO.prototxt)  | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3)                                   |                          | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md)     |
 |  1 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |                          | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM)    | [note](./notes/2024/SN1PK7EK/note.md) |</p>
 </details>
+<details open><summary><b>Jayashree Mohan</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                                  | pub    |   year | codeeeee                                                                       | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
+|  1 | [vAttention](./meta/2025/vAttention.prototxt)       | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'>    | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md)    |</p>
+</details>
 <details open><summary><b>Jeff Pool</b></summary> 
 <p>
 
@@ -1233,6 +1249,22 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Ramachandran Ramjee</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                                  | pub    |   year | codeeeee                                                                       | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
+|  1 | [vAttention](./meta/2025/vAttention.prototxt)       | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'>    | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md)    |</p>
+</details>
+<details open><summary><b>Ramya Prabhu</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                 | ccccccccccccccccccover                                                  | pub    |   year | codeeeee                                                                       | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-------|-------:|:-------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
+|  1 | [vAttention](./meta/2025/vAttention.prototxt)       | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'>    | ASPLOS |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md)    |</p>
 </details>
 <details open><summary><b>Rayan Saab</b></summary> 
 <p>

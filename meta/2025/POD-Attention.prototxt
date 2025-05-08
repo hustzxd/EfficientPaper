@@ -1,0 +1,31 @@
+paper {
+  title: "POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference"
+  abbr: "POD-Attention"
+  url: "http://arxiv.org/abs/2410.18038v2"
+  authors: "Aditya K Kamath"
+  authors: "Ramya Prabhu"
+  authors: "Jayashree Mohan"
+  authors: "Simon Peter"
+  authors: "Ramachandran Ramjee"
+  authors: "Ashish Panwar"
+  institutions: "University of Washington"
+  institutions: "Microsoft Research"
+}
+pub {
+  where: "ASPLOS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/vattention/tree/main/pod_attn"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: deployment
+}
+cover {
+  url: "fig2.png"
+}
