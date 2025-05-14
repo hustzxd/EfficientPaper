@@ -394,6 +394,13 @@
 |  0 | [MoA](./meta/2024/MoA.prototxt)       | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2)    | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'>     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)       | [note](./notes/2024/MoA/note.md)    |
 |  1 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | <img width='400' alt='image' src='./notes/2025/SpecEE/fig9.png'> | ISCA  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |</p>
 </details>
+<details open><summary><b>Institute for Advanced Algorithms Research</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                       | ccccccccccccccccccover                                         | pub   |   year | codeeeee                                                                     | note                              |
+|---:|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:----------------------------------|
+|  0 | [SEAP](./meta/2025/SEAP.prototxt) | [SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models](http://arxiv.org/abs/2503.07605v1) | <img width='400' alt='image' src='./notes/2025/SEAP/fig2.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/IAAR-Shanghai/SEAP) | [note](./notes/2025/SEAP/note.md) |</p>
+</details>
 <details open><summary><b>Institute of Automation, Chinese Academy of Sciences</b></summary> 
 <p>
 
@@ -797,9 +804,10 @@
 <details open><summary><b>Renmin University of China</b></summary> 
 <p>
 
-|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                    | ccccccccccccccccccover                                             | pub   |   year | codeeeee   | note                                  |
-|---:|:------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------|:--------------------------------------|
-|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1) | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |            | [note](./notes/2025/Acc-SpMM/note.md) |</p>
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                                                                       | ccccccccccccccccccover                                             | pub   |   year | codeeeee                                                                     | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [Acc-SpMM](./meta/2025/Acc-SpMM.prototxt) | [Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores](http://arxiv.org/abs/2501.09251v1)    | <img width='400' alt='image' src='./notes/2025/Acc-SpMM/fig3.png'> | arXiv |   2025 |                                                                              | [note](./notes/2025/Acc-SpMM/note.md) |
+|  1 | [SEAP](./meta/2025/SEAP.prototxt)         | [SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models](http://arxiv.org/abs/2503.07605v1) | <img width='400' alt='image' src='./notes/2025/SEAP/fig2.png'>     | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/IAAR-Shanghai/SEAP) | [note](./notes/2025/SEAP/note.md)     |</p>
 </details>
 <details open><summary><b>Rice University</b></summary> 
 <p>
