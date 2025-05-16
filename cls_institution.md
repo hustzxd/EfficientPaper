@@ -128,9 +128,10 @@
 <details open><summary><b>Cohere</b></summary> 
 <p>
 
-|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                        | note                                |
-|---:|:--------------------------------------|:--------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------|:------------------------------------|
-|  0 | [SnapKV](./meta/2024/SnapKV.prototxt) | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) | <img width='400' alt='image' src='./notes/2024/SnapKV/fig1.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV) | [note](./notes/2024/SnapKV/note.md) |</p>
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                              | note                                         |
+|---:|:--------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------|
+|  0 | [SnapKV](./meta/2024/SnapKV.prototxt)                   | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2)         | <img width='400' alt='image' src='./notes/2024/SnapKV/fig1.png'>         | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV)       | [note](./notes/2024/SnapKV/note.md)          |
+|  1 | [sparse-frontier](./meta/2025/sparse-frontier.prototxt) | [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) | <img width='400' alt='image' src='./notes/2025/sparse-frontier/tb1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) | [note](./notes/2025/sparse-frontier/note.md) |</p>
 </details>
 <details open><summary><b>Comenius University</b></summary> 
 <p>
@@ -514,9 +515,10 @@
 <details open><summary><b>Meta</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                   | ccccccccccccccccccover                                           | pub   |   year | codeeeee                                                                 | note                               |
-|---:|:------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:------|-------:|:-------------------------------------------------------------------------|:-----------------------------------|
-|  0 | [Wanda](./meta/2024/Wanda.prototxt) | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda) | [note](./notes/2024/Wanda/note.md) |</p>
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                              | note                                         |
+|---:|:--------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------|
+|  0 | [Wanda](./meta/2024/Wanda.prototxt)                     | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695)      | <img width='400' alt='image' src='./notes/2024/Wanda/wanda.png'>         | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)              | [note](./notes/2024/Wanda/note.md)           |
+|  1 | [sparse-frontier](./meta/2025/sparse-frontier.prototxt) | [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) | <img width='400' alt='image' src='./notes/2025/sparse-frontier/tb1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) | [note](./notes/2025/sparse-frontier/note.md) |</p>
 </details>
 <details open><summary><b>Meta AI</b></summary> 
 <p>
@@ -1206,6 +1208,13 @@
 |    | meta                               | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover   | pub   |   year | codeeeee                                                                                            | note   |
 |---:|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2022/XZBX1Z9G.prototxt) | [Sparse Progressive Distillation: Resolving Overfitting under Pretrain-and-Finetune Paradigm](https://aclanthology.org/2022.acl-long.16/) |                          | ACL   |   2022 | ![GitHub Repo stars](https://img.shields.io/github/stars/shaoyiHusky/SparseProgressiveDistillation) |        |</p>
+</details>
+<details open><summary><b>University of Edinburgh</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                        | ccccccccccccccccccover                                                   | pub   |   year | codeeeee                                                                              | note                                         |
+|---:|:--------------------------------------------------------|:----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------|-------:|:--------------------------------------------------------------------------------------|:---------------------------------------------|
+|  0 | [sparse-frontier](./meta/2025/sparse-frontier.prototxt) | [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) | <img width='400' alt='image' src='./notes/2025/sparse-frontier/tb1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) | [note](./notes/2025/sparse-frontier/note.md) |</p>
 </details>
 <details open><summary><b>University of Electronic Science and Technology of China</b></summary> 
 <p>

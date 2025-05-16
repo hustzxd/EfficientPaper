@@ -1,0 +1,32 @@
+paper {
+  title: "The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs"
+  abbr: "sparse-frontier"
+  url: "http://arxiv.org/abs/2504.17768v1"
+  authors: "Piotr Nawrot"
+  authors: "Robert Li"
+  authors: "Renjie Huang"
+  authors: "Sebastian Ruder"
+  authors: "Kelly Marchisio"
+  authors: "Edoardo M. Ponti"
+  institutions: "University of Edinburgh"
+  institutions: "Cohere"
+  institutions: "Meta"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/PiotrNawrot/sparse-frontier"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+  words: attention_sparsity
+}
+cover {
+  url: "tb1.png"
+}
