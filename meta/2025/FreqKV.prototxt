@@ -1,0 +1,32 @@
+paper {
+  title: "FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension"
+  abbr: "FreqKV"
+  url: "http://arxiv.org/abs/2505.00570v2"
+  authors: "Jushi Kai"
+  authors: "Boyi Zeng"
+  authors: "Yixuan Wang"
+  authors: "Haoli Bai"
+  authors: "Ziwei He"
+  authors: "Bo Jiang"
+  authors: "Zhouhan Lin"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Huawei Noah’s Ark Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}

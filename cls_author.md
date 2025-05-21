@@ -531,6 +531,14 @@
 |  1 | [SpargeAttn](./meta/2025/SpargeAttn.prototxt) | [SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference](http://arxiv.org/abs/2502.18137v1)          | <img width='400' alt='image' src='./notes/2025/SpargeAttn/fig3.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SpargeAttn)       | [note](./notes/2025/SpargeAttn/note.md) |
 |  2 | [XAttention](./meta/2025/XAttention.prototxt) | [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1)                    | <img width='400' alt='image' src='./notes/2025/XAttention/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) | [note](./notes/2025/XAttention/note.md) |</p>
 </details>
+<details open><summary><b>Haoli Bai</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                                                                    | note                                |
+|---:|:--------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:----------------------------------------------------------------------------------------------------------------------------|:------------------------------------|
+|  0 | [RIA](./meta/2024/IA8CS3VH.prototxt)  | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | <img width='400' alt='image' src='./notes/del/Plug-and-Play.jpg'> | ICLR  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |                                     |
+|  1 | [FreqKV](./meta/2025/FreqKV.prototxt) | [FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension](http://arxiv.org/abs/2505.00570v2)       | <img width='400' alt='image' src='./notes/2025/FreqKV/fig2.png'>  | arXiv |   2025 |                                                                                                                             | [note](./notes/2025/FreqKV/note.md) |</p>
+</details>
 <details open><summary><b>Haotian Tang</b></summary> 
 <p>
 
