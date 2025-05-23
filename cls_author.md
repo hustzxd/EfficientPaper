@@ -1205,6 +1205,14 @@
 |  0 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ICLR  |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |                                    |
 |  1 | [LoftQ](./meta/2023/loftq.prototxt)     | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659)        | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'>     | arXiv |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ)      | [note](./notes/2023/loftq/note.md) |</p>
 </details>
+<details open><summary><b>Pengfei Zuo</b></summary> 
+<p>
+
+|    | meta                                    | ttttttttttttttttttttttttttttttitle                                                                                                       | ccccccccccccccccccover                                            | pub   |   year | codeeeee                                                                     | note                                 |
+|---:|:----------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------|:-------------------------------------|
+|  0 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1)                     | <img width='400' alt='image' src='./notes/2025/AdaSkip/fig1.png'> | AAAI  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip)     | [note](./notes/2025/AdaSkip/note.md) |
+|  1 | [PSA](./meta/2025/PSA.prototxt)         | [Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving](http://arxiv.org/abs/2503.00392v1) | <img width='400' alt='image' src='./notes/2025/PSA/fig4.png'>     | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/PSAttention) | [note](./notes/2025/PSA/note.md)     |</p>
+</details>
 <details open><summary><b>Qiancheng Wang</b></summary> 
 <p>
 

@@ -25,6 +25,7 @@ note {
   url: "note.md"
 }
 keyword {
+  words: structured_sparsity
   words: sparse_pruning
   words: structure_design
 }
