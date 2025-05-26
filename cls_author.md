@@ -122,6 +122,14 @@
 |  0 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | <img width='400' alt='image' src='./notes/2024/CachedAttention/fig5.png'> | ATC   |   2024 |                                                                          | [note](./notes/2024/CachedAttention/note.md) |
 |  1 | [AdaSkip](./meta/2025/AdaSkip.prototxt)                 | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1)               | <img width='400' alt='image' src='./notes/2025/AdaSkip/fig1.png'>         | AAAI  |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md)         |</p>
 </details>
+<details open><summary><b>Bin Lin</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                                              | ccccccccccccccccccover                                                  | pub   |   year | codeeeee                                                                   | note                                       |
+|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:---------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [nmSPARSE](./meta/2023/nmSPARSE.prototxt)           | [Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning](https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf) |                                                                         | MLSys |   2023 | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SparTA) |                                            |
+|  1 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2)                                            | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | arXiv |   2024 |                                                                            | [note](./notes/2024/DistAttention/note.md) |</p>
+</details>
 <details open><summary><b>Bing Xue</b></summary> 
 <p>
 
@@ -162,6 +170,14 @@
 |---:|:--------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:------|-------:|:-----------------------------------------------------------------------------------------------|:------------------------------------------------|
 |  0 | [ProSparse](./meta/2024/ProSparse.prototxt)                   | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'>     | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md)          |
 |  1 | [AttentionPredictor](./meta/2025/AttentionPredictor.prototxt) | [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1)                       | <img width='400' alt='image' src='./notes/2025/AttentionPredictor/fig1.png'> | arXiv |   2025 |                                                                                                | [note](./notes/2025/AttentionPredictor/note.md) |</p>
+</details>
+<details open><summary><b>Chen Zhang</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                   | ccccccccccccccccccover                                                  | pub   |   year | codeeeee   | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:-----------|:-------------------------------------------|
+|  0 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2) | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/DistAttention/note.md) |
+|  1 | [ZigZagKV](./meta/2024/ZigZagKV.prototxt)           | [ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty](http://arxiv.org/abs/2412.09036v1)     | <img width='400' alt='image' src='./notes/2024/ZigZagKV/fig1.png'>      | arXiv |   2024 |            | [note](./notes/2024/ZigZagKV/note.md)      |</p>
 </details>
 <details open><summary><b>Chengda Lu</b></summary> 
 <p>
@@ -1614,6 +1630,14 @@
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Tao Xie</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                   | ccccccccccccccccccover                                                  | pub   |   year | codeeeee   | note                                       |
+|---:|:----------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:-----------|:-------------------------------------------|
+|  0 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2) | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | arXiv |   2024 |            | [note](./notes/2024/DistAttention/note.md) |
+|  1 | [RaaS](./meta/2025/RaaS.prototxt)                   | [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1)                       | <img width='400' alt='image' src='./notes/2025/RaaS/fig5.png'>          | arXiv |   2025 |            | [note](./notes/2025/RaaS/note.md)          |</p>
+</details>
 <details open><summary><b>Tao Yun</b></summary> 
 <p>
 
@@ -1761,6 +1785,14 @@
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Wei Lin</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                                  | pub   |   year | codeeeee                                                                            | note                                       |
+|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt)         | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'>    | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md)    |
+|  1 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2)                    | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | arXiv |   2024 |                                                                                     | [note](./notes/2024/DistAttention/note.md) |</p>
+</details>
 <details open><summary><b>Wei Wang</b></summary> 
 <p>
 
@@ -1840,6 +1872,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Xiafei Qiu</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                                  | pub   |   year | codeeeee                                                                            | note                                       |
+|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt)         | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'>    | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md)    |
+|  1 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2)                    | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | arXiv |   2024 |                                                                                     | [note](./notes/2024/DistAttention/note.md) |</p>
 </details>
 <details open><summary><b>Xiang Liu</b></summary> 
 <p>
@@ -2385,6 +2425,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | arXiv |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | arXiv |   2025 | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Yong Li</b></summary> 
+<p>
+
+|    | meta                                                | ttttttttttttttttttttttttttttttitle                                                                                                                      | ccccccccccccccccccover                                                  | pub   |   year | codeeeee                                                                            | note                                       |
+|---:|:----------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------|-------:|:------------------------------------------------------------------------------------|:-------------------------------------------|
+|  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt)         | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'>    | VLDB  |   2024 | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md)    |
+|  1 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2)                    | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | arXiv |   2024 |                                                                                     | [note](./notes/2024/DistAttention/note.md) |</p>
 </details>
 <details open><summary><b>Yongqiang Guo</b></summary> 
 <p>
