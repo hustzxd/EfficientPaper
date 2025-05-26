@@ -1,0 +1,31 @@
+paper {
+  title: "Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation"
+  abbr: "Adrenaline"
+  url: "http://arxiv.org/abs/2503.20552v1"
+  authors: "Yunkai Liang"
+  authors: "Zhangyu Chen"
+  authors: "Pengfei Zuo"
+  authors: "Zhi Zhou"
+  authors: "Xu Chen"
+  authors: "Zhou Yu"
+  institutions: "Sun Yat-sen University"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ASISys/Adrenaline"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: deployment
+}
+cover {
+  url: "fig4.png"
+}
