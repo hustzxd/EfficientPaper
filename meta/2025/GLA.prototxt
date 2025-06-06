@@ -1,0 +1,28 @@
+paper {
+  title: "Hardware-Efficient Attention for Fast Decoding"
+  abbr: "GLA"
+  url: "http://arxiv.org/abs/2505.21487v1"
+  authors: "Ted Zadouri"
+  authors: "Hubert Strauss"
+  authors: "Tri Dao"
+  institutions: "Princeton University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Dao-AILab/grouped-latent-attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: fusion
+  words: structure_design
+  words: kv_cache
+}
+cover {
+  url: "gla.png"
+}
