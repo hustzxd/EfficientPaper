@@ -108,12 +108,13 @@ keyword {
 38. [PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention](http://arxiv.org/abs/2503.03588v1) [arXiv 2025]  
 39. [Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving](http://arxiv.org/abs/2503.00392v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/PSAttention) 
 40. [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) 
-41. [SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models](http://arxiv.org/abs/2503.07605v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/IAAR-Shanghai/SEAP) 
-42. [SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference](http://arxiv.org/abs/2502.18137v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SpargeAttn) 
-43. [Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads](http://arxiv.org/abs/2501.15113v1) [arXiv 2025]  
-44. [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) 
-45. [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) 
-46. kvpress [github 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) 
+41. [SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling](http://arxiv.org/abs/2505.24179v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/BirdChristopher/SALE) 
+42. [SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models](http://arxiv.org/abs/2503.07605v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/IAAR-Shanghai/SEAP) 
+43. [SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference](http://arxiv.org/abs/2502.18137v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SpargeAttn) 
+44. [Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads](http://arxiv.org/abs/2501.15113v1) [arXiv 2025]  
+45. [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) 
+46. [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) [arXiv 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) 
+47. kvpress [github 2025] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) 
 </p>
 </details>
 <details open><summary><b>2024</b></summary> 
