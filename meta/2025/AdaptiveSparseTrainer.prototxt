@@ -1,0 +1,29 @@
+paper {
+  title: "Pruning Large Language Models with Semi-Structural Adaptive Sparse Training"
+  abbr: "AdaptiveSparseTrainer"
+  url: "http://arxiv.org/abs/2407.20584v3"
+  authors: "Weiyu Huang"
+  authors: "Yuezhou Hu"
+  authors: "Guohao Jian"
+  authors: "Jun Zhu"
+  authors: "Jianfei Chen"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "AAAI"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-ml/Adaptive-Sparse-Trainer"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "fig1.png"
+}
