@@ -28,3 +28,9 @@ process up to 380K context tokens on a single A100-80GB GPU using HuggingFace
 implementation with minor changes, exhibiting only a negligible accuracy drop
 in the Needle-in-a-Haystack test. Further comprehensive studies suggest
 SnapKV's potential for practical applications.
+
+<p align="center">
+<img src="list1.png" width="600" title="blank">
+</p>
+
+根据最近的历史token计算得到attention的score，pool topk选择重要的kv cache，压缩kv cache。
