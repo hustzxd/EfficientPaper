@@ -200,7 +200,7 @@ def main():
     with open("README.md", "w") as wf:
         wf.write(markdown)
     print("Generate README.md done")
-    
+
     del_keys = []
     for k, v in author_cls.items():
         if len(v) == 1:
@@ -240,6 +240,32 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
     return markdown
 
 
+PUBLISH_COLOR = {
+    "AAAI": "blue",
+    "ACL": "blue",
+    "ICLR": "blue",
+    "CVPR": "blue",
+    "ICML": "blue",
+    "NeurIPS": "blue",
+    "arXiv": "violet",
+    "ASPLOS": "orange",
+    "ATC": "orange",
+    "DATE": "orange",
+    "ISCA": "orange",
+    "MICRO": "orange",
+    "MLSys": "orange",
+    "SC": "orange",
+    "SOSP": "orange",
+}
+
+
+def colorful_text(text, color="green"):
+    if text in PUBLISH_COLOR:
+        color = PUBLISH_COLOR[text]
+    template = "![Publish](https://img.shields.io/badge/{}-{})"
+    return template.format(text, color)
+
+
 def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
     markdown = ""
     out_cls = dict(sorted(out_cls.items(), reverse=reverse))
@@ -256,7 +282,7 @@ def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
             markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         # markdown += df_.to_markdown()
         for index, row in df_.iterrows():
-            line_ = f"{index+1}. {row[TITLE]} [{row["pub"]} {row["year"]}] {row["codeeeee"]} \n"
+            line_ = f"{index+1}. {row[TITLE]} [{colorful_text(row["pub"])} {row["year"]}] {row["codeeeee"]} \n"
             markdown += line_
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n"
