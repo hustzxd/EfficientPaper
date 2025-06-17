@@ -1,0 +1,43 @@
+paper {
+  title: "HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference"
+  abbr: "HATA"
+  url: "http://arxiv.org/abs/2506.02572v1"
+  authors: "Ping Gong"
+  authors: "Jiawei Yi"
+  authors: "Shengnan Wang"
+  authors: "Juncheng Zhang"
+  authors: "Zewen Jin"
+  authors: "Ouxiang Zhou"
+  authors: "Ruibo Liu"
+  authors: "Guanbin Xu"
+  authors: "Youhui Bai"
+  authors: "Bowen Ye"
+  authors: "Kun Yuan"
+  authors: "Tong Yang"
+  authors: "Gong Zhang"
+  authors: "Renhai Chen"
+  authors: "Feng Wu"
+  authors: "Cheng Li"
+  institutions: "University of Science and Technology of China"
+  institutions: "Huawei Technologies"
+  institutions: "Peking University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/gpzlx1/HATA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}

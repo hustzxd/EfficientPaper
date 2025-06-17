@@ -30,7 +30,7 @@ Snap-KV等方法只考虑长prompt情况下的kv 压缩，没有考虑长generat
 - Decoding-time Compression
   - 不止关注prefill时的kv 压缩，在decoding时，每次decode特定长度的token后，对kv 进行压缩
 - Importance Scoring via Attention Weights
-  - 和之前方法相似，根据最近的$\alpha$个token得到的Attention Weight来判断哪些kv cache更重要
+  - 和之前方法相似，根据最近的 $\alpha$ 个token得到的Attention Weight来判断哪些kv cache更重要
 - Redundancy Estimation via Semantic Similarity
   - 对K cache去冗余，先对K 取均值，然后求所有K 的余弦相似性，数值较大表示越冗余。
 - Joint Selection Strategy for KV Cache Retention

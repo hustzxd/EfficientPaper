@@ -1799,6 +1799,14 @@
 |  0 | [SeerAttention](./meta/2024/SeerAttention.prototxt)     | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md)   |
 |  1 | [SeerAttention-R](./meta/2025/SeerAttention-R.prototxt) | [SeerAttention-R: Sparse Attention Adaptation for Long Reasoning](http://arxiv.org/abs/2506.08889v1) | <img width='400' alt='image' src='./notes/2025/SeerAttention-R/fig1.png'>        | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2025/SeerAttention-R/note.md) |</p>
 </details>
+<details open><summary><b>Tong Yang</b></summary> 
+<p>
+
+|    | meta                                  | ttttttttttttttttttttttttttttttitle                                                                                                        | ccccccccccccccccccover                                           | Publish                                                    | codeeeee                                                              | note                                |
+|---:|:--------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|:-----------------------------------------------------------|:----------------------------------------------------------------------|:------------------------------------|
+|  0 | [HATA](./meta/2025/HATA.prototxt)     | [HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference](http://arxiv.org/abs/2506.02572v1) | <img width='400' alt='image' src='./notes/2025/HATA/fig2.png'>   | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/gpzlx1/HATA) | [note](./notes/2025/HATA/note.md)   |
+|  1 | [KeepKV](./meta/2025/KeepKV.prototxt) | [KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference](http://arxiv.org/abs/2504.09936v1)         | <img width='400' alt='image' src='./notes/2025/KeepKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) |                                                                       | [note](./notes/2025/KeepKV/note.md) |</p>
+</details>
 <details open><summary><b>Torsten Hoefler</b></summary> 
 <p>
 
