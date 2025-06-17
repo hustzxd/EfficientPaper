@@ -1,6 +1,8 @@
 import argparse
 import os
 import sys
+import copy
+
 
 import google.protobuf as pb
 import google.protobuf.text_format
@@ -18,6 +20,25 @@ def parse_args():
     )
     args = parser.parse_args()
     return args
+
+
+PUBLISH_COLOR = {
+    "AAAI": "blue",
+    "ACL": "blue",
+    "ICLR": "blue",
+    "CVPR": "blue",
+    "ICML": "blue",
+    "NeurIPS": "blue",
+    "arXiv": "violet",
+    "ASPLOS": "orange",
+    "ATC": "orange",
+    "DATE": "orange",
+    "ISCA": "orange",
+    "MICRO": "orange",
+    "MLSys": "orange",
+    "SC": "orange",
+    "SOSP": "orange",
+}
 
 
 def readMeta():
@@ -133,7 +154,6 @@ def main():
 
             cover = "<img width='400' alt='image' src='{}'>".format(cover)
 
-        # data = [meta, title, pub, year, code, note, cover]
         data = [meta, title, cover, pub, year, code, note]
 
         if pinfo.pub.year:
@@ -143,7 +163,6 @@ def main():
                 year_cls[pinfo.pub.year] = [data]
 
         if pinfo.pub.where:
-            # pub_ = pinfo.pub.where.replace(" ", "-")
             pub_ = pinfo.pub.where
             if pub_ in pub_cls:
                 pub_cls[pub_].append(data)
@@ -152,7 +171,6 @@ def main():
 
         if pinfo.paper.institutions:
             for inst in pinfo.paper.institutions:
-                # inst = inst.replace(" ", "-")
                 if inst in inst_cls:
                     inst_cls[inst].append(data)
                 else:
@@ -160,7 +178,6 @@ def main():
 
         if pinfo.paper.authors:
             for authors in pinfo.paper.authors:
-                # author = author.replace(" ", "-")
                 authors = authors.split(",")
                 for author in authors:
                     author = author.strip()
@@ -172,7 +189,6 @@ def main():
         if pinfo.keyword.words:
             for word in pinfo.keyword.words:
                 word = word_pb2str[word]
-                # word = word.replace(" ", "-")
                 if word in keyword_cls:
                     keyword_cls[word].append(data)
                 else:
@@ -188,11 +204,7 @@ def main():
 
     markdown += "\n## Paper List\n\n"
 
-    # markdown += gen_table(keyword_cls, columns, "keyword", is_open=True)
     markdown += gen_list(year_cls, columns, "year", is_open=True, reverse=True)
-
-    # if args.detail:
-    #     markdown += gen_table(author_cls, columns, "author")
 
     with open("README_suffix.md") as rf:
         markdown += rf.read()
@@ -219,6 +231,15 @@ def main():
         with open(f"cls_{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
 
+def colorful_text(text, year=None, color="green"):
+    if text in PUBLISH_COLOR:
+        color = PUBLISH_COLOR[text]
+    if year is not None:
+        text = f"{year}-{text}"
+    text = text.replace(" ", "_")
+    template = "![Publish](https://img.shields.io/badge/{}-{})"
+    return template.format(text, color)
+
 
 def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
     markdown = ""
@@ -228,8 +249,15 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
     else:
         markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
     for key, data in out_cls.items():
-        df_ = pd.DataFrame(data, columns=columns)
-        df_ = df_.sort_values(by=["year", "pub", TITLE], ascending=True).reset_index(drop=True)
+        data_ = copy.deepcopy(data)
+        for d in data_:
+            d[3] = colorful_text(d[3], d[4])
+            d.pop(4)
+        columns_ = copy.deepcopy(columns)
+        columns_[3] = "Publish"
+        columns_.pop(4)
+        df_ = pd.DataFrame(data_, columns=columns_)
+        df_ = df_.sort_values(by=["Publish", TITLE], ascending=True).reset_index(drop=True)
         if is_open:
             markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         else:
@@ -238,32 +266,6 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n"
     return markdown
-
-
-PUBLISH_COLOR = {
-    "AAAI": "blue",
-    "ACL": "blue",
-    "ICLR": "blue",
-    "CVPR": "blue",
-    "ICML": "blue",
-    "NeurIPS": "blue",
-    "arXiv": "violet",
-    "ASPLOS": "orange",
-    "ATC": "orange",
-    "DATE": "orange",
-    "ISCA": "orange",
-    "MICRO": "orange",
-    "MLSys": "orange",
-    "SC": "orange",
-    "SOSP": "orange",
-}
-
-
-def colorful_text(text, color="green"):
-    if text in PUBLISH_COLOR:
-        color = PUBLISH_COLOR[text]
-    template = "![Publish](https://img.shields.io/badge/{}-{})"
-    return template.format(text, color)
 
 
 def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
@@ -282,7 +284,7 @@ def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
             markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         # markdown += df_.to_markdown()
         for index, row in df_.iterrows():
-            line_ = f"{index+1}. {row[TITLE]} [{colorful_text(row["pub"])} {row["year"]}] {row["codeeeee"]} \n"
+            line_ = f"{index+1}. {row[TITLE]} [{colorful_text(row["pub"], row["year"])}] {row["codeeeee"]} \n"
             markdown += line_
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n"

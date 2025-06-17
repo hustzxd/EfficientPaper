@@ -2,7 +2,7 @@ import argparse
 import os
 import string
 
-from pdftitle import get_title_from_file, GetTitleParameters
+from pdftitle import GetTitleParameters, get_title_from_file
 
 CNT_FAILED = 0
 CNT_SUCCESS = 0

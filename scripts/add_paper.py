@@ -1,9 +1,9 @@
+import datetime
 import hashlib
 import os
 import random
 import string
 import sys
-import datetime
 
 import arxiv
 import google.protobuf as pb
@@ -59,7 +59,9 @@ def main():
         pinfo.pub.year = year
 
     root_dir = "./"
-    if os.path.exists(os.path.join(root_dir, "meta", f"{pinfo.pub.year}", f"{name}.prototxt")) or os.path.exists(os.path.join(root_dir, "meta", f"{name}.prototxt")):
+    if os.path.exists(os.path.join(root_dir, "meta", f"{pinfo.pub.year}", f"{name}.prototxt")) or os.path.exists(
+        os.path.join(root_dir, "meta", f"{name}.prototxt")
+    ):
         print("The file `{}` already exists, please use another name".format(name))
         return
 
@@ -76,7 +78,11 @@ def main():
         else:
             title = name
             summary = ""
-        note_content = f"""# {title}\n\n<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n## Abstract\n\n{summary}\n"""
+        note_content = f"""# {title}\n\n"""
+        if paper is not None:
+            note_content += f"""> {", ".join(authors)}\n\n"""
+        note_content += """<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n"""
+        note_content += f"""## Abstract\n\n{summary}\n"""
         with open(f"notes/{name}/note.md", "w") as wf:
             wf.write(note_content)
 
