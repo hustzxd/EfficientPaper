@@ -123,7 +123,8 @@ keyword {
 53. [Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads](http://arxiv.org/abs/2501.15113v1) [![Publish](https://img.shields.io/badge/2025-arXiv-violet)]  
 54. [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) [![Publish](https://img.shields.io/badge/2025-arXiv-violet)] ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) 
 55. [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) [![Publish](https://img.shields.io/badge/2025-arXiv-violet)] ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) 
-56. kvpress [![Publish](https://img.shields.io/badge/2025-github-green)] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) 
+56. [Unified KV Cache Compression Methods for Auto-Regressive Models](https://github.com/Zefan-Cai/KVCache-Factory) [![Publish](https://img.shields.io/badge/2025-github-green)] ![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/KVCache-Factory) 
+57. kvpress [![Publish](https://img.shields.io/badge/2025-github-green)] ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) 
 </p>
 </details>
 <details open><summary><b>2024</b></summary> 

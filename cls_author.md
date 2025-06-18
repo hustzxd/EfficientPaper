@@ -2843,6 +2843,14 @@
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Zefan Cai</b></summary> 
+<p>
+
+|    | meta                                                    | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                         | Publish                                                    | codeeeee                                                                            | note                                         |
+|---:|:--------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:-----------------------------------------------------------|:------------------------------------------------------------------------------------|:---------------------------------------------|
+|  0 | [R-KV](./meta/2025/R-KV.prototxt)                       | [R-KV: Redundancy-aware KV Cache Compression for Training-Free Reasoning Models Acceleration](http://arxiv.org/abs/2505.24133v2) | <img width='400' alt='image' src='./notes/2025/R-KV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/R-KV)            | [note](./notes/2025/R-KV/note.md)            |
+|  1 | [KVCache-Factory](./meta/2025/KVCache-Factory.prototxt) | [Unified KV Cache Compression Methods for Auto-Regressive Models](https://github.com/Zefan-Cai/KVCache-Factory)                  |                                                                | ![Publish](https://img.shields.io/badge/2025-github-green) | ![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/KVCache-Factory) | [note](./notes/2025/KVCache-Factory/note.md) |</p>
+</details>
 <details open><summary><b>Zehui Ren</b></summary> 
 <p>
 
