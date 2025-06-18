@@ -641,6 +641,13 @@
 |  0 | [FoX](./meta/2025/FoX.prototxt) | [Forgetting Transformer: Softmax Attention with a Forget Gate](http://arxiv.org/abs/2503.02130v2) |                          | ![Publish](https://img.shields.io/badge/2025-ICLR-blue)    | ![GitHub Repo stars](https://img.shields.io/github/stars/zhixuan-lin/forgetting-transformer) | [note](./notes/2025/FoX/note.md) |
 |  1 | [ACP](./meta/2025/ACP.prototxt) | [Adaptive Computation Pruning for the Forgetting Transformer](http://arxiv.org/abs/2504.06949v1)  |                          | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/zhixuan-lin/arctic-fox)             | [note](./notes/2025/ACP/note.md) |</p>
 </details>
+<details open><summary><b>MiniCPM</b></summary> 
+<p>
+
+|    | meta                                      | ttttttttttttttttttttttttttttttitle                                                 | ccccccccccccccccccover                                             | Publish                                                    | codeeeee                                                                  | note                                  |
+|---:|:------------------------------------------|:-----------------------------------------------------------------------------------|:-------------------------------------------------------------------|:-----------------------------------------------------------|:--------------------------------------------------------------------------|:--------------------------------------|
+|  0 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |</p>
+</details>
 <details open><summary><b>Ministry of Education of China, Xiamen University</b></summary> 
 <p>
 
