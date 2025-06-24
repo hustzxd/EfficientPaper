@@ -18,6 +18,13 @@
 |---:|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:--------------------------------------------------------------------|:----------------------------------------------------------------------------|:-------|
 |  0 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | <img width='400' alt='image' src='./notes/2023/nas_pruning/nas_pruning.jpg'> | ![Publish](https://img.shields.io/badge/2023-AutoML_Workshop-green) | ![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune) |        |</p>
 </details>
+<details open><summary><b>Advanced Micro Devices</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                         | Publish                                                    | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:-----------------------------------------------------------|:-----------|:----------------------------------|
+|  0 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) |            | [note](./notes/2025/BaWA/note.md) |</p>
+</details>
 <details open><summary><b>Alibaba Cloud</b></summary> 
 <p>
 
@@ -444,9 +451,10 @@
 <details open><summary><b>Institute of Computing Technology</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
-|---:|:------------------------------------|:----------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
-|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1) | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                                     | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt)   | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'>  | ![Publish](https://img.shields.io/badge/2025-arXiv-violet)  |            | [note](./notes/2025/BaWA/note.md)  |</p>
 </details>
 <details open><summary><b>Institute of Computing Technology, Chinese Academy of Sciences</b></summary> 
 <p>

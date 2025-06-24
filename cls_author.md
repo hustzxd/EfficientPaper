@@ -340,6 +340,14 @@
 |  2 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | <img width='400' alt='image' src='./notes/2024/DeepSeekMoE/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 |  3 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1)        | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)  | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
 </details>
+<details open><summary><b>Dong Li</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                         | Publish                                                    | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:-----------------------------------------------------------|:-----------|:----------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt)   | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1)                      | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>   | ![Publish](https://img.shields.io/badge/2025-Coling-green) |            | [note](./notes/2025/SDS/note.md)  |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) |            | [note](./notes/2025/BaWA/note.md) |</p>
+</details>
 <details open><summary><b>Dongjie Ji</b></summary> 
 <p>
 
@@ -447,6 +455,14 @@
 |---:|:----------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------|:-----------------------------------------------------------|:-----------------------------------------------------------------------------|:----------------------------------------|
 |  0 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3)        | <img width='400' alt='image' src='./notes/2023/LLM-Pruner/cover.jpg'> | ![Publish](https://img.shields.io/badge/2023-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |
 |  1 | [MaskLLM](./meta/2024/MaskLLM.prototxt)       | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | <img width='400' alt='image' src='./notes/2024/MaskLLM/maskllm.png'>  | ![Publish](https://img.shields.io/badge/2024-NeurIPS-blue) | ![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)     | [note](./notes/2024/MaskLLM/note.md)    |</p>
+</details>
+<details open><summary><b>Guanchen Li</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                         | Publish                                                    | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:-----------------------------------------------------------|:-----------|:----------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt)   | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1)                      | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>   | ![Publish](https://img.shields.io/badge/2025-Coling-green) |            | [note](./notes/2025/SDS/note.md)  |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) |            | [note](./notes/2025/BaWA/note.md) |</p>
 </details>
 <details open><summary><b>Guangbo Hao</b></summary> 
 <p>
@@ -1048,10 +1064,11 @@
 <details open><summary><b>Lian Liu</b></summary> 
 <p>
 
-|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                               | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
-|---:|:------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
-|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |
-|  1 | [SDS](./meta/2025/SDS.prototxt)     | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>    | ![Publish](https://img.shields.io/badge/2025-Coling-green)  |            | [note](./notes/2025/SDS/note.md)   |</p>
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                                     | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |
+|  1 | [SDS](./meta/2025/SDS.prototxt)     | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1)                      | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>    | ![Publish](https://img.shields.io/badge/2025-Coling-green)  |            | [note](./notes/2025/SDS/note.md)   |
+|  2 | [BaWA](./meta/2025/BaWA.prototxt)   | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'>  | ![Publish](https://img.shields.io/badge/2025-arXiv-violet)  |            | [note](./notes/2025/BaWA/note.md)  |</p>
 </details>
 <details open><summary><b>Liang Zhao</b></summary> 
 <p>
@@ -1159,6 +1176,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Mengdi Wang</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                                     | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt)   | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'>  | ![Publish](https://img.shields.io/badge/2025-arXiv-violet)  |            | [note](./notes/2025/BaWA/note.md)  |</p>
 </details>
 <details open><summary><b>Miaojun Wang</b></summary> 
 <p>
@@ -1995,6 +2020,14 @@
 |  0 | [Flash-LLM](./meta/2024/flash_llm.prototxt)         | [Flash-LLM: Enabling Cost-Effective and Highly-Efficient Large Generative Model Inference with Unstructured Sparsity](https://arxiv.org/abs/2309.10285) | <img width='400' alt='image' src='./notes/2024/flash_llm/cover.jpg'>    | ![Publish](https://img.shields.io/badge/2024-VLDB-green)   | ![GitHub Repo stars](https://img.shields.io/github/stars/AlibabaResearch/flash-llm) | [note](./notes/2024/flash_llm/index.md)    |
 |  1 | [DistAttention](./meta/2024/DistAttention.prototxt) | [Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache](http://arxiv.org/abs/2401.02669v2)                    | <img width='400' alt='image' src='./notes/2024/DistAttention/fig1.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) |                                                                                     | [note](./notes/2024/DistAttention/note.md) |</p>
 </details>
+<details open><summary><b>Xiandong Zhao</b></summary> 
+<p>
+
+|    | meta                              | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                         | Publish                                                    | codeeeee   | note                              |
+|---:|:----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:-----------------------------------------------------------|:-----------|:----------------------------------|
+|  0 | [SDS](./meta/2025/SDS.prototxt)   | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1)                      | <img width='400' alt='image' src='./notes/2025/SDS/sds.png'>   | ![Publish](https://img.shields.io/badge/2025-Coling-green) |            | [note](./notes/2025/SDS/note.md)  |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) |            | [note](./notes/2025/BaWA/note.md) |</p>
+</details>
 <details open><summary><b>Xiang Liu</b></summary> 
 <p>
 
@@ -2099,6 +2132,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Xiaowei Li</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                                     | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt)   | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'>  | ![Publish](https://img.shields.io/badge/2025-arXiv-violet)  |            | [note](./notes/2025/BaWA/note.md)  |</p>
 </details>
 <details open><summary><b>Xiaowen Sun</b></summary> 
 <p>
@@ -2495,6 +2536,14 @@
 |  0 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 |  1 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1)                                                       | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 |  2 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-violet) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |</p>
+</details>
+<details open><summary><b>Yinhe Han</b></summary> 
+<p>
+
+|    | meta                                | ttttttttttttttttttttttttttttttitle                                                                                                                    | ccccccccccccccccccover                                          | Publish                                                     | codeeeee   | note                               |
+|---:|:------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|:------------------------------------------------------------|:-----------|:-----------------------------------|
+|  0 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1)                                                                     | <img width='400' alt='image' src='./notes/2025/COMET/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-orange) |            | [note](./notes/2025/COMET/note.md) |
+|  1 | [BaWA](./meta/2025/BaWA.prototxt)   | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'>  | ![Publish](https://img.shields.io/badge/2025-arXiv-violet)  |            | [note](./notes/2025/BaWA/note.md)  |</p>
 </details>
 <details open><summary><b>Yishi Piao</b></summary> 
 <p>
