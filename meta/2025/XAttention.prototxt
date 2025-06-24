@@ -13,7 +13,7 @@ paper {
   institutions: "NVIDIA"
 }
 pub {
-  where: "arXiv"
+  where: "ICML"
   year: 2025
 }
 code {
