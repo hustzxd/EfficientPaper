@@ -1275,6 +1275,13 @@
 |---:|:--------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|:-----------|:-------|
 |  0 | [Adaptively Sparse Attention](./meta/2023/adaptively_sparse_attention.prototxt) | [Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers](https://arxiv.org/abs/2305.15805) | <img width='400' alt='image' src='./notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg'> | ![Publish](https://img.shields.io/badge/2023-arXiv-violet) |            |        |</p>
 </details>
+<details open><summary><b>University of California</b></summary> 
+<p>
+
+|    | meta                            | ttttttttttttttttttttttttttttttitle                                                          | ccccccccccccccccccover                                        | Publish                                                | codeeeee   | note                             |
+|---:|:--------------------------------|:--------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:-------------------------------------------------------|:-----------|:---------------------------------|
+|  0 | [DSA](./meta/2022/DSA.prototxt) | [Transformer Acceleration with Dynamic Sparse Attention](http://arxiv.org/abs/2110.11299v1) | <img width='400' alt='image' src='./notes/2022/DSA/fig2.png'> | ![Publish](https://img.shields.io/badge/2022-TC-green) |            | [note](./notes/2022/DSA/note.md) |</p>
+</details>
 <details open><summary><b>University of California, Berkeley</b></summary> 
 <p>
 

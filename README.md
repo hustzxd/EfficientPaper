@@ -289,8 +289,9 @@ keyword {
 9. [Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning](https://openreview.net/pdf?id=ksVGCOlOEba) [![Publish](https://img.shields.io/badge/2022-NeurIPS-blue)] ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/OBC) 
 10. [ZeroQuant: Efficient and Affordable Post-Training Quantization for Large-Scale Transformers](https://openreview.net/forum?id=f-fVCElZ-G1) [![Publish](https://img.shields.io/badge/2022-NeurIPS-blue)] ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) 
 11. [Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks](https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a) [![Publish](https://img.shields.io/badge/2022-Neuromorphic_Computing_and_Engineering-green)]  
-12. [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) [![Publish](https://img.shields.io/badge/2022-VLSI-green)]  
-13. [The Optimal BERT Surgeon: Scalable and Accurate Second-Order Pruning for Large Language Models](https://arxiv.org/pdf/2203.07259.pdf) [![Publish](https://img.shields.io/badge/2022-arXiv-violet)] ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/sparseml) 
+12. [Transformer Acceleration with Dynamic Sparse Attention](http://arxiv.org/abs/2110.11299v1) [![Publish](https://img.shields.io/badge/2022-TC-green)]  
+13. [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) [![Publish](https://img.shields.io/badge/2022-VLSI-green)]  
+14. [The Optimal BERT Surgeon: Scalable and Accurate Second-Order Pruning for Large Language Models](https://arxiv.org/pdf/2203.07259.pdf) [![Publish](https://img.shields.io/badge/2022-arXiv-violet)] ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/sparseml) 
 </p>
 </details>
 <details open><summary><b>2021</b></summary> 
