@@ -1,15 +1,15 @@
 paper {
   title: "Star Attention: Efficient LLM Inference over Long Sequences"
   abbr: "StarAttention"
-  url: "http://arxiv.org/abs/2411.17116v2"
+  url: "https://openreview.net/forum?id=QY7Au9nZwp"
   authors: "Shantanu Acharya"
   authors: "Fei Jia"
   authors: "Boris Ginsburg"
   institutions: "NVDIA"
 }
 pub {
-  where: "arXiv"
-  year: 2024
+  where: "ICML"
+  year: 2025
 }
 code {
   type: "Pytorch"

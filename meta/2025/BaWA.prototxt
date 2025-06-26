@@ -7,7 +7,7 @@ paper {
   institutions: "Institute of Computing Technology"
 }
 pub {
-  where: "arXiv"
+  where: "ICML"
   year: 2025
 }
 code {

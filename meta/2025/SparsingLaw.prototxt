@@ -1,7 +1,7 @@
 paper {
   title: "Sparsing Law: Towards Large Language Models with Greater Activation Sparsity"
   abbr: "SparsingLaw"
-  url: "http://arxiv.org/abs/2411.02335v1"
+  url: "https://openreview.net/forum?id=SBUc5wirM8"
   authors: "Yuqi Luo"
   authors: "Chenyang Song"
   authors: "Xu Han"
@@ -12,8 +12,8 @@ paper {
   institutions: "Tsinghua University"
 }
 pub {
-  where: "arXiv"
-  year: 2024
+  where: "ICML"
+  year: 2025
 }
 code {
   type: "Pytorch"

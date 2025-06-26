@@ -1,7 +1,7 @@
 paper {
   title: "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference"
   abbr: "SpargeAttn"
-  url: "http://arxiv.org/abs/2502.18137v1"
+  url: "https://openreview.net/forum?id=74c3Wwk8Tc"
   authors: "Jintao Zhang"
   authors: "Chendong Xiang"
   authors: "Haofeng Huang"
@@ -13,7 +13,7 @@ paper {
   institutions: "University of California, Berkeley"
 }
 pub {
-  where: "arXiv"
+  where: "ICML"
   year: 2025
 }
 code {

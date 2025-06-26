@@ -1,14 +1,14 @@
 paper {
   title: "AdaSplash: Adaptive Sparse Flash Attention"
   abbr: "AdaSplash"
-  url: "http://arxiv.org/abs/2502.12082v1"
+  url: "http://arxiv.org/abs/2502.12082"
   authors: "Nuno Gonçalves"
   authors: "Marcos Treviso"
   authors: "André F. T. Martins"
   institutions: "Universidade de Lisboa"
 }
 pub {
-  where: "arXiv"
+  where: "ICML"
   year: 2025
 }
 code {
