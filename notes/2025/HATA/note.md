@@ -32,3 +32,4 @@ HATA提出将QK映射为Hash Code，并实用xor 操作高效的判断K cache的
 
 映射Hash Code的过程涉及到可学习权重，需要一部分数据集进行学习
 
+和 HashAttention: Semantic Sparsity for Faster Inference 思路很像

@@ -1,0 +1,28 @@
+paper {
+  title: "SlimLLM: Accurate Structured Pruning for Large Language Models"
+  abbr: "SlimLLM"
+  url: "http://arxiv.org/abs/2505.22689v1"
+  authors: "Jialong Guo"
+  authors: "Xinghao Chen"
+  authors: "Yehui Tang"
+  authors: "Yunhe Wang"
+  institutions: "Huawei Noah’s Ark Lab,"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: ""
+}

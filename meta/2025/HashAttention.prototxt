@@ -1,0 +1,31 @@
+paper {
+  title: "HashAttention: Semantic Sparsity for Faster Inference"
+  abbr: "HashAttention"
+  url: "https://openreview.net/forum?id=Em2oaXd8Dc"
+  authors: "Aditya Desai"
+  authors: "Shuo Yang"
+  authors: "Alejandro Cuadron"
+  authors: "Matei Zaharia"
+  authors: "Joseph E. Gonzalez"
+  authors: "Ion Stoica"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/xAlg-ai/HashAttention-1.0"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}
