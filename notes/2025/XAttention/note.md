@@ -28,3 +28,4 @@ efficient deployment of LCTMs in real-world applications. Code is available at
 https://github.com/mit-han-lab/x-attention.
 
 Block Sparse Attention的mask估计方法改进，baseline是Minference和FlexPrefill
+
