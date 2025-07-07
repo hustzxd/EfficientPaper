@@ -1,6 +1,7 @@
 import datetime as DT
 import os
 import sys
+import time
 
 import arxiv
 import google.protobuf as pb
@@ -14,15 +15,14 @@ from proto import efficient_paper_pb2 as eppb
 def main():
     today = DT.date.today()
     dir_root = "/Users/xiandong/projects/EfficientPaper/weekly_paper"
-    files = os.listdir(dir_root)
+    files = [f for f in os.listdir(dir_root) if f.endswith('.md')]
     files.sort()
     previous_day = files[-1].replace(".md", "")
     previous_day = DT.date.fromisoformat(previous_day)
-    print(f"Previou update date: {previous_day}")
+    print(f"Previous update date: {previous_day}")
     if today == previous_day:
         print("Already up to date")
         return
-    # week_ago = today - DT.timedelta(days=7)
 
     search_words = eppb.SearchWord()
     try:
@@ -64,38 +64,60 @@ def main():
     # Construct the default API client.
     client = arxiv.Client()
 
-    # Search for the 10 most recent articles matching the keyword "quantum."
+    # Search for papers in batches
+    total_results = 300  # 设置想要获取的总论文数
+    papers_per_batch = 100  # arXiv API的每页限制
+    markdown_content = f"# {today}\n\n"
+    papers_found = 0
+
+    # First search to get all results
     search = arxiv.Search(
         query=query,
-        max_results=400,
+        max_results=total_results,
         sort_by=arxiv.SortCriterion.SubmittedDate,
     )
 
-    markdown_content = f"# {today}\n\n"
-    # `results` is a generator; you can iterate over its elements one by one...
-    for paper in client.results(search):
-        date = paper.published.date()
-        if date >= previous_day:
-            title = paper.title
-            print(title)
-            authors = [author.name for author in paper.authors]
-            authors = ", ".join(authors)
-            url = paper.entry_id
-            summary = paper.summary
-            for k in key_words:
-                if k in summary:
-                    summary = summary.replace(k, f"**{k}**")
-            markdown_content += f"## {title}\n\n".replace(":", "")
-            markdown_content += f">Authors: {authors}\n\n"
-            markdown_content += f">{date}\n\n"
-            markdown_content += f"> {url}\n\n"
-            markdown_content += f"{summary}\n\n\n"
+    try:
+        # Process all papers
+        for paper in client.results(search):
+            date = paper.published.date()
+            if date >= previous_day:
+                title = paper.title
+                print(title)
+                authors = [author.name for author in paper.authors]
+                authors = ", ".join(authors)
+                url = paper.entry_id
+                summary = paper.summary
+                for k in key_words:
+                    if k in summary:
+                        summary = summary.replace(k, f"**{k}**")
+                markdown_content += f"## {title}\n\n".replace(":", "")
+                markdown_content += f">Authors: {authors}\n\n"
+                markdown_content += f">{date}\n\n"
+                markdown_content += f"> {url}\n\n"
+                markdown_content += f"{summary}\n\n\n"
+                papers_found += 1
 
-    file_name = f"/Users/xiandong/projects/EfficientPaper/weekly_paper/{today}.md"
-    with open(file_name, "w") as wf:
-        wf.write(markdown_content)
+            # Add a small delay every 100 papers to avoid rate limits
+            if papers_found % 100 == 0 and papers_found > 0:
+                print(f"\nProcessed {papers_found} papers, pausing briefly...")
+                time.sleep(3)  # 3秒延时，避免请求过快
 
-    os.system(f"/Users/xiandong/miniconda3/bin/markdown-toc {file_name}")
+    except arxiv.UnexpectedEmptyPageError:
+        print(f"\nReached end of results at {papers_found} papers")
+    except Exception as e:
+        print(f"\nError occurred: {e}")
+
+    print(f"\nTotal papers found: {papers_found}")
+    
+    if papers_found > 0:
+        file_name = f"/Users/xiandong/projects/EfficientPaper/weekly_paper/{today}.md"
+        with open(file_name, "w") as wf:
+            wf.write(markdown_content)
+
+        os.system(f"/Users/xiandong/miniconda3/bin/markdown-toc {file_name}")
+    else:
+        print("No new papers found, skipping file creation")
 
 
 if __name__ == "__main__":
