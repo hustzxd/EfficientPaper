@@ -8,7 +8,7 @@ paper {
   institutions: "Huawei Noah's Ark Lab"
 }
 pub {
-  where: "ACL Findings"
+  where: "ACL"
   year: 2023
 }
 code {

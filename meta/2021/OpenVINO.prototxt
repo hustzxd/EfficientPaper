@@ -7,7 +7,7 @@ paper {
   institutions: "Intel Corporation"
 }
 pub {
-  where: "ICCV workshop"
+  where: "ICCV"
   year: 2021
 }
 code {

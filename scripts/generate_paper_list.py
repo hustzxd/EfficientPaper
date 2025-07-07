@@ -23,13 +23,21 @@ def parse_args():
 
 
 PUBLISH_COLOR = {
+    # 蓝色(blue)会议
     "AAAI": "blue",
     "ACL": "blue",
-    "ICLR": "blue",
+    "COLM": "blue",
+    "Coling": "blue",
     "CVPR": "blue",
+    "ECCV": "blue",
+    "ENLSP": "blue",
+    "ICLR": "blue",
     "ICML": "blue",
     "NeurIPS": "blue",
-    "arXiv": "violet",
+    "TACL": "blue",
+    "UAI": "blue",
+    
+    # 橙色(orange)会议
     "ASPLOS": "orange",
     "ATC": "orange",
     "DATE": "orange",
@@ -38,6 +46,20 @@ PUBLISH_COLOR = {
     "MLSys": "orange",
     "SC": "orange",
     "SOSP": "orange",
+    "TC": "orange",
+    "VLDB": "orange",
+    "VLSI": "orange",
+    
+    # 紫色(violet)会议
+    "JMLR": "violet",
+    "Neuromorphic Computing and Engineering": "violet",
+    "TMLR": "violet",
+    "arXiv": "violet",
+    
+    # 灰色(gray)会议
+    "AutoML Workshop": "gray",
+    "Blog": "gray",
+    "github": "gray"
 }
 
 
