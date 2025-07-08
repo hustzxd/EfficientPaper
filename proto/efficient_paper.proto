@@ -56,6 +56,7 @@ message Keyword {
         attention_sparsity = 14;
         structured_sparsity = 15;
         deployment = 16;
+        overlap = 17;
         // TODO: please add your key words here.
         working = 100;
     }
