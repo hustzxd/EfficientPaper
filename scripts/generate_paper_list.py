@@ -23,7 +23,6 @@ def parse_args():
 
 
 PUBLISH_COLOR = {
-    # 蓝色(blue)会议
     "AAAI": "blue",
     "ACL": "blue",
     "COLM": "blue",
@@ -37,7 +36,6 @@ PUBLISH_COLOR = {
     "TACL": "blue",
     "UAI": "blue",
     
-    # 橙色(orange)会议
     "ASPLOS": "orange",
     "ATC": "orange",
     "DATE": "orange",
@@ -50,7 +48,6 @@ PUBLISH_COLOR = {
     "VLDB": "orange",
     "VLSI": "orange",
     
-    # 紫色(violet)会议
     "JMLR": "violet",
     "Neuromorphic Computing and Engineering": "violet",
     "TMLR": "violet",

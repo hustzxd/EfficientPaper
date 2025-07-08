@@ -1,0 +1,32 @@
+paper {
+  title: "Fast and Simplex: 2-Simplicial Attention in Triton"
+  abbr: "2ZU1IWL6"
+  url: "http://arxiv.org/abs/2507.02754v1"
+  authors: "Aurko Roy"
+  authors: "Timothy Chou"
+  authors: "Sai Surya Duvvuri"
+  authors: "Sijia Chen"
+  authors: "Jiecao Yu"
+  authors: "Xiaodong Wang"
+  authors: "Manzil Zaheer"
+  authors: "Rohan Anil"
+  institutions: "Meta"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: structure_design
+}
+cover {
+  url: ""
+}
