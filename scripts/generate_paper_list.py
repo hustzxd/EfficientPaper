@@ -101,16 +101,21 @@ word_pb2str = {
 for k, v in word_pb2str.items():
     word_pb2str[k] = f"{k-1:02}-{v}"
 
-TITLE = "ttttttttttttttttttttttttttttttitle"
-COVER = "ccccccccccccccccccover"
+
+def get_table_header():
+    return """
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+"""
 
 
 def main():
     args = parse_args()
     columns = [
         "meta",
-        TITLE,  # (abbr) [title](url)
-        COVER,
+        "Title",  # (abbr) [title](url)
+        "Cover",
         "pub",  # ICLR
         "year",  # 2022
         "codeeeee",  # [type](url)
@@ -219,7 +224,7 @@ def main():
         data_list.append(data)
 
     df = pd.DataFrame(data_list, columns=columns)
-    df = df.sort_values(by=["year", "pub", TITLE], ascending=True).reset_index(drop=True)
+    df = df.sort_values(by=["year", "pub", "Title"], ascending=True).reset_index(drop=True)
     with open("README_prefix.md") as rf:
         markdown = rf.read()
     markdown += "\n\n"
@@ -280,12 +285,20 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
         columns_[3] = "Publish"
         columns_.pop(4)
         df_ = pd.DataFrame(data_, columns=columns_)
-        df_ = df_.sort_values(by=["Publish", TITLE], ascending=True).reset_index(drop=True)
+        df_ = df_.sort_values(by=["Publish", "Title"], ascending=True).reset_index(drop=True)
         if is_open:
             markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         else:
             markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
-        markdown += df_.to_markdown()
+        
+        # 使用自定义表格头
+        markdown += get_table_header()
+        
+        # 直接使用DataFrame的值，跳过表头
+        for row in df_.values:
+            # 确保每行有6列数据
+            row_data = list(row)
+            markdown += "| {} | {} | {} | {} | {} | {} |\n".format(*row_data)
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n"
     return markdown
@@ -300,14 +313,14 @@ def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
         markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
     for key, data in out_cls.items():
         df_ = pd.DataFrame(data, columns=columns)
-        df_ = df_.sort_values(by=["year", "pub", TITLE], ascending=True).reset_index(drop=True)
+        df_ = df_.sort_values(by=["year", "pub", "Title"], ascending=True).reset_index(drop=True)
         if is_open:
             markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         else:
             markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         # markdown += df_.to_markdown()
         for index, row in df_.iterrows():
-            line_ = f"{index+1}. {row[TITLE]} [{colorful_text(row["pub"], row["year"])}] {row["codeeeee"]} \n"
+            line_ = f"{index+1}. {row["Title"]} [{colorful_text(row["pub"], row["year"])}] {row["codeeeee"]} \n"
             markdown += line_
         markdown += "</p>\n</details>\n"
     markdown += "</p>\n</details>\n\n"
