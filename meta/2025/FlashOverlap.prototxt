@@ -1,0 +1,36 @@
+paper {
+  title: "FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation"
+  abbr: "FlashOverlap"
+  url: "http://arxiv.org/abs/2504.19519v1"
+  authors: "Ke Hong"
+  authors: "Xiuhong Li"
+  authors: "Minxu Liu"
+  authors: "Qiuli Mao"
+  authors: "Tianqi Wu"
+  authors: "Zixiao Huang"
+  authors: "Lufang Chen"
+  authors: "Zhong Wang"
+  authors: "Yichong Zhang"
+  authors: "Zhenhua Zhu"
+  authors: "Guohao Dai"
+  authors: "Yu Wang"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

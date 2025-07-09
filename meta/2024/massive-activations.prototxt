@@ -6,8 +6,8 @@ paper {
   authors: "Xinlei Chen"
   authors: "J. Zico Kolter"
   authors: "Zhuang Liu"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "CMU"
+  institutions: "Meta"
 }
 pub {
   where: "arXiv"
@@ -21,7 +21,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: none
+  words: survey
 }
 cover {
   url: "massive_act.jpg"

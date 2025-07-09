@@ -21,7 +21,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: training
+  words: efficient_training
   words: sparse_pruning
 }
 cover {

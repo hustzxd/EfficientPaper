@@ -1,0 +1,30 @@
+paper {
+  title: "AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models"
+  abbr: "AhaKV"
+  url: "http://arxiv.org/abs/2506.03762v1"
+  authors: "Yifeng Gu"
+  authors: "Zicong Jiang"
+  authors: "Jianxiu Jin"
+  authors: "Kailing Guo"
+  authors: "Ziyang Zhang"
+  authors: "Xiangmin Xu"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}

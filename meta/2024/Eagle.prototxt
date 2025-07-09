@@ -23,7 +23,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: sampling
+  words: deployment
 }
 cover {
   url: "eagle.jpg"

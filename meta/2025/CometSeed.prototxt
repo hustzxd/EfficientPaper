@@ -1,0 +1,36 @@
+paper {
+  title: "Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts"
+  abbr: "CometSeed"
+  url: "http://arxiv.org/abs/2502.19811v3"
+  authors: "Shulai Zhang"
+  authors: "Ningxin Zheng"
+  authors: "Haibin Lin"
+  authors: "Ziheng Jiang"
+  authors: "Wenlei Bao"
+  authors: "Chengquan Jiang"
+  authors: "Qi Hou"
+  authors: "Weihao Cui"
+  authors: "Size Zheng"
+  authors: "Li-Wen Chang"
+  authors: "Quan Chen"
+  authors: "Xin Liu"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

@@ -20,7 +20,7 @@ note {
 }
 keyword {
   words: low_rank
-  words: training
+  words: efficient_training
 }
 cover {
   url: "lora/lora.jpg"

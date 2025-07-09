@@ -20,7 +20,7 @@ note {
 keyword {
   words: quantization
   words: low_rank
-  words: training
+  words: efficient_training
 }
 cover {
   url: "loftq/loftq.jpg"

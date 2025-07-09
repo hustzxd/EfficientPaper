@@ -1,0 +1,33 @@
+paper {
+  title: "Breaking the Computation and Communication Abstraction Barrier in Distributed Machine Learning Workloads"
+  abbr: "CoCoNet"
+  url: "http://arxiv.org/abs/2105.05720v5"
+  authors: "Abhinav Jangda"
+  authors: "Jun Huang"
+  authors: "Guodong Liu"
+  authors: "Amir Hossein Nodehi Sabet"
+  authors: "Saeed Maleki"
+  authors: "Youshan Miao"
+  authors: "Madanlal Musuvathi"
+  authors: "Todd Mytkowicz"
+  authors: "Olli Sarikivi"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2021
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}

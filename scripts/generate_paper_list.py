@@ -1,8 +1,7 @@
 import argparse
+import copy
 import os
 import sys
-import copy
-
 
 import google.protobuf as pb
 import google.protobuf.text_format
@@ -24,47 +23,41 @@ def parse_args():
 
 PUBLISH_COLOR = {
     # AI/ML Conferences (warm colors)
-    "AAAI": "FF4500",      # Orange Red
-    "ICLR": "FF6B6B",      # Coral Pink
-    "ICML": "FF8C00",      # Dark Orange
-    "NeurIPS": "FF1493",   # Deep Pink
-    
+    "AAAI": "FF4500",  # Orange Red
+    "ICLR": "FF6B6B",  # Coral Pink
+    "ICML": "FF8C00",  # Dark Orange
+    "NeurIPS": "FF1493",  # Deep Pink
     # NLP Conferences (cool colors)
-    "ACL": "4169E1",       # Royal Blue
-    "COLM": "6495ED",      # Cornflower Blue
-    "Coling": "1E90FF",    # Dodger Blue
-    "ENLSP": "00BFFF",     # Deep Sky Blue
-    "TACL": "87CEEB",      # Sky Blue
-    
+    "ACL": "4169E1",  # Royal Blue
+    "COLM": "6495ED",  # Cornflower Blue
+    "Coling": "1E90FF",  # Dodger Blue
+    "ENLSP": "00BFFF",  # Deep Sky Blue
+    "TACL": "87CEEB",  # Sky Blue
     # CV Conferences (green variants)
-    "CVPR": "2E8B57",      # Sea Green
-    "ECCV": "3CB371",      # Medium Sea Green
-    
+    "CVPR": "2E8B57",  # Sea Green
+    "ECCV": "3CB371",  # Medium Sea Green
     # Systems Conferences (purple variants)
-    "ASPLOS": "9370DB",    # Medium Purple
-    "SOSP": "8A2BE2",      # Blue Violet
-    "ISCA": "9932CC",      # Dark Orchid
-    "MICRO": "BA55D3",     # Medium Orchid
-    "MLSys": "DDA0DD",     # Plum
-    
+    "ASPLOS": "9370DB",  # Medium Purple
+    "SOSP": "8A2BE2",  # Blue Violet
+    "ISCA": "9932CC",  # Dark Orchid
+    "MICRO": "BA55D3",  # Medium Orchid
+    "MLSys": "DDA0DD",  # Plum
     # Architecture/Hardware (red variants)
-    "ATC": "DC143C",       # Crimson
-    "DATE": "B22222",      # Fire Brick
-    "SC": "CD5C5C",        # Indian Red
-    "TC": "F08080",        # Light Coral
-    "VLDB": "A52A2A",      # Brown
-    "VLSI": "8B0000",      # Dark Red
-    
+    "ATC": "DC143C",  # Crimson
+    "DATE": "B22222",  # Fire Brick
+    "SC": "CD5C5C",  # Indian Red
+    "TC": "F08080",  # Light Coral
+    "VLDB": "A52A2A",  # Brown
+    "VLSI": "8B0000",  # Dark Red
     # Journals (teal variants)
-    "JMLR": "008B8B",      # Dark Cyan
-    "TMLR": "20B2AA",      # Light Sea Green
+    "JMLR": "008B8B",  # Dark Cyan
+    "TMLR": "20B2AA",  # Light Sea Green
     "Neuromorphic Computing and Engineering": "40E0D0",  # Turquoise
-    
     # Others (neutral colors)
-    "arXiv": "1E88E5",     # Bright Blue (Material Design Blue)
+    "arXiv": "1E88E5",  # Bright Blue (Material Design Blue)
     "AutoML Workshop": "A9A9A9",  # Dark Gray
-    "Blog": "696969",      # Dim Gray
-    "github": "2F4F4F"     # Dark Slate Gray
+    "Blog": "696969",  # Dim Gray
+    "github": "2F4F4F",  # Dark Slate Gray
 }
 
 
@@ -95,10 +88,8 @@ word_pb2str = {
     eppb.Keyword.Word.fusion: "Layer Fusion (Reduce IO)",
     eppb.Keyword.Word.tool: "Tool",
     eppb.Keyword.Word.kv_cache: "KV Cache Optimization/Efficient Attention",
-    eppb.Keyword.Word.working: "0 Working",
-    eppb.Keyword.Word.training: "Efficient Training",
+    eppb.Keyword.Word.efficient_training: "Efficient Training",
     eppb.Keyword.Word.structure_design: "Network Structure Design",
-    eppb.Keyword.Word.sampling: "Efficient Sampling",
     eppb.Keyword.Word.weight_sparsity: "Sparsity (Weight)",
     eppb.Keyword.Word.activation_sparsity: "Sparsity (Activation)",
     eppb.Keyword.Word.attention_sparsity: "Sparsity (Attention)",
@@ -106,6 +97,9 @@ word_pb2str = {
     eppb.Keyword.Word.deployment: "LLM Deployment",
     eppb.Keyword.Word.overlap: "Communication-Computation Overlap",
 }
+
+for k, v in word_pb2str.items():
+    word_pb2str[k] = f"{k-1:02}-{v}"
 
 TITLE = "ttttttttttttttttttttttttttttttitle"
 COVER = "ccccccccccccccccccover"
@@ -258,6 +252,7 @@ def main():
     for cls_name in ["keyword", "year", "publication", "institution", "author"]:
         with open(f"cls_{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
+
 
 def colorful_text(text, year=None, color="green"):
     if text in PUBLISH_COLOR:

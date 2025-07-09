@@ -1,0 +1,46 @@
+paper {
+  title: "Triton-distributed: Programming Overlapping Kernels on Distributed AI Systems with the Triton Compiler"
+  abbr: "Triton-distributed"
+  url: "http://arxiv.org/abs/2504.19442v3"
+  authors: "Size Zheng"
+  authors: "Wenlei Bao"
+  authors: "Qi Hou"
+  authors: "Xuegui Zheng"
+  authors: "Jin Fang"
+  authors: "Chenhui Huang"
+  authors: "Tianqi Li"
+  authors: "Haojie Duanmu"
+  authors: "Renze Chen"
+  authors: "Ruifan Xu"
+  authors: "Yifan Guo"
+  authors: "Ningxin Zheng"
+  authors: "Ziheng Jiang"
+  authors: "Xinyi Di"
+  authors: "Dongyang Wang"
+  authors: "Jianxi Ye"
+  authors: "Haibin Lin"
+  authors: "Li-Wen Chang"
+  authors: "Liqiang Lu"
+  authors: "Yun Liang"
+  authors: "Jidong Zhai"
+  authors: "Xin Liu"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

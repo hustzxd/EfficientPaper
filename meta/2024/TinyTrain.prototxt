@@ -23,7 +23,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: training
+  words: efficient_training
 }
 cover {
   url: ""
