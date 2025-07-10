@@ -920,7 +920,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
-| [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
+| [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | <img width='400' alt='image' src='./notes/2025/TokenWeave/fig8.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
 </p>
 </details>
 <details open><summary><b>Mila & Universite de Montreal</b></summary> 

@@ -33,7 +33,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: none
+  words: overlap
 }
 cover {
   url: ""
