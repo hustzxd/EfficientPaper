@@ -83,20 +83,28 @@ def main():
             date = paper.published.date()
             if date >= previous_day:
                 title = paper.title
-                print(title)
                 authors = [author.name for author in paper.authors]
                 authors = ", ".join(authors)
                 url = paper.entry_id
                 summary = paper.summary
+                key_words_has = False
+                bg_words_has = False
                 for k in key_words:
                     if k in summary:
-                        summary = summary.replace(k, f"**{k}**")
-                markdown_content += f"## {title}\n\n".replace(":", "")
-                markdown_content += f">Authors: {authors}\n\n"
-                markdown_content += f">{date}\n\n"
-                markdown_content += f"> {url}\n\n"
-                markdown_content += f"{summary}\n\n\n"
-                papers_found += 1
+                        summary = summary.replace(k, f"![key](https://img.shields.io/badge/{k}-F08080)")
+                        key_words_has = True
+                for k in bg_words:
+                    if k in summary:
+                        summary = summary.replace(k, f"![key](https://img.shields.io/badge/{k}-FF8C00)")
+                        bg_words_has = True
+                if key_words_has and bg_words_has:
+                    print(title)
+                    markdown_content += f"## {title}\n\n".replace(":", "")
+                    markdown_content += f">Authors: {authors}\n\n"
+                    markdown_content += f">{date}\n\n"
+                    markdown_content += f"> {url}\n\n"
+                    markdown_content += f"{summary}\n\n\n"
+                    papers_found += 1
 
             # Add a small delay every 100 papers to avoid rate limits
             if papers_found % 100 == 0 and papers_found > 0:
