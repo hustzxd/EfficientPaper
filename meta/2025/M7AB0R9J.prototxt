@@ -1,0 +1,25 @@
+paper {
+  title: "GPU-centric Communication Schemes for HPC and ML Applications"
+  abbr: "M7AB0R9J"
+  url: "http://arxiv.org/abs/2503.24230v1"
+  authors: "Naveen Namashivayam"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+}
+cover {
+  url: ""
+}

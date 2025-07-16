@@ -1,0 +1,33 @@
+paper {
+  title: "SpindleKV: A Novel KV Cache Reduction Method Balancing Both Shallow and Deep Layers"
+  abbr: "SpindleKV"
+  url: "http://arxiv.org/abs/2507.06517v1"
+  authors: "Zicong Tang"
+  authors: "Shi Luohe"
+  authors: "Zuchao Li"
+  authors: "Baoyuan Qi"
+  authors: "Guoming Liu"
+  authors: "Lefei Zhang"
+  authors: "Ping Wang"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

@@ -24,8 +24,7 @@ paper {
   authors: "Yun Liang"
   authors: "Jidong Zhai"
   authors: "Xin Liu"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "ByteDance Seed"
 }
 pub {
   where: "arXiv"
@@ -33,7 +32,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/ByteDance-Seed/Triton-distributed"
 }
 note {
   url: "note.md"

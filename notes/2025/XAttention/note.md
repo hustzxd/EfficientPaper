@@ -29,3 +29,5 @@ https://github.com/mit-han-lab/x-attention.
 
 Block Sparse Attention的mask估计方法改进，baseline是Minference和FlexPrefill
 
+算法复杂度比FlexPrefill, Minference高，论文中结果显示加速比很好，但根据开源代码复现加速不理想。
+

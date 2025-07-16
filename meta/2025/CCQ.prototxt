@@ -1,0 +1,35 @@
+paper {
+  title: "CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs"
+  abbr: "CCQ"
+  url: "http://arxiv.org/abs/2507.07145v1"
+  authors: "Zhaojing Zhou"
+  authors: "Xunchao Li"
+  authors: "Minghao Li"
+  authors: "Handi Zhang"
+  authors: "Haoshuang Wang"
+  authors: "Wenbin Chang"
+  authors: "Yiqun Liu"
+  authors: "Qingqing Dang"
+  authors: "Dianhai Yu"
+  authors: "Yanjun Ma"
+  authors: "Haifeng Wang"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}
