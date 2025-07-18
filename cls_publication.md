@@ -85,6 +85,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [CATS](./meta/2024/CATS.prototxt) | [CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models](http://arxiv.org/abs/2404.08763v4) | <img width='400' alt='image' src='./notes/2024/CATS/fig1.png'> | ![Publish](https://img.shields.io/badge/2024-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/ScalingIntelligence/CATS) | [note](./notes/2024/CATS/note.md) |
 | [m](./meta/2024/JSHWEV0S.prototxt) | [Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption](http://arxiv.org/abs/2407.18003v3) | <img width='400' alt='image' src='./notes/2024/JSHWEV0S/overview.png'> | ![Publish](https://img.shields.io/badge/2024-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/zcli-charlie/Awesome-KV-Cache) | [note](./notes/2024/JSHWEV0S/note.md) |
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 </p>
 </details>
 <details open><summary><b>CVPR</b></summary> 

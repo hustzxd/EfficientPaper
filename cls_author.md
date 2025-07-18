@@ -253,6 +253,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
 </p>
@@ -347,6 +348,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 </p>
 </details>
@@ -1710,6 +1712,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
 </p>
@@ -2876,6 +2879,17 @@
 | [PowerAttention](./meta/2025/PowerAttention.prototxt) | [PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention](http://arxiv.org/abs/2503.03588v1) | <img width='400' alt='image' src='./notes/2025/PowerAttention/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/PowerAttention/note.md) |
 </p>
 </details>
+<details open><summary><b>Weilin Zhao</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
+| [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
+</p>
+</details>
 <details open><summary><b>Weiyu Huang</b></summary> 
 <p>
 
@@ -3396,6 +3410,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
 </p>
@@ -3764,6 +3779,17 @@
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+</p>
+</details>
+<details open><summary><b>Yingfa Chen</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
+| [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 </p>
 </details>
 <details open><summary><b>Yinhe Han</b></summary> 
@@ -4228,6 +4254,17 @@
 | [ZeroQuant-V2](./meta/2023/ZeroQuant-V2.prototxt) | [ZeroQuant-V2: Exploring Post-training Quantization in LLMs from Comprehensive Study to Low Rank Compensation](https://arxiv.org/abs/2303.08302) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/DeepSpeed) |  |
 </p>
 </details>
+<details open><summary><b>Yuxuan Li</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
+| [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
+</p>
+</details>
 <details open><summary><b>Yuxuan Liu</b></summary> 
 <p>
 
@@ -4560,6 +4597,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | <img width='400' alt='image' src='./notes/2024/ProSparse/prosparse.jpg'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | <img width='400' alt='image' src='./notes/2024/ReLU2/activation.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
+| [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | <img width='400' alt='image' src='./notes/2025/BlockFFN/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | <img width='400' alt='image' src='./notes/2025/MiniCPM4/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
 </p>

@@ -1,0 +1,32 @@
+paper {
+  title: "BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity"
+  abbr: "BlockFFN"
+  url: "http://arxiv.org/abs/2507.08771v1"
+  authors: "Chenyang Song"
+  authors: "Weilin Zhao"
+  authors: "Xu Han"
+  authors: "Chaojun Xiao"
+  authors: "Yingfa Chen"
+  authors: "Yuxuan Li"
+  authors: "Zhiyuan Liu"
+  authors: "Maosong Sun"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "COLM"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thunlp/BlockFFN"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: activation_sparsity
+  words: structure_design
+}
+cover {
+  url: "fig2.png"
+}
