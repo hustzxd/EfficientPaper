@@ -3,7 +3,7 @@
 > Size Zheng, Wenlei Bao, Qi Hou, Xuegui Zheng, Jin Fang, Chenhui Huang, Tianqi Li, Haojie Duanmu, Renze Chen, Ruifan Xu, Yifan Guo, Ningxin Zheng, Ziheng Jiang, Xinyi Di, Dongyang Wang, Jianxi Ye, Haibin Lin, Li-Wen Chang, Liqiang Lu, Yun Liang, Jidong Zhai, Xin Liu
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="fig2.png" width="600" title="blank">
 </p>
 
 ## Abstract
