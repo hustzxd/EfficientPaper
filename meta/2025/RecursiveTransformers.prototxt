@@ -1,0 +1,31 @@
+paper {
+  title: "Relaxed Recursive Transformers: Effective Parameter Sharing with Layer-wise LoRA"
+  abbr: "RecursiveTransformers"
+  url: "http://arxiv.org/abs/2410.20672v3"
+  authors: "Sangmin Bae"
+  authors: "Adam Fisch"
+  authors: "Hrayr Harutyunyan"
+  authors: "Ziwei Ji"
+  authors: "Seungyeon Kim"
+  authors: "Tal Schuster"
+  institutions: "KAIST AI"
+  institutions: "Google DeepMind"
+  institutions: "Google Research"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}

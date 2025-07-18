@@ -1,0 +1,31 @@
+paper {
+  title: "Mixture of Experts in Large Language Models"
+  abbr: "52A7RO95"
+  url: "http://arxiv.org/abs/2507.11181v1"
+  authors: "Danyang Zhang"
+  authors: "Junhao Song"
+  authors: "Ziqian Bi"
+  authors: "Yingfang Yuan"
+  authors: "Tianyang Wang"
+  authors: "Joe Yeong"
+  authors: "Junfeng Hao"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+}
+cover {
+  url: ""
+}
