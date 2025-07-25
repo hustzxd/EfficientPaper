@@ -103,6 +103,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [FlexPrefill](./meta/2025/FlexPrefill.prototxt) | [FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference](http://arxiv.org/abs/2502.20766v1) | <img width='400' alt='image' src='./notes/2025/FlexPrefill/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/FlexPrefill) | [note](./notes/2025/FlexPrefill/note.md) |
+| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) | <img width='400' alt='image' src='./notes/2025/52A7RO95/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
 </p>
 </details>
 <details open><summary><b>ByteDance Seed</b></summary> 
@@ -490,6 +491,16 @@
 | [ZigZagKV](./meta/2024/ZigZagKV.prototxt) | [ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty](http://arxiv.org/abs/2412.09036v1) | <img width='400' alt='image' src='./notes/2024/ZigZagKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZigZagKV/note.md) |
 </p>
 </details>
+<details open><summary><b>Heriot-Watt University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) | <img width='400' alt='image' src='./notes/2025/52A7RO95/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
+</p>
+</details>
 <details open><summary><b>Hong Kong University of Science and Technology</b></summary> 
 <p>
 
@@ -631,6 +642,16 @@
 | [m](./meta/2024/ULY1AZGY.prototxt) | [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) | [note](./notes/2024/ULY1AZGY/note.md) |
 </p>
 </details>
+<details open><summary><b>Imperial College London</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) | <img width='400' alt='image' src='./notes/2025/52A7RO95/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
+</p>
+</details>
 <details open><summary><b>Indian Institute of Science</b></summary> 
 <p>
 
@@ -650,6 +671,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | <img width='400' alt='image' src='./notes/2024/MoA/moa.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | <img width='400' alt='image' src='./notes/2025/SpecEE/fig9.png'> | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | ![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
+| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | <img width='400' alt='image' src='./notes/2025/FlashOverlap/fig3.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Institute for Advanced Algorithms Research</b></summary> 
@@ -1285,6 +1307,26 @@
 | [GLA](./meta/2025/GLA.prototxt) | [Hardware-Efficient Attention for Fast Decoding](http://arxiv.org/abs/2505.21487v1) | <img width='400' alt='image' src='./notes/2025/GLA/gla.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/grouped-latent-attention) | [note](./notes/2025/GLA/note.md) |
 </p>
 </details>
+<details open><summary><b>Purdue University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) | <img width='400' alt='image' src='./notes/2025/52A7RO95/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
+</p>
+</details>
+<details open><summary><b>Qwen Team</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [Qwen3](./meta/2025/Qwen3.prototxt) | [Qwen3 Technical Report](http://arxiv.org/abs/2505.09388v1) | <img width='400' alt='image' src='./notes/2025/Qwen3/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/QwenLM/Qwen3) | [note](./notes/2025/Qwen3/note.md) |
+</p>
+</details>
 <details open><summary><b>Renmin University of China</b></summary> 
 <p>
 
@@ -1454,6 +1496,7 @@
 | [CateKV](./meta/2025/CateKV.prototxt) | [CateKV: On Sequential Consistency for Long-Context LLM Inference Acceleration](https://openreview.net/forum?id=u7dlwgKstN) | <img width='400' alt='image' src='./notes/2025/CateKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/CateKV/note.md) |
 | [PoD](./meta/2025/PoD.prototxt) | [Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity](http://arxiv.org/abs/2412.02252v1) | <img width='400' alt='image' src='./notes/2025/PoD/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/PoD/note.md) |
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | <img width='400' alt='image' src='./notes/2025/SpecEE/fig9.png'> | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | ![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
+| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | <img width='400' alt='image' src='./notes/2025/FlashOverlap/fig3.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlashOverlap/note.md) |
 | [FreqKV](./meta/2025/FreqKV.prototxt) | [FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension](http://arxiv.org/abs/2505.00570v2) | <img width='400' alt='image' src='./notes/2025/FreqKV/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FreqKV/note.md) |
 </p>
 </details>
@@ -1730,6 +1773,7 @@
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | <img width='400' alt='image' src='./notes/2025/SparsingLaw/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 | [XAttention](./meta/2025/XAttention.prototxt) | [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) | <img width='400' alt='image' src='./notes/2025/XAttention/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention) | [note](./notes/2025/XAttention/note.md) |
 | [LinearPatch](./meta/2025/LinearPatch.prototxt) | [A Simple Linear Patch Revives Layer-Pruned Large Language Models](http://arxiv.org/abs/2505.24680v1) | <img width='400' alt='image' src='./notes/2025/LinearPatch/fig3.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/LinearPatch/note.md) |
+| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | <img width='400' alt='image' src='./notes/2025/FlashOverlap/fig3.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlashOverlap/note.md) |
 | [KeepKV](./meta/2025/KeepKV.prototxt) | [KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference](http://arxiv.org/abs/2504.09936v1) | <img width='400' alt='image' src='./notes/2025/KeepKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/KeepKV/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | <img width='400' alt='image' src='./notes/2025/MoBA/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
 | [ReSA](./meta/2025/ReSA.prototxt) | [Rectified Sparse Attention](http://arxiv.org/abs/2506.04108v2) | <img width='400' alt='image' src='./notes/2025/ReSA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/unilm) | [note](./notes/2025/ReSA/note.md) |
@@ -2065,6 +2109,16 @@
 | [EAGLE](./meta/2024/Eagle.prototxt) | [EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty](http://arxiv.org/abs/2401.15077v2) | <img width='400' alt='image' src='./notes/2024/Eagle/eagle.jpg'> | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/SafeAILab/EAGLE) | [note](./notes/2024/Eagle/note.md) |
 </p>
 </details>
+<details open><summary><b>Vokram Group</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) | <img width='400' alt='image' src='./notes/2025/52A7RO95/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
+</p>
+</details>
 <details open><summary><b>WeChat AI</b></summary> 
 <p>
 
@@ -2193,9 +2247,7 @@
 | [AhaKV](./meta/2025/AhaKV.prototxt) | [AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models](http://arxiv.org/abs/2506.03762v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AhaKV/note.md) |
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 | [CometSeed](./meta/2025/CometSeed.prototxt) | [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CometSeed/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlashOverlap/note.md) |
 | [MegaScale-MoE](./meta/2025/MegaScale-MoE.prototxt) | [MegaScale-MoE: Large-Scale Communication-Efficient Training of Mixture-of-Experts Models in Production](http://arxiv.org/abs/2505.11432v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/MegaScale-MoE/note.md) |
-| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
 | [QuickSilver](./meta/2025/QuickSilver.prototxt) | [QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization](http://arxiv.org/abs/2506.22396v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/QuickSilver/note.md) |
 | [RadialAttention](./meta/2025/RadialAttention.prototxt) | [Radial Attention: $O(n\log n)$ Sparse Attention with Energy Decay for Long Video Generation](http://arxiv.org/abs/2506.19852v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RadialAttention/note.md) |
 | [Seesaw](./meta/2025/Seesaw.prototxt) | [Seesaw: High-throughput LLM Inference via Model Re-sharding](http://arxiv.org/abs/2503.06433v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Seesaw/note.md) |
@@ -2219,9 +2271,7 @@
 | [AhaKV](./meta/2025/AhaKV.prototxt) | [AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models](http://arxiv.org/abs/2506.03762v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AhaKV/note.md) |
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 | [CometSeed](./meta/2025/CometSeed.prototxt) | [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CometSeed/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlashOverlap/note.md) |
 | [MegaScale-MoE](./meta/2025/MegaScale-MoE.prototxt) | [MegaScale-MoE: Large-Scale Communication-Efficient Training of Mixture-of-Experts Models in Production](http://arxiv.org/abs/2505.11432v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/MegaScale-MoE/note.md) |
-| [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
 | [QuickSilver](./meta/2025/QuickSilver.prototxt) | [QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization](http://arxiv.org/abs/2506.22396v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/QuickSilver/note.md) |
 | [RadialAttention](./meta/2025/RadialAttention.prototxt) | [Radial Attention: $O(n\log n)$ Sparse Attention with Energy Decay for Long Video Generation](http://arxiv.org/abs/2506.19852v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RadialAttention/note.md) |
 | [Seesaw](./meta/2025/Seesaw.prototxt) | [Seesaw: High-throughput LLM Inference via Model Re-sharding](http://arxiv.org/abs/2503.06433v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Seesaw/note.md) |

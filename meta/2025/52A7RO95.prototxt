@@ -9,8 +9,11 @@ paper {
   authors: "Tianyang Wang"
   authors: "Joe Yeong"
   authors: "Junfeng Hao"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "ByteDance Inc"
+  institutions: "Imperial College London"
+  institutions: "Purdue University"
+  institutions: "Heriot-Watt University"
+  institutions: "Vokram Group"
 }
 pub {
   where: "arXiv"
@@ -24,8 +27,9 @@ note {
   url: "note.md"
 }
 keyword {
+  words: structure_design
   words: survey
 }
 cover {
-  url: ""
+  url: "fig1.png"
 }

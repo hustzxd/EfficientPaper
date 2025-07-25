@@ -14,8 +14,9 @@ paper {
   authors: "Zhenhua Zhu"
   authors: "Guohao Dai"
   authors: "Yu Wang"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Tsinghua University"
+  institutions: "Infinigence-AI"
+  institutions: "Shanghai Jiao Tong University"
 }
 pub {
   where: "arXiv"
@@ -32,5 +33,5 @@ keyword {
   words: overlap
 }
 cover {
-  url: ""
+  url: "fig3.png"
 }

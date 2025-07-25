@@ -3,7 +3,7 @@
 > Danyang Zhang, Junhao Song, Ziqian Bi, Yingfang Yuan, Tianyang Wang, Joe Yeong, Junfeng Hao
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="fig1.png" width="600" title="blank">
 </p>
 
 ## Abstract
