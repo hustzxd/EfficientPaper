@@ -1,0 +1,29 @@
+paper {
+  title: "AMALI: An Analytical Model for Accurately Modeling LLM Inference on Modern GPUs"
+  abbr: "AMALI"
+  url: "https://dl.acm.org/doi/10.1145/3695053.3731064"
+  authors: "Shiheng Cao"
+  authors: "Junmin Wu"
+  authors: "Junshi Chen"
+  authors: "Hong An"
+  authors: "Zhibin Yu"
+  institutions: "University of Science and Technology"
+  institutions: "Shenzhen Institutes of Advanced Technology(SIAT), Chinese Academy of Science(CAS)"
+}
+pub {
+  where: "ISCA"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: modeling
+}
+cover {
+  url: "fig6.png"
+}

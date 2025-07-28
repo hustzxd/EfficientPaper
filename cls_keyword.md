@@ -128,7 +128,18 @@
 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | <img width='400' alt='image' src='./notes/2025/IFPruning/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/IFPruning/note.md) |
 </p>
 </details>
-<details open><summary><b>04-Sparsity (Structured)</b></summary> 
+<details open><summary><b>04-Modeling</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
+| [AMALI](./meta/2025/AMALI.prototxt) | [AMALI: An Analytical Model for Accurately Modeling LLM Inference on Modern GPUs](https://dl.acm.org/doi/10.1145/3695053.3731064) | <img width='400' alt='image' src='./notes/2025/AMALI/fig6.png'> | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) |  | [note](./notes/2025/AMALI/note.md) |
+</p>
+</details>
+<details open><summary><b>05-Sparsity (Structured)</b></summary> 
 <p>
 
 
@@ -163,7 +174,7 @@
 | [SEAP](./meta/2025/SEAP.prototxt) | [SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models](http://arxiv.org/abs/2503.07605v1) | <img width='400' alt='image' src='./notes/2025/SEAP/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/IAAR-Shanghai/SEAP) | [note](./notes/2025/SEAP/note.md) |
 </p>
 </details>
-<details open><summary><b>05-Sparse/Pruning</b></summary> 
+<details open><summary><b>06-Sparse/Pruning</b></summary> 
 <p>
 
 
@@ -339,7 +350,7 @@
 | [Task-KV](./meta/2025/Task-KV.prototxt) | [Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads](http://arxiv.org/abs/2501.15113v1) | <img width='400' alt='image' src='./notes/2025/Task-KV/fig6.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Task-KV/note.md) |
 </p>
 </details>
-<details open><summary><b>06-Quantization</b></summary> 
+<details open><summary><b>07-Quantization</b></summary> 
 <p>
 
 
@@ -375,7 +386,7 @@
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 </p>
 </details>
-<details open><summary><b>07-Survey</b></summary> 
+<details open><summary><b>08-Survey</b></summary> 
 <p>
 
 
@@ -397,7 +408,7 @@
 | [sparse-frontier](./meta/2025/sparse-frontier.prototxt) | [The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](http://arxiv.org/abs/2504.17768v1) | <img width='400' alt='image' src='./notes/2025/sparse-frontier/tb1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/PiotrNawrot/sparse-frontier) | [note](./notes/2025/sparse-frontier/note.md) |
 </p>
 </details>
-<details open><summary><b>08-Low Rank Decomposition</b></summary> 
+<details open><summary><b>09-Low Rank Decomposition</b></summary> 
 <p>
 
 
@@ -414,7 +425,7 @@
 | [L4Q](./meta/2024/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | <img width='400' alt='image' src='./notes/2024/L4Q/l4q.jpg'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/L4Q/note.md) |
 </p>
 </details>
-<details open><summary><b>09-Layer Fusion (Reduce IO)</b></summary> 
+<details open><summary><b>10-Layer Fusion (Reduce IO)</b></summary> 
 <p>
 
 
@@ -426,7 +437,7 @@
 | [GLA](./meta/2025/GLA.prototxt) | [Hardware-Efficient Attention for Fast Decoding](http://arxiv.org/abs/2505.21487v1) | <img width='400' alt='image' src='./notes/2025/GLA/gla.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/grouped-latent-attention) | [note](./notes/2025/GLA/note.md) |
 </p>
 </details>
-<details open><summary><b>10-Tool</b></summary> 
+<details open><summary><b>11-Tool</b></summary> 
 <p>
 
 
@@ -440,7 +451,7 @@
 | [kvpress](./meta/2025/kvpress.prototxt) | kvpress |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) | [note](./notes/2025/kvpress/note.md) |
 </p>
 </details>
-<details open><summary><b>11-KV Cache Optimization/Efficient Attention</b></summary> 
+<details open><summary><b>12-KV Cache Optimization/Efficient Attention</b></summary> 
 <p>
 
 
@@ -529,7 +540,7 @@
 | [kvpress](./meta/2025/kvpress.prototxt) | kvpress |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) | [note](./notes/2025/kvpress/note.md) |
 </p>
 </details>
-<details open><summary><b>12-Efficient Training</b></summary> 
+<details open><summary><b>13-Efficient Training</b></summary> 
 <p>
 
 
@@ -549,7 +560,7 @@
 | [m](./meta/2024/SN1PK7EK.prototxt) | [Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark](http://arxiv.org/abs/2402.11592v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/ZO-Bench/ZO-LLM) | [note](./notes/2024/SN1PK7EK/note.md) |
 </p>
 </details>
-<details open><summary><b>13-Network Structure Design</b></summary> 
+<details open><summary><b>14-Network Structure Design</b></summary> 
 <p>
 
 
@@ -579,7 +590,7 @@
 | [Qwen3](./meta/2025/Qwen3.prototxt) | [Qwen3 Technical Report](http://arxiv.org/abs/2505.09388v1) | <img width='400' alt='image' src='./notes/2025/Qwen3/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/QwenLM/Qwen3) | [note](./notes/2025/Qwen3/note.md) |
 </p>
 </details>
-<details open><summary><b>14-Sparsity (Weight)</b></summary> 
+<details open><summary><b>15-Sparsity (Weight)</b></summary> 
 <p>
 
 
@@ -602,7 +613,7 @@
 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | <img width='400' alt='image' src='./notes/2025/BaWA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/BaWA/note.md) |
 </p>
 </details>
-<details open><summary><b>15-LLM Deployment</b></summary> 
+<details open><summary><b>16-LLM Deployment</b></summary> 
 <p>
 
 

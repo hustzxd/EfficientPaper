@@ -96,6 +96,7 @@ word_pb2str = {
     eppb.Keyword.Word.structured_sparsity: "Sparsity (Structured)",
     eppb.Keyword.Word.deployment: "LLM Deployment",
     eppb.Keyword.Word.overlap: "Communication-Computation Overlap",
+    eppb.Keyword.Word.modeling: "Modeling"
 }
 
 for k, v in word_pb2str.items():
