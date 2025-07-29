@@ -3,7 +3,7 @@
 > Amey Agrawal, Nitin Kedia, Jayashree Mohan, Ashish Panwar, Nipun Kwatra, Bhargav Gulavani, Ramachandran Ramjee, Alexey Tumanov
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="fig2.png" width="600" title="blank">
 </p>
 
 ## Abstract

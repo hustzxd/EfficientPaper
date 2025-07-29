@@ -1,0 +1,30 @@
+paper {
+  title: "Characterizing Compute-Communication Overlap in GPU-Accelerated Distributed Deep Learning: Performance and Power Implications"
+  abbr: "1DZIJVBI"
+  url: "http://arxiv.org/abs/2507.03114v1"
+  authors: "Seonho Lee"
+  authors: "Jihwan Oh"
+  authors: "Junkyum Kim"
+  authors: "Seokjin Go"
+  authors: "Jongse Park"
+  authors: "Divya Mahajan"
+  institutions: "Georgia Institute of Technology"
+  institutions: "KAIST"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

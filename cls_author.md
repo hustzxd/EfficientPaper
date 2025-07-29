@@ -126,7 +126,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
-| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
+| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | <img width='400' alt='image' src='./notes/2024/Vidur/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
 | [vAttention](./meta/2025/vAttention.prototxt) | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md) |
 </p>
@@ -387,6 +387,17 @@
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | <img width='400' alt='image' src='./notes/2024/DeepSeekMoE/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | <img width='400' alt='image' src='./notes/2025/NSA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/NSA/note.md) |
+</p>
+</details>
+<details open><summary><b>Christos Kozyrakis</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | <img width='400' alt='image' src='./notes/2024/SGLang/fig9.png'> | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) | ![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |
+| [LIMINAL](./meta/2025/LIMINAL.prototxt) | [Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need](http://arxiv.org/abs/2507.14397v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/LIMINAL/note.md) |
 </p>
 </details>
 <details open><summary><b>Chuang Gan</b></summary> 
@@ -1145,7 +1156,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
-| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
+| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | <img width='400' alt='image' src='./notes/2024/Vidur/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
 | [vAttention](./meta/2025/vAttention.prototxt) | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md) |
 </p>
@@ -1960,7 +1971,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
-| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
+| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | <img width='400' alt='image' src='./notes/2024/Vidur/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
 | [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | <img width='400' alt='image' src='./notes/2025/TokenWeave/fig8.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
 </p>
 </details>
@@ -2139,7 +2150,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
-| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
+| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | <img width='400' alt='image' src='./notes/2024/Vidur/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | <img width='400' alt='image' src='./notes/2025/POD-Attention/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
 | [vAttention](./meta/2025/vAttention.prototxt) | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | <img width='400' alt='image' src='./notes/2025/vAttention/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention) | [note](./notes/2025/vAttention/note.md) |
 | [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | <img width='400' alt='image' src='./notes/2025/TokenWeave/fig8.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |

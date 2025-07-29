@@ -10,16 +10,15 @@ paper {
   authors: "Bhargav Gulavani"
   authors: "Ramachandran Ramjee"
   authors: "Alexey Tumanov"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Microsoft Research India"
 }
 pub {
-  where: "arXiv"
+  where: "MLSys"
   year: 2024
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/microsoft/vidur"
 }
 note {
   url: "note.md"
@@ -28,5 +27,5 @@ keyword {
   words: modeling
 }
 cover {
-  url: ""
+  url: "fig2.png"
 }

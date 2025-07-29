@@ -204,6 +204,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | <img width='400' alt='image' src='./notes/2024/SMAT/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |
 </p>
 </details>
@@ -405,6 +406,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | <img width='400' alt='image' src='./notes/2023/adalora/adalora.jpg'> | ![Publish](https://img.shields.io/badge/2023-ICLR-FF6B6B) | ![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA) |  |
 | [LoftQ](./meta/2023/loftq.prototxt) | [LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models](https://arxiv.org/abs/2310.08659) | <img width='400' alt='image' src='./notes/2023/loftq/loftq.jpg'> | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/yxli2123/LoftQ) | [note](./notes/2023/loftq/note.md) |
+| [1DZIJVBI](./meta/2025/1DZIJVBI.prototxt) | [Characterizing Compute-Communication Overlap in GPU-Accelerated Distributed Deep Learning: Performance and Power Implications](http://arxiv.org/abs/2507.03114v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/1DZIJVBI/note.md) |
 </p>
 </details>
 <details open><summary><b>Google</b></summary> 
@@ -489,6 +491,16 @@
 | [TextPruner](./meta/2022/TextPruner.prototxt) | [TextPruner: A Model Pruning Toolkit for Pre-Trained Language Models](https://arxiv.org/abs/2203.15996) | <img width='400' alt='image' src='./notes/2022/TextPruner/textpruner.jpg'> | ![Publish](https://img.shields.io/badge/2022-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/TextPruner) |  |
 | [GRAIN](./meta/2023/grain.prototxt) | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634) | <img width='400' alt='image' src='./notes/2023/grain/grain.jpg'> | ![Publish](https://img.shields.io/badge/2023-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/GRAIN) | [note](./notes/2023/grain/index.md) |
 | [ZigZagKV](./meta/2024/ZigZagKV.prototxt) | [ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty](http://arxiv.org/abs/2412.09036v1) | <img width='400' alt='image' src='./notes/2024/ZigZagKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZigZagKV/note.md) |
+</p>
+</details>
+<details open><summary><b>Harvard University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | <img width='400' alt='image' src='./notes/2024/SMAT/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
 </p>
 </details>
 <details open><summary><b>Heriot-Watt University</b></summary> 
@@ -753,6 +765,8 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [UC0D8DJ6](./meta/2025/UC0D8DJ6.prototxt) | [Characterizing Communication Patterns in Distributed Large Language Model Inference](http://arxiv.org/abs/2507.14392v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/UC0D8DJ6/note.md) |
+| [1DZIJVBI](./meta/2025/1DZIJVBI.prototxt) | [Characterizing Compute-Communication Overlap in GPU-Accelerated Distributed Deep Learning: Performance and Power Implications](http://arxiv.org/abs/2507.03114v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/1DZIJVBI/note.md) |
 | [DeltaAttention](./meta/2025/DeltaAttention.prototxt) | [Delta Attention: Fast and Accurate Sparse Attention Inference by Delta Correction](http://arxiv.org/abs/2505.11254v1) | <img width='400' alt='image' src='./notes/2025/DeltaAttention/fig4.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DeltaAttention/note.md) |
 </p>
 </details>
@@ -902,6 +916,16 @@
 | [H2O](./meta/2023/H2O.prototxt) | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | <img width='400' alt='image' src='./notes/2023/H2O/h2o.png'> | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O) | [note](./notes/2023/H2O/note.md) |
 </p>
 </details>
+<details open><summary><b>Meta Platforms Inc</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [TorchAO](./meta/2025/TorchAO.prototxt) | [TorchAO: PyTorch-Native Training-to-Serving Model Optimization](http://arxiv.org/abs/2507.16099v1) | <img width='400' alt='image' src='./notes/2025/TorchAO/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-ICML_Workshop-green) | ![GitHub Repo stars](https://img.shields.io/github/stars/pytorch/ao) | [note](./notes/2025/TorchAO/note.md) |
+</p>
+</details>
 <details open><summary><b>Michigan State University</b></summary> 
 <p>
 
@@ -979,6 +1003,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | <img width='400' alt='image' src='./notes/2024/Vidur/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
 | [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | <img width='400' alt='image' src='./notes/2025/TokenWeave/fig8.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
 </p>
 </details>
@@ -1075,6 +1100,16 @@
 | [kvpress](./meta/2025/kvpress.prototxt) | kvpress |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress) | [note](./notes/2025/kvpress/note.md) |
 </p>
 </details>
+<details open><summary><b>NVIDIA Research</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [LIMINAL](./meta/2025/LIMINAL.prototxt) | [Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need](http://arxiv.org/abs/2507.14397v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/LIMINAL/note.md) |
+</p>
+</details>
 <details open><summary><b>NanKai University</b></summary> 
 <p>
 
@@ -1105,6 +1140,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |  | ![Publish](https://img.shields.io/badge/2017-NeurIPS-FF1493) | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS) |  |
+| [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | <img width='400' alt='image' src='./notes/2024/SMAT/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
 | [Cus-Prun](./meta/2025/Cus-Prun.prototxt) | [Pruning General Large Language Models into Customized Expert Models](http://arxiv.org/abs/2506.02561v1) | <img width='400' alt='image' src='./notes/2025/Cus-Prun/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/zhaoyiran924/Custom-Prune) | [note](./notes/2025/Cus-Prun/note.md) |
 | [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | <img width='400' alt='image' src='./notes/2025/0VRXJQ3F/tab1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 </p>
@@ -1250,6 +1286,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [OmniQuant](./meta/2023/omniquant.prototxt) | [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) | <img width='400' alt='image' src='./notes/2023/omniquant/omniquant.png'> | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant) |  |
+</p>
+</details>
+<details open><summary><b>OpenTeams Inc</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [TorchAO](./meta/2025/TorchAO.prototxt) | [TorchAO: PyTorch-Native Training-to-Serving Model Optimization](http://arxiv.org/abs/2507.16099v1) | <img width='400' alt='image' src='./notes/2025/TorchAO/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-ICML_Workshop-green) | ![GitHub Repo stars](https://img.shields.io/github/stars/pytorch/ao) | [note](./notes/2025/TorchAO/note.md) |
 </p>
 </details>
 <details open><summary><b>Oxford University</b></summary> 
@@ -1697,6 +1743,16 @@
 | [ChunkKV](./meta/2025/ChunkKV.prototxt) | [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) | <img width='400' alt='image' src='./notes/2025/ChunkKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/ChunkKV/note.md) |
 </p>
 </details>
+<details open><summary><b>The Ohio State University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [UC0D8DJ6](./meta/2025/UC0D8DJ6.prototxt) | [Characterizing Communication Patterns in Distributed Large Language Model Inference](http://arxiv.org/abs/2507.14392v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/UC0D8DJ6/note.md) |
+</p>
+</details>
 <details open><summary><b>The University of Hong Kong</b></summary> 
 <p>
 
@@ -1985,6 +2041,16 @@
 | [topk-decoding](./meta/2025/topk-decoding.prototxt) | [Exploiting Sparsity for Long Context Inference: Million Token Contexts on Commodity GPUs](http://arxiv.org/abs/2502.06766v2) | <img width='400' alt='image' src='./notes/2025/topk-decoding/alg1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/ryansynk/topk-decoding) | [note](./notes/2025/topk-decoding/note.md) |
 </p>
 </details>
+<details open><summary><b>University of Oxford</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | <img width='400' alt='image' src='./notes/2024/SMAT/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
+</p>
+</details>
 <details open><summary><b>University of Science and Technology</b></summary> 
 <p>
 
@@ -2264,7 +2330,6 @@
 | [TinyTrain](./meta/2024/TinyTrain.prototxt) | [TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge](http://arxiv.org/abs/2307.09988v2) |  | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/theyoungkwon/TinyTrain) | [note](./notes/2024/TinyTrain/note.md) |
 | [FLUX](./meta/2024/FLUX.prototxt) | [FLUX: Fast Software-based Communication Overlap On GPUs Through Kernel Fusion](http://arxiv.org/abs/2406.06858v5) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FLUX/note.md) |
 | [NanoFlow](./meta/2024/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/NanoFlow/note.md) |
-| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
 | [AhaKV](./meta/2025/AhaKV.prototxt) | [AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models](http://arxiv.org/abs/2506.03762v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AhaKV/note.md) |
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 | [CometSeed](./meta/2025/CometSeed.prototxt) | [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CometSeed/note.md) |
@@ -2289,7 +2354,6 @@
 | [FLUX](./meta/2024/FLUX.prototxt) | [FLUX: Fast Software-based Communication Overlap On GPUs Through Kernel Fusion](http://arxiv.org/abs/2406.06858v5) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FLUX/note.md) |
 | [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |
 | [NanoFlow](./meta/2024/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/NanoFlow/note.md) |
-| [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Vidur/note.md) |
 | [AhaKV](./meta/2025/AhaKV.prototxt) | [AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models](http://arxiv.org/abs/2506.03762v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AhaKV/note.md) |
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 | [CometSeed](./meta/2025/CometSeed.prototxt) | [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CometSeed/note.md) |
