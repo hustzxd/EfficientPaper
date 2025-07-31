@@ -1,0 +1,33 @@
+paper {
+  title: "A Survey on Inference Optimization Techniques for Mixture of Experts Models"
+  abbr: "068ZPAME"
+  url: "http://arxiv.org/abs/2412.14219v2"
+  authors: "Jiacheng Liu"
+  authors: "Peng Tang"
+  authors: "Wenfeng Wang"
+  authors: "Yuhang Ren"
+  authors: "Xiaofeng Hou"
+  authors: "Pheng-Ann Heng"
+  authors: "Minyi Guo"
+  authors: "Chao Li"
+  institutions: "Chinese University of Hong Kong"
+  institutions: "Shanghai Jiao Tong Universtiy"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/MoE-Inf/awesome-moe-inference/"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+  words: structure_design
+}
+cover {
+  url: "tab1.png"
+}

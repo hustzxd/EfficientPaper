@@ -187,6 +187,16 @@
 | [m](./meta/2024/ULY1AZGY.prototxt) | [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) | [note](./notes/2024/ULY1AZGY/note.md) |
 </p>
 </details>
+<details open><summary><b>Chinese University of Hong Kong</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [068ZPAME](./meta/2024/068ZPAME.prototxt) | [A Survey on Inference Optimization Techniques for Mixture of Experts Models](http://arxiv.org/abs/2412.14219v2) | <img width='400' alt='image' src='./notes/2024/068ZPAME/tab1.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/MoE-Inf/awesome-moe-inference) | [note](./notes/2024/068ZPAME/note.md) |
+</p>
+</details>
 <details open><summary><b>Chongqing University</b></summary> 
 <p>
 
@@ -1544,6 +1554,16 @@
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | <img width='400' alt='image' src='./notes/2025/SpecEE/fig9.png'> | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | ![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
 | [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | <img width='400' alt='image' src='./notes/2025/FlashOverlap/fig3.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlashOverlap/note.md) |
 | [FreqKV](./meta/2025/FreqKV.prototxt) | [FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension](http://arxiv.org/abs/2505.00570v2) | <img width='400' alt='image' src='./notes/2025/FreqKV/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FreqKV/note.md) |
+</p>
+</details>
+<details open><summary><b>Shanghai Jiao Tong Universtiy</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [068ZPAME](./meta/2024/068ZPAME.prototxt) | [A Survey on Inference Optimization Techniques for Mixture of Experts Models](http://arxiv.org/abs/2412.14219v2) | <img width='400' alt='image' src='./notes/2024/068ZPAME/tab1.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/MoE-Inf/awesome-moe-inference) | [note](./notes/2024/068ZPAME/note.md) |
 </p>
 </details>
 <details open><summary><b>Shanghai Jiaotong University</b></summary> 
