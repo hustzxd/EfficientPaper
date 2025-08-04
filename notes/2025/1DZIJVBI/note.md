@@ -3,7 +3,7 @@
 > Seonho Lee, Jihwan Oh, Junkyum Kim, Seokjin Go, Jongse Park, Divya Mahajan
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="eq1.png" width="600" title="blank">
 </p>
 
 ## Abstract
@@ -34,3 +34,6 @@ also increase power consumption under specific configurations. The analysis
 also uncovers trade-offs introduced by power and frequency capping, emphasizing
 the importance of balanced strategies to optimize energy efficiency and
 training throughput.
+
+
+理论情况下overlap计算和通信不互相影响，但实际使用overlap将会导致计算变慢20%～40%，此外overlap导致资源争夺也会增加功耗

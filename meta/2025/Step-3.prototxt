@@ -1,0 +1,33 @@
+paper {
+  title: "Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding"
+  abbr: "Step-3"
+  url: "http://arxiv.org/abs/2507.19427v1"
+  authors: "Bin Wang"
+  authors: "Bojun Wang"
+  authors: "Changyi Wan"
+  authors: "Zili Wang"
+  authors: "Ziqi Wang"
+  authors: "Zixin Zhang"
+  authors: "Binxing Jiao"
+  authors: "Daxin Jiang"
+  authors: "Heung-Yeung Shum"
+  authors: "Xiangyu Zhang"
+  institutions: "StepFun Inc."
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: ""
+}

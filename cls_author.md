@@ -210,6 +210,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [PanguUltra](./meta/2025/PanguUltra.prototxt) | [Pangu Ultra: Pushing the Limits of Dense Large Language Models on Ascend NPUs](http://arxiv.org/abs/2504.07866v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/PanguUltra/note.md) |
+| [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 </p>
 </details>
 <details open><summary><b>Bing Xue</b></summary> 
@@ -254,6 +255,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | <img width='400' alt='image' src='./notes/2024/0Y41U1N2/cover.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/0Y41U1N2/note.md) |
+| [DeltaLLM](./meta/2025/DeltaLLM.prototxt) | [DeltaLLM: A Training-Free Framework Exploiting Temporal Sparsity for Efficient Edge LLM Inference](http://arxiv.org/abs/2507.19608v1) | <img width='400' alt='image' src='./notes/2025/DeltaLLM/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DeltaLLM/note.md) |
 | [Qwen3](./meta/2025/Qwen3.prototxt) | [Qwen3 Technical Report](http://arxiv.org/abs/2505.09388v1) | <img width='400' alt='image' src='./notes/2025/Qwen3/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/QwenLM/Qwen3) | [note](./notes/2025/Qwen3/note.md) |
 </p>
 </details>
@@ -476,6 +478,17 @@
 | [SpQR](./meta/2023/spqr.prototxt) | [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/pdf/2306.03078.pdf) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/Vahe1994/SpQR) |  |
 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf) | <img width='400' alt='image' src='./notes/2023/SquareHead/cover.png'> | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning) |  |
 | [m](./meta/2024/ULY1AZGY.prototxt) | [Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment](http://arxiv.org/abs/2405.03594v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/neuralmagic/nm-vllm) | [note](./notes/2024/ULY1AZGY/note.md) |
+</p>
+</details>
+<details open><summary><b>Daxin Jiang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [MFA](./meta/2024/MFA.prototxt) | [Multi-matrix Factorization Attention](http://arxiv.org/abs/2412.19255v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MFA/note.md) |
+| [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 </p>
 </details>
 <details open><summary><b>Daya Guo</b></summary> 
@@ -980,6 +993,17 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [SeerAttention](./meta/2024/SeerAttention.prototxt) | [SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs](http://arxiv.org/abs/2410.13276v2) | <img width='400' alt='image' src='./notes/2024/SeerAttention/seerattention.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2024/SeerAttention/note.md) |
 | [SeerAttention-R](./meta/2025/SeerAttention-R.prototxt) | [SeerAttention-R: Sparse Attention Adaptation for Long Reasoning](http://arxiv.org/abs/2506.08889v1) | <img width='400' alt='image' src='./notes/2025/SeerAttention-R/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention) | [note](./notes/2025/SeerAttention-R/note.md) |
+</p>
+</details>
+<details open><summary><b>Heung-Yeung Shum</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [MFA](./meta/2024/MFA.prototxt) | [Multi-matrix Factorization Attention](http://arxiv.org/abs/2412.19255v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MFA/note.md) |
+| [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 </p>
 </details>
 <details open><summary><b>Honghui Ding</b></summary> 
@@ -2105,6 +2129,7 @@
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [DeltaLLM](./meta/2025/DeltaLLM.prototxt) | [DeltaLLM: A Training-Free Framework Exploiting Temporal Sparsity for Efficient Edge LLM Inference](http://arxiv.org/abs/2507.19608v1) | <img width='400' alt='image' src='./notes/2025/DeltaLLM/fig5.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DeltaLLM/note.md) |
 </p>
 </details>
 <details open><summary><b>Qiushi Du</b></summary> 
@@ -3056,6 +3081,7 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | <img width='400' alt='image' src='./notes/2022/fisherpruning/cover.jpg'> | ![Publish](https://img.shields.io/badge/2022-NeurIPS-FF1493) | ![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
 | [Paged Attention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | <img width='400' alt='image' src='./notes/2023/PagedAttention/vllm.png'> | ![Publish](https://img.shields.io/badge/2023-SOSP-8A2BE2) | ![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |
+| [APEX](./meta/2024/APEX.prototxt) | [APEX: An Extensible and Dynamism-Aware Simulator for Automated Parallel Execution in LLM Serving](http://arxiv.org/abs/2411.17651v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/apex_plus) | [note](./notes/2024/APEX/note.md) |
 </p>
 </details>
 <details open><summary><b>Wulong Liu</b></summary> 
@@ -3112,6 +3138,17 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [LISA](./meta/2024/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/LISA/note.md) |
 | [ChunkKV](./meta/2025/ChunkKV.prototxt) | [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) | <img width='400' alt='image' src='./notes/2025/ChunkKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/ChunkKV/note.md) |
+</p>
+</details>
+<details open><summary><b>Xiangyu Zhang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [MFA](./meta/2024/MFA.prototxt) | [Multi-matrix Factorization Attention](http://arxiv.org/abs/2412.19255v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MFA/note.md) |
+| [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 </p>
 </details>
 <details open><summary><b>Xiangyue Jin</b></summary> 
@@ -4785,6 +4822,17 @@
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V3/fig5.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+</p>
+</details>
+<details open><summary><b>Zili Wang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [MFA](./meta/2024/MFA.prototxt) | [Multi-matrix Factorization Attention](http://arxiv.org/abs/2412.19255v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MFA/note.md) |
+| [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 </p>
 </details>
 <details open><summary><b>Zilin Li</b></summary> 

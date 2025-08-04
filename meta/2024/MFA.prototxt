@@ -1,0 +1,32 @@
+paper {
+  title: "Multi-matrix Factorization Attention"
+  abbr: "MFA"
+  url: "http://arxiv.org/abs/2412.19255v2"
+  authors: "Jingcheng Hu"
+  authors: "Houyi Li"
+  authors: "Yinmin Zhang"
+  authors: "Zili Wang"
+  authors: "Shuigeng Zhou"
+  authors: "Xiangyu Zhang"
+  authors: "Heung-Yeung Shum"
+  authors: "Daxin Jiang"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}
