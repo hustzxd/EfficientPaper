@@ -22,7 +22,7 @@ paper {
   institutions: "University of Washington"
 }
 pub {
-  where: "arXiv"
+  where: "ACL"
   year: 2025
 }
 code {
