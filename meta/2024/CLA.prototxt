@@ -23,6 +23,7 @@ note {
 }
 keyword {
   words: kv_cache
+  words: structure_design
 }
 cover {
   url: "fig1.png"

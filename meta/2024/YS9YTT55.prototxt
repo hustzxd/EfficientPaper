@@ -1,0 +1,29 @@
+paper {
+  title: "LLM Inference Serving: Survey of Recent Advances and Opportunities"
+  abbr: "YS9YTT55"
+  url: "http://arxiv.org/abs/2407.12391v1"
+  authors: "Baolin Li"
+  authors: "Yankai Jiang"
+  authors: "Vijay Gadepally"
+  authors: "Devesh Tiwari"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+  words: deployment
+}
+cover {
+  url: ""
+}

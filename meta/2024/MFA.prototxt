@@ -10,8 +10,10 @@ paper {
   authors: "Xiangyu Zhang"
   authors: "Heung-Yeung Shum"
   authors: "Daxin Jiang"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "StepFun"
+  institutions: "Tsinghua University"
+  institutions: "Fudan University"
+  institutions: "Megvii Technology"
 }
 pub {
   where: "arXiv"
@@ -25,7 +27,8 @@ note {
   url: "note.md"
 }
 keyword {
-  words: none
+  words: kv_cache
+  words: structure_design
 }
 cover {
   url: ""
