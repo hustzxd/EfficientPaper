@@ -258,6 +258,7 @@ keyword {
 89. [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) [![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5)] [Pytorch](https://huggingface.co/PowerInfer) 
 90. [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) [![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5)] ![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar) 
 91. [ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty](http://arxiv.org/abs/2412.09036v1) [![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5)]  
+92. [[Distributed w/ TorchTitan] Introducing Async Tensor Parallelism in PyTorch](https://discuss.pytorch.org/t/distributed-w-torchtitan-introducing-async-tensor-parallelism-in-pytorch/209487/1) [![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5)] ![GitHub Repo stars](https://img.shields.io/github/stars/pytorch/torchtitan) 
 </p>
 </details>
 <details open><summary><b>2023</b></summary> 

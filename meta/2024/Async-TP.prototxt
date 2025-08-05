@@ -1,0 +1,25 @@
+paper {
+  title: "[Distributed w/ TorchTitan] Introducing Async Tensor Parallelism in PyTorch"
+  abbr: "Async-TP"
+  url: "https://discuss.pytorch.org/t/distributed-w-torchtitan-introducing-async-tensor-parallelism-in-pytorch/209487/1"
+  authors: "Yifu Wang"
+  authors: "Horace He, Less Wright, Luca Wehrstedt, Tianyu Liu, Wanchao Liang"
+  institutions: "PyTorch"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/pytorch/torchtitan"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: "Figure_2.png"
+}
