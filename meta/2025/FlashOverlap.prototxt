@@ -23,8 +23,8 @@ pub {
   year: 2025
 }
 code {
-  type: "Pytorch"
-  url: ""
+  type: "C++"
+  url: "https://github.com/infinigence/FlashOverlap"
 }
 note {
   url: "note.md"
