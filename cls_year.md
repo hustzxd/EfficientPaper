@@ -10,7 +10,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1) | <img width='400' alt='image' src='./notes/2025/AdaSkip/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | ![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md) |
 | [AdaptiveSparseTrainer](./meta/2025/AdaptiveSparseTrainer.prototxt) | [Pruning Large Language Models with Semi-Structural Adaptive Sparse Training](http://arxiv.org/abs/2407.20584v3) | <img width='400' alt='image' src='./notes/2025/AdaptiveSparseTrainer/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | ![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/Adaptive-Sparse-Trainer) | [note](./notes/2025/AdaptiveSparseTrainer/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | <img width='400' alt='image' src='./notes/2025/NSA/fig2.png'> | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
@@ -113,7 +113,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | <img width='400' alt='image' src='./notes/del/flap.jpg'> | ![Publish](https://img.shields.io/badge/2024-AAAI-FF4500) | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |
 | [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |
 | [T3](./meta/2024/T3.prototxt) | [T3: Transparent Tracking & Triggering for Fine-grained Overlap of Compute & Collectives](http://arxiv.org/abs/2401.16677v1) | <img width='400' alt='image' src='./notes/2024/T3/fig1.png'> | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/T3/note.md) |
@@ -214,7 +214,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [Diffuser](./meta/2023/diffuser.prototxt) | [Diffuser: Efficient Transformers with Multi-hop Attention Diffusion for Long Sequences](https://arxiv.org/abs/2210.11794) | <img width='400' alt='image' src='./notes/2023/diffuser/diffuser.jpg'> | ![Publish](https://img.shields.io/badge/2023-AAAI-FF4500) | ![GitHub Repo stars](https://img.shields.io/github/stars/asFeng/Diffuser) |  |
 | [GRAIN](./meta/2023/grain.prototxt) | [Gradient-based Intra-attention Pruning on Pre-trained Language Models](https://arxiv.org/abs/2212.07634) | <img width='400' alt='image' src='./notes/2023/grain/grain.jpg'> | ![Publish](https://img.shields.io/badge/2023-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/GRAIN) | [note](./notes/2023/grain/index.md) |
 | [SMP](./meta/2023/smp.prototxt) | [Pruning Pre-trained Language Models Without Fine-Tuning](https://aclanthology.org/2023.acl-long.35.pdf) | <img width='400' alt='image' src='./notes/2023/smp/smp.jpg'> | ![Publish](https://img.shields.io/badge/2023-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/kongds/SMP) |  |
@@ -279,7 +279,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [m](./meta/2022/XZBX1Z9G.prototxt) | [Sparse Progressive Distillation: Resolving Overfitting under Pretrain-and-Finetune Paradigm](https://aclanthology.org/2022.acl-long.16/) |  | ![Publish](https://img.shields.io/badge/2022-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/shaoyiHusky/SparseProgressiveDistillation) |  |
 | [TextPruner](./meta/2022/TextPruner.prototxt) | [TextPruner: A Model Pruning Toolkit for Pre-Trained Language Models](https://arxiv.org/abs/2203.15996) | <img width='400' alt='image' src='./notes/2022/TextPruner/textpruner.jpg'> | ![Publish](https://img.shields.io/badge/2022-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/airaria/TextPruner) |  |
 | [m](./meta/2022/2EQV34KV.prototxt) | [Creating Sparse GPT-3 Models with Iterative Pruning](https://www.cerebras.net/blog/creating-sparse-gpt-3-models-with-iterative-pruning) |  | ![Publish](https://img.shields.io/badge/2022-Blog-696969) |  |  |
@@ -302,7 +302,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [OpenVINO](./meta/2021/OpenVINO.prototxt) | [Post-training deep neural network pruning via layer-wise calibration](https://openaccess.thecvf.com/content/ICCV2021W/LPCV/papers/Lazarevich_Post-Training_Deep_Neural_Network_Pruning_via_Layer-Wise_Calibration_ICCVW_2021_paper.pdf) |  | ![Publish](https://img.shields.io/badge/2021-ICCV-green) |  |  |
 | [BRECQ](./meta/2021/brecq.prototxt) | [BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction](https://openreview.net/pdf?id=POWv6hDd9XH) |  | ![Publish](https://img.shields.io/badge/2021-ICLR-FF6B6B) | ![GitHub Repo stars](https://img.shields.io/github/stars/yhhhli/BRECQ) |  |
 | [SR-STE](./meta/2021/sr-ste.prototxt) | [Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch](https://openreview.net/forum?id=K9bw7vqp_s) | <img width='400' alt='image' src='./notes/2021/sr-ste/sr-ste.jpg'> | ![Publish](https://img.shields.io/badge/2021-ICLR-FF6B6B) | ![GitHub Repo stars](https://img.shields.io/github/stars/aojunzz/NM-sparsity) |  |
@@ -319,7 +319,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [m](./meta/2020/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |  | ![Publish](https://img.shields.io/badge/2020-CVPR-2E8B57) | ![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020) |  |
 | [m](./meta/2020/V3MFIRLV.prototxt) | [Inducing and Exploiting Activation Sparsity for Fast Neural Network Inference](http://proceedings.mlr.press/v119/kurtz20a/kurtz20a.pdf) |  | ![Publish](https://img.shields.io/badge/2020-ICML-FF8C00) |  |  |
 | [Movement Pruning](./meta/2020/movement_pruning.prototxt) | [Movement Pruning: Adaptive Sparsity by Fine-Tuning](https://arxiv.org/abs/2005.07683) | <img width='400' alt='image' src='./notes/2020/movement_pruning/mp.jpg'> | ![Publish](https://img.shields.io/badge/2020-NeurIPS-FF1493) | ![GitHub Repo stars](https://img.shields.io/github/stars/huggingface/block_movement_pruning) |  |
@@ -332,7 +332,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ActNN](./meta/2019/actnn.prototxt) | [ActNN: Reducing Training Memory Footprint via 2-Bit Activation Compressed Training](https://arxiv.org/abs/2104.14129) |  | ![Publish](https://img.shields.io/badge/2019-ICML-FF8C00) | ![GitHub Repo stars](https://img.shields.io/github/stars/ucbrise/actnn) |  |
 </p>
 </details>
@@ -342,7 +342,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [ADMM-pruning](./meta/2018/Z9R72EAT.prototxt) | [A Systematic DNN Weight Pruning Framework using Alternating Direction Method of Multipliers](https://arxiv.org/abs/1804.03294) |  | ![Publish](https://img.shields.io/badge/2018-ECCV-3CB371) | ![GitHub Repo stars](https://img.shields.io/github/stars/bzantium/pytorch-admm-pruning) |  |
 </p>
 </details>
@@ -352,7 +352,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [DSD](./meta/2017/dsd.prototxt) | [DSD: Dense-Sparse-Dense Training for Deep Neural Networks](https://arxiv.org/pdf/1607.04381.pdf) |  | ![Publish](https://img.shields.io/badge/2017-ICLR-FF6B6B) |  |  |
 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |  | ![Publish](https://img.shields.io/badge/2017-NeurIPS-FF1493) | ![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS) |  |
 </p>
@@ -363,7 +363,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [Deep Compression](./meta/2016/deepcompression.prototxt) | [Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding](https://arxiv.org/pdf/1510.00149.pdf) |  | ![Publish](https://img.shields.io/badge/2016-ICLR-FF6B6B) |  |  |
 </p>
 </details>
@@ -373,7 +373,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [OBS](./meta/1993/obs.prototxt) | [Optimal Brain Surgeon and general network pruning](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=298572&tag=1) |  | ![Publish](https://img.shields.io/badge/1993--green) |  |  |
 </p>
 </details>
@@ -383,7 +383,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [OBD](./meta/1989/obd.prototxt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 </p>
 </details>
