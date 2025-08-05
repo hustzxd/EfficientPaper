@@ -76,6 +76,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 400px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 | [m](./meta/2022/2EQV34KV.prototxt) | [Creating Sparse GPT-3 Models with Iterative Pruning](https://www.cerebras.net/blog/creating-sparse-gpt-3-models-with-iterative-pruning) |  | ![Publish](https://img.shields.io/badge/2022-Blog-696969) |  |  |
+| [DistributedGEMM](./meta/2024/DistributedGEMM.prototxt) | [A novel CUTLASS-based implementation of Tensor Parallelism for NVLink-enabled systems](https://blog.shi-labs.com/distributed-gemm-88be6a481e2b) | <img width='400' alt='image' src='./notes/2024/DistributedGEMM/fig1.gif'> | ![Publish](https://img.shields.io/badge/2024-Blog-696969) | ![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/cutlass) | [note](./notes/2024/DistributedGEMM/note.md) |
 </p>
 </details>
 <details open><summary><b>COLM</b></summary> 
