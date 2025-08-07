@@ -14,8 +14,8 @@ paper {
   authors: "Li-Wen Chang"
   authors: "Quan Chen"
   authors: "Xin Liu"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "ByteDance Seed"
+  institutions: "Shanghai Jiao Tong University"
 }
 pub {
   where: "arXiv"
@@ -23,7 +23,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/bytedance/flux"
 }
 note {
   url: "note.md"

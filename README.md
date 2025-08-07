@@ -55,6 +55,10 @@ keyword {
 </details>
 
 
+<p align="center">
+<img src="notes//conference_timeline.png" width="800" title="blank">
+</p>
+
 
 
 ## Paper List
@@ -110,7 +114,7 @@ keyword {
 40. [Characterizing Communication Patterns in Distributed Large Language Model Inference](http://arxiv.org/abs/2507.14392v1) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)]  
 41. [Characterizing Compute-Communication Overlap in GPU-Accelerated Distributed Deep Learning: Performance and Power Implications](http://arxiv.org/abs/2507.03114v1) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)]  
 42. [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)]  
-43. [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)]  
+43. [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)] ![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/flux) 
 44. [DBudgetKV: Dynamic Budget in KV Cache Compression for Ensuring Optimal Performance](http://arxiv.org/abs/2502.16886v1) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)]  
 45. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)] ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) 
 46. [Delta Attention: Fast and Accurate Sparse Attention Inference by Delta Correction](http://arxiv.org/abs/2505.11254v1) [![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5)]  
