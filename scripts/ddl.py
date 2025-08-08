@@ -1,11 +1,14 @@
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Any, Dict
 
 import ipdb
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.patches import Patch
+
+from scripts.generate_paper_list import PUBLISH_COLOR
 
 
 def read_conferences(file_path: str) -> Dict[str, Any]:
@@ -19,38 +22,40 @@ def calculate_time_until_conference(conferences_data: Dict[str, Any]):
     """Calculate time difference from current date to future conferences"""
     conferences = conferences_data.get("conferences", [])
     now_date = datetime.now()
-    
+
     future_conferences = []
-    
+
     for conf in conferences:
         start = conf.get("start", "")
         end = conf.get("end", "")
         name = conf.get("name", "")
         level = conf.get("level", "")
-        
+
         # Parse dates
         try:
             start_date = datetime.strptime(start, "%Y-%m-%d")
             end_date = datetime.strptime(end, "%Y-%m-%d")
-            
+
             # Check if conference is in the future
             if end_date > now_date:
                 # Calculate time difference
                 time_diff = end_date - now_date
                 days_until = time_diff.days
-                
-                future_conferences.append({
-                    "Conference": name,
-                    "Start": start_date,
-                    "End": end_date,
-                    "Days_Until_Deadline": days_until,
-                    "Level": level,
-                    "URL": conf.get("url", "")
-                })
+
+                future_conferences.append(
+                    {
+                        "Conference": name,
+                        "Start": start_date,
+                        "End": end_date,
+                        "Days_Until_Deadline": days_until,
+                        "Level": level,
+                        "URL": conf.get("url", ""),
+                    }
+                )
         except ValueError as e:
             print(f"Error parsing dates for {name}: {e}")
             continue
-    
+
     return pd.DataFrame(future_conferences)
 
 
@@ -79,8 +84,8 @@ def create_conference_timeline(conferences_data: Dict[str, Any]):
             {
                 "Conference": name,
                 "Passed": now_date > end_date,
-                "Start": start_date.replace(year=target_year),
-                "End": end_date.replace(year=target_year),
+                "Start": start_date.replace(year=target_year) if now_date > start_date else start_date,
+                "End": end_date.replace(year=target_year) if now_date > end_date else end_date,
                 "Level": level,
                 "URL": conf.get("url", ""),
             }
@@ -95,22 +100,22 @@ def main():
 
     # Calculate time until future conferences
     future_df = calculate_time_until_conference(conferences_data)
-    
+
     if not future_df.empty:
         # Sort by days until deadline (ascending)
         future_df = future_df.sort_values("Days_Until_Deadline", ascending=True)
-        
+
         print("未来会议截止时间倒计时:")
         print("=" * 80)
         print(f"{'会议名称':<20} {'截止日期':<12} {'剩余天数':<10} {'级别':<8}")
         print("-" * 80)
-        
+
         for _, row in future_df.iterrows():
             conference_name = row["Conference"]
             end_date = row["End"].strftime("%Y-%m-%d")
             days_left = row["Days_Until_Deadline"]
             level = row["Level"]
-            
+
             # Add color coding based on urgency
             if days_left <= 30:
                 urgency = "🔥 紧急"
@@ -118,9 +123,9 @@ def main():
                 urgency = "⚠️  注意"
             else:
                 urgency = "📅 正常"
-            
+
             print(f"{conference_name:<20} {end_date:<12} {days_left:<10} {level:<8} {urgency}")
-        
+
         print("=" * 80)
         print(f"总计未来会议数量: {len(future_df)}")
     else:
@@ -160,12 +165,15 @@ def main():
         "#FFF0F5",  # Lavender blush
         "#F5F5DC",  # Beige
     ]
-
     colors = []
     patterns = []
     color_index = 0
     for _, row in df.iterrows():
-        colors.append(soft_colors[color_index % len(soft_colors)])
+        if row["Conference"] in PUBLISH_COLOR:
+            colors.append("#" + PUBLISH_COLOR[row["Conference"]])
+        else:
+            colors.append(soft_colors[color_index % len(soft_colors)])
+
         if row["Passed"]:
             # Past conferences - use diagonal stripes pattern
             patterns.append("////")
@@ -202,18 +210,18 @@ def main():
         days_mapping = {}
         for _, row in future_df.iterrows():
             days_mapping[row["Conference"]] = row["Days_Until_Deadline"]
-        
+
         # Add text annotations on the bars
         for i, (_, row) in enumerate(df.iterrows()):
             if not row["Passed"]:  # Only for future conferences
                 conf_name = row["Conference"]
                 if conf_name in days_mapping:
                     days_left = days_mapping[conf_name]
-                    
+
                     # Position text at the end of the bar
                     text_x = row["End"]
                     text_y = i
-                    
+
                     # Add urgency indicator
                     if days_left <= 30:
                         urgency_text = "URGENT"
@@ -224,7 +232,7 @@ def main():
                     else:
                         urgency_text = "NORMAL"
                         color = "green"
-                    
+
                     # Add text annotation
                     plt.annotate(
                         f"{urgency_text} {days_left}d",
@@ -236,7 +244,7 @@ def main():
                         fontsize=9,
                         fontweight="bold",
                         color=color,
-                        bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8, edgecolor=color)
+                        bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.8, edgecolor=color),
                     )
 
     # Format x-axis to show months
@@ -251,7 +259,6 @@ def main():
     plt.grid(True)
 
     # Create custom legend for conference status
-    from matplotlib.patches import Patch
 
     legend_elements = [
         Patch(facecolor="#FFB6C1", hatch="////", label="Past Conferences"),
