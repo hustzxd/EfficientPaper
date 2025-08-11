@@ -1,0 +1,31 @@
+paper {
+  title: "Unveiling Super Experts in Mixture-of-Experts Large Language Models"
+  abbr: "Super-Experts-Profilling"
+  url: "http://arxiv.org/abs/2507.23279v1"
+  authors: "Zunhai Su"
+  authors: "Qingyuan Li"
+  authors: "Hao Zhang"
+  authors: "YuLei Qian"
+  authors: "Yuchen Xie"
+  authors: "Kehong Yuan"
+  institutions: "Tsinghua University"
+  institutions: "Meituan"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ZunhaiSu/Super-Experts-Profilling"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structure_design
+}
+cover {
+  url: "fig3.png"
+}

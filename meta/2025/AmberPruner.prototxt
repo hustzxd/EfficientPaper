@@ -1,0 +1,33 @@
+paper {
+  title: "Amber Pruner: Leveraging N:M Activation Sparsity for Efficient Prefill in Large Language Models"
+  abbr: "AmberPruner"
+  url: "http://arxiv.org/abs/2508.02128v1"
+  authors: "Tai An"
+  authors: "Ruwu Cai"
+  authors: "Yanzhe Zhang"
+  authors: "Yang Liu"
+  authors: "Hao Chen"
+  authors: "Pengcheng Xie"
+  authors: "Sheng Chang"
+  authors: "Yiwu Yao"
+  authors: "Gongyi Wang"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: ""
+}

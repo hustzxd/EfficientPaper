@@ -1,0 +1,27 @@
+paper {
+  title: "Unifying Mixture of Experts and Multi-Head Latent Attention for Efficient Language Models"
+  abbr: "MoE-MLA-RoPE"
+  url: "http://arxiv.org/abs/2508.01261v1"
+  authors: "Sushant Mehta"
+  authors: "Raj Dandekar"
+  authors: "Rajat Dandekar"
+  authors: "Sreedath Panat"
+  institutions: "Vizuara AI Labs"
+}
+pub {
+  where: "KDD Workshop"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: ""
+}

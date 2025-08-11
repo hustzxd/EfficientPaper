@@ -22,32 +22,29 @@ pip install protobuf==5.27.2 pandas arxiv
 1. Add paper information by `./add_paper_info.sh`
 2. Run `./refresh_readme.sh`
 
-<details><summary><b>sparsegpt.prototxt</b></summary>	
+<details><summary><b>efficient_paper.prototxt</b></summary>	
 <p>
 
 ```
 paper {
-  title: "SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot."
-  abbr: "SparseGPT"
-  url: "https://arxiv.org/pdf/2301.00774.pdf"
-  authors: "Elias Frantar"
-  authors: "Dan Alistarh"
-  institutions: "IST Austria"
-  institutions: "Neural Magic"
+  title: "EfficientPaper: manage your research papers in an efficient way."
+  abbr: "EfficientPaper"
+  url: "https://github.com/hustzxd/PaperPrivate"
+  authors: "hustzxd"
 }
 pub {
-  where: "arXiv"
+  where: "GitHub"
   year: 2023
 }
 code {
   type: "Pytorch"
-  url: "https://github.com/IST-DASLab/sparsegpt"
+  url: "https://github.com/hustzxd/PaperPrivate"
 }
 note {
-  url: "SparseGPT.md"
+  url: "EfficientPaper.md"
 }
 keyword {
-  words: sparse_pruning
+  words: efficient_paper
 }
 ```
 
