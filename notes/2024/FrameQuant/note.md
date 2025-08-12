@@ -1,8 +1,6 @@
 # FrameQuant: Flexible Low-Bit Quantization for Transformers
 
-<p align="center">
-<img src="framequant.png" width="600" title="blank">
-</p>
+![](framequant.png)
 
 ## Abstract
 

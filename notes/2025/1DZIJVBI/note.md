@@ -2,9 +2,7 @@
 
 > Seonho Lee, Jihwan Oh, Junkyum Kim, Seokjin Go, Jongse Park, Divya Mahajan
 
-<p align="center">
-<img src="eq1.png" width="600" title="blank">
-</p>
+![](eq1.png)
 
 ## Abstract
 

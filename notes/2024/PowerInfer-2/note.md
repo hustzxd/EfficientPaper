@@ -1,8 +1,6 @@
 # PowerInfer-2: Fast Large Language Model Inference on a Smartphone
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

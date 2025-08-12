@@ -2,9 +2,7 @@
 
 > Jingcheng Hu, Houyi Li, Yinmin Zhang, Zili Wang, Shuigeng Zhou, Xiangyu Zhang, Heung-Yeung Shum, Daxin Jiang
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

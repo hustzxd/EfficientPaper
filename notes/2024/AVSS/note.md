@@ -1,8 +1,6 @@
 # AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis
 
-<p align="center">
-<img src="avss.png" width="600" title="blank">
-</p>
+![](avss.png)
 
 ## Abstract
 

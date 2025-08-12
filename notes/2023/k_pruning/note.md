@@ -2,9 +2,7 @@
 
 > This is a retraning-free structured pruning approach.
 
-<p align="center">
-  <img src="./kp.jpg" width="600" title="kp">
-</p>
+![](./kp.jpg)
 
 ## Method
 - Key idea
@@ -18,24 +16,16 @@
   - knowledge-preserving pruning
 
 Transformer Block consists of MHA and MLP.
-<p align="center">
-  <img src="./transformer.jpg" width="600" title="kp">
-</p>
+![](./transformer.jpg)
 
 The model-wise predictive knowledge loss is defined as the KL-divergence of logits between the pruned model and the dense model.
-<p align="center">
-  <img src="./eq4.jpg" width="600" title="kp">
-</p>
+![](./eq4.jpg)
 
 The sub-layerwise representational knowledge loss is defined as the F-norm (MSE loss) of the outputs.
-<p align="center">
-  <img src="./eq5.jpg" width="700" title="kp">
-</p>
+![](./eq5.jpg)
 
 The improtance scores are defined as:
-<p align="center">
-  <img src="./score.jpg" width="500" title="kp">
-</p>
+![](./score.jpg)
 
 where $\lambda = \\{0.00025, 1\\}$ and $\mu = 64$.
 
@@ -47,9 +37,7 @@ where $\lambda = \\{0.00025, 1\\}$ and $\mu = 64$.
 
 总之，这些超参数的引入用来均衡，跨层与跨算子的比较。
 
-<p align="center">
-  <img src="./alg.jpg" width="700" title="kp">
-</p>
+![](./alg.jpg)
 
 
 
@@ -57,9 +45,5 @@ where $\lambda = \\{0.00025, 1\\}$ and $\mu = 64$.
 
 ## Results
 
-<p align="center">
-  <img src="./exp.jpg" width="700" title="kp">
-</p>
-<p align="center">
-  <img src="./exp2.jpg" width="700" title="kp">
-</p>
+![](./exp.jpg)
+![](./exp2.jpg)

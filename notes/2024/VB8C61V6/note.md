@@ -1,8 +1,6 @@
 # Compressing LLMs: The Truth is Rarely Pure and Never Simple
 
-<p align="center">
-<img src="llm-kick.jpg" width="600" title="blank">
-</p>
+![](llm-kick.jpg)
 
 ## Abstract
 

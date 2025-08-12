@@ -104,7 +104,8 @@ def main():
         note_content = f"""# {title}\n\n"""
         if paper is not None:
             note_content += f"""> {", ".join(authors)}\n\n"""
-        note_content += """<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n"""
+        # note_content += """<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n"""
+        note_content += f"""![111](../../blank.jpg)\n\n"""
         note_content += f"""## Abstract\n\n{summary}\n"""
         with open(f"notes/{name}/note.md", "w") as wf:
             wf.write(note_content)

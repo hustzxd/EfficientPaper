@@ -1,8 +1,6 @@
 # Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning
 
-<p align="center">
-  <img src="./cover.jpg" width="400" title="kp">
-</p>
+![](./cover.jpg)
 
 ## structured pruning的两个困难
 1. 目前的方法找到的结构是suboptimal的

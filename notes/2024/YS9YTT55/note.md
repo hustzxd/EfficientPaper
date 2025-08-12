@@ -2,9 +2,7 @@
 
 > Baolin Li, Yankai Jiang, Vijay Gadepally, Devesh Tiwari
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

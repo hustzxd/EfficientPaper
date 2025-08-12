@@ -1,8 +1,6 @@
 # Efficient Streaming Language Models with Attention Sinks
 
-<p align="center">
-<img src="cover.jpg" width="600" title="blank">
-</p>
+![](cover.jpg)
 
 ## Abstract
 

@@ -2,9 +2,7 @@
 
 > Aurko Roy, Timothy Chou, Sai Surya Duvvuri, Sijia Chen, Jiecao Yu, Xiaodong Wang, Manzil Zaheer, Rohan Anil
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

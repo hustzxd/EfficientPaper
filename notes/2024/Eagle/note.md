@@ -1,8 +1,6 @@
 # EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty
 
-<p align="center">
-<img src="./eagle.jpg" width="600" title="blank">
-</p>
+![](./eagle.jpg)
 
 ## Abstract
 

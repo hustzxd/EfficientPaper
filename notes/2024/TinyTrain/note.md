@@ -1,8 +1,6 @@
 # TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

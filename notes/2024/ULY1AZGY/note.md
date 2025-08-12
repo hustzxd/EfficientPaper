@@ -1,8 +1,6 @@
 # Enabling High-Sparsity Foundational Llama Models with Efficient Pretraining and Deployment
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

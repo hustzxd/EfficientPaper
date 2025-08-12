@@ -1,8 +1,6 @@
 # AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](notes/2025/AdaSkip/fig1.png)
 
 ## Abstract
 

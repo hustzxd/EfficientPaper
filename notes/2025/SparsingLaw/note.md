@@ -30,16 +30,12 @@ greater activation sparsity have important implications for making LLMs more
 efficient and interpretable.
 
 
-<p align="center">
-<img src="fig3.png" width="600" title="blank">
-</p>
+![](fig3.png)
 
 - 提出PPL-p%评估指标，其实就是帕累托曲线，这里p%表示sparsity ratio，越高一半模型的精度也会越差，比如ppl越高。图中给的是activation ratio，正好与p%相加=100%。
 
 
-<p align="center">
-<img src="fig4.png" width="600" title="blank">
-</p>
+![](fig4.png)
 
 - PPL-1%来评估模型对sparse的忍受程度
   - ReLU：更多的训练数据可以导致模型更加稀疏
@@ -48,18 +44,14 @@ efficient and interpretable.
 
 - width-depth ratio 表示 hidden dimension 与 layer number的比例，越高证明这个LLM越胖，这个参数也与activation sparsity表现有密切关系
 
-<p align="center">
-<img src="fig5.png" width="600" title="blank">
-</p>
+![](fig5.png)
 
 - 以0.1B模型训练举例
   - Fig.5表示Width-Depth Ratio在[0, 114]之间，模型会逐渐变胖，且激活比例越来越高，所以希望模型越瘦越好，有利于activation sparsity
   - Fig.6表示Width-Depth Ratio在[74, 182]之间，不胖不瘦时训练loss最好
   - 综上，可以选取 Width-Depth Ratio=74，可以满足training loss 和 activation sparsity 需求
 
-<p align="center">
-<img src="fig7.png" width="600" title="blank">
-</p>
+![](fig7.png)
 
 - 确定模型的 Width-Depth ，且training data 足够多时，model的参数量对 activation sparsity 影响很小
 - 但是小模型更加容易收敛 （从 activation sparsity变化的角度）

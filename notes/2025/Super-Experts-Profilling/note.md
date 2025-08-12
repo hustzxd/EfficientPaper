@@ -2,9 +2,7 @@
 
 > Zunhai Su, Qingyuan Li, Hao Zhang, YuLei Qian, Yuchen Xie, Kehong Yuan
 
-<p align="center">
-<img src="fig3.png" width="600" title="blank">
-</p>
+![](fig3.png)
 
 ## Abstract
 

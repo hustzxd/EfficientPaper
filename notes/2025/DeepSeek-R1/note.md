@@ -1,8 +1,6 @@
 # DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 

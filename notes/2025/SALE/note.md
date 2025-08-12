@@ -1,8 +1,6 @@
 # SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 

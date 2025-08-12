@@ -4,3 +4,6 @@ git_push.sh
 git_pull.sh
 pdfs
 .DS_Store
+
+# docs
+site/

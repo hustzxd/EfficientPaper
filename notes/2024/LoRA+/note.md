@@ -1,8 +1,6 @@
 # LoRA+: Efficient Low Rank Adaptation of Large Models
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

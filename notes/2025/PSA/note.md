@@ -1,8 +1,6 @@
 # Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving
 
-<p align="center">
-<img src="fig4.png" width="600" title="blank">
-</p>
+![](fig4.png)
 
 ## Abstract
 

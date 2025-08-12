@@ -1,8 +1,6 @@
 # Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption
 
-<p align="center">
-<img src="overview.png" width="600" title="blank">
-</p>
+![](overview.png)
 
 ## Abstract
 

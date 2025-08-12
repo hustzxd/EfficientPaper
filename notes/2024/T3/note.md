@@ -2,9 +2,7 @@
 
 > Suchita Pati, Shaizeen Aga, Mahzabeen Islam, Nuwan Jayasena, Matthew D. Sinclair
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 
@@ -37,6 +35,4 @@ and MT-NLG.
 
 
 
-<p align="center">
-<img src="fig7.png" width="600" title="blank">
-</p>
+![](fig7.png)

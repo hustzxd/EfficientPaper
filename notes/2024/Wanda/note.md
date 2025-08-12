@@ -1,8 +1,6 @@
 # A Simple and Effective Pruning Approach for Large Language Models
 
-<p align="center">
-<img src="wanda.png" width="600" title="blank">
-</p>
+![](wanda.png)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs
 
-<p align="center">
-<img src="dsnot.png" width="600" title="blank">
-</p>
+![](dsnot.png)
 
 ## Abstract
 

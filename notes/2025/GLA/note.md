@@ -1,8 +1,6 @@
 # Hardware-Efficient Attention for Fast Decoding
 
-<p align="center">
-<img src="gla.png" width="600" title="blank">
-</p>
+![](gla.png)
 
 ## Abstract
 

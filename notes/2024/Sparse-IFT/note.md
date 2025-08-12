@@ -1,8 +1,6 @@
 # Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

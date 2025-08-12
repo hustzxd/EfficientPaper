@@ -29,16 +29,12 @@ at https://aka.ms/MInference.
 
 MInference 针对prefill阶段 long-context场景，利用attention的运算动态稀疏行进行加速。
 
-<p align="center">
-<img src="qk_atten.PNG" width="600" title="blank">
-</p>
+![](qk_atten.PNG)
 
 
 论文中将attention 中sparse的稀疏分为三种模式：
 
-<p align="center">
-<img src="MInference_3shape.PNG" width="600" title="blank">
-</p>
+![](MInference_3shape.PNG)
 1. A-shape的模式，只保留最开始几列和最近的几列运算，因此也是静态的sparse，直接可以减少运算开销；
 2. Vertial-slash 模式，如名称含义一样，竖着保留几列，斜着保留几列，同时sparse index需要根据输入来动态的生成，也可以减少运算；
 3. Block-sparse模式，按照block粒度来选择一部分block进行稀疏运算；
@@ -53,9 +49,7 @@ attention一般有多个head，文中首先使用一小部分sample 来对attent
 3. Block-sparse模式，同样需要动态决定保留的block index，会引入额外的评估开销，同时sparse加速也需要对应的attention kernel。
 
 由于模式2和3均引入了额外的runtime的评估开销，这部分开销要尽可能高效，设计如下：
-<p align="center">
-<img src="alg.PNG" width="600" title="blank">
-</p>
+![](alg.PNG)
 
 1. Vertial-slash 模式的评估开销主要为最后一行Q涉及的运算
 2. Block-sparse模式的评估开销主要为Pool之后的缩小后的QK涉及的运算
@@ -66,13 +60,9 @@ attention一般有多个head，文中首先使用一小部分sample 来对attent
 精度结果：
 由于加速来源于跳过了一部分运算，且评估跳过的位置可能会存在与实际稀疏位置有偏差的情况，所以模型的精度会受到一定的影响，文中使用InfiniteBench进行了对比，可以发现精度相较于baseline确实有一些波动，但是平均正确率没有下降，这也证明了方法的鲁棒性。
 
-<p align="center">
-<img src="res.PNG" width="600" title="blank">
-</p>
+![](res.PNG)
 
 加速结果：
 可以看到随着context size提升，最高能有10倍的加速。
 
-<p align="center">
-<img src="res1.png" width="600" title="blank">
-</p>
+![](res1.png)

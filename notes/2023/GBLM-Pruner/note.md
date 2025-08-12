@@ -1,8 +1,6 @@
 # Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models
 
-<p align="center">
-<img src="gblm-pruner.jpg" width="600" title="blank">
-</p>
+![](gblm-pruner.jpg)
 
 ## Abstract
 

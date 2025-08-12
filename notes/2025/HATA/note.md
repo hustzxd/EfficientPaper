@@ -2,9 +2,7 @@
 
 > Ping Gong, Jiawei Yi, Shengnan Wang, Juncheng Zhang, Zewen Jin, Ouxiang Zhou, Ruibo Liu, Guanbin Xu, Youhui Bai, Bowen Ye, Kun Yuan, Tong Yang, Gong Zhang, Renhai Chen, Feng Wu, Cheng Li
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 

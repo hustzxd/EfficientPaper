@@ -1,8 +1,6 @@
 # Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

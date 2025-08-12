@@ -1,8 +1,6 @@
 # DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 
@@ -29,29 +27,19 @@ https://spaces.ac.cn/archives/10091/comment-page-1
 
 ### Preliminaries: Standard Multi-Head Attention
 经典的MHA的计算方式如下：
-<p align="center">
-<img src="eq1.png" width="800" title="blank">
-</p>
-<p align="center">
-<img src="eq4.png" width="800" title="blank">
-</p>
+![](eq1.png)
+![](eq4.png)
 需要将历史的KV 进行缓存，这里省略了RoPE编码，实际首先对KV进行RoPE编码，然后再保存KV Cache。
 
 ### Low-Rank Key-Value Joint Compression
 作为对比，使用MLA:
-<p align="center">
-<img src="eq9.png" width="800" title="blank">
-</p>
+![](eq9.png)
 KV的需要经过两次Linear运算才能得到，只保存$C_t^{KV}$，在推理时，首先根据$C_t^{KV}$映射为KV，然后再进行MHA的运算。
 另外，也对Q进行了Low-Rank运算，虽然不能减少Cache，但是能减少training中的激活值的Memory。
-<p align="center">
-<img src="eq12.png" width="800" title="blank">
-</p>
+![](eq12.png)
 
 保存的KV cache对比如下图所示：
-<p align="center">
-<img src="fig3.png" width="600" title="blank">
-</p>
+![](fig3.png)
 
 ### Decoupled Rotary Position Embedding
 然而，Low-Rank与RoPE不兼容，

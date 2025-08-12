@@ -4,6 +4,4 @@
 > 
 > dynamic programming algorithm
 
-<p align="center">
-  <img src="./cover.jpg" width="600" title="SPDY">
-</p>
+![](./cover.jpg)

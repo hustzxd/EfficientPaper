@@ -1,8 +1,6 @@
 # Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads
 
-<p align="center">
-<img src="fig6.png" width="600" title="blank">
-</p>
+![](fig6.png)
 
 ## Abstract
 

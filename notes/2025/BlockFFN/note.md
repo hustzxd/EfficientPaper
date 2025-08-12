@@ -2,9 +2,7 @@
 
 > Chenyang Song, Weilin Zhao, Xu Han, Chaojun Xiao, Yingfa Chen, Yuxuan Li, Zhiyuan Liu, Maosong Sun
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 
@@ -31,8 +29,6 @@ real end-side devices than dense models. All codes and checkpoints are
 available publicly (https://github.com/thunlp/BlockFFN).
 
 
-<p align="center">
-<img src="tab2.png" width="600" title="blank">
-</p>
+![](tab2.png)
 
 这里取连续的8个token判断是否需要同时激活，从而能够在硬件上高效实现，与我们的想法基本一致。

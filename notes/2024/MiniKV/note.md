@@ -1,8 +1,6 @@
 # MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache
 
-<p align="center">
-<img src="minikv.png" width="600" title="blank">
-</p>
+![](minikv.png)
 
 ## Abstract
 

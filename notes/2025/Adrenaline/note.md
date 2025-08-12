@@ -1,8 +1,6 @@
 # Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation
 
-<p align="center">
-<img src="fig4.png" width="600" title="blank">
-</p>
+![](fig4.png)
 
 ## Abstract
 

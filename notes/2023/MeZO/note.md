@@ -1,8 +1,6 @@
 # Fine-Tuning Language Models with Just Forward Passes
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

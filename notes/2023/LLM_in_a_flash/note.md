@@ -25,13 +25,9 @@ integration of sparsity awareness, context-adaptive loading, and a
 hardware-oriented design paves the way for effective inference of LLMs on
 devices with limited memory.
 
-<p align="center">
-<img src="windows.png" width="600" title="blank">
-</p>
+![](windows.png)
 
-<p align="center">
-<img src="bundling.png" width="600" title="blank">
-</p>
+![](bundling.png)
 
 
 1. slidling windows 替换最近没有使用的weight

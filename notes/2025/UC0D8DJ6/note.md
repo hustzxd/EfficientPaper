@@ -2,9 +2,7 @@
 
 > Lang Xu, Kaushik Kandadi Suresh, Quentin Anthony, Nawras Alnaasan, Dhabaleswar K. Panda
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

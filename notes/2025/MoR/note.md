@@ -2,9 +2,7 @@
 
 > Sangmin Bae, Yujin Kim, Reza Bayat, Sungnyun Kim, Jiyoun Ha, Tal Schuster, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Aaron Courville, Se-Young Yun
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 

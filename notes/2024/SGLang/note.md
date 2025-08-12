@@ -1,8 +1,6 @@
 # SGLang: Efficient Execution of Structured Language Model Programs
 
-<p align="center">
-<img src="fig9.png" width="600" title="blank">
-</p>
+![](fig9.png)
 
 ## Abstract
 

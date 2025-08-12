@@ -1,8 +1,6 @@
 # FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

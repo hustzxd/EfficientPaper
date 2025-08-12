@@ -3,9 +3,8 @@ Pruning, Quantization and efficient-inference/training paper list.
 
 ## Table of Contents
 - [EfficientPaper](#efficientpaper)
-  - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
-  - [:sparkles: Paper List](#paper-list)
+  - [Paper List](#paper-list)
     - [keyword](cls_keyword.md)
     - [year](cls_year.md)
     - [publication](cls_publication.md)

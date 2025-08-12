@@ -1,8 +1,6 @@
 # LLM-Pruner: On the Structural Pruning of Large Language Models
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # Q-Sparse: All Large Language Models can be Fully Sparsely-Activated
 
-<p align="center">
-<img src="q-sparse.png" width="600" title="blank">
-</p>
+![](q-sparse.png)
 
 ## Abstract
 

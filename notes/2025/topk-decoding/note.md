@@ -1,8 +1,6 @@
 # Exploiting Sparsity for Long Context Inference: Million Token Contexts on Commodity GPUs
 
-<p align="center">
-<img src="alg1.png" width="600" title="blank">
-</p>
+![](alg1.png)
 
 ## Abstract
 

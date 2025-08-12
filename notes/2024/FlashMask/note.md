@@ -1,8 +1,6 @@
 # FlashMask: Efficient and Rich Mask Extension of FlashAttention
 
-<p align="center">
-<img src="flashmask.png" width="600" title="blank">
-</p>
+![](flashmask.png)
 
 ## Abstract
 

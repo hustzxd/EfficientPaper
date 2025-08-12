@@ -1,8 +1,6 @@
 # Mixture-of-Depths: Dynamically allocating compute in transformer-based language models
 
-<p align="center">
-<img src="mod.jpg" width="600" title="blank">
-</p>
+![](mod.jpg)
 
 ## Abstract
 
@@ -43,9 +41,7 @@ Routing的方式可以有以下几种选择
         - 约束每个path有top-k的token来选择，可以保证load balance
         - 但是会导致某些token实际计算量比最优需求高或者低。
 
-<p align="center">
-<img src="routing.jpg" width="600" title="blank">
-</p>
+![](routing.jpg)
 前两个图是以MoE为例，第三个图则是MoD routing的方法。MoE中有多个expert，token-choice每个token可以选择自己的expert，如左1途中虚线所示，如果expert1被选择的次数过多，超过了设置的capacity，则只能把这个token直接扔掉。中间图则采用了expert-choice 方式，每个expert对应两个token，由于有多个experts，所以某些token可能会有多个expert，某些token则可能一个expert都没有，相当于不参与这个block运算。右图则是对MoD的routing，选择只有两种，要么参与运算，要么不参与运算，所以top-2的token会参与这个block的运算，其他tokens则会直接跳过这个block的运算。
 
 - 最终，论文选择**expert-choice routing**，具体原因为：
@@ -54,14 +50,10 @@ Routing的方式可以有以下几种选择
     - 选择只有两种，计算或者跳过计算，top-k的方式可以很好的实现这个选择
 
 ### Routing implementation
-<p align="center">
-<img src="mod_routing.jpg" width="600" title="blank">
-</p>
+![](mod_routing.jpg)
 
 可以看到，选择top-k的token embedding进行运算，可以有效的减少compute budget
-<p align="center">
-<img src="eq1.jpg" width="300" title="blank">
-</p>
+![](eq1.jpg)
 需要注意的是，这里的block的输出$f_i(x)$增加了与$r_i$作为权重。
 
 ### Non-causal problem during sampling
@@ -75,14 +67,10 @@ Routing的方式可以有以下几种选择
 Training部分所有的超参数保持不变，只修改了layer number，heads和embedding size等
 
 ## Results
-<p align="center">
-<img src="fig3.jpg" width="600" title="blank">
-</p>
+![](fig3.jpg)
 同等参数量下，MoD比baseline要快，同等训练flops和wall-clock下，训练结果相似；（也就是说MoD需要训练更多的iteration） 
 
 Every block routing 和 **Evary other block routing**对比，后者表现更好。
 
-<p align="center">
-<img src="fig4.jpg" width="600" title="blank">
-</p>
+![](fig4.jpg)
 

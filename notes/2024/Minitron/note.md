@@ -1,8 +1,6 @@
 # Compact Language Models via Pruning and Knowledge Distillation
 
-<p align="center">
-<img src="minitron.png" width="600" title="blank">
-</p>
+![](minitron.png)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

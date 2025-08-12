@@ -1,8 +1,6 @@
 # Pruning General Large Language Models into Customized Expert Models
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 

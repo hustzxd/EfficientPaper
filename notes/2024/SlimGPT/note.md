@@ -1,8 +1,6 @@
 # SlimGPT: Layer-wise Structured Pruning for Large Language Models
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 
@@ -26,12 +24,8 @@ achieves state-of-the-art results.
 
 Batched Greedy Pruning 这个算法[TODO]
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 对第一层进行剪枝，测量每层的误差，发现越到最后一层误差越大，因此第一层最重要，最后一层最不重要，所以按照log增加
 
-<p align="center">
-<img src="tab6.png" width="600" title="blank">
-</p>
+![](tab6.png)

@@ -1,8 +1,6 @@
 # Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

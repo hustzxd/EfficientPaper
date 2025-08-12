@@ -1,8 +1,6 @@
 # Acc-SpMM: Accelerating General-purpose Sparse Matrix-Matrix Multiplication with GPU Tensor Cores
 
-<p align="center">
-<img src="fig3.png" width="600" title="blank">
-</p>
+![](fig3.png)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition
 
-<p align="center">
-<img src="chunkattn.png" width="600" title="blank">
-</p>
+![](chunkattn.png)
 
 ## Abstract
 
@@ -24,8 +22,6 @@ compared to the state-of-the-art implementation, with the length of the system
 prompt ranging from 1024 to 4096.
 
 
-<p align="center">
-<img src="res1.png" width="600" title="blank">
-</p>
+![](res1.png)
 
 从实验结果来看，主要适用于共享prompt的场景，且共享token越多，加速越明显。

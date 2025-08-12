@@ -1,8 +1,6 @@
 # Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

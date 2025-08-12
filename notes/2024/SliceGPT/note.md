@@ -1,8 +1,6 @@
 # SliceGPT: Compress Large Language Models by Deleting Rows and Columns
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

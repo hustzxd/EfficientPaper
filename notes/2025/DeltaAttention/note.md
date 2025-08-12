@@ -1,8 +1,6 @@
 # Delta Attention: Fast and Accurate Sparse Attention Inference by Delta Correction
 
-<p align="center">
-<img src="fig4.png" width="600" title="blank">
-</p>
+![](fig4.png)
 
 ## Abstract
 

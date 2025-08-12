@@ -2,9 +2,7 @@
 
 > Combine weight sparsity and activation sparsity
 
-<p align="center">
-  <img src="./cover.jpg" width="600" title="kp">
-</p>
+![](./cover.jpg)
 
 ## Table of Contents
 - [Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks](#two-sparsities-are-better-than-one-unlocking-the-performance-benefits-of-sparse-sparse-networks)
@@ -20,9 +18,7 @@
 - (c) **Route**: the appropriate element-wise products are routed separately for each output.
 - (d) **Sum**: routed products are aggregated and summed to form a separate result for each sparse entity.
 
-<p align="center">
-  <img src="./SSgif.gif" width="300" title="kp">
-</p>
+![](./SSgif.gif)
 
 ### sparse weight and sparse activation
 
@@ -31,6 +27,4 @@
 - (c) **Multiply**: each non-zero activation is multiplied by the corresponding weight elements in the dense structure (Hadamard product).
 - (d) **Route**: the appropriate element-wise products are routed separately for each output.
 - (e) **Sum**: routed products are aggregated and summed to form a separate result for each sparse matrix.
-<p align="center">
-  <img src="./fig5a.jpg" width="300" title="kp">
-</p>
+![](./fig5a.jpg)

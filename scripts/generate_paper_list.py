@@ -1,6 +1,7 @@
 import argparse
 import copy
 import os
+from pydoc import doc
 import sys
 
 import google.protobuf as pb
@@ -107,7 +108,6 @@ def get_table_header():
     return """
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
 """
 
 
@@ -180,7 +180,8 @@ def main():
             else:
                 cover = pinfo.cover.url
 
-            cover = "<img width='400' alt='image' src='{}'>".format(cover)
+            # cover = "<img width='400' alt='image' src='{}'>".format(cover)
+            cover = f"![cover]({cover})"
 
         data = [meta, title, cover, pub, year, code, note]
 
@@ -241,6 +242,20 @@ def main():
         wf.write(markdown)
     print("Generate README.md done")
 
+    with open("README_prefix.md") as rf:
+        markdown = rf.read()
+    markdown += "\n\n"
+
+    markdown += "\n## Paper List\n\n"
+
+    markdown += gen_list(year_cls, columns, "year", is_open=True, reverse=True, docs=True)
+
+    with open("README_suffix.md") as rf:
+        markdown += rf.read()
+    with open("docs/index.md", "w") as wf:
+        wf.write(markdown)
+
+
     del_keys = []
     for k, v in author_cls.items():
         if len(v) == 1:
@@ -258,6 +273,9 @@ def main():
     for cls_name in ["keyword", "year", "publication", "institution", "author"]:
         with open(f"cls_{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
+        with open(f"docs/cls_{cls_name}.md", "w") as wf:
+            wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year"), docs=True))
+
 
 
 def colorful_text(text, year=None, color="green"):
@@ -270,13 +288,16 @@ def colorful_text(text, year=None, color="green"):
     return template.format(text, color)
 
 
-def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
+def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False, docs=False):
     markdown = ""
     out_cls = dict(sorted(out_cls.items(), reverse=reverse))
-    if is_open:
-        markdown += """<details open><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+    if docs:
+        markdown += f"### {cls_name}\n\n"
     else:
-        markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+        if is_open:
+            markdown += """<details open><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+        else:
+            markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
     for key, data in out_cls.items():
         data_ = copy.deepcopy(data)
         for d in data_:
@@ -287,10 +308,13 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
         columns_.pop(4)
         df_ = pd.DataFrame(data_, columns=columns_)
         df_ = df_.sort_values(by=["Publish", "Title"], ascending=True).reset_index(drop=True)
-        if is_open:
-            markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+        if docs:
+            markdown += f"#### {key}\n\n"
         else:
-            markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+            if is_open:
+                markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+            else:
+                markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         
         # 使用自定义表格头
         markdown += get_table_header()
@@ -300,31 +324,49 @@ def gen_table(out_cls, columns, cls_name, is_open=False, reverse=False):
             # 确保每行有6列数据
             row_data = list(row)
             markdown += "| {} | {} | {} | {} | {} | {} |\n".format(*row_data)
-        markdown += "</p>\n</details>\n"
-    markdown += "</p>\n</details>\n\n"
+        if docs:
+            markdown += "\n\n"
+        else:
+            markdown += "</p>\n</details>\n"
+    if docs:
+        markdown += "\n\n"
+    else:
+        markdown += "</p>\n</details>\n\n"
     return markdown
 
 
-def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False):
+def gen_list(out_cls, columns, cls_name, is_open=False, reverse=False, docs=False):
     markdown = ""
     out_cls = dict(sorted(out_cls.items(), reverse=reverse))
-    if is_open:
-        markdown += """<details open><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+    if docs:
+        markdown += f"### {cls_name}\n\n"
     else:
-        markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+        if is_open:
+            markdown += """<details open><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
+        else:
+            markdown += """<details><summary>\n\n### {}\n</summary> \n<p>\n\n""".format(cls_name)
     for key, data in out_cls.items():
         df_ = pd.DataFrame(data, columns=columns)
         df_ = df_.sort_values(by=["year", "pub", "Title"], ascending=True).reset_index(drop=True)
-        if is_open:
-            markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+        if docs:
+            markdown += f"#### {key}\n\n"
         else:
-            markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+            if is_open:
+                markdown += """<details open><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
+            else:
+                markdown += """<details><summary><b>{}</b></summary> \n<p>\n\n""".format(key)
         # markdown += df_.to_markdown()
         for index, row in df_.iterrows():
             line_ = f"{index+1}. {row["Title"]} [{colorful_text(row["pub"], row["year"])}] {row["codeeeee"]} \n"
             markdown += line_
-        markdown += "</p>\n</details>\n"
-    markdown += "</p>\n</details>\n\n"
+        if docs:
+            markdown += "\n\n"
+        else:
+            markdown += "</p>\n</details>\n"
+    if docs:
+        markdown += "\n\n"
+    else:
+        markdown += "</p>\n</details>\n\n"
     return markdown
 
 

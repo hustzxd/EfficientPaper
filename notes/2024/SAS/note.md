@@ -1,8 +1,6 @@
 # SAS
 
-<p align="center">
-<img src="sas.jpg" width="600" title="blank">
-</p>
+![](sas.jpg)
 
 ## Abstract
 

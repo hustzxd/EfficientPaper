@@ -2,9 +2,7 @@
 
 > Size Zheng, Jin Fang, Xuegui Zheng, Qi Hou, Wenlei Bao, Ningxin Zheng, Ziheng Jiang, Dongyang Wang, Jianxi Ye, Haibin Lin, Li-Wen Chang, Xin Liu
 
-<p align="center">
-<img src="fig7.png" width="600" title="blank">
-</p>
+![](fig7.png)
 
 ## Abstract
 

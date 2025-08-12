@@ -1,8 +1,6 @@
 # H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models
 
-<p align="center">
-<img src="h2o.png" width="600" title="blank">
-</p>
+![](h2o.png)
 
 ## Abstract
 

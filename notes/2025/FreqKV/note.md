@@ -1,8 +1,6 @@
 # FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 

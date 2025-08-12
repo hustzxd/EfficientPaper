@@ -2,9 +2,7 @@
 
 > Nidhi Bhatia, Ankit More, Ritika Borkar, Tiyasa Mitra, Ramon Matas, Ritchie Zhao, Maximilian Golub, Dheevatsa Mudigere, Brian Pharris, Bita Darvish Rouhani
 
-<p align="center">
-<img src="fig4.png" width="600" title="blank">
-</p>
+![](fig4.png)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models
 
-<p align="center">
-<img src="prosparse.jpg" width="600" title="blank">
-</p>
+![](prosparse.jpg)
 
 ## Method
 There are three stages of ProSparse:
@@ -16,9 +14,7 @@ There are three stages of ProSparse:
 3. Activation threshold shifting
     - Modify the vanilla ReLU with FAT ReLU.
 
-<p align="center">
-<img src="activation.png" width="600" title="blank">
-</p>
+![](activation.png)
 
 This paper provides two models [prosparse-llama-2-7b](https://huggingface.co/SparseLLM/prosparse-llama-2-7b) and [prosparse-llama-2-13b](https://huggingface.co/SparseLLM/prosparse-llama-2-13b) in Huggingface.
 
@@ -53,10 +49,6 @@ This paper provides two models [prosparse-llama-2-7b](https://huggingface.co/Spa
  - other collected data.
 
 Prosparse achieves better result than Original model. I think the orginal models do not adopt **Instruction Finetuning**, but Prosparse does.
-<p align="center">
-<img src="exp1.jpg" width="600" title="blank">
-</p>
+![](exp1.jpg)
 
-<p align="center">
-<img src="exp2.jpg" width="600" title="blank">
-</p>
+![](exp2.jpg)

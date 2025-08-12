@@ -1,8 +1,6 @@
 # Accelerating Transformer Pre-training with 2:4 Sparsity
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

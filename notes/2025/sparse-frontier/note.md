@@ -1,8 +1,6 @@
 # The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs
 
-<p align="center">
-<img src="tb1.png" width="600" title="blank">
-</p>
+![](tb1.png)
 
 ## Abstract
 

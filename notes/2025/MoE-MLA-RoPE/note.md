@@ -2,9 +2,7 @@
 
 > Sushant Mehta, Raj Dandekar, Rajat Dandekar, Sreedath Panat
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference
 
-<p align="center">
-<img src="shadowkv.png" width="800" title="blank">
-</p>
+![](shadowkv.png)
 
 ## Abstract
 
@@ -37,9 +35,7 @@ at https://github.com/bytedance/ShadowKV.
 
 ### Pre-filling
 
-<p align="center">
-<img src="fig4.png" width="800" title="blank">
-</p>
+![](fig4.png)
 
 - 对Pre-RoPE的K进行SVD分解，
 - 对Post-RoPE的K 按照chunk进行分组，每组保留mean
@@ -47,9 +43,7 @@ at https://github.com/bytedance/ShadowKV.
 
 ### Decoding
 
-<p align="center">
-<img src="fig5.png" width="800" title="blank">
-</p>
+![](fig5.png)
 
 - 根据K的landmark与Q进行计算，得到softmax的score，
 - 选择最高的几个score对应的index，根据index选择稀疏V

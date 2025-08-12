@@ -1,8 +1,6 @@
 # VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

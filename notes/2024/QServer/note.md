@@ -1,8 +1,6 @@
 # QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

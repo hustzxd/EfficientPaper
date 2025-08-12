@@ -1,8 +1,6 @@
 # Mosaic: Composite Projection Pruning for Resource-efficient LLMs
 
-<p align="center">
-<img src="fig6.png" width="600" title="blank">
-</p>
+![](fig6.png)
 
 ## Abstract
 

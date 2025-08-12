@@ -1,8 +1,6 @@
 # SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer
 
-<p align="center">
-  <img src="./sparsevit.jpg" width="600" title="sparsevit">
-</p>
+![](./sparsevit.jpg)
 
 ## Method
 - Window activation pruning
@@ -23,12 +21,6 @@
 ## Result
 ∼50% latency reduction with 60% sparsity
 
-<p align="center">
-  <img src="./result1.jpg" width="600" title="sparsevit">
-</p>
-<p align="center">
-  <img src="./result2.jpg" width="600" title="sparsevit">
-</p>
-<p align="center">
-  <img src="./result3.jpg" width="600" title="sparsevit">
-</p>
+![](./result1.jpg)
+![](./result2.jpg)
+![](./result3.jpg)

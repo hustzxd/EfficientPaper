@@ -1,8 +1,6 @@
 # SCBench: A KV Cache-Centric Analysis of Long-Context Methods
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

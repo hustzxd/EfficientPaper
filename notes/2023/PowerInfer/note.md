@@ -1,8 +1,6 @@
 # PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

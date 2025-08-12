@@ -1,8 +1,6 @@
 # POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 

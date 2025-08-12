@@ -1,8 +1,6 @@
 # AdaSplash: Adaptive Sparse Flash Attention
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

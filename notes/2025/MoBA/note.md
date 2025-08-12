@@ -1,8 +1,6 @@
 # MoBA: Mixture of Block Attention for Long-Context LLMs
 
-<p align="center">
-<img src="fig1.png" width="600" title="blank">
-</p>
+![](fig1.png)
 
 ## Abstract
 

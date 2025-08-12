@@ -2,9 +2,7 @@
 
 > Jialong Guo, Xinghao Chen, Yehui Tang, Yunhe Wang
 
-<p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
-</p>
+![](../../blank.jpg)
 
 ## Abstract
 

@@ -1,8 +1,6 @@
 # Post-Training Statistical Calibration for Higher Activation Sparsity
 
-<p align="center">
-<img src="fig2.png" width="600" title="blank">
-</p>
+![](fig2.png)
 
 ## Abstract
 
@@ -21,6 +19,4 @@ scalability. The code is available at: https://github.com/IntelLabs/SCAP.
 1. FFN的输入也稀疏了；
 2. 之前按照0为中心进行稀疏，根据统计结果找到Model center，并添加偏移后稀疏，从而能提高最后的精度；
    
-<p align="center">
-<img src="eq4.png" width="800" title="blank">
-</p>
+![](eq4.png)

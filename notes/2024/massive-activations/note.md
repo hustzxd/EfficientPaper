@@ -1,8 +1,6 @@
 # Massive Activations in Large Language Models
 
-<p align="center">
-<img src="massive_act.jpg" width="600" title="blank">
-</p>
+![](massive_act.jpg)
 
 ## Abstract
 

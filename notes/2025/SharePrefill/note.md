@@ -1,8 +1,6 @@
 # Accelerating Prefilling for Long-Context LLMs via Sparse Pattern Sharing
 
-<p align="center">
-<img src="fig3.png" width="600" title="blank">
-</p>
+![](fig3.png)
 
 ## Abstract
 

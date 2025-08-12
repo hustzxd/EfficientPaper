@@ -1,8 +1,6 @@
 # Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism
 
-<p align="center">
-<img src="sds.png" width="600" title="blank">
-</p>
+![](sds.png)
 
 ## Abstract
 
