@@ -1,0 +1,32 @@
+paper {
+  title: "KV Cache Compression for Inference Efficiency in LLMs: A Review"
+  abbr: "209M5GA7"
+  url: "http://arxiv.org/abs/2508.06297v1"
+  authors: "Yanyu Liu"
+  authors: "Jingying Fu"
+  authors: "Sixiang Liu"
+  authors: "Yitian Zou"
+  authors: "You Fu"
+  authors: "Jiehan Zhou"
+  authors: "Shouhua Zhang"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: survey
+}
+cover {
+  url: ""
+}
