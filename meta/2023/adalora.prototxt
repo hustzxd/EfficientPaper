@@ -1,0 +1,33 @@
+paper {
+  title: "AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning"
+  abbr: "AdaLoRA"
+  url: "https://arxiv.org/pdf/2303.10512.pdf"
+  authors: "Qingru Zhang"
+  authors: "Minshuo Chen"
+  authors: "Alexander Bukharin"
+  authors: "Pengcheng He"
+  authors: "Yu Cheng"
+  authors: "Weizhu Chen"
+  authors: "Tuo Zhao"
+  institutions: "Georgia Institute of Technology"
+  institutions: "Princeton University"
+  institutions: "Microsoft Azure AI"
+}
+pub {
+  where: "ICLR"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/QingruZhang/AdaLoRA"
+}
+note {
+  url: ""
+}
+keyword {
+  words: low_rank
+  words: efficient_training
+}
+cover {
+  url: "adalora/adalora.jpg"
+}

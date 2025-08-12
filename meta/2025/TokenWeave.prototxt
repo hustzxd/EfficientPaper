@@ -1,0 +1,26 @@
+paper {
+  title: "TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference"
+  abbr: "TokenWeave"
+  url: "http://arxiv.org/abs/2505.11329v1"
+  authors: "Raja Gond"
+  authors: "Nipun Kwatra"
+  authors: "Ramachandran Ramjee"
+  institutions: "Microsoft Research India"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/tokenweave"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: "fig8.png"
+}

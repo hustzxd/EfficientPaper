@@ -1,0 +1,32 @@
+paper {
+  title: "Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts"
+  abbr: "SMAT"
+  url: "http://arxiv.org/abs/2403.08477v3"
+  authors: "Shengzhuang Chen"
+  authors: "Jihoon Tack"
+  authors: "Yunqiao Yang"
+  authors: "Yee Whye Teh"
+  authors: "Jonathan Richard Schwarz"
+  authors: "Ying Wei"
+  institutions: "City University of Hong Kong"
+  institutions: "University of Oxford"
+  institutions: "Harvard University"
+  institutions: "Nanyang Technological University"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/szc12153/sparse_interpolated_experts"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: activation_sparsity
+}
+cover {
+  url: "fig2.png"
+}

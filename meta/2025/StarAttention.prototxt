@@ -1,0 +1,27 @@
+paper {
+  title: "Star Attention: Efficient LLM Inference over Long Sequences"
+  abbr: "StarAttention"
+  url: "https://openreview.net/forum?id=QY7Au9nZwp"
+  authors: "Shantanu Acharya"
+  authors: "Fei Jia"
+  authors: "Boris Ginsburg"
+  institutions: "NVDIA"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVIDIA/Star-Attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

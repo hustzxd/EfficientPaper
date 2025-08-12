@@ -1,0 +1,39 @@
+paper {
+  title: "A Survey on Large Language Model Acceleration based on KV Cache Management"
+  abbr: "PWGG5HBE"
+  url: "http://arxiv.org/abs/2412.19442v2"
+  authors: "Haoyang Li"
+  authors: "Yiming Li"
+  authors: "Anxin Tian"
+  authors: "Tianhao Tang"
+  authors: "Zhanchao Xu"
+  authors: "Xuejia Chen"
+  authors: "Nicole Hu"
+  authors: "Wei Dong"
+  authors: "Qing Li"
+  authors: "Lei Chen"
+  institutions: "The Hong Kong Polytechnic University"
+  institutions: "Huazhong University of Science and Technology"
+  institutions: "Hong Kong University of Science and Technology"
+  institutions: "The Chinese University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/TreeAI-Lab/Awesome-KV-Cache-Management"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+  words: survey
+}
+cover {
+  url: "fig2.png"
+}

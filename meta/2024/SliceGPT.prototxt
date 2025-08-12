@@ -1,0 +1,30 @@
+paper {
+  title: "SliceGPT: Compress Large Language Models by Deleting Rows and Columns"
+  abbr: "SliceGPT"
+  url: "http://arxiv.org/abs/2401.15024v2"
+  authors: "Saleh Ashkboos"
+  authors: "Maximilian L. Croci"
+  authors: "Marcelo Gennari do Nascimento"
+  authors: "Torsten Hoefler"
+  authors: "James Hensman"
+  institutions: "Microsoft"
+  institutions: "ETH Zurich"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/TransformerCompression"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "sliceGPT.jpg"
+}

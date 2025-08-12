@@ -1,0 +1,29 @@
+paper {
+  title: "SparseLLM: Towards Global Pruning for Pre-trained Language Models"
+  abbr: "SparseLLM"
+  url: "http://arxiv.org/abs/2402.17946v3"
+  authors: "Guangji Bai"
+  authors: "Yijiang Li"
+  authors: "Chen Ling"
+  authors: "Kibaek Kim"
+  authors: "Liang Zhao"
+  institutions: "Emory University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/BaiTheBest/SparseLLM"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: ""
+}

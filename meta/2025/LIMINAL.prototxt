@@ -1,0 +1,27 @@
+paper {
+  title: "Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need"
+  abbr: "LIMINAL"
+  url: "http://arxiv.org/abs/2507.14397v1"
+  authors: "Michael Davies"
+  authors: "Neal Crago"
+  authors: "Karthikeyan Sankaralingam"
+  authors: "Christos Kozyrakis"
+  institutions: "NVIDIA Research"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: modeling
+}
+cover {
+  url: ""
+}

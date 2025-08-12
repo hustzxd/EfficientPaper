@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation";
+        var mkdocs_page_input_path = "notes/2025/MoR/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mixture-of-recursions-learning-dynamic-recursive-depths-for-adaptive-token-level-computation">Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation</h1>
+<blockquote>
+<p>Sangmin Bae, Yujin Kim, Reza Bayat, Sungnyun Kim, Jiyoun Ha, Tal Schuster, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Aaron Courville, Se-Young Yun</p>
+</blockquote>
+<p><img alt="" src="../fig1.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Scaling language models unlocks impressive capabilities, but the accompanying
+computational and memory demands make both training and deployment expensive.
+Existing efficiency efforts typically target either parameter sharing or
+adaptive computation, leaving open the question of how to attain both
+simultaneously. We introduce Mixture-of-Recursions (MoR), a unified framework
+that combines the two axes of efficiency inside a single Recursive Transformer.
+MoR reuses a shared stack of layers across recursion steps to achieve parameter
+efficiency, while lightweight routers enable adaptive token-level thinking by
+dynamically assigning different recursion depths to individual tokens. This
+allows MoR to focus quadratic attention computation only among tokens still
+active at a given recursion depth, further improving memory access efficiency
+by selectively caching only their key-value pairs. Beyond these core
+mechanisms, we also propose a KV sharing variant that reuses KV pairs from the
+first recursion, specifically designed to decrease prefill latency and memory
+footprint. Across model scales ranging from 135M to 1.7B parameters, MoR forms
+a new Pareto frontier: at equal training FLOPs and smaller model sizes, it
+significantly lowers validation perplexity and improves few-shot accuracy,
+while delivering higher throughput compared with vanilla and existing recursive
+baselines. These gains demonstrate that MoR is an effective path towards
+large-model quality without incurring large-model cost.</p>
+<p>每一层循环计算几次，再计算下一层，本质上是parameter sharing或者adaptive computation，代表是Recursive Transformer，MoR在Recursive Transformer基础上进行改进，每个Token采用不同的循环次数，从而使得Attention计算变成稀疏运算。</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

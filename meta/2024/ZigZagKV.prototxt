@@ -1,0 +1,34 @@
+paper {
+  title: "ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty"
+  abbr: "ZigZagKV"
+  url: "http://arxiv.org/abs/2412.09036v1"
+  authors: "Meizhi Zhong"
+  authors: "Xikai Liu"
+  authors: "Chen Zhang"
+  authors: "Yikun Lei"
+  authors: "Yan Gao"
+  authors: "Yao Hu"
+  authors: "Kehai Chen"
+  authors: "Min Zhang"
+  institutions: "Harbin Institute of Technology"
+  institutions: "Xiaohongshu"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

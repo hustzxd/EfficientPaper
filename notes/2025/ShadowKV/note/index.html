@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference";
+        var mkdocs_page_input_path = "notes/2025/ShadowKV/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="shadowkv-kv-cache-in-shadows-for-high-throughput-long-context-llm-inference">ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference</h1>
+<p><img alt="" src="../shadowkv.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>With the widespread deployment of long-context large language models (LLMs),
+there has been a growing demand for efficient support of high-throughput
+inference. However, as the key-value (KV) cache expands with the sequence
+length, the increasing memory footprint and the need to access it for each
+token generation both result in low throughput when serving long-context LLMs.
+While various dynamic sparse attention methods have been proposed to speed up
+inference while maintaining generation quality, they either fail to
+sufficiently reduce GPU memory consumption or introduce significant decoding
+latency by offloading the KV cache to the CPU. We present ShadowKV, a
+high-throughput long-context LLM inference system that stores the low-rank key
+cache and offloads the value cache to reduce the memory footprint for larger
+batch sizes and longer sequences. To minimize decoding latency, ShadowKV
+employs an accurate KV selection strategy that reconstructs minimal sparse KV
+pairs on-the-fly. By evaluating ShadowKV on a broad range of benchmarks,
+including RULER, LongBench, and Needle In A Haystack, and models like
+Llama-3.1-8B, Llama-3-8B-1M, GLM-4-9B-1M, Yi-9B-200K, Phi-3-Mini-128K, and
+Qwen2-7B-128K, we demonstrate that it can support up to 6$\times$ larger batch
+sizes and boost throughput by up to 3.04$\times$ on an A100 GPU without
+sacrificing accuracy, even surpassing the performance achievable with infinite
+batch size under the assumption of infinite GPU memory. The code is available
+at https://github.com/bytedance/ShadowKV.</p>
+<h2 id="observation">两个 Observation</h2>
+<ul>
+<li>Pre-RoPE keys 可以通过SVD分解方式，压缩6倍，且没有精度损失</li>
+<li>Post-RePE keys 邻近 tokens具有相似性，去除一些outlier后，并按照chunk对其进行mean reduce，观察到非常好的 cosine 相似度，因此把mean reduce后的key 当作 landmarks</li>
+</ul>
+<h2 id="shadowkv">ShadowKV</h2>
+<h3 id="pre-filling">Pre-filling</h3>
+<p><img alt="" src="../fig4.png" /></p>
+<ul>
+<li>对Pre-RoPE的K进行SVD分解，</li>
+<li>对Post-RoPE的K 按照chunk进行分组，每组保留mean</li>
+<li>如果组内的 cosine 相似度很低，那么这组作为outlier来单独保存。</li>
+</ul>
+<h3 id="decoding">Decoding</h3>
+<p><img alt="" src="../fig5.png" /></p>
+<ul>
+<li>根据K的landmark与Q进行计算，得到softmax的score，</li>
+<li>选择最高的几个score对应的index，根据index选择稀疏V</li>
+<li>根据index和prefill保存的SVD小矩阵，合并为稀疏K</li>
+<li>是否需要根据sparse K sparse V计算attention? 应该是需要的，算法写的有些不完整</li>
+</ul>
+<p>所有的V都保存下来了，K的SVD分解其实也可以不做，也可以像V一样存在CPU Memoy中，根据landmark进行计算；除了SVD分解的思路，landmark的思想其实和MInference是一样的，也就是通过间隔的计算来评估哪部分的kv重要，从而将dense attention转化为 sparse attention，进而加速整个计算过程。</p>
+<p>K的临近相似相和可以分解的特性。</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

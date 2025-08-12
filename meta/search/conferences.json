@@ -1,0 +1,144 @@
+{
+  "conferences": [
+    {
+      "name": "ICLR",
+      "start": "2025-09-19",
+      "end": "2025-09-24",
+      "level": "A",
+      "url": "https://iclr.cc/Conferences/2026/Dates"
+    },
+    {
+      "name": "MLSys",
+      "start": "2025-09-15",
+      "end": "2025-10-30",
+      "level": "Non-CCF",
+      "url": "https://mlsys.org/Conferences/2026/Dates"
+    },
+    {
+      "name": "ASPLOS Spring",
+      "start": "2025-3-05",
+      "end": "2025-3-12",
+      "level": "CCF-A",
+      "url": "https://www.asplos-conference.org/asplos2026/cfp/"
+    },
+    {
+      "name": "ASPLOS Summer",
+      "start": "2025-08-15",
+      "end": "2025-8-20",
+      "level": "CCF-A",
+      "url": "https://www.asplos-conference.org/asplos2026/cfp/"
+    },
+    {
+      "name": "AAAI",
+      "start": "2024-06-18",
+      "end": "2024-8-1",
+      "level": "CCF-A",
+      "url": "https://aaai.org/conference/aaai/aaai-26/main-technical-track-call/"
+    },
+    {
+      "name": "ICML",
+      "start": "2025-01-09",
+      "end": "2025-01-30",
+      "level": "CCF-A",
+      "url": "https://icml.cc/Conferences/2025/Dates"
+    },
+    {
+      "name": "NeurIPS",
+      "start": "2025-4-3",
+      "end": "2025-5-15",
+      "level": "CCF-A",
+      "url": "https://nips.cc/Conferences/2025/Dates"
+    },
+    {
+      "name": "ACL",
+      "start": "2025-02-1",
+      "end": "2025-02-15",
+      "level": "CCF-A",
+      "url": "https://2025.aclweb.org/calls/main_conference_papers/"
+    },
+    {
+      "name": "CVPR",
+      "start": "2024-12-08",
+      "end": "2024-12-15",
+      "level": "CCF-A",
+      "url": "https://cvpr.thecvf.com/Conferences/2025/Dates"
+    },
+    {
+      "name": "ICCV",
+      "start": "2025-03-03",
+      "end": "2025-03-07",
+      "level": "CCF-A",
+      "url": "https://iccv.thecvf.com/Conferences/2025/Dates"
+    },
+    {
+      "name": "IJCAI",
+      "start": "2025-1-01",
+      "end": "2025-1-23",
+      "level": "CCF-A",
+      "url": "https://2025.ijcai.org/call-for-papers-main-track/"
+    },
+    {
+      "name": "ECCV",
+      "start": "2024-2-28",
+      "end": "2024-3-07",
+      "level": "CCF-B",
+      "url": "https://eccv.ecva.net/Conferences/2024/CallForPapers"
+    },
+    {
+      "name": "BMVC",
+      "start": "2025-05-13",
+      "end": "2025-05-16",
+      "level": "CCF-C",
+      "url": "https://bmvc2025.bmva.org/dates/"
+    },
+    {
+      "name": "DAC",
+      "start": "2025-02-01",
+      "end": "2025-02-05",
+      "level": "CCF-A",
+      "url": "https://www.sigda.org/dac2025/call-for-papers/"
+    },
+    {
+      "name": "HPCA",
+      "start": "2025-07-25",
+      "end": "2025-08-01",
+      "level": "CCF-A",
+      "url": "https://hpca-conf.org/2026/call-for-papers/"
+    },
+    {
+      "name": "MICRO",
+      "start": "2025-04-04",
+      "end": "2025-04-11",
+      "level": "CCF-A",
+      "url": "https://www.microarch.org/micro58/submit/papers.php"
+    },
+    {
+      "name": "ISCA",
+      "start": "2024-11-01",
+      "end": "2024-11-22",
+      "level": "CCF-A",
+      "url": "https://www.iscaconf.org/isca2025/submit/papers.php"
+    },
+    {
+      "name": "EuroSys Spring",
+      "start": "2025-05-08",
+      "end": "2025-05-15",
+      "level": "CCF-A",
+      "url": "https://2026.eurosys.org/cfp.html#calls"
+    },
+    {
+      "name": "EuroSys Fall",
+      "start": "2025-09-18",
+      "end": "2025-09-25",
+      "level": "CCF-A",
+      "url": "https://2026.eurosys.org/cfp.html#calls"
+    },
+    {
+      "name": "COLM",
+      "start": "2025-03-22",
+      "end": "2025-03-28",
+      "level": "Non-CCF",
+      "url": "https://colmweb.org/cfp.html"
+    }
+  ]
+} 

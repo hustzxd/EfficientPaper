@@ -1,0 +1,38 @@
+paper {
+  title: "SGLang: Efficient Execution of Structured Language Model Programs"
+  abbr: "SGLang"
+  url: "http://arxiv.org/abs/2312.07104v2"
+  authors: "Lianmin Zheng"
+  authors: "Liangsheng Yin"
+  authors: "Zhiqiang Xie"
+  authors: "Chuyue Sun"
+  authors: "Jeff Huang"
+  authors: "Cody Hao Yu"
+  authors: "Shiyi Cao"
+  authors: "Christos Kozyrakis"
+  authors: "Ion Stoica"
+  authors: "Joseph E. Gonzalez"
+  authors: "Clark Barrett"
+  authors: "Ying Sheng"
+  institutions: "Stanford University"
+  institutions: "UC Berkeley"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sgl-project/sglang"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: deployment
+}
+cover {
+  url: "fig9.png"
+}

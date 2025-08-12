@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Unifying Mixture of Experts and Multi-Head Latent Attention for Efficient Language Models - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Unifying Mixture of Experts and Multi-Head Latent Attention for Efficient Language Models";
+        var mkdocs_page_input_path = "notes/2025/MoE-MLA-RoPE/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Unifying Mixture of Experts and Multi-Head Latent Attention for Efficient Language Models</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="unifying-mixture-of-experts-and-multi-head-latent-attention-for-efficient-language-models">Unifying Mixture of Experts and Multi-Head Latent Attention for Efficient Language Models</h1>
+<blockquote>
+<p>Sushant Mehta, Raj Dandekar, Rajat Dandekar, Sreedath Panat</p>
+</blockquote>
+<p><img alt="" src="../../../blank.jpg" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>We present MoE-MLA-RoPE, a novel architecture combination that combines
+Mixture of Experts (MoE) with Multi-head Latent Attention (MLA) and Rotary
+Position Embeddings (RoPE) for efficient language modeling. Our approach
+addresses the fundamental trade-off between model capacity and computational
+efficiency through three key innovations: (1) fine-grained expert routing with
+64 micro-experts and top-$k$ selection, enabling flexible specialization
+through 3.6 * 10^7 possible expert combinations; (2) shared expert isolation
+that dedicates 2 always active experts for common patterns while routing to 6
+of 62 specialized experts; and (3) gradient-conflict-free load balancing that
+maintains expert utilization without interfering with primary loss
+optimization.
+  Extensive experiments on models ranging from 17M to 202M parameters
+demonstrate that MoE-MLA-RoPE with compression ratio r=d/2 achieves 68% KV
+cache memory reduction and 3.2x inference speedup while maintaining competitive
+perplexity (0.8% degradation). Compared to the parameters with 53.9M
+parameters, MoE-MLA-RoPE improves the validation loss by 6.9% over the vanilla
+transformers while using 42% fewer active parameters per forward pass.
+FLOP-matched experiments reveal even larger gains: 11.1% improvement with 3.2x
+inference acceleration. Automated evaluation using GPT-4 as a judge confirms
+quality improvements in generation, with higher scores on coherence (8.1/10),
+creativity (7.9/10) and grammatical correctness (8.2/10). Our results establish
+that architectural novelty, not parameter scaling, defines the efficiency
+frontier for resource-constrained language model deployment.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

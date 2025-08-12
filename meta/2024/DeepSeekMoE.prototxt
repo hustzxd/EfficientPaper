@@ -1,0 +1,42 @@
+paper {
+  title: "DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models"
+  abbr: "DeepSeekMoE"
+  url: "http://arxiv.org/abs/2401.06066v1"
+  authors: "Damai Dai"
+  authors: "Chengqi Deng"
+  authors: "Chenggang Zhao"
+  authors: "R. X. Xu"
+  authors: "Huazuo Gao"
+  authors: "Deli Chen"
+  authors: "Jiashi Li"
+  authors: "Wangding Zeng"
+  authors: "Xingkai Yu"
+  authors: "Y. Wu"
+  authors: "Zhenda Xie"
+  authors: "Y. K. Li"
+  authors: "Panpan Huang"
+  authors: "Fuli Luo"
+  authors: "Chong Ruan"
+  authors: "Zhifang Sui"
+  authors: "Wenfeng Liang"
+  institutions: "DeepSeek-AI"
+  institutions: "Tsinghua University"
+  institutions: "Nanjing University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/deepseek-ai/DeepSeek-MoE"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig2.png"
+}

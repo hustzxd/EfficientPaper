@@ -1,0 +1,27 @@
+paper {
+  title: "LLM-Pruner: On the Structural Pruning of Large Language Models"
+  abbr: "LLM-Pruner"
+  url: "http://arxiv.org/abs/2305.11627v3"
+  authors: "Xinyin Ma"
+  authors: "Gongfan Fang"
+  authors: "Xinchao Wang"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/horseee/LLM-Pruner"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "cover.jpg"
+}

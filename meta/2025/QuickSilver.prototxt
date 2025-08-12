@@ -1,0 +1,36 @@
+paper {
+  title: "QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization"
+  abbr: "QuickSilver"
+  url: "http://arxiv.org/abs/2506.22396v1"
+  authors: "Danush Khanna"
+  authors: "Aditya Kumar Guru"
+  authors: "Srivarshinee Sridhar"
+  authors: "Zidan Ahmed"
+  authors: "Rubhav Bahirwani"
+  authors: "Meetu Malhotra"
+  authors: "Vinija Jain"
+  authors: "Aman Chadha"
+  authors: "Amitava Das"
+  authors: "Kripabandhu Ghosh"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

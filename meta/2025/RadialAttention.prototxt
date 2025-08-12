@@ -1,0 +1,40 @@
+paper {
+  title: "Radial Attention: $O(n\\log n)$ Sparse Attention with Energy Decay for Long Video Generation"
+  abbr: "RadialAttention"
+  url: "http://arxiv.org/abs/2506.19852v1"
+  authors: "Xingyang Li"
+  authors: "Muyang Li"
+  authors: "Tianle Cai"
+  authors: "Haocheng Xi"
+  authors: "Shuo Yang"
+  authors: "Yujun Lin"
+  authors: "Lvmin Zhang"
+  authors: "Songlin Yang"
+  authors: "Jinbo Hu"
+  authors: "Kelly Peng"
+  authors: "Maneesh Agrawala"
+  authors: "Ion Stoica"
+  authors: "Kurt Keutzer"
+  authors: "Song Han"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,33 @@
+paper {
+  title: "Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism"
+  abbr: "SDS"
+  url: "http://arxiv.org/abs/2408.10473v1"
+  authors: "Guanchen Li"
+  authors: "Xiandong Zhao"
+  authors: "Lian Liu"
+  authors: "Zeping Li"
+  authors: "Dong Li"
+  authors: "Lu Tian"
+  authors: "Jie He"
+  authors: "Ashish Sirasao"
+  authors: "Emad Barsoum"
+  institutions: "AMD"
+}
+pub {
+  where: "Coling"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "sds.png"
+}

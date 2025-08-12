@@ -1,0 +1,24 @@
+paper {
+  title: "Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers"
+  abbr: "Adaptively Sparse Attention"
+  url: "https://arxiv.org/abs/2305.15805"
+  authors: "Sotiris Anagnostidis, Dario Pavllo, Luca Biggio, Lorenzo Noci, Aurelien Lucchi, Thomas Hofmann"
+  institutions: "University of Basel"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "adaptively_sparse_attention/adaptively_sparse_attention.jpg"
+}

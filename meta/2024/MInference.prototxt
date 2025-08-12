@@ -1,0 +1,38 @@
+paper {
+  title: "MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention"
+  abbr: "MInference"
+  url: "http://arxiv.org/abs/2407.02490v1"
+  authors: "Huiqiang Jiang"
+  authors: "Yucheng Li"
+  authors: "Chengruidong Zhang"
+  authors: "Qianhui Wu"
+  authors: "Xufang Luo"
+  authors: "Surin Ahn"
+  authors: "Zhenhua Han"
+  authors: "Amir H. Abdi"
+  authors: "Dongsheng Li"
+  authors: "Chin-Yew Lin"
+  authors: "Yuqing Yang"
+  authors: "Lili Qiu"
+  institutions: "Microsoft"
+  institutions: "University of Surrey"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/MInference"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "MInference_3shape.PNG"
+}

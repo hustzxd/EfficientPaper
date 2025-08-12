@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference";
+        var mkdocs_page_input_path = "notes/2025/TokenWeave/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="tokenweave-efficient-compute-communication-overlap-for-distributed-llm-inference">TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference</h1>
+<blockquote>
+<p>Raja Gond, Nipun Kwatra, Ramachandran Ramjee</p>
+</blockquote>
+<p><img alt="" src="../fig8.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Distributed inference of large language models (LLMs) can introduce overheads
+of up to 20% even over GPUs connected via high-speed interconnects such as
+NVLINK. Multiple techniques have been proposed to mitigate these overheads by
+decomposing computations into finer-grained tasks and overlapping communication
+with sub-tasks as they complete. However, fine-grained decomposition of a large
+computation into many smaller computations on GPUs results in overheads.
+Further, the communication itself uses many streaming multiprocessors (SMs),
+adding to the overhead.
+  We present TokenWeave to address these challenges. TokenWeave proposes a
+Token-Splitting technique that divides the tokens in the inference batch into
+two approximately equal subsets in a wave-aware manner. The computation of one
+subset is then overlapped with the communication of the other. In addition,
+TokenWeave optimizes the order of the layer normalization computation with
+respect to communication operations and implements a novel fused
+AllReduce-RMSNorm kernel carefully leveraging Multimem instruction support
+available on NVIDIA Hopper GPUs. These optimizations allow TokenWeave to
+perform communication and RMSNorm using only 2-8 SMs. Moreover, our kernel
+enables the memory bound RMSNorm to be overlapped with the other batch's
+computation, providing additional gains. Our evaluations demonstrate up to 29%
+latency gains and up to 26% throughput gains across multiple models and
+workloads. In several settings, TokenWeave results in better performance
+compared to an equivalent model with all communication removed.</p>
+<p>TokenWeave 主要用到了三个技术点：
+1. Token-Splitting，将一个大batch的任务拆分成两个batch，通过这种可以将计算与通信进行overlap；但由于GPU的wave-quantization原因，Naive的拆分方式可能导致两个小的kernel的开销大于原本的一个大kernel，造成额外的overhead；这里的wave指的是GPU并行运算的波束，一个大的kernel通常能跑满GPU的并行运算资源，拆分为两个小kernel后，有可能造成小kernel的最后一个wave并行效率低；TokenWeave提出使用smart的方法来拆分，使得拆分后的两个kernel比一个kernel额外引入的开销最小。
+2. RMSNorm优化，TileLink, Flux和Nanoflow等工作没有考虑对Norm函数的优化，实测发现RMSNorm时间占比在8%左右；TokenWeave提出将原本的AllReduce-RMSNorm运算改为ReduceScatter-RMSNorm-AllGather操作，保证数学计算的等价性的同时，减少RMSNorm的计算开销；但简单的拆分后的效率会变差，TokenWeave设计了高效的kernel来优化这个问题。
+3. 新特性的引入减少SM的资源占用，通过使用Multimem instruction将reduce offload到NVSwitch上，从而减少了SM的使用。通过这种方式，将第二点RMSNorm的kernel实现由需要16-20 SMs减少到2-8 SMs
+TokenWeave在vLLM v1版本上实现，带来29% latency收益，最多26%的throughput收益。</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

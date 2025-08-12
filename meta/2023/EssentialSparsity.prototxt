@@ -1,0 +1,27 @@
+paper {
+  title: "The Emergence of Essential Sparsity in Large Pre-trained Models: The Weights that Matter"
+  abbr: "Essential Sparsity"
+  url: "https://arxiv.org/abs/2306.03805"
+  authors: "Ajay Jaiswal"
+  authors: "Shiwei Liu"
+  authors: "Zhangyang Wang"
+  institutions: "VITA Group"
+  institutions: "University of Texas at Austin"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/VITA-Group/essential_sparsity/tree/main"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

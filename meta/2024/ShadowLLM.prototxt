@@ -1,0 +1,31 @@
+paper {
+  title: "ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models"
+  abbr: "ShadowLLM"
+  url: "http://arxiv.org/abs/2406.16635v1"
+  authors: "Yash Akhauri"
+  authors: "Ahmed F AbouElhamayed"
+  authors: "Jordan Dotzel"
+  authors: "Zhiru Zhang"
+  authors: "Alexander M Rush"
+  authors: "Safeen Huda"
+  authors: "Mohamed S Abdelfattah"
+  institutions: "Cornell University"
+  institutions: "Google"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/abdelfattah-lab/shadow_llm"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "shadowLLM.png"
+}

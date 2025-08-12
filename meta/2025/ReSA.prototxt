@@ -1,0 +1,36 @@
+paper {
+  title: "Rectified Sparse Attention"
+  abbr: "ReSA"
+  url: "http://arxiv.org/abs/2506.04108v2"
+  authors: "Yutao Sun"
+  authors: "Tianzhu Ye"
+  authors: "Li Dong"
+  authors: "Yuqing Xia"
+  authors: "Jian Chen"
+  authors: "Yizhao Gao"
+  authors: "Shijie Cao"
+  authors: "Jianyong Wang"
+  authors: "Furu Wei"
+  institutions: "Microsoft Research"
+  institutions: "Tsinghua University"
+  institutions: "The University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/unilm/tree/master/ReSA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}

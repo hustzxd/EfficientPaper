@@ -1,0 +1,25 @@
+paper {
+  title: "QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models"
+  abbr: "QA-LoRA"
+  url: "https://arxiv.org/abs/2309.14717"
+  authors: "Yuhui Xu, Lingxi Xie, Xiaotao Gu, Xin Chen, Heng Chang, Hengheng Zhang, Zhengsu Chen, Xiaopeng Zhang, Qi Tian"
+  institutions: "Huawei"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/yuhuixu1993/qa-lora"
+}
+note {
+  url: "QA-LoRA/note.md"
+}
+keyword {
+  words: quantization
+  words: low_rank
+}
+cover {
+  url: "QA-LoRA/qalora.jpg"
+}

@@ -1,0 +1,26 @@
+paper {
+  title: "kvpress"
+  abbr: "kvpress"
+  url: ""
+  authors: "NVIDIA"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "github"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVIDIA/kvpress"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: tool
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

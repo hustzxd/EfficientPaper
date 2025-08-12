@@ -1,0 +1,75 @@
+paper {
+  title: "Pangu Ultra: Pushing the Limits of Dense Large Language Models on Ascend NPUs"
+  abbr: "PanguUltra"
+  url: "http://arxiv.org/abs/2504.07866v2"
+  authors: "Yichun Yin"
+  authors: "Wenyong Huang"
+  authors: "Kaikai Song"
+  authors: "Yehui Tang"
+  authors: "Xueyu Wu"
+  authors: "Wei Guo"
+  authors: "Peng Guo"
+  authors: "Yaoyuan Wang"
+  authors: "Xiaojun Meng"
+  authors: "Yasheng Wang"
+  authors: "Dong Li"
+  authors: "Can Chen"
+  authors: "Dandan Tu"
+  authors: "Yin Li"
+  authors: "Fisher Yu"
+  authors: "Ruiming Tang"
+  authors: "Yunhe Wang"
+  authors: "Baojun Wang"
+  authors: "Bin Wang"
+  authors: "Bo Wang"
+  authors: "Boxiao Liu"
+  authors: "Changzheng Zhang"
+  authors: "Duyu Tang"
+  authors: "Fei Mi"
+  authors: "Hui Jin"
+  authors: "Jiansheng Wei"
+  authors: "Jiarui Qin"
+  authors: "Jinpeng Li"
+  authors: "Jun Zhao"
+  authors: "Liqun Deng"
+  authors: "Lin Li"
+  authors: "Minghui Xu"
+  authors: "Naifu Zhang"
+  authors: "Nianzu Zheng"
+  authors: "Qiang Li"
+  authors: "Rongju Ruan"
+  authors: "Shengjun Cheng"
+  authors: "Tianyu Guo"
+  authors: "Wei He"
+  authors: "Wei Li"
+  authors: "Weiwen Liu"
+  authors: "Wulong Liu"
+  authors: "Xinyi Dai"
+  authors: "Yonghan Dong"
+  authors: "Yu Pan"
+  authors: "Yue Li"
+  authors: "Yufei Wang"
+  authors: "Yujun Li"
+  authors: "Yunsheng Ni"
+  authors: "Zhe Liu"
+  authors: "Zhenhe Zhang"
+  authors: "Zhicheng Liu"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: ""
+}

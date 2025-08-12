@@ -1,0 +1,26 @@
+paper {
+  title: "Learning N:M Fine-grained Structured Sparse Neural Networks From Scratch"
+  abbr: "SR-STE"
+  url: "https://openreview.net/forum?id=K9bw7vqp_s"
+  authors: "Aojun Zhou"
+  authors: "Hongsheng Li"
+  institutions: "SenseTime Research"
+  institutions: "Northwestern University"
+}
+pub {
+  where: "ICLR"
+  year: 2021
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/aojunzz/NM-sparsity"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "sr-ste/sr-ste.jpg"
+}

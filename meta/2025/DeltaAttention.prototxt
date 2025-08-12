@@ -1,0 +1,29 @@
+paper {
+  title: "Delta Attention: Fast and Accurate Sparse Attention Inference by Delta Correction"
+  abbr: "DeltaAttention"
+  url: "http://arxiv.org/abs/2505.11254v1"
+  authors: "Jeffrey Willette"
+  authors: "Heejun Lee"
+  authors: "Sung Ju Hwang"
+  institutions: "KAIST"
+  institutions: "DeepAuto.ai"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig4.png"
+}

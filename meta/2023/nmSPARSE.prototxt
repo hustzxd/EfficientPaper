@@ -1,0 +1,27 @@
+paper {
+  title: "Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning"
+  abbr: "nmSPARSE"
+  url: "https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf"
+  authors: "Bin Lin"
+  authors: "Fan Yang"
+  institutions: "Microsoft Research"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "MLSys"
+  year: 2023
+}
+code {
+  type: "CUDA"
+  url: "https://github.com/microsoft/SparTA/tree/nmsparse"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: ""
+}

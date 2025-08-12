@@ -1,0 +1,26 @@
+paper {
+  title: "ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs"
+  abbr: "ReLU2"
+  url: "https://arxiv.org/abs/2402.03804"
+  authors: "Zhengyan Zhang, Yixin Song, Guanghui Yu, Xu Han, Yankai Lin, Chaojun Xiao, Chenyang Song, Zhiyuan Liu, Zeyu Mi, Maosong Sun"
+  institutions: "Tsinghua University"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "ReLU2/note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "ReLU2/activation.png"
+}

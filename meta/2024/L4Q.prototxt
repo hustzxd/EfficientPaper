@@ -1,0 +1,26 @@
+paper {
+  title: "L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ"
+  abbr: "L4Q"
+  url: "https://arxiv.org/abs/2402.04902"
+  authors: "Hyesung Jeon, Yulhwa Kim, Jae-joon Kim"
+  institutions: "Seoul National University"
+  institutions: "Sungkyunkwan University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "L4Q/note.md"
+}
+keyword {
+  words: quantization
+  words: low_rank
+}
+cover {
+  url: "L4Q/l4q.jpg"
+}

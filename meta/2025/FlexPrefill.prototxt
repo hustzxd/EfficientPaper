@@ -1,0 +1,32 @@
+paper {
+  title: "FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference"
+  abbr: "FlexPrefill"
+  url: "http://arxiv.org/abs/2502.20766v1"
+  authors: "Xunhao Lai"
+  authors: "Jianqiao Lu"
+  authors: "Yao Luo"
+  authors: "Yiyuan Ma"
+  authors: "Xun Zhou"
+  institutions: "Peking University"
+  institutions: "The University of Hong Kong"
+  institutions: "ByteDance Inc"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/bytedance/FlexPrefill"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

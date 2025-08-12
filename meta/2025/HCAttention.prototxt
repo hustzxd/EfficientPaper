@@ -1,0 +1,30 @@
+paper {
+  title: "HCAttention: Extreme KV Cache Compression via Heterogeneous Attention Computing for LLMs"
+  abbr: "HCAttention"
+  url: "http://arxiv.org/abs/2507.19823v1"
+  authors: "Dongquan Yang"
+  authors: "Yifan Yang"
+  authors: "Xiaotian Yu"
+  authors: "Xianbiao Qi"
+  authors: "Rong Xiao"
+  institutions: "Intellifusion Inc."
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

@@ -1,0 +1,31 @@
+paper {
+  title: "VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores"
+  abbr: "VENOM"
+  url: "http://arxiv.org/abs/2310.02065v1"
+  authors: "Roberto L. Castro"
+  authors: "Andrei Ivanov"
+  authors: "Diego Andrade"
+  authors: "Tal Ben-Nun"
+  authors: "Basilio B. Fraguela"
+  authors: "Torsten Hoefler"
+  institutions: "Universidade da Coruña"
+  institutions: "ETH Zürich"
+}
+pub {
+  where: "SC"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/UDC-GAC/venom"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "vnm.png"
+}

@@ -1,0 +1,38 @@
+paper {
+  title: "PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention"
+  abbr: "PowerAttention"
+  url: "http://arxiv.org/abs/2503.03588v1"
+  authors: "Lida Chen"
+  authors: "Dong Xu"
+  authors: "Chenxin An"
+  authors: "Xintao Wang"
+  authors: "Yikai Zhang"
+  authors: "Jiangjie Chen"
+  authors: "Zujie Liang"
+  authors: "Feng Wei"
+  authors: "Jiaqing Liang"
+  authors: "Yanghua Xiao"
+  authors: "Wei Wang"
+  institutions: "Fudan University"
+  institutions: "The University of Hong Kong"
+  institutions: "ByteDance"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

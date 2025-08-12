@@ -1,0 +1,29 @@
+paper {
+  title: "Pruning Pre-trained Language Models Without Fine-Tuning"
+  abbr: "SMP"
+  url: "https://aclanthology.org/2023.acl-long.35.pdf"
+  authors: "Ting Jiang"
+  authors: "Deqing Wang"
+  authors: "Fuzhen Zhuang"
+  authors: "Ruobing Xie"
+  authors: "Feng Xia"
+  institutions: "Beihang University"
+  institutions: "Zhongguancun Laboratory"
+}
+pub {
+  where: "ACL"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/kongds/SMP"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "smp/smp.jpg"
+}

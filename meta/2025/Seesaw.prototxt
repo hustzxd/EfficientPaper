@@ -1,0 +1,33 @@
+paper {
+  title: "Seesaw: High-throughput LLM Inference via Model Re-sharding"
+  abbr: "Seesaw"
+  url: "http://arxiv.org/abs/2503.06433v1"
+  authors: "Qidong Su"
+  authors: "Wei Zhao"
+  authors: "Xin Li"
+  authors: "Muralidhar Andoorveedu"
+  authors: "Chenhao Jiang"
+  authors: "Zhanda Zhu"
+  authors: "Kevin Song"
+  authors: "Christina Giannoula"
+  authors: "Gennady Pekhimenko"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

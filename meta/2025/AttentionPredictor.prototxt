@@ -1,0 +1,37 @@
+paper {
+  title: "AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference"
+  abbr: "AttentionPredictor"
+  url: "http://arxiv.org/abs/2502.04077v1"
+  authors: "Qingyue Yang"
+  authors: "Jie Wang"
+  authors: "Xing Li"
+  authors: "Zhihai Wang"
+  authors: "Chen Chen"
+  authors: "Lei Chen"
+  authors: "Xianzhi Yu"
+  authors: "Wulong Liu"
+  authors: "Jianye Hao"
+  authors: "Mingxuan Yuan"
+  authors: "Bin Li"
+  institutions: "University of Science and Technology of China"
+  institutions: "Noah’s Ark Lab, Huawei Technologies"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

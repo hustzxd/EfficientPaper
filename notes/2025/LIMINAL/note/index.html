@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need";
+        var mkdocs_page_input_path = "notes/2025/LIMINAL/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="efficient-llm-inference-bandwidth-compute-synchronization-and-capacity-are-all-you-need">Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need</h1>
+<blockquote>
+<p>Michael Davies, Neal Crago, Karthikeyan Sankaralingam, Christos Kozyrakis</p>
+</blockquote>
+<p><img alt="" src="../../../blank.jpg" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>This paper presents a limit study of transformer-based large language model
+(LLM) inference, focusing on the fundamental performance bottlenecks imposed by
+memory bandwidth, memory capacity, and synchronization overhead in distributed
+inference systems. We develop a hardware-agnostic performance model that
+abstracts away implementation details, enabling the analysis of a wide range of
+current and near-future hardware technologies. Our analysis spans from current
+HBM3 memory technology used in AI accelerators like GPUs and TPUs to systems
+based on advanced HBM4 and advanced 3D-stacked DRAM technology. It also covers
+SRAM-based designs and scaling techniques from distributed clusters with
+varying numbers of chips to wafer-scale integration. Our key findings for
+auto-regressive decoding are: i) serving LLMs requires 100s of GB per server to
+serve a model instance; ii) high memory bandwidth is critical for high per-user
+throughput; iii) exposed synchronization latencies to achieve collective
+communication must be around 1us else they make the memory bandwidth
+ineffective; iv) DRAM-based designs have a fundamental advantage in terms of
+system-level efficiency as measured in throughput per cost or watt; and v)
+hardware designs can easily reach 2000+ user token/sec but getting to 10,000+
+tokens/sec will need smaller models, smaller context, or other forms of
+algorithmic advances. This study provides valuable insights into the
+fundamental performance limits of LLM inference, highlighting the potential
+benefits of future hardware advancements and guiding the optimization of LLM
+deployment strategies.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

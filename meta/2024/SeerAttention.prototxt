@@ -1,0 +1,35 @@
+paper {
+  title: "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs"
+  abbr: "SeerAttention"
+  url: "http://arxiv.org/abs/2410.13276v2"
+  authors: "Yizhao Gao"
+  authors: "Zhichen Zeng"
+  authors: "Dayou Du"
+  authors: "Shijie Cao"
+  authors: "Hayden Kwok-Hay So"
+  authors: "Ting Cao"
+  authors: "Fan Yang"
+  authors: "Mao Yang"
+  institutions: "University of Hong Kong"
+  institutions: "University of Washington"
+  institutions: "Microsoft Research"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/SeerAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: "seerattention.png"
+}

@@ -1,0 +1,26 @@
+paper {
+  title: "KVSink: Understanding and Enhancing the Preservation of Attention Sinks in KV Cache Quantization for LLMs"
+  abbr: "KVSink"
+  url: "http://arxiv.org/abs/2508.04257v1"
+  authors: "Zunhai Su"
+  authors: "Kehong Yuan"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "COLM"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig8.png"
+}

@@ -1,0 +1,29 @@
+paper {
+  title: "FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation"
+  abbr: "FastKV"
+  url: "http://arxiv.org/abs/2502.01068v1"
+  authors: "Dongwon Jo"
+  authors: "Jiwon Song"
+  authors: "Yulhwa Kim"
+  authors: "Jae-Joon Kim"
+  institutions: "Seoul National University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/dongwonjo/FastKV"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}

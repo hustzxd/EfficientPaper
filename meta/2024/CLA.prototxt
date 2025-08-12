@@ -1,0 +1,30 @@
+paper {
+  title: "Reducing Transformer Key-Value Cache Size with Cross-Layer Attention"
+  abbr: "CLA"
+  url: "http://arxiv.org/abs/2405.12981v1"
+  authors: "William Brandon"
+  authors: "Mayank Mishra"
+  authors: "Aniruddha Nrusimha"
+  authors: "Rameswar Panda"
+  authors: "Jonathan Ragan Kelly"
+  institutions: "MIT"
+  institutions: "MIT-IBM Watson AI Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/JerryYin777/Cross-Layer-Attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}

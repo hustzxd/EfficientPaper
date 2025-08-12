@@ -1,0 +1,28 @@
+paper {
+  title: "Forgetting Transformer: Softmax Attention with a Forget Gate"
+  abbr: "FoX"
+  url: "http://arxiv.org/abs/2503.02130v2"
+  authors: "Zhixuan Lin"
+  authors: "Evgenii Nikishin"
+  authors: "Xu Owen He"
+  authors: "Aaron Courville"
+  institutions: "Mila & Universite de Montreal"
+  institutions: "MakerMaker AI"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/zhixuan-lin/forgetting-transformer"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: ""
+}

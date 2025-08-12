@@ -1,0 +1,29 @@
+paper {
+  title: "Characterizing Communication Patterns in Distributed Large Language Model Inference"
+  abbr: "UC0D8DJ6"
+  url: "http://arxiv.org/abs/2507.14392v1"
+  authors: "Lang Xu"
+  authors: "Kaushik Kandadi Suresh"
+  authors: "Quentin Anthony"
+  authors: "Nawras Alnaasan"
+  authors: "Dhabaleswar K. Panda"
+  institutions: "The Ohio State University"
+  institutions: "KAIST"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,20 @@
+paper {
+  title: "RPTQ: Reorder-based Post-training Quantization for Large Language Models"
+  abbr: "RPTQ"
+  url: "https://arxiv.org/pdf/2304.01089.pdf"
+  authors: "Zhihang Yuan"
+  authors: "Bingzhe Wu"
+  institutions: "Houmo AI"
+  institutions: "Tencent AI Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "PyTorch"
+  url: "https://github.com/hahnyuan/RPTQ4LLM"
+}
+keyword {
+  words: quantization
+}

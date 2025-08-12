@@ -1,0 +1,35 @@
+paper {
+  title: "Mixture of Experts in Large Language Models"
+  abbr: "52A7RO95"
+  url: "http://arxiv.org/abs/2507.11181v1"
+  authors: "Danyang Zhang"
+  authors: "Junhao Song"
+  authors: "Ziqian Bi"
+  authors: "Yingfang Yuan"
+  authors: "Tianyang Wang"
+  authors: "Joe Yeong"
+  authors: "Junfeng Hao"
+  institutions: "ByteDance Inc"
+  institutions: "Imperial College London"
+  institutions: "Purdue University"
+  institutions: "Heriot-Watt University"
+  institutions: "Vokram Group"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+  words: survey
+}
+cover {
+  url: "fig1.png"
+}

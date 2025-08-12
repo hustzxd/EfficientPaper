@@ -1,0 +1,32 @@
+paper {
+  title: "Accelerating Prefilling for Long-Context LLMs via Sparse Pattern Sharing"
+  abbr: "SharePrefill"
+  url: "http://arxiv.org/abs/2505.19578v1"
+  authors: "Dan Peng"
+  authors: "Zhihui Fu"
+  authors: "Zewen Ye"
+  authors: "Zhuoran Song"
+  authors: "Jun Wang"
+  institutions: "OPPO Research Institute"
+  institutions: "Zhejiang University"
+  institutions: "Shanghai Jiaotong University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig3.png"
+}

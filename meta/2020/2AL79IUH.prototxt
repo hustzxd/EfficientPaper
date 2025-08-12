@@ -1,0 +1,22 @@
+paper {
+  title: "Fast Sparse ConvNets"
+  abbr: ""
+  url: "https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf"
+  authors: "Erich Elsen, Marat Dukhan, Trevor Gale, Karen Simonyan"
+  institutions: "Google"
+  institutions: "DeepMind"
+}
+pub {
+  where: "CVPR"
+  year: 2020
+}
+code {
+  type: "C"
+  url: "https://github.com/fastconvnets/cvpr2020"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

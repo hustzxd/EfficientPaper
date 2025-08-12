@@ -1,0 +1,29 @@
+paper {
+  title: "SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference"
+  abbr: "SparseInfer"
+  url: "http://arxiv.org/abs/2411.12692v1"
+  authors: "Jiho Shin"
+  authors: "Hoeseok Yang"
+  authors: "Youngmin Yi"
+  institutions: "University of Seoul"
+  institutions: "Santa Clara University"
+  institutions: "Sogang University"
+}
+pub {
+  where: "DATE"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: ""
+}

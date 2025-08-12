@@ -1,0 +1,28 @@
+paper {
+  title: "ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition"
+  abbr: "ChunkAttention"
+  url: "http://arxiv.org/abs/2402.15220v4"
+  authors: "Lu Ye"
+  authors: "Ze Tao"
+  authors: "Yong Huang"
+  authors: "Yang Li"
+  institutions: "Microsoft"
+}
+pub {
+  where: "ACL"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/chunk-attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: deployment
+}
+cover {
+  url: "chunkattn.png"
+}

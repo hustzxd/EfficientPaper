@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention";
+        var mkdocs_page_input_path = "notes/2025/vAttention/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="vattention-dynamic-memory-management-for-serving-llms-without-pagedattention">vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention</h1>
+<p><img alt="" src="../fig5.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>PagedAttention is a popular approach for dynamic memory allocation in LLM
+serving systems. It enables on-demand allocation of GPU memory to mitigate KV
+cache fragmentation -- a phenomenon that crippled the batch size (and
+consequently throughput) in prior systems. However, in trying to allocate
+physical memory at runtime, PagedAttention ends up changing the virtual memory
+layout of the KV cache from contiguous to non-contiguous. Such a design leads
+to non-trivial programming and performance overheads.
+  We present vAttention -- an approach that mitigates fragmentation in physical
+memory while retaining the contiguity of KV cache in virtual memory. We achieve
+this by decoupling the allocation of virtual and physical memory using CUDA
+virtual memory management APIs. We also introduce various LLM-specific
+optimizations to address the limitations of CUDA virtual memory support.
+Overall, vAttention is a simpler, portable, and performant alternative to
+PagedAttention: it supports various attention kernels out-of-the-box and
+improves LLM serving throughput by up to 1.23x compared to the use of
+PagedAttention-based kernels of FlashAttention and FlashInfer.</p>
+<p>Paged Attention的改进</p>
+<p>Paged Attention的缺点
+- Requires Re-writing the Attention Kernel
+  - KV Cache不是连续存储的，需要重写kernel
+- Adds Redundancy in the Serving Framework
+  - 在runtime时，需要同时访问多个块的kv cache，但是属于virtual memory的不同地址。Virtual Memory实际上通过操作系统找到Physical Memory有一个相似的操作。
+- Performance Overhead
+  - Runtime overhead on the GPU
+    - 多了一些运算逻辑，导致GPU上有额外的时间开销
+  - Runtime overhead on the CPU</p>
+<p>vAttention 发现两个现象
+- KV cache memory requirement is predictable on a per-iteration basis.
+  - 在decoding时，每次增长的memory是可以提前预测的
+- KV cache does not require high memory allocation bandwidth.
+  - 统计发现KV Cache需要Memory最高只有750MB/s</p>
+<p><strong>在系统层面进行分页，保证在virtual memory上是连续的，而不是PagedAttention在用户空间中在Virtual Memory上进行分页。</strong></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

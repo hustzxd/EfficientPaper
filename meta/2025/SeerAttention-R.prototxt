@@ -1,0 +1,44 @@
+paper {
+  title: "SeerAttention-R: Sparse Attention Adaptation for Long Reasoning"
+  abbr: "SeerAttention-R"
+  url: "http://arxiv.org/abs/2506.08889v1"
+  authors: "Yizhao Gao"
+  authors: "Shuming Guo"
+  authors: "Shijie Cao"
+  authors: "Yuqing Xia"
+  authors: "Yu Cheng"
+  authors: "Lei Wang"
+  authors: "Lingxiao Ma"
+  authors: "Yutao Sun"
+  authors: "Tianzhu Ye"
+  authors: "Li Dong"
+  authors: "Hayden Kwok-Hay So"
+  authors: "Yu Hua"
+  authors: "Ting Cao"
+  authors: "Fan Yang"
+  authors: "Mao Yang"
+  institutions: "Microsoft Research"
+  institutions: "The University of Hong Kong"
+  institutions: "Huazhong University of Science and Technology"
+  institutions: "Peking University"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/SeerAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: "fig1.png"
+}

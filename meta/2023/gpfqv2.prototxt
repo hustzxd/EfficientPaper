@@ -1,0 +1,22 @@
+paper {
+  title: "Post-training Quantization for Neural Networks with Provable Guarantees"
+  abbr: "GPFQv2"
+  url: "https://arxiv.org/pdf/2201.11113.pdf"
+  authors: "Jinjie Zhang"
+  authors: "Rayan Saab"
+  institutions: "UCSD"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/YixuanSeanZhou/Quantized_Neural_Nets"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

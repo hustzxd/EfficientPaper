@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Sparsing Law: Towards Large Language Models with Greater Activation Sparsity - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sparsing Law: Towards Large Language Models with Greater Activation Sparsity";
+        var mkdocs_page_input_path = "notes/2025/SparsingLaw/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Sparsing Law: Towards Large Language Models with Greater Activation Sparsity</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sparsing-law-towards-large-language-models-with-greater-activation-sparsity">Sparsing Law: Towards Large Language Models with Greater Activation Sparsity</h1>
+<h2 id="abstract">Abstract</h2>
+<p>Activation sparsity denotes the existence of substantial weakly-contributed
+elements within activation outputs that can be eliminated, benefiting many
+important applications concerned with large language models (LLMs). Although
+promoting greater activation sparsity within LLMs deserves deep studies,
+existing works lack comprehensive and quantitative research on the correlation
+between activation sparsity and potentially influential factors. In this paper,
+we present a comprehensive study on the quantitative scaling properties and
+influential factors of the activation sparsity within decoder-only
+Transformer-based LLMs. Specifically, we propose PPL-$p\%$ sparsity, a precise
+and performance-aware activation sparsity metric that is applicable to any
+activation function. Through extensive experiments, we find several important
+phenomena. Firstly, different activation functions exhibit comparable
+performance but opposite training-time sparsity trends. The activation ratio
+(i.e., $1-\mathrm{sparsity\ ratio}$) evolves as a convergent increasing
+power-law and decreasing logspace power-law with the amount of training data
+for SiLU-activated and ReLU-activated LLMs, respectively. These demonstrate
+that ReLU is more efficient as the activation function than SiLU and can
+leverage more training data to improve activation sparsity. Secondly, the
+activation ratio linearly increases with the width-depth ratio below a certain
+bottleneck point, indicating the potential advantage of a deeper architecture
+at a fixed parameter scale. Finally, at similar width-depth ratios, we
+surprisingly find that the limit value of activation sparsity varies weakly
+with the parameter scale, i.e., the activation patterns within LLMs are
+insensitive to the parameter scale. These empirical laws towards LLMs with
+greater activation sparsity have important implications for making LLMs more
+efficient and interpretable.</p>
+<p><img alt="" src="../fig3.png" /></p>
+<ul>
+<li>提出PPL-p%评估指标，其实就是帕累托曲线，这里p%表示sparsity ratio，越高一半模型的精度也会越差，比如ppl越高。图中给的是activation ratio，正好与p%相加=100%。</li>
+</ul>
+<p><img alt="" src="../fig4.png" /></p>
+<ul>
+<li>PPL-1%来评估模型对sparse的忍受程度</li>
+<li>ReLU：更多的训练数据可以导致模型更加稀疏</li>
+<li>SiLU: 更多的训练数据导致模型更加稠密 （使用PPL-1%来评估），这并不能说dense silu model比relu model差，按照经验和之前的实验结果，silu model比relu model好，但是去掉1%的激活后，silu model的精度表现会降低很多，而且随着训练的数据越多，精度降低的幅度就越大；这个是一个很好的结论。</li>
+<li>
+<p>所以推荐使用ReLU来作为LLM的激活函数</p>
+</li>
+<li>
+<p>width-depth ratio 表示 hidden dimension 与 layer number的比例，越高证明这个LLM越胖，这个参数也与activation sparsity表现有密切关系</p>
+</li>
+</ul>
+<p><img alt="" src="../fig5.png" /></p>
+<ul>
+<li>以0.1B模型训练举例</li>
+<li>Fig.5表示Width-Depth Ratio在[0, 114]之间，模型会逐渐变胖，且激活比例越来越高，所以希望模型越瘦越好，有利于activation sparsity</li>
+<li>Fig.6表示Width-Depth Ratio在[74, 182]之间，不胖不瘦时训练loss最好</li>
+<li>综上，可以选取 Width-Depth Ratio=74，可以满足training loss 和 activation sparsity 需求</li>
+</ul>
+<p><img alt="" src="../fig7.png" /></p>
+<ul>
+<li>确定模型的 Width-Depth ，且training data 足够多时，model的参数量对 activation sparsity 影响很小</li>
+<li>但是小模型更加容易收敛 （从 activation sparsity变化的角度）</li>
+<li>另外，不同scale 的LLM，acitvation 激活的频率都是相似的，且对相同的token输入，不同scale LLM激活的比例也是相似的。</li>
+</ul>
+<p>根据以上观察：
+- LLM Architectural design 尽量使用ReLU，且满足loss 前提下，尽量瘦一点
+- Training-time predictable sparsity，可以根据小模型的表现预测大模型的结果
+- Lens for the convergence of neuron specialization，Fig4表示training loss收敛后，activation sparsity 仍然在逐步的进化，所以可以让模型多训练，从而让更多的神经元进化为专用神经元。</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

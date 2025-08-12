@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models";
+        var mkdocs_page_input_path = "notes/2024/ProSparse/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="prosparse-introducing-and-enhancing-intrinsic-activation-sparsity-within-large-language-models">ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models</h1>
+<p><img alt="" src="../prosparse.jpg" /></p>
+<h2 id="method">Method</h2>
+<p>There are three stages of ProSparse:
+1. ReLU replacement
+    - Replace Non-ReLU activation with ReLU and finetune the model.
+    - However, this stage usually does not achieve satisfactory sparsity.
+2. Progressive sparsity regularization
+    - Apply sparsity regularization to the output of FFN.
+    - Progressively increase the regularization factor for better performace.
+    - Enhance higher sparsity.
+3. Activation threshold shifting
+    - Modify the vanilla ReLU with FAT ReLU.</p>
+<p><img alt="" src="../activation.png" /></p>
+<p>This paper provides two models <a href="https://huggingface.co/SparseLLM/prosparse-llama-2-7b">prosparse-llama-2-7b</a> and <a href="https://huggingface.co/SparseLLM/prosparse-llama-2-13b">prosparse-llama-2-13b</a> in Huggingface.</p>
+<h2 id="experiment">Experiment</h2>
+<h3 id="real-accelerate-on-hardware">Real accelerate on hardware</h3>
+<ol>
+<li>Approximate strategy<ul>
+<li>A predictor to predict the position of activation sparse.</li>
+<li>However, the final performance depends on the quality of the predictor and the predictor itself introduce an addional overhead.</li>
+<li>Test on <a href="https://github.com/SJTU-IPADS/PowerInfer">PowerInfer</a>, a c++ library.</li>
+</ul>
+</li>
+<li>Accurate strategy<ul>
+<li>GPU kernel<ul>
+<li>operation fusion</li>
+<li>coalesced memory access</li>
+<li>vectorization</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="training-dataset">Training Dataset</h3>
+<ol>
+<li>Pretraining Dataset</li>
+<li>StarCoder</li>
+<li>Wikipedia</li>
+<li>Pile</li>
+<li>other collected data.</li>
+<li>Instruction tuning dataset</li>
+<li>UltraChat</li>
+<li>multiple-choice QA data of P3</li>
+<li>PAQ</li>
+<li>Unnatural Instructions</li>
+<li>Flan</li>
+<li>Super-Natural Instructions</li>
+<li>other collected data.</li>
+</ol>
+<p>Prosparse achieves better result than Original model. I think the orginal models do not adopt <strong>Instruction Finetuning</strong>, but Prosparse does.
+<img alt="" src="../exp1.jpg" /></p>
+<p><img alt="" src="../exp2.jpg" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

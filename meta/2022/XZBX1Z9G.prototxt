@@ -1,0 +1,26 @@
+paper {
+  title: "Sparse Progressive Distillation: Resolving Overfitting under Pretrain-and-Finetune Paradigm"
+  abbr: ""
+  url: "https://aclanthology.org/2022.acl-long.16/"
+  authors: "Shaoyi Huang"
+  authors: "Dongkuan Xu"
+  authors: "Caiwen Ding"
+  institutions: "University of Connecticut"
+}
+pub {
+  where: "ACL"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/shaoyiHusky/SparseProgressiveDistillation"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

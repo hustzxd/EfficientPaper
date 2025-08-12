@@ -1,0 +1,27 @@
+paper {
+  title: "Mosaic: Composite Projection Pruning for Resource-efficient LLMs"
+  abbr: "Mosaic"
+  url: "http://arxiv.org/abs/2504.06323v1"
+  authors: "Bailey J. Eccles"
+  authors: "Leon Wong"
+  authors: "Blesson Varghese"
+  institutions: "University of St Andrews"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig6.png"
+}

@@ -1,0 +1,37 @@
+paper {
+  title: "FLUX: Fast Software-based Communication Overlap On GPUs Through Kernel Fusion"
+  abbr: "FLUX"
+  url: "http://arxiv.org/abs/2406.06858v5"
+  authors: "Li-Wen Chang"
+  authors: "Wenlei Bao"
+  authors: "Qi Hou"
+  authors: "Chengquan Jiang"
+  authors: "Ningxin Zheng"
+  authors: "Yinmin Zhong"
+  authors: "Xuanrun Zhang"
+  authors: "Zuquan Song"
+  authors: "Chengji Yao"
+  authors: "Ziheng Jiang"
+  authors: "Haibin Lin"
+  authors: "Xin Jin"
+  authors: "Xin Liu"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

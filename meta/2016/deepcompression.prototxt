@@ -1,0 +1,24 @@
+paper {
+  title: "Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding"
+  abbr: "Deep Compression"
+  url: "https://arxiv.org/pdf/1510.00149.pdf"
+  authors: "Song Han"
+  authors: "Huizi Mao"
+  authors: "William J. Dally"
+  institutions: "Stanford University"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "ICLR"
+  year: 2016
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

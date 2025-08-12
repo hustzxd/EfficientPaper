@@ -1,0 +1,29 @@
+paper {
+  title: "APEX: An Extensible and Dynamism-Aware Simulator for Automated Parallel Execution in LLM Serving"
+  abbr: "APEX"
+  url: "http://arxiv.org/abs/2411.17651v2"
+  authors: "Yi-Chien Lin"
+  authors: "Woosuk Kwon"
+  authors: "Ronald Pineda"
+  authors: "Fanny Nina Paravecino"
+  institutions: "University of Southern California"
+  institutions: "University of California, Berkeley"
+  institutions: "Microsoft"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/apex_plus"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: modeling
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,31 @@
+paper {
+  title: "LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning"
+  abbr: "LISA"
+  url: "http://arxiv.org/abs/2403.17919v1"
+  authors: "Rui Pan"
+  authors: "Xiang Liu"
+  authors: "Shizhe Diao"
+  authors: "Renjie Pi"
+  authors: "Jipeng Zhang"
+  authors: "Chi Han"
+  authors: "Tong Zhang"
+  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "University of Illinois Urbana-Champaign"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: efficient_training
+}
+cover {
+  url: ""
+}

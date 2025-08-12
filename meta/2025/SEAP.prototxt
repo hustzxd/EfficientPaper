@@ -1,0 +1,35 @@
+paper {
+  title: "SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models"
+  abbr: "SEAP"
+  url: "http://arxiv.org/abs/2503.07605v1"
+  authors: "Xun Liang"
+  authors: "Hanyu Wang"
+  authors: "Huayi Lai"
+  authors: "Simin Niu"
+  authors: "Shichao Song"
+  authors: "Jiawei Yang"
+  authors: "Jihao Zhao"
+  authors: "Feiyu Xiong"
+  authors: "Bo Tang"
+  authors: "Zhiyu Li"
+  institutions: "Renmin University of China"
+  institutions: "Institute for Advanced Algorithms Research"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/IAAR-Shanghai/SEAP/tree/main"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig2.png"
+}

@@ -1,0 +1,35 @@
+paper {
+  title: "TileLink: Generating Efficient Compute-Communication Overlapping Kernels using Tile-Centric Primitives"
+  abbr: "TileLink"
+  url: "http://arxiv.org/abs/2503.20313v3"
+  authors: "Size Zheng"
+  authors: "Jin Fang"
+  authors: "Xuegui Zheng"
+  authors: "Qi Hou"
+  authors: "Wenlei Bao"
+  authors: "Ningxin Zheng"
+  authors: "Ziheng Jiang"
+  authors: "Dongyang Wang"
+  authors: "Jianxi Ye"
+  authors: "Haibin Lin"
+  authors: "Li-Wen Chang"
+  authors: "Xin Liu"
+  institutions: "ByteDance Seed"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ByteDance-Seed/Triton-distributed"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: "fig7.png"
+}

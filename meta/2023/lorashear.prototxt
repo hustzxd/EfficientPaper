@@ -1,0 +1,28 @@
+paper {
+  title: "LoRAShear: Efficient Large Language Model Structured Pruning and Knowledge Recovery"
+  abbr: "LoRAShear"
+  url: "https://arxiv.org/abs/2310.18356"
+  authors: "Tianyi Chen"
+  authors: "Tianyu Ding"
+  authors: "Luming Liang"
+  institutions: "Microsoft"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: low_rank
+  words: structured_sparsity
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,34 @@
+paper {
+  title: "AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference"
+  abbr: "AdaSkip"
+  url: "http://arxiv.org/abs/2501.02336v1"
+  authors: "Zhuomin He"
+  authors: "Yizhen Yao"
+  authors: "Pengfei Zuo"
+  authors: "Bin Gao"
+  authors: "Qinya Li"
+  authors: "Zhenzhe Zheng"
+  authors: "Fan Wu"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Huawei Cloud"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "AAAI"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ASISys/AdaSkip"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structured_sparsity
+  words: sparse_pruning
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}

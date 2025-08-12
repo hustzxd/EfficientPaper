@@ -1,0 +1,29 @@
+paper {
+  title: "T3: Transparent Tracking & Triggering for Fine-grained Overlap of Compute & Collectives"
+  abbr: "T3"
+  url: "http://arxiv.org/abs/2401.16677v1"
+  authors: "Suchita Pati"
+  authors: "Shaizeen Aga"
+  authors: "Mahzabeen Islam"
+  authors: "Nuwan Jayasena"
+  authors: "Matthew D. Sinclair"
+  institutions: "Advanced Micro Devices"
+  institutions: "University of Wisconsin-Madison"
+}
+pub {
+  where: "ASPLOS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: "fig1.png"
+}

@@ -1,0 +1,29 @@
+paper {
+  title: "SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling"
+  abbr: "SALE"
+  url: "http://arxiv.org/abs/2505.24179v1"
+  authors: "Xiaodong Ji"
+  authors: "Hailin Zhang"
+  authors: "Fangcheng Fu"
+  authors: "Bin Cui"
+  institutions: "Peking University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/BirdChristopher/SALE"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

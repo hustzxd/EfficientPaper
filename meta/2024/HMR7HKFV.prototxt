@@ -1,0 +1,26 @@
+paper {
+  title: "ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models"
+  abbr: "ReLU Strikes Back"
+  url: "https://arxiv.org/abs/2310.04564"
+  authors: "Iman Mirzadeh"
+  authors: "Mehrdad Farajtabar"
+  institutions: "Apple"
+}
+pub {
+  where: "ICLR oral"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sjtu-ipads/powerinfer"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "ReLU_Strikes_Back.jpg"
+}

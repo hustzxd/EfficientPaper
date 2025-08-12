@@ -1,0 +1,25 @@
+paper {
+  title: "SPDF: Sparse Pre-training and Dense Fine-tuning for Large Language Models"
+  abbr: "SPDF"
+  url: "https://arxiv.org/abs/2303.10464"
+  authors: "Vithursan Thangarasa"
+  authors: "Shreyas Saxena"
+  institutions: "Cerebras Systems"
+}
+pub {
+  where: "UAI"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

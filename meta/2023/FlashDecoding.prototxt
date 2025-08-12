@@ -1,0 +1,25 @@
+paper {
+  title: "Flash-Decoding for long-context inference"
+  abbr: "Flash-Decoding"
+  url: "https://crfm.stanford.edu/2023/10/12/flashdecoding.html"
+  authors: "Tri Dao"
+  institutions: "Stanford University"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: ""
+}

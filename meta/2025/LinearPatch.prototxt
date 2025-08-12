@@ -1,0 +1,35 @@
+paper {
+  title: "A Simple Linear Patch Revives Layer-Pruned Large Language Models"
+  abbr: "LinearPatch"
+  url: "http://arxiv.org/abs/2505.24680v1"
+  authors: "Xinrui Chen"
+  authors: "Haoli Bai"
+  authors: "Tao Yuan"
+  authors: "Ruikang Liu"
+  authors: "Kang Zhao"
+  authors: "Xianzhi Yu"
+  authors: "Lu Hou"
+  authors: "Tian Guan"
+  authors: "Yonghong He"
+  authors: "Chun Yuan"
+  institutions: "Tsinghua University"
+  institutions: "Huawei Noah’s Ark Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig3.png"
+}

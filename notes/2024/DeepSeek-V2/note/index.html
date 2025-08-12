@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model";
+        var mkdocs_page_input_path = "notes/2024/DeepSeek-V2/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="deepseek-v2-a-strong-economical-and-efficient-mixture-of-experts-language-model">DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</h1>
+<p><img alt="" src="../fig2.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>We present DeepSeek-V2, a strong Mixture-of-Experts (MoE) language model
+characterized by economical training and efficient inference. It comprises 236B
+total parameters, of which 21B are activated for each token, and supports a
+context length of 128K tokens. DeepSeek-V2 adopts innovative architectures
+including Multi-head Latent Attention (MLA) and DeepSeekMoE. MLA guarantees
+efficient inference through significantly compressing the Key-Value (KV) cache
+into a latent vector, while DeepSeekMoE enables training strong models at an
+economical cost through sparse computation. Compared with DeepSeek 67B,
+DeepSeek-V2 achieves significantly stronger performance, and meanwhile saves
+42.5% of training costs, reduces the KV cache by 93.3%, and boosts the maximum
+generation throughput to 5.76 times. We pretrain DeepSeek-V2 on a high-quality
+and multi-source corpus consisting of 8.1T tokens, and further perform
+Supervised Fine-Tuning (SFT) and Reinforcement Learning (RL) to fully unlock
+its potential. Evaluation results show that, even with only 21B activated
+parameters, DeepSeek-V2 and its chat versions still achieve top-tier
+performance among open-source models.</p>
+<p>https://spaces.ac.cn/archives/10091/comment-page-1</p>
+<h2 id="multi-head-latent-attention-mla">Multi-head Latent Attention (MLA)</h2>
+<h3 id="preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</h3>
+<p>经典的MHA的计算方式如下：
+<img alt="" src="../eq1.png" />
+<img alt="" src="../eq4.png" />
+需要将历史的KV 进行缓存，这里省略了RoPE编码，实际首先对KV进行RoPE编码，然后再保存KV Cache。</p>
+<h3 id="low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</h3>
+<p>作为对比，使用MLA:
+<img alt="" src="../eq9.png" />
+KV的需要经过两次Linear运算才能得到，只保存$C_t^{KV}$，在推理时，首先根据$C_t^{KV}$映射为KV，然后再进行MHA的运算。
+另外，也对Q进行了Low-Rank运算，虽然不能减少Cache，但是能减少training中的激活值的Memory。
+<img alt="" src="../eq12.png" /></p>
+<p>保存的KV cache对比如下图所示：
+<img alt="" src="../fig3.png" /></p>
+<h3 id="decoupled-rotary-position-embedding">Decoupled Rotary Position Embedding</h3>
+<p>然而，Low-Rank与RoPE不兼容，</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

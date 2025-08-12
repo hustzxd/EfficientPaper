@@ -1,0 +1,31 @@
+paper {
+  title: "CATS: Contextually-Aware Thresholding for Sparsity in Large Language Models"
+  abbr: "CATS"
+  url: "http://arxiv.org/abs/2404.08763v4"
+  authors: "Donghyun Lee"
+  authors: "Je-Yong Lee"
+  authors: "Genghan Zhang"
+  authors: "Mo Tiwari"
+  authors: "Azalia Mirhoseini"
+  institutions: "University College London"
+  institutions: "Oxford University"
+  institutions: "Stanford University"
+}
+pub {
+  where: "COLM"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ScalingIntelligence/CATS"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "fig1.png"
+}

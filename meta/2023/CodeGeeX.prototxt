@@ -1,0 +1,38 @@
+paper {
+  title: "CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X"
+  abbr: "CodeGeeX"
+  url: "http://arxiv.org/abs/2303.17568v2"
+  authors: "Qinkai Zheng"
+  authors: "Xiao Xia"
+  authors: "Xu Zou"
+  authors: "Yuxiao Dong"
+  authors: "Shan Wang"
+  authors: "Yufei Xue"
+  authors: "Zihan Wang"
+  authors: "Lei Shen"
+  authors: "Andi Wang"
+  authors: "Yang Li"
+  authors: "Teng Su"
+  authors: "Zhilin Yang"
+  authors: "Jie Tang"
+  institutions: "Tsinghua University"
+  institutions: "Zhipu.AI"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/THUDM/CodeGeeX"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: ""
+}

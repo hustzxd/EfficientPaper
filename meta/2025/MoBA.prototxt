@@ -1,0 +1,53 @@
+paper {
+  title: "MoBA: Mixture of Block Attention for Long-Context LLMs"
+  abbr: "MoBA"
+  url: "http://arxiv.org/abs/2502.13189v1"
+  authors: "Enzhe Lu"
+  authors: "Zhejun Jiang"
+  authors: "Jingyuan Liu"
+  authors: "Yulun Du"
+  authors: "Tao Jiang"
+  authors: "Chao Hong"
+  authors: "Shaowei Liu"
+  authors: "Weiran He"
+  authors: "Enming Yuan"
+  authors: "Yuzhi Wang"
+  authors: "Zhiqi Huang"
+  authors: "Huan Yuan"
+  authors: "Suting Xu"
+  authors: "Xinran Xu"
+  authors: "Guokun Lai"
+  authors: "Yanru Chen"
+  authors: "Huabin Zheng"
+  authors: "Junjie Yan"
+  authors: "Jianlin Su"
+  authors: "Yuxin Wu"
+  authors: "Neo Y. Zhang"
+  authors: "Zhilin Yang"
+  authors: "Xinyu Zhou"
+  authors: "Mingxing Zhang"
+  authors: "Jiezhong Qiu"
+  institutions: "Moonshot AI"
+  institutions: "Tsinghua University"
+  institutions: "Zhejiang University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/MoonshotAI/MoBA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: structure_design
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

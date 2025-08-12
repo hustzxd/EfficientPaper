@@ -1,0 +1,30 @@
+paper {
+  title: "Transformer Acceleration with Dynamic Sparse Attention"
+  abbr: "DSA"
+  url: "http://arxiv.org/abs/2110.11299v1"
+  authors: "Liu Liu"
+  authors: "Zheng Qu"
+  authors: "Zhaodong Chen"
+  authors: "Yufei Ding"
+  authors: "Yuan Xie"
+  institutions: "University of California"
+}
+pub {
+  where: "TC"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: "fig2.png"
+}

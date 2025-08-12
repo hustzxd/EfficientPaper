@@ -1,0 +1,40 @@
+paper {
+  title: "FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving"
+  abbr: "FlashInfer"
+  url: "http://arxiv.org/abs/2501.01005v2"
+  authors: "Zihao Ye"
+  authors: "Lequn Chen"
+  authors: "Ruihang Lai"
+  authors: "Wuwei Lin"
+  authors: "Yineng Zhang"
+  authors: "Stephanie Wang"
+  authors: "Tianqi Chen"
+  authors: "Baris Kasikci"
+  authors: "Vinod Grover"
+  authors: "Arvind Krishnamurthy"
+  authors: "Luis Ceze"
+  institutions: "NVIDIA"
+  institutions: "University of Washington"
+  institutions: "Perplexity AI"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/flashinfer-ai/flashinfer"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+  words: tool
+}
+cover {
+  url: ""
+}

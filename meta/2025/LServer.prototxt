@@ -1,0 +1,37 @@
+paper {
+  title: "LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention"
+  abbr: "LServer"
+  url: "http://arxiv.org/abs/2502.14866v1"
+  authors: "Shang Yang"
+  authors: "Junxian Guo"
+  authors: "Haotian Tang"
+  authors: "Qinghao Hu"
+  authors: "Guangxuan Xiao"
+  authors: "Jiaming Tang"
+  authors: "Yujun Lin"
+  authors: "Zhijian Liu"
+  authors: "Yao Lu"
+  authors: "Song Han"
+  institutions: "NVIDIA"
+  institutions: "MIT"
+  institutions: "SJTU"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/omniserve"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig5.png"
+}

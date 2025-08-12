@@ -1,0 +1,27 @@
+paper {
+  title: "Structured Compression of Large Language Models based on Low-Rank and Sparse Approximation"
+  abbr: "LoSparse"
+  url: "https://arxiv.org/abs/2306.11222"
+  authors: "Yixiao Li"
+  authors: "Tuo Zhao"
+  institutions: "Microsoft"
+}
+pub {
+  where: "ICML"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/yxli2123/LoSparse"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: low_rank
+  words: structured_sparsity
+}
+cover {
+  url: "losparse.jpg"
+}

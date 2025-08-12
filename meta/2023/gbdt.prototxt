@@ -1,0 +1,27 @@
+paper {
+  title: "Pruning Large Language Models via Accuracy Predictor"
+  abbr: "GBDT"
+  url: "https://arxiv.org/abs/2309.09507"
+  authors: "Yupeng Ji"
+  authors: "Yibo Cao"
+  authors: "Jiucai Liu"
+  institutions: "Tongji University"
+  institutions: "Chongqing University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "gbdt/gbdt.jpg"
+}

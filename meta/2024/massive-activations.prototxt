@@ -1,0 +1,28 @@
+paper {
+  title: "Massive Activations in Large Language Models"
+  abbr: "massive-activations"
+  url: "http://arxiv.org/abs/2402.17762v2"
+  authors: "Mingjie Sun"
+  authors: "Xinlei Chen"
+  authors: "J. Zico Kolter"
+  authors: "Zhuang Liu"
+  institutions: "CMU"
+  institutions: "Meta"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/locuslab/massive-activations"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+}
+cover {
+  url: "massive_act.jpg"
+}

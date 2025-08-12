@@ -1,0 +1,26 @@
+paper {
+  title: "BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation"
+  abbr: "BaWA"
+  url: "https://openreview.net/forum?id=YrCvW1Hx7g"
+  authors: "Lian Liu, Xiandong Zhao, Guanchen Li, Dong Li, Mengdi Wang, Yinhe Han, Xiaowei Li, ying wang"
+  institutions: "Advanced Micro Devices"
+  institutions: "Institute of Computing Technology"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "fig2.png"
+}

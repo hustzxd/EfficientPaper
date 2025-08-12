@@ -1,0 +1,33 @@
+paper {
+  title: "MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models"
+  abbr: "MaskLLM"
+  url: "http://arxiv.org/abs/2409.17481v1"
+  authors: "Gongfan Fang"
+  authors: "Hongxu Yin"
+  authors: "Saurav Muralidharan"
+  authors: "Greg Heinrich"
+  authors: "Jeff Pool"
+  authors: "Jan Kautz"
+  authors: "Pavlo Molchanov"
+  authors: "Xinchao Wang"
+  institutions: "NVIDIA"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVlabs/MaskLLM"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "maskllm.png"
+}

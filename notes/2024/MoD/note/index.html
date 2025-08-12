@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Mixture-of-Depths: Dynamically allocating compute in transformer-based language models - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mixture-of-Depths: Dynamically allocating compute in transformer-based language models";
+        var mkdocs_page_input_path = "notes/2024/MoD/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Mixture-of-Depths: Dynamically allocating compute in transformer-based language models</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mixture-of-depths-dynamically-allocating-compute-in-transformer-based-language-models">Mixture-of-Depths: Dynamically allocating compute in transformer-based language models</h1>
+<p><img alt="" src="../mod.jpg" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Transformer-based language models spread FLOPs uniformly across input
+sequences. In this work we demonstrate that transformers can instead learn to
+dynamically allocate FLOPs (or compute) to specific positions in a sequence,
+optimising the allocation along the sequence for different layers across the
+model depth. Our method enforces a total compute budget by capping the number
+of tokens ($k$) that can participate in the self-attention and MLP computations
+at a given layer. The tokens to be processed are determined by the network
+using a top-$k$ routing mechanism. Since $k$ is defined a priori, this simple
+procedure uses a static computation graph with known tensor sizes, unlike other
+conditional computation techniques. Nevertheless, since the identities of the
+$k$ tokens are fluid, this method can expend FLOPs non-uniformly across the
+time and model depth dimensions. Thus, compute expenditure is entirely
+predictable in sum total, but dynamic and context-sensitive at the token-level.
+Not only do models trained in this way learn to dynamically allocate compute,
+they do so efficiently. These models match baseline performance for equivalent
+FLOPS and wall-clock times to train, but require a fraction of the FLOPs per
+forward pass, and can be upwards of 50\% faster to step during post-training
+sampling.</p>
+<h2 id="method">Method</h2>
+<h3 id="defining-a-compute-budget">Defining a compute budget</h3>
+<p>假设一共有T个tokens输入到transformer中进行运算，此时的compute budget则为T. MoE方法由于有多个experts，且回选择其中一个expert进行运算，所以平均的compute budget也约为T。</p>
+<p>对于MoD来说，由于这个方法会跳过一些block，所以最终的compute budget会小于T。假设，定义某一个block的compute budget为$T/2$，那么这个block中的self-attention的flops会由之前的$T^2$变为$\frac{T}{2}^2$，也就是变为了原来的25%。同理，对于MLP，则由原来的$T$变为$\frac{T}{2}$，即原来的50%。</p>
+<h3 id="routing-schemes">Routing schemes</h3>
+<p>Routing的方式可以有以下几种选择
+- 随机route，类似dropout，对performance影响很大
+- learned routing，证明是比随机routing更好的方法
+    - token-choice routing
+        - token可以选择合适的path，但是需要引入balancing loss，不然所有的token选择的path容易趋向与一致
+        - 由于没有强制的约束，token-choice routing会导致load unbalance
+    - <strong>expert-choice routing</strong>
+        - 约束每个path有top-k的token来选择，可以保证load balance
+        - 但是会导致某些token实际计算量比最优需求高或者低。</p>
+<p><img alt="" src="../routing.jpg" />
+前两个图是以MoE为例，第三个图则是MoD routing的方法。MoE中有多个expert，token-choice每个token可以选择自己的expert，如左1途中虚线所示，如果expert1被选择的次数过多，超过了设置的capacity，则只能把这个token直接扔掉。中间图则采用了expert-choice 方式，每个expert对应两个token，由于有多个experts，所以某些token可能会有多个expert，某些token则可能一个expert都没有，相当于不参与这个block运算。右图则是对MoD的routing，选择只有两种，要么参与运算，要么不参与运算，所以top-2的token会参与这个block的运算，其他tokens则会直接跳过这个block的运算。</p>
+<ul>
+<li>最终，论文选择<strong>expert-choice routing</strong>，具体原因为：<ul>
+<li>不需要增加balancing loss，既可以满足load balance</li>
+<li>Top-k的方法可以找到最需要参与运算的tokens，其他tokens则选择跳过运算</li>
+<li>选择只有两种，计算或者跳过计算，top-k的方式可以很好的实现这个选择</li>
+</ul>
+</li>
+</ul>
+<h3 id="routing-implementation">Routing implementation</h3>
+<p><img alt="" src="../mod_routing.jpg" /></p>
+<p>可以看到，选择top-k的token embedding进行运算，可以有效的减少compute budget
+<img alt="" src="../eq1.jpg" />
+需要注意的是，这里的block的输出$f_i(x)$增加了与$r_i$作为权重。</p>
+<h3 id="non-causal-problem-during-sampling">Non-causal problem during sampling</h3>
+<p>在自回归sampling时，确定这个token是否在top-k中，需要与未来的token进行比较，但是无法获取未来的token，导致因果逻辑混乱。论文中给出了两个解决方法：
+- A simple auxiliary loss
+    - 使用binary cross-entropy loss来区分每个token的$r_i$是否属于topk
+- A small auxiliary MLP predictor
+    - 相当于second router，用于预测是否属于topk</p>
+<h3 id="training">Training</h3>
+<p>Training部分所有的超参数保持不变，只修改了layer number，heads和embedding size等</p>
+<h2 id="results">Results</h2>
+<p><img alt="" src="../fig3.jpg" />
+同等参数量下，MoD比baseline要快，同等训练flops和wall-clock下，训练结果相似；（也就是说MoD需要训练更多的iteration） </p>
+<p>Every block routing 和 <strong>Evary other block routing</strong>对比，后者表现更好。</p>
+<p><img alt="" src="../fig4.jpg" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

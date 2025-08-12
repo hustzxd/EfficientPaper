@@ -1,0 +1,26 @@
+paper {
+  title: "Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks"
+  abbr: "Complementary Sparsity"
+  url: "https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a"
+  authors: "Kevin Hunter"
+  authors: "Lawrence Spracklen"
+  authors: "Subutai Ahmad"
+  institutions: "Numenta"
+}
+pub {
+  where: "Neuromorphic Computing and Engineering"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "ComplementarySparsity/note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "ComplementarySparsity/cover.jpg"
+}

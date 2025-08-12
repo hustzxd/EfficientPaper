@@ -1,0 +1,22 @@
+paper {
+  title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration"
+  abbr: "AWQ"
+  url: "https://arxiv.org/abs/2306.00978"
+  authors: "Ji Lin, Jiaming Tang, Haotian Tang, Shang Yang, Xingyu Dang, Chuang Gan, Song Han"
+  institutions: "MIT"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "MLSys"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/llm-awq"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

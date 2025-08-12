@@ -1,0 +1,28 @@
+paper {
+  title: "FrameQuant: Flexible Low-Bit Quantization for Transformers"
+  abbr: "FrameQuant"
+  url: "http://arxiv.org/abs/2403.06082v1"
+  authors: "Harshavardhan Adepu"
+  authors: "Zhanpeng Zeng"
+  authors: "Li Zhang"
+  authors: "Vikas Singh"
+  institutions: "University of Wisconsin-Madison"
+  institutions: "Google Research"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/vsingh-group/FrameQuant"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "framequant.png"
+}

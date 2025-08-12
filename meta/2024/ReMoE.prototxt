@@ -1,0 +1,26 @@
+paper {
+  title: "ReMoE: Fully Differentiable Mixture-of-Experts with ReLU Routing"
+  abbr: "ReMoE"
+  url: "http://arxiv.org/abs/2412.14711v1"
+  authors: "Ziteng Wang"
+  authors: "Jianfei Chen"
+  authors: "Jun Zhu"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-ml/ReMoE"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}

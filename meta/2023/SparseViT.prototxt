@@ -1,0 +1,26 @@
+paper {
+  title: "SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer"
+  abbr: "SparseViT"
+  url: "https://arxiv.org/abs/2303.17605"
+  authors: "Xuanyao Chen"
+  authors: "Song Han"
+  institutions: "MIT"
+}
+pub {
+  where: "CVPR"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/sparsevit"
+}
+note {
+  url: "sparsevit/index.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "sparsevit.jpg"
+}

@@ -1,0 +1,30 @@
+paper {
+  title: "PowerInfer-2: Fast Large Language Model Inference on a Smartphone"
+  abbr: "PowerInfer-2"
+  url: "http://arxiv.org/abs/2406.06282v2"
+  authors: "Zhenliang Xue"
+  authors: "Yixin Song"
+  authors: "Zeyu Mi"
+  authors: "Le Chen"
+  authors: "Yubin Xia"
+  authors: "Haibo Chen"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Website"
+  url: "https://powerinfer.ai/v2/"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: ""
+}

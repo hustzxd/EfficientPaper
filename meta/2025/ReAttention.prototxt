@@ -1,0 +1,36 @@
+paper {
+  title: "ReAttention: Training-Free Infinite Context with Finite Attention Scope"
+  abbr: "ReAttention"
+  url: "http://arxiv.org/abs/2407.15176v3"
+  authors: "Xiaoran Liu"
+  authors: "Ruixiao Li"
+  authors: "Qipeng Guo"
+  authors: "Zhigeng Liu"
+  authors: "Yuerong Song"
+  authors: "Kai Lv"
+  authors: "Hang Yan"
+  authors: "Linlin Li"
+  authors: "Qun Liu"
+  authors: "Xipeng Qiu"
+  institutions: "Fudan Universitynst2"
+  institutions: "Huawei Noah’s Ark Lab"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/OpenMOSS/ReAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

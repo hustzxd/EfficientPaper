@@ -1,0 +1,30 @@
+paper {
+  title: "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty"
+  abbr: "EAGLE"
+  url: "http://arxiv.org/abs/2401.15077v2"
+  authors: "Yuhui Li"
+  authors: "Fangyun Wei"
+  authors: "Chao Zhang"
+  authors: "Hongyang Zhang"
+  institutions: "Peking University"
+  institutions: "Microsoft Research"
+  institutions: "University of Waterloo"
+  institutions: "Vector Institute"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/SafeAILab/EAGLE"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: "eagle.jpg"
+}

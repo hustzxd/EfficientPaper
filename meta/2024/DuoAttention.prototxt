@@ -1,0 +1,34 @@
+paper {
+  title: "DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads"
+  abbr: "DuoAttention"
+  url: "http://arxiv.org/abs/2410.10819v1"
+  authors: "Guangxuan Xiao"
+  authors: "Jiaming Tang"
+  authors: "Jingwei Zuo"
+  authors: "Junxian Guo"
+  authors: "Shang Yang"
+  authors: "Haotian Tang"
+  authors: "Yao Fu"
+  authors: "Song Han"
+  institutions: "MIT"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/duo-attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "duoattention.png"
+}

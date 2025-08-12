@@ -1,0 +1,42 @@
+paper {
+  title: "R-KV: Redundancy-aware KV Cache Compression for Training-Free Reasoning Models Acceleration"
+  abbr: "R-KV"
+  url: "http://arxiv.org/abs/2505.24133v2"
+  authors: "Zefan Cai"
+  authors: "Wen Xiao"
+  authors: "Hanshi Sun"
+  authors: "Cheng Luo"
+  authors: "Yikai Zhang"
+  authors: "Ke Wan"
+  authors: "Yucheng Li"
+  authors: "Yeyang Zhou"
+  authors: "Li-Wen Chang"
+  authors: "Jiuxiang Gu"
+  authors: "Zhen Dong"
+  authors: "Anima Anandkumar"
+  authors: "Abedelkadir Asi"
+  authors: "Junjie Hu"
+  institutions: "University of Wisconsin"
+  institutions: "Microsoft"
+  institutions: "Carnegie Mellon University"
+  institutions: "University of Surrey"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Zefan-Cai/R-KV"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

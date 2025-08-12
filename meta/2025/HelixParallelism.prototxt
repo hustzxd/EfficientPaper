@@ -1,0 +1,34 @@
+paper {
+  title: "Helix Parallelism: Rethinking Sharding Strategies for Interactive Multi-Million-Token LLM Decoding"
+  abbr: "HelixParallelism"
+  url: "http://arxiv.org/abs/2507.07120v1"
+  authors: "Nidhi Bhatia"
+  authors: "Ankit More"
+  authors: "Ritika Borkar"
+  authors: "Tiyasa Mitra"
+  authors: "Ramon Matas"
+  authors: "Ritchie Zhao"
+  authors: "Maximilian Golub"
+  authors: "Dheevatsa Mudigere"
+  authors: "Brian Pharris"
+  authors: "Bita Darvish Rouhani"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+  words: deployment
+}
+cover {
+  url: ""
+}

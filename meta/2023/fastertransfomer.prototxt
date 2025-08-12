@@ -1,0 +1,23 @@
+paper {
+  title: "FasterTransformer"
+  abbr: "FT"
+  url: "https://github.com/NVIDIA/FasterTransformer"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "github"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVIDIA/FasterTransformer"
+}
+note {
+  url: ""
+}
+keyword {
+  words: tool
+}
+cover {
+  url: ""
+}

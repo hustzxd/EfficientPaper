@@ -1,0 +1,25 @@
+paper {
+  title: "Efficient Methods for Natural Language Processing: A Survey"
+  abbr: ""
+  url: "https://arxiv.org/abs/2209.00099"
+  authors: "Marcos Treviso, Ji-Ung Lee, Tianchu Ji, Betty van Aken, Qingqing Cao, Manuel R. Ciosici, Michael Hassid, Kenneth Heafield, Sara Hooker, Colin Raffel, Pedro H. Martins, André F. T. Martins, Jessica Zosa Forde, Peter Milder, Edwin Simpson, Noam Slonim, Jesse Dodge, Emma Strubell, Niranjan Balasubramanian, Leon Derczynski, Iryna Gurevych, Roy Schwartz"
+  institutions: "IST"
+  institutions: "The Hebrew University of Jerusalem, Israel"
+}
+pub {
+  where: "TACL"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: survey
+}
+cover {
+  url: "del/survey/efficient_NLP.jpg"
+}

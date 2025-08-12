@@ -1,0 +1,41 @@
+paper {
+  title: "Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache"
+  abbr: "DistAttention"
+  url: "http://arxiv.org/abs/2401.02669v2"
+  authors: "Bin Lin"
+  authors: "Chen Zhang"
+  authors: "Tao Peng"
+  authors: "Hanyu Zhao"
+  authors: "Wencong Xiao"
+  authors: "Minmin Sun"
+  authors: "Anmin Liu"
+  authors: "Zhipeng Zhang"
+  authors: "Lanbo Li"
+  authors: "Xiafei Qiu"
+  authors: "Shen Li"
+  authors: "Zhigang Ji"
+  authors: "Tao Xie"
+  authors: "Yong Li"
+  authors: "Wei Lin"
+  institutions: "Alibaba Group"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Peking University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: deployment
+}
+cover {
+  url: "fig1.png"
+}

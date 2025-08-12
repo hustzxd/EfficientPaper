@@ -1,0 +1,27 @@
+paper {
+  title: "Structured Pruning for Efficient Generative Pre-trained Language Models"
+  abbr: "SIMPLE"
+  url: "https://aclanthology.org/2023.findings-acl.692.pdf"
+  authors: "Chaofan Tao"
+  authors: "Ngai Wong"
+  institutions: "The University of Hong Kong"
+  institutions: "Huawei Noah's Ark Lab"
+}
+pub {
+  where: "ACL"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "simple/index.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "simple/cover.jpg"
+}

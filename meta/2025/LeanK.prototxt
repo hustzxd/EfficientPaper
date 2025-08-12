@@ -1,0 +1,33 @@
+paper {
+  title: "LeanK: Learnable K Cache Channel Pruning for Efficient Decoding"
+  abbr: "LeanK"
+  url: "http://arxiv.org/abs/2508.02215v1"
+  authors: "Yike Zhang"
+  authors: "Zhiyuan He"
+  authors: "Huiqiang Jiang"
+  authors: "Chengruidong Zhang"
+  authors: "Yuqing Yang"
+  authors: "Jianyong Wang"
+  authors: "Lili Qiu"
+  institutions: "Tsinghua University"
+  institutions: "Microsoft Research"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/MInference/tree/main/LeanK"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}

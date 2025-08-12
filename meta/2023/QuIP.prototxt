@@ -1,0 +1,25 @@
+paper {
+  title: "QuIP: Quantization with Incoherence Processing"
+  abbr: "QuIP"
+  url: "https://arxiv.org/pdf/2307.13304.pdf"
+  authors: "Jerry Chee"
+  authors: "Christopher De Sa"
+  institutions: "Cornell University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/jerry-chee/QuIP"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}

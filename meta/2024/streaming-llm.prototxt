@@ -1,0 +1,33 @@
+paper {
+  title: "Efficient Streaming Language Models with Attention Sinks"
+  abbr: "streaming-llm"
+  url: "http://arxiv.org/abs/2309.17453v4"
+  authors: "Guangxuan Xiao"
+  authors: "Yuandong Tian"
+  authors: "Beidi Chen"
+  authors: "Song Han"
+  authors: "Mike Lewis"
+  institutions: "Massachusetts Institute of Technology"
+  institutions: "Meta AI"
+  institutions: "Carnegie Mellon University"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mit-han-lab/streaming-llm"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.jpg"
+}

@@ -1,0 +1,32 @@
+paper {
+  title: "Pruning General Large Language Models into Customized Expert Models"
+  abbr: "Cus-Prun"
+  url: "http://arxiv.org/abs/2506.02561v1"
+  authors: "Yirao Zhao"
+  authors: "Guizhen Chen"
+  authors: "Kenji Kawaguchi"
+  authors: "Lidong Bing"
+  authors: "Wenxuan Zhang"
+  institutions: "National University of Singapore"
+  institutions: "Nanyang Technological University"
+  institutions: "Alibaba Group"
+  institutions: "Singapore University of Technology and Design"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/zhaoyiran924/Custom-Prune"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig1.png"
+}

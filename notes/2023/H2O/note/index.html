@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models";
+        var mkdocs_page_input_path = "notes/2023/H2O/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="h_2o-heavy-hitter-oracle-for-efficient-generative-inference-of-large-language-models">H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models</h1>
+<p><img alt="" src="../h2o.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Large Language Models (LLMs), despite their recent impressive
+accomplishments, are notably cost-prohibitive to deploy, particularly for
+applications involving long-content generation, such as dialogue systems and
+story writing. Often, a large amount of transient state information, referred
+to as the KV cache, is stored in GPU memory in addition to model parameters,
+scaling linearly with the sequence length and batch size. In this paper, we
+introduce a novel approach for implementing the KV cache which significantly
+reduces its memory footprint. Our approach is based on the noteworthy
+observation that a small portion of tokens contributes most of the value when
+computing attention scores. We call these tokens Heavy Hitters (H$_2$). Through
+a comprehensive investigation, we find that (i) the emergence of H$_2$ is
+natural and strongly correlates with the frequent co-occurrence of tokens in
+the text, and (ii) removing them results in significant performance
+degradation. Based on these insights, we propose Heavy Hitter Oracle (H$_2$O),
+a KV cache eviction policy that dynamically retains a balance of recent and
+H$_2$ tokens. We formulate the KV cache eviction as a dynamic submodular
+problem and prove (under mild assumptions) a theoretical guarantee for our
+novel eviction algorithm which could help guide future work. We validate the
+accuracy of our algorithm with OPT, LLaMA, and GPT-NeoX across a wide range of
+tasks. Our implementation of H$_2$O with 20% heavy hitters improves the
+throughput over three leading inference systems DeepSpeed Zero-Inference,
+Hugging Face Accelerate, and FlexGen by up to 29$\times$, 29$\times$, and
+3$\times$ on OPT-6.7B and OPT-30B. With the same batch size, H2O can reduce the
+latency by up to 1.9$\times$. The code is available at
+https://github.com/FMInference/H2O.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

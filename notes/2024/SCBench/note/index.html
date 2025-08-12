@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>SCBench: A KV Cache-Centric Analysis of Long-Context Methods - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SCBench: A KV Cache-Centric Analysis of Long-Context Methods";
+        var mkdocs_page_input_path = "notes/2024/SCBench/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">SCBench: A KV Cache-Centric Analysis of Long-Context Methods</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="scbench-a-kv-cache-centric-analysis-of-long-context-methods">SCBench: A KV Cache-Centric Analysis of Long-Context Methods</h1>
+<p><img alt="" src="../../../blank.jpg" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Long-context LLMs have enabled numerous downstream applications but also
+introduced significant challenges related to computational and memory
+efficiency. To address these challenges, optimizations for long-context
+inference have been developed, centered around the KV cache. However, existing
+benchmarks often evaluate in single-request, neglecting the full lifecycle of
+the KV cache in real-world use. This oversight is particularly critical, as KV
+cache reuse has become widely adopted in LLMs inference frameworks, such as
+vLLM and SGLang, as well as by LLM providers, including OpenAI, Microsoft,
+Google, and Anthropic. To address this gap, we introduce
+SCBench(SharedContextBench), a comprehensive benchmark for evaluating
+long-context methods from a KV cachecentric perspective: 1) KV cache
+generation, 2) KV cache compression, 3) KV cache retrieval, 4) KV cache
+loading. Specifically, SCBench uses test examples with shared context, ranging
+12 tasks with two shared context modes, covering four categories of
+long-context capabilities: string retrieval, semantic retrieval, global
+information, and multi-task. With it, we provide an extensive KV cache-centric
+analysis of eight categories long-context solutions, including Gated Linear
+RNNs, Mamba-Attention hybrids, and efficient methods such as sparse attention,
+KV cache dropping, quantization, retrieval, loading, and prompt compression.
+The evaluation is conducted on 8 long-context LLMs. Our findings show that
+sub-O(n) memory methods suffer in multi-turn scenarios, while sparse encoding
+with O(n) memory and sub-O(n^2) pre-filling computation perform robustly.
+Dynamic sparsity yields more expressive KV caches than static patterns, and
+layer-level sparsity in hybrid architectures reduces memory usage with strong
+performance. Additionally, we identify attention distribution shift issues in
+long-generation scenarios. https://aka.ms/SCBench.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+paper {
+  title: "TinyTrain: Resource-Aware Task-Adaptive Sparse Training of DNNs at the Data-Scarce Edge"
+  abbr: "TinyTrain"
+  url: "http://arxiv.org/abs/2307.09988v2"
+  authors: "Young D. Kwon"
+  authors: "Rui Li"
+  authors: "Stylianos I. Venieris"
+  authors: "Jagmohan Chauhan"
+  authors: "Nicholas D. Lane"
+  authors: "Cecilia Mascolo"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/theyoungkwon/TinyTrain"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: efficient_training
+}
+cover {
+  url: ""
+}

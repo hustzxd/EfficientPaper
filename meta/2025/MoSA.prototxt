@@ -1,0 +1,30 @@
+paper {
+  title: "Mixture of Sparse Attention: Content-Based Learnable Sparse Attention via Expert-Choice Routing"
+  abbr: "MoSA"
+  url: "http://arxiv.org/abs/2505.00315v1"
+  authors: "Piotr Piękos"
+  authors: "Róbert Csordás"
+  authors: "Jürgen Schmidhuber"
+  institutions: "KAUST"
+  institutions: "Stanford University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/piotrpiekos/MoSA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: structure_design
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

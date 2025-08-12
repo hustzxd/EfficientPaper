@@ -1,0 +1,24 @@
+paper {
+  title: "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning"
+  abbr: "FlashAttention-2"
+  url: "https://arxiv.org/abs/2307.08691"
+  authors: "Tri Dao"
+  institutions: "Stanford University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Dao-AILab/flash-attention"
+}
+note {
+  url: ""
+}
+keyword {
+  words: fusion
+}
+cover {
+  url: ""
+}

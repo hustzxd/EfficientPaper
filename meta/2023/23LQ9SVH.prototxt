@@ -1,0 +1,24 @@
+paper {
+  title: "Training Transformers with 4-bit Integers"
+  abbr: ""
+  url: "https://arxiv.org/abs//2306.11987"
+  authors: "Haocheng Xi, Changhao Li, Jianfei Chen, Jun Zhu"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "pytorch-CUDA"
+  url: "https://github.com/xijiu9/Train_Transformers_with_INT4"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}

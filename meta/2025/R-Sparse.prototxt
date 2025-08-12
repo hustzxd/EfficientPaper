@@ -1,0 +1,31 @@
+paper {
+  title: "R-Sparse: Rank-Aware Activation Sparsity for Efficient LLM Inference"
+  abbr: "R-Sparse"
+  url: "http://arxiv.org/abs/2504.19449v1"
+  authors: "Zhenyu Zhang"
+  authors: "Zechun Liu"
+  authors: "Yuandong Tian"
+  authors: "Harshit Khaitan"
+  authors: "Zhangyang Wang"
+  authors: "Steven Li"
+  institutions: "The University of Texas at Austin"
+  institutions: "Meta AI"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/VITA-Group/R-Sparse"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "fig4.png"
+}

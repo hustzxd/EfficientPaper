@@ -1,0 +1,26 @@
+paper {
+  title: "Sparse Iso-FLOP Transformations for Maximizing Training Efficiency"
+  abbr: "Sparse-IFT"
+  url: "https://arxiv.org/abs/2303.11525"
+  authors: "Shreyas Saxena"
+  authors: "Vithursan Thangarasa"
+  authors: "Sean Lie"
+  institutions: "Cerebras Systems"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/CerebrasResearch/Sparse-IFT"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}

@@ -1,0 +1,25 @@
+paper {
+  title: "TextPruner: A Model Pruning Toolkit for Pre-Trained Language Models"
+  abbr: "TextPruner"
+  url: "https://arxiv.org/abs/2203.15996"
+  authors: "Ziqing Yang"
+  authors: "Zhigang Chen"
+  institutions: "Harbin Institute of Technology"
+}
+pub {
+  where: "ACL"
+  year: 2022
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/airaria/TextPruner"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "textpruner.jpg"
+}

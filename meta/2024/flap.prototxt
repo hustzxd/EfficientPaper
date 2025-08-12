@@ -1,0 +1,29 @@
+paper {
+  title: "Fluctuation-based Adaptive Structured Pruning for Large Language Models"
+  abbr: "FLAP"
+  url: "https://arxiv.org/abs/2312.11983"
+  authors: "Yongqi An"
+  authors: "Xu Zhao"
+  authors: "Tao Yu"
+  authors: "Ming Tang"
+  authors: "Jinqiao Wang"
+  institutions: "Institute of Automation, Chinese Academy of Sciences"
+}
+pub {
+  where: "AAAI"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/CASIA-IVA-Lab/FLAP"
+}
+note {
+  url: "https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "del/flap.jpg"
+}

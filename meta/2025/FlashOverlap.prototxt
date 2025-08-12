@@ -1,0 +1,37 @@
+paper {
+  title: "FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation"
+  abbr: "FlashOverlap"
+  url: "http://arxiv.org/abs/2504.19519v1"
+  authors: "Ke Hong"
+  authors: "Xiuhong Li"
+  authors: "Minxu Liu"
+  authors: "Qiuli Mao"
+  authors: "Tianqi Wu"
+  authors: "Zixiao Huang"
+  authors: "Lufang Chen"
+  authors: "Zhong Wang"
+  authors: "Yichong Zhang"
+  authors: "Zhenhua Zhu"
+  authors: "Guohao Dai"
+  authors: "Yu Wang"
+  institutions: "Tsinghua University"
+  institutions: "Infinigence-AI"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "C++"
+  url: "https://github.com/infinigence/FlashOverlap"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: "fig3.png"
+}

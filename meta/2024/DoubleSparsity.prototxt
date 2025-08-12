@@ -1,0 +1,32 @@
+paper {
+  title: "Post-Training Sparse Attention with Double Sparsity"
+  abbr: "DoubleSparsity"
+  url: "http://arxiv.org/abs/2408.07092v2"
+  authors: "Shuo Yang"
+  authors: "Ying Sheng"
+  authors: "Joseph E. Gonzalez"
+  authors: "Ion Stoica"
+  authors: "Lianmin Zheng"
+  institutions: "UC Berkeley"
+  institutions: "Stanford"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/andy-yang-1/DoubleSparse"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

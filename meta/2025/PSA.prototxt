@@ -1,0 +1,30 @@
+paper {
+  title: "Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving"
+  abbr: "PSA"
+  url: "http://arxiv.org/abs/2503.00392v1"
+  authors: "Qihui Zhou"
+  authors: "Peiqi Yin"
+  authors: "Pengfei Zuo"
+  authors: "James Cheng"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ASISys/PSAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig4.png"
+}

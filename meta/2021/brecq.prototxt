@@ -1,0 +1,22 @@
+paper {
+  title: "BRECQ: Pushing the Limit of Post-Training Quantization by Block Reconstruction"
+  abbr: "BRECQ"
+  url: "https://openreview.net/pdf?id=POWv6hDd9XH"
+  authors: "Yuhang Li, Ruihao Gong, Xu Tan, Yang Yang, Peng Hu, Qi Zhang, Fengwei Yu, Wei Wang, Shi Gu"
+  institutions: "University of Electronic Science and Technology of China"
+  institutions: "SenseTime Research"
+}
+pub {
+  where: "ICLR"
+  year: 2021
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/yhhhli/BRECQ"
+}
+note {
+  url: ""
+}
+keyword {
+  words: quantization
+}

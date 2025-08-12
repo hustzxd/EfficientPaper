@@ -1,0 +1,22 @@
+paper {
+  title: "A Systematic DNN Weight Pruning Framework using Alternating Direction Method of Multipliers"
+  abbr: "ADMM-pruning"
+  url: "https://arxiv.org/abs/1804.03294"
+  authors: "Tianyun Zhang"
+  authors: "Yanzhi Wang"
+  institutions: "Northeastern University"
+}
+pub {
+  where: "ECCV"
+  year: 2018
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/bzantium/pytorch-admm-pruning"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

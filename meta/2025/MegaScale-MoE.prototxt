@@ -1,0 +1,43 @@
+paper {
+  title: "MegaScale-MoE: Large-Scale Communication-Efficient Training of Mixture-of-Experts Models in Production"
+  abbr: "MegaScale-MoE"
+  url: "http://arxiv.org/abs/2505.11432v2"
+  authors: "Chao Jin"
+  authors: "Ziheng Jiang"
+  authors: "Zhihao Bai"
+  authors: "Zheng Zhong"
+  authors: "Juncai Liu"
+  authors: "Xiang Li"
+  authors: "Ningxin Zheng"
+  authors: "Xi Wang"
+  authors: "Cong Xie"
+  authors: "Qi Huang"
+  authors: "Wen Heng"
+  authors: "Yiyuan Ma"
+  authors: "Wenlei Bao"
+  authors: "Size Zheng"
+  authors: "Yanghua Peng"
+  authors: "Haibin Lin"
+  authors: "Xuanzhe Liu"
+  authors: "Xin Jin"
+  authors: "Xin Liu"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

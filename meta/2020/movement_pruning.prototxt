@@ -1,0 +1,27 @@
+paper {
+  title: "Movement Pruning: Adaptive Sparsity by Fine-Tuning"
+  abbr: "Movement Pruning"
+  url: "https://arxiv.org/abs/2005.07683"
+  authors: "Victor Sanh"
+  authors: "Thomas Wolf"
+  authors: "Alexander M. Rush"
+  institutions: "Hugging Face"
+  institutions: "Cornell University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2020
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/huggingface/block_movement_pruning"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "movement_pruning/mp.jpg"
+}

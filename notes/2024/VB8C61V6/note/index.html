@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Compressing LLMs: The Truth is Rarely Pure and Never Simple - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Compressing LLMs: The Truth is Rarely Pure and Never Simple";
+        var mkdocs_page_input_path = "notes/2024/VB8C61V6/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Compressing LLMs: The Truth is Rarely Pure and Never Simple</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="compressing-llms-the-truth-is-rarely-pure-and-never-simple">Compressing LLMs: The Truth is Rarely Pure and Never Simple</h1>
+<p><img alt="" src="../llm-kick.jpg" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Despite their remarkable achievements, modern Large Language Models (LLMs)
+face exorbitant computational and memory footprints. Recently, several works
+have shown significant success in training-free and data-free compression
+(pruning and quantization) of LLMs that achieve 50 - 60% sparsity and reduce
+the bit width to 3 or 4 bits per weight, with negligible degradation of
+perplexity over the uncompressed baseline. As recent research efforts are
+focused on developing increasingly sophisticated compression methods, our work
+takes a step back and re-evaluates the effectiveness of existing SoTA
+compression methods, which rely on a fairly simple and widely questioned
+metric, perplexity (even for dense LLMs). We introduce Knowledge-Intensive
+Compressed LLM BenchmarK (LLM-KICK), a collection of carefully curated tasks to
+redefine the evaluation protocol for compressed LLMs, which have significant
+alignment with their dense counterparts and perplexity fail to capture subtle
+change in their true capabilities. LLM-KICK unveils many favorable merits and
+unfortunate plights of current SoTA compression methods: all pruning methods
+suffer significant performance degradation, sometimes at trivial sparsity
+ratios (e.g., 25-30%), and fail for N:M sparsity in knowledge-intensive tasks;
+current quantization methods are more successful than pruning; yet, pruned LLMs
+even at $\geq 50$% sparsity are robust in-context retrieval and summarization
+systems; among others. LLM-KICK is designed to holistically access compressed
+LLMs' ability for language understanding, reasoning, generation, in-context
+retrieval, in-context summarization, etc. We hope our study can foster the
+development of better LLM compression methods. The reproduced codes are
+available at https://github.com/VITA-Group/llm-kick.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

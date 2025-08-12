@@ -1,0 +1,28 @@
+paper {
+  title: "Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models"
+  abbr: "GBLM-Pruner"
+  url: "http://arxiv.org/abs/2311.04902v2"
+  authors: "Rocktim Jyoti Das"
+  authors: "Mingjie Sun"
+  authors: "Liqun Ma"
+  authors: "Zhiqiang Shen"
+  institutions: "Mohamed bin Zayed University of AI"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/VILA-Lab/GBLM-Pruner"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "gblm-pruner.jpg"
+}

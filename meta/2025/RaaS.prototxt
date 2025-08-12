@@ -1,0 +1,36 @@
+paper {
+  title: "Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity"
+  abbr: "RaaS"
+  url: "http://arxiv.org/abs/2502.11147v1"
+  authors: "Junhao Hu"
+  authors: "Wenrui Huang"
+  authors: "Weidong Wang"
+  authors: "Zhenwen Li"
+  authors: "Tiancheng Hu"
+  authors: "Zhixia Liu"
+  authors: "Xusheng Chen"
+  authors: "Tao Xie"
+  authors: "Yizhou Shan"
+  institutions: "Peking University"
+  institutions: "Nanjing University"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig5.png"
+}

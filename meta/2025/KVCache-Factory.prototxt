@@ -1,0 +1,25 @@
+paper {
+  title: "Unified KV Cache Compression Methods for Auto-Regressive Models"
+  abbr: "KVCache-Factory"
+  url: "https://github.com/Zefan-Cai/KVCache-Factory"
+  authors: "Zefan Cai"
+}
+pub {
+  where: "github"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Zefan-Cai/KVCache-Factory"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: tool
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}

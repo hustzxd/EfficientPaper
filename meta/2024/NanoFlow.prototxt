@@ -1,0 +1,40 @@
+paper {
+  title: "NanoFlow: Towards Optimal Large Language Model Serving Throughput"
+  abbr: "NanoFlow"
+  url: "http://arxiv.org/abs/2408.12757v2"
+  authors: "Kan Zhu"
+  authors: "Yufei Gao"
+  authors: "Yilong Zhao"
+  authors: "Liangyu Zhao"
+  authors: "Gefei Zuo"
+  authors: "Yile Gu"
+  authors: "Dedong Xie"
+  authors: "Tian Tang"
+  authors: "Qinyu Xu"
+  authors: "Zihao Ye"
+  authors: "Keisuke Kamahori"
+  authors: "Chien-Yu Lin"
+  authors: "Ziren Wang"
+  authors: "Stephanie Wang"
+  authors: "Arvind Krishnamurthy"
+  authors: "Baris Kasikci"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

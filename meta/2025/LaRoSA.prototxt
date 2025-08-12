@@ -1,0 +1,31 @@
+paper {
+  title: "La RoSA: Enhancing LLM Efficiency via Layerwise Rotated Sparse Activation"
+  abbr: "LaRoSA"
+  url: "http://arxiv.org/abs/2507.01299v1"
+  authors: "Kai Liu"
+  authors: "Bowen Xu"
+  authors: "Shaoyu Wu"
+  authors: "Xin Chen"
+  authors: "Hao Zhou"
+  authors: "Yongliang Tao"
+  authors: "Lulu Hu"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "fig1.png"
+}

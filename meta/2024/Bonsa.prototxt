@@ -1,0 +1,26 @@
+paper {
+  title: "Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes"
+  abbr: "Bonsa"
+  url: "https://arxiv.org/abs/2402.05406"
+  authors: "Lucio Dery, Steven Kolawole, Jean-François Kagy, Virginia Smith, Graham Neubig, Ameet Talwalkar"
+  institutions: "Carnegie Mellon University"
+  institutions: "Google Research"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ldery/Bonsai"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: ""
+}

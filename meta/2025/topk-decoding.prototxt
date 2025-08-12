@@ -1,0 +1,35 @@
+paper {
+  title: "Exploiting Sparsity for Long Context Inference: Million Token Contexts on Commodity GPUs"
+  abbr: "topk-decoding"
+  url: "http://arxiv.org/abs/2502.06766v2"
+  authors: "Ryan Synk"
+  authors: "Monte Hoover"
+  authors: "John Kirchenbauer"
+  authors: "Neel Jain"
+  authors: "Alex Stein"
+  authors: "Manli Shu"
+  authors: "Josue Melendez Sanchez"
+  authors: "Ramani Duraiswami"
+  authors: "Tom Goldstein"
+  institutions: "University of Maryland"
+  institutions: "Salesforce Research"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ryansynk/topk-decoding"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "alg1.png"
+}

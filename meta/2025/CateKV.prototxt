@@ -1,0 +1,28 @@
+paper {
+  title: "CateKV: On Sequential Consistency for Long-Context LLM Inference Acceleration"
+  abbr: "CateKV"
+  url: "https://openreview.net/forum?id=u7dlwgKstN"
+  authors: "Haoyun Jiang, Haolin li, jianwei zhang, Fei Huang, Qiang Hu, Minmin Sun, Shuai Xiao, Yong Li, Junyang Lin, Jiangchao Yao"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Alibaba Group"
+  institutions: "Fudan University"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

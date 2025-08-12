@@ -1,0 +1,30 @@
+paper {
+  title: "KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse"
+  abbr: "KVLink"
+  url: "http://arxiv.org/abs/2502.16002v1"
+  authors: "Jingbo Yang"
+  authors: "Bairu Hou"
+  authors: "Wei Wei"
+  authors: "Yujia Bao"
+  authors: "Shiyu Chang"
+  institutions: "UC Santa Barbara"
+  institutions: "Center for Advanced AI"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/UCSB-NLP-Chang/KVLink"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

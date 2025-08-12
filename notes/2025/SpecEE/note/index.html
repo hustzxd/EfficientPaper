@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting";
+        var mkdocs_page_input_path = "notes/2025/SpecEE/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="specee-accelerating-large-language-model-inference-with-speculative-early-exiting">SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting</h1>
+<p><img alt="" src="../fig9.png" /></p>
+<h2 id="abstract">Abstract</h2>
+<p>Early exiting has recently emerged as a promising technique for accelerating
+large language models (LLMs) by effectively reducing the hardware computation
+and memory access. In this paper, we present SpecEE, a fast LLM inference
+engine with speculative early exiting. (1) At the algorithm level, we propose
+the speculation-based lightweight predictor design by exploiting the
+probabilistic correlation between the speculative tokens and the correct
+results and high parallelism of GPUs. (2) At the system level, we point out
+that not all layers need a predictor and design the two-level heuristic
+predictor scheduling engine based on skewed distribution and contextual
+similarity. (3) At the mapping level, we point out that different decoding
+methods share the same essential characteristics, and propose the context-aware
+merged mapping for predictor with efficient GPU implementations to support
+speculative decoding, and form a framework for various existing orthogonal
+acceleration techniques (e.g., quantization and sparse activation) on cloud and
+personal computer (PC) scenarios, successfully pushing the Pareto frontier of
+accuracy and speedup. It is worth noting that SpecEE can be applied to any LLM
+by negligible training overhead in advance without affecting the model original
+parameters. Extensive experiments show that SpecEE achieves 2.25x and 2.43x
+speedup with Llama2-7B on cloud and PC scenarios respectively.</p>
+<ul>
+<li>使用Eagle的draft model生成topk的token</li>
+<li>大模型的每一层都经过 topk 的小lm_head，</li>
+<li>特征1: 生成Speculative Token Logits</li>
+<li>特征2: 再生成Local Probabilities</li>
+<li>特征3: 与上一层的Local Probabilities进行对比，得到Probability variation</li>
+<li>根据三个特征，经过预测期预测是否要Early Exit<ul>
+<li>是: 确定Early Exit，计算大lm_head，判断是否与小lm_head的top1一致</li>
+<li>一致，推理提前退出</li>
+<li>不一致，继续算下一层</li>
+<li>否: 继续算下一层</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

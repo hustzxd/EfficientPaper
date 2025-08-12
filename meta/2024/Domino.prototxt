@@ -1,0 +1,29 @@
+paper {
+  title: "Domino: Eliminating Communication in LLM Training via Generic Tensor Slicing and Overlapping"
+  abbr: "Domino"
+  url: "http://arxiv.org/abs/2409.15241v1"
+  authors: "Guanhua Wang"
+  authors: "Chengming Zhang"
+  authors: "Zheyu Shen"
+  authors: "Ang Li"
+  authors: "Olatunji Ruwase"
+  institutions: "Microsoft"
+  institutions: "DeepSpeed"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/deepspeedai/DeepSpeedExamples/blob/master/training/DeepSpeed-Domino/README.md"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

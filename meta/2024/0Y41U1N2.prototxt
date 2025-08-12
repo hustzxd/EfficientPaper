@@ -1,0 +1,34 @@
+paper {
+  title: "Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs"
+  abbr: ""
+  url: "http://arxiv.org/abs/2410.16135v1"
+  authors: "Kang Zhao"
+  authors: "Tao Yuan"
+  authors: "Han Bao"
+  authors: "Zhenfeng Su"
+  authors: "Chang Gao"
+  authors: "Zhaofeng Sun"
+  authors: "Zichen Liang"
+  authors: "Liping Jing"
+  authors: "Jianfei Chen"
+  institutions: "Tsinghua University"
+  institutions: "Huawei Noah's Ark Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "cover.png"
+}

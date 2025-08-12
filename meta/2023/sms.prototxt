@@ -1,0 +1,24 @@
+paper {
+  title: "Sparse Model Soups: A Recipe for Improved Pruning via Model Averaging"
+  abbr: "SMS"
+  url: "https://arxiv.org/abs/2306.16788"
+  authors: "Max Zimmer"
+  authors: "Sebastian Pokutta"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ZIB-IOL/SMS"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "sms/sms.jpg"
+}

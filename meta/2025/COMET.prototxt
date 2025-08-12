@@ -1,0 +1,36 @@
+paper {
+  title: "COMET: Towards Partical W4A4KV4 LLMs Serving"
+  abbr: "COMET"
+  url: "http://arxiv.org/abs/2410.12168v1"
+  authors: "Lian Liu"
+  authors: "Haimeng Ren"
+  authors: "Long Cheng"
+  authors: "Zhaohui Xu"
+  authors: "Yudong Pan"
+  authors: "Mengdi Wang"
+  authors: "Xiaowei Li"
+  authors: "Yinhe Han"
+  authors: "Ying Wang"
+  institutions: "Institute of Computing Technology"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "ShanghaiTech University"
+  institutions: "North China Electric Power University"
+}
+pub {
+  where: "ASPLOS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: quantization
+}
+cover {
+  url: "fig5.png"
+}

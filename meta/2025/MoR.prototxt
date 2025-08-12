@@ -1,0 +1,38 @@
+paper {
+  title: "Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation"
+  abbr: "MoR"
+  url: "http://arxiv.org/abs/2507.10524v1"
+  authors: "Sangmin Bae"
+  authors: "Yujin Kim"
+  authors: "Reza Bayat"
+  authors: "Sungnyun Kim"
+  authors: "Jiyoun Ha"
+  authors: "Tal Schuster"
+  authors: "Adam Fisch"
+  authors: "Hrayr Harutyunyan"
+  authors: "Ziwei Ji"
+  authors: "Aaron Courville"
+  authors: "Se-Young Yun"
+  institutions: "Google DeepMind"
+  institutions: "Google Research"
+  institutions: "Google Cloud"
+  institutions: "KAIST AI"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/raymin0223/mixture_of_recursions"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}

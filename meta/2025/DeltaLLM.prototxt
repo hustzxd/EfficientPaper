@@ -1,0 +1,30 @@
+paper {
+  title: "DeltaLLM: A Training-Free Framework Exploiting Temporal Sparsity for Efficient Edge LLM Inference"
+  abbr: "DeltaLLM"
+  url: "http://arxiv.org/abs/2507.19608v1"
+  authors: "Jiawen Qi"
+  authors: "Chang Gao"
+  authors: "Zhaochun Ren"
+  authors: "Qinyu Chen"
+  institutions: "Leiden University"
+  institutions: "Delft University of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+  words: sparse_pruning
+}
+cover {
+  url: "fig5.png"
+}

@@ -1,0 +1,39 @@
+paper {
+  title: "TorchAO: PyTorch-Native Training-to-Serving Model Optimization"
+  abbr: "TorchAO"
+  url: "http://arxiv.org/abs/2507.16099v1"
+  authors: "Andrew Or"
+  authors: "Apurva Jain"
+  authors: "Daniel Vega-Myhre"
+  authors: "Jesse Cai"
+  authors: "Charles David Hernandez"
+  authors: "Zhenrui Zheng"
+  authors: "Driss Guessous"
+  authors: "Vasiliy Kuznetsov"
+  authors: "Christian Puhrsch"
+  authors: "Mark Saroufim"
+  authors: "Supriya Rao"
+  authors: "Thien Tran"
+  authors: "Aleksandar Samardžić"
+  institutions: "Meta Platforms Inc"
+  institutions: "OpenTeams Inc"
+}
+pub {
+  where: "ICML Workshop"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/pytorch/ao/"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: weight_sparsity
+  words: tool
+}
+cover {
+  url: "fig1.png"
+}

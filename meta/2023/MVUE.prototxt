@@ -1,0 +1,22 @@
+paper {
+  title: "Minimum Variance Unbiased N:M Sparsity for the Neural Gradients"
+  abbr: "MVUE"
+  url: "https://openreview.net/pdf?id=vuD2xEtxZcj"
+  authors: "Brian Chmiel"
+  authors: "Daniel Soudry"
+  institutions: "Habana Labs"
+}
+pub {
+  where: "ICLR"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}

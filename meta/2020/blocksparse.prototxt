@@ -1,0 +1,25 @@
+paper {
+  title: "GPU Kernels for Block-Sparse Weights"
+  abbr: "blocksparse"
+  url: "https://cdn.openai.com/blocksparse/blocksparsepaper.pdf"
+  authors: "Scott Gray"
+  authors: "Diederik P. Kingma"
+  institutions: "OpenAI"
+}
+pub {
+  where: "arXiv"
+  year: 2020
+}
+code {
+  type: "TensorFlow"
+  url: "https://github.com/openai/blocksparse"
+}
+note {
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: ""
+}
