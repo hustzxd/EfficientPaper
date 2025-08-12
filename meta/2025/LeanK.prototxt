@@ -24,8 +24,10 @@ note {
   url: "note.md"
 }
 keyword {
-  words: none
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
 }
 cover {
-  url: ""
+  url: "fig2.png"
 }

@@ -26,7 +26,8 @@ note {
   url: "note.md"
 }
 keyword {
-  words: none
+  words: overlap
+  words: deployment
 }
 cover {
   url: ""

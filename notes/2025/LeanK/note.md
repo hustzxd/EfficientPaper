@@ -3,7 +3,7 @@
 > Yike Zhang, Zhiyuan He, Huiqiang Jiang, Chengruidong Zhang, Yuqing Yang, Jianyong Wang, Lili Qiu
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="fig2.png" width="600" title="blank">
 </p>
 
 ## Abstract
@@ -20,3 +20,9 @@ enables 1.3x speedup for attention computation. We also provide insights into
 model channels and attention heads during long-context inference by analyzing
 the learned importance distribution. Our code is available at
 https://aka.ms/LeanK.
+
+- static channel mask
+- 保留attention sink和recent tokens
+- K cache中间部分按照channel进行sparse，如上图所示，mask训练提前得到并固定
+- 每32 个decoding step更新是更新recent tokens，mask位置其实仍然固定
+- mask得到方式通过两阶段训练得到，并在推理时固定

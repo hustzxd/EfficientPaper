@@ -3,7 +3,7 @@
 > Nidhi Bhatia, Ankit More, Ritika Borkar, Tiyasa Mitra, Ramon Matas, Ritchie Zhao, Maximilian Golub, Dheevatsa Mudigere, Brian Pharris, Bita Darvish Rouhani
 
 <p align="center">
-<img src="../../blank.jpg" width="600" title="blank">
+<img src="fig4.png" width="600" title="blank">
 </p>
 
 ## Abstract
@@ -28,3 +28,8 @@ to conventional parallelism approaches, Helix reduces TTL by up to 1.5x at
 fixed batch sizes and supports up to 32x larger batches under the same latency
 budget for DeepSeek-R1, pushing forward the throughput-latency Pareto on
 Blackwell and making real-time inference with ultra-long-sequence practical.
+
+- 长序列推理时，KVP对KV进行切分，与之前工作不同之处在于沿着senquence 维度切分
+- 导致qK运算后结果需要All-to-All通信进行全局的softmax
+- 如何缓解上面问题？采用batch-wise computation-communication overlap
+- MLP部分按照TP切分
