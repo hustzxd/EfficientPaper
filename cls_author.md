@@ -3674,6 +3674,17 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Yang Li</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [CodeGeeX](./meta/2023/CodeGeeX.prototxt) | [CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X](http://arxiv.org/abs/2303.17568v2) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/CodeGeeX) | [note](./notes/2023/CodeGeeX/note.md) |
+| [ChunkAttention](./meta/2024/ChunkAttention.prototxt) | [ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition](http://arxiv.org/abs/2402.15220v4) | <img width='400' alt='image' src='./notes/2024/ChunkAttention/chunkattn.png'> | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | ![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/chunk-attention) | [note](./notes/2024/ChunkAttention/note.md) |
+</p>
+</details>
 <details open><summary><b>Yang Zhang</b></summary> 
 <p>
 
@@ -4697,6 +4708,17 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | <img width='400' alt='image' src='./notes/2025/DeepSeek-R1/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Zhilin Yang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+|<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [CodeGeeX](./meta/2023/CodeGeeX.prototxt) | [CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X](http://arxiv.org/abs/2303.17568v2) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/CodeGeeX) | [note](./notes/2023/CodeGeeX/note.md) |
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | <img width='400' alt='image' src='./notes/2025/MoBA/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+</p>
+</details>
 <details open><summary><b>Zhipeng Xu</b></summary> 
 <p>
 
@@ -4809,6 +4831,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 |<div style="width: 50px"></div>|<div style="width: 200px"></div>|<div style="width: 400px"></div>|<div style="width: 100px"></div>|<div style="width: 100px"></div>|<div style="width: 60px"></div>|
+| [CodeGeeX](./meta/2023/CodeGeeX.prototxt) | [CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X](http://arxiv.org/abs/2303.17568v2) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/CodeGeeX) | [note](./notes/2023/CodeGeeX/note.md) |
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | <img width='400' alt='image' src='./notes/2024/DeepSeek-V2/fig2.png'> | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | ![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [KeepKV](./meta/2025/KeepKV.prototxt) | [KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference](http://arxiv.org/abs/2504.09936v1) | <img width='400' alt='image' src='./notes/2025/KeepKV/fig1.png'> | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/KeepKV/note.md) |
 </p>
