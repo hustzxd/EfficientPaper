@@ -19,5 +19,6 @@ else
     git add .
     git commit -m $1
     git push
+    mkdocs gh-deploy --force
 fi
 

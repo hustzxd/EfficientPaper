@@ -16,6 +16,7 @@ Pruning, Quantization and efficient-inference/training paper list.
 
 ## Getting Started
 ```bash
+git clone https://github.com/hustzxd/EfficientPaper
 pip install protobuf==5.27.2 pandas arxiv 
 ```
 1. Add paper information by `./add_paper_info.sh`
@@ -28,7 +29,7 @@ pip install protobuf==5.27.2 pandas arxiv
 paper {
   title: "EfficientPaper: manage your research papers in an efficient way."
   abbr: "EfficientPaper"
-  url: "https://github.com/hustzxd/PaperPrivate"
+  url: "https://github.com/hustzxd/EfficientPaper"
   authors: "hustzxd"
 }
 pub {
@@ -37,7 +38,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: "https://github.com/hustzxd/PaperPrivate"
+  url: "https://github.com/hustzxd/EfficientPaper"
 }
 note {
   url: "EfficientPaper.md"
