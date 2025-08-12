@@ -17,7 +17,7 @@ def main():
     dir_root = "/Users/xiandong/projects/EfficientPaper/weekly_paper"
     files = [f for f in os.listdir(dir_root) if f.endswith('.md')]
     files.sort()
-    previous_day = files[-1].replace(".md", "")
+    previous_day = files[-2].replace(".md", "")
     previous_day = DT.date.fromisoformat(previous_day)
     print(f"Previous update date: {previous_day}")
     if today == previous_day:
@@ -120,6 +120,9 @@ def main():
     
     if papers_found > 0:
         file_name = f"/Users/xiandong/projects/EfficientPaper/weekly_paper/{today}.md"
+        with open(file_name, "w") as wf:
+            wf.write(markdown_content)
+        file_name = f"/Users/xiandong/projects/EfficientPaper/weekly_paper/latest.md"
         with open(file_name, "w") as wf:
             wf.write(markdown_content)
 

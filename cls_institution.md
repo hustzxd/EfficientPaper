@@ -672,7 +672,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | ![cover](./notes/del/flap.jpg) | ![Publish](https://img.shields.io/badge/2024-AAAI-FF4500) | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) | [note](https://z6oqkldvmo.feishu.cn/docx/JFFQdAxz3oWX2Kx6j91c2kamnqd) |
+| [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | ![cover](./notes/del/flap.jpg) | ![Publish](https://img.shields.io/badge/2024-AAAI-FF4500) | ![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP) |  |
 | [RIA](./meta/2024/IA8CS3VH.prototxt) | [Plug-and-Play: An Efficient Post-training Pruning Method for Large Language Models](https://openreview.net/forum?id=Tr0lPx9woF) | ![cover](./notes/del/Plug-and-Play.jpg) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | ![GitHub Repo stars](https://img.shields.io/github/stars/biomedical-cybernetics/Relative-importance-and-activation-pruning) |  |
 </p>
 </details>

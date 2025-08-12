@@ -8,6 +8,7 @@ nav:
     - By Publication: cls_publication.md
     - By Institution: cls_institution.md
     - By Author: cls_author.md
+  - Weekly Paper: weekly_paper/latest.md
 
 theme:
   name: readthedocs
