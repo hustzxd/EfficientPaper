@@ -1,0 +1,26 @@
+
+.wy-nav-content {
+    max-width: 100%;
+}
+
+/* 允许自动换行 */
+.rst-content table.docutils td,
+.rst-content table.docutils th {
+    white-space: normal;
+    word-break: keep-all;
+}
+
+.rst-content table.docutils td:nth-child(1),
+.rst-content table.docutils th:nth-child(1) {
+    min-width: calc(1 * 10ch);
+}
+
+.rst-content table.docutils td:nth-child(2),
+.rst-content table.docutils th:nth-child(2) {
+    min-width: calc(6 * 10ch);
+}
+
+.rst-content table.docutils td:nth-child(3),
+.rst-content table.docutils th:nth-child(3) {
+    min-width: calc(1 * 10ch);
+}
