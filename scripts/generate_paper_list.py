@@ -151,9 +151,9 @@ def main():
 
         if pinfo.code.url:
             if "github.com" in pinfo.code.url:  # https://github.com/artidoro/qlora
-                # ![GitHub Repo stars](https://img.shields.io/github/stars/hustzxd/LSQuantization)
                 [user_id, repo] = pinfo.code.url.split("/")[3:5]
-                code = f"![GitHub Repo stars](https://img.shields.io/github/stars/{user_id}/{repo})"
+                code = f"[![GitHub Repo stars](https://img.shields.io/github/stars/{user_id}/{repo})](https://github.com/{user_id}/{repo})"
+
             else:
                 code = "[{}]({})".format(codetype, pinfo.code.url)
 

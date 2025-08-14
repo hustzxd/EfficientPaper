@@ -2,7 +2,7 @@
 
 > Shulai Zhang, Ningxin Zheng, Haibin Lin, Ziheng Jiang, Wenlei Bao, Chengquan Jiang, Qi Hou, Weihao Cui, Size Zheng, Li-Wen Chang, Quan Chen, Xin Liu
 
-![](../../blank.jpg)
+![](fig3.png)
 
 ## Abstract
 

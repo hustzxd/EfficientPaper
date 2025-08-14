@@ -1,0 +1,33 @@
+paper {
+  title: "SageAttention3: Microscaling FP4 Attention for Inference and An Exploration of 8-Bit Training"
+  abbr: "SageAttention3"
+  url: "http://arxiv.org/abs/2505.11594v1"
+  authors: "Jintao Zhang"
+  authors: "Jia Wei"
+  authors: "Pengle Zhang"
+  authors: "Xiaoming Xu"
+  authors: "Haofeng Huang"
+  authors: "Haoxu Wang"
+  authors: "Kai Jiang"
+  authors: "Jun Zhu"
+  authors: "Jianfei Chen"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-ml/SageAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+}
+cover {
+  url: ""
+}

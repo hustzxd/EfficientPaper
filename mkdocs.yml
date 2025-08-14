@@ -17,9 +17,17 @@ markdown_extensions:
   - tables
   - attr_list
   - md_in_html
+  - mdx_math:
+      enable_dollar_delimiter: True #for use of inline $..$
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 extra_css:
   - css/extra.css
 
 plugins:
-  - search
+  - search:
+      lang: en
+      use_fuzzy_search: true
+  - glightbox

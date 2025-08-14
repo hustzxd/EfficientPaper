@@ -2,7 +2,7 @@
 
 > Zicong Tang, Shi Luohe, Zuchao Li, Baoyuan Qi, Guoming Liu, Lefei Zhang, Ping Wang
 
-![](../../blank.jpg)
+![](fig2.png)
 
 ## Abstract
 
