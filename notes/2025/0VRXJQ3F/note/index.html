@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="rethinking-key-value-cache-compression-techniques-for-large-language-model-serving">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</h1>
-<p><img alt="" src="../tab1.png" /></p>
+<p><a class="glightbox" href="../tab1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Key-Value cache (\texttt{KV} \texttt{cache}) compression has emerged as a
 promising technique to optimize Large Language Model (LLM) serving. It
@@ -142,6 +146,7 @@ production. They are open-sourced in
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -149,5 +154,6 @@ production. They are open-sourced in
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

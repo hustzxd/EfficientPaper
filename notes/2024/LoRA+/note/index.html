@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="lora-efficient-low-rank-adaptation-of-large-models">LoRA+: Efficient Low Rank Adaptation of Large Models</h1>
-<p><img alt="" src="../../../blank.jpg" /></p>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>In this paper, we show that Low Rank Adaptation (LoRA) as originally
 introduced in Hu et al. (2021) leads to suboptimal finetuning of models with
@@ -95,8 +99,8 @@ arguments for large width networks, we demonstrate that using the same learning
 rate for A and B does not allow efficient feature learning. We then show that
 this suboptimality of LoRA can be corrected simply by setting different
 learning rates for the LoRA adapter matrices A and B with a well-chosen ratio.
-We call this proposed algorithm LoRA$+$. In our extensive experiments, LoRA$+$
-improves performance (1-2 $\%$ improvements) and finetuning speed (up to $\sim$
+We call this proposed algorithm LoRA<script type="math/tex">+</script>. In our extensive experiments, LoRA<script type="math/tex">+</script>
+improves performance (1-2 <script type="math/tex">\%</script> improvements) and finetuning speed (up to <script type="math/tex">\sim</script>
 2X SpeedUp), at the same computational cost as LoRA.</p>
               
             </div>
@@ -129,6 +133,7 @@ improves performance (1-2 $\%$ improvements) and finetuning speed (up to $\sim$
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -136,5 +141,6 @@ improves performance (1-2 $\%$ improvements) and finetuning speed (up to $\sim$
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

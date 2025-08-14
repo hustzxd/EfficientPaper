@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="flashinfer-efficient-and-customizable-attention-engine-for-llm-inference-serving">FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving</h1>
-<p><img alt="" src="../../../blank.jpg" /></p>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Transformers, driven by attention mechanisms, form the foundation of large
 language models (LLMs). As these models scale up, efficient GPU attention
@@ -137,6 +141,7 @@ speedup for LLM serving with parallel generation.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -144,5 +149,6 @@ speedup for LLM serving with parallel generation.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="fastkv-kv-cache-compression-for-fast-long-context-processing-with-token-selective-propagation">FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation</h1>
-<p><img alt="" src="../fig2.png" /></p>
+<p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>While large language models (LLMs) excel at handling long-context sequences,
 they require substantial key-value (KV) caches to store contextual information,
@@ -100,7 +104,7 @@ selectively propagates only a portion of this information in deeper layers even
 in the prefill stage. Additionally, FastKV incorporates grouped-query attention
 (GQA)-aware KV cache compression to exploit the advantages of GQA in both
 memory and computational efficiency. Our experimental results show that FastKV
-achieves 2.00$\times$ and 1.40$\times$ improvements in time-to-first-token
+achieves 2.00<script type="math/tex">\times</script> and 1.40<script type="math/tex">\times</script> improvements in time-to-first-token
 (TTFT) and throughput, respectively, compared to HeadKV, the state-of-the-art
 KV cache compression method. Moreover, FastKV successfully maintains accuracy
 on long-context benchmarks at levels comparable to the baselines. Our code is
@@ -136,6 +140,7 @@ available at https://github.com/dongwonjo/FastKV.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -143,5 +148,6 @@ available at https://github.com/dongwonjo/FastKV.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

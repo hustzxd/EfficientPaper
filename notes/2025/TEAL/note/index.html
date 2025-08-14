@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="training-free-activation-sparsity-in-large-language-models">Training-Free Activation Sparsity in Large Language Models</h1>
-<p><img alt="" src="../fig1.png" /></p>
+<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Activation sparsity can enable practical inference speedups in large language
 models (LLMs) by reducing the compute and memory-movement required for matrix
@@ -98,7 +102,7 @@ activation sparsity to hidden states throughout the entire model. TEAL achieves
 40-50% model-wide sparsity with minimal performance degradation across Llama-2,
 Llama-3, and Mistral families, with sizes varying from 7B to 70B. We improve
 existing sparse kernels and demonstrate wall-clock decoding speed-ups of up to
-1.53$\times$ and 1.8$\times$ at 40% and 50% model-wide sparsity. TEAL is
+1.53<script type="math/tex">\times</script> and 1.8<script type="math/tex">\times</script> at 40% and 50% model-wide sparsity. TEAL is
 compatible with weight quantization, enabling further efficiency gains.</p>
               
             </div>
@@ -131,6 +135,7 @@ compatible with weight quantization, enabling further efficiency gains.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -138,5 +143,6 @@ compatible with weight quantization, enabling further efficiency gains.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

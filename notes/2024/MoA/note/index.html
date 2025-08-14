@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="moa-mixture-of-sparse-attention-for-automatic-large-language-model-compression">MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression</h1>
-<p><img alt="" src="../moa.png" /></p>
+<p><a class="glightbox" href="../moa.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../moa.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Sparse attention can effectively mitigate the significant memory and
 throughput demands of Large Language Models (LLMs) in long contexts. Existing
@@ -101,14 +105,14 @@ evaluates potential configurations, and pinpoints the optimal sparse attention
 compression plan. MoA adapts to varying input sizes, revealing that some
 attention heads expand their focus to accommodate longer sequences, while other
 heads consistently concentrate on fixed-length local contexts. Experiments show
-that MoA increases the effective context length by $3.9\times$ with the same
-average attention span, boosting retrieval accuracy by $1.5-7.1\times$ over the
+that MoA increases the effective context length by <script type="math/tex">3.9\times</script> with the same
+average attention span, boosting retrieval accuracy by <script type="math/tex">1.5-7.1\times</script> over the
 uniform-attention baseline across Vicuna-{7B,13B}, and Llama3-{8B,70B} models.
 Moreover, MoA narrows the capability gaps between sparse and dense models,
-reducing the maximum relative performance drop from $9\%-36\%$ to within $5\%$
+reducing the maximum relative performance drop from <script type="math/tex">9\%-36\%</script> to within <script type="math/tex">5\%</script>
 across two long-context understanding benchmarks. MoA achieves a
-$1.2-1.4\times$ GPU memory reduction, boosting decode throughput by
-$6.6-8.2\times$ and $1.7-1.9\times$ compared to FlashAttention2 and vLLM, with
+<script type="math/tex">1.2-1.4\times</script> GPU memory reduction, boosting decode throughput by
+<script type="math/tex">6.6-8.2\times</script> and <script type="math/tex">1.7-1.9\times</script> compared to FlashAttention2 and vLLM, with
 minimal impact on performance. Our code is available at
 \url{https://github.com/thu-nics/MoA}.</p>
 <p>和DuoAttention的做法非常像，每个 atention head 使用不同的 sparse pattern。</p>
@@ -148,6 +152,7 @@ minimal impact on performance. Our code is available at
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -155,5 +160,6 @@ minimal impact on performance. Our code is available at
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

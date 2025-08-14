@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="coreinfer-accelerating-large-language-model-inference-with-semantics-inspired-adaptive-sparse-activation">CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation</h1>
-<p><img alt="" src="../framework.png" /></p>
+<p><a class="glightbox" href="../framework.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../framework.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Large language models (LLMs) with billions of parameters have sparked a new
 wave of exciting AI applications. However, their high computational costs and
@@ -120,10 +124,11 @@ compared to the Huggingface implementation and PowerInfer, respectively.</p>
     - 每个token经过一个layer计算后，对应多个输出（neurons）,取绝对值最大的几个作为Core Neurons。
 - Sentence-wise Core Neurons.
   - 一个sentence含有多个token，每个token都可以根据以上一定找到core neurons，通过统计每个neuron作为token-wise core neuron的次数，次数最多的几个作为sentence-wise core neurons。</p>
-<p><img alt="" src="../eq1.png" /></p>
-<p><img alt="" src="../eq2.png" /></p>
-<p>可以看到分别引入了$\alpha$ $\beta$ 两个超参数，用来控制core neurons的比例。</p>
-<p><img alt="" src="../fig2.png" />
+<p><a class="glightbox" href="../eq1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq1.png" /></a></p>
+<p><a class="glightbox" href="../eq2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq2.png" /></a></p>
+<p>可以看到分别引入了<script type="math/tex">\alpha</script>
+<script type="math/tex">\beta</script> 两个超参数，用来控制core neurons的比例。</p>
+<p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.png" /></a>
 通过这种选择策略，只用计算少部分的neurons，便可以维持精度。</p>
 <p>另外观察，越临近的tokens的core neurons越相似，所以具有语义相似性。</p>
 <p>所以，coreinfer根据历史的core neuron来判断未来的core neuron方法如下：
@@ -161,6 +166,7 @@ compared to the Huggingface implementation and PowerInfer, respectively.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -168,5 +174,6 @@ compared to the Huggingface implementation and PowerInfer, respectively.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

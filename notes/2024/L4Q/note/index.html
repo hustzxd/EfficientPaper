@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,20 +89,20 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="l4q">L4Q</h1>
-<p><img alt="" src="../l4q.jpg" /></p>
+<p><a class="glightbox" href="../l4q.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../l4q.jpg" /></a></p>
 <ul>
 <li>Method<ul>
-<li>Step1: warm up Q(W) + $\alpha$ AB</li>
+<li>Step1: warm up Q(W) + <script type="math/tex">\alpha</script> AB</li>
 <li>Step2: quantize(W + sAB)</li>
 </ul>
 </li>
 </ul>
-<p><img alt="" src="../l4q_alg.jpg" /></p>
+<p><a class="glightbox" href="../l4q_alg.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../l4q_alg.jpg" /></a></p>
 <h2 id="experiments">Experiments</h2>
 <p>memory的占用变多了很多，论文中说GPTQ+LoRA stores the quantized weights in memory and dequantizate operation，包含了一些额外的操作，但是期望通过优化达到QLoRA的低memory占用。
-<img alt="" src="../l4q_memory.jpg" /></p>
+<a class="glightbox" href="../l4q_memory.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../l4q_memory.jpg" /></a></p>
 <p>实验结果表现还不错，比QLoRA要好，
-<img alt="" src="../l4q_exp.jpg" /></p>
+<a class="glightbox" href="../l4q_exp.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../l4q_exp.jpg" /></a></p>
               
             </div>
           </div><footer>
@@ -130,6 +134,7 @@
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -137,5 +142,6 @@
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

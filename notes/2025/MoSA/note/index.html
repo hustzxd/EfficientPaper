@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="mixture-of-sparse-attention-content-based-learnable-sparse-attention-via-expert-choice-routing">Mixture of Sparse Attention: Content-Based Learnable Sparse Attention via Expert-Choice Routing</h1>
-<p><img alt="" src="../fig1.png" /></p>
+<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Recent advances in large language models highlighted the excessive quadratic
 cost of self-attention. Despite the significant research efforts, subquadratic
@@ -94,9 +98,9 @@ hypothesize that dynamic, learned content-based sparsity can lead to more
 efficient attention mechanisms. We present Mixture of Sparse Attention (MoSA),
 a novel approach inspired by Mixture of Experts (MoE) with expert choice
 routing. MoSA dynamically selects tokens for each attention head, allowing
-arbitrary sparse attention patterns. By selecting $k$ tokens from a sequence of
-length $T$, MoSA reduces the computational complexity of each attention head
-from $O(T^2)$ to $O(k^2 + T)$. This enables using more heads within the same
+arbitrary sparse attention patterns. By selecting <script type="math/tex">k</script> tokens from a sequence of
+length <script type="math/tex">T</script>, MoSA reduces the computational complexity of each attention head
+from <script type="math/tex">O(T^2)</script> to <script type="math/tex">O(k^2 + T)</script>. This enables using more heads within the same
 computational budget, allowing higher specialization. We show that among the
 tested sparse attention variants, MoSA is the only one that can outperform the
 dense baseline, sometimes with up to 27% better perplexity for an identical
@@ -136,6 +140,7 @@ KV-cache compared to the dense transformer baselines.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -143,5 +148,6 @@ KV-cache compared to the dense transformer baselines.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

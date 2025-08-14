@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -133,7 +137,7 @@
 <li><a href="#Spatial-Temporal-Transformer-with-Curriculum-Learning-for-EEG-Based-Emotion-Recognition">Spatial-Temporal Transformer with Curriculum Learning for EEG-Based Emotion Recognition</a></li>
 <li><a href="#Enabling-Efficient-Hardware-Acceleration-of-Hybrid-Vision-Transformer-(ViT)-Networks-at-the-Edge">Enabling Efficient Hardware Acceleration of Hybrid Vision Transformer (ViT) Networks at the Edge</a></li>
 <li><a href="#Linear-Relational-Decoding-of-Morphology-in-Language-Models">Linear Relational Decoding of Morphology in Language Models</a></li>
-<li><a href="#KinForm-Kinetics-Informed-Feature-Optimised-Representation-Models-for-Enzyme-$k_{cat}$-and-$K_{M}$-Prediction">KinForm Kinetics Informed Feature Optimised Representation Models for Enzyme $k_{cat}$ and $K_{M}$ Prediction</a></li>
+<li><a href="#KinForm-Kinetics-Informed-Feature-Optimised-Representation-Models-for-Enzyme-k_{cat}-and-K_{M}-Prediction">KinForm Kinetics Informed Feature Optimised Representation Models for Enzyme <script type="math/tex">k_{cat}</script> and <script type="math/tex">K_{M}</script> Prediction</a></li>
 <li><a href="#Agentic-Satellite-Augmented-Low-Altitude-Economy-and-Terrestrial-Networks-A-Survey-on-Generative-Approaches">Agentic Satellite-Augmented Low-Altitude Economy and Terrestrial Networks A Survey on Generative Approaches</a></li>
 <li><a href="#Efficient-LLM-Inference-Bandwidth,-Compute,-Synchronization,-and-Capacity-are-all-you-need">Efficient LLM Inference Bandwidth, Compute, Synchronization, and Capacity are all you need</a></li>
 <li><a href="#Characterizing-Communication-Patterns-in-Distributed-Large-Language-Model-Inference">Characterizing Communication Patterns in Distributed Large Language Model Inference</a></li>
@@ -147,21 +151,21 @@
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18607v1</p>
 </blockquote>
-<p>Large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) produce high-dimensional embeddings that capture
+<p>Large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) produce high-dimensional embeddings that capture
 rich semantic and syntactic relationships between words, sentences, and
-concepts. Investigating the topological structures of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> embedding spaces via
+concepts. Investigating the topological structures of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> embedding spaces via
 mapper graphs enables us to understand their underlying structures.
 Specifically, a mapper graph summarizes the topological structure of the
 embedding space, where each node represents a topological neighborhood
 (containing a cluster of embeddings), and an edge connects two nodes if their
-corresponding neighborhoods <img alt="key" src="https://img.shields.io/badge/overlap-F08080" />. However, manually exploring these
+corresponding neighborhoods <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a>. However, manually exploring these
 embedding spaces to uncover encoded linguistic properties requires considerable
 human effort. To address this challenge, we introduce a framework for
 semi-automatic annotation of these embedding properties. To organize the
 exploration process, we first define a taxonomy of explorable elements within a
 mapper graph such as nodes, edges, paths, components, and trajectories. The
 annotation of these elements is executed through two types of customizable
-<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-based agents that employ perturbation techniques for scalable and automated
+<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-based agents that employ perturbation techniques for scalable and automated
 analysis. These agents help to explore and explain the characteristics of
 mapper elements and verify the robustness of the generated explanations. We
 instantiate the framework within a visual analytics workspace and demonstrate
@@ -175,23 +179,23 @@ topological neighborhoods.</p>
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18504v1</p>
 </blockquote>
-<p>Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) have shown strong potential for tabular data
+<p>Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) have shown strong potential for tabular data
 generation by modeling textualized feature-value pairs. However, tabular data
-inherently exhibits <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> feature-level dependencies, where many feature
+inherently exhibits <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> feature-level dependencies, where many feature
 interactions are structurally insignificant. This creates a fundamental
-mismatch as <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s' self-attention mechanism inevitably distributes focus across
+mismatch as <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s' self-attention mechanism inevitably distributes focus across
 all pairs, diluting attention on critical relationships, particularly in
 datasets with complex dependencies or semantically ambiguous features. To
 address this limitation, we propose GraDe (Graph-Guided Dependency Learning), a
-novel method that explicitly integrates <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> dependency graphs into <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s'
+novel method that explicitly integrates <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> dependency graphs into <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s'
 attention mechanism. GraDe employs a lightweight dynamic graph learning module
 guided by externally extracted functional dependencies, prioritizing key
 feature interactions while suppressing irrelevant ones. Our experiments across
 diverse real-world datasets demonstrate that GraDe outperforms existing
-<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-based approaches by up to 12% on complex datasets while achieving
+<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-based approaches by up to 12% on complex datasets while achieving
 competitive results with state-of-the-art approaches in synthetic data quality.
 Our method is minimally intrusive yet effective, offering a practical solution
-for structure-aware tabular data modeling with <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s.</p>
+for structure-aware tabular data modeling with <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s.</p>
 <h2 id="enhanced-velocity-adaptive-scheme-joint-fair-access-and-age-of-information-optimization-in-vehicular-networks">Enhanced Velocity-Adaptive Scheme Joint Fair Access and Age of Information Optimization in Vehicular Networks</h2>
 <blockquote>
 <p>Authors: Xiao Xu, Qiong Wu, Pingyi Fan, Kezhi Wang, Nan Cheng, Wen Chen, Khaled B. Letaief</p>
@@ -204,7 +208,7 @@ vehicular networks. Specifically, vehicles follow Mode 2 to communicate with
 Roadside Units (RSUs) to obtain accurate data for driving
 assistance.Nevertheless, vehicles often have different velocity when they are
 moving in adjacent lanes, leading to difference in RSU dwelltime and
-<img alt="key" src="https://img.shields.io/badge/communication-F08080" /> duration. This results in unfair access to network resources,
+<a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> duration. This results in unfair access to network resources,
 potentially influencing driving safety. To ensure the freshness of received
 data, the AoI should be analyzed. Mode 2 introduces a novel preemption
 mechanism, necessitating simultaneous optimization of fair access and AoI to
@@ -213,7 +217,7 @@ framework for vehicular network, defining a fairness index and employing
 Stochastic Hybrid Systems (SHS) to model AoI under preemption mechanism. By
 adaptively adjusting the selection window of Semi-Persistent Scheduling (SPS)
 in Mode 2, we address the optimization of fairness and AoI. We apply a large
-language model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />)-Based Multi-objective Evolutionary Algorithm Based on
+language model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>)-Based Multi-objective Evolutionary Algorithm Based on
 Decomposition (MOEA/D) to solve this problem. Simulation results demonstrate
 the effectiveness of our scheme in balancing fair access and minimizing AoI.</p>
 <h2 id="styleadaptedlm-enhancing-instruction-following-models-with-efficient-stylistic-transfer">StyleAdaptedLM Enhancing Instruction Following Models with Efficient Stylistic Transfer</h2>
@@ -222,8 +226,8 @@ the effectiveness of our scheme in balancing fair access and minimizing AoI.</p>
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18294v1</p>
 </blockquote>
-<p>Adapting <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s to specific stylistic characteristics, like brand voice or
-authorial tones, is crucial for enterprise <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> but challenging to
+<p>Adapting <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s to specific stylistic characteristics, like brand voice or
+authorial tones, is crucial for enterprise <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> but challenging to
 achieve from corpora which lacks instruction-response formatting without
 compromising instruction adherence. We introduce StyleAdaptedLM, a framework
 that efficiently transfers stylistic traits to instruction-following models
@@ -234,14 +238,14 @@ without paired data or sacrificing task performance. Experiments across
 multiple datasets and models demonstrate improved stylistic consistency while
 preserving instruction adherence, with human evaluations confirming
 brand-specific convention uptake. StyleAdaptedLM offers an efficient path for
-stylistic personalization in <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s.</p>
+stylistic personalization in <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s.</p>
 <h2 id="assemble-your-crew-automatic-multi-agent-communication-topology-design-via-autoregressive-graph-generation">Assemble Your Crew Automatic Multi-agent Communication Topology Design via Autoregressive Graph Generation</h2>
 <blockquote>
 <p>Authors: Shiyuan Li, Yixin Liu, Qingsong Wen, Chengqi Zhang, Shirui Pan</p>
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18224v1</p>
 </blockquote>
-<p>Multi-agent systems (MAS) based on large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) have emerged
+<p>Multi-agent systems (MAS) based on large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) have emerged
 as a powerful solution for dealing with complex problems across diverse
 domains. The effectiveness of MAS is critically dependent on its collaboration
 topology, which has become a focal point for automated design research.
@@ -255,7 +259,7 @@ novel autoregressive model that operationalizes this paradigm by constructing
 the collaboration graph from scratch. Conditioned on a natural language task
 query, ARG-Designer sequentially and dynamically determines the required number
 of agents, selects their appropriate roles from an extensible pool, and
-establishes the optimal <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> links between them. This generative
+establishes the optimal <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> links between them. This generative
 approach creates a customized topology in a flexible and extensible manner,
 precisely tailored to the unique demands of different tasks. Extensive
 experiments across six diverse benchmarks demonstrate that ARG-Designer not
@@ -268,18 +272,18 @@ ARG-Designer is available at https://github.com/Shiy-Li/ARG-Designer.</p>
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18212v1</p>
 </blockquote>
-<p>Layer <img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> has emerged as a promising technique for compressing large
-language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) while achieving <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /> proportional to the <img alt="key" src="https://img.shields.io/badge/pruning-F08080" />
+<p>Layer <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> has emerged as a promising technique for compressing large
+language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) while achieving <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /></a> proportional to the <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a>
 ratio. In this work, we identify that removing any layer induces a significant
 magnitude gap in hidden states, resulting in substantial performance
 degradation. To address this issue, we propose Prune&amp;Comp, a novel
-plug-and-play layer <img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> scheme that leverages magnitude compensation to
+plug-and-play layer <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> scheme that leverages magnitude compensation to
 mitigate such gaps in a training-free manner. Specifically, we first estimate
 the magnitude gap caused by layer removal and then eliminate this gap by
 rescaling the remaining weights offline, with zero runtime overhead incurred.
 We further demonstrate the advantages of Prune&amp;Comp through an iterative
-<img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> strategy. When integrated with an iterative prune-and-compensate loop,
-Prune&amp;Comp consistently enhances existing layer <img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> metrics. For instance,
+<a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> strategy. When integrated with an iterative prune-and-compensate loop,
+Prune&amp;Comp consistently enhances existing layer <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> metrics. For instance,
 when 5 layers of LLaMA-3-8B are pruned using the prevalent block influence
 metric, Prune&amp;Comp nearly halves the perplexity and retains 93.19\% of the
 original model's question-answering performance, outperforming the baseline by
@@ -290,9 +294,9 @@ original model's question-answering performance, outperforming the baseline by
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18181v1</p>
 </blockquote>
-<p>Large language model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />)-based automatic speech recognition (ASR) has
+<p>Large language model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>)-based automatic speech recognition (ASR) has
 recently attracted a lot of attention due to its high recognition accuracy and
-enhanced multi-dialect support. However, the high decoding latency of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s
+enhanced multi-dialect support. However, the high decoding latency of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s
 challenges the real-time ASR requirements. Although speculative decoding has
 been explored for better decoding efficiency, they usually ignore the key
 characteristics of the ASR task and achieve limited speedup. To further reduce
@@ -305,7 +309,7 @@ an adaptive draft sequence generation process that dynamically modifies the
 draft sequence length to maximize the token acceptance length. SpecASR further
 proposes a draft sequence recycling strategy that reuses the previously
 generated draft sequence to reduce the draft ASR model latency. Moreover, a
-two-pass <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> token tree generation algorithm is also proposed to balance the
+two-pass <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> token tree generation algorithm is also proposed to balance the
 latency of draft and target ASR models. With extensive experimental results, we
 demonstrate SpecASR achieves 3.04x-3.79x and 1.25x-1.84x speedup over the
 baseline autoregressive decoding and speculative decoding, respectively,
@@ -316,7 +320,7 @@ without any loss in recognition accuracy.</p>
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18167v1</p>
 </blockquote>
-<p>The rapid evolution of wireless <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> technologies, particularly
+<p>The rapid evolution of wireless <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> technologies, particularly
 massive multiple-input multiple-output (mMIMO) and millimeter-wave (mmWave),
 introduces significant network complexity and computational demands.
 Significant research efforts have been made to improve physical layer
@@ -325,7 +329,7 @@ usually task-specific and struggle with data scarcity and generalization. To
 address these challenges, we propose a novel In-Context Wireless Large Model
 (ICWLM), a wireless-native foundation model designed for simultaneous
 multi-task learning at the physical layer. Unlike conventional methods that
-adapt wireless data to pre-trained large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s), ICWLM is
+adapt wireless data to pre-trained large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s), ICWLM is
 trained directly on large-scale, mixed wireless datasets from scratch. It
 jointly solves multiple classical physical layer problems, including multi-user
 precoding (sum-rate maximization and max-min SINR) and channel prediction. A
@@ -347,17 +351,17 @@ resource management.</p>
 <p>2025-07-24</p>
 <p>http://arxiv.org/abs/2507.18028v1</p>
 </blockquote>
-<p>Efficiently editing knowledge stored in large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) enables
+<p>Efficiently editing knowledge stored in large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) enables
 model updates without large-scale training. One possible solution is
 Locate-and-Edit (L\&amp;E), allowing simultaneous modifications of a massive number
-of facts. However, such editing may compromise the general abilities of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s
+of facts. However, such editing may compromise the general abilities of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s
 and even result in forgetting edited facts when scaling up to thousands of
 edits. In this paper, we model existing linear L\&amp;E methods as querying a
-Key-Value (<img alt="key" src="https://img.shields.io/badge/KV-F08080" />) database. From this perspective, we then propose NeuralDB, an
-editing framework that explicitly represents the edited facts as a neural <img alt="key" src="https://img.shields.io/badge/KV-F08080" />
+Key-Value (<a class="glightbox" href="https://img.shields.io/badge/KV-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/KV-F08080" /></a>) database. From this perspective, we then propose NeuralDB, an
+editing framework that explicitly represents the edited facts as a neural <a class="glightbox" href="https://img.shields.io/badge/KV-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/KV-F08080" /></a>
 database equipped with a non-linear gated retrieval module, % In particular,
 our gated module only operates when inference involves the edited facts,
-effectively preserving the general abilities of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s. Comprehensive experiments
+effectively preserving the general abilities of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s. Comprehensive experiments
 involving the editing of 10,000 facts were conducted on the ZsRE and
 CounterFacts datasets, using GPT2-XL, GPT-J (6B) and Llama-3 (8B). The results
 demonstrate that NeuralDB not only excels in editing efficacy, generalization,
@@ -374,9 +378,9 @@ to 100,000 facts (\textbf{50x} more than in prior work).</p>
 <p>Negative campaigning is a central feature of political competition, yet
 empirical research has been limited by the high cost and limited scalability of
 existing classification methods. This study makes two key contributions. First,
-it introduces zero-shot Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) as a novel approach for
+it introduces zero-shot Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) as a novel approach for
 cross-lingual classification of negative campaigning. Using benchmark datasets
-in ten languages, we demonstrate that <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s achieve performance on par with
+in ten languages, we demonstrate that <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s achieve performance on par with
 native-speaking human coders and outperform conventional supervised machine
 learning approaches. Second, we leverage this novel method to conduct the
 largest cross-national study of negative campaigning to date, analyzing 18
@@ -385,10 +389,10 @@ and 2022. The results reveal consistent cross-national patterns: governing
 parties are less likely to use negative messaging, while ideologically extreme
 and populist parties -- particularly those on the radical right -- engage in
 significantly higher levels of negativity. These findings advance our
-understanding of how party-level characteristics shape strategic <img alt="key" src="https://img.shields.io/badge/communication-F08080" />
+understanding of how party-level characteristics shape strategic <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a>
 in multiparty systems. More broadly, the study demonstrates the potential of
-<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s to enable scalable, transparent, and replicable research in political
-<img alt="key" src="https://img.shields.io/badge/communication-F08080" /> across linguistic and cultural contexts.</p>
+<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s to enable scalable, transparent, and replicable research in political
+<a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> across linguistic and cultural contexts.</p>
 <h2 id="r-stitch-dynamic-trajectory-stitching-for-efficient-reasoning">R-Stitch Dynamic Trajectory Stitching for Efficient Reasoning</h2>
 <blockquote>
 <p>Authors: Zhuokun Chen, Zeren Chen, Jiahao He, Mingkui Tan, Jianfei Cai, Bohan Zhuang</p>
@@ -399,7 +403,7 @@ in multiparty systems. More broadly, the study demonstrates the potential of
 large language models by encouraging step-by-step intermediate reasoning during
 inference. While effective, CoT introduces substantial computational overhead
 due to its reliance on autoregressive decoding over long token sequences.
-Existing <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /> strategies either reduce sequence length through early
+Existing <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /></a> strategies either reduce sequence length through early
 stopping or compressive reward designs, or improve decoding speed via
 speculative decoding with smaller models. However, speculative decoding suffers
 from limited speedup when the agreement between small and large models is low,
@@ -407,10 +411,10 @@ and fails to exploit the potential advantages of small models in producing
 concise intermediate reasoning. In this paper, we present R-Stitch, a
 token-level, confidence-based hybrid decoding framework that accelerates CoT
 inference by switching between a small language model (SLM) and a large
-language model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />) along the reasoning trajectory. R-Stitch uses the SLM to
-generate tokens by default and delegates to the <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> only when the SLM's
+language model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>) along the reasoning trajectory. R-Stitch uses the SLM to
+generate tokens by default and delegates to the <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> only when the SLM's
 confidence falls below a threshold. This design avoids full-sequence rollback
-and selectively invokes the <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> on uncertain steps, preserving both efficiency
+and selectively invokes the <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> on uncertain steps, preserving both efficiency
 and answer quality. R-Stitch is model-agnostic, training-free, and compatible
 with standard decoding pipelines. Experiments on math reasoning benchmarks
 demonstrate that R-Stitch achieves up to 85\% reduction in inference latency
@@ -426,17 +430,17 @@ accelerating CoT reasoning.</p>
 quantitative finance, since traditional approaches heavily relying on
 historical return statistics and static objectives can hardly adapt to dynamic
 market regimes. To address this issue, we propose Evolutionary Factor Search
-(EFS), a novel framework that leverages large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) to
-automate the generation and evolution of alpha factors for <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> portfolio
+(EFS), a novel framework that leverages large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) to
+automate the generation and evolution of alpha factors for <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> portfolio
 construction. By reformulating the asset selection problem as a top-m ranking
-task guided by <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-generated factors, EFS incorporates an evolutionary feedback
+task guided by <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-generated factors, EFS incorporates an evolutionary feedback
 loop to iteratively refine the factor pool based on performance. Extensive
 experiments on five Fama-French benchmark datasets and three real-market
 datasets (US50, HSI45 and CSI300) demonstrate that EFS significantly
 outperforms both statistical-based and optimization-based baselines, especially
 in larger asset universes and volatile conditions. Comprehensive ablation
 studies validate the importance of prompt composition, factor diversity, and
-<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> backend choice. Our results highlight the promise of language-guided
+<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> backend choice. Our results highlight the promise of language-guided
 evolution as a robust and interpretable paradigm for portfolio optimization
 under structural constraints.</p>
 <h2 id="llm-meets-the-sky-heuristic-multi-agent-reinforcement-learning-for-secure-heterogeneous-uav-networks">LLM Meets the Sky Heuristic Multi-Agent Reinforcement Learning for Secure Heterogeneous UAV Networks</h2>
@@ -451,15 +455,15 @@ constraints. Unlike prior studies that assume uniform UAV capabilities or
 overlook energy-security trade-offs, we consider a realistic scenario where
 UAVs with diverse payloads and computation resources collaborate to serve
 ground terminals in the presence of eavesdroppers. To manage the complex
-coupling between UAV motion and <img alt="key" src="https://img.shields.io/badge/communication-F08080" />, we propose a hierarchical
+coupling between UAV motion and <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a>, we propose a hierarchical
 optimization framework. The inner layer uses a semidefinite relaxation
 (SDR)-based S2DC algorithm combining penalty functions and difference-of-convex
 (d.c.) programming to solve the secrecy precoding problem with fixed UAV
-positions. The outer layer introduces a Large Language Model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />)-guided
-heuristic multi-agent reinforcement learning approach (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-HeMARL) for
-trajectory optimization. <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-HeMARL efficiently incorporates expert heuristics
-policy generated by the <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />, enabling UAVs to learn energy-aware,
-security-driven trajectories without the inference overhead of real-time <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />
+positions. The outer layer introduces a Large Language Model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>)-guided
+heuristic multi-agent reinforcement learning approach (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-HeMARL) for
+trajectory optimization. <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-HeMARL efficiently incorporates expert heuristics
+policy generated by the <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>, enabling UAVs to learn energy-aware,
+security-driven trajectories without the inference overhead of real-time <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>
 calls. The simulation results show that our method outperforms existing
 baselines in secrecy rate and energy efficiency, with consistent robustness
 across varying UAV swarm sizes and random seeds.</p>
@@ -474,21 +478,21 @@ critical weaknesses in traditional medical supply chains, including
 inefficiencies in resource allocation, lack of transparency, and poor
 adaptability to dynamic disruptions. This paper presents a novel hybrid
 framework that integrates blockchain technology with a decentralized, large
-language model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />) powered multi-agent negotiation system to enhance the
+language model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>) powered multi-agent negotiation system to enhance the
 resilience and accountability of medical supply chains during crises. In this
 system, autonomous agents-representing manufacturers, distributors, and
 healthcare institutions-engage in structured, context-aware negotiation and
-decision-making processes facilitated by <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s, enabling rapid and ethical
+decision-making processes facilitated by <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s, enabling rapid and ethical
 allocation of scarce medical resources. The off-chain agent layer supports
 adaptive reasoning and local decision-making, while the on-chain blockchain
 layer ensures immutable, transparent, and auditable enforcement of decisions
 via smart contracts. The framework also incorporates a formal cross-layer
-<img alt="key" src="https://img.shields.io/badge/communication-F08080" /> protocol to bridge decentralized negotiation with institutional
+<a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> protocol to bridge decentralized negotiation with institutional
 enforcement. A simulation environment emulating pandemic scenarios evaluates
 the system's performance, demonstrating improvements in negotiation efficiency,
 fairness of allocation, supply chain responsiveness, and auditability. This
 research contributes an innovative approach that synergizes blockchain trust
-guarantees with the adaptive intelligence of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-driven agents, providing a
+guarantees with the adaptive intelligence of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-driven agents, providing a
 robust and scalable solution for critical supply chain coordination under
 uncertainty.</p>
 <h2 id="reinforcement-learning-fine-tunes-a-sparse-subnetwork-in-large-language-models">Reinforcement Learning Fine-Tunes a Sparse Subnetwork in Large Language Models</h2>
@@ -498,34 +502,34 @@ uncertainty.</p>
 <p>http://arxiv.org/abs/2507.17107v1</p>
 </blockquote>
 <p>Reinforcement learning (RL) is a key post-pretraining step for aligning large
-language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) with complex tasks and human preferences. While it is
+language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) with complex tasks and human preferences. While it is
 often assumed that RL fine-tuning requires updating most of a model's
 parameters, we challenge this assumption with a surprising finding: RL
 fine-tuning consistently modifies only a small subnetwork (typically 5-30% of
 weights), leaving most parameters unchanged. We call this phenomenon RL-induced
-parameter update <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" />. It arises naturally, without any <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" />
+parameter update <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a>. It arises naturally, without any <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a>
 constraints or parameter-efficient tuning, and appears across multiple RL
 algorithms (e.g., PPO, DPO, SimPO, PRIME) and model families (e.g., OpenAI,
-Meta, and open-source <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s). Moreover, the subnetworks updated by RL show
-substantial <img alt="key" src="https://img.shields.io/badge/overlap-F08080" /> across different seeds, datasets, and algorithms-far
+Meta, and open-source <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s). Moreover, the subnetworks updated by RL show
+substantial <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a> across different seeds, datasets, and algorithms-far
 exceeding chance-suggesting a partially transferable structure in the
-pretrained model. We show that fine-tuning only this <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> subnetwork recovers
+pretrained model. We show that fine-tuning only this <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> subnetwork recovers
 full model performance and yields parameters nearly identical to the fully
-fine-tuned model. Our analysis suggests this <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /> emerges because RL
+fine-tuned model. Our analysis suggests this <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a> emerges because RL
 operates near the model's original distribution, requiring only targeted
 changes. KL penalties, gradient clipping, and on-policy dynamics have limited
-effect on the <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /> pattern. These findings shed new light on how RL adapts
+effect on the <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a> pattern. These findings shed new light on how RL adapts
 models: not by shifting all weights, but by focusing training on a small,
 consistently updated subnetwork. This insight enables more efficient RL methods
-and reframes <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /> through the lens of the lottery ticket hypothesis.</p>
+and reframes <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a> through the lens of the lottery ticket hypothesis.</p>
 <h2 id="lora-is-all-you-need-for-safety-alignment-of-reasoning-llms">LoRA is All You Need for Safety Alignment of Reasoning LLMs</h2>
 <blockquote>
 <p>Authors: Yihao Xue, Baharan Mirzasoleiman</p>
 <p>2025-07-22</p>
 <p>http://arxiv.org/abs/2507.17075v1</p>
 </blockquote>
-<p>Reasoning <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s have demonstrated remarkable breakthroughs in solving complex
-problems that were previously out of reach. To ensure <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s do not assist with
+<p>Reasoning <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s have demonstrated remarkable breakthroughs in solving complex
+problems that were previously out of reach. To ensure <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s do not assist with
 harmful requests, safety alignment fine-tuning is necessary in the
 post-training phase. However, safety alignment fine-tuning has recently been
 shown to significantly degrade reasoning abilities, a phenomenon known as the
@@ -534,11 +538,11 @@ effectively aligns the model for safety without harming its reasoning
 capabilities. This is because restricting the safety weight updates to a
 low-rank space minimizes the interference with the reasoning weights. Our
 extensive experiments across four benchmarks covering math, science, and coding
-show that this approach produces highly safe <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s -- with safety levels
+show that this approach produces highly safe <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s -- with safety levels
 comparable to full-model fine-tuning -- without compromising their reasoning
 abilities. Additionally, we observe that LoRA induces weight updates with
-smaller <img alt="key" src="https://img.shields.io/badge/overlap-F08080" /> with the initial weights compared to full-model fine-tuning. We
-also explore methods that further reduce such <img alt="key" src="https://img.shields.io/badge/overlap-F08080" /> -- via regularization or
+smaller <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a> with the initial weights compared to full-model fine-tuning. We
+also explore methods that further reduce such <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a> -- via regularization or
 during weight merging -- and observe some improvement on certain tasks. We hope
 this result motivates designing approaches that yield more consistent
 improvements in the reasoning-safety trade-off.</p>
@@ -548,9 +552,9 @@ improvements in the reasoning-safety trade-off.</p>
 <p>2025-07-22</p>
 <p>http://arxiv.org/abs/2507.17061v1</p>
 </blockquote>
-<p>Large language model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />) agents have shown increasing promise for
+<p>Large language model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>) agents have shown increasing promise for
 collaborative task completion. However, existing multi-agent frameworks often
-rely on static workflows, fixed roles, and limited inter-agent <img alt="key" src="https://img.shields.io/badge/communication-F08080" />,
+rely on static workflows, fixed roles, and limited inter-agent <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a>,
 reducing their effectiveness in open-ended, high-complexity domains. This paper
 proposes a coordination framework that enables adaptiveness through three core
 mechanisms: dynamic task routing, bidirectional feedback, and parallel agent
@@ -561,16 +565,16 @@ the most suitable result. We instantiate these principles in a modular
 architecture and demonstrate substantial improvements in factual coverage,
 coherence, and efficiency over static and partially adaptive baselines. Our
 findings highlight the benefits of incorporating both adaptiveness and
-structured competition in multi-agent <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> systems.</p>
+structured competition in multi-agent <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> systems.</p>
 <h2 id="beyond-context-limits-subconscious-threads-for-long-horizon-reasoning">Beyond Context Limits Subconscious Threads for Long-Horizon Reasoning</h2>
 <blockquote>
 <p>Authors: Hongyin Luo, Nathaniel Morgan, Tina Li, Derek Zhao, Ai Vy Ngo, Philip Schroeder, Lijie Yang, Assaf Ben-Kish, Jack O'Brien, James Glass</p>
 <p>2025-07-22</p>
 <p>http://arxiv.org/abs/2507.16784v1</p>
 </blockquote>
-<p>To break the context limits of large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) that bottleneck
+<p>To break the context limits of large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) that bottleneck
 reasoning accuracy and efficiency, we propose the Thread Inference Model (TIM),
-a family of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s trained for recursive and decompositional problem solving, and
+a family of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s trained for recursive and decompositional problem solving, and
 TIMRUN, an inference runtime enabling long-horizon structured reasoning beyond
 context limits. Together, TIM hosted on TIMRUN supports virtually unlimited
 working memory and multi-hop tool calls within a single language model
@@ -580,10 +584,10 @@ reasoning trees measured by both length and depth instead of linear sequences.
 The reasoning trees consist of tasks with thoughts, recursive subtasks, and
 conclusions based on the concept we proposed in Schroeder et al, 2025. During
 generation, we maintain a working memory that retains only the key-value states
-of the most relevant context tokens, selected by a rule-based subtask-<img alt="key" src="https://img.shields.io/badge/pruning-F08080" />
+of the most relevant context tokens, selected by a rule-based subtask-<a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a>
 mechanism, enabling reuse of positional embeddings and GPU memory pages
 throughout reasoning. Experimental results show that our system sustains high
-inference throughput, even when manipulating up to 90% of the <img alt="key" src="https://img.shields.io/badge/KV-F08080" /> cache in GPU
+inference throughput, even when manipulating up to 90% of the <a class="glightbox" href="https://img.shields.io/badge/KV-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/KV-F08080" /></a> cache in GPU
 memory. It also delivers accurate reasoning on mathematical tasks and handles
 information retrieval challenges that require long-horizon reasoning and
 multi-hop tool use.</p>
@@ -593,20 +597,20 @@ multi-hop tool use.</p>
 <p>2025-07-22</p>
 <p>http://arxiv.org/abs/2507.16731v1</p>
 </blockquote>
-<p>As large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) evolve, deploying them solely in the cloud or
+<p>As large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) evolve, deploying them solely in the cloud or
 compressing them for edge devices has become inadequate due to concerns about
 latency, privacy, cost, and personalization. This survey explores a
-collaborative paradigm in which cloud-based <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s and edge-deployed small
+collaborative paradigm in which cloud-based <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s and edge-deployed small
 language models (SLMs) cooperate across both inference and training. We present
 a unified taxonomy of edge-cloud collaboration strategies. For inference, we
 categorize approaches into task assignment, task division, and mixture-based
 collaboration at both task and token granularity, encompassing adaptive
 scheduling, resource-aware offloading, speculative decoding, and modular
 routing. For training, we review distributed adaptation techniques, including
-parameter alignment, <img alt="key" src="https://img.shields.io/badge/pruning-F08080" />, bidirectional distillation, and
+parameter alignment, <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a>, bidirectional distillation, and
 small-model-guided optimization. We further summarize datasets, benchmarks, and
 deployment cases, and highlight privacy-preserving methods and vertical
-applications. This survey provides the first systematic foundation for <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-SLM
+applications. This survey provides the first systematic foundation for <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-SLM
 collaboration, bridging system and algorithm co-design to enable efficient,
 scalable, and trustworthy edge-cloud intelligence.</p>
 <h2 id="act-bridging-the-gap-in-code-translation-through-synthetic-data-generation-adaptive-training">ACT Bridging the Gap in Code Translation through Synthetic Data Generation &amp; Adaptive Training</h2>
@@ -624,7 +628,7 @@ present promising alternatives but are often limited by proprietary, API-based
 implementations that raise concerns over data security and reliance. In this
 paper, we present Auto-Train for Code Translation (ACT), an innovative
 framework that aims to improve code translation capabilities by enabling
-in-house finetuning of open-source Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s). ACT's
+in-house finetuning of open-source Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s). ACT's
 automated pipeline significantly boosts the performance of these models,
 narrowing the gap between open-source accessibility and the high performance of
 closed-source solutions. Central to ACT is its synthetic data generation
@@ -640,7 +644,7 @@ process. Our results demonstrate that ACT consistently enhances the
 effectiveness of open-source models, offering businesses and developers a
 secure and reliable alternative. Additionally, applying our data generation
 pipeline to industry-scale migration projects has led to a notable increase in
-developer <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" />.</p>
+developer <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /></a>.</p>
 <h2 id="mamba-otr-a-mamba-based-solution-for-online-take-and-release-detection-from-untrimmed-egocentric-video">Mamba-OTR a Mamba-based Solution for Online Take and Release Detection from Untrimmed Egocentric Video</h2>
 <blockquote>
 <p>Authors: Alessandro Sebastiano Catinello, Giovanni Maria Farinella, Antonino Furnari</p>
@@ -649,7 +653,7 @@ developer <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" 
 </blockquote>
 <p>This work tackles the problem of Online detection of Take and Release (OTR)
 of an object in untrimmed egocentric videos. This task is challenging due to
-severe label imbalance, with temporally <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> positive annotations, and the
+severe label imbalance, with temporally <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> positive annotations, and the
 need for precise temporal predictions. Furthermore, methods need to be
 computationally efficient in order to be deployed in real-world online
 settings. To address these challenges, we propose Mamba-OTR, a model based on
@@ -658,13 +662,13 @@ during inference while being trained on short video clips. To address label
 imbalance, our training pipeline incorporates the focal loss and a novel
 regularization scheme that aligns model predictions with the evaluation metric.
 Extensive experiments on EPIC-KITCHENS-100, the comparisons with
-<img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based approach, and the evaluation of different training and test
+<a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based approach, and the evaluation of different training and test
 schemes demonstrate the superiority of Mamba-OTR in both accuracy and
 efficiency. These finding are particularly evident when evaluating full-length
 videos or high frame-rate sequences, even when trained on short video snippets
 for computational convenience. The proposed Mamba-OTR achieves a noteworthy
 mp-mAP of 45.48 when operating in a sliding-window fashion, and 43.35 in
-streaming mode, versus the 20.32 of a vanilla <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /> and 25.16 of a
+streaming mode, versus the 20.32 of a vanilla <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a> and 25.16 of a
 vanilla Mamba, thus providing a strong baseline for OTR. We will publicly
 release the source code of Mamba-OTR to support future research.</p>
 <h2 id="compleak-deep-learning-model-compression-exacerbates-privacy-leakage">CompLeak Deep Learning Model Compression Exacerbates Privacy Leakage</h2>
@@ -675,14 +679,14 @@ release the source code of Mamba-OTR to support future research.</p>
 </blockquote>
 <p>Model compression is crucial for minimizing memory storage and accelerating
 inference in deep learning (DL) models, including recent foundation models like
-large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s). Users can access different compressed model
+large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s). Users can access different compressed model
 versions according to their resources and budget. However, while existing
 compression operations primarily focus on optimizing the trade-off between
 resource efficiency and model performance, the privacy risks introduced by
 compression remain overlooked and insufficiently understood.
   In this work, through the lens of membership inference attack (MIA), we
 propose CompLeak, the first privacy risk evaluation framework examining three
-widely used compression configurations that are <img alt="key" src="https://img.shields.io/badge/pruning-F08080" />, quantization, and
+widely used compression configurations that are <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a>, quantization, and
 weight clustering supported by the commercial model compression framework of
 Google's TensorFlow-Lite (TF-Lite) and Facebook's PyTorch Mobile. CompLeak has
 three variants, given available access to the number of compressed models and
@@ -705,14 +709,14 @@ datasets.</p>
 <p>http://arxiv.org/abs/2507.16289v1</p>
 </blockquote>
 <p>Modern sequential recommender systems, ranging from lightweight
-<img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based variants to large language models, have become increasingly
+<a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based variants to large language models, have become increasingly
 prominent in academia and industry due to their strong performance in the
 next-item prediction task. Yet common evaluation protocols for sequential
 recommendations remain insufficiently developed: they often fail to reflect the
 corresponding recommendation task accurately, or are not aligned with
 real-world scenarios.
   Although the widely used leave-one-out split matches next-item prediction, it
-permits the <img alt="key" src="https://img.shields.io/badge/overlap-F08080" /> between training and test periods, which leads to temporal
+permits the <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a> between training and test periods, which leads to temporal
 leakage and unrealistically long test horizon, limiting real-world relevance.
 Global temporal splitting addresses these issues by evaluating on distinct
 future periods. However, its applications to sequential recommendations remain
@@ -733,7 +737,7 @@ https://github.com/monkey0head/time-to-split</p>
 <p>2025-07-22</p>
 <p>http://arxiv.org/abs/2507.16274v1</p>
 </blockquote>
-<p>The rapid scaling of large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) has significantly increased
+<p>The rapid scaling of large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) has significantly increased
 GPU memory pressure, which is further aggravated by training optimization
 techniques such as virtual pipeline and recomputation that disrupt tensor
 lifespans and introduce considerable memory fragmentation. Default GPU memory
@@ -749,7 +753,7 @@ allocation. The offline planning leverages spatio-temporal regularities to
 generate a near-optimal allocation plan, while the online allocation handles
 complex and dynamic models such as Mixture-of-Experts (MoE). Built as a
 pluggable PyTorch allocator, STWeaver reduces fragmentation ratio on average by
-79.2\% (up to 100\%) across both dense and <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> models, with negligible
+79.2\% (up to 100\%) across both dense and <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> models, with negligible
 overhead. This enables more efficient, high-throughput training configurations
 and improves performance by up to 32.5\%.</p>
 <h2 id="benchmarking-llm-privacy-recognition-for-social-robot-decision-making">Benchmarking LLM Privacy Recognition for Social Robot Decision Making</h2>
@@ -759,24 +763,24 @@ and improves performance by up to 32.5\%.</p>
 <p>http://arxiv.org/abs/2507.16124v1</p>
 </blockquote>
 <p>Social robots are embodied agents that interact with people while following
-human <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> norms. These robots interact using verbal and non-verbal
+human <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> norms. These robots interact using verbal and non-verbal
 cues, and share the physical environments of people. While social robots have
 previously utilized rule-based systems or probabilistic models for user
-interaction, the rapid evolution of large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) presents new
-opportunities to develop <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-empowered social robots for enhanced human-robot
+interaction, the rapid evolution of large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) presents new
+opportunities to develop <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-empowered social robots for enhanced human-robot
 interaction. To fully realize these capabilities, however, robots need to
 collect data such as audio, fine-grained images, video, and locations. As a
-result, <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s often process sensitive personal information, particularly within
+result, <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s often process sensitive personal information, particularly within
 home environments. Given the tension between utility and privacy risks,
-evaluating how current <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s manage sensitive data is critical. Specifically, we
-aim to explore the extent to which out-of-the-box <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s are privacy-aware in the
+evaluating how current <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s manage sensitive data is critical. Specifically, we
+aim to explore the extent to which out-of-the-box <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s are privacy-aware in the
 context of household social robots. In this study, we present a set of
 privacy-relevant scenarios crafted through the lens of Contextual Integrity
 (CI). We first survey users' privacy preferences regarding in-home social robot
 behaviors and then examine how their privacy orientation affects their choices
 of these behaviors (N = 450). We then provide the same set of scenarios and
-questions to state-of-the-art <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s (N = 10) and find that the agreement between
-humans and <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s is low. To further investigate the capabilities of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s as a
+questions to state-of-the-art <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s (N = 10) and find that the agreement between
+humans and <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s is low. To further investigate the capabilities of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s as a
 potential privacy controller, we implement four additional prompting strategies
 and compare their results. Finally, we discuss the implications and potential
 of AI privacy awareness in human-robot interaction.</p>
@@ -787,15 +791,15 @@ of AI privacy awareness in human-robot interaction.</p>
 <p>http://arxiv.org/abs/2507.16099v1</p>
 </blockquote>
 <p>We present TorchAO, a PyTorch-native model optimization framework leveraging
-quantization and <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /> to provide an end-to-end, training-to-serving
+quantization and <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a> to provide an end-to-end, training-to-serving
 workflow for AI models. TorchAO supports a variety of popular model
 optimization techniques, including FP8 quantized training, quantization-aware
-training (QAT), post-training quantization (PTQ), and 2:4 <img alt="key" src="https://img.shields.io/badge/sparsity-F08080" />, and
+training (QAT), post-training quantization (PTQ), and 2:4 <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparsity-F08080" /></a>, and
 leverages a novel tensor subclass abstraction to represent a variety of
 widely-used, backend agnostic low precision data types, including INT4, INT8,
 FP8, MXFP4, MXFP6, and MXFP8. TorchAO integrates closely with the broader
 ecosystem at each step of the model optimization pipeline, from pre-training
-(TorchTitan) to fine-tuning (TorchTune, Axolotl) to serving (HuggingFace, v<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />,
+(TorchTitan) to fine-tuning (TorchTune, Axolotl) to serving (HuggingFace, v<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>,
 SGLang, ExecuTorch), connecting an otherwise fragmented space in a single,
 unified workflow. TorchAO has enabled recent launches of the quantized Llama
 3.2 1B/3B and LlamaGuard3-8B models and is open-source at
@@ -806,8 +810,8 @@ https://github.com/pytorch/ao/.</p>
 <p>2025-07-21</p>
 <p>http://arxiv.org/abs/2507.15977v1</p>
 </blockquote>
-<p>Modern <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s face inference efficiency challenges due to their scale. To
-address this, many compression methods have been proposed, such as <img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> and
+<p>Modern <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s face inference efficiency challenges due to their scale. To
+address this, many compression methods have been proposed, such as <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> and
 quantization. However, the effect of compression on a model's interpretability
 remains elusive. While several model interpretation approaches exist, such as
 circuit discovery, Sparse Autoencoders (SAEs) have proven particularly
@@ -815,7 +819,7 @@ effective in decomposing a model's activation space into its feature basis. In
 this work, we explore the differences in SAEs for the original and compressed
 models. We find that SAEs trained on the original model can interpret the
 compressed model albeit with slight performance degradation compared to the
-trained SAE on the compressed model. Furthermore, simply <img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> the original
+trained SAE on the compressed model. Furthermore, simply <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> the original
 SAE itself achieves performance comparable to training a new SAE on the pruned
 model. This finding enables us to mitigate the extensive training costs of
 SAEs.</p>
@@ -827,7 +831,7 @@ SAEs.</p>
 </blockquote>
 <p>Natural language interfaces offer a compelling approach for music
 recommendation, enabling users to express complex preferences conversationally.
-While Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) show promise in this direction, their
+While Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) show promise in this direction, their
 scalability in recommender systems is limited by high costs and latency.
 Retrieval-based approaches using smaller language models mitigate these issues
 but often rely on single-modal item representations, overlook long-term user
@@ -837,7 +841,7 @@ lightweight and intuitive framework for natural language music recommendation.
 JAM models user-query-item interactions as vector translations in a shared
 latent space, inspired by knowledge graph embedding methods like TransE. To
 capture the complexity of music and user intent, JAM aggregates multimodal item
-features via cross-attention and <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> mixture-of-experts. We also introduce
+features via cross-attention and <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> mixture-of-experts. We also introduce
 JAMSessions, a new dataset of over 100k user-query-item triples with anonymized
 user/item embeddings, uniquely combining conversational queries and user
 long-term preferences. Our results show that JAM provides accurate
@@ -849,21 +853,21 @@ cases, and can be easily integrated with existing music recommendation stacks.</
 <p>2025-07-21</p>
 <p>http://arxiv.org/abs/2507.15779v1</p>
 </blockquote>
-<p>Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />) have dominated the science and media landscape
+<p>Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>) have dominated the science and media landscape
 duo to their impressive performance on processing large chunks of data and
 produce human-like levels of text. Nevertheless, their huge energy demand and
 slow processing still a bottleneck for further increasing quality while also
 making the models accessible to everyone. To solve this bottleneck, we will
 investigate how reservoir computing performs on natural text processing, which
 could enable fast and energy efficient hardware implementations. Studies
-investigating the use of reservoir computing as a language model remain <img alt="key" src="https://img.shields.io/badge/sparse-F08080" />.
+investigating the use of reservoir computing as a language model remain <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a>.
 In this paper, we compare three distinct approaches for character-level
 language modeling, two different reservoir computing approaches, where only an
-output layer is trainable, and the well-known <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based architectures,
+output layer is trainable, and the well-known <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based architectures,
 which fully learn an attention-based sequence representation. We explore the
 performance, computational cost and prediction accuracy for both paradigms by
 equally varying the number of trainable parameters for all models. Using a
-consistent pipeline for all three approaches, we demonstrate that <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />s
+consistent pipeline for all three approaches, we demonstrate that <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>s
 excel in prediction quality, whereas reservoir computers remain highly
 efficient reducing the training and inference speed. Furthermore, we
 investigate two types of reservoir computing: a traditional reservoir with a
@@ -884,7 +888,7 @@ investigates how Congressional Democrats use Bluesky to form networks of
 influence and disseminate political messaging in a platform environment that
 lacks algorithmic amplification. We employ a mixed-methods approach that
 combines social network analysis, expo-nential random graph modeling (ERGM),
-and <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based topic mod-eling (BERTopic) to analyze follows, mentions,
+and <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based topic mod-eling (BERTopic) to analyze follows, mentions,
 reposts, and discourse pat-terns among 182 verified Democratic members of
 Congress. Our findings show that while party leaders such as Hakeem Jeffries
 and Elizabeth War-ren dominate visibility metrics, overlooked figures like
@@ -895,7 +899,7 @@ lines, with Senate leadership exhibiting lower connectivity. Topic analysis
 identifies both shared themes (e.g., reproductive rights, foreign conflicts)
 and subgroup-specific issues, with The Squad showing the most distinct
 discourse profile. These results demonstrate the potential of decentralized
-platforms to reshape intra-party <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> dynamics and highlight the need
+platforms to reshape intra-party <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> dynamics and highlight the need
 for continued computational research on elite political behavior in emerging
 digital environments.</p>
 <h2 id="transformer-based-deep-learning-model-for-joint-routing-and-scheduling-with-varying-electric-vehicle-numbers">Transformer-based Deep Learning Model for Joint Routing and Scheduling with Varying Electric Vehicle Numbers</h2>
@@ -918,8 +922,8 @@ MIP-based day-ahead electric vehicle joint routing and scheduling problem in
 this work. However, solving the problem in a practical setting can often be
 computationally intractable since the existence of binary variables makes it
 combinatorial challenging. Therefore, we proposed to simplify the problem's
-solution process for a MIP solver by <img alt="key" src="https://img.shields.io/badge/pruning-F08080" /> the solution search space with a
-<img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based deep learning (DL) model. This is done by training the model
+solution process for a MIP solver by <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/pruning-F08080" /></a> the solution search space with a
+<a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based deep learning (DL) model. This is done by training the model
 to rapidly predict the optimal binary solutions. In addition, unlike many
 existing DL approaches that assume fixed problem structures, the proposed model
 is designed to accommodate problems with EV fleets of any sizes. This
@@ -933,7 +937,7 @@ computational overhead. We evaluated the approach with simulations on the IEEE
 <p>http://arxiv.org/abs/2507.15357v1</p>
 </blockquote>
 <p>This paper presents a comprehensive evaluation of the capabilities of Large
-Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) in metaphor interpretation across multiple datasets,
+Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) in metaphor interpretation across multiple datasets,
 tasks, and prompt configurations. Although metaphor processing has gained
 significant attention in Natural Language Processing (NLP), previous research
 has been limited to single-dataset evaluations and specific task settings,
@@ -941,12 +945,12 @@ often using artificially constructed data through lexical replacement. We
 address these limitations by conducting extensive experiments using diverse
 publicly available datasets with inference and metaphor annotations, focusing
 on Natural Language Inference (NLI) and Question Answering (QA) tasks. The
-results indicate that <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s' performance is more influenced by features like
-lexical <img alt="key" src="https://img.shields.io/badge/overlap-F08080" /> and sentence length than by metaphorical content, demonstrating
-that any alleged emergent abilities of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s to understand metaphorical language
+results indicate that <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s' performance is more influenced by features like
+lexical <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a> and sentence length than by metaphorical content, demonstrating
+that any alleged emergent abilities of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s to understand metaphorical language
 are the result of a combination of surface-level features, in-context learning,
 and linguistic knowledge. This work provides critical insights into the current
-capabilities and limitations of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s in processing figurative language,
+capabilities and limitations of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s in processing figurative language,
 highlighting the need for more realistic evaluation frameworks in metaphor
 interpretation tasks. Data and code are publicly available.</p>
 <h2 id="scaling-decentralized-learning-with-flock">Scaling Decentralized Learning with FLock</h2>
@@ -955,18 +959,18 @@ interpretation tasks. Data and code are publicly available.</p>
 <p>2025-07-21</p>
 <p>http://arxiv.org/abs/2507.15349v1</p>
 </blockquote>
-<p>Fine-tuning the large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) are prevented by the deficiency
-of centralized control and the massive computing and <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> overhead on
+<p>Fine-tuning the large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) are prevented by the deficiency
+of centralized control and the massive computing and <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> overhead on
 the decentralized schemes. While the typical standard federated learning (FL)
 supports data privacy, the central server requirement creates a single point of
 attack and vulnerability to poisoning attacks. Generalizing the result in this
 direction to 70B-parameter models in the heterogeneous, trustless environments
 has turned out to be a huge, yet unbroken bottleneck. This paper introduces
-FLock, a decentralized framework for secure and efficient collaborative <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />
+FLock, a decentralized framework for secure and efficient collaborative <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>
 fine-tuning. Integrating a blockchain-based trust layer with economic
 incentives, FLock replaces the central aggregator with a secure, auditable
 protocol for cooperation among untrusted parties. We present the first
-empirical validation of fine-tuning a 70B <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> in a secure, multi-domain,
+empirical validation of fine-tuning a 70B <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> in a secure, multi-domain,
 decentralized setting. Our experiments show the FLock framework defends against
 backdoor poisoning attacks that compromise standard FL optimizers and fosters
 synergistic knowledge transfer. The resulting models show a &gt;68% reduction in
@@ -981,8 +985,8 @@ own specialized data.</p>
 </blockquote>
 <p>The injection molding industry faces critical challenges in preserving and
 transferring field knowledge, particularly as experienced workers retire and
-multilingual barriers hinder effective <img alt="key" src="https://img.shields.io/badge/communication-F08080" />. This study introduces
-IM-Chat, a multi-agent framework based on large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s),
+multilingual barriers hinder effective <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a>. This study introduces
+IM-Chat, a multi-agent framework based on large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s),
 designed to facilitate knowledge transfer in injection molding. IM-Chat
 integrates both limited documented knowledge (e.g., troubleshooting tables,
 manuals) and extensive field data modeled through a data-driven process
@@ -997,7 +1001,7 @@ and correctness, and was further supplemented by automated evaluation using
 GPT-4o guided by a domain-adapted instruction prompt. The evaluation results
 indicate that more capable models tend to achieve higher accuracy, particularly
 in complex, tool-integrated scenarios. Overall, these findings demonstrate the
-viability of multi-agent <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> systems for industrial knowledge workflows and
+viability of multi-agent <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> systems for industrial knowledge workflows and
 establish IM-Chat as a scalable and generalizable approach to AI-assisted
 decision support in manufacturing.</p>
 <h2 id="chadet-cross-hierarchical-attention-for-depth-completion-using-unsupervised-lightweight-transformer">CHADET Cross-Hierarchical-Attention for Depth-Completion Using Unsupervised Lightweight Transformer</h2>
@@ -1016,11 +1020,11 @@ and computational requirements make them unsuitable for real-time applications,
 highlighting the need to improve the completeness and accuracy of depth
 information while improving processing speed to enhance robot performance in
 various tasks. To address these challenges, in this paper, we propose
-CHADET(cross-hierarchical-attention depth-completion <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />), a
+CHADET(cross-hierarchical-attention depth-completion <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>), a
 lightweight depth-completion network that can generate accurate dense depth
-maps from RGB images and <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> depth points. For each pair, its feature is
+maps from RGB images and <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> depth points. For each pair, its feature is
 extracted from the depthwise blocks and passed to the equally lightweight
-<img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based decoder. In the decoder, we utilize the novel
+<a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based decoder. In the decoder, we utilize the novel
 cross-hierarchical-attention module that refines the image features from the
 depth information. Our approach improves the quality and reduces memory usage
 of the depth map prediction, as validated in both KITTI, NYUv2, and VOID
@@ -1034,13 +1038,13 @@ datasets.</p>
 <p>Unmanned Aerial Vehicles are reshaping Non-Terrestrial Networks by acting as
 agile, intelligent nodes capable of advanced analytics and instantaneous
 situational awareness. This article introduces a budget-friendly quadcopter
-platform that unites 5G <img alt="key" src="https://img.shields.io/badge/communication-F08080" />s, edge-based processing, and AI to tackle
+platform that unites 5G <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a>s, edge-based processing, and AI to tackle
 core challenges in NTN scenarios. Outfitted with a panoramic camera, robust
-onboard computation, and <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s, the drone system delivers seamless object
+onboard computation, and <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s, the drone system delivers seamless object
 recognition, contextual analysis, and immersive operator experiences through
 virtual reality VR technology. Field evaluations confirm the platform's ability
 to process visual streams with low latency and sustain robust 5G links. Adding
-<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s further streamlines operations by extracting actionable insights and
+<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s further streamlines operations by extracting actionable insights and
 refining collected data for decision support. Demonstrated use cases, including
 emergency response, infrastructure assessment, and environmental surveillance,
 underscore the system's adaptability in demanding contexts.</p>
@@ -1050,41 +1054,41 @@ underscore the system's adaptability in demanding contexts.</p>
 <p>2025-07-20</p>
 <p>http://arxiv.org/abs/2507.14900v2</p>
 </blockquote>
-<p>Large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) have demonstrated remarkable multilingual
+<p>Large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) have demonstrated remarkable multilingual
 capabilities, however, how to evaluate cross-lingual alignment remains
 underexplored. Existing alignment benchmarks primarily focus on sentence
 embeddings, but prior research has shown that neural models tend to induce a
 non-smooth representation space, which impact of semantic alignment evaluation
 on low-resource languages. Inspired by neuroscientific findings that similar
-information activates <img alt="key" src="https://img.shields.io/badge/overlap-F08080" />ping neuronal regions, we propose a novel Neuron
+information activates <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a>ping neuronal regions, we propose a novel Neuron
 State-Based Cross-Lingual Alignment (NeuronXA) to assess the cross-lingual a
-lignment capabilities of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s, which offers a more semantically grounded
+lignment capabilities of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s, which offers a more semantically grounded
 approach to assess cross-lingual alignment. We evaluate NeuronXA on several
-prominent multilingual <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s (LLaMA, Qwen, Mistral, GLM, and OLMo) across two
+prominent multilingual <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s (LLaMA, Qwen, Mistral, GLM, and OLMo) across two
 transfer tasks and three multilingual benchmarks. The results demonstrate that
 with only 100 parallel sentence pairs, NeuronXA achieves a Pearson correlation
 of 0.9556 with downstream tasks performance and 0.8514 with transferability.
 These findings demonstrate NeuronXA's effectiveness in assessing both
 cross-lingual alignment and transferability, even with a small dataset. This
 highlights its potential to advance cross-lingual alignment research and to
-improve the semantic understanding of multilingual <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s.</p>
+improve the semantic understanding of multilingual <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s.</p>
 <h2 id="sparse-autoencoder-guided-supervised-finetuning-to-mitigate-unexpected-code-switching-in-llms">Sparse Autoencoder-guided Supervised Finetuning to Mitigate Unexpected Code-Switching in LLMs</h2>
 <blockquote>
 <p>Authors: Boyi Deng, Yu Wan, Baosong Yang, Fei Huang, Wenjie Wang, Fuli Feng</p>
 <p>2025-07-20</p>
 <p>http://arxiv.org/abs/2507.14894v1</p>
 </blockquote>
-<p>Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) have impressive multilingual capabilities, but
+<p>Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) have impressive multilingual capabilities, but
 they suffer from unexpected code-switching, also known as language mixing,
 which involves switching to unexpected languages in the model response. This
 problem leads to poor readability and degrades the usability of model
 responses. However, existing work on this issue lacks a mechanistic analysis
 and shows limited effectiveness. In this paper, we first provide an in-depth
-analysis of unexpected code-switching using <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> autoencoders and find that
-when <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s switch to a language, the features of that language exhibit excessive
-pre-activation values. Based on our findings, we propose $\textbf{S}$parse
-$\textbf{A}$utoencoder-guided $\textbf{S}$upervised
-$\textbf{F}$ine$\textbf{t}$uning (SASFT), which teaches <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s to maintain
+analysis of unexpected code-switching using <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> autoencoders and find that
+when <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s switch to a language, the features of that language exhibit excessive
+pre-activation values. Based on our findings, we propose <script type="math/tex">\textbf{S}</script>parse
+<script type="math/tex">\textbf{A}</script>utoencoder-guided <script type="math/tex">\textbf{S}</script>upervised
+<script type="math/tex">\textbf{F}</script>ine<script type="math/tex">\textbf{t}</script>uning (SASFT), which teaches <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s to maintain
 appropriate pre-activation values of specific language features during
 training. Experiments on five models across three languages demonstrate that
 SASFT consistently reduces unexpected code-switching by more than 50\% compared
@@ -1100,16 +1104,16 @@ while preserving multilingual capabilities.</p>
 </blockquote>
 <p>A prominent achievement of natural language processing (NLP) is its ability
 to understand and generate meaningful human language. This capability relies on
-complex feedforward <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /> block architectures pre-trained on large
-language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s). However, <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> pre-training is currently feasible only
+complex feedforward <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a> block architectures pre-trained on large
+language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s). However, <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> pre-training is currently feasible only
 for a few dominant companies due to the immense computational resources
 required, limiting broader research participation. This creates a critical need
 for more accessible alternatives. In this study, we explore whether tiny
-language models (TLMs) exhibit the same key qualitative features of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s. We
+language models (TLMs) exhibit the same key qualitative features of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s. We
 demonstrate that TLMs exhibit a clear performance gap between pre-trained and
 non-pre-trained models across classification tasks, indicating the
 effectiveness of pre-training, even at a tiny scale. The performance gap
-increases with the size of the pre-training dataset and with greater <img alt="key" src="https://img.shields.io/badge/overlap-F08080" />
+increases with the size of the pre-training dataset and with greater <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a>
 between tokens in the pre-training and classification datasets. Furthermore,
 the classification accuracy achieved by a pre-trained deep TLM architecture can
 be replicated through a soft committee of multiple, independently pre-trained
@@ -1129,12 +1133,12 @@ https://github.com/Rg32601/Tiny-Language-Models .</p>
 <p>http://arxiv.org/abs/2507.14798v1</p>
 </blockquote>
 <p>State-of-the-art 3D computer vision algorithms continue to advance in
-handling <img alt="key" src="https://img.shields.io/badge/sparse-F08080" />, unordered image sets. Recently developed foundational models
+handling <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a>, unordered image sets. Recently developed foundational models
 for 3D reconstruction, such as Dense and Unconstrained Stereo 3D Reconstruction
 (DUSt3R), Matching and Stereo 3D Reconstruction (MASt3R), and Visual Geometry
 Grounded Transformer (VGGT), have attracted attention due to their ability to
-handle very <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> image <img alt="key" src="https://img.shields.io/badge/overlap-F08080" />s. Evaluating DUSt3R/MASt3R/VGGT on typical
-aerial images matters, as these models may handle extremely low image <img alt="key" src="https://img.shields.io/badge/overlap-F08080" />s,
+handle very <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> image <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a>s. Evaluating DUSt3R/MASt3R/VGGT on typical
+aerial images matters, as these models may handle extremely low image <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a>s,
 stereo occlusions, and textureless regions. For redundant collections, they can
 accelerate 3D reconstruction by using extremely sparsified image sets. Despite
 tests on various computer vision benchmarks, their potential on photogrammetric
@@ -1142,21 +1146,21 @@ aerial blocks remains unexplored. This paper conducts a comprehensive
 evaluation of the pre-trained DUSt3R/MASt3R/VGGT models on the aerial blocks of
 the UseGeo dataset for pose estimation and dense 3D reconstruction. Results
 show these methods can accurately reconstruct dense point clouds from very
-<img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> image sets (fewer than 10 images, up to 518 pixels resolution), with
+<a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> image sets (fewer than 10 images, up to 518 pixels resolution), with
 completeness gains up to +50% over COLMAP. VGGT also demonstrates higher
 computational efficiency, scalability, and more reliable camera pose
 estimation. However, all exhibit limitations with high-resolution images and
 large sets, as pose reliability declines with more images and geometric
-complexity. These findings suggest <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based methods cannot fully
+complexity. These findings suggest <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based methods cannot fully
 replace traditional SfM and MVS, but offer promise as complementary approaches,
-especially in challenging, low-resolution, and <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> scenarios.</p>
+especially in challenging, low-resolution, and <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> scenarios.</p>
 <h2 id="leadqa-llm-driven-context-aware-temporal-grounding-for-video-question-answering">LeAdQA LLM-Driven Context-Aware Temporal Grounding for Video Question Answering</h2>
 <blockquote>
 <p>Authors: Xinxin Dong, Baoyun Peng, Haokai Ma, Yufei Wang, Zixuan Dong, Fei Hu, Xiaodong Wang</p>
 <p>2025-07-20</p>
 <p>http://arxiv.org/abs/2507.14784v1</p>
 </blockquote>
-<p>Video Question Answering (VideoQA) requires identifying <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> critical
+<p>Video Question Answering (VideoQA) requires identifying <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> critical
 moments in long videos and reasoning about their causal relationships to answer
 semantically complex questions. While recent advances in multimodal learning
 have improved alignment and fusion, current approaches remain limited by two
@@ -1166,12 +1170,12 @@ content; and (2) heuristic retrieval captures superficial patterns but misses
 causal-temporal structures needed for complex reasoning. To address these
 challenges, we introduce LeAdQA, an innovative approach that bridges these gaps
 through synergizing causal-aware query refinement with fine-grained visual
-grounding. Our method first leverages <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s to reformulate question-option
+grounding. Our method first leverages <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s to reformulate question-option
 pairs, resolving causal ambiguities and sharpening temporal focus. These
 refined queries subsequently direct a temporal grounding model to precisely
 retrieve the most salient segments, complemented by an adaptive fusion
 mechanism dynamically integrating the evidence to maximize relevance. The
-integrated visual-textual cues are then processed by an M<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> to generate
+integrated visual-textual cues are then processed by an M<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> to generate
 accurate, contextually-grounded answers. Experiments on NExT-QA, IntentQA, and
 NExT-GQA demonstrate that our method's precise visual grounding substantially
 enhances the understanding of video-question relationships, achieving
@@ -1189,12 +1193,12 @@ vital diagnostic tool, providing insights into clinical trajectories, but their
 irregular acquisition limits their utility. Existing tools for CXR
 interpretation are constrained by cross-sectional analysis, failing to capture
 temporal dynamics. To address this, we introduce CXR-TFT, a novel multi-modal
-framework that integrates temporally <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> CXR imaging and radiology reports
+framework that integrates temporally <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> CXR imaging and radiology reports
 with high-frequency clinical data, such as vital signs, laboratory values, and
 respiratory flow sheets, to predict the trajectory of CXR findings in
 critically ill patients. CXR-TFT leverages latent embeddings from a vision
 encoder that are temporally aligned with hourly clinical data through
-interpolation. A <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /> model is then trained to predict CXR embeddings at
+interpolation. A <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a> model is then trained to predict CXR embeddings at
 each hour, conditioned on previous embeddings and clinical measurements. In a
 retrospective study of 20,000 ICU patients, CXR-TFT demonstrated high accuracy
 in forecasting abnormal CXR findings up to 12 hours before they became
@@ -1212,12 +1216,12 @@ that can directly improve clinical outcomes.</p>
 </blockquote>
 <p>Generative models have recently demonstrated strong potential in
 multi-behavior recommendation systems, leveraging the expressive power of
-<img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />s and tokenization to generate personalized item sequences. However,
+<a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>s and tokenization to generate personalized item sequences. However,
 their adoption is hindered by (1) the lack of explicit information for token
 reasoning, (2) high computational costs due to quadratic attention complexity
 and dense sequence representations after tokenization, and (3) limited
 multi-scale modeling over user history. In this work, we propose GRACE
-(Generative Recommendation via journey-aware <img alt="key" src="https://img.shields.io/badge/sparse-F08080" /> Attention on
+(Generative Recommendation via journey-aware <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a> Attention on
 Chain-of-thought tokEnization), a novel generative framework for multi-behavior
 sequential recommendation. GRACE introduces a hybrid Chain-of-Thought (CoT)
 tokenization method that encodes user-item interactions with explicit
@@ -1238,11 +1242,11 @@ attention computation by up to 48% with long sequences.</p>
 <p>http://arxiv.org/abs/2507.14698v1</p>
 </blockquote>
 <p>EEG-based emotion recognition plays an important role in developing adaptive
-brain-computer <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> systems, yet faces two fundamental challenges in
+brain-computer <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> systems, yet faces two fundamental challenges in
 practical implementations: (1) effective integration of non-stationary
 spatial-temporal neural patterns, (2) robust adaptation to dynamic emotional
 intensity variations in real-world scenarios. This paper proposes SST-CL, a
-novel framework integrating spatial-temporal <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />s with curriculum
+novel framework integrating spatial-temporal <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>s with curriculum
 learning. Our method introduces two core components: a spatial encoder that
 models inter-channel relationships and a temporal encoder that captures
 multi-scale dependencies through windowed attention mechanisms, enabling
@@ -1260,12 +1264,12 @@ architectural components and the curriculum learning mechanism.</p>
 <p>2025-07-19</p>
 <p>http://arxiv.org/abs/2507.14651v1</p>
 </blockquote>
-<p>Hybrid vision <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />s combine the elements of conventional neural
-networks (NN) and vision <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />s (ViT) to enable lightweight and accurate
+<p>Hybrid vision <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>s combine the elements of conventional neural
+networks (NN) and vision <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>s (ViT) to enable lightweight and accurate
 detection. However, several challenges remain for their efficient deployment on
 resource-constrained edge devices. The hybrid models suffer from a widely
 diverse set of NN layer types and large intermediate data tensors, hampering
-efficient hardware <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" />. To enable their execution at the edge, this
+efficient hardware <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /></a>. To enable their execution at the edge, this
 paper proposes innovations across the hardware-scheduling stack: a.) At the
 lowest level, a configurable PE array supports all hybrid ViT layer types; b.)
 temporal loop re-ordering within one layer, enabling hardware support for
@@ -1281,7 +1285,7 @@ accelerator is implemented in 28nm CMOS, achieving a peak energy efficiency of
 <p>http://arxiv.org/abs/2507.14640v1</p>
 </blockquote>
 <p>A two-part affine approximation has been found to be a good approximation for
-<img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /> computations over certain subject object relations. Adapting the
+<a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a> computations over certain subject object relations. Adapting the
 Bigger Analogy Test Set, we show that the linear transformation Ws, where s is
 a middle layer representation of a subject token and W is derived from model
 derivatives, is also able to accurately reproduce final object states for many
@@ -1289,15 +1293,15 @@ relations. This linear technique is able to achieve 90% faithfulness on
 morphological relations, and we show similar findings multi-lingually and
 across models. Our findings indicate that some conceptual relationships in
 language models, such as morphology, are readily interpretable from latent
-space, and are <img alt="key" src="https://img.shields.io/badge/sparse-F08080" />ly encoded by cross-layer linear transformations.</p>
-<h2 id="kinform-kinetics-informed-feature-optimised-representation-models-for-enzyme-k_cat-and-k_m-prediction">KinForm Kinetics Informed Feature Optimised Representation Models for Enzyme $k_{cat}$ and $K_{M}$ Prediction</h2>
+space, and are <a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/sparse-F08080" /></a>ly encoded by cross-layer linear transformations.</p>
+<h2 id="kinform-kinetics-informed-feature-optimised-representation-models-for-enzyme-k_cat-and-k_m-prediction">KinForm Kinetics Informed Feature Optimised Representation Models for Enzyme <script type="math/tex">k_{cat}</script> and <script type="math/tex">K_{M}</script> Prediction</h2>
 <blockquote>
 <p>Authors: Saleh Alwer, Ronan Fleming</p>
 <p>2025-07-19</p>
 <p>http://arxiv.org/abs/2507.14639v1</p>
 </blockquote>
-<p>Kinetic parameters such as the turnover number ($k_{cat}$) and Michaelis
-constant ($K_{\mathrm{M}}$) are essential for modelling enzymatic activity but
+<p>Kinetic parameters such as the turnover number (<script type="math/tex">k_{cat}</script>) and Michaelis
+constant (<script type="math/tex">K_{\mathrm{M}}</script>) are essential for modelling enzymatic activity but
 experimental data remains limited in scale and diversity. Previous methods for
 predicting enzyme kinetics typically use mean-pooled residue embeddings from a
 single protein language model to represent the protein. We present KinForm, a
@@ -1305,7 +1309,7 @@ machine learning framework designed to improve predictive accuracy and
 generalisation for kinetic parameters by optimising protein feature
 representations. KinForm combines several residue-level embeddings
 (Evolutionary Scale Modeling Cambrian, Evolutionary Scale Modeling 2, and
-ProtT5-XL-UniRef50), taken from empirically selected intermediate <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />
+ProtT5-XL-UniRef50), taken from empirically selected intermediate <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>
 layers and applies weighted pooling based on per-residue binding-site
 probability. To counter the resulting high dimensionality, we apply
 dimensionality reduction using principal--component analysis (PCA) on
@@ -1314,7 +1318,7 @@ similarity-based oversampling strategy. KinForm outperforms baseline methods on
 two benchmark datasets. Improvements are most pronounced in low sequence
 similarity bins. We observe improvements from binding-site probability pooling,
 intermediate-layer selection, PCA, and oversampling of low-identity proteins.
-We also find that removing sequence <img alt="key" src="https://img.shields.io/badge/overlap-F08080" /> between folds provides a more
+We also find that removing sequence <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/overlap-F08080" /></a> between folds provides a more
 realistic evaluation of generalisation and should be the standard over random
 splitting when benchmarking kinetic prediction models.</p>
 <h2 id="agentic-satellite-augmented-low-altitude-economy-and-terrestrial-networks-a-survey-on-generative-approaches">Agentic Satellite-Augmented Low-Altitude Economy and Terrestrial Networks A Survey on Generative Approaches</h2>
@@ -1328,17 +1332,17 @@ networks (SLAETNs) demands intelligent and autonomous systems that can operate
 reliably across heterogeneous, dynamic, and mission-critical environments. To
 address these challenges, this survey focuses on enabling agentic artificial
 intelligence (AI), that is, artificial agents capable of perceiving, reasoning,
-and acting, through generative AI (GAI) and large language models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s). We
+and acting, through generative AI (GAI) and large language models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s). We
 begin by introducing the architecture and characteristics of SLAETNs, and
 analyzing the challenges that arise in integrating satellite, aerial, and
 terrestrial components. Then, we present a model-driven foundation by
 systematically reviewing five major categories of generative models:
 variational autoencoders (VAEs), generative adversarial networks (GANs),
-generative diffusion models (GDMs), <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based models (TBMs), and <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s.
+generative diffusion models (GDMs), <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based models (TBMs), and <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s.
 Moreover, we provide a comparative analysis to highlight their generative
 mechanisms, capabilities, and deployment trade-offs within SLAETNs. Building on
 this foundation, we examine how these models empower agentic functions across
-three domains: <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> enhancement, security and privacy protection, and
+three domains: <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> enhancement, security and privacy protection, and
 intelligent satellite tasks. Finally, we outline key future directions for
 building scalable, adaptive, and trustworthy generative agents in SLAETNs. This
 survey aims to provide a unified understanding and actionable reference for
@@ -1349,8 +1353,8 @@ advancing agentic AI in next-generation integrated networks.</p>
 <p>2025-07-18</p>
 <p>http://arxiv.org/abs/2507.14397v1</p>
 </blockquote>
-<p>This paper presents a limit study of <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based large language model
-(<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />) inference, focusing on the fundamental performance bottlenecks imposed by
+<p>This paper presents a limit study of <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based large language model
+(<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>) inference, focusing on the fundamental performance bottlenecks imposed by
 memory bandwidth, memory capacity, and synchronization overhead in distributed
 inference systems. We develop a hardware-agnostic performance model that
 abstracts away implementation details, enabling the analysis of a wide range of
@@ -1359,17 +1363,17 @@ HBM3 memory technology used in AI accelerators like GPUs and TPUs to systems
 based on advanced HBM4 and advanced 3D-stacked DRAM technology. It also covers
 SRAM-based designs and scaling techniques from distributed clusters with
 varying numbers of chips to wafer-scale integration. Our key findings for
-auto-regressive decoding are: i) serving <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s requires 100s of GB per server to
+auto-regressive decoding are: i) serving <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s requires 100s of GB per server to
 serve a model instance; ii) high memory bandwidth is critical for high per-user
 throughput; iii) exposed synchronization latencies to achieve collective
-<img alt="key" src="https://img.shields.io/badge/communication-F08080" /> must be around 1us else they make the memory bandwidth
+<a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> must be around 1us else they make the memory bandwidth
 ineffective; iv) DRAM-based designs have a fundamental advantage in terms of
 system-level efficiency as measured in throughput per cost or watt; and v)
 hardware designs can easily reach 2000+ user token/sec but getting to 10,000+
 tokens/sec will need smaller models, smaller context, or other forms of
 algorithmic advances. This study provides valuable insights into the
-fundamental performance limits of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> inference, highlighting the potential
-benefits of future hardware advancements and guiding the optimization of <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />
+fundamental performance limits of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> inference, highlighting the potential
+benefits of future hardware advancements and guiding the optimization of <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>
 deployment strategies.</p>
 <h2 id="characterizing-communication-patterns-in-distributed-large-language-model-inference">Characterizing Communication Patterns in Distributed Large Language Model Inference</h2>
 <blockquote>
@@ -1377,25 +1381,25 @@ deployment strategies.</p>
 <p>2025-07-18</p>
 <p>http://arxiv.org/abs/2507.14392v1</p>
 </blockquote>
-<p>Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) built on <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /> architectures have
+<p>Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) built on <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a> architectures have
 transformed natural language processing, achieving remarkable performance
 across diverse applications. While distributed inference frameworks enable
-practical deployment of these models, inter-GPU <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> creates
+practical deployment of these models, inter-GPU <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> creates
 significant performance constraints that limit service quality in real-world
-systems. This paper investigates <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> dynamics in distributed <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />
+systems. This paper investigates <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> dynamics in distributed <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>
 serving-analyzing how various parallelization approaches coordinate data
-exchange between GPU workers during inference. We study dense <img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" />-based
+exchange between GPU workers during inference. We study dense <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/transformer-FF8C00" /></a>-based
 models as representative examples of contemporary architectures widely used in
 operational deployments. Our work combines detailed profiling measurements with
-predictive analytical models to characterize <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> behavior across
+predictive analytical models to characterize <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> behavior across
 different parallelization configurations. Results show that tensor parallelism
 incurs substantial network overhead but delivers superior response times for
 brief sequences, pipeline parallelism minimizes data transfer requirements
 while increasing total latency, and combined approaches demand careful tuning
 to achieve balanced performance. These insights offer practical recommendations
-for selecting appropriate parallelization schemes in production <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> services
+for selecting appropriate parallelization schemes in production <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> services
 and identify key opportunities for optimizing inference frameworks and
-<img alt="key" src="https://img.shields.io/badge/communication-F08080" /> infrastructure.</p>
+<a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> infrastructure.</p>
 <h2 id="dpmt-dual-process-multi-scale-theory-of-mind-framework-for-real-time-human-ai-collaboration">DPMT Dual Process Multi-scale Theory of Mind Framework for Real-time Human-AI Collaboration</h2>
 <blockquote>
 <p>Authors: Xiyun Li, Yining Ding, Yuhua Jiang, Yunlong Zhao, Runpeng Xie, Shuang Xu, Yuanhua Ni, Yiqin Yang, Bo Xu</p>
@@ -1404,9 +1408,9 @@ and identify key opportunities for optimizing inference frameworks and
 </blockquote>
 <p>Real-time human-artificial intelligence (AI) collaboration is crucial yet
 challenging, especially when AI agents must adapt to diverse and unseen human
-behaviors in dynamic scenarios. Existing large language model (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />) agents
+behaviors in dynamic scenarios. Existing large language model (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>) agents
 often fail to accurately model the complex human mental characteristics such as
-domain intentions, especially in the absence of direct <img alt="key" src="https://img.shields.io/badge/communication-F08080" />. To
+domain intentions, especially in the absence of direct <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a>. To
 address this limitation, we propose a novel dual process multi-scale theory of
 mind (DPMT) framework, drawing inspiration from cognitive science dual process
 theory. Our DPMT framework incorporates a multi-scale theory of mind (ToM)
@@ -1423,16 +1427,16 @@ validate the contributions of our multi-scale ToM in the slow system.</p>
 <p>Ontology Matching (OM) is a cornerstone task of semantic interoperability,
 yet existing systems often rely on handcrafted rules or specialized models with
 limited adaptability. We present KROMA, a novel OM framework that harnesses
-Large Language Models (<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s) within a Retrieval-Augmented Generation (RAG)
+Large Language Models (<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s) within a Retrieval-Augmented Generation (RAG)
 pipeline to dynamically enrich the semantic context of OM tasks with
 structural, lexical, and definitional knowledge. To optimize both performance
 and efficiency, KROMA integrates a bisimilarity-based concept matching and a
 lightweight ontology refinement step, which prune candidate concepts and
-substantially reduce the <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> overhead from invoking <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s. Through
+substantially reduce the <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> overhead from invoking <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s. Through
 experiments on multiple benchmark datasets, we show that integrating knowledge
-retrieval with context-augmented <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s significantly enhances ontology matching,
-outperforming both classic OM systems and cutting-edge <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />-based approaches
-while keeping <img alt="key" src="https://img.shields.io/badge/communication-F08080" /> overhead comparable. Our study highlights the
+retrieval with context-augmented <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s significantly enhances ontology matching,
+outperforming both classic OM systems and cutting-edge <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>-based approaches
+while keeping <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/communication-F08080" /></a> overhead comparable. Our study highlights the
 feasibility and benefit of the proposed optimization techniques (targeted
 knowledge retrieval, prompt enrichment, and ontology refinement) for ontology
 matching at scale.</p>
@@ -1446,22 +1450,22 @@ matching at scale.</p>
 language models, such as chatbots and virtual assistants. As conversation
 histories become longer, existing large language models face increasing
 computational and memory challenges, which hinder their ability to provide
-efficient and responsive interactions. Most current <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /> methods either
+efficient and responsive interactions. Most current <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /></a> methods either
 compress the context or optimize key value caching, but they often rely on
 fixed or position-based heuristics that do not adapt well to the dynamic and
 unpredictable patterns found in actual multi-turn conversations. In this paper,
-we present LoopServe, an adaptive dual-phase inference <img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /> framework
+we present LoopServe, an adaptive dual-phase inference <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/acceleration-F08080" /></a> framework
 for large language models in multi-turn dialogues. LoopServe introduces two
 main innovations. First, it performs online sparsification during the
 prefilling phase by dynamically selecting the most important parts of the
 attention matrix for each new input. Second, it uses progressive key value
 compression during decoding by adaptively maintaining a relevant and efficient
 cache based on the most recently generated output tokens. We also propose a
-\href{https://huggingface.co/datasets/TreeAILab/Multi-turn_Long-context_Benchmark_for_<img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" />s}{new
+\href{https://huggingface.co/datasets/TreeAILab/Multi-turn_Long-context_Benchmark_for_<a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a>s}{new
 benchmark} with eleven multi-turn datasets that reflect realistic query
 positions and conversational dependencies. Extensive experiments demonstrate
 that LoopServe consistently achieves superior effectiveness compared to
-existing baselines and significantly accelerates <img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /> inference across a wide
+existing baselines and significantly accelerates <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="key" src="https://img.shields.io/badge/LLM-FF8C00" /></a> inference across a wide
 range of long-context dialogue tasks.</p>
               
             </div>
@@ -1494,6 +1498,7 @@ range of long-context dialogue tasks.</p>
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -1501,5 +1506,6 @@ range of long-context dialogue tasks.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

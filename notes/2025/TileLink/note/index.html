@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -88,7 +92,7 @@
 <blockquote>
 <p>Size Zheng, Jin Fang, Xuegui Zheng, Qi Hou, Wenlei Bao, Ningxin Zheng, Ziheng Jiang, Dongyang Wang, Jianxi Ye, Haibin Lin, Li-Wen Chang, Xin Liu</p>
 </blockquote>
-<p><img alt="" src="../fig7.png" /></p>
+<p><a class="glightbox" href="../fig7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig7.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Large deep learning models have achieved state-of-the-art performance in a
 wide range of tasks. These models often necessitate distributed systems for
@@ -107,7 +111,7 @@ communication and computation, linking these two parts via tile-centric
 primitives. In the backend, TileLink translates these primitives into low-level
 communication instructions, integrating the communication and computation
 components to achieve overlapped execution. In experiments, TileLink achieves
-from $1.17\times$ to $20.76\times$ speedup to non-overlapping baseline and
+from <script type="math/tex">1.17\times</script> to <script type="math/tex">20.76\times</script> speedup to non-overlapping baseline and
 achieves performance comparable to state-of-the-art overlapping libraries on
 GPUs.</p>
               
@@ -141,6 +145,7 @@ GPUs.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -148,5 +153,6 @@ GPUs.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

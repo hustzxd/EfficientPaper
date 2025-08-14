@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -88,7 +92,7 @@
 <blockquote>
 <p>Combine weight sparsity and activation sparsity</p>
 </blockquote>
-<p><img alt="" src="../cover.jpg" /></p>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../cover.jpg" /></a></p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#two-sparsities-are-better-than-one-unlocking-the-performance-benefits-of-sparse-sparse-networks">Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks</a><ul>
@@ -108,7 +112,7 @@
 <li>(c) <strong>Route</strong>: the appropriate element-wise products are routed separately for each output.</li>
 <li>(d) <strong>Sum</strong>: routed products are aggregated and summed to form a separate result for each sparse entity.</li>
 </ul>
-<p><img alt="" src="../SSgif.gif" /></p>
+<p><a class="glightbox" href="../SSgif.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../SSgif.gif" /></a></p>
 <h3 id="sparse-weight-and-sparse-activation">sparse weight and sparse activation</h3>
 <ul>
 <li>a) <strong>Combine</strong>: multiple sparse weight structures are overlaid to form a single dense structure. This is done offline as a preprocessing step.</li>
@@ -116,7 +120,7 @@
 <li>(c) <strong>Multiply</strong>: each non-zero activation is multiplied by the corresponding weight elements in the dense structure (Hadamard product).</li>
 <li>(d) <strong>Route</strong>: the appropriate element-wise products are routed separately for each output.</li>
 <li>(e) <strong>Sum</strong>: routed products are aggregated and summed to form a separate result for each sparse matrix.
-<img alt="" src="../fig5a.jpg" /></li>
+<a class="glightbox" href="../fig5a.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5a.jpg" /></a></li>
 </ul>
               
             </div>
@@ -149,6 +153,7 @@
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -156,5 +161,6 @@
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

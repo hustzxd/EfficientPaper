@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="prosparse-introducing-and-enhancing-intrinsic-activation-sparsity-within-large-language-models">ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models</h1>
-<p><img alt="" src="../prosparse.jpg" /></p>
+<p><a class="glightbox" href="../prosparse.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../prosparse.jpg" /></a></p>
 <h2 id="method">Method</h2>
 <p>There are three stages of ProSparse:
 1. ReLU replacement
@@ -97,7 +101,7 @@
     - Enhance higher sparsity.
 3. Activation threshold shifting
     - Modify the vanilla ReLU with FAT ReLU.</p>
-<p><img alt="" src="../activation.png" /></p>
+<p><a class="glightbox" href="../activation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../activation.png" /></a></p>
 <p>This paper provides two models <a href="https://huggingface.co/SparseLLM/prosparse-llama-2-7b">prosparse-llama-2-7b</a> and <a href="https://huggingface.co/SparseLLM/prosparse-llama-2-13b">prosparse-llama-2-13b</a> in Huggingface.</p>
 <h2 id="experiment">Experiment</h2>
 <h3 id="real-accelerate-on-hardware">Real accelerate on hardware</h3>
@@ -135,8 +139,8 @@
 <li>other collected data.</li>
 </ol>
 <p>Prosparse achieves better result than Original model. I think the orginal models do not adopt <strong>Instruction Finetuning</strong>, but Prosparse does.
-<img alt="" src="../exp1.jpg" /></p>
-<p><img alt="" src="../exp2.jpg" /></p>
+<a class="glightbox" href="../exp1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../exp1.jpg" /></a></p>
+<p><a class="glightbox" href="../exp2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../exp2.jpg" /></a></p>
               
             </div>
           </div><footer>
@@ -168,6 +172,7 @@
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -175,5 +180,6 @@
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

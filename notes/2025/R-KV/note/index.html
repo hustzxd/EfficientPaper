@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -88,7 +92,7 @@
 <blockquote>
 <p>Zefan Cai, Wen Xiao, Hanshi Sun, Cheng Luo, Yikai Zhang, Ke Wan, Yucheng Li, Yeyang Zhou, Li-Wen Chang, Jiuxiang Gu, Zhen Dong, Anima Anandkumar, Abedelkadir Asi, Junjie Hu</p>
 </blockquote>
-<p><img alt="" src="../fig1.png" /></p>
+<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Reasoning models have demonstrated impressive performance in self-reflection
 and chain-of-thought reasoning. However, they often produce excessively long
@@ -111,7 +115,7 @@ reasoning datasets.</p>
 <li>Decoding-time Compression</li>
 <li>不止关注prefill时的kv 压缩，在decoding时，每次decode特定长度的token后，对kv 进行压缩</li>
 <li>Importance Scoring via Attention Weights</li>
-<li>和之前方法相似，根据最近的 $\alpha$ 个token得到的Attention Weight来判断哪些kv cache更重要</li>
+<li>和之前方法相似，根据最近的 <script type="math/tex">\alpha</script> 个token得到的Attention Weight来判断哪些kv cache更重要</li>
 <li>Redundancy Estimation via Semantic Similarity</li>
 <li>对K cache去冗余，先对K 取均值，然后求所有K 的余弦相似性，数值较大表示越冗余。</li>
 <li>Joint Selection Strategy for KV Cache Retention</li>
@@ -148,6 +152,7 @@ reasoning datasets.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -155,5 +160,6 @@ reasoning datasets.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

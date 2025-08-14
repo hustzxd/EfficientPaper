@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -88,7 +92,7 @@
 <blockquote>
 <p>This is a training-based structured pruning approach.</p>
 </blockquote>
-<p><img alt="" src="../cover.jpg" /></p>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../cover.jpg" /></a></p>
 <p>The limitations of one-shot pruning:
 - It depends heavily on pre-defined weight importance metrics for pruning decisions, and thus adopts a <strong>uniform-sparsity ratio across all layers</strong> without considering the different redundancy at each layer.
 - <strong>Error recovery</strong> for remaining model parameters is limited compared to training-based pruning, potentially affecting the final performance.</p>
@@ -117,21 +121,21 @@
 <p>Learning pruning mask values with augmented L0 regularization</p>
 <ul>
 <li>
-<p>重参数化mask, $\alpha$ is the learnable parameter:
-<img alt="" src="../eq4.jpg" /></p>
+<p>重参数化mask, <script type="math/tex">\alpha</script> is the learnable parameter:
+<a class="glightbox" href="../eq4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq4.jpg" /></a></p>
 </li>
 <li>
 <p>Mask regularization for the expected pruning ratio:
-<img alt="" src="../eq5.jpg" /></p>
+<a class="glightbox" href="../eq5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq5.jpg" /></a></p>
 </li>
 </ul>
 <h2 id="experiments">Experiments</h2>
 <p><strong>The impact of pruning data.</strong> GPT4-Alpaca is the best from the three datasets.
-<img alt="" src="../tb5.jpg" /></p>
+<a class="glightbox" href="../tb5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tb5.jpg" /></a></p>
 <p><strong>The effectiveness of collaborative pruning.</strong> Table 6 indicates that removing the pruning prompt at either stage significantly reduces the performance of pruned LLMs, particularly on commonsense reasoning and reading comprehension tasks. This demonstrates the effectiveness of our proposed collaborative pruning. <strong>Pruning prompt</strong> 很重要！
-<img alt="" src="../tb6.jpg" /></p>
+<a class="glightbox" href="../tb6.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tb6.jpg" /></a></p>
 <p>The effectiveness of post fine-tuning. fine-tuning可以轻微提高表现，但是在特定任务上会产生负面的影响；去掉fine-tuning后，大部分任务的结果会有所下降，但是也存在异常提高的情况，说明fine-tuning并不是必须的，不应过分依赖fine-tuning.
-<img alt="" src="../tb7.jpg" /></p>
+<a class="glightbox" href="../tb7.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tb7.jpg" /></a></p>
               
             </div>
           </div><footer>
@@ -163,6 +167,7 @@
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -170,5 +175,6 @@
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

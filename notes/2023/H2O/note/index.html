@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models - Efficient Paper</title>
+    <title>H_2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models";
+        var mkdocs_page_name = "H_2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models";
         var mkdocs_page_input_path = "notes/2023/H2O/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -75,7 +79,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models</li>
+      <li class="breadcrumb-item active">H_2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -84,8 +88,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="h_2o-heavy-hitter-oracle-for-efficient-generative-inference-of-large-language-models">H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models</h1>
-<p><img alt="" src="../h2o.png" /></p>
+                <h1 id="h_2o-heavy-hitter-oracle-for-efficient-generative-inference-of-large-language-models">H<script type="math/tex">_2</script>O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models</h1>
+<p><a class="glightbox" href="../h2o.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../h2o.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Large Language Models (LLMs), despite their recent impressive
 accomplishments, are notably cost-prohibitive to deploy, particularly for
@@ -96,21 +100,21 @@ scaling linearly with the sequence length and batch size. In this paper, we
 introduce a novel approach for implementing the KV cache which significantly
 reduces its memory footprint. Our approach is based on the noteworthy
 observation that a small portion of tokens contributes most of the value when
-computing attention scores. We call these tokens Heavy Hitters (H$_2$). Through
-a comprehensive investigation, we find that (i) the emergence of H$_2$ is
+computing attention scores. We call these tokens Heavy Hitters (H<script type="math/tex">_2</script>). Through
+a comprehensive investigation, we find that (i) the emergence of H<script type="math/tex">_2</script> is
 natural and strongly correlates with the frequent co-occurrence of tokens in
 the text, and (ii) removing them results in significant performance
-degradation. Based on these insights, we propose Heavy Hitter Oracle (H$_2$O),
+degradation. Based on these insights, we propose Heavy Hitter Oracle (H<script type="math/tex">_2</script>O),
 a KV cache eviction policy that dynamically retains a balance of recent and
-H$_2$ tokens. We formulate the KV cache eviction as a dynamic submodular
+H<script type="math/tex">_2</script> tokens. We formulate the KV cache eviction as a dynamic submodular
 problem and prove (under mild assumptions) a theoretical guarantee for our
 novel eviction algorithm which could help guide future work. We validate the
 accuracy of our algorithm with OPT, LLaMA, and GPT-NeoX across a wide range of
-tasks. Our implementation of H$_2$O with 20% heavy hitters improves the
+tasks. Our implementation of H<script type="math/tex">_2</script>O with 20% heavy hitters improves the
 throughput over three leading inference systems DeepSpeed Zero-Inference,
-Hugging Face Accelerate, and FlexGen by up to 29$\times$, 29$\times$, and
-3$\times$ on OPT-6.7B and OPT-30B. With the same batch size, H2O can reduce the
-latency by up to 1.9$\times$. The code is available at
+Hugging Face Accelerate, and FlexGen by up to 29<script type="math/tex">\times</script>, 29<script type="math/tex">\times</script>, and
+3<script type="math/tex">\times</script> on OPT-6.7B and OPT-30B. With the same batch size, H2O can reduce the
+latency by up to 1.9<script type="math/tex">\times</script>. The code is available at
 https://github.com/FMInference/H2O.</p>
               
             </div>
@@ -143,6 +147,7 @@ https://github.com/FMInference/H2O.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -150,5 +155,6 @@ https://github.com/FMInference/H2O.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

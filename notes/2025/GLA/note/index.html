@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="hardware-efficient-attention-for-fast-decoding">Hardware-Efficient Attention for Fast Decoding</h1>
-<p><img alt="" src="../gla.png" /></p>
+<p><a class="glightbox" href="../gla.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../gla.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>LLM decoding is bottlenecked for large batches and long contexts by loading
 the key-value (KV) cache from high-bandwidth memory, which inflates per-token
@@ -101,11 +105,11 @@ without compromising model quality. We then introduce Grouped Latent Attention
 for fast decoding while maintaining high model quality. Experiments show that
 GTA matches Grouped-Query Attention (GQA) quality while using roughly half the
 KV cache and that GLA matches Multi-head Latent Attention (MLA) and is easier
-to shard. Our optimized GLA kernel is up to 2$\times$ faster than FlashMLA, for
+to shard. Our optimized GLA kernel is up to 2<script type="math/tex">\times</script> faster than FlashMLA, for
 example, in a speculative decoding setting when the query length exceeds one.
 Furthermore, by fetching a smaller KV cache per device, GLA reduces end-to-end
 latency and increases throughput in online serving benchmarks by up to
-2$\times$.</p>
+2<script type="math/tex">\times</script>.</p>
 <p>MLA的改进，将latent划分group，类似MHA到GQA的改进。</p>
               
             </div>
@@ -138,6 +142,7 @@ latency and increases throughput in online serving benchmarks by up to
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -145,5 +150,6 @@ latency and increases throughput in online serving benchmarks by up to
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

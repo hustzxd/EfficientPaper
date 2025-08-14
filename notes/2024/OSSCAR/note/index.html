@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="osscar-one-shot-structured-pruning-in-vision-and-language-models-with-combinatorial-optimization">OSSCAR: One-Shot Structured Pruning in Vision and Language Models with Combinatorial Optimization</h1>
-<p><img alt="" src="../../../blank.jpg" /></p>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Structured pruning is a promising approach for reducing the inference costs
 of large vision and language models. By removing carefully chosen structures,
@@ -100,15 +104,17 @@ exploits low-rank updates for efficient local search. Our framework is time and
 memory-efficient and considerably improves upon state-of-the-art one-shot
 methods on vision models (e.g., ResNet50, MobileNet) and language models (e.g.,
 OPT-1.3B -- OPT-30B). For language models, e.g., OPT-2.7B, OSSCAR can lead to
-$125\times$ lower test perplexity on WikiText with $2\times$ inference time
+<script type="math/tex">125\times</script> lower test perplexity on WikiText with <script type="math/tex">2\times</script> inference time
 speedup in comparison to the state-of-the-art ZipLM approach. Our framework is
-also $6\times$ -- $8\times$ faster. Notably, our work considers models with
-tens of billions of parameters, which is up to $100\times$ larger than what has
+also <script type="math/tex">6\times</script> -- <script type="math/tex">8\times</script> faster. Notably, our work considers models with
+tens of billions of parameters, which is up to <script type="math/tex">100\times</script> larger than what has
 been previously considered in the structured pruning literature.</p>
 <p>structured pruning的方式与之前方法相同，layer-by-layer优化每层的loss，loss由一阶和二阶信息构建。</p>
 <p>如何搜索mask，从而最小化loss，是一个问题。首先是loss的计算比较耗时，论文中给出使用历史的计算和变化的mask位置来减少loss计算开销，这个也容易理解，只需要计算差值就好。因此，论文中给出一个local search的搜索方法。</p>
 <p>文中没有说是否为unform pruning ratio，只给了加速比，通过代码发现每一层配置的pruning ratio是一致的。</p>
-<p>$\hat{w}$</p>
+<p>
+<script type="math/tex">\hat{w}</script>
+</p>
               
             </div>
           </div><footer>
@@ -140,6 +146,7 @@ been previously considered in the structured pruning literature.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -147,5 +154,6 @@ been previously considered in the structured pruning literature.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

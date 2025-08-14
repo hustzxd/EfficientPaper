@@ -8,19 +8,34 @@
 .rst-content table.docutils th {
     white-space: normal;
     word-break: keep-all;
+    font-size: 16px;
 }
-
+/* Meta */
 .rst-content table.docutils td:nth-child(1),
 .rst-content table.docutils th:nth-child(1) {
     min-width: calc(1 * 10ch);
 }
 
+/* Title */
 .rst-content table.docutils td:nth-child(2),
 .rst-content table.docutils th:nth-child(2) {
-    min-width: calc(6 * 10ch);
+    min-width: calc(4 * 10ch);
 }
 
+/* Cover */
 .rst-content table.docutils td:nth-child(3),
 .rst-content table.docutils th:nth-child(3) {
+    min-width: calc(1 * 10ch);
+}
+
+/* Publication */
+.rst-content table.docutils td:nth-child(4),
+.rst-content table.docutils th:nth-child(4) {
+    min-width: calc(1 * 10ch);
+}
+
+/* Code */
+.rst-content table.docutils td:nth-child(5),
+.rst-content table.docutils th:nth-child(5) {
     min-width: calc(1 * 10ch);
 }

@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="post-training-sparse-attention-with-double-sparsity">Post-Training Sparse Attention with Double Sparsity</h1>
-<p><img alt="" src="../../../blank.jpg" /></p>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>The inference process for large language models is slow and memory-intensive,
 with one of the most critical bottlenecks being excessive Key-Value (KV) cache
@@ -99,13 +103,13 @@ static, allowing us to use offline calibration to make it efficient at runtime,
 thereby enabling accurate and efficient identification of important tokens.
 Moreover, this method can be combined with offloading to achieve significant
 memory usage reduction. Experimental results demonstrate that Double Sparsity
-can achieve $\frac{1}{16}$ token and channel sparsity with minimal impact on
+can achieve <script type="math/tex">\frac{1}{16}</script> token and channel sparsity with minimal impact on
 accuracy across various tasks, including wiki-2 perplexity, key-value
 retrieval, and long context benchmarks with models including Llama-2-7B,
-Llama-2-70B, and Mixtral-8x7B. It brings up to a 14.1$\times$ acceleration in
-attention operations and a 1.9$\times$ improvement in end-to-end inference on
+Llama-2-70B, and Mixtral-8x7B. It brings up to a 14.1<script type="math/tex">\times</script> acceleration in
+attention operations and a 1.9<script type="math/tex">\times</script> improvement in end-to-end inference on
 GPUs. With offloading, it achieves a decoding speed acceleration of
-16.3$\times$ compared to state-of-the-art solutions at a sequence length of
+16.3<script type="math/tex">\times</script> compared to state-of-the-art solutions at a sequence length of
 256K. Our code is publicly available at
 https://github.com/andy-yang-1/DoubleSparse.</p>
               
@@ -139,6 +143,7 @@ https://github.com/andy-yang-1/DoubleSparse.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -146,5 +151,6 @@ https://github.com/andy-yang-1/DoubleSparse.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

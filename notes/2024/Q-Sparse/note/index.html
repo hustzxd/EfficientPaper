@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="q-sparse-all-large-language-models-can-be-fully-sparsely-activated">Q-Sparse: All Large Language Models can be Fully Sparsely-Activated</h1>
-<p><img alt="" src="../q-sparse.png" /></p>
+<p><a class="glightbox" href="../q-sparse.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../q-sparse.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>We introduce, Q-Sparse, a simple yet effective approach to training
 sparsely-activated large language models (LLMs). Q-Sparse enables full sparsity
@@ -134,6 +138,7 @@ and energy consumption, of future LLMs.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -141,5 +146,6 @@ and energy consumption, of future LLMs.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,11 +89,11 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="qa-lora">QA-LoRA</h1>
-<p><img alt="" src="../qalora.jpg" /></p>
+<p><a class="glightbox" href="../qalora.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../qalora.jpg" /></a></p>
 <p>QLoRA主要用于减少finetuning时的memory cost，相较于LoRA，它的性能没有优势，但是QLoRA在进行推理时，有需要把AB两个高精度表示的矩阵融合到低位宽的权重中，导致最终融合的权重表示为高位宽，并不能满足量化的约束。</p>
-<p><img alt="" src="../IMG_0448.PNG" /></p>
+<p><a class="glightbox" href="../IMG_0448.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../IMG_0448.PNG" /></a></p>
 <p>实验结果对比，比QLoRA差一点，也算正常
-<img alt="" src="../qa_lora_result.jpg" /></p>
+<a class="glightbox" href="../qa_lora_result.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../qa_lora_result.jpg" /></a></p>
               
             </div>
           </div><footer>
@@ -121,6 +125,7 @@
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -128,5 +133,6 @@
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

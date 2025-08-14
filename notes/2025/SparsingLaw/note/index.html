@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -94,12 +98,12 @@ existing works lack comprehensive and quantitative research on the correlation
 between activation sparsity and potentially influential factors. In this paper,
 we present a comprehensive study on the quantitative scaling properties and
 influential factors of the activation sparsity within decoder-only
-Transformer-based LLMs. Specifically, we propose PPL-$p\%$ sparsity, a precise
+Transformer-based LLMs. Specifically, we propose PPL-<script type="math/tex">p\%</script> sparsity, a precise
 and performance-aware activation sparsity metric that is applicable to any
 activation function. Through extensive experiments, we find several important
 phenomena. Firstly, different activation functions exhibit comparable
 performance but opposite training-time sparsity trends. The activation ratio
-(i.e., $1-\mathrm{sparsity\ ratio}$) evolves as a convergent increasing
+(i.e., <script type="math/tex">1-\mathrm{sparsity\ ratio}</script>) evolves as a convergent increasing
 power-law and decreasing logspace power-law with the amount of training data
 for SiLU-activated and ReLU-activated LLMs, respectively. These demonstrate
 that ReLU is more efficient as the activation function than SiLU and can
@@ -112,11 +116,11 @@ with the parameter scale, i.e., the activation patterns within LLMs are
 insensitive to the parameter scale. These empirical laws towards LLMs with
 greater activation sparsity have important implications for making LLMs more
 efficient and interpretable.</p>
-<p><img alt="" src="../fig3.png" /></p>
+<p><a class="glightbox" href="../fig3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.png" /></a></p>
 <ul>
 <li>提出PPL-p%评估指标，其实就是帕累托曲线，这里p%表示sparsity ratio，越高一半模型的精度也会越差，比如ppl越高。图中给的是activation ratio，正好与p%相加=100%。</li>
 </ul>
-<p><img alt="" src="../fig4.png" /></p>
+<p><a class="glightbox" href="../fig4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.png" /></a></p>
 <ul>
 <li>PPL-1%来评估模型对sparse的忍受程度</li>
 <li>ReLU：更多的训练数据可以导致模型更加稀疏</li>
@@ -128,14 +132,14 @@ efficient and interpretable.</p>
 <p>width-depth ratio 表示 hidden dimension 与 layer number的比例，越高证明这个LLM越胖，这个参数也与activation sparsity表现有密切关系</p>
 </li>
 </ul>
-<p><img alt="" src="../fig5.png" /></p>
+<p><a class="glightbox" href="../fig5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.png" /></a></p>
 <ul>
 <li>以0.1B模型训练举例</li>
 <li>Fig.5表示Width-Depth Ratio在[0, 114]之间，模型会逐渐变胖，且激活比例越来越高，所以希望模型越瘦越好，有利于activation sparsity</li>
 <li>Fig.6表示Width-Depth Ratio在[74, 182]之间，不胖不瘦时训练loss最好</li>
 <li>综上，可以选取 Width-Depth Ratio=74，可以满足training loss 和 activation sparsity 需求</li>
 </ul>
-<p><img alt="" src="../fig7.png" /></p>
+<p><a class="glightbox" href="../fig7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig7.png" /></a></p>
 <ul>
 <li>确定模型的 Width-Depth ，且training data 足够多时，model的参数量对 activation sparsity 影响很小</li>
 <li>但是小模型更加容易收敛 （从 activation sparsity变化的角度）</li>
@@ -176,6 +180,7 @@ efficient and interpretable.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -183,5 +188,6 @@ efficient and interpretable.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

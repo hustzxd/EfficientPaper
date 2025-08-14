@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="maskllm-learnable-semi-structured-sparsity-for-large-language-models">MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models</h1>
-<p><img alt="" src="../maskllm.png" /></p>
+<p><a class="glightbox" href="../maskllm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../maskllm.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Large Language Models (LLMs) are distinguished by their massive parameter
 counts, which typically result in significant redundancy. This work introduces
@@ -138,6 +142,7 @@ sparsity to downstream tasks or domains. Code is available at
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -145,5 +150,6 @@ sparsity to downstream tasks or domains. Code is available at
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

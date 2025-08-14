@@ -1,0 +1,30 @@
+paper {
+  title: "SageAttention2: Efficient Attention with Thorough Outlier Smoothing and Per-thread INT4 Quantization"
+  abbr: "SageAttention2"
+  url: "http://arxiv.org/abs/2411.10958v6"
+  authors: "Jintao Zhang"
+  authors: "Haofeng Huang"
+  authors: "Pengle Zhang"
+  authors: "Jia Wei"
+  authors: "Jun Zhu"
+  authors: "Jianfei Chen"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-ml/SageAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+}
+cover {
+  url: ""
+}

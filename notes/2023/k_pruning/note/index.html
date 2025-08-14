@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -88,7 +92,7 @@
 <blockquote>
 <p>This is a retraning-free structured pruning approach.</p>
 </blockquote>
-<p><img alt="" src="../kp.jpg" /></p>
+<p><a class="glightbox" href="../kp.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../kp.jpg" /></a></p>
 <h2 id="method">Method</h2>
 <ul>
 <li>Key idea</li>
@@ -106,26 +110,26 @@
 <li>knowledge-preserving pruning</li>
 </ul>
 <p>Transformer Block consists of MHA and MLP.
-<img alt="" src="../transformer.jpg" /></p>
+<a class="glightbox" href="../transformer.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../transformer.jpg" /></a></p>
 <p>The model-wise predictive knowledge loss is defined as the KL-divergence of logits between the pruned model and the dense model.
-<img alt="" src="../eq4.jpg" /></p>
+<a class="glightbox" href="../eq4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq4.jpg" /></a></p>
 <p>The sub-layerwise representational knowledge loss is defined as the F-norm (MSE loss) of the outputs.
-<img alt="" src="../eq5.jpg" /></p>
+<a class="glightbox" href="../eq5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq5.jpg" /></a></p>
 <p>The improtance scores are defined as:
-<img alt="" src="../score.jpg" /></p>
-<p>where $\lambda = \{0.00025, 1\}$ and $\mu = 64$.</p>
+<a class="glightbox" href="../score.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../score.jpg" /></a></p>
+<p>where <script type="math/tex">\lambda = \\{0.00025, 1\\}</script> and <script type="math/tex">\mu = 64</script>.</p>
 <ul>
 <li>不同层之间的score是可以互相比较的吗？</li>
-<li>对于MLP， $\lambda$ 取值非常小，只看predictive loss，可以跨层比较</li>
-<li>但是对于MHA， $\lambda$ 取值比较大，predictive/representational 都看，两者兼顾</li>
+<li>对于MLP， <script type="math/tex">\lambda</script> 取值非常小，只看predictive loss，可以跨层比较</li>
+<li>但是对于MHA， <script type="math/tex">\lambda</script> 取值比较大，predictive/representational 都看，两者兼顾</li>
 <li>MHA 与 MLP 也可以互相比较？</li>
-<li>通过配比 $\mu$ 来实现</li>
+<li>通过配比 <script type="math/tex">\mu</script> 来实现</li>
 </ul>
 <p>总之，这些超参数的引入用来均衡，跨层与跨算子的比较。</p>
-<p><img alt="" src="../alg.jpg" /></p>
+<p><a class="glightbox" href="../alg.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../alg.jpg" /></a></p>
 <h2 id="results">Results</h2>
-<p><img alt="" src="../exp.jpg" />
-<img alt="" src="../exp2.jpg" /></p>
+<p><a class="glightbox" href="../exp.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../exp.jpg" /></a>
+<a class="glightbox" href="../exp2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../exp2.jpg" /></a></p>
               
             </div>
           </div><footer>
@@ -157,6 +161,7 @@
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -164,5 +169,6 @@
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>

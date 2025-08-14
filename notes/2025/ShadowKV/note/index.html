@@ -23,7 +23,11 @@
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
-</head>
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 
 <body class="wy-body-for-nav" role="document">
 
@@ -85,7 +89,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="shadowkv-kv-cache-in-shadows-for-high-throughput-long-context-llm-inference">ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference</h1>
-<p><img alt="" src="../shadowkv.png" /></p>
+<p><a class="glightbox" href="../shadowkv.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../shadowkv.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>With the widespread deployment of long-context large language models (LLMs),
 there has been a growing demand for efficient support of high-throughput
@@ -103,8 +107,8 @@ employs an accurate KV selection strategy that reconstructs minimal sparse KV
 pairs on-the-fly. By evaluating ShadowKV on a broad range of benchmarks,
 including RULER, LongBench, and Needle In A Haystack, and models like
 Llama-3.1-8B, Llama-3-8B-1M, GLM-4-9B-1M, Yi-9B-200K, Phi-3-Mini-128K, and
-Qwen2-7B-128K, we demonstrate that it can support up to 6$\times$ larger batch
-sizes and boost throughput by up to 3.04$\times$ on an A100 GPU without
+Qwen2-7B-128K, we demonstrate that it can support up to 6<script type="math/tex">\times</script> larger batch
+sizes and boost throughput by up to 3.04<script type="math/tex">\times</script> on an A100 GPU without
 sacrificing accuracy, even surpassing the performance achievable with infinite
 batch size under the assumption of infinite GPU memory. The code is available
 at https://github.com/bytedance/ShadowKV.</p>
@@ -115,14 +119,14 @@ at https://github.com/bytedance/ShadowKV.</p>
 </ul>
 <h2 id="shadowkv">ShadowKV</h2>
 <h3 id="pre-filling">Pre-filling</h3>
-<p><img alt="" src="../fig4.png" /></p>
+<p><a class="glightbox" href="../fig4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.png" /></a></p>
 <ul>
 <li>对Pre-RoPE的K进行SVD分解，</li>
 <li>对Post-RoPE的K 按照chunk进行分组，每组保留mean</li>
 <li>如果组内的 cosine 相似度很低，那么这组作为outlier来单独保存。</li>
 </ul>
 <h3 id="decoding">Decoding</h3>
-<p><img alt="" src="../fig5.png" /></p>
+<p><a class="glightbox" href="../fig5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.png" /></a></p>
 <ul>
 <li>根据K的landmark与Q进行计算，得到softmax的score，</li>
 <li>选择最高的几个score对应的index，根据index选择稀疏V</li>
@@ -162,6 +166,7 @@ at https://github.com/bytedance/ShadowKV.</p>
     <script>var base_url = "../../../..";</script>
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
@@ -169,5 +174,6 @@ at https://github.com/bytedance/ShadowKV.</p>
         });
     </script>
 
-</body>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
 </html>
