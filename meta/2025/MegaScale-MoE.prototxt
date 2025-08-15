@@ -21,8 +21,8 @@ paper {
   authors: "Xuanzhe Liu"
   authors: "Xin Jin"
   authors: "Xin Liu"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "ByteDance Seed"
+  institutions: "Peking University"
 }
 pub {
   where: "arXiv"
@@ -39,5 +39,5 @@ keyword {
   words: overlap
 }
 cover {
-  url: ""
+  url: "fig8.png"
 }
