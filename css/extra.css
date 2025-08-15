@@ -39,3 +39,279 @@
 .rst-content table.docutils th:nth-child(5) {
     min-width: calc(1 * 10ch);
 }
+
+/* Prototxt 语法高亮样式 - 强制去除所有下划线 */
+.language-prototxt,
+.language-prototxt *,
+pre .language-prototxt,
+pre .language-prototxt *,
+code.language-prototxt,
+code.language-prototxt * {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Prototxt 特定元素样式 - 清晰无重影，无下划线 */
+.language-prototxt .token {
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.comment {
+    color: #5a7d47 !important;
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.string {
+    color: #a85a2a !important;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.number {
+    color: #2a7a3a !important;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.boolean {
+    color: #0f4c81 !important;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.property,
+.language-prototxt .token.field-name {
+    color: #1f5582 !important;
+    font-weight: 500;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.class-name,
+.language-prototxt .token.message-type {
+    color: #2d6356 !important;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.punctuation {
+    color: #444444 !important;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+
+.language-prototxt .token.operator {
+    color: #444444 !important;
+    font-weight: 400;
+    text-decoration: none !important;
+}
+
+/* 弹窗中的代码块样式 */
+pre code.language-prototxt {
+    background-color: #faf9f7 !important;
+    color: #2c2c2c !important;
+    border-radius: 4px;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    text-shadow: none;
+    text-decoration: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 重写弹窗内容区域背景色以匹配米白色主题 */
+.modal-content pre {
+    background: #faf9f7 !important;
+}
+
+/* 添加关键字高亮 */
+.token.keyword {
+    color: #8e4585 !important;
+    font-weight: bold;
+}
+
+/* 增强可读性的行号和间距 */
+.language-prototxt {
+    tab-size: 2;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
+}
+
+/* 为不同嵌套级别添加缩进指示 */
+pre code.language-prototxt {
+    white-space: pre;
+    overflow-wrap: normal;
+}
+
+/* 简化的数字和布尔值样式 - 移除背景避免重影 */
+.token.number {
+    color: #2a7a3a !important;
+}
+
+.token.boolean {
+    color: #0f4c81 !important;
+    font-weight: bold;
+}
+
+/* 简化的字符串样式 */
+.token.string {
+    color: #a85a2a !important;
+}
+
+/* URL 链接样式 - 只为真正的URL添加下划线 */
+.language-prototxt .token.url {
+    color: #1565c0 !important;
+    text-decoration: underline;
+}
+
+.language-prototxt .token.url:not([href*="http"]) {
+    text-decoration: none !important;
+}
+
+/* 变量/标识符样式 */
+.language-prototxt .token.variable {
+    color: #8a6914 !important;
+    text-decoration: none !important;
+}
+
+/* 消息名称样式 */
+.language-prototxt .token.class-name {
+    color: #2d6356 !important;
+    font-weight: bold;
+    font-size: 1.05em;
+    text-decoration: none !important;
+}
+
+/* 强制重置所有可能的装饰线样式 */
+pre code.language-prototxt,
+pre code.language-prototxt *,
+.language-prototxt,
+.language-prototxt *,
+.language-prototxt .token,
+.language-prototxt .token *,
+.prism-previewer,
+.prism-previewer * {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    text-underline-offset: 0 !important;
+    text-decoration-thickness: 0 !important;
+    text-decoration-skip: none !important;
+    text-decoration-skip-ink: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+    outline: none !important;
+    -webkit-text-decoration: none !important;
+    -webkit-text-decoration-line: none !important;
+    -webkit-text-decoration-style: none !important;
+    -webkit-text-decoration-color: transparent !important;
+}
+
+/* 特别针对可能的链接样式重置 */
+a .language-prototxt,
+a .language-prototxt *,
+.language-prototxt a,
+.language-prototxt a * {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* 终极装饰线移除 - 覆盖所有可能的样式来源 */
+*[class*="language-prototxt"] * {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    outline: none !important;
+    background: none !important;
+    background-image: none !important;
+    background-position: none !important;
+    background-repeat: no-repeat !important;
+    background-size: 0 !important;
+}
+
+/* 覆盖 Prism 默认主题可能的样式 */
+.token.url,
+.token.symbol,
+.token.inserted {
+    text-decoration: none !important;
+}
+
+/* 确保在弹窗环境中也没有任何装饰线 */
+div[style*="position: fixed"] .language-prototxt,
+div[style*="position: fixed"] .language-prototxt *,
+div[style*="position: fixed"] .token {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    outline: none !important;
+    background: transparent !important;
+    background-image: none !important;
+}
+
+/* 专门针对上划线的重置 */
+.language-prototxt,
+.language-prototxt *,
+pre .language-prototxt,
+pre .language-prototxt *,
+code.language-prototxt,
+code.language-prototxt *,
+.language-prototxt .token,
+.language-prototxt .token * {
+    /* 移除所有可能的文本装饰 */
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    text-decoration-thickness: 0 !important;
+    text-underline-position: unset !important;
+    text-decoration-skip-ink: none !important;
+    text-emphasis: none !important;
+    text-emphasis-style: none !important;
+    text-emphasis-color: transparent !important;
+    
+    /* 移除边框 */
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    outline: none !important;
+    
+    /* 移除背景装饰 - 但保持代码块背景 */
+    background-image: none !important;
+    box-shadow: none !important;
+    
+    /* Webkit 特定属性 */
+    -webkit-text-decoration: none !important;
+    -webkit-text-decoration-line: none !important;
+    -webkit-text-decoration-style: none !important;
+    -webkit-text-decoration-color: transparent !important;
+    -webkit-text-emphasis: none !important;
+    -webkit-text-emphasis-style: none !important;
+    
+    /* Mozilla 特定属性 */
+    -moz-text-decoration-line: none !important;
+    -moz-text-decoration-style: none !important;
+    -moz-text-decoration-color: transparent !important;
+}

@@ -139,6 +139,13 @@
       "end": "2025-03-28",
       "level": "Non-CCF",
       "url": "https://colmweb.org/cfp.html"
+    },
+    {
+      "name": "OSDI",
+      "start": "2025-12-4",
+      "end": "2025-12-11",
+      "level": "CCF-A",
+      "url": "https://www.usenix.org/conference/osdi26/call-for-papers"
     }
   ]
 } 

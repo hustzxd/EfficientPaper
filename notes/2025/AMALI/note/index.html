@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
         <link href="../../../../css/extra.css" rel="stylesheet" />
     
       <script>
@@ -91,14 +92,22 @@
                 <h1 id="amali">AMALI</h1>
 <p><a class="glightbox" href="../fig6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig6.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>GPU 的性能评估可以分为两类：
-- cycle-accurate simulators
-  - 提供cycle量级的仿真，但是很慢，很复杂，因此也难以进行对结果进行分析。
-- analytical models
-  - 速度快但精度下降，能够建立cycles-per-instruction结果，便于分析架构的瓶颈</p>
-<p>但是analytical models目前仍然非常不准确，有以下两个方面的原因：
-1. 当前没有考虑tensor cores, immediate constant cache, instruction caches等新的GPU特性
-2. 没有考虑LLM在推理的特性</p>
+<p>GPU 的性能评估可以分为两类：</p>
+<ul>
+<li>cycle-accurate simulators<ul>
+<li>提供cycle量级的仿真，但是很慢，很复杂，因此也难以进行对结果进行分析。</li>
+</ul>
+</li>
+<li>analytical models<ul>
+<li>速度快但精度下降，能够建立cycles-per-instruction结果，便于分析架构的瓶颈</li>
+</ul>
+</li>
+</ul>
+<p>但是analytical models目前仍然非常不准确，有以下两个方面的原因：</p>
+<ol>
+<li>当前没有考虑tensor cores, immediate constant cache, instruction caches等新的GPU特性</li>
+<li>没有考虑LLM在推理的特性</li>
+</ol>
 <p>因此AMALI提出</p>
 <ol>
 <li>提出了Tensor Core model，用以精确捕捉的由于dtype和size不同导致的不同延迟</li>
@@ -137,6 +146,11 @@
     <script src="../../../../js/theme_extra.js"></script>
     <script src="../../../../js/theme.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
