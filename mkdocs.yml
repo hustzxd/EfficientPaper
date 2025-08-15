@@ -22,8 +22,14 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js
+  - js/prism-prototxt.js
+  - js/preview.js
 
 extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css
   - css/extra.css
 
 plugins:

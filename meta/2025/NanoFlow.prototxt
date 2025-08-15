@@ -18,16 +18,16 @@ paper {
   authors: "Stephanie Wang"
   authors: "Arvind Krishnamurthy"
   authors: "Baris Kasikci"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Washington"
+  institutions: "Tsinghua University"
 }
 pub {
-  where: "arXiv"
-  year: 2024
+  where: "OSDI"
+  year: 2025
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/efeslab/Nanoflow"
 }
 note {
   url: "note.md"
@@ -36,5 +36,5 @@ keyword {
   words: overlap
 }
 cover {
-  url: ""
+  url: "pipeline.gif"
 }

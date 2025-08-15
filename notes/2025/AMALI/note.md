@@ -5,12 +5,14 @@
 ## Abstract
 
 GPU 的性能评估可以分为两类：
+
 - cycle-accurate simulators
-  - 提供cycle量级的仿真，但是很慢，很复杂，因此也难以进行对结果进行分析。
+    - 提供cycle量级的仿真，但是很慢，很复杂，因此也难以进行对结果进行分析。
 - analytical models
-  - 速度快但精度下降，能够建立cycles-per-instruction结果，便于分析架构的瓶颈
+    - 速度快但精度下降，能够建立cycles-per-instruction结果，便于分析架构的瓶颈
 
 但是analytical models目前仍然非常不准确，有以下两个方面的原因：
+
 1. 当前没有考虑tensor cores, immediate constant cache, instruction caches等新的GPU特性
 2. 没有考虑LLM在推理的特性
 

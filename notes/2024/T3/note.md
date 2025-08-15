@@ -33,6 +33,10 @@ movement by 22% geomean (max 36%). Furthermore, T3's benefits persist as models
 scale: geomean 29% for sublayers in $\sim$500-billion parameter models, PALM
 and MT-NLG.
 
-
+- track & trigger
+    - 它使用跟踪和触发机制来监控 GEMM/collective 的进度并协调通信，无需额外的计算单元 (CU)
+    - 它利用近内存计算进行约简，以减少通信引起的内存流量。
+- transparently
+    - 以透明的方式完成这些操作，只需对内核进行少量修改
 
 ![](fig7.png)
