@@ -15,8 +15,8 @@ paper {
   authors: "Haibin Lin"
   authors: "Xin Jin"
   authors: "Xin Liu"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "ByteDance"
+  institutions: "Peking University"
 }
 pub {
   where: "arXiv"
@@ -33,5 +33,5 @@ keyword {
   words: overlap
 }
 cover {
-  url: ""
+  url: "fig3.png"
 }

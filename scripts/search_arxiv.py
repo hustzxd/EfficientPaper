@@ -102,7 +102,7 @@ def main():
                     markdown_content += f"## {title}\n\n".replace(":", "")
                     markdown_content += f">Authors: {authors}\n\n"
                     markdown_content += f">{date}\n\n"
-                    markdown_content += f"> {url}\n\n"
+                    markdown_content += f"> [{url}]({url})\n\n"
                     markdown_content += f"{summary}\n\n\n"
                     papers_found += 1
 

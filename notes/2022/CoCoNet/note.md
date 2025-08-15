@@ -2,7 +2,7 @@
 
 > Abhinav Jangda, Jun Huang, Guodong Liu, Amir Hossein Nodehi Sabet, Saeed Maleki, Youshan Miao, Madanlal Musuvathi, Todd Mytkowicz, Olli Sarikivi
 
-![](../../blank.jpg)
+![](fig9.png)
 
 ## Abstract
 

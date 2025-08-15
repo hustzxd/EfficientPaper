@@ -2,7 +2,7 @@
 
 > Guanhua Wang, Chengming Zhang, Zheyu Shen, Ang Li, Olatunji Ruwase
 
-![](../../blank.jpg)
+![](fig5.png)
 
 ## Abstract
 
@@ -16,3 +16,5 @@ smaller independent pieces, Domino pipelines these independent pieces training
 and provides generic strategy of fine-grained communication and computation
 overlapping. Extensive results show that, comparing with Megatron-LM, Domino
 achieves up to 1.3x speedup for LLM training on Nvidia DGX-H100 GPUs.
+
+LLM Training 计算通信重叠的优化，切分方式按照batch等切分。

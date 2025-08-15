@@ -2,7 +2,7 @@
 
 > Li-Wen Chang, Wenlei Bao, Qi Hou, Chengquan Jiang, Ningxin Zheng, Yinmin Zhong, Xuanrun Zhang, Zuquan Song, Chengji Yao, Ziheng Jiang, Haibin Lin, Xin Jin, Xin Liu
 
-![](../../blank.jpg)
+![](fig3.png)
 
 ## Abstract
 

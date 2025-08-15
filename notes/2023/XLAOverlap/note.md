@@ -1,6 +1,6 @@
 # RIIWOI3F
 
-![](../../blank.jpg)
+![](fig5.png)
 
 ## Abstract
 

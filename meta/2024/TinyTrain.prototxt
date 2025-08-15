@@ -8,8 +8,8 @@ paper {
   authors: "Jagmohan Chauhan"
   authors: "Nicholas D. Lane"
   authors: "Cecilia Mascolo"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Cambridge, United Kingdom"
+  institutions: "Samsung AI Center"
 }
 pub {
   where: "ICML"
