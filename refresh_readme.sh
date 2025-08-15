@@ -10,10 +10,11 @@ python scripts/split_by_year.py
 
 if [ -z "$1" ]; then
     python scripts/generate_paper_list.py
+    python scripts/fix_mkdocs_links.py weekly_paper/latest.md
     echo "Refresh Readme Done"
 else
-    # python scripts/generate_paper_list.py -d
     python scripts/generate_paper_list.py
+    python scripts/fix_mkdocs_links.py weekly_paper/latest.md
     echo "Refresh Readme Done"
     echo "Upload changes to github"
     git add .

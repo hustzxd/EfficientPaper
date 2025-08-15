@@ -122,6 +122,9 @@ def main():
         file_name = f"/Users/xiandong/projects/EfficientPaper/weekly_paper/{today}.md"
         with open(file_name, "w") as wf:
             wf.write(markdown_content)
+        
+        os.system(f"/Users/xiandong/miniconda3/bin/markdown-toc {file_name}")
+
         file_name = f"/Users/xiandong/projects/EfficientPaper/weekly_paper/latest.md"
         with open(file_name, "w") as wf:
             wf.write(markdown_content)

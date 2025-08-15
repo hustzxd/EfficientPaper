@@ -17,6 +17,7 @@ markdown_extensions:
   - tables
   - attr_list
   - md_in_html
+  - toc
   - mdx_math:
       enable_dollar_delimiter: True #for use of inline $..$
 
