@@ -360,6 +360,10 @@ code.language-prototxt *,
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    /* 确保在所有设备上图标清晰显示 */
+    min-width: 16px;
+    min-height: 16px;
+    flex-shrink: 0;
 }
 
 /* 响应式设计 - 在小屏幕上调整按钮位置 */
@@ -367,12 +371,27 @@ code.language-prototxt *,
     #back-to-top {
         bottom: 20px;
         right: 20px;
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
     }
     
     #back-to-top::before {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* 超小屏幕特别优化 */
+@media (max-width: 480px) {
+    #back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    #back-to-top::before {
+        width: 20px;
+        height: 20px;
     }
 }
