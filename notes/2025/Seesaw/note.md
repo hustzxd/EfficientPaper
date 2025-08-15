@@ -2,7 +2,7 @@
 
 > Qidong Su, Wei Zhao, Xin Li, Muralidhar Andoorveedu, Chenhao Jiang, Zhanda Zhu, Kevin Song, Christina Giannoula, Gennady Pekhimenko
 
-![](../../blank.jpg)
+![](fig8.png)
 
 ## Abstract
 

@@ -1,23 +1,34 @@
 # 2025-08-15
 
 # Table of Contents
+* [STream3R Scalable Sequential 3D Reconstruction with Causal Transformer](#stream3r-scalable-sequential-3d-reconstruction-with-causal-transformer)
 * [Generalizable Federated Learning using Client Adaptive Focal Modulation](#generalizable-federated-learning-using-client-adaptive-focal-modulation)
 * [Video-BLADE Block-Sparse Attention Meets Step Distillation for Efficient Video Generation](#video-blade-block-sparse-attention-meets-step-distillation-for-efficient-video-generation)
 * [Thinking Inside the Mask In-Place Prompting in Diffusion LLMs](#thinking-inside-the-mask-in-place-prompting-in-diffusion-llms)
 * [Continuous Bangla Sign Language Translation Mitigating the Expense of Gloss Annotation with the Assistance of Graph](#continuous-bangla-sign-language-translation-mitigating-the-expense-of-gloss-annotation-with-the-assistance-of-graph)
 * [SemPT Semantic Prompt Tuning for Vision-Language Models](#sempt-semantic-prompt-tuning-for-vision-language-models)
+* [DAS Dual-Aligned Semantic IDs Empowered Industrial Recommender System](#das-dual-aligned-semantic-ids-empowered-industrial-recommender-system)
+* [GCRPNet Graph-Enhanced Contextual and Regional Perception Network For Salient Object Detection in Optical Remote Sensing Images](#gcrpnet-graph-enhanced-contextual-and-regional-perception-network-for-salient-object-detection-in-optical-remote-sensing-images)
+* [X-Node Self-Explanation is All We Need](#x-node-self-explanation-is-all-we-need)
 * [Efficient Methods for Accurate Sparse Trajectory Recovery and Map Matching](#efficient-methods-for-accurate-sparse-trajectory-recovery-and-map-matching)
 * [Computational Economics in Large Language Models Exploring Model Behavior and Incentive Design under Resource Constraints](#computational-economics-in-large-language-models-exploring-model-behavior-and-incentive-design-under-resource-constraints)
 * [Layer-Wise Perturbations via Sparse Autoencoders for Adversarial Text Generation](#layer-wise-perturbations-via-sparse-autoencoders-for-adversarial-text-generation)
 * [XQuant Breaking the Memory Wall for LLM Inference with KV Cache Rematerialization](#xquant-breaking-the-memory-wall-for-llm-inference-with-kv-cache-rematerialization)
 * [eMamba Efficient Acceleration Framework for Mamba Models in Edge Computing](#emamba-efficient-acceleration-framework-for-mamba-models-in-edge-computing)
+* [Improving Generative Cross-lingual Aspect-Based Sentiment Analysis with Constrained Decoding](#improving-generative-cross-lingual-aspect-based-sentiment-analysis-with-constrained-decoding)
+* [Advancing Cross-lingual Aspect-Based Sentiment Analysis with LLMs and Constrained Decoding for Sequence-to-Sequence Models](#advancing-cross-lingual-aspect-based-sentiment-analysis-with-llms-and-constrained-decoding-for-sequence-to-sequence-models)
 * [What to Ask Next? Probing the Imaginative Reasoning of LLMs with TurtleSoup Puzzles](#What-to-Ask-Next?-Probing-the-Imaginative-Reasoning-of-LLMs-with-TurtleSoup-Puzzles)
 * [DiffAxE Diffusion-driven Hardware Accelerator Generation and Design Space Exploration](#diffaxe-diffusion-driven-hardware-accelerator-generation-and-design-space-exploration)
 * [Pruning and Malicious Injection A Retraining-Free Backdoor Attack on Transformer Models](#pruning-and-malicious-injection-a-retraining-free-backdoor-attack-on-transformer-models)
 * [Personalized Real-time Jargon Support for Online Meetings](#personalized-real-time-jargon-support-for-online-meetings)
+* [Can Transformers Break Encryption Schemes via In-Context Learning?](#Can-Transformers-Break-Encryption-Schemes-via-In-Context-Learning?)
 * [Agentic AI Frameworks Architectures, Protocols, and Design Challenges](#Agentic-AI-Frameworks-Architectures,-Protocols,-and-Design-Challenges)
+* [Nested-ReFT Efficient Reinforcement Learning for Large Language Model Fine-Tuning via Off-Policy Rollouts](#nested-reft-efficient-reinforcement-learning-for-large-language-model-fine-tuning-via-off-policy-rollouts)
 * [From Intent to Execution Multimodal Chain-of-Thought Reinforcement Learning for Precise CAD Code Generation](#from-intent-to-execution-multimodal-chain-of-thought-reinforcement-learning-for-precise-cad-code-generation)
+* [Constrained Decoding of Diffusion LLMs with Context-Free Grammars](#constrained-decoding-of-diffusion-llms-with-context-free-grammars)
 * [Language of Persuasion and Misrepresentation in Business Communication A Textual Detection Approach](#language-of-persuasion-and-misrepresentation-in-business-communication-a-textual-detection-approach)
+* [Memory Decoder A Pretrained, Plug-and-Play Memory for Large Language Models](#Memory-Decoder-A-Pretrained,-Plug-and-Play-Memory-for-Large-Language-Models)
+* [OneVAE Joint Discrete and Continuous Optimization Helps Discrete Video VAE Train Better](#onevae-joint-discrete-and-continuous-optimization-helps-discrete-video-vae-train-better)
 * [Speed Always Wins A Survey on Efficient Architectures for Large Language Models](#speed-always-wins-a-survey-on-efficient-architectures-for-large-language-models)
 * [MoIIE Mixture of Intra- and Inter-Modality Experts for Large Vision Language Models](#moiie-mixture-of-intra--and-inter-modality-experts-for-large-vision-language-models)
 * [MEML-GRPO Heterogeneous Multi-Expert Mutual Learning for RLVR Advancement](#meml-grpo-heterogeneous-multi-expert-mutual-learning-for-rlvr-advancement)
@@ -27,12 +38,15 @@
 * [Gen-AFFECT Generation of Avatar Fine-grained Facial Expressions with Consistent identiTy](#gen-affect-generation-of-avatar-fine-grained-facial-expressions-with-consistent-identity)
 * [Shadow in the Cache Unveiling and Mitigating Privacy Risks of KV-cache in LLM Inference](#shadow-in-the-cache-unveiling-and-mitigating-privacy-risks-of-kv-cache-in-llm-inference)
 * [Synaptic Pruning A Biological Inspiration for Deep Learning Regularization](#synaptic-pruning-a-biological-inspiration-for-deep-learning-regularization)
+* [SinLlama -- A Large Language Model for Sinhala](#sinllama----a-large-language-model-for-sinhala)
 * [READER Retrieval-Assisted Drafter for Efficient LLM Inference](#reader-retrieval-assisted-drafter-for-efficient-llm-inference)
 * [FetFIDS A Feature Embedding Attention based Federated Network Intrusion Detection Algorithm](#fetfids-a-feature-embedding-attention-based-federated-network-intrusion-detection-algorithm)
+* [A Survey on Training-free Alignment of Large Language Models](#a-survey-on-training-free-alignment-of-large-language-models)
 * [Retrospective Sparse Attention for Efficient Long-Context Generation](#retrospective-sparse-attention-for-efficient-long-context-generation)
 * [NEFMind Parameter-Efficient Fine-Tuning of Open-Source LLMs for Telecom APIs Automation](#nefmind-parameter-efficient-fine-tuning-of-open-source-llms-for-telecom-apis-automation)
 * [ColorGPT Leveraging Large Language Models for Multimodal Color Recommendation](#colorgpt-leveraging-large-language-models-for-multimodal-color-recommendation)
 * [ASPD Unlocking Adaptive Serial-Parallel Decoding by Exploring Intrinsic Parallelism in LLMs](#aspd-unlocking-adaptive-serial-parallel-decoding-by-exploring-intrinsic-parallelism-in-llms)
+* [Steering Towards Fairness Mitigating Political Bias in LLMs](#steering-towards-fairness-mitigating-political-bias-in-llms)
 * [DiffPose-Animal A Language-Conditioned Diffusion Framework for Animal Pose Estimation](#diffpose-animal-a-language-conditioned-diffusion-framework-for-animal-pose-estimation)
 * [Interpretable Reward Model via Sparse Autoencoder](#interpretable-reward-model-via-sparse-autoencoder)
 * [A Survey on Parallel Text Generation From Parallel Decoding to Diffusion Language Models](#a-survey-on-parallel-text-generation-from-parallel-decoding-to-diffusion-language-models)
@@ -41,44 +55,77 @@
 * [AgriGPT a Large Language Model Ecosystem for Agriculture](#agrigpt-a-large-language-model-ecosystem-for-agriculture)
 * [QoE-Aware Service Provision for Mobile AR Rendering An Agent-Driven Approach](#qoe-aware-service-provision-for-mobile-ar-rendering-an-agent-driven-approach)
 * [Agentic Graph Neural Networks for Wireless Communications and Networking Towards Edge General Intelligence A Survey](#agentic-graph-neural-networks-for-wireless-communications-and-networking-towards-edge-general-intelligence-a-survey)
+* [Joint decoding method for controllable contextual speech recognition based on Speech LLM](#joint-decoding-method-for-controllable-contextual-speech-recognition-based-on-speech-llm)
 * [Securing Agentic AI Threat Modeling and Risk Analysis for Network Monitoring Agentic AI System](#securing-agentic-ai-threat-modeling-and-risk-analysis-for-network-monitoring-agentic-ai-system)
+* [Profiling Large Language Model Inference on Apple Silicon A Quantization Perspective](#profiling-large-language-model-inference-on-apple-silicon-a-quantization-perspective)
 * [Using LLMs to Capture Users' Temporal Context for Recommendation](#Using-LLMs-to-Capture-Users'-Temporal-Context-for-Recommendation)
 * [When the Domain Expert Has No Time and the LLM Developer Has No Clinical Expertise Real-World Lessons from LLM Co-Design in a Safety-Net Hospital](#when-the-domain-expert-has-no-time-and-the-llm-developer-has-no-clinical-expertise-real-world-lessons-from-llm-co-design-in-a-safety-net-hospital)
+* [Vector-Centric Machine Learning Systems A Cross-Stack Approach](#vector-centric-machine-learning-systems-a-cross-stack-approach)
 * [Architecting Long-Context LLM Acceleration with Packing-Prefetch Scheduler and Ultra-Large Capacity On-Chip Memories](#architecting-long-context-llm-acceleration-with-packing-prefetch-scheduler-and-ultra-large-capacity-on-chip-memories)
+* [OverFill Two-Stage Models for Efficient Language Model Decoding](#overfill-two-stage-models-for-efficient-language-model-decoding)
 * [Selective KV-Cache Sharing to Mitigate Timing Side-Channels in LLM Inference](#selective-kv-cache-sharing-to-mitigate-timing-side-channels-in-llm-inference)
+* [Follow-Your-Shape Shape-Aware Image Editing via Trajectory-Guided Region Control](#follow-your-shape-shape-aware-image-editing-via-trajectory-guided-region-control)
 * [BlindGuard Safeguarding LLM-based Multi-Agent Systems under Unknown Attacks](#blindguard-safeguarding-llm-based-multi-agent-systems-under-unknown-attacks)
 * [TeamMedAgents Enhancing Medical Decision-Making of LLMs Through Structured Teamwork](#teammedagents-enhancing-medical-decision-making-of-llms-through-structured-teamwork)
 * [ChatGPT on the Road Leveraging Large Language Model-Powered In-vehicle Conversational Agents for Safer and More Enjoyable Driving Experience](#chatgpt-on-the-road-leveraging-large-language-model-powered-in-vehicle-conversational-agents-for-safer-and-more-enjoyable-driving-experience)
+* [Bridging ASR and LLMs for Dysarthric Speech Recognition Benchmarking Self-Supervised and Generative Approaches](#bridging-asr-and-llms-for-dysarthric-speech-recognition-benchmarking-self-supervised-and-generative-approaches)
 * [Interpreting Fedspeak with Confidence A LLM-Based Uncertainty-Aware Framework Guided by Monetary Policy Transmission Paths](#interpreting-fedspeak-with-confidence-a-llm-based-uncertainty-aware-framework-guided-by-monetary-policy-transmission-paths)
+* [DiTVR Zero-Shot Diffusion Transformer for Video Restoration](#ditvr-zero-shot-diffusion-transformer-for-video-restoration)
 * [EvoCoT Overcoming the Exploration Bottleneck in Reinforcement Learning](#evocot-overcoming-the-exploration-bottleneck-in-reinforcement-learning)
 * [Grove MoE Towards Efficient and Superior MoE LLMs with Adjugate Experts](#grove-moe-towards-efficient-and-superior-moe-llms-with-adjugate-experts)
+* [SASST Leveraging Syntax-Aware Chunking and LLMs for Simultaneous Speech Translation](#sasst-leveraging-syntax-aware-chunking-and-llms-for-simultaneous-speech-translation)
+* [Symmetry-Aware Transformer Training for Automated Planning](#symmetry-aware-transformer-training-for-automated-planning)
+* [Semantic Caching for Low-Cost LLM Serving From Offline Learning to Online Adaptation](#semantic-caching-for-low-cost-llm-serving-from-offline-learning-to-online-adaptation)
 * [GLiClass Generalist Lightweight Model for Sequence Classification Tasks](#gliclass-generalist-lightweight-model-for-sequence-classification-tasks)
+* [LaVieID Local Autoregressive Diffusion Transformers for Identity-Preserving Video Creation](#lavieid-local-autoregressive-diffusion-transformers-for-identity-preserving-video-creation)
 * [HGMF A Hierarchical Gaussian Mixture Framework for Scalable Tool Invocation within the Model Context Protocol](#hgmf-a-hierarchical-gaussian-mixture-framework-for-scalable-tool-invocation-within-the-model-context-protocol)
+* [Towards Theoretical Understanding of Transformer Test-Time Computing Investigation on In-Context Linear Regression](#towards-theoretical-understanding-of-transformer-test-time-computing-investigation-on-in-context-linear-regression)
 * [Grounding Natural Language for Multi-agent Decision-Making with Multi-agentic LLMs](#grounding-natural-language-for-multi-agent-decision-making-with-multi-agentic-llms)
+* [Investigating 1-Bit Quantization in Transformer-Based Top Tagging](#investigating-1-bit-quantization-in-transformer-based-top-tagging)
 * [LET-US Long Event-Text Understanding of Scenes](#let-us-long-event-text-understanding-of-scenes)
 * [Efficient Edge LLMs Deployment via HessianAware Quantization and CPU GPU Collaborative](#efficient-edge-llms-deployment-via-hessianaware-quantization-and-cpu-gpu-collaborative)
 * [BEVANet Bilateral Efficient Visual Attention Network for Real-Time Semantic Segmentation](#bevanet-bilateral-efficient-visual-attention-network-for-real-time-semantic-segmentation)
+* [Tasa Thermal-aware 3D-Stacked Architecture Design with Bandwidth Sharing for LLM Inference](#tasa-thermal-aware-3d-stacked-architecture-design-with-bandwidth-sharing-for-llm-inference)
 * [LP-Spec Leveraging LPDDR PIM for Efficient LLM Mobile Speculative Inference with Architecture-Dataflow Co-Optimization](#lp-spec-leveraging-lpddr-pim-for-efficient-llm-mobile-speculative-inference-with-architecture-dataflow-co-optimization)
+* [Bridging Semantic Logic Gaps A Cognition-Inspired Multimodal Boundary-Preserving Network for Image Manipulation Localization](#bridging-semantic-logic-gaps-a-cognition-inspired-multimodal-boundary-preserving-network-for-image-manipulation-localization)
 * [DySK-Attn A Framework for Efficient, Real-Time Knowledge Updating in Large Language Models via Dynamic Sparse Knowledge Attention](#DySK-Attn-A-Framework-for-Efficient,-Real-Time-Knowledge-Updating-in-Large-Language-Models-via-Dynamic-Sparse-Knowledge-Attention)
 * [How Effectively Can Large Language Models Connect SNP Variants and ECG Phenotypes for Cardiovascular Risk Prediction?](#How-Effectively-Can-Large-Language-Models-Connect-SNP-Variants-and-ECG-Phenotypes-for-Cardiovascular-Risk-Prediction?)
 * [From Nodes to Narratives Explaining Graph Neural Networks with LLMs and Graph Context](#from-nodes-to-narratives-explaining-graph-neural-networks-with-llms-and-graph-context)
+* [Large Language Model Evaluated Stand-alone Attention-Assisted Graph Neural Network with Spatial and Structural Information Interaction for Precise Endoscopic Image Segmentation](#large-language-model-evaluated-stand-alone-attention-assisted-graph-neural-network-with-spatial-and-structural-information-interaction-for-precise-endoscopic-image-segmentation)
+* [Vec2Summ Text Summarization via Probabilistic Sentence Embeddings](#vec2summ-text-summarization-via-probabilistic-sentence-embeddings)
 * [Narrative Memory in Machines Multi-Agent Arc Extraction in Serialized TV](#narrative-memory-in-machines-multi-agent-arc-extraction-in-serialized-tv)
 * [SSD Offloading for LLM Mixture-of-Experts Weights Considered Harmful in Energy Efficiency](#ssd-offloading-for-llm-mixture-of-experts-weights-considered-harmful-in-energy-efficiency)
+* [Rethinking 1-bit Optimization Leveraging Pre-trained Large Language Models](#rethinking-1-bit-optimization-leveraging-pre-trained-large-language-models)
 * [Fed MobiLLM Efficient Federated LLM Fine-Tuning over Heterogeneous Mobile Devices via Server Assisted Side-Tuning](#fed-mobillm-efficient-federated-llm-fine-tuning-over-heterogeneous-mobile-devices-via-server-assisted-side-tuning)
-* [SlimInfer Accelerating Long-Context LLM Inference via Dynamic Token Pruning](#sliminfer-accelerating-long-context-llm-inference-via-dynamic-token-pruning)
-* [Aligning Effective Tokens with Video Anomaly in Large Language Models](#aligning-effective-tokens-with-video-anomaly-in-large-language-models)
-* [M2IO-R1 An Efficient RL-Enhanced Reasoning Framework for Multimodal Retrieval Augmented Multimodal Generation](#m2io-r1-an-efficient-rl-enhanced-reasoning-framework-for-multimodal-retrieval-augmented-multimodal-generation)
-* [Matrix-Driven Instant Review Confident Detection and Reconstruction of LLM Plagiarism on PC](#matrix-driven-instant-review-confident-detection-and-reconstruction-of-llm-plagiarism-on-pc)
-* [KV Cache Compression for Inference Efficiency in LLMs A Review](#kv-cache-compression-for-inference-efficiency-in-llms-a-review)
-* [MA-CBP A Criminal Behavior Prediction Framework Based on Multi-Agent Asynchronous Collaboration](#ma-cbp-a-criminal-behavior-prediction-framework-based-on-multi-agent-asynchronous-collaboration)
-* [Meta-Learning for Speeding Up Large Model Inference in Decentralized Environments](#meta-learning-for-speeding-up-large-model-inference-in-decentralized-environments)
-* [Comparing Knowledge Injection Methods for LLMs in a Low-Resource Regime](#comparing-knowledge-injection-methods-for-llms-in-a-low-resource-regime)
-* [Pragmatics beyond humans meaning, communication, and LLMs](#Pragmatics-beyond-humans-meaning,-communication,-and-LLMs)
-* [LLM Serving Optimization with Variable Prefill and Decode Lengths](#llm-serving-optimization-with-variable-prefill-and-decode-lengths)
-* [You Don't Need Pre-built Graphs for RAG Retrieval Augmented Generation with Adaptive Reasoning Structures](#You-Don't-Need-Pre-built-Graphs-for-RAG-Retrieval-Augmented-Generation-with-Adaptive-Reasoning-Structures)
-* [ConlangCrafter Constructing Languages with a Multi-Hop LLM Pipeline](#conlangcrafter-constructing-languages-with-a-multi-hop-llm-pipeline)
-* [Diffusion LLMs Can Do Faster-Than-AR Inference via Discrete Diffusion Forcing](#diffusion-llms-can-do-faster-than-ar-inference-via-discrete-diffusion-forcing)
-* [Prosocial Behavior Detection in Player Game Chat From Aligning Human-AI Definitions to Efficient Annotation at Scale](#prosocial-behavior-detection-in-player-game-chat-from-aligning-human-ai-definitions-to-efficient-annotation-at-scale)
+* [Pushing the Envelope of LLM Inference on AI-PC](#pushing-the-envelope-of-llm-inference-on-ai-pc)
+* [CISO Species Distribution Modeling Conditioned on Incomplete Species Observations](#ciso-species-distribution-modeling-conditioned-on-incomplete-species-observations)
+
+
+## STream3R Scalable Sequential 3D Reconstruction with Causal Transformer
+
+>Authors: Yushi Lan, Yihang Luo, Fangzhou Hong, Shangchen Zhou, Honghua Chen, Zhaoyang Lyu, Shuai Yang, Bo Dai, Chen Change Loy, Xingang Pan
+
+>2025-08-14
+
+> [http://arxiv.org/abs/2508.10893v1](http://arxiv.org/abs/2508.10893v1)
+
+We present STream3R, a novel approach to 3D reconstruction that reformulates
+pointmap prediction as a ![key](https://img.shields.io/badge/decode-F08080)r-only Transformer problem. Existing
+state-of-the-art methods for multi-view reconstruction either depend on
+expensive global optimization or rely on simplistic memory mechanisms that
+scale poorly with sequence length. In contrast, STream3R introduces an
+streaming framework that processes image sequences efficiently using causal
+attention, inspired by advances in modern language modeling. By learning
+geometric priors from large-scale 3D datasets, STream3R generalizes well to
+diverse and challenging scenarios, including dynamic scenes where traditional
+methods often fail. Extensive experiments show that our method consistently
+outperforms prior work across both static and dynamic scene benchmarks.
+Moreover, STream3R is inherently compatible with ![key](https://img.shields.io/badge/LLM-FF8C00)-style training
+infrastructure, enabling efficient large-scale pretraining and fine-tuning for
+various downstream 3D tasks. Our results underscore the potential of causal
+Transformer models for online 3D perception, paving the way for real-time 3D
+understanding in streaming environments. More details can be found in our
+project page: https://nirvanalan.github.io/projects/stream3r.
 
 
 ## Generalizable Federated Learning using Client Adaptive Focal Modulation
@@ -89,7 +136,7 @@
 
 > [http://arxiv.org/abs/2508.10840v1](http://arxiv.org/abs/2508.10840v1)
 
-Federated learning (FL) has proven essential for privacy-preserving,
+Federated learning (FL) has proven essential for privacy-pre![key](https://img.shields.io/badge/serving-FF8C00),
 collaborative training across distributed clients. Our prior work, TransFed,
 introduced a robust ![key](https://img.shields.io/badge/transformer-FF8C00)-based FL framework that leverages a
 learn-to-adapt hypernetwork to generate personalized focal modulation layers
@@ -210,7 +257,7 @@ hearing.
 > [http://arxiv.org/abs/2508.10645v1](http://arxiv.org/abs/2508.10645v1)
 
 Visual transfer learning for unseen categories presents an active research
-topic yet a challenging task, due to the inherent conflict between preserving
+topic yet a challenging task, due to the inherent conflict between pre![key](https://img.shields.io/badge/serving-FF8C00)
 category-specific representations and acquiring transferable knowledge.
 Vision-Language Models (VLMs) pre-trained on large amounts of image-text pairs
 offer a promising solution. However, existing prompt tuning methods rely on
@@ -233,6 +280,106 @@ Extensive experiments on 15 benchmark datasets demonstrate that SemPT achieves
 state-of-the-art performance across various settings, including base-to-novel
 generalization, cross-dataset transfer, cross-domain transfer, and few-shot
 learning.
+
+
+## DAS Dual-Aligned Semantic IDs Empowered Industrial Recommender System
+
+>Authors: Wencai Ye, Mingjie Sun, Shaoyun Shi, Peng Wang, Wenjin Wu, Peng Jiang
+
+>2025-08-14
+
+> [http://arxiv.org/abs/2508.10584v1](http://arxiv.org/abs/2508.10584v1)
+
+Semantic IDs are discrete identifiers generated by quantizing the Multi-modal
+Large Language Models (M![key](https://img.shields.io/badge/LLM-FF8C00)s) embeddings, enabling efficient multi-modal
+content integration in recommendation systems. However, their lack of
+collaborative signals results in a misalignment with downstream discriminative
+and generative recommendation objectives. Recent studies have introduced
+various alignment mechanisms to address this problem, but their two-stage
+framework design still leads to two main limitations: (1) inevitable
+information loss during alignment, and (2) inflexibility in applying adaptive
+alignment strategies, consequently constraining the mutual information
+maximization during the alignment process. To address these limitations, we
+propose a novel and flexible one-stage Dual-Aligned Semantic IDs (DAS) method
+that simultaneously optimizes ![key](https://img.shields.io/badge/quantization-F08080) and alignment, pre![key](https://img.shields.io/badge/serving-FF8C00) semantic
+integrity and alignment quality while avoiding the information loss typically
+associated with two-stage methods. Meanwhile, DAS achieves more efficient
+alignment between the semantic IDs and collaborative signals, with the
+following two innovative and effective approaches: (1) Multi-view Constrative
+Alignment: To maximize mutual information between semantic IDs and
+collaborative signals, we first incorporate an ID-based CF debias module, and
+then design three effective contrastive alignment methods: dual user-to-item
+(u2i), dual item-to-item/user-to-user (i2i/u2u), and dual co-occurrence
+item-to-item/user-to-user (i2i/u2u). (2) Dual Learning: By aligning the dual
+![key](https://img.shields.io/badge/quantization-F08080)s of users and ads, the constructed semantic IDs for users and ads
+achieve stronger alignment. Finally, we conduct extensive offline experiments
+and online A/B tests to evaluate DAS's effectiveness, which is now successfully
+deployed across various advertising scenarios at Kuaishou App, ![key](https://img.shields.io/badge/serving-FF8C00) over 400
+million users daily.
+
+
+## GCRPNet Graph-Enhanced Contextual and Regional Perception Network For Salient Object Detection in Optical Remote Sensing Images
+
+>Authors: Mengyu Ren, Yutong Li, Hua Li, Runmin Cong, Sam Kwong
+
+>2025-08-14
+
+> [http://arxiv.org/abs/2508.10542v1](http://arxiv.org/abs/2508.10542v1)
+
+Salient object detection (SOD) in optical remote sensing images (ORSIs) faces
+numerous challenges, including significant variations in target scales and low
+contrast between targets and the background. Existing methods based on vision
+![key](https://img.shields.io/badge/transformer-FF8C00)s (ViTs) and convolutional neural networks (CNNs) architectures aim
+to leverage both global and local features, but the difficulty in effectively
+integrating these heterogeneous features limits their overall performance. To
+overcome these limitations, we propose a graph-enhanced contextual and regional
+perception network (GCRPNet), which builds upon the Mamba architecture to
+simultaneously capture long-range dependencies and enhance regional feature
+representation. Specifically, we employ the visual state space (VSS) encoder to
+extract multi-scale features. To further achieve deep guidance and enhancement
+of these features, we first design a difference-similarity guided hierarchical
+graph attention module (DS-HGAM). This module strengthens cross-layer
+interaction capabilities between features of different scales while enhancing
+the model's structural perception,allowing it to distinguish between foreground
+and background more effectively. Then, we design the LEVSS block as the ![key](https://img.shields.io/badge/decode-F08080)r
+of GCRPNet. This module integrates our proposed adaptive scanning strategy and
+multi-granularity collaborative attention enhancement module (MCAEM). It
+performs adaptive patch scanning on feature maps processed via multi-scale
+convolutions, thereby capturing rich local region information and enhancing
+Mamba's local modeling capability. Extensive experimental results demonstrate
+that the proposed model achieves state-of-the-art performance, validating its
+effectiveness and superiority.
+
+
+## X-Node Self-Explanation is All We Need
+
+>Authors: Prajit Sengupta, Islem Rekik
+
+>2025-08-14
+
+> [http://arxiv.org/abs/2508.10461v1](http://arxiv.org/abs/2508.10461v1)
+
+Graph neural networks (GNNs) have achieved state-of-the-art results in
+computer vision and medical image classification tasks by capturing structural
+dependencies across data instances. However, their decision-making remains
+largely opaque, limiting their trustworthiness in high-stakes clinical
+applications where interpretability is essential. Existing explainability
+techniques for GNNs are typically post-hoc and global, offering limited insight
+into individual node decisions or local reasoning. We introduce X-Node, a
+self-explaining GNN framework in which each node generates its own explanation
+as part of the prediction process. For every node, we construct a structured
+context vector encoding interpretable cues such as degree, centrality,
+clustering, feature saliency, and label agreement within its local topology. A
+lightweight Reasoner module maps this context into a compact explanation
+vector, which serves three purposes: (1) reconstructing the node's latent
+embedding via a ![key](https://img.shields.io/badge/decode-F08080)r to enforce faithfulness, (2) generating a natural
+language explanation using a pre-trained ![key](https://img.shields.io/badge/LLM-FF8C00) (e.g., Grok or Gemini), and (3)
+guiding the GNN itself via a "text-injection" mechanism that feeds explanations
+back into the message-passing pipeline. We evaluate X-Node on two graph
+datasets derived from MedMNIST and MorphoMNIST, integrating it with GCN, GAT,
+and GIN backbones. Our results show that X-Node maintains competitive
+classification accuracy while producing faithful, per-node explanations.
+Repository: https://github.com/basiralab/X-Node.
 
 
 ## Efficient Methods for Accurate Sparse Trajectory Recovery and Map Matching
@@ -262,7 +409,7 @@ segments in the route returned by MMA to infer missing points with position
 ratios on road segments, producing high-sampling trajectories efficiently by
 avoiding evaluation of all road segments. Specifically, in TRMMA, we design a
 dual-![key](https://img.shields.io/badge/transformer-FF8C00) encoding process to cohesively capture latent patterns in
-trajectories and routes, and an effective decoding technique to sequentially
+trajectories and routes, and an effective ![key](https://img.shields.io/badge/decoding-F08080) technique to sequentially
 predict the position ratios and road segments of missing points. We conduct
 extensive experiments to compare TRMMA and MMA with numerous existing methods
 for trajectory recovery and map matching, respectively, on 4 large real-world
@@ -283,7 +430,7 @@ We introduce a "computational economics" framework that treats an ![key](https:/
 internal economy of resource-constrained agents (attention heads and neuron
 blocks) that must allocate scarce computation to maximize task utility. First,
 we show empirically that when computation is scarce, standard ![key](https://img.shields.io/badge/LLM-FF8C00)s reallocate
-attention toward high-value tokens while preserving accuracy. Building on this
+attention toward high-value tokens while pre![key](https://img.shields.io/badge/serving-FF8C00) accuracy. Building on this
 observation, we propose an incentive-driven training paradigm that augments the
 task loss with a differentiable computation cost term, encouraging ![key](https://img.shields.io/badge/sparse-F08080) and
 efficient activations. On GLUE (MNLI, STS-B, CoLA) and WikiText-103, the method
@@ -340,8 +487,8 @@ decades, a trend that remains evident in modern GPU hardware and exacerbates
 the challenge of ![key](https://img.shields.io/badge/LLM-FF8C00) inference. As such, new algorithms are emerging that trade
 increased computation for reduced memory operations. To that end, we present
 XQuant, which takes advantage of this trend, enabling an order-of-magnitude
-reduction in memory consumption through low-bit quantization with substantial
-accuracy benefits relative to state-of-the-art ![key](https://img.shields.io/badge/KV-F08080) cache quantization methods.
+reduction in memory consumption through ![key](https://img.shields.io/badge/low-bit-F08080) ![key](https://img.shields.io/badge/quantization-F08080) with substantial
+accuracy benefits relative to state-of-the-art ![key](https://img.shields.io/badge/KV-F08080) ![key](https://img.shields.io/badge/cache-F08080) ![key](https://img.shields.io/badge/quantization-F08080) methods.
 We accomplish this by quantizing and caching the layer input activations X,
 instead of using standard ![key](https://img.shields.io/badge/KV-F08080) caching, and then rematerializing the Keys and
 Values on-the-fly during inference. This results in an immediate 2$\times$
@@ -355,7 +502,7 @@ extreme compression. Across different models, XQuant-CL attains up to
 perplexity degradation, and 12.5$\times$ memory savings with only $0.1$
 perplexity degradation. XQuant exploits the rapidly increasing compute
 capabilities of hardware platforms to eliminate the memory bottleneck, while
-surpassing state-of-the-art ![key](https://img.shields.io/badge/KV-F08080) cache quantization methods and achieving
+surpassing state-of-the-art ![key](https://img.shields.io/badge/KV-F08080) ![key](https://img.shields.io/badge/cache-F08080) ![key](https://img.shields.io/badge/quantization-F08080) methods and achieving
 near-FP16 accuracy across a wide range of models.
 
 
@@ -385,12 +532,65 @@ and MARS, an open-source human pose estimation dataset, show eMamba achieves
 comparable accuracy to state-of-the-art techniques using 1.63-19.9$\times$
 fewer parameters. In addition, it generalizes well to large-scale natural
 language tasks, demonstrating stable perplexity across varying sequence lengths
-on the WikiText2 dataset. We also quantize and implement the entire eMamba
+on the WikiText2 dataset. We also ![key](https://img.shields.io/badge/quantize-F08080) and implement the entire eMamba
 pipeline on an AMD ZCU102 FPGA and ASIC using GlobalFoundries (GF) 22 nm
 technology. Experimental results show 4.95-5.62$\times$ lower latency and
 2.22-9.95$\times$ higher throughput, with 4.77$\times$ smaller area,
 9.84$\times$ lower power, and 48.6$\times$ lower energy consumption than
 baseline solutions while maintaining competitive accuracy.
+
+
+## Improving Generative Cross-lingual Aspect-Based Sentiment Analysis with Constrained Decoding
+
+>Authors: Jakub Šmíd, Pavel Přibáň, Pavel Král
+
+>2025-08-14
+
+> [http://arxiv.org/abs/2508.10369v1](http://arxiv.org/abs/2508.10369v1)
+
+While aspect-based sentiment analysis (ABSA) has made substantial progress,
+challenges remain for low-resource languages, which are often overlooked in
+favour of English. Current cross-lingual ABSA approaches focus on limited, less
+complex tasks and often rely on external translation tools. This paper
+introduces a novel approach using constrained ![key](https://img.shields.io/badge/decoding-F08080) with
+sequence-to-sequence models, eliminating the need for unreliable translation
+tools and improving cross-lingual performance by 5\% on average for the most
+complex task. The proposed method also supports multi-tasking, which enables
+solving multiple ABSA tasks with a single model, with constrained ![key](https://img.shields.io/badge/decoding-F08080)
+boosting results by more than 10\%.
+  We evaluate our approach across seven languages and six ABSA tasks,
+surpassing state-of-the-art methods and setting new benchmarks for previously
+unexplored tasks. Additionally, we assess large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) in
+zero-shot, few-shot, and fine-tuning scenarios. While ![key](https://img.shields.io/badge/LLM-FF8C00)s perform poorly in
+zero-shot and few-shot settings, fine-tuning achieves competitive results
+compared to smaller multilingual models, albeit at the cost of longer training
+and inference times.
+  We provide practical recommendations for real-world applications, enhancing
+the understanding of cross-lingual ABSA methodologies. This study offers
+valuable insights into the strengths and limitations of cross-lingual ABSA
+approaches, advancing the state-of-the-art in this challenging research domain.
+
+
+## Advancing Cross-lingual Aspect-Based Sentiment Analysis with LLMs and Constrained Decoding for Sequence-to-Sequence Models
+
+>Authors: Jakub Šmíd, Pavel Přibáň, Pavel Král
+
+>2025-08-14
+
+> [http://arxiv.org/abs/2508.10366v1](http://arxiv.org/abs/2508.10366v1)
+
+Aspect-based sentiment analysis (ABSA) has made significant strides, yet
+challenges remain for low-resource languages due to the predominant focus on
+English. Current cross-lingual ABSA studies often centre on simpler tasks and
+rely heavily on external translation tools. In this paper, we present a novel
+sequence-to-sequence method for compound ABSA tasks that eliminates the need
+for such tools. Our approach, which uses constrained ![key](https://img.shields.io/badge/decoding-F08080), improves
+cross-lingual ABSA performance by up to 10\%. This method broadens the scope of
+cross-lingual ABSA, enabling it to handle more complex tasks and providing a
+practical, efficient alternative to translation-dependent techniques.
+Furthermore, we compare our approach with large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) and show
+that while fine-tuned multilingual ![key](https://img.shields.io/badge/LLM-FF8C00)s can achieve comparable results,
+English-centric ![key](https://img.shields.io/badge/LLM-FF8C00)s struggle with these tasks.
 
 
 ## What to Ask Next? Probing the Imaginative Reasoning of LLMs with TurtleSoup Puzzles
@@ -510,6 +710,33 @@ support tools, with implications for broader interdisciplinary and educational
 applications.
 
 
+## Can Transformers Break Encryption Schemes via In-Context Learning?
+
+>Authors: Jathin Korrapati, Patrick Mendoza, Aditya Tomar, Abein Abraham
+
+>2025-08-13
+
+> [http://arxiv.org/abs/2508.10235v1](http://arxiv.org/abs/2508.10235v1)
+
+In-context learning (ICL) has emerged as a powerful capability of
+![key](https://img.shields.io/badge/transformer-FF8C00)-based language models, enabling them to perform tasks by
+conditioning on a small number of examples presented at inference time, without
+any parameter updates. Prior work has shown that ![key](https://img.shields.io/badge/transformer-FF8C00)s can generalize
+over simple function classes like linear functions, decision trees, even neural
+networks, purely from context, focusing on numerical or symbolic reasoning over
+underlying well-structured functions. Instead, we propose a novel application
+of ICL into the domain of cryptographic function learning, specifically
+focusing on ciphers such as mono-alphabetic substitution and Vigen\`ere
+ciphers, two classes of private-key encryption schemes. These ciphers involve a
+fixed but hidden bijective mapping between plain text and cipher text
+characters. Given a small set of (cipher text, plain text) pairs, the goal is
+for the model to infer the underlying substitution and ![key](https://img.shields.io/badge/decode-F08080) a new cipher text
+word. This setting poses a structured inference challenge, which is well-suited
+for evaluating the inductive biases and generalization capabilities of
+![key](https://img.shields.io/badge/transformer-FF8C00)s under the ICL paradigm. Code is available at
+https://github.com/adistomar/CS182-project.
+
+
 ## Agentic AI Frameworks Architectures, Protocols, and Design Challenges
 
 >Authors: Hana Derouiche, Zaki Brahmi, Haithem Mazeni
@@ -534,6 +761,35 @@ taxonomy for Agentic AI systems but also propose future research directions to
 enhance scalability, robustness, and interoperability. This work serves as a
 comprehensive reference for researchers and practitioners working to advance
 the next generation of autonomous AI systems.
+
+
+## Nested-ReFT Efficient Reinforcement Learning for Large Language Model Fine-Tuning via Off-Policy Rollouts
+
+>Authors: Maxime Heuillet, Yufei Cui, Boxing Chen, Audrey Durand, Prasanna Parthasarathi
+
+>2025-08-13
+
+> [http://arxiv.org/abs/2508.10123v1](http://arxiv.org/abs/2508.10123v1)
+
+Advanced reasoning in ![key](https://img.shields.io/badge/LLM-FF8C00)s on challenging domains like mathematical reasoning
+can be tackled using verifiable rewards based reinforced fine-tuning (ReFT). In
+standard ReFT frameworks, a behavior model generates multiple completions with
+answers per problem, for the answer to be then scored by a reward function.
+While such RL post-training methods demonstrate significant performance
+improvements across challenging reasoning domains, the computational cost of
+generating completions during training with multiple inference steps makes the
+training cost non-trivial. To address this, we draw inspiration from off-policy
+RL, and speculative ![key](https://img.shields.io/badge/decoding-F08080) to introduce a novel ReFT framework, dubbed
+Nested-ReFT, where a subset of layers of the target model acts as the behavior
+model to generate off-policy completions during training. The behavior model
+configured with dynamic layer skipping per batch during training decreases the
+inference cost compared to the standard ReFT frameworks. Our theoretical
+analysis shows that Nested-ReFT yields unbiased gradient estimates with
+controlled variance. Our empirical analysis demonstrates improved computational
+efficiency measured as tokens/sec across multiple math reasoning benchmarks and
+model sizes. Additionally, we explore three variants of bias mitigation to
+minimize the off-policyness in the gradient updates that allows for maintaining
+performance that matches the baseline ReFT performance.
 
 
 ## From Intent to Execution Multimodal Chain-of-Thought Reinforcement Learning for Precise CAD Code Generation
@@ -568,6 +824,39 @@ significant improvements in reasoning quality, output precision, and code
 executability over existing VLMs.
 
 
+## Constrained Decoding of Diffusion LLMs with Context-Free Grammars
+
+>Authors: Niels Mündler, Jasper Dekoninck, Martin Vechev
+
+>2025-08-13
+
+> [http://arxiv.org/abs/2508.10111v1](http://arxiv.org/abs/2508.10111v1)
+
+Large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) have shown promising performance across diverse
+domains. Many practical applications of ![key](https://img.shields.io/badge/LLM-FF8C00)s, such as code completion and
+structured data extraction, require adherence to syntactic constraints
+specified by a formal language. Yet, due to their probabilistic nature, ![key](https://img.shields.io/badge/LLM-FF8C00)
+output is not guaranteed to adhere to such formal languages. Prior work has
+proposed constrained ![key](https://img.shields.io/badge/decoding-F08080) as a means to restrict ![key](https://img.shields.io/badge/LLM-FF8C00) generation to
+particular formal languages. However, existing works are not applicable to the
+emerging paradigm of diffusion ![key](https://img.shields.io/badge/LLM-FF8C00)s, when used in practical scenarios such as
+the generation of formally correct C++ or JSON output. In this paper we address
+this challenge and present the first constrained ![key](https://img.shields.io/badge/decoding-F08080) method for diffusion
+models, one that can handle formal languages captured by context-free grammars.
+We begin by reducing constrained ![key](https://img.shields.io/badge/decoding-F08080) to the more general additive
+infilling problem, which asks whether a partial output can be completed to a
+valid word in the target language. This problem also naturally subsumes the
+previously unaddressed multi-region infilling constrained ![key](https://img.shields.io/badge/decoding-F08080). We then
+reduce this problem to the task of deciding whether the intersection of the
+target language and a regular language is empty and present an efficient
+algorithm to solve it for context-free languages. Empirical results on various
+applications, such as C++ code infilling and structured data extraction in
+JSON, demonstrate that our method achieves near-perfect syntactic correctness
+while consistently pre![key](https://img.shields.io/badge/serving-FF8C00) or improving functional correctness. Importantly,
+our efficiency optimizations ensure that the computational overhead remains
+practical.
+
+
 ## Language of Persuasion and Misrepresentation in Business Communication A Textual Detection Approach
 
 >Authors: Sayem Hossen, Monalisa Moon Joti, Md. Golam Rashed
@@ -599,6 +888,68 @@ empirically approximated,
   and therefore, there is a need to have strong automatic text-identification
 systems where AI-based
   discourse is becoming more realistic in communicating with humans.
+
+
+## Memory Decoder A Pretrained, Plug-and-Play Memory for Large Language Models
+
+>Authors: Jiaqi Cao, Jiarui Wang, Rubin Wei, Qipeng Guo, Kai Chen, Bowen Zhou, Zhouhan Lin
+
+>2025-08-13
+
+> [http://arxiv.org/abs/2508.09874v1](http://arxiv.org/abs/2508.09874v1)
+
+Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s) have shown strong abilities in general language
+tasks, yet adapting them to specific domains remains a challenge. Current
+method like Domain Adaptive Pretraining (DAPT) requires costly full-parameter
+training and suffers from catastrophic forgetting. Meanwhile,
+Retrieval-Augmented Generation (RAG) introduces substantial inference latency
+due to expensive nearest-neighbor searches and longer context. This paper
+introduces Memory Decoder, a plug-and-play pretrained memory that enables
+efficient domain adaptation without changing the original model's parameters.
+Memory Decoder employs a small ![key](https://img.shields.io/badge/transformer-FF8C00) ![key](https://img.shields.io/badge/decode-F08080)r that learns to imitate the
+behavior of an external non-parametric retriever. Once trained, Memory Decoder
+can be seamlessly integrated with any pretrained language model that shares the
+same tokenizer, requiring no model-specific modifications. Experimental results
+demonstrate that Memory Decoder enables effective adaptation of various Qwen
+and Llama models to three distinct specialized domains: biomedicine, finance,
+and law, reducing perplexity by an average of 6.17 points. Overall, Memory
+Decoder introduces a novel paradigm centered on a specially pretrained memory
+component designed for domain-specific adaptation. This memory architecture can
+be integrated in a plug-and-play manner, consistently enhancing performance
+across multiple models within the target domain.
+
+
+## OneVAE Joint Discrete and Continuous Optimization Helps Discrete Video VAE Train Better
+
+>Authors: Yupeng Zhou, Zhen Li, Ziheng Ouyang, Yuming Chen, Ruoyi Du, Daquan Zhou, Bin Fu, Yihao Liu, Peng Gao, Ming-Ming Cheng, Qibin Hou
+
+>2025-08-13
+
+> [http://arxiv.org/abs/2508.09857v1](http://arxiv.org/abs/2508.09857v1)
+
+Encoding videos into discrete tokens could align with text tokens to
+facilitate concise and unified multi-modal ![key](https://img.shields.io/badge/LLM-FF8C00)s, yet introducing significant
+spatiotemporal compression compared to continuous video representation.
+Previous discrete video VAEs experienced unstable training, long training time,
+and degraded reconstruction quality. Given the easier training and superior
+performance of continuous VAEs, an intuitive idea is to enhance discrete video
+VAEs by leveraging continuous VAEs. After rethinking the intrinsic link between
+discrete and continuous representations, we found that FSQ could effectively
+preserve pre-trained continuous VAE priors compared to other ![key](https://img.shields.io/badge/quantization-F08080)
+methods. By leveraging continuous VAE priors, it converges several times faster
+than training from scratch and achieves superior performance at convergence.
+Meanwhile, two structural improvements are proposed. First, inspired by how
+continuous VAEs enhance reconstruction via enlarged latent dimensions, we
+introduce a multi-token ![key](https://img.shields.io/badge/quantization-F08080) mechanism, which achieves nearly a 1 dB
+improvement in PSNR without compromising the token compression ratio. Second,
+to tackle reconstruction challenges in high-compression video VAEs, we
+strengthen first-frame reconstruction, enabling the causal VAE to leverage this
+information in subsequent frames and markedly improving the performance of 4 x
+16 x 16 discrete VAEs. Furthermore, we propose a joint discrete-continuous
+optimization scheme that unifies the two paradigms and, for the first time,
+achieves competitive performance on both continuous and discrete
+representations within a single network. We name our method OneVAE to reflect
+this connection.
 
 
 ## Speed Always Wins A Survey on Efficient Architectures for Large Language Models
@@ -721,7 +1072,7 @@ SmartMoE, and Megatron-LM.
 
 > [http://arxiv.org/abs/2508.09473v1](http://arxiv.org/abs/2508.09473v1)
 
-Ensuring robust safety alignment while preserving utility is critical for the
+Ensuring robust safety alignment while pre![key](https://img.shields.io/badge/serving-FF8C00) utility is critical for the
 reliable deployment of Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s). However, current
 techniques fundamentally suffer from intertwined deficiencies: insufficient
 robustness against malicious attacks, frequent refusal of benign queries,
@@ -731,7 +1082,7 @@ impairment. We trace these limitations to the coarse-grained layer-wise
 interventions in existing methods. To resolve this, we propose NeuronTune, a
 fine-grained framework that dynamically modulates ![key](https://img.shields.io/badge/sparse-F08080) neurons to achieve
 simultaneous safety-utility optimization. Our approach first identifies
-safety-critical and utility-preserving neurons across all layers via
+safety-critical and utility-pre![key](https://img.shields.io/badge/serving-FF8C00) neurons across all layers via
 attribution, then employs meta-learning to adaptively amplify safety-neuron
 activations and suppress utility-neuron activations. Crucially, NeuronTune
 enables tunable adjustment of intervention scope via neuron-count thresholds,
@@ -757,7 +1108,7 @@ challenge, the present work introduces EGGS-PTP: an Expander-Graph Guided
 Structured Post-training Pruning method. The proposed approach leverages graph
 theory to guide the design of N:M structured ![key](https://img.shields.io/badge/pruning-F08080), effectively reducing
 model size and computational demands. By incorporating concepts from expander
-graphs, EGGS-PTP ensures information flow within the pruned network, preserving
+graphs, EGGS-PTP ensures information flow within the pruned network, pre![key](https://img.shields.io/badge/serving-FF8C00)
 essential model functionality. Extensive numerical experiments demonstrate that
 EGGS-PTP not only achieves significant ![key](https://img.shields.io/badge/acceleration-F08080) and memory savings due to
 structured ![key](https://img.shields.io/badge/sparsity-F08080) but also outperforms existing structured ![key](https://img.shields.io/badge/pruning-F08080) techniques
@@ -798,19 +1149,19 @@ the target identity across an array of fine-grained facial expressions.
 
 > [http://arxiv.org/abs/2508.09442v1](http://arxiv.org/abs/2508.09442v1)
 
-The Key-Value (![key](https://img.shields.io/badge/KV-F08080)) cache, which stores intermediate attention computations
+The Key-Value (![key](https://img.shields.io/badge/KV-F08080)) ![key](https://img.shields.io/badge/cache-F08080), which stores intermediate attention computations
 (Key and Value pairs) to avoid redundant calculations, is a fundamental
 mechanism for accelerating Large Language Model (![key](https://img.shields.io/badge/LLM-FF8C00)) inference. However, this
 efficiency optimization introduces significant yet underexplored privacy risks.
 This paper provides the first comprehensive analysis of these vulnerabilities,
 demonstrating that an attacker can reconstruct sensitive user inputs directly
-from the ![key](https://img.shields.io/badge/KV-F08080)-cache. We design and implement three distinct attack vectors: a
+from the ![key](https://img.shields.io/badge/KV-F08080)-![key](https://img.shields.io/badge/cache-F08080). We design and implement three distinct attack vectors: a
 direct Inversion Attack, a more broadly applicable and potent Collision Attack,
 and a semantic-based Injection Attack. These methods demonstrate the
-practicality and severity of ![key](https://img.shields.io/badge/KV-F08080)-cache privacy leakage issues. To mitigate this,
+practicality and severity of ![key](https://img.shields.io/badge/KV-F08080)-![key](https://img.shields.io/badge/cache-F08080) privacy leakage issues. To mitigate this,
 we propose ![key](https://img.shields.io/badge/KV-F08080)-Cloak, a novel, lightweight, and efficient defense mechanism.
 ![key](https://img.shields.io/badge/KV-F08080)-Cloak uses a reversible matrix-based obfuscation scheme, combined with
-operator fusion, to secure the ![key](https://img.shields.io/badge/KV-F08080)-cache. Our extensive experiments show that
+operator fusion, to secure the ![key](https://img.shields.io/badge/KV-F08080)-![key](https://img.shields.io/badge/cache-F08080). Our extensive experiments show that
 ![key](https://img.shields.io/badge/KV-F08080)-Cloak effectively thwarts all proposed attacks, reducing reconstruction
 quality to random noise. Crucially, it achieves this robust security with
 virtually no degradation in model accuracy and minimal performance overhead,
@@ -848,6 +1199,25 @@ series forecasting, highlights its potential as a practical alternative to
 conventional dropout techniques.
 
 
+## SinLlama -- A Large Language Model for Sinhala
+
+>Authors: H. W. K. Aravinda, Rashad Sirajudeen, Samith Karunathilake, Nisansa de Silva, Surangika Ranathunga, Rishemjit Kaur
+
+>2025-08-12
+
+> [http://arxiv.org/abs/2508.09115v1](http://arxiv.org/abs/2508.09115v1)
+
+Low-resource languages such as Sinhala are often overlooked by open-source
+Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s). In this research, we extend an existing
+multilingual ![key](https://img.shields.io/badge/LLM-FF8C00) (Llama-3-8B) to better serve Sinhala. We enhance the ![key](https://img.shields.io/badge/LLM-FF8C00)
+tokenizer with Sinhala specific vocabulary and perform continual pre-training
+on a cleaned 10 million Sinhala corpus, resulting in the SinLlama model. This
+is the very first ![key](https://img.shields.io/badge/decode-F08080)r-based open-source ![key](https://img.shields.io/badge/LLM-FF8C00) with explicit Sinhala support.
+When SinLlama was instruction fine-tuned for three text classification tasks,
+it outperformed base and instruct variants of Llama-3-8B by a significant
+margin.
+
+
 ## READER Retrieval-Assisted Drafter for Efficient LLM Inference
 
 >Authors: Maxim Divilkovskiy, Vitaly Malygin, Sergey Zlobin, Sultan Isali, Vasily Kalugin, Stanislav Ilyushin, Nuriza Aitassova, Yi Fei, Zeng Weidi
@@ -863,13 +1233,13 @@ challenge for efficient deployment. In recent years, various methods have been
 proposed to address this issue, with the most effective approaches often
 involving the training of additional draft models. In this paper, we introduce
 READER (Retrieval-Assisted Drafter for Efficient ![key](https://img.shields.io/badge/LLM-FF8C00) Inference), a novel
-lossless speculative decoding method that enhances model-based approaches by
+lossless speculative ![key](https://img.shields.io/badge/decoding-F08080) method that enhances model-based approaches by
 leveraging self-repetitions in the text. Our algorithm expands the speculative
-decoding tree using tokens obtained through statistical search. This work
+![key](https://img.shields.io/badge/decoding-F08080) tree using tokens obtained through statistical search. This work
 focuses on large batch sizes (>= 8), an underexplored yet important area for
-industrial applications. We also analyze the key-value (![key](https://img.shields.io/badge/KV-F08080)) cache size during
-speculative decoding and propose an optimization to improve performance for
-large batches. As a result, READER outperforms existing speculative decoding
+industrial applications. We also analyze the key-value (![key](https://img.shields.io/badge/KV-F08080)) ![key](https://img.shields.io/badge/cache-F08080) size during
+speculative ![key](https://img.shields.io/badge/decoding-F08080) and propose an optimization to improve performance for
+large batches. As a result, READER outperforms existing speculative ![key](https://img.shields.io/badge/decoding-F08080)
 methods. Notably, READER requires no additional training and can reuse
 pre-trained speculator models, increasing the speedup by over 40\%. Our method
 demonstrates particularly strong performance on search-based tasks, such as
@@ -899,6 +1269,33 @@ learning. The code for this work can be found at
 https://github.com/ghosh64/fetfids.
 
 
+## A Survey on Training-free Alignment of Large Language Models
+
+>Authors: Birong Pan, Yongqi Li, Weiyu Zhang, Wenpeng Lu, Mayi Xu, Shen Zhou, Yuanyuan Zhu, Ming Zhong, Tieyun Qian
+
+>2025-08-12
+
+> [http://arxiv.org/abs/2508.09016v1](http://arxiv.org/abs/2508.09016v1)
+
+The alignment of large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) aims to ensure their outputs
+adhere to human values, ethical standards, and legal norms. Traditional
+alignment methods often rely on resource-intensive fine-tuning (FT), which may
+suffer from knowledge degradation and face challenges in scenarios where the
+model accessibility or computational resources are constrained. In contrast,
+training-free (TF) alignment techniques--leveraging in-context learning,
+![key](https://img.shields.io/badge/decoding-F08080)-time adjustments, and post-generation corrections--offer a promising
+alternative by enabling alignment without heavily retraining ![key](https://img.shields.io/badge/LLM-FF8C00)s, making them
+adaptable to both open-source and closed-source environments. This paper
+presents the first systematic review of TF alignment methods, categorizing them
+by stages of pre-![key](https://img.shields.io/badge/decoding-F08080), in-![key](https://img.shields.io/badge/decoding-F08080), and post-![key](https://img.shields.io/badge/decoding-F08080). For each stage, we
+provide a detailed examination from the viewpoint of ![key](https://img.shields.io/badge/LLM-FF8C00)s and multimodal ![key](https://img.shields.io/badge/LLM-FF8C00)s
+(M![key](https://img.shields.io/badge/LLM-FF8C00)s), highlighting their mechanisms and limitations. Furthermore, we
+identify key challenges and future directions, paving the way for more
+inclusive and effective TF alignment techniques. By synthesizing and organizing
+the rapidly growing body of research, this survey offers a guidance for
+practitioners and advances the development of safer and more reliable ![key](https://img.shields.io/badge/LLM-FF8C00)s.
+
+
 ## Retrospective Sparse Attention for Efficient Long-Context Generation
 
 >Authors: Seonghwan Choi, Beomseok Kang, Dongwon Jo, Jae-Joon Kim
@@ -909,14 +1306,14 @@ https://github.com/ghosh64/fetfids.
 
 Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s) are increasingly deployed in long-context tasks
 such as reasoning, code generation, and multi-turn dialogue. However, inference
-over extended contexts is bottlenecked by the Key-Value (![key](https://img.shields.io/badge/KV-F08080)) cache, whose
+over extended contexts is bottlenecked by the Key-Value (![key](https://img.shields.io/badge/KV-F08080)) ![key](https://img.shields.io/badge/cache-F08080), whose
 memory footprint grows linearly with sequence length and dominates latency at
-each decoding step. While recent ![key](https://img.shields.io/badge/KV-F08080) cache compression methods identify and load
+each ![key](https://img.shields.io/badge/decoding-F08080) step. While recent ![key](https://img.shields.io/badge/KV-F08080) ![key](https://img.shields.io/badge/cache-F08080) compression methods identify and load
 important tokens, they focus predominantly on input contexts and fail to
-address the cumulative attention errors that arise during long decoding. In
-this paper, we introduce RetroAttention, a novel ![key](https://img.shields.io/badge/KV-F08080) cache update technique that
+address the cumulative attention errors that arise during long ![key](https://img.shields.io/badge/decoding-F08080). In
+this paper, we introduce RetroAttention, a novel ![key](https://img.shields.io/badge/KV-F08080) ![key](https://img.shields.io/badge/cache-F08080) update technique that
 retrospectively revises past attention outputs using newly arrived ![key](https://img.shields.io/badge/KV-F08080) entries
-from subsequent decoding steps. By maintaining a lightweight output cache,
+from subsequent ![key](https://img.shields.io/badge/decoding-F08080) steps. By maintaining a lightweight output ![key](https://img.shields.io/badge/cache-F08080),
 RetroAttention enables past queries to efficiently access more relevant
 context, while incurring minimal latency overhead. This breaks the
 fixed-attention-output paradigm and allows continual correction of prior
@@ -995,19 +1392,19 @@ diversity and similarity compared to current techniques.
 
 The increasing scale and complexity of large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) pose
 significant inference latency challenges, primarily due to their autoregressive
-decoding paradigm characterized by the sequential nature of next-token
+![key](https://img.shields.io/badge/decoding-F08080) paradigm characterized by the sequential nature of next-token
 prediction. By re-examining the outputs of autoregressive models, we observed
 that some segments exhibit parallelizable structures, which we term intrinsic
 parallelism. Decoding each parallelizable branch simultaneously (i.e. parallel
-decoding) can significantly improve the overall inference speed of ![key](https://img.shields.io/badge/LLM-FF8C00)s. In
+![key](https://img.shields.io/badge/decoding-F08080)) can significantly improve the overall inference speed of ![key](https://img.shields.io/badge/LLM-FF8C00)s. In
 this paper, we propose an Adaptive Serial-Parallel Decoding (ASPD), which
 addresses two core challenges: automated construction of parallelizable data
-and efficient parallel decoding mechanism. More specifically, we introduce a
+and efficient parallel ![key](https://img.shields.io/badge/decoding-F08080) mechanism. More specifically, we introduce a
 non-invasive pipeline that automatically extracts and validates parallelizable
 structures from the responses of autoregressive models. To empower efficient
-adaptive serial-parallel decoding, we implement a Hybrid Decoding Engine which
-enables seamless transitions between serial and parallel decoding modes while
-maintaining a reusable ![key](https://img.shields.io/badge/KV-F08080) cache, maximizing computational efficiency. Extensive
+adaptive serial-parallel ![key](https://img.shields.io/badge/decoding-F08080), we implement a Hybrid Decoding Engine which
+enables seamless transitions between serial and parallel ![key](https://img.shields.io/badge/decoding-F08080) modes while
+maintaining a reusable ![key](https://img.shields.io/badge/KV-F08080) ![key](https://img.shields.io/badge/cache-F08080), maximizing computational efficiency. Extensive
 evaluations across General Tasks, Retrieval-Augmented Generation, Mathematical
 Reasoning, demonstrate that ASPD achieves unprecedented performance in both
 effectiveness and efficiency. Notably, on Vicuna Bench, our method achieves up
@@ -1017,6 +1414,31 @@ to 3.19x speedup (1.85x on average) while maintaining response quality within
 groundbreaking benchmark for efficient ![key](https://img.shields.io/badge/LLM-FF8C00) parallel inference, paving the way
 for its deployment in latency-sensitive applications such as AI-powered
 customer service bots and answer retrieval engines.
+
+
+## Steering Towards Fairness Mitigating Political Bias in LLMs
+
+>Authors: Afrozah Nadeem, Mark Dras, Usman Naseem
+
+>2025-08-12
+
+> [http://arxiv.org/abs/2508.08846v1](http://arxiv.org/abs/2508.08846v1)
+
+Recent advancements in large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) have enabled their
+widespread use across diverse real-world applications. However, concerns remain
+about their tendency to encode and reproduce ideological biases, particularly
+along political and economic dimensions. In this paper, we propose a framework
+for probing and mitigating such biases in ![key](https://img.shields.io/badge/decode-F08080)r-based ![key](https://img.shields.io/badge/LLM-FF8C00)s through analysis
+of internal model representations. Grounded in the Political Compass Test
+(PCT), our method uses contrastive pairs to extract and compare hidden layer
+activations from models like Mistral and DeepSeek. We introduce a comprehensive
+activation extraction pipeline capable of layer-wise analysis across multiple
+ideological axes, revealing meaningful disparities linked to political framing.
+Our results show that ![key](https://img.shields.io/badge/decode-F08080)r ![key](https://img.shields.io/badge/LLM-FF8C00)s systematically encode representational bias
+across layers, which can be leveraged for effective steering vector-based
+mitigation. This work provides new insights into how political bias is encoded
+in ![key](https://img.shields.io/badge/LLM-FF8C00)s and offers a principled approach to debiasing beyond surface-level
+output interventions.
 
 
 ## DiffPose-Animal A Language-Conditioned Diffusion Framework for Animal Pose Estimation
@@ -1041,7 +1463,7 @@ anatomical priors and local keypoint-wise semantics based on species-specific
 prompts. These textual priors are encoded and fused with image features via
 cross-attention modules to provide biologically meaningful constraints
 throughout the denoising process. Additionally, a diffusion-based keypoint
-decoder is designed to progressively refine pose predictions, improving
+![key](https://img.shields.io/badge/decode-F08080)r is designed to progressively refine pose predictions, improving
 robustness to occlusion and annotation ![key](https://img.shields.io/badge/sparsity-F08080). Extensive experiments on
 public animal pose datasets demonstrate the effectiveness and generalization
 capability of our method, especially under challenging scenarios with diverse
@@ -1262,6 +1684,30 @@ question-answering agent, leveraging this survey as a local knowledge base to
 enable GNN-related responses tailored to wireless ![key](https://img.shields.io/badge/communication-F08080) research.
 
 
+## Joint decoding method for controllable contextual speech recognition based on Speech LLM
+
+>Authors: Yangui Fang, Jing Peng, Yu Xi, Xu Li, Haoyu Li, Chengwei Zhang, Guohui Zhong, Kai Yu
+
+>2025-08-12
+
+> [http://arxiv.org/abs/2508.08585v1](http://arxiv.org/abs/2508.08585v1)
+
+Contextual speech recognition refers to the ability to identify preferences
+for specific content based on contextual information. Recently, leveraging the
+contextual understanding capabilities of Speech ![key](https://img.shields.io/badge/LLM-FF8C00) to achieve contextual
+biasing by injecting contextual information through prompts have emerged as a
+research hotspot.However, the direct information injection method via prompts
+relies on the internal attention mechanism of the model, making it impossible
+to explicitly control the extent of information injection. To address this
+limitation, we propose a joint ![key](https://img.shields.io/badge/decoding-F08080) method to control the contextual
+information. This approach enables explicit control over the injected
+contextual information and achieving superior recognition performance.
+Additionally, Our method can also be used for sensitive word suppression
+recognition.Furthermore, experimental results show that even Speech ![key](https://img.shields.io/badge/LLM-FF8C00) not
+pre-trained on long contextual data can acquire long contextual capabilities
+through our method.
+
+
 ## Securing Agentic AI Threat Modeling and Risk Analysis for Network Monitoring Agentic AI System
 
 >Authors: Pallavi Zambare, Venkata Nikhil Thanikella, Ying Liu
@@ -1290,6 +1736,43 @@ the basis of the resilient system design. The authors bring attention to the
 importance of the enforcement of memory integrity, paying attention to the
 adaptation logic monitoring, and cross-layer ![key](https://img.shields.io/badge/communication-F08080) protection that
 guarantee the agentic AI reliability in adversarial settings.
+
+
+## Profiling Large Language Model Inference on Apple Silicon A Quantization Perspective
+
+>Authors: Afsara Benazir, Felix Xiaozhu Lin
+
+>2025-08-12
+
+> [http://arxiv.org/abs/2508.08531v1](http://arxiv.org/abs/2508.08531v1)
+
+A systematic understanding of Apple Silicon is lacking in the current
+landscape of hardware efficiency; research focus is largely centered on
+accelerating GPUs for large-scale training or inference on CUDA devices. This
+paper investigates Apple Silicon's unique memory architecture that offers a
+unified memory integrating CPU and GPU memory and its implications for
+on-device ![key](https://img.shields.io/badge/LLM-FF8C00) inference.
+  We decipher myths about whether Apple Silicon is efficient for on-device
+inference compared to competitors such as NVIDIA GPUs by directly conducting
+latency and throughput comparison benchmarks. We explain the performance gap
+between them through profiling low level hardware metrics - ALU utilization,
+memory bandwidth, buffer usage, ![key](https://img.shields.io/badge/cache-F08080) residency etc. at runtime. We draw
+several insights regarding performance bottlenecks such as de![key](https://img.shields.io/badge/quantization-F08080)
+overhead, compute throughput and memory bandwidth. We debunk existing false
+claims regarding large language model inference such as compressing models to
+lower bit precision is a defacto promise for faster inference across all
+hardware platforms. We find that the large unified memory enables Apple Silicon
+to be both cost effective and efficient against NVIDIA GPUs for ultra large
+language models.
+  Our large scale evaluation on 5 hardware testbeds incorporating three Apple
+M-series devices: M2 Ultra, M2 Max and M4 Pro and two NVIDIA GPUs: NVIDIA RTX
+A6000, a multi GPU setup with 2xNVIDIA RTX A6000, 5 model scales ranging from
+8B to 405B parameters and 14 ![key](https://img.shields.io/badge/quantization-F08080) schemes gives an understanding of how
+Apple Silicon fits within the paradigm of on-device ![key](https://img.shields.io/badge/LLM-FF8C00) inference. Our analysis
+reveals multiple resource interdependencies and unexpected findings, while also
+quantifying established insights. To the best of our knowledge, this study
+makes the first attempt to present a thorough characterization and analysis of
+Apple Silicon for on-device inference.
 
 
 ## Using LLMs to Capture Users' Temporal Context for Recommendation
@@ -1352,6 +1835,39 @@ individually-optimizable attributes and then each attribute is efficiently
 refined and validated through a multi-tier cascading approach.
 
 
+## Vector-Centric Machine Learning Systems A Cross-Stack Approach
+
+>Authors: Wenqi Jiang
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.08469v1](http://arxiv.org/abs/2508.08469v1)
+
+Today, two major trends are shaping the evolution of ML systems. First,
+modern AI systems are becoming increasingly complex, often integrating
+components beyond the model itself. A notable example is Retrieval-Augmented
+Generation (RAG), which incorporates not only multiple models but also vector
+databases, leading to heterogeneity in both system components and underlying
+hardware. Second, with the end of Moore's Law, achieving high system efficiency
+is no longer feasible without accounting for the rapid evolution of the
+hardware landscape.
+  Building on the observations above, this thesis adopts a cross-stack approach
+to improving ML system efficiency, presenting solutions that span algorithms,
+systems, and hardware. First, it introduces several pioneering works about RAG
+![key](https://img.shields.io/badge/serving-FF8C00) efficiency across the computing stack. PipeRAG focuses on
+algorithm-level improvements, RAGO introduces system-level optimizations, and
+Chameleon explores heterogeneous accelerator systems for RAG. Second, this
+thesis investigates algorithm-hardware co-design for vector search.
+Specifically, FANNS and Falcon optimize ![key](https://img.shields.io/badge/quantization-F08080)-based and graph-based
+vector search, the two most popular paradigms of retrieval algorithms. Third,
+this thesis addresses the ![key](https://img.shields.io/badge/serving-FF8C00) efficiency of recommender systems, another
+example of vector-centric ML systems, where the memory-intensive lookup
+operations on embedding vector tables often represent a major performance
+bottleneck. MicroRec and FleetRec propose solutions at the hardware and system
+levels, respectively, optimizing both data movement and computation to enhance
+the efficiency of large-scale recommender models.
+
+
 ## Architecting Long-Context LLM Acceleration with Packing-Prefetch Scheduler and Ultra-Large Capacity On-Chip Memories
 
 >Authors: Ming-Yen Lee, Faaiq Waqar, Hanchen Yang, Muhammed Ahosan Ul Karim, Harsono Simka, Shimeng Yu
@@ -1362,13 +1878,13 @@ refined and validated through a multi-tier cascading approach.
 
 Long-context Large Language Model (![key](https://img.shields.io/badge/LLM-FF8C00)) inference faces increasing compute
 bottlenecks as attention calculations scale with context length, primarily due
-to the growing ![key](https://img.shields.io/badge/KV-F08080)-cache transfer overhead that saturates High Bandwidth Memory
-(HBM). While prefetching techniques mitigate cache misses by fetching ![key](https://img.shields.io/badge/KV-F08080) data
+to the growing ![key](https://img.shields.io/badge/KV-F08080)-![key](https://img.shields.io/badge/cache-F08080) transfer overhead that saturates High Bandwidth Memory
+(HBM). While prefetching techniques mitigate ![key](https://img.shields.io/badge/cache-F08080) misses by fetching ![key](https://img.shields.io/badge/KV-F08080) data
 in advance, their spatial and temporal benefits present new opportunities to
 exploit. This work proposes a packing-prefetch scheduling architecture with
 monolithic 3D (M3D) back-end-of-line (BEOL) compatible embedded memories with
 ultra-large on-chip capacity to accelerate long-context ![key](https://img.shields.io/badge/LLM-FF8C00) inference. Our
-optimizations demonstrate 8.06x decode speedup and 1.83x overall latency
+optimizations demonstrate 8.06x ![key](https://img.shields.io/badge/decode-F08080) speedup and 1.83x overall latency
 reduction on Llama3.1-8B using TPUv6e-like hardware with additional 512MB BEOL
 memories over the serial execution. Evaluations of multi-request workloads on
 TPU-like architectures show 1.7x-2.4x throughput improvement and 1.5x-2.4x HBM
@@ -1376,6 +1892,31 @@ bandwidth reduction compared to packing-only methods on Llama3.1-8B and
 Llama3.1-70B models. With the co-design of packing, prefetching, and BEOL
 memories, our approach alleviates HBM constraints and enables efficient
 long-context ![key](https://img.shields.io/badge/LLM-FF8C00) inference.
+
+
+## OverFill Two-Stage Models for Efficient Language Model Decoding
+
+>Authors: Woojeong Kim, Junxiong Wang, Jing Nathan Yan, Mohamed Abdelfattah, Alexander M. Rush
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.08446v1](http://arxiv.org/abs/2508.08446v1)
+
+Large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) excel across diverse tasks but face significant
+deployment challenges due to high inference costs. ![key](https://img.shields.io/badge/LLM-FF8C00) inference comprises
+![key](https://img.shields.io/badge/prefill-F08080) (compute-bound) and ![key](https://img.shields.io/badge/decode-F08080) (memory-bound) stages, with ![key](https://img.shields.io/badge/decode-F08080)
+dominating latency particularly for long sequences. Current ![key](https://img.shields.io/badge/decode-F08080)r-only models
+handle both stages uniformly, despite their distinct computational profiles. We
+propose OverFill, which decouples these stages to optimize accuracy-efficiency
+tradeoffs. OverFill begins with a full model for ![key](https://img.shields.io/badge/prefill-F08080), processing system and
+user inputs in parallel. It then switches to a dense pruned model, while
+generating tokens sequentially. Leveraging more compute during ![key](https://img.shields.io/badge/prefill-F08080),
+OverFill improves generation quality with minimal latency overhead. Our
+3B-to-1B OverFill configuration outperforms 1B pruned models by 83.2%, while
+the 8B-to-3B configuration improves over 3B pruned models by 79.2% on average
+across standard benchmarks. OverFill matches the performance of same-sized
+models trained from scratch, while using significantly less training data. Our
+code is available at https://github.com/friendshipkim/overfill.
 
 
 ## Selective KV-Cache Sharing to Mitigate Timing Side-Channels in LLM Inference
@@ -1386,15 +1927,15 @@ long-context ![key](https://img.shields.io/badge/LLM-FF8C00) inference.
 
 > [http://arxiv.org/abs/2508.08438v1](http://arxiv.org/abs/2508.08438v1)
 
-Global ![key](https://img.shields.io/badge/KV-F08080)-cache sharing has emerged as a key optimization for accelerating
+Global ![key](https://img.shields.io/badge/KV-F08080)-![key](https://img.shields.io/badge/cache-F08080) sharing has emerged as a key optimization for accelerating
 large language model (![key](https://img.shields.io/badge/LLM-FF8C00)) inference. However, it exposes a new class of timing
 side-channel attacks, enabling adversaries to infer sensitive user inputs via
-shared cache entries. Existing defenses, such as per-user isolation, eliminate
+shared ![key](https://img.shields.io/badge/cache-F08080) entries. Existing defenses, such as per-user isolation, eliminate
 leakage but degrade performance by up to 38.9% in time-to-first-token (TTFT),
 making them impractical for high-throughput deployment. To address this gap, we
 introduce Safe![key](https://img.shields.io/badge/KV-F08080) (Secure and Flexible ![key](https://img.shields.io/badge/KV-F08080) Cache Sharing), a privacy-aware
-![key](https://img.shields.io/badge/KV-F08080)-cache management framework that selectively shares non-sensitive entries
-while confining sensitive content to private caches. Safe![key](https://img.shields.io/badge/KV-F08080) comprises three
+![key](https://img.shields.io/badge/KV-F08080)-![key](https://img.shields.io/badge/cache-F08080) management framework that selectively shares non-sensitive entries
+while confining sensitive content to private ![key](https://img.shields.io/badge/cache-F08080)s. Safe![key](https://img.shields.io/badge/KV-F08080) comprises three
 components: (i) a hybrid, multi-tier detection pipeline that integrates
 rule-based pattern matching, a general-purpose privacy detector, and
 context-aware validation; (ii) a unified radix-tree index that manages public
@@ -1403,11 +1944,39 @@ and private entries across heterogeneous memory tiers (HBM, DRAM, SSD); and
 information leakage. Our evaluation shows that Safe![key](https://img.shields.io/badge/KV-F08080) mitigates 94% - 97% of
 timing-based side-channel attacks. Compared to per-user isolation method,
 Safe![key](https://img.shields.io/badge/KV-F08080) improves TTFT by up to 40.58% and throughput by up to 2.66X across
-diverse ![key](https://img.shields.io/badge/LLM-FF8C00)s and workloads. Safe![key](https://img.shields.io/badge/KV-F08080) reduces cache-induced TTFT overhead from
+diverse ![key](https://img.shields.io/badge/LLM-FF8C00)s and workloads. Safe![key](https://img.shields.io/badge/KV-F08080) reduces ![key](https://img.shields.io/badge/cache-F08080)-induced TTFT overhead from
 50.41% to 11.74% on Qwen3-235B. By combining fine-grained privacy control with
-high cache reuse efficiency, Safe![key](https://img.shields.io/badge/KV-F08080) reclaims the performance advantages of
+high ![key](https://img.shields.io/badge/cache-F08080) reuse efficiency, Safe![key](https://img.shields.io/badge/KV-F08080) reclaims the performance advantages of
 global sharing while providing robust runtime privacy guarantees for ![key](https://img.shields.io/badge/LLM-FF8C00)
 inference.
+
+
+## Follow-Your-Shape Shape-Aware Image Editing via Trajectory-Guided Region Control
+
+>Authors: Zeqian Long, Mingzhe Zheng, Kunyu Feng, Xinhua Zhang, Hongyu Liu, Harry Yang, Linfeng Zhang, Qifeng Chen, Yue Ma
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.08134v2](http://arxiv.org/abs/2508.08134v2)
+
+While recent flow-based image editing models demonstrate general-purpose
+capabilities across diverse tasks, they often struggle to specialize in
+challenging scenarios -- particularly those involving large-scale shape
+transformations. When performing such structural edits, these methods either
+fail to achieve the intended shape change or inadvertently alter non-target
+regions, resulting in degraded background quality. We propose
+Follow-Your-Shape, a training-free and mask-free framework that supports
+precise and controllable editing of object shapes while strictly pre![key](https://img.shields.io/badge/serving-FF8C00)
+non-target content. Motivated by the divergence between inversion and editing
+trajectories, we compute a Trajectory Divergence Map (TDM) by comparing
+token-wise velocity differences between the inversion and denoising paths. The
+TDM enables precise localization of editable regions and guides a Scheduled ![key](https://img.shields.io/badge/KV-F08080)
+Injection mechanism that ensures stable and faithful editing. To facilitate a
+rigorous evaluation, we introduce ReShapeBench, a new benchmark comprising 120
+new images and enriched prompt pairs specifically curated for shape-aware
+editing. Experiments demonstrate that our method achieves superior editability
+and visual fidelity, particularly in tasks requiring large-scale shape
+replacement.
 
 
 ## BlindGuard Safeguarding LLM-based Multi-Agent Systems under Unknown Attacks
@@ -1502,6 +2071,27 @@ the potential of ![key](https://img.shields.io/badge/LLM-FF8C00)-powered in-vehi
 driving safety and user experience through natural, context-rich interactions.
 
 
+## Bridging ASR and LLMs for Dysarthric Speech Recognition Benchmarking Self-Supervised and Generative Approaches
+
+>Authors: Ahmed Aboeitta, Ahmed Sharshar, Youssef Nafea, Shady Shehata
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.08027v1](http://arxiv.org/abs/2508.08027v1)
+
+Speech Recognition (ASR) due to phoneme distortions and high variability.
+While self-supervised ASR models like Wav2Vec, HuBERT, and Whisper have shown
+promise, their effectiveness in dysarthric speech remains unclear. This study
+systematically benchmarks these models with different ![key](https://img.shields.io/badge/decoding-F08080) strategies,
+including CTC, seq2seq, and ![key](https://img.shields.io/badge/LLM-FF8C00)-enhanced ![key](https://img.shields.io/badge/decoding-F08080) (BART,GPT-2, Vicuna). Our
+contributions include (1) benchmarking ASR architectures for dysarthric speech,
+(2) introducing ![key](https://img.shields.io/badge/LLM-FF8C00)-based ![key](https://img.shields.io/badge/decoding-F08080) to improve intelligibility, (3) analyzing
+generalization across datasets, and (4) providing insights into recognition
+errors across severity levels. Findings highlight that ![key](https://img.shields.io/badge/LLM-FF8C00)-enhanced ![key](https://img.shields.io/badge/decoding-F08080)
+improves dysarthric ASR by leveraging linguistic constraints for phoneme
+restoration and grammatical correction.
+
+
 ## Interpreting Fedspeak with Confidence A LLM-Based Uncertainty-Aware Framework Guided by Monetary Policy Transmission Paths
 
 >Authors: Rui Yao, Qi Chai, Jinhai Yao, Siyuan Li, Junhao Chen, Qi Zhang, Hao Wang
@@ -1521,13 +2111,40 @@ an ![key](https://img.shields.io/badge/LLM-FF8C00)-based, uncertainty-aware fram
 classifying its underlying monetary policy stance. Technically, to enrich the
 semantic and contextual representation of Fedspeak texts, we incorporate
 domain-specific reasoning grounded in the monetary policy transmission
-mechanism. We further introduce a dynamic uncertainty decoding module to assess
+mechanism. We further introduce a dynamic uncertainty ![key](https://img.shields.io/badge/decoding-F08080) module to assess
 the confidence of model predictions, thereby enhancing both classification
 accuracy and model reliability. Experimental results demonstrate that our
 framework achieves state-of-the-art performance on the policy stance analysis
 task. Moreover, statistical analysis reveals a significant positive correlation
 between perceptual uncertainty and model error rates, validating the
 effectiveness of perceptual uncertainty as a diagnostic signal.
+
+
+## DiTVR Zero-Shot Diffusion Transformer for Video Restoration
+
+>Authors: Sicheng Gao, Nancy Mehta, Zongwei Wu, Radu Timofte
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.07811v1](http://arxiv.org/abs/2508.07811v1)
+
+Video restoration aims to reconstruct high quality video sequences from low
+quality inputs, addressing tasks such as super resolution, denoising, and
+deblurring. Traditional regression based methods often produce unrealistic
+details and require extensive paired datasets, while recent generative
+diffusion models face challenges in ensuring temporal consistency. We introduce
+DiTVR, a zero shot video restoration framework that couples a diffusion
+![key](https://img.shields.io/badge/transformer-FF8C00) with trajectory aware attention and a wavelet guided, flow
+consistent sampler. Unlike prior 3D convolutional or frame wise diffusion
+approaches, our attention mechanism aligns tokens along optical flow
+trajectories, with particular emphasis on vital layers that exhibit the highest
+sensitivity to temporal dynamics. A spatiotemporal neighbour ![key](https://img.shields.io/badge/cache-F08080) dynamically
+selects relevant tokens based on motion correspondences across frames. The flow
+guided sampler injects data consistency only into low-frequency bands,
+pre![key](https://img.shields.io/badge/serving-FF8C00) high frequency priors while accelerating convergence. DiTVR
+establishes a new zero shot state of the art on video restoration benchmarks,
+demonstrating superior temporal consistency and detail preservation while
+remaining robust to flow noise and occlusions.
 
 
 ## EvoCoT Overcoming the Exploration Bottleneck in Reinforcement Learning
@@ -1582,6 +2199,80 @@ during mid-training and post-training. GroveMoE models dynamically activate
 comparable to SOTA open-source models of similar or even larger size.
 
 
+## SASST Leveraging Syntax-Aware Chunking and LLMs for Simultaneous Speech Translation
+
+>Authors: Zeyu Yang, Lai Wei, Roman Koshkin, Xi Chen, Satoshi Nakamura
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.07781v1](http://arxiv.org/abs/2508.07781v1)
+
+This work proposes a grammar-based chunking strategy that segments input
+streams into semantically complete units by parsing dependency relations (e.g.,
+noun phrase boundaries, verb-object structures) and punctuation features. The
+method ensures chunk coherence and minimizes semantic fragmentation. Building
+on this mechanism, we present SASST (Syntax-Aware Simultaneous Speech
+Translation), an end-to-end framework integrating frozen Whisper encoder and
+![key](https://img.shields.io/badge/decode-F08080)r-only ![key](https://img.shields.io/badge/LLM-FF8C00). The unified architecture dynamically outputs translation
+tokens or <WAIT> symbols to jointly optimize translation timing and content,
+with target-side reordering addressing word-order divergence. Experiments on
+CoVoST2 multilingual corpus En-{De, Zh, Ja} demonstrate significant translation
+quality improvements across languages and validate the effectiveness of
+syntactic structures in ![key](https://img.shields.io/badge/LLM-FF8C00)-driven SimulST systems.
+
+
+## Symmetry-Aware Transformer Training for Automated Planning
+
+>Authors: Markus Fritzsche, Elliot Gestrin, Jendrik Seipp
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.07743v1](http://arxiv.org/abs/2508.07743v1)
+
+While ![key](https://img.shields.io/badge/transformer-FF8C00)s excel in many settings, their application in the field of
+automated planning is limited. Prior work like PlanGPT, a state-of-the-art
+![key](https://img.shields.io/badge/decode-F08080)r-only ![key](https://img.shields.io/badge/transformer-FF8C00), struggles with extrapolation from easy to hard
+planning problems. This in turn stems from problem symmetries: planning tasks
+can be represented with arbitrary variable names that carry no meaning beyond
+being identifiers. This causes a combinatorial explosion of equivalent
+representations that pure ![key](https://img.shields.io/badge/transformer-FF8C00)s cannot efficiently learn from. We
+propose a novel contrastive learning objective to make ![key](https://img.shields.io/badge/transformer-FF8C00)s
+symmetry-aware and thereby compensate for their lack of inductive bias.
+Combining this with architectural improvements, we show that ![key](https://img.shields.io/badge/transformer-FF8C00)s can
+be efficiently trained for either plan-generation or heuristic-prediction. Our
+results across multiple planning domains demonstrate that our symmetry-aware
+training effectively and efficiently addresses the limitations of PlanGPT.
+
+
+## Semantic Caching for Low-Cost LLM Serving From Offline Learning to Online Adaptation
+
+>Authors: Xutong Liu, Baran Atalar, Xiangxiang Dai, Jinhang Zuo, Siwei Wang, John C. S. Lui, Wei Chen, Carlee Joe-Wong
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.07675v2](http://arxiv.org/abs/2508.07675v2)
+
+Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s) are revolutionizing how users interact with
+information systems, yet their high inference cost poses serious scalability
+and sustainability challenges. Caching inference responses, allowing them to be
+retrieved without another forward pass through the ![key](https://img.shields.io/badge/LLM-FF8C00), has emerged as one
+possible solution. Traditional exact-match caching, however, overlooks the
+semantic similarity between queries, leading to unnecessary recomputation.
+Semantic caching addresses this by retrieving responses based on semantic
+similarity, but introduces a fundamentally different ![key](https://img.shields.io/badge/cache-F08080) eviction problem:
+one must account for mismatch costs between incoming queries and ![key](https://img.shields.io/badge/cache-F08080)d
+responses. Moreover, key system parameters, such as query arrival probabilities
+and ![key](https://img.shields.io/badge/serving-FF8C00) costs, are often unknown and must be learned over time. Existing
+semantic caching methods are largely ad-hoc, lacking theoretical foundations
+and unable to adapt to real-world uncertainty. In this paper, we present a
+principled, learning-based framework for semantic ![key](https://img.shields.io/badge/cache-F08080) eviction under unknown
+query and cost distributions. We formulate both offline optimization and online
+learning variants of the problem, and develop provably efficient algorithms
+with state-of-the-art guarantees. We also evaluate our framework on a synthetic
+dataset, showing that our proposed algorithms perform matching or superior
+performance compared with baselines.
+
+
 ## GLiClass Generalist Lightweight Model for Sequence Classification Tasks
 
 >Authors: Ihor Stepanov, Mykhailo Shtopko, Dmytro Vodianytskyi, Oleksandr Lukashov, Alexander Yavorskyi, Mykyta Yaroshenko
@@ -1591,7 +2282,7 @@ comparable to SOTA open-source models of similar or even larger size.
 > [http://arxiv.org/abs/2508.07662v1](http://arxiv.org/abs/2508.07662v1)
 
 Classification is one of the most widespread tasks in AI applications,
-serving often as the first step in filtering, sorting, and categorizing data.
+![key](https://img.shields.io/badge/serving-FF8C00) often as the first step in filtering, sorting, and categorizing data.
 Since modern AI systems must handle large volumes of input data and early
 pipeline stages can propagate errors downstream, achieving high efficiency and
 accuracy is critical. Moreover, classification requirements can change
@@ -1609,6 +2300,34 @@ comparable to embedding-based methods, while maintaining the flexibility needed
 for zero-shot and few-shot learning scenarios. Additionally, we adapted
 proximal policy optimization (PPO) for multi-label text classification,
 enabling training classifiers in data-![key](https://img.shields.io/badge/sparse-F08080) conditions or from human feedback.
+
+
+## LaVieID Local Autoregressive Diffusion Transformers for Identity-Preserving Video Creation
+
+>Authors: Wenhui Song, Hanhui Li, Jiehui Huang, Panwen Hu, Yuhao Cheng, Long Chen, Yiqiang Yan, Xiaodan Liang
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.07603v1](http://arxiv.org/abs/2508.07603v1)
+
+In this paper, we present LaVieID, a novel \underline{l}ocal
+\underline{a}utoregressive \underline{vi}d\underline{e}o diffusion framework
+designed to tackle the challenging \underline{id}entity-pre![key](https://img.shields.io/badge/serving-FF8C00)
+text-to-video task. The key idea of LaVieID is to mitigate the loss of identity
+information inherent in the stochastic global generation process of diffusion
+![key](https://img.shields.io/badge/transformer-FF8C00)s (DiTs) from both spatial and temporal perspectives. Specifically,
+unlike the global and unstructured modeling of facial latent states in existing
+DiTs, LaVieID introduces a local router to explicitly represent latent states
+by weighted combinations of fine-grained local facial structures. This
+alleviates undesirable feature interference and encourages DiTs to capture
+distinctive facial characteristics. Furthermore, a temporal autoregressive
+module is integrated into LaVieID to refine denoised latent tokens before video
+![key](https://img.shields.io/badge/decoding-F08080). This module divides latent tokens temporally into chunks, exploiting
+their long-range temporal dependencies to predict biases for rectifying tokens,
+thereby significantly enhancing inter-frame identity consistency. Consequently,
+LaVieID can generate high-fidelity personalized videos and achieve
+state-of-the-art performance. Our code and models are available at
+https://github.com/ssugarwh/LaVieID.
 
 
 ## HGMF A Hierarchical Gaussian Mixture Framework for Scalable Tool Invocation within the Model Context Protocol
@@ -1637,6 +2356,28 @@ selection accuracy while reducing inference latency, confirming the framework's
 scalability and effectiveness for large-scale tool libraries.
 
 
+## Towards Theoretical Understanding of Transformer Test-Time Computing Investigation on In-Context Linear Regression
+
+>Authors: Xingwu Chen, Miao Lu, Beining Wu, Difan Zou
+
+>2025-08-11
+
+> [http://arxiv.org/abs/2508.07571v1](http://arxiv.org/abs/2508.07571v1)
+
+Using more test-time computation during language model inference, such as
+generating more intermediate thoughts or sampling multiple candidate answers,
+has proven effective in significantly improving model performance. This paper
+takes an initial step toward bridging the gap between practical language model
+inference and theoretical ![key](https://img.shields.io/badge/transformer-FF8C00) analysis by incorporating randomness and
+sampling. We focus on in-context linear regression with continuous/binary
+coefficients, where our framework simulates language model ![key](https://img.shields.io/badge/decoding-F08080) through
+noise injection and binary coefficient sampling. Through this framework, we
+provide detailed analyses of widely adopted inference techniques. Supported by
+empirical results, our theoretical framework and analysis demonstrate the
+potential for offering new insights into understanding inference behaviors in
+real-world language models.
+
+
 ## Grounding Natural Language for Multi-agent Decision-Making with Multi-agentic LLMs
 
 >Authors: Dom Huh, Prasant Mohapatra
@@ -1661,6 +2402,31 @@ ablation studies on classic game settings with significant underlying social
 dilemmas and game-theoretic considerations.
 
 
+## Investigating 1-Bit Quantization in Transformer-Based Top Tagging
+
+>Authors: Saurabh Rai, Prisha, Jitendra Kumar
+
+>2025-08-10
+
+> [http://arxiv.org/abs/2508.07431v1](http://arxiv.org/abs/2508.07431v1)
+
+The increasing scale of deep learning models in high-energy physics (HEP) has
+posed challenges to their deployment on low-power, latency-sensitive platforms,
+such as FPGAs and ASICs used in trigger systems, as well as in offline data
+reconstruction and processing pipelines. In this work, we introduce BitParT, a
+1-bit Transformer-based architecture designed specifically for the top-quark
+tagging method. Building upon recent advances in ultra-![key](https://img.shields.io/badge/low-bit-F08080) large language
+models (![key](https://img.shields.io/badge/LLM-FF8C00)s), we extended these ideas to the HEP domain by developing a
+binary-weight variant (BitParT) of the Particle Transformer (ParT) model. Our
+findings indicate a potential for substantial reduction in model size and
+computational complexity, while maintaining high tagging performance. We
+benchmark BitParT on the public Top Quark Tagging Reference Dataset and show
+that it achieves competitive performance relative to its full-precision
+counterpart. This work demonstrates the design of extreme ![key](https://img.shields.io/badge/quantize-F08080)d models for
+physics applications, paving the way for real-time inference in collider
+experiments with minimal and optimized resource usage.
+
+
 ## LET-US Long Event-Text Understanding of Scenes
 
 >Authors: Rui Chen, Xingyu Chen, Shaoan Wang, Shihan Kong, Junzhi Yu
@@ -1676,7 +2442,7 @@ Models (M![key](https://img.shields.io/badge/LLM-FF8C00)s) have achieved signifi
 RGB video content, they either fail to interpret event streams effectively or
 remain constrained to very short sequences. In this paper, we introduce LET-US,
 a framework for long event-stream--text comprehension that employs an adaptive
-compression mechanism to reduce the volume of input events while preserving
+compression mechanism to reduce the volume of input events while pre![key](https://img.shields.io/badge/serving-FF8C00)
 critical visual details. LET-US thus establishes a new frontier in cross-modal
 inferential understanding over extended event sequences. To bridge the
 substantial modality gap between event streams and textual representations, we
@@ -1709,13 +2475,13 @@ resource-constrained edge devices has become a critical challenge. The Mixture
 of Experts (MoE) architecture enhances model capacity through ![key](https://img.shields.io/badge/sparse-F08080)
 activation, but faces two major difficulties in practical deployment: (1) The
 presence of numerous outliers in activation distributions leads to severe
-degradation in quantization accuracy for both activations and weights,
+degradation in ![key](https://img.shields.io/badge/quantization-F08080) accuracy for both activations and weights,
 significantly impairing inference performance; (2) Under limited memory,
 efficient offloading and collaborative inference of expert modules struggle to
 balance latency and throughput. To address these issues, this paper proposes an
 efficient MoE edge deployment scheme based on Hessian-Aware Quantization (HAQ)
 and CPU-GPU collaborative inference. First, by introducing smoothed Hessian
-matrix quantization, we achieve joint 8-bit quantization of activations and
+matrix ![key](https://img.shields.io/badge/quantization-F08080), we achieve joint 8-bit ![key](https://img.shields.io/badge/quantization-F08080) of activations and
 weights, which significantly alleviates the accuracy loss caused by outliers
 while ensuring efficient implementation on mainstream hardware. Second, we
 design an expert-level collaborative offloading and inference mechanism, which,
@@ -1724,7 +2490,7 @@ and scheduling of expert modules between CPU and GPU, greatly reducing memory
 footprint and inference latency. Extensive experiments validate the
 effectiveness of our method on mainstream large models such as the OPT series
 and Mixtral 8*7B: on datasets like Wikitext2 and C4, the inference accuracy of
-the low-bit quantized model approaches that of the full-precision model, while
+the ![key](https://img.shields.io/badge/low-bit-F08080) ![key](https://img.shields.io/badge/quantize-F08080)d model approaches that of the full-precision model, while
 GPU memory usage is reduced by about 60%, and inference latency is
 significantly improved.
 
@@ -1758,6 +2524,36 @@ pretraining, demonstrating state-of-the-art performance. The code and model is
 available at https://github.com/maomao0819/BEVANet.
 
 
+## Tasa Thermal-aware 3D-Stacked Architecture Design with Bandwidth Sharing for LLM Inference
+
+>Authors: Siyuan He, Peiran Yan, Yandong He, Youwei Zhuo, Tianyu Jia
+
+>2025-08-10
+
+> [http://arxiv.org/abs/2508.07252v1](http://arxiv.org/abs/2508.07252v1)
+
+The autoregressive ![key](https://img.shields.io/badge/decoding-F08080) in ![key](https://img.shields.io/badge/LLM-FF8C00)s is the major inference bottleneck due to
+the memory-intensive operations and limited hardware bandwidth. 3D-stacked
+architecture is a promising solution with significantly improved memory
+bandwidth, which vertically stacked multi DRAM dies on top of logic die.
+However, our experiments also show the 3D-stacked architecture faces severer
+thermal issues compared to 2D architecture, in terms of thermal temperature,
+gradient and scalability. To better exploit the potential of 3D-stacked
+architecture, we present Tasa, a heterogeneous architecture with cross-stack
+thermal optimizations to balance the temperature distribution and maximize the
+performance under the thermal constraints. High-performance core is designed
+for compute-intensive operations, while high-efficiency core is used for
+memory-intensive operators, e.g. attention layers. Furthermore, we propose a
+bandwidth sharing scheduling to improve the bandwidth utilization in such
+heterogeneous architecture. Extensive thermal experiments show that our Tasa
+architecture demonstrates greater scalability compared with the homogeneous
+3D-stacked architecture, i.e. up to 5.55 $\tccentigrade$, 9.37 $\tccentigrade$,
+and 7.91 $\tccentigrade$ peak temperature reduction for 48, 60, and 72 core
+configurations. Our experimental for Llama-65B and GPT-3 66B inferences also
+demonstrate 2.85x and 2.21x speedup are obtained over the GPU baselines and
+state-of-the-art heterogeneous PIM-based ![key](https://img.shields.io/badge/LLM-FF8C00) accelerator
+
+
 ## LP-Spec Leveraging LPDDR PIM for Efficient LLM Mobile Speculative Inference with Architecture-Dataflow Co-Optimization
 
 >Authors: Siyuan He, Zhantong Zhu, Yandong He, Tianyu Jia
@@ -1786,6 +2582,36 @@ GEMV-accelerated PIMs, our LP-Spec achieves 13.21x, 7.56x, and 99.87x
 improvements in performance, energy efficiency, and energy-delay-product (EDP).
 Compared with prior AttAcc PIM and RTX 3090 GPU, LP-Spec can obtain 12.83x and
 415.31x EDP reduction benefits.
+
+
+## Bridging Semantic Logic Gaps A Cognition-Inspired Multimodal Boundary-Preserving Network for Image Manipulation Localization
+
+>Authors: Songlin Li, Zhiqing Guo, Yuanman Li, Zeyu Li, Yunfeng Diao, Gaobo Yang, Liejun Wang
+
+>2025-08-10
+
+> [http://arxiv.org/abs/2508.07216v1](http://arxiv.org/abs/2508.07216v1)
+
+The existing image manipulation localization (IML) models mainly relies on
+visual cues, but ignores the semantic logical relationships between content
+features. In fact, the content semantics conveyed by real images often conform
+to human cognitive laws. However, image manipulation technology usually
+destroys the internal relationship between content features, thus leaving
+semantic clues for IML. In this paper, we propose a cognition-inspired
+multimodal boundary-pre![key](https://img.shields.io/badge/serving-FF8C00) network (CMB-Net). Specifically, CMB-Net
+utilizes large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) to analyze manipulated regions within
+images and generate prompt-based textual information to compensate for the lack
+of semantic relationships in the visual information. Considering that the
+erroneous texts induced by hallucination from ![key](https://img.shields.io/badge/LLM-FF8C00)s will damage the accuracy of
+IML, we propose an image-text central ambiguity module (ITCAM). It assigns
+weights to the text features by quantifying the ambiguity between text and
+image features, thereby ensuring the beneficial impact of textual information.
+We also propose an image-text interaction module (ITIM) that aligns visual and
+text features using a correlation matrix for fine-grained interaction. Finally,
+inspired by invertible neural networks, we propose a restoration edge ![key](https://img.shields.io/badge/decode-F08080)r
+(RED) that mutually generates input and output features to preserve boundary
+information in manipulated regions without loss. Extensive experiments show
+that CMB-Net outperforms most existing IML models.
 
 
 ## DySK-Attn A Framework for Efficient, Real-Time Knowledge Updating in Large Language Models via Dynamic Sparse Knowledge Attention
@@ -1873,6 +2699,66 @@ explainability in graph learning by aligning GNN internals with human
 reasoning.
 
 
+## Large Language Model Evaluated Stand-alone Attention-Assisted Graph Neural Network with Spatial and Structural Information Interaction for Precise Endoscopic Image Segmentation
+
+>Authors: Juntong Fan, Shuyi Fan, Debesh Jha, Changsheng Fang, Tieyong Zeng, Hengyong Yu, Dayang Wang
+
+>2025-08-09
+
+> [http://arxiv.org/abs/2508.07028v1](http://arxiv.org/abs/2508.07028v1)
+
+Accurate endoscopic image segmentation on the polyps is critical for early
+colorectal cancer detection. However, this task remains challenging due to low
+contrast with surrounding mucosa, specular highlights, and indistinct
+boundaries. To address these challenges, we propose FOCUS-Med, which stands for
+Fusion of spatial and structural graph with attentional context-aware polyp
+segmentation in endoscopic medical imaging. FOCUS-Med integrates a Dual Graph
+Convolutional Network (Dual-GCN) module to capture contextual spatial and
+topological structural dependencies. This graph-based representation enables
+the model to better distinguish polyps from background tissues by leveraging
+topological cues and spatial connectivity, which are often obscured in raw
+image intensities. It enhances the model's ability to preserve boundaries and
+delineate complex shapes typical of polyps. In addition, a location-fused
+stand-alone self-attention is employed to strengthen global context
+integration. To bridge the semantic gap between encoder-![key](https://img.shields.io/badge/decode-F08080)r layers, we
+incorporate a trainable weighted fast normalized fusion strategy for efficient
+multi-scale aggregation. Notably, we are the first to introduce the use of a
+Large Language Model (![key](https://img.shields.io/badge/LLM-FF8C00)) to provide detailed qualitative evaluations of
+segmentation quality. Extensive experiments on public benchmarks demonstrate
+that FOCUS-Med achieves state-of-the-art performance across five key metrics,
+underscoring its effectiveness and clinical potential for AI-assisted
+colonoscopy.
+
+
+## Vec2Summ Text Summarization via Probabilistic Sentence Embeddings
+
+>Authors: Mao Li, Fred Conrad, Johann Gagnon-Bartsch
+
+>2025-08-09
+
+> [http://arxiv.org/abs/2508.07017v1](http://arxiv.org/abs/2508.07017v1)
+
+We propose Vec2Summ, a novel method for abstractive summarization that frames
+the task as semantic compression. Vec2Summ represents a document collection
+using a single mean vector in the semantic embedding space, capturing the
+central meaning of the corpus. To reconstruct fluent summaries, we perform
+embedding inversion -- ![key](https://img.shields.io/badge/decoding-F08080) this mean vector into natural language using a
+generative language model. To improve reconstruction quality and capture some
+degree of topical variability, we introduce stochasticity by sampling from a
+Gaussian distribution centered on the mean. This approach is loosely analogous
+to bagging in ensemble learning, where controlled randomness encourages more
+robust and varied outputs. Vec2Summ addresses key limitations of ![key](https://img.shields.io/badge/LLM-FF8C00)-based
+summarization methods. It avoids context-length constraints, enables
+interpretable and controllable generation via semantic parameters, and scales
+efficiently with corpus size -- requiring only $O(d + d^2)$ parameters.
+Empirical results show that Vec2Summ produces coherent summaries for topically
+focused, order-invariant corpora, with performance comparable to direct ![key](https://img.shields.io/badge/LLM-FF8C00)
+summarization in terms of thematic coverage and efficiency, albeit with less
+fine-grained detail. These results underscore Vec2Summ's potential in settings
+where scalability, semantic control, and corpus-level abstraction are
+prioritized.
+
+
 ## Narrative Memory in Machines Multi-Agent Arc Extraction in Serialized TV
 
 >Authors: Roberto Balestri, Guglielmo Pescatore
@@ -1922,7 +2808,7 @@ to offload expert weights from fast-but-small DRAM (HBM) to denser Flash SSDs.
 While SSDs provide cost-effective capacity, their read energy per bit is
 substantially higher than that of DRAM. This paper quantitatively analyzes the
 energy implications of offloading MoE expert weights to SSDs during the
-critical decode stage of ![key](https://img.shields.io/badge/LLM-FF8C00) inference. Our analysis, comparing SSD, CPU memory
+critical ![key](https://img.shields.io/badge/decode-F08080) stage of ![key](https://img.shields.io/badge/LLM-FF8C00) inference. Our analysis, comparing SSD, CPU memory
 (DDR), and HBM storage scenarios for models like DeepSeek-R1, reveals that
 offloading MoE weights to current SSDs drastically increases
 per-token-generation energy consumption (e.g., by up to ~12x compared to the
@@ -1932,6 +2818,29 @@ mitigate this fundamental energy penalty. We further explore future
 technological scaling, finding that the inherent ![key](https://img.shields.io/badge/sparsity-F08080) of MoE models could
 potentially make SSDs energy-viable if Flash read energy improves
 significantly, roughly by an order of magnitude.
+
+
+## Rethinking 1-bit Optimization Leveraging Pre-trained Large Language Models
+
+>Authors: Zhijun Tu, Hanting Chen, Siqi Liu, Chuanjian Liu, Jian Li, Jie Hu, Yunhe Wang
+
+>2025-08-09
+
+> [http://arxiv.org/abs/2508.06974v1](http://arxiv.org/abs/2508.06974v1)
+
+1-bit ![key](https://img.shields.io/badge/LLM-FF8C00) ![key](https://img.shields.io/badge/quantization-F08080) offers significant advantages in reducing storage and
+computational costs. However, existing methods typically train 1-bit ![key](https://img.shields.io/badge/LLM-FF8C00)s from
+scratch, failing to fully leverage pre-trained models. This results in high
+training costs and notable accuracy degradation. We identify that the large gap
+between full precision and 1-bit representations makes direct adaptation
+difficult. In this paper, we introduce a consistent progressive training for
+both forward and backward, smoothly converting the floating-point weights into
+the binarized ones. Additionally, we incorporate binary-aware initialization
+and dual-scaling compensation to reduce the difficulty of progressive training
+and improve the performance. Experimental results on ![key](https://img.shields.io/badge/LLM-FF8C00)s of various sizes
+demonstrate that our method outperforms existing approaches. Our results show
+that high-performance 1-bit ![key](https://img.shields.io/badge/LLM-FF8C00)s can be achieved using pre-trained models,
+eliminating the need for expensive training from scratch.
 
 
 ## Fed MobiLLM Efficient Federated LLM Fine-Tuning over Heterogeneous Mobile Devices via Server Assisted Side-Tuning
@@ -1966,409 +2875,65 @@ convergence compared to existing methods, validating its efficacy for practical
 ![key](https://img.shields.io/badge/LLM-FF8C00) adaptation over heterogeneous mobile devices.
 
 
-## SlimInfer Accelerating Long-Context LLM Inference via Dynamic Token Pruning
+## Pushing the Envelope of LLM Inference on AI-PC
 
->Authors: Lingkun Long, Rubing Yang, Yushi Huang, Desheng Hui, Ao Zhou, Jianlei Yang
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06447v1](http://arxiv.org/abs/2508.06447v1)
-
-Long-context inference for Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s) is heavily limited by
-high computational demands. While several existing methods optimize attention
-computation, they still process the full set of hidden states at each layer,
-limiting overall efficiency. In this work, we propose SlimInfer, an innovative
-framework that aims to accelerate inference by directly ![key](https://img.shields.io/badge/pruning-F08080) less critical
-prompt tokens during the forward pass. Our key insight is an information
-diffusion phenomenon: As information from critical tokens propagates through
-layers, it becomes distributed across the entire sequence. This diffusion
-process suggests that ![key](https://img.shields.io/badge/LLM-FF8C00)s can maintain their semantic integrity when excessive
-tokens, even including these critical ones, are pruned in hidden states.
-Motivated by this, SlimInfer introduces a dynamic fine-grained ![key](https://img.shields.io/badge/pruning-F08080)
-mechanism that accurately removes redundant tokens of hidden state at
-intermediate layers. This layer-wise ![key](https://img.shields.io/badge/pruning-F08080) naturally enables an asynchronous
-![key](https://img.shields.io/badge/KV-F08080) cache manager that prefetches required token blocks without complex
-predictors, reducing both memory usage and I/O costs. Extensive experiments
-show that SlimInfer can achieve up to $\mathbf{2.53\times}$ time-to-first-token
-(TTFT) speedup and $\mathbf{1.88\times}$ end-to-end latency reduction for
-LLaMA3.1-8B-Instruct on a single RTX 4090, without sacrificing performance on
-LongBench. Our code will be released upon acceptance.
-
-
-## Aligning Effective Tokens with Video Anomaly in Large Language Models
-
->Authors: Yingxian Chen, Jiahui Liu, Ruifan Di, Yanwei Li, Chirui Chang, Shizhen Zhao, Wilton W. T. Fok, Xiaojuan Qi, Yik-Chung Wu
+>Authors: Evangelos Georganas, Dhiraj Kalamkar, Alexander Heinecke
 
 >2025-08-08
 
-> [http://arxiv.org/abs/2508.06350v1](http://arxiv.org/abs/2508.06350v1)
+> [http://arxiv.org/abs/2508.06753v1](http://arxiv.org/abs/2508.06753v1)
 
-Understanding abnormal events in videos is a vital and challenging task that
-has garnered significant attention in a wide range of applications. Although
-current video understanding Multi-modal Large Language Models (M![key](https://img.shields.io/badge/LLM-FF8C00)s) are
-capable of analyzing general videos, they often struggle to handle anomalies
-due to the spatial and temporal ![key](https://img.shields.io/badge/sparsity-F08080) of abnormal events, where the
-redundant information always leads to suboptimal outcomes. To address these
-challenges, exploiting the representation and generalization capabilities of
-Vison Language Models (VLMs) and Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s), we propose
-VA-GPT, a novel M![key](https://img.shields.io/badge/LLM-FF8C00) designed for summarizing and localizing abnormal events in
-various videos. Our approach efficiently aligns effective tokens between visual
-encoders and ![key](https://img.shields.io/badge/LLM-FF8C00)s through two key proposed modules: Spatial Effective Token
-Selection (SETS) and Temporal Effective Token Generation (TETG). These modules
-enable our model to effectively capture and analyze both spatial and temporal
-information associated with abnormal events, resulting in more accurate
-responses and interactions. Furthermore, we construct an instruction-following
-dataset specifically for fine-tuning video-anomaly-aware M![key](https://img.shields.io/badge/LLM-FF8C00)s, and introduce a
-cross-domain evaluation benchmark based on XD-Violence dataset. Our proposed
-method outperforms existing state-of-the-art methods on various benchmarks.
-
-
-## M2IO-R1 An Efficient RL-Enhanced Reasoning Framework for Multimodal Retrieval Augmented Multimodal Generation
-
->Authors: Zhiyou Xiao, Qinhan Yu, Binghui Li, Geng Chen, Chong Chen, Wentao Zhang
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06328v1](http://arxiv.org/abs/2508.06328v1)
-
-Current research on Multimodal Retrieval-Augmented Generation (MRAG) enables
-diverse multimodal inputs but remains limited to single-modality outputs,
-restricting expressive capacity and practical utility. In contrast, real-world
-applications often demand both multimodal inputs and multimodal outputs for
-effective ![key](https://img.shields.io/badge/communication-F08080) and grounded reasoning. Motivated by the recent success
-of Reinforcement Learning (RL) in complex reasoning tasks for Large Language
-Models (![key](https://img.shields.io/badge/LLM-FF8C00)s), we adopt RL as a principled and effective paradigm to address
-the multi-step, outcome-driven challenges inherent in multimodal output
-generation. Here, we introduce M2IO-R1, a novel framework for Multimodal
-Retrieval-Augmented Multimodal Generation (MRAMG) that supports both multimodal
-inputs and outputs. Central to our framework is an RL-based inserter,
-Inserter-R1-3B, trained with Group Relative Policy Optimization to guide image
-selection and placement in a controllable and semantically aligned manner.
-Empirical results show that our lightweight 3B inserter achieves strong
-reasoning capabilities with significantly reduced latency, outperforming
-baselines in both quality and efficiency.
-
-
-## Matrix-Driven Instant Review Confident Detection and Reconstruction of LLM Plagiarism on PC
-
->Authors: Ruichong Zhang
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06309v1](http://arxiv.org/abs/2508.06309v1)
-
-In recent years, concerns about intellectual property (IP) in large language
-models (![key](https://img.shields.io/badge/LLM-FF8C00)s) have grown significantly. Plagiarizing other ![key](https://img.shields.io/badge/LLM-FF8C00)s (through direct
-weight copying, upcycling, ![key](https://img.shields.io/badge/pruning-F08080), or continual pretraining) and claiming
-authorship without properly attributing to the original license, is a serious
-misconduct that can lead to significant financial and reputational harm to the
-original developers. However, existing methods for detecting ![key](https://img.shields.io/badge/LLM-FF8C00) plagiarism
-fall short in key areas. They fail to accurately reconstruct weight
-correspondences, lack the ability to compute statistical significance measures
-such as $p$-values, and may mistakenly flag models trained on similar data as
-being related. To address these limitations, we propose Matrix-Driven Instant
-Review (MDIR), a novel method that leverages matrix analysis and Large
-Deviation Theory. MDIR achieves accurate reconstruction of weight
-relationships, provides rigorous $p$-value estimation, and focuses exclusively
-on weight similarity without requiring full model inference. Experimental
-results demonstrate that MDIR reliably detects plagiarism even after extensive
-transformations, such as random permutations and continual pretraining with
-trillions of tokens. Moreover, all detections can be performed on a single PC
-within an hour, making MDIR both efficient and accessible.
-
-
-## KV Cache Compression for Inference Efficiency in LLMs A Review
-
->Authors: Yanyu Liu, Jingying Fu, Sixiang Liu, Yitian Zou, You Fu, Jiehan Zhou, Shouhua Zhang
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06297v1](http://arxiv.org/abs/2508.06297v1)
-
-Withtherapid advancement of large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s), the context length
-for inference has been continuously increasing, leading to an exponential
-growth in the demand for Key-Value (![key](https://img.shields.io/badge/KV-F08080)) caching. This has resulted in a
-significant memory bottleneck, limiting the inference efficiency and
-scalability of the models. Therefore, optimizing the ![key](https://img.shields.io/badge/KV-F08080) cache during inference
-is crucial for enhancing performance and efficiency. This review systematically
-examines current ![key](https://img.shields.io/badge/KV-F08080) cache optimization techniques, including compression
-strategies such as selective token strategies, quantization, and attention
-compression. We evaluate the effectiveness, trade-offs, and application
-scenarios of these methods, providing a comprehensive analysis of their impact
-on memory usage and inference speed. We focus on identifying the limitations
-and challenges of existing methods, such as compatibility issues with different
-models and tasks. Additionally, this review highlights future research
-directions, including hybrid optimization techniques, adaptive dynamic
-strategies, and software-hardware co-design. These approaches aim to improve
-inference efficiency and promote the practical application of large language
+The advent of ultra-![key](https://img.shields.io/badge/low-bit-F08080) ![key](https://img.shields.io/badge/LLM-FF8C00) models (1/1.58/2-bit), which match the
+perplexity and end-task performance of their full-precision counterparts using
+the same model size, is ushering in a new era of ![key](https://img.shields.io/badge/LLM-FF8C00) inference for
+resource-constrained environments such as edge devices and AI PCs. While these
+![key](https://img.shields.io/badge/quantization-F08080) advances promise models that are more cost-effective in terms of
+latency, memory, throughput, and energy consumption, the computational
+efficiency of state-of-the-art (SOTA) inference runtimes (e.g., bitnet.cpp)
+used to deploy them remains underexplored. In this work, we take a bottom-up
+approach: we first design and implement 1-bit and 2-bit microkernels optimized
+for modern CPUs, achieving peak computational efficiency across a variety of
+CPU platforms. We integrate these microkernels into a state-of-the-art ![key](https://img.shields.io/badge/LLM-FF8C00)
+inference framework, namely PyTorch-TPP, and present end-to-end inference
+results with 2-bit models that outperform the current SOTA runtime bitnet.cpp
+by up to 2.2x, and deliver up to 7x speedup compared to the 16-bit model
+inference. Our optimized runtime advances the state of ![key](https://img.shields.io/badge/LLM-FF8C00) inference on AI PCs
+and edge devices, paving the way for efficient deployment of ultra-![key](https://img.shields.io/badge/low-bit-F08080) ![key](https://img.shields.io/badge/LLM-FF8C00)
 models.
 
 
-## MA-CBP A Criminal Behavior Prediction Framework Based on Multi-Agent Asynchronous Collaboration
+## CISO Species Distribution Modeling Conditioned on Incomplete Species Observations
 
->Authors: Cheng Liu, Daou Zhang, Tingxu Liu, Yuhan Wang, Jinyang Chen, Yuexuan Li, Xinying Xiao, Chenbo Xin, Ziru Wang, Weichao Wu
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06189v1](http://arxiv.org/abs/2508.06189v1)
-
-With the ![key](https://img.shields.io/badge/acceleration-F08080) of urbanization, criminal behavior in public scenes
-poses an increasingly serious threat to social security. Traditional anomaly
-detection methods based on feature recognition struggle to capture high-level
-behavioral semantics from historical information, while generative approaches
-based on Large Language Models (![key](https://img.shields.io/badge/LLM-FF8C00)s) often fail to meet real-time
-requirements. To address these challenges, we propose MA-CBP, a criminal
-behavior prediction framework based on multi-agent asynchronous collaboration.
-This framework transforms real-time video streams into frame-level semantic
-descriptions, constructs causally consistent historical summaries, and fuses
-adjacent image frames to perform joint reasoning over long- and short-term
-contexts. The resulting behavioral decisions include key elements such as event
-subjects, locations, and causes, enabling early warning of potential criminal
-activity. In addition, we construct a high-quality criminal behavior dataset
-that provides multi-scale language supervision, including frame-level,
-summary-level, and event-level semantic annotations. Experimental results
-demonstrate that our method achieves superior performance on multiple datasets
-and offers a promising solution for risk warning in urban public safety
-scenarios.
-
-
-## Meta-Learning for Speeding Up Large Model Inference in Decentralized Environments
-
->Authors: Yipeng Du, Zihao Wang, Ahmad Farhan, Claudio Angione, Harry Yang, Fielding Johnston, James P. Buban, Patrick Colangelo, Yue Zhao, Yuzhe Yang
+>Authors: Hager Radi Abdelwahed, Mélisande Teng, Robin Zbinden, Laura Pollock, Hugo Larochelle, Devis Tuia, David Rolnick
 
 >2025-08-08
 
-> [http://arxiv.org/abs/2508.09194v1](http://arxiv.org/abs/2508.09194v1)
+> [http://arxiv.org/abs/2508.06704v1](http://arxiv.org/abs/2508.06704v1)
 
-The deployment of large-scale models, such as large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s),
-incurs substantial costs due to their computational demands. To mitigate these
-costs and address challenges related to scalability and data security, there is
-a growing shift towards decentralized systems for model deployment, where
-choosing efficient inference ![key](https://img.shields.io/badge/acceleration-F08080) schemes become crucial to manage
-computational resources effectively and enhance system responsiveness. In this
-work, we address the challenge of selecting optimal ![key](https://img.shields.io/badge/acceleration-F08080) methods in
-decentralized systems by introducing a meta-learning-based framework. This
-framework automates the selection process by learning from historical
-performance data of various ![key](https://img.shields.io/badge/acceleration-F08080) techniques across different tasks.
-Unlike traditional methods that rely on random selection or expert intuition,
-our approach systematically identifies the best ![key](https://img.shields.io/badge/acceleration-F08080) strategies based
-on the specific characteristics of each task. We demonstrate that our
-meta-learning framework not only streamlines the decision-making process but
-also consistently outperforms conventional methods in terms of efficiency and
-performance. Our results highlight the potential of inference ![key](https://img.shields.io/badge/acceleration-F08080) in
-decentralized AI systems, offering a path towards more democratic and
-economically feasible artificial intelligence solutions.
-
-
-## Comparing Knowledge Injection Methods for LLMs in a Low-Resource Regime
-
->Authors: Hugo Abonizio, Thales Almeida, Roberto Lotufo, Rodrigo Nogueira
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06178v1](http://arxiv.org/abs/2508.06178v1)
-
-Large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) often require vast amounts of text to
-effectively acquire new knowledge. While continuing pre-training on large
-corpora or employing retrieval-augmented generation (RAG) has proven
-successful, updating an ![key](https://img.shields.io/badge/LLM-FF8C00) with only a few thousand or million tokens remains
-challenging. In this work, we investigate the task of injecting small,
-unstructured information into ![key](https://img.shields.io/badge/LLM-FF8C00)s and its relation to the catastrophic
-forgetting phenomenon. We use a dataset of recent news -- ensuring no ![key](https://img.shields.io/badge/overlap-F08080)
-with the model's pre-training data -- to evaluate the knowledge acquisition by
-probing the model with question-answer pairs related the learned information.
-Starting from a continued pre-training baseline, we explored different
-augmentation algorithms to generate synthetic data to improve the knowledge
-acquisition capabilities. Our experiments show that simply continuing
-pre-training on limited data yields modest improvements, whereas exposing the
-model to diverse textual variations significantly improves the learning of new
-facts -- particularly with methods that induce greater variability through
-diverse prompting. Furthermore, we shed light on the forgetting phenomenon in
-small-data regimes, illustrating the delicate balance between learning new
-content and retaining existing capabilities. We also confirm the sensitivity of
-RAG-based approaches for knowledge injection, which often lead to greater
-degradation on control datasets compared to parametric methods. Finally, we
-demonstrate that models can generate effective synthetic training data
-themselves, suggesting a pathway toward self-improving model updates. All code
-and generated data used in our experiments are publicly available, providing a
-resource for studying efficient knowledge injection in ![key](https://img.shields.io/badge/LLM-FF8C00)s with limited data
-at https://github.com/hugoabonizio/knowledge-injection-methods.
-
-
-## Pragmatics beyond humans meaning, communication, and LLMs
-
->Authors: Vít Gvoždiak
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06167v1](http://arxiv.org/abs/2508.06167v1)
-
-The paper reconceptualizes pragmatics not as a subordinate, third dimension
-of meaning, but as a dynamic interface through which language operates as a
-socially embedded tool for action. With the emergence of large language models
-(![key](https://img.shields.io/badge/LLM-FF8C00)s) in communicative contexts, this understanding needs to be further
-refined and methodologically reconsidered. The first section challenges the
-traditional semiotic trichotomy, arguing that connectionist ![key](https://img.shields.io/badge/LLM-FF8C00) architectures
-destabilize established hierarchies of meaning, and proposes the Human-Machine
-Communication (HMC) framework as a more suitable alternative. The second
-section examines the tension between human-centred pragmatic theories and the
-machine-centred nature of ![key](https://img.shields.io/badge/LLM-FF8C00)s. While traditional, Gricean-inspired pragmatics
-continue to dominate, it relies on human-specific assumptions ill-suited to
-predictive systems like ![key](https://img.shields.io/badge/LLM-FF8C00)s. Probabilistic pragmatics, particularly the
-Rational Speech Act framework, offers a more compatible teleology by focusing
-on optimization rather than truth-evaluation. The third section addresses the
-issue of substitutionalism in three forms - generalizing, linguistic, and
-communicative - highlighting the anthropomorphic biases that distort ![key](https://img.shields.io/badge/LLM-FF8C00)
-evaluation and obscure the role of human communicative subjects. Finally, the
-paper introduces the concept of context frustration to describe the paradox of
-increased contextual input paired with a collapse in contextual understanding,
-emphasizing how users are compelled to co-construct pragmatic conditions both
-for the model and themselves. These arguments suggest that pragmatic theory may
-need to be adjusted or expanded to better account for ![key](https://img.shields.io/badge/communication-F08080) involving
-generative AI.
-
-
-## LLM Serving Optimization with Variable Prefill and Decode Lengths
-
->Authors: Meixuan Wang, Yinyu Ye, Zijie Zhou
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06133v1](http://arxiv.org/abs/2508.06133v1)
-
-We study the problem of serving ![key](https://img.shields.io/badge/LLM-FF8C00) (Large Language Model) requests where
-each request has heterogeneous prefill and decode lengths. In ![key](https://img.shields.io/badge/LLM-FF8C00) serving, the
-prefill length corresponds to the input prompt length, which determines the
-initial memory usage in the ![key](https://img.shields.io/badge/KV-F08080) cache. The decode length refers to the number of
-output tokens generated sequentially, with each additional token increasing the
-![key](https://img.shields.io/badge/KV-F08080) cache memory usage by one unit. Given a set of n requests, our goal is to
-schedule and process them to minimize the total completion time. We show that
-this problem is NP-hard due to the interplay of batching, placement
-constraints, precedence relationships, and linearly increasing memory usage. We
-then analyze commonly used scheduling strategies in practice, such as
-First-Come-First-Serve (FCFS) and Shortest-First (SF), and prove that their
-competitive ratios scale up sublinearly with the memory limit-a significant
-drawback in real-world settings where memory demand is large. To address this,
-we propose a novel algorithm based on a new selection metric that efficiently
-forms batches over time. We prove that this algorithm achieves a constant
-competitive ratio. Finally, we develop and evaluate a few algorithm variants
-inspired by this approach, including dynamic programming variants, local search
-methods, and an LP-based scheduler, demonstrating through comprehensive
-simulations that they outperform standard baselines while maintaining
-computational efficiency.
-
-
-## You Don't Need Pre-built Graphs for RAG Retrieval Augmented Generation with Adaptive Reasoning Structures
-
->Authors: Shengyuan Chen, Chuang Zhou, Zheng Yuan, Qinggang Zhang, Zeyang Cui, Hao Chen, Yilin Xiao, Jiannong Cao, Xiao Huang
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06105v1](http://arxiv.org/abs/2508.06105v1)
-
-Large language models (![key](https://img.shields.io/badge/LLM-FF8C00)s) often suffer from hallucination, generating
-factually incorrect statements when handling questions beyond their knowledge
-and perception. Retrieval-augmented generation (RAG) addresses this by
-retrieving query-relevant contexts from knowledge bases to support ![key](https://img.shields.io/badge/LLM-FF8C00)
-reasoning. Recent advances leverage pre-constructed graphs to capture the
-relational connections among distributed documents, showing remarkable
-performance in complex tasks. However, existing Graph-based RAG (GraphRAG)
-methods rely on a costly process to transform the corpus into a graph,
-introducing overwhelming token cost and update latency. Moreover, real-world
-queries vary in type and complexity, requiring different logic structures for
-accurate reasoning. The pre-built graph may not align with these required
-structures, resulting in ineffective knowledge retrieval. To this end, we
-propose a \textbf{\underline{Logic}}-aware
-\textbf{\underline{R}}etrieval-\textbf{\underline{A}}ugmented
-\textbf{\underline{G}}eneration framework (\textbf{LogicRAG}) that dynamically
-extracts reasoning structures at inference time to guide adaptive retrieval
-without any pre-built graph. LogicRAG begins by decomposing the input query
-into a set of subproblems and constructing a directed acyclic graph (DAG) to
-model the logical dependencies among them. To support coherent multi-step
-reasoning, LogicRAG then linearizes the graph using topological sort, so that
-subproblems can be addressed in a logically consistent order. Besides, LogicRAG
-applies graph ![key](https://img.shields.io/badge/pruning-F08080) to reduce redundant retrieval and uses context ![key](https://img.shields.io/badge/pruning-F08080) to
-filter irrelevant context, significantly reducing the overall token cost.
-Extensive experiments demonstrate that LogicRAG achieves both superior
-performance and efficiency compared to state-of-the-art baselines.
-
-
-## ConlangCrafter Constructing Languages with a Multi-Hop LLM Pipeline
-
->Authors: Morris Alper, Moran Yanuka, Raja Giryes, Gašper Beguš
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.06094v1](http://arxiv.org/abs/2508.06094v1)
-
-Constructed languages (conlangs) such as Esperanto and Quenya have played
-diverse roles in art, philosophy, and international ![key](https://img.shields.io/badge/communication-F08080). Meanwhile,
-large-scale foundation models have revolutionized creative generation in text,
-images, and beyond. In this work, we leverage modern ![key](https://img.shields.io/badge/LLM-FF8C00)s as computational
-creativity aids for end-to-end conlang creation. We introduce ConlangCrafter, a
-multi-hop pipeline that decomposes language design into modular stages --
-phonology, morphology, syntax, lexicon generation, and translation. At each
-stage, our method leverages ![key](https://img.shields.io/badge/LLM-FF8C00)s' meta-linguistic reasoning capabilities,
-injecting randomness to encourage diversity and leveraging self-refinement
-feedback to encourage consistency in the emerging language description. We
-evaluate ConlangCrafter on metrics measuring coherence and typological
-diversity, demonstrating its ability to produce coherent and varied conlangs
-without human linguistic expertise.
-
-
-## Diffusion LLMs Can Do Faster-Than-AR Inference via Discrete Diffusion Forcing
-
->Authors: Xu Wang, Chenkai Xu, Yijie Jin, Jiachun Jin, Hao Zhang, Zhijie Deng
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.09192v1](http://arxiv.org/abs/2508.09192v1)
-
-Diffusion Large Language Models (d![key](https://img.shields.io/badge/LLM-FF8C00)s) have emerged as a promising
-alternative to autoregressive (AR) ![key](https://img.shields.io/badge/LLM-FF8C00)s for text generation, with the potential
-to decode multiple tokens in a single iteration. However, none of the existing
-open-source d![key](https://img.shields.io/badge/LLM-FF8C00)s have achieved superior inference speed over AR ![key](https://img.shields.io/badge/LLM-FF8C00)s of
-similar size. This paper breaks this barrier based on a simple and effective
-strategy named discrete diffusion forcing (D2F). D2F equips d![key](https://img.shields.io/badge/LLM-FF8C00)s with two key
-capabilities: (1) block-wise autoregressive generation to enable ![key](https://img.shields.io/badge/KV-F08080) cache
-utilization; (2) prediction of following tokens without requiring completion of
-prior blocks for inter-block parallel decoding. In this way, the vanilla d![key](https://img.shields.io/badge/LLM-FF8C00)s
-are refurbished into an AR-diffusion hybrid paradigm for efficient inference.
-D2F can be implemented with an asymmetric distillation process based on
-pre-trained d![key](https://img.shields.io/badge/LLM-FF8C00)s. We further propose a pipelined parallel decoding algorithm,
-which enables a trade-off between efficiency and efficacy. Empirically, D2F
-d![key](https://img.shields.io/badge/LLM-FF8C00)s achieve more than $\mathbf{2.5\times}$ inference speed than LLaMA3 and
-Qwen2.5 on GSM8K. Compared to vanilla d![key](https://img.shields.io/badge/LLM-FF8C00)s like LLaDA and Dream, the
-![key](https://img.shields.io/badge/acceleration-F08080) can be more than $\mathbf{50\times}$ while maintaining comparable
-output quality. The code is available at
-https://github.com/zhijie-group/Discrete-Diffusion-Forcing.
-
-
-## Prosocial Behavior Detection in Player Game Chat From Aligning Human-AI Definitions to Efficient Annotation at Scale
-
->Authors: Rafal Kocielnik, Min Kim, Penphob, Boonyarungsrit, Fereshteh Soltani, Deshawn Sambrano, Animashree Anandkumar, R. Michael Alvarez
-
->2025-08-08
-
-> [http://arxiv.org/abs/2508.05938v1](http://arxiv.org/abs/2508.05938v1)
-
-Detecting prosociality in text--![key](https://img.shields.io/badge/communication-F08080) intended to affirm, support, or
-improve others' behavior--is a novel and increasingly important challenge for
-trust and safety systems. Unlike toxic content detection, prosociality lacks
-well-established definitions and labeled data, requiring new approaches to both
-annotation and deployment. We present a practical, three-stage pipeline that
-enables scalable, high-precision prosocial content classification while
-minimizing human labeling effort and inference costs. First, we identify the
-best ![key](https://img.shields.io/badge/LLM-FF8C00)-based labeling strategy using a small seed set of human-labeled
-examples. We then introduce a human-AI refinement loop, where annotators review
-high-disagreement cases between GPT-4 and humans to iteratively clarify and
-expand the task definition-a critical step for emerging annotation tasks like
-prosociality. This process results in improved label quality and definition
-alignment. Finally, we synthesize 10k high-quality labels using GPT-4 and train
-a two-stage inference system: a lightweight classifier handles high-confidence
-predictions, while only $\sim$35\% of ambiguous instances are escalated to
-GPT-4o. This architecture reduces inference costs by $\sim$70% while achieving
-high precision ($\sim$0.90). Our pipeline demonstrates how targeted human-AI
-interaction, careful task formulation, and deployment-aware architecture design
-can unlock scalable solutions for novel responsible AI tasks.
+Species distribution models (SDMs) are widely used to predict species'
+geographic distributions, ![key](https://img.shields.io/badge/serving-FF8C00) as critical tools for ecological research and
+conservation planning. Typically, SDMs relate species occurrences to
+environmental variables representing abiotic factors, such as temperature,
+precipitation, and soil properties. However, species distributions are also
+strongly influenced by biotic interactions with other species, which are often
+overlooked. While some methods partially address this limitation by
+incorporating biotic interactions, they often assume symmetrical pairwise
+relationships between species and require consistent co-occurrence data. In
+practice, species observations are ![key](https://img.shields.io/badge/sparse-F08080), and the availability of information
+about the presence or absence of other species varies significantly across
+locations. To address these challenges, we propose CISO, a deep learning-based
+method for species distribution modeling Conditioned on Incomplete Species
+Observations. CISO enables predictions to be conditioned on a flexible number
+of species observations alongside environmental variables, accommodating the
+variability and incompleteness of available biotic data. We demonstrate our
+approach using three datasets representing different species groups: sPlotOpen
+for plants, SatBird for birds, and a new dataset, SatButterfly, for
+butterflies. Our results show that including partial biotic information
+improves predictive performance on spatially separate test sets. When
+conditioned on a subset of species within the same dataset, CISO outperforms
+alternative methods in predicting the distribution of the remaining species.
+Furthermore, we show that combining observations from multiple datasets can
+improve performance. CISO is a promising ecological tool, capable of
+incorporating incomplete biotic information and identifying potential
+interactions between species from disparate taxa.
 

@@ -11,8 +11,10 @@ paper {
   authors: "Kevin Song"
   authors: "Christina Giannoula"
   authors: "Gennady Pekhimenko"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Toronto"
+  institutions: "Vector Institute"
+  institutions: "CentML"
+  institutions: "Stanford University"
 }
 pub {
   where: "arXiv"
@@ -29,5 +31,5 @@ keyword {
   words: overlap
 }
 cover {
-  url: ""
+  url: "fig8.png"
 }
