@@ -419,5 +419,3 @@ keyword {
 3. https://github.com/csyhhu/Awesome-Deep-Neural-Network-Compression
 4. https://github.com/AojunZhou/Efficient-Deep-Learning
 5. https://github.com/chester256/Model-Compression-Papers
-
-[:arrow_up: Back to top](#efficientpaper)

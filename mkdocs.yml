@@ -28,6 +28,7 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js
   - js/prism-prototxt.js
   - js/preview.js
+  - js/back-to-top.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css
