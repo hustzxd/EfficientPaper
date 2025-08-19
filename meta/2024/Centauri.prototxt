@@ -1,0 +1,26 @@
+paper {
+  title: "Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning"
+  abbr: "Centauri"
+  url: "https://dl.acm.org/doi/10.1145/3620666.3651379"
+  authors: "Chang Chen, Xiuhong Li, Qianchao Zhu, Jiangfei Duan, Peng Sun, Xingcheng Zhang, Chao Yang"
+  institutions: "Peking University"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "Shanghai AI Lab"
+}
+pub {
+  where: "ASPLOS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: ""
+}

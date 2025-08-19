@@ -1,0 +1,48 @@
+paper {
+  title: "Speed Always Wins: A Survey on Efficient Architectures for Large Language Models"
+  abbr: "Awesome-Efficient-Arch"
+  url: "http://arxiv.org/abs/2508.09834v1"
+  authors: "Weigao Sun"
+  authors: "Jiaxi Hu"
+  authors: "Yucheng Zhou"
+  authors: "Jusen Du"
+  authors: "Disen Lan"
+  authors: "Kexin Wang"
+  authors: "Tong Zhu"
+  authors: "Xiaoye Qu"
+  authors: "Yu Zhang"
+  authors: "Xiaoyu Mo"
+  authors: "Daizong Liu"
+  authors: "Yuxuan Liang"
+  authors: "Wenliang Chen"
+  authors: "Guoqi Li"
+  authors: "Yu Cheng"
+  institutions: "Shanghai AI Laboratory"
+  institutions: "HKUST"
+  institutions: "University of Macau"
+  institutions: "Institute of Automation, Chinese Academy of Sciences"
+  institutions: "Soochow University"
+  institutions: "KTH Royal Institute of Technology"
+  institutions: "Peking University"
+  institutions: "The Chinese University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/weigao266/Awesome-Efficient-Arch"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+  words: attention_sparsity
+  words: structure_design
+  words: sparse_pruning
+}
+cover {
+  url: "fig1.png"
+}

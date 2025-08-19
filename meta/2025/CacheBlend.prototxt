@@ -1,0 +1,33 @@
+paper {
+  title: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
+  abbr: "CacheBlend"
+  url: "http://arxiv.org/abs/2405.16444v3"
+  authors: "Jiayi Yao"
+  authors: "Hanchen Li"
+  authors: "Yuhan Liu"
+  authors: "Siddhant Ray"
+  authors: "Yihua Cheng"
+  authors: "Qizheng Zhang"
+  authors: "Kuntai Du"
+  authors: "Shan Lu"
+  authors: "Junchen Jiang"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "EuroSys"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/LMCache/LMCache"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: "fig1.png"
+}

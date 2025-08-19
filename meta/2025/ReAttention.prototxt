@@ -12,8 +12,8 @@ paper {
   authors: "Linlin Li"
   authors: "Qun Liu"
   authors: "Xipeng Qiu"
-  institutions: "Fudan Universitynst2"
-  institutions: "Huawei Noah’s Ark Lab"
+  institutions: "Fudan University"
+  institutions: "Huawei Noah's Ark Lab"
 }
 pub {
   where: "ICLR"

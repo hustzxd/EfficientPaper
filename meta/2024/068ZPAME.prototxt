@@ -11,7 +11,7 @@ paper {
   authors: "Minyi Guo"
   authors: "Chao Li"
   institutions: "Chinese University of Hong Kong"
-  institutions: "Shanghai Jiao Tong Universtiy"
+  institutions: "Shanghai Jiao Tong University"
 }
 pub {
   where: "arXiv"

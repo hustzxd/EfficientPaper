@@ -11,7 +11,7 @@ paper {
   authors: "Jie He"
   authors: "Ashish Sirasao"
   authors: "Emad Barsoum"
-  institutions: "AMD"
+  institutions: "Advanced Micro Devices"
 }
 pub {
   where: "Coling"

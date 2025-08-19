@@ -48,7 +48,7 @@ message Keyword {
         sparse_pruning = 6;        
         quantization = 7;
         overlap = 8;
-        modeling = 9;
+        performance_modeling = 9;
         deployment = 10;
         survey = 11;
         structure_design = 12;

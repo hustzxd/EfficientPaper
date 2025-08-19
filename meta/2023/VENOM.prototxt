@@ -9,7 +9,7 @@ paper {
   authors: "Basilio B. Fraguela"
   authors: "Torsten Hoefler"
   institutions: "Universidade da Coruña"
-  institutions: "ETH Zürich"
+  institutions: "ETH Zurich"
 }
 pub {
   where: "SC"

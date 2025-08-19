@@ -13,7 +13,7 @@ paper {
   authors: "Yonghong He"
   authors: "Chun Yuan"
   institutions: "Tsinghua University"
-  institutions: "Huawei Noah’s Ark Lab"
+  institutions: "Huawei Noah's Ark Lab"
 }
 pub {
   where: "arXiv"

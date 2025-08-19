@@ -9,7 +9,7 @@ paper {
   authors: "Xun Zhou"
   institutions: "Peking University"
   institutions: "The University of Hong Kong"
-  institutions: "ByteDance Inc"
+  institutions: "ByteDance"
 }
 pub {
   where: "ICLR"

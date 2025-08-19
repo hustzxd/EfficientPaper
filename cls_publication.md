@@ -40,6 +40,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [CoCoNet](./meta/2022/CoCoNet.prototxt) | [Breaking the Computation and Communication Abstraction Barrier in Distributed Machine Learning Workloads](http://arxiv.org/abs/2105.05720v5) | ![cover](./notes/2022/CoCoNet/fig9.png) | ![Publish](https://img.shields.io/badge/2022-ASPLOS-9370DB) | [![GitHub Repo stars](https://img.shields.io/github/stars/parasailteam/coconet)](https://github.com/parasailteam/coconet) | [note](./notes/2022/CoCoNet/note.md) |
 | [XLA Overlap](./meta/2023/XLAOverlap.prototxt) | [Overlap Communication with Dependent Computation via Decomposition in Large Deep Learning Models](https://dl.acm.org/doi/abs/10.1145/3567955.3567959) | ![cover](./notes/2023/XLAOverlap/fig5.png) | ![Publish](https://img.shields.io/badge/2023-ASPLOS-9370DB) |  | [note](./notes/2023/XLAOverlap/note.md) |
+| [Centauri](./meta/2024/Centauri.prototxt) | [Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning](https://dl.acm.org/doi/10.1145/3620666.3651379) |  | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/Centauri/note.md) |
 | [T3](./meta/2024/T3.prototxt) | [T3: Transparent Tracking & Triggering for Fine-grained Overlap of Compute & Collectives](http://arxiv.org/abs/2401.16677v1) | ![cover](./notes/2024/T3/fig1.png) | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/T3/note.md) |
 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1) | ![cover](./notes/2025/COMET/fig5.png) | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) |  | [note](./notes/2025/COMET/note.md) |
 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | ![cover](./notes/2025/POD-Attention/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention)](https://github.com/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
@@ -139,6 +140,15 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | ![cover](./notes/2024/SCAP/fig2.png) | ![Publish](https://img.shields.io/badge/2024-ENLSP-00BFFF) | [![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP)](https://github.com/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |
+</p>
+</details>
+<details open><summary><b>EuroSys</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CacheBlend](./meta/2025/CacheBlend.prototxt) | [CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion](http://arxiv.org/abs/2405.16444v3) | ![cover](./notes/2025/CacheBlend/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/LMCache/LMCache)](https://github.com/LMCache/LMCache) | [note](./notes/2025/CacheBlend/note.md) |
 </p>
 </details>
 <details open><summary><b>ICCV</b></summary> 
@@ -557,6 +567,7 @@
 | [SageAttention3](./meta/2025/SageAttention3.prototxt) | [SageAttention3: Microscaling FP4 Attention for Inference and An Exploration of 8-Bit Training](http://arxiv.org/abs/2505.11594v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SageAttention)](https://github.com/thu-ml/SageAttention) | [note](./notes/2025/SageAttention3/note.md) |
 | [SeerAttention-R](./meta/2025/SeerAttention-R.prototxt) | [SeerAttention-R: Sparse Attention Adaptation for Long Reasoning](http://arxiv.org/abs/2506.08889v1) | ![cover](./notes/2025/SeerAttention-R/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention)](https://github.com/microsoft/SeerAttention) | [note](./notes/2025/SeerAttention-R/note.md) |
 | [Seesaw](./meta/2025/Seesaw.prototxt) | [Seesaw: High-throughput LLM Inference via Model Re-sharding](http://arxiv.org/abs/2503.06433v1) | ![cover](./notes/2025/Seesaw/fig8.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Seesaw/note.md) |
+| [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
 | [SpindleKV](./meta/2025/SpindleKV.prototxt) | [SpindleKV: A Novel KV Cache Reduction Method Balancing Both Shallow and Deep Layers](http://arxiv.org/abs/2507.06517v1) | ![cover](./notes/2025/SpindleKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/tyxqc/SpindleKV)](https://github.com/tyxqc/SpindleKV) | [note](./notes/2025/SpindleKV/note.md) |
 | [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 | [Task-KV](./meta/2025/Task-KV.prototxt) | [Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads](http://arxiv.org/abs/2501.15113v1) | ![cover](./notes/2025/Task-KV/fig6.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Task-KV/note.md) |
@@ -574,8 +585,9 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [FT](./meta/2023/fastertransfomer.prototxt) | [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) |  | ![Publish](https://img.shields.io/badge/2023-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/FasterTransformer)](https://github.com/NVIDIA/FasterTransformer) |  |
+| [attention-gym](./meta/2025/attention-gym.prototxt) | [Attention-Gym: Triton-Based Sparse and Quantization Attention](https://github.com/RiseAI-Sys/attention-gym) |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/RiseAI-Sys/attention-gym)](https://github.com/RiseAI-Sys/attention-gym) | [note](./notes/2025/attention-gym/note.md) |
 | [KVCache-Factory](./meta/2025/KVCache-Factory.prototxt) | [Unified KV Cache Compression Methods for Auto-Regressive Models](https://github.com/Zefan-Cai/KVCache-Factory) |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/KVCache-Factory)](https://github.com/Zefan-Cai/KVCache-Factory) | [note](./notes/2025/KVCache-Factory/note.md) |
-| [kvpress](./meta/2025/kvpress.prototxt) | kvpress |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress)](https://github.com/NVIDIA/kvpress) | [note](./notes/2025/kvpress/note.md) |
+| [kvpress](./meta/2025/kvpress.prototxt) | [kvpress: LLM KV cache compression made easy](https://github.com/NVIDIA/kvpress) |  | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress)](https://github.com/NVIDIA/kvpress) | [note](./notes/2025/kvpress/note.md) |
 </p>
 </details>
 </p>

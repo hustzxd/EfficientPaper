@@ -6,7 +6,7 @@ paper {
   authors: "Xinghao Chen"
   authors: "Yehui Tang"
   authors: "Yunhe Wang"
-  institutions: "Huawei Noah’s Ark Lab,"
+  institutions: "Huawei Noah's Ark Lab"
 }
 pub {
   where: "ICML"
