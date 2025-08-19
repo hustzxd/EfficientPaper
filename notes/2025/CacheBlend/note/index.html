@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion";
+        var mkdocs_page_input_path = "notes/2025/CacheBlend/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/latest/">Weekly Paper</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cacheblend-fast-large-language-model-serving-for-rag-with-cached-knowledge-fusion">CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion</h1>
+<blockquote>
+<p>Jiayi Yao, Hanchen Li, Yuhan Liu, Siddhant Ray, Yihua Cheng, Qizheng Zhang, Kuntai Du, Shan Lu, Junchen Jiang</p>
+</blockquote>
+<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.png" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>Large language models (LLMs) often incorporate multiple text chunks in their
+inputs to provide the necessary contexts. To speed up the prefill of the long
+LLM inputs, one can pre-compute the KV cache of a text and re-use the KV cache
+when the context is reused as the prefix of another LLM input. However, the
+reused text chunks are not always the input prefix, which makes precomputed KV
+caches not directly usable since they ignore the text's cross-attention with
+the preceding texts. Thus, the benefits of reusing KV caches remain largely
+unrealized.
+  This paper tackles just one challenge: when an LLM input contains multiple
+text chunks, how to quickly combine their precomputed KV caches in order to
+achieve the same generation quality as the expensive full prefill (i.e.,
+without reusing KV cache)? This challenge naturally arises in
+retrieval-augmented generation (RAG) where the input is supplemented with
+multiple retrieved texts as the context. We present CacheBlend, a scheme that
+reuses the precomputed KV caches, regardless prefix or not, and selectively
+recomputes the KV values of a small subset of tokens to partially update each
+reused KV cache. In the meantime, the small extra delay for recomputing some
+tokens can be pipelined with the retrieval of KV caches within the same job,
+allowing CacheBlend to store KV caches in slower devices with more storage
+capacity while retrieving them without increasing the inference delay. By
+comparing CacheBlend with the state-of-the-art KV cache reusing schemes on
+three open-source LLMs of various sizes and four popular benchmark datasets of
+different tasks, we show that CacheBlend reduces time-to-first-token (TTFT) by
+2.2-3.3x and increases the inference throughput by 2.8-5x from full KV
+recompute without compromising generation quality. The code is available at
+https://github.com/LMCache/LMCache.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

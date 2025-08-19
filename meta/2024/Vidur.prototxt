@@ -24,7 +24,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: modeling
+  words: performance_modeling
 }
 cover {
   url: "fig2.png"

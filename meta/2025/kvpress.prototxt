@@ -1,7 +1,7 @@
 paper {
-  title: "kvpress"
+  title: "kvpress: LLM KV cache compression made easy"
   abbr: "kvpress"
-  url: ""
+  url: "https://github.com/NVIDIA/kvpress"
   authors: "NVIDIA"
   institutions: "NVIDIA"
 }

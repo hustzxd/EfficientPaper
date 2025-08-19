@@ -1,0 +1,27 @@
+paper {
+  title: "Attention-Gym: Triton-Based Sparse and Quantization Attention"
+  abbr: "attention-gym"
+  url: "https://github.com/RiseAI-Sys/attention-gym"
+  authors: "RiseAI-Sys"
+  institutions: "RiseAI-Sys"
+}
+pub {
+  where: "github"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/RiseAI-Sys/attention-gym"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: attention_sparsity
+  words: quantization
+  words: sparse_pruning
+  words: tool
+}
+cover {
+  url: ""
+}

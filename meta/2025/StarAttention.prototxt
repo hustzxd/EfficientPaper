@@ -5,7 +5,7 @@ paper {
   authors: "Shantanu Acharya"
   authors: "Fei Jia"
   authors: "Boris Ginsburg"
-  institutions: "NVDIA"
+  institutions: "NVIDIA"
 }
 pub {
   where: "ICML"

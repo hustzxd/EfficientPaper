@@ -10,7 +10,7 @@ paper {
   authors: "Bo Jiang"
   authors: "Zhouhan Lin"
   institutions: "Shanghai Jiao Tong University"
-  institutions: "Huawei Noah’s Ark Lab"
+  institutions: "Huawei Noah's Ark Lab"
 }
 pub {
   where: "arXiv"
