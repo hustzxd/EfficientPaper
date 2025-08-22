@@ -124,7 +124,7 @@ def main():
             wf.write(markdown_content)
         
         os.system(f"/Users/xiandong/miniconda3/bin/markdown-toc {file_name}")
-        os.system(f"python /Users/xiandong/projects/EfficientPaper/scripts/fix_mkdocs_links.py {file_name}")
+        os.system(f"/Users/xiandong/miniconda3/bin/python /Users/xiandong/projects/EfficientPaper/scripts/fix_mkdocs_links.py {file_name}")
 
     else:
         print("No new papers found, skipping file creation")
