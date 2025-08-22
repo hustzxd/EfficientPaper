@@ -24,7 +24,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/bytedance/flux"
 }
 note {
   url: "note.md"

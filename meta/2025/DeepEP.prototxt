@@ -1,0 +1,25 @@
+paper {
+  title: "DeepEP: an efficient expert-parallel communication library"
+  abbr: "DeepEP"
+  url: "https://github.com/deepseek-ai/DeepEP"
+  authors: "DeepSeek"
+  institutions: "DeepSeek"
+}
+pub {
+  where: "github"
+  year: 2025
+}
+code {
+  type: "CUDA"
+  url: "https://github.com/deepseek-ai/DeepEP"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: overlap
+  words: tool
+}
+cover {
+  url: "low-latency.png"
+}

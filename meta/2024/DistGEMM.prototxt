@@ -1,6 +1,6 @@
 paper {
   title: "A novel CUTLASS-based implementation of Tensor Parallelism for NVLink-enabled systems"
-  abbr: "DistributedGEMM"
+  abbr: "DistGEMM"
   url: "https://blog.shi-labs.com/distributed-gemm-88be6a481e2b"
   authors: "Ali Hassani"
   authors: "Michael Isaev"

@@ -30,5 +30,5 @@ keyword {
   words: deployment
 }
 cover {
-  url: ""
+  url: "fig4.png"
 }
