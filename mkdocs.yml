@@ -8,7 +8,7 @@ nav:
     - By Publication: cls_publication.md
     - By Institution: cls_institution.md
     - By Author: cls_author.md
-  - Weekly Paper: weekly_paper/latest.md
+  - Weekly Paper: weekly_paper/
 
 theme:
   name: readthedocs
@@ -37,3 +37,4 @@ extra_css:
 plugins:
   - search
   - glightbox
+  - literate-nav

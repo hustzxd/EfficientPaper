@@ -1,6 +1,6 @@
 paper {
   title: "Overlap Communication with Dependent Computation via Decomposition in Large Deep Learning Models"
-  abbr: "XLA Overlap"
+  abbr: "Dist-Einsum"
   url: "https://dl.acm.org/doi/abs/10.1145/3567955.3567959"
   authors: "Shibo Wang, Jinliang Wei, Amit Sabne, Andy Davis, Berkin Ilbeyi, Blake Hechtman, Dehao Chen, Karthik Srinivasa Murthy, Marcello Maggioni, Qiao Zhang, Sameer Kumar, Tongfei Guo, Yuanzhong Xu, Zongwei Zhou"
   institutions: "Google"

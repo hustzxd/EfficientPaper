@@ -1,6 +1,6 @@
 # Centauri
 
-![111](../../blank.jpg)
+![111](fig3.png)
 
 ## Abstract
 

@@ -7,7 +7,7 @@ paper {
   institutions: "PyTorch"
 }
 pub {
-  where: "arXiv"
+  where: "Blog"
   year: 2024
 }
 code {
