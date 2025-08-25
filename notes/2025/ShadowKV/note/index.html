@@ -98,6 +98,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
+  
                 <h1 id="shadowkv-kv-cache-in-shadows-for-high-throughput-long-context-llm-inference">ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference</h1>
 <p><a class="glightbox" href="../shadowkv.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../shadowkv.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
@@ -146,6 +147,22 @@ at https://github.com/bytedance/ShadowKV.</p>
 <p>所有的V都保存下来了，K的SVD分解其实也可以不做，也可以像V一样存在CPU Memoy中，根据landmark进行计算；除了SVD分解的思路，landmark的思想其实和MInference是一样的，也就是通过间隔的计算来评估哪部分的kv重要，从而将dense attention转化为 sparse attention，进而加速整个计算过程。</p>
 <p>K的临近相似相和可以分解的特性。</p>
               
+  <script src="https://giscus.app/client.js"
+        data-repo="hustzxd/EfficientPaper"
+        data-repo-id="R_kgDOKVYtOg"
+        data-category="General"
+        data-category-id="DIC_kwDOKVYtOs4CukCv"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
             </div>
           </div><footer>
 
@@ -183,6 +200,7 @@ at https://github.com/bytedance/ShadowKV.</p>
       <script src="../../../../js/prism-prototxt.js"></script>
       <script src="../../../../js/preview.js"></script>
       <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://giscus.app/client.js"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {

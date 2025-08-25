@@ -1,0 +1,30 @@
+paper {
+  title: "TidalDecode: Fast and Accurate LLM Decoding with Position Persistent Sparse Attention"
+  abbr: "TidalDecode"
+  url: "http://arxiv.org/abs/2410.05076v1"
+  authors: "Lijie Yang"
+  authors: "Zhihao Zhang"
+  authors: "Zhuofu Chen"
+  authors: "Zikun Li"
+  authors: "Zhihao Jia"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/DerrickYLJ/TidalDecode"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache
+  words: sparse_pruning
+}
+cover {
+  url: "fig2.png"
+}

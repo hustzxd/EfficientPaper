@@ -98,6 +98,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
+  
                 <h1 id="qa-lora">QA-LoRA</h1>
 <p><a class="glightbox" href="../qalora.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../qalora.jpg" /></a></p>
 <p>QLoRA主要用于减少finetuning时的memory cost，相较于LoRA，它的性能没有优势，但是QLoRA在进行推理时，有需要把AB两个高精度表示的矩阵融合到低位宽的权重中，导致最终融合的权重表示为高位宽，并不能满足量化的约束。</p>
@@ -105,6 +106,22 @@
 <p>实验结果对比，比QLoRA差一点，也算正常
 <a class="glightbox" href="../qa_lora_result.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../qa_lora_result.jpg" /></a></p>
               
+  <script src="https://giscus.app/client.js"
+        data-repo="hustzxd/EfficientPaper"
+        data-repo-id="R_kgDOKVYtOg"
+        data-category="General"
+        data-category-id="DIC_kwDOKVYtOs4CukCv"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
             </div>
           </div><footer>
 
@@ -142,6 +159,7 @@
       <script src="../../../../js/prism-prototxt.js"></script>
       <script src="../../../../js/preview.js"></script>
       <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://giscus.app/client.js"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {

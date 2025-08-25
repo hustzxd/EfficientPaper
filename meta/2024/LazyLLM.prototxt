@@ -1,0 +1,32 @@
+paper {
+  title: "LazyLLM: Dynamic Token Pruning for Efficient Long Context LLM Inference"
+  abbr: "LazyLLM"
+  url: "http://arxiv.org/abs/2407.14057v1"
+  authors: "Qichen Fu"
+  authors: "Minsik Cho"
+  authors: "Thomas Merth"
+  authors: "Sachin Mehta"
+  authors: "Mohammad Rastegari"
+  authors: "Mahyar Najibi"
+  institutions: "Apple"
+  institutions: "Meta AI"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+  words: sparse_pruning
+}
+cover {
+  url: "fig3.png"
+}
