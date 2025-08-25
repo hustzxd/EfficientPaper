@@ -12,6 +12,7 @@ nav:
 
 theme:
   name: readthedocs
+  custom_dir: overrides
 
 markdown_extensions:
   - tables
@@ -29,6 +30,7 @@ extra_javascript:
   - js/prism-prototxt.js
   - js/preview.js
   - js/back-to-top.js
+  - https://giscus.app/client.js  # giscus 客户端脚本
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css

@@ -1,0 +1,32 @@
+paper {
+  title: "SlimInfer: Accelerating Long-Context LLM Inference via Dynamic Token Pruning"
+  abbr: "SlimInfer"
+  url: "http://arxiv.org/abs/2508.06447v1"
+  authors: "Lingkun Long"
+  authors: "Rubing Yang"
+  authors: "Yushi Huang"
+  authors: "Desheng Hui"
+  authors: "Ao Zhou"
+  authors: "Jianlei Yang"
+  institutions: "Beihang University"
+  institutions: "Hong Kong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+  words: sparse_pruning
+}
+cover {
+  url: "fig4.png"
+}
