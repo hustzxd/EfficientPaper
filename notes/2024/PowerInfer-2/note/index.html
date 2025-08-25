@@ -122,14 +122,31 @@ usage while maintaining inference speeds comparable to llama.cpp and MLC-LLM.
 For more details, including a demonstration video, please visit the project
 site at www.powerinfer.ai/v2.</p>
               
-  <!-- Giscus只在生产环境中显示，本地开发时隐藏 -->
-
-<div style="padding: 20px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
-    <p><strong>📝 评论功能</strong></p>
-    <p>评论功能仅在生产环境中可用。在本地开发环境中，Giscus 无法正常工作。</p>
-    <p>请访问线上版本查看完整的评论功能。</p>
-</div>
-
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
 
             </div>
           </div><footer>
@@ -168,7 +185,6 @@ site at www.powerinfer.ai/v2.</p>
       <script src="../../../../js/prism-prototxt.js"></script>
       <script src="../../../../js/preview.js"></script>
       <script src="../../../../js/back-to-top.js"></script>
-      <script src="https://giscus.app/client.js"></script>
       <script src="../../../../search/main.js"></script>
     <script>
         jQuery(function () {
