@@ -12,7 +12,7 @@ paper {
   institutions: "SenseTime"
 }
 pub {
-  where: "arXiv"
+  where: "MLSys"
   year: 2025
 }
 code {

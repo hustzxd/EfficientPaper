@@ -1,0 +1,29 @@
+paper {
+  title: "Retrospective Sparse Attention for Efficient Long-Context Generation"
+  abbr: "RetroAttention"
+  url: "http://arxiv.org/abs/2508.09001v1"
+  authors: "Seonghwan Choi"
+  authors: "Beomseok Kang"
+  authors: "Dongwon Jo"
+  authors: "Jae-Joon Kim"
+  institutions: "Seoul National University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig3.png"
+}
