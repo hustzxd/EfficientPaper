@@ -559,6 +559,16 @@
 | [MMInference](./meta/2025/MMInference.prototxt) | [MMInference: Accelerating Pre-filling for Long-Context VLMs via Modality-Aware Permutation Sparse Attention](https://openreview.net/forum?id=me6PfbATWM) |  | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/MMInference/note.md) |
 </p>
 </details>
+<details open><summary><b>Dongwon Jo</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [FastKV](./meta/2025/FastKV.prototxt) | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | ![cover](./notes/2025/FastKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV)](https://github.com/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md) |
+| [RetroAttention](./meta/2025/RetroAttention.prototxt) | [Retrospective Sparse Attention for Efficient Long-Context Generation](http://arxiv.org/abs/2508.09001v1) | ![cover](./notes/2025/RetroAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RetroAttention/note.md) |
+</p>
+</details>
 <details open><summary><b>Dongyang Wang</b></summary> 
 <p>
 
@@ -1088,6 +1098,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Wanda](./meta/2024/Wanda.prototxt) | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | ![cover](./notes/2024/Wanda/wanda.png) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)](https://github.com/locuslab/wanda) | [note](./notes/2024/Wanda/note.md) |
 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | ![cover](./notes/2024/massive-activations/massive_act.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations)](https://github.com/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |
+</p>
+</details>
+<details open><summary><b>Jae-Joon Kim</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [FastKV](./meta/2025/FastKV.prototxt) | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | ![cover](./notes/2025/FastKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV)](https://github.com/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md) |
+| [RetroAttention](./meta/2025/RetroAttention.prototxt) | [Retrospective Sparse Attention for Efficient Long-Context Generation](http://arxiv.org/abs/2508.09001v1) | ![cover](./notes/2025/RetroAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RetroAttention/note.md) |
 </p>
 </details>
 <details open><summary><b>Jan Kautz</b></summary> 
@@ -1988,7 +2008,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Centauri](./meta/2024/Centauri.prototxt) | [Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning](https://dl.acm.org/doi/10.1145/3620666.3651379) | ![cover](./notes/2024/Centauri/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/Centauri/note.md) |
-| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
+| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 </p>
 </details>
 <details open><summary><b>Peng Zhang</b></summary> 
@@ -3335,8 +3355,8 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
-| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 </p>
 </details>
 <details open><summary><b>Xinyuan Li</b></summary> 

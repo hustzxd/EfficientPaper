@@ -66,3 +66,7 @@ message SearchWord {
     repeated string key_words = 2;
     repeated string exclude_words = 3;
 }
+
+message RepoList {
+    repeated string repo_url = 1;
+}

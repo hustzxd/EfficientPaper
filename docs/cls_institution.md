@@ -1001,8 +1001,8 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |  | ![Publish](https://img.shields.io/badge/2017-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS)](https://github.com/csyhhu/L-OBS) |  |
 | [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | ![cover](./notes/2024/SMAT/fig2.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts)](https://github.com/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
+| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 | [Cus-Prun](./meta/2025/Cus-Prun.prototxt) | [Pruning General Large Language Models into Customized Expert Models](http://arxiv.org/abs/2506.02561v1) | ![cover](./notes/2025/Cus-Prun/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zhaoyiran924/Custom-Prune)](https://github.com/zhaoyiran924/Custom-Prune) | [note](./notes/2025/Cus-Prun/note.md) |
-| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 
 
 #### National University of Singapore
@@ -1293,7 +1293,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
+| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 
 
 #### SenseTime Research
@@ -1313,6 +1313,7 @@
 | [K-pruning](./meta/2023/k_pruning.prototxt) | [Knowledge-preserving Pruning for Pre-trained Language Models without Retraining](https://arxiv.org/abs/2308.03449) | ![cover](./notes/2023/k_pruning/kp.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) |  | [note](./notes/2023/k_pruning/note.md) |
 | [L4Q](./meta/2024/L4Q.prototxt) | [L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ](https://arxiv.org/abs/2402.04902) | ![cover](./notes/2024/L4Q/l4q.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/L4Q/note.md) |
 | [FastKV](./meta/2025/FastKV.prototxt) | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | ![cover](./notes/2025/FastKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV)](https://github.com/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md) |
+| [RetroAttention](./meta/2025/RetroAttention.prototxt) | [Retrospective Sparse Attention for Efficient Long-Context Generation](http://arxiv.org/abs/2508.09001v1) | ![cover](./notes/2025/RetroAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RetroAttention/note.md) |
 
 
 #### Shanghai AI Lab
@@ -1328,7 +1329,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
+| [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 | [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
 
 

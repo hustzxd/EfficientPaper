@@ -9,7 +9,7 @@ nav:
     - By Institution: cls_institution.md
     - By Author: cls_author.md
   - Weekly Paper: weekly_paper/
-
+  - Contributors: contributors.md
 theme:
   name: readthedocs
   custom_dir: overrides

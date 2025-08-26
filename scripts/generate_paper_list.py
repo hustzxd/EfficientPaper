@@ -1,7 +1,5 @@
-import argparse
 import copy
 import os
-from pydoc import doc
 import sys
 
 import google.protobuf as pb
@@ -12,14 +10,6 @@ from proto import efficient_paper_pb2 as eppb
 
 sys.path.append("./")
 
-
-def parse_args():
-    parser = argparse.ArgumentParser(description="Generate Paper INFO")
-    parser.add_argument(
-        "-d", "--detail", action="store_true", default=False, help="Whether to display information in a detail way."
-    )
-    args = parser.parse_args()
-    return args
 
 
 PUBLISH_COLOR = {
@@ -112,7 +102,6 @@ def get_table_header():
 
 
 def main():
-    args = parse_args()
     columns = [
         "meta",
         "Title",  # (abbr) [title](url)

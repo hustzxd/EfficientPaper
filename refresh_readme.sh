@@ -7,6 +7,7 @@ python proto/gene_template.py
 
 python scripts/ddl.py
 python scripts/split_by_year.py
+python scripts/generate_reference.py
 
 if [ -z "$1" ]; then
     python scripts/generate_paper_list.py
