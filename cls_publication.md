@@ -32,6 +32,15 @@
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 </p>
 </details>
+<details open><summary><b>AISTATS</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MXFP4Train](./meta/2025/MXFP4Train.prototxt) | [Training LLMs with MXFP4](http://arxiv.org/abs/2502.20586v2) | ![cover](./notes/2025/MXFP4Train/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AISTATS-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/amazon-science/mxfp4-llm)](https://github.com/amazon-science/mxfp4-llm) | [note](./notes/2025/MXFP4Train/note.md) |
+</p>
+</details>
 <details open><summary><b>ASPLOS</b></summary> 
 <p>
 
@@ -150,6 +159,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [CacheBlend](./meta/2025/CacheBlend.prototxt) | [CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion](http://arxiv.org/abs/2405.16444v3) | ![cover](./notes/2025/CacheBlend/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/LMCache/LMCache)](https://github.com/LMCache/LMCache) | [note](./notes/2025/CacheBlend/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>ICCV</b></summary> 
@@ -259,6 +269,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [Splitwise](./meta/2024/Splitwise.prototxt) | [Splitwise: Efficient generative LLM inference using phase splitting](http://arxiv.org/abs/2311.18677v2) | ![cover](./notes/2024/Splitwise/fig10.png) | ![Publish](https://img.shields.io/badge/2024-ISCA-9932CC) | [![GitHub Repo stars](https://img.shields.io/github/stars/Mutinifni/splitwise-sim)](https://github.com/Mutinifni/splitwise-sim) | [note](./notes/2024/Splitwise/note.md) |
 | [AMALI](./meta/2025/AMALI.prototxt) | [AMALI: An Analytical Model for Accurately Modeling LLM Inference on Modern GPUs](https://dl.acm.org/doi/10.1145/3695053.3731064) | ![cover](./notes/2025/AMALI/fig6.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) |  | [note](./notes/2025/AMALI/note.md) |
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | ![cover](./notes/2025/SpecEE/fig9.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE)](https://github.com/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
 </p>
@@ -525,6 +536,7 @@
 | [ChunkKV](./meta/2025/ChunkKV.prototxt) | [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) | ![cover](./notes/2025/ChunkKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/ChunkKV/note.md) |
 | [CometSeed](./meta/2025/CometSeed.prototxt) | [Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts](http://arxiv.org/abs/2502.19811v3) | ![cover](./notes/2025/CometSeed/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/flux)](https://github.com/bytedance/flux) | [note](./notes/2025/CometSeed/note.md) |
 | [DBudgetKV](./meta/2025/DBudgetKV.prototxt) | [DBudgetKV: Dynamic Budget in KV Cache Compression for Ensuring Optimal Performance](http://arxiv.org/abs/2502.16886v1) | ![cover](./notes/2025/DBudgetKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DBudgetKV/note.md) |
+| [DReSS](./meta/2025/DReSS.prototxt) | [DReSS: Data-driven Regularized Structured Streamlining for Large Language Models](http://arxiv.org/abs/2501.17905v3) | ![cover](./notes/2025/DReSS/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DReSS/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 | [DeltaAttention](./meta/2025/DeltaAttention.prototxt) | [Delta Attention: Fast and Accurate Sparse Attention Inference by Delta Correction](http://arxiv.org/abs/2505.11254v1) | ![cover](./notes/2025/DeltaAttention/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DeltaAttention/note.md) |
 | [DeltaLLM](./meta/2025/DeltaLLM.prototxt) | [DeltaLLM: A Training-Free Framework Exploiting Temporal Sparsity for Efficient Edge LLM Inference](http://arxiv.org/abs/2507.19608v1) | ![cover](./notes/2025/DeltaLLM/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DeltaLLM/note.md) |
@@ -534,7 +546,6 @@
 | [2ZU1IWL6](./meta/2025/2ZU1IWL6.prototxt) | [Fast and Simplex: 2-Simplicial Attention in Triton](http://arxiv.org/abs/2507.02754v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/2ZU1IWL6/note.md) |
 | [FastKV](./meta/2025/FastKV.prototxt) | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | ![cover](./notes/2025/FastKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV)](https://github.com/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md) |
 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer)](https://github.com/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
 | [FreqKV](./meta/2025/FreqKV.prototxt) | [FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension](http://arxiv.org/abs/2505.00570v2) | ![cover](./notes/2025/FreqKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FreqKV/note.md) |
 | [HATA](./meta/2025/HATA.prototxt) | [HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference](http://arxiv.org/abs/2506.02572v1) | ![cover](./notes/2025/HATA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/gpzlx1/HATA)](https://github.com/gpzlx1/HATA) | [note](./notes/2025/HATA/note.md) |
 | [HCAttention](./meta/2025/HCAttention.prototxt) | [HCAttention: Extreme KV Cache Compression via Heterogeneous Attention Computing for LLMs](http://arxiv.org/abs/2507.19823v1) | ![cover](./notes/2025/HCAttention/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/HCAttention/note.md) |
@@ -579,6 +590,7 @@
 | [TileLink](./meta/2025/TileLink.prototxt) | [TileLink: Generating Efficient Compute-Communication Overlapping Kernels using Tile-Centric Primitives](http://arxiv.org/abs/2503.20313v3) | ![cover](./notes/2025/TileLink/fig7.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ByteDance-Seed/Triton-distributed)](https://github.com/ByteDance-Seed/Triton-distributed) | [note](./notes/2025/TileLink/note.md) |
 | [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | ![cover](./notes/2025/TokenWeave/fig8.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave)](https://github.com/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
 | [Triton-distributed](./meta/2025/Triton-distributed.prototxt) | [Triton-distributed: Programming Overlapping Kernels on Distributed AI Systems with the Triton Compiler](http://arxiv.org/abs/2504.19442v3) | ![cover](./notes/2025/Triton-distributed/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ByteDance-Seed/Triton-distributed)](https://github.com/ByteDance-Seed/Triton-distributed) | [note](./notes/2025/Triton-distributed/note.md) |
+| [Týr-the-Pruner](./meta/2025/Týr-the-Pruner.prototxt) | [Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization](http://arxiv.org/abs/2503.09657v2) | ![cover](./notes/2025/Týr-the-Pruner/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Týr-the-Pruner/note.md) |
 | [Super-Experts-Profilling](./meta/2025/Super-Experts-Profilling.prototxt) | [Unveiling Super Experts in Mixture-of-Experts Large Language Models](http://arxiv.org/abs/2507.23279v1) | ![cover](./notes/2025/Super-Experts-Profilling/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ZunhaiSu/Super-Experts-Profilling)](https://github.com/ZunhaiSu/Super-Experts-Profilling) | [note](./notes/2025/Super-Experts-Profilling/note.md) |
 </p>
 </details>

@@ -1,0 +1,31 @@
+paper {
+  title: "Splitwise: Efficient generative LLM inference using phase splitting"
+  abbr: "Splitwise"
+  url: "http://arxiv.org/abs/2311.18677v2"
+  authors: "Pratyush Patel"
+  authors: "Esha Choukse"
+  authors: "Chaojie Zhang"
+  authors: "Aashaka Shah"
+  authors: "Íñigo Goiri"
+  authors: "Saeed Maleki"
+  authors: "Ricardo Bianchini"
+  institutions: "University of Washington"
+  institutions: "Microsoft"
+}
+pub {
+  where: "ISCA"
+  year: 2024
+}
+code {
+  type: "python"
+  url: "https://github.com/Mutinifni/splitwise-sim"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: "fig10.png"
+}

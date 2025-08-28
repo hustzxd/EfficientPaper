@@ -28,3 +28,7 @@ LLM tasks. Third, we provide tools to shed light on future \texttt{KV}
 \texttt{cache} compression studies and facilitate their practical deployment in
 production. They are open-sourced in
 \href{https://github.com/LLMkvsys/rethink-kv-compression}{https://github.com/LLMkvsys/rethink-kv-compression}.
+
+- KV cache压缩后缺乏性能的评估
+- PagedAttention FalshAttention没有对KV 压缩进行适配
+- KV 压缩后可能导致output变长，从而增加end-to-end的latency

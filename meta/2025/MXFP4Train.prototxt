@@ -1,0 +1,28 @@
+paper {
+  title: "Training LLMs with MXFP4"
+  abbr: "MXFP4Train"
+  url: "http://arxiv.org/abs/2502.20586v2"
+  authors: "Albert Tseng"
+  authors: "Tao Yu"
+  authors: "Youngsuk Park"
+  institutions: "Cornell University"
+  institutions: "AWS AI"
+}
+pub {
+  where: "AISTATS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/amazon-science/mxfp4-llm"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: efficient_training
+}
+cover {
+  url: "fig1.png"
+}

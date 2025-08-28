@@ -1,0 +1,32 @@
+paper {
+  title: "DReSS: Data-driven Regularized Structured Streamlining for Large Language Models"
+  abbr: "DReSS"
+  url: "http://arxiv.org/abs/2501.17905v3"
+  authors: "Mingkuan Feng"
+  authors: "Jinyang Wu"
+  authors: "Shuai Zhang"
+  authors: "Pengpeng Shao"
+  authors: "Ruihan Jin"
+  authors: "Zhengqi Wen"
+  authors: "Jianhua Tao"
+  authors: "Feihu Che"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig1.png"
+}

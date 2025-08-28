@@ -19,8 +19,8 @@ paper {
   institutions: "Shanghai Jiao Tong University"
 }
 pub {
-  where: "arXiv"
-  year: 2025
+  where: "EuroSys"
+  year: 2026
 }
 code {
   type: "C++"

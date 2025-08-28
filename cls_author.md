@@ -535,6 +535,7 @@
 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | ![cover](./notes/2025/SDS/sds.png) | ![Publish](https://img.shields.io/badge/2025-Coling-1E90FF) |  | [note](./notes/2025/SDS/note.md) |
 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | ![cover](./notes/2025/BaWA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/BaWA/note.md) |
 | [PanguUltra](./meta/2025/PanguUltra.prototxt) | [Pangu Ultra: Pushing the Limits of Dense Large Language Models on Ascend NPUs](http://arxiv.org/abs/2504.07866v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/PanguUltra/note.md) |
+| [Týr-the-Pruner](./meta/2025/Týr-the-Pruner.prototxt) | [Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization](http://arxiv.org/abs/2503.09657v2) | ![cover](./notes/2025/Týr-the-Pruner/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Týr-the-Pruner/note.md) |
 </p>
 </details>
 <details open><summary><b>Dongjie Ji</b></summary> 
@@ -603,6 +604,16 @@
 | [SparseGPT](./meta/2023/sparsegpt.prototxt) | [SparseGPT: Massive Language Models Can be Accurately Pruned in one-shot.](https://arxiv.org/pdf/2301.00774.pdf) |  | ![Publish](https://img.shields.io/badge/2023-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/sparsegpt)](https://github.com/IST-DASLab/sparsegpt) |  |
 | [ZipLM](./meta/2023/ZipLM.prototxt) | [ZipLM: Inference-Aware Structured Pruning of Language Models](https://openreview.net/pdf?id=bPFFPueAxm) | ![cover](./notes/2023/ZipLM/cover.jpg) | ![Publish](https://img.shields.io/badge/2023-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/ZipLM)](https://github.com/IST-DASLab/ZipLM) |  |
 | [SquareHead](./meta/2023/SquareHead.prototxt) | [Sparse Fine-tuning for Inference Acceleration of Large Language Models](https://arxiv.org/pdf/2310.06927.pdf) | ![cover](./notes/2023/SquareHead/cover.png) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/IST-DASLab/SparseFinetuning)](https://github.com/IST-DASLab/SparseFinetuning) |  |
+</p>
+</details>
+<details open><summary><b>Emad Barsoum</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | ![cover](./notes/2025/SDS/sds.png) | ![Publish](https://img.shields.io/badge/2025-Coling-1E90FF) |  | [note](./notes/2025/SDS/note.md) |
+| [Týr-the-Pruner](./meta/2025/Týr-the-Pruner.prototxt) | [Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization](http://arxiv.org/abs/2503.09657v2) | ![cover](./notes/2025/Týr-the-Pruner/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Týr-the-Pruner/note.md) |
 </p>
 </details>
 <details open><summary><b>Erhang Li</b></summary> 
@@ -708,6 +719,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | ![cover](./notes/2025/SDS/sds.png) | ![Publish](https://img.shields.io/badge/2025-Coling-1E90FF) |  | [note](./notes/2025/SDS/note.md) |
 | [BaWA](./meta/2025/BaWA.prototxt) | [BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation](https://openreview.net/forum?id=YrCvW1Hx7g) | ![cover](./notes/2025/BaWA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/BaWA/note.md) |
+| [Týr-the-Pruner](./meta/2025/Týr-the-Pruner.prototxt) | [Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization](http://arxiv.org/abs/2503.09657v2) | ![cover](./notes/2025/Týr-the-Pruner/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Týr-the-Pruner/note.md) |
 </p>
 </details>
 <details open><summary><b>Guangbo Hao</b></summary> 
@@ -755,7 +767,7 @@
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | ![cover](./notes/2025/SpecEE/fig9.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE)](https://github.com/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Guowei Li</b></summary> 
@@ -1516,7 +1528,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Kehong Yuan</b></summary> 
@@ -2291,6 +2303,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Saeed Maleki</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CoCoNet](./meta/2022/CoCoNet.prototxt) | [Breaking the Computation and Communication Abstraction Barrier in Distributed Machine Learning Workloads](http://arxiv.org/abs/2105.05720v5) | ![cover](./notes/2022/CoCoNet/fig9.png) | ![Publish](https://img.shields.io/badge/2022-ASPLOS-9370DB) | [![GitHub Repo stars](https://img.shields.io/github/stars/parasailteam/coconet)](https://github.com/parasailteam/coconet) | [note](./notes/2022/CoCoNet/note.md) |
+| [Splitwise](./meta/2024/Splitwise.prototxt) | [Splitwise: Efficient generative LLM inference using phase splitting](http://arxiv.org/abs/2311.18677v2) | ![cover](./notes/2024/Splitwise/fig10.png) | ![Publish](https://img.shields.io/badge/2024-ISCA-9932CC) | [![GitHub Repo stars](https://img.shields.io/github/stars/Mutinifni/splitwise-sim)](https://github.com/Mutinifni/splitwise-sim) | [note](./notes/2024/Splitwise/note.md) |
+</p>
+</details>
 <details open><summary><b>Sangmin Bae</b></summary> 
 <p>
 
@@ -2628,6 +2650,16 @@
 | [RaaS](./meta/2025/RaaS.prototxt) | [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1) | ![cover](./notes/2025/RaaS/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RaaS/note.md) |
 </p>
 </details>
+<details open><summary><b>Tao Yu</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [FLAP](./meta/2024/flap.prototxt) | [Fluctuation-based Adaptive Structured Pruning for Large Language Models](https://arxiv.org/abs/2312.11983) | ![cover](./notes/del/flap.jpg) | ![Publish](https://img.shields.io/badge/2024-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/CASIA-IVA-Lab/FLAP)](https://github.com/CASIA-IVA-Lab/FLAP) |  |
+| [MXFP4Train](./meta/2025/MXFP4Train.prototxt) | [Training LLMs with MXFP4](http://arxiv.org/abs/2502.20586v2) | ![cover](./notes/2025/MXFP4Train/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AISTATS-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/amazon-science/mxfp4-llm)](https://github.com/amazon-science/mxfp4-llm) | [note](./notes/2025/MXFP4Train/note.md) |
+</p>
+</details>
 <details open><summary><b>Tao Yuan</b></summary> 
 <p>
 
@@ -2697,7 +2729,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Tianyu Fu</b></summary> 
@@ -3378,7 +3410,7 @@
 | [Centauri](./meta/2024/Centauri.prototxt) | [Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning](https://dl.acm.org/doi/10.1145/3620666.3651379) | ![cover](./notes/2024/Centauri/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/Centauri/note.md) |
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | ![cover](./notes/2024/SampleAttention/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/SampleAttention/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Xu Han</b></summary> 
@@ -3926,7 +3958,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Yu Wu</b></summary> 
@@ -4264,6 +4296,16 @@
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | ![cover](./notes/2024/DeepSeek-V2/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2)](https://github.com/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+</p>
+</details>
+<details open><summary><b>Zeping Li</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SDS](./meta/2025/SDS.prototxt) | [Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism](http://arxiv.org/abs/2408.10473v1) | ![cover](./notes/2025/SDS/sds.png) | ![Publish](https://img.shields.io/badge/2025-Coling-1E90FF) |  | [note](./notes/2025/SDS/note.md) |
+| [Týr-the-Pruner](./meta/2025/Týr-the-Pruner.prototxt) | [Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization](http://arxiv.org/abs/2503.09657v2) | ![cover](./notes/2025/Týr-the-Pruner/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Týr-the-Pruner/note.md) |
 </p>
 </details>
 <details open><summary><b>Zeyu Mi</b></summary> 
@@ -4698,7 +4740,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
-| [FlashOverlap](./meta/2025/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2025/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2025/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Zixuan Zhou</b></summary> 
