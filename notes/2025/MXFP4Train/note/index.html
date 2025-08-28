@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving - Efficient Paper</title>
+    <title>Training LLMs with MXFP4 - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving";
-        var mkdocs_page_input_path = "notes/2025/0VRXJQ3F/note.md";
+        var mkdocs_page_name = "Training LLMs with MXFP4";
+        var mkdocs_page_input_path = "notes/2025/MXFP4Train/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -93,7 +93,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</li>
+      <li class="breadcrumb-item active">Training LLMs with MXFP4</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -103,38 +103,26 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="rethinking-key-value-cache-compression-techniques-for-large-language-model-serving">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</h1>
-<p><a class="glightbox" href="../tab1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.png" /></a></p>
+                <h1 id="training-llms-with-mxfp4">Training LLMs with MXFP4</h1>
+<blockquote>
+<p>Albert Tseng, Tao Yu, Youngsuk Park</p>
+</blockquote>
+<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Key-Value cache (\texttt{KV} \texttt{cache}) compression has emerged as a
-promising technique to optimize Large Language Model (LLM) serving. It
-primarily decreases the memory consumption of \texttt{KV} \texttt{cache} to
-reduce the computation cost. Despite the development of many compression
-algorithms, their applications in production environments are still not
-prevalent. In this paper, we revisit mainstream \texttt{KV} \texttt{cache}
-compression solutions from a practical perspective. Our contributions are
-three-fold. First, we comprehensively review existing algorithmic designs and
-benchmark studies for \texttt{KV} \texttt{cache} compression and identify
-missing pieces in their performance measurement, which could hinder their
-adoption in practice. Second, we empirically evaluate representative
-\texttt{KV} \texttt{cache} compression methods to uncover two key issues that
-affect the computational efficiency: (1) while compressing \texttt{KV}
-\texttt{cache} can reduce memory consumption, current implementations (e.g.,
-FlashAttention, PagedAttention) do not optimize for production-level LLM
-serving, resulting in suboptimal throughput performance; (2) compressing
-\texttt{KV} \texttt{cache} may lead to longer outputs, resulting in increased
-end-to-end latency. We further investigate the accuracy performance of
-individual samples rather than the overall performance, revealing the intrinsic
-limitations in \texttt{KV} \texttt{cache} compression when handling specific
-LLM tasks. Third, we provide tools to shed light on future \texttt{KV}
-\texttt{cache} compression studies and facilitate their practical deployment in
-production. They are open-sourced in
-\href{https://github.com/LLMkvsys/rethink-kv-compression}{https://github.com/LLMkvsys/rethink-kv-compression}.</p>
-<ul>
-<li>KV cache压缩后缺乏性能的评估</li>
-<li>PagedAttention FalshAttention没有对KV 压缩进行适配</li>
-<li>KV 压缩后可能导致output变长，从而增加end-to-end的latency</li>
-</ul>
+<p>Low precision (LP) datatypes such as MXFP4 can accelerate matrix
+multiplications (GEMMs) and reduce training costs. However, directly using
+MXFP4 instead of BF16 during training significantly degrades model quality. In
+this work, we present the first near-lossless training recipe that uses MXFP4
+GEMMs, which are <script type="math/tex">2\times</script> faster than FP8 on supported hardware. Our key
+insight is to compute unbiased gradient estimates with stochastic rounding
+(SR), resulting in more accurate model updates. However, directly applying SR
+to MXFP4 can result in high variance from block-level outliers, harming
+convergence. To overcome this, we use the random Hadamard tranform to
+theoretically bound the variance of SR. We train GPT models up to 6.7B
+parameters and find that our method induces minimal degradation over
+mixed-precision BF16 training. Our recipe computes <script type="math/tex">>1/2</script> the training FLOPs in
+MXFP4, enabling an estimated speedup of <script type="math/tex">>1.3\times</script> over FP8 and <script type="math/tex">>1.7\times</script>
+over BF16 during backpropagation.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

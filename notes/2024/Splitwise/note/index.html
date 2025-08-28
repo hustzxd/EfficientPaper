@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving - Efficient Paper</title>
+    <title>Splitwise: Efficient generative LLM inference using phase splitting - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving";
-        var mkdocs_page_input_path = "notes/2025/0VRXJQ3F/note.md";
+        var mkdocs_page_name = "Splitwise: Efficient generative LLM inference using phase splitting";
+        var mkdocs_page_input_path = "notes/2024/Splitwise/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -93,7 +93,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</li>
+      <li class="breadcrumb-item active">Splitwise: Efficient generative LLM inference using phase splitting</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -103,38 +103,37 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="rethinking-key-value-cache-compression-techniques-for-large-language-model-serving">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</h1>
-<p><a class="glightbox" href="../tab1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.png" /></a></p>
+                <h1 id="splitwise-efficient-generative-llm-inference-using-phase-splitting">Splitwise: Efficient generative LLM inference using phase splitting</h1>
+<blockquote>
+<p>Pratyush Patel, Esha Choukse, Chaojie Zhang, Aashaka Shah, Íñigo Goiri, Saeed Maleki, Ricardo Bianchini</p>
+</blockquote>
+<p><a class="glightbox" href="../fig10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig10.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Key-Value cache (\texttt{KV} \texttt{cache}) compression has emerged as a
-promising technique to optimize Large Language Model (LLM) serving. It
-primarily decreases the memory consumption of \texttt{KV} \texttt{cache} to
-reduce the computation cost. Despite the development of many compression
-algorithms, their applications in production environments are still not
-prevalent. In this paper, we revisit mainstream \texttt{KV} \texttt{cache}
-compression solutions from a practical perspective. Our contributions are
-three-fold. First, we comprehensively review existing algorithmic designs and
-benchmark studies for \texttt{KV} \texttt{cache} compression and identify
-missing pieces in their performance measurement, which could hinder their
-adoption in practice. Second, we empirically evaluate representative
-\texttt{KV} \texttt{cache} compression methods to uncover two key issues that
-affect the computational efficiency: (1) while compressing \texttt{KV}
-\texttt{cache} can reduce memory consumption, current implementations (e.g.,
-FlashAttention, PagedAttention) do not optimize for production-level LLM
-serving, resulting in suboptimal throughput performance; (2) compressing
-\texttt{KV} \texttt{cache} may lead to longer outputs, resulting in increased
-end-to-end latency. We further investigate the accuracy performance of
-individual samples rather than the overall performance, revealing the intrinsic
-limitations in \texttt{KV} \texttt{cache} compression when handling specific
-LLM tasks. Third, we provide tools to shed light on future \texttt{KV}
-\texttt{cache} compression studies and facilitate their practical deployment in
-production. They are open-sourced in
-\href{https://github.com/LLMkvsys/rethink-kv-compression}{https://github.com/LLMkvsys/rethink-kv-compression}.</p>
-<ul>
-<li>KV cache压缩后缺乏性能的评估</li>
-<li>PagedAttention FalshAttention没有对KV 压缩进行适配</li>
-<li>KV 压缩后可能导致output变长，从而增加end-to-end的latency</li>
-</ul>
+<p>Recent innovations in generative large language models (LLMs) have made their
+applications and use-cases ubiquitous. This has led to large-scale deployments
+of these models, using complex, expensive, and power-hungry AI accelerators,
+most commonly GPUs. These developments make LLM inference efficiency an
+important challenge. Based on our extensive characterization, we find that
+there are two main phases during an LLM inference request: a compute-intensive
+prompt computation, and a memory-intensive token generation, each with distinct
+latency, throughput, memory, and power characteristics. Despite
+state-of-the-art batching and scheduling, the token generation phase
+underutilizes compute resources. Specifically, unlike compute-intensive prompt
+computation phases, token generation phases do not require the compute
+capability of the latest GPUs, and can be run with lower power and cost.
+  With Splitwise, we propose splitting the two phases of a LLM inference
+request on to separate machines. This allows us to use hardware that is
+well-suited for each phase, and provision resources independently per phase.
+However, splitting an inference request across machines requires state transfer
+from the machine running prompt computation over to the machine generating
+tokens. We implement and optimize this state transfer using the fast back-plane
+interconnects available in today's GPU clusters.
+  We use the Splitwise technique to design LLM inference clusters using the
+same or different types of machines for the prompt computation and token
+generation phases. Our clusters are optimized for three key objectives:
+throughput, cost, and power. In particular, we show that we can achieve 1.4x
+higher throughput at 20% lower cost than current designs. Alternatively, we can
+achieve 2.35x more throughput with the same cost and power budgets.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

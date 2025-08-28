@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving - Efficient Paper</title>
+    <title>Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving";
-        var mkdocs_page_input_path = "notes/2025/0VRXJQ3F/note.md";
+        var mkdocs_page_name = "T\u00fdr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization";
+        var mkdocs_page_input_path = "notes/2025/T\u00fdr-the-Pruner/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -93,7 +93,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</li>
+      <li class="breadcrumb-item active">Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -103,38 +103,31 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="rethinking-key-value-cache-compression-techniques-for-large-language-model-serving">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</h1>
-<p><a class="glightbox" href="../tab1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.png" /></a></p>
+                <h1 id="tyr-the-pruner-unlocking-accurate-50-structural-pruning-for-llms-via-global-sparsity-distribution-optimization">Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization</h1>
+<blockquote>
+<p>Guanchen Li, Yixing Xu, Zeping Li, Ji Liu, Xuanwu Yin, Dong Li, Emad Barsoum</p>
+</blockquote>
+<p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig2.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Key-Value cache (\texttt{KV} \texttt{cache}) compression has emerged as a
-promising technique to optimize Large Language Model (LLM) serving. It
-primarily decreases the memory consumption of \texttt{KV} \texttt{cache} to
-reduce the computation cost. Despite the development of many compression
-algorithms, their applications in production environments are still not
-prevalent. In this paper, we revisit mainstream \texttt{KV} \texttt{cache}
-compression solutions from a practical perspective. Our contributions are
-three-fold. First, we comprehensively review existing algorithmic designs and
-benchmark studies for \texttt{KV} \texttt{cache} compression and identify
-missing pieces in their performance measurement, which could hinder their
-adoption in practice. Second, we empirically evaluate representative
-\texttt{KV} \texttt{cache} compression methods to uncover two key issues that
-affect the computational efficiency: (1) while compressing \texttt{KV}
-\texttt{cache} can reduce memory consumption, current implementations (e.g.,
-FlashAttention, PagedAttention) do not optimize for production-level LLM
-serving, resulting in suboptimal throughput performance; (2) compressing
-\texttt{KV} \texttt{cache} may lead to longer outputs, resulting in increased
-end-to-end latency. We further investigate the accuracy performance of
-individual samples rather than the overall performance, revealing the intrinsic
-limitations in \texttt{KV} \texttt{cache} compression when handling specific
-LLM tasks. Third, we provide tools to shed light on future \texttt{KV}
-\texttt{cache} compression studies and facilitate their practical deployment in
-production. They are open-sourced in
-\href{https://github.com/LLMkvsys/rethink-kv-compression}{https://github.com/LLMkvsys/rethink-kv-compression}.</p>
-<ul>
-<li>KV cache压缩后缺乏性能的评估</li>
-<li>PagedAttention FalshAttention没有对KV 压缩进行适配</li>
-<li>KV 压缩后可能导致output变长，从而增加end-to-end的latency</li>
-</ul>
+<p>Structural pruning enhances hardware-agnostic inference efficiency for large
+language models (LLMs) but often struggles to maintain performance. Local
+pruning performs efficient layer-by-layer compression but ignores global
+topology. Global pruning has the potential to find the optimal solution
+although resource-intensive. However, existing methods tend to rank structural
+saliency uniformly, ignoring inter-structure dependencies and failing to
+achieve end-to-end optimization. To address these limitations, we propose
+T\'yr-the-Pruner, an efficient end-to-end search-based global structural
+pruning framework. This framework constructs a supernet by repeatedly applying
+local pruning across a range of sparsity ratios to each layer in an LLM, with
+the core goal of determining the optimal sparsity distribution under a target
+overall sparsity ratio. Concretely, we introduce an effective local pruning and
+an expectation error accumulation approach to improve supernet construction.
+Furthermore, we employ an iterative prune-and-search strategy with
+coarse-to-fine sparsity granularity to ensure efficient search convergence.
+Experimental results show that T\'yr-the-Pruner achieves state-of-the-art
+structural pruning, retaining 97% of the dense model's performance while
+removing a challenging 50% of Llama-3.1-70B's parameters.</p>
+<p>evolutionary search得到每一层的稀疏度</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving - Efficient Paper</title>
+    <title>DReSS: Data-driven Regularized Structured Streamlining for Large Language Models - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving";
-        var mkdocs_page_input_path = "notes/2025/0VRXJQ3F/note.md";
+        var mkdocs_page_name = "DReSS: Data-driven Regularized Structured Streamlining for Large Language Models";
+        var mkdocs_page_input_path = "notes/2025/DReSS/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -93,7 +93,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</li>
+      <li class="breadcrumb-item active">DReSS: Data-driven Regularized Structured Streamlining for Large Language Models</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -103,38 +103,36 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="rethinking-key-value-cache-compression-techniques-for-large-language-model-serving">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</h1>
-<p><a class="glightbox" href="../tab1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.png" /></a></p>
+                <h1 id="dress-data-driven-regularized-structured-streamlining-for-large-language-models">DReSS: Data-driven Regularized Structured Streamlining for Large Language Models</h1>
+<blockquote>
+<p>Mingkuan Feng, Jinyang Wu, Shuai Zhang, Pengpeng Shao, Ruihan Jin, Zhengqi Wen, Jianhua Tao, Feihu Che</p>
+</blockquote>
+<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Key-Value cache (\texttt{KV} \texttt{cache}) compression has emerged as a
-promising technique to optimize Large Language Model (LLM) serving. It
-primarily decreases the memory consumption of \texttt{KV} \texttt{cache} to
-reduce the computation cost. Despite the development of many compression
-algorithms, their applications in production environments are still not
-prevalent. In this paper, we revisit mainstream \texttt{KV} \texttt{cache}
-compression solutions from a practical perspective. Our contributions are
-three-fold. First, we comprehensively review existing algorithmic designs and
-benchmark studies for \texttt{KV} \texttt{cache} compression and identify
-missing pieces in their performance measurement, which could hinder their
-adoption in practice. Second, we empirically evaluate representative
-\texttt{KV} \texttt{cache} compression methods to uncover two key issues that
-affect the computational efficiency: (1) while compressing \texttt{KV}
-\texttt{cache} can reduce memory consumption, current implementations (e.g.,
-FlashAttention, PagedAttention) do not optimize for production-level LLM
-serving, resulting in suboptimal throughput performance; (2) compressing
-\texttt{KV} \texttt{cache} may lead to longer outputs, resulting in increased
-end-to-end latency. We further investigate the accuracy performance of
-individual samples rather than the overall performance, revealing the intrinsic
-limitations in \texttt{KV} \texttt{cache} compression when handling specific
-LLM tasks. Third, we provide tools to shed light on future \texttt{KV}
-\texttt{cache} compression studies and facilitate their practical deployment in
-production. They are open-sourced in
-\href{https://github.com/LLMkvsys/rethink-kv-compression}{https://github.com/LLMkvsys/rethink-kv-compression}.</p>
+<p>Large language models (LLMs) have achieved significant progress across
+various domains, but their increasing scale results in high computational and
+memory costs. Recent studies have revealed that LLMs exhibit sparsity,
+providing the potential to reduce model size through pruning techniques.
+However, existing pruning methods typically follow a prune-then-finetune
+paradigm. Since the pruned components still contain valuable information, their
+direct removal often leads to irreversible performance degradation, imposing a
+substantial computational burden to recover performance during finetuning. In
+this paper, we propose a novel paradigm that first applies regularization, then
+prunes, and finally finetunes. Based on this paradigm, we introduce DReSS, a
+simple and effective Data-driven Regularized Structured Streamlining method for
+LLMs. By leveraging a small amount of data to regularize the components to be
+pruned, DReSS explicitly transfers the important information to the remaining
+parts of the model in advance. Compared to direct pruning, this can reduce the
+information loss caused by parameter removal, thereby enhancing its language
+modeling capabilities. Experimental results demonstrate that DReSS
+significantly outperforms existing pruning methods even under extreme pruning
+ratios, significantly reducing latency and increasing throughput.</p>
 <ul>
-<li>KV cache压缩后缺乏性能的评估</li>
-<li>PagedAttention FalshAttention没有对KV 压缩进行适配</li>
-<li>KV 压缩后可能导致output变长，从而增加end-to-end的latency</li>
+<li>channel pruning mask直接初始化固定，通过正则化将mask的channel 信息传递到其他channel</li>
+<li>根据 mask pruning</li>
+<li>再次进行finetuning</li>
 </ul>
+<p>step1的正则化会改变weight的分布，而且是按照人工设置的mask改变，是否会改变模型的基础能力呢？</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
