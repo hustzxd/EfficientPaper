@@ -1750,7 +1750,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [Adaptively Sparse Attention](./meta/2023/adaptively_sparse_attention.prototxt) | [Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers](https://arxiv.org/abs/2305.15805) | ![cover](./notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) |  |  |
+| [Adaptively Sparse Attention](./meta/2023/adaptively_sparse_attention.prototxt) | [Dynamic Context Pruning for Efficient and Interpretable Autoregressive Transformers](https://arxiv.org/abs/2305.15805) | ![cover](./notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/sanagno/adaptively_sparse_attention)](https://github.com/sanagno/adaptively_sparse_attention) |  |
 
 
 #### University of California

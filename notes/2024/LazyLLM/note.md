@@ -25,3 +25,14 @@ seamlessly integrated with existing language models to significantly accelerate
 the generation without fine-tuning. For instance, in the multi-document
 question-answering task, LazyLLM accelerates the prefilling stage of the LLama
 2 7B model by 2.34x while maintaining accuracy.
+
+- Prefill
+    - 随着每层的运算，Token逐渐缩小
+    - Token的重要性评估根据第$l$层的attention score估计，并对$l+1$层的Token进行pruning
+    - 后续的layer选择只能时之前层的subset
+- Decode
+    - Decode时每层可以选择不同的subset，通过AuxCache实现（但论文说的比较模糊）
+
+[ICLR2025 reject](https://openreview.net/forum?id=am5Z8dXoaV)
+
+![](fig4.png)
