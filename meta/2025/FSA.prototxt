@@ -1,0 +1,28 @@
+paper {
+  title: "Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel"
+  abbr: "FSA"
+  url: "http://arxiv.org/abs/2508.18224v1"
+  authors: "Ran Yan"
+  authors: "Youhe Jiang"
+  authors: "Binhang Yuan"
+  institutions: "The Hong Kong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: attention_sparsity
+  words: sparse_pruning
+}
+cover {
+  url: "fig1.png"
+}
