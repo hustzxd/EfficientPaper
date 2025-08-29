@@ -1745,6 +1745,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [LISA](./meta/2024/LISA.prototxt) | [LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning](http://arxiv.org/abs/2403.17919v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/LISA/note.md) |
 | [ChunkKV](./meta/2025/ChunkKV.prototxt) | [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) | ![cover](./notes/2025/ChunkKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/ChunkKV/note.md) |
+| [FSA](./meta/2025/FSA.prototxt) | [Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel](http://arxiv.org/abs/2508.18224v1) | ![cover](./notes/2025/FSA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Relaxed-System-Lab/Flash-Sparse-Attention)](https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention) | [note](./notes/2025/FSA/note.md) |
 </p>
 </details>
 <details open><summary><b>The Ohio State University</b></summary> 
