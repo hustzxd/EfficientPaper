@@ -40,3 +40,12 @@ plugins:
   - search
   - glightbox
   - literate-nav
+  - git-latest-changes:
+      limit_to_docs_dir: True       # 仅限 docs 目录
+      history_limit: 9              # 最近 3 条记录
+      timestamp_format: "%Y-%m-%d %H:%M"
+      table_features:
+        - "page_path_link"
+        - "timestamp"
+        - "author"
+        - "message"

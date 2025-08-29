@@ -235,6 +235,9 @@ def main():
         markdown = rf.read()
     markdown += "\n\n"
 
+    markdown += "## Recent Changes\n\n"
+    markdown += "{{ latest_changes }}\n\n"
+
     markdown += "\n## Paper List\n\n"
 
     markdown += gen_list(year_cls, columns, "year", is_open=True, reverse=True, docs=True)

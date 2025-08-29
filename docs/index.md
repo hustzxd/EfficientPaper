@@ -51,11 +51,14 @@ keyword {
 </p>
 </details>
 
-
 <p align="center">
 <img src="notes//conference_timeline.png" width="800" title="blank">
 </p>
 
+
+## Recent Changes
+
+{{ latest_changes }}
 
 
 ## Paper List
