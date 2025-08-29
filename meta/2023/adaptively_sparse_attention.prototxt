@@ -11,13 +11,14 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/sanagno/adaptively_sparse_attention"
 }
 note {
   url: ""
 }
 keyword {
   words: sparse_pruning
+  words: attention_sparsity
 }
 cover {
   url: "adaptively_sparse_attention/adaptively_sparse_attention.jpg"
