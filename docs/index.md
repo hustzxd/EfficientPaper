@@ -415,7 +415,6 @@ keyword {
 #### 1989
 
 1. [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) [![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493)]  
-2. [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) [![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493)]  
 
 
 

@@ -3254,15 +3254,6 @@
 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | ![cover](./notes/2025/MiniCPM4/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm)](https://github.com/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
 
 
-#### Yann Le Cun
-
-
-| Meta | Title | Cover | Publish | Code | Note |
-|:-----|:------|:------|:--------|:-----|:-----|
-| [OBD](./meta/1989/obd.prototxt.txt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
-| [OBD](./meta/1989/obd.prototxt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
-
-
 #### Yanping Huang
 
 

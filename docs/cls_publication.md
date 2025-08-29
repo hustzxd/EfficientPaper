@@ -289,7 +289,6 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [OBD](./meta/1989/obd.prototxt.txt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 | [OBD](./meta/1989/obd.prototxt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 | [L-OBS](./meta/2017/lobs.prototxt) | [Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon](https://arxiv.org/pdf/1705.07565.pdf) |  | ![Publish](https://img.shields.io/badge/2017-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/csyhhu/L-OBS)](https://github.com/csyhhu/L-OBS) |  |
 | [Movement Pruning](./meta/2020/movement_pruning.prototxt) | [Movement Pruning: Adaptive Sparsity by Fine-Tuning](https://arxiv.org/abs/2005.07683) | ![cover](./notes/2020/movement_pruning/mp.jpg) | ![Publish](https://img.shields.io/badge/2020-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/huggingface/block_movement_pruning)](https://github.com/huggingface/block_movement_pruning) |  |

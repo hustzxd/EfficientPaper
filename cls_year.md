@@ -405,7 +405,6 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [OBD](./meta/1989/obd.prototxt.txt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 | [OBD](./meta/1989/obd.prototxt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 </p>
 </details>

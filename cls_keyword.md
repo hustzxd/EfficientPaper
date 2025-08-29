@@ -183,7 +183,6 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [OBD](./meta/1989/obd.prototxt.txt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 | [OBD](./meta/1989/obd.prototxt) | [Optimal Brain Damage](https://proceedings.neurips.cc/paper_files/paper/1989/file/6c9882bbac1c7093bd25041881277658-Paper.pdf) |  | ![Publish](https://img.shields.io/badge/1989-NeurIPS-FF1493) |  |  |
 | [OBS](./meta/1993/obs.prototxt) | [Optimal Brain Surgeon and general network pruning](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=298572&tag=1) |  | ![Publish](https://img.shields.io/badge/1993--green) |  |  |
 | [DSD](./meta/2017/dsd.prototxt) | [DSD: Dense-Sparse-Dense Training for Deep Neural Networks](https://arxiv.org/pdf/1607.04381.pdf) |  | ![Publish](https://img.shields.io/badge/2017-ICLR-FF6B6B) |  |  |
