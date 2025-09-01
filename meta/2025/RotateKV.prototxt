@@ -1,0 +1,33 @@
+paper {
+  title: "RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations"
+  abbr: "RotateKV"
+  url: "http://arxiv.org/abs/2501.16383v2"
+  authors: "Zunhai Su"
+  authors: "Zhe Chen"
+  authors: "Wang Shen"
+  authors: "Hanyu Wei"
+  authors: "Linge Li"
+  authors: "Huangqi Yu"
+  authors: "Kehong Yuan"
+  institutions: "Tsinghua University"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: "fig3.png"
+}

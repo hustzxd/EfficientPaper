@@ -1,0 +1,34 @@
+paper {
+  title: "GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM"
+  abbr: "GEAR"
+  url: "http://arxiv.org/abs/2403.05527v4"
+  authors: "Hao Kang"
+  authors: "Qingru Zhang"
+  authors: "Souvik Kundu"
+  authors: "Geonhwa Jeong"
+  authors: "Zaoxing Liu"
+  authors: "Tushar Krishna"
+  authors: "Tuo Zhao"
+  institutions: "Georgia Tech"
+  institutions: "Intel"
+  institutions: "University of Maryland"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/HaoKang-Timmy/GEAR"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: "overview.png"
+}

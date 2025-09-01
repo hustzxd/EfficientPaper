@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization - Efficient Paper</title>
+    <title>GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization";
-        var mkdocs_page_input_path = "notes/2024/KVQuant/note.md";
+        var mkdocs_page_name = "GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM";
+        var mkdocs_page_input_path = "notes/2024/GEAR/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -95,7 +95,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</li>
+      <li class="breadcrumb-item active">GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,49 +105,33 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="kvquant-towards-10-million-context-length-llm-inference-with-kv-cache-quantization">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</h1>
-<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
+                <h1 id="gear-an-efficient-kv-cache-compression-recipe-for-near-lossless-generative-inference-of-llm">GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM</h1>
+<blockquote>
+<p>Hao Kang, Qingru Zhang, Souvik Kundu, Geonhwa Jeong, Zaoxing Liu, Tushar Krishna, Tuo Zhao</p>
+</blockquote>
+<p><a class="glightbox" href="../overview.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../overview.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>LLMs are seeing growing use for applications such as document analysis and
-summarization which require large context windows, and with these large context
-windows KV cache activations surface as the dominant contributor to memory
-consumption during inference. Quantization is a promising approach for
-compressing KV cache activations; however, existing solutions fail to represent
-activations accurately in ultra-low precisions, such as sub-4-bit. In this
-work, we present KVQuant, which addresses this problem by incorporating novel
-methods for quantizing cached KV activations, including: (i) Per-Channel Key
-Quantization, where we adjust the dimension along which we quantize the Key
-activations to better match the distribution; (ii) Pre-RoPE Key Quantization,
-where we quantize Key activations before the rotary positional embedding to
-mitigate its impact on quantization; (iii) Non-Uniform KV Cache Quantization,
-where we derive per-layer sensitivity-weighted non-uniform datatypes that
-better represent the distributions; (iv) Per-Vector Dense-and-Sparse
-Quantization, where we isolate outliers separately for each vector to minimize
-skews in quantization ranges; and (v) Q-Norm, where we normalize quantization
-centroids in order to mitigate distribution shift, providing additional
-benefits for 2-bit quantization. By applying our method to the LLaMA, LLaMA-2,
-and Mistral models, we achieve <script type="math/tex"><0.1</script> perplexity degradation with 3-bit
-quantization on both Wikitext-2 and C4, outperforming existing approaches. Our
-method enables serving the LLaMA-7B model with a context length of up to 1
-million on a single A100-80GB GPU and up to 10 million on an 8-GPU system.</p>
+<p>Key-value (KV) caching has become the de-facto to accelerate generation speed
+for large language models (LLMs) inference. However, the growing cache demand
+with increasing sequence length has transformed LLM inference to be a memory
+bound problem, significantly constraining the system throughput. Existing
+methods rely on dropping unimportant tokens or quantizing all entries
+uniformly. Such methods, however, often incur high approximation errors to
+represent the compressed matrices. The autoregressive decoding process further
+compounds the error of each step, resulting in critical deviation in model
+generation and deterioration of performance. To tackle this challenge, we
+propose GEAR, an efficient KV cache compression framework that achieves
+near-lossless high-ratio compression. GEAR first applies quantization to
+majority of entries of similar magnitudes to ultra-low precision. It then
+employs a low rank matrix to approximate the quantization error, and a sparse
+matrix to remedy individual errors from outlier entries. By adeptly integrating
+three techniques, GEAR is able to fully exploit their synergistic potentials.
+Our experiments demonstrate that compared to alternatives, GEAR achieves
+near-lossless 4-bit KV cache compression with up to 2.38x throughput
+improvement, while reducing peak-memory size up to 2.29x. Our code is publicly
+available at https://github.com/HaoKang-Timmy/GEAR.</p>
 <ul>
-<li>Per-Channel Key Quantization<ul>
-<li>出现outlier channel, channel-wise quant比 token-wise quant要好</li>
-</ul>
-</li>
-<li>Pre-RoPE Key Quantization<ul>
-<li>RoPE前Key的分布更集中</li>
-</ul>
-</li>
-<li>non-uniform quantization</li>
-<li>Per-Vector Dense-and-Sparse Quantization<ul>
-<li>Outlier使用稀疏格式的高位宽数据格式存储</li>
-</ul>
-</li>
-<li>Attention Sink-Aware Quantization<ul>
-<li>前几个token属于Sink，采用fp16格式</li>
-</ul>
-</li>
+<li>quant + 低秩分解</li>
 </ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->

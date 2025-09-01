@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization - Efficient Paper</title>
+    <title>ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization";
-        var mkdocs_page_input_path = "notes/2024/KVQuant/note.md";
+        var mkdocs_page_name = "ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification";
+        var mkdocs_page_input_path = "notes/2024/ZipCache/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -95,7 +95,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</li>
+      <li class="breadcrumb-item active">ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,50 +105,37 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="kvquant-towards-10-million-context-length-llm-inference-with-kv-cache-quantization">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</h1>
-<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
+                <h1 id="zipcache-accurate-and-efficient-kv-cache-quantization-with-salient-token-identification">ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification</h1>
+<blockquote>
+<p>Yefei He, Luoming Zhang, Weijia Wu, Jing Liu, Hong Zhou, Bohan Zhuang</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>LLMs are seeing growing use for applications such as document analysis and
-summarization which require large context windows, and with these large context
-windows KV cache activations surface as the dominant contributor to memory
-consumption during inference. Quantization is a promising approach for
-compressing KV cache activations; however, existing solutions fail to represent
-activations accurately in ultra-low precisions, such as sub-4-bit. In this
-work, we present KVQuant, which addresses this problem by incorporating novel
-methods for quantizing cached KV activations, including: (i) Per-Channel Key
-Quantization, where we adjust the dimension along which we quantize the Key
-activations to better match the distribution; (ii) Pre-RoPE Key Quantization,
-where we quantize Key activations before the rotary positional embedding to
-mitigate its impact on quantization; (iii) Non-Uniform KV Cache Quantization,
-where we derive per-layer sensitivity-weighted non-uniform datatypes that
-better represent the distributions; (iv) Per-Vector Dense-and-Sparse
-Quantization, where we isolate outliers separately for each vector to minimize
-skews in quantization ranges; and (v) Q-Norm, where we normalize quantization
-centroids in order to mitigate distribution shift, providing additional
-benefits for 2-bit quantization. By applying our method to the LLaMA, LLaMA-2,
-and Mistral models, we achieve <script type="math/tex"><0.1</script> perplexity degradation with 3-bit
-quantization on both Wikitext-2 and C4, outperforming existing approaches. Our
-method enables serving the LLaMA-7B model with a context length of up to 1
-million on a single A100-80GB GPU and up to 10 million on an 8-GPU system.</p>
-<ul>
-<li>Per-Channel Key Quantization<ul>
-<li>出现outlier channel, channel-wise quant比 token-wise quant要好</li>
-</ul>
-</li>
-<li>Pre-RoPE Key Quantization<ul>
-<li>RoPE前Key的分布更集中</li>
-</ul>
-</li>
-<li>non-uniform quantization</li>
-<li>Per-Vector Dense-and-Sparse Quantization<ul>
-<li>Outlier使用稀疏格式的高位宽数据格式存储</li>
-</ul>
-</li>
-<li>Attention Sink-Aware Quantization<ul>
-<li>前几个token属于Sink，采用fp16格式</li>
-</ul>
-</li>
-</ul>
+<p>KV cache stores key and value states from previous tokens to avoid
+re-computation, yet it demands substantial storage space, especially for long
+sequences. Adaptive KV cache compression seeks to discern the saliency of
+tokens, preserving vital information while aggressively compressing those of
+less importance. However, previous methods of this approach exhibit significant
+performance degradation at high compression ratios due to inaccuracies in
+identifying salient tokens. In this paper, we present ZipCache, an accurate and
+efficient KV cache quantization method for LLMs. First, we construct a strong
+baseline for quantizing KV cache. Through the proposed channel-separable
+tokenwise quantization scheme, the memory overhead of quantization parameters
+are substantially reduced compared to fine-grained groupwise quantization. To
+enhance the compression ratio, we propose normalized attention score as an
+effective metric for identifying salient tokens by considering the lower
+triangle characteristics of the attention matrix. Moreover, we develop an
+efficient approximation method that decouples the saliency metric from full
+attention scores, enabling compatibility with fast attention implementations
+like FlashAttention. Extensive experiments demonstrate that ZipCache achieves
+superior compression ratios, fast generation speed and minimal performance
+losses compared with previous KV cache compression methods. For instance, when
+evaluating Mistral-7B model on GSM8k dataset, ZipCache is capable of
+compressing the KV cache by <script type="math/tex">4.98\times</script>, with only a <script type="math/tex">0.38\%</script> drop in
+accuracy. In terms of efficiency, ZipCache also showcases a <script type="math/tex">37.3\%</script> reduction
+in prefill-phase latency, a <script type="math/tex">56.9\%</script> reduction in decoding-phase latency, and a
+<script type="math/tex">19.8\%</script> reduction in GPU memory usage when evaluating LLaMA3-8B model with a
+input length of <script type="math/tex">4096</script>.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

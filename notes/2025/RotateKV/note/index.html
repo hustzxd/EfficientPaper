@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization - Efficient Paper</title>
+    <title>RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization";
-        var mkdocs_page_input_path = "notes/2024/KVQuant/note.md";
+        var mkdocs_page_name = "RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations";
+        var mkdocs_page_input_path = "notes/2025/RotateKV/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -95,7 +95,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</li>
+      <li class="breadcrumb-item active">RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,50 +105,36 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="kvquant-towards-10-million-context-length-llm-inference-with-kv-cache-quantization">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</h1>
-<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
+                <h1 id="rotatekv-accurate-and-robust-2-bit-kv-cache-quantization-for-llms-via-outlier-aware-adaptive-rotations">RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations</h1>
+<blockquote>
+<p>Zunhai Su, Zhe Chen, Wang Shen, Hanyu Wei, Linge Li, Huangqi Yu, Kehong Yuan</p>
+</blockquote>
+<p><a class="glightbox" href="../fig3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig3.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>LLMs are seeing growing use for applications such as document analysis and
-summarization which require large context windows, and with these large context
-windows KV cache activations surface as the dominant contributor to memory
-consumption during inference. Quantization is a promising approach for
-compressing KV cache activations; however, existing solutions fail to represent
-activations accurately in ultra-low precisions, such as sub-4-bit. In this
-work, we present KVQuant, which addresses this problem by incorporating novel
-methods for quantizing cached KV activations, including: (i) Per-Channel Key
-Quantization, where we adjust the dimension along which we quantize the Key
-activations to better match the distribution; (ii) Pre-RoPE Key Quantization,
-where we quantize Key activations before the rotary positional embedding to
-mitigate its impact on quantization; (iii) Non-Uniform KV Cache Quantization,
-where we derive per-layer sensitivity-weighted non-uniform datatypes that
-better represent the distributions; (iv) Per-Vector Dense-and-Sparse
-Quantization, where we isolate outliers separately for each vector to minimize
-skews in quantization ranges; and (v) Q-Norm, where we normalize quantization
-centroids in order to mitigate distribution shift, providing additional
-benefits for 2-bit quantization. By applying our method to the LLaMA, LLaMA-2,
-and Mistral models, we achieve <script type="math/tex"><0.1</script> perplexity degradation with 3-bit
-quantization on both Wikitext-2 and C4, outperforming existing approaches. Our
-method enables serving the LLaMA-7B model with a context length of up to 1
-million on a single A100-80GB GPU and up to 10 million on an 8-GPU system.</p>
-<ul>
-<li>Per-Channel Key Quantization<ul>
-<li>出现outlier channel, channel-wise quant比 token-wise quant要好</li>
-</ul>
-</li>
-<li>Pre-RoPE Key Quantization<ul>
-<li>RoPE前Key的分布更集中</li>
-</ul>
-</li>
-<li>non-uniform quantization</li>
-<li>Per-Vector Dense-and-Sparse Quantization<ul>
-<li>Outlier使用稀疏格式的高位宽数据格式存储</li>
-</ul>
-</li>
-<li>Attention Sink-Aware Quantization<ul>
-<li>前几个token属于Sink，采用fp16格式</li>
-</ul>
-</li>
-</ul>
+<p>Key-Value (KV) cache facilitates efficient large language models (LLMs)
+inference by avoiding recomputation of past KVs. As the batch size and context
+length increase, the oversized KV caches become a significant memory
+bottleneck, highlighting the need for efficient compression. Existing KV
+quantization rely on fine-grained quantization or the retention of a
+significant portion of high bit-widths caches, both of which compromise
+compression ratio and often fail to maintain robustness at extremely low
+average bit-widths. In this work, we explore the potential of rotation
+technique for 2-bit KV quantization and propose RotateKV, which achieves
+accurate and robust performance through the following innovations: (i)
+Outlier-Aware Rotation, which utilizes channel-reordering to adapt the
+rotations to varying channel-wise outlier distributions without sacrificing the
+computational efficiency of the fast Walsh-Hadamard transform (FWHT); (ii)
+Pre-RoPE Grouped-Head Rotation, which mitigates the impact of rotary position
+embedding (RoPE) on proposed outlier-aware rotation and further smooths
+outliers across heads; (iii) Attention-Sink-Aware Quantization, which leverages
+the massive activations to precisely identify and protect attention sinks.
+RotateKV achieves less than 0.3 perplexity (PPL) degradation with 2-bit
+quantization on WikiText-2 using LLaMA-2-13B, maintains strong CoT reasoning
+and long-context capabilities, with less than 1.7\% degradation on GSM8K,
+outperforming existing methods even at lower average bit-widths. RotateKV also
+showcases a 3.97x reduction in peak memory usage, supports 5.75x larger batch
+sizes, and achieves a 2.32x speedup in decoding stage.</p>
+<p>对 kv进行Hadamard变换</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

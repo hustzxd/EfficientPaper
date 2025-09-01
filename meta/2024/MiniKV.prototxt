@@ -1,13 +1,13 @@
 paper {
   title: "MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache"
   abbr: "MiniKV"
-  url: "http://arxiv.org/abs/2411.18077v2"
+  url: "http://arxiv.org/abs/2411.18077"
   authors: "Akshat Sharma"
   authors: "Hangliang Ding"
   authors: "Jianping Li"
   authors: "Neel Dani"
   authors: "Minjia Zhang"
-  institutions: "Tsinghua University"
+  institutions: "University of Illinois at Urbana-Champaign"
 }
 pub {
   where: "arXiv"
@@ -15,7 +15,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/akshatsh49/MiniKV-Dev"
 }
 note {
   url: "note.md"
@@ -23,6 +23,7 @@ note {
 keyword {
   words: quantization
   words: kv_cache
+  words: kv_cache_quant
 }
 cover {
   url: "minikv.png"

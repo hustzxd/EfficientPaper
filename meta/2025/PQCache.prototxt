@@ -1,0 +1,35 @@
+paper {
+  title: "PQCache: Product Quantization-based KVCache for Long Context LLM Inference"
+  abbr: "PQCache"
+  url: "http://arxiv.org/abs/2407.12820v2"
+  authors: "Hailin Zhang"
+  authors: "Xiaodong Ji"
+  authors: "Yilin Chen"
+  authors: "Fangcheng Fu"
+  authors: "Xupeng Miao"
+  authors: "Xiaonan Nie"
+  authors: "Weipeng Chen"
+  authors: "Bin Cui"
+  institutions: "Peking University"
+  institutions: "Purdue University"
+  institutions: "Baichuan Inc"
+}
+pub {
+  where: "SIGMOD"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}

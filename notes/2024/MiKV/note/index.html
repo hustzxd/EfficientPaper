@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization - Efficient Paper</title>
+    <title>No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization";
-        var mkdocs_page_input_path = "notes/2024/KVQuant/note.md";
+        var mkdocs_page_name = "No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization";
+        var mkdocs_page_input_path = "notes/2024/MiKV/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -95,7 +95,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</li>
+      <li class="breadcrumb-item active">No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,50 +105,34 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="kvquant-towards-10-million-context-length-llm-inference-with-kv-cache-quantization">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</h1>
-<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
+                <h1 id="no-token-left-behind-reliable-kv-cache-compression-via-importance-aware-mixed-precision-quantization">No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization</h1>
+<blockquote>
+<p>June Yong Yang, Byeongwook Kim, Jeongin Bae, Beomseok Kwon, Gunho Park, Eunho Yang, Se Jung Kwon, Dongsoo Lee</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>LLMs are seeing growing use for applications such as document analysis and
-summarization which require large context windows, and with these large context
-windows KV cache activations surface as the dominant contributor to memory
-consumption during inference. Quantization is a promising approach for
-compressing KV cache activations; however, existing solutions fail to represent
-activations accurately in ultra-low precisions, such as sub-4-bit. In this
-work, we present KVQuant, which addresses this problem by incorporating novel
-methods for quantizing cached KV activations, including: (i) Per-Channel Key
-Quantization, where we adjust the dimension along which we quantize the Key
-activations to better match the distribution; (ii) Pre-RoPE Key Quantization,
-where we quantize Key activations before the rotary positional embedding to
-mitigate its impact on quantization; (iii) Non-Uniform KV Cache Quantization,
-where we derive per-layer sensitivity-weighted non-uniform datatypes that
-better represent the distributions; (iv) Per-Vector Dense-and-Sparse
-Quantization, where we isolate outliers separately for each vector to minimize
-skews in quantization ranges; and (v) Q-Norm, where we normalize quantization
-centroids in order to mitigate distribution shift, providing additional
-benefits for 2-bit quantization. By applying our method to the LLaMA, LLaMA-2,
-and Mistral models, we achieve <script type="math/tex"><0.1</script> perplexity degradation with 3-bit
-quantization on both Wikitext-2 and C4, outperforming existing approaches. Our
-method enables serving the LLaMA-7B model with a context length of up to 1
-million on a single A100-80GB GPU and up to 10 million on an 8-GPU system.</p>
-<ul>
-<li>Per-Channel Key Quantization<ul>
-<li>出现outlier channel, channel-wise quant比 token-wise quant要好</li>
-</ul>
-</li>
-<li>Pre-RoPE Key Quantization<ul>
-<li>RoPE前Key的分布更集中</li>
-</ul>
-</li>
-<li>non-uniform quantization</li>
-<li>Per-Vector Dense-and-Sparse Quantization<ul>
-<li>Outlier使用稀疏格式的高位宽数据格式存储</li>
-</ul>
-</li>
-<li>Attention Sink-Aware Quantization<ul>
-<li>前几个token属于Sink，采用fp16格式</li>
-</ul>
-</li>
-</ul>
+<p>Key-Value (KV) Caching has become an essential technique for accelerating the
+inference speed and throughput of generative Large Language Models~(LLMs).
+However, the memory footprint of the KV cache poses a critical bottleneck in
+LLM deployment as the cache size grows with batch size and sequence length,
+often surpassing even the size of the model itself. Although recent methods
+were proposed to select and evict unimportant KV pairs from the cache to reduce
+memory consumption, the potential ramifications of eviction on the generative
+process are yet to be thoroughly examined. In this paper, we examine the
+detrimental impact of cache eviction and observe that unforeseen risks arise as
+the information contained in the KV pairs is exhaustively discarded, resulting
+in safety breaches, hallucinations, and context loss. Surprisingly, we find
+that preserving even a small amount of information contained in the evicted KV
+pairs via reduced precision quantization substantially recovers the incurred
+degradation. On the other hand, we observe that the important KV pairs must be
+kept at a relatively higher precision to safeguard the generation quality.
+Motivated by these observations, we propose \textit{Mixed-precision KV
+cache}~(MiKV), a reliable cache compression method that simultaneously
+preserves the context details by retaining the evicted KV pairs in
+low-precision and ensure generation quality by keeping the important KV pairs
+in high-precision. Experiments on diverse benchmarks and LLM backbones show
+that our proposed method offers a state-of-the-art trade-off between
+compression ratio and performance, compared to other baselines.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

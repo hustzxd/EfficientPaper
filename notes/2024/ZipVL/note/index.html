@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization - Efficient Paper</title>
+    <title>ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization";
-        var mkdocs_page_input_path = "notes/2024/KVQuant/note.md";
+        var mkdocs_page_name = "ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification";
+        var mkdocs_page_input_path = "notes/2024/ZipVL/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -95,7 +95,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</li>
+      <li class="breadcrumb-item active">ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -105,50 +105,35 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="kvquant-towards-10-million-context-length-llm-inference-with-kv-cache-quantization">KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization</h1>
-<p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.png" /></a></p>
+                <h1 id="zipvl-efficient-large-vision-language-models-with-dynamic-token-sparsification">ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification</h1>
+<blockquote>
+<p>Yefei He, Feng Chen, Jing Liu, Wenqi Shao, Hong Zhou, Kaipeng Zhang, Bohan Zhuang</p>
+</blockquote>
+<p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig2.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>LLMs are seeing growing use for applications such as document analysis and
-summarization which require large context windows, and with these large context
-windows KV cache activations surface as the dominant contributor to memory
-consumption during inference. Quantization is a promising approach for
-compressing KV cache activations; however, existing solutions fail to represent
-activations accurately in ultra-low precisions, such as sub-4-bit. In this
-work, we present KVQuant, which addresses this problem by incorporating novel
-methods for quantizing cached KV activations, including: (i) Per-Channel Key
-Quantization, where we adjust the dimension along which we quantize the Key
-activations to better match the distribution; (ii) Pre-RoPE Key Quantization,
-where we quantize Key activations before the rotary positional embedding to
-mitigate its impact on quantization; (iii) Non-Uniform KV Cache Quantization,
-where we derive per-layer sensitivity-weighted non-uniform datatypes that
-better represent the distributions; (iv) Per-Vector Dense-and-Sparse
-Quantization, where we isolate outliers separately for each vector to minimize
-skews in quantization ranges; and (v) Q-Norm, where we normalize quantization
-centroids in order to mitigate distribution shift, providing additional
-benefits for 2-bit quantization. By applying our method to the LLaMA, LLaMA-2,
-and Mistral models, we achieve <script type="math/tex"><0.1</script> perplexity degradation with 3-bit
-quantization on both Wikitext-2 and C4, outperforming existing approaches. Our
-method enables serving the LLaMA-7B model with a context length of up to 1
-million on a single A100-80GB GPU and up to 10 million on an 8-GPU system.</p>
-<ul>
-<li>Per-Channel Key Quantization<ul>
-<li>出现outlier channel, channel-wise quant比 token-wise quant要好</li>
-</ul>
-</li>
-<li>Pre-RoPE Key Quantization<ul>
-<li>RoPE前Key的分布更集中</li>
-</ul>
-</li>
-<li>non-uniform quantization</li>
-<li>Per-Vector Dense-and-Sparse Quantization<ul>
-<li>Outlier使用稀疏格式的高位宽数据格式存储</li>
-</ul>
-</li>
-<li>Attention Sink-Aware Quantization<ul>
-<li>前几个token属于Sink，采用fp16格式</li>
-</ul>
-</li>
-</ul>
+<p>The efficiency of large vision-language models (LVLMs) is constrained by the
+computational bottleneck of the attention mechanism during the prefill phase
+and the memory bottleneck of fetching the key-value (KV) cache in the decoding
+phase, particularly in scenarios involving high-resolution images or videos.
+Visual content often exhibits substantial redundancy, resulting in highly
+sparse attention maps within LVLMs. This sparsity can be leveraged to
+accelerate attention computation or compress the KV cache through various
+approaches. However, most studies focus on addressing only one of these
+bottlenecks and do not adequately support dynamic adjustment of sparsity
+concerning distinct layers or tasks. In this paper, we present ZipVL, an
+efficient inference framework designed for LVLMs through a dynamic ratio
+allocation strategy of important tokens. This ratio is adaptively determined
+based on the layer-specific distribution of attention scores, rather than fixed
+hyper-parameters, thereby improving efficiency for less complex tasks while
+maintaining high performance for more challenging ones. Then we select
+important tokens based on their normalized attention scores and perform sparse
+attention mechanism solely on those important tokens, reducing the latency in
+the prefill phase. Tokens deemed less important will be discarded to reduce KV
+cache size, alleviating the memory bottleneck in the decoding phase. Our
+experiments demonstrate that ZipVL can accelerate the prefill phase by
+2.3<script type="math/tex">\times</script> and improve decoding throughput by 2.8<script type="math/tex">\times</script>, with a minimal
+accuracy reduction of only 0.5\% on VQAv2 benchmark over LLaVA-Next-13B model,
+effectively enhancing the generation efficiency of LVLMs.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
