@@ -16,6 +16,14 @@
 | [m](./meta/2023/WDCO13S6.prototxt) | [Structural Pruning of Large Language Models via Neural Architecture Search](https://openreview.net/forum?id=SHlZcInS6C) | ![cover](./notes/2023/nas_pruning/nas_pruning.jpg) | ![Publish](https://img.shields.io/badge/2023-AutoML_Workshop-A9A9A9) | [![GitHub Repo stars](https://img.shields.io/github/stars/awslabs/syne-tune)](https://github.com/awslabs/syne-tune) |  |
 
 
+#### Adobe Research
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [QJL](./meta/2025/QJL.prototxt) | [QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead](http://arxiv.org/abs/2406.03482v2) | ![cover](./notes/2025/QJL/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/amirzandieh/QJL)](https://github.com/amirzandieh/QJL) | [note](./notes/2025/QJL/note.md) |
+
+
 #### Advanced Micro Devices
 
 
@@ -58,6 +66,14 @@
 | [ReLU Strikes Back](./meta/2024/HMR7HKFV.prototxt) | [ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models](https://arxiv.org/abs/2310.04564) | ![cover](./notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg) | ![Publish](https://img.shields.io/badge/2024-ICLR_oral-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/sjtu-ipads/powerinfer)](https://github.com/sjtu-ipads/powerinfer) |  |
 | [LazyLLM](./meta/2024/LazyLLM.prototxt) | [LazyLLM: Dynamic Token Pruning for Efficient Long Context LLM Inference](http://arxiv.org/abs/2407.14057v1) | ![cover](./notes/2024/LazyLLM/fig3.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/LazyLLM/note.md) |
 | [IFPruning](./meta/2025/IFPruning.prototxt) | [Instruction-Following Pruning for Large Language Models](http://arxiv.org/abs/2501.02086v2) | ![cover](./notes/2025/IFPruning/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/IFPruning/note.md) |
+
+
+#### Baichuan Inc
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [PQCache](./meta/2025/PQCache.prototxt) | [PQCache: Product Quantization-based KVCache for Long Context LLM Inference](http://arxiv.org/abs/2407.12820v2) |  | ![Publish](https://img.shields.io/badge/2025-SIGMOD-green) |  | [note](./notes/2025/PQCache/note.md) |
 
 
 #### Beihang University
@@ -119,6 +135,7 @@
 | [H2O](./meta/2023/H2O.prototxt) | [H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models](http://arxiv.org/abs/2306.14048) | ![cover](./notes/2023/H2O/h2o.png) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/H2O)](https://github.com/FMInference/H2O) | [note](./notes/2023/H2O/note.md) |
 | [Wanda](./meta/2024/Wanda.prototxt) | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | ![cover](./notes/2024/Wanda/wanda.png) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)](https://github.com/locuslab/wanda) | [note](./notes/2024/Wanda/note.md) |
 | [streaming-llm](./meta/2024/streaming-llm.prototxt) | [Efficient Streaming Language Models with Attention Sinks](http://arxiv.org/abs/2309.17453v4) | ![cover](./notes/2024/streaming-llm/cover.jpg) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/streaming-llm)](https://github.com/mit-han-lab/streaming-llm) | [note](./notes/2024/streaming-llm/note.md) |
+| [KIVI](./meta/2024/KIVI.prototxt) | [KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache](http://arxiv.org/abs/2402.02750v2) | ![cover](./notes/2024/KIVI/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/jy-yuan/KIVI)](https://github.com/jy-yuan/KIVI) | [note](./notes/2024/KIVI/note.md) |
 | [Bonsa](./meta/2024/Bonsa.prototxt) | [Everybody Prune Now: Structured Pruning of LLMs with only Forward Passes](https://arxiv.org/abs/2402.05406) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ldery/Bonsai)](https://github.com/ldery/Bonsai) |  |
 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | ![cover](./notes/2024/XGrammar/fig1.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)](https://github.com/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |
 | [TidalDecode](./meta/2025/TidalDecode.prototxt) | [TidalDecode: Fast and Accurate LLM Decoding with Position Persistent Sparse Attention](http://arxiv.org/abs/2410.05076v1) | ![cover](./notes/2025/TidalDecode/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/DerrickYLJ/TidalDecode)](https://github.com/DerrickYLJ/TidalDecode) | [note](./notes/2025/TidalDecode/note.md) |
@@ -369,6 +386,14 @@
 | [1DZIJVBI](./meta/2025/1DZIJVBI.prototxt) | [Characterizing Compute-Communication Overlap in GPU-Accelerated Distributed Deep Learning: Performance and Power Implications](http://arxiv.org/abs/2507.03114v1) | ![cover](./notes/2025/1DZIJVBI/eq1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/1DZIJVBI/note.md) |
 
 
+#### Georgia Tech
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [GEAR](./meta/2024/GEAR.prototxt) | [GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM](http://arxiv.org/abs/2403.05527v4) | ![cover](./notes/2024/GEAR/overview.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/HaoKang-Timmy/GEAR)](https://github.com/HaoKang-Timmy/GEAR) | [note](./notes/2024/GEAR/note.md) |
+
+
 #### Google
 
 
@@ -489,6 +514,7 @@
 | [QA-LoRA](./meta/2024/QA-LoRA.prototxt) | [QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2309.14717) | ![cover](./notes/2024/QA-LoRA/qalora.jpg) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/yuhuixu1993/qa-lora)](https://github.com/yuhuixu1993/qa-lora) | [note](./notes/2024/QA-LoRA/note.md) |
 | [AmberPruner](./meta/2025/AmberPruner.prototxt) | [Amber Pruner: Leveraging N:M Activation Sparsity for Efficient Prefill in Large Language Models](http://arxiv.org/abs/2508.02128v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AmberPruner/note.md) |
 | [PanguUltra](./meta/2025/PanguUltra.prototxt) | [Pangu Ultra: Pushing the Limits of Dense Large Language Models on Ascend NPUs](http://arxiv.org/abs/2504.07866v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/PanguUltra/note.md) |
+| [RotateKV](./meta/2025/RotateKV.prototxt) | [RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations](http://arxiv.org/abs/2501.16383v2) | ![cover](./notes/2025/RotateKV/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RotateKV/note.md) |
 
 
 #### Huawei Cloud
@@ -644,6 +670,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SCAP](./meta/2024/SCAP.prototxt) | [Post-Training Statistical Calibration for Higher Activation Sparsity](http://arxiv.org/abs/2412.07174v1) | ![cover](./notes/2024/SCAP/fig2.png) | ![Publish](https://img.shields.io/badge/2024-ENLSP-00BFFF) | [![GitHub Repo stars](https://img.shields.io/github/stars/IntelLabs/SCAP)](https://github.com/IntelLabs/SCAP) | [note](./notes/2024/SCAP/note.md) |
+| [GEAR](./meta/2024/GEAR.prototxt) | [GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM](http://arxiv.org/abs/2403.05527v4) | ![cover](./notes/2024/GEAR/overview.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/HaoKang-Timmy/GEAR)](https://github.com/HaoKang-Timmy/GEAR) | [note](./notes/2024/GEAR/note.md) |
 
 
 #### Intel Corporation
@@ -667,6 +694,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [MiKV](./meta/2024/MiKV.prototxt) | [No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization](http://arxiv.org/abs/2402.18096v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MiKV/note.md) |
 | [UC0D8DJ6](./meta/2025/UC0D8DJ6.prototxt) | [Characterizing Communication Patterns in Distributed Large Language Model Inference](http://arxiv.org/abs/2507.14392v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/UC0D8DJ6/note.md) |
 | [1DZIJVBI](./meta/2025/1DZIJVBI.prototxt) | [Characterizing Compute-Communication Overlap in GPU-Accelerated Distributed Deep Learning: Performance and Power Implications](http://arxiv.org/abs/2507.03114v1) | ![cover](./notes/2025/1DZIJVBI/eq1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/1DZIJVBI/note.md) |
 | [DeltaAttention](./meta/2025/DeltaAttention.prototxt) | [Delta Attention: Fast and Accurate Sparse Attention Inference by Delta Correction](http://arxiv.org/abs/2505.11254v1) | ![cover](./notes/2025/DeltaAttention/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DeltaAttention/note.md) |
@@ -940,6 +968,16 @@
 | [GBLM-Pruner](./meta/2023/GBLM-Pruner.prototxt) | [Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models](http://arxiv.org/abs/2311.04902v2) | ![cover](./notes/2023/GBLM-Pruner/gblm-pruner.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/VILA-Lab/GBLM-Pruner)](https://github.com/VILA-Lab/GBLM-Pruner) | [note](./notes/2023/GBLM-Pruner/note.md) |
 
 
+#### Monash University
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [ZipCache](./meta/2024/ZipCache.prototxt) | [ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification](http://arxiv.org/abs/2405.14256v1) |  | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) |  | [note](./notes/2024/ZipCache/note.md) |
+| [MiniCache](./meta/2024/MiniCache.prototxt) | [MiniCache: KV Cache Compression in Depth Dimension for Large Language Models](http://arxiv.org/abs/2405.14366v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/AkideLiu/MiniCache)](https://github.com/AkideLiu/MiniCache) | [note](./notes/2024/MiniCache/note.md) |
+| [ZipVL](./meta/2024/ZipVL.prototxt) | [ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification](http://arxiv.org/abs/2410.08584v2) | ![cover](./notes/2024/ZipVL/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZipVL/note.md) |
+
+
 #### Moonshot AI
 
 
@@ -954,6 +992,14 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | ![cover](./notes/2024/SPP/spp.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)](https://github.com/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |
+
+
+#### NAVER Cloud
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MiKV](./meta/2024/MiKV.prototxt) | [No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization](http://arxiv.org/abs/2402.18096v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MiKV/note.md) |
 
 
 #### NVIDIA
@@ -1024,6 +1070,7 @@
 | [LLM-Pruner](./meta/2023/LLM-Pruner.prototxt) | [LLM-Pruner: On the Structural Pruning of Large Language Models](http://arxiv.org/abs/2305.11627v3) | ![cover](./notes/2023/LLM-Pruner/cover.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/horseee/LLM-Pruner)](https://github.com/horseee/LLM-Pruner) | [note](./notes/2023/LLM-Pruner/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 | [MaskLLM](./meta/2024/MaskLLM.prototxt) | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | ![cover](./notes/2024/MaskLLM/maskllm.png) | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)](https://github.com/NVlabs/MaskLLM) | [note](./notes/2024/MaskLLM/note.md) |
+| [ZipCache](./meta/2024/ZipCache.prototxt) | [ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification](http://arxiv.org/abs/2405.14256v1) |  | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) |  | [note](./notes/2024/ZipCache/note.md) |
 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1) | ![cover](./notes/2025/AdaSkip/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip)](https://github.com/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md) |
 | [Cus-Prun](./meta/2025/Cus-Prun.prototxt) | [Pruning General Large Language Models into Customized Expert Models](http://arxiv.org/abs/2506.02561v1) | ![cover](./notes/2025/Cus-Prun/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zhaoyiran924/Custom-Prune)](https://github.com/zhaoyiran924/Custom-Prune) | [note](./notes/2025/Cus-Prun/note.md) |
 
@@ -1051,6 +1098,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Recycled Attention](./meta/2024/RecycledAttention.prototxt) | [Recycled Attention: Efficient inference for long-context language models](http://arxiv.org/abs/2411.05787v1) | ![cover](./notes/2024/RecycledAttention/fig1.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/carriex/recycled-attention)](https://github.com/carriex/recycled-attention) | [note](./notes/2024/RecycledAttention/note.md) |
+| [QJL](./meta/2025/QJL.prototxt) | [QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead](http://arxiv.org/abs/2406.03482v2) | ![cover](./notes/2025/QJL/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/amirzandieh/QJL)](https://github.com/amirzandieh/QJL) | [note](./notes/2025/QJL/note.md) |
 
 
 #### Noah’s Ark Lab, Huawei Technologies
@@ -1163,6 +1211,7 @@
 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | ![cover](./notes/2024/SampleAttention/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/SampleAttention/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [FlexPrefill](./meta/2025/FlexPrefill.prototxt) | [FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference](http://arxiv.org/abs/2502.20766v1) | ![cover](./notes/2025/FlexPrefill/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/FlexPrefill)](https://github.com/bytedance/FlexPrefill) | [note](./notes/2025/FlexPrefill/note.md) |
+| [PQCache](./meta/2025/PQCache.prototxt) | [PQCache: Product Quantization-based KVCache for Long Context LLM Inference](http://arxiv.org/abs/2407.12820v2) |  | ![Publish](https://img.shields.io/badge/2025-SIGMOD-green) |  | [note](./notes/2025/PQCache/note.md) |
 | [RaaS](./meta/2025/RaaS.prototxt) | [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1) | ![cover](./notes/2025/RaaS/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RaaS/note.md) |
 | [HATA](./meta/2025/HATA.prototxt) | [HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference](http://arxiv.org/abs/2506.02572v1) | ![cover](./notes/2025/HATA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/gpzlx1/HATA)](https://github.com/gpzlx1/HATA) | [note](./notes/2025/HATA/note.md) |
 | [KeepKV](./meta/2025/KeepKV.prototxt) | [KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference](http://arxiv.org/abs/2504.09936v1) | ![cover](./notes/2025/KeepKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/KeepKV/note.md) |
@@ -1198,6 +1247,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [PQCache](./meta/2025/PQCache.prototxt) | [PQCache: Product Quantization-based KVCache for Long Context LLM Inference](http://arxiv.org/abs/2407.12820v2) |  | ![Publish](https://img.shields.io/badge/2025-SIGMOD-green) |  | [note](./notes/2025/PQCache/note.md) |
 | [52A7RO95](./meta/2025/52A7RO95.prototxt) | [Mixture of Experts in Large Language Models](http://arxiv.org/abs/2507.11181v1) | ![cover](./notes/2025/52A7RO95/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/52A7RO95/note.md) |
 
 
@@ -1232,6 +1282,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Deja Vu](./meta/2023/dejavu.prototxt) | [Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time](https://openreview.net/forum?id=wIPIhHd00i) | ![cover](./notes/2023/dejavu/dejavu.jpg) | ![Publish](https://img.shields.io/badge/2023-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/FMInference/DejaVu)](https://github.com/FMInference/DejaVu) |  |
+| [KIVI](./meta/2024/KIVI.prototxt) | [KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache](http://arxiv.org/abs/2402.02750v2) | ![cover](./notes/2024/KIVI/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/jy-yuan/KIVI)](https://github.com/jy-yuan/KIVI) | [note](./notes/2024/KIVI/note.md) |
 
 
 #### RiseAI-Sys
@@ -1340,6 +1391,8 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [PrefixQuant](./meta/2024/PrefixQuant.prototxt) | [PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization](http://arxiv.org/abs/2410.05265v2) | ![cover](./notes/2024/PrefixQuant/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ChenMnZ/PrefixQuant)](https://github.com/ChenMnZ/PrefixQuant) | [note](./notes/2024/PrefixQuant/note.md) |
+| [ZipVL](./meta/2024/ZipVL.prototxt) | [ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification](http://arxiv.org/abs/2410.08584v2) | ![cover](./notes/2024/ZipVL/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZipVL/note.md) |
 | [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 | [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
 
@@ -1482,6 +1535,14 @@
 | [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
 
 
+#### Stevens Institute of Technology
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [KIVI](./meta/2024/KIVI.prototxt) | [KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache](http://arxiv.org/abs/2402.02750v2) | ![cover](./notes/2024/KIVI/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/jy-yuan/KIVI)](https://github.com/jy-yuan/KIVI) | [note](./notes/2024/KIVI/note.md) |
+
+
 #### Sun Yat-sen University
 
 
@@ -1528,6 +1589,14 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | ![cover](./notes/2024/DSnoT/dsnot.png) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT)](https://github.com/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |
+
+
+#### Texas A&M University
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [KIVI](./meta/2024/KIVI.prototxt) | [KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache](http://arxiv.org/abs/2402.02750v2) | ![cover](./notes/2024/KIVI/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/jy-yuan/KIVI)](https://github.com/jy-yuan/KIVI) | [note](./notes/2024/KIVI/note.md) |
 
 
 #### The Chinese University of Hong Kong
@@ -1585,6 +1654,14 @@
 | [UC0D8DJ6](./meta/2025/UC0D8DJ6.prototxt) | [Characterizing Communication Patterns in Distributed Large Language Model Inference](http://arxiv.org/abs/2507.14392v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/UC0D8DJ6/note.md) |
 
 
+#### The University of Adelaide
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [ZipVL](./meta/2024/ZipVL.prototxt) | [ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification](http://arxiv.org/abs/2410.08584v2) | ![cover](./notes/2024/ZipVL/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZipVL/note.md) |
+
+
 #### The University of Hong Kong
 
 
@@ -1592,6 +1669,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SIMPLE](./meta/2023/simple.prototxt) | [Structured Pruning for Efficient Generative Pre-trained Language Models](https://aclanthology.org/2023.findings-acl.692.pdf) | ![cover](./notes/2023/simple/cover.jpg) | ![Publish](https://img.shields.io/badge/2023-ACL-4169E1) |  | [note](./notes/2023/simple/index.md) |
 | [OmniQuant](./meta/2023/omniquant.prototxt) | [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) | ![cover](./notes/2023/omniquant/omniquant.png) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant)](https://github.com/OpenGVLab/OmniQuant) |  |
+| [PrefixQuant](./meta/2024/PrefixQuant.prototxt) | [PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization](http://arxiv.org/abs/2410.05265v2) | ![cover](./notes/2024/PrefixQuant/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ChenMnZ/PrefixQuant)](https://github.com/ChenMnZ/PrefixQuant) | [note](./notes/2024/PrefixQuant/note.md) |
 | [FlexPrefill](./meta/2025/FlexPrefill.prototxt) | [FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference](http://arxiv.org/abs/2502.20766v1) | ![cover](./notes/2025/FlexPrefill/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/FlexPrefill)](https://github.com/bytedance/FlexPrefill) | [note](./notes/2025/FlexPrefill/note.md) |
 | [PowerAttention](./meta/2025/PowerAttention.prototxt) | [PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention](http://arxiv.org/abs/2503.03588v1) | ![cover](./notes/2025/PowerAttention/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/PowerAttention/note.md) |
 | [ReSA](./meta/2025/ReSA.prototxt) | [Rectified Sparse Attention](http://arxiv.org/abs/2506.04108v2) | ![cover](./notes/2025/ReSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/unilm)](https://github.com/microsoft/unilm) | [note](./notes/2025/ReSA/note.md) |
@@ -1632,6 +1710,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [GBDT](./meta/2023/gbdt.prototxt) | [Pruning Large Language Models via Accuracy Predictor](https://arxiv.org/abs/2309.09507) | ![cover](./notes/2023/gbdt/gbdt.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) |  |  |
+| [PrefixQuant](./meta/2024/PrefixQuant.prototxt) | [PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization](http://arxiv.org/abs/2410.05265v2) | ![cover](./notes/2024/PrefixQuant/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ChenMnZ/PrefixQuant)](https://github.com/ChenMnZ/PrefixQuant) | [note](./notes/2024/PrefixQuant/note.md) |
 
 
 #### Tsinghua University
@@ -1649,7 +1728,6 @@
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [m](./meta/2024/0Y41U1N2.prototxt) | [Beyond 2:4: exploring V:N:M sparsity for efficient transformer inference on GPUs](http://arxiv.org/abs/2410.16135v1) | ![cover](./notes/2024/0Y41U1N2/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/0Y41U1N2/note.md) |
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
-| [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077v2) | ![cover](./notes/2024/MiniKV/minikv.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MiniKV/note.md) |
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
 | [MFA](./meta/2024/MFA.prototxt) | [Multi-matrix Factorization Attention](http://arxiv.org/abs/2412.19255v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MFA/note.md) |
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | ![cover](./notes/2024/ProSparse/prosparse.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator)](https://github.com/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
@@ -1672,6 +1750,7 @@
 | [LeanK](./meta/2025/LeanK.prototxt) | [LeanK: Learnable K Cache Channel Pruning for Efficient Decoding](http://arxiv.org/abs/2508.02215v1) | ![cover](./notes/2025/LeanK/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)](https://github.com/microsoft/MInference) | [note](./notes/2025/LeanK/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
 | [ReSA](./meta/2025/ReSA.prototxt) | [Rectified Sparse Attention](http://arxiv.org/abs/2506.04108v2) | ![cover](./notes/2025/ReSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/unilm)](https://github.com/microsoft/unilm) | [note](./notes/2025/ReSA/note.md) |
+| [RotateKV](./meta/2025/RotateKV.prototxt) | [RotateKV: Accurate and Robust 2-Bit KV Cache Quantization for LLMs via Outlier-Aware Adaptive Rotations](http://arxiv.org/abs/2501.16383v2) | ![cover](./notes/2025/RotateKV/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RotateKV/note.md) |
 | [SageAttention3](./meta/2025/SageAttention3.prototxt) | [SageAttention3: Microscaling FP4 Attention for Inference and An Exploration of 8-Bit Training](http://arxiv.org/abs/2505.11594v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SageAttention)](https://github.com/thu-ml/SageAttention) | [note](./notes/2025/SageAttention3/note.md) |
 | [SeerAttention-R](./meta/2025/SeerAttention-R.prototxt) | [SeerAttention-R: Sparse Attention Adaptation for Long Reasoning](http://arxiv.org/abs/2506.08889v1) | ![cover](./notes/2025/SeerAttention-R/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/SeerAttention)](https://github.com/microsoft/SeerAttention) | [note](./notes/2025/SeerAttention-R/note.md) |
 | [Super-Experts-Profilling](./meta/2025/Super-Experts-Profilling.prototxt) | [Unveiling Super Experts in Mixture-of-Experts Large Language Models](http://arxiv.org/abs/2507.23279v1) | ![cover](./notes/2025/Super-Experts-Profilling/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ZunhaiSu/Super-Experts-Profilling)](https://github.com/ZunhaiSu/Super-Experts-Profilling) | [note](./notes/2025/Super-Experts-Profilling/note.md) |
@@ -1687,9 +1766,9 @@
 | [FisherPruning](./meta/2022/fisherpruning.prototxt) | [A Fast Post-Training Pruning Framework for Transformers](http://arxiv.org/abs/2204.09656v2) | ![cover](./notes/2022/fisherpruning/cover.jpg) | ![Publish](https://img.shields.io/badge/2022-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/WoosukKwon/retraining-free-pruning)](https://github.com/WoosukKwon/retraining-free-pruning) | [note](./notes/2022/fisherpruning/note.md) |
 | [PagedAttention](./meta/2023/PagedAttention.prototxt) | [Efficient Memory Management for Large Language Model Serving with PagedAttention](http://arxiv.org/abs/2309.06180v1) | ![cover](./notes/2023/PagedAttention/vllm.png) | ![Publish](https://img.shields.io/badge/2023-SOSP-8A2BE2) | [![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)](https://github.com/vllm-project/vllm) | [note](./notes/2023/PagedAttention/note.md) |
 | [LoRA+](./meta/2024/LoRA+.prototxt) | [LoRA+: Efficient Low Rank Adaptation of Large Models](http://arxiv.org/abs/2402.12354v1) |  | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/nikhil-ghosh-berkeley/loraplus)](https://github.com/nikhil-ghosh-berkeley/loraplus) | [note](./notes/2024/LoRA+/note.md) |
-| [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629v4) | ![cover](./notes/2024/SqueezeLLM/squeezeLLM.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)](https://github.com/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |
+| [SqueezeLLM](./meta/2024/SqueezeLLM.prototxt) | [SqueezeLLM: Dense-and-Sparse Quantization](http://arxiv.org/abs/2306.07629) | ![cover](./notes/2024/SqueezeLLM/squeezeLLM.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/SqueezeLLM)](https://github.com/SqueezeAILab/SqueezeLLM) | [note](./notes/2024/SqueezeLLM/note.md) |
+| [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079) | ![cover](./notes/2024/KVQuant/fig1.png) | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)](https://github.com/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |
 | [SGLang](./meta/2024/SGLang.prototxt) | [SGLang: Efficient Execution of Structured Language Model Programs](http://arxiv.org/abs/2312.07104v2) | ![cover](./notes/2024/SGLang/fig9.png) | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/sgl-project/sglang)](https://github.com/sgl-project/sglang) | [note](./notes/2024/SGLang/note.md) |
-| [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)](https://github.com/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |
 | [DoubleSparsity](./meta/2024/DoubleSparsity.prototxt) | [Post-Training Sparse Attention with Double Sparsity](http://arxiv.org/abs/2408.07092v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/andy-yang-1/DoubleSparse)](https://github.com/andy-yang-1/DoubleSparse) | [note](./notes/2024/DoubleSparsity/note.md) |
 | [HashAttention](./meta/2025/HashAttention.prototxt) | [HashAttention: Semantic Sparsity for Faster Inference](https://openreview.net/forum?id=Em2oaXd8Dc) | ![cover](./notes/2025/HashAttention/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/xAlg-ai/HashAttention-1.0)](https://github.com/xAlg-ai/HashAttention-1.0) | [note](./notes/2025/HashAttention/note.md) |
 
@@ -1846,6 +1925,14 @@
 | [SnapKV](./meta/2024/SnapKV.prototxt) | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) | ![cover](./notes/2024/SnapKV/fig1.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV)](https://github.com/FasterDecoding/SnapKV) | [note](./notes/2024/SnapKV/note.md) |
 
 
+#### University of Illinois at Urbana-Champaign
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MiniKV](./meta/2024/MiniKV.prototxt) | [MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache](http://arxiv.org/abs/2411.18077) | ![cover](./notes/2024/MiniKV/minikv.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/akshatsh49/MiniKV-Dev)](https://github.com/akshatsh49/MiniKV-Dev) | [note](./notes/2024/MiniKV/note.md) |
+
+
 #### University of Macau
 
 
@@ -1859,6 +1946,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [GEAR](./meta/2024/GEAR.prototxt) | [GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM](http://arxiv.org/abs/2403.05527v4) | ![cover](./notes/2024/GEAR/overview.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/HaoKang-Timmy/GEAR)](https://github.com/HaoKang-Timmy/GEAR) | [note](./notes/2024/GEAR/note.md) |
 | [topk-decoding](./meta/2025/topk-decoding.prototxt) | [Exploiting Sparsity for Long Context Inference: Million Token Contexts on Commodity GPUs](http://arxiv.org/abs/2502.06766v2) | ![cover](./notes/2025/topk-decoding/alg1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ryansynk/topk-decoding)](https://github.com/ryansynk/topk-decoding) | [note](./notes/2025/topk-decoding/note.md) |
 
 
@@ -2051,6 +2139,14 @@
 | [SpindleKV](./meta/2025/SpindleKV.prototxt) | [SpindleKV: A Novel KV Cache Reduction Method Balancing Both Shallow and Deep Layers](http://arxiv.org/abs/2507.06517v1) | ![cover](./notes/2025/SpindleKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/tyxqc/SpindleKV)](https://github.com/tyxqc/SpindleKV) | [note](./notes/2025/SpindleKV/note.md) |
 
 
+#### Xi'an Jiaotong University
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [KVmix](./meta/2025/KVmix.prototxt) | [KVmix: Gradient-Based Layer Importance-Aware Mixed-Precision Quantization for KV Cache](http://arxiv.org/abs/2506.08018v1) | ![cover](./notes/2025/KVmix/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/KVmix/note.md) |
+
+
 #### Xiamen University
 
 
@@ -2096,6 +2192,9 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [ZipCache](./meta/2024/ZipCache.prototxt) | [ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification](http://arxiv.org/abs/2405.14256v1) |  | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) |  | [note](./notes/2024/ZipCache/note.md) |
+| [MiniCache](./meta/2024/MiniCache.prototxt) | [MiniCache: KV Cache Compression in Depth Dimension for Large Language Models](http://arxiv.org/abs/2405.14366v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/AkideLiu/MiniCache)](https://github.com/AkideLiu/MiniCache) | [note](./notes/2024/MiniCache/note.md) |
+| [ZipVL](./meta/2024/ZipVL.prototxt) | [ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification](http://arxiv.org/abs/2410.08584v2) | ![cover](./notes/2024/ZipVL/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZipVL/note.md) |
 | [SharePrefill](./meta/2025/SharePrefill.prototxt) | [Accelerating Prefilling for Long-Context LLMs via Sparse Pattern Sharing](http://arxiv.org/abs/2505.19578v1) | ![cover](./notes/2025/SharePrefill/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SharePrefill/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
 
@@ -2155,7 +2254,6 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Flash-Decoding](./meta/2023/FlashDecoding.prototxt) | [Flash-Decoding for long-context inference](https://crfm.stanford.edu/2023/10/12/flashdecoding.html) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) |  | [note](./notes/2023/FlashDecoding/note.md) |
 | [Sparse-IFT](./meta/2024/Sparse-IFT.prototxt) | [Sparse-IFT: Sparse Iso-FLOP Transformations for Maximizing Training Efficiency](http://arxiv.org/abs/2303.11525v3) | ![cover](./notes/2024/Sparse-IFT/sparseIFT.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/CerebrasResearch/Sparse-IFT)](https://github.com/CerebrasResearch/Sparse-IFT) | [note](./notes/2024/Sparse-IFT/note.md) |
-| [KVQuant](./meta/2024/KVQuant.prototxt) | [KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization](http://arxiv.org/abs/2401.18079v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/SqueezeAILab/KVQuant)](https://github.com/SqueezeAILab/KVQuant) | [note](./notes/2024/KVQuant/note.md) |
 | [YS9YTT55](./meta/2024/YS9YTT55.prototxt) | [LLM Inference Serving: Survey of Recent Advances and Opportunities](http://arxiv.org/abs/2407.12391v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/YS9YTT55/note.md) |
 | [CacheBlend](./meta/2025/CacheBlend.prototxt) | [CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion](http://arxiv.org/abs/2405.16444v3) | ![cover](./notes/2025/CacheBlend/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/LMCache/LMCache)](https://github.com/LMCache/LMCache) | [note](./notes/2025/CacheBlend/note.md) |
 | [AhaKV](./meta/2025/AhaKV.prototxt) | [AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models](http://arxiv.org/abs/2506.03762v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AhaKV/note.md) |

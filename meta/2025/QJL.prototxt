@@ -1,0 +1,29 @@
+paper {
+  title: "QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead"
+  abbr: "QJL"
+  url: "http://arxiv.org/abs/2406.03482v2"
+  authors: "Amir Zandieh"
+  authors: "Majid Daliri"
+  authors: "Insu Han"
+  institutions: "New York University"
+  institutions: "Adobe Research"
+}
+pub {
+  where: "AAAI"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/amirzandieh/QJL"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: "fig1.png"
+}

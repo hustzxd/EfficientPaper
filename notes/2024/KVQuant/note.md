@@ -1,6 +1,6 @@
 # KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization
 
-![](../../blank.jpg)
+![](fig1.png)
 
 ## Abstract
 
@@ -26,3 +26,13 @@ and Mistral models, we achieve $<0.1$ perplexity degradation with 3-bit
 quantization on both Wikitext-2 and C4, outperforming existing approaches. Our
 method enables serving the LLaMA-7B model with a context length of up to 1
 million on a single A100-80GB GPU and up to 10 million on an 8-GPU system.
+
+- Per-Channel Key Quantization
+    - 出现outlier channel, channel-wise quant比 token-wise quant要好
+- Pre-RoPE Key Quantization
+    - RoPE前Key的分布更集中
+- non-uniform quantization
+- Per-Vector Dense-and-Sparse Quantization
+    - Outlier使用稀疏格式的高位宽数据格式存储
+- Attention Sink-Aware Quantization
+    - 前几个token属于Sink，采用fp16格式

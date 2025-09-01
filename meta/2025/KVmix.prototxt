@@ -1,0 +1,30 @@
+paper {
+  title: "KVmix: Gradient-Based Layer Importance-Aware Mixed-Precision Quantization for KV Cache"
+  abbr: "KVmix"
+  url: "http://arxiv.org/abs/2506.08018v1"
+  authors: "Fei Li"
+  authors: "Song Liu"
+  authors: "Weiguo Wu"
+  authors: "Shiqiang Nie"
+  authors: "Jinyu Wang"
+  institutions: "Xi'an Jiaotong University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: "fig3.png"
+}

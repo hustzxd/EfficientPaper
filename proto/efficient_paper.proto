@@ -45,18 +45,19 @@ message Keyword {
         activation_sparsity = 3;
         weight_sparsity = 4;
         structured_sparsity = 5;
-        sparse_pruning = 6;        
-        quantization = 7;
-        overlap = 8;
-        performance_modeling = 9;
-        deployment = 10;
-        survey = 11;
-        structure_design = 12;
-        low_rank = 13;
-        kv_cache = 14;
-        fusion = 15;
-        efficient_training = 16;
-        tool = 17;
+        sparse_pruning = 6;
+        kv_cache_quant = 7;    
+        quantization = 8;
+        overlap = 9;
+        performance_modeling = 10;
+        deployment = 11;
+        survey = 12;
+        structure_design = 13;
+        low_rank = 14;
+        kv_cache = 15;
+        fusion = 16;
+        efficient_training = 17;
+        tool = 18;
         // TODO: please add your key words here.
     }
 }

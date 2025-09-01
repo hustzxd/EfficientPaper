@@ -1,7 +1,7 @@
 paper {
   title: "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization"
   abbr: "KVQuant"
-  url: "http://arxiv.org/abs/2401.18079v2"
+  url: "http://arxiv.org/abs/2401.18079"
   authors: "Coleman Hooper"
   authors: "Sehoon Kim"
   authors: "Hiva Mohammadzadeh"
@@ -10,10 +10,9 @@ paper {
   authors: "Kurt Keutzer"
   authors: "Amir Gholami"
   institutions: "UC Berkeley"
-  institutions: "inst2"
 }
 pub {
-  where: "arXiv"
+  where: "NeurIPS"
   year: 2024
 }
 code {
@@ -26,7 +25,8 @@ note {
 keyword {
   words: quantization
   words: kv_cache
+  words: kv_cache_quant
 }
 cover {
-  url: ""
+  url: "fig1.png"
 }

@@ -1,0 +1,36 @@
+paper {
+  title: "KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache"
+  abbr: "KIVI"
+  url: "http://arxiv.org/abs/2402.02750v2"
+  authors: "Zirui Liu"
+  authors: "Jiayi Yuan"
+  authors: "Hongye Jin"
+  authors: "Shaochen Zhong"
+  authors: "Zhaozhuo Xu"
+  authors: "Vladimir Braverman"
+  authors: "Beidi Chen"
+  authors: "Xia Hu"
+  institutions: "Rice University"
+  institutions: "Texas A&M University"
+  institutions: "Stevens Institute of Technology"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/jy-yuan/KIVI"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: "fig3.png"
+}

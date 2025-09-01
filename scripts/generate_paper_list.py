@@ -88,6 +88,7 @@ word_pb2str = {
     eppb.Keyword.Word.deployment: "LLM Deployment",
     eppb.Keyword.Word.overlap: "Communication-Computation Overlap",
     eppb.Keyword.Word.performance_modeling: "Performance Modeling",
+    eppb.Keyword.Word.kv_cache_quant: "Quantization (KV Cache)",
 }
 
 for k, v in word_pb2str.items():

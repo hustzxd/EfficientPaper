@@ -1,6 +1,6 @@
 # SqueezeLLM: Dense-and-Sparse Quantization
 
-![](../../blank.jpg)
+![](squeezeLLM.png)
 
 ## Abstract
 

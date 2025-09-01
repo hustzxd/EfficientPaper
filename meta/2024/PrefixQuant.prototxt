@@ -1,0 +1,33 @@
+paper {
+  title: "PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization"
+  abbr: "PrefixQuant"
+  url: "http://arxiv.org/abs/2410.05265v2"
+  authors: "Mengzhao Chen"
+  authors: "Yi Liu"
+  authors: "Jiahao Wang"
+  authors: "Yi Bin"
+  authors: "Wenqi Shao"
+  authors: "Ping Luo"
+  institutions: "The University of Hong Kong"
+  institutions: "Tongji University"
+  institutions: "Shanghai AI Laboratory"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ChenMnZ/PrefixQuant"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: "fig2.png"
+}

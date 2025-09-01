@@ -1,0 +1,34 @@
+paper {
+  title: "No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization"
+  abbr: "MiKV"
+  url: "http://arxiv.org/abs/2402.18096v1"
+  authors: "June Yong Yang"
+  authors: "Byeongwook Kim"
+  authors: "Jeongin Bae"
+  authors: "Beomseok Kwon"
+  authors: "Gunho Park"
+  authors: "Eunho Yang"
+  authors: "Se Jung Kwon"
+  authors: "Dongsoo Lee"
+  institutions: "KAIST"
+  institutions: "NAVER Cloud"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}

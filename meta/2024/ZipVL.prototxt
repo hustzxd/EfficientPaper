@@ -1,0 +1,35 @@
+paper {
+  title: "ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification"
+  abbr: "ZipVL"
+  url: "http://arxiv.org/abs/2410.08584v2"
+  authors: "Yefei He"
+  authors: "Feng Chen"
+  authors: "Jing Liu"
+  authors: "Wenqi Shao"
+  authors: "Hong Zhou"
+  authors: "Kaipeng Zhang"
+  authors: "Bohan Zhuang"
+  institutions: "Zhejiang University"
+  institutions: "Shanghai AI Laboratory"
+  institutions: "The University of Adelaide"
+  institutions: "Monash University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}

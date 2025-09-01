@@ -1,0 +1,33 @@
+paper {
+  title: "ZipCache: Accurate and Efficient KV Cache Quantization with Salient Token Identification"
+  abbr: "ZipCache"
+  url: "http://arxiv.org/abs/2405.14256v1"
+  authors: "Yefei He"
+  authors: "Luoming Zhang"
+  authors: "Weijia Wu"
+  authors: "Jing Liu"
+  authors: "Hong Zhou"
+  authors: "Bohan Zhuang"
+  institutions: "Zhejiang University"
+  institutions: "National University of Singapore"
+  institutions: "Monash University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}
