@@ -12,7 +12,7 @@ paper {
   authors: "Daxin Jiang"
   authors: "Heung-Yeung Shum"
   authors: "Xiangyu Zhang"
-  institutions: "StepFun Inc."
+  institutions: "StepFun"
 }
 pub {
   where: "arXiv"

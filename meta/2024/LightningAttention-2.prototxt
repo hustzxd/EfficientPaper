@@ -1,0 +1,30 @@
+paper {
+  title: "Lightning Attention-2: A Free Lunch for Handling Unlimited Sequence Lengths in Large Language Models"
+  abbr: "LightningAttention-2"
+  url: "http://arxiv.org/abs/2401.04658v2"
+  authors: "Zhen Qin"
+  authors: "Weigao Sun"
+  authors: "Dong Li"
+  authors: "Xuyang Shen"
+  authors: "Weixuan Sun"
+  authors: "Yiran Zhong"
+  institutions: "OpenNLPLab"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/OpenNLPLab/lightning-attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: structure_design
+}
+cover {
+  url: ""
+}

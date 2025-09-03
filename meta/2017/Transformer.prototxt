@@ -1,0 +1,31 @@
+paper {
+  title: "Attention Is All You Need"
+  abbr: "Transformer"
+  url: "http://arxiv.org/abs/1706.03762v7"
+  authors: "Ashish Vaswani"
+  authors: "Noam Shazeer"
+  authors: "Niki Parmar"
+  authors: "Jakob Uszkoreit"
+  authors: "Llion Jones"
+  authors: "Aidan N. Gomez"
+  authors: "Lukasz Kaiser"
+  authors: "Illia Polosukhin"
+  institutions: "Google"
+}
+pub {
+  where: "NIPS"
+  year: 2017
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}

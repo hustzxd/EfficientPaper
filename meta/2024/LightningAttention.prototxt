@@ -1,0 +1,30 @@
+paper {
+  title: "Various Lengths, Constant Speed: Efficient Language Modeling with Lightning Attention"
+  abbr: "LightningAttention"
+  url: "http://arxiv.org/abs/2405.17381v2"
+  authors: "Zhen Qin"
+  authors: "Weigao Sun"
+  authors: "Dong Li"
+  authors: "Xuyang Shen"
+  authors: "Weixuan Sun"
+  authors: "Yiran Zhong"
+  institutions: "OpenNLPLab"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/OpenNLPLab/TransnormerLLM"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: structure_design
+}
+cover {
+  url: ""
+}
