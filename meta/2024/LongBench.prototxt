@@ -1,0 +1,38 @@
+paper {
+  title: "LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding"
+  abbr: "LongBench"
+  url: "http://arxiv.org/abs/2308.14508v2"
+  authors: "Yushi Bai"
+  authors: "Xin Lv"
+  authors: "Jiajie Zhang"
+  authors: "Hongchang Lyu"
+  authors: "Jiankai Tang"
+  authors: "Zhidian Huang"
+  authors: "Zhengxiao Du"
+  authors: "Xiao Liu"
+  authors: "Aohan Zeng"
+  authors: "Lei Hou"
+  authors: "Yuxiao Dong"
+  authors: "Jie Tang"
+  authors: "Juanzi Li"
+  institutions: "Tsinghua University"
+  institutions: "Zhipu.AI"
+  institutions: "Institute of Automation, Chinese Academy of Sciences"
+}
+pub {
+  where: "ACL"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: benchmark
+}
+cover {
+  url: ""
+}

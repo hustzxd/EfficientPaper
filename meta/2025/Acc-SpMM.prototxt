@@ -19,7 +19,7 @@ paper {
   institutions: "Renmin University of China"
 }
 pub {
-  where: "arXiv"
+  where: "PPoPP"
   year: 2025
 }
 code {
