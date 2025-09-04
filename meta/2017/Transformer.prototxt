@@ -13,7 +13,7 @@ paper {
   institutions: "Google"
 }
 pub {
-  where: "NIPS"
+  where: "NeurIPS"
   year: 2017
 }
 code {
