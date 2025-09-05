@@ -238,7 +238,7 @@ def main():
     markdown += "\n\n"
 
     markdown += "## Recent Changes\n\n"
-    markdown += "{{ latest_changes }}\n\n"
+    markdown += '''{{ latest_commits("docs/weekly_paper, meta", 6) }}\n\n'''
 
     markdown += "\n## Paper List\n\n"
 

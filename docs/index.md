@@ -58,7 +58,7 @@ keyword {
 
 ## Recent Changes
 
-{{ latest_changes }}
+{{ latest_commits("docs/weekly_paper, meta", 6) }}
 
 
 ## Paper List
