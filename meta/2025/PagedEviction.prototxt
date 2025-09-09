@@ -1,0 +1,33 @@
+paper {
+  title: "PagedEviction: Structured Block-wise KV Cache Pruning for Efficient Large Language Model Inference"
+  abbr: "PagedEviction"
+  url: "http://arxiv.org/abs/2509.04377v1"
+  authors: "Krishna Teja Chitty-Venkata"
+  authors: "Jie Ye"
+  authors: "Xian-He Sun"
+  authors: "Anthony Kougkas"
+  authors: "Murali Emani"
+  authors: "Venkatram Vishwanath"
+  authors: "Bogdan Nicolae"
+  institutions: "Argonne National Laboratory"
+  institutions: "Illinois Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}
