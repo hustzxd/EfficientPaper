@@ -1,0 +1,27 @@
+paper {
+  title: "MoPEQ: Mixture of Mixed Precision Quantized Experts"
+  abbr: "MoPEQ"
+  url: "http://arxiv.org/abs/2509.02512v1"
+  authors: "Krishna Teja Chitty-Venkata"
+  authors: "Jie Ye"
+  authors: "Murali Emani"
+  institutions: "Argonne National Laboratory"
+  institutions: "Illinois Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/krishnateja95/MoE-Mixed-Prec"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "fig1.png"
+}

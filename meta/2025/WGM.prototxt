@@ -1,0 +1,31 @@
+paper {
+  title: "Binary Quantization For LLMs Through Dynamic Grouping"
+  abbr: "WGM"
+  url: "http://arxiv.org/abs/2509.03054v1"
+  authors: "Xinzhe Zheng"
+  authors: "Zhen-Qun Yang"
+  authors: "Haoran Xie"
+  authors: "S. Joe Qin"
+  authors: "Arlene Chen"
+  authors: "Fangzhen Lin"
+  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "The Hong Kong Polytechnic University"
+  institutions: "Lingnan University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/johnnyzheng0636/WGM_bi_quan"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "fig1.png"
+}
