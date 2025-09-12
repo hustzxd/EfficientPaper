@@ -9,6 +9,7 @@ message PaperInfo {
     optional Note note = 4;
     optional Keyword keyword = 5;
     optional Cover cover = 6;
+    optional Baseline baseline = 7;
 }
 
 message Paper {
@@ -35,6 +36,10 @@ message Note {
 
 message Cover {
     optional string url = 1;
+}
+
+message Baseline {
+    repeated string methods = 1;
 }
 
 message Keyword {

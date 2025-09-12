@@ -38,3 +38,6 @@ keyword {
 cover {
   url: "pipeline.gif"
 }
+baseline {
+  methods: "PagedAttention"
+}

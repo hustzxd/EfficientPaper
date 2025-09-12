@@ -29,6 +29,8 @@ def gene_base_template():
 
     pinfo.cover.url = pinfo.cover.url
 
+    pinfo.baseline.methods.extend(["None"])
+
     pinfo.keyword.words.extend([pinfo.keyword.Word.none])
 
     root_dir = os.getenv("CURRENT_DIR")

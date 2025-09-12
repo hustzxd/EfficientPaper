@@ -41,6 +41,7 @@ plugins:
   - glightbox
   - literate-nav
   - macros
+  - mermaid2
 
   # - git-latest-changes:
   #     limit_to_docs_dir: True       # 仅限 docs 目录

@@ -24,3 +24,6 @@ keyword {
 cover {
   url: ""
 }
+baseline {
+  methods: "None"
+}
