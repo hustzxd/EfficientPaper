@@ -39,5 +39,5 @@ cover {
   url: "pipeline.gif"
 }
 baseline {
-  methods: "PagedAttention"
+  methods: "2023/PagedAttention"
 }

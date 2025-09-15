@@ -24,3 +24,7 @@ keyword {
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "2023/sparsegpt"
+  methods: "2024/Wanda"
+}

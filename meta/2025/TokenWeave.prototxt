@@ -24,3 +24,8 @@ keyword {
 cover {
   url: "fig8.png"
 }
+baseline {
+  methods: "2025/NanoFlow"
+  methods: "2023/PagedAttention"
+  methods: "2025/TileLink"
+}

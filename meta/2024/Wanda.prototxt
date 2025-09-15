@@ -27,3 +27,6 @@ keyword {
 cover {
   url: "wanda.png"
 }
+baseline {
+  methods: "2023/sparsegpt"
+}

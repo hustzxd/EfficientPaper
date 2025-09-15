@@ -31,3 +31,8 @@ keyword {
 cover {
   url: "fig1.png"
 }
+baseline {
+  methods: "2024/MInference"
+  methods: "2024/streaming-llm"
+  methods: "2025/FlexPrefill"
+}
