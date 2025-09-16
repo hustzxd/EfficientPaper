@@ -372,6 +372,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [VENOM](./meta/2023/VENOM.prototxt) | [VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores](http://arxiv.org/abs/2310.02065v1) | ![cover](./notes/2023/VENOM/vnm.png) | ![Publish](https://img.shields.io/badge/2023-SC-CD5C5C) | [![GitHub Repo stars](https://img.shields.io/github/stars/UDC-GAC/venom)](https://github.com/UDC-GAC/venom) | [note](./notes/2023/VENOM/note.md) |
 | [SliceGPT](./meta/2024/SliceGPT.prototxt) | [SliceGPT: Compress Large Language Models by Deleting Rows and Columns](http://arxiv.org/abs/2401.15024v2) | ![cover](./notes/2024/SliceGPT/sliceGPT.jpg) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/TransformerCompression)](https://github.com/microsoft/TransformerCompression) | [note](./notes/2024/SliceGPT/note.md) |
+| [EvolKV](./meta/2025/EvolKV.prototxt) | [EvolKV: Evolutionary KV Cache Compression for LLM Inference](http://arxiv.org/abs/2509.08315v1) | ![cover](./notes/2025/EvolKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/EvolKV/note.md) |
 </p>
 </details>
 <details open><summary><b>Eindhoven University of Technology</b></summary> 
@@ -719,6 +720,15 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SEAP](./meta/2025/SEAP.prototxt) | [SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models](http://arxiv.org/abs/2503.07605v1) | ![cover](./notes/2025/SEAP/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/IAAR-Shanghai/SEAP)](https://github.com/IAAR-Shanghai/SEAP) | [note](./notes/2025/SEAP/note.md) |
+</p>
+</details>
+<details open><summary><b>Institute of Automation</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [EvolKV](./meta/2025/EvolKV.prototxt) | [EvolKV: Evolutionary KV Cache Compression for LLM Inference](http://arxiv.org/abs/2509.08315v1) | ![cover](./notes/2025/EvolKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/EvolKV/note.md) |
 </p>
 </details>
 <details open><summary><b>Institute of Automation, Chinese Academy of Sciences</b></summary> 
@@ -1145,6 +1155,15 @@
 | [SPP](./meta/2024/SPP.prototxt) | [SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models](http://arxiv.org/abs/2405.16057v1) | ![cover](./notes/2024/SPP/spp.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/Lucky-Lance/SPP)](https://github.com/Lucky-Lance/SPP) | [note](./notes/2024/SPP/note.md) |
 </p>
 </details>
+<details open><summary><b>Murdoch University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [TOA](./meta/2025/TOA.prototxt) | [Tree of Agents: Improving Long-Context Capabilities of Large Language Models through Multi-Perspective Reasoning](http://arxiv.org/abs/2509.06436v1) | ![cover](./notes/2025/TOA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EMNLP_Findings-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/Aireduce952/Tree-of-Agents)](https://github.com/Aireduce952/Tree-of-Agents) | [note](./notes/2025/TOA/note.md) |
+</p>
+</details>
 <details open><summary><b>NAVER Cloud</b></summary> 
 <p>
 
@@ -1205,6 +1224,7 @@
 | [STA](./meta/2022/44KWQAWO.prototxt) | [An Algorithm-Hardware Co-Optimized Framework for Accelerating N:M Sparse Transformers](https://arxiv.org/abs/2208.06118) |  | ![Publish](https://img.shields.io/badge/2022-VLSI-8B0000) |  |  |
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [RaaS](./meta/2025/RaaS.prototxt) | [Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity](http://arxiv.org/abs/2502.11147v1) | ![cover](./notes/2025/RaaS/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RaaS/note.md) |
+| [LAVa](./meta/2025/LAVa.prototxt) | [LAVa: Layer-wise KV Cache Eviction with Dynamic Budget Allocation](http://arxiv.org/abs/2509.09754v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MGDDestiny/Lava)](https://github.com/MGDDestiny/Lava) | [note](./notes/2025/LAVa/note.md) |
 </p>
 </details>
 <details open><summary><b>Nanyang Technological University</b></summary> 
@@ -1455,6 +1475,24 @@
 | [Qwen3](./meta/2025/Qwen3.prototxt) | [Qwen3 Technical Report](http://arxiv.org/abs/2505.09388v1) | ![cover](./notes/2025/Qwen3/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/QwenLM/Qwen3)](https://github.com/QwenLM/Qwen3) | [note](./notes/2025/Qwen3/note.md) |
 </p>
 </details>
+<details open><summary><b>RMIT University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [TOA](./meta/2025/TOA.prototxt) | [Tree of Agents: Improving Long-Context Capabilities of Large Language Models through Multi-Perspective Reasoning](http://arxiv.org/abs/2509.06436v1) | ![cover](./notes/2025/TOA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EMNLP_Findings-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/Aireduce952/Tree-of-Agents)](https://github.com/Aireduce952/Tree-of-Agents) | [note](./notes/2025/TOA/note.md) |
+</p>
+</details>
+<details open><summary><b>RWTH Aachen University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [FasterVGGT](./meta/2025/FasterVGGT.prototxt) | [Faster VGGT with Block-Sparse Global Attention](http://arxiv.org/abs/2509.07120v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FasterVGGT/note.md) |
+</p>
+</details>
 <details open><summary><b>Renmin University of China</b></summary> 
 <p>
 
@@ -1703,6 +1741,15 @@
 | [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
 </p>
 </details>
+<details open><summary><b>Southwest University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [TOA](./meta/2025/TOA.prototxt) | [Tree of Agents: Improving Long-Context Capabilities of Large Language Models through Multi-Perspective Reasoning](http://arxiv.org/abs/2509.06436v1) | ![cover](./notes/2025/TOA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EMNLP_Findings-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/Aireduce952/Tree-of-Agents)](https://github.com/Aireduce952/Tree-of-Agents) | [note](./notes/2025/TOA/note.md) |
+</p>
+</details>
 <details open><summary><b>Stanford</b></summary> 
 <p>
 
@@ -1741,6 +1788,15 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [MFA](./meta/2024/MFA.prototxt) | [Multi-matrix Factorization Attention](http://arxiv.org/abs/2412.19255v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/MFA/note.md) |
 | [Step-3](./meta/2025/Step-3.prototxt) | [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](http://arxiv.org/abs/2507.19427v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Step-3/note.md) |
+</p>
+</details>
+<details open><summary><b>Stepfun</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [LAVa](./meta/2025/LAVa.prototxt) | [LAVa: Layer-wise KV Cache Eviction with Dynamic Budget Allocation](http://arxiv.org/abs/2509.09754v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MGDDestiny/Lava)](https://github.com/MGDDestiny/Lava) | [note](./notes/2025/LAVa/note.md) |
 </p>
 </details>
 <details open><summary><b>Stevens Institute of Technology</b></summary> 
@@ -1979,6 +2035,7 @@
 | [NanoFlow](./meta/2025/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) | ![cover](./notes/2025/NanoFlow/pipeline.gif) | ![Publish](https://img.shields.io/badge/2025-OSDI-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/efeslab/Nanoflow)](https://github.com/efeslab/Nanoflow) | [note](./notes/2025/NanoFlow/note.md) |
 | [LinearPatch](./meta/2025/LinearPatch.prototxt) | [A Simple Linear Patch Revives Layer-Pruned Large Language Models](http://arxiv.org/abs/2505.24680v1) | ![cover](./notes/2025/LinearPatch/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/LinearPatch/note.md) |
 | [DReSS](./meta/2025/DReSS.prototxt) | [DReSS: Data-driven Regularized Structured Streamlining for Large Language Models](http://arxiv.org/abs/2501.17905v3) | ![cover](./notes/2025/DReSS/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/DReSS/note.md) |
+| [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 | [KeepKV](./meta/2025/KeepKV.prototxt) | [KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference](http://arxiv.org/abs/2504.09936v1) | ![cover](./notes/2025/KeepKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/KeepKV/note.md) |
 | [LeanK](./meta/2025/LeanK.prototxt) | [LeanK: Learnable K Cache Channel Pruning for Efficient Decoding](http://arxiv.org/abs/2508.02215v1) | ![cover](./notes/2025/LeanK/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)](https://github.com/microsoft/MInference) | [note](./notes/2025/LeanK/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
@@ -2129,6 +2186,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Q-Sparse](./meta/2024/Q-Sparse.prototxt) | [Q-Sparse: All Large Language Models can be Fully Sparsely-Activated](http://arxiv.org/abs/2407.10969v1) | ![cover](./notes/2024/Q-Sparse/q-sparse.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/Q-Sparse/note.md) |
 | [COMET](./meta/2025/COMET.prototxt) | [COMET: Towards Partical W4A4KV4 LLMs Serving](http://arxiv.org/abs/2410.12168v1) | ![cover](./notes/2025/COMET/fig5.png) | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) |  | [note](./notes/2025/COMET/note.md) |
+| [EvolKV](./meta/2025/EvolKV.prototxt) | [EvolKV: Evolutionary KV Cache Compression for LLM Inference](http://arxiv.org/abs/2509.08315v1) | ![cover](./notes/2025/EvolKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/EvolKV/note.md) |
 </p>
 </details>
 <details open><summary><b>University of Connecticut</b></summary> 
@@ -2289,6 +2347,15 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Selective Context](./meta/2023/selective_context.prototxt) | [Unlocking Context Constraints of LLMs: Enhancing Context Efficiency of LLMs with Self-Information-Based Content Filtering](https://arxiv.org/abs/2304.12102) | ![cover](./notes/2023/selective_context/selective_context.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/liyucheng09/Selective_Context)](https://github.com/liyucheng09/Selective_Context) |  |
+</p>
+</details>
+<details open><summary><b>University of Technology Sydney</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [TOA](./meta/2025/TOA.prototxt) | [Tree of Agents: Improving Long-Context Capabilities of Large Language Models through Multi-Perspective Reasoning](http://arxiv.org/abs/2509.06436v1) | ![cover](./notes/2025/TOA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-EMNLP_Findings-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/Aireduce952/Tree-of-Agents)](https://github.com/Aireduce952/Tree-of-Agents) | [note](./notes/2025/TOA/note.md) |
 </p>
 </details>
 <details open><summary><b>University of Texas at Austin</b></summary> 
@@ -2480,6 +2547,15 @@
 | [ZipVL](./meta/2024/ZipVL.prototxt) | [ZipVL: Efficient Large Vision-Language Models with Dynamic Token Sparsification](http://arxiv.org/abs/2410.08584v2) | ![cover](./notes/2024/ZipVL/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZipVL/note.md) |
 | [SharePrefill](./meta/2025/SharePrefill.prototxt) | [Accelerating Prefilling for Long-Context LLMs via Sparse Pattern Sharing](http://arxiv.org/abs/2505.19578v1) | ![cover](./notes/2025/SharePrefill/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SharePrefill/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+</p>
+</details>
+<details open><summary><b>Zhipu AI</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhipu.AI</b></summary> 

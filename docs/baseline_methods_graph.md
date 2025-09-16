@@ -6,15 +6,15 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 ```mermaid
 flowchart TD
-    2025_BaWA["BaWA[2025]"]
-    2024_Wanda["Wanda[2024]"]
     2025_SDS["SDS[2025]"]
     2023_sparsegpt["sparsegpt[2023]"]
-    2024_Wanda --> 2025_SDS
-    2024_Wanda --> 2025_BaWA
+    2025_BaWA["BaWA[2025]"]
+    2024_Wanda["Wanda[2024]"]
     2023_sparsegpt --> 2025_SDS
     2023_sparsegpt --> 2025_BaWA
     2023_sparsegpt --> 2024_Wanda
+    2024_Wanda --> 2025_SDS
+    2024_Wanda --> 2025_BaWA
 ```
 
 ## Component 2
@@ -22,26 +22,42 @@ flowchart TD
 ```mermaid
 flowchart TD
     2023_PagedAttention["PagedAttention[2023]"]
-    2025_TileLink["TileLink[2025]"]
-    2025_TokenWeave["TokenWeave[2025]"]
     2025_NanoFlow["NanoFlow[2025]"]
+    2025_TokenWeave["TokenWeave[2025]"]
+    2025_TileLink["TileLink[2025]"]
     2023_PagedAttention --> 2025_NanoFlow
     2023_PagedAttention --> 2025_TokenWeave
-    2025_TileLink --> 2025_TokenWeave
     2025_NanoFlow --> 2025_TokenWeave
+    2025_TileLink --> 2025_TokenWeave
 ```
 
 ## Component 3
 
 ```mermaid
 flowchart TD
-    2025_XAttention["XAttention[2025]"]
+    2025_EvolKV["EvolKV[2025]"]
     2024_streaming_llm["streaming-llm[2024]"]
-    2024_MInference["MInference[2024]"]
+    2024_SnapKV["SnapKV[2024]"]
+    PyramidKV["PyramidKV"]
+    2025_LAVa["LAVa[2025]"]
+    Ada_SnapKV["Ada-SnapKV"]
+    CAKE["CAKE"]
     2025_FlexPrefill["FlexPrefill[2025]"]
+    2024_MInference["MInference[2024]"]
+    2025_XAttention["XAttention[2025]"]
+    InfLLM["InfLLM"]
+    2024_streaming_llm --> 2025_EvolKV
     2024_streaming_llm --> 2025_FlexPrefill
     2024_streaming_llm --> 2025_XAttention
+    2024_streaming_llm --> 2024_MInference
+    2024_SnapKV --> 2025_EvolKV
+    2024_SnapKV --> 2025_LAVa
+    PyramidKV --> 2025_EvolKV
+    PyramidKV --> 2025_LAVa
+    Ada_SnapKV --> 2025_LAVa
+    CAKE --> 2025_LAVa
+    2025_FlexPrefill --> 2025_XAttention
     2024_MInference --> 2025_FlexPrefill
     2024_MInference --> 2025_XAttention
-    2025_FlexPrefill --> 2025_XAttention
+    InfLLM --> 2024_MInference
 ```

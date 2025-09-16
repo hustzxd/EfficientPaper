@@ -15,13 +15,17 @@ def main():
             cur_node = f"{cur_year}/{cur_name}"
             G.add_node(cur_node, name=f"{cur_name}[{cur_year}]")
             for bl_method in pinfo.baseline.methods:
+                if bl_method == "None":
+                    continue
                 if not check_exist(bl_method):
                     print(f"{f} Baseline Method: {bl_method} does not exist.")
-                    continue
-                match = re.match(r"^(\d{4})/([a-z0-9_-]+)$", bl_method, flags=re.IGNORECASE)
-                year, name = match.groups()
-                G.add_node(bl_method, name=f"{name}[{year}]")
-                G.add_edge(bl_method, cur_node)
+                    G.add_node(bl_method, name=f"{bl_method}")
+                    G.add_edge(bl_method, cur_node)
+                else:
+                    match = re.match(r"^(\d{4})/([a-z0-9_-]+)$", bl_method, flags=re.IGNORECASE)
+                    year, name = match.groups()
+                    G.add_node(bl_method, name=f"{name}[{year}]")
+                    G.add_edge(bl_method, cur_node)
 
     components = list(nx.weakly_connected_components(G))
     subgraphs = [G.subgraph(c).copy() for c in components]

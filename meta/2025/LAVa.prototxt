@@ -1,0 +1,38 @@
+paper {
+  title: "LAVa: Layer-wise KV Cache Eviction with Dynamic Budget Allocation"
+  abbr: "LAVa"
+  url: "http://arxiv.org/abs/2509.09754v1"
+  authors: "Yiqun Shen"
+  authors: "Song Yuan"
+  authors: "Zhengze Zhang"
+  authors: "Xiaoliang Wang"
+  authors: "Daxin Jiang"
+  authors: "Nguyen Cam-Tu"
+  institutions: "Nanjing University"
+  institutions: "Stepfun"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/MGDDestiny/Lava"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "PyramidKV"
+  methods: "2024/SnapKV"
+  methods: "Ada-SnapKV"
+  methods: "CAKE"
+}

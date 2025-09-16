@@ -1,0 +1,34 @@
+paper {
+  title: "EvolKV: Evolutionary KV Cache Compression for LLM Inference"
+  abbr: "EvolKV"
+  url: "http://arxiv.org/abs/2509.08315v1"
+  authors: "Bohan Yu"
+  authors: "Yekun Chai"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "Institute of Automation"
+  institutions: "ETH Zurich"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}
+baseline {
+  methods: "2024/streaming-llm"
+  methods: "2024/SnapKV"
+  methods: "PyramidKV"
+}
