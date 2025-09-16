@@ -1,0 +1,34 @@
+paper {
+  title: "Tree of Agents: Improving Long-Context Capabilities of Large Language Models through Multi-Perspective Reasoning"
+  abbr: "TOA"
+  url: "http://arxiv.org/abs/2509.06436v1"
+  authors: "Song Yu"
+  authors: "Xiaofei Xu"
+  authors: "Ke Deng"
+  authors: "Li Li"
+  authors: "Lin Tian"
+  institutions: "Southwest University"
+  institutions: "Murdoch University"
+  institutions: "RMIT University"
+  institutions: "University of Technology Sydney"
+}
+pub {
+  where: "EMNLP Findings"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Aireduce952/Tree-of-Agents"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}
+baseline {
+  methods: "None"
+}

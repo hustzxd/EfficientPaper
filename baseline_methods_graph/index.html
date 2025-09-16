@@ -84,7 +84,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-05/">2025-09-05</a>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-12/">2025-09-12</a>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-15/">2025-09-15</a>
 </li>
 <li class="toctree-l1"><a class="reference internal">Lagency</a>
 <ul>
@@ -121,38 +121,54 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <h2 id="component-1">Component 1</h2>
 <div class="mermaid">flowchart TD
-    2025_BaWA["BaWA[2025]"]
-    2024_Wanda["Wanda[2024]"]
     2025_SDS["SDS[2025]"]
     2023_sparsegpt["sparsegpt[2023]"]
-    2024_Wanda --&gt; 2025_SDS
-    2024_Wanda --&gt; 2025_BaWA
+    2025_BaWA["BaWA[2025]"]
+    2024_Wanda["Wanda[2024]"]
     2023_sparsegpt --&gt; 2025_SDS
     2023_sparsegpt --&gt; 2025_BaWA
     2023_sparsegpt --&gt; 2024_Wanda
+    2024_Wanda --&gt; 2025_SDS
+    2024_Wanda --&gt; 2025_BaWA
 </div>
 <h2 id="component-2">Component 2</h2>
 <div class="mermaid">flowchart TD
     2023_PagedAttention["PagedAttention[2023]"]
-    2025_TileLink["TileLink[2025]"]
-    2025_TokenWeave["TokenWeave[2025]"]
     2025_NanoFlow["NanoFlow[2025]"]
+    2025_TokenWeave["TokenWeave[2025]"]
+    2025_TileLink["TileLink[2025]"]
     2023_PagedAttention --&gt; 2025_NanoFlow
     2023_PagedAttention --&gt; 2025_TokenWeave
-    2025_TileLink --&gt; 2025_TokenWeave
     2025_NanoFlow --&gt; 2025_TokenWeave
+    2025_TileLink --&gt; 2025_TokenWeave
 </div>
 <h2 id="component-3">Component 3</h2>
 <div class="mermaid">flowchart TD
-    2025_XAttention["XAttention[2025]"]
+    2025_EvolKV["EvolKV[2025]"]
     2024_streaming_llm["streaming-llm[2024]"]
-    2024_MInference["MInference[2024]"]
+    2024_SnapKV["SnapKV[2024]"]
+    PyramidKV["PyramidKV"]
+    2025_LAVa["LAVa[2025]"]
+    Ada_SnapKV["Ada-SnapKV"]
+    CAKE["CAKE"]
     2025_FlexPrefill["FlexPrefill[2025]"]
+    2024_MInference["MInference[2024]"]
+    2025_XAttention["XAttention[2025]"]
+    InfLLM["InfLLM"]
+    2024_streaming_llm --&gt; 2025_EvolKV
     2024_streaming_llm --&gt; 2025_FlexPrefill
     2024_streaming_llm --&gt; 2025_XAttention
+    2024_streaming_llm --&gt; 2024_MInference
+    2024_SnapKV --&gt; 2025_EvolKV
+    2024_SnapKV --&gt; 2025_LAVa
+    PyramidKV --&gt; 2025_EvolKV
+    PyramidKV --&gt; 2025_LAVa
+    Ada_SnapKV --&gt; 2025_LAVa
+    CAKE --&gt; 2025_LAVa
+    2025_FlexPrefill --&gt; 2025_XAttention
     2024_MInference --&gt; 2025_FlexPrefill
     2024_MInference --&gt; 2025_XAttention
-    2025_FlexPrefill --&gt; 2025_XAttention
+    InfLLM --&gt; 2024_MInference
 </div>
 <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

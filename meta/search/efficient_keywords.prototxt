@@ -3,6 +3,7 @@ background_words: "LLMs"
 background_words: "transformer"
 background_words: "vLLM"
 background_words: "serving"
+background_words: "compression"
 
 key_words: "sparse"
 key_words: "pruning"
