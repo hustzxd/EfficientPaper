@@ -35,3 +35,7 @@ keyword {
 cover {
   url: "fig3.png"
 }
+baseline {
+  methods: "2024/Async-TP"
+  methods: "2024/FLUX"
+}

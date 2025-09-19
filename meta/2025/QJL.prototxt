@@ -27,3 +27,7 @@ keyword {
 cover {
   url: "fig1.png"
 }
+baseline {
+  methods: "2024/KIVI"
+  methods: "2024/KVQuant"
+}
