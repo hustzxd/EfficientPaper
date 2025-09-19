@@ -12,7 +12,7 @@ paper {
   institutions: "Advanced Micro Devices"
 }
 pub {
-  where: "arXiv"
+  where: "NeurIPS"
   year: 2025
 }
 code {

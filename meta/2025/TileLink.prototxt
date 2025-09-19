@@ -33,3 +33,8 @@ keyword {
 cover {
   url: "fig7.png"
 }
+baseline {
+  methods: "2024/Async-TP"
+  methods: "2024/FLUX"
+  methods: "2023/PagedAttention"
+}
