@@ -1,7 +1,7 @@
 paper {
   title: "Efficient GPU Kernels for N:M-Sparse Weights in Deep Learning"
   abbr: "nmSPARSE"
-  url: "https://proceedings.mlsys.org/paper_files/paper/2023/file/4552cedd396a308320209f75f56a5ad5-Paper-mlsys2023.pdf"
+  url: "https://proceedings.mlsys.org/paper_files/paper/2023/file/a10deb4d5227a8ea307ea8ff3cb712f4-Paper-mlsys2023.pdf"
   authors: "Bin Lin"
   authors: "Fan Yang"
   institutions: "Microsoft Research"

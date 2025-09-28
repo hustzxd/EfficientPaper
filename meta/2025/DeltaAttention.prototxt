@@ -9,7 +9,7 @@ paper {
   institutions: "DeepAuto.ai"
 }
 pub {
-  where: "arXiv"
+  where: "NeurIPS"
   year: 2025
 }
 code {
