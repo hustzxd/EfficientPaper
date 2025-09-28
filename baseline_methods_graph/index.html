@@ -74,25 +74,29 @@
 </ul>
 <p class="caption"><span class="caption-text">Weekly Paper</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-08-01/">2025-08-01</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-08-08/">2025-08-08</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-08-15/">2025-08-15</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-08-22/">2025-08-22</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-08-29/">2025-08-29</a>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-05/">2025-09-05</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-15/">2025-09-15</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-19/">2025-09-19</a>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-26/">2025-09-26</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-28/">2025-09-28</a>
+</li>
 <li class="toctree-l1"><a class="reference internal">Lagency</a>
 <ul>
 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-07-25/">2025-07-25</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-01/">2025-08-01</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-08/">2025-08-08</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-15/">2025-08-15</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-22/">2025-08-22</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-29/">2025-08-29</a>
 </li>
 </ul>
 </li>
@@ -125,83 +129,83 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <h2 id="component-1">Component 1</h2>
 <div class="mermaid">flowchart TD
-    2024_Async_TP["Async-TP[2024]"]
     2025_TileLink["TileLink[2025]"]
+    2024_FLUX["FLUX[2024]"]
     2025_TokenWeave["TokenWeave[2025]"]
     2023_PagedAttention["PagedAttention[2023]"]
-    2026_FlashOverlap["FlashOverlap[2026]"]
-    2024_FLUX["FLUX[2024]"]
     2025_NanoFlow["NanoFlow[2025]"]
-    2024_Async_TP --&gt; 2025_TileLink
-    2024_Async_TP --&gt; 2026_FlashOverlap
+    2024_Async_TP["Async-TP[2024]"]
+    2026_FlashOverlap["FlashOverlap[2026]"]
     2025_TileLink --&gt; 2025_TokenWeave
+    2024_FLUX --&gt; 2025_TileLink
+    2024_FLUX --&gt; 2026_FlashOverlap
     2023_PagedAttention --&gt; 2025_TileLink
     2023_PagedAttention --&gt; 2025_NanoFlow
     2023_PagedAttention --&gt; 2025_TokenWeave
-    2024_FLUX --&gt; 2025_TileLink
-    2024_FLUX --&gt; 2026_FlashOverlap
     2025_NanoFlow --&gt; 2025_TokenWeave
+    2024_Async_TP --&gt; 2025_TileLink
+    2024_Async_TP --&gt; 2026_FlashOverlap
 </div>
 <h2 id="component-2">Component 2</h2>
 <div class="mermaid">flowchart TD
-    2023_sparsegpt["sparsegpt[2023]"]
-    2025_SDS["SDS[2025]"]
     2024_Wanda["Wanda[2024]"]
+    2025_SDS["SDS[2025]"]
+    2023_sparsegpt["sparsegpt[2023]"]
     2025_BaWA["BaWA[2025]"]
+    2024_Wanda --&gt; 2025_SDS
+    2024_Wanda --&gt; 2025_BaWA
     2023_sparsegpt --&gt; 2025_SDS
     2023_sparsegpt --&gt; 2025_BaWA
     2023_sparsegpt --&gt; 2024_Wanda
-    2024_Wanda --&gt; 2025_SDS
-    2024_Wanda --&gt; 2025_BaWA
 </div>
 <h2 id="component-3">Component 3</h2>
 <div class="mermaid">flowchart TD
-    2025_LAVa["LAVa[2025]"]
+    CAKE["CAKE"]
     2025_EvolKV["EvolKV[2025]"]
     InfLLM["InfLLM"]
-    2025_FlexPrefill["FlexPrefill[2025]"]
-    2024_SnapKV["SnapKV[2024]"]
-    CAKE["CAKE"]
-    2024_streaming_llm["streaming-llm[2024]"]
     Ada_SnapKV["Ada-SnapKV"]
-    PyramidKV["PyramidKV"]
     2024_MInference["MInference[2024]"]
+    2024_streaming_llm["streaming-llm[2024]"]
+    PyramidKV["PyramidKV"]
+    2025_FlexPrefill["FlexPrefill[2025]"]
     2025_XAttention["XAttention[2025]"]
-    InfLLM --&gt; 2024_MInference
-    2025_FlexPrefill --&gt; 2025_XAttention
-    2024_SnapKV --&gt; 2025_EvolKV
-    2024_SnapKV --&gt; 2025_LAVa
+    2025_LAVa["LAVa[2025]"]
+    2024_SnapKV["SnapKV[2024]"]
     CAKE --&gt; 2025_LAVa
+    InfLLM --&gt; 2024_MInference
+    Ada_SnapKV --&gt; 2025_LAVa
+    2024_MInference --&gt; 2025_FlexPrefill
+    2024_MInference --&gt; 2025_XAttention
     2024_streaming_llm --&gt; 2025_EvolKV
     2024_streaming_llm --&gt; 2025_FlexPrefill
     2024_streaming_llm --&gt; 2025_XAttention
     2024_streaming_llm --&gt; 2024_MInference
-    Ada_SnapKV --&gt; 2025_LAVa
     PyramidKV --&gt; 2025_EvolKV
     PyramidKV --&gt; 2025_LAVa
-    2024_MInference --&gt; 2025_FlexPrefill
-    2024_MInference --&gt; 2025_XAttention
+    2025_FlexPrefill --&gt; 2025_XAttention
+    2024_SnapKV --&gt; 2025_EvolKV
+    2024_SnapKV --&gt; 2025_LAVa
 </div>
 <h2 id="component-4">Component 4</h2>
 <div class="mermaid">flowchart TD
-    2025_RotateKV["RotateKV[2025]"]
+    2024_KIVI["KIVI[2024]"]
     2025_KVmix["KVmix[2025]"]
     2024_KVQuant["KVQuant[2024]"]
+    2025_QJL["QJL[2025]"]
+    2025_RotateKV["RotateKV[2025]"]
+    2023_H2O["H2O[2023]"]
     2024_ZipCache["ZipCache[2024]"]
     2024_MiKV["MiKV[2024]"]
-    2024_KIVI["KIVI[2024]"]
-    2023_H2O["H2O[2023]"]
-    2025_QJL["QJL[2025]"]
     2024_GEAR["GEAR[2024]"]
-    2024_KVQuant --&gt; 2025_KVmix
-    2024_KVQuant --&gt; 2025_QJL
-    2024_KVQuant --&gt; 2025_RotateKV
-    2024_ZipCache --&gt; 2025_RotateKV
-    2024_MiKV --&gt; 2025_RotateKV
     2024_KIVI --&gt; 2025_KVmix
     2024_KIVI --&gt; 2025_QJL
     2024_KIVI --&gt; 2025_RotateKV
+    2024_KVQuant --&gt; 2025_KVmix
+    2024_KVQuant --&gt; 2025_QJL
+    2024_KVQuant --&gt; 2025_RotateKV
     2023_H2O --&gt; 2024_MiKV
+    2024_ZipCache --&gt; 2025_RotateKV
+    2024_MiKV --&gt; 2025_RotateKV
     2024_GEAR --&gt; 2025_RotateKV
 </div>
 <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
@@ -233,7 +237,7 @@
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../cls_author/" title="By Author"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../weekly_paper/2025-08-01/" title="2025-08-01">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../weekly_paper/2025-09-05/" title="2025-09-05">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -249,7 +253,7 @@
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
 <span><a href="../cls_author/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../weekly_paper/2025-08-01/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../weekly_paper/2025-09-05/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../js/jquery-3.6.0.min.js"></script>

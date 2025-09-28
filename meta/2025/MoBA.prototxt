@@ -32,7 +32,7 @@ paper {
   institutions: "Zhejiang University"
 }
 pub {
-  where: "arXiv"
+  where: "NeurIPS"
   year: 2025
 }
 code {
