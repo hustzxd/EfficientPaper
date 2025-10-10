@@ -1,0 +1,30 @@
+paper {
+  title: "DeepSeek-V3.2-Exp: Boosting Long-Context Efficiency with DeepSeek Sparse Attention"
+  abbr: "DSA"
+  url: "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/DeepSeek_V3_2.pdf"
+  authors: "DeepSeek-AI"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "Github"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: structure_design
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}
+baseline {
+  methods: "None"
+}

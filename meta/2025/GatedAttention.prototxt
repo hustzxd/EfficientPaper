@@ -1,0 +1,44 @@
+paper {
+  title: "Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free"
+  abbr: "GatedAttention"
+  url: "http://arxiv.org/abs/2505.06708v1"
+  authors: "Zihan Qiu"
+  authors: "Zekun Wang"
+  authors: "Bo Zheng"
+  authors: "Zeyu Huang"
+  authors: "Kaiyue Wen"
+  authors: "Songlin Yang"
+  authors: "Rui Men"
+  authors: "Le Yu"
+  authors: "Fei Huang"
+  authors: "Suozhi Huang"
+  authors: "Dayiheng Liu"
+  authors: "Jingren Zhou"
+  authors: "Junyang Lin"
+  institutions: "Qwen Team"
+  institutions: "Alibaba Group"
+  institutions: "University of Edinburgh"
+  institutions: "Stanford University"
+  institutions: "MIT"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/qiuzh20/gated_attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "fig1.png"
+}
+baseline {
+  methods: "None"
+}

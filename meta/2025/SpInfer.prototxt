@@ -1,0 +1,29 @@
+paper {
+  title: "SpInfer: Leveraging Low-Level Sparsity for Efficient Large Language Model Inference on GPUs"
+  abbr: "SpInfer"
+  url: "https://dl.acm.org/doi/10.1145/3689031.3717481"
+  authors: "Ruibo Fan, Xiangrui Yu, Peijie Dong, Zeyu Li, Gu Gong, Qiang Wang, Wei Wang, Xiaowen Chu"
+  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Harbin Institute of Technology"
+}
+pub {
+  where: "EuroSys"
+  year: 2025
+}
+code {
+  type: "CUDA"
+  url: "https://github.com/xxyux/SpInfer"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "fig5.png"
+}
+baseline {
+  methods: "None"
+}
