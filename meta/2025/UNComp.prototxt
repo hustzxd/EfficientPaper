@@ -1,0 +1,51 @@
+paper {
+  title: "UNComp: Can Matrix Entropy Uncover Sparsity? -- A Compressor Design from an Uncertainty-Aware Perspective"
+  abbr: "UNComp"
+  url: "http://arxiv.org/abs/2410.03090v2"
+  authors: "Jing Xiong"
+  authors: "Jianghan Shen"
+  authors: "Fanghua Ye"
+  authors: "Chaofan Tao"
+  authors: "Zhongwei Wan"
+  authors: "Jianqiao Lu"
+  authors: "Xun Wu"
+  authors: "Chuanyang Zheng"
+  authors: "Zhijiang Guo"
+  authors: "Min Yang"
+  authors: "Lingpeng Kong"
+  authors: "Ngai Wong"
+  institutions: "The University of Hong Kong"
+  institutions: "Nanjing University"
+  institutions: "University College London"
+  institutions: "The Ohio State University"
+  institutions: "Microsoft Research Asia"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "The Hong Kong University of Science and Technology"
+}
+pub {
+  where: "EMNLP"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/menik1126/UNComp"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig4.png"
+}
+baseline {
+  methods: "2023/H2O"
+  methods: "2024/streaming-llm"
+  methods: "2024/SnapKV"
+  methods: "PyramidKV"
+  methods: "2024/Quest"
+  methods: "2024/DoubleSparse"
+}

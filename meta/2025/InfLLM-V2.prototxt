@@ -1,0 +1,42 @@
+paper {
+  title: "InfLLM-V2: Dense-Sparse Switchable Attention for Seamless Short-to-Long Adaptation"
+  abbr: "InfLLM-V2"
+  url: "http://arxiv.org/abs/2509.24663v1"
+  authors: "Weilin Zhao"
+  authors: "Zihan Zhou"
+  authors: "Zhou Su"
+  authors: "Chaojun Xiao"
+  authors: "Yuxuan Li"
+  authors: "Yanghao Li"
+  authors: "Yudi Zhang"
+  authors: "Weilun Zhao"
+  authors: "Zhen Li"
+  authors: "Yuxiang Huang"
+  authors: "Ao Sun"
+  authors: "Xu Han"
+  authors: "Zhiyuan Liu"
+  institutions: "Tsinghua University"
+  institutions: "OpenBMB"
+  institutions: "Harbin Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "CUDA"
+  url: "https://github.com/OpenBMB/infllmv2_cuda_impl"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}
+baseline {
+  methods: "2025/NSA"
+}

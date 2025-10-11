@@ -56,12 +56,12 @@ def main():
 def export_mermaid(graph: nx.DiGraph) -> str:
     """Export a NetworkX DiGraph to Mermaid flowchart text.
 
-    - Direction: top-down (TD)
+    - Direction: top-down (LR)
     - Node id: sanitized from original node key by replacing non [A-Za-z0-9_] with '_'
     - Node label: prefer node attribute 'name', fallback to node key
     - Edge direction: u --> v
     """
-    lines = ["flowchart TD"]
+    lines = ["flowchart LR"]
 
     def sanitize_id(raw: str) -> str:
         return re.sub(r"[^A-Za-z0-9_]", "_", raw)

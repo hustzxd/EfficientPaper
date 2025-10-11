@@ -1,0 +1,42 @@
+paper {
+  title: "MILLION: Mastering Long-Context LLM Inference Via Outlier-Immunized KV Product Quantization"
+  abbr: "MILLION"
+  url: "http://arxiv.org/abs/2504.03661v2"
+  authors: "Zongwu Wang"
+  authors: "Peng Xu"
+  authors: "Fangxin Liu"
+  authors: "Yiwei Hu"
+  authors: "Qingxiao Sun"
+  authors: "Gezi Li"
+  authors: "Cheng Li"
+  authors: "Xuan Wang"
+  authors: "Li Jiang"
+  authors: "Haibing Guan"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Shanghai Qi Zhi Institute"
+  institutions: "Huawei"
+  institutions: "China University of Petroleum-Beijing"
+}
+pub {
+  where: "DAC"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ZongwuWang/MILLION"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: "fig4.png"
+}
+baseline {
+  methods: "2024/KIVI"
+  methods: "2024/KVQuant"
+}

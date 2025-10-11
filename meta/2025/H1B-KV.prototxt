@@ -1,0 +1,30 @@
+paper {
+  title: "H1B-KV: Hybrid One-Bit Caches for Memory-Efficient Large Language Model Inference"
+  abbr: "H1B-KV"
+  url: "http://arxiv.org/abs/2510.05529v1"
+  authors: "Harshil Vejendla"
+  institutions: "Rutgers University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/KIVI"
+  methods: "Loki"
+}
