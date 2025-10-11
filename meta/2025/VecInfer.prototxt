@@ -1,0 +1,38 @@
+paper {
+  title: "VecInfer: Efficient LLM Inference with Low-Bit KV Cache via Outlier-Suppressed Vector Quantization"
+  abbr: "VecInfer"
+  url: "http://arxiv.org/abs/2510.06175v1"
+  authors: "Dingyu Yao"
+  authors: "Chenxu Yang"
+  authors: "Zhengyang Tong"
+  authors: "Zheng Lin"
+  authors: "Wei Liu"
+  authors: "Jian Luan"
+  authors: "Weiping Wang"
+  institutions: "Institute of Information Engineering, Chinese Academy of Sciences"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "Xiaomi"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: "fig4.png"
+}
+baseline {
+  methods: "2024/KIVI"
+  methods: "2025/MILLION"
+}
