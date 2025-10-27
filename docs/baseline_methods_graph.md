@@ -6,31 +6,31 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 ```mermaid
 flowchart LR
+    2023_PagedAttention["PagedAttention[2023]"]
+    2024_Async_TP["Async-TP[2024]"]
     2024_FLUX["FLUX[2024]"]
     2025_TokenWeave["TokenWeave[2025]"]
-    2025_TileLink["TileLink[2025]"]
-    2023_PagedAttention["PagedAttention[2023]"]
-    2026_FlashOverlap["FlashOverlap[2026]"]
     2025_NanoFlow["NanoFlow[2025]"]
-    2024_Async_TP["Async-TP[2024]"]
-    2024_FLUX --> 2025_TileLink
-    2024_FLUX --> 2026_FlashOverlap
-    2025_TileLink --> 2025_TokenWeave
+    2025_TileLink["TileLink[2025]"]
+    2026_FlashOverlap["FlashOverlap[2026]"]
     2023_PagedAttention --> 2025_TileLink
     2023_PagedAttention --> 2025_NanoFlow
     2023_PagedAttention --> 2025_TokenWeave
-    2025_NanoFlow --> 2025_TokenWeave
     2024_Async_TP --> 2025_TileLink
     2024_Async_TP --> 2026_FlashOverlap
+    2024_FLUX --> 2025_TileLink
+    2024_FLUX --> 2026_FlashOverlap
+    2025_NanoFlow --> 2025_TokenWeave
+    2025_TileLink --> 2025_TokenWeave
 ```
 
 ## Component 2
 
 ```mermaid
 flowchart LR
+    2025_SDS["SDS[2025]"]
     2024_Wanda["Wanda[2024]"]
     2023_sparsegpt["sparsegpt[2023]"]
-    2025_SDS["SDS[2025]"]
     2025_BaWA["BaWA[2025]"]
     2024_Wanda --> 2025_SDS
     2024_Wanda --> 2025_BaWA
@@ -112,7 +112,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    2025_NSA["NSA[2025]"]
     2025_InfLLM_V2["InfLLM-V2[2025]"]
+    2025_NSA["NSA[2025]"]
     2025_NSA --> 2025_InfLLM_V2
 ```
