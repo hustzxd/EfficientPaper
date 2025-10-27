@@ -88,6 +88,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-17/">2025-10-17</a>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-24/">2025-10-24</a>
+</li>
 <li class="toctree-l1"><a class="reference internal">Lagency</a>
 <ul>
 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-07-25/">2025-07-25</a>
@@ -133,28 +135,28 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <h2 id="component-1">Component 1</h2>
 <div class="mermaid">flowchart LR
+    2023_PagedAttention["PagedAttention[2023]"]
+    2024_Async_TP["Async-TP[2024]"]
     2024_FLUX["FLUX[2024]"]
     2025_TokenWeave["TokenWeave[2025]"]
-    2025_TileLink["TileLink[2025]"]
-    2023_PagedAttention["PagedAttention[2023]"]
-    2026_FlashOverlap["FlashOverlap[2026]"]
     2025_NanoFlow["NanoFlow[2025]"]
-    2024_Async_TP["Async-TP[2024]"]
-    2024_FLUX --&gt; 2025_TileLink
-    2024_FLUX --&gt; 2026_FlashOverlap
-    2025_TileLink --&gt; 2025_TokenWeave
+    2025_TileLink["TileLink[2025]"]
+    2026_FlashOverlap["FlashOverlap[2026]"]
     2023_PagedAttention --&gt; 2025_TileLink
     2023_PagedAttention --&gt; 2025_NanoFlow
     2023_PagedAttention --&gt; 2025_TokenWeave
-    2025_NanoFlow --&gt; 2025_TokenWeave
     2024_Async_TP --&gt; 2025_TileLink
     2024_Async_TP --&gt; 2026_FlashOverlap
+    2024_FLUX --&gt; 2025_TileLink
+    2024_FLUX --&gt; 2026_FlashOverlap
+    2025_NanoFlow --&gt; 2025_TokenWeave
+    2025_TileLink --&gt; 2025_TokenWeave
 </div>
 <h2 id="component-2">Component 2</h2>
 <div class="mermaid">flowchart LR
+    2025_SDS["SDS[2025]"]
     2024_Wanda["Wanda[2024]"]
     2023_sparsegpt["sparsegpt[2023]"]
-    2025_SDS["SDS[2025]"]
     2025_BaWA["BaWA[2025]"]
     2024_Wanda --&gt; 2025_SDS
     2024_Wanda --&gt; 2025_BaWA
@@ -230,8 +232,8 @@
 </div>
 <h2 id="component-4">Component 4</h2>
 <div class="mermaid">flowchart LR
-    2025_NSA["NSA[2025]"]
     2025_InfLLM_V2["InfLLM-V2[2025]"]
+    2025_NSA["NSA[2025]"]
     2025_NSA --&gt; 2025_InfLLM_V2
 </div>
 <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
