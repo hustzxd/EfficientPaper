@@ -1,0 +1,38 @@
+paper {
+  title: "PureKV: Plug-and-Play KV Cache Optimization with Spatial-Temporal Sparse Attention for Vision-Language Large Models"
+  abbr: "PureKV"
+  url: "http://arxiv.org/abs/2510.25600v2"
+  authors: "Zhonghua Jiang"
+  authors: "Kunxi Li"
+  authors: "Yiyun Zhou"
+  authors: "Sihao Liu"
+  authors: "Zhaode Wang"
+  authors: "Chengfei lv"
+  authors: "Shengyu Zhang"
+  institutions: "Zhejiang University"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig1.png"
+}
+baseline {
+  methods: "2023/H2O"
+  methods: "2024/SnapKV"
+  methods: "2024/streaming-llm"
+}
