@@ -1,0 +1,43 @@
+paper {
+  title: "Sparse VideoGen2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation"
+  abbr: "SVG2"
+  url: "http://arxiv.org/abs/2505.18875v3"
+  authors: "Shuo Yang"
+  authors: "Haocheng Xi"
+  authors: "Yilong Zhao"
+  authors: "Muyang Li"
+  authors: "Jintao Zhang"
+  authors: "Han Cai"
+  authors: "Yujun Lin"
+  authors: "Xiuyu Li"
+  authors: "Chenfeng Xu"
+  authors: "Kelly Peng"
+  authors: "Jianfei Chen"
+  authors: "Song Han"
+  authors: "Kurt Keutzer"
+  authors: "Ion Stoica"
+  institutions: "University of California, Berkeley"
+  institutions: "MIT"
+  institutions: "Stanford University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/svg-project/SparseVideoGen"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+note {
+  url: "note.md"
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/SVG"
+}

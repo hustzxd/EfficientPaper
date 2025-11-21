@@ -47,5 +47,5 @@ baseline {
   methods: "2024/SnapKV"
   methods: "PyramidKV"
   methods: "2024/Quest"
-  methods: "2024/DoubleSparse"
+  methods: "2024/DoubleSparsity"
 }

@@ -1,0 +1,42 @@
+paper {
+  title: "SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse-Linear Attention"
+  abbr: "SLA"
+  url: "http://arxiv.org/abs/2509.24006v1"
+  authors: "Jintao Zhang"
+  authors: "Haoxu Wang"
+  authors: "Kai Jiang"
+  authors: "Shuo Yang"
+  authors: "Kaiwen Zheng"
+  authors: "Haocheng Xi"
+  authors: "Ziteng Wang"
+  authors: "Hongzhou Zhu"
+  authors: "Min Zhao"
+  authors: "Ion Stoica"
+  authors: "Joseph E. Gonzalez"
+  authors: "Jun Zhu"
+  authors: "Jianfei Chen"
+  institutions: "Tsinghua University"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thu-ml/SLA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: structure_design
+}
+cover {
+  url: "fig4.png"
+}
+baseline {
+  methods: "None"
+}

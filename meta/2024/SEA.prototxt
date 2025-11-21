@@ -1,0 +1,32 @@
+paper {
+  title: "SEA: Sparse Linear Attention with Estimated Attention Mask"
+  abbr: "SEA"
+  url: "http://arxiv.org/abs/2310.01777v2"
+  authors: "Heejun Lee"
+  authors: "Jina Kim"
+  authors: "Jeffrey Willette"
+  authors: "Sung Ju Hwang"
+  institutions: "Korea Advanced Institute of Science and Technology"
+  institutions: "DeepAuto.ai"
+}
+pub {
+  where: "ICLR"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/gmlwns2000/sea-attention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "figure1.png"
+}
+baseline {
+  methods: "None"
+}

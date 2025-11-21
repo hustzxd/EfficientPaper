@@ -16,8 +16,12 @@ paper {
   authors: "Ion Stoica"
   authors: "Kurt Keutzer"
   authors: "Song Han"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "MIT"
+  institutions: "NVIDIA"
+  institutions: "Princeton"
+  institutions: "UC Berkeley"
+  institutions: "Stanford"
+  institutions: "First Intelligence"
 }
 pub {
   where: "arXiv"
@@ -36,5 +40,5 @@ keyword {
   words: attention_sparsity
 }
 cover {
-  url: ""
+  url: "fig3.png"
 }
