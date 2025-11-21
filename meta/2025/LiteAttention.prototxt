@@ -1,0 +1,32 @@
+paper {
+  title: "LiteAttention: A Temporal Sparse Attention for Diffusion Transformers"
+  abbr: "LiteAttention"
+  url: "http://arxiv.org/abs/2511.11062v1"
+  authors: "Dor Shmilovich"
+  authors: "Tony Wu"
+  authors: "Aviad Dahan"
+  authors: "Yuval Domb"
+  institutions: "MoonMath.ai"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/moonmath-ai/LiteAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/RadialAttention"
+  methods: "2025/SVG"
+}

@@ -69,21 +69,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#component-4">Component 4</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#component-5">Component 5</a>
+</li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Weekly Paper</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-05/">2025-09-05</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-15/">2025-09-15</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-19/">2025-09-19</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-26/">2025-09-26</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-09-28/">2025-09-28</a>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-09/">2025-10-09</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-17/">2025-10-17</a>
@@ -94,19 +86,33 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-11-07/">2025-11-07</a>
 </li>
-<li class="toctree-l1"><a class="reference internal">Lagency</a>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-11-14/">2025-11-14</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-11-21/">2025-11-21</a>
+</li>
+<li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-07-25/">2025-07-25</a>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-07-25/">2025-07-25</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-01/">2025-08-01</a>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-08-01/">2025-08-01</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-08/">2025-08-08</a>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-08-08/">2025-08-08</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-15/">2025-08-15</a>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-08-15/">2025-08-15</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-22/">2025-08-22</a>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-08-22/">2025-08-22</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/lagency/2025-08-29/">2025-08-29</a>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-08-29/">2025-08-29</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-05/">2025-09-05</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-15/">2025-09-15</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-19/">2025-09-19</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-26/">2025-09-26</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-28/">2025-09-28</a>
 </li>
 </ul>
 </li>
@@ -139,36 +145,46 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <h2 id="component-1">Component 1</h2>
 <div class="mermaid">flowchart LR
+    2026_FlashOverlap["FlashOverlap[2026]"]
+    2024_FLUX["FLUX[2024]"]
     2025_NanoFlow["NanoFlow[2025]"]
     2023_PagedAttention["PagedAttention[2023]"]
-    2024_FLUX["FLUX[2024]"]
-    2025_TileLink["TileLink[2025]"]
-    2026_FlashOverlap["FlashOverlap[2026]"]
     2024_Async_TP["Async-TP[2024]"]
+    2025_TileLink["TileLink[2025]"]
     2025_TokenWeave["TokenWeave[2025]"]
+    2024_FLUX --&gt; 2025_TileLink
+    2024_FLUX --&gt; 2026_FlashOverlap
     2025_NanoFlow --&gt; 2025_TokenWeave
     2023_PagedAttention --&gt; 2025_TileLink
     2023_PagedAttention --&gt; 2025_NanoFlow
     2023_PagedAttention --&gt; 2025_TokenWeave
-    2024_FLUX --&gt; 2025_TileLink
-    2024_FLUX --&gt; 2026_FlashOverlap
-    2025_TileLink --&gt; 2025_TokenWeave
     2024_Async_TP --&gt; 2025_TileLink
     2024_Async_TP --&gt; 2026_FlashOverlap
+    2025_TileLink --&gt; 2025_TokenWeave
 </div>
 <h2 id="component-2">Component 2</h2>
 <div class="mermaid">flowchart LR
-    2024_Wanda["Wanda[2024]"]
-    2025_BaWA["BaWA[2025]"]
+    2025_SVG2["SVG2[2025]"]
+    2025_RadialAttention["RadialAttention[2025]"]
+    2025_SVG["SVG[2025]"]
+    2025_LiteAttention["LiteAttention[2025]"]
+    2025_RadialAttention --&gt; 2025_LiteAttention
+    2025_SVG --&gt; 2025_SVG2
+    2025_SVG --&gt; 2025_LiteAttention
+</div>
+<h2 id="component-3">Component 3</h2>
+<div class="mermaid">flowchart LR
     2023_sparsegpt["sparsegpt[2023]"]
+    2024_Wanda["Wanda[2024]"]
     2025_SDS["SDS[2025]"]
-    2024_Wanda --&gt; 2025_SDS
-    2024_Wanda --&gt; 2025_BaWA
+    2025_BaWA["BaWA[2025]"]
     2023_sparsegpt --&gt; 2025_SDS
     2023_sparsegpt --&gt; 2025_BaWA
     2023_sparsegpt --&gt; 2024_Wanda
+    2024_Wanda --&gt; 2025_SDS
+    2024_Wanda --&gt; 2025_BaWA
 </div>
-<h2 id="component-3">Component 3</h2>
+<h2 id="component-4">Component 4</h2>
 <div class="mermaid">flowchart LR
     2025_UNComp["UNComp[2025]"]
     2023_H2O["H2O[2023]"]
@@ -176,7 +192,7 @@
     2024_SnapKV["SnapKV[2024]"]
     PyramidKV["PyramidKV"]
     2024_Quest["Quest[2024]"]
-    2024_DoubleSparse["2024/DoubleSparse"]
+    2024_DoubleSparsity["DoubleSparsity[2024]"]
     2025_EvolKV["EvolKV[2025]"]
     2025_LAVa["LAVa[2025]"]
     Ada_SnapKV["Ada-SnapKV"]
@@ -215,7 +231,7 @@
     PyramidKV --&gt; 2025_EvolKV
     PyramidKV --&gt; 2025_LAVa
     2024_Quest --&gt; 2025_UNComp
-    2024_DoubleSparse --&gt; 2025_UNComp
+    2024_DoubleSparsity --&gt; 2025_UNComp
     Ada_SnapKV --&gt; 2025_LAVa
     CAKE --&gt; 2025_LAVa
     2025_FlexPrefill --&gt; 2025_XAttention
@@ -238,7 +254,7 @@
     2024_GEAR --&gt; 2025_RotateKV
     InfLLM --&gt; 2024_MInference
 </div>
-<h2 id="component-4">Component 4</h2>
+<h2 id="component-5">Component 5</h2>
 <div class="mermaid">flowchart LR
     2025_InfLLM_V2["InfLLM-V2[2025]"]
     2025_NSA["NSA[2025]"]
@@ -273,7 +289,7 @@
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../cls_author/" title="By Author"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../weekly_paper/2025-09-05/" title="2025-09-05">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../weekly_paper/2025-10-09/" title="2025-10-09">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -289,7 +305,7 @@
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
 <span><a href="../cls_author/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../weekly_paper/2025-09-05/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../weekly_paper/2025-10-09/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../js/jquery-3.6.0.min.js"></script>

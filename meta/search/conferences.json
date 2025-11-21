@@ -37,10 +37,10 @@
     },
     {
       "name": "ICML",
-      "start": "2025-01-09",
-      "end": "2025-01-30",
+      "start": "2026-01-08",
+      "end": "2026-01-28",
       "level": "CCF-A",
-      "url": "https://icml.cc/Conferences/2025/Dates"
+      "url": "https://icml.cc/Conferences/2026/Dates"
     },
     {
       "name": "NeurIPS",
@@ -51,10 +51,10 @@
     },
     {
       "name": "ACL",
-      "start": "2025-02-1",
-      "end": "2025-02-15",
+      "start": "2026-01-1",
+      "end": "2026-01-05",
       "level": "CCF-A",
-      "url": "https://2025.aclweb.org/calls/main_conference_papers/"
+      "url": "https://2026.aclweb.org/calls/main_conference_papers/"
     },
     {
       "name": "CVPR",
@@ -72,10 +72,10 @@
     },
     {
       "name": "IJCAI",
-      "start": "2025-1-01",
-      "end": "2025-1-23",
+      "start": "2026-1-12",
+      "end": "2026-1-19",
       "level": "CCF-A",
-      "url": "https://2025.ijcai.org/call-for-papers-main-track/"
+      "url": "https://2026.ijcai.org/important-dates/"
     },
     {
       "name": "ECCV",
@@ -93,10 +93,10 @@
     },
     {
       "name": "DAC",
-      "start": "2025-02-01",
-      "end": "2025-02-05",
+      "start": "2025-11-10",
+      "end": "2025-11-19",
       "level": "CCF-A",
-      "url": "https://www.sigda.org/dac2025/call-for-papers/"
+      "url": "https://dac.com/2026/program/research-manuscript-submissions"
     },
     {
       "name": "HPCA",

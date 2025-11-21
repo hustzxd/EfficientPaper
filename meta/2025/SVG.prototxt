@@ -1,0 +1,44 @@
+paper {
+  title: "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+  abbr: "SVG"
+  url: "http://arxiv.org/abs/2502.01776v2"
+  authors: "Haocheng Xi"
+  authors: "Shuo Yang"
+  authors: "Yilong Zhao"
+  authors: "Chenfeng Xu"
+  authors: "Muyang Li"
+  authors: "Xiuyu Li"
+  authors: "Yujun Lin"
+  authors: "Han Cai"
+  authors: "Jintao Zhang"
+  authors: "Dacheng Li"
+  authors: "Jianfei Chen"
+  authors: "Ion Stoica"
+  authors: "Kurt Keutzer"
+  authors: "Song Han"
+  institutions: "University of California, Berkeley"
+  institutions: "MIT"
+  institutions: "NVIDIA"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "ICML"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/svg-project/SparseVideoGen"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
