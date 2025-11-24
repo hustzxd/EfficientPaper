@@ -1,0 +1,48 @@
+paper {
+  title: "Spark Transformer: Reactivating Sparsity in FFN and Attention"
+  abbr: "SparkTransformer"
+  url: "http://arxiv.org/abs/2506.06644v2"
+  authors: "Chong You"
+  authors: "Kan Wu"
+  authors: "Zhipeng Jia"
+  authors: "Lin Chen"
+  authors: "Srinadh Bhojanapalli"
+  authors: "Jiaxian Guo"
+  authors: "Utku Evci"
+  authors: "Jan Wassenberg"
+  authors: "Praneeth Netrapalli"
+  authors: "Jeremiah J. Willcock"
+  authors: "Suvinay Subramanian"
+  authors: "Felix Chern"
+  authors: "Alek Andreev"
+  authors: "Shreya Pathak"
+  authors: "Felix Yu"
+  authors: "Prateek Jain"
+  authors: "David E. Culler"
+  authors: "Henry M. Levy"
+  authors: "Sanjiv Kumar"
+  institutions: "Google"
+  institutions: "xAI"
+  institutions: "Anthropic"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: pruning_sparse
+  words: activation_sparsity
+}
+cover {
+  url: "fig2.png"
+}
+baseline {
+  methods: "None"
+}
