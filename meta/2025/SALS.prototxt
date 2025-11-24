@@ -1,0 +1,35 @@
+paper {
+  title: "SALS: Sparse Attention in Latent Space for KV cache Compression"
+  abbr: "SALS"
+  url: "http://arxiv.org/abs/2510.24273v1"
+  authors: "Junlin Mu"
+  authors: "Hantao Huang"
+  authors: "Jihang Zhang"
+  authors: "Minghui Yu"
+  authors: "Tao Wang"
+  authors: "Yidong Li"
+  institutions: "Beijing Jiaotong University"
+  institutions: "ByteDance Seed"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache
+  words: attention_sparsity
+}
+cover {
+  url: "fig3.png"
+}
+baseline {
+  methods: "None"
+}

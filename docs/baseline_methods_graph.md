@@ -6,45 +6,45 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 ```mermaid
 flowchart LR
-    2026_FlashOverlap["FlashOverlap[2026]"]
-    2024_FLUX["FLUX[2024]"]
-    2025_NanoFlow["NanoFlow[2025]"]
     2023_PagedAttention["PagedAttention[2023]"]
-    2024_Async_TP["Async-TP[2024]"]
     2025_TileLink["TileLink[2025]"]
+    2024_FLUX["FLUX[2024]"]
+    2024_Async_TP["Async-TP[2024]"]
     2025_TokenWeave["TokenWeave[2025]"]
-    2024_FLUX --> 2025_TileLink
-    2024_FLUX --> 2026_FlashOverlap
-    2025_NanoFlow --> 2025_TokenWeave
+    2025_NanoFlow["NanoFlow[2025]"]
+    2026_FlashOverlap["FlashOverlap[2026]"]
     2023_PagedAttention --> 2025_TileLink
     2023_PagedAttention --> 2025_NanoFlow
     2023_PagedAttention --> 2025_TokenWeave
+    2025_TileLink --> 2025_TokenWeave
+    2024_FLUX --> 2025_TileLink
+    2024_FLUX --> 2026_FlashOverlap
     2024_Async_TP --> 2025_TileLink
     2024_Async_TP --> 2026_FlashOverlap
-    2025_TileLink --> 2025_TokenWeave
+    2025_NanoFlow --> 2025_TokenWeave
 ```
 
 ## Component 2
 
 ```mermaid
 flowchart LR
-    2025_SVG2["SVG2[2025]"]
-    2025_RadialAttention["RadialAttention[2025]"]
     2025_SVG["SVG[2025]"]
     2025_LiteAttention["LiteAttention[2025]"]
-    2025_RadialAttention --> 2025_LiteAttention
+    2025_RadialAttention["RadialAttention[2025]"]
+    2025_SVG2["SVG2[2025]"]
     2025_SVG --> 2025_SVG2
     2025_SVG --> 2025_LiteAttention
+    2025_RadialAttention --> 2025_LiteAttention
 ```
 
 ## Component 3
 
 ```mermaid
 flowchart LR
-    2023_sparsegpt["sparsegpt[2023]"]
-    2024_Wanda["Wanda[2024]"]
     2025_SDS["SDS[2025]"]
+    2023_sparsegpt["sparsegpt[2023]"]
     2025_BaWA["BaWA[2025]"]
+    2024_Wanda["Wanda[2024]"]
     2023_sparsegpt --> 2025_SDS
     2023_sparsegpt --> 2025_BaWA
     2023_sparsegpt --> 2024_Wanda
