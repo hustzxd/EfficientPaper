@@ -1,0 +1,44 @@
+paper {
+  title: "RetrievalAttention: Accelerating Long-Context LLM Inference via Vector Retrieval"
+  abbr: "RetrievalAttention"
+  url: "http://arxiv.org/abs/2409.10516v3"
+  authors: "Di Liu"
+  authors: "Meng Chen"
+  authors: "Baotong Lu"
+  authors: "Huiqiang Jiang"
+  authors: "Zhenhua Han"
+  authors: "Qianxi Zhang"
+  authors: "Qi Chen"
+  authors: "Chengruidong Zhang"
+  authors: "Bailu Ding"
+  authors: "Kai Zhang"
+  authors: "Chen Chen"
+  authors: "Fan Yang"
+  authors: "Yuqing Yang"
+  authors: "Lili Qiu"
+  institutions: "Microsoft Research"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Fudan University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/RetrievalAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

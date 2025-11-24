@@ -12,7 +12,7 @@ paper {
   institutions: "ByteDance Seed"
 }
 pub {
-  where: "arXiv"
+  where: "NeurIPS"
   year: 2025
 }
 code {

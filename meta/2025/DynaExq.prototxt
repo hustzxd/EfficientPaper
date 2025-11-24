@@ -1,0 +1,33 @@
+paper {
+  title: "Dynamic Expert Quantization for Scalable Mixture-of-Experts Inference"
+  abbr: "DynaExq"
+  url: "http://arxiv.org/abs/2511.15015v1"
+  authors: "Kexin Chu"
+  authors: "Dawei Xiang"
+  authors: "Zixu Shen"
+  authors: "Yiwei Yang"
+  authors: "Zecheng Liu"
+  authors: "Wei Zhang"
+  institutions: "University of Connecticut"
+  institutions: "University of California"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "fig2.png"
+}
+baseline {
+  methods: "None"
+}
