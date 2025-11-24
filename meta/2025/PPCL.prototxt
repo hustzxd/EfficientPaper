@@ -1,0 +1,34 @@
+paper {
+  title: "Pluggable Pruning with Contiguous Layer Distillation for Diffusion Transformers"
+  abbr: "PPCL"
+  url: "http://arxiv.org/abs/2511.16156v1"
+  authors: "Jian Ma"
+  authors: "Qirong Peng"
+  authors: "Xujie Zhu"
+  authors: "Peixing Xie"
+  authors: "Chen Chen"
+  authors: "Haonan Lu"
+  institutions: "OPPO AI Center"
+  institutions: "Sun Yat-sen University"
+  institutions: "The Chinese University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/OPPO-Mente-Lab/Qwen-Image-Pruning"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+}
+cover {
+  url: "fig3.png"
+}
+baseline {
+  methods: "None"
+}

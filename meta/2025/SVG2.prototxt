@@ -26,7 +26,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: "https://github.com/svg-project/SparseVideoGen"
+  url: "https://github.com/svg-project/Sparse-VideoGen"
 }
 keyword {
   words: sparse_pruning
