@@ -58,6 +58,14 @@
 | [PureKV](./meta/2025/PureKV.prototxt) | [PureKV: Plug-and-Play KV Cache Optimization with Spatial-Temporal Sparse Attention for Vision-Language Large Models](http://arxiv.org/abs/2510.25600v2) | ![cover](./notes/2025/PureKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/PureKV/note.md) |
 
 
+#### Anthropic
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SparkTransformer](./meta/2025/SparkTransformer.prototxt) | [Spark Transformer: Reactivating Sparsity in FFN and Attention](http://arxiv.org/abs/2506.06644v2) | ![cover](./notes/2025/SparkTransformer/fig2.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SparkTransformer/note.md) |
+
+
 #### Apple
 
 
@@ -447,6 +455,7 @@
 | [m](./meta/2023/WMMGA0AR.prototxt) | [The Lazy Neuron Phenomenon: On Emergence of Activation Sparsity in Transformers](https://openreview.net/forum?id=TJ2nxciYCk-) |  | ![Publish](https://img.shields.io/badge/2023-ICLR-FF6B6B) |  |  |
 | [KCM](./meta/2023/kcm.prototxt) | [Gradient-Free Structured Pruning with Unlabeled Data](https://arxiv.org/abs/2303.04185) | ![cover](./notes/2023/kcm/kcm.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) |  |  |
 | [ShadowLLM](./meta/2024/ShadowLLM.prototxt) | [ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models](http://arxiv.org/abs/2406.16635v1) | ![cover](./notes/2024/ShadowLLM/shadowLLM.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/abdelfattah-lab/shadow_llm)](https://github.com/abdelfattah-lab/shadow_llm) | [note](./notes/2024/ShadowLLM/note.md) |
+| [SparkTransformer](./meta/2025/SparkTransformer.prototxt) | [Spark Transformer: Reactivating Sparsity in FFN and Attention](http://arxiv.org/abs/2506.06644v2) | ![cover](./notes/2025/SparkTransformer/fig2.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SparkTransformer/note.md) |
 
 
 #### Google Cloud
@@ -2509,6 +2518,14 @@
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 | [209M5GA7](./meta/2025/209M5GA7.prototxt) | [KV Cache Compression for Inference Efficiency in LLMs: A Review](http://arxiv.org/abs/2508.06297v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/209M5GA7/note.md) |
 | [QuickSilver](./meta/2025/QuickSilver.prototxt) | [QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization](http://arxiv.org/abs/2506.22396v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/QuickSilver/note.md) |
+
+
+#### xAI
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SparkTransformer](./meta/2025/SparkTransformer.prototxt) | [Spark Transformer: Reactivating Sparsity in FFN and Attention](http://arxiv.org/abs/2506.06644v2) | ![cover](./notes/2025/SparkTransformer/fig2.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SparkTransformer/note.md) |
 
 
 

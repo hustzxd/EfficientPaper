@@ -535,6 +535,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Chong You</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [m](./meta/2023/WMMGA0AR.prototxt) | [The Lazy Neuron Phenomenon: On Emergence of Activation Sparsity in Transformers](https://openreview.net/forum?id=TJ2nxciYCk-) |  | ![Publish](https://img.shields.io/badge/2023-ICLR-FF6B6B) |  |  |
+| [SparkTransformer](./meta/2025/SparkTransformer.prototxt) | [Spark Transformer: Reactivating Sparsity in FFN and Attention](http://arxiv.org/abs/2506.06644v2) | ![cover](./notes/2025/SparkTransformer/fig2.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SparkTransformer/note.md) |
+</p>
+</details>
 <details open><summary><b>Christos Kozyrakis</b></summary> 
 <p>
 
@@ -3100,6 +3110,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [RecursiveTransformers](./meta/2025/RecursiveTransformers.prototxt) | [Relaxed Recursive Transformers: Effective Parameter Sharing with Layer-wise LoRA](http://arxiv.org/abs/2410.20672v3) | ![cover](./notes/2025/RecursiveTransformers/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) |  | [note](./notes/2025/RecursiveTransformers/note.md) |
 | [MoR](./meta/2025/MoR.prototxt) | [Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation](http://arxiv.org/abs/2507.10524v1) | ![cover](./notes/2025/MoR/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/raymin0223/mixture_of_recursions)](https://github.com/raymin0223/mixture_of_recursions) | [note](./notes/2025/MoR/note.md) |
+</p>
+</details>
+<details open><summary><b>Sanjiv Kumar</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [m](./meta/2023/WMMGA0AR.prototxt) | [The Lazy Neuron Phenomenon: On Emergence of Activation Sparsity in Transformers](https://openreview.net/forum?id=TJ2nxciYCk-) |  | ![Publish](https://img.shields.io/badge/2023-ICLR-FF6B6B) |  |  |
+| [SparkTransformer](./meta/2025/SparkTransformer.prototxt) | [Spark Transformer: Reactivating Sparsity in FFN and Attention](http://arxiv.org/abs/2506.06644v2) | ![cover](./notes/2025/SparkTransformer/fig2.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SparkTransformer/note.md) |
 </p>
 </details>
 <details open><summary><b>Saurav Muralidharan</b></summary> 

@@ -37,7 +37,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: pruning_sparse
+  words: sparse_pruning
   words: activation_sparsity
 }
 cover {
