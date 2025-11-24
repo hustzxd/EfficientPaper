@@ -1,0 +1,37 @@
+paper {
+  title: "MoDES: Accelerating Mixture-of-Experts Multimodal Large Language Models via Dynamic Expert Skipping"
+  abbr: "MoDES"
+  url: "http://arxiv.org/abs/2511.15690v1"
+  authors: "Yushi Huang"
+  authors: "Zining Wang"
+  authors: "Zhihang Yuan"
+  authors: "Yifu Ding"
+  authors: "Ruihao Gong"
+  authors: "Jinyang Guo"
+  authors: "Xianglong Liu"
+  authors: "Jun Zhang"
+  institutions: "Hong Kong University of Science and Technology"
+  institutions: "Beihang University"
+  institutions: "Peking University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: "fig4.png"
+}
+baseline {
+  methods: "None"
+}

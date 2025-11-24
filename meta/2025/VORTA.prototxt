@@ -1,0 +1,34 @@
+paper {
+  title: "VORTA: Efficient Video Diffusion via Routing Sparse Attention"
+  abbr: "VORTA"
+  url: "http://arxiv.org/abs/2505.18809v2"
+  authors: "Wenhao Sun"
+  authors: "Rong-Cheng Tu"
+  authors: "Yifu Ding"
+  authors: "Zhao Jin"
+  authors: "Jingyi Liao"
+  authors: "Shunyu Liu"
+  authors: "Dacheng Tao"
+  institutions: "Nanyang Technological University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/wenhao728/VORTA"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig6.png"
+}
+baseline {
+  methods: "None"
+}
