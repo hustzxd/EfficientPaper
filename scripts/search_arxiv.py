@@ -7,7 +7,7 @@ import arxiv
 import google.protobuf as pb
 import google.protobuf.text_format
 
-sys.path.append("/Users/xiandong/projects/EfficientPaper")
+sys.path.insert(0, "/Users/xiandong/projects/EfficientPaper")
 
 from proto import efficient_paper_pb2 as eppb
 
