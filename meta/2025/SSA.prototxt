@@ -1,0 +1,35 @@
+paper {
+  title: "SSA: Sparse Sparse Attention by Aligning Full and Sparse Attention Outputs in Feature Space"
+  abbr: "SSA"
+  url: "http://arxiv.org/abs/2511.20102v1"
+  authors: "Zhenyi Shen"
+  authors: "Junru Lu"
+  authors: "Lin Gui"
+  authors: "Jiazheng Li"
+  authors: "Yulan He"
+  authors: "Di Yin"
+  authors: "Xing Sun"
+  institutions: "King’s College London"
+  institutions: "Tencent Youtu Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig2.png"
+}
+baseline {
+  methods: "None"
+}

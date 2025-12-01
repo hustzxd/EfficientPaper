@@ -10,10 +10,10 @@ import arxiv
 import google.protobuf as pb
 import google.protobuf.text_format
 
-sys.path.append("./")
+# Add project root to path before importing local modules
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from proto import efficient_paper_pb2 as eppb
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate Paper INFO")
