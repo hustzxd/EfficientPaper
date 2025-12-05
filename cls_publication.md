@@ -107,6 +107,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [m](./meta/2020/2AL79IUH.prototxt) | [Fast Sparse ConvNets](https://openaccess.thecvf.com/content_CVPR_2020/papers/Elsen_Fast_Sparse_ConvNets_CVPR_2020_paper.pdf) |  | ![Publish](https://img.shields.io/badge/2020-CVPR-2E8B57) | [![GitHub Repo stars](https://img.shields.io/github/stars/fastconvnets/cvpr2020)](https://github.com/fastconvnets/cvpr2020) |  |
+| [GPUSQ-ViT](./meta/2023/GPUSQ-ViT.prototxt) | [Boost Vision Transformer with GPU-Friendly Sparsity and Quantization](http://arxiv.org/abs/2305.10727v1) |  | ![Publish](https://img.shields.io/badge/2023-CVPR-2E8B57) |  | [note](./notes/2023/GPUSQ-ViT/note.md) |
 | [SparseViT](./meta/2023/SparseViT.prototxt) | [SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer](https://arxiv.org/abs/2303.17605) | ![cover](./notes/2023/SparseViT/sparsevit.jpg) | ![Publish](https://img.shields.io/badge/2023-CVPR-2E8B57) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/sparsevit)](https://github.com/mit-han-lab/sparsevit) | [note](./notes/2023/sparsevit/index.md) |
 </p>
 </details>

@@ -490,6 +490,15 @@
 | [SparkTransformer](./meta/2025/SparkTransformer.prototxt) | [Spark Transformer: Reactivating Sparsity in FFN and Attention](http://arxiv.org/abs/2506.06644v2) | ![cover](./notes/2025/SparkTransformer/fig2.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SparkTransformer/note.md) |
 
 
+#### Chong Yu
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [m](./meta/2021/K7GSWQIC.prototxt) | [Channel Permutations for N:M Sparsity](https://proceedings.neurips.cc/paper/2021/hash/6e8404c3b93a9527c8db241a1846599a-Abstract.html) |  | ![Publish](https://img.shields.io/badge/2021-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/apex)](https://github.com/NVIDIA/apex) |  |
+| [GPUSQ-ViT](./meta/2023/GPUSQ-ViT.prototxt) | [Boost Vision Transformer with GPU-Friendly Sparsity and Quantization](http://arxiv.org/abs/2305.10727v1) |  | ![Publish](https://img.shields.io/badge/2023-CVPR-2E8B57) |  | [note](./notes/2023/GPUSQ-ViT/note.md) |
+
+
 #### Christos Kozyrakis
 
 
