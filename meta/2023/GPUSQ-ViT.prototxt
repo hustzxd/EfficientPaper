@@ -1,0 +1,33 @@
+paper {
+  title: "Boost Vision Transformer with GPU-Friendly Sparsity and Quantization"
+  abbr: "GPUSQ-ViT"
+  url: "http://arxiv.org/abs/2305.10727v1"
+  authors: "Chong Yu"
+  authors: "Tao Chen"
+  authors: "Zhongxue Gan"
+  authors: "Jiayuan Fan"
+  institutions: "Fudan University"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "CVPR"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+  words: quantization
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
