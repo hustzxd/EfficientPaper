@@ -54,3 +54,8 @@ keyword {
 <p align="center">
 <img src="notes//conference_timeline.png" width="800" title="blank">
 </p>
+
+
+## 招聘
+
+如果您对论文涉及到的研究内容感兴趣，同时有求职意向（[实习生/校招/社招](https://m.zhipin.com/gongsi/job/dc8e21b748a34c331HZz3Nu-GFU~.html?ka=m_seo_companys_all_jobs_boss)），可以发送简历到zhaoxiandong27@gmail.com，欢迎沟通交流。

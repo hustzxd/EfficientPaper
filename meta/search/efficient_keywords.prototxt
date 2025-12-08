@@ -24,7 +24,7 @@ key_words: "decode"
 key_words: "prefilling"
 key_words: "decoding"
 key_words: "disaggregate"
-
+key_words: "disaggregation"
 
 exclude_words: "spiking"
 exclude_words: "BEV"
