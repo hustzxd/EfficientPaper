@@ -584,6 +584,7 @@
 | [ZigZagKV](./meta/2024/ZigZagKV.prototxt) | [ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty](http://arxiv.org/abs/2412.09036v1) | ![cover](./notes/2024/ZigZagKV/fig1.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ZigZagKV/note.md) |
 | [SpInfer](./meta/2025/SpInfer.prototxt) | [SpInfer: Leveraging Low-Level Sparsity for Efficient Large Language Model Inference on GPUs](https://dl.acm.org/doi/10.1145/3689031.3717481) | ![cover](./notes/2025/SpInfer/fig5.png) | ![Publish](https://img.shields.io/badge/2025-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/xxyux/SpInfer)](https://github.com/xxyux/SpInfer) | [note](./notes/2025/SpInfer/note.md) |
 | [InfLLM-V2](./meta/2025/InfLLM-V2.prototxt) | [InfLLM-V2: Dense-Sparse Switchable Attention for Seamless Short-to-Long Adaptation](http://arxiv.org/abs/2509.24663v1) | ![cover](./notes/2025/InfLLM-V2/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/infllmv2_cuda_impl)](https://github.com/OpenBMB/infllmv2_cuda_impl) | [note](./notes/2025/InfLLM-V2/note.md) |
+| [TCA-Attention](./meta/2025/TCA-Attention.prototxt) | [Training-free Context-adaptive Attention for Efficient Long Context Modeling](http://arxiv.org/abs/2512.09238v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/TCA-Attention/note.md) |
 </p>
 </details>
 <details open><summary><b>Harvard University</b></summary> 
@@ -1539,6 +1540,15 @@
 | [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
 </p>
 </details>
+<details open><summary><b>Pengcheng Laboratory</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [TCA-Attention](./meta/2025/TCA-Attention.prototxt) | [Training-free Context-adaptive Attention for Efficient Long Context Modeling](http://arxiv.org/abs/2512.09238v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/TCA-Attention/note.md) |
+</p>
+</details>
 <details open><summary><b>Perplexity AI</b></summary> 
 <p>
 
@@ -1884,6 +1894,15 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
+</p>
+</details>
+<details open><summary><b>South China University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [TCA-Attention](./meta/2025/TCA-Attention.prototxt) | [Training-free Context-adaptive Attention for Efficient Long Context Modeling](http://arxiv.org/abs/2512.09238v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/TCA-Attention/note.md) |
 </p>
 </details>
 <details open><summary><b>Southwest University</b></summary> 
