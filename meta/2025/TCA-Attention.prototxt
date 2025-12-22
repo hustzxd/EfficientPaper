@@ -1,0 +1,38 @@
+paper {
+  title: "Training-free Context-adaptive Attention for Efficient Long Context Modeling"
+  abbr: "TCA-Attention"
+  url: "http://arxiv.org/abs/2512.09238v1"
+  authors: "Zeng You"
+  authors: "Yaofo Chen"
+  authors: "Shuhai Zhang"
+  authors: "Zhijie Qiu"
+  authors: "Tingyu Wu"
+  authors: "Yingjian Li"
+  authors: "Yaowei Wang"
+  authors: "Mingkui Tan"
+  institutions: "Pengcheng Laboratory"
+  institutions: "South China University"
+  institutions: "Harbin Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/XAttention"
+  methods: "2025/FlexPrefill"
+}

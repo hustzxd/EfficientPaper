@@ -76,14 +76,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Weekly Paper</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-09/">2025-10-09</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-17/">2025-10-17</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-24/">2025-10-24</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-10-31/">2025-10-31</a>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-11-07/">2025-11-07</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-11-14/">2025-11-14</a>
@@ -93,6 +85,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-11-28/">2025-11-28</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-12-05/">2025-12-05</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-12-12/">2025-12-12</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-12-19/">2025-12-19</a>
 </li>
 <li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
@@ -117,6 +113,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-26/">2025-09-26</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-09-28/">2025-09-28</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
 </li>
 </ul>
 </li>
@@ -149,39 +153,39 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <h2 id="component-1">Component 1</h2>
 <div class="mermaid">flowchart LR
-    2023_PagedAttention["PagedAttention[2023]"]
-    2024_FLUX["FLUX[2024]"]
+    2024_Async_TP["Async-TP[2024]"]
     2025_TileLink["TileLink[2025]"]
+    2024_FLUX["FLUX[2024]"]
     2026_FlashOverlap["FlashOverlap[2026]"]
+    2023_PagedAttention["PagedAttention[2023]"]
     2025_TokenWeave["TokenWeave[2025]"]
     2025_NanoFlow["NanoFlow[2025]"]
-    2024_Async_TP["Async-TP[2024]"]
+    2024_Async_TP --&gt; 2025_TileLink
+    2024_Async_TP --&gt; 2026_FlashOverlap
+    2025_TileLink --&gt; 2025_TokenWeave
+    2024_FLUX --&gt; 2025_TileLink
+    2024_FLUX --&gt; 2026_FlashOverlap
     2023_PagedAttention --&gt; 2025_TileLink
     2023_PagedAttention --&gt; 2025_NanoFlow
     2023_PagedAttention --&gt; 2025_TokenWeave
-    2024_FLUX --&gt; 2025_TileLink
-    2024_FLUX --&gt; 2026_FlashOverlap
-    2025_TileLink --&gt; 2025_TokenWeave
     2025_NanoFlow --&gt; 2025_TokenWeave
-    2024_Async_TP --&gt; 2025_TileLink
-    2024_Async_TP --&gt; 2026_FlashOverlap
 </div>
 <h2 id="component-2">Component 2</h2>
 <div class="mermaid">flowchart LR
+    2025_RadialAttention["RadialAttention[2025]"]
     2025_SVG["SVG[2025]"]
     2025_SVG2["SVG2[2025]"]
     2025_LiteAttention["LiteAttention[2025]"]
-    2025_RadialAttention["RadialAttention[2025]"]
+    2025_RadialAttention --&gt; 2025_LiteAttention
     2025_SVG --&gt; 2025_SVG2
     2025_SVG --&gt; 2025_LiteAttention
-    2025_RadialAttention --&gt; 2025_LiteAttention
 </div>
 <h2 id="component-3">Component 3</h2>
 <div class="mermaid">flowchart LR
-    2025_SDS["SDS[2025]"]
     2023_sparsegpt["sparsegpt[2023]"]
-    2024_Wanda["Wanda[2024]"]
     2025_BaWA["BaWA[2025]"]
+    2025_SDS["SDS[2025]"]
+    2024_Wanda["Wanda[2024]"]
     2023_sparsegpt --&gt; 2025_SDS
     2023_sparsegpt --&gt; 2025_BaWA
     2023_sparsegpt --&gt; 2024_Wanda
@@ -190,69 +194,72 @@
 </div>
 <h2 id="component-4">Component 4</h2>
 <div class="mermaid">flowchart LR
-    2025_RotateKV["RotateKV[2025]"]
-    2025_MILLION["MILLION[2025]"]
-    2025_XAttention["XAttention[2025]"]
-    2025_LAVa["LAVa[2025]"]
-    PyramidKV["PyramidKV"]
-    2025_KVmix["KVmix[2025]"]
-    2024_DoubleSparsity["DoubleSparsity[2024]"]
     2024_MInference["MInference[2024]"]
-    2025_UNComp["UNComp[2025]"]
-    Ada_SnapKV["Ada-SnapKV"]
-    2023_H2O["H2O[2023]"]
-    InfLLM["InfLLM"]
-    2025_EvolKV["EvolKV[2025]"]
-    2025_VecInfer["VecInfer[2025]"]
-    CAKE["CAKE"]
-    2025_FlexPrefill["FlexPrefill[2025]"]
-    2024_MiKV["MiKV[2024]"]
-    2025_H1B_KV["H1B-KV[2025]"]
-    2024_KIVI["KIVI[2024]"]
-    2024_streaming_llm["streaming-llm[2024]"]
     Loki["Loki"]
+    PyramidKV["PyramidKV"]
+    2025_FlexPrefill["FlexPrefill[2025]"]
     2025_PureKV["PureKV[2025]"]
+    2025_XAttention["XAttention[2025]"]
+    2025_H1B_KV["H1B-KV[2025]"]
+    InfLLM["InfLLM"]
+    2025_VecInfer["VecInfer[2025]"]
+    2024_MiKV["MiKV[2024]"]
+    2025_LAVa["LAVa[2025]"]
+    2024_DoubleSparsity["DoubleSparsity[2024]"]
+    2025_RotateKV["RotateKV[2025]"]
+    2025_UNComp["UNComp[2025]"]
     2024_GEAR["GEAR[2024]"]
     2024_Quest["Quest[2024]"]
-    2024_ZipCache["ZipCache[2024]"]
-    2024_SnapKV["SnapKV[2024]"]
-    2024_KVQuant["KVQuant[2024]"]
+    2025_MILLION["MILLION[2025]"]
+    2025_TCA_Attention["TCA-Attention[2025]"]
+    Ada_SnapKV["Ada-SnapKV"]
+    2023_H2O["H2O[2023]"]
+    2024_streaming_llm["streaming-llm[2024]"]
+    2025_EvolKV["EvolKV[2025]"]
+    2025_KVmix["KVmix[2025]"]
     2025_QJL["QJL[2025]"]
-    2025_MILLION --&gt; 2025_VecInfer
+    2024_SnapKV["SnapKV[2024]"]
+    2024_ZipCache["ZipCache[2024]"]
+    CAKE["CAKE"]
+    2024_KIVI["KIVI[2024]"]
+    2024_KVQuant["KVQuant[2024]"]
+    2024_MInference --&gt; 2025_FlexPrefill
+    2024_MInference --&gt; 2025_XAttention
+    Loki --&gt; 2025_H1B_KV
     PyramidKV --&gt; 2025_UNComp
     PyramidKV --&gt; 2025_EvolKV
     PyramidKV --&gt; 2025_LAVa
+    2025_FlexPrefill --&gt; 2025_XAttention
+    2025_FlexPrefill --&gt; 2025_TCA_Attention
+    2025_XAttention --&gt; 2025_TCA_Attention
+    InfLLM --&gt; 2024_MInference
+    2024_MiKV --&gt; 2025_RotateKV
     2024_DoubleSparsity --&gt; 2025_UNComp
-    2024_MInference --&gt; 2025_FlexPrefill
-    2024_MInference --&gt; 2025_XAttention
+    2024_GEAR --&gt; 2025_RotateKV
+    2024_Quest --&gt; 2025_UNComp
+    2025_MILLION --&gt; 2025_VecInfer
     Ada_SnapKV --&gt; 2025_LAVa
     2023_H2O --&gt; 2025_UNComp
     2023_H2O --&gt; 2025_PureKV
     2023_H2O --&gt; 2024_MiKV
-    InfLLM --&gt; 2024_MInference
-    CAKE --&gt; 2025_LAVa
-    2025_FlexPrefill --&gt; 2025_XAttention
-    2024_MiKV --&gt; 2025_RotateKV
-    2024_KIVI --&gt; 2025_KVmix
-    2024_KIVI --&gt; 2025_MILLION
-    2024_KIVI --&gt; 2025_VecInfer
-    2024_KIVI --&gt; 2025_QJL
-    2024_KIVI --&gt; 2025_H1B_KV
-    2024_KIVI --&gt; 2025_RotateKV
     2024_streaming_llm --&gt; 2025_UNComp
     2024_streaming_llm --&gt; 2025_EvolKV
     2024_streaming_llm --&gt; 2025_FlexPrefill
     2024_streaming_llm --&gt; 2025_XAttention
     2024_streaming_llm --&gt; 2025_PureKV
     2024_streaming_llm --&gt; 2024_MInference
-    Loki --&gt; 2025_H1B_KV
-    2024_GEAR --&gt; 2025_RotateKV
-    2024_Quest --&gt; 2025_UNComp
-    2024_ZipCache --&gt; 2025_RotateKV
     2024_SnapKV --&gt; 2025_UNComp
     2024_SnapKV --&gt; 2025_EvolKV
     2024_SnapKV --&gt; 2025_LAVa
     2024_SnapKV --&gt; 2025_PureKV
+    2024_ZipCache --&gt; 2025_RotateKV
+    CAKE --&gt; 2025_LAVa
+    2024_KIVI --&gt; 2025_KVmix
+    2024_KIVI --&gt; 2025_MILLION
+    2024_KIVI --&gt; 2025_VecInfer
+    2024_KIVI --&gt; 2025_QJL
+    2024_KIVI --&gt; 2025_H1B_KV
+    2024_KIVI --&gt; 2025_RotateKV
     2024_KVQuant --&gt; 2025_KVmix
     2024_KVQuant --&gt; 2025_MILLION
     2024_KVQuant --&gt; 2025_QJL
@@ -293,7 +300,7 @@
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../cls_author/" title="By Author"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../weekly_paper/2025-10-09/" title="2025-10-09">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../weekly_paper/2025-11-07/" title="2025-11-07">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -309,7 +316,7 @@
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
 <span><a href="../cls_author/" style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../weekly_paper/2025-10-09/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../weekly_paper/2025-11-07/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../js/jquery-3.6.0.min.js"></script>
