@@ -1,0 +1,37 @@
+paper {
+  title: "Pruner-Zero: Evolving Symbolic Pruning Metric from scratch for Large Language Models"
+  abbr: "Pruner-Zero"
+  url: "http://arxiv.org/abs/2406.02924v1"
+  authors: "Peijie Dong"
+  authors: "Lujun Li"
+  authors: "Zhenheng Tang"
+  authors: "Xiang Liu"
+  authors: "Xinglin Pan"
+  authors: "Qiang Wang"
+  authors: "Xiaowen Chu"
+  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Hong Kong Baptist Univeristy"
+  institutions: "Harbin Institude of Technology"
+}
+pub {
+  where: "ICML"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/pprp/Pruner-Zero"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+}
+cover {
+  url: "fig1.png"
+}
+baseline {
+  methods: "2023/sparsegpt"
+  methods: "2024/Wanda"
+}

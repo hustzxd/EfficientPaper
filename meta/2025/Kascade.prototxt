@@ -1,0 +1,32 @@
+paper {
+  title: "Kascade: A Practical Sparse Attention Method for Long-Context LLM Inference"
+  abbr: "Kascade"
+  url: "http://arxiv.org/abs/2512.16391v1"
+  authors: "Dhruv Deshmukh"
+  authors: "Saurabh Goyal"
+  authors: "Nipun Kwatra"
+  authors: "Ramachandran Ramjee"
+  institutions: "Microsoft Research India"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/kascade"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
