@@ -676,11 +676,11 @@ function closeLightbox() {
             </div>
             ${authors ? `<div class="paper-authors">${authors}</div>` : ''}
             ${institutions ? `<div class="paper-institutions">${institutions}</div>` : ''}
-            ${paper.code_url ? `
-              <div class="paper-links">
-                <a href="${paper.code_url}" target="_blank">Code</a>
-              </div>
-            ` : ''}
+            <div class="paper-links">
+              ${paper.code_url ? `<a href="${paper.code_url}" target="_blank">Code</a>` : ''}
+              ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
+              ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" title="Requires local server">Edit 🔧</a>` : ''}
+            </div>
           </div>
         </div>
       `;

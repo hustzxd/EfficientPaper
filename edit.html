@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Paper Metadata</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .file-path {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 30px;
+      font-family: monospace;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .form-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #34495e;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #4a90d9;
+      box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      font-family: inherit;
+    }
+
+    /* Autocomplete dropdown */
+    .autocomplete-container {
+      position: relative;
+    }
+
+    .autocomplete-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+      display: none;
+    }
+
+    .autocomplete-dropdown.show {
+      display: block;
+    }
+
+    .autocomplete-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .autocomplete-item:last-child {
+      border-bottom: none;
+    }
+
+    .autocomplete-item:hover {
+      background: #f5f5f5;
+    }
+
+    .autocomplete-item.selected {
+      background: #e3f2fd;
+    }
+
+    .autocomplete-hint {
+      color: #888;
+      font-size: 11px;
+      font-style: italic;
+    }
+
+    .array-input {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .array-input input {
+      flex: 1;
+    }
+
+    .btn-remove {
+      padding: 10px 16px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .btn-remove:hover {
+      background: #c0392b;
+    }
+
+    .btn-add {
+      padding: 8px 16px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-top: 5px;
+      transition: background 0.2s;
+    }
+
+    .btn-add:hover {
+      background: #2980b9;
+    }
+
+    .keyword-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: auto;
+      cursor: pointer;
+    }
+
+    .checkbox-item label {
+      margin: 0;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .btn-primary {
+      flex: 1;
+      padding: 12px 24px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #229954;
+    }
+
+    .btn-secondary {
+      padding: 12px 24px;
+      background: #95a5a6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #7f8c8d;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Paper Metadata</h1>
+    <div class="file-path" id="file-path">Loading...</div>
+
+    <div id="message-container"></div>
+
+    <div id="loading" class="loading">Loading paper data...</div>
+
+    <form id="paper-form" style="display: none;">
+      <!-- Paper Section -->
+      <div class="form-section">
+        <h2 class="section-title">Paper Information</h2>
+
+        <div class="form-group">
+          <label for="title">Title *</label>
+          <input type="text" id="title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="abbr">Abbreviation</label>
+          <input type="text" id="abbr">
+        </div>
+
+        <div class="form-group">
+          <label for="url">Paper URL</label>
+          <input type="url" id="url">
+        </div>
+
+        <div class="form-group">
+          <label>Authors</label>
+          <div id="authors-container"></div>
+          <button type="button" class="btn-add" onclick="addAuthor()">+ Add Author</button>
+        </div>
+
+        <div class="form-group">
+          <label>Institutions</label>
+          <div id="institutions-container"></div>
+          <button type="button" class="btn-add" onclick="addInstitution()">+ Add Institution</button>
+        </div>
+      </div>
+
+      <!-- Publication Section -->
+      <div class="form-section">
+        <h2 class="section-title">Publication</h2>
+
+        <div class="form-group">
+          <label for="venue">Venue</label>
+          <select id="venue">
+            <option value="arXiv">arXiv</option>
+            <option value="ICML">ICML</option>
+            <option value="NeurIPS">NeurIPS</option>
+            <option value="ICLR">ICLR</option>
+            <option value="CVPR">CVPR</option>
+            <option value="ICCV">ICCV</option>
+            <option value="ECCV">ECCV</option>
+            <option value="ACL">ACL</option>
+            <option value="EMNLP">EMNLP</option>
+            <option value="NAACL">NAACL</option>
+            <option value="AAAI">AAAI</option>
+            <option value="IJCAI">IJCAI</option>
+            <option value="SIGMOD">SIGMOD</option>
+            <option value="KDD">KDD</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="year">Year *</label>
+          <input type="number" id="year" min="2000" max="2030" required>
+        </div>
+      </div>
+
+      <!-- Code Section -->
+      <div class="form-section">
+        <h2 class="section-title">Code</h2>
+
+        <div class="form-group">
+          <label for="code-type">Code Type</label>
+          <select id="code-type">
+            <option value="Pytorch">PyTorch</option>
+            <option value="Tensorflow">TensorFlow</option>
+            <option value="JAX">JAX</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="code-url">Code Repository URL</label>
+          <input type="url" id="code-url">
+        </div>
+      </div>
+
+      <!-- Keywords Section -->
+      <div class="form-section">
+        <h2 class="section-title">Keywords</h2>
+        <div class="keyword-checkboxes" id="keywords-container"></div>
+      </div>
+
+      <!-- Cover Section -->
+      <div class="form-section">
+        <h2 class="section-title">Cover Image</h2>
+
+        <div class="form-group">
+          <label for="cover-url">Cover Image Filename</label>
+          <input type="text" id="cover-url" readonly>
+          <div class="hint">Upload an image or enter filename manually (e.g., cover.png)</div>
+        </div>
+
+        <div class="form-group">
+          <label for="cover-upload">Upload Cover Image</label>
+          <input type="file" id="cover-upload" accept="image/*" style="display: none;">
+          <button type="button" class="btn-add" onclick="document.getElementById('cover-upload').click()">Choose Image</button>
+          <span id="upload-status" style="margin-left: 10px; font-size: 13px; color: #888;"></span>
+        </div>
+
+        <div class="form-group" id="cover-preview-container" style="display: none;">
+          <label>Preview</label>
+          <img id="cover-preview" style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; border-radius: 6px;">
+        </div>
+      </div>
+
+      <!-- Baseline Section -->
+      <div class="form-section">
+        <h2 class="section-title">Baseline Methods</h2>
+
+        <div class="form-group">
+          <label>Methods</label>
+          <div id="baseline-methods-container"></div>
+          <button type="button" class="btn-add" onclick="addBaselineMethod()">+ Add Method</button>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="window.location.href='/search/'">Cancel</button>
+        <button type="submit" class="btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Available keywords from proto definition
+    const KEYWORDS = [
+      { value: 'none', label: 'None' },
+      { value: 'attention_sparsity', label: 'Attention Sparsity' },
+      { value: 'activation_sparsity', label: 'Activation Sparsity' },
+      { value: 'weight_sparsity', label: 'Weight Sparsity' },
+      { value: 'structured_sparsity', label: 'Structured Sparsity' },
+      { value: 'sparse_pruning', label: 'Sparse Pruning' },
+      { value: 'kv_cache_quant', label: 'KV Cache Quantization' },
+      { value: 'quantization', label: 'Quantization' },
+      { value: 'overlap', label: 'Overlap' },
+      { value: 'performance_modeling', label: 'Performance Modeling' },
+      { value: 'deployment', label: 'Deployment' },
+      { value: 'survey', label: 'Survey' },
+      { value: 'structure_design', label: 'Structure Design' },
+      { value: 'low_rank', label: 'Low Rank' },
+      { value: 'kv_cache', label: 'KV Cache' },
+      { value: 'fusion', label: 'Fusion' },
+      { value: 'efficient_training', label: 'Efficient Training' },
+      { value: 'tool', label: 'Tool' },
+      { value: 'benchmark', label: 'Benchmark' },
+    ];
+
+    // API configuration
+    const API_BASE_URL = 'http://localhost:8001';
+
+    let currentPath = '';
+    let paperData = null;
+    let availableBaselineMethods = [];
+
+    // Get path from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    currentPath = urlParams.get('path') || '';
+
+    // Load available baseline methods
+    async function loadBaselineMethods() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/get-baseline-methods`);
+        const data = await response.json();
+        if (response.ok) {
+          availableBaselineMethods = data.methods || [];
+        }
+      } catch (error) {
+        console.error('Failed to load baseline methods:', error);
+      }
+    }
+
+    // Load paper data
+    async function loadPaperData() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/load-paper?path=${encodeURIComponent(currentPath)}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to load paper data');
+        }
+
+        paperData = data;
+        document.getElementById('file-path').textContent = currentPath;
+        populateForm(data);
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('paper-form').style.display = 'block';
+      } catch (error) {
+        console.error('Error loading paper data:', error);
+        document.getElementById('loading').innerHTML =
+          `<div class="message error">Error: ${error.message}</div>`;
+      }
+    }
+
+    // Populate form with data
+    function populateForm(data) {
+      // Paper section
+      document.getElementById('title').value = data.paper.title || '';
+      document.getElementById('abbr').value = data.paper.abbr || '';
+      document.getElementById('url').value = data.paper.url || '';
+
+      // Authors
+      const authorsContainer = document.getElementById('authors-container');
+      authorsContainer.innerHTML = '';
+      (data.paper.authors || []).forEach(author => {
+        addAuthor(author);
+      });
+
+      // Institutions
+      const institutionsContainer = document.getElementById('institutions-container');
+      institutionsContainer.innerHTML = '';
+      (data.paper.institutions || []).forEach(institution => {
+        addInstitution(institution);
+      });
+
+      // Publication
+      document.getElementById('venue').value = data.pub.where || 'arXiv';
+      document.getElementById('year').value = data.pub.year || new Date().getFullYear();
+
+      // Code
+      document.getElementById('code-type').value = data.code.type || 'Pytorch';
+      document.getElementById('code-url').value = data.code.url || '';
+
+      // Keywords
+      const keywordsContainer = document.getElementById('keywords-container');
+      keywordsContainer.innerHTML = '';
+      KEYWORDS.forEach(keyword => {
+        const checked = (data.keyword.words || []).includes(keyword.value);
+        keywordsContainer.innerHTML += `
+          <div class="checkbox-item">
+            <input type="checkbox" id="kw-${keyword.value}" value="${keyword.value}" ${checked ? 'checked' : ''}>
+            <label for="kw-${keyword.value}">${keyword.label}</label>
+          </div>
+        `;
+      });
+
+      // Cover
+      const coverUrl = data.cover.url || '';
+      document.getElementById('cover-url').value = coverUrl;
+
+      // Show cover preview if exists
+      if (coverUrl) {
+        const year = currentPath.split('/')[1];
+        const paperId = currentPath.split('/')[2].replace('.prototxt', '');
+        const previewUrl = `../notes/${year}/${paperId}/${coverUrl}`;
+
+        const previewContainer = document.getElementById('cover-preview-container');
+        const previewImg = document.getElementById('cover-preview');
+        previewImg.src = previewUrl;
+        previewContainer.style.display = 'block';
+      }
+
+      // Baseline methods
+      const baselineContainer = document.getElementById('baseline-methods-container');
+      baselineContainer.innerHTML = '';
+      (data.baseline.methods || []).forEach(method => {
+        if (method !== 'None') {
+          addBaselineMethod(method);
+        }
+      });
+    }
+
+    // Add author field
+    function addAuthor(value = '') {
+      const container = document.getElementById('authors-container');
+      const div = document.createElement('div');
+      div.className = 'array-input';
+      div.innerHTML = `
+        <input type="text" value="${value}" placeholder="Author name">
+        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Remove</button>
+      `;
+      container.appendChild(div);
+    }
+
+    // Add institution field
+    function addInstitution(value = '') {
+      const container = document.getElementById('institutions-container');
+      const div = document.createElement('div');
+      div.className = 'array-input';
+      div.innerHTML = `
+        <input type="text" value="${value}" placeholder="Institution name">
+        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Remove</button>
+      `;
+      container.appendChild(div);
+    }
+
+    // Add baseline method field with autocomplete
+    function addBaselineMethod(value = '') {
+      const container = document.getElementById('baseline-methods-container');
+      const div = document.createElement('div');
+      div.className = 'array-input autocomplete-container';
+
+      const inputId = `baseline-method-${Date.now()}-${Math.random()}`;
+      const dropdownId = `${inputId}-dropdown`;
+
+      div.innerHTML = `
+        <input type="text" id="${inputId}" value="${value}" placeholder="Method name (start typing to search...)">
+        <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Remove</button>
+        <div id="${dropdownId}" class="autocomplete-dropdown"></div>
+      `;
+      container.appendChild(div);
+
+      // Setup autocomplete
+      setupAutocomplete(inputId, dropdownId);
+    }
+
+    // Setup autocomplete for baseline method input
+    function setupAutocomplete(inputId, dropdownId) {
+      const input = document.getElementById(inputId);
+      const dropdown = document.getElementById(dropdownId);
+      let selectedIndex = -1;
+
+      input.addEventListener('input', () => {
+        const value = input.value.toLowerCase().trim();
+
+        if (!value) {
+          dropdown.classList.remove('show');
+          return;
+        }
+
+        // Filter available methods
+        const matches = availableBaselineMethods.filter(method =>
+          method.toLowerCase().includes(value)
+        );
+
+        if (matches.length === 0) {
+          dropdown.classList.remove('show');
+          return;
+        }
+
+        // Render dropdown
+        dropdown.innerHTML = matches.map((method, index) => `
+          <div class="autocomplete-item" data-value="${method}" data-index="${index}">
+            ${method}
+          </div>
+        `).join('') + `
+          <div class="autocomplete-item autocomplete-hint">
+            Type to search existing methods, or enter a new one
+          </div>
+        `;
+
+        dropdown.classList.add('show');
+        selectedIndex = -1;
+
+        // Add click handlers
+        dropdown.querySelectorAll('.autocomplete-item[data-value]').forEach(item => {
+          item.addEventListener('click', () => {
+            input.value = item.getAttribute('data-value');
+            dropdown.classList.remove('show');
+          });
+        });
+      });
+
+      // Keyboard navigation
+      input.addEventListener('keydown', (e) => {
+        const items = dropdown.querySelectorAll('.autocomplete-item[data-value]');
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (selectedIndex < items.length - 1) {
+            selectedIndex++;
+            updateSelection(items, selectedIndex);
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (selectedIndex > 0) {
+            selectedIndex--;
+            updateSelection(items, selectedIndex);
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (selectedIndex >= 0 && items[selectedIndex]) {
+            input.value = items[selectedIndex].getAttribute('data-value');
+            dropdown.classList.remove('show');
+          }
+        } else if (e.key === 'Escape') {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!div.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      function updateSelection(items, index) {
+        items.forEach((item, i) => {
+          if (i === index) {
+            item.classList.add('selected');
+            item.scrollIntoView({ block: 'nearest' });
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+      }
+    }
+
+    // Collect form data
+    function collectFormData() {
+      const authors = Array.from(document.querySelectorAll('#authors-container input'))
+        .map(input => input.value.trim())
+        .filter(val => val);
+
+      const institutions = Array.from(document.querySelectorAll('#institutions-container input'))
+        .map(input => input.value.trim())
+        .filter(val => val);
+
+      const keywords = Array.from(document.querySelectorAll('#keywords-container input:checked'))
+        .map(input => input.value);
+
+      const baselineMethods = Array.from(document.querySelectorAll('#baseline-methods-container input'))
+        .map(input => input.value.trim())
+        .filter(val => val);
+
+      return {
+        paper: {
+          title: document.getElementById('title').value,
+          abbr: document.getElementById('abbr').value,
+          url: document.getElementById('url').value,
+          authors: authors,
+          institutions: institutions,
+        },
+        pub: {
+          where: document.getElementById('venue').value,
+          year: parseInt(document.getElementById('year').value),
+        },
+        code: {
+          type: document.getElementById('code-type').value,
+          url: document.getElementById('code-url').value,
+        },
+        keyword: {
+          words: keywords.length > 0 ? keywords : ['none'],
+        },
+        cover: {
+          url: document.getElementById('cover-url').value,
+        },
+        baseline: {
+          methods: baselineMethods.length > 0 ? baselineMethods : ['None'],
+        },
+      };
+    }
+
+    // Show message
+    function showMessage(message, type) {
+      const container = document.getElementById('message-container');
+      container.innerHTML = `<div class="message ${type}">${message}</div>`;
+      setTimeout(() => {
+        container.innerHTML = '';
+      }, 5000);
+    }
+
+    // Handle form submission
+    document.getElementById('paper-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = collectFormData();
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/save-paper`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            path: currentPath,
+            data: formData,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          showMessage('Successfully saved! Redirecting to search page...', 'success');
+          setTimeout(() => {
+            window.location.href = '/search/';
+          }, 2000);
+        } else {
+          throw new Error(result.error || 'Failed to save');
+        }
+      } catch (error) {
+        console.error('Error saving paper:', error);
+        showMessage(`Error: ${error.message}`, 'error');
+      }
+    });
+
+    // Handle cover image upload
+    document.getElementById('cover-upload').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const uploadStatus = document.getElementById('upload-status');
+      uploadStatus.textContent = 'Uploading...';
+      uploadStatus.style.color = '#888';
+
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('path', currentPath);
+
+        const response = await fetch(`${API_BASE_URL}/api/upload-cover`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Update the cover URL field with the filename
+          document.getElementById('cover-url').value = result.filename;
+
+          // Show preview
+          const previewContainer = document.getElementById('cover-preview-container');
+          const previewImg = document.getElementById('cover-preview');
+          previewImg.src = result.url;
+          previewContainer.style.display = 'block';
+
+          uploadStatus.textContent = '✓ Uploaded successfully';
+          uploadStatus.style.color = '#27ae60';
+        } else {
+          throw new Error(result.error || 'Upload failed');
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        uploadStatus.textContent = `✗ ${error.message}`;
+        uploadStatus.style.color = '#e74c3c';
+      }
+    });
+
+    // Initialize
+    if (!currentPath) {
+      document.getElementById('loading').innerHTML =
+        '<div class="message error">No file path specified</div>';
+    } else {
+      // Load baseline methods first, then paper data
+      loadBaselineMethods().then(() => {
+        loadPaperData();
+      });
+    }
+  </script>
+</body>
+</html>
