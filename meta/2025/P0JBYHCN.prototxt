@@ -1,0 +1,26 @@
+paper {
+  title: "Efficient CPU-GPU Collaborative Inference for MoE-based LLMs on Memory-Limited Systems"
+  abbr: "P0JBYHCN"
+  url: "http://arxiv.org/abs/2512.16473v1"
+  authors: "En-Ming Huang"
+  authors: "Li-Shang Lin"
+  authors: "Chun-Yi Lee"
+  institutions: "National Taiwan University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/elsa-lab/MoE-CPU-GPU-Collaborative-Inference"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}

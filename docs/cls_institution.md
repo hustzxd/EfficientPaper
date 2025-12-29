@@ -1224,6 +1224,14 @@
 | [Cus-Prun](./meta/2025/Cus-Prun.prototxt) | [Pruning General Large Language Models into Customized Expert Models](http://arxiv.org/abs/2506.02561v1) | ![cover](./notes/2025/Cus-Prun/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zhaoyiran924/Custom-Prune)](https://github.com/zhaoyiran924/Custom-Prune) | [note](./notes/2025/Cus-Prun/note.md) |
 
 
+#### National Taiwan University
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [P0JBYHCN](./meta/2025/P0JBYHCN.prototxt) | [Efficient CPU-GPU Collaborative Inference for MoE-based LLMs on Memory-Limited Systems](http://arxiv.org/abs/2512.16473v1) | ![cover](./notes/2025/P0JBYHCN/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/elsa-lab/MoE-CPU-GPU-Collaborative-Inference)](https://github.com/elsa-lab/MoE-CPU-GPU-Collaborative-Inference) | [note](./notes/2025/P0JBYHCN/note.md) |
+
+
 #### National University of Singapore
 
 

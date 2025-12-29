@@ -3,6 +3,7 @@ import datetime
 import hashlib
 import os
 import random
+import re
 import string
 import sys
 
@@ -25,6 +26,60 @@ def parse_args():
 def get_hash_code(message):
     hash = hashlib.sha1(message.encode("UTF-8")).hexdigest()
     return hash[:8]
+
+
+def extract_code_url(summary):
+    """Extract GitHub/code repository URL from paper summary.
+
+    Args:
+        summary: Paper abstract/summary text
+
+    Returns:
+        str: Code repository URL if found, None otherwise
+    """
+    if not summary:
+        return None
+
+    # Common patterns for code repositories
+    patterns = [
+        r'https?://github\.com/[\w\-\.]+/[\w\-\.]+',
+        r'https?://gitlab\.com/[\w\-\.]+/[\w\-\.]+',
+        r'https?://huggingface\.co/[\w\-\.]+/[\w\-\.]+',
+        r'https?://gitee\.com/[\w\-\.]+/[\w\-\.]+',
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, summary, re.IGNORECASE)
+        if match:
+            url = match.group(0)
+            # Remove trailing punctuation
+            url = re.sub(r'[.,;:\)]+$', '', url)
+            return url
+
+    return None
+
+
+def extract_institutions(authors):
+    """Extract institutions from arXiv author objects.
+
+    Args:
+        authors: List of arxiv.Result.Author objects
+
+    Returns:
+        list: List of unique institution names
+    """
+    institutions = []
+    seen = set()
+
+    for author in authors:
+        # Try to get affiliation from author object
+        if hasattr(author, 'affiliation') and author.affiliation:
+            affiliation = author.affiliation.strip()
+            if affiliation and affiliation not in seen:
+                institutions.append(affiliation)
+                seen.add(affiliation)
+
+    return institutions
 
 
 def main():
@@ -71,6 +126,28 @@ def main():
             pinfo.paper.authors.pop()
         pinfo.paper.authors.extend(authors)
         pinfo.pub.year = paper.published.year
+
+        # Automatically extract institutions
+        institutions = extract_institutions(paper.authors)
+        if institutions:
+            print(f"\033[92m✓ Found {len(institutions)} institution(s):\033[0m")
+            for inst in institutions:
+                print(f"  - {inst}")
+            try:
+                pinfo.paper.institutions.clear()
+            except:
+                pass
+            pinfo.paper.institutions.extend(institutions)
+        else:
+            print("\033[93m⚠ No institutions found in arXiv metadata\033[0m")
+
+        # Automatically extract code repository URL
+        code_url = extract_code_url(paper.summary)
+        if code_url:
+            print(f"\033[92m✓ Found code repository: {code_url}\033[0m")
+            pinfo.code.url = code_url
+        else:
+            print("\033[93m⚠ No code repository URL found in abstract\033[0m")
     else:
         current_year = datetime.date.today().year
         year = input(f"Please input the public year of this paper (Default: {current_year}) \n Year: ")

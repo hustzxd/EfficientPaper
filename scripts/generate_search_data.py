@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-生成论文搜索数据 JSON 文件
-供独立搜索页面使用
+Generate paper search data JSON file
+For use by standalone search page
 """
 
 import json
@@ -11,15 +11,18 @@ import sys
 import google.protobuf as pb
 import google.protobuf.text_format
 
+# Add project root to path before importing local modules
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from proto import efficient_paper_pb2 as eppb
 from scripts.generate_paper_list import word_pb2str
 
-# 关键词映射
+# Keyword mapping
 KEYWORD_MAP = word_pb2str
 
 
 def read_all_papers():
-    """读取所有论文元数据"""
+    """Read all paper metadata"""
     papers = []
     meta_dir = "./meta"
 
@@ -51,7 +54,7 @@ def read_all_papers():
 
 
 def generate_search_data():
-    """生成搜索数据 JSON"""
+    """Generate search data JSON"""
     papers = read_all_papers()
 
     data = []
@@ -63,7 +66,7 @@ def generate_search_data():
         paper = pinfo.paper
         pub = pinfo.pub
 
-        # 提取关键词
+        # Extract keywords
         paper_keywords = []
         for word in pinfo.keyword.words:
             if word in KEYWORD_MAP:
@@ -75,11 +78,11 @@ def generate_search_data():
         venues.add(venue)
         years.add(year)
 
-        # 处理封面图片路径
+        # Process cover image path
         cover_url = None
         if pinfo.cover.url:
             file_name = filename.replace(".prototxt", "")
-            # 检查可能的图片路径
+            # Check possible image paths
             possible_paths = [
                 f"./notes/{pinfo.cover.url}",
                 f"./notes/{year}/{pinfo.cover.url}",
@@ -87,11 +90,20 @@ def generate_search_data():
             ]
             for path in possible_paths:
                 if os.path.exists(path):
-                    # 转换为相对于 docs 目录的路径
+                    # Convert to path relative to docs directory
                     cover_url = path.replace("./", "../")
                     break
 
-        # 构建论文数据
+        # Process note URL path
+        note_url = None
+        file_name = filename.replace(".prototxt", "")
+        # Check if note file exists (note.md)
+        note_md_path = f"./notes/{year}/{file_name}/note.md"
+        if os.path.exists(note_md_path):
+            # Convert to directory URL (remove note.md, keep trailing slash)
+            note_url = f"../notes/{year}/{file_name}/note/"
+
+        # Build paper data
         paper_data = {
             "id": filename.replace(".prototxt", ""),
             "title": paper.title,
@@ -104,13 +116,15 @@ def generate_search_data():
             "cover": cover_url,
             "keywords": paper_keywords,
             "code_url": pinfo.code.url if pinfo.code.url else None,
+            "note_url": note_url,
+            "prototxt_path": f"meta/{year}/{filename}",
         }
         data.append(paper_data)
 
-    # 按年份降序、标题升序排序
+    # Sort by year descending, title ascending
     data.sort(key=lambda x: (-x["year"], x["title"].lower()))
 
-    # 生成完整的搜索数据结构
+    # Generate complete search data structure
     search_data = {
         "papers": data,
         "filters": {
@@ -127,7 +141,7 @@ def generate_search_data():
 def main():
     search_data = generate_search_data()
 
-    # 写入 JSON 文件
+    # Write JSON file
     output_path = "./docs/js/papers.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(search_data, f, ensure_ascii=False, indent=2)
