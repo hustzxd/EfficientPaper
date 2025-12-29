@@ -1,7 +1,8 @@
 site_name: Efficient Paper
 
 nav:
-  - Home: search.md
+  - Search: search.md
+  - Home: index.md
   - Paper List:
     - By Year: cls_year.md
     - By Keyword: cls_keyword.md
@@ -38,11 +39,11 @@ extra_css:
   - css/extra.css
 
 plugins:
-  - search
   - glightbox
   - literate-nav
   - macros
   - mermaid2
+  # - search
 
   # - git-latest-changes:
   #     limit_to_docs_dir: True       # 仅限 docs 目录

@@ -1,4 +1,4 @@
-# Paper Search
+# Efficient Paper Search
 
 <div id="paper-search-app">
   <div class="search-header">
