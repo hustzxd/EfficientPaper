@@ -1,7 +1,7 @@
 site_name: Efficient Paper
 
 nav:
-  - Home: index.md
+  - Home: search.md
   - Paper List:
     - By Year: cls_year.md
     - By Keyword: cls_keyword.md

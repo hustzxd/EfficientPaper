@@ -9,6 +9,7 @@ python scripts/ddl.py
 python scripts/split_by_year.py
 python scripts/generate_reference.py
 python scripts/generate_baseline_methods_graph.py
+python scripts/generate_search_data.py
 
 if [ -z "$1" ]; then
     python scripts/generate_paper_list.py
