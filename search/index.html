@@ -176,6 +176,12 @@
   <div id="paper-list" class="paper-list">
     <!-- Papers will be rendered here -->
   </div>
+
+  <!-- Lightbox for image preview -->
+  <div id="lightbox" class="lightbox-overlay">
+    <img id="lightbox-img" src="" alt="Preview">
+    <span class="lightbox-hint">Press ESC or click to close</span>
+  </div>
 </div>
 
 <style>
@@ -423,6 +429,62 @@
   color: #888;
 }
 
+/* Lightbox */
+.lightbox-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  pointer-events: none;
+  visibility: hidden;
+  transition: background 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.lightbox-overlay.active {
+  background: rgba(0, 0, 0, 0.9);
+  pointer-events: auto;
+  visibility: visible;
+  transition: background 0.3s ease, visibility 0s linear 0s;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transform: scale(0.3);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.lightbox-overlay.active img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.lightbox-hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.lightbox-overlay.active .lightbox-hint {
+  opacity: 0.7;
+}
+
 /* Loading */
 .loading {
   text-align: center;
@@ -459,6 +521,23 @@
 </style>
 
 <script>
+// Lightbox functions (global scope)
+function openLightbox(event, src) {
+  event.preventDefault();
+  event.stopPropagation();
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  lightboxImg.src = src;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 (function() {
   let papers = [];
   let filteredPapers = [];
@@ -577,7 +656,7 @@
 
       // 封面图片
       const coverHtml = paper.cover
-        ? `<a class="glightbox" href="${paper.cover}" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="${paper.cover}" alt="cover" loading="lazy" onclick="window.open(this.src, '_blank')"></a>`
+        ? `<a class="glightbox" href="${paper.cover}" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="${paper.cover}" alt="cover" loading="lazy" onclick="openLightbox(event, this.src)"></a>`
         : `<span class="no-cover">No Cover</span>`;
 
       return `
@@ -661,6 +740,13 @@
         document.getElementById('search-input').focus();
       }
       if (e.key === 'Escape') {
+        // Close lightbox first if open
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.classList.contains('active')) {
+          closeLightbox();
+          return;
+        }
+        // Otherwise clear search input
         const input = document.getElementById('search-input');
         if (document.activeElement === input) {
           input.value = '';
@@ -669,6 +755,9 @@
         }
       }
     });
+
+    // Click overlay to close lightbox
+    document.getElementById('lightbox').addEventListener('click', closeLightbox);
   }
 
   // Run on DOM ready
