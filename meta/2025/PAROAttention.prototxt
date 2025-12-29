@@ -1,0 +1,39 @@
+paper {
+  title: "PAROAttention: Pattern-Aware ReOrdering for Efficient Sparse and Quantized Attention in Visual Generation Models"
+  abbr: "PAROAttention"
+  url: "http://arxiv.org/abs/2506.16054v1"
+  authors: "Tianchen Zhao"
+  authors: "Ke Hong"
+  authors: "Xinhao Yang"
+  authors: "Xuefeng Xiao"
+  authors: "Huixia Li"
+  authors: "Feng Ling"
+  authors: "Ruiqi Xie"
+  authors: "Siqi Chen"
+  authors: "Hongyu Zhu"
+  authors: "Yichong Zhang"
+  authors: "Yu Wang"
+  institutions: "Tsinghua University"
+  institutions: "ByteDance Seed"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "fig3.png"
+}
+baseline {
+  methods: "2025/SVG"
+}
