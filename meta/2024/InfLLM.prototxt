@@ -1,0 +1,36 @@
+paper {
+  title: "InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory"
+  abbr: "InfLLM"
+  url: "http://arxiv.org/abs/2402.04617v2"
+  authors: "Chaojun Xiao"
+  authors: "Pengle Zhang"
+  authors: "Xu Han"
+  authors: "Guangxuan Xiao"
+  authors: "Yankai Lin"
+  authors: "Zhengyan Zhang"
+  authors: "Zhiyuan Liu"
+  authors: "Maosong Sun"
+  institutions: "Tsinghua University"
+  institutions: "Massachusetts Institution of Technology"
+  institutions: "Renmin University of China"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/thunlp/InfLLM"
+}
+keyword {
+  words: attention_sparsity
+  words: sparse_pruning
+  words: kv_cache
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2023/H2O"
+  methods: "2024/StreamingLLM"
+}

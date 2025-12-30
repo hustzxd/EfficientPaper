@@ -21,17 +21,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/pprp/Pruner-Zero"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
   words: weight_sparsity
+  words: sparse_pruning
 }
 cover {
   url: "fig1.png"
 }
 baseline {
-  methods: "2023/sparsegpt"
+  methods: "2023/SparseGPT"
   methods: "2024/Wanda"
 }

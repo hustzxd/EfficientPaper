@@ -759,6 +759,18 @@
     document.getElementById('paper-form').addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      // Show confirmation dialog first
+      const confirmed = confirm(
+        'After saving, you need to run:\n\n' +
+        './start_editor.sh\n\n' +
+        'to regenerate the static files and see the updates.\n\n' +
+        'Click OK to save and continue.'
+      );
+
+      if (!confirmed) {
+        return;
+      }
+
       const formData = collectFormData();
 
       try {
@@ -776,7 +788,10 @@
         const result = await response.json();
 
         if (response.ok) {
-          showMessage('Successfully saved! Redirecting to search page...', 'success');
+          // Reload baseline methods after saving
+          await loadBaselineMethods();
+
+          showMessage('Successfully saved! Please run ./start_editor.sh to see updates.', 'success');
           setTimeout(() => {
             window.location.href = '/search/';
           }, 2000);
@@ -820,7 +835,7 @@
           previewImg.src = result.url;
           previewContainer.style.display = 'block';
 
-          uploadStatus.textContent = '✓ Uploaded successfully';
+          uploadStatus.textContent = `✓ ${result.message || 'Uploaded successfully'}`;
           uploadStatus.style.color = '#27ae60';
         } else {
           throw new Error(result.error || 'Upload failed');

@@ -111,12 +111,12 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.send_json_response({'error': str(e)}, 500)
 
     def handle_get_baseline_methods(self):
-        """Get all unique baseline methods from existing papers"""
+        """Get all paper abbr in format 'year/abbr' from meta directory"""
         try:
             methods_set = set()
             meta_dir = "./meta"
 
-            # Scan all prototxt files
+            # Scan all prototxt files and collect year/abbr
             for year_dir in os.listdir(meta_dir):
                 year_path = os.path.join(meta_dir, year_dir)
                 if not os.path.isdir(year_path):
@@ -132,10 +132,12 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                         with open(filepath, "r") as f:
                             pb.text_format.Merge(f.read(), pinfo)
 
-                        # Add methods to set
-                        for method in pinfo.baseline.methods:
-                            if method and method != "None":
-                                methods_set.add(method)
+                        # Get abbr from paper info
+                        abbr = pinfo.paper.abbr
+                        if abbr:
+                            # Format as year/abbr
+                            method_name = f"{year_dir}/{abbr}"
+                            methods_set.add(method_name)
                     except Exception as e:
                         # Skip files that can't be parsed
                         continue
@@ -200,7 +202,7 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             with open(file_path, 'w') as f:
                 f.write(str(pinfo))
 
-            self.send_json_response({'success': True, 'message': 'Paper saved successfully'})
+            self.send_json_response({'success': True, 'message': 'Paper saved successfully. Run ./start_editor.sh to see updates.'})
 
         except Exception as e:
             print(f"Error saving paper: {e}", file=sys.stderr)
@@ -287,6 +289,29 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             with open(file_path, 'wb') as f:
                 f.write(file_data)
 
+            # Update note.md if it exists
+            note_md_path = os.path.join(notes_dir, 'note.md')
+            if os.path.exists(note_md_path):
+                try:
+                    import re
+                    with open(note_md_path, 'r', encoding='utf-8') as f:
+                        note_content = f.read()
+
+                    # Use regex to replace any ![111](...) pattern with the new cover image
+                    # This handles ../../blank.jpg, cover.png, or any other existing path
+                    updated_content = re.sub(
+                        r'!\[111\]\([^)]+\)',
+                        f'![111]({saved_filename})',
+                        note_content
+                    )
+
+                    with open(note_md_path, 'w', encoding='utf-8') as f:
+                        f.write(updated_content)
+
+                    print(f"Updated note.md with cover image reference: {saved_filename}")
+                except Exception as e:
+                    print(f"Warning: Could not update note.md: {e}", file=sys.stderr)
+
             # Return response with filename and preview URL
             preview_url = f'/notes/{year}/{paper_id}/{saved_filename}'
 
@@ -294,7 +319,7 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                 'success': True,
                 'filename': saved_filename,
                 'url': preview_url,
-                'message': 'Image uploaded successfully'
+                'message': 'Image uploaded successfully. Run ./start_editor.sh to see updates.'
             })
 
         except Exception as e:

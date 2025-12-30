@@ -101,6 +101,40 @@
       "prototxt_path": "meta/2025/Acc-SpMM.prototxt"
     },
     {
+      "id": "7R1KOYRK",
+      "title": "Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding",
+      "abbr": "7R1KOYRK",
+      "url": "http://arxiv.org/abs/2512.01278v1",
+      "authors": [
+        "Yilong Zhao",
+        "Jiaming Tang",
+        "Kan Zhu",
+        "Zihao Ye",
+        "Chi-Chih Chang",
+        "Chaofan Lin",
+        "Jongseok Park",
+        "Guangxuan Xiao",
+        "Mohamed S. Abdelfattah",
+        "Mingyu Gao",
+        "Baris Kasikci",
+        "Song Han",
+        "Ion Stoica"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "00-None"
+      ],
+      "code_url": null,
+      "note_url": "../notes/2025/7R1KOYRK/note/",
+      "prototxt_path": "meta/2025/7R1KOYRK.prototxt"
+    },
+    {
       "id": "07NWF4VE",
       "title": "Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching",
       "abbr": "07NWF4VE",
@@ -424,8 +458,8 @@
       "venue": "ICML",
       "cover": "../notes/2025/BaWA/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "03-Sparsity (Weight)",
+        "05-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "../notes/2025/BaWA/note/",
@@ -458,6 +492,51 @@
       "code_url": "https://github.com/johnnyzheng0636/WGM_bi_quan",
       "note_url": "../notes/2025/WGM/note/",
       "prototxt_path": "meta/2025/WGM.prototxt"
+    },
+    {
+      "id": "BLASST",
+      "title": "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding",
+      "abbr": "BLASST",
+      "url": "http://arxiv.org/abs/2512.12087v1",
+      "authors": [
+        "Jiayi Yuan",
+        "Cameron Shinn",
+        "Kai Xu",
+        "Jingze Cui",
+        "George Klimiashvili",
+        "Guangxuan Xiao",
+        "Perkz Zheng",
+        "Bo Li",
+        "Yuxin Zhou",
+        "Zhouhai Ye",
+        "Weijie You",
+        "Tian Zheng",
+        "Dominic Brown",
+        "Pengbo Wang",
+        "Richard Cai",
+        "Julien Demouth",
+        "John D. Owens",
+        "Xia Hu",
+        "Song Han",
+        "Timmy Liu",
+        "Huizi Mao"
+      ],
+      "institutions": [
+        "NVIDIA",
+        "Rice University",
+        "University of California"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "../notes/2025/BLASST/cover.png",
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "05-Sparse/Pruning",
+        "10-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "../notes/2025/BLASST/note/",
+      "prototxt_path": "meta/2025/BLASST.prototxt"
     },
     {
       "id": "BlockFFN",
@@ -1263,11 +1342,11 @@
         "Advanced Micro Devices"
       ],
       "year": 2025,
-      "venue": "Coling",
+      "venue": "arXiv",
       "cover": "../notes/2025/SDS/sds.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "03-Sparsity (Weight)",
+        "05-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "../notes/2025/SDS/note/",
@@ -1291,9 +1370,9 @@
       "venue": "arXiv",
       "cover": "../notes/2025/EvolKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
+        "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
       "note_url": "../notes/2025/EvolKV/note/",
@@ -1494,9 +1573,9 @@
       "venue": "ICLR",
       "cover": "../notes/2025/FlexPrefill/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
+        "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/bytedance/FlexPrefill",
       "note_url": "../notes/2025/FlexPrefill/note/",
@@ -3546,9 +3625,9 @@
       "venue": "arXiv",
       "cover": "../notes/2025/PureKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
+        "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
       "note_url": "../notes/2025/PureKV/note/",
@@ -5105,9 +5184,9 @@
       "venue": "EMNLP",
       "cover": "../notes/2025/UNComp/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
+        "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/menik1126/UNComp",
       "note_url": "../notes/2025/UNComp/note/",
@@ -5402,8 +5481,8 @@
       "venue": "ICLR",
       "cover": "../notes/2024/Wanda/wanda.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "03-Sparsity (Weight)",
+        "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/locuslab/wanda",
       "note_url": "../notes/2024/Wanda/note/",
@@ -6442,7 +6521,7 @@
     {
       "id": "streaming-llm",
       "title": "Efficient Streaming Language Models with Attention Sinks",
-      "abbr": "streaming-llm",
+      "abbr": "StreamingLLM",
       "url": "http://arxiv.org/abs/2309.17453v4",
       "authors": [
         "Guangxuan Xiao",
@@ -6461,9 +6540,9 @@
       "venue": "ICLR",
       "cover": "../notes/2024/streaming-llm/cover.jpg",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
+        "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/mit-han-lab/streaming-llm",
       "note_url": "../notes/2024/streaming-llm/note/",
@@ -6784,6 +6863,38 @@
       "code_url": null,
       "note_url": "../notes/2024/DistAttention/note/",
       "prototxt_path": "meta/2024/DistAttention.prototxt"
+    },
+    {
+      "id": "InfLLM",
+      "title": "InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory",
+      "abbr": "InfLLM",
+      "url": "http://arxiv.org/abs/2402.04617v2",
+      "authors": [
+        "Chaojun Xiao",
+        "Pengle Zhang",
+        "Xu Han",
+        "Guangxuan Xiao",
+        "Yankai Lin",
+        "Zhengyan Zhang",
+        "Zhiyuan Liu",
+        "Maosong Sun"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Massachusetts Institution of Technology",
+        "Renmin University of China"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "../notes/2024/InfLLM/cover.png",
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "05-Sparse/Pruning",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": "https://github.com/thunlp/InfLLM",
+      "note_url": "../notes/2024/InfLLM/note/",
+      "prototxt_path": "meta/2024/InfLLM.prototxt"
     },
     {
       "id": "JSHWEV0S",
@@ -7147,9 +7258,9 @@
       "venue": "NeurIPS",
       "cover": "../notes/2024/MInference/MInference_3shape.PNG",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
+        "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/microsoft/MInference",
       "note_url": "../notes/2024/MInference/note/",
@@ -7328,9 +7439,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
+        "06-Quantization (KV Cache)",
         "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
       "note_url": "../notes/2024/MiKV/note/",
@@ -7605,8 +7716,8 @@
       "venue": "ICML",
       "cover": "../notes/2024/Pruner-Zero/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "03-Sparsity (Weight)",
+        "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/pprp/Pruner-Zero",
       "note_url": "../notes/2024/Pruner-Zero/note/",
@@ -10957,7 +11068,6 @@
       "COLM",
       "CVPR",
       "CVPR workshop",
-      "Coling",
       "DAC",
       "DATE",
       "ECCV",
@@ -10993,6 +11103,7 @@
       "github"
     ],
     "keywords": [
+      "00-None",
       "01-Sparsity (Attention)",
       "02-Sparsity (Activation)",
       "03-Sparsity (Weight)",
@@ -11013,5 +11124,5 @@
       "18-Benchmark"
     ]
   },
-  "total": 354
+  "total": 357
 }

@@ -17,16 +17,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/locuslab/wanda"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
   words: weight_sparsity
+  words: sparse_pruning
 }
 cover {
   url: "wanda.png"
 }
 baseline {
-  methods: "2023/sparsegpt"
+  methods: "2023/SparseGPT"
 }
