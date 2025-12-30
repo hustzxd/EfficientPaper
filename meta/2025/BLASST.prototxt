@@ -1,0 +1,50 @@
+paper {
+  title: "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding"
+  abbr: "BLASST"
+  url: "http://arxiv.org/abs/2512.12087v1"
+  authors: "Jiayi Yuan"
+  authors: "Cameron Shinn"
+  authors: "Kai Xu"
+  authors: "Jingze Cui"
+  authors: "George Klimiashvili"
+  authors: "Guangxuan Xiao"
+  authors: "Perkz Zheng"
+  authors: "Bo Li"
+  authors: "Yuxin Zhou"
+  authors: "Zhouhai Ye"
+  authors: "Weijie You"
+  authors: "Tian Zheng"
+  authors: "Dominic Brown"
+  authors: "Pengbo Wang"
+  authors: "Richard Cai"
+  authors: "Julien Demouth"
+  authors: "John D. Owens"
+  authors: "Xia Hu"
+  authors: "Song Han"
+  authors: "Timmy Liu"
+  authors: "Huizi Mao"
+  institutions: "NVIDIA"
+  institutions: "Rice University"
+  institutions: "University of California"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: sparse_pruning
+  words: deployment
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/MInference"
+  methods: "2025/FlexPrefill"
+  methods: "2025/XAttention"
+}

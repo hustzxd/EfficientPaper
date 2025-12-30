@@ -51,8 +51,22 @@
     <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">环境准备</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_1">招聘</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">工作流程</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_3">第一步：添加论文信息</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">第二步：启动编辑器并编辑</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#github">第三步：确认并部署到 GitHub</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">招聘</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#recent-changes">Recent Changes</a>
     </li>
@@ -210,48 +224,47 @@
 <li><a href="#references">References</a></li>
 </ul>
 <h2 id="getting-started">Getting Started</h2>
+<h3 id="_1">环境准备</h3>
 <pre><code class="language-bash">git clone https://github.com/hustzxd/EfficientPaper
-pip install protobuf==5.27.2 pandas arxiv 
+pip install protobuf==5.27.2 pandas arxiv
 </code></pre>
-<ol>
-<li>Add paper information by <code>./add_paper_info.sh</code></li>
-<li>Run <code>./refresh_readme.sh</code></li>
-</ol>
-<details><summary><b>efficient_paper.prototxt</b></summary> 
-<p>
-
-
-<pre><code>paper {
-  title: &quot;EfficientPaper: manage your research papers in an efficient way.&quot;
-  abbr: &quot;EfficientPaper&quot;
-  url: &quot;https://github.com/hustzxd/EfficientPaper&quot;
-  authors: &quot;hustzxd&quot;
-}
-pub {
-  where: &quot;GitHub&quot;
-  year: 2023
-}
-code {
-  type: &quot;Pytorch&quot;
-  url: &quot;https://github.com/hustzxd/EfficientPaper&quot;
-}
-note {
-  url: &quot;EfficientPaper.md&quot;
-}
-keyword {
-  words: efficient_paper
-}
+<h3 id="_2">工作流程</h3>
+<h4 id="_3">第一步：添加论文信息</h4>
+<p>使用 <code>add_paper_info.sh</code> 脚本从 PDF 文件自动提取论文信息：</p>
+<pre><code class="language-bash">./add_paper_info.sh ~/Downloads/2512.01278v1.pdf
 </code></pre>
-
-
-</p>
-</details>
-
+<p>这个脚本会：
+- 自动从 PDF 提取论文标题、作者、摘要等信息
+- 在 <code>meta/YYYY/</code> 目录下创建对应的 <code>.prototxt</code> 文件
+- 在 <code>notes/YYYY/{paper_id}/</code> 目录下创建笔记文件</p>
+<h4 id="_4">第二步：启动编辑器并编辑</h4>
+<p>运行编辑器服务：</p>
+<pre><code class="language-bash">./start_editor.sh
+</code></pre>
+<p>这个脚本会同时启动：
+- <strong>MkDocs 服务</strong> (端口 8000) - 提供搜索和预览界面
+- <strong>Paper Editor API</strong> (端口 8001) - 提供编辑功能的后端 API</p>
+<p>然后访问搜索页面 <code>http://localhost:8000/search/</code>，在可视化界面中：
+1. <strong>查找论文</strong> - 使用搜索框或筛选器找到刚添加的论文
+2. <strong>点击 Edit</strong> - 点击论文卡片上的 "Edit" 链接
+3. <strong>编辑信息</strong> - 在表单中完善论文信息（标题、作者、机构、关键词、封面图片、baseline methods 等）
+4. <strong>保存</strong> - 点击 "Save Changes" 按钮并确认</p>
+<h4 id="github">第三步：确认并部署到 GitHub</h4>
+<p>确认编辑无误后，使用 <code>refresh_readme.sh</code> 部署到 GitHub：</p>
+<pre><code class="language-bash">./refresh_readme.sh 'update paper info'
+</code></pre>
+<p>这个脚本会：
+- 重新生成搜索数据和分类页面
+- 提交所有更改并推送到 GitHub
+- 自动触发 GitHub Pages 部署</p>
+<blockquote>
+<p>详细使用说明请参考 <a href="PAPER_EDITOR_README.md">PAPER_EDITOR_README.md</a></p>
+</blockquote>
 <p align="center">
 <a class="glightbox" href="notes//conference_timeline.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="notes//conference_timeline.png" width="800" title="blank"></a>
 </p>
 
-<h2 id="_1">招聘</h2>
+<h2 id="_5">招聘</h2>
 <p>如果您对论文涉及到的研究内容感兴趣，同时有求职意向（<a href="https://m.zhipin.com/gongsi/job/dc8e21b748a34c331HZz3Nu-GFU~.html?ka=m_seo_companys_all_jobs_boss">实习生/校招/社招</a>），可以发送简历到zhaoxiandong27@gmail.com，欢迎沟通交流。</p>
 <h2 id="recent-changes">Recent Changes</h2>
 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -277,6 +290,7 @@ keyword {
 </ol>
 <h4 id="2025">2025</h4>
 <ol>
+<li><a href="http://arxiv.org/abs/2408.10473v1">Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism</a> [<a class="glightbox" href="https://img.shields.io/badge/2025--green" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025--green" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2501.02336v1">AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-AAAI-FF4500" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-AAAI-FF4500" /></a>] <a href="https://github.com/ASISys/AdaSkip"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ASISys/AdaSkip" /></a> </li>
 <li><a href="http://arxiv.org/abs/2407.20584v3">Pruning Large Language Models with Semi-Structural Adaptive Sparse Training</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-AAAI-FF4500" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-AAAI-FF4500" /></a>] <a href="https://github.com/thu-ml/Adaptive-Sparse-Trainer"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/thu-ml/Adaptive-Sparse-Trainer" /></a> </li>
 <li><a href="http://arxiv.org/abs/2406.03482v2">QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-AAAI-FF4500" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-AAAI-FF4500" /></a>] <a href="https://github.com/amirzandieh/QJL"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/amirzandieh/QJL" /></a> </li>
@@ -287,7 +301,6 @@ keyword {
 <li><a href="http://arxiv.org/abs/2405.04437v3">vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-ASPLOS-9370DB" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-ASPLOS-9370DB" /></a>] <a href="https://github.com/microsoft/vattention"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/microsoft/vattention" /></a> </li>
 <li><a href="http://arxiv.org/abs/2507.08771v1">BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-COLM-6495ED" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-COLM-6495ED" /></a>] <a href="https://github.com/thunlp/BlockFFN"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/thunlp/BlockFFN" /></a> </li>
 <li><a href="http://arxiv.org/abs/2508.04257v1">KVSink: Understanding and Enhancing the Preservation of Attention Sinks in KV Cache Quantization for LLMs</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-COLM-6495ED" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-COLM-6495ED" /></a>]  </li>
-<li><a href="http://arxiv.org/abs/2408.10473v1">Enhancing One-shot Pruned Pre-trained Language Models through Sparse-Dense-Sparse Mechanism</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-Coling-1E90FF" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-Coling-1E90FF" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2504.03661v2">MILLION: Mastering Long-Context LLM Inference Via Outlier-Immunized KV Product Quantization</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-DAC-green" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-DAC-green" /></a>] <a href="https://github.com/ZongwuWang/MILLION"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ZongwuWang/MILLION" /></a> </li>
 <li><a href="http://arxiv.org/abs/2410.03090v2">UNComp: Can Matrix Entropy Uncover Sparsity? -- A Compressor Design from an Uncertainty-Aware Perspective</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-EMNLP-green" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-EMNLP-green" /></a>] <a href="https://github.com/menik1126/UNComp"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/menik1126/UNComp" /></a> </li>
 <li><a href="http://arxiv.org/abs/2509.06436v1">Tree of Agents: Improving Long-Context Capabilities of Large Language Models through Multi-Perspective Reasoning</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-EMNLP_Findings-green" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-EMNLP_Findings-green" /></a>] <a href="https://github.com/Aireduce952/Tree-of-Agents"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Aireduce952/Tree-of-Agents" /></a> </li>
@@ -336,12 +349,14 @@ keyword {
 <li><a href="http://arxiv.org/abs/2407.12820v2">PQCache: Product Quantization-based KVCache for Long Context LLM Inference</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-SIGMOD-green" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-SIGMOD-green" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2505.24680v1">A Simple Linear Patch Revives Layer-Pruned Large Language Models</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2504.06319v1">Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
+<li><a href="http://arxiv.org/abs/2512.01278v1">Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2505.19578v1">Accelerating Prefilling for Long-Context LLMs via Sparse Pattern Sharing</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2504.06949v1">Adaptive Computation Pruning for the Forgetting Transformer</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>] <a href="https://github.com/zhixuan-lin/arctic-fox"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/zhixuan-lin/arctic-fox" /></a> </li>
 <li><a href="http://arxiv.org/abs/2503.23798v1">Adaptive Layer-skipping in Pre-trained LLMs</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2506.03762v1">AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2508.02128v1">Amber Pruner: Leveraging N:M Activation Sparsity for Efficient Prefill in Large Language Models</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2502.04077v1">AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
+<li><a href="http://arxiv.org/abs/2512.12087v1">BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2509.03054v1">Binary Quantization For LLMs Through Dynamic Grouping</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>] <a href="https://github.com/johnnyzheng0636/WGM_bi_quan"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/johnnyzheng0636/WGM_bi_quan" /></a> </li>
 <li><a href="http://arxiv.org/abs/2507.07145v1">CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2507.14392v1">Characterizing Communication Patterns in Distributed Large Language Model Inference</a> [<a class="glightbox" href="https://img.shields.io/badge/2025-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2025-arXiv-1E88E5" /></a>]  </li>
@@ -505,6 +520,7 @@ keyword {
 <li><a href="http://arxiv.org/abs/2406.06858v5">FLUX: Fast Software-based Communication Overlap On GPUs Through Kernel Fusion</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>] <a href="https://github.com/bytedance/flux"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/bytedance/flux" /></a> </li>
 <li><a href="http://arxiv.org/abs/2410.01359v1">FlashMask: Efficient and Rich Mask Extension of FlashAttention</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>] <a href="https://github.com/PaddlePaddle/PaddleNLP"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/PaddlePaddle/PaddleNLP" /></a> </li>
 <li><a href="http://arxiv.org/abs/2403.05527v4">GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>] <a href="https://github.com/HaoKang-Timmy/GEAR"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HaoKang-Timmy/GEAR" /></a> </li>
+<li><a href="http://arxiv.org/abs/2402.04617v2">InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>] <a href="https://github.com/thunlp/InfLLM"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/thunlp/InfLLM" /></a> </li>
 <li><a href="http://arxiv.org/abs/2401.02669v2">Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>]  </li>
 <li><a href="https://arxiv.org/abs/2402.04902">L4Q: Parameter Efficient Quantization-Aware Training on Large Language Models via LoRA-wise LSQ</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>]  </li>
 <li><a href="http://arxiv.org/abs/2403.17919v1">LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning</a> [<a class="glightbox" href="https://img.shields.io/badge/2024-arXiv-1E88E5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Publish" src="https://img.shields.io/badge/2024-arXiv-1E88E5" /></a>]  </li>
@@ -802,5 +818,5 @@ keyword {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-12-29 10:43:35.414990+00:00
+Build Date UTC : 2025-12-30 03:15:56.511366+00:00
 -->

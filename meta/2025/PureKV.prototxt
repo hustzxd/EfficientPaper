@@ -20,13 +20,10 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache
-  words: sparse_pruning
   words: attention_sparsity
+  words: sparse_pruning
+  words: kv_cache
 }
 cover {
   url: "fig1.png"
@@ -34,5 +31,5 @@ cover {
 baseline {
   methods: "2023/H2O"
   methods: "2024/SnapKV"
-  methods: "2024/streaming-llm"
+  methods: "2024/StreamingLLM"
 }

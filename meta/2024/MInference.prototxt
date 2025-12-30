@@ -25,18 +25,15 @@ code {
   type: "Pytorch"
   url: "https://github.com/microsoft/MInference"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache
-  words: sparse_pruning
   words: attention_sparsity
+  words: sparse_pruning
+  words: kv_cache
 }
 cover {
   url: "MInference_3shape.PNG"
 }
 baseline {
-  methods: "2024/streaming-llm"
-  methods: "InfLLM"
+  methods: "2024/StreamingLLM"
+  methods: "2024/InfLLM"
 }

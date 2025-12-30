@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding";
+        var mkdocs_page_input_path = "notes/2025/BLASST/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../search/">Search</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Paper List</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-07/">2025-11-07</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-14/">2025-11-14</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-21/">2025-11-21</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-28/">2025-11-28</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-05/">2025-12-05</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-12/">2025-12-12</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-19/">2025-12-19</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-26/">2025-12-26</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-07-25/">2025-07-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-01/">2025-08-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-08/">2025-08-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-15/">2025-08-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-22/">2025-08-22</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-29/">2025-08-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-05/">2025-09-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-15/">2025-09-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-19/">2025-09-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-26/">2025-09-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-28/">2025-09-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="blasst-dynamic-blocked-attention-sparsity-via-softmax-thresholding">BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding</h1>
+<blockquote>
+<p>Jiayi Yuan, Cameron Shinn, Kai Xu, Jingze Cui, George Klimiashvili, Guangxuan Xiao, Perkz Zheng, Bo Li, Yuxin Zhou, Zhouhai Ye, Weijie You, Tian Zheng, Dominic Brown, Pengbo Wang, Richard Cai, Julien Demouth, John D. Owens, Xia Hu, Song Han, Timmy Liu, Huizi Mao</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.png" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>The growing demand for long-context inference capabilities in Large Language Models (LLMs) has intensified the computational and memory bottlenecks inherent to the standard attention mechanism. To address this challenge, we introduce BLASST, a drop-in sparse attention method that dynamically prunes the attention matrix without any pre-computation or proxy scores. Our method uses a fixed threshold and existing information from online softmax to identify negligible attention scores, skipping softmax computation, Value block loading, and the subsequent matrix multiplication. This fits seamlessly into existing FlashAttention kernel designs with negligible latency overhead. The approach is applicable to both prefill and decode stages across all attention variants (MHA, GQA, MQA, and MLA), providing a unified solution for accelerating long-context inference. We develop an automated calibration procedure that reveals a simple inverse relationship between optimal threshold and context length, enabling robust deployment across diverse scenarios. Maintaining high accuracy, we demonstrate a 1.62x speedup for prefill at 74.7% sparsity and a 1.48x speedup for decode at 73.2% sparsity on modern GPUs. Furthermore, we explore sparsity-aware training as a natural extension, showing that models can be trained to be inherently more robust to sparse attention patterns, pushing the accuracy-sparsity frontier even further.</p>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

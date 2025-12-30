@@ -14,24 +14,21 @@ paper {
   institutions: "Advanced Micro Devices"
 }
 pub {
-  where: "Coling"
+  where: ""
   year: 2025
 }
 code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
   words: weight_sparsity
+  words: sparse_pruning
 }
 cover {
   url: "sds.png"
 }
 baseline {
   methods: "2024/Wanda"
-  methods: "2023/sparsegpt"
+  methods: "2023/SparseGPT"
 }

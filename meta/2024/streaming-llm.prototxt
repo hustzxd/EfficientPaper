@@ -1,6 +1,6 @@
 paper {
   title: "Efficient Streaming Language Models with Attention Sinks"
-  abbr: "streaming-llm"
+  abbr: "StreamingLLM"
   url: "http://arxiv.org/abs/2309.17453v4"
   authors: "Guangxuan Xiao"
   authors: "Yuandong Tian"
@@ -20,14 +20,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/mit-han-lab/streaming-llm"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache
-  words: sparse_pruning
   words: attention_sparsity
+  words: sparse_pruning
+  words: kv_cache
 }
 cover {
   url: "cover.jpg"
+}
+baseline {
+  methods: "None"
 }
