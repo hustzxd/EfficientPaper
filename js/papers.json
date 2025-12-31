@@ -25,11 +25,11 @@
         "Shanghai Jiao Tong University"
       ],
       "year": 2026,
-      "venue": "arXiv",
+      "venue": "EuroSys",
       "cover": "../notes/2026/FlashOverlap/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "08-Communication-Computation Overlap"
+        "08-Communication-Computation Overlap",
+        "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/infinigence/FlashOverlap",
       "note_url": "../notes/2026/FlashOverlap/note/",
