@@ -92,7 +92,7 @@ pip install protobuf==5.27.2 pandas arxiv
 <details open><summary><b>2026</b></summary> 
 <p>
 
-1. [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) [![Publish](https://img.shields.io/badge/2026--green)] [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) 
+1. [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) [![Publish](https://img.shields.io/badge/2026-EuroSys-green)] [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) 
 </p>
 </details>
 <details open><summary><b>2025</b></summary> 

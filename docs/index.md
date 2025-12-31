@@ -42,6 +42,14 @@
         <div id="venue-chart" class="horizontal-bar-chart"></div>
       </div>
       <div class="stat-card">
+        <h3>Top 10 Authors</h3>
+        <div id="author-chart" class="horizontal-bar-chart"></div>
+      </div>
+      <div class="stat-card">
+        <h3>Top 10 Institutions</h3>
+        <div id="institution-chart" class="horizontal-bar-chart"></div>
+      </div>
+      <div class="stat-card">
         <h3>Top 20 Keywords</h3>
         <div id="keyword-cloud" class="keyword-cloud"></div>
       </div>
@@ -1068,6 +1076,8 @@ function closeLightbox() {
 
     generateYearChart();
     generateVenueChart();
+    generateAuthorChart();
+    generateInstitutionChart();
     generateKeywordCloud();
   }
 
@@ -1126,6 +1136,78 @@ function closeLightbox() {
     }).join('');
 
     document.getElementById('venue-chart').innerHTML = chartHtml;
+  }
+
+  function generateAuthorChart() {
+    const authorCounts = {};
+    papers.forEach(paper => {
+      paper.authors.forEach(author => {
+        authorCounts[author] = (authorCounts[author] || 0) + 1;
+      });
+    });
+
+    const sortedAuthors = Object.entries(authorCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+
+    if (sortedAuthors.length === 0) {
+      document.getElementById('author-chart').innerHTML = '<div class="no-data">No author data available</div>';
+      return;
+    }
+
+    const maxCount = sortedAuthors[0][1];
+
+    const chartHtml = sortedAuthors.map(([author, count]) => {
+      const width = (count / maxCount) * 100;
+      return `
+        <div class="h-bar-item">
+          <div class="h-bar-label">${author}</div>
+          <div class="h-bar-container">
+            <div class="h-bar-fill" style="width: ${width}%">
+              <span class="h-bar-value">${count}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('author-chart').innerHTML = chartHtml;
+  }
+
+  function generateInstitutionChart() {
+    const institutionCounts = {};
+    papers.forEach(paper => {
+      paper.institutions.forEach(institution => {
+        institutionCounts[institution] = (institutionCounts[institution] || 0) + 1;
+      });
+    });
+
+    const sortedInstitutions = Object.entries(institutionCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+
+    if (sortedInstitutions.length === 0) {
+      document.getElementById('institution-chart').innerHTML = '<div class="no-data">No institution data available</div>';
+      return;
+    }
+
+    const maxCount = sortedInstitutions[0][1];
+
+    const chartHtml = sortedInstitutions.map(([institution, count]) => {
+      const width = (count / maxCount) * 100;
+      return `
+        <div class="h-bar-item">
+          <div class="h-bar-label">${institution}</div>
+          <div class="h-bar-container">
+            <div class="h-bar-fill" style="width: ${width}%">
+              <span class="h-bar-value">${count}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('institution-chart').innerHTML = chartHtml;
   }
 
   function generateKeywordCloud() {
