@@ -12,6 +12,37 @@ sys.path.insert(0, "/Users/xiandong/projects/EfficientPaper")
 from proto import efficient_paper_pb2 as eppb
 
 
+def fetch_papers_with_retry(client, search, max_retries=5):
+    """Fetch papers with exponential backoff retry on rate limit errors."""
+    retry_count = 0
+    base_delay = 10  # Start with 10 seconds
+
+    while retry_count < max_retries:
+        try:
+            papers = []
+            for paper in client.results(search):
+                papers.append(paper)
+                # Add a small delay between individual paper fetches
+                time.sleep(0.5)
+            return papers
+        except arxiv.HTTPError as e:
+            if "429" in str(e):
+                retry_count += 1
+                if retry_count >= max_retries:
+                    print(f"\nMax retries ({max_retries}) reached. Giving up.")
+                    raise
+
+                delay = base_delay * (2 ** (retry_count - 1))  # Exponential backoff
+                print(f"\nRate limit hit (429 error). Retrying in {delay} seconds... (attempt {retry_count}/{max_retries})")
+                time.sleep(delay)
+            else:
+                raise
+        except Exception as e:
+            raise
+
+    return []
+
+
 def main():
     today = DT.date.today()
     dir_root = "/Users/xiandong/projects/EfficientPaper/weekly_paper"
@@ -78,8 +109,13 @@ def main():
     )
 
     try:
+        # Fetch all papers with retry logic
+        print("Fetching papers from arXiv...")
+        papers = fetch_papers_with_retry(client, search)
+        print(f"Successfully fetched {len(papers)} papers")
+
         # Process all papers
-        for paper in client.results(search):
+        for i, paper in enumerate(papers, 1):
             date = paper.published.date()
             if date >= previous_day:
                 title = paper.title
@@ -106,10 +142,9 @@ def main():
                     markdown_content += f"{summary}\n\n\n"
                     papers_found += 1
 
-            # Add a small delay every 100 papers to avoid rate limits
-            if papers_found % 100 == 0 and papers_found > 0:
-                print(f"\nProcessed {papers_found} papers, pausing briefly...")
-                time.sleep(3)  # 3秒延时，避免请求过快
+            # Progress update
+            if i % 50 == 0:
+                print(f"Processed {i}/{len(papers)} papers, found {papers_found} matching papers so far...")
 
     except arxiv.UnexpectedEmptyPageError:
         print(f"\nReached end of results at {papers_found} papers")

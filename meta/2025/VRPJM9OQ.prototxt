@@ -1,0 +1,35 @@
+paper {
+  title: "Accelerate Speculative Decoding with Sparse Computation in Verification"
+  abbr: "VRPJM9OQ"
+  url: "http://arxiv.org/abs/2512.21911v1"
+  authors: "Jikai Wang"
+  authors: "Jianchao Tan"
+  authors: "Yuxuan Hu"
+  authors: "Jiayu Qin"
+  authors: "Yerui Sun"
+  authors: "Yuchen Xie"
+  authors: "Xunliang Cai"
+  authors: "Juntao Li"
+  authors: "Min Zhang"
+  institutions: "Meituan"
+  institutions: "Soochow University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: activation_sparsity
+  words: attention_sparsity
+  words: deployment
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
