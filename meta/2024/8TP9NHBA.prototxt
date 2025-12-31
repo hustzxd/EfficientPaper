@@ -1,0 +1,35 @@
+paper {
+  title: "Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention"
+  abbr: "CachedAttention"
+  url: "http://arxiv.org/abs/2403.19708v3"
+  authors: "Bin Gao"
+  authors: "Zhuomin He"
+  authors: "Puru Sharma"
+  authors: "Qingxuan Kang"
+  authors: "Djordje Jevdjic"
+  authors: "Junbo Deng"
+  authors: "Xingkun Yang"
+  authors: "Zhou Yu"
+  authors: "Pengfei Zuo"
+  institutions: "National University of Singapore"
+  institutions: "Shanghai Jiaotong University"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "ATC"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: deployment
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

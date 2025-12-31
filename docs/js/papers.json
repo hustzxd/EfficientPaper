@@ -25,9 +25,10 @@
         "Shanghai Jiao Tong University"
       ],
       "year": 2026,
-      "venue": "EuroSys",
+      "venue": "arXiv",
       "cover": "../notes/2026/FlashOverlap/fig3.png",
       "keywords": [
+        "05-Sparse/Pruning",
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/infinigence/FlashOverlap",
@@ -101,44 +102,10 @@
       "prototxt_path": "meta/2025/Acc-SpMM.prototxt"
     },
     {
-      "id": "7R1KOYRK",
-      "title": "Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding",
-      "abbr": "7R1KOYRK",
-      "url": "http://arxiv.org/abs/2512.01278v1",
-      "authors": [
-        "Yilong Zhao",
-        "Jiaming Tang",
-        "Kan Zhu",
-        "Zihao Ye",
-        "Chi-Chih Chang",
-        "Chaofan Lin",
-        "Jongseok Park",
-        "Guangxuan Xiao",
-        "Mohamed S. Abdelfattah",
-        "Mingyu Gao",
-        "Baris Kasikci",
-        "Song Han",
-        "Ion Stoica"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "00-None"
-      ],
-      "code_url": null,
-      "note_url": "../notes/2025/7R1KOYRK/note/",
-      "prototxt_path": "meta/2025/7R1KOYRK.prototxt"
-    },
-    {
       "id": "07NWF4VE",
       "title": "Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching",
       "abbr": "07NWF4VE",
-      "url": "http://arxiv.org/abs/2504.06319v1",
+      "url": "https://arxiv.org/abs/2504.06319v2",
       "authors": [
         "Yanhao Dong",
         "Yubo Miao",
@@ -155,9 +122,9 @@
       "venue": "arXiv",
       "cover": "../notes/2025/07NWF4VE/fig1.png",
       "keywords": [
+        "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "05-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "../notes/2025/07NWF4VE/note/",
@@ -313,16 +280,16 @@
         "Xiangmin Xu"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "South China University of Technology",
+        "Pazhou Laboratory"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
+        "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "05-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "../notes/2025/AhaKV/note/",
@@ -835,6 +802,38 @@
       "code_url": null,
       "note_url": "../notes/2025/PoD/note/",
       "prototxt_path": "meta/2025/PoD.prototxt"
+    },
+    {
+      "id": "CTkvr",
+      "title": "CTkvr: KV Cache Retrieval for Long-Context LLMs via Centroid then Token Indexing",
+      "abbr": "CTkvr",
+      "url": "http://arxiv.org/abs/2512.15550v1",
+      "authors": [
+        "Kuan Lu",
+        "Shuhang Lin",
+        "Sai Wu",
+        "Yichen Yao",
+        "Junhan Yang",
+        "Huan Li",
+        "Wei Chu",
+        "Xu Yinghui",
+        "Yuan Qi",
+        "Gang Chen"
+      ],
+      "institutions": [
+        "Zhejiang University",
+        "Rutgers University",
+        "INFLY Tech"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "../notes/2025/CTkvr/note/",
+      "prototxt_path": "meta/2025/CTkvr.prototxt"
     },
     {
       "id": "DBudgetKV",
@@ -4099,6 +4098,33 @@
       "prototxt_path": "meta/2025/RotateKV.prototxt"
     },
     {
+      "id": "RoundAttention",
+      "title": "Round Attention: A Novel Round-Level Attention Mechanism to Accelerate LLM Inference",
+      "abbr": "RoundAttention",
+      "url": "http://arxiv.org/abs/2502.15294v3",
+      "authors": [
+        "Yaohua Tang",
+        "Zhicheng Hu",
+        "Kun Cheng",
+        "Fan Mo",
+        "Qiheng Lv",
+        "Hua Wang",
+        "Zhi Chen"
+      ],
+      "institutions": [
+        "Moore Threads AI"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "../notes/2025/RoundAttention/note/",
+      "prototxt_path": "meta/2025/RoundAttention.prototxt"
+    },
+    {
       "id": "SageAttention3",
       "title": "SageAttention3: Microscaling FP4 Attention for Inference and An Exploration of 8-Bit Training",
       "abbr": "SageAttention3",
@@ -5932,6 +5958,38 @@
       "code_url": "https://github.com/wangqinsi1/CoreInfer",
       "note_url": "../notes/2024/CoreInfer/note/",
       "prototxt_path": "meta/2024/CoreInfer.prototxt"
+    },
+    {
+      "id": "8TP9NHBA",
+      "title": "Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention",
+      "abbr": "CachedAttention",
+      "url": "http://arxiv.org/abs/2403.19708v3",
+      "authors": [
+        "Bin Gao",
+        "Zhuomin He",
+        "Puru Sharma",
+        "Qingxuan Kang",
+        "Djordje Jevdjic",
+        "Junbo Deng",
+        "Xingkun Yang",
+        "Zhou Yu",
+        "Pengfei Zuo"
+      ],
+      "institutions": [
+        "National University of Singapore",
+        "Shanghai Jiaotong University",
+        "Huawei Cloud"
+      ],
+      "year": 2024,
+      "venue": "ATC",
+      "cover": null,
+      "keywords": [
+        "10-LLM Deployment",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "../notes/2024/8TP9NHBA/note/",
+      "prototxt_path": "meta/2024/8TP9NHBA.prototxt"
     },
     {
       "id": "CachedAttention",
@@ -11103,7 +11161,6 @@
       "github"
     ],
     "keywords": [
-      "00-None",
       "01-Sparsity (Attention)",
       "02-Sparsity (Activation)",
       "03-Sparsity (Weight)",
@@ -11124,5 +11181,5 @@
       "18-Benchmark"
     ]
   },
-  "total": 357
+  "total": 359
 }

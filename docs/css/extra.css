@@ -389,9 +389,210 @@ code.language-prototxt *,
         width: 48px;
         height: 48px;
     }
-    
+
     #back-to-top::before {
         width: 20px;
         height: 20px;
+    }
+}
+
+/* Note Editor Styles */
+.note-edit-btn {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    padding: 10px 20px;
+    background: #4a90d9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.note-edit-btn:hover {
+    background: #3a7bc8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.note-editor-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.note-editor-container {
+    background: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.note-editor-header {
+    padding: 20px 24px;
+    border-bottom: 2px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-editor-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 20px;
+}
+
+.note-editor-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #4a90d9;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #3a7bc8;
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.btn-secondary:hover {
+    background: #e8e8e8;
+}
+
+.note-editor-body {
+    flex: 1;
+    padding: 20px 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#note-editor-textarea {
+    width: 100%;
+    flex: 1;
+    min-height: 400px;
+    padding: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#note-editor-textarea:focus {
+    border-color: #4a90d9;
+}
+
+.note-editor-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #888;
+}
+
+.note-path {
+    font-family: monospace;
+    color: #666;
+}
+
+#note-save-status {
+    font-weight: 500;
+}
+
+#note-save-status.status-saving {
+    color: #4a90d9;
+}
+
+#note-save-status.status-success {
+    color: #2e7d32;
+}
+
+#note-save-status.status-error {
+    color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .note-edit-btn {
+        bottom: 70px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .note-editor-modal {
+        padding: 10px;
+    }
+
+    .note-editor-container {
+        max-height: 95vh;
+    }
+
+    .note-editor-header {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .note-editor-body {
+        padding: 16px;
+    }
+
+    #note-editor-textarea {
+        min-height: 300px;
+        font-size: 13px;
+    }
+
+    .note-editor-footer {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 12px;
     }
 }

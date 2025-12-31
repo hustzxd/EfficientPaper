@@ -97,7 +97,7 @@ def main():
     if paper is not None:
         print("Paper title from arxiv:")
         print(f"\033[96m<<< {paper.title} >>>\033[0m")
-        if os.path.exists(args.file):
+        if args.file is not None and os.path.exists(args.file):
             root_dir = os.path.dirname(args.file)
             new_name = paper.title.replace(" ", "_") + ".pdf"
             new_name = new_name.replace(":", "_")
@@ -159,19 +159,29 @@ def main():
         pinfo.pub.year = year
 
     root_dir = "./"
-    if os.path.exists(os.path.join(root_dir, "meta", f"{pinfo.pub.year}", f"{name}.prototxt")) or os.path.exists(
-        os.path.join(root_dir, "meta", f"{name}.prototxt")
-    ):
+    # Ensure year-based directory exists
+    year_dir = os.path.join(root_dir, "meta", str(pinfo.pub.year))
+    os.makedirs(year_dir, exist_ok=True)
+
+    # Check if file already exists
+    new_path = os.path.join(year_dir, f"{name}.prototxt")
+    old_path = os.path.join(root_dir, "meta", f"{name}.prototxt")
+
+    if os.path.exists(new_path) or os.path.exists(old_path):
         print("The file `{}` already exists, please use another name".format(name))
         return
 
-    with open(os.path.join(root_dir, "meta", "{}.prototxt".format(name)), "w") as wf:
+    with open(new_path, "w") as wf:
         print(pinfo)
-        print("Writing paper information into {}/meta/{}.prototxt".format(root_dir, name))
+        print("Writing paper information into {}/meta/{}/{}.prototxt".format(root_dir, pinfo.pub.year, name))
         wf.write(str(pinfo))
-    # mkdir note
-    os.makedirs(f"notes/{name}", exist_ok=True)
-    if not os.path.exists(f"notes/{name}/note.md"):
+
+    # mkdir note with year-based structure
+    note_dir = f"notes/{pinfo.pub.year}/{name}"
+    os.makedirs(note_dir, exist_ok=True)
+    note_file = os.path.join(note_dir, "note.md")
+
+    if not os.path.exists(note_file):
         if paper is not None:
             title = paper.title
             summary = paper.summary
@@ -184,7 +194,7 @@ def main():
         # note_content += """<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n"""
         note_content += f"""![111](../../blank.jpg)\n\n"""
         note_content += f"""## Abstract\n\n{summary}\n"""
-        with open(f"notes/{name}/note.md", "w") as wf:
+        with open(note_file, "w") as wf:
             wf.write(note_content)
 
 

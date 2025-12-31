@@ -1,7 +1,7 @@
 paper {
   title: "Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching"
   abbr: "07NWF4VE"
-  url: "http://arxiv.org/abs/2504.06319v1"
+  url: "https://arxiv.org/abs/2504.06319v2"
   authors: "Yanhao Dong"
   authors: "Yubo Miao"
   authors: "Weinan Li"
@@ -19,14 +19,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
+  words: attention_sparsity
   words: kv_cache
   words: sparse_pruning
-  words: attention_sparsity
 }
 cover {
   url: "fig1.png"
+}
+baseline {
+  methods: "None"
 }

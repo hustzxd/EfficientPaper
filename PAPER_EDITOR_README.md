@@ -60,7 +60,7 @@ http://localhost:8000/search/
 确认编辑无误后，使用 `refresh_readme.sh` 部署到 GitHub：
 
 ```bash
-./refresh_readme.sh 'update paper info'
+./refresh_readme.sh 'update_paper_info'
 ```
 
 这个脚本会：

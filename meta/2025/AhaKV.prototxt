@@ -8,8 +8,8 @@ paper {
   authors: "Kailing Guo"
   authors: "Ziyang Zhang"
   authors: "Xiangmin Xu"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "South China University of Technology"
+  institutions: "Pazhou Laboratory"
 }
 pub {
   where: "arXiv"
@@ -19,14 +19,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
-  words: kv_cache
   words: attention_sparsity
+  words: kv_cache
+  words: sparse_pruning
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }

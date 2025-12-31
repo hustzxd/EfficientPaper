@@ -253,6 +253,22 @@
       background: #7f8c8d;
     }
 
+    .btn-danger {
+      padding: 12px 24px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
     .message {
       padding: 12px 16px;
       border-radius: 6px;
@@ -333,22 +349,28 @@
 
         <div class="form-group">
           <label for="venue">Venue</label>
-          <select id="venue">
-            <option value="arXiv">arXiv</option>
-            <option value="ICML">ICML</option>
-            <option value="NeurIPS">NeurIPS</option>
-            <option value="ICLR">ICLR</option>
-            <option value="CVPR">CVPR</option>
-            <option value="ICCV">ICCV</option>
-            <option value="ECCV">ECCV</option>
-            <option value="ACL">ACL</option>
-            <option value="EMNLP">EMNLP</option>
-            <option value="NAACL">NAACL</option>
-            <option value="AAAI">AAAI</option>
-            <option value="IJCAI">IJCAI</option>
-            <option value="SIGMOD">SIGMOD</option>
-            <option value="KDD">KDD</option>
-          </select>
+          <input type="text" id="venue" list="venue-list" placeholder="Select or type venue name">
+          <datalist id="venue-list">
+            <option value="arXiv">
+            <option value="ICML">
+            <option value="NeurIPS">
+            <option value="ICLR">
+            <option value="CVPR">
+            <option value="ICCV">
+            <option value="ECCV">
+            <option value="ACL">
+            <option value="EMNLP">
+            <option value="NAACL">
+            <option value="AAAI">
+            <option value="IJCAI">
+            <option value="SIGMOD">
+            <option value="KDD">
+            <option value="SIGIR">
+            <option value="WWW">
+            <option value="CIKM">
+            <option value="WSDM">
+          </datalist>
+          <div class="hint">Select from common venues or type your own</div>
         </div>
 
         <div class="form-group">
@@ -363,12 +385,17 @@
 
         <div class="form-group">
           <label for="code-type">Code Type</label>
-          <select id="code-type">
-            <option value="Pytorch">PyTorch</option>
-            <option value="Tensorflow">TensorFlow</option>
-            <option value="JAX">JAX</option>
-            <option value="Others">Others</option>
-          </select>
+          <input type="text" id="code-type" list="code-type-list" placeholder="Select or type code framework">
+          <datalist id="code-type-list">
+            <option value="Pytorch">
+            <option value="Tensorflow">
+            <option value="JAX">
+            <option value="Keras">
+            <option value="MXNet">
+            <option value="Scikit-learn">
+            <option value="Others">
+          </datalist>
+          <div class="hint">Select from common frameworks or type your own</div>
         </div>
 
         <div class="form-group">
@@ -419,6 +446,7 @@
 
       <!-- Buttons -->
       <div class="button-group">
+        <button type="button" class="btn-danger" onclick="deletePaper()">Delete Paper</button>
         <button type="button" class="btn-secondary" onclick="window.location.href='/search/'">Cancel</button>
         <button type="submit" class="btn-primary">Save Changes</button>
       </div>
@@ -426,35 +454,13 @@
   </div>
 
   <script>
-    // Available keywords from proto definition
-    const KEYWORDS = [
-      { value: 'none', label: 'None' },
-      { value: 'attention_sparsity', label: 'Attention Sparsity' },
-      { value: 'activation_sparsity', label: 'Activation Sparsity' },
-      { value: 'weight_sparsity', label: 'Weight Sparsity' },
-      { value: 'structured_sparsity', label: 'Structured Sparsity' },
-      { value: 'sparse_pruning', label: 'Sparse Pruning' },
-      { value: 'kv_cache_quant', label: 'KV Cache Quantization' },
-      { value: 'quantization', label: 'Quantization' },
-      { value: 'overlap', label: 'Overlap' },
-      { value: 'performance_modeling', label: 'Performance Modeling' },
-      { value: 'deployment', label: 'Deployment' },
-      { value: 'survey', label: 'Survey' },
-      { value: 'structure_design', label: 'Structure Design' },
-      { value: 'low_rank', label: 'Low Rank' },
-      { value: 'kv_cache', label: 'KV Cache' },
-      { value: 'fusion', label: 'Fusion' },
-      { value: 'efficient_training', label: 'Efficient Training' },
-      { value: 'tool', label: 'Tool' },
-      { value: 'benchmark', label: 'Benchmark' },
-    ];
-
     // API configuration
     const API_BASE_URL = 'http://localhost:8001';
 
     let currentPath = '';
     let paperData = null;
     let availableBaselineMethods = [];
+    let KEYWORDS = [];  // Will be loaded from API
 
     // Get path from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
@@ -470,6 +476,21 @@
         }
       } catch (error) {
         console.error('Failed to load baseline methods:', error);
+      }
+    }
+
+    // Load available keywords
+    async function loadKeywords() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/get-keywords`);
+        const data = await response.json();
+        if (response.ok) {
+          KEYWORDS = data.keywords || [];
+        }
+      } catch (error) {
+        console.error('Failed to load keywords:', error);
+        // Fallback to empty array if API fails
+        KEYWORDS = [];
       }
     }
 
@@ -791,10 +812,8 @@
           // Reload baseline methods after saving
           await loadBaselineMethods();
 
-          showMessage('Successfully saved! Please run ./start_editor.sh to see updates.', 'success');
-          setTimeout(() => {
-            window.location.href = '/search/';
-          }, 2000);
+          showMessage('✓ Saved successfully! Auto-reload is running. Refresh your browser in a few seconds to see changes.', 'success');
+          // Don't redirect, stay on current page
         } else {
           throw new Error(result.error || 'Failed to save');
         }
@@ -847,15 +866,86 @@
       }
     });
 
+    // Handle paper deletion
+    async function deletePaper() {
+      if (!currentPath) {
+        showMessage('Error: No paper path specified', 'error');
+        return;
+      }
+
+      // Extract paper info from path for display
+      const pathParts = currentPath.split('/');
+      const year = pathParts[1] || 'unknown';
+      const fileName = pathParts[2] || 'unknown';
+      const paperId = fileName.replace('.prototxt', '');
+
+      // Show detailed confirmation dialog
+      const confirmMessage =
+        `⚠️  WARNING: Permanently delete this paper?\n\n` +
+        `${paperData?.paper?.title || 'Unknown'}\n` +
+        `${currentPath}\n\n` +
+        `⚠️  THIS CANNOT BE UNDONE!\n\n` +
+        `Type "DELETE" to confirm:`;
+
+      const userInput = prompt(confirmMessage);
+
+      if (userInput !== 'DELETE') {
+        if (userInput !== null) {
+          // Show what the user typed and what was expected
+          const typed = userInput.trim();
+          if (typed === '') {
+            showMessage('Deletion cancelled: No confirmation text entered', 'error');
+          } else if (typed.toLowerCase() === 'delete') {
+            showMessage(`Deletion cancelled: You typed "${typed}" but must type "DELETE" in capital letters`, 'error');
+          } else {
+            showMessage(`Deletion cancelled: You typed "${typed}" but must type "DELETE" exactly`, 'error');
+          }
+        }
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/delete-paper`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            path: currentPath,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          showMessage('Paper deleted successfully! Redirecting...', 'success');
+          setTimeout(() => {
+            window.location.href = '/search/';
+          }, 2000);
+        } else {
+          throw new Error(result.error || 'Failed to delete paper');
+        }
+      } catch (error) {
+        console.error('Error deleting paper:', error);
+        showMessage(`Error: ${error.message}`, 'error');
+      }
+    }
+
     // Initialize
     if (!currentPath) {
       document.getElementById('loading').innerHTML =
         '<div class="message error">No file path specified</div>';
     } else {
-      // Load baseline methods first, then paper data
-      loadBaselineMethods().then(() => {
-        loadPaperData();
-      });
+      // Load keywords, baseline methods, then paper data
+      Promise.all([loadKeywords(), loadBaselineMethods()])
+        .then(() => {
+          loadPaperData();
+        })
+        .catch(error => {
+          console.error('Error loading initial data:', error);
+          document.getElementById('loading').innerHTML =
+            `<div class="message error">Error: ${error.message}</div>`;
+        });
     }
   </script>
 </body>

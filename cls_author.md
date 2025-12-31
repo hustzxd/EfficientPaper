@@ -178,7 +178,6 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | ![cover](./notes/2024/Quest/quest.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)](https://github.com/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |
 | [NanoFlow](./meta/2025/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) | ![cover](./notes/2025/NanoFlow/pipeline.gif) | ![Publish](https://img.shields.io/badge/2025-OSDI-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/efeslab/Nanoflow)](https://github.com/efeslab/Nanoflow) | [note](./notes/2025/NanoFlow/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer)](https://github.com/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |
 </p>
 </details>
@@ -222,6 +221,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1) | ![cover](./notes/2025/AdaSkip/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip)](https://github.com/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md) |
 </p>
@@ -366,7 +366,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [07NWF4VE](./meta/2025/07NWF4VE.prototxt) | [Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching](http://arxiv.org/abs/2504.06319v1) | ![cover](./notes/2025/07NWF4VE/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/07NWF4VE/note.md) |
+| [07NWF4VE](./meta/2025/07NWF4VE.prototxt) | [Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching](https://arxiv.org/abs/2504.06319v2) | ![cover](./notes/2025/07NWF4VE/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/07NWF4VE/note.md) |
 | [MiniMax-M1](./meta/2025/MiniMax-M1.prototxt) | [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](http://arxiv.org/abs/2506.13585v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MiniMax-AI/MiniMax-M1)](https://github.com/MiniMax-AI/MiniMax-M1) | [note](./notes/2025/MiniMax-M1/note.md) |
 </p>
 </details>
@@ -756,6 +756,16 @@
 | [CCQ](./meta/2025/CCQ.prototxt) | [CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs](http://arxiv.org/abs/2507.07145v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CCQ/note.md) |
 </p>
 </details>
+<details open><summary><b>Djordje Jevdjic</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
+| [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
+</p>
+</details>
 <details open><summary><b>Dong Li</b></summary> 
 <p>
 
@@ -1001,7 +1011,6 @@
 | [InfLLM](./meta/2024/InfLLM.prototxt) | [InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory](http://arxiv.org/abs/2402.04617v2) | ![cover](./notes/2024/InfLLM/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/InfLLM)](https://github.com/thunlp/InfLLM) | [note](./notes/2024/InfLLM/note.md) |
 | [QServe](./meta/2024/QServer.prototxt) | [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](http://arxiv.org/abs/2405.04532v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [Pytorch](https://hanlab.mit.edu/projects/qserve) | [note](./notes/2024/QServer/note.md) |
 | [XAttention](./meta/2025/XAttention.prototxt) | [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) | ![cover](./notes/2025/XAttention/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention)](https://github.com/mit-han-lab/x-attention) | [note](./notes/2025/XAttention/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 | [BLASST](./meta/2025/BLASST.prototxt) | [BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding](http://arxiv.org/abs/2512.12087v1) | ![cover](./notes/2025/BLASST/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/BLASST/note.md) |
 | [LServer](./meta/2025/LServer.prototxt) | [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1) | ![cover](./notes/2025/LServer/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve)](https://github.com/mit-han-lab/omniserve) | [note](./notes/2025/LServer/note.md) |
 </p>
@@ -1026,7 +1035,7 @@
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | ![cover](./notes/2025/SpecEE/fig9.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE)](https://github.com/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Guowei Li</b></summary> 
@@ -1423,7 +1432,6 @@
 | [HashAttention](./meta/2025/HashAttention.prototxt) | [HashAttention: Semantic Sparsity for Faster Inference](https://openreview.net/forum?id=Em2oaXd8Dc) | ![cover](./notes/2025/HashAttention/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/xAlg-ai/HashAttention-1.0)](https://github.com/xAlg-ai/HashAttention-1.0) | [note](./notes/2025/HashAttention/note.md) |
 | [SVG](./meta/2025/SVG.prototxt) | [Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity](http://arxiv.org/abs/2502.01776v2) |  | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG/note.md) |
 | [SVG2](./meta/2025/SVG2.prototxt) | [Sparse VideoGen2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation](http://arxiv.org/abs/2505.18875v3) |  | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG2/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 | [RadialAttention](./meta/2025/RadialAttention.prototxt) | [Radial Attention: $O(n\log n)$ Sparse Attention with Energy Decay for Long Video Generation](http://arxiv.org/abs/2506.19852v1) | ![cover](./notes/2025/RadialAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RadialAttention/note.md) |
 | [SLA](./meta/2025/SLA.prototxt) | [SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse-Linear Attention](http://arxiv.org/abs/2509.24006v1) | ![cover](./notes/2025/SLA/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SLA)](https://github.com/thu-ml/SLA) | [note](./notes/2025/SLA/note.md) |
 </p>
@@ -1541,7 +1549,6 @@
 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | ![cover](./notes/2024/Quest/quest.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)](https://github.com/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |
 | [AWQ](./meta/2024/awq.prototxt) | [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](https://arxiv.org/abs/2306.00978) |  | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/llm-awq)](https://github.com/mit-han-lab/llm-awq) |  |
 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | ![cover](./notes/2024/DuoAttention/duoattention.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention)](https://github.com/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 | [LServer](./meta/2025/LServer.prototxt) | [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1) | ![cover](./notes/2025/LServer/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve)](https://github.com/mit-han-lab/omniserve) | [note](./notes/2025/LServer/note.md) |
 </p>
 </details>
@@ -1902,6 +1909,16 @@
 | [SLA](./meta/2025/SLA.prototxt) | [SLA: Beyond Sparsity in Diffusion Transformers via Fine-Tunable Sparse-Linear Attention](http://arxiv.org/abs/2509.24006v1) | ![cover](./notes/2025/SLA/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-ml/SLA)](https://github.com/thu-ml/SLA) | [note](./notes/2025/SLA/note.md) |
 </p>
 </details>
+<details open><summary><b>Junbo Deng</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
+| [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
+</p>
+</details>
 <details open><summary><b>Junhao Xu</b></summary> 
 <p>
 
@@ -2027,7 +2044,6 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Quest](./meta/2024/Quest.prototxt) | [Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2406.10774) | ![cover](./notes/2024/Quest/quest.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/quest)](https://github.com/mit-han-lab/quest) | [note](./notes/2024/Quest/note.md) |
 | [NanoFlow](./meta/2025/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) | ![cover](./notes/2025/NanoFlow/pipeline.gif) | ![Publish](https://img.shields.io/badge/2025-OSDI-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/efeslab/Nanoflow)](https://github.com/efeslab/Nanoflow) | [note](./notes/2025/NanoFlow/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 </p>
 </details>
 <details open><summary><b>Kang Guan</b></summary> 
@@ -2060,7 +2076,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [PAROAttention](./meta/2025/PAROAttention.prototxt) | [PAROAttention: Pattern-Aware ReOrdering for Efficient Sparse and Quantized Attention in Visual Generation Models](http://arxiv.org/abs/2506.16054v1) | ![cover](./notes/2025/PAROAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/PAROAttention/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Kecheng Xiao</b></summary> 
@@ -2801,6 +2817,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1) | ![cover](./notes/2025/AdaSkip/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip)](https://github.com/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md) |
 | [Adrenaline](./meta/2025/Adrenaline.prototxt) | [Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation](http://arxiv.org/abs/2503.20552v1) | ![cover](./notes/2025/Adrenaline/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/Adrenaline)](https://github.com/ASISys/Adrenaline) | [note](./notes/2025/Adrenaline/note.md) |
@@ -2837,6 +2854,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [OmniQuant](./meta/2023/omniquant.prototxt) | [OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models](https://arxiv.org/abs/2308.13137) | ![cover](./notes/2023/omniquant/omniquant.png) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenGVLab/OmniQuant)](https://github.com/OpenGVLab/OmniQuant) |  |
 | [PrefixQuant](./meta/2024/PrefixQuant.prototxt) | [PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization](http://arxiv.org/abs/2410.05265v2) | ![cover](./notes/2024/PrefixQuant/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ChenMnZ/PrefixQuant)](https://github.com/ChenMnZ/PrefixQuant) | [note](./notes/2024/PrefixQuant/note.md) |
+</p>
+</details>
+<details open><summary><b>Puru Sharma</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
+| [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 </p>
 </details>
 <details open><summary><b>Qi Hou</b></summary> 
@@ -2931,6 +2958,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | ![cover](./notes/2023/adalora/adalora.jpg) | ![Publish](https://img.shields.io/badge/2023-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA)](https://github.com/QingruZhang/AdaLoRA) |  |
 | [GEAR](./meta/2024/GEAR.prototxt) | [GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM](http://arxiv.org/abs/2403.05527v4) | ![cover](./notes/2024/GEAR/overview.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/HaoKang-Timmy/GEAR)](https://github.com/HaoKang-Timmy/GEAR) | [note](./notes/2024/GEAR/note.md) |
+</p>
+</details>
+<details open><summary><b>Qingxuan Kang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
+| [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 </p>
 </details>
 <details open><summary><b>Qinkai Zheng</b></summary> 
@@ -3512,7 +3549,6 @@
 | [SVG](./meta/2025/SVG.prototxt) | [Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity](http://arxiv.org/abs/2502.01776v2) |  | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG/note.md) |
 | [XAttention](./meta/2025/XAttention.prototxt) | [XAttention: Block Sparse Attention with Antidiagonal Scoring](http://arxiv.org/abs/2503.16428v1) | ![cover](./notes/2025/XAttention/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/x-attention)](https://github.com/mit-han-lab/x-attention) | [note](./notes/2025/XAttention/note.md) |
 | [SVG2](./meta/2025/SVG2.prototxt) | [Sparse VideoGen2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation](http://arxiv.org/abs/2505.18875v3) |  | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG2/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 | [BLASST](./meta/2025/BLASST.prototxt) | [BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding](http://arxiv.org/abs/2512.12087v1) | ![cover](./notes/2025/BLASST/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/BLASST/note.md) |
 | [LServer](./meta/2025/LServer.prototxt) | [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1) | ![cover](./notes/2025/LServer/fig5.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve)](https://github.com/mit-han-lab/omniserve) | [note](./notes/2025/LServer/note.md) |
 | [RadialAttention](./meta/2025/RadialAttention.prototxt) | [Radial Attention: $O(n\log n)$ Sparse Attention with Energy Decay for Long Video Generation](http://arxiv.org/abs/2506.19852v1) | ![cover](./notes/2025/RadialAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RadialAttention/note.md) |
@@ -3679,7 +3715,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Tianrun Liang</b></summary> 
@@ -4458,6 +4494,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Xingkun Yang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
+| [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
+</p>
+</details>
 <details open><summary><b>Xinnan Song</b></summary> 
 <p>
 
@@ -4540,7 +4586,7 @@
 | [Centauri](./meta/2024/Centauri.prototxt) | [Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning](https://dl.acm.org/doi/10.1145/3620666.3651379) | ![cover](./notes/2024/Centauri/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/Centauri/note.md) |
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | ![cover](./notes/2024/SampleAttention/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/SampleAttention/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Xiuyu Li</b></summary> 
@@ -4909,7 +4955,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [PAROAttention](./meta/2025/PAROAttention.prototxt) | [PAROAttention: Pattern-Aware ReOrdering for Efficient Sparse and Quantized Attention in Visual Generation Models](http://arxiv.org/abs/2506.16054v1) | ![cover](./notes/2025/PAROAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/PAROAttention/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Yifan Shi</b></summary> 
@@ -4965,7 +5011,6 @@
 | [SVG](./meta/2025/SVG.prototxt) | [Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity](http://arxiv.org/abs/2502.01776v2) |  | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG/note.md) |
 | [SVG2](./meta/2025/SVG2.prototxt) | [Sparse VideoGen2: Accelerate Video Generation with Sparse Attention via Semantic-Aware Permutation](http://arxiv.org/abs/2505.18875v3) |  | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG2/note.md) |
 | [NanoFlow](./meta/2025/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) | ![cover](./notes/2025/NanoFlow/pipeline.gif) | ![Publish](https://img.shields.io/badge/2025-OSDI-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/efeslab/Nanoflow)](https://github.com/efeslab/Nanoflow) | [note](./notes/2025/NanoFlow/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 </p>
 </details>
 <details open><summary><b>Ying He</b></summary> 
@@ -5203,7 +5248,7 @@
 | [m](./meta/2024/DHIB73MC.prototxt) | [A Survey on Efficient Inference for Large Language Models](http://arxiv.org/abs/2404.14294v2) | ![cover](./notes/2024/DHIB73MC/efficientinference.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/DHIB73MC/note.md) |
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
 | [PAROAttention](./meta/2025/PAROAttention.prototxt) | [PAROAttention: Pattern-Aware ReOrdering for Efficient Sparse and Quantized Attention in Visual Generation Models](http://arxiv.org/abs/2506.16054v1) | ![cover](./notes/2025/PAROAttention/fig3.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/PAROAttention/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Yu Wu</b></summary> 
@@ -5931,6 +5976,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Zhi Chen</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [PoD](./meta/2025/PoD.prototxt) | [Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity](http://arxiv.org/abs/2412.02252v1) | ![cover](./notes/2025/PoD/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) |  | [note](./notes/2025/PoD/note.md) |
+| [RoundAttention](./meta/2025/RoundAttention.prototxt) | [Round Attention: A Novel Round-Level Attention Mechanism to Accelerate LLM Inference](http://arxiv.org/abs/2502.15294v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/RoundAttention/note.md) |
+</p>
+</details>
 <details open><summary><b>Zhibin Gou</b></summary> 
 <p>
 
@@ -6077,6 +6132,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 | [Adrenaline](./meta/2025/Adrenaline.prototxt) | [Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation](http://arxiv.org/abs/2503.20552v1) | ![cover](./notes/2025/Adrenaline/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/Adrenaline)](https://github.com/ASISys/Adrenaline) | [note](./notes/2025/Adrenaline/note.md) |
 </p>
@@ -6107,6 +6163,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
+| [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1) | ![cover](./notes/2025/AdaSkip/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip)](https://github.com/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md) |
 </p>
@@ -6162,7 +6219,6 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [NanoFlow](./meta/2025/NanoFlow.prototxt) | [NanoFlow: Towards Optimal Large Language Model Serving Throughput](http://arxiv.org/abs/2408.12757v2) | ![cover](./notes/2025/NanoFlow/pipeline.gif) | ![Publish](https://img.shields.io/badge/2025-OSDI-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/efeslab/Nanoflow)](https://github.com/efeslab/Nanoflow) | [note](./notes/2025/NanoFlow/note.md) |
-| [7R1KOYRK](./meta/2025/7R1KOYRK.prototxt) | [Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding](http://arxiv.org/abs/2512.01278v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/7R1KOYRK/note.md) |
 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer)](https://github.com/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |
 </p>
 </details>
@@ -6289,7 +6345,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
-| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+| [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026--green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
 </p>
 </details>
 <details open><summary><b>Zixuan Zhou</b></summary> 

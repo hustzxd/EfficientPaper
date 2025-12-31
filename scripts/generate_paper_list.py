@@ -246,9 +246,8 @@ def main():
 
     with open("README_suffix.md") as rf:
         markdown += rf.read()
-    with open("docs/index.md", "w") as wf:
-        wf.write(markdown)
-
+    # with open("docs/readme.md", "w") as wf:
+    #     wf.write(markdown)
 
     del_keys = []
     for k, v in author_cls.items():
@@ -267,8 +266,8 @@ def main():
     for cls_name in ["keyword", "year", "publication", "institution", "author"]:
         with open(f"cls_{cls_name}.md", "w") as wf:
             wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year")))
-        with open(f"docs/cls_{cls_name}.md", "w") as wf:
-            wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year"), docs=True))
+        # with open(f"docs/cls_{cls_name}.md", "w") as wf:
+        #     wf.write(gen_table(cls_dict[cls_name], columns, cls_name, is_open=True, reverse=(cls_name == "year"), docs=True))
 
 
 

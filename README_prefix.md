@@ -61,7 +61,7 @@ pip install protobuf==5.27.2 pandas arxiv
 确认编辑无误后，使用 `refresh_readme.sh` 部署到 GitHub：
 
 ```bash
-./refresh_readme.sh 'update paper info'
+./refresh_readme.sh 'update_paper_info'
 ```
 
 这个脚本会：
@@ -72,7 +72,7 @@ pip install protobuf==5.27.2 pandas arxiv
 > 详细使用说明请参考 [PAPER_EDITOR_README.md](PAPER_EDITOR_README.md)
 
 <p align="center">
-<img src="notes//conference_timeline.png" width="800" title="blank">
+<img src="notes/conference_timeline.png" width="800" title="blank">
 </p>
 
 

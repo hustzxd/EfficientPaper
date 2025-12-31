@@ -1,14 +1,14 @@
 site_name: Efficient Paper
 
 nav:
-  - Search: search.md
   - Home: index.md
-  - Paper List:
-    - By Year: cls_year.md
-    - By Keyword: cls_keyword.md
-    - By Publication: cls_publication.md
-    - By Institution: cls_institution.md
-    - By Author: cls_author.md
+  # - Paper List:
+  #   - By Year: cls_year.md
+  #   - By Keyword: cls_keyword.md
+  #   - By Publication: cls_publication.md
+  #   - By Institution: cls_institution.md
+  #   - By Author: cls_author.md
+  # - Full List: readme.md
   - Graph: baseline_methods_graph.md
   - Weekly Paper: weekly_paper/
   - Contributors: contributors.md
@@ -32,6 +32,7 @@ extra_javascript:
   - js/prism-prototxt.js
   - js/preview.js
   - js/back-to-top.js
+  - js/note-editor.js
 
 
 extra_css:

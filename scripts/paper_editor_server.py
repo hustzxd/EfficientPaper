@@ -39,6 +39,10 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_load_paper(parsed_url)
         elif parsed_url.path == '/api/get-baseline-methods':
             self.handle_get_baseline_methods()
+        elif parsed_url.path == '/api/get-keywords':
+            self.handle_get_keywords()
+        elif parsed_url.path == '/api/load-note':
+            self.handle_load_note(parsed_url)
         else:
             self.send_error(404, "Not Found")
 
@@ -50,6 +54,14 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_save_paper()
         elif parsed_url.path == '/api/upload-cover':
             self.handle_upload_cover()
+        elif parsed_url.path == '/api/delete-paper':
+            self.handle_delete_paper()
+        elif parsed_url.path == '/save_note':
+            self.handle_save_note()
+        elif parsed_url.path == '/api/add-from-arxiv':
+            self.handle_add_from_arxiv()
+        elif parsed_url.path == '/api/upload-github':
+            self.handle_upload_github()
         else:
             self.send_error(404, "Not Found")
 
@@ -149,6 +161,34 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
 
         except Exception as e:
             print(f"Error getting baseline methods: {e}", file=sys.stderr)
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_get_keywords(self):
+        """Get all available keywords from proto definition"""
+        try:
+            # Get all keyword enum values from the protobuf
+            keyword_enum = eppb.Keyword.Word
+
+            # Convert enum names to readable labels
+            def to_label(enum_name):
+                """Convert enum_name like 'attention_sparsity' to 'Attention Sparsity'"""
+                return ' '.join(word.capitalize() for word in enum_name.split('_'))
+
+            # Get all values from the enum descriptor
+            keywords = []
+            for name, value in keyword_enum.items():
+                keywords.append({
+                    'value': name,
+                    'label': to_label(name)
+                })
+
+            # Sort by value (enum name)
+            keywords.sort(key=lambda x: x['value'])
+
+            self.send_json_response({'keywords': keywords})
+
+        except Exception as e:
+            print(f"Error getting keywords: {e}", file=sys.stderr)
             self.send_json_response({'error': str(e)}, 500)
 
     def handle_save_paper(self):
@@ -328,6 +368,328 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             traceback.print_exc()
             self.send_json_response({'error': str(e)}, 500)
 
+    def handle_delete_paper(self):
+        """Delete paper prototxt file and corresponding notes folder"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            path = request_data.get('path')
+
+            if not path:
+                self.send_json_response({'error': 'Missing path'}, 400)
+                return
+
+            # Construct full file path for prototxt
+            prototxt_path = os.path.join(os.getcwd(), path)
+
+            if not os.path.exists(prototxt_path):
+                self.send_json_response({'error': f'File not found: {path}'}, 404)
+                return
+
+            # Extract year and paper_id from path (e.g., meta/2025/P0JBYHCN.prototxt)
+            path_parts = path.split('/')
+            if len(path_parts) < 3:
+                self.send_json_response({'error': 'Invalid path format'}, 400)
+                return
+
+            year = path_parts[1]
+            paper_id = path_parts[2].replace('.prototxt', '')
+
+            # Construct notes folder path
+            notes_folder = os.path.join(os.getcwd(), 'notes', year, paper_id)
+
+            deleted_items = []
+
+            # Delete prototxt file
+            try:
+                os.remove(prototxt_path)
+                deleted_items.append(f'Metadata file: {path}')
+                print(f"Deleted prototxt file: {prototxt_path}")
+            except Exception as e:
+                print(f"Error deleting prototxt file: {e}", file=sys.stderr)
+                self.send_json_response({'error': f'Failed to delete metadata file: {str(e)}'}, 500)
+                return
+
+            # Delete notes folder if it exists
+            if os.path.exists(notes_folder):
+                try:
+                    import shutil
+                    shutil.rmtree(notes_folder)
+                    deleted_items.append(f'Notes folder: notes/{year}/{paper_id}/')
+                    print(f"Deleted notes folder: {notes_folder}")
+                except Exception as e:
+                    print(f"Error deleting notes folder: {e}", file=sys.stderr)
+                    # Don't fail if notes folder deletion fails, prototxt is already deleted
+                    deleted_items.append(f'Notes folder (partial): {str(e)}')
+            else:
+                deleted_items.append('Notes folder: (not found, skipped)')
+
+            self.send_json_response({
+                'success': True,
+                'message': 'Paper deleted successfully. Run ./start_editor.sh to see updates.',
+                'deleted': deleted_items
+            })
+
+        except Exception as e:
+            print(f"Error deleting paper: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_load_note(self, parsed_url):
+        """Load note.md file content"""
+        try:
+            # Parse query parameters
+            query_params = parse_qs(parsed_url.query)
+            path = query_params.get('path', [''])[0]
+
+            if not path:
+                self.send_json_response({'error': 'No path specified'}, 400)
+                return
+
+            # Construct full file path
+            file_path = os.path.join(os.getcwd(), path)
+
+            # Check if file exists
+            if not os.path.exists(file_path):
+                # Return empty template if file doesn't exist
+                self.send_json_response({
+                    'exists': False,
+                    'content': ''
+                })
+                return
+
+            # Read note content
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            print(f"Loaded note: {file_path}")
+
+            self.send_json_response({
+                'exists': True,
+                'content': content
+            })
+
+        except Exception as e:
+            print(f"Error loading note: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_save_note(self):
+        """Save note.md file"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            path = request_data.get('path')
+            content = request_data.get('content')
+
+            if not path:
+                self.send_json_response({'error': 'Missing path'}, 400)
+                return
+
+            if content is None:
+                self.send_json_response({'error': 'Missing content'}, 400)
+                return
+
+            # Construct full file path
+            file_path = os.path.join(os.getcwd(), path)
+
+            # Ensure the directory exists
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+            # Write note content
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+
+            print(f"Saved note: {file_path}")
+
+            self.send_json_response({
+                'success': True,
+                'message': 'Note saved successfully'
+            })
+
+        except Exception as e:
+            print(f"Error saving note: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_add_from_arxiv(self):
+        """Add paper from arXiv ID"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            arxiv_id = request_data.get('arxiv_id', '').strip()
+            abbr = request_data.get('abbr', '').strip()
+
+            if not arxiv_id:
+                self.send_json_response({'error': 'Missing arXiv ID'}, 400)
+                return
+
+            print(f"Adding paper from arXiv: {arxiv_id}")
+
+            # Run add_paper.py script
+            import subprocess
+            import random
+            import string
+
+            # Generate random abbr if not provided
+            if not abbr:
+                abbr = "".join(random.choices(string.ascii_uppercase + string.digits, k=8))
+
+            # Create a temporary file path to pass as argument (script expects -f flag or stdin)
+            # We'll use stdin to pass both arxiv_id and abbr
+            import tempfile
+            with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.txt') as f:
+                f.write(f"{arxiv_id}\n")  # arXiv ID
+                f.write(f"{abbr}\n")       # Paper abbr name
+                temp_input_file = f.name
+
+            try:
+                # Run the script without -f flag, so it reads from stdin
+                with open(temp_input_file, 'r') as input_file:
+                    result = subprocess.run(
+                        ['python', 'scripts/add_paper.py'],
+                        stdin=input_file,
+                        capture_output=True,
+                        text=True,
+                        timeout=30
+                    )
+
+                if result.returncode == 0:
+                    # Extract the prototxt path from output
+                    prototxt_path = None
+                    for line in result.stdout.split('\n'):
+                        if 'Writing paper information into' in line:
+                            # Extract path from message like: Writing paper information into ./meta/2025/ABCD1234.prototxt
+                            import re
+                            match = re.search(r'into\s+\./meta/(\d+)/([^/]+\.prototxt)', line)
+                            if match:
+                                year = match.group(1)
+                                filename = match.group(2)
+                                prototxt_path = f"meta/{year}/{filename}"
+
+                    self.send_json_response({
+                        'success': True,
+                        'message': 'Paper added successfully from arXiv',
+                        'abbr': abbr,
+                        'prototxt_path': prototxt_path,
+                        'output': result.stdout
+                    })
+                else:
+                    raise Exception(f"Script failed: {result.stderr}")
+
+            finally:
+                # Clean up temp file
+                import os as os_module
+                try:
+                    os_module.unlink(temp_input_file)
+                except:
+                    pass
+
+        except subprocess.TimeoutExpired:
+            print(f"Timeout adding paper from arXiv", file=sys.stderr)
+            self.send_json_response({'error': 'Request timeout - arXiv might be slow'}, 500)
+        except Exception as e:
+            print(f"Error adding paper from arXiv: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_upload_github(self):
+        """Upload changes to GitHub and deploy to GitHub Pages"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            commit_message = request_data.get('commit_message', '').strip()
+
+            if not commit_message:
+                self.send_json_response({'error': 'Missing commit message'}, 400)
+                return
+
+            print(f"Uploading to GitHub with message: {commit_message}")
+
+            # Run git commands
+            import subprocess
+
+            try:
+                # Run git add .
+                result_add = subprocess.run(
+                    ['git', 'add', '.'],
+                    capture_output=True,
+                    text=True,
+                    timeout=10
+                )
+
+                if result_add.returncode != 0:
+                    raise Exception(f"git add failed: {result_add.stderr}")
+
+                # Run git commit
+                result_commit = subprocess.run(
+                    ['git', 'commit', '-m', commit_message],
+                    capture_output=True,
+                    text=True,
+                    timeout=10
+                )
+
+                # It's ok if commit fails because there are no changes
+                if result_commit.returncode != 0 and 'nothing to commit' not in result_commit.stdout:
+                    raise Exception(f"git commit failed: {result_commit.stderr}")
+
+                # Run git push
+                result_push = subprocess.run(
+                    ['git', 'push'],
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+
+                if result_push.returncode != 0:
+                    raise Exception(f"git push failed: {result_push.stderr}")
+
+                # Run mkdocs gh-deploy
+                result_deploy = subprocess.run(
+                    ['mkdocs', 'gh-deploy', '--force'],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
+                )
+
+                if result_deploy.returncode != 0:
+                    raise Exception(f"mkdocs gh-deploy failed: {result_deploy.stderr}")
+
+                self.send_json_response({
+                    'success': True,
+                    'message': 'Successfully uploaded to GitHub and deployed to GitHub Pages',
+                    'output': {
+                        'commit': result_commit.stdout,
+                        'push': result_push.stdout,
+                        'deploy': result_deploy.stdout
+                    }
+                })
+
+            except subprocess.TimeoutExpired:
+                raise Exception("Operation timed out")
+
+        except Exception as e:
+            print(f"Error uploading to GitHub: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
     def send_json_response(self, data, status=200):
         """Send JSON response"""
         self.send_response(status)
@@ -350,7 +712,15 @@ def main():
     print(f"MkDocs should run on http://localhost:8000")
     print(f"API endpoints:")
     print(f"  - GET  http://localhost:{port}/api/load-paper?path=...")
+    print(f"  - GET  http://localhost:{port}/api/get-baseline-methods")
+    print(f"  - GET  http://localhost:{port}/api/get-keywords")
+    print(f"  - GET  http://localhost:{port}/api/load-note?path=...")
     print(f"  - POST http://localhost:{port}/api/save-paper")
+    print(f"  - POST http://localhost:{port}/api/upload-cover")
+    print(f"  - POST http://localhost:{port}/api/delete-paper")
+    print(f"  - POST http://localhost:{port}/api/add-from-arxiv")
+    print(f"  - POST http://localhost:{port}/api/upload-github")
+    print(f"  - POST http://localhost:{port}/save_note")
     print("Press Ctrl+C to stop")
 
     try:
