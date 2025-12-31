@@ -960,6 +960,71 @@
   color: #888;
 }
 
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #4a90d9;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 40px;
+  font-weight: 500;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #4a90d9;
+  color: white;
+  border-color: #4a90d9;
+}
+
+.pagination-btn.active {
+  background: #4a90d9;
+  color: white;
+  border-color: #4a90d9;
+}
+
+.pagination-btn:disabled {
+  background: #f5f5f5;
+  color: #ccc;
+  border-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  padding: 6px 4px;
+  color: #888;
+  font-size: 14px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .paper-card {
@@ -1009,6 +1074,8 @@ function closeLightbox() {
 (function() {
   let papers = [];
   let filteredPapers = [];
+  let currentPage = 1;
+  const itemsPerPage = 10;
 
   // Load paper data
   async function loadPapers() {
@@ -1092,6 +1159,8 @@ function closeLightbox() {
       return true;
     });
 
+    // Reset to page 1 when filtering
+    currentPage = 1;
     renderPapers(filteredPapers);
     updateStats();
   }
@@ -1114,10 +1183,17 @@ function closeLightbox() {
 
     if (papersToRender.length === 0) {
       container.innerHTML = '<div class="no-results">No papers found matching your criteria</div>';
+      renderPagination(0);
       return;
     }
 
-    const html = papersToRender.map(paper => {
+    // Calculate pagination
+    const totalPages = Math.ceil(papersToRender.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const papersToShow = papersToRender.slice(startIndex, endIndex);
+
+    const html = papersToShow.map(paper => {
       const title = highlightText(paper.title, searchQuery);
       const authors = paper.authors.map(a => highlightText(a, searchQuery)).join(', ');
       const institutions = paper.institutions.map(i => highlightText(i, searchQuery)).join(', ');
@@ -1155,6 +1231,7 @@ function closeLightbox() {
     }).join('');
 
     container.innerHTML = html;
+    renderPagination(totalPages);
   }
 
   // Update stats
@@ -1168,6 +1245,97 @@ function closeLightbox() {
     } else {
       countEl.textContent = `${showing} of ${total} papers`;
     }
+  }
+
+  // Render pagination controls
+  function renderPagination(totalPages) {
+    const container = document.getElementById('paper-list');
+
+    // Remove existing pagination if it exists
+    const existingPagination = document.getElementById('pagination-controls');
+    if (existingPagination) {
+      existingPagination.remove();
+    }
+
+    if (totalPages <= 1) {
+      return;
+    }
+
+    const startIndex = (currentPage - 1) * itemsPerPage + 1;
+    const endIndex = Math.min(currentPage * itemsPerPage, filteredPapers.length);
+
+    let paginationHtml = `
+      <div id="pagination-controls" class="pagination-controls">
+        <div class="pagination-info">
+          Showing ${startIndex}-${endIndex} of ${filteredPapers.length} papers
+        </div>
+        <div class="pagination-buttons">
+    `;
+
+    // Previous button
+    paginationHtml += `
+      <button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">
+        ← Previous
+      </button>
+    `;
+
+    // Page numbers
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+    if (endPage - startPage < maxVisiblePages - 1) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    if (startPage > 1) {
+      paginationHtml += `<button class="pagination-btn" data-page="1">1</button>`;
+      if (startPage > 2) {
+        paginationHtml += `<span class="pagination-ellipsis">...</span>`;
+      }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      const isActive = i === currentPage ? 'active' : '';
+      paginationHtml += `<button class="pagination-btn ${isActive}" data-page="${i}">${i}</button>`;
+    }
+
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        paginationHtml += `<span class="pagination-ellipsis">...</span>`;
+      }
+      paginationHtml += `<button class="pagination-btn" data-page="${totalPages}">${totalPages}</button>`;
+    }
+
+    // Next button
+    paginationHtml += `
+      <button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">
+        Next →
+      </button>
+    `;
+
+    paginationHtml += `
+        </div>
+      </div>
+    `;
+
+    container.insertAdjacentHTML('afterend', paginationHtml);
+
+    // Add event listeners to pagination buttons
+    document.querySelectorAll('.pagination-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.disabled) return;
+        const page = parseInt(this.dataset.page);
+        goToPage(page);
+      });
+    });
+  }
+
+  // Go to specific page
+  function goToPage(page) {
+    currentPage = page;
+    renderPapers(filteredPapers);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // Reset filters
@@ -1713,5 +1881,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-12-31 05:17:10.505824+00:00
+Build Date UTC : 2025-12-31 05:30:03.798622+00:00
 -->
