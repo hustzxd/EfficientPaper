@@ -1,0 +1,30 @@
+paper {
+  title: "Round Attention: A Novel Round-Level Attention Mechanism to Accelerate LLM Inference"
+  abbr: "RoundAttention"
+  url: "http://arxiv.org/abs/2502.15294v3"
+  authors: "Yaohua Tang"
+  authors: "Zhicheng Hu"
+  authors: "Kun Cheng"
+  authors: "Fan Mo"
+  authors: "Qiheng Lv"
+  authors: "Hua Wang"
+  authors: "Zhi Chen"
+  institutions: "Moore Threads AI"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

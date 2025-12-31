@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding - Efficient Paper</title>
+    <title>CTkvr: KV Cache Retrieval for Long-Context LLMs via Centroid then Token Indexing - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding";
-        var mkdocs_page_input_path = "notes/2025/7R1KOYRK/note.md";
+        var mkdocs_page_name = "CTkvr: KV Cache Retrieval for Long-Context LLMs via Centroid then Token Indexing";
+        var mkdocs_page_input_path = "notes/2025/CTkvr/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -42,25 +42,8 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../../../search/">Search</a>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
                 </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Paper List</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_year/">By Year</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_keyword/">By Keyword</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_publication/">By Publication</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_institution/">By Institution</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../cls_author/">By Author</a>
-                  </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
@@ -68,14 +51,6 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-07/">2025-11-07</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-14/">2025-11-14</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-21/">2025-11-21</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-11-28/">2025-11-28</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-05/">2025-12-05</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-12/">2025-12-12</a>
@@ -86,28 +61,6 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-07-25/">2025-07-25</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-01/">2025-08-01</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-08/">2025-08-08</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-15/">2025-08-15</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-22/">2025-08-22</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-08-29/">2025-08-29</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-05/">2025-09-05</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-15/">2025-09-15</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-19/">2025-09-19</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-26/">2025-09-26</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-09-28/">2025-09-28</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
@@ -115,6 +68,14 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
                 </li>
     </ul>
                   </li>
@@ -137,7 +98,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding</li>
+      <li class="breadcrumb-item active">CTkvr: KV Cache Retrieval for Long-Context LLMs via Centroid then Token Indexing</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -147,14 +108,13 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="accelerating-large-scale-reasoning-model-inference-with-sparse-self-speculative-decoding">Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding</h1>
+                <h1 id="ctkvr-kv-cache-retrieval-for-long-context-llms-via-centroid-then-token-indexing">CTkvr: KV Cache Retrieval for Long-Context LLMs via Centroid then Token Indexing</h1>
 <blockquote>
-<p>Yilong Zhao, Jiaming Tang, Kan Zhu, Zihao Ye, Chi-Chih Chang, Chaofan Lin, Jongseok Park, Guangxuan Xiao, Mohamed S. Abdelfattah, Mingyu Gao, Baris Kasikci, Song Han, Ion Stoica</p>
+<p>Kuan Lu, Shuhang Lin, Sai Wu, Yichen Yao, Junhan Yang, Huan Li, Wei Chu, Xu Yinghui, Yuan Qi, Gang Chen</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Reasoning language models have demonstrated remarkable capabilities on challenging tasks by generating elaborate chain-of-thought (CoT) solutions. However, such lengthy generation shifts the inference bottleneck from compute-bound to memory-bound. To generate each token, the model applies full attention to all previously generated tokens, requiring memory access to an increasingly large KV-Cache. Consequently, longer generations demand more memory access for every step, leading to substantial pressure on memory bandwidth.
-  To address this, we introduce SparseSpec, a speculative decoding framework that reuses the same model as the draft and target models (i.e., self-speculation). SparseSpec features a novel sparse attention mechanism, PillarAttn, as the draft model, which accurately selects critical tokens via elegantly reusing information from the verification stage. Furthermore, SparseSpec co-designs self-speculation with three system innovations: (1) a unified scheduler to batch token drafting and verification, (2) delayed verification for CPU/GPU overlap, and (3) dynamic KV-Cache management to maximize memory utilization. Across various models and datasets, SparseSpec outperforms state-of-the-art solutions, with an up to 2.13x throughput speedup.</p>
+<p>Large language models (LLMs) are increasingly applied in long-context scenarios such as multi-turn conversations. However, long contexts pose significant challenges for inference efficiency, including high memory overhead from Key-Value (KV) cache and increased latency due to excessive memory accesses. Recent methods for dynamic KV selection struggle with trade-offs: block-level indexing degrades accuracy by retrieving irrelevant KV entries, while token-level indexing incurs high latency from inefficient retrieval mechanisms. In this paper, we propose CTKVR, a novel centroid-then-token KV retrieval scheme that addresses these limitations. CTKVR leverages a key observation: query vectors adjacent in position exhibit high similarity after Rotary Position Embedding (RoPE) and share most of their top-k KV cache entries. Based on this insight, CTKVR employs a two-stage retrieval strategy: lightweight centroids are precomputed during prefilling for centroid-grained indexing, followed by token-level refinement for precise KV retrieval. This approach balances retrieval efficiency and accuracy. To further enhance performance, we implement an optimized system for indexing construction and search using CPU-GPU co-execution. Experimentally, CTKVR achieves superior performance across multiple benchmarks with less than 1% accuracy degradation. Meanwhile, CTKVR delivers 3 times and 4 times throughput speedups on Llama-3-8B and Yi-9B at 96K context length across diverse GPU hardware.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
@@ -219,6 +179,7 @@
       <script src="../../../../js/prism-prototxt.js"></script>
       <script src="../../../../js/preview.js"></script>
       <script src="../../../../js/back-to-top.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);

@@ -1,0 +1,35 @@
+paper {
+  title: "CTkvr: KV Cache Retrieval for Long-Context LLMs via Centroid then Token Indexing"
+  abbr: "CTkvr"
+  url: "http://arxiv.org/abs/2512.15550v1"
+  authors: "Kuan Lu"
+  authors: "Shuhang Lin"
+  authors: "Sai Wu"
+  authors: "Yichen Yao"
+  authors: "Junhan Yang"
+  authors: "Huan Li"
+  authors: "Wei Chu"
+  authors: "Xu Yinghui"
+  authors: "Yuan Qi"
+  authors: "Gang Chen"
+  institutions: "Zhejiang University"
+  institutions: "Rutgers University"
+  institutions: "INFLY Tech"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

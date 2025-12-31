@@ -19,17 +19,15 @@ paper {
   institutions: "Shanghai Jiao Tong University"
 }
 pub {
-  where: "EuroSys"
+  where: ""
   year: 2026
 }
 code {
-  type: "C++"
+  type: ""
   url: "https://github.com/infinigence/FlashOverlap"
 }
-note {
-  url: "note.md"
-}
 keyword {
+  words: sparse_pruning
   words: overlap
 }
 cover {
