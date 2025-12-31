@@ -660,6 +660,18 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                 if result_push.returncode != 0:
                     raise Exception(f"git push failed: {result_push.stderr}")
 
+                # Run mkdocs build first to ensure notes/ and meta/ are copied
+                print("[GitHub Upload] Running mkdocs build...")
+                result_build = subprocess.run(
+                    ['mkdocs', 'build'],
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+
+                if result_build.returncode != 0:
+                    raise Exception(f"mkdocs build failed: {result_build.stderr}")
+
                 # Run mkdocs gh-deploy
                 result_deploy = subprocess.run(
                     ['mkdocs', 'gh-deploy', '--force'],
@@ -677,6 +689,7 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                     'output': {
                         'commit': result_commit.stdout,
                         'push': result_push.stdout,
+                        'build': result_build.stdout,
                         'deploy': result_deploy.stdout
                     }
                 })

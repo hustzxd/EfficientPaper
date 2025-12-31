@@ -1,0 +1,30 @@
+paper {
+  title: "SparseServe: Unlocking Parallelism for Dynamic Sparse Attention in Long-Context LLM Serving"
+  abbr: "SparseServe"
+  url: "http://arxiv.org/abs/2509.24626v1"
+  authors: "Qihui Zhou"
+  authors: "Peiqi Yin"
+  authors: "Pengfei Zuo"
+  authors: "James Cheng"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: deployment
+  words: kv_cache
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2023/PagedAttention"
+}

@@ -4584,6 +4584,33 @@
       "prototxt_path": "meta/2025/SVG.prototxt"
     },
     {
+      "id": "SparseServe",
+      "title": "SparseServe: Unlocking Parallelism for Dynamic Sparse Attention in Long-Context LLM Serving",
+      "abbr": "SparseServe",
+      "url": "http://arxiv.org/abs/2509.24626v1",
+      "authors": [
+        "Qihui Zhou",
+        "Peiqi Yin",
+        "Pengfei Zuo",
+        "James Cheng"
+      ],
+      "institutions": [
+        "The Chinese University of Hong Kong",
+        "Huawei Cloud"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/SparseServe/cover.png",
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "10-LLM Deployment",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/SparseServe/note/",
+      "prototxt_path": "meta/2025/SparseServe.prototxt"
+    },
+    {
       "id": "SparsingLaw",
       "title": "Sparsing Law: Towards Large Language Models with Greater Activation Sparsity",
       "abbr": "SparsingLaw",
@@ -11181,5 +11208,5 @@
       "18-Benchmark"
     ]
   },
-  "total": 359
+  "total": 360
 }
