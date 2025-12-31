@@ -21,6 +21,9 @@ else
     git add .
     git commit -m $1
     git push
-    mkdocs gh-deploy --force
+    # Build site with MkDocs
+    mkdocs build
+    # Use custom build script that copies notes/ and meta/ directories
+    ./build_and_deploy.sh
 fi
 

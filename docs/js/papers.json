@@ -26,13 +26,13 @@
       ],
       "year": 2026,
       "venue": "EuroSys",
-      "cover": "../notes/2026/FlashOverlap/fig3.png",
+      "cover": "notes/2026/FlashOverlap/fig3.png",
       "keywords": [
         "08-Communication-Computation Overlap",
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/infinigence/FlashOverlap",
-      "note_url": "../notes/2026/FlashOverlap/note/",
+      "note_url": "notes/2026/FlashOverlap/note/",
       "prototxt_path": "meta/2026/FlashOverlap.prototxt"
     },
     {
@@ -58,13 +58,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/LinearPatch/fig3.png",
+      "cover": "notes/2025/LinearPatch/fig3.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/LinearPatch/note/",
+      "note_url": "notes/2025/LinearPatch/note/",
       "prototxt_path": "meta/2025/LinearPatch.prototxt"
     },
     {
@@ -93,12 +93,12 @@
       ],
       "year": 2025,
       "venue": "PPoPP",
-      "cover": "../notes/2025/Acc-SpMM/fig3.png",
+      "cover": "notes/2025/Acc-SpMM/fig3.png",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/Acc-SpMM/note/",
+      "note_url": "notes/2025/Acc-SpMM/note/",
       "prototxt_path": "meta/2025/Acc-SpMM.prototxt"
     },
     {
@@ -120,14 +120,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/07NWF4VE/fig1.png",
+      "cover": "notes/2025/07NWF4VE/fig1.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/07NWF4VE/note/",
+      "note_url": "notes/2025/07NWF4VE/note/",
       "prototxt_path": "meta/2025/07NWF4VE.prototxt"
     },
     {
@@ -149,14 +149,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SharePrefill/fig3.png",
+      "cover": "notes/2025/SharePrefill/fig3.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SharePrefill/note/",
+      "note_url": "notes/2025/SharePrefill/note/",
       "prototxt_path": "meta/2025/SharePrefill.prototxt"
     },
     {
@@ -183,7 +183,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/zhixuan-lin/arctic-fox",
-      "note_url": "../notes/2025/ACP/note/",
+      "note_url": "notes/2025/ACP/note/",
       "prototxt_path": "meta/2025/ACP.prototxt"
     },
     {
@@ -201,13 +201,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/FlexiDepth/fig2.png",
+      "cover": "notes/2025/FlexiDepth/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/FlexiDepth/note/",
+      "note_url": "notes/2025/FlexiDepth/note/",
       "prototxt_path": "meta/2025/FlexiDepth.prototxt"
     },
     {
@@ -231,14 +231,14 @@
       ],
       "year": 2025,
       "venue": "AAAI",
-      "cover": "../notes/2025/AdaSkip/fig1.png",
+      "cover": "notes/2025/AdaSkip/fig1.png",
       "keywords": [
         "04-Sparsity (Structured)",
         "05-Sparse/Pruning",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/ASISys/AdaSkip",
-      "note_url": "../notes/2025/AdaSkip/note/",
+      "note_url": "notes/2025/AdaSkip/note/",
       "prototxt_path": "meta/2025/AdaSkip.prototxt"
     },
     {
@@ -263,7 +263,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/deep-spin/adasplash",
-      "note_url": "../notes/2025/AdaSplash/note/",
+      "note_url": "notes/2025/AdaSplash/note/",
       "prototxt_path": "meta/2025/AdaSplash.prototxt"
     },
     {
@@ -292,7 +292,7 @@
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/AhaKV/note/",
+      "note_url": "notes/2025/AhaKV/note/",
       "prototxt_path": "meta/2025/AhaKV.prototxt"
     },
     {
@@ -313,12 +313,12 @@
       ],
       "year": 2025,
       "venue": "ISCA",
-      "cover": "../notes/2025/AMALI/fig6.png",
+      "cover": "notes/2025/AMALI/fig6.png",
       "keywords": [
         "09-Performance Modeling"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/AMALI/note/",
+      "note_url": "notes/2025/AMALI/note/",
       "prototxt_path": "meta/2025/AMALI.prototxt"
     },
     {
@@ -348,7 +348,7 @@
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/AmberPruner/note/",
+      "note_url": "notes/2025/AmberPruner/note/",
       "prototxt_path": "meta/2025/AmberPruner.prototxt"
     },
     {
@@ -372,7 +372,7 @@
         "17-Tool"
       ],
       "code_url": "https://github.com/RiseAI-Sys/attention-gym",
-      "note_url": "../notes/2025/attention-gym/note/",
+      "note_url": "notes/2025/attention-gym/note/",
       "prototxt_path": "meta/2025/attention-gym.prototxt"
     },
     {
@@ -399,14 +399,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/AttentionPredictor/fig1.png",
+      "cover": "notes/2025/AttentionPredictor/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/AttentionPredictor/note/",
+      "note_url": "notes/2025/AttentionPredictor/note/",
       "prototxt_path": "meta/2025/AttentionPredictor.prototxt"
     },
     {
@@ -423,13 +423,13 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/BaWA/fig2.png",
+      "cover": "notes/2025/BaWA/fig2.png",
       "keywords": [
         "03-Sparsity (Weight)",
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/BaWA/note/",
+      "note_url": "notes/2025/BaWA/note/",
       "prototxt_path": "meta/2025/BaWA.prototxt"
     },
     {
@@ -452,12 +452,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/WGM/fig1.png",
+      "cover": "notes/2025/WGM/fig1.png",
       "keywords": [
         "07-Quantization"
       ],
       "code_url": "https://github.com/johnnyzheng0636/WGM_bi_quan",
-      "note_url": "../notes/2025/WGM/note/",
+      "note_url": "notes/2025/WGM/note/",
       "prototxt_path": "meta/2025/WGM.prototxt"
     },
     {
@@ -495,14 +495,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/BLASST/cover.png",
+      "cover": "notes/2025/BLASST/cover.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/BLASST/note/",
+      "note_url": "notes/2025/BLASST/note/",
       "prototxt_path": "meta/2025/BLASST.prototxt"
     },
     {
@@ -525,13 +525,13 @@
       ],
       "year": 2025,
       "venue": "COLM",
-      "cover": "../notes/2025/BlockFFN/fig2.png",
+      "cover": "notes/2025/BlockFFN/fig2.png",
       "keywords": [
         "02-Sparsity (Activation)",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/thunlp/BlockFFN",
-      "note_url": "../notes/2025/BlockFFN/note/",
+      "note_url": "notes/2025/BlockFFN/note/",
       "prototxt_path": "meta/2025/BlockFFN.prototxt"
     },
     {
@@ -556,12 +556,12 @@
       ],
       "year": 2025,
       "venue": "EuroSys",
-      "cover": "../notes/2025/CacheBlend/fig1.png",
+      "cover": "notes/2025/CacheBlend/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/LMCache/LMCache",
-      "note_url": "../notes/2025/CacheBlend/note/",
+      "note_url": "notes/2025/CacheBlend/note/",
       "prototxt_path": "meta/2025/CacheBlend.prototxt"
     },
     {
@@ -579,14 +579,14 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/CateKV/fig1.png",
+      "cover": "notes/2025/CateKV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/CateKV/note/",
+      "note_url": "notes/2025/CateKV/note/",
       "prototxt_path": "meta/2025/CateKV.prototxt"
     },
     {
@@ -618,7 +618,7 @@
         "07-Quantization"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/CCQ/note/",
+      "note_url": "notes/2025/CCQ/note/",
       "prototxt_path": "meta/2025/CCQ.prototxt"
     },
     {
@@ -644,7 +644,7 @@
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/UC0D8DJ6/note/",
+      "note_url": "notes/2025/UC0D8DJ6/note/",
       "prototxt_path": "meta/2025/UC0D8DJ6.prototxt"
     },
     {
@@ -666,12 +666,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/1DZIJVBI/eq1.png",
+      "cover": "notes/2025/1DZIJVBI/eq1.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/1DZIJVBI/note/",
+      "note_url": "notes/2025/1DZIJVBI/note/",
       "prototxt_path": "meta/2025/1DZIJVBI.prototxt"
     },
     {
@@ -693,14 +693,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/ChunkKV/fig1.png",
+      "cover": "notes/2025/ChunkKV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/ChunkKV/note/",
+      "note_url": "notes/2025/ChunkKV/note/",
       "prototxt_path": "meta/2025/ChunkKV.prototxt"
     },
     {
@@ -728,12 +728,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/CometSeed/fig3.png",
+      "cover": "notes/2025/CometSeed/fig3.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/bytedance/flux",
-      "note_url": "../notes/2025/CometSeed/note/",
+      "note_url": "notes/2025/CometSeed/note/",
       "prototxt_path": "meta/2025/CometSeed.prototxt"
     },
     {
@@ -760,13 +760,13 @@
       ],
       "year": 2025,
       "venue": "ASPLOS",
-      "cover": "../notes/2025/COMET/fig5.png",
+      "cover": "notes/2025/COMET/fig5.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "07-Quantization"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/COMET/note/",
+      "note_url": "notes/2025/COMET/note/",
       "prototxt_path": "meta/2025/COMET.prototxt"
     },
     {
@@ -793,14 +793,14 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/PoD/fig2.png",
+      "cover": "notes/2025/PoD/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PoD/note/",
+      "note_url": "notes/2025/PoD/note/",
       "prototxt_path": "meta/2025/PoD.prototxt"
     },
     {
@@ -832,7 +832,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/CTkvr/note/",
+      "note_url": "notes/2025/CTkvr/note/",
       "prototxt_path": "meta/2025/CTkvr.prototxt"
     },
     {
@@ -856,14 +856,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/DBudgetKV/fig1.png",
+      "cover": "notes/2025/DBudgetKV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/DBudgetKV/note/",
+      "note_url": "notes/2025/DBudgetKV/note/",
       "prototxt_path": "meta/2025/DBudgetKV.prototxt"
     },
     {
@@ -879,13 +879,13 @@
       ],
       "year": 2025,
       "venue": "github",
-      "cover": "../notes/2025/DeepEP/low-latency.png",
+      "cover": "notes/2025/DeepEP/low-latency.png",
       "keywords": [
         "08-Communication-Computation Overlap",
         "17-Tool"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepEP",
-      "note_url": "../notes/2025/DeepEP/note/",
+      "note_url": "notes/2025/DeepEP/note/",
       "prototxt_path": "meta/2025/DeepEP.prototxt"
     },
     {
@@ -1100,12 +1100,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/DeepSeek-R1/fig1.png",
+      "cover": "notes/2025/DeepSeek-R1/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-R1",
-      "note_url": "../notes/2025/DeepSeek-R1/note/",
+      "note_url": "notes/2025/DeepSeek-R1/note/",
       "prototxt_path": "meta/2025/DeepSeek-R1.prototxt"
     },
     {
@@ -1121,7 +1121,7 @@
       ],
       "year": 2025,
       "venue": "Github",
-      "cover": "../notes/2025/DSA/fig1.png",
+      "cover": "notes/2025/DSA/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -1129,7 +1129,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp",
-      "note_url": "../notes/2025/DSA/note/",
+      "note_url": "notes/2025/DSA/note/",
       "prototxt_path": "meta/2025/DSA.prototxt"
     },
     {
@@ -1148,14 +1148,14 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/DeltaAttention/fig4.png",
+      "cover": "notes/2025/DeltaAttention/fig4.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/DeltaAttention/note/",
+      "note_url": "notes/2025/DeltaAttention/note/",
       "prototxt_path": "meta/2025/DeltaAttention.prototxt"
     },
     {
@@ -1175,14 +1175,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/DeltaLLM/fig5.png",
+      "cover": "notes/2025/DeltaLLM/fig5.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/DeltaLLM/note/",
+      "note_url": "notes/2025/DeltaLLM/note/",
       "prototxt_path": "meta/2025/DeltaLLM.prototxt"
     },
     {
@@ -1205,13 +1205,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/DReSS/fig1.png",
+      "cover": "notes/2025/DReSS/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/DReSS/note/",
+      "note_url": "notes/2025/DReSS/note/",
       "prototxt_path": "meta/2025/DReSS.prototxt"
     },
     {
@@ -1233,12 +1233,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/DynaExq/fig2.png",
+      "cover": "notes/2025/DynaExq/fig2.png",
       "keywords": [
         "07-Quantization"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/DynaExq/note/",
+      "note_url": "notes/2025/DynaExq/note/",
       "prototxt_path": "meta/2025/DynaExq.prototxt"
     },
     {
@@ -1256,12 +1256,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/P0JBYHCN/cover.png",
+      "cover": "notes/2025/P0JBYHCN/cover.png",
       "keywords": [
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/elsa-lab/MoE-CPU-GPU-Collaborative-Inference",
-      "note_url": "../notes/2025/P0JBYHCN/note/",
+      "note_url": "notes/2025/P0JBYHCN/note/",
       "prototxt_path": "meta/2025/P0JBYHCN.prototxt"
     },
     {
@@ -1285,7 +1285,7 @@
         "09-Performance Modeling"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/LIMINAL/note/",
+      "note_url": "notes/2025/LIMINAL/note/",
       "prototxt_path": "meta/2025/LIMINAL.prototxt"
     },
     {
@@ -1311,14 +1311,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/RaaS/fig5.png",
+      "cover": "notes/2025/RaaS/fig5.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/RaaS/note/",
+      "note_url": "notes/2025/RaaS/note/",
       "prototxt_path": "meta/2025/RaaS.prototxt"
     },
     {
@@ -1342,13 +1342,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SDS/sds.png",
+      "cover": "notes/2025/SDS/sds.png",
       "keywords": [
         "03-Sparsity (Weight)",
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SDS/note/",
+      "note_url": "notes/2025/SDS/note/",
       "prototxt_path": "meta/2025/SDS.prototxt"
     },
     {
@@ -1367,14 +1367,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/EvolKV/fig1.png",
+      "cover": "notes/2025/EvolKV/fig1.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/EvolKV/note/",
+      "note_url": "notes/2025/EvolKV/note/",
       "prototxt_path": "meta/2025/EvolKV.prototxt"
     },
     {
@@ -1399,14 +1399,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/topk-decoding/alg1.png",
+      "cover": "notes/2025/topk-decoding/alg1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/ryansynk/topk-decoding",
-      "note_url": "../notes/2025/topk-decoding/note/",
+      "note_url": "notes/2025/topk-decoding/note/",
       "prototxt_path": "meta/2025/topk-decoding.prototxt"
     },
     {
@@ -1435,7 +1435,7 @@
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/2ZU1IWL6/note/",
+      "note_url": "notes/2025/2ZU1IWL6/note/",
       "prototxt_path": "meta/2025/2ZU1IWL6.prototxt"
     },
     {
@@ -1460,7 +1460,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/FasterVGGT/note/",
+      "note_url": "notes/2025/FasterVGGT/note/",
       "prototxt_path": "meta/2025/FasterVGGT.prototxt"
     },
     {
@@ -1479,14 +1479,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/FastKV/fig2.png",
+      "cover": "notes/2025/FastKV/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/dongwonjo/FastKV",
-      "note_url": "../notes/2025/FastKV/note/",
+      "note_url": "notes/2025/FastKV/note/",
       "prototxt_path": "meta/2025/FastKV.prototxt"
     },
     {
@@ -1504,14 +1504,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/FSA/fig1.png",
+      "cover": "notes/2025/FSA/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention",
-      "note_url": "../notes/2025/FSA/note/",
+      "note_url": "notes/2025/FSA/note/",
       "prototxt_path": "meta/2025/FSA.prototxt"
     },
     {
@@ -1548,7 +1548,7 @@
         "17-Tool"
       ],
       "code_url": "https://github.com/flashinfer-ai/flashinfer",
-      "note_url": "../notes/2025/FlashInfer/note/",
+      "note_url": "notes/2025/FlashInfer/note/",
       "prototxt_path": "meta/2025/FlashInfer.prototxt"
     },
     {
@@ -1570,14 +1570,14 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "../notes/2025/FlexPrefill/fig1.png",
+      "cover": "notes/2025/FlexPrefill/fig1.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/bytedance/FlexPrefill",
-      "note_url": "../notes/2025/FlexPrefill/note/",
+      "note_url": "notes/2025/FlexPrefill/note/",
       "prototxt_path": "meta/2025/FlexPrefill.prototxt"
     },
     {
@@ -1602,7 +1602,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/zhixuan-lin/forgetting-transformer",
-      "note_url": "../notes/2025/FoX/note/",
+      "note_url": "notes/2025/FoX/note/",
       "prototxt_path": "meta/2025/FoX.prototxt"
     },
     {
@@ -1625,13 +1625,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/FreqKV/fig2.png",
+      "cover": "notes/2025/FreqKV/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/FreqKV/note/",
+      "note_url": "notes/2025/FreqKV/note/",
       "prototxt_path": "meta/2025/FreqKV.prototxt"
     },
     {
@@ -1664,12 +1664,12 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/GatedAttention/fig1.png",
+      "cover": "notes/2025/GatedAttention/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/qiuzh20/gated_attention",
-      "note_url": "../notes/2025/GatedAttention/note/",
+      "note_url": "notes/2025/GatedAttention/note/",
       "prototxt_path": "meta/2025/GatedAttention.prototxt"
     },
     {
@@ -1861,7 +1861,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/zai-org/GLM-4.5",
-      "note_url": "../notes/2025/GLM-4.5/note/",
+      "note_url": "notes/2025/GLM-4.5/note/",
       "prototxt_path": "meta/2025/GLM-4.5.prototxt"
     },
     {
@@ -1884,7 +1884,7 @@
         "06-Quantization (KV Cache)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/H1B-KV/note/",
+      "note_url": "notes/2025/H1B-KV/note/",
       "prototxt_path": "meta/2025/H1B-KV.prototxt"
     },
     {
@@ -1902,14 +1902,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/GLA/gla.png",
+      "cover": "notes/2025/GLA/gla.png",
       "keywords": [
         "15-Layer Fusion (Reduce IO)",
         "12-Network Structure Design",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/Dao-AILab/grouped-latent-attention",
-      "note_url": "../notes/2025/GLA/note/",
+      "note_url": "notes/2025/GLA/note/",
       "prototxt_path": "meta/2025/GLA.prototxt"
     },
     {
@@ -1930,14 +1930,14 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/HashAttention/fig2.png",
+      "cover": "notes/2025/HashAttention/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/xAlg-ai/HashAttention-1.0",
-      "note_url": "../notes/2025/HashAttention/note/",
+      "note_url": "notes/2025/HashAttention/note/",
       "prototxt_path": "meta/2025/HashAttention.prototxt"
     },
     {
@@ -1970,14 +1970,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/HATA/fig2.png",
+      "cover": "notes/2025/HATA/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/gpzlx1/HATA",
-      "note_url": "../notes/2025/HATA/note/",
+      "note_url": "notes/2025/HATA/note/",
       "prototxt_path": "meta/2025/HATA.prototxt"
     },
     {
@@ -1997,14 +1997,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/HCAttention/fig1.png",
+      "cover": "notes/2025/HCAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/HCAttention/note/",
+      "note_url": "notes/2025/HCAttention/note/",
       "prototxt_path": "meta/2025/HCAttention.prototxt"
     },
     {
@@ -2029,13 +2029,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/HelixParallelism/fig4.png",
+      "cover": "notes/2025/HelixParallelism/fig4.png",
       "keywords": [
         "08-Communication-Computation Overlap",
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/HelixParallelism/note/",
+      "note_url": "notes/2025/HelixParallelism/note/",
       "prototxt_path": "meta/2025/HelixParallelism.prototxt"
     },
     {
@@ -2065,13 +2065,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/InfLLM-V2/fig2.png",
+      "cover": "notes/2025/InfLLM-V2/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/OpenBMB/infllmv2_cuda_impl",
-      "note_url": "../notes/2025/InfLLM-V2/note/",
+      "note_url": "notes/2025/InfLLM-V2/note/",
       "prototxt_path": "meta/2025/InfLLM-V2.prototxt"
     },
     {
@@ -2093,13 +2093,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Adrenaline/fig4.png",
+      "cover": "notes/2025/Adrenaline/fig4.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/ASISys/Adrenaline",
-      "note_url": "../notes/2025/Adrenaline/note/",
+      "note_url": "notes/2025/Adrenaline/note/",
       "prototxt_path": "meta/2025/Adrenaline.prototxt"
     },
     {
@@ -2124,13 +2124,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/IFPruning/fig1.png",
+      "cover": "notes/2025/IFPruning/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/IFPruning/note/",
+      "note_url": "notes/2025/IFPruning/note/",
       "prototxt_path": "meta/2025/IFPruning.prototxt"
     },
     {
@@ -2156,7 +2156,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/microsoft/kascade",
-      "note_url": "../notes/2025/Kascade/note/",
+      "note_url": "notes/2025/Kascade/note/",
       "prototxt_path": "meta/2025/Kascade.prototxt"
     },
     {
@@ -2182,12 +2182,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/KeepKV/fig1.png",
+      "cover": "notes/2025/KeepKV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/KeepKV/note/",
+      "note_url": "notes/2025/KeepKV/note/",
       "prototxt_path": "meta/2025/KeepKV.prototxt"
     },
     {
@@ -2216,7 +2216,7 @@
         "11-Survey"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/209M5GA7/note/",
+      "note_url": "notes/2025/209M5GA7/note/",
       "prototxt_path": "meta/2025/209M5GA7.prototxt"
     },
     {
@@ -2237,13 +2237,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/KVLink/fig1.png",
+      "cover": "notes/2025/KVLink/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/UCSB-NLP-Chang/KVLink",
-      "note_url": "../notes/2025/KVLink/note/",
+      "note_url": "notes/2025/KVLink/note/",
       "prototxt_path": "meta/2025/KVLink.prototxt"
     },
     {
@@ -2263,14 +2263,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/KVmix/fig3.png",
+      "cover": "notes/2025/KVmix/fig3.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/KVmix/note/",
+      "note_url": "notes/2025/KVmix/note/",
       "prototxt_path": "meta/2025/KVmix.prototxt"
     },
     {
@@ -2293,7 +2293,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/NVIDIA/kvpress",
-      "note_url": "../notes/2025/kvpress/note/",
+      "note_url": "notes/2025/kvpress/note/",
       "prototxt_path": "meta/2025/kvpress.prototxt"
     },
     {
@@ -2310,13 +2310,13 @@
       ],
       "year": 2025,
       "venue": "COLM",
-      "cover": "../notes/2025/KVSink/fig8.png",
+      "cover": "notes/2025/KVSink/fig8.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/KVSink/note/",
+      "note_url": "notes/2025/KVSink/note/",
       "prototxt_path": "meta/2025/KVSink.prototxt"
     },
     {
@@ -2338,13 +2338,13 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/LaRoSA/fig1.png",
+      "cover": "notes/2025/LaRoSA/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/LaRoSA/note/",
+      "note_url": "notes/2025/LaRoSA/note/",
       "prototxt_path": "meta/2025/LaRoSA.prototxt"
     },
     {
@@ -2373,7 +2373,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/MGDDestiny/Lava",
-      "note_url": "../notes/2025/LAVa/note/",
+      "note_url": "notes/2025/LAVa/note/",
       "prototxt_path": "meta/2025/LAVa.prototxt"
     },
     {
@@ -2396,14 +2396,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/LeanK/fig2.png",
+      "cover": "notes/2025/LeanK/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/microsoft/MInference/tree/main/LeanK",
-      "note_url": "../notes/2025/LeanK/note/",
+      "note_url": "notes/2025/LeanK/note/",
       "prototxt_path": "meta/2025/LeanK.prototxt"
     },
     {
@@ -2428,7 +2428,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/moonmath-ai/LiteAttention",
-      "note_url": "../notes/2025/LiteAttention/note/",
+      "note_url": "notes/2025/LiteAttention/note/",
       "prototxt_path": "meta/2025/LiteAttention.prototxt"
     },
     {
@@ -2455,14 +2455,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/LServer/fig5.png",
+      "cover": "notes/2025/LServer/fig5.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/omniserve",
-      "note_url": "../notes/2025/LServer/note/",
+      "note_url": "notes/2025/LServer/note/",
       "prototxt_path": "meta/2025/LServer.prototxt"
     },
     {
@@ -2497,12 +2497,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/MegaScale-MoE/fig8.png",
+      "cover": "notes/2025/MegaScale-MoE/fig8.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/MegaScale-MoE/note/",
+      "note_url": "notes/2025/MegaScale-MoE/note/",
       "prototxt_path": "meta/2025/MegaScale-MoE.prototxt"
     },
     {
@@ -2530,14 +2530,14 @@
       ],
       "year": 2025,
       "venue": "DAC",
-      "cover": "../notes/2025/MILLION/fig4.png",
+      "cover": "notes/2025/MILLION/fig4.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "07-Quantization",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/ZongwuWang/MILLION",
-      "note_url": "../notes/2025/MILLION/note/",
+      "note_url": "notes/2025/MILLION/note/",
       "prototxt_path": "meta/2025/MILLION.prototxt"
     },
     {
@@ -2627,7 +2627,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/MiniCPM4/fig2.png",
+      "cover": "notes/2025/MiniCPM4/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -2635,7 +2635,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/openbmb/minicpm",
-      "note_url": "../notes/2025/MiniCPM4/note/",
+      "note_url": "notes/2025/MiniCPM4/note/",
       "prototxt_path": "meta/2025/MiniCPM4.prototxt"
     },
     {
@@ -2746,7 +2746,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/MiniMax-AI/MiniMax-01",
-      "note_url": "../notes/2025/MiniMax-01/note/",
+      "note_url": "notes/2025/MiniMax-01/note/",
       "prototxt_path": "meta/2025/MiniMax-01.prototxt"
     },
     {
@@ -2895,7 +2895,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/MiniMax-AI/MiniMax-M1",
-      "note_url": "../notes/2025/MiniMax-M1/note/",
+      "note_url": "notes/2025/MiniMax-M1/note/",
       "prototxt_path": "meta/2025/MiniMax-M1.prototxt"
     },
     {
@@ -2925,7 +2925,7 @@
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/MIRAGE/note/",
+      "note_url": "notes/2025/MIRAGE/note/",
       "prototxt_path": "meta/2025/MIRAGE.prototxt"
     },
     {
@@ -2951,13 +2951,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/52A7RO95/fig1.png",
+      "cover": "notes/2025/52A7RO95/fig1.png",
       "keywords": [
         "12-Network Structure Design",
         "11-Survey"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/52A7RO95/note/",
+      "note_url": "notes/2025/52A7RO95/note/",
       "prototxt_path": "meta/2025/52A7RO95.prototxt"
     },
     {
@@ -2976,7 +2976,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/MoSA/fig1.png",
+      "cover": "notes/2025/MoSA/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -2984,7 +2984,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/piotrpiekos/MoSA",
-      "note_url": "../notes/2025/MoSA/note/",
+      "note_url": "notes/2025/MoSA/note/",
       "prototxt_path": "meta/2025/MoSA.prototxt"
     },
     {
@@ -3013,13 +3013,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/MoR/fig1.png",
+      "cover": "notes/2025/MoR/fig1.png",
       "keywords": [
         "12-Network Structure Design",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/raymin0223/mixture_of_recursions",
-      "note_url": "../notes/2025/MoR/note/",
+      "note_url": "notes/2025/MoR/note/",
       "prototxt_path": "meta/2025/MoR.prototxt"
     },
     {
@@ -3053,7 +3053,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/MMInference/note/",
+      "note_url": "notes/2025/MMInference/note/",
       "prototxt_path": "meta/2025/MMInference.prototxt"
     },
     {
@@ -3095,7 +3095,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/MoBA/fig1.png",
+      "cover": "notes/2025/MoBA/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -3103,7 +3103,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/MoonshotAI/MoBA",
-      "note_url": "../notes/2025/MoBA/note/",
+      "note_url": "notes/2025/MoBA/note/",
       "prototxt_path": "meta/2025/MoBA.prototxt"
     },
     {
@@ -3128,13 +3128,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/MoDES/fig4.png",
+      "cover": "notes/2025/MoDES/fig4.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/MoDES/note/",
+      "note_url": "notes/2025/MoDES/note/",
       "prototxt_path": "meta/2025/MoDES.prototxt"
     },
     {
@@ -3153,12 +3153,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/MoPEQ/fig1.png",
+      "cover": "notes/2025/MoPEQ/fig1.png",
       "keywords": [
         "07-Quantization"
       ],
       "code_url": "https://github.com/krishnateja95/MoE-Mixed-Prec",
-      "note_url": "../notes/2025/MoPEQ/note/",
+      "note_url": "notes/2025/MoPEQ/note/",
       "prototxt_path": "meta/2025/MoPEQ.prototxt"
     },
     {
@@ -3176,13 +3176,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Mosaic/fig6.png",
+      "cover": "notes/2025/Mosaic/fig6.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/Mosaic/note/",
+      "note_url": "notes/2025/Mosaic/note/",
       "prototxt_path": "meta/2025/Mosaic.prototxt"
     },
     {
@@ -3214,12 +3214,12 @@
       ],
       "year": 2025,
       "venue": "OSDI",
-      "cover": "../notes/2025/NanoFlow/pipeline.gif",
+      "cover": "notes/2025/NanoFlow/pipeline.gif",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/efeslab/Nanoflow",
-      "note_url": "../notes/2025/NanoFlow/note/",
+      "note_url": "notes/2025/NanoFlow/note/",
       "prototxt_path": "meta/2025/NanoFlow.prototxt"
     },
     {
@@ -3251,7 +3251,7 @@
       ],
       "year": 2025,
       "venue": "ACL",
-      "cover": "../notes/2025/NSA/fig2.png",
+      "cover": "notes/2025/NSA/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -3259,7 +3259,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/NSA/note/",
+      "note_url": "notes/2025/NSA/note/",
       "prototxt_path": "meta/2025/NSA.prototxt"
     },
     {
@@ -3282,14 +3282,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/PagedEviction/fig1.png",
+      "cover": "notes/2025/PagedEviction/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PagedEviction/note/",
+      "note_url": "notes/2025/PagedEviction/note/",
       "prototxt_path": "meta/2025/PagedEviction.prototxt"
     },
     {
@@ -3361,7 +3361,7 @@
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PanguUltra/note/",
+      "note_url": "notes/2025/PanguUltra/note/",
       "prototxt_path": "meta/2025/PanguUltra.prototxt"
     },
     {
@@ -3388,13 +3388,13 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/PAROAttention/fig3.png",
+      "cover": "notes/2025/PAROAttention/fig3.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PAROAttention/note/",
+      "note_url": "notes/2025/PAROAttention/note/",
       "prototxt_path": "meta/2025/PAROAttention.prototxt"
     },
     {
@@ -3417,12 +3417,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/PPCL/fig3.png",
+      "cover": "notes/2025/PPCL/fig3.png",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/OPPO-Mente-Lab/Qwen-Image-Pruning",
-      "note_url": "../notes/2025/PPCL/note/",
+      "note_url": "notes/2025/PPCL/note/",
       "prototxt_path": "meta/2025/PPCL.prototxt"
     },
     {
@@ -3444,13 +3444,13 @@
       ],
       "year": 2025,
       "venue": "ASPLOS",
-      "cover": "../notes/2025/POD-Attention/fig2.png",
+      "cover": "notes/2025/POD-Attention/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/microsoft/vattention/tree/main/pod_attn",
-      "note_url": "../notes/2025/POD-Attention/note/",
+      "note_url": "notes/2025/POD-Attention/note/",
       "prototxt_path": "meta/2025/POD-Attention.prototxt"
     },
     {
@@ -3478,14 +3478,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/PowerAttention/fig1.png",
+      "cover": "notes/2025/PowerAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PowerAttention/note/",
+      "note_url": "notes/2025/PowerAttention/note/",
       "prototxt_path": "meta/2025/PowerAttention.prototxt"
     },
     {
@@ -3517,7 +3517,7 @@
         "06-Quantization (KV Cache)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PQCache/note/",
+      "note_url": "notes/2025/PQCache/note/",
       "prototxt_path": "meta/2025/PQCache.prototxt"
     },
     {
@@ -3537,14 +3537,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/PSA/fig4.png",
+      "cover": "notes/2025/PSA/fig4.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/ASISys/PSAttention",
-      "note_url": "../notes/2025/PSA/note/",
+      "note_url": "notes/2025/PSA/note/",
       "prototxt_path": "meta/2025/PSA.prototxt"
     },
     {
@@ -3567,13 +3567,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Cus-Prun/fig1.png",
+      "cover": "notes/2025/Cus-Prun/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/zhaoyiran924/Custom-Prune",
-      "note_url": "../notes/2025/Cus-Prun/note/",
+      "note_url": "notes/2025/Cus-Prun/note/",
       "prototxt_path": "meta/2025/Cus-Prun.prototxt"
     },
     {
@@ -3593,13 +3593,13 @@
       ],
       "year": 2025,
       "venue": "AAAI",
-      "cover": "../notes/2025/AdaptiveSparseTrainer/fig1.png",
+      "cover": "notes/2025/AdaptiveSparseTrainer/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/thu-ml/Adaptive-Sparse-Trainer",
-      "note_url": "../notes/2025/AdaptiveSparseTrainer/note/",
+      "note_url": "notes/2025/AdaptiveSparseTrainer/note/",
       "prototxt_path": "meta/2025/AdaptiveSparseTrainer.prototxt"
     },
     {
@@ -3622,14 +3622,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/PureKV/fig1.png",
+      "cover": "notes/2025/PureKV/fig1.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/PureKV/note/",
+      "note_url": "notes/2025/PureKV/note/",
       "prototxt_path": "meta/2025/PureKV.prototxt"
     },
     {
@@ -3648,14 +3648,14 @@
       ],
       "year": 2025,
       "venue": "AAAI",
-      "cover": "../notes/2025/QJL/fig1.png",
+      "cover": "notes/2025/QJL/fig1.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/amirzandieh/QJL",
-      "note_url": "../notes/2025/QJL/note/",
+      "note_url": "notes/2025/QJL/note/",
       "prototxt_path": "meta/2025/QJL.prototxt"
     },
     {
@@ -3688,7 +3688,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/QuickSilver/note/",
+      "note_url": "notes/2025/QuickSilver/note/",
       "prototxt_path": "meta/2025/QuickSilver.prototxt"
     },
     {
@@ -3763,12 +3763,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Qwen3/fig1.png",
+      "cover": "notes/2025/Qwen3/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/QwenLM/Qwen3",
-      "note_url": "../notes/2025/Qwen3/note/",
+      "note_url": "notes/2025/Qwen3/note/",
       "prototxt_path": "meta/2025/Qwen3.prototxt"
     },
     {
@@ -3800,14 +3800,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/R-KV/fig1.png",
+      "cover": "notes/2025/R-KV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/Zefan-Cai/R-KV",
-      "note_url": "../notes/2025/R-KV/note/",
+      "note_url": "notes/2025/R-KV/note/",
       "prototxt_path": "meta/2025/R-KV.prototxt"
     },
     {
@@ -3829,13 +3829,13 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "../notes/2025/R-Sparse/fig4.png",
+      "cover": "notes/2025/R-Sparse/fig4.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/VITA-Group/R-Sparse",
-      "note_url": "../notes/2025/R-Sparse/note/",
+      "note_url": "notes/2025/R-Sparse/note/",
       "prototxt_path": "meta/2025/R-Sparse.prototxt"
     },
     {
@@ -3869,14 +3869,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/RadialAttention/fig3.png",
+      "cover": "notes/2025/RadialAttention/fig3.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/RadialAttention/note/",
+      "note_url": "notes/2025/RadialAttention/note/",
       "prototxt_path": "meta/2025/RadialAttention.prototxt"
     },
     {
@@ -3902,14 +3902,14 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "../notes/2025/ReAttention/fig1.png",
+      "cover": "notes/2025/ReAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/OpenMOSS/ReAttention",
-      "note_url": "../notes/2025/ReAttention/note/",
+      "note_url": "notes/2025/ReAttention/note/",
       "prototxt_path": "meta/2025/ReAttention.prototxt"
     },
     {
@@ -3935,14 +3935,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/ReSA/fig2.png",
+      "cover": "notes/2025/ReSA/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/microsoft/unilm/tree/master/ReSA",
-      "note_url": "../notes/2025/ReSA/note/",
+      "note_url": "notes/2025/ReSA/note/",
       "prototxt_path": "meta/2025/ReSA.prototxt"
     },
     {
@@ -3965,12 +3965,12 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "../notes/2025/RecursiveTransformers/fig1.png",
+      "cover": "notes/2025/RecursiveTransformers/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/RecursiveTransformers/note/",
+      "note_url": "notes/2025/RecursiveTransformers/note/",
       "prototxt_path": "meta/2025/RecursiveTransformers.prototxt"
     },
     {
@@ -3992,7 +3992,7 @@
       ],
       "year": 2025,
       "venue": "MLSys",
-      "cover": "../notes/2025/0VRXJQ3F/tab1.png",
+      "cover": "notes/2025/0VRXJQ3F/tab1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -4000,7 +4000,7 @@
         "11-Survey"
       ],
       "code_url": "https://github.com/LLMkvsys/rethink-kv-compression",
-      "note_url": "../notes/2025/0VRXJQ3F/note/",
+      "note_url": "notes/2025/0VRXJQ3F/note/",
       "prototxt_path": "meta/2025/0VRXJQ3F.prototxt"
     },
     {
@@ -4038,7 +4038,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/microsoft/RetrievalAttention",
-      "note_url": "../notes/2025/RetrievalAttention/note/",
+      "note_url": "notes/2025/RetrievalAttention/note/",
       "prototxt_path": "meta/2025/RetrievalAttention.prototxt"
     },
     {
@@ -4057,14 +4057,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/RetroAttention/fig3.png",
+      "cover": "notes/2025/RetroAttention/fig3.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/RetroAttention/note/",
+      "note_url": "notes/2025/RetroAttention/note/",
       "prototxt_path": "meta/2025/RetroAttention.prototxt"
     },
     {
@@ -4087,14 +4087,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/RotateKV/fig3.png",
+      "cover": "notes/2025/RotateKV/fig3.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/RotateKV/note/",
+      "note_url": "notes/2025/RotateKV/note/",
       "prototxt_path": "meta/2025/RotateKV.prototxt"
     },
     {
@@ -4121,7 +4121,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/RoundAttention/note/",
+      "note_url": "notes/2025/RoundAttention/note/",
       "prototxt_path": "meta/2025/RoundAttention.prototxt"
     },
     {
@@ -4151,7 +4151,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/thu-ml/SageAttention",
-      "note_url": "../notes/2025/SageAttention3/note/",
+      "note_url": "notes/2025/SageAttention3/note/",
       "prototxt_path": "meta/2025/SageAttention3.prototxt"
     },
     {
@@ -4170,14 +4170,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SALE/fig1.png",
+      "cover": "notes/2025/SALE/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/BirdChristopher/SALE",
-      "note_url": "../notes/2025/SALE/note/",
+      "note_url": "notes/2025/SALE/note/",
       "prototxt_path": "meta/2025/SALE.prototxt"
     },
     {
@@ -4199,14 +4199,14 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/SALS/fig3.png",
+      "cover": "notes/2025/SALS/fig3.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SALS/note/",
+      "note_url": "notes/2025/SALS/note/",
       "prototxt_path": "meta/2025/SALS.prototxt"
     },
     {
@@ -4232,13 +4232,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SEAP/fig2.png",
+      "cover": "notes/2025/SEAP/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/IAAR-Shanghai/SEAP/tree/main",
-      "note_url": "../notes/2025/SEAP/note/",
+      "note_url": "notes/2025/SEAP/note/",
       "prototxt_path": "meta/2025/SEAP.prototxt"
     },
     {
@@ -4272,14 +4272,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SeerAttention-R/fig1.png",
+      "cover": "notes/2025/SeerAttention-R/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/microsoft/SeerAttention",
-      "note_url": "../notes/2025/SeerAttention-R/note/",
+      "note_url": "notes/2025/SeerAttention-R/note/",
       "prototxt_path": "meta/2025/SeerAttention-R.prototxt"
     },
     {
@@ -4306,12 +4306,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Seesaw/fig8.png",
+      "cover": "notes/2025/Seesaw/fig8.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/Seesaw/note/",
+      "note_url": "notes/2025/Seesaw/note/",
       "prototxt_path": "meta/2025/Seesaw.prototxt"
     },
     {
@@ -4336,14 +4336,14 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/ShadowKV/shadowkv.png",
+      "cover": "notes/2025/ShadowKV/shadowkv.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/bytedance/ShadowKV",
-      "note_url": "../notes/2025/ShadowKV/note/",
+      "note_url": "notes/2025/ShadowKV/note/",
       "prototxt_path": "meta/2025/ShadowKV.prototxt"
     },
     {
@@ -4372,14 +4372,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SLA/fig4.png",
+      "cover": "notes/2025/SLA/fig4.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/thu-ml/SLA",
-      "note_url": "../notes/2025/SLA/note/",
+      "note_url": "notes/2025/SLA/note/",
       "prototxt_path": "meta/2025/SLA.prototxt"
     },
     {
@@ -4401,14 +4401,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SlimInfer/fig4.png",
+      "cover": "notes/2025/SlimInfer/fig4.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SlimInfer/note/",
+      "note_url": "notes/2025/SlimInfer/note/",
       "prototxt_path": "meta/2025/SlimInfer.prototxt"
     },
     {
@@ -4433,7 +4433,7 @@
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SlimLLM/note/",
+      "note_url": "notes/2025/SlimLLM/note/",
       "prototxt_path": "meta/2025/SlimLLM.prototxt"
     },
     {
@@ -4456,14 +4456,14 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/SpargeAttn/fig3.png",
+      "cover": "notes/2025/SpargeAttn/fig3.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/thu-ml/SpargeAttn",
-      "note_url": "../notes/2025/SpargeAttn/note/",
+      "note_url": "notes/2025/SpargeAttn/note/",
       "prototxt_path": "meta/2025/SpargeAttn.prototxt"
     },
     {
@@ -4499,13 +4499,13 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/SparkTransformer/fig2.png",
+      "cover": "notes/2025/SparkTransformer/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SparkTransformer/note/",
+      "note_url": "notes/2025/SparkTransformer/note/",
       "prototxt_path": "meta/2025/SparkTransformer.prototxt"
     },
     {
@@ -4542,7 +4542,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/svg-project/Sparse-VideoGen",
-      "note_url": "../notes/2025/SVG2/note/",
+      "note_url": "notes/2025/SVG2/note/",
       "prototxt_path": "meta/2025/SVG2.prototxt"
     },
     {
@@ -4580,7 +4580,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/svg-project/Sparse-VideoGen",
-      "note_url": "../notes/2025/SVG/note/",
+      "note_url": "notes/2025/SVG/note/",
       "prototxt_path": "meta/2025/SVG.prototxt"
     },
     {
@@ -4602,13 +4602,13 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/SparsingLaw/fig4.png",
+      "cover": "notes/2025/SparsingLaw/fig4.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/thunlp/SparsingLaw",
-      "note_url": "../notes/2025/SparsingLaw/note/",
+      "note_url": "notes/2025/SparsingLaw/note/",
       "prototxt_path": "meta/2025/SparsingLaw.prototxt"
     },
     {
@@ -4632,14 +4632,14 @@
       ],
       "year": 2025,
       "venue": "ISCA",
-      "cover": "../notes/2025/SpecEE/fig9.png",
+      "cover": "notes/2025/SpecEE/fig9.png",
       "keywords": [
         "04-Sparsity (Structured)",
         "05-Sparse/Pruning",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/infinigence/SpecEE",
-      "note_url": "../notes/2025/SpecEE/note/",
+      "note_url": "notes/2025/SpecEE/note/",
       "prototxt_path": "meta/2025/SpecEE.prototxt"
     },
     {
@@ -4676,7 +4676,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Awesome-Efficient-Arch/fig1.png",
+      "cover": "notes/2025/Awesome-Efficient-Arch/fig1.png",
       "keywords": [
         "11-Survey",
         "01-Sparsity (Attention)",
@@ -4684,7 +4684,7 @@
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/weigao266/Awesome-Efficient-Arch",
-      "note_url": "../notes/2025/Awesome-Efficient-Arch/note/",
+      "note_url": "notes/2025/Awesome-Efficient-Arch/note/",
       "prototxt_path": "meta/2025/Awesome-Efficient-Arch.prototxt"
     },
     {
@@ -4707,14 +4707,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SpindleKV/fig2.png",
+      "cover": "notes/2025/SpindleKV/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/tyxqc/SpindleKV",
-      "note_url": "../notes/2025/SpindleKV/note/",
+      "note_url": "notes/2025/SpindleKV/note/",
       "prototxt_path": "meta/2025/SpindleKV.prototxt"
     },
     {
@@ -4731,13 +4731,13 @@
       ],
       "year": 2025,
       "venue": "EuroSys",
-      "cover": "../notes/2025/SpInfer/fig5.png",
+      "cover": "notes/2025/SpInfer/fig5.png",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/xxyux/SpInfer",
-      "note_url": "../notes/2025/SpInfer/note/",
+      "note_url": "notes/2025/SpInfer/note/",
       "prototxt_path": "meta/2025/SpInfer.prototxt"
     },
     {
@@ -4760,13 +4760,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/SSA/fig2.png",
+      "cover": "notes/2025/SSA/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/SSA/note/",
+      "note_url": "notes/2025/SSA/note/",
       "prototxt_path": "meta/2025/SSA.prototxt"
     },
     {
@@ -4784,13 +4784,13 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/StarAttention/fig1.png",
+      "cover": "notes/2025/StarAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/NVIDIA/Star-Attention",
-      "note_url": "../notes/2025/StarAttention/note/",
+      "note_url": "notes/2025/StarAttention/note/",
       "prototxt_path": "meta/2025/StarAttention.prototxt"
     },
     {
@@ -4820,7 +4820,7 @@
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/Step-3/note/",
+      "note_url": "notes/2025/Step-3/note/",
       "prototxt_path": "meta/2025/Step-3.prototxt"
     },
     {
@@ -4838,14 +4838,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Task-KV/fig6.png",
+      "cover": "notes/2025/Task-KV/fig6.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/Task-KV/note/",
+      "note_url": "notes/2025/Task-KV/note/",
       "prototxt_path": "meta/2025/Task-KV.prototxt"
     },
     {
@@ -4868,13 +4868,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/sparse-frontier/tb1.png",
+      "cover": "notes/2025/sparse-frontier/tb1.png",
       "keywords": [
         "11-Survey",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/PiotrNawrot/sparse-frontier",
-      "note_url": "../notes/2025/sparse-frontier/note/",
+      "note_url": "notes/2025/sparse-frontier/note/",
       "prototxt_path": "meta/2025/sparse-frontier.prototxt"
     },
     {
@@ -4894,14 +4894,14 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "../notes/2025/TidalDecode/fig2.png",
+      "cover": "notes/2025/TidalDecode/fig2.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/DerrickYLJ/TidalDecode",
-      "note_url": "../notes/2025/TidalDecode/note/",
+      "note_url": "notes/2025/TidalDecode/note/",
       "prototxt_path": "meta/2025/TidalDecode.prototxt"
     },
     {
@@ -4928,12 +4928,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/TileLink/fig7.png",
+      "cover": "notes/2025/TileLink/fig7.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/ByteDance-Seed/Triton-distributed",
-      "note_url": "../notes/2025/TileLink/note/",
+      "note_url": "notes/2025/TileLink/note/",
       "prototxt_path": "meta/2025/TileLink.prototxt"
     },
     {
@@ -4951,12 +4951,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/TokenWeave/fig8.png",
+      "cover": "notes/2025/TokenWeave/fig8.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/microsoft/tokenweave",
-      "note_url": "../notes/2025/TokenWeave/note/",
+      "note_url": "notes/2025/TokenWeave/note/",
       "prototxt_path": "meta/2025/TokenWeave.prototxt"
     },
     {
@@ -4985,14 +4985,14 @@
       ],
       "year": 2025,
       "venue": "ICML Workshop",
-      "cover": "../notes/2025/TorchAO/fig1.png",
+      "cover": "notes/2025/TorchAO/fig1.png",
       "keywords": [
         "07-Quantization",
         "03-Sparsity (Weight)",
         "17-Tool"
       ],
       "code_url": "https://github.com/pytorch/ao/",
-      "note_url": "../notes/2025/TorchAO/note/",
+      "note_url": "notes/2025/TorchAO/note/",
       "prototxt_path": "meta/2025/TorchAO.prototxt"
     },
     {
@@ -5011,13 +5011,13 @@
       ],
       "year": 2025,
       "venue": "AISTATS",
-      "cover": "../notes/2025/MXFP4Train/fig1.png",
+      "cover": "notes/2025/MXFP4Train/fig1.png",
       "keywords": [
         "07-Quantization",
         "16-Efficient Training"
       ],
       "code_url": "https://github.com/amazon-science/mxfp4-llm",
-      "note_url": "../notes/2025/MXFP4Train/note/",
+      "note_url": "notes/2025/MXFP4Train/note/",
       "prototxt_path": "meta/2025/MXFP4Train.prototxt"
     },
     {
@@ -5040,13 +5040,13 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "../notes/2025/TEAL/fig1.png",
+      "cover": "notes/2025/TEAL/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/FasterDecoding/TEAL",
-      "note_url": "../notes/2025/TEAL/note/",
+      "note_url": "notes/2025/TEAL/note/",
       "prototxt_path": "meta/2025/TEAL.prototxt"
     },
     {
@@ -5077,7 +5077,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/TCA-Attention/note/",
+      "note_url": "notes/2025/TCA-Attention/note/",
       "prototxt_path": "meta/2025/TCA-Attention.prototxt"
     },
     {
@@ -5100,12 +5100,12 @@
       ],
       "year": 2025,
       "venue": "EMNLP Findings",
-      "cover": "../notes/2025/TOA/fig1.png",
+      "cover": "notes/2025/TOA/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/Aireduce952/Tree-of-Agents",
-      "note_url": "../notes/2025/TOA/note/",
+      "note_url": "notes/2025/TOA/note/",
       "prototxt_path": "meta/2025/TOA.prototxt"
     },
     {
@@ -5142,12 +5142,12 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Triton-distributed/fig2.png",
+      "cover": "notes/2025/Triton-distributed/fig2.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/ByteDance-Seed/Triton-distributed",
-      "note_url": "../notes/2025/Triton-distributed/note/",
+      "note_url": "notes/2025/Triton-distributed/note/",
       "prototxt_path": "meta/2025/Triton-distributed.prototxt"
     },
     {
@@ -5169,13 +5169,13 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/Týr-the-Pruner/fig2.png",
+      "cover": "notes/2025/Týr-the-Pruner/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/Týr-the-Pruner/note/",
+      "note_url": "notes/2025/Týr-the-Pruner/note/",
       "prototxt_path": "meta/2025/Týr-the-Pruner.prototxt"
     },
     {
@@ -5208,14 +5208,14 @@
       ],
       "year": 2025,
       "venue": "EMNLP",
-      "cover": "../notes/2025/UNComp/fig4.png",
+      "cover": "notes/2025/UNComp/fig4.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/menik1126/UNComp",
-      "note_url": "../notes/2025/UNComp/note/",
+      "note_url": "notes/2025/UNComp/note/",
       "prototxt_path": "meta/2025/UNComp.prototxt"
     },
     {
@@ -5236,7 +5236,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/Zefan-Cai/KVCache-Factory",
-      "note_url": "../notes/2025/KVCache-Factory/note/",
+      "note_url": "notes/2025/KVCache-Factory/note/",
       "prototxt_path": "meta/2025/KVCache-Factory.prototxt"
     },
     {
@@ -5260,7 +5260,7 @@
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/MoE-MLA-RoPE/note/",
+      "note_url": "notes/2025/MoE-MLA-RoPE/note/",
       "prototxt_path": "meta/2025/MoE-MLA-RoPE.prototxt"
     },
     {
@@ -5282,13 +5282,13 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/Super-Experts-Profilling/fig3.png",
+      "cover": "notes/2025/Super-Experts-Profilling/fig3.png",
       "keywords": [
         "05-Sparse/Pruning",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/ZunhaiSu/Super-Experts-Profilling",
-      "note_url": "../notes/2025/Super-Experts-Profilling/note/",
+      "note_url": "notes/2025/Super-Experts-Profilling/note/",
       "prototxt_path": "meta/2025/Super-Experts-Profilling.prototxt"
     },
     {
@@ -5309,13 +5309,13 @@
       ],
       "year": 2025,
       "venue": "ASPLOS",
-      "cover": "../notes/2025/vAttention/fig5.png",
+      "cover": "notes/2025/vAttention/fig5.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/microsoft/vattention",
-      "note_url": "../notes/2025/vAttention/note/",
+      "note_url": "notes/2025/vAttention/note/",
       "prototxt_path": "meta/2025/vAttention.prototxt"
     },
     {
@@ -5339,14 +5339,14 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "../notes/2025/VecInfer/fig4.png",
+      "cover": "notes/2025/VecInfer/fig4.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "07-Quantization",
         "06-Quantization (KV Cache)"
       ],
       "code_url": null,
-      "note_url": "../notes/2025/VecInfer/note/",
+      "note_url": "notes/2025/VecInfer/note/",
       "prototxt_path": "meta/2025/VecInfer.prototxt"
     },
     {
@@ -5368,13 +5368,13 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "../notes/2025/VORTA/fig6.png",
+      "cover": "notes/2025/VORTA/fig6.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/wenhao728/VORTA",
-      "note_url": "../notes/2025/VORTA/note/",
+      "note_url": "notes/2025/VORTA/note/",
       "prototxt_path": "meta/2025/VORTA.prototxt"
     },
     {
@@ -5397,14 +5397,14 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "../notes/2025/XAttention/fig1.png",
+      "cover": "notes/2025/XAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/x-attention",
-      "note_url": "../notes/2025/XAttention/note/",
+      "note_url": "notes/2025/XAttention/note/",
       "prototxt_path": "meta/2025/XAttention.prototxt"
     },
     {
@@ -5435,7 +5435,7 @@
         "18-Benchmark"
       ],
       "code_url": "https://github.com/OpenBMB/InfiniteBench",
-      "note_url": "../notes/2024/InfiniteBench/note/",
+      "note_url": "notes/2024/InfiniteBench/note/",
       "prototxt_path": "meta/2024/InfiniteBench.prototxt"
     },
     {
@@ -5452,12 +5452,12 @@
       ],
       "year": 2024,
       "venue": "Blog",
-      "cover": "../notes/2024/Async-TP/Figure_2.png",
+      "cover": "notes/2024/Async-TP/Figure_2.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/pytorch/torchtitan",
-      "note_url": "../notes/2024/Async-TP/note/",
+      "note_url": "notes/2024/Async-TP/note/",
       "prototxt_path": "meta/2024/Async-TP.prototxt"
     },
     {
@@ -5480,12 +5480,12 @@
       ],
       "year": 2024,
       "venue": "Blog",
-      "cover": "../notes/2024/DistGEMM/fig1.gif",
+      "cover": "notes/2024/DistGEMM/fig1.gif",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/NVIDIA/cutlass/blob/main/examples/65_distributed_gemm/README.md",
-      "note_url": "../notes/2024/DistGEMM/note/",
+      "note_url": "notes/2024/DistGEMM/note/",
       "prototxt_path": "meta/2024/DistGEMM.prototxt"
     },
     {
@@ -5505,13 +5505,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/Wanda/wanda.png",
+      "cover": "notes/2024/Wanda/wanda.png",
       "keywords": [
         "03-Sparsity (Weight)",
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/locuslab/wanda",
-      "note_url": "../notes/2024/Wanda/note/",
+      "note_url": "notes/2024/Wanda/note/",
       "prototxt_path": "meta/2024/Wanda.prototxt"
     },
     {
@@ -5543,12 +5543,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/DHIB73MC/efficientinference.png",
+      "cover": "notes/2024/DHIB73MC/efficientinference.png",
       "keywords": [
         "11-Survey"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/DHIB73MC/note/",
+      "note_url": "notes/2024/DHIB73MC/note/",
       "prototxt_path": "meta/2024/DHIB73MC.prototxt"
     },
     {
@@ -5572,13 +5572,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/068ZPAME/tab1.png",
+      "cover": "notes/2024/068ZPAME/tab1.png",
       "keywords": [
         "11-Survey",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/MoE-Inf/awesome-moe-inference/",
-      "note_url": "../notes/2024/068ZPAME/note/",
+      "note_url": "notes/2024/068ZPAME/note/",
       "prototxt_path": "meta/2024/068ZPAME.prototxt"
     },
     {
@@ -5606,7 +5606,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/PWGG5HBE/fig2.png",
+      "cover": "notes/2024/PWGG5HBE/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
@@ -5614,7 +5614,7 @@
         "11-Survey"
       ],
       "code_url": "https://github.com/TreeAI-Lab/Awesome-KV-Cache-Management",
-      "note_url": "../notes/2024/PWGG5HBE/note/",
+      "note_url": "notes/2024/PWGG5HBE/note/",
       "prototxt_path": "meta/2024/PWGG5HBE.prototxt"
     },
     {
@@ -5640,7 +5640,7 @@
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/huyz2023/2by4-pretrain/tree/main",
-      "note_url": "../notes/2024/HYPL7G37/note/",
+      "note_url": "notes/2024/HYPL7G37/note/",
       "prototxt_path": "meta/2024/HYPL7G37.prototxt"
     },
     {
@@ -5660,14 +5660,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/AdaKV/fig2.png",
+      "cover": "notes/2024/AdaKV/fig2.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/FFY0/AdaKV",
-      "note_url": "../notes/2024/AdaKV/note/",
+      "note_url": "notes/2024/AdaKV/note/",
       "prototxt_path": "meta/2024/AdaKV.prototxt"
     },
     {
@@ -5693,7 +5693,7 @@
         "09-Performance Modeling"
       ],
       "code_url": "https://github.com/microsoft/apex_plus",
-      "note_url": "../notes/2024/APEX/note/",
+      "note_url": "notes/2024/APEX/note/",
       "prototxt_path": "meta/2024/APEX.prototxt"
     },
     {
@@ -5712,12 +5712,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/AVSS/avss.png",
+      "cover": "notes/2024/AVSS/avss.png",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/AVSS/note/",
+      "note_url": "notes/2024/AVSS/note/",
       "prototxt_path": "meta/2024/AVSS.prototxt"
     },
     {
@@ -5764,13 +5764,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/0Y41U1N2/cover.png",
+      "cover": "notes/2024/0Y41U1N2/cover.png",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/0Y41U1N2/note/",
+      "note_url": "notes/2024/0Y41U1N2/note/",
       "prototxt_path": "meta/2024/0Y41U1N2.prototxt"
     },
     {
@@ -5787,14 +5787,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/SharedAttention/fig1.png",
+      "cover": "notes/2024/SharedAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/metacarbon/shareAtt/tree/main",
-      "note_url": "../notes/2024/SharedAttention/note/",
+      "note_url": "notes/2024/SharedAttention/note/",
       "prototxt_path": "meta/2024/SharedAttention.prototxt"
     },
     {
@@ -5816,13 +5816,13 @@
       ],
       "year": 2024,
       "venue": "COLM",
-      "cover": "../notes/2024/CATS/fig1.png",
+      "cover": "notes/2024/CATS/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/ScalingIntelligence/CATS",
-      "note_url": "../notes/2024/CATS/note/",
+      "note_url": "notes/2024/CATS/note/",
       "prototxt_path": "meta/2024/CATS.prototxt"
     },
     {
@@ -5840,12 +5840,12 @@
       ],
       "year": 2024,
       "venue": "ASPLOS",
-      "cover": "../notes/2024/Centauri/fig3.png",
+      "cover": "notes/2024/Centauri/fig3.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/Centauri/note/",
+      "note_url": "notes/2024/Centauri/note/",
       "prototxt_path": "meta/2024/Centauri.prototxt"
     },
     {
@@ -5864,13 +5864,13 @@
       ],
       "year": 2024,
       "venue": "ACL",
-      "cover": "../notes/2024/ChunkAttention/chunkattn.png",
+      "cover": "notes/2024/ChunkAttention/chunkattn.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/microsoft/chunk-attention",
-      "note_url": "../notes/2024/ChunkAttention/note/",
+      "note_url": "notes/2024/ChunkAttention/note/",
       "prototxt_path": "meta/2024/ChunkAttention.prototxt"
     },
     {
@@ -5894,13 +5894,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/Minitron/minitron.png",
+      "cover": "notes/2024/Minitron/minitron.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/NVlabs/Minitron",
-      "note_url": "../notes/2024/Minitron/note/",
+      "note_url": "notes/2024/Minitron/note/",
       "prototxt_path": "meta/2024/Minitron.prototxt"
     },
     {
@@ -5922,13 +5922,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/VB8C61V6/llm-kick.jpg",
+      "cover": "notes/2024/VB8C61V6/llm-kick.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "11-Survey"
       ],
       "code_url": "https://github.com/VITA-Group/llm-kick",
-      "note_url": "../notes/2024/VB8C61V6/note/",
+      "note_url": "notes/2024/VB8C61V6/note/",
       "prototxt_path": "meta/2024/VB8C61V6.prototxt"
     },
     {
@@ -5950,13 +5950,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/CoreInfer/framework.png",
+      "cover": "notes/2024/CoreInfer/framework.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/wangqinsi1/CoreInfer",
-      "note_url": "../notes/2024/CoreInfer/note/",
+      "note_url": "notes/2024/CoreInfer/note/",
       "prototxt_path": "meta/2024/CoreInfer.prototxt"
     },
     {
@@ -5988,7 +5988,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/8TP9NHBA/note/",
+      "note_url": "notes/2024/8TP9NHBA/note/",
       "prototxt_path": "meta/2024/8TP9NHBA.prototxt"
     },
     {
@@ -6014,13 +6014,13 @@
       ],
       "year": 2024,
       "venue": "ATC",
-      "cover": "../notes/2024/CachedAttention/fig5.png",
+      "cover": "notes/2024/CachedAttention/fig5.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/CachedAttention/note/",
+      "note_url": "notes/2024/CachedAttention/note/",
       "prototxt_path": "meta/2024/CachedAttention.prototxt"
     },
     {
@@ -6192,12 +6192,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/DeepSeek-V2/fig2.png",
+      "cover": "notes/2024/DeepSeek-V2/fig2.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-V2",
-      "note_url": "../notes/2024/DeepSeek-V2/note/",
+      "note_url": "notes/2024/DeepSeek-V2/note/",
       "prototxt_path": "meta/2024/DeepSeek-V2.prototxt"
     },
     {
@@ -6412,12 +6412,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/DeepSeek-V3/fig5.png",
+      "cover": "notes/2024/DeepSeek-V3/fig5.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-V3",
-      "note_url": "../notes/2024/DeepSeek-V3/note/",
+      "note_url": "notes/2024/DeepSeek-V3/note/",
       "prototxt_path": "meta/2024/DeepSeek-V3.prototxt"
     },
     {
@@ -6451,12 +6451,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/DeepSeekMoE/fig2.png",
+      "cover": "notes/2024/DeepSeekMoE/fig2.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-MoE",
-      "note_url": "../notes/2024/DeepSeekMoE/note/",
+      "note_url": "notes/2024/DeepSeekMoE/note/",
       "prototxt_path": "meta/2024/DeepSeekMoE.prototxt"
     },
     {
@@ -6477,12 +6477,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/Domino/fig5.png",
+      "cover": "notes/2024/Domino/fig5.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/deepspeedai/DeepSpeedExamples/blob/master/training/DeepSpeed-Domino/README.md",
-      "note_url": "../notes/2024/Domino/note/",
+      "note_url": "notes/2024/Domino/note/",
       "prototxt_path": "meta/2024/Domino.prototxt"
     },
     {
@@ -6506,14 +6506,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/DuoAttention/duoattention.png",
+      "cover": "notes/2024/DuoAttention/duoattention.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/duo-attention",
-      "note_url": "../notes/2024/DuoAttention/note/",
+      "note_url": "notes/2024/DuoAttention/note/",
       "prototxt_path": "meta/2024/DuoAttention.prototxt"
     },
     {
@@ -6540,13 +6540,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/DSnoT/dsnot.png",
+      "cover": "notes/2024/DSnoT/dsnot.png",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/zyxxmu/DSnoT",
-      "note_url": "../notes/2024/DSnoT/note/",
+      "note_url": "notes/2024/DSnoT/note/",
       "prototxt_path": "meta/2024/DSnoT.prototxt"
     },
     {
@@ -6568,12 +6568,12 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/Eagle/eagle.jpg",
+      "cover": "notes/2024/Eagle/eagle.jpg",
       "keywords": [
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/SafeAILab/EAGLE",
-      "note_url": "../notes/2024/Eagle/note/",
+      "note_url": "notes/2024/Eagle/note/",
       "prototxt_path": "meta/2024/Eagle.prototxt"
     },
     {
@@ -6596,14 +6596,14 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/streaming-llm/cover.jpg",
+      "cover": "notes/2024/streaming-llm/cover.jpg",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/mit-han-lab/streaming-llm",
-      "note_url": "../notes/2024/streaming-llm/note/",
+      "note_url": "notes/2024/streaming-llm/note/",
       "prototxt_path": "meta/2024/streaming-llm.prototxt"
     },
     {
@@ -6637,7 +6637,7 @@
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/neuralmagic/nm-vllm",
-      "note_url": "../notes/2024/ULY1AZGY/note/",
+      "note_url": "notes/2024/ULY1AZGY/note/",
       "prototxt_path": "meta/2024/ULY1AZGY.prototxt"
     },
     {
@@ -6682,7 +6682,7 @@
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/fmfi-compbio/admm-pruning",
-      "note_url": "../notes/2024/ADMM-pruning/note/",
+      "note_url": "notes/2024/ADMM-pruning/note/",
       "prototxt_path": "meta/2024/ADMM-pruning.prototxt"
     },
     {
@@ -6707,7 +6707,7 @@
       ],
       "year": 2024,
       "venue": "VLDB",
-      "cover": "../notes/2024/flash_llm/cover.jpg",
+      "cover": "notes/2024/flash_llm/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -6758,14 +6758,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/FlashMask/flashmask.png",
+      "cover": "notes/2024/FlashMask/flashmask.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/PaddlePaddle/PaddleNLP/tree/develop",
-      "note_url": "../notes/2024/FlashMask/note/",
+      "note_url": "notes/2024/FlashMask/note/",
       "prototxt_path": "meta/2024/FlashMask.prototxt"
     },
     {
@@ -6785,7 +6785,7 @@
       ],
       "year": 2024,
       "venue": "AAAI",
-      "cover": "../notes/del/flap.jpg",
+      "cover": "notes/del/flap.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
@@ -6820,12 +6820,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/FLUX/fig3.png",
+      "cover": "notes/2024/FLUX/fig3.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/bytedance/flux",
-      "note_url": "../notes/2024/FLUX/note/",
+      "note_url": "notes/2024/FLUX/note/",
       "prototxt_path": "meta/2024/FLUX.prototxt"
     },
     {
@@ -6845,12 +6845,12 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/FrameQuant/framequant.png",
+      "cover": "notes/2024/FrameQuant/framequant.png",
       "keywords": [
         "07-Quantization"
       ],
       "code_url": "https://github.com/vsingh-group/FrameQuant",
-      "note_url": "../notes/2024/FrameQuant/note/",
+      "note_url": "notes/2024/FrameQuant/note/",
       "prototxt_path": "meta/2024/FrameQuant.prototxt"
     },
     {
@@ -6874,14 +6874,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/GEAR/overview.png",
+      "cover": "notes/2024/GEAR/overview.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "07-Quantization",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/HaoKang-Timmy/GEAR",
-      "note_url": "../notes/2024/GEAR/note/",
+      "note_url": "notes/2024/GEAR/note/",
       "prototxt_path": "meta/2024/GEAR.prototxt"
     },
     {
@@ -6913,13 +6913,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/DistAttention/fig1.png",
+      "cover": "notes/2024/DistAttention/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/DistAttention/note/",
+      "note_url": "notes/2024/DistAttention/note/",
       "prototxt_path": "meta/2024/DistAttention.prototxt"
     },
     {
@@ -6944,14 +6944,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/InfLLM/cover.png",
+      "cover": "notes/2024/InfLLM/cover.png",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/thunlp/InfLLM",
-      "note_url": "../notes/2024/InfLLM/note/",
+      "note_url": "notes/2024/InfLLM/note/",
       "prototxt_path": "meta/2024/InfLLM.prototxt"
     },
     {
@@ -6972,13 +6972,13 @@
       ],
       "year": 2024,
       "venue": "COLM",
-      "cover": "../notes/2024/JSHWEV0S/overview.png",
+      "cover": "notes/2024/JSHWEV0S/overview.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "11-Survey"
       ],
       "code_url": "https://github.com/zcli-charlie/Awesome-KV-Cache",
-      "note_url": "../notes/2024/JSHWEV0S/note/",
+      "note_url": "notes/2024/JSHWEV0S/note/",
       "prototxt_path": "meta/2024/JSHWEV0S.prototxt"
     },
     {
@@ -7004,14 +7004,14 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/KIVI/fig3.png",
+      "cover": "notes/2024/KIVI/fig3.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "07-Quantization",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/jy-yuan/KIVI",
-      "note_url": "../notes/2024/KIVI/note/",
+      "note_url": "notes/2024/KIVI/note/",
       "prototxt_path": "meta/2024/KIVI.prototxt"
     },
     {
@@ -7033,14 +7033,14 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "../notes/2024/KVQuant/fig1.png",
+      "cover": "notes/2024/KVQuant/fig1.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/SqueezeAILab/KVQuant",
-      "note_url": "../notes/2024/KVQuant/note/",
+      "note_url": "notes/2024/KVQuant/note/",
       "prototxt_path": "meta/2024/KVQuant.prototxt"
     },
     {
@@ -7057,13 +7057,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/L4Q/l4q.jpg",
+      "cover": "notes/2024/L4Q/l4q.jpg",
       "keywords": [
         "07-Quantization",
         "13-Low Rank Decomposition"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/L4Q/note/",
+      "note_url": "notes/2024/L4Q/note/",
       "prototxt_path": "meta/2024/L4Q.prototxt"
     },
     {
@@ -7085,14 +7085,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/LazyLLM/fig3.png",
+      "cover": "notes/2024/LazyLLM/fig3.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/LazyLLM/note/",
+      "note_url": "notes/2024/LazyLLM/note/",
       "prototxt_path": "meta/2024/LazyLLM.prototxt"
     },
     {
@@ -7119,7 +7119,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/OpenNLPLab/lightning-attention",
-      "note_url": "../notes/2024/LightningAttention-2/note/",
+      "note_url": "notes/2024/LightningAttention-2/note/",
       "prototxt_path": "meta/2024/LightningAttention-2.prototxt"
     },
     {
@@ -7147,7 +7147,7 @@
         "16-Efficient Training"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/LISA/note/",
+      "note_url": "notes/2024/LISA/note/",
       "prototxt_path": "meta/2024/LISA.prototxt"
     },
     {
@@ -7173,7 +7173,7 @@
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/YS9YTT55/note/",
+      "note_url": "notes/2024/YS9YTT55/note/",
       "prototxt_path": "meta/2024/YS9YTT55.prototxt"
     },
     {
@@ -7208,7 +7208,7 @@
         "18-Benchmark"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/LongBench/note/",
+      "note_url": "notes/2024/LongBench/note/",
       "prototxt_path": "meta/2024/LongBench.prototxt"
     },
     {
@@ -7231,7 +7231,7 @@
         "16-Efficient Training"
       ],
       "code_url": "https://github.com/nikhil-ghosh-berkeley/loraplus",
-      "note_url": "../notes/2024/LoRA+/note/",
+      "note_url": "notes/2024/LoRA+/note/",
       "prototxt_path": "meta/2024/LoRA+.prototxt"
     },
     {
@@ -7255,13 +7255,13 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "../notes/2024/MaskLLM/maskllm.png",
+      "cover": "notes/2024/MaskLLM/maskllm.png",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/NVlabs/MaskLLM",
-      "note_url": "../notes/2024/MaskLLM/note/",
+      "note_url": "notes/2024/MaskLLM/note/",
       "prototxt_path": "meta/2024/MaskLLM.prototxt"
     },
     {
@@ -7281,12 +7281,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/massive-activations/massive_act.jpg",
+      "cover": "notes/2024/massive-activations/massive_act.jpg",
       "keywords": [
         "11-Survey"
       ],
       "code_url": "https://github.com/locuslab/massive-activations",
-      "note_url": "../notes/2024/massive-activations/note/",
+      "note_url": "notes/2024/massive-activations/note/",
       "prototxt_path": "meta/2024/massive-activations.prototxt"
     },
     {
@@ -7314,14 +7314,14 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "../notes/2024/MInference/MInference_3shape.PNG",
+      "cover": "notes/2024/MInference/MInference_3shape.PNG",
       "keywords": [
         "01-Sparsity (Attention)",
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/microsoft/MInference",
-      "note_url": "../notes/2024/MInference/note/",
+      "note_url": "notes/2024/MInference/note/",
       "prototxt_path": "meta/2024/MInference.prototxt"
     },
     {
@@ -7348,7 +7348,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/AkideLiu/MiniCache",
-      "note_url": "../notes/2024/MiniCache/note/",
+      "note_url": "notes/2024/MiniCache/note/",
       "prototxt_path": "meta/2024/MiniCache.prototxt"
     },
     {
@@ -7368,14 +7368,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/MiniKV/minikv.png",
+      "cover": "notes/2024/MiniKV/minikv.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/akshatsh49/MiniKV-Dev",
-      "note_url": "../notes/2024/MiniKV/note/",
+      "note_url": "notes/2024/MiniKV/note/",
       "prototxt_path": "meta/2024/MiniKV.prototxt"
     },
     {
@@ -7396,12 +7396,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/MoD/mod.jpg",
+      "cover": "notes/2024/MoD/mod.jpg",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/MoD/note/",
+      "note_url": "notes/2024/MoD/note/",
       "prototxt_path": "meta/2024/MoD.prototxt"
     },
     {
@@ -7432,14 +7432,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/MoA/moa.png",
+      "cover": "notes/2024/MoA/moa.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/thu-nics/MoA",
-      "note_url": "../notes/2024/MoA/note/",
+      "note_url": "notes/2024/MoA/note/",
       "prototxt_path": "meta/2024/MoA.prototxt"
     },
     {
@@ -7471,7 +7471,7 @@
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/MFA/note/",
+      "note_url": "notes/2024/MFA/note/",
       "prototxt_path": "meta/2024/MFA.prototxt"
     },
     {
@@ -7502,7 +7502,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/MiKV/note/",
+      "note_url": "notes/2024/MiKV/note/",
       "prototxt_path": "meta/2024/MiKV.prototxt"
     },
     {
@@ -7529,7 +7529,7 @@
         "05-Sparse/Pruning"
       ],
       "code_url": "https://anonymous.4open.science/r/CHESS-BA40/README.md",
-      "note_url": "../notes/2024/CHESS/note/",
+      "note_url": "notes/2024/CHESS/note/",
       "prototxt_path": "meta/2024/CHESS.prototxt"
     },
     {
@@ -7557,7 +7557,7 @@
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/mazumder-lab/OSSCAR",
-      "note_url": "../notes/2024/OSSCAR/note/",
+      "note_url": "notes/2024/OSSCAR/note/",
       "prototxt_path": "meta/2024/OSSCAR.prototxt"
     },
     {
@@ -7585,7 +7585,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/owl/cover.jpg",
+      "cover": "notes/2024/owl/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -7608,7 +7608,7 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/del/Plug-and-Play.jpg",
+      "cover": "notes/del/Plug-and-Play.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
@@ -7643,7 +7643,7 @@
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/andy-yang-1/DoubleSparse",
-      "note_url": "../notes/2024/DoubleSparsity/note/",
+      "note_url": "notes/2024/DoubleSparsity/note/",
       "prototxt_path": "meta/2024/DoubleSparsity.prototxt"
     },
     {
@@ -7661,13 +7661,13 @@
       ],
       "year": 2024,
       "venue": "ENLSP",
-      "cover": "../notes/2024/SCAP/fig2.png",
+      "cover": "notes/2024/SCAP/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/IntelLabs/SCAP",
-      "note_url": "../notes/2024/SCAP/note/",
+      "note_url": "notes/2024/SCAP/note/",
       "prototxt_path": "meta/2024/SCAP.prototxt"
     },
     {
@@ -7694,7 +7694,7 @@
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://powerinfer.ai/v2/",
-      "note_url": "../notes/2024/PowerInfer-2/note/",
+      "note_url": "notes/2024/PowerInfer-2/note/",
       "prototxt_path": "meta/2024/PowerInfer-2.prototxt"
     },
     {
@@ -7717,14 +7717,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/PrefixQuant/fig2.png",
+      "cover": "notes/2024/PrefixQuant/fig2.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/ChenMnZ/PrefixQuant",
-      "note_url": "../notes/2024/PrefixQuant/note/",
+      "note_url": "notes/2024/PrefixQuant/note/",
       "prototxt_path": "meta/2024/PrefixQuant.prototxt"
     },
     {
@@ -7742,13 +7742,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/ProSparse/prosparse.jpg",
+      "cover": "notes/2024/ProSparse/prosparse.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/raincleared-song/sparse_gpu_operator",
-      "note_url": "../notes/2024/ProSparse/note/",
+      "note_url": "notes/2024/ProSparse/note/",
       "prototxt_path": "meta/2024/ProSparse.prototxt"
     },
     {
@@ -7772,13 +7772,13 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/Pruner-Zero/fig1.png",
+      "cover": "notes/2024/Pruner-Zero/fig1.png",
       "keywords": [
         "03-Sparsity (Weight)",
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/pprp/Pruner-Zero",
-      "note_url": "../notes/2024/Pruner-Zero/note/",
+      "note_url": "notes/2024/Pruner-Zero/note/",
       "prototxt_path": "meta/2024/Pruner-Zero.prototxt"
     },
     {
@@ -7798,14 +7798,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/Q-Sparse/q-sparse.png",
+      "cover": "notes/2024/Q-Sparse/q-sparse.png",
       "keywords": [
         "07-Quantization",
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/Q-Sparse/note/",
+      "note_url": "notes/2024/Q-Sparse/note/",
       "prototxt_path": "meta/2024/Q-Sparse.prototxt"
     },
     {
@@ -7821,13 +7821,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/QA-LoRA/qalora.jpg",
+      "cover": "notes/2024/QA-LoRA/qalora.jpg",
       "keywords": [
         "07-Quantization",
         "13-Low Rank Decomposition"
       ],
       "code_url": "https://github.com/yuhuixu1993/qa-lora",
-      "note_url": "../notes/2024/QA-LoRA/note/",
+      "note_url": "notes/2024/QA-LoRA/note/",
       "prototxt_path": "meta/2024/QA-LoRA.prototxt"
     },
     {
@@ -7855,7 +7855,7 @@
         "07-Quantization"
       ],
       "code_url": "https://hanlab.mit.edu/projects/qserve",
-      "note_url": "../notes/2024/QServer/note/",
+      "note_url": "notes/2024/QServer/note/",
       "prototxt_path": "meta/2024/QServer.prototxt"
     },
     {
@@ -7877,14 +7877,14 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/Quest/quest.png",
+      "cover": "notes/2024/Quest/quest.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/quest",
-      "note_url": "../notes/2024/Quest/note/",
+      "note_url": "notes/2024/Quest/note/",
       "prototxt_path": "meta/2024/Quest.prototxt"
     },
     {
@@ -7904,14 +7904,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/RecycledAttention/fig1.png",
+      "cover": "notes/2024/RecycledAttention/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/carriex/recycled-attention",
-      "note_url": "../notes/2024/RecycledAttention/note/",
+      "note_url": "notes/2024/RecycledAttention/note/",
       "prototxt_path": "meta/2024/RecycledAttention.prototxt"
     },
     {
@@ -7932,13 +7932,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/CLA/fig1.png",
+      "cover": "notes/2024/CLA/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/JerryYin777/Cross-Layer-Attention",
-      "note_url": "../notes/2024/CLA/note/",
+      "note_url": "notes/2024/CLA/note/",
       "prototxt_path": "meta/2024/CLA.prototxt"
     },
     {
@@ -7955,7 +7955,7 @@
       ],
       "year": 2024,
       "venue": "ICLR oral",
-      "cover": "../notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg",
+      "cover": "notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
@@ -7978,13 +7978,13 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/ReLU2/activation.png",
+      "cover": "notes/2024/ReLU2/activation.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/ReLU2/note/",
+      "note_url": "notes/2024/ReLU2/note/",
       "prototxt_path": "meta/2024/ReLU2.prototxt"
     },
     {
@@ -8002,12 +8002,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/ReMoE/fig1.png",
+      "cover": "notes/2024/ReMoE/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/thu-ml/ReMoE",
-      "note_url": "../notes/2024/ReMoE/note/",
+      "note_url": "notes/2024/ReMoE/note/",
       "prototxt_path": "meta/2024/ReMoE.prototxt"
     },
     {
@@ -8041,7 +8041,7 @@
         "16-Efficient Training"
       ],
       "code_url": " https://github.com/ZO-Bench/ZO-LLM",
-      "note_url": "../notes/2024/SN1PK7EK/note/",
+      "note_url": "notes/2024/SN1PK7EK/note/",
       "prototxt_path": "meta/2024/SN1PK7EK.prototxt"
     },
     {
@@ -8068,7 +8068,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/thu-ml/SageAttention",
-      "note_url": "../notes/2024/SageAttention2/note/",
+      "note_url": "notes/2024/SageAttention2/note/",
       "prototxt_path": "meta/2024/SageAttention2.prototxt"
     },
     {
@@ -8095,7 +8095,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/thu-ml/SageAttention",
-      "note_url": "../notes/2024/SageAttention/note/",
+      "note_url": "notes/2024/SageAttention/note/",
       "prototxt_path": "meta/2024/SageAttention.prototxt"
     },
     {
@@ -8125,14 +8125,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/SampleAttention/cover.png",
+      "cover": "notes/2024/SampleAttention/cover.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/SampleAttention/note/",
+      "note_url": "notes/2024/SampleAttention/note/",
       "prototxt_path": "meta/2024/SampleAttention.prototxt"
     },
     {
@@ -8148,13 +8148,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/SAS/sas.jpg",
+      "cover": "notes/2024/SAS/sas.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/DensoITLab/sas_",
-      "note_url": "../notes/2024/SAS/note/",
+      "note_url": "notes/2024/SAS/note/",
       "prototxt_path": "meta/2024/SAS.prototxt"
     },
     {
@@ -8186,7 +8186,7 @@
         "17-Tool"
       ],
       "code_url": "https://github.com/microsoft/MInference/tree/main/scbench",
-      "note_url": "../notes/2024/SCBench/note/",
+      "note_url": "notes/2024/SCBench/note/",
       "prototxt_path": "meta/2024/SCBench.prototxt"
     },
     {
@@ -8206,13 +8206,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/SEA/figure1.png",
+      "cover": "notes/2024/SEA/figure1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/gmlwns2000/sea-attention",
-      "note_url": "../notes/2024/SEA/note/",
+      "note_url": "notes/2024/SEA/note/",
       "prototxt_path": "meta/2024/SEA.prototxt"
     },
     {
@@ -8237,14 +8237,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/SeerAttention/seerattention.png",
+      "cover": "notes/2024/SeerAttention/seerattention.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": "https://github.com/microsoft/SeerAttention",
-      "note_url": "../notes/2024/SeerAttention/note/",
+      "note_url": "notes/2024/SeerAttention/note/",
       "prototxt_path": "meta/2024/SeerAttention.prototxt"
     },
     {
@@ -8273,13 +8273,13 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "../notes/2024/SGLang/fig9.png",
+      "cover": "notes/2024/SGLang/fig9.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/sgl-project/sglang",
-      "note_url": "../notes/2024/SGLang/note/",
+      "note_url": "notes/2024/SGLang/note/",
       "prototxt_path": "meta/2024/SGLang.prototxt"
     },
     {
@@ -8302,12 +8302,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/ShadowLLM/shadowLLM.png",
+      "cover": "notes/2024/ShadowLLM/shadowLLM.png",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/abdelfattah-lab/shadow_llm",
-      "note_url": "../notes/2024/ShadowLLM/note/",
+      "note_url": "notes/2024/ShadowLLM/note/",
       "prototxt_path": "meta/2024/ShadowLLM.prototxt"
     },
     {
@@ -8328,13 +8328,13 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "../notes/2024/SliceGPT/sliceGPT.jpg",
+      "cover": "notes/2024/SliceGPT/sliceGPT.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/microsoft/TransformerCompression",
-      "note_url": "../notes/2024/SliceGPT/note/",
+      "note_url": "notes/2024/SliceGPT/note/",
       "prototxt_path": "meta/2024/SliceGPT.prototxt"
     },
     {
@@ -8353,13 +8353,13 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "../notes/2024/SlimGPT/fig1.png",
+      "cover": "notes/2024/SlimGPT/fig1.png",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/SlimGPT/note/",
+      "note_url": "notes/2024/SlimGPT/note/",
       "prototxt_path": "meta/2024/SlimGPT.prototxt"
     },
     {
@@ -8385,14 +8385,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/SnapKV/fig1.png",
+      "cover": "notes/2024/SnapKV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/FasterDecoding/SnapKV",
-      "note_url": "../notes/2024/SnapKV/note/",
+      "note_url": "notes/2024/SnapKV/note/",
       "prototxt_path": "meta/2024/SnapKV.prototxt"
     },
     {
@@ -8420,7 +8420,7 @@
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/SparQ/note/",
+      "note_url": "notes/2024/SparQ/note/",
       "prototxt_path": "meta/2024/SparQ.prototxt"
     },
     {
@@ -8446,7 +8446,7 @@
         "16-Efficient Training"
       ],
       "code_url": "https://github.com/song-wx/SIFT",
-      "note_url": "../notes/2024/SIFT/note/",
+      "note_url": "notes/2024/SIFT/note/",
       "prototxt_path": "meta/2024/SIFT.prototxt"
     },
     {
@@ -8466,13 +8466,13 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/Sparse-IFT/sparseIFT.png",
+      "cover": "notes/2024/Sparse-IFT/sparseIFT.png",
       "keywords": [
         "16-Efficient Training",
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/CerebrasResearch/Sparse-IFT",
-      "note_url": "../notes/2024/Sparse-IFT/note/",
+      "note_url": "notes/2024/Sparse-IFT/note/",
       "prototxt_path": "meta/2024/Sparse-IFT.prototxt"
     },
     {
@@ -8498,7 +8498,7 @@
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/SparseInfer/note/",
+      "note_url": "notes/2024/SparseInfer/note/",
       "prototxt_path": "meta/2024/SparseInfer.prototxt"
     },
     {
@@ -8524,7 +8524,7 @@
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/BaiTheBest/SparseLLM",
-      "note_url": "../notes/2024/SparseLLM/note/",
+      "note_url": "notes/2024/SparseLLM/note/",
       "prototxt_path": "meta/2024/SparseLLM.prototxt"
     },
     {
@@ -8547,12 +8547,12 @@
       ],
       "year": 2024,
       "venue": "ISCA",
-      "cover": "../notes/2024/Splitwise/fig10.png",
+      "cover": "notes/2024/Splitwise/fig10.png",
       "keywords": [
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/Mutinifni/splitwise-sim",
-      "note_url": "../notes/2024/Splitwise/note/",
+      "note_url": "notes/2024/Splitwise/note/",
       "prototxt_path": "meta/2024/Splitwise.prototxt"
     },
     {
@@ -8577,12 +8577,12 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/SPP/spp.png",
+      "cover": "notes/2024/SPP/spp.png",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/Lucky-Lance/SPP",
-      "note_url": "../notes/2024/SPP/note/",
+      "note_url": "notes/2024/SPP/note/",
       "prototxt_path": "meta/2024/SPP.prototxt"
     },
     {
@@ -8605,14 +8605,14 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/SqueezeLLM/squeezeLLM.png",
+      "cover": "notes/2024/SqueezeLLM/squeezeLLM.png",
       "keywords": [
         "07-Quantization",
         "14-KV Cache Optimization/Efficient Attention",
         "06-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/SqueezeAILab/SqueezeLLM",
-      "note_url": "../notes/2024/SqueezeLLM/note/",
+      "note_url": "notes/2024/SqueezeLLM/note/",
       "prototxt_path": "meta/2024/SqueezeLLM.prototxt"
     },
     {
@@ -8633,12 +8633,12 @@
       ],
       "year": 2024,
       "venue": "ASPLOS",
-      "cover": "../notes/2024/T3/fig1.png",
+      "cover": "notes/2024/T3/fig1.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/T3/note/",
+      "note_url": "notes/2024/T3/note/",
       "prototxt_path": "meta/2024/T3.prototxt"
     },
     {
@@ -8665,7 +8665,7 @@
         "16-Efficient Training"
       ],
       "code_url": "https://github.com/theyoungkwon/TinyTrain",
-      "note_url": "../notes/2024/TinyTrain/note/",
+      "note_url": "notes/2024/TinyTrain/note/",
       "prototxt_path": "meta/2024/TinyTrain.prototxt"
     },
     {
@@ -8686,14 +8686,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/TOVA/tova.png",
+      "cover": "notes/2024/TOVA/tova.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/schwartz-lab-NLP/TOVA",
-      "note_url": "../notes/2024/TOVA/note/",
+      "note_url": "notes/2024/TOVA/note/",
       "prototxt_path": "meta/2024/TOVA.prototxt"
     },
     {
@@ -8723,7 +8723,7 @@
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://huggingface.co/PowerInfer",
-      "note_url": "../notes/2024/TurboSparse/note/",
+      "note_url": "notes/2024/TurboSparse/note/",
       "prototxt_path": "meta/2024/TurboSparse.prototxt"
     },
     {
@@ -8747,12 +8747,12 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "../notes/2024/SMAT/fig2.png",
+      "cover": "notes/2024/SMAT/fig2.png",
       "keywords": [
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/szc12153/sparse_interpolated_experts",
-      "note_url": "../notes/2024/SMAT/note/",
+      "note_url": "notes/2024/SMAT/note/",
       "prototxt_path": "meta/2024/SMAT.prototxt"
     },
     {
@@ -8779,7 +8779,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/OpenNLPLab/TransnormerLLM",
-      "note_url": "../notes/2024/LightningAttention/note/",
+      "note_url": "notes/2024/LightningAttention/note/",
       "prototxt_path": "meta/2024/LightningAttention.prototxt"
     },
     {
@@ -8802,12 +8802,12 @@
       ],
       "year": 2024,
       "venue": "MLSys",
-      "cover": "../notes/2024/Vidur/fig2.png",
+      "cover": "notes/2024/Vidur/fig2.png",
       "keywords": [
         "09-Performance Modeling"
       ],
       "code_url": "https://github.com/microsoft/vidur",
-      "note_url": "../notes/2024/Vidur/note/",
+      "note_url": "notes/2024/Vidur/note/",
       "prototxt_path": "meta/2024/Vidur.prototxt"
     },
     {
@@ -8832,12 +8832,12 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/XGrammar/fig1.png",
+      "cover": "notes/2024/XGrammar/fig1.png",
       "keywords": [
         "10-LLM Deployment"
       ],
       "code_url": "https://github.com/mlc-ai/xgrammar",
-      "note_url": "../notes/2024/XGrammar/note/",
+      "note_url": "notes/2024/XGrammar/note/",
       "prototxt_path": "meta/2024/XGrammar.prototxt"
     },
     {
@@ -8861,14 +8861,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/ZigZagKV/fig1.png",
+      "cover": "notes/2024/ZigZagKV/fig1.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/ZigZagKV/note/",
+      "note_url": "notes/2024/ZigZagKV/note/",
       "prototxt_path": "meta/2024/ZigZagKV.prototxt"
     },
     {
@@ -8898,7 +8898,7 @@
         "06-Quantization (KV Cache)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/ZipCache/note/",
+      "note_url": "notes/2024/ZipCache/note/",
       "prototxt_path": "meta/2024/ZipCache.prototxt"
     },
     {
@@ -8923,14 +8923,14 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "../notes/2024/ZipVL/fig2.png",
+      "cover": "notes/2024/ZipVL/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "14-KV Cache Optimization/Efficient Attention",
         "01-Sparsity (Attention)"
       ],
       "code_url": null,
-      "note_url": "../notes/2024/ZipVL/note/",
+      "note_url": "notes/2024/ZipVL/note/",
       "prototxt_path": "meta/2024/ZipVL.prototxt"
     },
     {
@@ -8947,7 +8947,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/del/survey/eval_LLM.jpg",
+      "cover": "notes/del/survey/eval_LLM.jpg",
       "keywords": [
         "11-Survey"
       ],
@@ -8974,7 +8974,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/del/survey/compression_LLM.jpg",
+      "cover": "notes/del/survey/compression_LLM.jpg",
       "keywords": [
         "11-Survey"
       ],
@@ -9003,7 +9003,7 @@
       ],
       "year": 2023,
       "venue": "ICLR",
-      "cover": "../notes/2023/adalora/adalora.jpg",
+      "cover": "notes/2023/adalora/adalora.jpg",
       "keywords": [
         "13-Low Rank Decomposition",
         "16-Efficient Training"
@@ -9029,12 +9029,12 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/GBLM-Pruner/gblm-pruner.jpg",
+      "cover": "notes/2023/GBLM-Pruner/gblm-pruner.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/VILA-Lab/GBLM-Pruner",
-      "note_url": "../notes/2023/GBLM-Pruner/note/",
+      "note_url": "notes/2023/GBLM-Pruner/note/",
       "prototxt_path": "meta/2023/GBLM-Pruner.prototxt"
     },
     {
@@ -9061,7 +9061,7 @@
         "07-Quantization"
       ],
       "code_url": null,
-      "note_url": "../notes/2023/GPUSQ-ViT/note/",
+      "note_url": "notes/2023/GPUSQ-ViT/note/",
       "prototxt_path": "meta/2023/GPUSQ-ViT.prototxt"
     },
     {
@@ -9096,7 +9096,7 @@
         "12-Network Structure Design"
       ],
       "code_url": "https://github.com/THUDM/CodeGeeX",
-      "note_url": "../notes/2023/CodeGeeX/note/",
+      "note_url": "notes/2023/CodeGeeX/note/",
       "prototxt_path": "meta/2023/CodeGeeX.prototxt"
     },
     {
@@ -9116,13 +9116,13 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/Compresso/cover.jpg",
+      "cover": "notes/2023/Compresso/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/microsoft/Moonlit/blob/main/Compresso",
-      "note_url": "../notes/2023/Compresso/note/",
+      "note_url": "notes/2023/Compresso/note/",
       "prototxt_path": "meta/2023/Compresso.prototxt"
     },
     {
@@ -9141,7 +9141,7 @@
       ],
       "year": 2023,
       "venue": "ICML",
-      "cover": "../notes/2023/dejavu/dejavu.jpg",
+      "cover": "notes/2023/dejavu/dejavu.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
@@ -9164,7 +9164,7 @@
       ],
       "year": 2023,
       "venue": "AAAI",
-      "cover": "../notes/2023/diffuser/diffuser.jpg",
+      "cover": "notes/2023/diffuser/diffuser.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -9185,7 +9185,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg",
+      "cover": "notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
@@ -9232,12 +9232,12 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/IHOT8YP4/fig1.png",
+      "cover": "notes/2023/IHOT8YP4/fig1.png",
       "keywords": [
         "10-LLM Deployment"
       ],
       "code_url": null,
-      "note_url": "../notes/2023/IHOT8YP4/note/",
+      "note_url": "notes/2023/IHOT8YP4/note/",
       "prototxt_path": "meta/2023/IHOT8YP4.prototxt"
     },
     {
@@ -9262,14 +9262,14 @@
       ],
       "year": 2023,
       "venue": "SOSP",
-      "cover": "../notes/2023/PagedAttention/vllm.png",
+      "cover": "notes/2023/PagedAttention/vllm.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "10-LLM Deployment",
         "17-Tool"
       ],
       "code_url": "https://github.com/vllm-project/vllm",
-      "note_url": "../notes/2023/PagedAttention/note/",
+      "note_url": "notes/2023/PagedAttention/note/",
       "prototxt_path": "meta/2023/PagedAttention.prototxt"
     },
     {
@@ -9286,7 +9286,7 @@
       ],
       "year": 2023,
       "venue": "TACL",
-      "cover": "../notes/del/survey/efficient_NLP.jpg",
+      "cover": "notes/del/survey/efficient_NLP.jpg",
       "keywords": [
         "11-Survey"
       ],
@@ -9337,7 +9337,7 @@
         "16-Efficient Training"
       ],
       "code_url": "https://github.com/princeton-nlp/MeZO",
-      "note_url": "../notes/2023/MeZO/note/",
+      "note_url": "notes/2023/MeZO/note/",
       "prototxt_path": "meta/2023/MeZO.prototxt"
     },
     {
@@ -9359,7 +9359,7 @@
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2023/FlashDecoding/note/",
+      "note_url": "notes/2023/FlashDecoding/note/",
       "prototxt_path": "meta/2023/FlashDecoding.prototxt"
     },
     {
@@ -9402,7 +9402,7 @@
       ],
       "year": 2023,
       "venue": "ACL",
-      "cover": "../notes/2023/grain/grain.jpg",
+      "cover": "notes/2023/grain/grain.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -9424,7 +9424,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/kcm/kcm.jpg",
+      "cover": "notes/2023/kcm/kcm.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
@@ -9462,14 +9462,14 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/H2O/h2o.png",
+      "cover": "notes/2023/H2O/h2o.png",
       "keywords": [
         "14-KV Cache Optimization/Efficient Attention",
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/FMInference/H2O",
-      "note_url": "../notes/2023/H2O/note/",
+      "note_url": "notes/2023/H2O/note/",
       "prototxt_path": "meta/2023/H2O.prototxt"
     },
     {
@@ -9487,13 +9487,13 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/k_pruning/kp.jpg",
+      "cover": "notes/2023/k_pruning/kp.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": null,
-      "note_url": "../notes/2023/k_pruning/note/",
+      "note_url": "notes/2023/k_pruning/note/",
       "prototxt_path": "meta/2023/k_pruning.prototxt"
     },
     {
@@ -9516,13 +9516,13 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/LLM_in_a_flash/windows.png",
+      "cover": "notes/2023/LLM_in_a_flash/windows.png",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
       ],
       "code_url": null,
-      "note_url": "../notes/2023/LLM_in_a_flash/note/",
+      "note_url": "notes/2023/LLM_in_a_flash/note/",
       "prototxt_path": "meta/2023/LLM_in_a_flash.prototxt"
     },
     {
@@ -9540,13 +9540,13 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/LLM-Pruner/cover.jpg",
+      "cover": "notes/2023/LLM-Pruner/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/horseee/LLM-Pruner",
-      "note_url": "../notes/2023/LLM-Pruner/note/",
+      "note_url": "notes/2023/LLM-Pruner/note/",
       "prototxt_path": "meta/2023/LLM-Pruner.prototxt"
     },
     {
@@ -9563,14 +9563,14 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/loftq/loftq.jpg",
+      "cover": "notes/2023/loftq/loftq.jpg",
       "keywords": [
         "07-Quantization",
         "13-Low Rank Decomposition",
         "16-Efficient Training"
       ],
       "code_url": "https://github.com/yxli2123/LoftQ",
-      "note_url": "../notes/2023/loftq/note/",
+      "note_url": "notes/2023/loftq/note/",
       "prototxt_path": "meta/2023/loftq.prototxt"
     },
     {
@@ -9635,7 +9635,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/omniquant/omniquant.png",
+      "cover": "notes/2023/omniquant/omniquant.png",
       "keywords": [
         "07-Quantization"
       ],
@@ -9656,12 +9656,12 @@
       ],
       "year": 2023,
       "venue": "ASPLOS",
-      "cover": "../notes/2023/Dist-Einsum/fig5.png",
+      "cover": "notes/2023/Dist-Einsum/fig5.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": null,
-      "note_url": "../notes/2023/Dist-Einsum/note/",
+      "note_url": "notes/2023/Dist-Einsum/note/",
       "prototxt_path": "meta/2023/Dist-Einsum.prototxt"
     },
     {
@@ -9708,7 +9708,7 @@
         "02-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/SJTU-IPADS/PowerInfer",
-      "note_url": "../notes/2023/PowerInfer/note/",
+      "note_url": "notes/2023/PowerInfer/note/",
       "prototxt_path": "meta/2023/PowerInfer.prototxt"
     },
     {
@@ -9727,7 +9727,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/gbdt/gbdt.jpg",
+      "cover": "notes/2023/gbdt/gbdt.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -9775,7 +9775,7 @@
       ],
       "year": 2023,
       "venue": "ACL",
-      "cover": "../notes/2023/smp/smp.jpg",
+      "cover": "notes/2023/smp/smp.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -9797,7 +9797,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/qlora/qlora.jpg",
+      "cover": "notes/2023/qlora/qlora.jpg",
       "keywords": [
         "13-Low Rank Decomposition",
         "07-Quantization"
@@ -9865,13 +9865,13 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/LLM_shearing/cover.jpg",
+      "cover": "notes/2023/LLM_shearing/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/princeton-nlp/LLM-Shearing",
-      "note_url": "../notes/2023/LLM_shearing/note/",
+      "note_url": "notes/2023/LLM_shearing/note/",
       "prototxt_path": "meta/2023/LLM_shearing.prototxt"
     },
     {
@@ -9892,7 +9892,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/SquareHead/cover.png",
+      "cover": "notes/2023/SquareHead/cover.png",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -9935,7 +9935,7 @@
       "institutions": [],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/sms/sms.jpg",
+      "cover": "notes/2023/sms/sms.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -9981,7 +9981,7 @@
       ],
       "year": 2023,
       "venue": "CVPR",
-      "cover": "../notes/2023/SparseViT/sparsevit.jpg",
+      "cover": "notes/2023/SparseViT/sparsevit.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "02-Sparsity (Activation)"
@@ -10052,7 +10052,7 @@
       ],
       "year": 2023,
       "venue": "AutoML Workshop",
-      "cover": "../notes/2023/nas_pruning/nas_pruning.jpg",
+      "cover": "notes/2023/nas_pruning/nas_pruning.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
@@ -10075,7 +10075,7 @@
       ],
       "year": 2023,
       "venue": "ICML",
-      "cover": "../notes/2023/LoSparse/losparse.jpg",
+      "cover": "notes/2023/LoSparse/losparse.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "13-Low Rank Decomposition",
@@ -10100,7 +10100,7 @@
       ],
       "year": 2023,
       "venue": "ACL",
-      "cover": "../notes/2023/simple/cover.jpg",
+      "cover": "notes/2023/simple/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
@@ -10237,7 +10237,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "../notes/2023/selective_context/selective_context.jpg",
+      "cover": "notes/2023/selective_context/selective_context.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -10264,13 +10264,13 @@
       ],
       "year": 2023,
       "venue": "SC",
-      "cover": "../notes/2023/VENOM/vnm.png",
+      "cover": "notes/2023/VENOM/vnm.png",
       "keywords": [
         "05-Sparse/Pruning",
         "03-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/UDC-GAC/venom",
-      "note_url": "../notes/2023/VENOM/note/",
+      "note_url": "notes/2023/VENOM/note/",
       "prototxt_path": "meta/2023/VENOM.prototxt"
     },
     {
@@ -10311,7 +10311,7 @@
       ],
       "year": 2023,
       "venue": "NeurIPS",
-      "cover": "../notes/2023/ZipLM/cover.jpg",
+      "cover": "notes/2023/ZipLM/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
@@ -10339,13 +10339,13 @@
       ],
       "year": 2022,
       "venue": "NeurIPS",
-      "cover": "../notes/2022/fisherpruning/cover.jpg",
+      "cover": "notes/2022/fisherpruning/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning",
         "04-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/WoosukKwon/retraining-free-pruning",
-      "note_url": "../notes/2022/fisherpruning/note/",
+      "note_url": "notes/2022/fisherpruning/note/",
       "prototxt_path": "meta/2022/fisherpruning.prototxt"
     },
     {
@@ -10394,12 +10394,12 @@
       ],
       "year": 2022,
       "venue": "ASPLOS",
-      "cover": "../notes/2022/CoCoNet/fig9.png",
+      "cover": "notes/2022/CoCoNet/fig9.png",
       "keywords": [
         "08-Communication-Computation Overlap"
       ],
       "code_url": "https://github.com/parasailteam/coconet",
-      "note_url": "../notes/2022/CoCoNet/note/",
+      "note_url": "notes/2022/CoCoNet/note/",
       "prototxt_path": "meta/2022/CoCoNet.prototxt"
     },
     {
@@ -10435,7 +10435,7 @@
       ],
       "year": 2022,
       "venue": "NeurIPS",
-      "cover": "../notes/2022/flashattention/cover.jpg",
+      "cover": "notes/2022/flashattention/cover.jpg",
       "keywords": [
         "15-Layer Fusion (Reduce IO)"
       ],
@@ -10458,7 +10458,7 @@
       ],
       "year": 2022,
       "venue": "ICLR",
-      "cover": "../notes/2022/lora/lora.jpg",
+      "cover": "notes/2022/lora/lora.jpg",
       "keywords": [
         "13-Low Rank Decomposition",
         "16-Efficient Training"
@@ -10551,7 +10551,7 @@
       ],
       "year": 2022,
       "venue": "ICML",
-      "cover": "../notes/2022/spdy/cover.jpg",
+      "cover": "notes/2022/spdy/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -10573,7 +10573,7 @@
       ],
       "year": 2022,
       "venue": "ACL",
-      "cover": "../notes/2022/TextPruner/textpruner.jpg",
+      "cover": "notes/2022/TextPruner/textpruner.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -10622,14 +10622,14 @@
       ],
       "year": 2022,
       "venue": "TC",
-      "cover": "../notes/2022/DSA/fig2.png",
+      "cover": "notes/2022/DSA/fig2.png",
       "keywords": [
         "05-Sparse/Pruning",
         "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention"
       ],
       "code_url": null,
-      "note_url": "../notes/2022/DSA/note/",
+      "note_url": "notes/2022/DSA/note/",
       "prototxt_path": "meta/2022/DSA.prototxt"
     },
     {
@@ -10647,12 +10647,12 @@
       ],
       "year": 2022,
       "venue": "Neuromorphic Computing and Engineering",
-      "cover": "../notes/2022/ComplementarySparsity/cover.jpg",
+      "cover": "notes/2022/ComplementarySparsity/cover.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
       "code_url": null,
-      "note_url": "../notes/2022/ComplementarySparsity/note/",
+      "note_url": "notes/2022/ComplementarySparsity/note/",
       "prototxt_path": "meta/2022/ComplementarySparsity.prototxt"
     },
     {
@@ -10780,7 +10780,7 @@
       ],
       "year": 2021,
       "venue": "ICLR",
-      "cover": "../notes/2021/sr-ste/sr-ste.jpg",
+      "cover": "notes/2021/sr-ste/sr-ste.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -10916,7 +10916,7 @@
       ],
       "year": 2020,
       "venue": "NeurIPS",
-      "cover": "../notes/2020/movement_pruning/mp.jpg",
+      "cover": "notes/2020/movement_pruning/mp.jpg",
       "keywords": [
         "05-Sparse/Pruning"
       ],
@@ -10987,12 +10987,12 @@
       ],
       "year": 2017,
       "venue": "NeurIPS",
-      "cover": "../notes/2017/Transformer/fig1.png",
+      "cover": "notes/2017/Transformer/fig1.png",
       "keywords": [
         "12-Network Structure Design"
       ],
       "code_url": null,
-      "note_url": "../notes/2017/Transformer/note/",
+      "note_url": "notes/2017/Transformer/note/",
       "prototxt_path": "meta/2017/Transformer.prototxt"
     },
     {

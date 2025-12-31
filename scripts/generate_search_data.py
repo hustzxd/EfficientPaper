@@ -90,8 +90,8 @@ def generate_search_data():
             ]
             for path in possible_paths:
                 if os.path.exists(path):
-                    # Convert to path relative to docs directory
-                    cover_url = path.replace("./", "../")
+                    # Use absolute path from site root (notes/ is at root level)
+                    cover_url = path.replace("./", "")
                     break
 
         # Process note URL path
@@ -100,8 +100,8 @@ def generate_search_data():
         # Check if note file exists (note.md)
         note_md_path = f"./notes/{year}/{file_name}/note.md"
         if os.path.exists(note_md_path):
-            # Convert to directory URL (remove note.md, keep trailing slash)
-            note_url = f"../notes/{year}/{file_name}/note/"
+            # Use absolute path from site root (notes/ is at root level)
+            note_url = f"notes/{year}/{file_name}/note/"
 
         # Build paper data
         paper_data = {

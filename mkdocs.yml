@@ -12,6 +12,7 @@ nav:
   - Graph: baseline_methods_graph.md
   - Weekly Paper: weekly_paper/
   - Contributors: contributors.md
+
 theme:
   name: readthedocs
   custom_dir: overrides
@@ -34,10 +35,13 @@ extra_javascript:
   - js/back-to-top.js
   - js/note-editor.js
 
-
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css
   - css/extra.css
+
+# Copy extra directories to site
+exclude_docs: |
+  scripts/
 
 plugins:
   - glightbox
