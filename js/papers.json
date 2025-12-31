@@ -102,6 +102,38 @@
       "prototxt_path": "meta/2025/Acc-SpMM.prototxt"
     },
     {
+      "id": "VRPJM9OQ",
+      "title": "Accelerate Speculative Decoding with Sparse Computation in Verification",
+      "abbr": "VRPJM9OQ",
+      "url": "http://arxiv.org/abs/2512.21911v1",
+      "authors": [
+        "Jikai Wang",
+        "Jianchao Tan",
+        "Yuxuan Hu",
+        "Jiayu Qin",
+        "Yerui Sun",
+        "Yuchen Xie",
+        "Xunliang Cai",
+        "Juntao Li",
+        "Min Zhang"
+      ],
+      "institutions": [
+        "Meituan",
+        "Soochow University"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/VRPJM9OQ/cover.png",
+      "keywords": [
+        "02-Sparsity (Activation)",
+        "01-Sparsity (Attention)",
+        "10-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/VRPJM9OQ/note/",
+      "prototxt_path": "meta/2025/VRPJM9OQ.prototxt"
+    },
+    {
       "id": "07NWF4VE",
       "title": "Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching",
       "abbr": "07NWF4VE",
@@ -3160,6 +3192,32 @@
       "code_url": "https://github.com/krishnateja95/MoE-Mixed-Prec",
       "note_url": "notes/2025/MoPEQ/note/",
       "prototxt_path": "meta/2025/MoPEQ.prototxt"
+    },
+    {
+      "id": "VFPWFOQA",
+      "title": "MoR: Mixture Of Representations For Mixed-Precision Training",
+      "abbr": "MoR",
+      "url": "http://arxiv.org/abs/2512.22804v1",
+      "authors": [
+        "Bor-Yiing Su",
+        "Peter Dykas",
+        "Mike Chrzanowski",
+        "Jatin Chhugani"
+      ],
+      "institutions": [
+        "Nvidia",
+        "Meta"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "16-Efficient Training",
+        "07-Quantization"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/VFPWFOQA/note/",
+      "prototxt_path": "meta/2025/VFPWFOQA.prototxt"
     },
     {
       "id": "Mosaic",
@@ -11208,5 +11266,5 @@
       "18-Benchmark"
     ]
   },
-  "total": 360
+  "total": 362
 }

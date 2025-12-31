@@ -1,0 +1,29 @@
+paper {
+  title: "MoR: Mixture Of Representations For Mixed-Precision Training"
+  abbr: "MoR"
+  url: "http://arxiv.org/abs/2512.22804v1"
+  authors: "Bor-Yiing Su"
+  authors: "Peter Dykas"
+  authors: "Mike Chrzanowski"
+  authors: "Jatin Chhugani"
+  institutions: "Nvidia"
+  institutions: "Meta"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: efficient_training
+  words: quantization
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
