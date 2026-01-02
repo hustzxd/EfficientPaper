@@ -1,0 +1,40 @@
+paper {
+  title: "Reconstructing KV Caches with Cross-layer Fusion For Enhanced Transformers"
+  abbr: "FusedKV"
+  url: "http://arxiv.org/abs/2512.03870v1"
+  authors: "Hongzhan Lin"
+  authors: "Zhiqi Bai"
+  authors: "Xinmiao Zhang"
+  authors: "Sen Yang"
+  authors: "Xiang Li"
+  authors: "Siran Yang"
+  authors: "Yunlong Xu"
+  authors: "Jiaheng Liu"
+  authors: "Yongchi Zhao"
+  authors: "Jiamang Wang"
+  authors: "Yuchi Xu"
+  authors: "Wenbo Su"
+  authors: "Bo Zheng"
+  institutions: "Alibaba"
+  institutions: "Renmin University of China"
+  institutions: "ICT"
+  institutions: "Nanjing University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://anonymous.4open.science/r/FusedKV/"
+}
+keyword {
+  words: deployment
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

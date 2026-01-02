@@ -1,0 +1,32 @@
+paper {
+  title: "Taming the Fragility of KV Cache Eviction in LLM Inference"
+  abbr: "DefensiveKV"
+  url: "http://arxiv.org/abs/2510.13334v1"
+  authors: "Yuan Feng"
+  authors: "Haoyu Guo"
+  authors: "JunLin Lv"
+  authors: "S. Kevin Zhou"
+  authors: "Xike Xie"
+  institutions: "University of Science and Technology of China"
+  institutions: "Suzhou Institute for Advanced Research"
+  institutions: "USTC"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FFY0/DefensiveKV"
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/DuoAttention"
+  methods: "2024/AdaKV"
+  methods: "2024/SnapKV"
+}

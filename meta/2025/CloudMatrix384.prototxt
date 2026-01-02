@@ -1,0 +1,70 @@
+paper {
+  title: "Serving Large Language Models on Huawei CloudMatrix384"
+  abbr: "CloudMatrix384"
+  url: "http://arxiv.org/abs/2506.12708v3"
+  authors: "Pengfei Zuo"
+  authors: "Huimin Lin"
+  authors: "Junbo Deng"
+  authors: "Nan Zou"
+  authors: "Xingkun Yang"
+  authors: "Yingyu Diao"
+  authors: "Weifeng Gao"
+  authors: "Ke Xu"
+  authors: "Zhangyu Chen"
+  authors: "Shirui Lu"
+  authors: "Zhao Qiu"
+  authors: "Peiyang Li"
+  authors: "Xianyu Chang"
+  authors: "Zhengzhong Yu"
+  authors: "Fangzheng Miao"
+  authors: "Jia Zheng"
+  authors: "Ying Li"
+  authors: "Yuan Feng"
+  authors: "Bei Wang"
+  authors: "Zaijian Zong"
+  authors: "Mosong Zhou"
+  authors: "Wenli Zhou"
+  authors: "Houjiang Chen"
+  authors: "Xingyu Liao"
+  authors: "Yipeng Li"
+  authors: "Wenxiao Zhang"
+  authors: "Ping Zhu"
+  authors: "Yinggang Wang"
+  authors: "Chuanjie Xiao"
+  authors: "Depeng Liang"
+  authors: "Dong Cao"
+  authors: "Juncheng Liu"
+  authors: "Yongqiang Yang"
+  authors: "Xiaolong Bai"
+  authors: "Yi Li"
+  authors: "Huaguo Xie"
+  authors: "Huatao Wu"
+  authors: "Zhibin Yu"
+  authors: "Lv Chen"
+  authors: "Hu Liu"
+  authors: "Yujun Ding"
+  authors: "Haipei Zhu"
+  authors: "Jing Xia"
+  authors: "Yi Xiong"
+  authors: "Zhou Yu"
+  authors: "Heng Liao"
+  institutions: "Huawei"
+  institutions: "SiliconFlow"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

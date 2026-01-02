@@ -1,0 +1,26 @@
+paper {
+  title: "Hardware-Centric Analysis of DeepSeek\'s Multi-Head Latent Attention"
+  abbr: "H2VD7Q70"
+  url: "http://arxiv.org/abs/2506.02523v1"
+  authors: "Robin Geens"
+  authors: "Marian Verhelst"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: performance_modeling
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
