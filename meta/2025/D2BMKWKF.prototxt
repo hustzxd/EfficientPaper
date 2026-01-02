@@ -1,0 +1,34 @@
+paper {
+  title: "KVCache Cache in the Wild: Characterizing and Optimizing KVCache Cache at a Large Cloud Provider"
+  abbr: "D2BMKWKF"
+  url: "http://arxiv.org/abs/2506.02634v4"
+  authors: "Jiahao Wang"
+  authors: "Jinbo Han"
+  authors: "Xingda Wei"
+  authors: "Sijie Shen"
+  authors: "Dingyan Zhang"
+  authors: "Chenguang Fang"
+  authors: "Rong Chen"
+  authors: "Wenyuan Yu"
+  authors: "Haibo Chen"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "ATC"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: deployment
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

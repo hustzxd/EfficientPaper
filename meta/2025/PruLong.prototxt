@@ -1,0 +1,29 @@
+paper {
+  title: "Cache Me If You Can: How Many KVs Do You Need for Effective Long-Context LMs?"
+  abbr: "PruLong"
+  url: "http://arxiv.org/abs/2506.17121v1"
+  authors: "Adithya Bhaskar"
+  authors: "Alexander Wettig"
+  authors: "Tianyu Gao"
+  authors: "Yihe Dong"
+  authors: "Danqi Chen"
+  institutions: "Princeton University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/princeton-pli/PruLong"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/DuoAttention"
+}

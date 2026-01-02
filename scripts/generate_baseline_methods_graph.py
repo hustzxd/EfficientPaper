@@ -28,6 +28,8 @@ def main():
                     G.add_edge(bl_method, cur_node)
 
     components = list(nx.weakly_connected_components(G))
+    # Sort components by size (descending) then by node names for consistency
+    components.sort(key=lambda c: (-len(c), sorted(c)[0] if c else ''))
     subgraphs = [G.subgraph(c).copy() for c in components]
 
     # collect markdown with multiple mermaid blocks
@@ -105,7 +107,8 @@ def export_mermaid(graph: nx.DiGraph) -> str:
     leaf_nodes = [n for n in graph.nodes() if graph.out_degree(n) == 0]
 
     node_to_id = {}
-    for node, data in graph.nodes(data=True):
+    # Sort nodes for consistent output
+    for node, data in sorted(graph.nodes(data=True), key=lambda x: str(x[0])):
         nid = sanitize_id(str(node))
         node_to_id[node] = nid
         label = str(data.get("name", node))
@@ -136,7 +139,8 @@ def export_mermaid(graph: nx.DiGraph) -> str:
     ]
 
     edge_index = 0
-    for u, v in graph.edges():
+    # Sort edges for consistent output
+    for u, v in sorted(graph.edges(), key=lambda e: (str(e[0]), str(e[1]))):
         uid = node_to_id[u]
         vid = node_to_id[v]
         # Assign different colors to edges for better visibility

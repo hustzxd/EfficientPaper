@@ -1,0 +1,39 @@
+paper {
+  title: "Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding"
+  abbr: "SparseSpec"
+  url: "http://arxiv.org/abs/2512.01278v1"
+  authors: "Yilong Zhao"
+  authors: "Jiaming Tang"
+  authors: "Kan Zhu"
+  authors: "Zihao Ye"
+  authors: "Chi-Chih Chang"
+  authors: "Chaofan Lin"
+  authors: "Jongseok Park"
+  authors: "Guangxuan Xiao"
+  authors: "Mohamed S. Abdelfattah"
+  authors: "Mingyu Gao"
+  authors: "Baris Kasikci"
+  authors: "Song Han"
+  authors: "Ion Stoica"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sspec-project/SparseSpec"
+}
+keyword {
+  words: attention_sparsity
+  words: deployment
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

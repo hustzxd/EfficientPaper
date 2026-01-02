@@ -134,6 +134,42 @@
       "prototxt_path": "meta/2025/VRPJM9OQ.prototxt"
     },
     {
+      "id": "SparseSpec",
+      "title": "Accelerating Large-Scale Reasoning Model Inference with Sparse Self-Speculative Decoding",
+      "abbr": "SparseSpec",
+      "url": "http://arxiv.org/abs/2512.01278v1",
+      "authors": [
+        "Yilong Zhao",
+        "Jiaming Tang",
+        "Kan Zhu",
+        "Zihao Ye",
+        "Chi-Chih Chang",
+        "Chaofan Lin",
+        "Jongseok Park",
+        "Guangxuan Xiao",
+        "Mohamed S. Abdelfattah",
+        "Mingyu Gao",
+        "Baris Kasikci",
+        "Song Han",
+        "Ion Stoica"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "10-LLM Deployment",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": "https://github.com/sspec-project/SparseSpec",
+      "note_url": "notes/2025/SparseSpec/note/",
+      "prototxt_path": "meta/2025/SparseSpec.prototxt"
+    },
+    {
       "id": "07NWF4VE",
       "title": "Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching",
       "abbr": "07NWF4VE",
@@ -565,6 +601,32 @@
       "code_url": "https://github.com/thunlp/BlockFFN",
       "note_url": "notes/2025/BlockFFN/note/",
       "prototxt_path": "meta/2025/BlockFFN.prototxt"
+    },
+    {
+      "id": "PruLong",
+      "title": "Cache Me If You Can: How Many KVs Do You Need for Effective Long-Context LMs?",
+      "abbr": "PruLong",
+      "url": "http://arxiv.org/abs/2506.17121v1",
+      "authors": [
+        "Adithya Bhaskar",
+        "Alexander Wettig",
+        "Tianyu Gao",
+        "Yihe Dong",
+        "Danqi Chen"
+      ],
+      "institutions": [
+        "Princeton University"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": "https://github.com/princeton-pli/PruLong",
+      "note_url": "notes/2025/PruLong/note/",
+      "prototxt_path": "meta/2025/PruLong.prototxt"
     },
     {
       "id": "CacheBlend",
@@ -1321,6 +1383,38 @@
       "prototxt_path": "meta/2025/LIMINAL.prototxt"
     },
     {
+      "id": "Chelsea",
+      "title": "Efficient Long-Context LLM Inference via KV Cache Clustering",
+      "abbr": "Chelsea",
+      "url": "http://arxiv.org/abs/2506.11418v1",
+      "authors": [
+        "Jie Hu",
+        "Shengnan Wang",
+        "Yutong He",
+        "Ping Gong",
+        "Jiawei Yi",
+        "Juncheng Zhang",
+        "Youhui Bai",
+        "Renhai Chen",
+        "Gong Zhang",
+        "Cheng Li",
+        "Kun Yuan"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/Chelsea/note/",
+      "prototxt_path": "meta/2025/Chelsea.prototxt"
+    },
+    {
       "id": "RaaS",
       "title": "Efficient Long-Decoding Inference with Reasoning-Aware Attention Sparsity",
       "abbr": "RaaS",
@@ -1613,6 +1707,31 @@
       "prototxt_path": "meta/2025/FlexPrefill.prototxt"
     },
     {
+      "id": "FlowKV",
+      "title": "FlowKV: Enhancing Multi-Turn Conversational Coherence in LLMs via Isolated Key-Value Cache Management",
+      "abbr": "FlowKV",
+      "url": "http://arxiv.org/abs/2505.15347v1",
+      "authors": [
+        "Xiang Liu",
+        "Hong Chen",
+        "Xuming Hu",
+        "Xiaowen Chu"
+      ],
+      "institutions": [
+        "The Hong Kong University of Science and Technology"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/FlowKV/note/",
+      "prototxt_path": "meta/2025/FlowKV.prototxt"
+    },
+    {
       "id": "FoX",
       "title": "Forgetting Transformer: Softmax Attention with a Forget Gate",
       "abbr": "FoX",
@@ -1636,6 +1755,37 @@
       "code_url": "https://github.com/zhixuan-lin/forgetting-transformer",
       "note_url": "notes/2025/FoX/note/",
       "prototxt_path": "meta/2025/FoX.prototxt"
+    },
+    {
+      "id": "FreeKV",
+      "title": "FreeKV: Boosting KV Cache Retrieval for Efficient LLM Inference",
+      "abbr": "FreeKV",
+      "url": "http://arxiv.org/abs/2505.13109v3",
+      "authors": [
+        "Guangda Liu",
+        "Chengwei Li",
+        "Zhenyu Ning",
+        "Jing Lin",
+        "Yiwu Yao",
+        "Danning Ke",
+        "Minyi Guo",
+        "Jieru Zhao"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Huawei"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "01-Sparsity (Attention)",
+        "10-LLM Deployment",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/FreeKV/note/",
+      "prototxt_path": "meta/2025/FreeKV.prototxt"
     },
     {
       "id": "FreqKV",
@@ -1918,6 +2068,29 @@
       "code_url": null,
       "note_url": "notes/2025/H1B-KV/note/",
       "prototxt_path": "meta/2025/H1B-KV.prototxt"
+    },
+    {
+      "id": "H2VD7Q70",
+      "title": "Hardware-Centric Analysis of DeepSeek's Multi-Head Latent Attention",
+      "abbr": "H2VD7Q70",
+      "url": "http://arxiv.org/abs/2506.02523v1",
+      "authors": [
+        "Robin Geens",
+        "Marian Verhelst"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "09-Performance Modeling"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/H2VD7Q70/note/",
+      "prototxt_path": "meta/2025/H2VD7Q70.prototxt"
     },
     {
       "id": "GLA",
@@ -2252,6 +2425,37 @@
       "prototxt_path": "meta/2025/209M5GA7.prototxt"
     },
     {
+      "id": "D2BMKWKF",
+      "title": "KVCache Cache in the Wild: Characterizing and Optimizing KVCache Cache at a Large Cloud Provider",
+      "abbr": "D2BMKWKF",
+      "url": "http://arxiv.org/abs/2506.02634v4",
+      "authors": [
+        "Jiahao Wang",
+        "Jinbo Han",
+        "Xingda Wei",
+        "Sijie Shen",
+        "Dingyan Zhang",
+        "Chenguang Fang",
+        "Rong Chen",
+        "Wenyuan Yu",
+        "Haibo Chen"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Alibaba Group"
+      ],
+      "year": 2025,
+      "venue": "ATC",
+      "cover": null,
+      "keywords": [
+        "10-LLM Deployment",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/D2BMKWKF/note/",
+      "prototxt_path": "meta/2025/D2BMKWKF.prototxt"
+    },
+    {
       "id": "KVLink",
       "title": "KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse",
       "abbr": "KVLink",
@@ -2496,6 +2700,35 @@
       "code_url": "https://github.com/mit-han-lab/omniserve",
       "note_url": "notes/2025/LServer/note/",
       "prototxt_path": "meta/2025/LServer.prototxt"
+    },
+    {
+      "id": "Marconi",
+      "title": "Marconi: Prefix Caching for the Era of Hybrid LLMs",
+      "abbr": "Marconi",
+      "url": "http://arxiv.org/abs/2411.19379v3",
+      "authors": [
+        "Rui Pan",
+        "Zhuang Wang",
+        "Zhen Jia",
+        "Can Karakus",
+        "Luca Zancato",
+        "Tri Dao",
+        "Yida Wang",
+        "Ravi Netravali"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2025,
+      "venue": "MLSys",
+      "cover": null,
+      "keywords": [
+        "10-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/Marconi/note/",
+      "prototxt_path": "meta/2025/Marconi.prototxt"
     },
     {
       "id": "MegaScale-MoE",
@@ -3971,6 +4204,43 @@
       "prototxt_path": "meta/2025/ReAttention.prototxt"
     },
     {
+      "id": "FusedKV",
+      "title": "Reconstructing KV Caches with Cross-layer Fusion For Enhanced Transformers",
+      "abbr": "FusedKV",
+      "url": "http://arxiv.org/abs/2512.03870v1",
+      "authors": [
+        "Hongzhan Lin",
+        "Zhiqi Bai",
+        "Xinmiao Zhang",
+        "Sen Yang",
+        "Xiang Li",
+        "Siran Yang",
+        "Yunlong Xu",
+        "Jiaheng Liu",
+        "Yongchi Zhao",
+        "Jiamang Wang",
+        "Yuchi Xu",
+        "Wenbo Su",
+        "Bo Zheng"
+      ],
+      "institutions": [
+        "Alibaba",
+        "Renmin University of China",
+        "ICT",
+        "Nanjing University"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "10-LLM Deployment",
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": "https://anonymous.4open.science/r/FusedKV/",
+      "note_url": "notes/2025/FusedKV/note/",
+      "prototxt_path": "meta/2025/FusedKV.prototxt"
+    },
+    {
       "id": "ReSA",
       "title": "Rectified Sparse Attention",
       "abbr": "ReSA",
@@ -4371,6 +4641,73 @@
       "code_url": null,
       "note_url": "notes/2025/Seesaw/note/",
       "prototxt_path": "meta/2025/Seesaw.prototxt"
+    },
+    {
+      "id": "CloudMatrix384",
+      "title": "Serving Large Language Models on Huawei CloudMatrix384",
+      "abbr": "CloudMatrix384",
+      "url": "http://arxiv.org/abs/2506.12708v3",
+      "authors": [
+        "Pengfei Zuo",
+        "Huimin Lin",
+        "Junbo Deng",
+        "Nan Zou",
+        "Xingkun Yang",
+        "Yingyu Diao",
+        "Weifeng Gao",
+        "Ke Xu",
+        "Zhangyu Chen",
+        "Shirui Lu",
+        "Zhao Qiu",
+        "Peiyang Li",
+        "Xianyu Chang",
+        "Zhengzhong Yu",
+        "Fangzheng Miao",
+        "Jia Zheng",
+        "Ying Li",
+        "Yuan Feng",
+        "Bei Wang",
+        "Zaijian Zong",
+        "Mosong Zhou",
+        "Wenli Zhou",
+        "Houjiang Chen",
+        "Xingyu Liao",
+        "Yipeng Li",
+        "Wenxiao Zhang",
+        "Ping Zhu",
+        "Yinggang Wang",
+        "Chuanjie Xiao",
+        "Depeng Liang",
+        "Dong Cao",
+        "Juncheng Liu",
+        "Yongqiang Yang",
+        "Xiaolong Bai",
+        "Yi Li",
+        "Huaguo Xie",
+        "Huatao Wu",
+        "Zhibin Yu",
+        "Lv Chen",
+        "Hu Liu",
+        "Yujun Ding",
+        "Haipei Zhu",
+        "Jing Xia",
+        "Yi Xiong",
+        "Zhou Yu",
+        "Heng Liao"
+      ],
+      "institutions": [
+        "Huawei",
+        "SiliconFlow"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "10-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/CloudMatrix384/note/",
+      "prototxt_path": "meta/2025/CloudMatrix384.prototxt"
     },
     {
       "id": "ShadowKV",
@@ -4907,6 +5244,33 @@
       "code_url": null,
       "note_url": "notes/2025/Step-3/note/",
       "prototxt_path": "meta/2025/Step-3.prototxt"
+    },
+    {
+      "id": "DefensiveKV",
+      "title": "Taming the Fragility of KV Cache Eviction in LLM Inference",
+      "abbr": "DefensiveKV",
+      "url": "http://arxiv.org/abs/2510.13334v1",
+      "authors": [
+        "Yuan Feng",
+        "Haoyu Guo",
+        "JunLin Lv",
+        "S. Kevin Zhou",
+        "Xike Xie"
+      ],
+      "institutions": [
+        "University of Science and Technology of China",
+        "Suzhou Institute for Advanced Research",
+        "USTC"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "14-KV Cache Optimization/Efficient Attention"
+      ],
+      "code_url": "https://github.com/FFY0/DefensiveKV",
+      "note_url": "notes/2025/DefensiveKV/note/",
+      "prototxt_path": "meta/2025/DefensiveKV.prototxt"
     },
     {
       "id": "Task-KV",
@@ -11266,5 +11630,5 @@
       "18-Benchmark"
     ]
   },
-  "total": 362
+  "total": 373
 }

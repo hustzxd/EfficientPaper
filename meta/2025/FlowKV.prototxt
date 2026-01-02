@@ -1,0 +1,28 @@
+paper {
+  title: "FlowKV: Enhancing Multi-Turn Conversational Coherence in LLMs via Isolated Key-Value Cache Management"
+  abbr: "FlowKV"
+  url: "http://arxiv.org/abs/2505.15347v1"
+  authors: "Xiang Liu"
+  authors: "Hong Chen"
+  authors: "Xuming Hu"
+  authors: "Xiaowen Chu"
+  institutions: "The Hong Kong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

@@ -1,0 +1,32 @@
+paper {
+  title: "Marconi: Prefix Caching for the Era of Hybrid LLMs"
+  abbr: "Marconi"
+  url: "http://arxiv.org/abs/2411.19379v3"
+  authors: "Rui Pan"
+  authors: "Zhuang Wang"
+  authors: "Zhen Jia"
+  authors: "Can Karakus"
+  authors: "Luca Zancato"
+  authors: "Tri Dao"
+  authors: "Yida Wang"
+  authors: "Ravi Netravali"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "MLSys"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

@@ -1,0 +1,35 @@
+paper {
+  title: "Efficient Long-Context LLM Inference via KV Cache Clustering"
+  abbr: "Chelsea"
+  url: "http://arxiv.org/abs/2506.11418v1"
+  authors: "Jie Hu"
+  authors: "Shengnan Wang"
+  authors: "Yutong He"
+  authors: "Ping Gong"
+  authors: "Jiawei Yi"
+  authors: "Juncheng Zhang"
+  authors: "Youhui Bai"
+  authors: "Renhai Chen"
+  authors: "Gong Zhang"
+  authors: "Cheng Li"
+  authors: "Kun Yuan"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
