@@ -154,8 +154,12 @@
         "Ion Stoica"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "University of California, Berkeley",
+        "Massachusetts Institute of Technology",
+        "University of Washington",
+        "NVIDIA",
+        "Cornell University",
+        "Tsinghua University"
       ],
       "year": 2025,
       "venue": "arXiv",
@@ -645,8 +649,9 @@
         "Junchen Jiang"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "University of Chicago",
+        "Stanford University",
+        "Microsoft Research"
       ],
       "year": 2025,
       "venue": "EuroSys",
@@ -702,8 +707,7 @@
         "Haifeng Wang"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Baidu"
       ],
       "year": 2025,
       "venue": "arXiv",
@@ -1401,8 +1405,9 @@
         "Kun Yuan"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Peking University",
+        "Huawei",
+        "University of Science and Technology of China"
       ],
       "year": 2025,
       "venue": "arXiv",
@@ -2079,8 +2084,7 @@
         "Marian Verhelst"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "KU Leuven"
       ],
       "year": 2025,
       "venue": "arXiv",
@@ -2410,8 +2414,8 @@
         "Shouhua Zhang"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Shandong University of Science and Technology",
+        "University of Oulu"
       ],
       "year": 2025,
       "venue": "arXiv",
@@ -2717,8 +2721,8 @@
         "Ravi Netravali"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Princeton University",
+        "AWS"
       ],
       "year": 2025,
       "venue": "MLSys",
@@ -3967,16 +3971,22 @@
         "Kripabandhu Ghosh"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Manipal University Jaipur",
+        "Vellore Institute of Technology",
+        "NIT Silchar",
+        "Harrisburg University of Science and Technology",
+        "Meta",
+        "Amazon",
+        "IISER Kolkata",
+        "BITS Pilani"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
+        "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "05-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/QuickSilver/note/",
@@ -5848,9 +5858,9 @@
       "venue": "ICML",
       "cover": "notes/2025/XAttention/fig1.png",
       "keywords": [
+        "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/mit-han-lab/x-attention",
       "note_url": "notes/2025/XAttention/note/",
@@ -7203,15 +7213,15 @@
         "Haifeng Wang"
       ],
       "institutions": [
-        "baidu"
+        "Baidu"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": "notes/2024/FlashMask/flashmask.png",
       "keywords": [
+        "01-Sparsity (Attention)",
         "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "05-Sparse/Pruning"
       ],
       "code_url": "https://github.com/PaddlePaddle/PaddleNLP/tree/develop",
       "note_url": "notes/2024/FlashMask/note/",
@@ -7611,15 +7621,15 @@
         "Devesh Tiwari"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Northeastern University",
+        "MIT"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "11-Survey",
-        "10-LLM Deployment"
+        "10-LLM Deployment",
+        "11-Survey"
       ],
       "code_url": null,
       "note_url": "notes/2024/YS9YTT55/note/",
@@ -8910,8 +8920,7 @@
         "Sean Lie"
       ],
       "institutions": [
-        "inst1",
-        "inst2"
+        "Cerebras"
       ],
       "year": 2024,
       "venue": "ICML",

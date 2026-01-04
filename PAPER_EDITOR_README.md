@@ -2,6 +2,8 @@
 
 一个用于管理和编辑论文元数据的可视化工具，支持从 PDF 自动提取信息、在线编辑和部署到 GitHub Pages。
 
+![Efficient Paper](docs/images/efficient_paper.png)
+
 ## 快速开始
 
 ### 第一步：添加论文信息
@@ -11,6 +13,8 @@
 ```bash
 ./add_paper_info.sh ~/Downloads/2512.01278v1.pdf
 ```
+
+![添加论文](docs/images/add_from_arxiv.png)
 
 这个脚本会：
 - 自动从 PDF 提取论文标题、作者、摘要等信息
@@ -35,18 +39,22 @@
 http://localhost:8000/search/
 ```
 
-![搜索页面](docs/images/search.png)
-
 在搜索页面中：
 1. **查找论文** - 使用搜索框或筛选器找到刚添加的论文
 2. **点击 Edit** - 点击论文卡片上的 "Edit" 链接
 3. **编辑信息** - 在可视化表单中完善论文信息：
+
+![编辑页面1](docs/images/edit1.png)
+
    - 补充或修正标题、作者、机构
    - 选择发表会议/期刊和年份
    - 添加代码仓库链接
    - 选择关键词标签
    - 上传封面图片
    - 添加 baseline methods（格式：`年份/方法名`，如 `2024/StreamingLLM`）
+
+![编辑页面2](docs/images/edit2.png)
+
 4. **保存** - 点击 "Save Changes" 按钮
    - 系统会弹出提示：保存后需要运行 `./start_editor.sh` 重新生成静态文件
    - 点击 OK 确认保存
@@ -57,11 +65,13 @@ http://localhost:8000/search/
 
 ### 第三步：确认并部署到 GitHub
 
-确认编辑无误后，使用 `refresh_readme.sh` 部署到 GitHub：
+确认编辑无误后，使用 `refresh_and_upload.sh` 部署到 GitHub：
 
 ```bash
-./refresh_readme.sh 'update_paper_info'
+./refresh_and_upload.sh 'update_paper_info'
 ```
+
+![部署到GitHub](docs/images/upload_to_github.png)
 
 这个脚本会：
 - 重新生成搜索数据 (`papers.json`)

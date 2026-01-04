@@ -4,9 +4,9 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.
 
-## 2024/StreamingLLM Family
+## StreamingLLM Family
 
-*26 methods, 37 relationships*
+*25 methods, 37 relationships*
 
 ```mermaid
 flowchart LR
@@ -31,10 +31,8 @@ flowchart LR
     class 2024_Quest rootNode
     2024_SnapKV["SnapKV[2024]"]
     class 2024_SnapKV rootNode
-    2024_StreamingLLM["2024/StreamingLLM"]
+    2024_StreamingLLM["StreamingLLM[2024]"]
     class 2024_StreamingLLM rootNode
-    2024_streaming_llm["streaming-llm[2024]"]
-    class 2024_streaming_llm rootNode
     2025_BLASST["BLASST[2025]"]
     class 2025_BLASST leafNode
     2025_DefensiveKV["DefensiveKV[2025]"]
@@ -116,7 +114,7 @@ flowchart LR
     linkStyle 22 stroke:#FFA500,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2025_UNComp
     linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_streaming_llm ==>|" "| 2025_XAttention
+    2024_StreamingLLM ==>|" "| 2025_XAttention
     linkStyle 24 stroke:#9370DB,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2025_BLASST
     linkStyle 25 stroke:#FF6347,stroke-width:2.5px

@@ -15,8 +15,12 @@ paper {
   authors: "Baris Kasikci"
   authors: "Song Han"
   authors: "Ion Stoica"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of California, Berkeley"
+  institutions: "Massachusetts Institute of Technology"
+  institutions: "University of Washington"
+  institutions: "NVIDIA"
+  institutions: "Cornell University"
+  institutions: "Tsinghua University"
 }
 pub {
   where: "arXiv"

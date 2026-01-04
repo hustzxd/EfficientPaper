@@ -6,8 +6,7 @@ paper {
   authors: "Shreyas Saxena"
   authors: "Abhay Gupta"
   authors: "Sean Lie"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Cerebras"
 }
 pub {
   where: "ICML"
@@ -17,13 +16,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/CerebrasResearch/Sparse-IFT"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: efficient_training
   words: sparse_pruning
 }
 cover {
   url: "sparseIFT.png"
+}
+baseline {
+  methods: "None"
 }

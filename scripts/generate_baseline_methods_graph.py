@@ -17,8 +17,12 @@ def main():
             for bl_method in pinfo.baseline.methods:
                 if bl_method == "None":
                     continue
-                if not check_exist(bl_method):
-                    print(f"{f} Baseline Method: {bl_method} does not exist.")
+                # if not check_exist(bl_method):
+                #     print(f"{f} Baseline Method: {bl_method} does not exist.")
+                #     G.add_node(bl_method, name=f"{bl_method}")
+                #     G.add_edge(bl_method, cur_node)
+                if "/" not in bl_method:
+                    print(f"{f} Baseline Method: {bl_method} missed year.")
                     G.add_node(bl_method, name=f"{bl_method}")
                     G.add_edge(bl_method, cur_node)
                 else:

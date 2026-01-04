@@ -13,8 +13,7 @@ paper {
   authors: "Dianhai Yu"
   authors: "Yanjun Ma"
   authors: "Haifeng Wang"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Baidu"
 }
 pub {
   where: "arXiv"
@@ -24,12 +23,12 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: quantization
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }

@@ -41,6 +41,8 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_get_baseline_methods()
         elif parsed_url.path == '/api/get-keywords':
             self.handle_get_keywords()
+        elif parsed_url.path == '/api/get-institutions':
+            self.handle_get_institutions()
         elif parsed_url.path == '/api/load-note':
             self.handle_load_note(parsed_url)
         else:
@@ -189,6 +191,45 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
 
         except Exception as e:
             print(f"Error getting keywords: {e}", file=sys.stderr)
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_get_institutions(self):
+        """Get all unique institutions from existing papers"""
+        try:
+            institutions_set = set()
+            meta_dir = "./meta"
+
+            # Scan all prototxt files and collect institutions
+            for year_dir in os.listdir(meta_dir):
+                year_path = os.path.join(meta_dir, year_dir)
+                if not os.path.isdir(year_path):
+                    continue
+
+                for filename in os.listdir(year_path):
+                    if not filename.endswith(".prototxt"):
+                        continue
+
+                    filepath = os.path.join(year_path, filename)
+                    try:
+                        pinfo = eppb.PaperInfo()
+                        with open(filepath, "r") as f:
+                            pb.text_format.Merge(f.read(), pinfo)
+
+                        # Add all institutions from this paper
+                        for institution in pinfo.paper.institutions:
+                            if institution:  # Skip empty strings
+                                institutions_set.add(institution)
+                    except Exception as e:
+                        # Skip files that can't be parsed
+                        continue
+
+            # Convert to sorted list
+            institutions_list = sorted(list(institutions_set))
+
+            self.send_json_response({'institutions': institutions_list})
+
+        except Exception as e:
+            print(f"Error getting institutions: {e}", file=sys.stderr)
             self.send_json_response({'error': str(e)}, 500)
 
     def handle_save_paper(self):
@@ -727,6 +768,7 @@ def main():
     print(f"  - GET  http://localhost:{port}/api/load-paper?path=...")
     print(f"  - GET  http://localhost:{port}/api/get-baseline-methods")
     print(f"  - GET  http://localhost:{port}/api/get-keywords")
+    print(f"  - GET  http://localhost:{port}/api/get-institutions")
     print(f"  - GET  http://localhost:{port}/api/load-note?path=...")
     print(f"  - POST http://localhost:{port}/api/save-paper")
     print(f"  - POST http://localhost:{port}/api/upload-cover")

@@ -61,7 +61,7 @@ pip install protobuf==5.27.2 pandas arxiv
 确认编辑无误后，使用 `refresh_readme.sh` 部署到 GitHub：
 
 ```bash
-./refresh_readme.sh 'update_paper_info'
+./refresh_and_upload.sh 'update_paper_info'
 ```
 
 这个脚本会：

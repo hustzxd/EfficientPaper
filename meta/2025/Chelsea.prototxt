@@ -13,8 +13,9 @@ paper {
   authors: "Gong Zhang"
   authors: "Cheng Li"
   authors: "Kun Yuan"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Peking University"
+  institutions: "Huawei"
+  institutions: "University of Science and Technology of China"
 }
 pub {
   where: "arXiv"
