@@ -9,8 +9,8 @@ paper {
   authors: "You Fu"
   authors: "Jiehan Zhou"
   authors: "Shouhua Zhang"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Shandong University of Science and Technology"
+  institutions: "University of Oulu"
 }
 pub {
   where: "arXiv"
@@ -20,13 +20,13 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: kv_cache
   words: survey
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }

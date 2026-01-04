@@ -44,7 +44,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current" href="#">Graph</a>
 <ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="#2024streamingllm-family">2024/StreamingLLM Family</a>
+<li class="toctree-l2"><a class="reference internal" href="#streamingllm-family">StreamingLLM Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#kivi-family">KIVI Family</a>
 </li>
@@ -119,8 +119,8 @@
 <h1 id="baseline-methods-graph">Baseline Methods Graph</h1>
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <p>Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.</p>
-<h2 id="2024streamingllm-family">2024/StreamingLLM Family</h2>
-<p><em>26 methods, 37 relationships</em></p>
+<h2 id="streamingllm-family">StreamingLLM Family</h2>
+<p><em>25 methods, 37 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
     classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
@@ -143,10 +143,8 @@
     class 2024_Quest rootNode
     2024_SnapKV["SnapKV[2024]"]
     class 2024_SnapKV rootNode
-    2024_StreamingLLM["2024/StreamingLLM"]
+    2024_StreamingLLM["StreamingLLM[2024]"]
     class 2024_StreamingLLM rootNode
-    2024_streaming_llm["streaming-llm[2024]"]
-    class 2024_streaming_llm rootNode
     2025_BLASST["BLASST[2025]"]
     class 2025_BLASST leafNode
     2025_DefensiveKV["DefensiveKV[2025]"]
@@ -228,7 +226,7 @@
     linkStyle 22 stroke:#FFA500,stroke-width:2.5px
     2024_StreamingLLM ==&gt;|" "| 2025_UNComp
     linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_streaming_llm ==&gt;|" "| 2025_XAttention
+    2024_StreamingLLM ==&gt;|" "| 2025_XAttention
     linkStyle 24 stroke:#9370DB,stroke-width:2.5px
     2025_FlexPrefill ==&gt;|" "| 2025_BLASST
     linkStyle 25 stroke:#FF6347,stroke-width:2.5px

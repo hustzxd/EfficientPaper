@@ -12,7 +12,7 @@ paper {
   authors: "Jiang Bian"
   authors: "Dianhai Yu"
   authors: "Haifeng Wang"
-  institutions: "baidu"
+  institutions: "Baidu"
 }
 pub {
   where: "arXiv"
@@ -22,14 +22,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/PaddlePaddle/PaddleNLP/tree/develop"
 }
-note {
-  url: "note.md"
-}
 keyword {
+  words: attention_sparsity
   words: kv_cache
   words: sparse_pruning
-  words: attention_sparsity
 }
 cover {
   url: "flashmask.png"
+}
+baseline {
+  methods: "None"
 }

@@ -4,8 +4,7 @@ paper {
   url: "http://arxiv.org/abs/2506.02523v1"
   authors: "Robin Geens"
   authors: "Marian Verhelst"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "KU Leuven"
 }
 pub {
   where: "arXiv"

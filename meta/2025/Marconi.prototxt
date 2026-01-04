@@ -10,8 +10,8 @@ paper {
   authors: "Tri Dao"
   authors: "Yida Wang"
   authors: "Ravi Netravali"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Princeton University"
+  institutions: "AWS"
 }
 pub {
   where: "MLSys"

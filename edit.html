@@ -460,6 +460,7 @@
     let currentPath = '';
     let paperData = null;
     let availableBaselineMethods = [];
+    let availableInstitutions = [];
     let KEYWORDS = [];  // Will be loaded from API
 
     // Get path from URL parameter
@@ -491,6 +492,20 @@
         console.error('Failed to load keywords:', error);
         // Fallback to empty array if API fails
         KEYWORDS = [];
+      }
+    }
+
+    // Load available institutions
+    async function loadInstitutions() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/get-institutions`);
+        const data = await response.json();
+        if (response.ok) {
+          availableInstitutions = data.institutions || [];
+        }
+      } catch (error) {
+        console.error('Failed to load institutions:', error);
+        availableInstitutions = [];
       }
     }
 
@@ -597,16 +612,24 @@
       container.appendChild(div);
     }
 
-    // Add institution field
+    // Add institution field with autocomplete
     function addInstitution(value = '') {
       const container = document.getElementById('institutions-container');
       const div = document.createElement('div');
-      div.className = 'array-input';
+      div.className = 'array-input autocomplete-container';
+
+      const inputId = `institution-${Date.now()}-${Math.random()}`;
+      const dropdownId = `${inputId}-dropdown`;
+
       div.innerHTML = `
-        <input type="text" value="${value}" placeholder="Institution name">
+        <input type="text" id="${inputId}" value="${value}" placeholder="Institution name (start typing to search...)">
         <button type="button" class="btn-remove" onclick="this.parentElement.remove()">Remove</button>
+        <div id="${dropdownId}" class="autocomplete-dropdown"></div>
       `;
       container.appendChild(div);
+
+      // Setup autocomplete
+      setupInstitutionAutocomplete(inputId, dropdownId);
     }
 
     // Add baseline method field with autocomplete
@@ -627,6 +650,100 @@
 
       // Setup autocomplete
       setupAutocomplete(inputId, dropdownId);
+    }
+
+    // Setup autocomplete for institution input
+    function setupInstitutionAutocomplete(inputId, dropdownId) {
+      const input = document.getElementById(inputId);
+      const dropdown = document.getElementById(dropdownId);
+      const div = input.closest('.autocomplete-container');
+      let selectedIndex = -1;
+
+      input.addEventListener('input', () => {
+        const value = input.value.toLowerCase().trim();
+
+        if (!value) {
+          dropdown.classList.remove('show');
+          return;
+        }
+
+        // Filter available institutions
+        const matches = availableInstitutions.filter(institution =>
+          institution.toLowerCase().includes(value)
+        );
+
+        if (matches.length === 0) {
+          dropdown.classList.remove('show');
+          return;
+        }
+
+        // Render dropdown
+        dropdown.innerHTML = matches.map((institution, index) => `
+          <div class="autocomplete-item" data-value="${institution}" data-index="${index}">
+            ${institution}
+          </div>
+        `).join('') + `
+          <div class="autocomplete-item autocomplete-hint">
+            Type to search existing institutions, or enter a new one
+          </div>
+        `;
+
+        dropdown.classList.add('show');
+        selectedIndex = -1;
+
+        // Add click handlers
+        dropdown.querySelectorAll('.autocomplete-item[data-value]').forEach(item => {
+          item.addEventListener('click', () => {
+            input.value = item.getAttribute('data-value');
+            dropdown.classList.remove('show');
+          });
+        });
+      });
+
+      // Keyboard navigation
+      input.addEventListener('keydown', (e) => {
+        const items = dropdown.querySelectorAll('.autocomplete-item[data-value]');
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (selectedIndex < items.length - 1) {
+            selectedIndex++;
+            updateSelection(items, selectedIndex);
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (selectedIndex > 0) {
+            selectedIndex--;
+            updateSelection(items, selectedIndex);
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (selectedIndex >= 0 && items[selectedIndex]) {
+            input.value = items[selectedIndex].getAttribute('data-value');
+            dropdown.classList.remove('show');
+          }
+        } else if (e.key === 'Escape') {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!div.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      function updateSelection(items, index) {
+        items.forEach((item, i) => {
+          if (i === index) {
+            item.classList.add('selected');
+            item.scrollIntoView({ block: 'nearest' });
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+      }
     }
 
     // Setup autocomplete for baseline method input
@@ -936,8 +1053,8 @@
       document.getElementById('loading').innerHTML =
         '<div class="message error">No file path specified</div>';
     } else {
-      // Load keywords, baseline methods, then paper data
-      Promise.all([loadKeywords(), loadBaselineMethods()])
+      // Load keywords, baseline methods, institutions, then paper data
+      Promise.all([loadKeywords(), loadBaselineMethods(), loadInstitutions()])
         .then(() => {
           loadPaperData();
         })

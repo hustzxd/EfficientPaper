@@ -12,8 +12,14 @@ paper {
   authors: "Aman Chadha"
   authors: "Amitava Das"
   authors: "Kripabandhu Ghosh"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Manipal University Jaipur"
+  institutions: "Vellore Institute of Technology"
+  institutions: "NIT Silchar"
+  institutions: "Harrisburg University of Science and Technology"
+  institutions: "Meta"
+  institutions: "Amazon"
+  institutions: "IISER Kolkata"
+  institutions: "BITS Pilani"
 }
 pub {
   where: "arXiv"
@@ -23,14 +29,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
-  words: kv_cache
   words: attention_sparsity
+  words: kv_cache
+  words: sparse_pruning
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }

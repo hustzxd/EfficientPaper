@@ -6,8 +6,8 @@ paper {
   authors: "Yankai Jiang"
   authors: "Vijay Gadepally"
   authors: "Devesh Tiwari"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Northeastern University"
+  institutions: "MIT"
 }
 pub {
   where: "arXiv"
@@ -17,13 +17,13 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: survey
   words: deployment
+  words: survey
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }

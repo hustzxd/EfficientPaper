@@ -11,8 +11,9 @@ paper {
   authors: "Kuntai Du"
   authors: "Shan Lu"
   authors: "Junchen Jiang"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Chicago"
+  institutions: "Stanford University"
+  institutions: "Microsoft Research"
 }
 pub {
   where: "EuroSys"
@@ -22,12 +23,12 @@ code {
   type: "Pytorch"
   url: "https://github.com/LMCache/LMCache"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: kv_cache
 }
 cover {
   url: "fig1.png"
+}
+baseline {
+  methods: "None"
 }
