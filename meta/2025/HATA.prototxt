@@ -19,7 +19,7 @@ paper {
   authors: "Feng Wu"
   authors: "Cheng Li"
   institutions: "University of Science and Technology of China"
-  institutions: "Huawei Technologies"
+  institutions: "Huawei"
   institutions: "Peking University"
 }
 pub {
@@ -34,7 +34,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
 }

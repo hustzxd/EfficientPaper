@@ -20,7 +20,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: deployment
 }
 cover {

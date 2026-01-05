@@ -12,7 +12,7 @@ paper {
   authors: "Liping Jing"
   authors: "Jianfei Chen"
   institutions: "Tsinghua University"
-  institutions: "Huawei Noah's Ark Lab"
+  institutions: "Huawei"
 }
 pub {
   where: "arXiv"

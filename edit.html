@@ -189,10 +189,23 @@
     }
 
     .keyword-checkboxes {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
+      display: flex;
+      gap: 30px;
       margin-top: 10px;
+    }
+
+    .keyword-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .keyword-checkboxes {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
 
     .checkbox-item {
@@ -561,18 +574,43 @@
       document.getElementById('code-type').value = data.code.type || 'Pytorch';
       document.getElementById('code-url').value = data.code.url || '';
 
-      // Keywords
+      // Keywords - display in 3 columns, sorted by numeric prefix
       const keywordsContainer = document.getElementById('keywords-container');
       keywordsContainer.innerHTML = '';
-      KEYWORDS.forEach(keyword => {
-        const checked = (data.keyword.words || []).includes(keyword.value);
-        keywordsContainer.innerHTML += `
-          <div class="checkbox-item">
+
+      // Sort all keywords by their numeric prefix
+      const sortedKeywords = KEYWORDS.sort((a, b) => {
+        const numA = parseInt(a.label.match(/^\d+/)[0]);
+        const numB = parseInt(b.label.match(/^\d+/)[0]);
+        return numA - numB;
+      });
+
+      // Create 3 columns
+      const numColumns = 3;
+      const itemsPerColumn = Math.ceil(sortedKeywords.length / numColumns);
+
+      for (let col = 0; col < numColumns; col++) {
+        const columnDiv = document.createElement('div');
+        columnDiv.className = 'keyword-column';
+
+        // Get items for this column
+        const startIdx = col * itemsPerColumn;
+        const endIdx = Math.min(startIdx + itemsPerColumn, sortedKeywords.length);
+
+        for (let i = startIdx; i < endIdx; i++) {
+          const keyword = sortedKeywords[i];
+          const checked = (data.keyword.words || []).includes(keyword.value);
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'checkbox-item';
+          itemDiv.innerHTML = `
             <input type="checkbox" id="kw-${keyword.value}" value="${keyword.value}" ${checked ? 'checked' : ''}>
             <label for="kw-${keyword.value}">${keyword.label}</label>
-          </div>
-        `;
-      });
+          `;
+          columnDiv.appendChild(itemDiv);
+        }
+
+        keywordsContainer.appendChild(columnDiv);
+      }
 
       // Cover
       const coverUrl = data.cover.url || '';

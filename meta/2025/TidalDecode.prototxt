@@ -22,7 +22,7 @@ note {
 }
 keyword {
   words: attention_sparsity
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
 }
 cover {

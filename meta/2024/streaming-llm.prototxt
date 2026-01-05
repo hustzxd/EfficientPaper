@@ -23,7 +23,7 @@ code {
 keyword {
   words: attention_sparsity
   words: sparse_pruning
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: "cover.jpg"

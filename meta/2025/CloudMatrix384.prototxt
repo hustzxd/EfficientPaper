@@ -1,5 +1,5 @@
 paper {
-  title: "Serving Large Language Models on Huawei CloudMatrix384"
+  title: "Serving Large Language Models on HuaweiMatrix384"
   abbr: "CloudMatrix384"
   url: "http://arxiv.org/abs/2506.12708v3"
   authors: "Pengfei Zuo"

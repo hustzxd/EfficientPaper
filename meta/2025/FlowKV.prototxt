@@ -6,7 +6,7 @@ paper {
   authors: "Hong Chen"
   authors: "Xuming Hu"
   authors: "Xiaowen Chu"
-  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Hong Kong University of Science and Technology"
 }
 pub {
   where: "arXiv"
@@ -18,7 +18,7 @@ code {
 }
 keyword {
   words: attention_sparsity
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: ""

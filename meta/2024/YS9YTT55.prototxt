@@ -7,7 +7,7 @@ paper {
   authors: "Vijay Gadepally"
   authors: "Devesh Tiwari"
   institutions: "Northeastern University"
-  institutions: "MIT"
+  institutions: "Massachusetts Institute of Technology"
 }
 pub {
   where: "arXiv"

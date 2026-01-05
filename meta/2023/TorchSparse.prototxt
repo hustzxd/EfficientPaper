@@ -4,7 +4,7 @@ paper {
   url: "https://openaccess.thecvf.com/content/CVPR2023W/WAD/papers/Tang_TorchSparse_Efficient_Point_Cloud_Engine_CVPRW_2023_paper.pdf"
   authors: "Haotian Tang"
   authors: "Song Han"
-  institutions: "MIT"
+  institutions: "Massachusetts Institute of Technology"
 }
 pub {
   where: "CVPR workshop"

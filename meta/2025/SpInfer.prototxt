@@ -3,7 +3,7 @@ paper {
   abbr: "SpInfer"
   url: "https://dl.acm.org/doi/10.1145/3689031.3717481"
   authors: "Ruibo Fan, Xiangrui Yu, Peijie Dong, Zeyu Li, Gu Gong, Qiang Wang, Wei Wang, Xiaowen Chu"
-  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Hong Kong University of Science and Technology"
   institutions: "Harbin Institute of Technology"
 }
 pub {

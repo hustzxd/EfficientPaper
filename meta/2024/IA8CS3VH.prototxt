@@ -5,7 +5,7 @@ paper {
   authors: "Yingtao Zhang, Haoli Bai, Haokun Lin, Jialin Zhao, Lu Hou, Carlo Vittorio Cannistraci"
   institutions: "Tsinghua University"
   institutions: "Institute of Automation, Chinese Academy of Sciences"
-  institutions: "Huawei Noah's Ark Lab"
+  institutions: "Huawei"
 }
 pub {
   where: "ICLR"

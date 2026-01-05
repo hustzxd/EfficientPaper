@@ -16,17 +16,15 @@ code {
   type: "Pytorch"
   url: "https://github.com/microsoft/kascade"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache
+  words: kv_cache_management
+  words: sparse_pruning
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
-  methods: "None"
+  methods: "2024/StreamingLLM"
+  methods: "2024/Quest"
 }

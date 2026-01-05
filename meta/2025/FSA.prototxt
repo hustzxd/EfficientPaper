@@ -5,7 +5,7 @@ paper {
   authors: "Ran Yan"
   authors: "Youhe Jiang"
   authors: "Binhang Yuan"
-  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Hong Kong University of Science and Technology"
 }
 pub {
   where: "arXiv"
@@ -19,7 +19,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: attention_sparsity
   words: sparse_pruning
 }

@@ -91,7 +91,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: structure_design
   words: attention_sparsity

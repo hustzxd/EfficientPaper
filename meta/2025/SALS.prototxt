@@ -24,7 +24,7 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: kv_cache
+  words: kv_cache_management
   words: attention_sparsity
 }
 cover {

@@ -9,7 +9,7 @@ paper {
   authors: "Baris Kasikci"
   authors: "Song Han"
   institutions: "Shanghai Jiao Tong University"
-  institutions: "MIT"
+  institutions: "Massachusetts Institute of Technology"
 }
 pub {
   where: "ICML"
@@ -24,7 +24,7 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: kv_cache
+  words: kv_cache_management
   words: attention_sparsity
 }
 cover {

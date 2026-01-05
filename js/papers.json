@@ -28,8 +28,7 @@
       "venue": "EuroSys",
       "cover": "notes/2026/FlashOverlap/fig3.png",
       "keywords": [
-        "08-Communication-Computation Overlap",
-        "05-Sparse/Pruning"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/infinigence/FlashOverlap",
       "note_url": "notes/2026/FlashOverlap/note/",
@@ -54,14 +53,14 @@
       ],
       "institutions": [
         "Tsinghua University",
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/LinearPatch/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/LinearPatch/note/",
@@ -95,7 +94,7 @@
       "venue": "PPoPP",
       "cover": "notes/2025/Acc-SpMM/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/Acc-SpMM/note/",
@@ -125,9 +124,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/VRPJM9OQ/cover.png",
       "keywords": [
-        "02-Sparsity (Activation)",
-        "01-Sparsity (Attention)",
-        "10-LLM Deployment"
+        "03-Sparsity (Activation)",
+        "02-Sparsity (Attention)",
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2025/VRPJM9OQ/note/",
@@ -165,9 +164,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "10-LLM Deployment",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "40-LLM Deployment",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/sspec-project/SparseSpec",
       "note_url": "notes/2025/SparseSpec/note/",
@@ -194,9 +193,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/07NWF4VE/fig1.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/07NWF4VE/note/",
@@ -223,9 +222,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/SharePrefill/fig3.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/SharePrefill/note/",
@@ -250,9 +249,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/zhixuan-lin/arctic-fox",
       "note_url": "notes/2025/ACP/note/",
@@ -275,8 +274,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/FlexiDepth/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/FlexiDepth/note/",
@@ -298,16 +297,16 @@
       ],
       "institutions": [
         "Shanghai Jiao Tong University",
-        "Huawei Cloud",
+        "Huawei",
         "National University of Singapore"
       ],
       "year": 2025,
       "venue": "AAAI",
       "cover": "notes/2025/AdaSkip/fig1.png",
       "keywords": [
-        "04-Sparsity (Structured)",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design"
+        "05-Sparsity (Structured)",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/ASISys/AdaSkip",
       "note_url": "notes/2025/AdaSkip/note/",
@@ -330,9 +329,9 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/deep-spin/adasplash",
       "note_url": "notes/2025/AdaSplash/note/",
@@ -359,9 +358,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/AhaKV/note/",
@@ -387,7 +386,7 @@
       "venue": "ISCA",
       "cover": "notes/2025/AMALI/fig6.png",
       "keywords": [
-        "09-Performance Modeling"
+        "39-Performance Modeling"
       ],
       "code_url": null,
       "note_url": "notes/2025/AMALI/note/",
@@ -416,8 +415,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2025/AmberPruner/note/",
@@ -438,10 +437,10 @@
       "venue": "github",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "07-Quantization",
-        "05-Sparse/Pruning",
-        "17-Tool"
+        "02-Sparsity (Attention)",
+        "09-Quantization",
+        "01-Sparse/Pruning",
+        "46-Tool"
       ],
       "code_url": "https://github.com/RiseAI-Sys/attention-gym",
       "note_url": "notes/2025/attention-gym/note/",
@@ -467,15 +466,15 @@
       ],
       "institutions": [
         "University of Science and Technology of China",
-        "Noah’s Ark Lab, Huawei Technologies"
+        "Noah’s Ark Lab, Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/AttentionPredictor/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/AttentionPredictor/note/",
@@ -497,8 +496,8 @@
       "venue": "ICML",
       "cover": "notes/2025/BaWA/fig2.png",
       "keywords": [
-        "03-Sparsity (Weight)",
-        "05-Sparse/Pruning"
+        "04-Sparsity (Weight)",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/BaWA/note/",
@@ -518,7 +517,7 @@
         "Fangzhen Lin"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology",
+        "Hong Kong University of Science and Technology",
         "The Hong Kong Polytechnic University",
         "Lingnan University"
       ],
@@ -526,7 +525,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/WGM/fig1.png",
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/johnnyzheng0636/WGM_bi_quan",
       "note_url": "notes/2025/WGM/note/",
@@ -569,9 +568,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/BLASST/cover.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "10-LLM Deployment"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2025/BLASST/note/",
@@ -599,8 +598,8 @@
       "venue": "COLM",
       "cover": "notes/2025/BlockFFN/fig2.png",
       "keywords": [
-        "02-Sparsity (Activation)",
-        "12-Network Structure Design"
+        "03-Sparsity (Activation)",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/thunlp/BlockFFN",
       "note_url": "notes/2025/BlockFFN/note/",
@@ -625,8 +624,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/princeton-pli/PruLong",
       "note_url": "notes/2025/PruLong/note/",
@@ -657,7 +656,7 @@
       "venue": "EuroSys",
       "cover": "notes/2025/CacheBlend/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/LMCache/LMCache",
       "note_url": "notes/2025/CacheBlend/note/",
@@ -680,9 +679,9 @@
       "venue": "ICML",
       "cover": "notes/2025/CateKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/CateKV/note/",
@@ -713,7 +712,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": null,
       "note_url": "notes/2025/CCQ/note/",
@@ -739,7 +738,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2025/UC0D8DJ6/note/",
@@ -766,7 +765,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/1DZIJVBI/eq1.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2025/1DZIJVBI/note/",
@@ -787,15 +786,15 @@
         "Xiaowen Chu"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology"
+        "Hong Kong University of Science and Technology"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/ChunkKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/ChunkKV/note/",
@@ -828,7 +827,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/CometSeed/fig3.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/bytedance/flux",
       "note_url": "notes/2025/CometSeed/note/",
@@ -860,8 +859,8 @@
       "venue": "ASPLOS",
       "cover": "notes/2025/COMET/fig5.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "07-Quantization"
+        "20-KV Cache Management",
+        "09-Quantization"
       ],
       "code_url": null,
       "note_url": "notes/2025/COMET/note/",
@@ -893,9 +892,9 @@
       "venue": "ICML",
       "cover": "notes/2025/PoD/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/PoD/note/",
@@ -927,7 +926,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/CTkvr/note/",
@@ -956,9 +955,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/DBudgetKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/DBudgetKV/note/",
@@ -979,8 +978,8 @@
       "venue": "github",
       "cover": "notes/2025/DeepEP/low-latency.png",
       "keywords": [
-        "08-Communication-Computation Overlap",
-        "17-Tool"
+        "29-Comm-Comp Overlap",
+        "46-Tool"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepEP",
       "note_url": "notes/2025/DeepEP/note/",
@@ -1200,7 +1199,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/DeepSeek-R1/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-R1",
       "note_url": "notes/2025/DeepSeek-R1/note/",
@@ -1221,10 +1220,10 @@
       "venue": "Github",
       "cover": "notes/2025/DSA/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp",
       "note_url": "notes/2025/DSA/note/",
@@ -1248,9 +1247,9 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/DeltaAttention/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/DeltaAttention/note/",
@@ -1275,9 +1274,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/DeltaLLM/fig5.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/DeltaLLM/note/",
@@ -1305,8 +1304,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/DReSS/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/DReSS/note/",
@@ -1333,7 +1332,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/DynaExq/fig2.png",
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": null,
       "note_url": "notes/2025/DynaExq/note/",
@@ -1356,7 +1355,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/P0JBYHCN/cover.png",
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/elsa-lab/MoE-CPU-GPU-Collaborative-Inference",
       "note_url": "notes/2025/P0JBYHCN/note/",
@@ -1380,7 +1379,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "09-Performance Modeling"
+        "39-Performance Modeling"
       ],
       "code_url": null,
       "note_url": "notes/2025/LIMINAL/note/",
@@ -1413,7 +1412,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/Chelsea/note/",
@@ -1438,15 +1437,15 @@
       "institutions": [
         "Peking University",
         "Nanjing University",
-        "Huawei Cloud"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/RaaS/fig5.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/RaaS/note/",
@@ -1475,8 +1474,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/SDS/sds.png",
       "keywords": [
-        "03-Sparsity (Weight)",
-        "05-Sparse/Pruning"
+        "04-Sparsity (Weight)",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/SDS/note/",
@@ -1500,9 +1499,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/EvolKV/fig1.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/EvolKV/note/",
@@ -1532,9 +1531,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/topk-decoding/alg1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/ryansynk/topk-decoding",
       "note_url": "notes/2025/topk-decoding/note/",
@@ -1562,8 +1561,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2025/2ZU1IWL6/note/",
@@ -1587,8 +1586,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/FasterVGGT/note/",
@@ -1612,9 +1611,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/FastKV/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/dongwonjo/FastKV",
       "note_url": "notes/2025/FastKV/note/",
@@ -1631,15 +1630,15 @@
         "Binhang Yuan"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology"
+        "Hong Kong University of Science and Technology"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/FSA/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention",
       "note_url": "notes/2025/FSA/note/",
@@ -1673,10 +1672,10 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "17-Tool"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "46-Tool"
       ],
       "code_url": "https://github.com/flashinfer-ai/flashinfer",
       "note_url": "notes/2025/FlashInfer/note/",
@@ -1703,9 +1702,9 @@
       "venue": "ICLR",
       "cover": "notes/2025/FlexPrefill/fig1.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/bytedance/FlexPrefill",
       "note_url": "notes/2025/FlexPrefill/note/",
@@ -1723,14 +1722,14 @@
         "Xiaowen Chu"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology"
+        "Hong Kong University of Science and Technology"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/FlowKV/note/",
@@ -1755,7 +1754,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/zhixuan-lin/forgetting-transformer",
       "note_url": "notes/2025/FoX/note/",
@@ -1784,9 +1783,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "10-LLM Deployment",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "40-LLM Deployment",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/FreeKV/note/",
@@ -1808,14 +1807,14 @@
       ],
       "institutions": [
         "Shanghai Jiao Tong University",
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/FreqKV/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/FreqKV/note/",
@@ -1846,14 +1845,14 @@
         "Alibaba Group",
         "University of Edinburgh",
         "Stanford University",
-        "MIT",
+        "Massachusetts Institute of Technology",
         "Tsinghua University"
       ],
       "year": 2025,
       "venue": "NeurIPS",
       "cover": "notes/2025/GatedAttention/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/qiuzh20/gated_attention",
       "note_url": "notes/2025/GatedAttention/note/",
@@ -2045,7 +2044,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/zai-org/GLM-4.5",
       "note_url": "notes/2025/GLM-4.5/note/",
@@ -2066,9 +2065,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": null,
       "note_url": "notes/2025/H1B-KV/note/",
@@ -2090,7 +2089,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "09-Performance Modeling"
+        "39-Performance Modeling"
       ],
       "code_url": null,
       "note_url": "notes/2025/H2VD7Q70/note/",
@@ -2113,9 +2112,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/GLA/gla.png",
       "keywords": [
-        "15-Layer Fusion (Reduce IO)",
-        "12-Network Structure Design",
-        "14-KV Cache Optimization/Efficient Attention"
+        "44-Layer Fusion (Reduce IO)",
+        "42-Network Structure Design",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/Dao-AILab/grouped-latent-attention",
       "note_url": "notes/2025/GLA/note/",
@@ -2141,9 +2140,9 @@
       "venue": "ICML",
       "cover": "notes/2025/HashAttention/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/xAlg-ai/HashAttention-1.0",
       "note_url": "notes/2025/HashAttention/note/",
@@ -2174,16 +2173,16 @@
       ],
       "institutions": [
         "University of Science and Technology of China",
-        "Huawei Technologies",
+        "Huawei",
         "Peking University"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/HATA/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/gpzlx1/HATA",
       "note_url": "notes/2025/HATA/note/",
@@ -2208,9 +2207,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/HCAttention/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/HCAttention/note/",
@@ -2240,12 +2239,40 @@
       "venue": "arXiv",
       "cover": "notes/2025/HelixParallelism/fig4.png",
       "keywords": [
-        "08-Communication-Computation Overlap",
-        "10-LLM Deployment"
+        "29-Comm-Comp Overlap",
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2025/HelixParallelism/note/",
       "prototxt_path": "meta/2025/HelixParallelism.prototxt"
+    },
+    {
+      "id": "DHC",
+      "title": "Hyper-Connections",
+      "abbr": "DHC",
+      "url": "http://arxiv.org/abs/2409.19606v3",
+      "authors": [
+        "Defa Zhu",
+        "Hongzhi Huang",
+        "Zihao Huang",
+        "Yutao Zeng",
+        "Yunyao Mao",
+        "Banggu Wu",
+        "Qiyang Min",
+        "Xun Zhou"
+      ],
+      "institutions": [
+        "ByteDance Seed"
+      ],
+      "year": 2025,
+      "venue": "ICLR",
+      "cover": "notes/2025/DHC/cover.png",
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": "https://github.com/lucidrains/hyper-connections",
+      "note_url": "notes/2025/DHC/note/",
+      "prototxt_path": "meta/2025/DHC.prototxt"
     },
     {
       "id": "InfLLM-V2",
@@ -2276,8 +2303,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/InfLLM-V2/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/OpenBMB/infllmv2_cuda_impl",
       "note_url": "notes/2025/InfLLM-V2/note/",
@@ -2298,14 +2325,14 @@
       ],
       "institutions": [
         "Sun Yat-sen University",
-        "Huawei Cloud"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/Adrenaline/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/ASISys/Adrenaline",
       "note_url": "notes/2025/Adrenaline/note/",
@@ -2335,8 +2362,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/IFPruning/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2025/IFPruning/note/",
@@ -2358,11 +2385,11 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": null,
+      "cover": "notes/2025/Kascade/cover.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/microsoft/kascade",
       "note_url": "notes/2025/Kascade/note/",
@@ -2393,7 +2420,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/KeepKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/KeepKV/note/",
@@ -2421,8 +2448,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "11-Survey"
+        "20-KV Cache Management",
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": "notes/2025/209M5GA7/note/",
@@ -2452,8 +2479,8 @@
       "venue": "ATC",
       "cover": null,
       "keywords": [
-        "10-LLM Deployment",
-        "14-KV Cache Optimization/Efficient Attention"
+        "40-LLM Deployment",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/D2BMKWKF/note/",
@@ -2479,8 +2506,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/KVLink/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/UCSB-NLP-Chang/KVLink",
       "note_url": "notes/2025/KVLink/note/",
@@ -2505,9 +2532,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/KVmix/fig3.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": null,
       "note_url": "notes/2025/KVmix/note/",
@@ -2528,9 +2555,9 @@
       "venue": "github",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "17-Tool",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "46-Tool",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/NVIDIA/kvpress",
       "note_url": "notes/2025/kvpress/note/",
@@ -2552,8 +2579,8 @@
       "venue": "COLM",
       "cover": "notes/2025/KVSink/fig8.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/KVSink/note/",
@@ -2580,8 +2607,8 @@
       "venue": "ICML",
       "cover": "notes/2025/LaRoSA/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2025/LaRoSA/note/",
@@ -2608,9 +2635,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/MGDDestiny/Lava",
       "note_url": "notes/2025/LAVa/note/",
@@ -2638,9 +2665,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/LeanK/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/microsoft/MInference/tree/main/LeanK",
       "note_url": "notes/2025/LeanK/note/",
@@ -2664,8 +2691,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/moonmath-ai/LiteAttention",
       "note_url": "notes/2025/LiteAttention/note/",
@@ -2690,16 +2717,16 @@
       ],
       "institutions": [
         "NVIDIA",
-        "MIT",
+        "Massachusetts Institute of Technology",
         "SJTU"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/LServer/fig5.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/omniserve",
       "note_url": "notes/2025/LServer/note/",
@@ -2728,7 +2755,7 @@
       "venue": "MLSys",
       "cover": null,
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2025/Marconi/note/",
@@ -2768,11 +2795,50 @@
       "venue": "arXiv",
       "cover": "notes/2025/MegaScale-MoE/fig8.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2025/MegaScale-MoE/note/",
       "prototxt_path": "meta/2025/MegaScale-MoE.prototxt"
+    },
+    {
+      "id": "mHC",
+      "title": "mHC: Manifold-Constrained Hyper-Connections",
+      "abbr": "mHC",
+      "url": "http://arxiv.org/abs/2512.24880v1",
+      "authors": [
+        "Zhenda Xie",
+        "Yixuan Wei",
+        "Huanqi Cao",
+        "Chenggang Zhao",
+        "Chengqi Deng",
+        "Jiashi Li",
+        "Damai Dai",
+        "Huazuo Gao",
+        "Jiang Chang",
+        "Liang Zhao",
+        "Shangyan Zhou",
+        "Zhean Xu",
+        "Zhengyan Zhang",
+        "Wangding Zeng",
+        "Shengding Hu",
+        "Yuqing Wang",
+        "Jingyang Yuan",
+        "Lean Wang",
+        "Wenfeng Liang"
+      ],
+      "institutions": [
+        "DeepSeek-AI"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/mHC/cover.png",
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/mHC/note/",
+      "prototxt_path": "meta/2025/mHC.prototxt"
     },
     {
       "id": "MILLION",
@@ -2801,9 +2867,9 @@
       "venue": "DAC",
       "cover": "notes/2025/MILLION/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "07-Quantization",
-        "06-Quantization (KV Cache)"
+        "20-KV Cache Management",
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/ZongwuWang/MILLION",
       "note_url": "notes/2025/MILLION/note/",
@@ -2898,10 +2964,10 @@
       "venue": "arXiv",
       "cover": "notes/2025/MiniCPM4/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/openbmb/minicpm",
       "note_url": "notes/2025/MiniCPM4/note/",
@@ -3011,8 +3077,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/MiniMax-AI/MiniMax-01",
       "note_url": "notes/2025/MiniMax-01/note/",
@@ -3160,8 +3226,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/MiniMax-AI/MiniMax-M1",
       "note_url": "notes/2025/MiniMax-M1/note/",
@@ -3190,12 +3256,41 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2025/MIRAGE/note/",
       "prototxt_path": "meta/2025/MIRAGE.prototxt"
+    },
+    {
+      "id": "MixKVQ",
+      "title": "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning",
+      "abbr": "MixKVQ",
+      "url": "http://arxiv.org/abs/2512.19206v1",
+      "authors": [
+        "Tao Zhang",
+        "Ziqian Zeng",
+        "Hao Peng",
+        "Huiping Zhuang",
+        "Cen Chen"
+      ],
+      "institutions": [
+        "South China University of Technology",
+        "Beihang University",
+        "Pazhou Laboratory"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/MixKVQ/cover.png",
+      "keywords": [
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)",
+        "09-Quantization"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/MixKVQ/note/",
+      "prototxt_path": "meta/2025/MixKVQ.prototxt"
     },
     {
       "id": "52A7RO95",
@@ -3222,8 +3317,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/52A7RO95/fig1.png",
       "keywords": [
-        "12-Network Structure Design",
-        "11-Survey"
+        "42-Network Structure Design",
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": "notes/2025/52A7RO95/note/",
@@ -3247,10 +3342,10 @@
       "venue": "arXiv",
       "cover": "notes/2025/MoSA/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/piotrpiekos/MoSA",
       "note_url": "notes/2025/MoSA/note/",
@@ -3284,8 +3379,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/MoR/fig1.png",
       "keywords": [
-        "12-Network Structure Design",
-        "01-Sparsity (Attention)"
+        "42-Network Structure Design",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/raymin0223/mixture_of_recursions",
       "note_url": "notes/2025/MoR/note/",
@@ -3317,9 +3412,9 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/MMInference/note/",
@@ -3366,10 +3461,10 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/MoBA/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/MoonshotAI/MoBA",
       "note_url": "notes/2025/MoBA/note/",
@@ -3399,8 +3494,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/MoDES/fig4.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/MoDES/note/",
@@ -3424,7 +3519,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/MoPEQ/fig1.png",
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/krishnateja95/MoE-Mixed-Prec",
       "note_url": "notes/2025/MoPEQ/note/",
@@ -3449,8 +3544,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "16-Efficient Training",
-        "07-Quantization"
+        "45-Efficient Training",
+        "09-Quantization"
       ],
       "code_url": null,
       "note_url": "notes/2025/VFPWFOQA/note/",
@@ -3473,8 +3568,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/Mosaic/fig6.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/Mosaic/note/",
@@ -3511,7 +3606,7 @@
       "venue": "OSDI",
       "cover": "notes/2025/NanoFlow/pipeline.gif",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/efeslab/Nanoflow",
       "note_url": "notes/2025/NanoFlow/note/",
@@ -3548,10 +3643,10 @@
       "venue": "ACL",
       "cover": "notes/2025/NSA/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/NSA/note/",
@@ -3579,9 +3674,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/PagedEviction/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/PagedEviction/note/",
@@ -3653,7 +3748,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2025/PanguUltra/note/",
@@ -3685,8 +3780,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/PAROAttention/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/PAROAttention/note/",
@@ -3714,7 +3809,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/PPCL/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/OPPO-Mente-Lab/Qwen-Image-Pruning",
       "note_url": "notes/2025/PPCL/note/",
@@ -3741,8 +3836,8 @@
       "venue": "ASPLOS",
       "cover": "notes/2025/POD-Attention/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/microsoft/vattention/tree/main/pod_attn",
       "note_url": "notes/2025/POD-Attention/note/",
@@ -3775,9 +3870,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/PowerAttention/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/PowerAttention/note/",
@@ -3807,9 +3902,9 @@
       "venue": "SIGMOD",
       "cover": null,
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": null,
       "note_url": "notes/2025/PQCache/note/",
@@ -3828,15 +3923,15 @@
       ],
       "institutions": [
         "The Chinese University of Hong Kong",
-        "Huawei Cloud"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/PSA/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/ASISys/PSAttention",
       "note_url": "notes/2025/PSA/note/",
@@ -3864,8 +3959,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/Cus-Prun/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/zhaoyiran924/Custom-Prune",
       "note_url": "notes/2025/Cus-Prun/note/",
@@ -3890,8 +3985,8 @@
       "venue": "AAAI",
       "cover": "notes/2025/AdaptiveSparseTrainer/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/thu-ml/Adaptive-Sparse-Trainer",
       "note_url": "notes/2025/AdaptiveSparseTrainer/note/",
@@ -3919,9 +4014,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/PureKV/fig1.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/PureKV/note/",
@@ -3945,9 +4040,9 @@
       "venue": "AAAI",
       "cover": "notes/2025/QJL/fig1.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/amirzandieh/QJL",
       "note_url": "notes/2025/QJL/note/",
@@ -3984,9 +4079,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/QuickSilver/note/",
@@ -4066,7 +4161,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/Qwen3/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/QwenLM/Qwen3",
       "note_url": "notes/2025/Qwen3/note/",
@@ -4103,9 +4198,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/R-KV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/Zefan-Cai/R-KV",
       "note_url": "notes/2025/R-KV/note/",
@@ -4132,8 +4227,8 @@
       "venue": "ICLR",
       "cover": "notes/2025/R-Sparse/fig4.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/VITA-Group/R-Sparse",
       "note_url": "notes/2025/R-Sparse/note/",
@@ -4161,7 +4256,7 @@
         "Song Han"
       ],
       "institutions": [
-        "MIT",
+        "Massachusetts Institute of Technology",
         "NVIDIA",
         "Princeton",
         "UC Berkeley",
@@ -4172,9 +4267,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/RadialAttention/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/RadialAttention/note/",
@@ -4199,15 +4294,15 @@
       ],
       "institutions": [
         "Fudan University",
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "ICLR",
       "cover": "notes/2025/ReAttention/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/OpenMOSS/ReAttention",
       "note_url": "notes/2025/ReAttention/note/",
@@ -4243,8 +4338,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "10-LLM Deployment",
-        "14-KV Cache Optimization/Efficient Attention"
+        "40-LLM Deployment",
+        "20-KV Cache Management"
       ],
       "code_url": "https://anonymous.4open.science/r/FusedKV/",
       "note_url": "notes/2025/FusedKV/note/",
@@ -4275,9 +4370,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/ReSA/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/microsoft/unilm/tree/master/ReSA",
       "note_url": "notes/2025/ReSA/note/",
@@ -4305,7 +4400,7 @@
       "venue": "ICLR",
       "cover": "notes/2025/RecursiveTransformers/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2025/RecursiveTransformers/note/",
@@ -4332,10 +4427,10 @@
       "venue": "MLSys",
       "cover": "notes/2025/0VRXJQ3F/tab1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "11-Survey"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "41-Survey"
       ],
       "code_url": "https://github.com/LLMkvsys/rethink-kv-compression",
       "note_url": "notes/2025/0VRXJQ3F/note/",
@@ -4371,9 +4466,9 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/microsoft/RetrievalAttention",
       "note_url": "notes/2025/RetrievalAttention/note/",
@@ -4397,9 +4492,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/RetroAttention/fig3.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/RetroAttention/note/",
@@ -4427,9 +4522,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/RotateKV/fig3.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": null,
       "note_url": "notes/2025/RotateKV/note/",
@@ -4456,7 +4551,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/RoundAttention/note/",
@@ -4485,8 +4580,8 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention"
+        "09-Quantization",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/thu-ml/SageAttention",
       "note_url": "notes/2025/SageAttention3/note/",
@@ -4510,9 +4605,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/SALE/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/BirdChristopher/SALE",
       "note_url": "notes/2025/SALE/note/",
@@ -4539,9 +4634,9 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/SALS/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/SALS/note/",
@@ -4572,8 +4667,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/SEAP/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/IAAR-Shanghai/SEAP/tree/main",
       "note_url": "notes/2025/SEAP/note/",
@@ -4612,9 +4707,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/SeerAttention-R/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/microsoft/SeerAttention",
       "note_url": "notes/2025/SeerAttention-R/note/",
@@ -4646,7 +4741,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/Seesaw/fig8.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2025/Seesaw/note/",
@@ -4654,7 +4749,7 @@
     },
     {
       "id": "CloudMatrix384",
-      "title": "Serving Large Language Models on Huawei CloudMatrix384",
+      "title": "Serving Large Language Models on HuaweiMatrix384",
       "abbr": "CloudMatrix384",
       "url": "http://arxiv.org/abs/2506.12708v3",
       "authors": [
@@ -4713,7 +4808,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2025/CloudMatrix384/note/",
@@ -4737,15 +4832,15 @@
       ],
       "institutions": [
         "Carnegie Mellon University",
-        "ByteDance"
+        "ByteDance Seed"
       ],
       "year": 2025,
       "venue": "ICML",
       "cover": "notes/2025/ShadowKV/shadowkv.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/bytedance/ShadowKV",
       "note_url": "notes/2025/ShadowKV/note/",
@@ -4779,9 +4874,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/SLA/fig4.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "12-Network Structure Design"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/thu-ml/SLA",
       "note_url": "notes/2025/SLA/note/",
@@ -4808,9 +4903,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/SlimInfer/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2025/SlimInfer/note/",
@@ -4828,14 +4923,14 @@
         "Yunhe Wang"
       ],
       "institutions": [
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/SlimLLM/note/",
@@ -4863,9 +4958,9 @@
       "venue": "ICML",
       "cover": "notes/2025/SpargeAttn/fig3.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/thu-ml/SpargeAttn",
       "note_url": "notes/2025/SpargeAttn/note/",
@@ -4906,8 +5001,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/SparkTransformer/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2025/SparkTransformer/note/",
@@ -4936,15 +5031,15 @@
       ],
       "institutions": [
         "University of California, Berkeley",
-        "MIT",
+        "Massachusetts Institute of Technology",
         "Stanford University"
       ],
       "year": 2025,
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/svg-project/Sparse-VideoGen",
       "note_url": "notes/2025/SVG2/note/",
@@ -4973,7 +5068,7 @@
       ],
       "institutions": [
         "University of California, Berkeley",
-        "MIT",
+        "Massachusetts Institute of Technology",
         "NVIDIA",
         "Tsinghua University"
       ],
@@ -4981,8 +5076,8 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/svg-project/Sparse-VideoGen",
       "note_url": "notes/2025/SVG/note/",
@@ -5001,15 +5096,15 @@
       ],
       "institutions": [
         "The Chinese University of Hong Kong",
-        "Huawei Cloud"
+        "Huawei"
       ],
       "year": 2025,
       "venue": "arXiv",
       "cover": "notes/2025/SparseServe/cover.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "10-LLM Deployment",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "40-LLM Deployment",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2025/SparseServe/note/",
@@ -5036,8 +5131,8 @@
       "venue": "ICML",
       "cover": "notes/2025/SparsingLaw/fig4.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/thunlp/SparsingLaw",
       "note_url": "notes/2025/SparsingLaw/note/",
@@ -5066,9 +5161,9 @@
       "venue": "ISCA",
       "cover": "notes/2025/SpecEE/fig9.png",
       "keywords": [
-        "04-Sparsity (Structured)",
-        "05-Sparse/Pruning",
-        "12-Network Structure Design"
+        "05-Sparsity (Structured)",
+        "01-Sparse/Pruning",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/infinigence/SpecEE",
       "note_url": "notes/2025/SpecEE/note/",
@@ -5098,7 +5193,7 @@
       ],
       "institutions": [
         "Shanghai AI Laboratory",
-        "HKUST",
+        "Hong Kong University of Science and Technology",
         "University of Macau",
         "Institute of Automation, Chinese Academy of Sciences",
         "Soochow University",
@@ -5110,10 +5205,10 @@
       "venue": "arXiv",
       "cover": "notes/2025/Awesome-Efficient-Arch/fig1.png",
       "keywords": [
-        "11-Survey",
-        "01-Sparsity (Attention)",
-        "12-Network Structure Design",
-        "05-Sparse/Pruning"
+        "41-Survey",
+        "02-Sparsity (Attention)",
+        "42-Network Structure Design",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/weigao266/Awesome-Efficient-Arch",
       "note_url": "notes/2025/Awesome-Efficient-Arch/note/",
@@ -5141,9 +5236,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/SpindleKV/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/tyxqc/SpindleKV",
       "note_url": "notes/2025/SpindleKV/note/",
@@ -5158,19 +5253,49 @@
         "Ruibo Fan, Xiangrui Yu, Peijie Dong, Zeyu Li, Gu Gong, Qiang Wang, Wei Wang, Xiaowen Chu"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology",
+        "Hong Kong University of Science and Technology",
         "Harbin Institute of Technology"
       ],
       "year": 2025,
       "venue": "EuroSys",
       "cover": "notes/2025/SpInfer/fig5.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/xxyux/SpInfer",
       "note_url": "notes/2025/SpInfer/note/",
       "prototxt_path": "meta/2025/SpInfer.prototxt"
+    },
+    {
+      "id": "SQ-format",
+      "title": "SQ-format: A Unified Sparse-Quantized Hardware-friendly Data Format for LLMs",
+      "abbr": "SQ-format",
+      "url": "http://arxiv.org/abs/2512.05409v1",
+      "authors": [
+        "Ruixuan Huang",
+        "Hao Zeng",
+        "Hantao Huang",
+        "Jinyuan Shi",
+        "Minghui Yu",
+        "Ian En-Hsu Yen",
+        "Shuai Wang"
+      ],
+      "institutions": [
+        "Hong Kong University of Science and Technology",
+        "Moffett AI",
+        "ByteDance Seed"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/SQ-format/cover.png",
+      "keywords": [
+        "09-Quantization",
+        "04-Sparsity (Weight)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/SQ-format/note/",
+      "prototxt_path": "meta/2025/SQ-format.prototxt"
     },
     {
       "id": "SSA",
@@ -5194,8 +5319,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/SSA/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/SSA/note/",
@@ -5218,8 +5343,8 @@
       "venue": "ICML",
       "cover": "notes/2025/StarAttention/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/NVIDIA/Star-Attention",
       "note_url": "notes/2025/StarAttention/note/",
@@ -5249,7 +5374,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2025/Step-3/note/",
@@ -5276,7 +5401,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/FFY0/DefensiveKV",
       "note_url": "notes/2025/DefensiveKV/note/",
@@ -5299,9 +5424,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/Task-KV/fig6.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/Task-KV/note/",
@@ -5329,8 +5454,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/sparse-frontier/tb1.png",
       "keywords": [
-        "11-Survey",
-        "01-Sparsity (Attention)"
+        "41-Survey",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/PiotrNawrot/sparse-frontier",
       "note_url": "notes/2025/sparse-frontier/note/",
@@ -5355,9 +5480,9 @@
       "venue": "ICLR",
       "cover": "notes/2025/TidalDecode/fig2.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/DerrickYLJ/TidalDecode",
       "note_url": "notes/2025/TidalDecode/note/",
@@ -5389,7 +5514,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/TileLink/fig7.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/ByteDance-Seed/Triton-distributed",
       "note_url": "notes/2025/TileLink/note/",
@@ -5412,7 +5537,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/TokenWeave/fig8.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/microsoft/tokenweave",
       "note_url": "notes/2025/TokenWeave/note/",
@@ -5446,9 +5571,9 @@
       "venue": "ICML Workshop",
       "cover": "notes/2025/TorchAO/fig1.png",
       "keywords": [
-        "07-Quantization",
-        "03-Sparsity (Weight)",
-        "17-Tool"
+        "09-Quantization",
+        "04-Sparsity (Weight)",
+        "46-Tool"
       ],
       "code_url": "https://github.com/pytorch/ao/",
       "note_url": "notes/2025/TorchAO/note/",
@@ -5472,8 +5597,8 @@
       "venue": "AISTATS",
       "cover": "notes/2025/MXFP4Train/fig1.png",
       "keywords": [
-        "07-Quantization",
-        "16-Efficient Training"
+        "09-Quantization",
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/amazon-science/mxfp4-llm",
       "note_url": "notes/2025/MXFP4Train/note/",
@@ -5501,8 +5626,8 @@
       "venue": "ICLR",
       "cover": "notes/2025/TEAL/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/FasterDecoding/TEAL",
       "note_url": "notes/2025/TEAL/note/",
@@ -5532,8 +5657,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2025/TCA-Attention/note/",
@@ -5554,14 +5679,14 @@
       "institutions": [
         "Southwest University",
         "Murdoch University",
-        "RMIT University",
+        "Massachusetts Institute of Technology University",
         "University of Technology Sydney"
       ],
       "year": 2025,
       "venue": "EMNLP Findings",
       "cover": "notes/2025/TOA/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/Aireduce952/Tree-of-Agents",
       "note_url": "notes/2025/TOA/note/",
@@ -5603,7 +5728,7 @@
       "venue": "arXiv",
       "cover": "notes/2025/Triton-distributed/fig2.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/ByteDance-Seed/Triton-distributed",
       "note_url": "notes/2025/Triton-distributed/note/",
@@ -5630,8 +5755,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/Týr-the-Pruner/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2025/Týr-the-Pruner/note/",
@@ -5663,15 +5788,15 @@
         "The Ohio State University",
         "Microsoft Research Asia",
         "The Chinese University of Hong Kong",
-        "The Hong Kong University of Science and Technology"
+        "Hong Kong University of Science and Technology"
       ],
       "year": 2025,
       "venue": "EMNLP",
       "cover": "notes/2025/UNComp/fig4.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/menik1126/UNComp",
       "note_url": "notes/2025/UNComp/note/",
@@ -5690,9 +5815,9 @@
       "venue": "github",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "17-Tool",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "46-Tool",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/Zefan-Cai/KVCache-Factory",
       "note_url": "notes/2025/KVCache-Factory/note/",
@@ -5716,7 +5841,7 @@
       "venue": "KDD Workshop",
       "cover": null,
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2025/MoE-MLA-RoPE/note/",
@@ -5743,8 +5868,8 @@
       "venue": "arXiv",
       "cover": "notes/2025/Super-Experts-Profilling/fig3.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "12-Network Structure Design"
+        "01-Sparse/Pruning",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/ZunhaiSu/Super-Experts-Profilling",
       "note_url": "notes/2025/Super-Experts-Profilling/note/",
@@ -5770,8 +5895,8 @@
       "venue": "ASPLOS",
       "cover": "notes/2025/vAttention/fig5.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/microsoft/vattention",
       "note_url": "notes/2025/vAttention/note/",
@@ -5800,9 +5925,9 @@
       "venue": "arXiv",
       "cover": "notes/2025/VecInfer/fig4.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "07-Quantization",
-        "06-Quantization (KV Cache)"
+        "20-KV Cache Management",
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": null,
       "note_url": "notes/2025/VecInfer/note/",
@@ -5829,8 +5954,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2025/VORTA/fig6.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/wenhao728/VORTA",
       "note_url": "notes/2025/VORTA/note/",
@@ -5858,9 +5983,9 @@
       "venue": "ICML",
       "cover": "notes/2025/XAttention/fig1.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/mit-han-lab/x-attention",
       "note_url": "notes/2025/XAttention/note/",
@@ -5889,9 +6014,9 @@
       ],
       "year": 2024,
       "venue": "ACL",
-      "cover": null,
+      "cover": "notes/2024/InfiniteBench/cover.png",
       "keywords": [
-        "18-Benchmark"
+        "47-Benchmark"
       ],
       "code_url": "https://github.com/OpenBMB/InfiniteBench",
       "note_url": "notes/2024/InfiniteBench/note/",
@@ -5913,7 +6038,7 @@
       "venue": "Blog",
       "cover": "notes/2024/Async-TP/Figure_2.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/pytorch/torchtitan",
       "note_url": "notes/2024/Async-TP/note/",
@@ -5941,7 +6066,7 @@
       "venue": "Blog",
       "cover": "notes/2024/DistGEMM/fig1.gif",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/NVIDIA/cutlass/blob/main/examples/65_distributed_gemm/README.md",
       "note_url": "notes/2024/DistGEMM/note/",
@@ -5966,8 +6091,8 @@
       "venue": "ICLR",
       "cover": "notes/2024/Wanda/wanda.png",
       "keywords": [
-        "03-Sparsity (Weight)",
-        "05-Sparse/Pruning"
+        "04-Sparsity (Weight)",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/locuslab/wanda",
       "note_url": "notes/2024/Wanda/note/",
@@ -6004,7 +6129,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/DHIB73MC/efficientinference.png",
       "keywords": [
-        "11-Survey"
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": "notes/2024/DHIB73MC/note/",
@@ -6033,8 +6158,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/068ZPAME/tab1.png",
       "keywords": [
-        "11-Survey",
-        "12-Network Structure Design"
+        "41-Survey",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/MoE-Inf/awesome-moe-inference/",
       "note_url": "notes/2024/068ZPAME/note/",
@@ -6067,10 +6192,10 @@
       "venue": "arXiv",
       "cover": "notes/2024/PWGG5HBE/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "11-Survey"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "41-Survey"
       ],
       "code_url": "https://github.com/TreeAI-Lab/Awesome-KV-Cache-Management",
       "note_url": "notes/2024/PWGG5HBE/note/",
@@ -6095,8 +6220,8 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "16-Efficient Training",
-        "05-Sparse/Pruning"
+        "45-Efficient Training",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/huyz2023/2by4-pretrain/tree/main",
       "note_url": "notes/2024/HYPL7G37/note/",
@@ -6121,9 +6246,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/AdaKV/fig2.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/FFY0/AdaKV",
       "note_url": "notes/2024/AdaKV/note/",
@@ -6149,7 +6274,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "09-Performance Modeling"
+        "39-Performance Modeling"
       ],
       "code_url": "https://github.com/microsoft/apex_plus",
       "note_url": "notes/2024/APEX/note/",
@@ -6173,7 +6298,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/AVSS/avss.png",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2024/AVSS/note/",
@@ -6188,14 +6313,14 @@
         "Ji Lin, Jiaming Tang, Haotian Tang, Shang Yang, Xingyu Dang, Chuang Gan, Song Han"
       ],
       "institutions": [
-        "MIT",
+        "Massachusetts Institute of Technology",
         "Tsinghua University"
       ],
       "year": 2024,
       "venue": "MLSys",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/mit-han-lab/llm-awq",
       "note_url": null,
@@ -6219,14 +6344,14 @@
       ],
       "institutions": [
         "Tsinghua University",
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": "notes/2024/0Y41U1N2/cover.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": null,
       "note_url": "notes/2024/0Y41U1N2/note/",
@@ -6248,9 +6373,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/SharedAttention/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/metacarbon/shareAtt/tree/main",
       "note_url": "notes/2024/SharedAttention/note/",
@@ -6277,8 +6402,8 @@
       "venue": "COLM",
       "cover": "notes/2024/CATS/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/ScalingIntelligence/CATS",
       "note_url": "notes/2024/CATS/note/",
@@ -6301,7 +6426,7 @@
       "venue": "ASPLOS",
       "cover": "notes/2024/Centauri/fig3.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2024/Centauri/note/",
@@ -6325,8 +6450,8 @@
       "venue": "ACL",
       "cover": "notes/2024/ChunkAttention/chunkattn.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/microsoft/chunk-attention",
       "note_url": "notes/2024/ChunkAttention/note/",
@@ -6355,8 +6480,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/Minitron/minitron.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/NVlabs/Minitron",
       "note_url": "notes/2024/Minitron/note/",
@@ -6383,8 +6508,8 @@
       "venue": "ICLR",
       "cover": "notes/2024/VB8C61V6/llm-kick.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "11-Survey"
+        "01-Sparse/Pruning",
+        "41-Survey"
       ],
       "code_url": "https://github.com/VITA-Group/llm-kick",
       "note_url": "notes/2024/VB8C61V6/note/",
@@ -6411,8 +6536,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/CoreInfer/framework.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/wangqinsi1/CoreInfer",
       "note_url": "notes/2024/CoreInfer/note/",
@@ -6437,14 +6562,14 @@
       "institutions": [
         "National University of Singapore",
         "Shanghai Jiaotong University",
-        "Huawei Cloud"
+        "Huawei"
       ],
       "year": 2024,
       "venue": "ATC",
       "cover": null,
       "keywords": [
-        "10-LLM Deployment",
-        "14-KV Cache Optimization/Efficient Attention"
+        "40-LLM Deployment",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2024/8TP9NHBA/note/",
@@ -6469,14 +6594,14 @@
       "institutions": [
         "National University of Singapore",
         "Shanghai Jiaotong University",
-        "Huawei Cloud"
+        "Huawei"
       ],
       "year": 2024,
       "venue": "ATC",
       "cover": "notes/2024/CachedAttention/fig5.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2024/CachedAttention/note/",
@@ -6653,7 +6778,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/DeepSeek-V2/fig2.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-V2",
       "note_url": "notes/2024/DeepSeek-V2/note/",
@@ -6873,7 +6998,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/DeepSeek-V3/fig5.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-V3",
       "note_url": "notes/2024/DeepSeek-V3/note/",
@@ -6912,7 +7037,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/DeepSeekMoE/fig2.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/deepseek-ai/DeepSeek-MoE",
       "note_url": "notes/2024/DeepSeekMoE/note/",
@@ -6938,7 +7063,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/Domino/fig5.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/deepspeedai/DeepSpeedExamples/blob/master/training/DeepSpeed-Domino/README.md",
       "note_url": "notes/2024/Domino/note/",
@@ -6960,16 +7085,16 @@
         "Song Han"
       ],
       "institutions": [
-        "MIT",
+        "Massachusetts Institute of Technology",
         "NVIDIA"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": "notes/2024/DuoAttention/duoattention.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/duo-attention",
       "note_url": "notes/2024/DuoAttention/note/",
@@ -6995,14 +7120,14 @@
         "Key Laboratory of Multimedia Trusted Perception and Efficient Computing",
         "Ministry of Education of China, Xiamen University",
         "Tencent Youtu Lab",
-        "Huawei Technologies"
+        "Huawei"
       ],
       "year": 2024,
       "venue": "ICLR",
       "cover": "notes/2024/DSnoT/dsnot.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/zyxxmu/DSnoT",
       "note_url": "notes/2024/DSnoT/note/",
@@ -7029,7 +7154,7 @@
       "venue": "ICML",
       "cover": "notes/2024/Eagle/eagle.jpg",
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/SafeAILab/EAGLE",
       "note_url": "notes/2024/Eagle/note/",
@@ -7057,9 +7182,9 @@
       "venue": "ICLR",
       "cover": "notes/2024/streaming-llm/cover.jpg",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/mit-han-lab/streaming-llm",
       "note_url": "notes/2024/streaming-llm/note/",
@@ -7093,7 +7218,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/neuralmagic/nm-vllm",
       "note_url": "notes/2024/ULY1AZGY/note/",
@@ -7115,8 +7240,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/ldery/Bonsai",
       "note_url": null,
@@ -7137,8 +7262,8 @@
       "venue": "TMLR",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/fmfi-compbio/admm-pruning",
       "note_url": "notes/2024/ADMM-pruning/note/",
@@ -7168,7 +7293,7 @@
       "venue": "VLDB",
       "cover": "notes/2024/flash_llm/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/AlibabaResearch/flash-llm/tree/main",
       "note_url": null,
@@ -7189,7 +7314,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "15-Layer Fusion (Reduce IO)"
+        "44-Layer Fusion (Reduce IO)"
       ],
       "code_url": "https://github.com/Dao-AILab/flash-attention",
       "note_url": null,
@@ -7219,9 +7344,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/FlashMask/flashmask.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/PaddlePaddle/PaddleNLP/tree/develop",
       "note_url": "notes/2024/FlashMask/note/",
@@ -7246,8 +7371,8 @@
       "venue": "AAAI",
       "cover": "notes/del/flap.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/CASIA-IVA-Lab/FLAP",
       "note_url": null,
@@ -7281,7 +7406,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/FLUX/fig3.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/bytedance/flux",
       "note_url": "notes/2024/FLUX/note/",
@@ -7306,7 +7431,7 @@
       "venue": "ICML",
       "cover": "notes/2024/FrameQuant/framequant.png",
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/vsingh-group/FrameQuant",
       "note_url": "notes/2024/FrameQuant/note/",
@@ -7335,9 +7460,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/GEAR/overview.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "07-Quantization",
-        "06-Quantization (KV Cache)"
+        "20-KV Cache Management",
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/HaoKang-Timmy/GEAR",
       "note_url": "notes/2024/GEAR/note/",
@@ -7374,8 +7499,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/DistAttention/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2024/DistAttention/note/",
@@ -7405,9 +7530,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/InfLLM/cover.png",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/thunlp/InfLLM",
       "note_url": "notes/2024/InfLLM/note/",
@@ -7433,8 +7558,8 @@
       "venue": "COLM",
       "cover": "notes/2024/JSHWEV0S/overview.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "11-Survey"
+        "20-KV Cache Management",
+        "41-Survey"
       ],
       "code_url": "https://github.com/zcli-charlie/Awesome-KV-Cache",
       "note_url": "notes/2024/JSHWEV0S/note/",
@@ -7465,9 +7590,9 @@
       "venue": "ICML",
       "cover": "notes/2024/KIVI/fig3.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "07-Quantization",
-        "06-Quantization (KV Cache)"
+        "20-KV Cache Management",
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/jy-yuan/KIVI",
       "note_url": "notes/2024/KIVI/note/",
@@ -7494,9 +7619,9 @@
       "venue": "NeurIPS",
       "cover": "notes/2024/KVQuant/fig1.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/SqueezeAILab/KVQuant",
       "note_url": "notes/2024/KVQuant/note/",
@@ -7518,8 +7643,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/L4Q/l4q.jpg",
       "keywords": [
-        "07-Quantization",
-        "13-Low Rank Decomposition"
+        "09-Quantization",
+        "43-Low Rank Decomposition"
       ],
       "code_url": null,
       "note_url": "notes/2024/L4Q/note/",
@@ -7546,9 +7671,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/LazyLLM/fig3.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning"
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2024/LazyLLM/note/",
@@ -7574,8 +7699,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/OpenNLPLab/lightning-attention",
       "note_url": "notes/2024/LightningAttention-2/note/",
@@ -7596,14 +7721,14 @@
         "Tong Zhang"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology",
+        "Hong Kong University of Science and Technology",
         "University of Illinois Urbana-Champaign"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "16-Efficient Training"
+        "45-Efficient Training"
       ],
       "code_url": null,
       "note_url": "notes/2024/LISA/note/",
@@ -7622,14 +7747,14 @@
       ],
       "institutions": [
         "Northeastern University",
-        "MIT"
+        "Massachusetts Institute of Technology"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "10-LLM Deployment",
-        "11-Survey"
+        "40-LLM Deployment",
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": "notes/2024/YS9YTT55/note/",
@@ -7657,16 +7782,16 @@
       ],
       "institutions": [
         "Tsinghua University",
-        "Zhipu.AI",
+        "Zhipu AI",
         "Institute of Automation, Chinese Academy of Sciences"
       ],
       "year": 2024,
       "venue": "ACL",
-      "cover": null,
+      "cover": "notes/2024/LongBench/cover.png",
       "keywords": [
-        "18-Benchmark"
+        "47-Benchmark"
       ],
-      "code_url": null,
+      "code_url": "https://github.com/THUDM/LongBench",
       "note_url": "notes/2024/LongBench/note/",
       "prototxt_path": "meta/2024/LongBench.prototxt"
     },
@@ -7687,7 +7812,7 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "16-Efficient Training"
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/nikhil-ghosh-berkeley/loraplus",
       "note_url": "notes/2024/LoRA+/note/",
@@ -7716,8 +7841,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2024/MaskLLM/maskllm.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/NVlabs/MaskLLM",
       "note_url": "notes/2024/MaskLLM/note/",
@@ -7742,7 +7867,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/massive-activations/massive_act.jpg",
       "keywords": [
-        "11-Survey"
+        "41-Survey"
       ],
       "code_url": "https://github.com/locuslab/massive-activations",
       "note_url": "notes/2024/massive-activations/note/",
@@ -7775,9 +7900,9 @@
       "venue": "NeurIPS",
       "cover": "notes/2024/MInference/MInference_3shape.PNG",
       "keywords": [
-        "01-Sparsity (Attention)",
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention"
+        "02-Sparsity (Attention)",
+        "01-Sparse/Pruning",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/microsoft/MInference",
       "note_url": "notes/2024/MInference/note/",
@@ -7804,7 +7929,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/AkideLiu/MiniCache",
       "note_url": "notes/2024/MiniCache/note/",
@@ -7829,9 +7954,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/MiniKV/minikv.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/akshatsh49/MiniKV-Dev",
       "note_url": "notes/2024/MiniKV/note/",
@@ -7857,7 +7982,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/MoD/mod.jpg",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2024/MoD/note/",
@@ -7893,9 +8018,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/MoA/moa.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/thu-nics/MoA",
       "note_url": "notes/2024/MoA/note/",
@@ -7926,8 +8051,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2024/MFA/note/",
@@ -7956,9 +8081,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "06-Quantization (KV Cache)",
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention"
+        "19-Quantization (KV Cache)",
+        "09-Quantization",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2024/MiKV/note/",
@@ -7985,7 +8110,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://anonymous.4open.science/r/CHESS-BA40/README.md",
       "note_url": "notes/2024/CHESS/note/",
@@ -8012,8 +8137,8 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/mazumder-lab/OSSCAR",
       "note_url": "notes/2024/OSSCAR/note/",
@@ -8046,7 +8171,7 @@
       "venue": "ICML",
       "cover": "notes/2024/owl/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/luuyin/OWL",
       "note_url": null,
@@ -8063,14 +8188,14 @@
       "institutions": [
         "Tsinghua University",
         "Institute of Automation, Chinese Academy of Sciences",
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2024,
       "venue": "ICLR",
       "cover": "notes/del/Plug-and-Play.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/biomedical-cybernetics/Relative-importance-and-activation-pruning",
       "note_url": null,
@@ -8097,9 +8222,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/andy-yang-1/DoubleSparse",
       "note_url": "notes/2024/DoubleSparsity/note/",
@@ -8122,8 +8247,8 @@
       "venue": "ENLSP",
       "cover": "notes/2024/SCAP/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/IntelLabs/SCAP",
       "note_url": "notes/2024/SCAP/note/",
@@ -8149,8 +8274,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://powerinfer.ai/v2/",
       "note_url": "notes/2024/PowerInfer-2/note/",
@@ -8178,9 +8303,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/PrefixQuant/fig2.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/ChenMnZ/PrefixQuant",
       "note_url": "notes/2024/PrefixQuant/note/",
@@ -8203,8 +8328,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/ProSparse/prosparse.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/raincleared-song/sparse_gpu_operator",
       "note_url": "notes/2024/ProSparse/note/",
@@ -8225,7 +8350,7 @@
         "Xiaowen Chu"
       ],
       "institutions": [
-        "The Hong Kong University of Science and Technology",
+        "Hong Kong University of Science and Technology",
         "Hong Kong Baptist Univeristy",
         "Harbin Institude of Technology"
       ],
@@ -8233,8 +8358,8 @@
       "venue": "ICML",
       "cover": "notes/2024/Pruner-Zero/fig1.png",
       "keywords": [
-        "03-Sparsity (Weight)",
-        "05-Sparse/Pruning"
+        "04-Sparsity (Weight)",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/pprp/Pruner-Zero",
       "note_url": "notes/2024/Pruner-Zero/note/",
@@ -8259,9 +8384,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/Q-Sparse/q-sparse.png",
       "keywords": [
-        "07-Quantization",
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "09-Quantization",
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2024/Q-Sparse/note/",
@@ -8282,8 +8407,8 @@
       "venue": "ICLR",
       "cover": "notes/2024/QA-LoRA/qalora.jpg",
       "keywords": [
-        "07-Quantization",
-        "13-Low Rank Decomposition"
+        "09-Quantization",
+        "43-Low Rank Decomposition"
       ],
       "code_url": "https://github.com/yuhuixu1993/qa-lora",
       "note_url": "notes/2024/QA-LoRA/note/",
@@ -8304,14 +8429,14 @@
         "Song Han"
       ],
       "institutions": [
-        "MIT",
+        "Massachusetts Institute of Technology",
         "NVIDIA"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://hanlab.mit.edu/projects/qserve",
       "note_url": "notes/2024/QServer/note/",
@@ -8332,15 +8457,15 @@
       ],
       "institutions": [
         "Shanghai Jiao Tong University",
-        "MIT"
+        "Massachusetts Institute of Technology"
       ],
       "year": 2024,
       "venue": "ICML",
       "cover": "notes/2024/Quest/quest.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/mit-han-lab/quest",
       "note_url": "notes/2024/Quest/note/",
@@ -8365,9 +8490,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/RecycledAttention/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/carriex/recycled-attention",
       "note_url": "notes/2024/RecycledAttention/note/",
@@ -8386,15 +8511,14 @@
         "Jonathan Ragan Kelly"
       ],
       "institutions": [
-        "MIT",
-        "MIT-IBM Watson AI Lab"
+        "Massachusetts Institute of Technology"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": "notes/2024/CLA/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/JerryYin777/Cross-Layer-Attention",
       "note_url": "notes/2024/CLA/note/",
@@ -8416,8 +8540,8 @@
       "venue": "ICLR oral",
       "cover": "notes/2024/HMR7HKFV/ReLU_Strikes_Back.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/sjtu-ipads/powerinfer",
       "note_url": null,
@@ -8439,8 +8563,8 @@
       "venue": "arXiv",
       "cover": "notes/2024/ReLU2/activation.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2024/ReLU2/note/",
@@ -8463,7 +8587,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/ReMoE/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/thu-ml/ReMoE",
       "note_url": "notes/2024/ReMoE/note/",
@@ -8497,7 +8621,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "16-Efficient Training"
+        "45-Efficient Training"
       ],
       "code_url": " https://github.com/ZO-Bench/ZO-LLM",
       "note_url": "notes/2024/SN1PK7EK/note/",
@@ -8523,8 +8647,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention"
+        "09-Quantization",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/thu-ml/SageAttention",
       "note_url": "notes/2024/SageAttention2/note/",
@@ -8550,8 +8674,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention"
+        "09-Quantization",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/thu-ml/SageAttention",
       "note_url": "notes/2024/SageAttention/note/",
@@ -8579,16 +8703,16 @@
       "institutions": [
         "Peking University",
         "The Chinese University of Hong Kong",
-        "Zhipu.AI",
+        "Zhipu AI",
         "Tsinghua University"
       ],
       "year": 2024,
       "venue": "arXiv",
       "cover": "notes/2024/SampleAttention/cover.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2024/SampleAttention/note/",
@@ -8609,8 +8733,8 @@
       "venue": "ICLR",
       "cover": "notes/2024/SAS/sas.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/DensoITLab/sas_",
       "note_url": "notes/2024/SAS/note/",
@@ -8642,7 +8766,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "17-Tool"
+        "46-Tool"
       ],
       "code_url": "https://github.com/microsoft/MInference/tree/main/scbench",
       "note_url": "notes/2024/SCBench/note/",
@@ -8667,8 +8791,8 @@
       "venue": "ICLR",
       "cover": "notes/2024/SEA/figure1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/gmlwns2000/sea-attention",
       "note_url": "notes/2024/SEA/note/",
@@ -8698,9 +8822,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/SeerAttention/seerattention.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management"
       ],
       "code_url": "https://github.com/microsoft/SeerAttention",
       "note_url": "notes/2024/SeerAttention/note/",
@@ -8734,8 +8858,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2024/SGLang/fig9.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment"
+        "20-KV Cache Management",
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/sgl-project/sglang",
       "note_url": "notes/2024/SGLang/note/",
@@ -8763,7 +8887,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/ShadowLLM/shadowLLM.png",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/abdelfattah-lab/shadow_llm",
       "note_url": "notes/2024/ShadowLLM/note/",
@@ -8789,8 +8913,8 @@
       "venue": "ICLR",
       "cover": "notes/2024/SliceGPT/sliceGPT.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/microsoft/TransformerCompression",
       "note_url": "notes/2024/SliceGPT/note/",
@@ -8814,8 +8938,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2024/SlimGPT/fig1.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2024/SlimGPT/note/",
@@ -8846,9 +8970,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/SnapKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/FasterDecoding/SnapKV",
       "note_url": "notes/2024/SnapKV/note/",
@@ -8875,8 +8999,8 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2024/SparQ/note/",
@@ -8902,7 +9026,7 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "16-Efficient Training"
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/song-wx/SIFT",
       "note_url": "notes/2024/SIFT/note/",
@@ -8926,8 +9050,8 @@
       "venue": "ICML",
       "cover": "notes/2024/Sparse-IFT/sparseIFT.png",
       "keywords": [
-        "16-Efficient Training",
-        "05-Sparse/Pruning"
+        "45-Efficient Training",
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/CerebrasResearch/Sparse-IFT",
       "note_url": "notes/2024/Sparse-IFT/note/",
@@ -8952,8 +9076,8 @@
       "venue": "DATE",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2024/SparseInfer/note/",
@@ -8978,8 +9102,8 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/BaiTheBest/SparseLLM",
       "note_url": "notes/2024/SparseLLM/note/",
@@ -9007,7 +9131,7 @@
       "venue": "ISCA",
       "cover": "notes/2024/Splitwise/fig10.png",
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/Mutinifni/splitwise-sim",
       "note_url": "notes/2024/Splitwise/note/",
@@ -9037,7 +9161,7 @@
       "venue": "ICML",
       "cover": "notes/2024/SPP/spp.png",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/Lucky-Lance/SPP",
       "note_url": "notes/2024/SPP/note/",
@@ -9065,9 +9189,9 @@
       "venue": "ICML",
       "cover": "notes/2024/SqueezeLLM/squeezeLLM.png",
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": "https://github.com/SqueezeAILab/SqueezeLLM",
       "note_url": "notes/2024/SqueezeLLM/note/",
@@ -9093,7 +9217,7 @@
       "venue": "ASPLOS",
       "cover": "notes/2024/T3/fig1.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2024/T3/note/",
@@ -9120,7 +9244,7 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "16-Efficient Training"
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/theyoungkwon/TinyTrain",
       "note_url": "notes/2024/TinyTrain/note/",
@@ -9146,9 +9270,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/TOVA/tova.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/schwartz-lab-NLP/TOVA",
       "note_url": "notes/2024/TOVA/note/",
@@ -9177,8 +9301,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://huggingface.co/PowerInfer",
       "note_url": "notes/2024/TurboSparse/note/",
@@ -9207,7 +9331,7 @@
       "venue": "ICML",
       "cover": "notes/2024/SMAT/fig2.png",
       "keywords": [
-        "02-Sparsity (Activation)"
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/szc12153/sparse_interpolated_experts",
       "note_url": "notes/2024/SMAT/note/",
@@ -9233,8 +9357,8 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "12-Network Structure Design"
+        "20-KV Cache Management",
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/OpenNLPLab/TransnormerLLM",
       "note_url": "notes/2024/LightningAttention/note/",
@@ -9262,7 +9386,7 @@
       "venue": "MLSys",
       "cover": "notes/2024/Vidur/fig2.png",
       "keywords": [
-        "09-Performance Modeling"
+        "39-Performance Modeling"
       ],
       "code_url": "https://github.com/microsoft/vidur",
       "note_url": "notes/2024/Vidur/note/",
@@ -9292,7 +9416,7 @@
       "venue": "arXiv",
       "cover": "notes/2024/XGrammar/fig1.png",
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": "https://github.com/mlc-ai/xgrammar",
       "note_url": "notes/2024/XGrammar/note/",
@@ -9321,9 +9445,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/ZigZagKV/fig1.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2024/ZigZagKV/note/",
@@ -9351,9 +9475,9 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "07-Quantization",
-        "14-KV Cache Optimization/Efficient Attention",
-        "06-Quantization (KV Cache)"
+        "09-Quantization",
+        "20-KV Cache Management",
+        "19-Quantization (KV Cache)"
       ],
       "code_url": null,
       "note_url": "notes/2024/ZipCache/note/",
@@ -9383,9 +9507,9 @@
       "venue": "arXiv",
       "cover": "notes/2024/ZipVL/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "14-KV Cache Optimization/Efficient Attention",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "20-KV Cache Management",
+        "02-Sparsity (Attention)"
       ],
       "code_url": null,
       "note_url": "notes/2024/ZipVL/note/",
@@ -9407,7 +9531,7 @@
       "venue": "arXiv",
       "cover": "notes/del/survey/eval_LLM.jpg",
       "keywords": [
-        "11-Survey"
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": null,
@@ -9434,7 +9558,7 @@
       "venue": "arXiv",
       "cover": "notes/del/survey/compression_LLM.jpg",
       "keywords": [
-        "11-Survey"
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": null,
@@ -9463,8 +9587,8 @@
       "venue": "ICLR",
       "cover": "notes/2023/adalora/adalora.jpg",
       "keywords": [
-        "13-Low Rank Decomposition",
-        "16-Efficient Training"
+        "43-Low Rank Decomposition",
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/QingruZhang/AdaLoRA",
       "note_url": null,
@@ -9489,7 +9613,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/GBLM-Pruner/gblm-pruner.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/VILA-Lab/GBLM-Pruner",
       "note_url": "notes/2023/GBLM-Pruner/note/",
@@ -9514,9 +9638,9 @@
       "venue": "CVPR",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)",
-        "07-Quantization"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)",
+        "09-Quantization"
       ],
       "code_url": null,
       "note_url": "notes/2023/GPUSQ-ViT/note/",
@@ -9544,14 +9668,14 @@
       ],
       "institutions": [
         "Tsinghua University",
-        "Zhipu.AI",
+        "Zhipu AI",
         "Huawei"
       ],
       "year": 2023,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": "https://github.com/THUDM/CodeGeeX",
       "note_url": "notes/2023/CodeGeeX/note/",
@@ -9576,8 +9700,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/Compresso/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/microsoft/Moonlit/blob/main/Compresso",
       "note_url": "notes/2023/Compresso/note/",
@@ -9601,8 +9725,8 @@
       "venue": "ICML",
       "cover": "notes/2023/dejavu/dejavu.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/FMInference/DejaVu",
       "note_url": null,
@@ -9624,7 +9748,7 @@
       "venue": "AAAI",
       "cover": "notes/2023/diffuser/diffuser.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/asFeng/Diffuser",
       "note_url": null,
@@ -9645,8 +9769,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/adaptively_sparse_attention/adaptively_sparse_attention.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/sanagno/adaptively_sparse_attention",
       "note_url": null,
@@ -9669,8 +9793,8 @@
       "venue": "MLSys",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/microsoft/SparTA/tree/nmsparse",
       "note_url": null,
@@ -9692,7 +9816,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/IHOT8YP4/fig1.png",
       "keywords": [
-        "10-LLM Deployment"
+        "40-LLM Deployment"
       ],
       "code_url": null,
       "note_url": "notes/2023/IHOT8YP4/note/",
@@ -9722,9 +9846,9 @@
       "venue": "SOSP",
       "cover": "notes/2023/PagedAttention/vllm.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "10-LLM Deployment",
-        "17-Tool"
+        "20-KV Cache Management",
+        "40-LLM Deployment",
+        "46-Tool"
       ],
       "code_url": "https://github.com/vllm-project/vllm",
       "note_url": "notes/2023/PagedAttention/note/",
@@ -9746,7 +9870,7 @@
       "venue": "TACL",
       "cover": "notes/del/survey/efficient_NLP.jpg",
       "keywords": [
-        "11-Survey"
+        "41-Survey"
       ],
       "code_url": null,
       "note_url": null,
@@ -9765,7 +9889,7 @@
       "venue": "github",
       "cover": null,
       "keywords": [
-        "17-Tool"
+        "46-Tool"
       ],
       "code_url": "https://github.com/NVIDIA/FasterTransformer",
       "note_url": null,
@@ -9792,7 +9916,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "16-Efficient Training"
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/princeton-nlp/MeZO",
       "note_url": "notes/2023/MeZO/note/",
@@ -9807,14 +9931,13 @@
         "Tri Dao"
       ],
       "institutions": [
-        "Stanford University",
-        "inst2"
+        "Stanford University"
       ],
       "year": 2023,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention"
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2023/FlashDecoding/note/",
@@ -9837,7 +9960,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/IST-DASLab/gptq",
       "note_url": null,
@@ -9862,7 +9985,7 @@
       "venue": "ACL",
       "cover": "notes/2023/grain/grain.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/airaria/GRAIN",
       "note_url": null,
@@ -9884,8 +10007,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/kcm/kcm.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": null,
@@ -9922,9 +10045,9 @@
       "venue": "arXiv",
       "cover": "notes/2023/H2O/h2o.png",
       "keywords": [
-        "14-KV Cache Optimization/Efficient Attention",
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)"
+        "20-KV Cache Management",
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
       ],
       "code_url": "https://github.com/FMInference/H2O",
       "note_url": "notes/2023/H2O/note/",
@@ -9947,8 +10070,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/k_pruning/kp.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": "notes/2023/k_pruning/note/",
@@ -9976,8 +10099,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/LLM_in_a_flash/windows.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": "notes/2023/LLM_in_a_flash/note/",
@@ -10000,8 +10123,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/LLM-Pruner/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/horseee/LLM-Pruner",
       "note_url": "notes/2023/LLM-Pruner/note/",
@@ -10023,9 +10146,9 @@
       "venue": "arXiv",
       "cover": "notes/2023/loftq/loftq.jpg",
       "keywords": [
-        "07-Quantization",
-        "13-Low Rank Decomposition",
-        "16-Efficient Training"
+        "09-Quantization",
+        "43-Low Rank Decomposition",
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/yxli2123/LoftQ",
       "note_url": "notes/2023/loftq/note/",
@@ -10048,9 +10171,9 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "13-Low Rank Decomposition",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "43-Low Rank Decomposition",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": null,
@@ -10072,7 +10195,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10095,7 +10218,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/omniquant/omniquant.png",
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/OpenGVLab/OmniQuant",
       "note_url": null,
@@ -10116,7 +10239,7 @@
       "venue": "ASPLOS",
       "cover": "notes/2023/Dist-Einsum/fig5.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": null,
       "note_url": "notes/2023/Dist-Einsum/note/",
@@ -10138,7 +10261,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/YixuanSeanZhou/Quantized_Neural_Nets",
       "note_url": null,
@@ -10162,8 +10285,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/SJTU-IPADS/PowerInfer",
       "note_url": "notes/2023/PowerInfer/note/",
@@ -10187,7 +10310,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/gbdt/gbdt.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10209,7 +10332,7 @@
       "venue": "ACL",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/drsy/pins",
       "note_url": null,
@@ -10235,7 +10358,7 @@
       "venue": "ACL",
       "cover": "notes/2023/smp/smp.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/kongds/SMP",
       "note_url": null,
@@ -10257,8 +10380,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/qlora/qlora.jpg",
       "keywords": [
-        "13-Low Rank Decomposition",
-        "07-Quantization"
+        "43-Low Rank Decomposition",
+        "09-Quantization"
       ],
       "code_url": "https://github.com/artidoro/qlora",
       "note_url": null,
@@ -10280,7 +10403,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/jerry-chee/QuIP",
       "note_url": null,
@@ -10303,7 +10426,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/hahnyuan/RPTQ4LLM",
       "note_url": null,
@@ -10325,8 +10448,8 @@
       "venue": "arXiv",
       "cover": "notes/2023/LLM_shearing/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/princeton-nlp/LLM-Shearing",
       "note_url": "notes/2023/LLM_shearing/note/",
@@ -10352,7 +10475,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/SquareHead/cover.png",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/IST-DASLab/SparseFinetuning",
       "note_url": null,
@@ -10375,7 +10498,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/CerebrasResearch/Sparse-IFT",
       "note_url": null,
@@ -10395,7 +10518,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/sms/sms.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/ZIB-IOL/SMS",
       "note_url": null,
@@ -10418,8 +10541,8 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/IST-DASLab/sparsegpt",
       "note_url": null,
@@ -10435,14 +10558,14 @@
         "Song Han"
       ],
       "institutions": [
-        "MIT"
+        "Massachusetts Institute of Technology"
       ],
       "year": 2023,
       "venue": "CVPR",
       "cover": "notes/2023/SparseViT/sparsevit.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": "https://github.com/mit-han-lab/sparsevit",
       "note_url": null,
@@ -10464,7 +10587,7 @@
       "venue": "UAI",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10487,7 +10610,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/Vahe1994/SpQR",
       "note_url": null,
@@ -10512,8 +10635,8 @@
       "venue": "AutoML Workshop",
       "cover": "notes/2023/nas_pruning/nas_pruning.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/awslabs/syne-tune/tree/nas/benchmarking/nursery/nas_llm",
       "note_url": null,
@@ -10535,9 +10658,9 @@
       "venue": "ICML",
       "cover": "notes/2023/LoSparse/losparse.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "13-Low Rank Decomposition",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "43-Low Rank Decomposition",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/yxli2123/LoSparse",
       "note_url": null,
@@ -10554,14 +10677,14 @@
       ],
       "institutions": [
         "The University of Hong Kong",
-        "Huawei Noah's Ark Lab"
+        "Huawei"
       ],
       "year": 2023,
       "venue": "ACL",
       "cover": "notes/2023/simple/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": null,
       "note_url": null,
@@ -10584,8 +10707,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "11-Survey",
-        "05-Sparse/Pruning"
+        "41-Survey",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10609,7 +10732,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/VITA-Group/essential_sparsity/tree/main",
       "note_url": null,
@@ -10632,8 +10755,8 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "02-Sparsity (Activation)"
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
       ],
       "code_url": null,
       "note_url": null,
@@ -10649,13 +10772,13 @@
         "Song Han"
       ],
       "institutions": [
-        "MIT"
+        "Massachusetts Institute of Technology"
       ],
       "year": 2023,
       "venue": "CVPR workshop",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/mit-han-lab/torchsparse",
       "note_url": null,
@@ -10676,7 +10799,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/xijiu9/Train_Transformers_with_INT4",
       "note_url": null,
@@ -10697,7 +10820,7 @@
       "venue": "arXiv",
       "cover": "notes/2023/selective_context/selective_context.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/liyucheng09/Selective_Context",
       "note_url": null,
@@ -10724,8 +10847,8 @@
       "venue": "SC",
       "cover": "notes/2023/VENOM/vnm.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/UDC-GAC/venom",
       "note_url": "notes/2023/VENOM/note/",
@@ -10747,7 +10870,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/microsoft/DeepSpeed",
       "note_url": null,
@@ -10771,8 +10894,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2023/ZipLM/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/IST-DASLab/ZipLM",
       "note_url": null,
@@ -10799,8 +10922,8 @@
       "venue": "NeurIPS",
       "cover": "notes/2022/fisherpruning/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning",
-        "04-Sparsity (Structured)"
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)"
       ],
       "code_url": "https://github.com/WoosukKwon/retraining-free-pruning",
       "note_url": "notes/2022/fisherpruning/note/",
@@ -10821,7 +10944,7 @@
       "venue": "VLSI",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10854,7 +10977,7 @@
       "venue": "ASPLOS",
       "cover": "notes/2022/CoCoNet/fig9.png",
       "keywords": [
-        "08-Communication-Computation Overlap"
+        "29-Comm-Comp Overlap"
       ],
       "code_url": "https://github.com/parasailteam/coconet",
       "note_url": "notes/2022/CoCoNet/note/",
@@ -10873,7 +10996,7 @@
       "venue": "Blog",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10895,7 +11018,7 @@
       "venue": "NeurIPS",
       "cover": "notes/2022/flashattention/cover.jpg",
       "keywords": [
-        "15-Layer Fusion (Reduce IO)"
+        "44-Layer Fusion (Reduce IO)"
       ],
       "code_url": "https://github.com/Dao-AILab/flash-attention",
       "note_url": null,
@@ -10918,8 +11041,8 @@
       "venue": "ICLR",
       "cover": "notes/2022/lora/lora.jpg",
       "keywords": [
-        "13-Low Rank Decomposition",
-        "16-Efficient Training"
+        "43-Low Rank Decomposition",
+        "45-Efficient Training"
       ],
       "code_url": "https://github.com/microsoft/LoRA",
       "note_url": null,
@@ -10942,8 +11065,8 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "07-Quantization"
+        "01-Sparse/Pruning",
+        "09-Quantization"
       ],
       "code_url": "https://github.com/IST-DASLab/OBC",
       "note_url": null,
@@ -10965,7 +11088,7 @@
       "venue": "MICRO",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -10988,7 +11111,7 @@
       "venue": "ACL",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/shaoyiHusky/SparseProgressiveDistillation",
       "note_url": null,
@@ -11011,7 +11134,7 @@
       "venue": "ICML",
       "cover": "notes/2022/spdy/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/IST-DASLab/spdy",
       "note_url": null,
@@ -11033,7 +11156,7 @@
       "venue": "ACL",
       "cover": "notes/2022/TextPruner/textpruner.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/airaria/TextPruner",
       "note_url": null,
@@ -11056,8 +11179,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning",
-        "03-Sparsity (Weight)"
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
       ],
       "code_url": "https://github.com/neuralmagic/sparseml/blob/main/research/optimal_BERT_surgeon_oBERT/README.md",
       "note_url": null,
@@ -11082,9 +11205,9 @@
       "venue": "TC",
       "cover": "notes/2022/DSA/fig2.png",
       "keywords": [
-        "05-Sparse/Pruning",
-        "01-Sparsity (Attention)",
-        "14-KV Cache Optimization/Efficient Attention"
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "20-KV Cache Management"
       ],
       "code_url": null,
       "note_url": "notes/2022/DSA/note/",
@@ -11107,7 +11230,7 @@
       "venue": "Neuromorphic Computing and Engineering",
       "cover": "notes/2022/ComplementarySparsity/cover.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": "notes/2022/ComplementarySparsity/note/",
@@ -11129,7 +11252,7 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/microsoft/DeepSpeed",
       "note_url": null,
@@ -11151,7 +11274,7 @@
       "venue": "JMLR",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/YixuanSeanZhou/Quantized_Neural_Nets",
       "note_url": null,
@@ -11173,7 +11296,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11195,7 +11318,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/yhhhli/BRECQ",
       "note_url": null,
@@ -11217,7 +11340,7 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/NVIDIA/apex/tree/master/apex/contrib/sparsity",
       "note_url": null,
@@ -11240,7 +11363,7 @@
       "venue": "ICLR",
       "cover": "notes/2021/sr-ste/sr-ste.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/aojunzz/NM-sparsity",
       "note_url": null,
@@ -11262,7 +11385,7 @@
       "venue": "ICCV",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11284,8 +11407,8 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "11-Survey",
-        "05-Sparse/Pruning"
+        "41-Survey",
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11307,7 +11430,7 @@
       "venue": "CVPR",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/fastconvnets/cvpr2020",
       "note_url": null,
@@ -11329,7 +11452,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/openai/blocksparse",
       "note_url": null,
@@ -11352,7 +11475,7 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11376,7 +11499,7 @@
       "venue": "NeurIPS",
       "cover": "notes/2020/movement_pruning/mp.jpg",
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/huggingface/block_movement_pruning",
       "note_url": null,
@@ -11397,7 +11520,7 @@
       "venue": "ICML",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": "https://github.com/ucbrise/actnn",
       "note_url": null,
@@ -11419,7 +11542,7 @@
       "venue": "ECCV",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/bzantium/pytorch-admm-pruning",
       "note_url": null,
@@ -11447,7 +11570,7 @@
       "venue": "NeurIPS",
       "cover": "notes/2017/Transformer/fig1.png",
       "keywords": [
-        "12-Network Structure Design"
+        "42-Network Structure Design"
       ],
       "code_url": null,
       "note_url": "notes/2017/Transformer/note/",
@@ -11468,7 +11591,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11490,7 +11613,7 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": "https://github.com/csyhhu/L-OBS",
       "note_url": null,
@@ -11514,7 +11637,7 @@
       "venue": "ICLR",
       "cover": null,
       "keywords": [
-        "07-Quantization"
+        "09-Quantization"
       ],
       "code_url": null,
       "note_url": null,
@@ -11531,7 +11654,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11550,7 +11673,7 @@
       "venue": "NeurIPS",
       "cover": null,
       "keywords": [
-        "05-Sparse/Pruning"
+        "01-Sparse/Pruning"
       ],
       "code_url": null,
       "note_url": null,
@@ -11619,25 +11742,25 @@
       "github"
     ],
     "keywords": [
-      "01-Sparsity (Attention)",
-      "02-Sparsity (Activation)",
-      "03-Sparsity (Weight)",
-      "04-Sparsity (Structured)",
-      "05-Sparse/Pruning",
-      "06-Quantization (KV Cache)",
-      "07-Quantization",
-      "08-Communication-Computation Overlap",
-      "09-Performance Modeling",
-      "10-LLM Deployment",
-      "11-Survey",
-      "12-Network Structure Design",
-      "13-Low Rank Decomposition",
-      "14-KV Cache Optimization/Efficient Attention",
-      "15-Layer Fusion (Reduce IO)",
-      "16-Efficient Training",
-      "17-Tool",
-      "18-Benchmark"
+      "01-Sparse/Pruning",
+      "02-Sparsity (Attention)",
+      "03-Sparsity (Activation)",
+      "04-Sparsity (Weight)",
+      "05-Sparsity (Structured)",
+      "09-Quantization",
+      "19-Quantization (KV Cache)",
+      "20-KV Cache Management",
+      "29-Comm-Comp Overlap",
+      "39-Performance Modeling",
+      "40-LLM Deployment",
+      "41-Survey",
+      "42-Network Structure Design",
+      "43-Low Rank Decomposition",
+      "44-Layer Fusion (Reduce IO)",
+      "45-Efficient Training",
+      "46-Tool",
+      "47-Benchmark"
     ]
   },
-  "total": 373
+  "total": 377
 }

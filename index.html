@@ -133,9 +133,14 @@
       <button id="stats-btn" class="stats-btn">📊 Statistics</button>
       <button id="add-arxiv-btn" class="add-arxiv-btn" title="Add paper from arXiv (requires local server)">➕ Add from arXiv</button>
       <button id="upload-github-btn" class="upload-github-btn" title="Upload changes to GitHub (requires local server)">☁️ Upload to GitHub</button>
+      <button id="export-selected-btn" class="export-btn" style="display: none;" title="Export selected papers">📥 Export Selected (<span id="selected-count">0</span>)</button>
     </div>
     <div class="search-stats">
       <span id="result-count">Loading...</span>
+      <label class="select-all-container">
+        <input type="checkbox" id="select-all-checkbox">
+        <span>Select All (<span id="select-all-label">0</span>/<span id="total-filtered-count">0</span>)</span>
+      </label>
     </div>
   </div>
 
@@ -155,11 +160,11 @@
         <div id="venue-chart" class="horizontal-bar-chart"></div>
       </div>
       <div class="stat-card">
-        <h3>Top 10 Authors</h3>
+        <h3>Top 20 Authors</h3>
         <div id="author-chart" class="horizontal-bar-chart"></div>
       </div>
       <div class="stat-card">
-        <h3>Top 10 Institutions</h3>
+        <h3>Top 20 Institutions</h3>
         <div id="institution-chart" class="horizontal-bar-chart"></div>
       </div>
       <div class="stat-card">
@@ -214,6 +219,48 @@
       <div class="arxiv-modal-footer">
         <button id="github-submit-btn" class="btn-primary">Upload</button>
         <button id="github-cancel-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export Selected Papers Modal -->
+  <div id="export-modal" class="arxiv-modal" style="display: none;">
+    <div class="arxiv-modal-content">
+      <div class="arxiv-modal-header">
+        <h2>📥 Export Selected Papers</h2>
+        <button id="close-export" class="close-arxiv">✕</button>
+      </div>
+      <div class="arxiv-modal-body">
+        <div class="form-group">
+          <label>Export Format</label>
+          <div class="export-format-options">
+            <label class="radio-option">
+              <input type="radio" name="export-format" value="markdown" checked>
+              <span>Markdown - [Title](URL) format</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="export-format" value="plaintext">
+              <span>Plain Text - Title and URL on separate lines</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="export-format" value="bibtex">
+              <span>BibTeX - Citation format</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="export-format" value="json">
+              <span>JSON - Complete paper data</span>
+            </label>
+          </div>
+        </div>
+        <div id="export-preview" class="export-preview">
+          <label>Preview:</label>
+          <textarea id="export-preview-text" readonly rows="10"></textarea>
+        </div>
+      </div>
+      <div class="arxiv-modal-footer">
+        <button id="export-copy-btn" class="btn-primary">📋 Copy to Clipboard</button>
+        <button id="export-download-btn" class="btn-primary">💾 Download File</button>
+        <button id="export-cancel-btn" class="btn-secondary">Cancel</button>
       </div>
     </div>
   </div>
@@ -364,6 +411,97 @@
   background: #e65100;
 }
 
+.export-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #8e24aa;
+  border-radius: 6px;
+  background: #8e24aa;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.export-btn:hover {
+  background: #7b1fa2;
+}
+
+.select-all-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+}
+
+.select-all-container input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.export-format-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.radio-option:hover {
+  background: #f5f5f5;
+  border-color: #4a90d9;
+}
+
+.radio-option input[type="radio"] {
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"]:checked + span {
+  font-weight: 600;
+  color: #4a90d9;
+}
+
+.export-preview {
+  margin-top: 20px;
+}
+
+.export-preview label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.export-preview textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+  resize: vertical;
+}
+
+.paper-checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
 /* Statistics Panel */
 .stats-panel {
   position: fixed;
@@ -504,6 +642,51 @@
   font-size: 13px;
   color: #666;
   text-align: right;
+}
+
+.clickable-author {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-author:hover {
+  color: #2563eb;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.clickable-venue {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-venue:hover {
+  color: #2563eb;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.clickable-institution {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-institution:hover {
+  color: #2563eb;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.clickable-keyword {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clickable-keyword:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  background: #bbdefb;
+  border-color: #2196f3;
 }
 
 .h-bar-container {
@@ -873,16 +1056,65 @@
   margin-top: 10px;
   display: flex;
   gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .paper-links a {
   font-size: 13px;
   color: #4a90d9;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .paper-links a:hover {
   text-decoration: underline;
+}
+
+.star-count {
+  font-size: 11px;
+  color: #f39c12;
+  font-weight: 500;
+  padding: 2px 6px;
+  background: #fff9e6;
+  border-radius: 10px;
+  white-space: nowrap;
+  border: 1px solid #ffeaa7;
+}
+
+.code-link {
+  position: relative;
+}
+
+.copy-btn {
+  font-size: 13px;
+  color: #4a90d9;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.copy-btn:hover {
+  color: #3a7bc8;
+  text-decoration: underline;
+}
+
+.copy-btn.copied {
+  color: #43a047;
+}
+
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
 /* Highlight matched text */
@@ -1056,6 +1288,68 @@
 </style>
 
 <script>
+// Copy paper info function (global scope)
+function copyPaperInfo(title, url) {
+  // For plain text platforms (WeChat, etc.), just use the title
+  const plainText = title;
+
+  // Create HTML hyperlink for rich text editors (Word, Feishu, etc.)
+  const htmlText = `<a href="${url}">${title}</a>`;
+
+  // Create a clipboard item with both formats
+  const textBlob = new Blob([plainText], { type: 'text/plain' });
+  const htmlBlob = new Blob([htmlText], { type: 'text/html' });
+
+  const clipboardItem = new ClipboardItem({
+    'text/plain': textBlob,
+    'text/html': htmlBlob
+  });
+
+  navigator.clipboard.write([clipboardItem]).then(() => {
+    // Find the button that was clicked and update it
+    const buttons = document.querySelectorAll('.copy-btn');
+    buttons.forEach(btn => {
+      if (btn.onclick && btn.onclick.toString().includes(url)) {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  }).catch(err => {
+    // Fallback to simple text copy if ClipboardItem not supported
+    console.warn('ClipboardItem not supported, using fallback:', err);
+    navigator.clipboard.writeText(plainText).then(() => {
+      const buttons = document.querySelectorAll('.copy-btn');
+      buttons.forEach(btn => {
+        if (btn.onclick && btn.onclick.toString().includes(url)) {
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+          btn.classList.add('copied');
+
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+          }, 2000);
+        }
+      });
+    }).catch(err2 => {
+      console.error('Failed to copy:', err2);
+      alert('Failed to copy. Please copy manually:\n\n' + plainText);
+    });
+  });
+}
+
+// Toggle paper selection (global scope)
+function togglePaperSelection(paperId, checked) {
+  // This will be overridden by the IIFE below
+  console.warn('togglePaperSelection not initialized yet');
+}
+
 // Lightbox functions (global scope)
 function openLightbox(event, src) {
   event.preventDefault();
@@ -1078,6 +1372,48 @@ function closeLightbox() {
   let filteredPapers = [];
   let currentPage = 1;
   const itemsPerPage = 10;
+  let selectedPapers = new Set(); // Track selected papers by index or ID
+  let starCache = {}; // Cache GitHub star counts
+
+  // Fetch GitHub stars for a repository
+  async function fetchGitHubStars(repoUrl) {
+    // Check cache first
+    if (starCache[repoUrl] !== undefined) {
+      return starCache[repoUrl];
+    }
+
+    try {
+      // Extract owner and repo from GitHub URL
+      const match = repoUrl.match(/github\.com\/([^\/]+)\/([^\/\?#]+)/);
+      if (!match) return null;
+
+      const [, owner, repo] = match;
+      const cleanRepo = repo.replace(/\.git$/, '');
+
+      // Call GitHub API
+      const response = await fetch(`https://api.github.com/repos/${owner}/${cleanRepo}`);
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      const stars = data.stargazers_count;
+
+      // Cache the result
+      starCache[repoUrl] = stars;
+      return stars;
+    } catch (error) {
+      console.error('Failed to fetch GitHub stars:', error);
+      return null;
+    }
+  }
+
+  // Format star count (e.g., 1234 -> 1.2k)
+  function formatStarCount(count) {
+    if (count === null) return '';
+    if (count >= 1000) {
+      return (count / 1000).toFixed(1) + 'k';
+    }
+    return count.toString();
+  }
 
   // Load paper data
   async function loadPapers() {
@@ -1161,6 +1497,16 @@ function closeLightbox() {
       return true;
     });
 
+    // Clear selections that are not in the filtered results
+    const filteredIds = new Set(filteredPapers.map(p => p.prototxt_path || `paper-${papers.indexOf(p)}`));
+    const toRemove = [];
+    selectedPapers.forEach(id => {
+      if (!filteredIds.has(id)) {
+        toRemove.push(id);
+      }
+    });
+    toRemove.forEach(id => selectedPapers.delete(id));
+
     // Reset to page 1 when filtering
     currentPage = 1;
     renderPapers(filteredPapers);
@@ -1186,6 +1532,8 @@ function closeLightbox() {
     if (papersToRender.length === 0) {
       container.innerHTML = '<div class="no-results">No papers found matching your criteria</div>';
       renderPagination(0);
+      updateSelectedCount();
+      updateStats();
       return;
     }
 
@@ -1195,7 +1543,11 @@ function closeLightbox() {
     const endIndex = startIndex + itemsPerPage;
     const papersToShow = papersToRender.slice(startIndex, endIndex);
 
-    const html = papersToShow.map(paper => {
+    const html = papersToShow.map((paper, index) => {
+      const globalIndex = startIndex + index;
+      const paperId = paper.prototxt_path || `paper-${globalIndex}`;
+      const isChecked = selectedPapers.has(paperId) ? 'checked' : '';
+
       const title = highlightText(paper.title, searchQuery);
       const authors = paper.authors.map(a => highlightText(a, searchQuery)).join(', ');
       const institutions = paper.institutions.map(i => highlightText(i, searchQuery)).join(', ');
@@ -1205,8 +1557,17 @@ function closeLightbox() {
         ? `<a class="glightbox" href="${paper.cover}" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="${paper.cover}" alt="cover" loading="lazy" onclick="openLightbox(event, this.src)"></a>`
         : `<span class="no-cover">No Cover</span>`;
 
+      // Code link with star count placeholder
+      const codeLink = paper.code_url
+        ? `<a href="${paper.code_url}" target="_blank" class="code-link" data-repo-url="${paper.code_url}">
+             Code
+             <span class="star-count" data-repo-url="${paper.code_url}">⭐ ...</span>
+           </a>`
+        : '';
+
       return `
         <div class="paper-card">
+          <input type="checkbox" class="paper-checkbox" data-paper-id="${paperId}" ${isChecked} onchange="togglePaperSelection('${paperId}', this.checked)">
           <div class="paper-cover">
             ${coverHtml}
           </div>
@@ -1223,7 +1584,11 @@ function closeLightbox() {
             ${authors ? `<div class="paper-authors">${authors}</div>` : ''}
             ${institutions ? `<div class="paper-institutions">${institutions}</div>` : ''}
             <div class="paper-links">
-              ${paper.code_url ? `<a href="${paper.code_url}" target="_blank">Code</a>` : ''}
+              ${paper.url ? `<button class="copy-btn" onclick="copyPaperInfo('${paper.title.replace(/'/g, "\\'")}', '${paper.url}')" title="Copy title and URL">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                Copy
+              </button>` : ''}
+              ${codeLink}
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
               ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server">Edit 🔧</a>` : ''}
             </div>
@@ -1234,6 +1599,32 @@ function closeLightbox() {
 
     container.innerHTML = html;
     renderPagination(totalPages);
+    updateSelectedCount();
+    updateStats();
+
+    // Load star counts asynchronously
+    loadStarCounts();
+  }
+
+  // Load star counts asynchronously
+  async function loadStarCounts() {
+    const starElements = document.querySelectorAll('.star-count');
+
+    for (const element of starElements) {
+      const repoUrl = element.getAttribute('data-repo-url');
+      if (!repoUrl || !repoUrl.includes('github.com')) {
+        element.style.display = 'none';
+        continue;
+      }
+
+      const stars = await fetchGitHubStars(repoUrl);
+      if (stars !== null) {
+        element.textContent = `⭐ ${formatStarCount(stars)}`;
+        element.title = `${stars} stars on GitHub`;
+      } else {
+        element.style.display = 'none';
+      }
+    }
   }
 
   // Update stats
@@ -1246,6 +1637,31 @@ function closeLightbox() {
       countEl.textContent = `${total} papers`;
     } else {
       countEl.textContent = `${showing} of ${total} papers`;
+    }
+
+    // Update select all label
+    const selectAllLabel = document.getElementById('select-all-label');
+    const totalFilteredCount = document.getElementById('total-filtered-count');
+    if (selectAllLabel) {
+      selectAllLabel.textContent = selectedPapers.size;
+    }
+    if (totalFilteredCount) {
+      totalFilteredCount.textContent = showing;
+    }
+
+    // Update select all checkbox state
+    const selectAllCheckbox = document.getElementById('select-all-checkbox');
+    if (selectAllCheckbox) {
+      if (selectedPapers.size === 0) {
+        selectAllCheckbox.checked = false;
+        selectAllCheckbox.indeterminate = false;
+      } else if (selectedPapers.size === showing) {
+        selectAllCheckbox.checked = true;
+        selectAllCheckbox.indeterminate = false;
+      } else {
+        selectAllCheckbox.checked = false;
+        selectAllCheckbox.indeterminate = true;
+      }
     }
   }
 
@@ -1337,6 +1753,7 @@ function closeLightbox() {
   function goToPage(page) {
     currentPage = page;
     renderPapers(filteredPapers);
+    updateStats(); // Update checkbox states on page change
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -1406,7 +1823,7 @@ function closeLightbox() {
       const width = (count / maxCount) * 100;
       return `
         <div class="h-bar-item">
-          <div class="h-bar-label">${venue}</div>
+          <div class="h-bar-label clickable-venue" data-venue="${venue}" title="Click to filter papers by ${venue}">${venue}</div>
           <div class="h-bar-container">
             <div class="h-bar-fill" style="width: ${width}%">
               <span class="h-bar-value">${count}</span>
@@ -1417,6 +1834,33 @@ function closeLightbox() {
     }).join('');
 
     document.getElementById('venue-chart').innerHTML = chartHtml;
+
+    // Add click event listeners to venue names
+    document.querySelectorAll('.clickable-venue').forEach(venueEl => {
+      venueEl.addEventListener('click', function() {
+        const venueName = this.dataset.venue;
+        filterByVenue(venueName);
+      });
+    });
+  }
+
+  function filterByVenue(venueName) {
+    // Close statistics panel
+    closeStatistics();
+
+    // Set venue filter
+    document.getElementById('venue-filter').value = venueName;
+
+    // Reset other filters
+    document.getElementById('search-input').value = '';
+    document.getElementById('year-filter').value = '';
+    document.getElementById('keyword-filter').value = '';
+
+    // Apply the filter
+    filterPapers();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function generateAuthorChart() {
@@ -1429,7 +1873,7 @@ function closeLightbox() {
 
     const sortedAuthors = Object.entries(authorCounts)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 10);
+      .slice(0, 20);
 
     if (sortedAuthors.length === 0) {
       document.getElementById('author-chart').innerHTML = '<div class="no-data">No author data available</div>';
@@ -1442,7 +1886,7 @@ function closeLightbox() {
       const width = (count / maxCount) * 100;
       return `
         <div class="h-bar-item">
-          <div class="h-bar-label">${author}</div>
+          <div class="h-bar-label clickable-author" data-author="${author}" title="Click to filter papers by ${author}">${author}</div>
           <div class="h-bar-container">
             <div class="h-bar-fill" style="width: ${width}%">
               <span class="h-bar-value">${count}</span>
@@ -1453,6 +1897,34 @@ function closeLightbox() {
     }).join('');
 
     document.getElementById('author-chart').innerHTML = chartHtml;
+
+    // Add click event listeners to author names
+    document.querySelectorAll('.clickable-author').forEach(authorEl => {
+      authorEl.addEventListener('click', function() {
+        const authorName = this.dataset.author;
+        filterByAuthor(authorName);
+      });
+    });
+  }
+
+  function filterByAuthor(authorName) {
+    // Close statistics panel
+    closeStatistics();
+
+    // Set search query to the author name
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = authorName;
+
+    // Reset other filters
+    document.getElementById('year-filter').value = '';
+    document.getElementById('venue-filter').value = '';
+    document.getElementById('keyword-filter').value = '';
+
+    // Apply the filter
+    filterPapers();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function generateInstitutionChart() {
@@ -1465,7 +1937,7 @@ function closeLightbox() {
 
     const sortedInstitutions = Object.entries(institutionCounts)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 10);
+      .slice(0, 20);
 
     if (sortedInstitutions.length === 0) {
       document.getElementById('institution-chart').innerHTML = '<div class="no-data">No institution data available</div>';
@@ -1478,7 +1950,7 @@ function closeLightbox() {
       const width = (count / maxCount) * 100;
       return `
         <div class="h-bar-item">
-          <div class="h-bar-label">${institution}</div>
+          <div class="h-bar-label clickable-institution" data-institution="${institution}" title="Click to filter papers by ${institution}">${institution}</div>
           <div class="h-bar-container">
             <div class="h-bar-fill" style="width: ${width}%">
               <span class="h-bar-value">${count}</span>
@@ -1489,6 +1961,34 @@ function closeLightbox() {
     }).join('');
 
     document.getElementById('institution-chart').innerHTML = chartHtml;
+
+    // Add click event listeners to institution names
+    document.querySelectorAll('.clickable-institution').forEach(institutionEl => {
+      institutionEl.addEventListener('click', function() {
+        const institutionName = this.dataset.institution;
+        filterByInstitution(institutionName);
+      });
+    });
+  }
+
+  function filterByInstitution(institutionName) {
+    // Close statistics panel
+    closeStatistics();
+
+    // Set search query to the institution name
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = institutionName;
+
+    // Reset other filters
+    document.getElementById('year-filter').value = '';
+    document.getElementById('venue-filter').value = '';
+    document.getElementById('keyword-filter').value = '';
+
+    // Apply the filter
+    filterPapers();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function generateKeywordCloud() {
@@ -1514,10 +2014,37 @@ function closeLightbox() {
       else if (ratio > 0.5) sizeClass = 'size-lg';
       else if (ratio > 0.25) sizeClass = 'size-md';
 
-      return `<span class="keyword-tag ${sizeClass}" title="${count} papers">${keyword}</span>`;
+      return `<span class="keyword-tag ${sizeClass} clickable-keyword" data-keyword="${keyword}" title="Click to filter: ${count} papers">${keyword}</span>`;
     }).join('');
 
     document.getElementById('keyword-cloud').innerHTML = cloudHtml;
+
+    // Add click event listeners to keywords
+    document.querySelectorAll('.clickable-keyword').forEach(keywordEl => {
+      keywordEl.addEventListener('click', function() {
+        const keywordName = this.dataset.keyword;
+        filterByKeyword(keywordName);
+      });
+    });
+  }
+
+  function filterByKeyword(keywordName) {
+    // Close statistics panel
+    closeStatistics();
+
+    // Set keyword filter
+    document.getElementById('keyword-filter').value = keywordName;
+
+    // Reset other filters
+    document.getElementById('search-input').value = '';
+    document.getElementById('year-filter').value = '';
+    document.getElementById('venue-filter').value = '';
+
+    // Apply the filter
+    filterPapers();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // arXiv Modal functions
@@ -1677,6 +2204,173 @@ function closeLightbox() {
     }
   }
 
+  // Update selected count
+  function updateSelectedCount() {
+    const count = selectedPapers.size;
+    const countEl = document.getElementById('selected-count');
+    const exportBtn = document.getElementById('export-selected-btn');
+
+    if (countEl) {
+      countEl.textContent = count;
+    }
+
+    if (exportBtn) {
+      exportBtn.style.display = count > 0 ? 'inline-block' : 'none';
+    }
+  }
+
+  // Toggle paper selection
+  window.togglePaperSelection = function(paperId, checked) {
+    if (checked) {
+      selectedPapers.add(paperId);
+    } else {
+      selectedPapers.delete(paperId);
+    }
+    updateSelectedCount();
+    updateStats();
+  };
+
+  // Select all papers (across all filtered pages)
+  function toggleSelectAll(checked) {
+    // Clear or add all filtered papers
+    if (checked) {
+      // Add all filtered papers to selection
+      filteredPapers.forEach(paper => {
+        const paperId = paper.prototxt_path || `paper-${papers.indexOf(paper)}`;
+        selectedPapers.add(paperId);
+      });
+    } else {
+      // Clear all selections
+      selectedPapers.clear();
+    }
+
+    // Update current page checkboxes visually
+    const checkboxes = document.querySelectorAll('.paper-checkbox');
+    checkboxes.forEach(cb => {
+      cb.checked = checked;
+    });
+
+    updateSelectedCount();
+    updateStats();
+  }
+
+  // Get selected papers data
+  function getSelectedPapersData() {
+    const selected = [];
+    papers.forEach(paper => {
+      const paperId = paper.prototxt_path || `paper-${papers.indexOf(paper)}`;
+      if (selectedPapers.has(paperId)) {
+        selected.push(paper);
+      }
+    });
+    return selected;
+  }
+
+  // Export functions
+  function exportAsMarkdown(papers) {
+    return papers.map(p => `[${p.title}](${p.url || ''})`).join('\n');
+  }
+
+  function exportAsPlainText(papers) {
+    return papers.map(p => `${p.title}\n${p.url || ''}\n`).join('\n');
+  }
+
+  function exportAsBibTeX(papers) {
+    return papers.map((p, i) => {
+      const id = p.abbr || `paper${i + 1}`;
+      return `@article{${id},
+  title={${p.title}},
+  author={${p.authors.join(' and ')}},
+  year={${p.year}},
+  venue={${p.venue}},
+  url={${p.url || ''}}
+}`;
+    }).join('\n\n');
+  }
+
+  function exportAsJSON(papers) {
+    return JSON.stringify(papers, null, 2);
+  }
+
+  // Show export modal
+  function showExportModal() {
+    const selected = getSelectedPapersData();
+    if (selected.length === 0) {
+      alert('Please select at least one paper to export');
+      return;
+    }
+
+    const modal = document.getElementById('export-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    updateExportPreview();
+  }
+
+  function closeExportModal() {
+    const modal = document.getElementById('export-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function updateExportPreview() {
+    const format = document.querySelector('input[name="export-format"]:checked').value;
+    const selected = getSelectedPapersData();
+    const preview = document.getElementById('export-preview-text');
+
+    let text = '';
+    switch(format) {
+      case 'markdown':
+        text = exportAsMarkdown(selected);
+        break;
+      case 'plaintext':
+        text = exportAsPlainText(selected);
+        break;
+      case 'bibtex':
+        text = exportAsBibTeX(selected);
+        break;
+      case 'json':
+        text = exportAsJSON(selected);
+        break;
+    }
+    preview.value = text;
+  }
+
+  function copyExportToClipboard() {
+    const text = document.getElementById('export-preview-text').value;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('export-copy-btn');
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => {
+        btn.textContent = originalText;
+      }, 2000);
+    }).catch(err => {
+      alert('Failed to copy: ' + err.message);
+    });
+  }
+
+  function downloadExport() {
+    const format = document.querySelector('input[name="export-format"]:checked').value;
+    const text = document.getElementById('export-preview-text').value;
+
+    const extensions = {
+      markdown: 'md',
+      plaintext: 'txt',
+      bibtex: 'bib',
+      json: 'json'
+    };
+
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `papers.${extensions[format]}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   // Debounce function
   function debounce(func, wait) {
     let timeout;
@@ -1698,6 +2392,30 @@ function closeLightbox() {
     document.getElementById('venue-filter').addEventListener('change', filterPapers);
     document.getElementById('keyword-filter').addEventListener('change', filterPapers);
     document.getElementById('reset-btn').addEventListener('click', resetFilters);
+
+    // Select all checkbox
+    document.getElementById('select-all-checkbox').addEventListener('change', (e) => {
+      toggleSelectAll(e.target.checked);
+    });
+
+    // Export selected button
+    document.getElementById('export-selected-btn').addEventListener('click', showExportModal);
+    document.getElementById('close-export').addEventListener('click', closeExportModal);
+    document.getElementById('export-cancel-btn').addEventListener('click', closeExportModal);
+    document.getElementById('export-copy-btn').addEventListener('click', copyExportToClipboard);
+    document.getElementById('export-download-btn').addEventListener('click', downloadExport);
+
+    // Update preview when format changes
+    document.querySelectorAll('input[name="export-format"]').forEach(radio => {
+      radio.addEventListener('change', updateExportPreview);
+    });
+
+    // Close export modal on overlay click
+    document.getElementById('export-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'export-modal') {
+        closeExportModal();
+      }
+    });
 
     // Statistics panel
     document.getElementById('stats-btn').addEventListener('click', showStatistics);
@@ -1883,5 +2601,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-04 02:38:23.765783+00:00
+Build Date UTC : 2026-01-05 09:00:54.501956+00:00
 -->

@@ -34,7 +34,7 @@ note {
 keyword {
   words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: ""

@@ -16,7 +16,7 @@ paper {
   authors: "Ion Stoica"
   authors: "Kurt Keutzer"
   authors: "Song Han"
-  institutions: "MIT"
+  institutions: "Massachusetts Institute of Technology"
   institutions: "NVIDIA"
   institutions: "Princeton"
   institutions: "UC Berkeley"
@@ -36,7 +36,7 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: kv_cache
+  words: kv_cache_management
   words: attention_sparsity
 }
 cover {

@@ -16,7 +16,7 @@ paper {
   authors: "Chao Yang"
   institutions: "Peking University"
   institutions: "The Chinese University of Hong Kong"
-  institutions: "Zhipu.AI"
+  institutions: "Zhipu AI"
   institutions: "Tsinghua University"
 }
 pub {
@@ -32,7 +32,7 @@ note {
 }
 keyword {
   words: sparse_pruning
-  words: kv_cache
+  words: kv_cache_management
   words: attention_sparsity
 }
 cover {

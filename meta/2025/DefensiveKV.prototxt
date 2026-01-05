@@ -20,7 +20,7 @@ code {
   url: "https://github.com/FFY0/DefensiveKV"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: ""

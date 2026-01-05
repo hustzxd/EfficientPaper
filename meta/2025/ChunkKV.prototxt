@@ -9,7 +9,7 @@ paper {
   authors: "Bo Li"
   authors: "Xuming Hu"
   authors: "Xiaowen Chu"
-  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Hong Kong University of Science and Technology"
 }
 pub {
   where: "arXiv"
@@ -23,7 +23,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
 }

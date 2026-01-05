@@ -5,7 +5,7 @@ paper {
   authors: "Chaofan Tao"
   authors: "Ngai Wong"
   institutions: "The University of Hong Kong"
-  institutions: "Huawei Noah's Ark Lab"
+  institutions: "Huawei"
 }
 pub {
   where: "ACL"

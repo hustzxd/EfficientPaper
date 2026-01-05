@@ -12,7 +12,7 @@ paper {
   authors: "Yuejie Chi"
   authors: "Beidi Chen"
   institutions: "Carnegie Mellon University"
-  institutions: "ByteDance"
+  institutions: "ByteDance Seed"
 }
 pub {
   where: "ICML"
@@ -22,14 +22,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/bytedance/ShadowKV"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache
-  words: sparse_pruning
   words: attention_sparsity
+  words: kv_cache_management
+  words: sparse_pruning
 }
 cover {
   url: "shadowkv.png"
+}
+baseline {
+  methods: "None"
 }

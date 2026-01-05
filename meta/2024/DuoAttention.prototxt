@@ -10,7 +10,7 @@ paper {
   authors: "Haotian Tang"
   authors: "Yao Fu"
   authors: "Song Han"
-  institutions: "MIT"
+  institutions: "Massachusetts Institute of Technology"
   institutions: "NVIDIA"
 }
 pub {
@@ -25,7 +25,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
 }

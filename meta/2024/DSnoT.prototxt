@@ -14,7 +14,7 @@ paper {
   institutions: "Key Laboratory of Multimedia Trusted Perception and Efficient Computing"
   institutions: "Ministry of Education of China, Xiamen University"
   institutions: "Tencent Youtu Lab"
-  institutions: "Huawei Technologies"
+  institutions: "Huawei"
 }
 pub {
   where: "ICLR"
