@@ -45,6 +45,8 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_get_institutions()
         elif parsed_url.path == '/api/load-note':
             self.handle_load_note(parsed_url)
+        elif parsed_url.path == '/api/search-arxiv':
+            self.handle_search_arxiv(parsed_url)
         else:
             self.send_error(404, "Not Found")
 
@@ -562,6 +564,75 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             traceback.print_exc()
             self.send_json_response({'error': str(e)}, 500)
 
+    def handle_search_arxiv(self, parsed_url):
+        """Search arXiv by ID and return paper info without adding it"""
+        try:
+            # Parse query parameters
+            query_params = parse_qs(parsed_url.query)
+            arxiv_id = query_params.get('arxiv_id', [''])[0].strip()
+
+            if not arxiv_id:
+                self.send_json_response({'error': 'Missing arXiv ID'}, 400)
+                return
+
+            print(f"Searching arXiv for: {arxiv_id}")
+
+            # Use arxiv library to fetch paper info
+            import arxiv
+
+            try:
+                paper = next(arxiv.Client().results(arxiv.Search(id_list=[arxiv_id])))
+
+                # Extract code repository URL from summary if present
+                code_url = None
+                import re
+                patterns = [
+                    r'https?://github\.com/[\w\-\.]+/[\w\-\.]+',
+                    r'https?://gitlab\.com/[\w\-\.]+/[\w\-\.]+',
+                    r'https?://huggingface\.co/[\w\-\.]+/[\w\-\.]+',
+                ]
+                for pattern in patterns:
+                    match = re.search(pattern, paper.summary, re.IGNORECASE)
+                    if match:
+                        code_url = match.group(0)
+                        code_url = re.sub(r'[.,;:\)]+$', '', code_url)
+                        break
+
+                # Extract institutions from authors
+                institutions = []
+                for author in paper.authors:
+                    if hasattr(author, 'affiliation') and author.affiliation:
+                        affiliation = author.affiliation.strip()
+                        if affiliation and affiliation not in institutions:
+                            institutions.append(affiliation)
+
+                authors = [author.name for author in paper.authors]
+
+                self.send_json_response({
+                    'success': True,
+                    'title': paper.title,
+                    'authors': authors,
+                    'year': paper.published.year,
+                    'url': paper.entry_id,
+                    'summary': paper.summary[:500] + '...' if len(paper.summary) > 500 else paper.summary,
+                    'institutions': institutions,
+                    'code_url': code_url
+                })
+
+            except arxiv.HTTPError as e:
+                if '429' in str(e):
+                    self.send_json_response({'error': 'arXiv rate limit exceeded. Please try again in a few seconds.'}, 429)
+                else:
+                    self.send_json_response({'error': f'arXiv HTTP error: {str(e)}'}, 404)
+            except Exception as e:
+                self.send_json_response({'error': f'Paper not found: {str(e)}'}, 404)
+
+        except Exception as e:
+            print(f"Error searching arXiv: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
     def handle_add_from_arxiv(self):
         """Add paper from arXiv ID"""
         try:
@@ -770,6 +841,7 @@ def main():
     print(f"  - GET  http://localhost:{port}/api/get-keywords")
     print(f"  - GET  http://localhost:{port}/api/get-institutions")
     print(f"  - GET  http://localhost:{port}/api/load-note?path=...")
+    print(f"  - GET  http://localhost:{port}/api/search-arxiv?arxiv_id=...")
     print(f"  - POST http://localhost:{port}/api/save-paper")
     print(f"  - POST http://localhost:{port}/api/upload-cover")
     print(f"  - POST http://localhost:{port}/api/delete-paper")

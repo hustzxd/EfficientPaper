@@ -74,6 +74,21 @@
           <input type="text" id="arxiv-id-input" placeholder="e.g., 2301.12345 or 2301.12345v1" required>
           <small>Enter the arXiv ID from the paper URL (e.g., arxiv.org/abs/2301.12345)</small>
         </div>
+        <div id="arxiv-paper-info" class="arxiv-paper-info" style="display: none;">
+          <div class="paper-info-header">
+            <span class="paper-info-label">Paper Found:</span>
+            <button id="clear-arxiv-search" class="clear-search-btn" title="Clear">✕</button>
+          </div>
+          <div class="paper-info-content">
+            <div class="paper-info-title" id="arxiv-paper-title"></div>
+            <div class="paper-info-authors" id="arxiv-paper-authors"></div>
+            <div class="paper-info-meta">
+              <span class="paper-info-year" id="arxiv-paper-year"></span>
+              <span class="paper-info-institutions" id="arxiv-paper-institutions"></span>
+            </div>
+            <div class="paper-info-code" id="arxiv-paper-code"></div>
+          </div>
+        </div>
         <div class="form-group">
           <label for="abbr-input">Abbreviation (optional)</label>
           <input type="text" id="abbr-input" placeholder="e.g., FlashAttn2, GPT4">
@@ -767,6 +782,96 @@
 .arxiv-status.status-error {
   background: #ffebee;
   color: #c62828;
+}
+
+/* arXiv Paper Info Display */
+.arxiv-paper-info {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f0f7ff;
+  border: 1px solid #b3d7ff;
+  border-radius: 8px;
+}
+
+.paper-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.paper-info-label {
+  font-weight: 600;
+  color: #1565c0;
+  font-size: 14px;
+}
+
+.clear-search-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.clear-search-btn:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.paper-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paper-info-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+
+.paper-info-authors {
+  font-size: 13px;
+  color: #555;
+}
+
+.paper-info-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.paper-info-year {
+  color: #666;
+}
+
+.paper-info-institutions {
+  color: #666;
+}
+
+.paper-info-code {
+  font-size: 12px;
+  color: #4a90d9;
+}
+
+.paper-info-code a {
+  color: #4a90d9;
+  text-decoration: none;
+}
+
+.paper-info-code a:hover {
+  text-decoration: underline;
 }
 
 .arxiv-modal-footer {
@@ -1952,6 +2057,84 @@ function closeLightbox() {
     document.getElementById('abbr-input').value = '';
     document.getElementById('arxiv-status').textContent = '';
     document.getElementById('arxiv-status').className = 'arxiv-status';
+    document.getElementById('arxiv-paper-info').style.display = 'none';
+  }
+
+  // Search arXiv and display paper info
+  let arxivSearchTimeout;
+  async function searchArxiv(arxivId) {
+    const paperInfoEl = document.getElementById('arxiv-paper-info');
+    const titleEl = document.getElementById('arxiv-paper-title');
+    const authorsEl = document.getElementById('arxiv-paper-authors');
+    const yearEl = document.getElementById('arxiv-paper-year');
+    const institutionsEl = document.getElementById('arxiv-paper-institutions');
+    const codeEl = document.getElementById('arxiv-paper-code');
+    const statusEl = document.getElementById('arxiv-status');
+
+    // Clear previous results
+    paperInfoEl.style.display = 'none';
+    statusEl.textContent = '';
+    statusEl.className = 'arxiv-status';
+
+    // Check if arxivId is empty
+    if (!arxivId || arxivId.trim().length === 0) {
+      return;
+    }
+
+    // Check if arxivId looks valid (basic format check)
+    const trimmedId = arxivId.trim();
+    if (!/^\d{4}\.\d{4,5}(v\d+)?$/.test(trimmedId)) {
+      // Not a valid format yet, don't search
+      return;
+    }
+
+    // Show loading status
+    statusEl.textContent = 'Searching arXiv...';
+    statusEl.className = 'arxiv-status status-loading';
+
+    try {
+      const response = await fetch(`http://localhost:8001/api/search-arxiv?arxiv_id=${encodeURIComponent(trimmedId)}`);
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Display paper info
+        titleEl.textContent = result.title;
+        authorsEl.textContent = result.authors.slice(0, 5).join(', ') + (result.authors.length > 5 ? ' et al.' : '');
+        yearEl.textContent = `Year: ${result.year}`;
+
+        if (result.institutions && result.institutions.length > 0) {
+          institutionsEl.textContent = result.institutions.slice(0, 2).join(', ') + (result.institutions.length > 2 ? ' et al.' : '');
+        } else {
+          institutionsEl.textContent = '';
+        }
+
+        if (result.code_url) {
+          codeEl.innerHTML = `Code: <a href="${result.code_url}" target="_blank">${result.code_url}</a>`;
+        } else {
+          codeEl.textContent = '';
+        }
+
+        // Show the paper info panel
+        paperInfoEl.style.display = 'block';
+        statusEl.textContent = '';
+        statusEl.className = 'arxiv-status';
+      } else {
+        statusEl.textContent = result.error || 'Paper not found';
+        statusEl.className = 'arxiv-status status-error';
+      }
+    } catch (error) {
+      statusEl.textContent = `Error: ${error.message}. Make sure the server is running.`;
+      statusEl.className = 'arxiv-status status-error';
+    }
+  }
+
+  // Clear arXiv search results
+  function clearArxivSearch() {
+    document.getElementById('arxiv-paper-info').style.display = 'none';
+    document.getElementById('arxiv-id-input').value = '';
+    document.getElementById('arxiv-status').textContent = '';
+    document.getElementById('arxiv-status').className = 'arxiv-status';
+    document.getElementById('arxiv-id-input').focus();
   }
 
   async function addPaperFromArxiv() {
@@ -2313,6 +2496,15 @@ function closeLightbox() {
     document.getElementById('close-arxiv').addEventListener('click', closeArxivModal);
     document.getElementById('arxiv-cancel-btn').addEventListener('click', closeArxivModal);
     document.getElementById('arxiv-submit-btn').addEventListener('click', addPaperFromArxiv);
+
+    // Real-time arXiv search with debounce
+    const debouncedArxivSearch = debounce((e) => {
+      searchArxiv(e.target.value);
+    }, 500);
+    document.getElementById('arxiv-id-input').addEventListener('input', debouncedArxivSearch);
+
+    // Clear arXiv search button
+    document.getElementById('clear-arxiv-search').addEventListener('click', clearArxivSearch);
 
     // Close arXiv modal on overlay click
     document.getElementById('arxiv-modal').addEventListener('click', (e) => {

@@ -1,0 +1,27 @@
+paper {
+  title: "Attention Sinks: A \'Catch, Tag, Release\' Mechanism for Embeddings"
+  abbr: "AttentionSinks"
+  url: "http://arxiv.org/abs/2502.00919v2"
+  authors: "Stephen Zhang"
+  authors: "Mustafa Khan"
+  authors: "Vardan Papyan"
+  institutions: "University of Toronto"
+  institutions: "Vector Institute"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

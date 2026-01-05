@@ -1,0 +1,44 @@
+paper {
+  title: "FPSAttention: Training-Aware FP8 and Sparsity Co-Design for Fast Video Diffusion"
+  abbr: "FPSAttention"
+  url: "http://arxiv.org/abs/2506.04648v2"
+  authors: "Akide Liu"
+  authors: "Zeyu Zhang"
+  authors: "Zhexin Li"
+  authors: "Xuehai Bai"
+  authors: "Yizeng Han"
+  authors: "Jiasheng Tang"
+  authors: "Yuanjie Xing"
+  authors: "Jichao Wu"
+  authors: "Mingyang Yang"
+  authors: "Weihua Chen"
+  authors: "Jiahao He"
+  authors: "Yuanyu He"
+  authors: "Fan Wang"
+  authors: "Gholamreza Haffari"
+  authors: "Bohan Zhuang"
+  institutions: "Monash University"
+  institutions: "Alibaba"
+  institutions: "Zhejiang University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+  words: quantization
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/SVG"
+  methods: "2024/SageAttention"
+  methods: "2022/STA"
+}

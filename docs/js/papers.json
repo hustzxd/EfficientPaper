@@ -423,6 +423,30 @@
       "prototxt_path": "meta/2025/AmberPruner.prototxt"
     },
     {
+      "id": "AttentionSinks",
+      "title": "Attention Sinks: A 'Catch, Tag, Release' Mechanism for Embeddings",
+      "abbr": "AttentionSinks",
+      "url": "http://arxiv.org/abs/2502.00919v2",
+      "authors": [
+        "Stephen Zhang",
+        "Mustafa Khan",
+        "Vardan Papyan"
+      ],
+      "institutions": [
+        "University of Toronto",
+        "Vector Institute"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS",
+      "cover": null,
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/AttentionSinks/note/",
+      "prototxt_path": "meta/2025/AttentionSinks.prototxt"
+    },
+    {
       "id": "attention-gym",
       "title": "Attention-Gym: Triton-Based Sparse and Quantization Attention",
       "abbr": "attention-gym",
@@ -1759,6 +1783,45 @@
       "code_url": "https://github.com/zhixuan-lin/forgetting-transformer",
       "note_url": "notes/2025/FoX/note/",
       "prototxt_path": "meta/2025/FoX.prototxt"
+    },
+    {
+      "id": "FPSAttention",
+      "title": "FPSAttention: Training-Aware FP8 and Sparsity Co-Design for Fast Video Diffusion",
+      "abbr": "FPSAttention",
+      "url": "http://arxiv.org/abs/2506.04648v2",
+      "authors": [
+        "Akide Liu",
+        "Zeyu Zhang",
+        "Zhexin Li",
+        "Xuehai Bai",
+        "Yizeng Han",
+        "Jiasheng Tang",
+        "Yuanjie Xing",
+        "Jichao Wu",
+        "Mingyang Yang",
+        "Weihua Chen",
+        "Jiahao He",
+        "Yuanyu He",
+        "Fan Wang",
+        "Gholamreza Haffari",
+        "Bohan Zhuang"
+      ],
+      "institutions": [
+        "Monash University",
+        "Alibaba",
+        "Zhejiang University"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS",
+      "cover": "notes/2025/FPSAttention/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "09-Quantization"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/FPSAttention/note/",
+      "prototxt_path": "meta/2025/FPSAttention.prototxt"
     },
     {
       "id": "FreeKV",
@@ -11762,5 +11825,5 @@
       "47-Benchmark"
     ]
   },
-  "total": 377
+  "total": 379
 }

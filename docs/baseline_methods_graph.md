@@ -224,6 +224,50 @@ flowchart LR
     linkStyle 17 stroke:#FF6347,stroke-width:2.5px
 ```
 
+## SVG Family
+
+*8 methods, 7 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2022_STA["STA[2022]"]
+    class 2022_STA rootNode
+    2024_SageAttention["SageAttention[2024]"]
+    class 2024_SageAttention rootNode
+    2025_FPSAttention["FPSAttention[2025]"]
+    class 2025_FPSAttention leafNode
+    2025_LiteAttention["LiteAttention[2025]"]
+    class 2025_LiteAttention leafNode
+    2025_PAROAttention["PAROAttention[2025]"]
+    class 2025_PAROAttention leafNode
+    2025_RadialAttention["RadialAttention[2025]"]
+    class 2025_RadialAttention rootNode
+    2025_SVG["SVG[2025]"]
+    class 2025_SVG rootNode
+    2025_SVG2["SVG2[2025]"]
+    class 2025_SVG2 leafNode
+
+    2022_STA ==>|" "| 2025_FPSAttention
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2024_SageAttention ==>|" "| 2025_FPSAttention
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2025_RadialAttention ==>|" "| 2025_LiteAttention
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+    2025_SVG ==>|" "| 2025_FPSAttention
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+    2025_SVG ==>|" "| 2025_LiteAttention
+    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
+    2025_SVG ==>|" "| 2025_PAROAttention
+    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
+    2025_SVG ==>|" "| 2025_SVG2
+    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
+```
+
 ## PagedAttention Family
 
 *8 methods, 10 relationships*
@@ -310,38 +354,6 @@ flowchart LR
     linkStyle 5 stroke:#00CED1,stroke-width:2.5px
     2024_Wanda ==>|" "| 2025_SDS
     linkStyle 6 stroke:#FFA500,stroke-width:2.5px
-```
-
-## SVG Family
-
-*5 methods, 4 relationships*
-
-```mermaid
-flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2025_LiteAttention["LiteAttention[2025]"]
-    class 2025_LiteAttention leafNode
-    2025_PAROAttention["PAROAttention[2025]"]
-    class 2025_PAROAttention leafNode
-    2025_RadialAttention["RadialAttention[2025]"]
-    class 2025_RadialAttention rootNode
-    2025_SVG["SVG[2025]"]
-    class 2025_SVG rootNode
-    2025_SVG2["SVG2[2025]"]
-    class 2025_SVG2 leafNode
-
-    2025_RadialAttention ==>|" "| 2025_LiteAttention
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-    2025_SVG ==>|" "| 2025_LiteAttention
-    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
-    2025_SVG ==>|" "| 2025_PAROAttention
-    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
-    2025_SVG ==>|" "| 2025_SVG2
-    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
 ```
 
 ## GPTQ Family
