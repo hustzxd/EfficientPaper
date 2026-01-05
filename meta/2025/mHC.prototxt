@@ -1,0 +1,42 @@
+paper {
+  title: "mHC: Manifold-Constrained Hyper-Connections"
+  abbr: "mHC"
+  url: "http://arxiv.org/abs/2512.24880v1"
+  authors: "Zhenda Xie"
+  authors: "Yixuan Wei"
+  authors: "Huanqi Cao"
+  authors: "Chenggang Zhao"
+  authors: "Chengqi Deng"
+  authors: "Jiashi Li"
+  authors: "Damai Dai"
+  authors: "Huazuo Gao"
+  authors: "Jiang Chang"
+  authors: "Liang Zhao"
+  authors: "Shangyan Zhou"
+  authors: "Zhean Xu"
+  authors: "Zhengyan Zhang"
+  authors: "Wangding Zeng"
+  authors: "Shengding Hu"
+  authors: "Yuqing Wang"
+  authors: "Jingyang Yuan"
+  authors: "Lean Wang"
+  authors: "Wenfeng Liang"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/DHC"
+}

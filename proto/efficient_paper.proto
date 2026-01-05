@@ -46,24 +46,28 @@ message Keyword {
     repeated Word words = 1;
     enum Word {
         none = 1;
-        attention_sparsity = 2;
-        activation_sparsity = 3;
-        weight_sparsity = 4;
-        structured_sparsity = 5;
-        sparse_pruning = 6;
-        kv_cache_quant = 7;    
-        quantization = 8;
-        overlap = 9;
-        performance_modeling = 10;
-        deployment = 11;
-        survey = 12;
-        structure_design = 13;
-        low_rank = 14;
-        kv_cache = 15;
-        fusion = 16;
-        efficient_training = 17;
-        tool = 18;
-        benchmark = 19;
+        sparse_pruning = 2;
+        attention_sparsity = 3;
+        activation_sparsity = 4;
+        weight_sparsity = 5;
+        structured_sparsity = 6;
+
+        quantization = 10;
+
+        kv_cache_quant = 20;
+        kv_cache_management = 21;
+
+        overlap = 30;
+
+        performance_modeling = 40;
+        deployment = 41;
+        survey = 42;
+        structure_design = 43;
+        low_rank = 44;
+        fusion = 45;
+        efficient_training = 46;
+        tool = 47;
+        benchmark = 48;
         // TODO: please add your key words here.
     }
 }

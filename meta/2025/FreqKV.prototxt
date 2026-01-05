@@ -10,7 +10,7 @@ paper {
   authors: "Bo Jiang"
   authors: "Zhouhan Lin"
   institutions: "Shanghai Jiao Tong University"
-  institutions: "Huawei Noah's Ark Lab"
+  institutions: "Huawei"
 }
 pub {
   where: "arXiv"
@@ -24,7 +24,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: attention_sparsity
 }
 cover {

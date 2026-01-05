@@ -30,7 +30,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
   words: tool

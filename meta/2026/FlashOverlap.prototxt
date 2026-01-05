@@ -28,7 +28,6 @@ code {
 }
 keyword {
   words: overlap
-  words: sparse_pruning
 }
 cover {
   url: "fig3.png"

@@ -21,7 +21,7 @@ note {
 keyword {
   words: fusion
   words: structure_design
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: "gla.png"

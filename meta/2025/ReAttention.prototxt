@@ -13,7 +13,7 @@ paper {
   authors: "Qun Liu"
   authors: "Xipeng Qiu"
   institutions: "Fudan University"
-  institutions: "Huawei Noah's Ark Lab"
+  institutions: "Huawei"
 }
 pub {
   where: "ICLR"
@@ -27,7 +27,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
 }

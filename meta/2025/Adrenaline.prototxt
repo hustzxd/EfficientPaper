@@ -9,7 +9,7 @@ paper {
   authors: "Xu Chen"
   authors: "Zhou Yu"
   institutions: "Sun Yat-sen University"
-  institutions: "Huawei Cloud"
+  institutions: "Huawei"
 }
 pub {
   where: "arXiv"
@@ -23,7 +23,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: deployment
 }
 cover {

@@ -20,7 +20,7 @@ code {
   url: ""
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: ""

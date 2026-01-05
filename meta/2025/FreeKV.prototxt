@@ -24,7 +24,7 @@ code {
 keyword {
   words: attention_sparsity
   words: deployment
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: ""

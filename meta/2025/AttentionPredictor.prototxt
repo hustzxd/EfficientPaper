@@ -14,7 +14,7 @@ paper {
   authors: "Mingxuan Yuan"
   authors: "Bin Li"
   institutions: "University of Science and Technology of China"
-  institutions: "Noah’s Ark Lab, Huawei Technologies"
+  institutions: "Noah’s Ark Lab, Huawei"
 }
 pub {
   where: "arXiv"
@@ -28,7 +28,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
 }

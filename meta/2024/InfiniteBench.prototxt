@@ -23,12 +23,12 @@ code {
   type: "Pytorch"
   url: "https://github.com/OpenBMB/InfiniteBench"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: benchmark
 }
 cover {
-  url: ""
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
 }

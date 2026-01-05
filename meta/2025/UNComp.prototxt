@@ -20,7 +20,7 @@ paper {
   institutions: "The Ohio State University"
   institutions: "Microsoft Research Asia"
   institutions: "The Chinese University of Hong Kong"
-  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Hong Kong University of Science and Technology"
 }
 pub {
   where: "EMNLP"
@@ -33,7 +33,7 @@ code {
 keyword {
   words: attention_sparsity
   words: sparse_pruning
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: "fig4.png"

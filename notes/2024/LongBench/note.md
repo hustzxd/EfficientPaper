@@ -2,7 +2,7 @@
 
 > Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao Liu, Aohan Zeng, Lei Hou, Yuxiao Dong, Jie Tang, Juanzi Li
 
-![111](../../blank.jpg)
+![111](cover.png)
 
 ## Abstract
 

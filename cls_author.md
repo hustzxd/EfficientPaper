@@ -104,7 +104,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -479,6 +479,7 @@
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Chengqi Deng</b></summary> 
@@ -490,6 +491,7 @@
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Chengquan Jiang</b></summary> 
@@ -661,6 +663,7 @@
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Dan Alistarh</b></summary> 
@@ -1170,6 +1173,16 @@
 | [R-KV](./meta/2025/R-KV.prototxt) | [R-KV: Redundancy-aware KV Cache Compression for Training-Free Reasoning Models Acceleration](http://arxiv.org/abs/2505.24133v2) | ![cover](./notes/2025/R-KV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/R-KV)](https://github.com/Zefan-Cai/R-KV) | [note](./notes/2025/R-KV/note.md) |
 </p>
 </details>
+<details open><summary><b>Hantao Huang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SALS](./meta/2025/SALS.prototxt) | [SALS: Sparse Attention in Latent Space for KV cache Compression](http://arxiv.org/abs/2510.24273v1) | ![cover](./notes/2025/SALS/fig3.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SALS/note.md) |
+| [SQ-format](./meta/2025/SQ-format.prototxt) | [SQ-format: A Unified Sparse-Quantized Hardware-friendly Data Format for LLMs](http://arxiv.org/abs/2512.05409v1) | ![cover](./notes/2025/SQ-format/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SQ-format/note.md) |
+</p>
+</details>
 <details open><summary><b>Hanwei Xu</b></summary> 
 <p>
 
@@ -1179,6 +1192,26 @@
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | ![cover](./notes/2024/DeepSeek-V2/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2)](https://github.com/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+</p>
+</details>
+<details open><summary><b>Hao Peng</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
+| [MixKVQ](./meta/2025/MixKVQ.prototxt) | [MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning](http://arxiv.org/abs/2512.19206v1) | ![cover](./notes/2025/MixKVQ/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/MixKVQ/note.md) |
+</p>
+</details>
+<details open><summary><b>Hao Zeng</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
+| [SQ-format](./meta/2025/SQ-format.prototxt) | [SQ-format: A Unified Sparse-Quantized Hardware-friendly Data Format for LLMs](http://arxiv.org/abs/2512.05409v1) | ![cover](./notes/2025/SQ-format/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SQ-format/note.md) |
 </p>
 </details>
 <details open><summary><b>Hao Zhang</b></summary> 
@@ -1376,6 +1409,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Huanqi Cao</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | ![cover](./notes/2024/SampleAttention/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/SampleAttention/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
+</p>
+</details>
 <details open><summary><b>Huazuo Gao</b></summary> 
 <p>
 
@@ -1387,6 +1430,7 @@
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Hui Li</b></summary> 
@@ -1582,7 +1626,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -1733,6 +1777,7 @@
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Jiawei Wang</b></summary> 
@@ -1802,7 +1847,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [CodeGeeX](./meta/2023/CodeGeeX.prototxt) | [CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X](http://arxiv.org/abs/2303.17568v2) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/CodeGeeX)](https://github.com/THUDM/CodeGeeX) | [note](./notes/2023/CodeGeeX/note.md) |
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -1908,6 +1953,7 @@
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Jintao Zhang</b></summary> 
@@ -1945,7 +1991,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -1974,7 +2020,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 </p>
 </details>
 <details open><summary><b>Juncheng Zhang</b></summary> 
@@ -2263,6 +2309,7 @@
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Lecong Zhang</b></summary> 
@@ -2384,6 +2431,7 @@
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Lianmin Zheng</b></summary> 
@@ -2490,7 +2538,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
+| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [InfLLM](./meta/2024/InfLLM.prototxt) | [InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory](http://arxiv.org/abs/2402.04617v2) | ![cover](./notes/2024/InfLLM/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/InfLLM)](https://github.com/thunlp/InfLLM) | [note](./notes/2024/InfLLM/note.md) |
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | ![cover](./notes/2024/ProSparse/prosparse.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator)](https://github.com/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | ![cover](./notes/2024/ReLU2/activation.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
@@ -2654,6 +2702,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SALS](./meta/2025/SALS.prototxt) | [SALS: Sparse Attention in Latent Space for KV cache Compression](http://arxiv.org/abs/2510.24273v1) | ![cover](./notes/2025/SALS/fig3.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) |  | [note](./notes/2025/SALS/note.md) |
 | [MiniMax-M1](./meta/2025/MiniMax-M1.prototxt) | [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](http://arxiv.org/abs/2506.13585v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MiniMax-AI/MiniMax-M1)](https://github.com/MiniMax-AI/MiniMax-M1) | [note](./notes/2025/MiniMax-M1/note.md) |
+| [SQ-format](./meta/2025/SQ-format.prototxt) | [SQ-format: A Unified Sparse-Quantized Hardware-friendly Data Format for LLMs](http://arxiv.org/abs/2512.05409v1) | ![cover](./notes/2025/SQ-format/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SQ-format/note.md) |
 </p>
 </details>
 <details open><summary><b>Mingjie Sun</b></summary> 
@@ -2811,7 +2860,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | ![cover](./notes/2024/Vidur/fig2.png) | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur)](https://github.com/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
-| [Kascade](./meta/2025/Kascade.prototxt) | [Kascade: A Practical Sparse Attention Method for Long-Context LLM Inference](http://arxiv.org/abs/2512.16391v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/kascade)](https://github.com/microsoft/kascade) | [note](./notes/2025/Kascade/note.md) |
+| [Kascade](./meta/2025/Kascade.prototxt) | [Kascade: A Practical Sparse Attention Method for Long-Context LLM Inference](http://arxiv.org/abs/2512.16391v1) | ![cover](./notes/2025/Kascade/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/kascade)](https://github.com/microsoft/kascade) | [note](./notes/2025/Kascade/note.md) |
 | [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | ![cover](./notes/2025/TokenWeave/fig8.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave)](https://github.com/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
 </p>
 </details>
@@ -2931,7 +2980,7 @@
 | [AdaSkip](./meta/2025/AdaSkip.prototxt) | [AdaSkip: Adaptive Sublayer Skipping for Accelerating Long-Context LLM Inference](http://arxiv.org/abs/2501.02336v1) | ![cover](./notes/2025/AdaSkip/fig1.png) | ![Publish](https://img.shields.io/badge/2025-AAAI-FF4500) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/AdaSkip)](https://github.com/ASISys/AdaSkip) | [note](./notes/2025/AdaSkip/note.md) |
 | [Adrenaline](./meta/2025/Adrenaline.prototxt) | [Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation](http://arxiv.org/abs/2503.20552v1) | ![cover](./notes/2025/Adrenaline/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/Adrenaline)](https://github.com/ASISys/Adrenaline) | [note](./notes/2025/Adrenaline/note.md) |
 | [PSA](./meta/2025/PSA.prototxt) | [Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving](http://arxiv.org/abs/2503.00392v1) | ![cover](./notes/2025/PSA/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/PSAttention)](https://github.com/ASISys/PSAttention) | [note](./notes/2025/PSA/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 | [SparseServe](./meta/2025/SparseServe.prototxt) | [SparseServe: Unlocking Parallelism for Dynamic Sparse Attention in Long-Context LLM Serving](http://arxiv.org/abs/2509.24626v1) | ![cover](./notes/2025/SparseServe/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SparseServe/note.md) |
 </p>
 </details>
@@ -3165,7 +3214,7 @@
 | [Vidur](./meta/2024/Vidur.prototxt) | [Vidur: A Large-Scale Simulation Framework For LLM Inference](http://arxiv.org/abs/2405.05465v2) | ![cover](./notes/2024/Vidur/fig2.png) | ![Publish](https://img.shields.io/badge/2024-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vidur)](https://github.com/microsoft/vidur) | [note](./notes/2024/Vidur/note.md) |
 | [POD-Attention](./meta/2025/POD-Attention.prototxt) | [POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference](http://arxiv.org/abs/2410.18038v2) | ![cover](./notes/2025/POD-Attention/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention)](https://github.com/microsoft/vattention) | [note](./notes/2025/POD-Attention/note.md) |
 | [vAttention](./meta/2025/vAttention.prototxt) | [vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention](http://arxiv.org/abs/2405.04437v3) | ![cover](./notes/2025/vAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2025-ASPLOS-9370DB) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/vattention)](https://github.com/microsoft/vattention) | [note](./notes/2025/vAttention/note.md) |
-| [Kascade](./meta/2025/Kascade.prototxt) | [Kascade: A Practical Sparse Attention Method for Long-Context LLM Inference](http://arxiv.org/abs/2512.16391v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/kascade)](https://github.com/microsoft/kascade) | [note](./notes/2025/Kascade/note.md) |
+| [Kascade](./meta/2025/Kascade.prototxt) | [Kascade: A Practical Sparse Attention Method for Long-Context LLM Inference](http://arxiv.org/abs/2512.16391v1) | ![cover](./notes/2025/Kascade/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/kascade)](https://github.com/microsoft/kascade) | [note](./notes/2025/Kascade/note.md) |
 | [TokenWeave](./meta/2025/TokenWeave.prototxt) | [TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference](http://arxiv.org/abs/2505.11329v1) | ![cover](./notes/2025/TokenWeave/fig8.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/tokenweave)](https://github.com/microsoft/tokenweave) | [note](./notes/2025/TokenWeave/note.md) |
 </p>
 </details>
@@ -3448,6 +3497,7 @@
 | [DeepSeek-V2](./meta/2024/DeepSeek-V2.prototxt) | [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](http://arxiv.org/abs/2405.04434v5) | ![cover](./notes/2024/DeepSeek-V2/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V2)](https://github.com/deepseek-ai/DeepSeek-V2) | [note](./notes/2024/DeepSeek-V2/note.md) |
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Shanhuang Chen</b></summary> 
@@ -3478,8 +3528,9 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
+| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | ![cover](./notes/2024/ProSparse/prosparse.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator)](https://github.com/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Shengen Yan</b></summary> 
@@ -3640,7 +3691,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
+| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [MiniCPM4](./meta/2025/MiniCPM4.prototxt) | [MiniCPM4: Ultra-Efficient LLMs on End Devices](http://arxiv.org/abs/2506.07900v1) | ![cover](./notes/2025/MiniCPM4/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/openbmb/minicpm)](https://github.com/openbmb/minicpm) | [note](./notes/2025/MiniCPM4/note.md) |
 </p>
 </details>
@@ -4041,6 +4092,7 @@
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Wanjia Zhao</b></summary> 
@@ -4192,6 +4244,7 @@
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Wenjun Gao</b></summary> 
@@ -4632,7 +4685,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | ![cover](./notes/2024/SampleAttention/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/SampleAttention/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
@@ -4698,7 +4751,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 </p>
 </details>
 <details open><summary><b>Xinnan Song</b></summary> 
@@ -4803,7 +4856,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
+| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [InfLLM](./meta/2024/InfLLM.prototxt) | [InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory](http://arxiv.org/abs/2402.04617v2) | ![cover](./notes/2024/InfLLM/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/InfLLM)](https://github.com/thunlp/InfLLM) | [note](./notes/2024/InfLLM/note.md) |
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | ![cover](./notes/2024/ProSparse/prosparse.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator)](https://github.com/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | ![cover](./notes/2024/ReLU2/activation.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
@@ -4893,6 +4946,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [ChunkKV](./meta/2025/ChunkKV.prototxt) | [ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference](http://arxiv.org/abs/2502.00299v1) | ![cover](./notes/2025/ChunkKV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/ChunkKV/note.md) |
 | [FlowKV](./meta/2025/FlowKV.prototxt) | [FlowKV: Enhancing Multi-Turn Conversational Coherence in LLMs via Isolated Key-Value Cache Management](http://arxiv.org/abs/2505.15347v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/FlowKV/note.md) |
+</p>
+</details>
+<details open><summary><b>Xun Zhou</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [FlexPrefill](./meta/2025/FlexPrefill.prototxt) | [FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference](http://arxiv.org/abs/2502.20766v1) | ![cover](./notes/2025/FlexPrefill/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/bytedance/FlexPrefill)](https://github.com/bytedance/FlexPrefill) | [note](./notes/2025/FlexPrefill/note.md) |
+| [DHC](./meta/2025/DHC.prototxt) | [Hyper-Connections](http://arxiv.org/abs/2409.19606v3) | ![cover](./notes/2025/DHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/lucidrains/hyper-connections)](https://github.com/lucidrains/hyper-connections) | [note](./notes/2025/DHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Xun Zou</b></summary> 
@@ -5261,7 +5324,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
+| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [BlockFFN](./meta/2025/BlockFFN.prototxt) | [BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity](http://arxiv.org/abs/2507.08771v1) | ![cover](./notes/2025/BlockFFN/fig2.png) | ![Publish](https://img.shields.io/badge/2025-COLM-6495ED) | [![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/BlockFFN)](https://github.com/thunlp/BlockFFN) | [note](./notes/2025/BlockFFN/note.md) |
 | [SparsingLaw](./meta/2025/SparsingLaw.prototxt) | [Sparsing Law: Towards Large Language Models with Greater Activation Sparsity](https://openreview.net/forum?id=SBUc5wirM8) | ![cover](./notes/2025/SparsingLaw/fig4.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/SparsingLaw)](https://github.com/thunlp/SparsingLaw) | [note](./notes/2025/SparsingLaw/note.md) |
 </p>
@@ -5487,7 +5550,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [AdaKV](./meta/2024/AdaKV.prototxt) | [Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference](http://arxiv.org/abs/2407.11550v3) | ![cover](./notes/2024/AdaKV/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/AdaKV)](https://github.com/FFY0/AdaKV) | [note](./notes/2024/AdaKV/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 | [DefensiveKV](./meta/2025/DefensiveKV.prototxt) | [Taming the Fragility of KV Cache Eviction in LLM Inference](http://arxiv.org/abs/2510.13334v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/DefensiveKV)](https://github.com/FFY0/DefensiveKV) | [note](./notes/2025/DefensiveKV/note.md) |
 </p>
 </details>
@@ -5753,6 +5816,16 @@
 | [MiniMax-M1](./meta/2025/MiniMax-M1.prototxt) | [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](http://arxiv.org/abs/2506.13585v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MiniMax-AI/MiniMax-M1)](https://github.com/MiniMax-AI/MiniMax-M1) | [note](./notes/2025/MiniMax-M1/note.md) |
 </p>
 </details>
+<details open><summary><b>Yuqing Wang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
+</p>
+</details>
 <details open><summary><b>Yuqing Xia</b></summary> 
 <p>
 
@@ -5782,7 +5855,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -5855,7 +5928,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [CodeGeeX](./meta/2023/CodeGeeX.prototxt) | [CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X](http://arxiv.org/abs/2303.17568v2) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/CodeGeeX)](https://github.com/THUDM/CodeGeeX) | [note](./notes/2023/CodeGeeX/note.md) |
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -6048,7 +6121,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Adrenaline](./meta/2025/Adrenaline.prototxt) | [Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation](http://arxiv.org/abs/2503.20552v1) | ![cover](./notes/2025/Adrenaline/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/Adrenaline)](https://github.com/ASISys/Adrenaline) | [note](./notes/2025/Adrenaline/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhe Fu</b></summary> 
@@ -6070,6 +6143,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhen Dong</b></summary> 
@@ -6136,6 +6210,7 @@
 | [DeepSeekMoE](./meta/2024/DeepSeekMoE.prototxt) | [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](http://arxiv.org/abs/2401.06066v1) | ![cover](./notes/2024/DeepSeekMoE/fig2.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-MoE)](https://github.com/deepseek-ai/DeepSeek-MoE) | [note](./notes/2024/DeepSeekMoE/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhengxiao Du</b></summary> 
@@ -6144,7 +6219,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) |  | [note](./notes/2024/LongBench/note.md) |
+| [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 </p>
 </details>
@@ -6161,6 +6236,7 @@
 | [Turbo Sparse](./meta/2024/TurboSparse.prototxt) | [Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters](http://arxiv.org/abs/2406.05955v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [Pytorch](https://huggingface.co/PowerInfer) | [note](./notes/2024/TurboSparse/note.md) |
 | [NSA](./meta/2025/NSA.prototxt) | [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](http://arxiv.org/abs/2502.11089v1) | ![cover](./notes/2025/NSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-ACL-4169E1) |  | [note](./notes/2025/NSA/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+| [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhenheng Tang</b></summary> 
@@ -6253,7 +6329,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [AMALI](./meta/2025/AMALI.prototxt) | [AMALI: An Analytical Model for Accurately Modeling LLM Inference on Modern GPUs](https://dl.acm.org/doi/10.1145/3695053.3731064) | ![cover](./notes/2025/AMALI/fig6.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) |  | [note](./notes/2025/AMALI/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhicheng Ma</b></summary> 
@@ -6355,7 +6431,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) |  | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
+| [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [InfLLM](./meta/2024/InfLLM.prototxt) | [InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory](http://arxiv.org/abs/2402.04617v2) | ![cover](./notes/2024/InfLLM/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thunlp/InfLLM)](https://github.com/thunlp/InfLLM) | [note](./notes/2024/InfLLM/note.md) |
 | [ProSparse](./meta/2024/ProSparse.prototxt) | [ProSparse: Introducing and Enhancing Intrinsic Activation Sparsity within Large Language Models](https://arxiv.org/abs/2402.13516) | ![cover](./notes/2024/ProSparse/prosparse.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/raincleared-song/sparse_gpu_operator)](https://github.com/raincleared-song/sparse_gpu_operator) | [note](./notes/2024/ProSparse/note.md) |
 | [ReLU2](./meta/2024/ReLU2.prototxt) | [ReLU2 Wins: Discovering Efficient Activation Functions for Sparse LLMs](https://arxiv.org/abs/2402.03804) | ![cover](./notes/2024/ReLU2/activation.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/ReLU2/note.md) |
@@ -6395,7 +6471,7 @@
 | [CachedAttention](./meta/2024/8TP9NHBA.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) |  | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/8TP9NHBA/note.md) |
 | [CachedAttention](./meta/2024/CachedAttention.prototxt) | [Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention](http://arxiv.org/abs/2403.19708v3) | ![cover](./notes/2024/CachedAttention/fig5.png) | ![Publish](https://img.shields.io/badge/2024-ATC-DC143C) |  | [note](./notes/2024/CachedAttention/note.md) |
 | [Adrenaline](./meta/2025/Adrenaline.prototxt) | [Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation](http://arxiv.org/abs/2503.20552v1) | ![cover](./notes/2025/Adrenaline/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/ASISys/Adrenaline)](https://github.com/ASISys/Adrenaline) | [note](./notes/2025/Adrenaline/note.md) |
-| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on Huawei CloudMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
+| [CloudMatrix384](./meta/2025/CloudMatrix384.prototxt) | [Serving Large Language Models on HuaweiMatrix384](http://arxiv.org/abs/2506.12708v3) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/CloudMatrix384/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhuang Liu</b></summary> 

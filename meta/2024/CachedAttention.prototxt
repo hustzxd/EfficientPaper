@@ -13,7 +13,7 @@ paper {
   authors: "Pengfei Zuo"
   institutions: "National University of Singapore"
   institutions: "Shanghai Jiaotong University"
-  institutions: "Huawei Cloud"
+  institutions: "Huawei"
 }
 pub {
   where: "ATC"
@@ -27,7 +27,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: deployment
 }
 cover {

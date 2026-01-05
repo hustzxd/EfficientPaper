@@ -168,24 +168,24 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
     def handle_get_keywords(self):
         """Get all available keywords from proto definition"""
         try:
+            # Import the word_pb2str mapping from generate_paper_list.py
+            from scripts.generate_paper_list import word_pb2str
+
             # Get all keyword enum values from the protobuf
-            keyword_enum = eppb.Keyword.Word
-
-            # Convert enum names to readable labels
-            def to_label(enum_name):
-                """Convert enum_name like 'attention_sparsity' to 'Attention Sparsity'"""
-                return ' '.join(word.capitalize() for word in enum_name.split('_'))
-
-            # Get all values from the enum descriptor
+            # Iterate over all Word enum values by their numeric values
             keywords = []
-            for name, value in keyword_enum.items():
+            for enum_value in eppb.Keyword.Word.values():
+                # Get the enum name (e.g., 'attention_sparsity')
+                enum_name = eppb.Keyword.Word.Name(enum_value)
+                # Use word_pb2str to get the formatted label (e.g., '03-Sparsity (Attention)')
+                label = word_pb2str.get(enum_value, enum_name)
                 keywords.append({
-                    'value': name,
-                    'label': to_label(name)
+                    'value': enum_name,
+                    'label': label
                 })
 
             # Sort by value (enum name)
-            keywords.sort(key=lambda x: x['value'])
+            keywords.sort(key=lambda x: x['label'])
 
             self.send_json_response({'keywords': keywords})
 

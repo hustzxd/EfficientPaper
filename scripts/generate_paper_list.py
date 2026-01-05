@@ -73,22 +73,25 @@ def readMeta():
 word_pb2str = {
     eppb.Keyword.Word.none: "None",
     eppb.Keyword.Word.sparse_pruning: "Sparse/Pruning",
-    eppb.Keyword.Word.quantization: "Quantization",
-    eppb.Keyword.Word.survey: "Survey",
-    eppb.Keyword.Word.low_rank: "Low Rank Decomposition",
-    eppb.Keyword.Word.fusion: "Layer Fusion (Reduce IO)",
-    eppb.Keyword.Word.tool: "Tool",
-    eppb.Keyword.Word.kv_cache: "KV Cache Optimization/Efficient Attention",
-    eppb.Keyword.Word.efficient_training: "Efficient Training",
-    eppb.Keyword.Word.structure_design: "Network Structure Design",
     eppb.Keyword.Word.weight_sparsity: "Sparsity (Weight)",
     eppb.Keyword.Word.activation_sparsity: "Sparsity (Activation)",
     eppb.Keyword.Word.attention_sparsity: "Sparsity (Attention)",
     eppb.Keyword.Word.structured_sparsity: "Sparsity (Structured)",
-    eppb.Keyword.Word.deployment: "LLM Deployment",
-    eppb.Keyword.Word.overlap: "Communication-Computation Overlap",
-    eppb.Keyword.Word.performance_modeling: "Performance Modeling",
+
+    eppb.Keyword.Word.quantization: "Quantization",
+
     eppb.Keyword.Word.kv_cache_quant: "Quantization (KV Cache)",
+    eppb.Keyword.Word.kv_cache_management: "KV Cache Management",
+
+    eppb.Keyword.Word.survey: "Survey",
+    eppb.Keyword.Word.low_rank: "Low Rank Decomposition",
+    eppb.Keyword.Word.fusion: "Layer Fusion (Reduce IO)",
+    eppb.Keyword.Word.tool: "Tool",
+    eppb.Keyword.Word.efficient_training: "Efficient Training",
+    eppb.Keyword.Word.structure_design: "Network Structure Design",
+    eppb.Keyword.Word.deployment: "LLM Deployment",
+    eppb.Keyword.Word.overlap: "Comm-Comp Overlap",
+    eppb.Keyword.Word.performance_modeling: "Performance Modeling",
     eppb.Keyword.Word.benchmark: "Benchmark",
 }
 

@@ -9,7 +9,7 @@ paper {
   authors: "Lin Tian"
   institutions: "Southwest University"
   institutions: "Murdoch University"
-  institutions: "RMIT University"
+  institutions: "Massachusetts Institute of Technology University"
   institutions: "University of Technology Sydney"
 }
 pub {
@@ -19,9 +19,6 @@ pub {
 code {
   type: "Pytorch"
   url: "https://github.com/Aireduce952/Tree-of-Agents"
-}
-note {
-  url: "note.md"
 }
 keyword {
   words: structure_design

@@ -13,7 +13,7 @@ paper {
   authors: "Yizhou Shan"
   institutions: "Peking University"
   institutions: "Nanjing University"
-  institutions: "Huawei Cloud"
+  institutions: "Huawei"
 }
 pub {
   where: "arXiv"
@@ -27,7 +27,7 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
 }

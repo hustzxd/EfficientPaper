@@ -1,0 +1,34 @@
+paper {
+  title: "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning"
+  abbr: "MixKVQ"
+  url: "http://arxiv.org/abs/2512.19206v1"
+  authors: "Tao Zhang"
+  authors: "Ziqian Zeng"
+  authors: "Hao Peng"
+  authors: "Huiping Zhuang"
+  authors: "Cen Chen"
+  institutions: "South China University of Technology"
+  institutions: "Beihang University"
+  institutions: "Pazhou Laboratory"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: kv_cache_quant
+  words: quantization
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/KIVI"
+  methods: "2024/KVQuant"
+  methods: "2025/RotateKV"
+}

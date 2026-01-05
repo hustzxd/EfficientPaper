@@ -1,0 +1,33 @@
+paper {
+  title: "SQ-format: A Unified Sparse-Quantized Hardware-friendly Data Format for LLMs"
+  abbr: "SQ-format"
+  url: "http://arxiv.org/abs/2512.05409v1"
+  authors: "Ruixuan Huang"
+  authors: "Hao Zeng"
+  authors: "Hantao Huang"
+  authors: "Jinyuan Shi"
+  authors: "Minghui Yu"
+  authors: "Ian En-Hsu Yen"
+  authors: "Shuai Wang"
+  institutions: "Hong Kong University of Science and Technology"
+  institutions: "Moffett AI"
+  institutions: "ByteDance Seed"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: quantization
+  words: weight_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2023/GPTQ"
+}

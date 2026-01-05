@@ -1,0 +1,31 @@
+paper {
+  title: "Hyper-Connections"
+  abbr: "DHC"
+  url: "http://arxiv.org/abs/2409.19606v3"
+  authors: "Defa Zhu"
+  authors: "Hongzhi Huang"
+  authors: "Zihao Huang"
+  authors: "Yutao Zeng"
+  authors: "Yunyao Mao"
+  authors: "Banggu Wu"
+  authors: "Qiyang Min"
+  authors: "Xun Zhou"
+  institutions: "ByteDance Seed"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/lucidrains/hyper-connections"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}

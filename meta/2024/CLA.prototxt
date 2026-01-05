@@ -7,8 +7,7 @@ paper {
   authors: "Aniruddha Nrusimha"
   authors: "Rameswar Panda"
   authors: "Jonathan Ragan Kelly"
-  institutions: "MIT"
-  institutions: "MIT-IBM Watson AI Lab"
+  institutions: "Massachusetts Institute of Technology"
 }
 pub {
   where: "arXiv"
@@ -18,13 +17,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/JerryYin777/Cross-Layer-Attention"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache
+  words: kv_cache_management
   words: structure_design
 }
 cover {
   url: "fig1.png"
+}
+baseline {
+  methods: "None"
 }

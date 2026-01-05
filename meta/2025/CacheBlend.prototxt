@@ -24,7 +24,7 @@ code {
   url: "https://github.com/LMCache/LMCache"
 }
 keyword {
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: "fig1.png"

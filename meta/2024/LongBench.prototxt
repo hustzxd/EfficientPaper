@@ -16,7 +16,7 @@ paper {
   authors: "Jie Tang"
   authors: "Juanzi Li"
   institutions: "Tsinghua University"
-  institutions: "Zhipu.AI"
+  institutions: "Zhipu AI"
   institutions: "Institute of Automation, Chinese Academy of Sciences"
 }
 pub {
@@ -25,14 +25,14 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
-}
-note {
-  url: "note.md"
+  url: "https://github.com/THUDM/LongBench"
 }
 keyword {
   words: benchmark
 }
 cover {
-  url: ""
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
 }

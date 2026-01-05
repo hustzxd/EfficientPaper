@@ -7,7 +7,7 @@ paper {
   authors: "Pengfei Zuo"
   authors: "James Cheng"
   institutions: "The Chinese University of Hong Kong"
-  institutions: "Huawei Cloud"
+  institutions: "Huawei"
 }
 pub {
   where: "arXiv"
@@ -20,7 +20,7 @@ code {
 keyword {
   words: attention_sparsity
   words: deployment
-  words: kv_cache
+  words: kv_cache_management
 }
 cover {
   url: "cover.png"

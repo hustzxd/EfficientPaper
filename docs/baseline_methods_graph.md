@@ -6,7 +6,7 @@ Each component represents a family of related methods, showing how newer papers 
 
 ## StreamingLLM Family
 
-*25 methods, 37 relationships*
+*26 methods, 39 relationships*
 
 ```mermaid
 flowchart LR
@@ -43,6 +43,8 @@ flowchart LR
     class 2025_FlexPrefill defaultNode
     2025_FreeKV["FreeKV[2025]"]
     class 2025_FreeKV leafNode
+    2025_Kascade["Kascade[2025]"]
+    class 2025_Kascade leafNode
     2025_LAVa["LAVa[2025]"]
     class 2025_LAVa leafNode
     2025_PruLong["PruLong[2025]"]
@@ -90,61 +92,65 @@ flowchart LR
     linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
     2024_Quest ==>|" "| 2025_FreeKV
     linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_UNComp
+    2024_Quest ==>|" "| 2025_Kascade
     linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_DefensiveKV
+    2024_Quest ==>|" "| 2025_UNComp
     linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_EvolKV
+    2024_SnapKV ==>|" "| 2025_DefensiveKV
     linkStyle 14 stroke:#FFA500,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_LAVa
+    2024_SnapKV ==>|" "| 2025_EvolKV
     linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_PureKV
+    2024_SnapKV ==>|" "| 2025_LAVa
     linkStyle 16 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_UNComp
+    2024_SnapKV ==>|" "| 2025_PureKV
     linkStyle 17 stroke:#FF6347,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_InfLLM
+    2024_SnapKV ==>|" "| 2025_UNComp
     linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_MInference
+    2024_StreamingLLM ==>|" "| 2024_InfLLM
     linkStyle 19 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_EvolKV
+    2024_StreamingLLM ==>|" "| 2024_MInference
     linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_FlexPrefill
+    2024_StreamingLLM ==>|" "| 2025_EvolKV
     linkStyle 21 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_PureKV
+    2024_StreamingLLM ==>|" "| 2025_FlexPrefill
     linkStyle 22 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_UNComp
+    2024_StreamingLLM ==>|" "| 2025_Kascade
     linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_XAttention
+    2024_StreamingLLM ==>|" "| 2025_PureKV
     linkStyle 24 stroke:#9370DB,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_BLASST
+    2024_StreamingLLM ==>|" "| 2025_UNComp
     linkStyle 25 stroke:#FF6347,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_TCA_Attention
+    2024_StreamingLLM ==>|" "| 2025_XAttention
     linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_XAttention
+    2025_FlexPrefill ==>|" "| 2025_BLASST
     linkStyle 27 stroke:#FFD700,stroke-width:2.5px
-    2025_RaaS ==>|" "| 2025_FreeKV
+    2025_FlexPrefill ==>|" "| 2025_TCA_Attention
     linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
-    2025_ShadowKV ==>|" "| 2025_FreeKV
+    2025_FlexPrefill ==>|" "| 2025_XAttention
     linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_BLASST
+    2025_RaaS ==>|" "| 2025_FreeKV
     linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_TCA_Attention
+    2025_ShadowKV ==>|" "| 2025_FreeKV
     linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    Ada_SnapKV ==>|" "| 2025_LAVa
+    2025_XAttention ==>|" "| 2025_BLASST
     linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    CAKE ==>|" "| 2025_LAVa
+    2025_XAttention ==>|" "| 2025_TCA_Attention
     linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_EvolKV
+    Ada_SnapKV ==>|" "| 2025_LAVa
     linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_LAVa
+    CAKE ==>|" "| 2025_LAVa
     linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_UNComp
+    PyramidKV ==>|" "| 2025_EvolKV
     linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
+    PyramidKV ==>|" "| 2025_LAVa
+    linkStyle 37 stroke:#00CED1,stroke-width:2.5px
+    PyramidKV ==>|" "| 2025_UNComp
+    linkStyle 38 stroke:#FFA500,stroke-width:2.5px
 ```
 
 ## KIVI Family
 
-*12 methods, 15 relationships*
+*13 methods, 18 relationships*
 
 ```mermaid
 flowchart LR
@@ -169,10 +175,12 @@ flowchart LR
     class 2025_KVmix leafNode
     2025_MILLION["MILLION[2025]"]
     class 2025_MILLION defaultNode
+    2025_MixKVQ["MixKVQ[2025]"]
+    class 2025_MixKVQ leafNode
     2025_QJL["QJL[2025]"]
     class 2025_QJL leafNode
     2025_RotateKV["RotateKV[2025]"]
-    class 2025_RotateKV leafNode
+    class 2025_RotateKV defaultNode
     2025_VecInfer["VecInfer[2025]"]
     class 2025_VecInfer leafNode
     Loki["Loki"]
@@ -186,28 +194,34 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
     2024_KIVI ==>|" "| 2025_MILLION
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_QJL
+    2024_KIVI ==>|" "| 2025_MixKVQ
     linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_RotateKV
+    2024_KIVI ==>|" "| 2025_QJL
     linkStyle 5 stroke:#00CED1,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_VecInfer
+    2024_KIVI ==>|" "| 2025_RotateKV
     linkStyle 6 stroke:#FFA500,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_KVmix
+    2024_KIVI ==>|" "| 2025_VecInfer
     linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_MILLION
+    2024_KVQuant ==>|" "| 2025_KVmix
     linkStyle 8 stroke:#9370DB,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_QJL
+    2024_KVQuant ==>|" "| 2025_MILLION
     linkStyle 9 stroke:#FF6347,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_RotateKV
+    2024_KVQuant ==>|" "| 2025_MixKVQ
     linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
-    2024_MiKV ==>|" "| 2025_RotateKV
+    2024_KVQuant ==>|" "| 2025_QJL
     linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2024_ZipCache ==>|" "| 2025_RotateKV
+    2024_KVQuant ==>|" "| 2025_RotateKV
     linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
-    2025_MILLION ==>|" "| 2025_VecInfer
+    2024_MiKV ==>|" "| 2025_RotateKV
     linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    Loki ==>|" "| 2025_H1B_KV
+    2024_ZipCache ==>|" "| 2025_RotateKV
     linkStyle 14 stroke:#FFA500,stroke-width:2.5px
+    2025_MILLION ==>|" "| 2025_VecInfer
+    linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
+    2025_RotateKV ==>|" "| 2025_MixKVQ
+    linkStyle 16 stroke:#9370DB,stroke-width:2.5px
+    Loki ==>|" "| 2025_H1B_KV
+    linkStyle 17 stroke:#FF6347,stroke-width:2.5px
 ```
 
 ## PagedAttention Family
@@ -328,6 +342,46 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
     2025_SVG ==>|" "| 2025_SVG2
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+```
+
+## GPTQ Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2023_GPTQ["GPTQ[2023]"]
+    class 2023_GPTQ rootNode
+    2025_SQ_format["SQ-format[2025]"]
+    class 2025_SQ_format leafNode
+
+    2023_GPTQ ==>|" "| 2025_SQ_format
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+```
+
+## DHC Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_DHC["DHC[2025]"]
+    class 2025_DHC rootNode
+    2025_mHC["mHC[2025]"]
+    class 2025_mHC leafNode
+
+    2025_DHC ==>|" "| 2025_mHC
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```
 
 ## NSA Family
