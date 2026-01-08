@@ -1073,10 +1073,10 @@
         const result = await response.json();
 
         if (response.ok) {
-          showMessage('Paper deleted successfully! Redirecting...', 'success');
+          showMessage('Paper deleted successfully! Closing tab...', 'success');
           setTimeout(() => {
-            window.location.href = '/search/';
-          }, 2000);
+            window.close();
+          }, 1500);
         } else {
           throw new Error(result.error || 'Failed to delete paper');
         }

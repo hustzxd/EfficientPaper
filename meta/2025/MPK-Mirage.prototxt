@@ -1,0 +1,39 @@
+paper {
+  title: "Mirage: A Multi-Level Superoptimizer for Tensor Programs"
+  abbr: "Mirage"
+  url: "http://arxiv.org/abs/2405.05751v3"
+  authors: "Mengdi Wu"
+  authors: "Xinhao Cheng"
+  authors: "Shengyu Liu"
+  authors: "Chunan Shi"
+  authors: "Jianan Ji"
+  authors: "Kit Ao"
+  authors: "Praveen Velliengiri"
+  authors: "Xupeng Miao"
+  authors: "Oded Padon"
+  authors: "Zhihao Jia"
+  institutions: "Carnegie Mellon University"
+  institutions: "Peking University"
+  institutions: "Pennsylvania State University"
+  institutions: "Purdue University"
+  institutions: "Weizmann Institute of Science"
+}
+pub {
+  where: "OSDI"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mirage-project/mirage"
+}
+keyword {
+  words: overlap
+  words: deployment
+  words: tool
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}

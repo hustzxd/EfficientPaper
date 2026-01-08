@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>MIRAGE: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving - Efficient Paper</title>
+    <title>SignRoundV2: Closing the Performance Gap in Extremely Low-Bit Post-Training Quantization for LLMs - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "MIRAGE: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving";
-        var mkdocs_page_input_path = "notes/2025/MIRAGE/note.md";
+        var mkdocs_page_name = "SignRoundV2: Closing the Performance Gap in Extremely Low-Bit Post-Training Quantization for LLMs";
+        var mkdocs_page_input_path = "notes/2025/SignRoundV2/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -100,7 +100,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">MIRAGE: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving</li>
+      <li class="breadcrumb-item active">SignRoundV2: Closing the Performance Gap in Extremely Low-Bit Post-Training Quantization for LLMs</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -110,28 +110,13 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="mirage-kv-cache-optimization-through-parameter-remapping-for-multi-tenant-llm-serving">MIRAGE: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving</h1>
+                <h1 id="signroundv2-closing-the-performance-gap-in-extremely-low-bit-post-training-quantization-for-llms">SignRoundV2: Closing the Performance Gap in Extremely Low-Bit Post-Training Quantization for LLMs</h1>
 <blockquote>
-<p>Ruihao Li, Shagnik Pal, Vineeth Narayan Pullu, Prasoon Sinha, Jeeho Ryoo, Lizy K. John, Neeraja J. Yadwadkar</p>
+<p>Wenhua Cheng, Weiwei Zhang, Heng Guo, Haihao Shen</p>
 </blockquote>
-<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>KV cache accelerates LLM inference by avoiding redundant computation, at the
-expense of memory. To support larger KV caches, prior work extends GPU memory
-with CPU memory via CPU-offloading. This involves swapping KV cache between GPU
-and CPU memory. However, because the cache updates dynamically, such swapping
-incurs high CPU memory traffic. We make a key observation that model parameters
-remain constant during runtime, unlike the dynamically updated KV cache.
-Building on this, we introduce MIRAGE, which avoids KV cache swapping by
-remapping, and thereby repurposing, the memory allocated to model parameters
-for KV cache. This parameter remapping is especially beneficial in multi-tenant
-environments, where the memory used for the parameters of the inactive models
-can be more aggressively reclaimed. Exploiting the high CPU-GPU bandwidth
-offered by the modern hardware, such as the NVIDIA Grace Hopper Superchip, we
-show that MIRAGE significantly outperforms state-of-the-art solutions,
-achieving a reduction of 44.8%-82.5% in tail time-between-token latency,
-20.7%-99.3% in tail time-to-first-token latency, and 6.6%-86.7% higher
-throughput compared to vLLM.</p>
+<p>Extreme low-bit quantization is critical for efficiently deploying Large Language Models (LLMs), yet it often leads to severe performance degradation at 2-bits and even 4-bits (e.g., MXFP4). We present SignRoundV2, a post-training quantization framework that is highly effective even without mixed-precision. SignRoundV2 introduces (1) a fast sensitivity metric that combines gradient information with quantization-induced deviations to guide layer-wise bit allocation, and (2) a lightweight pre-tuning search for quantization scales to improve extremely low-bit quantization. These components allow SignRoundV2 to close the gap with full-precision models. Extensive experiments indicate that our method sustains competitive accuracy for LLMs, achieving production-grade performance with about 1 percent variance at 4-5 bits and strong results even at 2 bits. The implementation is available at https://github.com/intel/auto-round.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
@@ -197,6 +182,7 @@ throughput compared to vLLM.</p>
       <script src="../../../../js/preview.js"></script>
       <script src="../../../../js/back-to-top.js"></script>
       <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);

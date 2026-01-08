@@ -1,0 +1,29 @@
+paper {
+  title: "SignRoundV2: Closing the Performance Gap in Extremely Low-Bit Post-Training Quantization for LLMs"
+  abbr: "SignRoundV2"
+  url: "http://arxiv.org/abs/2512.04746v1"
+  authors: "Wenhua Cheng"
+  authors: "Weiwei Zhang"
+  authors: "Heng Guo"
+  authors: "Haihao Shen"
+  institutions: "Intel"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/intel/auto-round"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/GPTQ"
+  methods: "2024/AWQ"
+}
+update_time: 1767864059

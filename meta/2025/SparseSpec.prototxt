@@ -32,11 +32,11 @@ code {
 }
 keyword {
   words: attention_sparsity
-  words: deployment
   words: kv_cache_management
+  words: deployment
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"

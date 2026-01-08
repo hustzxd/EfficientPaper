@@ -1,0 +1,38 @@
+paper {
+  title: "ESS: An Offload-Centric Latent-Cache Management Architecture for DeepSeek-V3.2-Exp"
+  abbr: "ESS"
+  url: "http://arxiv.org/abs/2512.10576v1"
+  authors: "Xinhang Chen"
+  authors: "Chao Zhang"
+  authors: "Jiahuan He"
+  authors: "Wei Liu"
+  authors: "Jianming Zhang"
+  authors: "Wenlong Zhou"
+  authors: "Xiao Li"
+  authors: "Pai Zeng"
+  authors: "Shiyong Li"
+  authors: "Yuanpan Qian"
+  authors: "Dong Li"
+  authors: "Zhaogeng Li"
+  institutions: "Baidu"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1767863719

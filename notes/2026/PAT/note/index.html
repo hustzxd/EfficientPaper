@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption - Efficient Paper</title>
+    <title>PAT: Accelerating LLM Decoding via Prefix-Aware Attention with Resource Efficient Multi-Tile Kernel - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Keep the Cost Down: A Review on Methods to Optimize LLM\u0027 s KV-Cache Consumption";
-        var mkdocs_page_input_path = "notes/2024/JSHWEV0S/note.md";
+        var mkdocs_page_name = "PAT: Accelerating LLM Decoding via Prefix-Aware Attention with Resource Efficient Multi-Tile Kernel";
+        var mkdocs_page_input_path = "notes/2026/PAT/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -100,7 +100,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption</li>
+      <li class="breadcrumb-item active">PAT: Accelerating LLM Decoding via Prefix-Aware Attention with Resource Efficient Multi-Tile Kernel</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -110,25 +110,14 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="keep-the-cost-down-a-review-on-methods-to-optimize-llm-s-kv-cache-consumption">Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption</h1>
-<p><a class="glightbox" href="../overview.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../overview.png" /></a></p>
+                <h1 id="pat-accelerating-llm-decoding-via-prefix-aware-attention-with-resource-efficient-multi-tile-kernel">PAT: Accelerating LLM Decoding via Prefix-Aware Attention with Resource Efficient Multi-Tile Kernel</h1>
+<blockquote>
+<p>Jinjun Yi, Zhixin Zhao, Yitao Hu, Ke Yan, Weiwei Sun, Hao Wang, Laiping Zhao, Yuhao Zhang, Wenxin Li, Keqiu Li</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs), epitomized by ChatGPT' s release in late 2022,
-have revolutionized various industries with their advanced language
-comprehension. However, their efficiency is challenged by the Transformer
-architecture' s struggle with handling long texts. KV-Cache has emerged as a
-pivotal solution to this issue, converting the time complexity of token
-generation from quadratic to linear, albeit with increased GPU memory overhead
-proportional to conversation length. With the development of the LLM community
-and academia, various KV-Cache compression methods have been proposed. In this
-review, we dissect the various properties of KV-Cache and elaborate on various
-methods currently used to optimize the KV-Cache space usage of LLMs. These
-methods span the pre-training phase, deployment phase, and inference phase, and
-we summarize the commonalities and differences among these methods.
-Additionally, we list some metrics for evaluating the long-text capabilities of
-large language models, from both efficiency and capability perspectives. Our
-review thus sheds light on the evolving landscape of LLM optimization, offering
-insights into future advancements in this dynamic field.</p>
+<p>LLM serving is increasingly dominated by decode attention, which is a memory-bound operation due to massive KV cache loading from global memory. Meanwhile, real-world workloads exhibit substantial, hierarchical shared prefixes across requests (e.g., system prompts, tools/templates, RAG). Existing attention implementations fail to fully exploit prefix sharing: one-query-per-CTA execution repeatedly loads shared prefix KV cache, while one-size-fits-all tiling leaves on-chip resources idle and exacerbates bubbles for uneven KV lengths. These choices amplify memory bandwidth pressure and stall memory-bound decode attention.
+  This paper introduces PAT, a prefix-aware attention kernel implementation for LLM decoding that organizes execution with a pack-forward-merge paradigm. PAT packs queries by shared prefix to reduce repeated memory accesses, runs a customized multi-tile kernel to achieve high resource efficiency. It further applies practical multi-stream forwarding and KV splitting to reduce resource bubbles. The final merge performs online softmax with negligible overhead. We implement PAT as an off-the-shelf plugin for vLLM. Evaluation on both real-world and synthetic workloads shows that PAT reduces attention latency by 53.5% on average and TPOT by 17.0-93.1% under the same configurations against state-of-the-art attention kernels. PAT's source code is publicly available at https://github.com/flashserve/PAT.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
@@ -194,6 +183,7 @@ insights into future advancements in this dynamic field.</p>
       <script src="../../../../js/preview.js"></script>
       <script src="../../../../js/back-to-top.js"></script>
       <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);

@@ -14,7 +14,7 @@ paper {
   authors: "Song Han"
   institutions: "NVIDIA"
   institutions: "Massachusetts Institute of Technology"
-  institutions: "SJTU"
+  institutions: "Shanghai Jiao Tong University"
 }
 pub {
   where: "arXiv"
@@ -24,14 +24,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/mit-han-lab/omniserve"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
+  words: kv_cache_management
 }
 cover {
   url: "fig5.png"
+}
+baseline {
+  methods: "None"
 }

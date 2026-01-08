@@ -1,0 +1,27 @@
+paper {
+  title: "NOSA: Native and Offloadable Sparse Attention"
+  abbr: "NOSA"
+  url: "http://arxiv.org/abs/2510.13602v1"
+  authors: "Yuxiang Huang"
+  authors: "Chaojun Xiao"
+  authors: "Xu Han"
+  authors: "Zhiyuan Liu"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

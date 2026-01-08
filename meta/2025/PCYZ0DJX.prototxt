@@ -1,0 +1,32 @@
+paper {
+  title: "Efficient Attention Mechanisms for Large Language Models: A Survey"
+  abbr: "PCYZ0DJX"
+  url: "http://arxiv.org/abs/2507.19595v2"
+  authors: "Yutao Sun"
+  authors: "Zhenyu Li"
+  authors: "Yike Zhang"
+  authors: "Tengyu Pan"
+  authors: "Bowen Dong"
+  authors: "Yuyi Guo"
+  authors: "Jianyong Wang"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: survey
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}

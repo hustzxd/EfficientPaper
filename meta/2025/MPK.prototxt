@@ -1,0 +1,50 @@
+paper {
+  title: "Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs"
+  abbr: "MPK"
+  url: "http://arxiv.org/abs/2512.22219v1"
+  authors: "Xinhao Cheng"
+  authors: "Zhihao Zhang"
+  authors: "Yu Zhou"
+  authors: "Jianan Ji"
+  authors: "Jinchen Jiang"
+  authors: "Zepeng Zhao"
+  authors: "Ziruo Xiao"
+  authors: "Zihao Ye"
+  authors: "Yingyi Huang"
+  authors: "Ruihang Lai"
+  authors: "Hongyi Jin"
+  authors: "Bohan Hou"
+  authors: "Mengdi Wu"
+  authors: "Yixin Dong"
+  authors: "Anthony Yip"
+  authors: "Zihao Ye"
+  authors: "Songting Wang"
+  authors: "Wenqin Yang"
+  authors: "Xupeng Miao"
+  authors: "Tianqi Chen"
+  authors: "Zhihao Jia"
+  institutions: "Carnegie Mellon University"
+  institutions: "Tsinghua University"
+  institutions: "NVIDIA"
+  institutions: "University of Michigan"
+  institutions: "Purdue University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/mirage-project/mirage"
+}
+keyword {
+  words: overlap
+  words: deployment
+  words: tool
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}

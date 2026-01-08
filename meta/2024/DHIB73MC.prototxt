@@ -1,6 +1,6 @@
 paper {
   title: "A Survey on Efficient Inference for Large Language Models"
-  abbr: ""
+  abbr: "DHIB73MC"
   url: "http://arxiv.org/abs/2404.14294v2"
   authors: "Zixuan Zhou"
   authors: "Xuefei Ning"
@@ -18,7 +18,7 @@ paper {
   authors: "Yuhan Dong"
   authors: "Yu Wang"
   institutions: "Tsinghua University"
-  institutions: "Shanghai Jiaotong University"
+  institutions: "Shanghai Jiao Tong University"
   institutions: "Peking University"
 }
 pub {
@@ -29,12 +29,12 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: survey
 }
 cover {
   url: "efficientinference.png"
+}
+baseline {
+  methods: "None"
 }

@@ -12,7 +12,7 @@ paper {
   authors: "Zhou Yu"
   authors: "Pengfei Zuo"
   institutions: "National University of Singapore"
-  institutions: "Shanghai Jiaotong University"
+  institutions: "Shanghai Jiao Tong University"
   institutions: "Huawei"
 }
 pub {
@@ -24,8 +24,8 @@ code {
   url: ""
 }
 keyword {
-  words: deployment
   words: kv_cache_management
+  words: deployment
 }
 cover {
   url: ""

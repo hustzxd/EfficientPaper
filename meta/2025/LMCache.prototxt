@@ -1,0 +1,35 @@
+paper {
+  title: "LMCache: An Efficient KV Cache Layer for Enterprise-Scale LLM Inference"
+  abbr: "LMCache"
+  url: "http://arxiv.org/abs/2510.09665v2"
+  authors: "Yuhan Liu"
+  authors: "Yihua Cheng"
+  authors: "Jiayi Yao"
+  authors: "Yuwei An"
+  authors: "Xiaokun Chen"
+  authors: "Shaoting Feng"
+  authors: "Yuyang Huang"
+  authors: "Samuel Shen"
+  authors: "Rui Zhang"
+  authors: "Kuntai Du"
+  authors: "Junchen Jiang"
+  institutions: "Tensormesh"
+  institutions: "University of Chicago"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/LMCache/LMCache"
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
