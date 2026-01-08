@@ -1689,6 +1689,43 @@ function closeLightbox() {
   const itemsPerPage = 10;
   let selectedPapers = new Set(); // Track selected papers by index or ID
   let starCache = {}; // Cache GitHub star counts
+  let isLocalServerAvailable = false; // Track local server availability
+
+  // Check if local server is available
+  async function checkLocalServer() {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+      const response = await fetch('http://localhost:8001/api/get-keywords', {
+        method: 'GET',
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      isLocalServerAvailable = response.ok;
+    } catch (e) {
+      isLocalServerAvailable = false;
+    }
+    updateServerDependentUI();
+  }
+
+  // Update UI elements that depend on local server
+  function updateServerDependentUI() {
+    const serverButtons = ['add-arxiv-btn', 'upload-github-btn', 'pdf-path-btn'];
+    serverButtons.forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.style.display = isLocalServerAvailable ? '' : 'none';
+      }
+    });
+
+    // Update PDF and Edit buttons in paper cards
+    document.querySelectorAll('.pdf-btn').forEach(btn => {
+      btn.style.display = isLocalServerAvailable ? '' : 'none';
+    });
+    document.querySelectorAll('.edit-link').forEach(link => {
+      link.style.display = isLocalServerAvailable ? '' : 'none';
+    });
+  }
 
   // Format timestamp to human-readable date
   function formatUpdateTime(timestamp) {
@@ -1929,7 +1966,7 @@ function closeLightbox() {
               ${codeLink}
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
               <button class="pdf-btn" data-abbr="${paper.abbr || ''}" data-year="${paper.year || ''}" data-url="${paper.url || ''}" data-title="${paper.title.replace(/'/g, "\\'")}" onclick="openLocalPdf('${paper.abbr || 'paper'}', '${paper.title.replace(/'/g, "\\'")}', '${paper.year || ''}', '${paper.url || ''}')" title="Open local PDF or download (requires local server)">📄 PDF</button>
-              ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server">Edit 🔧</a>` : ''}
+              ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server" class="edit-link">Edit 🔧</a>` : ''}
             </div>
           </div>
         </div>
@@ -1943,6 +1980,9 @@ function closeLightbox() {
 
     // Load star counts asynchronously
     loadStarCounts();
+
+    // Update server-dependent UI elements (PDF, Edit buttons)
+    updateServerDependentUI();
   }
 
   // Load star counts asynchronously
@@ -2898,6 +2938,9 @@ function closeLightbox() {
 
   // Initialize
   function init() {
+    // Check local server availability first
+    checkLocalServer();
+
     loadPapers();
 
     // Event listeners
@@ -3160,5 +3203,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-08 09:31:21.570033+00:00
+Build Date UTC : 2026-01-08 09:53:02.802002+00:00
 -->
