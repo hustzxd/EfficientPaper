@@ -1,0 +1,27 @@
+paper {
+  title: "SGLang"
+  abbr: "SGLang-Code"
+  url: ""
+  authors: "Name1"
+  authors: "Name2"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sgl-project/sglang"
+}
+keyword {
+  words: deployment
+  words: tool
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

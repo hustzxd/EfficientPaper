@@ -118,11 +118,12 @@ def generate_search_data():
             "code_url": pinfo.code.url if pinfo.code.url else None,
             "note_url": note_url,
             "prototxt_path": f"meta/{year}/{filename}",
+            "update_time": pinfo.update_time if pinfo.HasField('update_time') else 0,
         }
         data.append(paper_data)
 
-    # Sort by year descending, title ascending
-    data.sort(key=lambda x: (-x["year"], x["title"].lower()))
+    # Sort by update_time descending (most recently updated first)
+    data.sort(key=lambda x: (-x["update_time"], x["title"].lower()))
 
     # Generate complete search data structure
     search_data = {

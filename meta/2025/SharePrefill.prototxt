@@ -9,7 +9,7 @@ paper {
   authors: "Jun Wang"
   institutions: "OPPO Research Institute"
   institutions: "Zhejiang University"
-  institutions: "Shanghai Jiaotong University"
+  institutions: "Shanghai Jiao Tong University"
 }
 pub {
   where: "arXiv"
@@ -19,14 +19,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
+  words: kv_cache_management
 }
 cover {
   url: "fig3.png"
+}
+baseline {
+  methods: "None"
 }

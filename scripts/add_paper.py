@@ -118,6 +118,7 @@ def main():
         pinfo.paper.title = paper.title
         pinfo.paper.abbr = name
         pinfo.paper.url = paper.entry_id
+        pinfo.update_time = int(datetime.datetime.now().timestamp())
         authors = [author.name for author in paper.authors]
         try:
             pinfo.paper.authors.clear()
@@ -157,6 +158,7 @@ def main():
         else:
             year = 2025
         pinfo.pub.year = year
+        pinfo.update_time = int(datetime.datetime.now().timestamp())
 
     root_dir = "./"
     # Ensure year-based directory exists

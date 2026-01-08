@@ -66,6 +66,16 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_add_from_arxiv()
         elif parsed_url.path == '/api/upload-github':
             self.handle_upload_github()
+        elif parsed_url.path == '/api/browse-folder':
+            self.handle_browse_folder()
+        elif parsed_url.path == '/api/verify-pdf-path':
+            self.handle_verify_pdf_path()
+        elif parsed_url.path == '/api/open-pdf':
+            self.handle_open_pdf()
+        elif parsed_url.path == '/api/download-pdf':
+            self.handle_download_pdf()
+        elif parsed_url.path == '/api/find-pdf':
+            self.handle_find_pdf()
         else:
             self.send_error(404, "Not Found")
 
@@ -118,6 +128,7 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                 'baseline': {
                     'methods': list(pinfo.baseline.methods),
                 },
+                'update_time': pinfo.update_time if pinfo.HasField('update_time') else None,
             }
 
             self.send_json_response(data)
@@ -280,6 +291,11 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
 
             # Baseline section
             pinfo.baseline.methods.extend(data['baseline']['methods'])
+
+            # Update timestamp
+            import datetime
+            import time
+            pinfo.update_time = int(time.time())
 
             # Write to file
             with open(file_path, 'w') as f:
@@ -815,6 +831,371 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             traceback.print_exc()
             self.send_json_response({'error': str(e)}, 500)
 
+    def handle_browse_folder(self):
+        """Open a folder selection dialog and return the selected path"""
+        try:
+            # Read request body (may be empty)
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > 0:
+                body = self.rfile.read(content_length)
+
+            import subprocess
+            import platform
+
+            system = platform.system()
+
+            if system == 'Darwin':  # macOS
+                # Use osascript to show folder selection dialog
+                # Use 'Finder' instead of 'System Events' for better compatibility
+                script = '''
+                tell application "Finder"
+                    set folderPath to choose folder with prompt "Select PDF Folder"
+                    return POSIX path of folderPath
+                end tell
+                '''
+                result = subprocess.run(
+                    ['osascript', '-e', script],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
+                )
+                if result.returncode == 0:
+                    folder_path = result.stdout.strip()
+                    if folder_path:
+                        # Remove trailing slash if present
+                        if folder_path.endswith('/'):
+                            folder_path = folder_path[:-1]
+                        self.send_json_response({'path': folder_path})
+                    else:
+                        self.send_json_response({'error': 'No folder selected'}, 400)
+                else:
+                    # User cancelled the dialog
+                    self.send_json_response({'error': 'Folder selection cancelled'}, 400)
+
+            elif system == 'Windows':
+                # Use PowerShell to show folder selection dialog
+                script = '''
+                Add-Type -AssemblyName System.Windows.Forms
+                $folder = New-Object System.Windows.Forms.FolderBrowserDialog
+                $folder.Description = "Select PDF Folder"
+                $folder.ShowNewFolderButton = $false
+                if ($folder.ShowDialog() -eq "OK") {
+                    Write-Output $folder.SelectedPath
+                }
+                '''
+                result = subprocess.run(
+                    ['powershell', '-Command', script],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
+                )
+                if result.returncode == 0 and result.stdout.strip():
+                    folder_path = result.stdout.strip()
+                    self.send_json_response({'path': folder_path})
+                else:
+                    self.send_json_response({'error': 'Folder selection cancelled'}, 400)
+
+            else:  # Linux
+                # Use zenity (common on GNOME) or kdialog (KDE)
+                # Try zenity first
+                result = subprocess.run(
+                    ['zenity', '--file-selection', '--directory', '--title=Select PDF Folder'],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
+                )
+                if result.returncode == 0 and result.stdout.strip():
+                    folder_path = result.stdout.strip()
+                    # Remove trailing newline
+                    folder_path = folder_path.rstrip('\n\r')
+                    self.send_json_response({'path': folder_path})
+                else:
+                    # Try kdialog as fallback
+                    result = subprocess.run(
+                        ['kdialog', '--getexistingdirectory', '--title=Select PDF Folder'],
+                        capture_output=True,
+                        text=True,
+                        timeout=60
+                    )
+                    if result.returncode == 0 and result.stdout.strip():
+                        folder_path = result.stdout.strip().rstrip('\n\r')
+                        self.send_json_response({'path': folder_path})
+                    else:
+                        self.send_json_response({'error': 'Folder selection cancelled or not supported. Please install zenity or enter path manually.'}, 400)
+
+        except subprocess.TimeoutExpired:
+            self.send_json_response({'error': 'Folder selection timed out'}, 500)
+        except FileNotFoundError:
+            # Folder selection tools not available
+            self.send_json_response({'error': 'Folder selection dialog not available. Please enter the path manually.'}, 400)
+        except Exception as e:
+            print(f"Error browsing folder: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_verify_pdf_path(self):
+        """Verify if the PDF path exists and count PDF files"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            path = request_data.get('path', '').strip()
+
+            if not path:
+                self.send_json_response({'error': 'Missing path'}, 400)
+                return
+
+            # Expand ~ to home directory
+            path = os.path.expanduser(path)
+
+            # Check if path exists and is a directory
+            if not os.path.exists(path):
+                self.send_json_response({'error': f'Path does not exist: {path}', 'valid': False}, 404)
+                return
+
+            if not os.path.isdir(path):
+                self.send_json_response({'error': f'Path is not a directory: {path}', 'valid': False}, 400)
+                return
+
+            # Count PDF files
+            pdf_count = 0
+            for filename in os.listdir(path):
+                if filename.lower().endswith('.pdf'):
+                    pdf_count += 1
+
+            self.send_json_response({
+                'valid': True,
+                'path': path,
+                'count': pdf_count
+            })
+
+        except Exception as e:
+            print(f"Error verifying PDF path: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e), 'valid': False}, 500)
+
+    def handle_open_pdf(self):
+        """Open a PDF file with the system's default viewer"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            pdf_path = request_data.get('path', '').strip()
+
+            if not pdf_path:
+                self.send_json_response({'error': 'Missing PDF path'}, 400)
+                return
+
+            # Expand ~ to home directory
+            pdf_path = os.path.expanduser(pdf_path)
+
+            # Check if file exists
+            if not os.path.exists(pdf_path):
+                self.send_json_response({'error': f'PDF file not found: {pdf_path}'}, 404)
+                return
+
+            # Open PDF with system default application
+            import subprocess
+            import platform
+
+            system = platform.system()
+            try:
+                if system == 'Darwin':  # macOS
+                    subprocess.run(['open', pdf_path], check=True)
+                elif system == 'Windows':
+                    subprocess.run(['start', '', pdf_path], shell=True, check=True)
+                else:  # Linux and others
+                    subprocess.run(['xdg-open', pdf_path], check=True)
+
+                self.send_json_response({'success': True, 'message': f'Opened: {pdf_path}'})
+            except subprocess.CalledProcessError as e:
+                self.send_json_response({'error': f'Failed to open PDF: {str(e)}'}, 500)
+
+        except Exception as e:
+            print(f"Error opening PDF: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_find_pdf(self):
+        """Find a PDF file in the specified directory"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            pdf_dir = request_data.get('pdf_path', '').strip()
+            abbr = request_data.get('abbr', '').strip()
+            title = request_data.get('title', '').strip()
+            possible_names = request_data.get('possible_names', [])
+
+            if not pdf_dir or not abbr:
+                self.send_json_response({'error': 'Missing pdf_path or abbr'}, 400)
+                return
+
+            # Expand ~ to home directory
+            pdf_dir = os.path.expanduser(pdf_dir)
+
+            # Check if directory exists
+            if not os.path.exists(pdf_dir) or not os.path.isdir(pdf_dir):
+                self.send_json_response({'error': f'PDF directory not found: {pdf_dir}'}, 404)
+                return
+
+            # Try each possible filename
+            found_path = None
+            for filename in possible_names:
+                filepath = os.path.join(pdf_dir, filename)
+                if os.path.exists(filepath) and os.path.isfile(filepath):
+                    found_path = filepath
+                    break
+
+            if found_path:
+                # Open the PDF
+                import subprocess
+                import platform
+
+                system = platform.system()
+                try:
+                    if system == 'Darwin':  # macOS
+                        subprocess.run(['open', found_path], check=True)
+                    elif system == 'Windows':
+                        subprocess.run(['start', '', found_path], shell=True, check=True)
+                    else:  # Linux and others
+                        subprocess.run(['xdg-open', found_path], check=True)
+
+                    self.send_json_response({'success': True, 'message': f'Opened: {found_path}'})
+                except subprocess.CalledProcessError as e:
+                    self.send_json_response({'error': f'Failed to open PDF: {str(e)}'}, 500)
+            else:
+                self.send_json_response({'error': f'PDF not found for "{abbr}"', 'not_found': True}, 404)
+
+        except Exception as e:
+            print(f"Error finding PDF: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_download_pdf(self):
+        """Download PDF from paper URL and save to local directory"""
+        try:
+            # Read request body
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            pdf_dir = request_data.get('pdf_dir', '').strip()
+            filename = request_data.get('filename', '').strip()
+            url = request_data.get('url', '').strip()
+            title = request_data.get('title', '').strip()
+            abbr = request_data.get('abbr', '').strip()
+
+            if not pdf_dir or not filename or not url:
+                self.send_json_response({'error': 'Missing pdf_dir, filename, or url'}, 400)
+                return
+
+            # Expand ~ to home directory
+            pdf_dir = os.path.expanduser(pdf_dir)
+
+            # Create directory if it doesn't exist
+            os.makedirs(pdf_dir, exist_ok=True)
+
+            # Determine the PDF URL
+            pdf_url = url
+
+            # If the URL is an arXiv abstract page, convert to PDF link
+            import re
+            arxiv_match = re.match(r'https?://arxiv\.org/abs/(\d+\.\d+)', url)
+            if arxiv_match:
+                arxiv_id = arxiv_match.group(1)
+                pdf_url = f'https://arxiv.org/pdf/{arxiv_id}.pdf'
+            # If URL is already arxiv.org/pdf, use as is
+            elif 'arxiv.org/pdf/' in url:
+                pdf_url = url
+            # If URL ends with .pdf, use as is
+            elif url.lower().endswith('.pdf'):
+                pdf_url = url
+            else:
+                # Try to find PDF link in common patterns
+                # For OpenReview, ICLR, NeurIPS, etc.
+                if 'openreview.net' in url:
+                    # OpenReview PDF URL pattern
+                    if '/pdf' not in url:
+                        pdf_url = url.replace('/forum?', '/pdf?id=').replace('id=', 'pdf?id=')
+                elif 'neurips.cc' in url or 'nips.cc' in url:
+                    # NeurIPS paper URL usually has a PDF link
+                    pdf_url = url + '.pdf' if not url.endswith('.pdf') else url
+                elif 'icml.cc' in url or 'icml.cc' in url:
+                    # ICML
+                    pdf_url = url + '.pdf' if not url.endswith('.pdf') else url
+                elif 'openaccess.thecvf' in url:
+                    # CVF (CVPR, ICCV, etc.)
+                    pdf_url = url.replace('html', 'pdf')
+                else:
+                    # Generic: try adding .pdf
+                    if not url.endswith('.pdf'):
+                        pdf_url = url + '.pdf'
+
+            # Download the PDF
+            import urllib.request
+            import ssl
+
+            # Create output file path
+            output_path = os.path.join(pdf_dir, filename)
+
+            print(f"Downloading PDF from: {pdf_url}")
+            print(f"Saving to: {output_path}")
+
+            # Download with SSL context (some sites need this)
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+
+            # Use urllib to download
+            with urllib.request.urlopen(pdf_url, context=ssl_context, timeout=30) as response:
+                with open(output_path, 'wb') as out_file:
+                    out_file.write(response.read())
+
+            # Verify the file was downloaded and is not empty
+            if not os.path.exists(output_path):
+                raise Exception('Download failed - file not created')
+
+            file_size = os.path.getsize(output_path)
+            if file_size < 1000:  # Less than 1KB likely an error page
+                # Read and check content
+                with open(output_path, 'r', errors='ignore') as f:
+                    content = f.read(500)
+                    if 'html' in content.lower() or 'error' in content.lower():
+                        os.remove(output_path)
+                        raise Exception('Downloaded file is not a valid PDF (likely an error page)')
+
+            print(f"Successfully downloaded PDF ({file_size} bytes)")
+
+            self.send_json_response({
+                'success': True,
+                'message': f'Downloaded to {output_path}',
+                'path': output_path,
+                'size': file_size
+            })
+
+        except urllib.error.HTTPError as e:
+            print(f"HTTP Error downloading PDF: {e}", file=sys.stderr)
+            self.send_json_response({'error': f'Failed to download PDF: HTTP {e.code} - The URL may not have a direct PDF link'}, 404)
+        except urllib.error.URLError as e:
+            print(f"URL Error downloading PDF: {e}", file=sys.stderr)
+            self.send_json_response({'error': f'Failed to download PDF: {str(e)}'}, 500)
+        except Exception as e:
+            print(f"Error downloading PDF: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
     def send_json_response(self, data, status=200):
         """Send JSON response"""
         self.send_response(status)
@@ -847,6 +1228,11 @@ def main():
     print(f"  - POST http://localhost:{port}/api/delete-paper")
     print(f"  - POST http://localhost:{port}/api/add-from-arxiv")
     print(f"  - POST http://localhost:{port}/api/upload-github")
+    print(f"  - POST http://localhost:{port}/api/browse-folder")
+    print(f"  - POST http://localhost:{port}/api/verify-pdf-path")
+    print(f"  - POST http://localhost:{port}/api/open-pdf")
+    print(f"  - POST http://localhost:{port}/api/download-pdf")
+    print(f"  - POST http://localhost:{port}/api/find-pdf")
     print(f"  - POST http://localhost:{port}/save_note")
     print("Press Ctrl+C to stop")
 

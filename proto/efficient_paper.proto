@@ -10,6 +10,7 @@ message PaperInfo {
     optional Keyword keyword = 5;
     optional Cover cover = 6;
     optional Baseline baseline = 7;
+    optional int64 update_time = 8;  // Unix timestamp when paper was added/updated
 }
 
 message Paper {
@@ -55,7 +56,8 @@ message Keyword {
         quantization = 10;
 
         kv_cache_quant = 20;
-        kv_cache_management = 21;
+        kv_cache_sparse = 21;
+        kv_cache_management = 22;
 
         overlap = 30;
 

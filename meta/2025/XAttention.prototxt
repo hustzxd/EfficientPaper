@@ -9,7 +9,7 @@ paper {
   authors: "Song Han"
   institutions: "Tsinghua University"
   institutions: "Massachusetts Institute of Technology"
-  institutions: "SJTU"
+  institutions: "Shanghai Jiao Tong University"
   institutions: "NVIDIA"
 }
 pub {
@@ -21,9 +21,9 @@ code {
   url: "https://github.com/mit-han-lab/x-attention"
 }
 keyword {
+  words: sparse_pruning
   words: attention_sparsity
   words: kv_cache_management
-  words: sparse_pruning
 }
 cover {
   url: "fig1.png"

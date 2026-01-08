@@ -2,7 +2,7 @@
 
 > Yilong Zhao, Jiaming Tang, Kan Zhu, Zihao Ye, Chi-Chih Chang, Chaofan Lin, Jongseok Park, Guangxuan Xiao, Mohamed S. Abdelfattah, Mingyu Gao, Baris Kasikci, Song Han, Ion Stoica
 
-![111](../../blank.jpg)
+![111](cover.png)
 
 ## Abstract
 

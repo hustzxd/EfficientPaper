@@ -81,6 +81,7 @@ word_pb2str = {
     eppb.Keyword.Word.quantization: "Quantization",
 
     eppb.Keyword.Word.kv_cache_quant: "Quantization (KV Cache)",
+    eppb.Keyword.Word.kv_cache_sparse: "Sparse/Eviction (KV Cache)",
     eppb.Keyword.Word.kv_cache_management: "KV Cache Management",
 
     eppb.Keyword.Word.survey: "Survey",

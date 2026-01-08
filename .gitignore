@@ -4,6 +4,7 @@ git_push.sh
 git_pull.sh
 pdfs
 .DS_Store
+local_config.json
 
 # docs
 site/

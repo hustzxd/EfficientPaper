@@ -14,7 +14,7 @@ paper {
   institutions: "Advanced Micro Devices"
 }
 pub {
-  where: ""
+  where: "Coling"
   year: 2025
 }
 code {
@@ -22,8 +22,8 @@ code {
   url: ""
 }
 keyword {
-  words: weight_sparsity
   words: sparse_pruning
+  words: weight_sparsity
 }
 cover {
   url: "sds.png"

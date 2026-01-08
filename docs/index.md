@@ -21,6 +21,7 @@
       <button id="add-arxiv-btn" class="add-arxiv-btn" title="Add paper from arXiv (requires local server)">➕ Add from arXiv</button>
       <button id="upload-github-btn" class="upload-github-btn" title="Upload changes to GitHub (requires local server)">☁️ Upload to GitHub</button>
       <button id="export-selected-btn" class="export-btn" style="display: none;" title="Export selected papers">📥 Export Selected (<span id="selected-count">0</span>)</button>
+      <button id="pdf-path-btn" class="pdf-path-btn" title="Set local PDF folder path">📁 Set PDF Path</button>
     </div>
     <div class="search-stats">
       <span id="result-count">Loading...</span>
@@ -121,6 +122,31 @@
       <div class="arxiv-modal-footer">
         <button id="github-submit-btn" class="btn-primary">Upload</button>
         <button id="github-cancel-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PDF Path Modal -->
+  <div id="pdf-modal" class="arxiv-modal" style="display: none;">
+    <div class="arxiv-modal-content">
+      <div class="arxiv-modal-header">
+        <h2>📁 Set Local PDF Folder</h2>
+        <button id="close-pdf" class="close-arxiv">✕</button>
+      </div>
+      <div class="arxiv-modal-body">
+        <div class="form-group">
+          <label for="pdf-path-input">PDF Folder Path</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="pdf-path-input" placeholder="/Users/yourname/Papers/PDFs" style="flex: 1;">
+            <button type="button" id="pdf-browse-btn" class="btn-secondary" style="white-space: nowrap;">Browse…</button>
+          </div>
+          <small>Enter the path manually or click Browse to select a folder. This path will be saved in your browser.</small>
+        </div>
+        <div id="pdf-status" class="arxiv-status"></div>
+      </div>
+      <div class="arxiv-modal-footer">
+        <button id="pdf-submit-btn" class="btn-primary">Save Path</button>
+        <button id="pdf-cancel-btn" class="btn-secondary">Cancel</button>
       </div>
     </div>
   </div>
@@ -311,6 +337,21 @@
 
 .upload-github-btn:hover {
   background: #e65100;
+}
+
+.pdf-path-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #795548;
+  border-radius: 6px;
+  background: #795548;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pdf-path-btn:hover {
+  background: #5d4037;
 }
 
 .export-btn {
@@ -1044,6 +1085,16 @@
   color: #888;
 }
 
+.paper-update-time {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.paper-update-time .update-time {
+  font-style: italic;
+}
+
 .paper-links {
   margin-top: 10px;
   display: flex;
@@ -1101,6 +1152,25 @@
 
 .copy-btn.copied {
   color: #43a047;
+}
+
+.pdf-btn {
+  font-size: 13px;
+  color: #d32f2f;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.pdf-btn:hover {
+  color: #b71c1c;
+  text-decoration: underline;
 }
 
 .copy-btn svg {
@@ -1280,6 +1350,146 @@
 </style>
 
 <script>
+// PDF path storage
+const PDF_PATH_KEY = 'efficient_paper_pdf_path';
+
+// Get PDF path from localStorage
+function getPdfPath() {
+  return localStorage.getItem(PDF_PATH_KEY) || '';
+}
+
+// Save PDF path to localStorage
+function savePdfPath(path) {
+  localStorage.setItem(PDF_PATH_KEY, path);
+}
+
+// Open local PDF file (global scope)
+async function openLocalPdf(abbr, title, year, paperUrl) {
+  const pdfPath = getPdfPath();
+  if (!pdfPath) {
+    alert('Please set the PDF folder path first by clicking "📁 Set PDF Path" button.');
+    showPdfModal();
+    return;
+  }
+
+  // Show loading state on the button
+  const button = document.querySelector(`.pdf-btn[data-abbr="${abbr}"]`);
+  const originalText = button ? button.innerHTML : '📄 PDF';
+  if (button) {
+    button.innerHTML = '⏳...';
+    button.disabled = true;
+  }
+
+  // Construct PDF path organized by year
+  const pdfDir = year ? `${pdfPath}/${year}` : pdfPath;
+  const exactPath = `${pdfDir}/${abbr}.pdf`;
+
+  // First try to open the PDF directly
+  try {
+    const response = await fetch(`http://localhost:8001/api/open-pdf`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        path: exactPath
+      })
+    });
+
+    if (response.ok) {
+      if (button) {
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }
+      return;
+    }
+  } catch (e) {
+    // Continue to try other patterns
+  }
+
+  // PDF not found, check if we can download it
+  if (!paperUrl) {
+    if (button) {
+      button.innerHTML = '❌ No URL';
+      button.disabled = false;
+    }
+    alert(`Could not find PDF for "${title}" (${abbr}).\\n\\nNo paper URL available for download.\\n\\nMake sure the PDF file exists in your local folder: ${pdfDir}`);
+    return;
+  }
+
+  // Ask user if they want to download
+  const confirmed = confirm(
+    `PDF not found locally for:\\n"${title}" (${abbr})\\n\\n` +
+    `Would you like to download it from:\\n${paperUrl}\\n\\n` +
+    `The PDF will be saved to: ${pdfDir}/${abbr}.pdf`
+  );
+
+  if (!confirmed) {
+    if (button) {
+      button.innerHTML = originalText;
+      button.disabled = false;
+    }
+    return;
+  }
+
+  // Download the PDF
+  if (button) {
+    button.innerHTML = '⬇️ Download...';
+  }
+
+  try {
+    const response = await fetch(`http://localhost:8001/api/download-pdf`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        pdf_dir: pdfDir,
+        filename: `${abbr}.pdf`,
+        url: paperUrl,
+        title: title,
+        abbr: abbr
+      })
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      if (button) {
+        button.innerHTML = '✓ Done';
+      }
+      // Open the downloaded PDF
+      setTimeout(async () => {
+        await fetch(`http://localhost:8001/api/open-pdf`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            path: exactPath
+          })
+        });
+        if (button) {
+          button.innerHTML = originalText;
+          button.disabled = false;
+        }
+      }, 500);
+    } else {
+      throw new Error(result.error || 'Download failed');
+    }
+  } catch (error) {
+    console.error('Failed to download PDF:', error);
+    if (button) {
+      button.innerHTML = '❌ Failed';
+      button.disabled = false;
+      setTimeout(() => {
+        button.innerHTML = originalText;
+      }, 2000);
+    }
+    alert(`Failed to download PDF: ${error.message}\\n\\nYou can download manually from:\\n${paperUrl}`);
+  }
+}
+
 // Copy paper info function (global scope)
 function copyPaperInfo(title, url) {
   // For plain text platforms (WeChat, etc.), just use the title
@@ -1366,6 +1576,23 @@ function closeLightbox() {
   const itemsPerPage = 10;
   let selectedPapers = new Set(); // Track selected papers by index or ID
   let starCache = {}; // Cache GitHub star counts
+
+  // Format timestamp to human-readable date
+  function formatUpdateTime(timestamp) {
+    if (!timestamp || timestamp === 0) return '';
+    const date = new Date(timestamp * 1000);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) return 'Today';
+    if (diffDays === 1) return 'Yesterday';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+    if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
 
   // Fetch GitHub stars for a repository
   async function fetchGitHubStars(repoUrl) {
@@ -1557,6 +1784,11 @@ function closeLightbox() {
            </a>`
         : '';
 
+      // Format update time
+      const updateTimeHtml = paper.update_time
+        ? `<span class="update-time" title="Updated: ${new Date(paper.update_time * 1000).toLocaleString()}">Updated: ${formatUpdateTime(paper.update_time)}</span>`
+        : '';
+
       return `
         <div class="paper-card">
           <input type="checkbox" class="paper-checkbox" data-paper-id="${paperId}" ${isChecked} onchange="togglePaperSelection('${paperId}', this.checked)">
@@ -1573,6 +1805,7 @@ function closeLightbox() {
               <span class="paper-badge badge-venue">${paper.venue}</span>
               ${paper.keywords.map(k => `<span class="paper-badge badge-keyword">${k}</span>`).join('')}
             </div>
+            ${updateTimeHtml ? `<div class="paper-update-time">${updateTimeHtml}</div>` : ''}
             ${authors ? `<div class="paper-authors">${authors}</div>` : ''}
             ${institutions ? `<div class="paper-institutions">${institutions}</div>` : ''}
             <div class="paper-links">
@@ -1582,6 +1815,7 @@ function closeLightbox() {
               </button>` : ''}
               ${codeLink}
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
+              <button class="pdf-btn" data-abbr="${paper.abbr || ''}" data-year="${paper.year || ''}" data-url="${paper.url || ''}" data-title="${paper.title.replace(/'/g, "\\'")}" onclick="openLocalPdf('${paper.abbr || 'paper'}', '${paper.title.replace(/'/g, "\\'")}', '${paper.year || ''}', '${paper.url || ''}')" title="Open local PDF or download (requires local server)">📄 PDF</button>
               ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server">Edit 🔧</a>` : ''}
             </div>
           </div>
@@ -2450,6 +2684,105 @@ function closeLightbox() {
     };
   }
 
+  // PDF Modal functions
+  function showPdfModal() {
+    const modal = document.getElementById('pdf-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    // Load saved path
+    const savedPath = getPdfPath();
+    if (savedPath) {
+      document.getElementById('pdf-path-input').value = savedPath;
+    }
+    document.getElementById('pdf-status').textContent = '';
+    document.getElementById('pdf-status').className = 'arxiv-status';
+    document.getElementById('pdf-path-input').focus();
+  }
+
+  function closePdfModal() {
+    const modal = document.getElementById('pdf-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  async function browsePdfFolder() {
+    const statusEl = document.getElementById('pdf-status');
+
+    statusEl.textContent = 'Opening folder dialog...';
+    statusEl.className = 'arxiv-status status-loading';
+
+    try {
+      const response = await fetch('http://localhost:8001/api/browse-folder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.path) {
+        document.getElementById('pdf-path-input').value = result.path;
+        statusEl.textContent = `Selected folder: ${result.path}`;
+        statusEl.className = 'arxiv-status status-success';
+        // Auto-save the selected path
+        setTimeout(() => {
+          savePdfPathSetting();
+        }, 500);
+      } else {
+        statusEl.textContent = result.error || 'Failed to select folder';
+        statusEl.className = 'arxiv-status status-error';
+      }
+    } catch (error) {
+      console.error('Failed to browse folder:', error);
+      statusEl.textContent = `Error: ${error.message}. Make sure the server is running.`;
+      statusEl.className = 'arxiv-status status-error';
+    }
+  }
+
+  async function savePdfPathSetting() {
+    const pathInput = document.getElementById('pdf-path-input');
+    const path = pathInput.value.trim();
+    const statusEl = document.getElementById('pdf-status');
+
+    if (!path) {
+      statusEl.textContent = 'Please enter a path';
+      statusEl.className = 'arxiv-status status-error';
+      return;
+    }
+
+    statusEl.textContent = 'Verifying path...';
+    statusEl.className = 'arxiv-status status-loading';
+
+    try {
+      const response = await fetch('http://localhost:8001/api/verify-pdf-path', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ path: path })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.valid) {
+        savePdfPath(path);
+        statusEl.textContent = `✓ Path saved successfully! Found ${result.count || 0} PDF files.`;
+        statusEl.className = 'arxiv-status status-success';
+        setTimeout(() => {
+          closePdfModal();
+        }, 1500);
+      } else {
+        statusEl.textContent = result.error || 'Path is not valid or does not exist';
+        statusEl.className = 'arxiv-status status-error';
+      }
+    } catch (error) {
+      console.error('Failed to verify path:', error);
+      statusEl.textContent = `Error: ${error.message}. Make sure the server is running.`;
+      statusEl.className = 'arxiv-status status-error';
+    }
+  }
+
   // Initialize
   function init() {
     loadPapers();
@@ -2545,6 +2878,27 @@ function closeLightbox() {
       }
     });
 
+    // PDF path modal
+    document.getElementById('pdf-path-btn').addEventListener('click', showPdfModal);
+    document.getElementById('close-pdf').addEventListener('click', closePdfModal);
+    document.getElementById('pdf-cancel-btn').addEventListener('click', closePdfModal);
+    document.getElementById('pdf-submit-btn').addEventListener('click', savePdfPathSetting);
+    document.getElementById('pdf-browse-btn').addEventListener('click', browsePdfFolder);
+
+    // Close PDF modal on overlay click
+    document.getElementById('pdf-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'pdf-modal') {
+        closePdfModal();
+      }
+    });
+
+    // Submit on Enter in PDF path input
+    document.getElementById('pdf-path-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        savePdfPathSetting();
+      }
+    });
+
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
@@ -2558,10 +2912,22 @@ function closeLightbox() {
           closeGithubModal();
           return;
         }
+        // Close PDF modal if open
+        const pdfModal = document.getElementById('pdf-modal');
+        if (pdfModal.style.display === 'flex') {
+          closePdfModal();
+          return;
+        }
         // Close arXiv modal if open
         const arxivModal = document.getElementById('arxiv-modal');
         if (arxivModal.style.display === 'flex') {
           closeArxivModal();
+          return;
+        }
+        // Close export modal if open
+        const exportModal = document.getElementById('export-modal');
+        if (exportModal.style.display === 'flex') {
+          closeExportModal();
           return;
         }
         // Close stats panel if open

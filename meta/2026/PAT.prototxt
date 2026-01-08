@@ -1,0 +1,34 @@
+paper {
+  title: "PAT: Accelerating LLM Decoding via Prefix-Aware Attention with Resource Efficient Multi-Tile Kernel"
+  abbr: "PAT"
+  url: "http://arxiv.org/abs/2511.22333v2"
+  authors: "Jinjun Yi"
+  authors: "Zhixin Zhao"
+  authors: "Yitao Hu"
+  authors: "Ke Yan"
+  authors: "Weiwei Sun"
+  authors: "Hao Wang"
+  authors: "Laiping Zhao"
+  authors: "Yuhao Zhang"
+  authors: "Wenxin Li"
+  authors: "Keqiu Li"
+  institutions: "Tianjin University"
+  institutions: "Stevens Institute of Technology"
+}
+pub {
+  where: "ASPLOS"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/flashserve/PAT"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

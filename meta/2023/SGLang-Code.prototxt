@@ -1,0 +1,25 @@
+paper {
+  title: "vLLM"
+  abbr: "vLLM"
+  url: ""
+  authors: "Name2"
+  institutions: "inst1"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/vllm-project/vllm"
+}
+keyword {
+  words: deployment
+  words: tool
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}

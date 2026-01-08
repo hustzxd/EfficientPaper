@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x65\x66\x66icient_paper.proto\x12\x0f\x65\x66\x66icient_paper\"\xa6\x02\n\tPaperInfo\x12%\n\x05paper\x18\x01 \x01(\x0b\x32\x16.efficient_paper.Paper\x12)\n\x03pub\x18\x02 \x01(\x0b\x32\x1c.efficient_paper.Publication\x12#\n\x04\x63ode\x18\x03 \x01(\x0b\x32\x15.efficient_paper.Code\x12#\n\x04note\x18\x04 \x01(\x0b\x32\x15.efficient_paper.Note\x12)\n\x07keyword\x18\x05 \x01(\x0b\x32\x18.efficient_paper.Keyword\x12%\n\x05\x63over\x18\x06 \x01(\x0b\x32\x16.efficient_paper.Cover\x12+\n\x08\x62\x61seline\x18\x07 \x01(\x0b\x32\x19.efficient_paper.Baseline\"g\n\x05Paper\x12\x1a\n\x05title\x18\x01 \x01(\t:\x0bpaper title\x12\x0e\n\x04\x61\x62\x62r\x18\x02 \x01(\t:\x00\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x0f\n\x07\x61uthors\x18\x04 \x03(\t\x12\x14\n\x0cinstitutions\x18\x05 \x03(\t\"1\n\x0bPublication\x12\x14\n\x05where\x18\x01 \x01(\t:\x05\x61rXiv\x12\x0c\n\x04year\x18\x02 \x01(\x05\"*\n\x04\x43ode\x12\x15\n\x04type\x18\x01 \x01(\t:\x07Pytorch\x12\x0b\n\x03url\x18\x02 \x01(\t\"\x1c\n\x04Note\x12\x14\n\x03url\x18\x01 \x01(\t:\x07note.md\"\x14\n\x05\x43over\x12\x0b\n\x03url\x18\x01 \x01(\t\"\x1b\n\x08\x42\x61seline\x12\x0f\n\x07methods\x18\x01 \x03(\t\"\xa0\x03\n\x07Keyword\x12,\n\x05words\x18\x01 \x03(\x0e\x32\x1d.efficient_paper.Keyword.Word\"\xe6\x02\n\x04Word\x12\x08\n\x04none\x10\x01\x12\x12\n\x0esparse_pruning\x10\x02\x12\x16\n\x12\x61ttention_sparsity\x10\x03\x12\x17\n\x13\x61\x63tivation_sparsity\x10\x04\x12\x13\n\x0fweight_sparsity\x10\x05\x12\x17\n\x13structured_sparsity\x10\x06\x12\x10\n\x0cquantization\x10\n\x12\x12\n\x0ekv_cache_quant\x10\x14\x12\x17\n\x13kv_cache_management\x10\x15\x12\x0b\n\x07overlap\x10\x1e\x12\x18\n\x14performance_modeling\x10(\x12\x0e\n\ndeployment\x10)\x12\n\n\x06survey\x10*\x12\x14\n\x10structure_design\x10+\x12\x0c\n\x08low_rank\x10,\x12\n\n\x06\x66usion\x10-\x12\x16\n\x12\x65\x66\x66icient_training\x10.\x12\x08\n\x04tool\x10/\x12\r\n\tbenchmark\x10\x30\"P\n\nSearchWord\x12\x18\n\x10\x62\x61\x63kground_words\x18\x01 \x03(\t\x12\x11\n\tkey_words\x18\x02 \x03(\t\x12\x15\n\rexclude_words\x18\x03 \x03(\t\"\x1c\n\x08RepoList\x12\x10\n\x08repo_url\x18\x01 \x03(\t')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x65\x66\x66icient_paper.proto\x12\x0f\x65\x66\x66icient_paper\"\xbb\x02\n\tPaperInfo\x12%\n\x05paper\x18\x01 \x01(\x0b\x32\x16.efficient_paper.Paper\x12)\n\x03pub\x18\x02 \x01(\x0b\x32\x1c.efficient_paper.Publication\x12#\n\x04\x63ode\x18\x03 \x01(\x0b\x32\x15.efficient_paper.Code\x12#\n\x04note\x18\x04 \x01(\x0b\x32\x15.efficient_paper.Note\x12)\n\x07keyword\x18\x05 \x01(\x0b\x32\x18.efficient_paper.Keyword\x12%\n\x05\x63over\x18\x06 \x01(\x0b\x32\x16.efficient_paper.Cover\x12+\n\x08\x62\x61seline\x18\x07 \x01(\x0b\x32\x19.efficient_paper.Baseline\x12\x13\n\x0bupdate_time\x18\x08 \x01(\x03\"g\n\x05Paper\x12\x1a\n\x05title\x18\x01 \x01(\t:\x0bpaper title\x12\x0e\n\x04\x61\x62\x62r\x18\x02 \x01(\t:\x00\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x0f\n\x07\x61uthors\x18\x04 \x03(\t\x12\x14\n\x0cinstitutions\x18\x05 \x03(\t\"1\n\x0bPublication\x12\x14\n\x05where\x18\x01 \x01(\t:\x05\x61rXiv\x12\x0c\n\x04year\x18\x02 \x01(\x05\"*\n\x04\x43ode\x12\x15\n\x04type\x18\x01 \x01(\t:\x07Pytorch\x12\x0b\n\x03url\x18\x02 \x01(\t\"\x1c\n\x04Note\x12\x14\n\x03url\x18\x01 \x01(\t:\x07note.md\"\x14\n\x05\x43over\x12\x0b\n\x03url\x18\x01 \x01(\t\"\x1b\n\x08\x42\x61seline\x12\x0f\n\x07methods\x18\x01 \x03(\t\"\xb5\x03\n\x07Keyword\x12,\n\x05words\x18\x01 \x03(\x0e\x32\x1d.efficient_paper.Keyword.Word\"\xfb\x02\n\x04Word\x12\x08\n\x04none\x10\x01\x12\x12\n\x0esparse_pruning\x10\x02\x12\x16\n\x12\x61ttention_sparsity\x10\x03\x12\x17\n\x13\x61\x63tivation_sparsity\x10\x04\x12\x13\n\x0fweight_sparsity\x10\x05\x12\x17\n\x13structured_sparsity\x10\x06\x12\x10\n\x0cquantization\x10\n\x12\x12\n\x0ekv_cache_quant\x10\x14\x12\x13\n\x0fkv_cache_sparse\x10\x15\x12\x17\n\x13kv_cache_management\x10\x16\x12\x0b\n\x07overlap\x10\x1e\x12\x18\n\x14performance_modeling\x10(\x12\x0e\n\ndeployment\x10)\x12\n\n\x06survey\x10*\x12\x14\n\x10structure_design\x10+\x12\x0c\n\x08low_rank\x10,\x12\n\n\x06\x66usion\x10-\x12\x16\n\x12\x65\x66\x66icient_training\x10.\x12\x08\n\x04tool\x10/\x12\r\n\tbenchmark\x10\x30\"P\n\nSearchWord\x12\x18\n\x10\x62\x61\x63kground_words\x18\x01 \x03(\t\x12\x11\n\tkey_words\x18\x02 \x03(\t\x12\x15\n\rexclude_words\x18\x03 \x03(\t\"\x1c\n\x08RepoList\x12\x10\n\x08repo_url\x18\x01 \x03(\t')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,25 +32,25 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'efficient_paper_pb2', _glob
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_PAPERINFO']._serialized_start=43
-  _globals['_PAPERINFO']._serialized_end=337
-  _globals['_PAPER']._serialized_start=339
-  _globals['_PAPER']._serialized_end=442
-  _globals['_PUBLICATION']._serialized_start=444
-  _globals['_PUBLICATION']._serialized_end=493
-  _globals['_CODE']._serialized_start=495
-  _globals['_CODE']._serialized_end=537
-  _globals['_NOTE']._serialized_start=539
-  _globals['_NOTE']._serialized_end=567
-  _globals['_COVER']._serialized_start=569
-  _globals['_COVER']._serialized_end=589
-  _globals['_BASELINE']._serialized_start=591
-  _globals['_BASELINE']._serialized_end=618
-  _globals['_KEYWORD']._serialized_start=621
-  _globals['_KEYWORD']._serialized_end=1037
-  _globals['_KEYWORD_WORD']._serialized_start=679
-  _globals['_KEYWORD_WORD']._serialized_end=1037
-  _globals['_SEARCHWORD']._serialized_start=1039
-  _globals['_SEARCHWORD']._serialized_end=1119
-  _globals['_REPOLIST']._serialized_start=1121
-  _globals['_REPOLIST']._serialized_end=1149
+  _globals['_PAPERINFO']._serialized_end=358
+  _globals['_PAPER']._serialized_start=360
+  _globals['_PAPER']._serialized_end=463
+  _globals['_PUBLICATION']._serialized_start=465
+  _globals['_PUBLICATION']._serialized_end=514
+  _globals['_CODE']._serialized_start=516
+  _globals['_CODE']._serialized_end=558
+  _globals['_NOTE']._serialized_start=560
+  _globals['_NOTE']._serialized_end=588
+  _globals['_COVER']._serialized_start=590
+  _globals['_COVER']._serialized_end=610
+  _globals['_BASELINE']._serialized_start=612
+  _globals['_BASELINE']._serialized_end=639
+  _globals['_KEYWORD']._serialized_start=642
+  _globals['_KEYWORD']._serialized_end=1079
+  _globals['_KEYWORD_WORD']._serialized_start=700
+  _globals['_KEYWORD_WORD']._serialized_end=1079
+  _globals['_SEARCHWORD']._serialized_start=1081
+  _globals['_SEARCHWORD']._serialized_end=1161
+  _globals['_REPOLIST']._serialized_start=1163
+  _globals['_REPOLIST']._serialized_end=1191
 # @@protoc_insertion_point(module_scope)

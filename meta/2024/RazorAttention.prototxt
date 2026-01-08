@@ -1,0 +1,32 @@
+paper {
+  title: "RazorAttention: Efficient KV Cache Compression Through Retrieval Heads"
+  abbr: "RazorAttention"
+  url: "http://arxiv.org/abs/2407.15891v1"
+  authors: "Hanlin Tang"
+  authors: "Yang Lin"
+  authors: "Jing Lin"
+  authors: "Qingsen Han"
+  authors: "Shikuan Hong"
+  authors: "Yiwu Yao"
+  authors: "Gongyi Wang"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/StreamingLLM"
+  methods: "2023/H2O"
+}
+update_time: 1767863141

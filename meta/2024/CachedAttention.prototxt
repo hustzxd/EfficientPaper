@@ -12,7 +12,7 @@ paper {
   authors: "Zhou Yu"
   authors: "Pengfei Zuo"
   institutions: "National University of Singapore"
-  institutions: "Shanghai Jiaotong University"
+  institutions: "Shanghai Jiao Tong University"
   institutions: "Huawei"
 }
 pub {
@@ -23,13 +23,13 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: kv_cache_management
   words: deployment
 }
 cover {
   url: "fig5.png"
+}
+baseline {
+  methods: "None"
 }

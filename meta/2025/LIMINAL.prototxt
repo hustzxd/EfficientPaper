@@ -6,7 +6,7 @@ paper {
   authors: "Neal Crago"
   authors: "Karthikeyan Sankaralingam"
   authors: "Christos Kozyrakis"
-  institutions: "NVIDIA Research"
+  institutions: "NVIDIA"
 }
 pub {
   where: "arXiv"
@@ -16,12 +16,12 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: performance_modeling
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }

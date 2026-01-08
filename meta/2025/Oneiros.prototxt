@@ -1,7 +1,7 @@
 paper {
-  title: "MIRAGE: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving"
-  abbr: "MIRAGE"
-  url: "http://arxiv.org/abs/2507.11507v1"
+  title: "Oneiros: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving"
+  abbr: "Oneiros"
+  url: "http://arxiv.org/abs/2507.11507v2"
   authors: "Ruihao Li"
   authors: "Shagnik Pal"
   authors: "Vineeth Narayan Pullu"
@@ -11,18 +11,14 @@ paper {
   authors: "Neeraja J. Yadwadkar"
   institutions: "The University of Texas at Austin"
   institutions: "Fairleigh Dickinson University"
-  institutions: "The University of Texas at Austin"
 }
 pub {
-  where: "arXiv"
+  where: "SoCC"
   year: 2025
 }
 code {
   type: "Pytorch"
-  url: ""
-}
-note {
-  url: "note.md"
+  url: "https://github.com/UT-SysML/Oneiros"
 }
 keyword {
   words: kv_cache_management
@@ -30,4 +26,7 @@ keyword {
 }
 cover {
   url: ""
+}
+baseline {
+  methods: "None"
 }
