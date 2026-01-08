@@ -6,6 +6,22 @@
   const isNotePage = window.location.pathname.includes('/notes/');
   if (!isNotePage) return;
 
+  // Check if local server is available
+  async function checkLocalServer() {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+      const response = await fetch('http://localhost:8001/api/get-keywords', {
+        method: 'GET',
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      return response.ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
   // Get note path from URL
   function getNotePath() {
     // Try different URL patterns:
@@ -120,6 +136,13 @@
   // Initialize editor
   async function initEditor() {
     console.log('[Note Editor] Initializing on path:', window.location.pathname);
+
+    // Check if local server is available first
+    const serverAvailable = await checkLocalServer();
+    if (!serverAvailable) {
+      console.log('[Note Editor] Local server not available, hiding edit button');
+      return;
+    }
 
     const notePath = getNotePath();
     if (!notePath) {
