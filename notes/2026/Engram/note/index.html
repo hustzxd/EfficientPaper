@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention - Efficient Paper</title>
+    <title>Engram - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention";
-        var mkdocs_page_input_path = "notes/2024/8TP9NHBA/note.md";
+        var mkdocs_page_name = "Engram";
+        var mkdocs_page_input_path = "notes/2026/Engram/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -61,6 +61,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-31/">2025-12-31</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-01-09/">2026-01-09</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -100,7 +102,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention</li>
+      <li class="breadcrumb-item active">Engram</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -110,13 +112,9 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="cost-efficient-large-language-model-serving-for-multi-turn-conversations-with-cachedattention">Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention</h1>
-<blockquote>
-<p>Bin Gao, Zhuomin He, Puru Sharma, Qingxuan Kang, Djordje Jevdjic, Junbo Deng, Xingkun Yang, Zhou Yu, Pengfei Zuo</p>
-</blockquote>
-<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
+                <h1 id="engram">Engram</h1>
+<p><a class="glightbox" href="../cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Interacting with humans through multi-turn conversations is a fundamental feature of large language models (LLMs). However, existing LLM serving engines executing multi-turn conversations are inefficient due to the need to repeatedly compute the key-value (KV) caches of historical tokens, incurring high serving costs. To address the problem, this paper proposes CachedAttention, a new attention mechanism that enables reuse of KV caches across multi-turn conversations, significantly reducing the repetitive computation overheads. CachedAttention maintains a hierarchical KV caching system that leverages cost-effective memory/storage mediums to save KV caches for all requests. To reduce KV cache access overheads from slow mediums, CachedAttention employs layer-wise pre-loading and asynchronous saving schemes to overlap the KV cache access with the GPU computation. To ensure that the KV caches to be accessed are placed in the fastest hierarchy, CachedAttention employs scheduler-aware fetching and eviction schemes to consciously place the KV caches in different layers based on the hints from the inference job scheduler. To avoid the invalidation of the saved KV caches incurred by context window overflow, CachedAttention enables the saved KV caches to remain valid via decoupling the positional encoding and effectively truncating the KV caches. Extensive experimental results demonstrate that CachedAttention significantly decreases the time to the first token (TTFT) by up to 87%, improves the prompt prefilling throughput by up to 7.8<script type="math/tex">\times</script> for multi-turn conversations, and reduces the end-to-end inference cost by up to 70%.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

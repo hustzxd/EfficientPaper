@@ -1,7 +1,7 @@
 paper {
   title: "Beyond KV Caching: Shared Attention for Efficient LLMs"
   abbr: "SharedAttention"
-  url: "http://arxiv.org/abs/2407.12866v1"
+  url: "http://arxiv.org/abs/2407.12866"
   authors: "Bingli Liao"
   authors: "Danilo Vasconcellos Vargas"
   institutions: "Kyushu University"
@@ -14,14 +14,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/metacarbon/shareAtt/tree/main"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
-  words: attention_sparsity
+  words: structure_design
 }
 cover {
   url: "fig1.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1767950129

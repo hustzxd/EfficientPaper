@@ -14,13 +14,13 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "fig8.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768208382

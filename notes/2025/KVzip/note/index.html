@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Adaptive Computation Pruning for the Forgetting Transformer - Efficient Paper</title>
+    <title>KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Adaptive Computation Pruning for the Forgetting Transformer";
-        var mkdocs_page_input_path = "notes/2025/ACP/note.md";
+        var mkdocs_page_name = "KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction";
+        var mkdocs_page_input_path = "notes/2025/KVzip/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -61,6 +61,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-31/">2025-12-31</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-01-09/">2026-01-09</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -100,7 +102,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Adaptive Computation Pruning for the Forgetting Transformer</li>
+      <li class="breadcrumb-item active">KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -110,28 +112,13 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="adaptive-computation-pruning-for-the-forgetting-transformer">Adaptive Computation Pruning for the Forgetting Transformer</h1>
-<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
+                <h1 id="kvzip-query-agnostic-kv-cache-compression-with-context-reconstruction">KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction</h1>
+<blockquote>
+<p>Jang-Hyun Kim, Jinuk Kim, Sangwoo Kwon, Jae W. Lee, Sangdoo Yun, Hyun Oh Song</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>The recently proposed Forgetting Transformer (FoX) incorporates a forget gate
-into softmax attention and has shown consistently better or on-par performance
-compared to the standard RoPE-based Transformer. Notably, many attention heads
-in FoX tend to forget quickly, causing their output at each timestep to rely
-primarily on the local context. Based on this observation, we propose Adaptive
-Computation Pruning (ACP) for FoX, a method that dynamically prunes
-computations involving input-output dependencies that are strongly decayed by
-the forget gate. This is achieved using a dynamically set pruning threshold
-that ensures that the pruned attention weights remain negligible. We apply ACP
-to language model pretraining with FoX and show it consistently reduces the
-number of FLOPs in softmax attention by around 70% across different model sizes
-and context lengths, resulting in a roughly 10% to 35% improvement in training
-throughput. Furthermore, longer context lengths yield greater computational
-savings. All these speed improvements are achieved without any performance
-degradation. We also perform several analyses to provide deeper insights into
-our method, such as examining the pruning patterns and analyzing the
-distribution of FLOP savings across different attention heads. Our code is
-available at https://github.com/zhixuan-lin/arctic-fox.</p>
-<p>基于Forgetting Transformer的模型优化</p>
+<p>Transformer-based large language models (LLMs) cache context as key-value (KV) pairs during inference. As context length grows, KV cache sizes expand, leading to substantial memory overhead and increased attention latency. This paper introduces KVzip, a query-agnostic KV cache eviction method enabling effective reuse of compressed KV caches across diverse queries. KVzip quantifies the importance of a KV pair using the underlying LLM to reconstruct original contexts from cached KV pairs, subsequently evicting pairs with lower importance. Extensive empirical evaluations demonstrate that KVzip reduces KV cache size by <script type="math/tex">3</script>-<script type="math/tex">4\times</script> and FlashAttention decoding latency by approximately <script type="math/tex">2\times</script>, with negligible performance loss in question-answering, retrieval, reasoning, and code comprehension tasks. Evaluations include various models such as LLaMA3.1, Qwen2.5, and Gemma3, with context lengths reaching up to 170K tokens. KVzip significantly outperforms existing query-aware KV eviction methods, which suffer from performance degradation even at a 90% cache budget ratio under multi-query scenarios.</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

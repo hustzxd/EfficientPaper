@@ -1,0 +1,28 @@
+paper {
+  title: "GPU-Accelerated INT8 Quantization for KV Cache Compression in Large Language Models"
+  abbr: "X3NUE78O"
+  url: "http://arxiv.org/abs/2601.04719v1"
+  authors: "Maanas Taneja"
+  authors: "Purab Shingvi"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768007485

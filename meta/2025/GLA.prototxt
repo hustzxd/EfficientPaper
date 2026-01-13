@@ -15,14 +15,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/Dao-AILab/grouped-latent-attention"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: fusion
   words: structure_design
-  words: kv_cache_management
 }
 cover {
   url: "gla.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768187112

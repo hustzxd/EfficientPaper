@@ -23,8 +23,9 @@ code {
   url: ""
 }
 keyword {
-  words: activation_sparsity
   words: attention_sparsity
+  words: activation_sparsity
+  words: speculative_decoding
   words: deployment
 }
 cover {
@@ -33,3 +34,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1767869436

@@ -13,14 +13,11 @@ code {
   type: "Pytorch"
   url: "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: sparse_pruning
-  words: structure_design
   words: attention_sparsity
+  words: kv_cache_sparse
+  words: structure_design
 }
 cover {
   url: "fig1.png"
@@ -28,3 +25,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1767953224

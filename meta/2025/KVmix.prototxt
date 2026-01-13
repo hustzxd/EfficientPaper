@@ -7,7 +7,7 @@ paper {
   authors: "Weiguo Wu"
   authors: "Shiqiang Nie"
   authors: "Jinyu Wang"
-  institutions: "Xi'an Jiaotong University"
+  institutions: "Xi\'an Jiaotong University"
 }
 pub {
   where: "arXiv"
@@ -15,14 +15,10 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
-}
-note {
-  url: "note.md"
+  url: "https://github.com/LfLab-AI/KVmix"
 }
 keyword {
   words: quantization
-  words: kv_cache_management
   words: kv_cache_quant
 }
 cover {
@@ -32,3 +28,4 @@ baseline {
   methods: "2024/KIVI"
   methods: "2024/KVQuant"
 }
+update_time: 1768200055

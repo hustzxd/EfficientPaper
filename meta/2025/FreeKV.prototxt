@@ -1,7 +1,7 @@
 paper {
   title: "FreeKV: Boosting KV Cache Retrieval for Efficient LLM Inference"
   abbr: "FreeKV"
-  url: "http://arxiv.org/abs/2505.13109v3"
+  url: "http://arxiv.org/abs/2505.13109"
   authors: "Guangda Liu"
   authors: "Chengwei Li"
   authors: "Zhenyu Ning"
@@ -22,15 +22,15 @@ code {
   url: ""
 }
 keyword {
-  words: attention_sparsity
-  words: deployment
   words: kv_cache_management
+  words: deployment
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "2024/Quest"
   methods: "2025/RaaS"
   methods: "2025/ShadowKV"
 }
+update_time: 1768187837

@@ -33,6 +33,7 @@ code {
 keyword {
   words: attention_sparsity
   words: kv_cache_management
+  words: speculative_decoding
   words: deployment
 }
 cover {
@@ -41,3 +42,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1767869383

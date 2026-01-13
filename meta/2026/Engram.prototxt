@@ -1,0 +1,40 @@
+paper {
+  title: "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models"
+  abbr: "Engram"
+  url: "https://github.com/deepseek-ai/Engram/blob/main/Engram_paper.pdf"
+  authors: "Xin Cheng"
+  authors: "Wangding Zeng"
+  authors: "Damai Dai"
+  authors: "Qinyu Chen"
+  authors: "Bingxuan Wang"
+  authors: "Zhenda Xie"
+  authors: "Kezhao Huang"
+  authors: "Xingkai Yu"
+  authors: "Zhewen Hao"
+  authors: "Yukun Li"
+  authors: "Han Zhang"
+  authors: "Huishuai Zhang"
+  authors: "Dongyan Zhao"
+  authors: "Wenfeng Liang"
+  institutions: "Peking University"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "Github"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/deepseek-ai/Engram"
+}
+keyword {
+  words: sparse_pruning
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768275148

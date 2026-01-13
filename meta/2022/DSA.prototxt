@@ -17,14 +17,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache_management
 }
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768010701

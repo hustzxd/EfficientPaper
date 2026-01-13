@@ -18,7 +18,6 @@ code {
   url: "https://github.com/JerryYin777/Cross-Layer-Attention"
 }
 keyword {
-  words: kv_cache_management
   words: structure_design
 }
 cover {

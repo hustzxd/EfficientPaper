@@ -1,7 +1,7 @@
 paper {
   title: "ESS: An Offload-Centric Latent-Cache Management Architecture for DeepSeek-V3.2-Exp"
   abbr: "ESS"
-  url: "http://arxiv.org/abs/2512.10576v1"
+  url: "http://arxiv.org/abs/2512.10576"
   authors: "Xinhang Chen"
   authors: "Chao Zhang"
   authors: "Jiahuan He"
@@ -30,9 +30,9 @@ keyword {
   words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"
 }
-update_time: 1767863719
+update_time: 1767868778

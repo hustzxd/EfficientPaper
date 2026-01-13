@@ -23,12 +23,13 @@ code {
   url: ""
 }
 keyword {
-  words: deployment
   words: kv_cache_management
+  words: deployment
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"
 }
+update_time: 1768190496

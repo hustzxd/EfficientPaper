@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>KV Cache Compression for Inference Efficiency in LLMs: A Review - Efficient Paper</title>
+    <title>GPU-Accelerated INT8 Quantization for KV Cache Compression in Large Language Models - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "KV Cache Compression for Inference Efficiency in LLMs: A Review";
-        var mkdocs_page_input_path = "notes/2025/209M5GA7/note.md";
+        var mkdocs_page_name = "GPU-Accelerated INT8 Quantization for KV Cache Compression in Large Language Models";
+        var mkdocs_page_input_path = "notes/2026/X3NUE78O/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -61,6 +61,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2025-12-31/">2025-12-31</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-01-09/">2026-01-09</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -100,7 +102,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">KV Cache Compression for Inference Efficiency in LLMs: A Review</li>
+      <li class="breadcrumb-item active">GPU-Accelerated INT8 Quantization for KV Cache Compression in Large Language Models</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -110,29 +112,13 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="kv-cache-compression-for-inference-efficiency-in-llms-a-review">KV Cache Compression for Inference Efficiency in LLMs: A Review</h1>
+                <h1 id="gpu-accelerated-int8-quantization-for-kv-cache-compression-in-large-language-models">GPU-Accelerated INT8 Quantization for KV Cache Compression in Large Language Models</h1>
 <blockquote>
-<p>Yanyu Liu, Jingying Fu, Sixiang Liu, Yitian Zou, You Fu, Jiehan Zhou, Shouhua Zhang</p>
+<p>Maanas Taneja, Purab Shingvi</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
-<p>Withtherapid advancement of large language models (LLMs), the context length
-for inference has been continuously increasing, leading to an exponential
-growth in the demand for Key-Value (KV) caching. This has resulted in a
-significant memory bottleneck, limiting the inference efficiency and
-scalability of the models. Therefore, optimizing the KV cache during inference
-is crucial for enhancing performance and efficiency. This review systematically
-examines current KV cache optimization techniques, including compression
-strategies such as selective token strategies, quantization, and attention
-compression. We evaluate the effectiveness, trade-offs, and application
-scenarios of these methods, providing a comprehensive analysis of their impact
-on memory usage and inference speed. We focus on identifying the limitations
-and challenges of existing methods, such as compatibility issues with different
-models and tasks. Additionally, this review highlights future research
-directions, including hybrid optimization techniques, adaptive dynamic
-strategies, and software-hardware co-design. These approaches aim to improve
-inference efficiency and promote the practical application of large language
-models.</p>
+<p>The key-value (KV) cache in large language models presents a significant memory bottleneck during inference, growing linearly with sequence length and often exceeding the memory footprint of model weights themselves. We implement and evaluate GPU-accelerated INT8 quantization for KV cache compression, achieving 4<script type="math/tex">\times</script> memory reduction with minimal accuracy degradation. We develop four CUDA kernel variants -- naive, tiled, coarsened, and vectorized -- and benchmark them across realistic workload sizes up to 1 billion elements. Our vectorized kernel achieves up to 1,694<script type="math/tex">\times</script> speedup over CPU baselines while maintaining reconstruction error below 0.004 and attention score error below 0.1 even for 8K-dimensional heads. These results demonstrate that INT8 quantization provides a practical approach for reducing memory pressure in LLM inference with negligible computational overhead (6--58ms) and minimal impact on downstream model behavior</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

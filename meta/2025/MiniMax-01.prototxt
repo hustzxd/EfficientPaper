@@ -102,13 +102,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/MiniMax-AI/MiniMax-01"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: structure_design
 }
 cover {
   url: ""
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768271332

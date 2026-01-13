@@ -25,7 +25,6 @@ note {
 }
 keyword {
   words: quantization
-  words: kv_cache_management
   words: kv_cache_quant
 }
 cover {

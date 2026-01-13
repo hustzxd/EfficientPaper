@@ -23,7 +23,6 @@ code {
 keyword {
   words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache_management
 }
 cover {
   url: "fig1.png"
@@ -33,3 +32,4 @@ baseline {
   methods: "2024/StreamingLLM"
   methods: "2025/FlexPrefill"
 }
+update_time: 1768012233

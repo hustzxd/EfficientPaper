@@ -19,14 +19,18 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: attention_sparsity
   words: sparse_pruning
+  words: attention_sparsity
+  words: kv_cache_sparse
+  words: kv_cache_management
 }
 cover {
   url: "fig4.png"
 }
+baseline {
+  methods: "2024/LazyLLM"
+  methods: "2025/FlexPrefill"
+  methods: "2024/MInference"
+}
+update_time: 1768125886

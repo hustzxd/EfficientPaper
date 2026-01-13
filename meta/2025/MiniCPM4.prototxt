@@ -87,15 +87,15 @@ code {
   type: "Pytorch"
   url: "https://github.com/openbmb/minicpm"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: sparse_pruning
-  words: structure_design
   words: attention_sparsity
+  words: structure_design
 }
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768271275

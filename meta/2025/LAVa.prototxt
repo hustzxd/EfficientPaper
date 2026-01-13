@@ -19,20 +19,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/MGDDestiny/Lava"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: ""
 }
 baseline {
-  methods: "PyramidKV"
   methods: "2024/SnapKV"
-  methods: "Ada-SnapKV"
-  methods: "CAKE"
 }
+update_time: 1768208511

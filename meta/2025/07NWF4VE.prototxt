@@ -20,9 +20,7 @@ code {
   url: ""
 }
 keyword {
-  words: attention_sparsity
   words: kv_cache_management
-  words: sparse_pruning
 }
 cover {
   url: "fig1.png"
@@ -30,3 +28,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1767939862

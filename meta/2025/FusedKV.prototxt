@@ -1,7 +1,7 @@
 paper {
   title: "Reconstructing KV Caches with Cross-layer Fusion For Enhanced Transformers"
   abbr: "FusedKV"
-  url: "http://arxiv.org/abs/2512.03870v1"
+  url: "http://arxiv.org/abs/2512.03870"
   authors: "Hongzhan Lin"
   authors: "Zhiqi Bai"
   authors: "Xinmiao Zhang"
@@ -29,12 +29,12 @@ code {
   url: "https://anonymous.4open.science/r/FusedKV/"
 }
 keyword {
-  words: deployment
-  words: kv_cache_management
+  words: structure_design
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
-  methods: "None"
+  methods: "2024/CLA"
 }
+update_time: 1768269423

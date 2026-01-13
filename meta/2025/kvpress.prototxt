@@ -13,14 +13,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/NVIDIA/kvpress"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
+  words: kv_cache_sparse
   words: tool
-  words: attention_sparsity
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768200165

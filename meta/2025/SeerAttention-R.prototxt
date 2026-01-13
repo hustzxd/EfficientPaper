@@ -37,7 +37,6 @@ note {
 keyword {
   words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache_management
 }
 cover {
   url: "fig1.png"

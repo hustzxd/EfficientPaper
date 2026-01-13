@@ -1,0 +1,27 @@
+paper {
+  title: "PackCache: A Training-Free Acceleration Method for Unified Autoregressive Video Generation via Compact KV-Cache"
+  abbr: "PackCache"
+  url: "http://arxiv.org/abs/2601.04359v1"
+  authors: "Kunyang Li"
+  authors: "Mubarak Shah"
+  authors: "Yuzhang Shang"
+  institutions: "University of Central Florida"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768007605

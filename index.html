@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2025-12-31/">2025-12-31</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-09/">2026-01-09</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -128,6 +130,12 @@
       </select>
       <select id="keyword-filter">
         <option value="">All Keywords</option>
+      </select>
+      <select id="sort-filter">
+        <option value="update-desc">Sort: Update (Newest)</option>
+        <option value="update-asc">Sort: Update (Oldest)</option>
+        <option value="year-desc">Sort: Published (Newest)</option>
+        <option value="year-asc">Sort: Published (Oldest)</option>
       </select>
       <button id="reset-btn">Reset</button>
       <button id="stats-btn" class="stats-btn">📊 Statistics</button>
@@ -391,6 +399,16 @@
 .filter-bar select:focus {
   outline: none;
   border-color: #4a90d9;
+}
+
+#sort-filter {
+  background: #fff8e1;
+  border-color: #ffc107;
+  font-weight: 500;
+}
+
+#sort-filter:focus {
+  border-color: #ff9800;
 }
 
 #reset-btn {
@@ -1099,11 +1117,136 @@
   border-radius: 8px;
   background: #fff;
   transition: box-shadow 0.2s, border-color 0.2s;
+  position: relative;
 }
 
 .paper-card:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   border-color: #d0d0d0;
+}
+
+/* Note Preview Tooltip */
+.note-preview {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.paper-card:hover .note-preview {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.note-preview-content {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+.note-preview-content h1,
+.note-preview-content h2,
+.note-preview-content h3 {
+  margin: 8px 0 4px 0;
+  color: #2c3e50;
+}
+
+.note-preview-content h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.note-preview-content h2 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.note-preview-content h3 {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.note-preview-content p {
+  margin: 4px 0;
+}
+
+.note-preview-content ul,
+.note-preview-content ol {
+  margin: 4px 0;
+  padding-left: 20px;
+}
+
+.note-preview-content li {
+  margin: 2px 0;
+}
+
+.note-preview-content code {
+  background: #e9ecef;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.note-preview-content img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.note-preview-loading {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+}
+
+.note-preview-empty {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+  font-style: italic;
+}
+
+.note-preview-error {
+  color: #d32f2f;
+  padding: 10px;
+  background: #ffebee;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Note indicator on card */
+.note-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #4a90d9;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.paper-card:hover .note-indicator {
+  opacity: 1;
 }
 
 .paper-cover {
@@ -1689,6 +1832,12 @@ function closeLightbox() {
   const itemsPerPage = 10;
   let selectedPapers = new Set(); // Track selected papers by index or ID
   let starCache = {}; // Cache GitHub star counts
+  let basePath = window.location.pathname.includes('/search') ? '..' : '.'; // Base path for relative URLs
+
+  // Expose variables to window for auto-reload state restoration
+  window.papers = papers;
+  window.filteredPapers = filteredPapers;
+  window.currentPage = currentPage;
   let isLocalServerAvailable = false; // Track local server availability
 
   // Check if local server is available
@@ -1787,17 +1936,22 @@ function closeLightbox() {
   // Load paper data
   async function loadPapers() {
     try {
-      // 使用基于站点根目录的绝对路径
-      const basePath = window.location.pathname.includes('/search') ? '..' : '.';
+      // basePath is already defined at module level
       const response = await fetch(basePath + '/js/papers.json');
       const data = await response.json();
       papers = data.papers;
 
+      // Also expose papers globally for auto-reload script
+      window.papers = papers;
+
       // Populate filter options
       populateFilters(data.filters);
 
-      // Initial render
-      filteredPapers = papers;
+      // Initial render with default sorting
+      filteredPapers = [...papers]; // Create a copy
+      window.filteredPapers = filteredPapers; // Expose for auto-reload
+      const defaultSort = document.getElementById('sort-filter')?.value || 'update-desc';
+      sortPapers(filteredPapers, defaultSort);
       renderPapers(filteredPapers);
       updateStats();
     } catch (error) {
@@ -1826,12 +1980,46 @@ function closeLightbox() {
     });
   }
 
+  // Sort papers based on selected option
+  function sortPapers(papersArray, sortType) {
+    switch(sortType) {
+      case 'update-desc': // Update time (newest first) - default
+        papersArray.sort((a, b) => (b.update_time || 0) - (a.update_time || 0));
+        break;
+      case 'update-asc': // Update time (oldest first)
+        papersArray.sort((a, b) => (a.update_time || 0) - (b.update_time || 0));
+        break;
+      case 'year-desc': // Published year (newest first)
+        papersArray.sort((a, b) => {
+          if (b.year !== a.year) return b.year - a.year;
+          // If same year, sort by abbr alphabetically (case-insensitive)
+          const abbrA = (a.abbr || '').toLowerCase();
+          const abbrB = (b.abbr || '').toLowerCase();
+          return abbrA.localeCompare(abbrB);
+        });
+        break;
+      case 'year-asc': // Published year (oldest first)
+        papersArray.sort((a, b) => {
+          if (a.year !== b.year) return a.year - b.year;
+          // If same year, sort by abbr alphabetically (case-insensitive)
+          const abbrA = (a.abbr || '').toLowerCase();
+          const abbrB = (b.abbr || '').toLowerCase();
+          return abbrA.localeCompare(abbrB);
+        });
+        break;
+      default:
+        // Default to update time descending
+        papersArray.sort((a, b) => (b.update_time || 0) - (a.update_time || 0));
+    }
+  }
+
   // Filter papers
   function filterPapers() {
     const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
     const yearFilter = document.getElementById('year-filter').value;
     const venueFilter = document.getElementById('venue-filter').value;
     const keywordFilter = document.getElementById('keyword-filter').value;
+    const sortFilter = document.getElementById('sort-filter').value;
 
     filteredPapers = papers.filter(paper => {
       // Search query
@@ -1866,6 +2054,12 @@ function closeLightbox() {
       return true;
     });
 
+    // Apply sorting
+    sortPapers(filteredPapers, sortFilter);
+
+    // Expose filteredPapers for auto-reload
+    window.filteredPapers = filteredPapers;
+
     // Clear selections that are not in the filtered results
     const filteredIds = new Set(filteredPapers.map(p => p.prototxt_path || `paper-${papers.indexOf(p)}`));
     const toRemove = [];
@@ -1878,6 +2072,7 @@ function closeLightbox() {
 
     // Reset to page 1 when filtering
     currentPage = 1;
+    window.currentPage = currentPage; // Sync for auto-reload
     renderPapers(filteredPapers);
     updateStats();
   }
@@ -1921,9 +2116,10 @@ function closeLightbox() {
       const authors = paper.authors.map(a => highlightText(a, searchQuery)).join(', ');
       const institutions = paper.institutions.map(i => highlightText(i, searchQuery)).join(', ');
 
-      // 封面图片
+      // 封面图片 (使用 basePath 确保路径正确)
+      const coverSrc = paper.cover ? `${basePath}/${paper.cover}` : '';
       const coverHtml = paper.cover
-        ? `<a class="glightbox" href="${paper.cover}" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="${paper.cover}" alt="cover" loading="lazy" onclick="openLightbox(event, this.src)"></a>`
+        ? `<a class="glightbox" href="${coverSrc}" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="${coverSrc}" alt="cover" loading="lazy" onclick="openLightbox(event, this.src)"></a>`
         : `<span class="no-cover">No Cover</span>`;
 
       // Code link with star count placeholder
@@ -2044,6 +2240,9 @@ function closeLightbox() {
     }
   }
 
+  // Expose renderPapers for auto-reload state restoration
+  window.renderPapers = renderPapers;
+
   // Render pagination controls
   function renderPagination(totalPages) {
     const container = document.getElementById('paper-list');
@@ -2131,10 +2330,14 @@ function closeLightbox() {
   // Go to specific page
   function goToPage(page) {
     currentPage = page;
+    window.currentPage = currentPage; // Sync for auto-reload
     renderPapers(filteredPapers);
     updateStats(); // Update checkbox states on page change
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // Expose goToPage for auto-reload state restoration
+  window.goToPage = goToPage;
 
   // Reset filters
   function resetFilters() {
@@ -2142,6 +2345,7 @@ function closeLightbox() {
     document.getElementById('year-filter').value = '';
     document.getElementById('venue-filter').value = '';
     document.getElementById('keyword-filter').value = '';
+    document.getElementById('sort-filter').value = 'update-desc'; // Reset to default sort
     filterPapers();
   }
 
@@ -2950,6 +3154,7 @@ function closeLightbox() {
     document.getElementById('year-filter').addEventListener('change', filterPapers);
     document.getElementById('venue-filter').addEventListener('change', filterPapers);
     document.getElementById('keyword-filter').addEventListener('change', filterPapers);
+    document.getElementById('sort-filter').addEventListener('change', filterPapers);
     document.getElementById('reset-btn').addEventListener('click', resetFilters);
 
     // Select all checkbox
@@ -3203,5 +3408,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-08 09:53:02.802002+00:00
+Build Date UTC : 2026-01-13 03:36:13.977147+00:00
 -->
