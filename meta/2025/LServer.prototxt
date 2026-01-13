@@ -17,7 +17,7 @@ paper {
   institutions: "Shanghai Jiao Tong University"
 }
 pub {
-  where: "arXiv"
+  where: "MLSys"
   year: 2025
 }
 code {
@@ -27,7 +27,7 @@ code {
 keyword {
   words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
   url: "fig5.png"
@@ -35,3 +35,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1768270395

@@ -20,13 +20,13 @@ code {
   url: ""
 }
 keyword {
-  words: sparse_pruning
   words: attention_sparsity
-  words: kv_cache_management
 }
 cover {
   url: "fig3.png"
 }
 baseline {
-  methods: "None"
+  methods: "2024/MInference"
+  methods: "2025/FlexPrefill"
 }
+update_time: 1767940570

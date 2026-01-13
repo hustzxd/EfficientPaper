@@ -24,7 +24,6 @@ code {
 keyword {
   words: kv_cache_quant
   words: quantization
-  words: kv_cache_management
 }
 cover {
   url: ""

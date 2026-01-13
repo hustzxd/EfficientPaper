@@ -21,14 +21,16 @@ code {
   type: "Pytorch"
   url: "https://github.com/infinigence/SpecEE"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: structured_sparsity
   words: sparse_pruning
+  words: structured_sparsity
+  words: speculative_decoding
   words: structure_design
 }
 cover {
   url: "fig9.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1767869479

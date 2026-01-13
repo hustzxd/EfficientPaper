@@ -1,0 +1,9 @@
+# PackCache: A Training-Free Acceleration Method for Unified Autoregressive Video Generation via Compact KV-Cache
+
+> Kunyang Li, Mubarak Shah, Yuzhang Shang
+
+![111](../../blank.jpg)
+
+## Abstract
+
+A unified autoregressive model is a Transformer-based framework that addresses diverse multimodal tasks (e.g., text, image, video) as a single sequence modeling problem under a shared token space. Such models rely on the KV-cache mechanism to reduce attention computation from O(T^2) to O(T); however, KV-cache size grows linearly with the number of generated tokens, and it rapidly becomes the dominant bottleneck limiting inference efficiency and generative length. Unified autoregressive video generation inherits this limitation. Our analysis reveals that KV-cache tokens exhibit distinct spatiotemporal properties: (i) text and conditioning-image tokens act as persistent semantic anchors that consistently receive high attention, and (ii) attention to previous frames naturally decays with temporal distance. Leveraging these observations, we introduce PackCache, a training-free KV-cache management method that dynamically compacts the KV cache through three coordinated mechanisms: condition anchoring that preserves semantic references, cross-frame decay modeling that allocates cache budget according to temporal distance, and spatially preserving position embedding that maintains coherent 3D structure under cache removal. In terms of efficiency, PackCache accelerates end-to-end generation by 1.7-2.2x on 48-frame long sequences, showcasing its strong potential for enabling longer-sequence video generation. Notably, the final four frames - the portion most impacted by the progressively expanding KV-cache and thus the most expensive segment of the clip - PackCache delivers a 2.6x and 3.7x acceleration on A40 and H200, respectively, for 48-frame videos.

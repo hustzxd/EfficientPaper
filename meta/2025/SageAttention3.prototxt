@@ -21,13 +21,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/thu-ml/SageAttention"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: quantization
-  words: kv_cache_management
+  words: kv_cache_quant
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768127223

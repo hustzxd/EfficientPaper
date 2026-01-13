@@ -17,12 +17,12 @@ code {
   url: ""
 }
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"
 }
+update_time: 1768185132

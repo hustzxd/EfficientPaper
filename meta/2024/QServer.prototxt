@@ -13,19 +13,21 @@ paper {
   institutions: "NVIDIA"
 }
 pub {
-  where: "arXiv"
+  where: "MLSys"
   year: 2024
 }
 code {
   type: "Pytorch"
   url: "https://hanlab.mit.edu/projects/qserve"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: quantization
+  words: kv_cache_quant
 }
 cover {
   url: ""
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768270440

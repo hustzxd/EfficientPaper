@@ -27,7 +27,6 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache_management
   words: quantization
   words: kv_cache_quant
 }

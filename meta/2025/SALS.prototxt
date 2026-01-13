@@ -19,13 +19,10 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: sparse_pruning
-  words: kv_cache_management
   words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "fig3.png"
@@ -33,3 +30,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1768127645

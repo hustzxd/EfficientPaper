@@ -23,9 +23,8 @@ code {
   url: "https://github.com/PaddlePaddle/PaddleNLP/tree/develop"
 }
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
   words: sparse_pruning
+  words: attention_sparsity
 }
 cover {
   url: "flashmask.png"
@@ -33,3 +32,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1768012626

@@ -1,0 +1,31 @@
+paper {
+  title: "KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction"
+  abbr: "KVzip"
+  url: "http://arxiv.org/abs/2505.23416v2"
+  authors: "Jang-Hyun Kim"
+  authors: "Jinuk Kim"
+  authors: "Sangwoo Kwon"
+  authors: "Jae W. Lee"
+  authors: "Sangdoo Yun"
+  authors: "Hyun Oh Song"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "NeurIPS"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/snu-mllab/KVzip"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1767944865

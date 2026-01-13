@@ -21,14 +21,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/mit-han-lab/duo-attention"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
   words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "duoattention.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1767954412

@@ -6,19 +6,20 @@ paper {
   institutions: "Stanford University"
 }
 pub {
-  where: "arXiv"
+  where: "blog"
   year: 2023
 }
 code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
+  words: tool
 }
 cover {
-  url: ""
+  url: "cover.gif"
 }
+baseline {
+  methods: "2022/FlashAttention"
+}
+update_time: 1768010480

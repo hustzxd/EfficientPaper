@@ -20,7 +20,7 @@ code {
   url: "https://github.com/FFY0/DefensiveKV"
 }
 keyword {
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
   url: ""
@@ -30,3 +30,4 @@ baseline {
   methods: "2024/AdaKV"
   methods: "2024/SnapKV"
 }
+update_time: 1768129560

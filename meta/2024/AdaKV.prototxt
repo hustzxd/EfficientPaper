@@ -17,14 +17,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/FFY0/AdaKV"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1767941887

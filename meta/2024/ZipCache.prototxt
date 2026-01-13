@@ -20,14 +20,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: quantization
-  words: kv_cache_management
   words: kv_cache_quant
 }
 cover {
   url: ""
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768129395

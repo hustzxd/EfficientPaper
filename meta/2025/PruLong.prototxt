@@ -18,8 +18,7 @@ code {
   url: "https://github.com/princeton-pli/PruLong"
 }
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
   url: ""
@@ -27,3 +26,4 @@ cover {
 baseline {
   methods: "2024/DuoAttention"
 }
+update_time: 1767950451

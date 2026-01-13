@@ -1,7 +1,7 @@
 paper {
   title: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
   abbr: "CacheBlend"
-  url: "http://arxiv.org/abs/2405.16444v3"
+  url: "http://arxiv.org/abs/2405.16444"
   authors: "Jiayi Yao"
   authors: "Hanchen Li"
   authors: "Yuhan Liu"
@@ -32,3 +32,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1768186162

@@ -18,14 +18,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/schwartz-lab-NLP/TOVA"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "tova.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768010716

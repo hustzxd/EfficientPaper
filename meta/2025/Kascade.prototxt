@@ -17,14 +17,12 @@ code {
   url: "https://github.com/microsoft/kascade"
 }
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
-  words: sparse_pruning
+  words: kv_cache_sparse
 }
 cover {
   url: "cover.png"
 }
 baseline {
-  methods: "2024/StreamingLLM"
   methods: "2024/Quest"
 }
+update_time: 1768199139

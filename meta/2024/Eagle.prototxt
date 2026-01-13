@@ -19,12 +19,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/SafeAILab/EAGLE"
 }
-note {
-  url: "note.md"
-}
 keyword {
+  words: speculative_decoding
   words: deployment
 }
 cover {
   url: "eagle.jpg"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1767869467

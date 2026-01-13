@@ -25,11 +25,7 @@ code {
   type: "Pytorch"
   url: "https://github.com/ZongwuWang/MILLION"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: quantization
   words: kv_cache_quant
 }
@@ -40,3 +36,4 @@ baseline {
   methods: "2024/KIVI"
   methods: "2024/KVQuant"
 }
+update_time: 1768272143

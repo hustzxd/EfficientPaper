@@ -18,14 +18,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/xAlg-ai/HashAttention-1.0"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "2024/StreamingLLM"
+  methods: "2023/H2O"
+}
+update_time: 1768198661

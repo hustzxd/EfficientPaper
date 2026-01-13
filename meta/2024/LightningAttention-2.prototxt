@@ -22,7 +22,6 @@ note {
   url: "note.md"
 }
 keyword {
-  words: kv_cache_management
   words: structure_design
 }
 cover {

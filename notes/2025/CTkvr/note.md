@@ -2,7 +2,7 @@
 
 > Kuan Lu, Shuhang Lin, Sai Wu, Yichen Yao, Junhan Yang, Huan Li, Wei Chu, Xu Yinghui, Yuan Qi, Gang Chen
 
-![111](../../blank.jpg)
+![111](cover.png)
 
 ## Abstract
 

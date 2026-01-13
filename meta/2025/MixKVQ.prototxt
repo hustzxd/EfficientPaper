@@ -20,9 +20,8 @@ code {
   url: ""
 }
 keyword {
-  words: kv_cache_management
-  words: kv_cache_quant
   words: quantization
+  words: kv_cache_quant
 }
 cover {
   url: "cover.png"
@@ -32,3 +31,4 @@ baseline {
   methods: "2024/KVQuant"
   methods: "2025/RotateKV"
 }
+update_time: 1768270692

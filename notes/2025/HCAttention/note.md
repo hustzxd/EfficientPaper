@@ -22,3 +22,7 @@ its original size. Remarkably, it stays competitive with only 12.5% of the
 cache, setting a new state-of-the-art in LLM KV cache compression. To the best
 of our knowledge, HCAttention is the first to extend the Llama-3-8B model to
 process 4 million tokens on a single A100 GPU with 80GB memory.
+
+k quantization
+v offloading
+dynamic kv eviction

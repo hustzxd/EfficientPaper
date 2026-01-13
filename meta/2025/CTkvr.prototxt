@@ -25,11 +25,13 @@ code {
   url: ""
 }
 keyword {
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
-  methods: "None"
+  methods: "2024/Quest"
+  methods: "2024/SnapKV"
 }
+update_time: 1767953388

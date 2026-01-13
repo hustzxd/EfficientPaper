@@ -60,6 +60,7 @@ message Keyword {
         kv_cache_management = 22;
 
         overlap = 30;
+        speculative_decoding = 31;
 
         performance_modeling = 40;
         deployment = 41;

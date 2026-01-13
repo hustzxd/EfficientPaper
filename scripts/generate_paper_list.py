@@ -92,6 +92,7 @@ word_pb2str = {
     eppb.Keyword.Word.structure_design: "Network Structure Design",
     eppb.Keyword.Word.deployment: "LLM Deployment",
     eppb.Keyword.Word.overlap: "Comm-Comp Overlap",
+    eppb.Keyword.Word.speculative_decoding: "Speculative Decoding",
     eppb.Keyword.Word.performance_modeling: "Performance Modeling",
     eppb.Keyword.Word.benchmark: "Benchmark",
 }

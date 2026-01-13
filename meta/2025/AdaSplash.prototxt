@@ -15,14 +15,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/deep-spin/adasplash"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: sparse_pruning
   words: attention_sparsity
 }
 cover {
   url: ""
 }
+baseline {
+  methods: "None"
+}
+update_time: 1767949876

@@ -15,14 +15,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: attention_sparsity
   words: sparse_pruning
+  words: attention_sparsity
 }
 cover {
   url: "fig1.png"
 }
+baseline {
+  methods: "2025/NSA"
+}
+update_time: 1768010112
