@@ -23,14 +23,15 @@ code {
   type: "Pytorch"
   url: "https://github.com/OpenMOSS/ReAttention"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: sparse_pruning
   words: attention_sparsity
+  words: kv_cache_management
 }
 cover {
   url: "fig1.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768874199

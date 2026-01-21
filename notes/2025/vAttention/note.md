@@ -24,19 +24,24 @@ PagedAttention-based kernels of FlashAttention and FlashInfer.
 Paged Attention的改进
 
 Paged Attention的缺点
+
 - Requires Re-writing the Attention Kernel
-  - KV Cache不是连续存储的，需要重写kernel
+    - KV Cache不是连续存储的，需要重写kernel
 - Adds Redundancy in the Serving Framework
-  - 在runtime时，需要同时访问多个块的kv cache，但是属于virtual memory的不同地址。Virtual Memory实际上通过操作系统找到Physical Memory有一个相似的操作。
+    - 在runtime时，需要同时访问多个块的kv cache，但是属于virtual memory的不同地址。Virtual Memory实际上通过操作系统找到
+
+Physical Memory有一个相似的操作。
+
 - Performance Overhead
-  - Runtime overhead on the GPU
-    - 多了一些运算逻辑，导致GPU上有额外的时间开销
-  - Runtime overhead on the CPU
+    - Runtime overhead on the GPU
+        - 多了一些运算逻辑，导致GPU上有额外的时间开销
+    - Runtime overhead on the CPU
 
 vAttention 发现两个现象
+
 - KV cache memory requirement is predictable on a per-iteration basis.
-  - 在decoding时，每次增长的memory是可以提前预测的
+    - 在decoding时，每次增长的memory是可以提前预测的
 - KV cache does not require high memory allocation bandwidth.
-  - 统计发现KV Cache需要Memory最高只有750MB/s
+    - 统计发现KV Cache需要Memory最高只有750MB/s
 
 **在系统层面进行分页，保证在virtual memory上是连续的，而不是PagedAttention在用户空间中在Virtual Memory上进行分页。**

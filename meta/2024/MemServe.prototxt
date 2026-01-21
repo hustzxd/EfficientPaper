@@ -1,0 +1,37 @@
+paper {
+  title: "MemServe: Context Caching for Disaggregated LLM Serving with Elastic Memory Pool"
+  abbr: "MemServe"
+  url: "http://arxiv.org/abs/2406.17565v3"
+  authors: "Cunchen Hu"
+  authors: "Heyang Huang"
+  authors: "Junhao Hu"
+  authors: "Jiang Xu"
+  authors: "Xusheng Chen"
+  authors: "Tao Xie"
+  authors: "Chenxi Wang"
+  authors: "Sa Wang"
+  authors: "Yungang Bao"
+  authors: "Ninghui Sun"
+  authors: "Yizhou Shan"
+  institutions: "Huawei Cloud"
+  institutions: "Institute of Computing Technology"
+  institutions: "Peking University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768879031

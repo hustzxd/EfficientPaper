@@ -23,13 +23,13 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: structure_design
 }
 cover {
   url: ""
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768291308

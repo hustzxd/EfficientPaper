@@ -25,8 +25,9 @@ keyword {
   words: deployment
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"
 }
+update_time: 1768292955

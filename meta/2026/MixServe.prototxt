@@ -1,0 +1,33 @@
+paper {
+  title: "MixServe: An Automatic Distributed Serving System for MoE Models with Hybrid Parallelism Based on Fused Communication Algorithm"
+  abbr: "MixServe"
+  url: "http://arxiv.org/abs/2601.08800v1"
+  authors: "Bowen Zhou"
+  authors: "Jinrui Jia"
+  authors: "Wenhao He"
+  authors: "Yong Zhang"
+  authors: "Fang Dong"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768533614

@@ -1,0 +1,40 @@
+paper {
+  title: "vTensor: Flexible Virtual Tensor Management for Efficient LLM Serving"
+  abbr: "vTensor"
+  url: "http://arxiv.org/abs/2407.15309v1"
+  authors: "Jiale Xu"
+  authors: "Rui Zhang"
+  authors: "Cong Guo"
+  authors: "Weiming Hu"
+  authors: "Zihan Liu"
+  authors: "Feiyang Wu"
+  authors: "Yu Feng"
+  authors: "Shixuan Sun"
+  authors: "Changxu Shao"
+  authors: "Yuhong Guo"
+  authors: "Junping Zhao"
+  authors: "Ke Zhang"
+  authors: "Minyi Guo"
+  authors: "Jingwen Leng"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Shanghai Qi Zhi Institute"
+  institutions: "Ant Group"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768878373

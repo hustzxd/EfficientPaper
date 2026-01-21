@@ -8,8 +8,9 @@ paper {
   authors: "Jae W. Lee"
   authors: "Sangdoo Yun"
   authors: "Hyun Oh Song"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Seoul National University"
+  institutions: "Neural Processing Research Center"
+  institutions: "NAVER AI Lab"
 }
 pub {
   where: "NeurIPS"
@@ -23,9 +24,9 @@ keyword {
   words: kv_cache_sparse
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
-  methods: "None"
+  methods: "2024/SnapKV"
 }
-update_time: 1767944865
+update_time: 1768991701

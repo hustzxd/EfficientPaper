@@ -19,13 +19,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/microsoft/vattention/tree/main/pod_attn"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
-  words: deployment
+  words: overlap
 }
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768295194

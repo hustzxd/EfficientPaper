@@ -1,0 +1,42 @@
+paper {
+  title: "eLLM: Elastic Memory Management Framework for Efficient LLM Serving"
+  abbr: "eLLM"
+  url: "http://arxiv.org/abs/2506.15155v1"
+  authors: "Jiale Xu"
+  authors: "Rui Zhang"
+  authors: "Yi Xiong"
+  authors: "Cong Guo"
+  authors: "Zihan Liu"
+  authors: "Yangjie Zhou"
+  authors: "Weiming Hu"
+  authors: "Hao Wu"
+  authors: "Changxu Shao"
+  authors: "Ziqing Wang"
+  authors: "Yongjie Yuan"
+  authors: "Junping Zhao"
+  authors: "Minyi Guo"
+  authors: "Jingwen Leng"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Shanghai Qi Zhi Institute"
+  institutions: "Ant Group"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: tool
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768879358

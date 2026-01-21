@@ -26,9 +26,8 @@ code {
   url: "https://github.com/microsoft/MInference"
 }
 keyword {
-  words: attention_sparsity
   words: sparse_pruning
-  words: kv_cache_management
+  words: attention_sparsity
 }
 cover {
   url: "MInference_3shape.PNG"
@@ -37,3 +36,4 @@ baseline {
   methods: "2024/StreamingLLM"
   methods: "2024/InfLLM"
 }
+update_time: 1768291167

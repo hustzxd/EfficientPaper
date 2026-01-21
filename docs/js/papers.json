@@ -1,6 +1,1354 @@
 {
   "papers": [
     {
+      "id": "KVzip",
+      "title": "KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction",
+      "abbr": "KVzip",
+      "url": "http://arxiv.org/abs/2505.23416v2",
+      "authors": [
+        "Jang-Hyun Kim",
+        "Jinuk Kim",
+        "Sangwoo Kwon",
+        "Jae W. Lee",
+        "Sangdoo Yun",
+        "Hyun Oh Song"
+      ],
+      "institutions": [
+        "Seoul National University",
+        "Neural Processing Research Center",
+        "NAVER AI Lab"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS",
+      "cover": "notes/2025/KVzip/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/snu-mllab/KVzip",
+      "note_url": "notes/2025/KVzip/note/",
+      "prototxt_path": "meta/2025/KVzip.prototxt",
+      "update_time": 1768991701
+    },
+    {
+      "id": "KVzap",
+      "title": "KVzap: Fast, Adaptive, and Faithful KV Cache Pruning",
+      "abbr": "KVzap",
+      "url": "http://arxiv.org/abs/2601.07891v1",
+      "authors": [
+        "Simon Jegou",
+        "Maximilian Jeblick"
+      ],
+      "institutions": [
+        "NVIDIA"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/KVzap/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/NVIDIA/kvpress",
+      "note_url": "notes/2026/KVzap/note/",
+      "prototxt_path": "meta/2026/KVzap.prototxt",
+      "update_time": 1768991644
+    },
+    {
+      "id": "Mooncake",
+      "title": "Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving",
+      "abbr": "Mooncake",
+      "url": "http://arxiv.org/abs/2407.00079v4",
+      "authors": [
+        "Ruoyu Qin",
+        "Zheming Li",
+        "Weiran He",
+        "Mingxing Zhang",
+        "Yongwei Wu",
+        "Weimin Zheng",
+        "Xinran Xu"
+      ],
+      "institutions": [
+        "Moonshot AI",
+        "Tsinghua University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/Mooncake/cover.png",
+      "keywords": [
+        "21-KV Cache Management",
+        "46-Tool"
+      ],
+      "code_url": "https://github.com/kvcache-ai/Mooncake",
+      "note_url": "notes/2024/Mooncake/note/",
+      "prototxt_path": "meta/2024/Mooncake.prototxt",
+      "update_time": 1768881836
+    },
+    {
+      "id": "eLLM",
+      "title": "eLLM: Elastic Memory Management Framework for Efficient LLM Serving",
+      "abbr": "eLLM",
+      "url": "http://arxiv.org/abs/2506.15155v1",
+      "authors": [
+        "Jiale Xu",
+        "Rui Zhang",
+        "Yi Xiong",
+        "Cong Guo",
+        "Zihan Liu",
+        "Yangjie Zhou",
+        "Weiming Hu",
+        "Hao Wu",
+        "Changxu Shao",
+        "Ziqing Wang",
+        "Yongjie Yuan",
+        "Junping Zhao",
+        "Minyi Guo",
+        "Jingwen Leng"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Shanghai Qi Zhi Institute",
+        "Ant Group",
+        "National University of Singapore"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/eLLM/cover.png",
+      "keywords": [
+        "21-KV Cache Management",
+        "46-Tool"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/eLLM/note/",
+      "prototxt_path": "meta/2025/eLLM.prototxt",
+      "update_time": 1768879358
+    },
+    {
+      "id": "MemServe",
+      "title": "MemServe: Context Caching for Disaggregated LLM Serving with Elastic Memory Pool",
+      "abbr": "MemServe",
+      "url": "http://arxiv.org/abs/2406.17565v3",
+      "authors": [
+        "Cunchen Hu",
+        "Heyang Huang",
+        "Junhao Hu",
+        "Jiang Xu",
+        "Xusheng Chen",
+        "Tao Xie",
+        "Chenxi Wang",
+        "Sa Wang",
+        "Yungang Bao",
+        "Ninghui Sun",
+        "Yizhou Shan"
+      ],
+      "institutions": [
+        "Huawei Cloud",
+        "Institute of Computing Technology",
+        "Peking University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/MemServe/cover.png",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/MemServe/note/",
+      "prototxt_path": "meta/2024/MemServe.prototxt",
+      "update_time": 1768879031
+    },
+    {
+      "id": "vTensor",
+      "title": "vTensor: Flexible Virtual Tensor Management for Efficient LLM Serving",
+      "abbr": "vTensor",
+      "url": "http://arxiv.org/abs/2407.15309v1",
+      "authors": [
+        "Jiale Xu",
+        "Rui Zhang",
+        "Cong Guo",
+        "Weiming Hu",
+        "Zihan Liu",
+        "Feiyang Wu",
+        "Yu Feng",
+        "Shixuan Sun",
+        "Changxu Shao",
+        "Yuhong Guo",
+        "Junping Zhao",
+        "Ke Zhang",
+        "Minyi Guo",
+        "Jingwen Leng"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Shanghai Qi Zhi Institute",
+        "Ant Group"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/vTensor/cover.png",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/vTensor/note/",
+      "prototxt_path": "meta/2024/vTensor.prototxt",
+      "update_time": 1768878373
+    },
+    {
+      "id": "HATA",
+      "title": "HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference",
+      "abbr": "HATA",
+      "url": "http://arxiv.org/abs/2506.02572v1",
+      "authors": [
+        "Ping Gong",
+        "Jiawei Yi",
+        "Shengnan Wang",
+        "Juncheng Zhang",
+        "Zewen Jin",
+        "Ouxiang Zhou",
+        "Ruibo Liu",
+        "Guanbin Xu",
+        "Youhui Bai",
+        "Bowen Ye",
+        "Kun Yuan",
+        "Tong Yang",
+        "Gong Zhang",
+        "Renhai Chen",
+        "Feng Wu",
+        "Cheng Li"
+      ],
+      "institutions": [
+        "University of Science and Technology of China",
+        "Huawei",
+        "Peking University"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/HATA/fig2.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/gpzlx1/HATA",
+      "note_url": "notes/2025/HATA/note/",
+      "prototxt_path": "meta/2025/HATA.prototxt",
+      "update_time": 1768877641
+    },
+    {
+      "id": "UNComp",
+      "title": "UNComp: Can Matrix Entropy Uncover Sparsity? -- A Compressor Design from an Uncertainty-Aware Perspective",
+      "abbr": "UNComp",
+      "url": "http://arxiv.org/abs/2410.03090v2",
+      "authors": [
+        "Jing Xiong",
+        "Jianghan Shen",
+        "Fanghua Ye",
+        "Chaofan Tao",
+        "Zhongwei Wan",
+        "Jianqiao Lu",
+        "Xun Wu",
+        "Chuanyang Zheng",
+        "Zhijiang Guo",
+        "Min Yang",
+        "Lingpeng Kong",
+        "Ngai Wong"
+      ],
+      "institutions": [
+        "The University of Hong Kong",
+        "Nanjing University",
+        "University College London",
+        "The Ohio State University",
+        "Microsoft Research Asia",
+        "The Chinese University of Hong Kong",
+        "Hong Kong University of Science and Technology"
+      ],
+      "year": 2025,
+      "venue": "EMNLP",
+      "cover": "notes/2025/UNComp/fig4.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/menik1126/UNComp",
+      "note_url": "notes/2025/UNComp/note/",
+      "prototxt_path": "meta/2025/UNComp.prototxt",
+      "update_time": 1768874671
+    },
+    {
+      "id": "ReAttention",
+      "title": "ReAttention: Training-Free Infinite Context with Finite Attention Scope",
+      "abbr": "ReAttention",
+      "url": "http://arxiv.org/abs/2407.15176v3",
+      "authors": [
+        "Xiaoran Liu",
+        "Ruixiao Li",
+        "Qipeng Guo",
+        "Zhigeng Liu",
+        "Yuerong Song",
+        "Kai Lv",
+        "Hang Yan",
+        "Linlin Li",
+        "Qun Liu",
+        "Xipeng Qiu"
+      ],
+      "institutions": [
+        "Fudan University",
+        "Huawei"
+      ],
+      "year": 2025,
+      "venue": "ICLR",
+      "cover": "notes/2025/ReAttention/fig1.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)",
+        "21-KV Cache Management"
+      ],
+      "code_url": "https://github.com/OpenMOSS/ReAttention",
+      "note_url": "notes/2025/ReAttention/note/",
+      "prototxt_path": "meta/2025/ReAttention.prototxt",
+      "update_time": 1768874199
+    },
+    {
+      "id": "RetrievalAttention",
+      "title": "RetrievalAttention: Accelerating Long-Context LLM Inference via Vector Retrieval",
+      "abbr": "RetrievalAttention",
+      "url": "http://arxiv.org/abs/2409.10516v3",
+      "authors": [
+        "Di Liu",
+        "Meng Chen",
+        "Baotong Lu",
+        "Huiqiang Jiang",
+        "Zhenhua Han",
+        "Qianxi Zhang",
+        "Qi Chen",
+        "Chengruidong Zhang",
+        "Bailu Ding",
+        "Kai Zhang",
+        "Chen Chen",
+        "Fan Yang",
+        "Yuqing Yang",
+        "Lili Qiu"
+      ],
+      "institutions": [
+        "Microsoft Research",
+        "Shanghai Jiao Tong University",
+        "Fudan University"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS",
+      "cover": "notes/2025/RetrievalAttention/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": "https://github.com/microsoft/RetrievalAttention",
+      "note_url": "notes/2025/RetrievalAttention/note/",
+      "prototxt_path": "meta/2025/RetrievalAttention.prototxt",
+      "update_time": 1768874005
+    },
+    {
+      "id": "MoA",
+      "title": "MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression",
+      "abbr": "MoA",
+      "url": "http://arxiv.org/abs/2406.14909v2",
+      "authors": [
+        "Tianyu Fu",
+        "Haofeng Huang",
+        "Xuefei Ning",
+        "Genghan Zhang",
+        "Boju Chen",
+        "Tianqi Wu",
+        "Hongyi Wang",
+        "Zixiao Huang",
+        "Shiyao Li",
+        "Shengen Yan",
+        "Guohao Dai",
+        "Huazhong Yang",
+        "Yu Wang"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Infinigence-AI",
+        "Stanford University",
+        "Shanghai Jiao Tong University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/MoA/moa.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/thu-nics/MoA",
+      "note_url": "notes/2024/MoA/note/",
+      "prototxt_path": "meta/2024/MoA.prototxt",
+      "update_time": 1768873775
+    },
+    {
+      "id": "PrefixQuant",
+      "title": "PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization",
+      "abbr": "PrefixQuant",
+      "url": "http://arxiv.org/abs/2410.05265v2",
+      "authors": [
+        "Mengzhao Chen",
+        "Yi Liu",
+        "Jiahao Wang",
+        "Yi Bin",
+        "Wenqi Shao",
+        "Ping Luo"
+      ],
+      "institutions": [
+        "The University of Hong Kong",
+        "Tongji University",
+        "Shanghai AI Laboratory"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/PrefixQuant/fig2.png",
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/ChenMnZ/PrefixQuant",
+      "note_url": "notes/2024/PrefixQuant/note/",
+      "prototxt_path": "meta/2024/PrefixQuant.prototxt",
+      "update_time": 1768873723
+    },
+    {
+      "id": "InfLLM",
+      "title": "InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory",
+      "abbr": "InfLLM",
+      "url": "http://arxiv.org/abs/2402.04617v2",
+      "authors": [
+        "Chaojun Xiao",
+        "Pengle Zhang",
+        "Xu Han",
+        "Guangxuan Xiao",
+        "Yankai Lin",
+        "Zhengyan Zhang",
+        "Zhiyuan Liu",
+        "Maosong Sun"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Massachusetts Institution of Technology",
+        "Renmin University of China"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/InfLLM/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/thunlp/InfLLM",
+      "note_url": "notes/2024/InfLLM/note/",
+      "prototxt_path": "meta/2024/InfLLM.prototxt",
+      "update_time": 1768873667
+    },
+    {
+      "id": "TidalDecode",
+      "title": "TidalDecode: Fast and Accurate LLM Decoding with Position Persistent Sparse Attention",
+      "abbr": "TidalDecode",
+      "url": "http://arxiv.org/abs/2410.05076v1",
+      "authors": [
+        "Lijie Yang",
+        "Zhihao Zhang",
+        "Zhuofu Chen",
+        "Zikun Li",
+        "Zhihao Jia"
+      ],
+      "institutions": [
+        "Carnegie Mellon University"
+      ],
+      "year": 2025,
+      "venue": "ICLR",
+      "cover": "notes/2025/TidalDecode/fig2.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/DerrickYLJ/TidalDecode",
+      "note_url": "notes/2025/TidalDecode/note/",
+      "prototxt_path": "meta/2025/TidalDecode.prototxt",
+      "update_time": 1768819197
+    },
+    {
+      "id": "SpargeAttn",
+      "title": "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference",
+      "abbr": "SpargeAttn",
+      "url": "https://arxiv.org/pdf/2502.18137",
+      "authors": [
+        "Jintao Zhang",
+        "Chendong Xiang",
+        "Haofeng Huang",
+        "Jia Wei",
+        "Haocheng Xi",
+        "Jun Zhu",
+        "Jianfei Chen"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "University of California, Berkeley"
+      ],
+      "year": 2025,
+      "venue": "ICML",
+      "cover": "notes/2025/SpargeAttn/fig3.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/thu-ml/SpargeAttn",
+      "note_url": "notes/2025/SpargeAttn/note/",
+      "prototxt_path": "meta/2025/SpargeAttn.prototxt",
+      "update_time": 1768818735
+    },
+    {
+      "id": "ShadowKV",
+      "title": "ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference",
+      "abbr": "ShadowKV",
+      "url": "https://arxiv.org/abs/2410.21465",
+      "authors": [
+        "Hanshi Sun",
+        "Li-Wen Chang",
+        "Wenlei Bao",
+        "Size Zheng",
+        "Ningxin Zheng",
+        "Xin Liu",
+        "Harry Dong",
+        "Yuejie Chi",
+        "Beidi Chen"
+      ],
+      "institutions": [
+        "Carnegie Mellon University",
+        "ByteDance Seed"
+      ],
+      "year": 2025,
+      "venue": "ICML",
+      "cover": "notes/2025/ShadowKV/shadowkv.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "43-Low Rank Decomposition"
+      ],
+      "code_url": "https://github.com/bytedance/ShadowKV",
+      "note_url": "notes/2025/ShadowKV/note/",
+      "prototxt_path": "meta/2025/ShadowKV.prototxt",
+      "update_time": 1768817764
+    },
+    {
+      "id": "RadialAttention",
+      "title": "Radial Attention: $O(n\\log n)$ Sparse Attention with Energy Decay for Long Video Generation",
+      "abbr": "RadialAttention",
+      "url": "http://arxiv.org/abs/2506.19852v1",
+      "authors": [
+        "Xingyang Li",
+        "Muyang Li",
+        "Tianle Cai",
+        "Haocheng Xi",
+        "Shuo Yang",
+        "Yujun Lin",
+        "Lvmin Zhang",
+        "Songlin Yang",
+        "Jinbo Hu",
+        "Kelly Peng",
+        "Maneesh Agrawala",
+        "Ion Stoica",
+        "Kurt Keutzer",
+        "Song Han"
+      ],
+      "institutions": [
+        "Massachusetts Institute of Technology",
+        "NVIDIA",
+        "Princeton",
+        "UC Berkeley",
+        "Stanford",
+        "First Intelligence"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/RadialAttention/fig3.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/RadialAttention/note/",
+      "prototxt_path": "meta/2025/RadialAttention.prototxt",
+      "update_time": 1768817588
+    },
+    {
+      "id": "R-KV",
+      "title": "R-KV: Redundancy-aware KV Cache Compression for Training-Free Reasoning Models Acceleration",
+      "abbr": "R-KV",
+      "url": "http://arxiv.org/abs/2505.24133v2",
+      "authors": [
+        "Zefan Cai",
+        "Wen Xiao",
+        "Hanshi Sun",
+        "Cheng Luo",
+        "Yikai Zhang",
+        "Ke Wan",
+        "Yucheng Li",
+        "Yeyang Zhou",
+        "Li-Wen Chang",
+        "Jiuxiang Gu",
+        "Zhen Dong",
+        "Anima Anandkumar",
+        "Abedelkadir Asi",
+        "Junjie Hu"
+      ],
+      "institutions": [
+        "University of Wisconsin",
+        "Microsoft",
+        "Carnegie Mellon University",
+        "University of Surrey"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/R-KV/fig1.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/Zefan-Cai/R-KV",
+      "note_url": "notes/2025/R-KV/note/",
+      "prototxt_path": "meta/2025/R-KV.prototxt",
+      "update_time": 1768817562
+    },
+    {
+      "id": "QuickSilver",
+      "title": "QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization",
+      "abbr": "QuickSilver",
+      "url": "http://arxiv.org/abs/2506.22396v1",
+      "authors": [
+        "Danush Khanna",
+        "Aditya Kumar Guru",
+        "Srivarshinee Sridhar",
+        "Zidan Ahmed",
+        "Rubhav Bahirwani",
+        "Meetu Malhotra",
+        "Vinija Jain",
+        "Aman Chadha",
+        "Amitava Das",
+        "Kripabandhu Ghosh"
+      ],
+      "institutions": [
+        "Manipal University Jaipur",
+        "Vellore Institute of Technology",
+        "NIT Silchar",
+        "Harrisburg University of Science and Technology",
+        "Meta",
+        "Amazon",
+        "IISER Kolkata",
+        "BITS Pilani"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/QuickSilver/cover.png",
+      "keywords": [
+        "19-Quantization (KV Cache)",
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://anonymous.4open.science/r/Quicksilver/codes/kvc.py",
+      "note_url": "notes/2025/QuickSilver/note/",
+      "prototxt_path": "meta/2025/QuickSilver.prototxt",
+      "update_time": 1768817372
+    },
+    {
+      "id": "PureKV",
+      "title": "PureKV: Plug-and-Play KV Cache Optimization with Spatial-Temporal Sparse Attention for Vision-Language Large Models",
+      "abbr": "PureKV",
+      "url": "http://arxiv.org/abs/2510.25600v2",
+      "authors": [
+        "Zhonghua Jiang",
+        "Kunxi Li",
+        "Yiyun Zhou",
+        "Sihao Liu",
+        "Zhaode Wang",
+        "Chengfei lv",
+        "Shengyu Zhang"
+      ],
+      "institutions": [
+        "Zhejiang University",
+        "Alibaba Group"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/PureKV/fig1.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/PureKV/note/",
+      "prototxt_path": "meta/2025/PureKV.prototxt",
+      "update_time": 1768816533
+    },
+    {
+      "id": "QJL",
+      "title": "QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead",
+      "abbr": "QJL",
+      "url": "http://arxiv.org/abs/2406.03482v2",
+      "authors": [
+        "Amir Zandieh",
+        "Majid Daliri",
+        "Insu Han"
+      ],
+      "institutions": [
+        "New York University",
+        "Adobe Research"
+      ],
+      "year": 2025,
+      "venue": "AAAI",
+      "cover": "notes/2025/QJL/fig1.png",
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/amirzandieh/QJL",
+      "note_url": "notes/2025/QJL/note/",
+      "prototxt_path": "meta/2025/QJL.prototxt",
+      "update_time": 1768816211
+    },
+    {
+      "id": "PSA",
+      "title": "Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving",
+      "abbr": "PSA",
+      "url": "http://arxiv.org/abs/2503.00392v1",
+      "authors": [
+        "Qihui Zhou",
+        "Peiqi Yin",
+        "Pengfei Zuo",
+        "James Cheng"
+      ],
+      "institutions": [
+        "The Chinese University of Hong Kong",
+        "Huawei"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/PSA/fig4.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/ASISys/PSAttention",
+      "note_url": "notes/2025/PSA/note/",
+      "prototxt_path": "meta/2025/PSA.prototxt",
+      "update_time": 1768816157
+    },
+    {
+      "id": "ComplementarySparsity",
+      "title": "Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks",
+      "abbr": "Complementary Sparsity",
+      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a",
+      "authors": [
+        "Kevin Hunter",
+        "Lawrence Spracklen",
+        "Subutai Ahmad"
+      ],
+      "institutions": [
+        "Numenta"
+      ],
+      "year": 2022,
+      "venue": "NCE",
+      "cover": "notes/2022/ComplementarySparsity/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning"
+      ],
+      "code_url": null,
+      "note_url": "notes/2022/ComplementarySparsity/note/",
+      "prototxt_path": "meta/2022/ComplementarySparsity.prototxt",
+      "update_time": 1768799470
+    },
+    {
+      "id": "MixServe",
+      "title": "MixServe: An Automatic Distributed Serving System for MoE Models with Hybrid Parallelism Based on Fused Communication Algorithm",
+      "abbr": "MixServe",
+      "url": "http://arxiv.org/abs/2601.08800v1",
+      "authors": [
+        "Bowen Zhou",
+        "Jinrui Jia",
+        "Wenhao He",
+        "Yong Zhang",
+        "Fang Dong"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "00-None"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/MixServe/note/",
+      "prototxt_path": "meta/2026/MixServe.prototxt",
+      "update_time": 1768533614
+    },
+    {
+      "id": "CAOTE",
+      "title": "CAOTE: KV Cache Selection for LLMs via Attention Output Error-Based Token Eviction",
+      "abbr": "CAOTE",
+      "url": "http://arxiv.org/abs/2504.14051v6",
+      "authors": [
+        "Raghavv Goel",
+        "Junyoung Park",
+        "Mukul Gagrani",
+        "Dalton Jones",
+        "Matthew Morse",
+        "Harper Langston",
+        "Mingu Lee",
+        "Chris Lott"
+      ],
+      "institutions": [
+        "Qualcomm"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/CAOTE/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/CAOTE/note/",
+      "prototxt_path": "meta/2025/CAOTE.prototxt",
+      "update_time": 1768446513
+    },
+    {
+      "id": "POD-Attention",
+      "title": "POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference",
+      "abbr": "POD-Attention",
+      "url": "http://arxiv.org/abs/2410.18038v2",
+      "authors": [
+        "Aditya K Kamath",
+        "Ramya Prabhu",
+        "Jayashree Mohan",
+        "Simon Peter",
+        "Ramachandran Ramjee",
+        "Ashish Panwar"
+      ],
+      "institutions": [
+        "University of Washington",
+        "Microsoft Research"
+      ],
+      "year": 2025,
+      "venue": "ASPLOS",
+      "cover": "notes/2025/POD-Attention/fig2.png",
+      "keywords": [
+        "29-Comm-Comp Overlap"
+      ],
+      "code_url": "https://github.com/microsoft/vattention/tree/main/pod_attn",
+      "note_url": "notes/2025/POD-Attention/note/",
+      "prototxt_path": "meta/2025/POD-Attention.prototxt",
+      "update_time": 1768295194
+    },
+    {
+      "id": "Oneiros",
+      "title": "Oneiros: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving",
+      "abbr": "Oneiros",
+      "url": "http://arxiv.org/abs/2507.11507v2",
+      "authors": [
+        "Ruihao Li",
+        "Shagnik Pal",
+        "Vineeth Narayan Pullu",
+        "Prasoon Sinha",
+        "Jeeho Ryoo",
+        "Lizy K. John",
+        "Neeraja J. Yadwadkar"
+      ],
+      "institutions": [
+        "The University of Texas at Austin",
+        "Fairleigh Dickinson University"
+      ],
+      "year": 2025,
+      "venue": "SoCC",
+      "cover": "notes/2025/Oneiros/cover.png",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/UT-SysML/Oneiros",
+      "note_url": "notes/2025/Oneiros/note/",
+      "prototxt_path": "meta/2025/Oneiros.prototxt",
+      "update_time": 1768292955
+    },
+    {
+      "id": "SageAttention2",
+      "title": "SageAttention2: Efficient Attention with Thorough Outlier Smoothing and Per-thread INT4 Quantization",
+      "abbr": "SageAttention2",
+      "url": "http://arxiv.org/abs/2411.10958v6",
+      "authors": [
+        "Jintao Zhang",
+        "Haofeng Huang",
+        "Pengle Zhang",
+        "Jia Wei",
+        "Jun Zhu",
+        "Jianfei Chen"
+      ],
+      "institutions": [
+        "Tsinghua University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/thu-ml/SageAttention",
+      "note_url": "notes/2024/SageAttention2/note/",
+      "prototxt_path": "meta/2024/SageAttention2.prototxt",
+      "update_time": 1768291553
+    },
+    {
+      "id": "SageAttention",
+      "title": "SageAttention: Accurate 8-Bit Attention for Plug-and-play Inference Acceleration",
+      "abbr": "SageAttention",
+      "url": "http://arxiv.org/abs/2410.02367v8",
+      "authors": [
+        "Jintao Zhang",
+        "Jia Wei",
+        "Haofeng Huang",
+        "Pengle Zhang",
+        "Jun Zhu",
+        "Jianfei Chen"
+      ],
+      "institutions": [
+        "Tsinghua University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/thu-ml/SageAttention",
+      "note_url": "notes/2024/SageAttention/note/",
+      "prototxt_path": "meta/2024/SageAttention.prototxt",
+      "update_time": 1768291541
+    },
+    {
+      "id": "MiniKV",
+      "title": "MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache",
+      "abbr": "MiniKV",
+      "url": "http://arxiv.org/abs/2411.18077",
+      "authors": [
+        "Akshat Sharma",
+        "Hangliang Ding",
+        "Jianping Li",
+        "Neel Dani",
+        "Minjia Zhang"
+      ],
+      "institutions": [
+        "University of Illinois at Urbana-Champaign"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/MiniKV/minikv.png",
+      "keywords": [
+        "19-Quantization (KV Cache)",
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/akshatsh49/MiniKV-Dev",
+      "note_url": "notes/2024/MiniKV/note/",
+      "prototxt_path": "meta/2024/MiniKV.prototxt",
+      "update_time": 1768291509
+    },
+    {
+      "id": "MFA",
+      "title": "Multi-matrix Factorization Attention",
+      "abbr": "MFA",
+      "url": "http://arxiv.org/abs/2412.19255v2",
+      "authors": [
+        "Jingcheng Hu",
+        "Houyi Li",
+        "Yinmin Zhang",
+        "Zili Wang",
+        "Shuigeng Zhou",
+        "Xiangyu Zhang",
+        "Heung-Yeung Shum",
+        "Daxin Jiang"
+      ],
+      "institutions": [
+        "StepFun",
+        "Tsinghua University",
+        "Fudan University",
+        "Megvii Technology"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/MFA/note/",
+      "prototxt_path": "meta/2024/MFA.prototxt",
+      "update_time": 1768291308
+    },
+    {
+      "id": "LazyLLM",
+      "title": "LazyLLM: Dynamic Token Pruning for Efficient Long Context LLM Inference",
+      "abbr": "LazyLLM",
+      "url": "http://arxiv.org/abs/2407.14057v1",
+      "authors": [
+        "Qichen Fu",
+        "Minsik Cho",
+        "Thomas Merth",
+        "Sachin Mehta",
+        "Mohammad Rastegari",
+        "Mahyar Najibi"
+      ],
+      "institutions": [
+        "Apple",
+        "Meta AI"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/LazyLLM/fig3.png",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/LazyLLM/note/",
+      "prototxt_path": "meta/2024/LazyLLM.prototxt",
+      "update_time": 1768291289
+    },
+    {
+      "id": "GEAR",
+      "title": "GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM",
+      "abbr": "GEAR",
+      "url": "http://arxiv.org/abs/2403.05527v4",
+      "authors": [
+        "Hao Kang",
+        "Qingru Zhang",
+        "Souvik Kundu",
+        "Geonhwa Jeong",
+        "Zaoxing Liu",
+        "Tushar Krishna",
+        "Tuo Zhao"
+      ],
+      "institutions": [
+        "Georgia Tech",
+        "Intel",
+        "University of Maryland"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/GEAR/overview.png",
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/HaoKang-Timmy/GEAR",
+      "note_url": "notes/2024/GEAR/note/",
+      "prototxt_path": "meta/2024/GEAR.prototxt",
+      "update_time": 1768291205
+    },
+    {
+      "id": "MInference",
+      "title": "MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention",
+      "abbr": "MInference",
+      "url": "http://arxiv.org/abs/2407.02490v1",
+      "authors": [
+        "Huiqiang Jiang",
+        "Yucheng Li",
+        "Chengruidong Zhang",
+        "Qianhui Wu",
+        "Xufang Luo",
+        "Surin Ahn",
+        "Zhenhua Han",
+        "Amir H. Abdi",
+        "Dongsheng Li",
+        "Chin-Yew Lin",
+        "Yuqing Yang",
+        "Lili Qiu"
+      ],
+      "institutions": [
+        "Microsoft",
+        "University of Surrey"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS",
+      "cover": "notes/2024/MInference/MInference_3shape.PNG",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/microsoft/MInference",
+      "note_url": "notes/2024/MInference/note/",
+      "prototxt_path": "meta/2024/MInference.prototxt",
+      "update_time": 1768291167
+    },
+    {
+      "id": "DoubleSparsity",
+      "title": "Post-Training Sparse Attention with Double Sparsity",
+      "abbr": "DoubleSparsity",
+      "url": "http://arxiv.org/abs/2408.07092v2",
+      "authors": [
+        "Shuo Yang",
+        "Ying Sheng",
+        "Joseph E. Gonzalez",
+        "Ion Stoica",
+        "Lianmin Zheng"
+      ],
+      "institutions": [
+        "UC Berkeley",
+        "Stanford",
+        "Shanghai Jiao Tong University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/DoubleSparsity/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/andy-yang-1/DoubleSparse",
+      "note_url": "notes/2024/DoubleSparsity/note/",
+      "prototxt_path": "meta/2024/DoubleSparsity.prototxt",
+      "update_time": 1768291146
+    },
+    {
+      "id": "RecycledAttention",
+      "title": "Recycled Attention: Efficient inference for long-context language models",
+      "abbr": "Recycled Attention",
+      "url": "http://arxiv.org/abs/2411.05787v1",
+      "authors": [
+        "Fangyuan Xu",
+        "Tanya Goyal",
+        "Eunsol Choi"
+      ],
+      "institutions": [
+        "New York University",
+        "Cornell University",
+        "The University of Texas at Austin"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/RecycledAttention/fig1.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/carriex/recycled-attention",
+      "note_url": "notes/2024/RecycledAttention/note/",
+      "prototxt_path": "meta/2024/RecycledAttention.prototxt",
+      "update_time": 1768290661
+    },
+    {
+      "id": "Quest",
+      "title": "Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference",
+      "abbr": "Quest",
+      "url": "http://arxiv.org/abs/2406.10774",
+      "authors": [
+        "Jiaming Tang",
+        "Yilong Zhao",
+        "Kan Zhu",
+        "Guangxuan Xiao",
+        "Baris Kasikci",
+        "Song Han"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Massachusetts Institute of Technology"
+      ],
+      "year": 2024,
+      "venue": "ICML",
+      "cover": "notes/2024/Quest/quest.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/mit-han-lab/quest",
+      "note_url": "notes/2024/Quest/note/",
+      "prototxt_path": "meta/2024/Quest.prototxt",
+      "update_time": 1768290633
+    },
+    {
+      "id": "SampleAttention",
+      "title": "SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention",
+      "abbr": "SampleAttention",
+      "url": "http://arxiv.org/abs/2406.15486v2",
+      "authors": [
+        "Qianchao Zhu",
+        "Jiangfei Duan",
+        "Chang Chen",
+        "Siran Liu",
+        "Xiuhong Li",
+        "Guanyu Feng",
+        "Xin Lv",
+        "Huanqi Cao",
+        "Xiao Chuanfu",
+        "Xingcheng Zhang",
+        "Dahua Lin",
+        "Chao Yang"
+      ],
+      "institutions": [
+        "Peking University",
+        "The Chinese University of Hong Kong",
+        "Zhipu AI",
+        "Tsinghua University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/SampleAttention/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/SampleAttention/note/",
+      "prototxt_path": "meta/2024/SampleAttention.prototxt",
+      "update_time": 1768290587
+    },
+    {
+      "id": "MiniCache",
+      "title": "MiniCache: KV Cache Compression in Depth Dimension for Large Language Models",
+      "abbr": "MiniCache",
+      "url": "http://arxiv.org/abs/2405.14366v2",
+      "authors": [
+        "Akide Liu",
+        "Jing Liu",
+        "Zizheng Pan",
+        "Yefei He",
+        "Gholamreza Haffari",
+        "Bohan Zhuang"
+      ],
+      "institutions": [
+        "Monash University",
+        "Zhejiang University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/MiniCache/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/AkideLiu/MiniCache",
+      "note_url": "notes/2024/MiniCache/note/",
+      "prototxt_path": "meta/2024/MiniCache.prototxt",
+      "update_time": 1768290522
+    },
+    {
+      "id": "SparQ",
+      "title": "SparQ Attention: Bandwidth-Efficient LLM Inference",
+      "abbr": "SparQ",
+      "url": "http://arxiv.org/abs/2312.04985v5",
+      "authors": [
+        "Luka Ribar",
+        "Ivan Chelombiev",
+        "Luke Hudlass-Galley",
+        "Charlie Blake",
+        "Carlo Luschi",
+        "Douglas Orr"
+      ],
+      "institutions": [
+        "Graphcore Research",
+        "Synthesia"
+      ],
+      "year": 2024,
+      "venue": "ICML",
+      "cover": "notes/2024/SparQ/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/SparQ/note/",
+      "prototxt_path": "meta/2024/SparQ.prototxt",
+      "update_time": 1768290225
+    },
+    {
+      "id": "SeerAttention",
+      "title": "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs",
+      "abbr": "SeerAttention",
+      "url": "http://arxiv.org/abs/2410.13276v2",
+      "authors": [
+        "Yizhao Gao",
+        "Zhichen Zeng",
+        "Dayou Du",
+        "Shijie Cao",
+        "Hayden Kwok-Hay So",
+        "Ting Cao",
+        "Fan Yang",
+        "Mao Yang"
+      ],
+      "institutions": [
+        "University of Hong Kong",
+        "University of Washington",
+        "Microsoft Research"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/SeerAttention/seerattention.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/microsoft/SeerAttention",
+      "note_url": "notes/2024/SeerAttention/note/",
+      "prototxt_path": "meta/2024/SeerAttention.prototxt",
+      "update_time": 1768284057
+    },
+    {
+      "id": "SnapKV",
+      "title": "SnapKV: LLM Knows What You are Looking for Before Generation",
+      "abbr": "SnapKV",
+      "url": "http://arxiv.org/abs/2404.14469v2",
+      "authors": [
+        "Yuhong Li",
+        "Yingbing Huang",
+        "Bowen Yang",
+        "Bharat Venkitesh",
+        "Acyr Locatelli",
+        "Hanchen Ye",
+        "Tianle Cai",
+        "Patrick Lewis",
+        "Deming Chen"
+      ],
+      "institutions": [
+        "University of Illinois Urbana-Champaign",
+        "Cohere",
+        "Princeton University"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/SnapKV/fig1.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/FasterDecoding/SnapKV",
+      "note_url": "notes/2024/SnapKV/note/",
+      "prototxt_path": "meta/2024/SnapKV.prototxt",
+      "update_time": 1768283987
+    },
+    {
+      "id": "ReSA",
+      "title": "Rectified Sparse Attention",
+      "abbr": "ReSA",
+      "url": "http://arxiv.org/abs/2506.04108v2",
+      "authors": [
+        "Yutao Sun",
+        "Tianzhu Ye",
+        "Li Dong",
+        "Yuqing Xia",
+        "Jian Chen",
+        "Yizhao Gao",
+        "Shijie Cao",
+        "Jianyong Wang",
+        "Furu Wei"
+      ],
+      "institutions": [
+        "Microsoft Research",
+        "Tsinghua University",
+        "The University of Hong Kong"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/ReSA/fig2.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/microsoft/unilm/tree/master/ReSA",
+      "note_url": "notes/2025/ReSA/note/",
+      "prototxt_path": "meta/2025/ReSA.prototxt",
+      "update_time": 1768283900
+    },
+    {
       "id": "Engram",
       "title": "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models",
       "abbr": "Engram",
@@ -1069,45 +2417,6 @@
       "note_url": "notes/2025/HCAttention/note/",
       "prototxt_path": "meta/2025/HCAttention.prototxt",
       "update_time": 1768199096
-    },
-    {
-      "id": "HATA",
-      "title": "HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference",
-      "abbr": "HATA",
-      "url": "http://arxiv.org/abs/2506.02572v1",
-      "authors": [
-        "Ping Gong",
-        "Jiawei Yi",
-        "Shengnan Wang",
-        "Juncheng Zhang",
-        "Zewen Jin",
-        "Ouxiang Zhou",
-        "Ruibo Liu",
-        "Guanbin Xu",
-        "Youhui Bai",
-        "Bowen Ye",
-        "Kun Yuan",
-        "Tong Yang",
-        "Gong Zhang",
-        "Renhai Chen",
-        "Feng Wu",
-        "Cheng Li"
-      ],
-      "institutions": [
-        "University of Science and Technology of China",
-        "Huawei",
-        "Peking University"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/HATA/fig2.png",
-      "keywords": [
-        "20-Sparse/Eviction (KV Cache)"
-      ],
-      "code_url": "https://github.com/gpzlx1/HATA",
-      "note_url": "notes/2025/HATA/note/",
-      "prototxt_path": "meta/2025/HATA.prototxt",
-      "update_time": 1768198910
     },
     {
       "id": "HashAttention",
@@ -2704,34 +4013,6 @@
       "note_url": "notes/2025/AdaSplash/note/",
       "prototxt_path": "meta/2025/AdaSplash.prototxt",
       "update_time": 1767949876
-    },
-    {
-      "id": "KVzip",
-      "title": "KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction",
-      "abbr": "KVzip",
-      "url": "http://arxiv.org/abs/2505.23416v2",
-      "authors": [
-        "Jang-Hyun Kim",
-        "Jinuk Kim",
-        "Sangwoo Kwon",
-        "Jae W. Lee",
-        "Sangdoo Yun",
-        "Hyun Oh Song"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2025,
-      "venue": "NeurIPS",
-      "cover": null,
-      "keywords": [
-        "20-Sparse/Eviction (KV Cache)"
-      ],
-      "code_url": "https://github.com/snu-mllab/KVzip",
-      "note_url": "notes/2025/KVzip/note/",
-      "prototxt_path": "meta/2025/KVzip.prototxt",
-      "update_time": 1767944865
     },
     {
       "id": "AdaKV",
@@ -6157,38 +7438,6 @@
       "update_time": 0
     },
     {
-      "id": "GEAR",
-      "title": "GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM",
-      "abbr": "GEAR",
-      "url": "http://arxiv.org/abs/2403.05527v4",
-      "authors": [
-        "Hao Kang",
-        "Qingru Zhang",
-        "Souvik Kundu",
-        "Geonhwa Jeong",
-        "Zaoxing Liu",
-        "Tushar Krishna",
-        "Tuo Zhao"
-      ],
-      "institutions": [
-        "Georgia Tech",
-        "Intel",
-        "University of Maryland"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/GEAR/overview.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "09-Quantization",
-        "19-Quantization (KV Cache)"
-      ],
-      "code_url": "https://github.com/HaoKang-Timmy/GEAR",
-      "note_url": "notes/2024/GEAR/note/",
-      "prototxt_path": "meta/2024/GEAR.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "GLM-4.5",
       "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
       "abbr": "GLM-4.5",
@@ -6663,39 +7912,6 @@
       "update_time": 0
     },
     {
-      "id": "InfLLM",
-      "title": "InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory",
-      "abbr": "InfLLM",
-      "url": "http://arxiv.org/abs/2402.04617v2",
-      "authors": [
-        "Chaojun Xiao",
-        "Pengle Zhang",
-        "Xu Han",
-        "Guangxuan Xiao",
-        "Yankai Lin",
-        "Zhengyan Zhang",
-        "Zhiyuan Liu",
-        "Maosong Sun"
-      ],
-      "institutions": [
-        "Tsinghua University",
-        "Massachusetts Institution of Technology",
-        "Renmin University of China"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/InfLLM/cover.png",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "01-Sparse/Pruning",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/thunlp/InfLLM",
-      "note_url": "notes/2024/InfLLM/note/",
-      "prototxt_path": "meta/2024/InfLLM.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "Adrenaline",
       "title": "Injecting Adrenaline into LLM Serving: Boosting Resource Utilization and Throughput via Attention Disaggregation",
       "abbr": "Adrenaline",
@@ -6894,36 +8110,6 @@
       "code_url": null,
       "note_url": "notes/2025/LaRoSA/note/",
       "prototxt_path": "meta/2025/LaRoSA.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "LazyLLM",
-      "title": "LazyLLM: Dynamic Token Pruning for Efficient Long Context LLM Inference",
-      "abbr": "LazyLLM",
-      "url": "http://arxiv.org/abs/2407.14057v1",
-      "authors": [
-        "Qichen Fu",
-        "Minsik Cho",
-        "Thomas Merth",
-        "Sachin Mehta",
-        "Mohammad Rastegari",
-        "Mahyar Najibi"
-      ],
-      "institutions": [
-        "Apple",
-        "Meta AI"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/LazyLLM/fig3.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "02-Sparsity (Attention)",
-        "01-Sparse/Pruning"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/LazyLLM/note/",
-      "prototxt_path": "meta/2024/LazyLLM.prototxt",
       "update_time": 0
     },
     {
@@ -7475,98 +8661,6 @@
       "update_time": 0
     },
     {
-      "id": "MInference",
-      "title": "MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention",
-      "abbr": "MInference",
-      "url": "http://arxiv.org/abs/2407.02490v1",
-      "authors": [
-        "Huiqiang Jiang",
-        "Yucheng Li",
-        "Chengruidong Zhang",
-        "Qianhui Wu",
-        "Xufang Luo",
-        "Surin Ahn",
-        "Zhenhua Han",
-        "Amir H. Abdi",
-        "Dongsheng Li",
-        "Chin-Yew Lin",
-        "Yuqing Yang",
-        "Lili Qiu"
-      ],
-      "institutions": [
-        "Microsoft",
-        "University of Surrey"
-      ],
-      "year": 2024,
-      "venue": "NeurIPS",
-      "cover": "notes/2024/MInference/MInference_3shape.PNG",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "01-Sparse/Pruning",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/microsoft/MInference",
-      "note_url": "notes/2024/MInference/note/",
-      "prototxt_path": "meta/2024/MInference.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "MiniCache",
-      "title": "MiniCache: KV Cache Compression in Depth Dimension for Large Language Models",
-      "abbr": "MiniCache",
-      "url": "http://arxiv.org/abs/2405.14366v2",
-      "authors": [
-        "Akide Liu",
-        "Jing Liu",
-        "Zizheng Pan",
-        "Yefei He",
-        "Gholamreza Haffari",
-        "Bohan Zhuang"
-      ],
-      "institutions": [
-        "Monash University",
-        "Zhejiang University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/AkideLiu/MiniCache",
-      "note_url": "notes/2024/MiniCache/note/",
-      "prototxt_path": "meta/2024/MiniCache.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "MiniKV",
-      "title": "MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache",
-      "abbr": "MiniKV",
-      "url": "http://arxiv.org/abs/2411.18077",
-      "authors": [
-        "Akshat Sharma",
-        "Hangliang Ding",
-        "Jianping Li",
-        "Neel Dani",
-        "Minjia Zhang"
-      ],
-      "institutions": [
-        "University of Illinois at Urbana-Champaign"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/MiniKV/minikv.png",
-      "keywords": [
-        "09-Quantization",
-        "21-KV Cache Management",
-        "19-Quantization (KV Cache)"
-      ],
-      "code_url": "https://github.com/akshatsh49/MiniKV-Dev",
-      "note_url": "notes/2024/MiniKV/note/",
-      "prototxt_path": "meta/2024/MiniKV.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "MVUE",
       "title": "Minimum Variance Unbiased N:M Sparsity for the Neural Gradients",
       "abbr": "MVUE",
@@ -7771,45 +8865,6 @@
       "update_time": 0
     },
     {
-      "id": "MoA",
-      "title": "MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression",
-      "abbr": "MoA",
-      "url": "http://arxiv.org/abs/2406.14909v2",
-      "authors": [
-        "Tianyu Fu",
-        "Haofeng Huang",
-        "Xuefei Ning",
-        "Genghan Zhang",
-        "Boju Chen",
-        "Tianqi Wu",
-        "Hongyi Wang",
-        "Zixiao Huang",
-        "Shiyao Li",
-        "Shengen Yan",
-        "Guohao Dai",
-        "Huazhong Yang",
-        "Yu Wang"
-      ],
-      "institutions": [
-        "Tsinghua University",
-        "Infinigence-AI",
-        "Stanford University",
-        "Shanghai Jiao Tong University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/MoA/moa.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/thu-nics/MoA",
-      "note_url": "notes/2024/MoA/note/",
-      "prototxt_path": "meta/2024/MoA.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "MoDES",
       "title": "MoDES: Accelerating Mixture-of-Experts Multimodal Large Language Models via Dynamic Expert Skipping",
       "abbr": "MoDES",
@@ -7944,39 +8999,6 @@
       "update_time": 0
     },
     {
-      "id": "MFA",
-      "title": "Multi-matrix Factorization Attention",
-      "abbr": "MFA",
-      "url": "http://arxiv.org/abs/2412.19255v2",
-      "authors": [
-        "Jingcheng Hu",
-        "Houyi Li",
-        "Yinmin Zhang",
-        "Zili Wang",
-        "Shuigeng Zhou",
-        "Xiangyu Zhang",
-        "Heung-Yeung Shum",
-        "Daxin Jiang"
-      ],
-      "institutions": [
-        "StepFun",
-        "Tsinghua University",
-        "Fudan University",
-        "Megvii Technology"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "21-KV Cache Management",
-        "42-Network Structure Design"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/MFA/note/",
-      "prototxt_path": "meta/2024/MFA.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "NanoFlow",
       "title": "NanoFlow: Towards Optimal Large Language Model Serving Throughput",
       "abbr": "NanoFlow",
@@ -8092,36 +9114,6 @@
       "code_url": "https://github.com/OpenGVLab/OmniQuant",
       "note_url": null,
       "prototxt_path": "meta/2023/omniquant.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "Oneiros",
-      "title": "Oneiros: KV Cache Optimization through Parameter Remapping for Multi-tenant LLM Serving",
-      "abbr": "Oneiros",
-      "url": "http://arxiv.org/abs/2507.11507v2",
-      "authors": [
-        "Ruihao Li",
-        "Shagnik Pal",
-        "Vineeth Narayan Pullu",
-        "Prasoon Sinha",
-        "Jeeho Ryoo",
-        "Lizy K. John",
-        "Neeraja J. Yadwadkar"
-      ],
-      "institutions": [
-        "The University of Texas at Austin",
-        "Fairleigh Dickinson University"
-      ],
-      "year": 2025,
-      "venue": "SoCC",
-      "cover": null,
-      "keywords": [
-        "21-KV Cache Management",
-        "40-LLM Deployment"
-      ],
-      "code_url": "https://github.com/UT-SysML/Oneiros",
-      "note_url": "notes/2025/Oneiros/note/",
-      "prototxt_path": "meta/2025/Oneiros.prototxt",
       "update_time": 0
     },
     {
@@ -8494,35 +9486,6 @@
       "update_time": 0
     },
     {
-      "id": "POD-Attention",
-      "title": "POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference",
-      "abbr": "POD-Attention",
-      "url": "http://arxiv.org/abs/2410.18038v2",
-      "authors": [
-        "Aditya K Kamath",
-        "Ramya Prabhu",
-        "Jayashree Mohan",
-        "Simon Peter",
-        "Ramachandran Ramjee",
-        "Ashish Panwar"
-      ],
-      "institutions": [
-        "University of Washington",
-        "Microsoft Research"
-      ],
-      "year": 2025,
-      "venue": "ASPLOS",
-      "cover": "notes/2025/POD-Attention/fig2.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "40-LLM Deployment"
-      ],
-      "code_url": "https://github.com/microsoft/vattention/tree/main/pod_attn",
-      "note_url": "notes/2025/POD-Attention/note/",
-      "prototxt_path": "meta/2025/POD-Attention.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "OpenVINO",
       "title": "Post-training deep neural network pruning via layer-wise calibration",
       "abbr": "OpenVINO",
@@ -8566,36 +9529,6 @@
       "code_url": "https://github.com/YixuanSeanZhou/Quantized_Neural_Nets",
       "note_url": null,
       "prototxt_path": "meta/2023/gpfqv2.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "DoubleSparsity",
-      "title": "Post-Training Sparse Attention with Double Sparsity",
-      "abbr": "DoubleSparsity",
-      "url": "http://arxiv.org/abs/2408.07092v2",
-      "authors": [
-        "Shuo Yang",
-        "Ying Sheng",
-        "Joseph E. Gonzalez",
-        "Ion Stoica",
-        "Lianmin Zheng"
-      ],
-      "institutions": [
-        "UC Berkeley",
-        "Stanford",
-        "Shanghai Jiao Tong University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/andy-yang-1/DoubleSparse",
-      "note_url": "notes/2024/DoubleSparsity/note/",
-      "prototxt_path": "meta/2024/DoubleSparsity.prototxt",
       "update_time": 0
     },
     {
@@ -8675,65 +9608,6 @@
       "code_url": "https://github.com/SJTU-IPADS/PowerInfer",
       "note_url": "notes/2023/PowerInfer/note/",
       "prototxt_path": "meta/2023/PowerInfer.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "PrefixQuant",
-      "title": "PrefixQuant: Eliminating Outliers by Prefixed Tokens for Large Language Models Quantization",
-      "abbr": "PrefixQuant",
-      "url": "http://arxiv.org/abs/2410.05265v2",
-      "authors": [
-        "Mengzhao Chen",
-        "Yi Liu",
-        "Jiahao Wang",
-        "Yi Bin",
-        "Wenqi Shao",
-        "Ping Luo"
-      ],
-      "institutions": [
-        "The University of Hong Kong",
-        "Tongji University",
-        "Shanghai AI Laboratory"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/PrefixQuant/fig2.png",
-      "keywords": [
-        "09-Quantization",
-        "21-KV Cache Management",
-        "19-Quantization (KV Cache)"
-      ],
-      "code_url": "https://github.com/ChenMnZ/PrefixQuant",
-      "note_url": "notes/2024/PrefixQuant/note/",
-      "prototxt_path": "meta/2024/PrefixQuant.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "PSA",
-      "title": "Progressive Sparse Attention: Algorithm and System Co-design for Efficient Attention in LLM Serving",
-      "abbr": "PSA",
-      "url": "http://arxiv.org/abs/2503.00392v1",
-      "authors": [
-        "Qihui Zhou",
-        "Peiqi Yin",
-        "Pengfei Zuo",
-        "James Cheng"
-      ],
-      "institutions": [
-        "The Chinese University of Hong Kong",
-        "Huawei"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/PSA/fig4.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/ASISys/PSAttention",
-      "note_url": "notes/2025/PSA/note/",
-      "prototxt_path": "meta/2025/PSA.prototxt",
       "update_time": 0
     },
     {
@@ -8925,37 +9799,6 @@
       "update_time": 0
     },
     {
-      "id": "PureKV",
-      "title": "PureKV: Plug-and-Play KV Cache Optimization with Spatial-Temporal Sparse Attention for Vision-Language Large Models",
-      "abbr": "PureKV",
-      "url": "http://arxiv.org/abs/2510.25600v2",
-      "authors": [
-        "Zhonghua Jiang",
-        "Kunxi Li",
-        "Yiyun Zhou",
-        "Sihao Liu",
-        "Zhaode Wang",
-        "Chengfei lv",
-        "Shengyu Zhang"
-      ],
-      "institutions": [
-        "Zhejiang University",
-        "Alibaba Group"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/PureKV/fig1.png",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "01-Sparse/Pruning",
-        "21-KV Cache Management"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/PureKV/note/",
-      "prototxt_path": "meta/2025/PureKV.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "Q-Sparse",
       "title": "Q-Sparse: All Large Language Models can be Fully Sparsely-Activated",
       "abbr": "Q-Sparse",
@@ -9007,33 +9850,6 @@
       "update_time": 0
     },
     {
-      "id": "QJL",
-      "title": "QJL: 1-Bit Quantized JL Transform for KV Cache Quantization with Zero Overhead",
-      "abbr": "QJL",
-      "url": "http://arxiv.org/abs/2406.03482v2",
-      "authors": [
-        "Amir Zandieh",
-        "Majid Daliri",
-        "Insu Han"
-      ],
-      "institutions": [
-        "New York University",
-        "Adobe Research"
-      ],
-      "year": 2025,
-      "venue": "AAAI",
-      "cover": "notes/2025/QJL/fig1.png",
-      "keywords": [
-        "09-Quantization",
-        "21-KV Cache Management",
-        "19-Quantization (KV Cache)"
-      ],
-      "code_url": "https://github.com/amirzandieh/QJL",
-      "note_url": "notes/2025/QJL/note/",
-      "prototxt_path": "meta/2025/QJL.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "qlora",
       "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
       "abbr": "QLoRA",
@@ -9055,76 +9871,6 @@
       "code_url": "https://github.com/artidoro/qlora",
       "note_url": null,
       "prototxt_path": "meta/2023/qlora.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "Quest",
-      "title": "Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference",
-      "abbr": "Quest",
-      "url": "http://arxiv.org/abs/2406.10774",
-      "authors": [
-        "Jiaming Tang",
-        "Yilong Zhao",
-        "Kan Zhu",
-        "Guangxuan Xiao",
-        "Baris Kasikci",
-        "Song Han"
-      ],
-      "institutions": [
-        "Shanghai Jiao Tong University",
-        "Massachusetts Institute of Technology"
-      ],
-      "year": 2024,
-      "venue": "ICML",
-      "cover": "notes/2024/Quest/quest.png",
-      "keywords": [
-        "01-Sparse/Pruning",
-        "21-KV Cache Management",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/mit-han-lab/quest",
-      "note_url": "notes/2024/Quest/note/",
-      "prototxt_path": "meta/2024/Quest.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "QuickSilver",
-      "title": "QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization",
-      "abbr": "QuickSilver",
-      "url": "http://arxiv.org/abs/2506.22396v1",
-      "authors": [
-        "Danush Khanna",
-        "Aditya Kumar Guru",
-        "Srivarshinee Sridhar",
-        "Zidan Ahmed",
-        "Rubhav Bahirwani",
-        "Meetu Malhotra",
-        "Vinija Jain",
-        "Aman Chadha",
-        "Amitava Das",
-        "Kripabandhu Ghosh"
-      ],
-      "institutions": [
-        "Manipal University Jaipur",
-        "Vellore Institute of Technology",
-        "NIT Silchar",
-        "Harrisburg University of Science and Technology",
-        "Meta",
-        "Amazon",
-        "IISER Kolkata",
-        "BITS Pilani"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "21-KV Cache Management",
-        "01-Sparse/Pruning"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/QuickSilver/note/",
-      "prototxt_path": "meta/2025/QuickSilver.prototxt",
       "update_time": 0
     },
     {
@@ -9232,46 +9978,6 @@
       "update_time": 0
     },
     {
-      "id": "R-KV",
-      "title": "R-KV: Redundancy-aware KV Cache Compression for Training-Free Reasoning Models Acceleration",
-      "abbr": "R-KV",
-      "url": "http://arxiv.org/abs/2505.24133v2",
-      "authors": [
-        "Zefan Cai",
-        "Wen Xiao",
-        "Hanshi Sun",
-        "Cheng Luo",
-        "Yikai Zhang",
-        "Ke Wan",
-        "Yucheng Li",
-        "Yeyang Zhou",
-        "Li-Wen Chang",
-        "Jiuxiang Gu",
-        "Zhen Dong",
-        "Anima Anandkumar",
-        "Abedelkadir Asi",
-        "Junjie Hu"
-      ],
-      "institutions": [
-        "University of Wisconsin",
-        "Microsoft",
-        "Carnegie Mellon University",
-        "University of Surrey"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/R-KV/fig1.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/Zefan-Cai/R-KV",
-      "note_url": "notes/2025/R-KV/note/",
-      "prototxt_path": "meta/2025/R-KV.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "R-Sparse",
       "title": "R-Sparse: Rank-Aware Activation Sparsity for Efficient LLM Inference",
       "abbr": "R-Sparse",
@@ -9298,144 +10004,6 @@
       "code_url": "https://github.com/VITA-Group/R-Sparse",
       "note_url": "notes/2025/R-Sparse/note/",
       "prototxt_path": "meta/2025/R-Sparse.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "RadialAttention",
-      "title": "Radial Attention: $O(n\\log n)$ Sparse Attention with Energy Decay for Long Video Generation",
-      "abbr": "RadialAttention",
-      "url": "http://arxiv.org/abs/2506.19852v1",
-      "authors": [
-        "Xingyang Li",
-        "Muyang Li",
-        "Tianle Cai",
-        "Haocheng Xi",
-        "Shuo Yang",
-        "Yujun Lin",
-        "Lvmin Zhang",
-        "Songlin Yang",
-        "Jinbo Hu",
-        "Kelly Peng",
-        "Maneesh Agrawala",
-        "Ion Stoica",
-        "Kurt Keutzer",
-        "Song Han"
-      ],
-      "institutions": [
-        "Massachusetts Institute of Technology",
-        "NVIDIA",
-        "Princeton",
-        "UC Berkeley",
-        "Stanford",
-        "First Intelligence"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/RadialAttention/fig3.png",
-      "keywords": [
-        "01-Sparse/Pruning",
-        "21-KV Cache Management",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/RadialAttention/note/",
-      "prototxt_path": "meta/2025/RadialAttention.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "ReAttention",
-      "title": "ReAttention: Training-Free Infinite Context with Finite Attention Scope",
-      "abbr": "ReAttention",
-      "url": "http://arxiv.org/abs/2407.15176v3",
-      "authors": [
-        "Xiaoran Liu",
-        "Ruixiao Li",
-        "Qipeng Guo",
-        "Zhigeng Liu",
-        "Yuerong Song",
-        "Kai Lv",
-        "Hang Yan",
-        "Linlin Li",
-        "Qun Liu",
-        "Xipeng Qiu"
-      ],
-      "institutions": [
-        "Fudan University",
-        "Huawei"
-      ],
-      "year": 2025,
-      "venue": "ICLR",
-      "cover": "notes/2025/ReAttention/fig1.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/OpenMOSS/ReAttention",
-      "note_url": "notes/2025/ReAttention/note/",
-      "prototxt_path": "meta/2025/ReAttention.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "ReSA",
-      "title": "Rectified Sparse Attention",
-      "abbr": "ReSA",
-      "url": "http://arxiv.org/abs/2506.04108v2",
-      "authors": [
-        "Yutao Sun",
-        "Tianzhu Ye",
-        "Li Dong",
-        "Yuqing Xia",
-        "Jian Chen",
-        "Yizhao Gao",
-        "Shijie Cao",
-        "Jianyong Wang",
-        "Furu Wei"
-      ],
-      "institutions": [
-        "Microsoft Research",
-        "Tsinghua University",
-        "The University of Hong Kong"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/ReSA/fig2.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/microsoft/unilm/tree/master/ReSA",
-      "note_url": "notes/2025/ReSA/note/",
-      "prototxt_path": "meta/2025/ReSA.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "RecycledAttention",
-      "title": "Recycled Attention: Efficient inference for long-context language models",
-      "abbr": "Recycled Attention",
-      "url": "http://arxiv.org/abs/2411.05787v1",
-      "authors": [
-        "Fangyuan Xu",
-        "Tanya Goyal",
-        "Eunsol Choi"
-      ],
-      "institutions": [
-        "New York University",
-        "Cornell University",
-        "The University of Texas at Austin"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/RecycledAttention/fig1.png",
-      "keywords": [
-        "01-Sparse/Pruning",
-        "21-KV Cache Management",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/carriex/recycled-attention",
-      "note_url": "notes/2024/RecycledAttention/note/",
-      "prototxt_path": "meta/2024/RecycledAttention.prototxt",
       "update_time": 0
     },
     {
@@ -9597,45 +10165,6 @@
       "update_time": 0
     },
     {
-      "id": "RetrievalAttention",
-      "title": "RetrievalAttention: Accelerating Long-Context LLM Inference via Vector Retrieval",
-      "abbr": "RetrievalAttention",
-      "url": "http://arxiv.org/abs/2409.10516v3",
-      "authors": [
-        "Di Liu",
-        "Meng Chen",
-        "Baotong Lu",
-        "Huiqiang Jiang",
-        "Zhenhua Han",
-        "Qianxi Zhang",
-        "Qi Chen",
-        "Chengruidong Zhang",
-        "Bailu Ding",
-        "Kai Zhang",
-        "Chen Chen",
-        "Fan Yang",
-        "Yuqing Yang",
-        "Lili Qiu"
-      ],
-      "institutions": [
-        "Microsoft Research",
-        "Shanghai Jiao Tong University",
-        "Fudan University"
-      ],
-      "year": 2025,
-      "venue": "NeurIPS",
-      "cover": null,
-      "keywords": [
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/microsoft/RetrievalAttention",
-      "note_url": "notes/2025/RetrievalAttention/note/",
-      "prototxt_path": "meta/2025/RetrievalAttention.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "SN1PK7EK",
       "title": "Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark",
       "abbr": "",
@@ -9722,100 +10251,6 @@
       "code_url": "https://github.com/hahnyuan/RPTQ4LLM",
       "note_url": null,
       "prototxt_path": "meta/2023/RPTQ.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "SageAttention2",
-      "title": "SageAttention2: Efficient Attention with Thorough Outlier Smoothing and Per-thread INT4 Quantization",
-      "abbr": "SageAttention2",
-      "url": "http://arxiv.org/abs/2411.10958v6",
-      "authors": [
-        "Jintao Zhang",
-        "Haofeng Huang",
-        "Pengle Zhang",
-        "Jia Wei",
-        "Jun Zhu",
-        "Jianfei Chen"
-      ],
-      "institutions": [
-        "Tsinghua University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "09-Quantization",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/thu-ml/SageAttention",
-      "note_url": "notes/2024/SageAttention2/note/",
-      "prototxt_path": "meta/2024/SageAttention2.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "SageAttention",
-      "title": "SageAttention: Accurate 8-Bit Attention for Plug-and-play Inference Acceleration",
-      "abbr": "SageAttention",
-      "url": "http://arxiv.org/abs/2410.02367v8",
-      "authors": [
-        "Jintao Zhang",
-        "Jia Wei",
-        "Haofeng Huang",
-        "Pengle Zhang",
-        "Jun Zhu",
-        "Jianfei Chen"
-      ],
-      "institutions": [
-        "Tsinghua University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "09-Quantization",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/thu-ml/SageAttention",
-      "note_url": "notes/2024/SageAttention/note/",
-      "prototxt_path": "meta/2024/SageAttention.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "SampleAttention",
-      "title": "SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention",
-      "abbr": "SampleAttention",
-      "url": "http://arxiv.org/abs/2406.15486v2",
-      "authors": [
-        "Qianchao Zhu",
-        "Jiangfei Duan",
-        "Chang Chen",
-        "Siran Liu",
-        "Xiuhong Li",
-        "Guanyu Feng",
-        "Xin Lv",
-        "Huanqi Cao",
-        "Xiao Chuanfu",
-        "Xingcheng Zhang",
-        "Dahua Lin",
-        "Chao Yang"
-      ],
-      "institutions": [
-        "Peking University",
-        "The Chinese University of Hong Kong",
-        "Zhipu AI",
-        "Tsinghua University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/SampleAttention/cover.png",
-      "keywords": [
-        "01-Sparse/Pruning",
-        "21-KV Cache Management",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/SampleAttention/note/",
-      "prototxt_path": "meta/2024/SampleAttention.prototxt",
       "update_time": 0
     },
     {
@@ -9973,39 +10408,6 @@
       "code_url": "https://github.com/microsoft/SeerAttention",
       "note_url": "notes/2025/SeerAttention-R/note/",
       "prototxt_path": "meta/2025/SeerAttention-R.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "SeerAttention",
-      "title": "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs",
-      "abbr": "SeerAttention",
-      "url": "http://arxiv.org/abs/2410.13276v2",
-      "authors": [
-        "Yizhao Gao",
-        "Zhichen Zeng",
-        "Dayou Du",
-        "Shijie Cao",
-        "Hayden Kwok-Hay So",
-        "Ting Cao",
-        "Fan Yang",
-        "Mao Yang"
-      ],
-      "institutions": [
-        "University of Hong Kong",
-        "University of Washington",
-        "Microsoft Research"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/SeerAttention/seerattention.png",
-      "keywords": [
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/microsoft/SeerAttention",
-      "note_url": "notes/2024/SeerAttention/note/",
-      "prototxt_path": "meta/2024/SeerAttention.prototxt",
       "update_time": 0
     },
     {
@@ -10168,39 +10570,6 @@
       "code_url": "https://github.com/sgl-project/sglang",
       "note_url": "notes/2024/SGLang/note/",
       "prototxt_path": "meta/2024/SGLang.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "ShadowKV",
-      "title": "ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference",
-      "abbr": "ShadowKV",
-      "url": "https://openreview.net/forum?id=oa7MYAO6h6",
-      "authors": [
-        "Hanshi Sun",
-        "Li-Wen Chang",
-        "Wenlei Bao",
-        "Size Zheng",
-        "Ningxin Zheng",
-        "Xin Liu",
-        "Harry Dong",
-        "Yuejie Chi",
-        "Beidi Chen"
-      ],
-      "institutions": [
-        "Carnegie Mellon University",
-        "ByteDance Seed"
-      ],
-      "year": 2025,
-      "venue": "ICML",
-      "cover": "notes/2025/ShadowKV/shadowkv.png",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "21-KV Cache Management",
-        "01-Sparse/Pruning"
-      ],
-      "code_url": "https://github.com/bytedance/ShadowKV",
-      "note_url": "notes/2025/ShadowKV/note/",
-      "prototxt_path": "meta/2025/ShadowKV.prototxt",
       "update_time": 0
     },
     {
@@ -10374,71 +10743,6 @@
       "update_time": 0
     },
     {
-      "id": "SnapKV",
-      "title": "SnapKV: LLM Knows What You are Looking for Before Generation",
-      "abbr": "SnapKV",
-      "url": "http://arxiv.org/abs/2404.14469v2",
-      "authors": [
-        "Yuhong Li",
-        "Yingbing Huang",
-        "Bowen Yang",
-        "Bharat Venkitesh",
-        "Acyr Locatelli",
-        "Hanchen Ye",
-        "Tianle Cai",
-        "Patrick Lewis",
-        "Deming Chen"
-      ],
-      "institutions": [
-        "University of Illinois Urbana-Champaign",
-        "Cohere",
-        "Princeton University"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/SnapKV/fig1.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/FasterDecoding/SnapKV",
-      "note_url": "notes/2024/SnapKV/note/",
-      "prototxt_path": "meta/2024/SnapKV.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "SpargeAttn",
-      "title": "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference",
-      "abbr": "SpargeAttn",
-      "url": "https://openreview.net/forum?id=74c3Wwk8Tc",
-      "authors": [
-        "Jintao Zhang",
-        "Chendong Xiang",
-        "Haofeng Huang",
-        "Jia Wei",
-        "Haocheng Xi",
-        "Jun Zhu",
-        "Jianfei Chen"
-      ],
-      "institutions": [
-        "Tsinghua University",
-        "University of California, Berkeley"
-      ],
-      "year": 2025,
-      "venue": "ICML",
-      "cover": "notes/2025/SpargeAttn/fig3.png",
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/thu-ml/SpargeAttn",
-      "note_url": "notes/2025/SpargeAttn/note/",
-      "prototxt_path": "meta/2025/SpargeAttn.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "SparkTransformer",
       "title": "Spark Transformer: Reactivating Sparsity in FFN and Attention",
       "abbr": "SparkTransformer",
@@ -10479,35 +10783,6 @@
       "code_url": null,
       "note_url": "notes/2025/SparkTransformer/note/",
       "prototxt_path": "meta/2025/SparkTransformer.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "SparQ",
-      "title": "SparQ Attention: Bandwidth-Efficient LLM Inference",
-      "abbr": "SparQ",
-      "url": "http://arxiv.org/abs/2312.04985v5",
-      "authors": [
-        "Luka Ribar",
-        "Ivan Chelombiev",
-        "Luke Hudlass-Galley",
-        "Charlie Blake",
-        "Carlo Luschi",
-        "Douglas Orr"
-      ],
-      "institutions": [
-        "Graphcore Research",
-        "Synthesia"
-      ],
-      "year": 2024,
-      "venue": "ICML",
-      "cover": null,
-      "keywords": [
-        "21-KV Cache Management",
-        "01-Sparse/Pruning"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/SparQ/note/",
-      "prototxt_path": "meta/2024/SparQ.prototxt",
       "update_time": 0
     },
     {
@@ -11469,34 +11744,6 @@
       "update_time": 0
     },
     {
-      "id": "TidalDecode",
-      "title": "TidalDecode: Fast and Accurate LLM Decoding with Position Persistent Sparse Attention",
-      "abbr": "TidalDecode",
-      "url": "http://arxiv.org/abs/2410.05076v1",
-      "authors": [
-        "Lijie Yang",
-        "Zhihao Zhang",
-        "Zhuofu Chen",
-        "Zikun Li",
-        "Zhihao Jia"
-      ],
-      "institutions": [
-        "Carnegie Mellon University"
-      ],
-      "year": 2025,
-      "venue": "ICLR",
-      "cover": "notes/2025/TidalDecode/fig2.png",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "21-KV Cache Management",
-        "01-Sparse/Pruning"
-      ],
-      "code_url": "https://github.com/DerrickYLJ/TidalDecode",
-      "note_url": "notes/2025/TidalDecode/note/",
-      "prototxt_path": "meta/2025/TidalDecode.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "TileLink",
       "title": "TileLink: Generating Efficient Compute-Communication Overlapping Kernels using Tile-Centric Primitives",
       "abbr": "TileLink",
@@ -11855,30 +12102,6 @@
       "update_time": 0
     },
     {
-      "id": "ComplementarySparsity",
-      "title": "Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks",
-      "abbr": "Complementary Sparsity",
-      "url": "https://iopscience.iop.org/article/10.1088/2634-4386/ac7c8a",
-      "authors": [
-        "Kevin Hunter",
-        "Lawrence Spracklen",
-        "Subutai Ahmad"
-      ],
-      "institutions": [
-        "Numenta"
-      ],
-      "year": 2022,
-      "venue": "Neuromorphic Computing and Engineering",
-      "cover": "notes/2022/ComplementarySparsity/cover.jpg",
-      "keywords": [
-        "01-Sparse/Pruning"
-      ],
-      "code_url": null,
-      "note_url": "notes/2022/ComplementarySparsity/note/",
-      "prototxt_path": "meta/2022/ComplementarySparsity.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "Týr-the-Pruner",
       "title": "Týr-the-Pruner: Unlocking Accurate 50% Structural Pruning for LLMs via Global Sparsity Distribution Optimization",
       "abbr": "Týr-the-Pruner",
@@ -11905,47 +12128,6 @@
       "code_url": null,
       "note_url": "notes/2025/Týr-the-Pruner/note/",
       "prototxt_path": "meta/2025/Týr-the-Pruner.prototxt",
-      "update_time": 0
-    },
-    {
-      "id": "UNComp",
-      "title": "UNComp: Can Matrix Entropy Uncover Sparsity? -- A Compressor Design from an Uncertainty-Aware Perspective",
-      "abbr": "UNComp",
-      "url": "http://arxiv.org/abs/2410.03090v2",
-      "authors": [
-        "Jing Xiong",
-        "Jianghan Shen",
-        "Fanghua Ye",
-        "Chaofan Tao",
-        "Zhongwei Wan",
-        "Jianqiao Lu",
-        "Xun Wu",
-        "Chuanyang Zheng",
-        "Zhijiang Guo",
-        "Min Yang",
-        "Lingpeng Kong",
-        "Ngai Wong"
-      ],
-      "institutions": [
-        "The University of Hong Kong",
-        "Nanjing University",
-        "University College London",
-        "The Ohio State University",
-        "Microsoft Research Asia",
-        "The Chinese University of Hong Kong",
-        "Hong Kong University of Science and Technology"
-      ],
-      "year": 2025,
-      "venue": "EMNLP",
-      "cover": "notes/2025/UNComp/fig4.png",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "01-Sparse/Pruning",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/menik1126/UNComp",
-      "note_url": "notes/2025/UNComp/note/",
-      "prototxt_path": "meta/2025/UNComp.prototxt",
       "update_time": 0
     },
     {
@@ -12373,8 +12555,8 @@
       "KDD Workshop",
       "MICRO",
       "MLSys",
+      "NCE",
       "NeurIPS",
-      "Neuromorphic Computing and Engineering",
       "OSDI",
       "PPoPP",
       "SC",
@@ -12392,6 +12574,7 @@
       "github"
     ],
     "keywords": [
+      "00-None",
       "01-Sparse/Pruning",
       "02-Sparsity (Attention)",
       "03-Sparsity (Activation)",
@@ -12414,5 +12597,5 @@
       "47-Benchmark"
     ]
   },
-  "total": 389
+  "total": 396
 }

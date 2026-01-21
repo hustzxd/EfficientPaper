@@ -19,14 +19,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/andy-yang-1/DoubleSparse"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: sparse_pruning
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768291146

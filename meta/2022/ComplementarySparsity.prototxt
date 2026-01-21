@@ -8,15 +8,12 @@ paper {
   institutions: "Numenta"
 }
 pub {
-  where: "Neuromorphic Computing and Engineering"
+  where: "NCE"
   year: 2022
 }
 code {
   type: "Pytorch"
   url: ""
-}
-note {
-  url: "ComplementarySparsity/note.md"
 }
 keyword {
   words: sparse_pruning
@@ -24,3 +21,7 @@ keyword {
 cover {
   url: "ComplementarySparsity/cover.jpg"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768799470

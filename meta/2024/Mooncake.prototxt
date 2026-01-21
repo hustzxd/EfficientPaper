@@ -1,0 +1,33 @@
+paper {
+  title: "Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"
+  abbr: "Mooncake"
+  url: "http://arxiv.org/abs/2407.00079v4"
+  authors: "Ruoyu Qin"
+  authors: "Zheming Li"
+  authors: "Weiran He"
+  authors: "Mingxing Zhang"
+  authors: "Yongwei Wu"
+  authors: "Weimin Zheng"
+  authors: "Xinran Xu"
+  institutions: "Moonshot AI"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/kvcache-ai/Mooncake"
+}
+keyword {
+  words: kv_cache_management
+  words: tool
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768881836

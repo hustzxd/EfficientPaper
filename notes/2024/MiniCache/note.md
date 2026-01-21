@@ -2,7 +2,7 @@
 
 > Akide Liu, Jing Liu, Zizheng Pan, Yefei He, Gholamreza Haffari, Bohan Zhuang
 
-![111](../../blank.jpg)
+![111](cover.png)
 
 ## Abstract
 
@@ -33,4 +33,5 @@ inference throughput by approximately 5x, and reduces the memory footprint by
 41% compared to the FP16 full cache baseline, all while maintaining
 near-lossless performance.
 
+- 相邻层之间cache相似性高
 - kv cache merge
