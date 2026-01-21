@@ -1,0 +1,26 @@
+paper {
+  title: "KVzap: Fast, Adaptive, and Faithful KV Cache Pruning"
+  abbr: "KVzap"
+  url: "http://arxiv.org/abs/2601.07891v1"
+  authors: "Simon Jegou"
+  authors: "Maximilian Jeblick"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVIDIA/kvpress"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768991644

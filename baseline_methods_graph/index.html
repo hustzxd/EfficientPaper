@@ -64,8 +64,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dhc-family">DHC Family</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#hata-family">HATA Family</a>
-</li>
 </ul>
 </li>
 </ul>
@@ -82,6 +80,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2025-12-31/">2025-12-31</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-01-09/">2026-01-09</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-01-16/">2026-01-16</a>
 </li>
 <li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
@@ -132,7 +132,7 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <p>Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.</p>
 <h2 id="streamingllm-family">StreamingLLM Family</h2>
-<p><em>31 methods, 47 relationships</em></p>
+<p><em>32 methods, 48 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
     classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
@@ -177,6 +177,8 @@
     class 2025_FreeKV leafNode
     2025_HashAttention["HashAttention[2025]"]
     class 2025_HashAttention leafNode
+    2025_KVzip["KVzip[2025]"]
+    class 2025_KVzip leafNode
     2025_Kascade["Kascade[2025]"]
     class 2025_Kascade leafNode
     2025_LAVa["LAVa[2025]"]
@@ -250,52 +252,54 @@
     linkStyle 22 stroke:#FFA500,stroke-width:2.5px
     2024_SnapKV ==&gt;|" "| 2025_EvolKV
     linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_LAVa
+    2024_SnapKV ==&gt;|" "| 2025_KVzip
     linkStyle 24 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_PureKV
+    2024_SnapKV ==&gt;|" "| 2025_LAVa
     linkStyle 25 stroke:#FF6347,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_UNComp
+    2024_SnapKV ==&gt;|" "| 2025_PureKV
     linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_InfLLM
+    2024_SnapKV ==&gt;|" "| 2025_UNComp
     linkStyle 27 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_MInference
+    2024_StreamingLLM ==&gt;|" "| 2024_InfLLM
     linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_RazorAttention
+    2024_StreamingLLM ==&gt;|" "| 2024_MInference
     linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_EvolKV
+    2024_StreamingLLM ==&gt;|" "| 2024_RazorAttention
     linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_FlexPrefill
+    2024_StreamingLLM ==&gt;|" "| 2025_EvolKV
     linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_HashAttention
+    2024_StreamingLLM ==&gt;|" "| 2025_FlexPrefill
     linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_PureKV
+    2024_StreamingLLM ==&gt;|" "| 2025_HashAttention
     linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_UNComp
+    2024_StreamingLLM ==&gt;|" "| 2025_PureKV
     linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_XAttention
+    2024_StreamingLLM ==&gt;|" "| 2025_UNComp
     linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_BLASST
+    2024_StreamingLLM ==&gt;|" "| 2025_XAttention
     linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_SharePrefill
+    2025_FlexPrefill ==&gt;|" "| 2025_BLASST
     linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_SlimInfer
+    2025_FlexPrefill ==&gt;|" "| 2025_SharePrefill
     linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_TCA_Attention
+    2025_FlexPrefill ==&gt;|" "| 2025_SlimInfer
     linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_XAttention
+    2025_FlexPrefill ==&gt;|" "| 2025_TCA_Attention
     linkStyle 40 stroke:#9370DB,stroke-width:2.5px
-    2025_RaaS ==&gt;|" "| 2025_FreeKV
+    2025_FlexPrefill ==&gt;|" "| 2025_XAttention
     linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
+    2025_RaaS ==&gt;|" "| 2025_FreeKV
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_BLASST
+    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
+    2025_XAttention ==&gt;|" "| 2025_BLASST
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    PyramidKV ==&gt;|" "| 2025_EvolKV
+    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    PyramidKV ==&gt;|" "| 2025_UNComp
+    PyramidKV ==&gt;|" "| 2025_EvolKV
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
+    PyramidKV ==&gt;|" "| 2025_UNComp
+    linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
 </div>
 <h2 id="kivi-family">KIVI Family</h2>
 <p><em>13 methods, 18 relationships</em></p>
@@ -579,20 +583,6 @@
     class 2025_mHC leafNode
 
     2025_DHC ==&gt;|" "| 2025_mHC
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-</div>
-<h2 id="hata-family">HATA Family</h2>
-<p><em>1 methods, 1 relationships</em></p>
-<div class="mermaid">flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2025_HATA["HATA[2025]"]
-    class 2025_HATA defaultNode
-
-    2025_HATA ==&gt;|" "| 2025_HATA
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 </div>
 <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->

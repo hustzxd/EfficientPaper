@@ -1,7 +1,7 @@
 paper {
   title: "ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference"
   abbr: "ShadowKV"
-  url: "https://openreview.net/forum?id=oa7MYAO6h6"
+  url: "https://arxiv.org/abs/2410.21465"
   authors: "Hanshi Sun"
   authors: "Li-Wen Chang"
   authors: "Wenlei Bao"
@@ -23,9 +23,8 @@ code {
   url: "https://github.com/bytedance/ShadowKV"
 }
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
-  words: sparse_pruning
+  words: kv_cache_sparse
+  words: low_rank
 }
 cover {
   url: "shadowkv.png"
@@ -33,3 +32,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1768817764

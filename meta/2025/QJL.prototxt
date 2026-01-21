@@ -16,12 +16,8 @@ code {
   type: "Pytorch"
   url: "https://github.com/amirzandieh/QJL"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: quantization
-  words: kv_cache_management
   words: kv_cache_quant
 }
 cover {
@@ -31,3 +27,4 @@ baseline {
   methods: "2024/KIVI"
   methods: "2024/KVQuant"
 }
+update_time: 1768816211

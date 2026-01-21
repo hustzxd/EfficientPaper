@@ -27,16 +27,16 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://anonymous.4open.science/r/Quicksilver/codes/kvc.py"
 }
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
-  words: sparse_pruning
+  words: kv_cache_quant
+  words: kv_cache_sparse
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"
 }
+update_time: 1768817372

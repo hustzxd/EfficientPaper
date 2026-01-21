@@ -23,9 +23,7 @@ code {
   url: "https://github.com/thunlp/InfLLM"
 }
 keyword {
-  words: attention_sparsity
-  words: sparse_pruning
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
   url: "cover.png"
@@ -34,3 +32,4 @@ baseline {
   methods: "2023/H2O"
   methods: "2024/StreamingLLM"
 }
+update_time: 1768873667

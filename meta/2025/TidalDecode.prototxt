@@ -17,14 +17,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/DerrickYLJ/TidalDecode"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: attention_sparsity
-  words: kv_cache_management
-  words: sparse_pruning
+  words: kv_cache_sparse
 }
 cover {
   url: "fig2.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768819197

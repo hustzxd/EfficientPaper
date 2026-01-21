@@ -65,6 +65,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-09/">2026-01-09</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-16/">2026-01-16</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -118,7 +120,7 @@
 <div id="paper-search-app">
   <div class="search-header">
     <div class="search-box">
-      <input type="text" id="search-input" placeholder="Search papers by title, author, institution..." autofocus>
+      <input type="text" id="search-input" placeholder="Search: key1 key2 (OR), key1 AND key2, -key (NOT), &quot;phrase&quot;" autofocus>
       <span class="search-hint">Press <kbd>/</kbd> to focus, <kbd>Esc</kbd> to clear</span>
     </div>
     <div class="filter-bar">
@@ -2013,9 +2015,115 @@ function closeLightbox() {
     }
   }
 
+  // Parse search query with support for AND, OR, NOT operators
+  // Syntax:
+  //   key1 key2       -> OR (match key1 OR key2)
+  //   key1 AND key2   -> AND (match both)
+  //   key1 & key2     -> AND (match both)
+  //   key1 | key2     -> OR (match either)
+  //   key1 -key2      -> NOT (match key1 but NOT key2)
+  //   key1 NOT key2   -> NOT (match key1 but NOT key2)
+  //   "phrase"        -> exact phrase match
+  function parseSearchQuery(query) {
+    if (!query || !query.trim()) return null;
+
+    const tokens = [];
+    const regex = /"([^"]+)"|([^\s"&|\-]+)/g;
+    let match;
+
+    while ((match = regex.exec(query)) !== null) {
+      if (match[1]) {
+        // Exact phrase in quotes
+        tokens.push({ type: 'exact', value: match[1].toLowerCase() });
+      } else if (match[2]) {
+        const token = match[2].toLowerCase();
+        if (token === 'and' || token === '&') {
+          tokens.push({ type: 'and' });
+        } else if (token === 'or' || token === '|') {
+          tokens.push({ type: 'or' });
+        } else if (token === 'not') {
+          tokens.push({ type: 'not' });
+        } else if (token.startsWith('-')) {
+          tokens.push({ type: 'not', value: token.slice(1) });
+        } else {
+          tokens.push({ type: 'term', value: token });
+        }
+      }
+    }
+
+    if (tokens.length === 0) return null;
+
+    // Convert to search groups (AND groups combined with OR)
+    const groups = [];
+    let currentGroup = { terms: [], notTerms: [], exact: [] };
+
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i];
+
+      if (token.type === 'or') {
+        if (currentGroup.terms.length > 0 || currentGroup.exact.length > 0 || currentGroup.notTerms.length > 0) {
+          groups.push(currentGroup);
+        }
+        currentGroup = { terms: [], notTerms: [], exact: [] };
+      } else if (token.type === 'not') {
+        // Next token is the term to exclude
+        const nextToken = tokens[i + 1];
+        if (nextToken && (nextToken.type === 'term' || nextToken.type === 'exact')) {
+          currentGroup.notTerms.push(nextToken.value);
+          i++; // Skip next token
+        }
+      } else if (token.type === 'term') {
+        currentGroup.terms.push(token.value);
+      } else if (token.type === 'exact') {
+        currentGroup.exact.push(token.value);
+      }
+      // 'and' is implicit - terms in same group are AND-ed
+    }
+
+    if (currentGroup.terms.length > 0 || currentGroup.exact.length > 0 || currentGroup.notTerms.length > 0) {
+      groups.push(currentGroup);
+    }
+
+    return groups.length > 0 ? groups : null;
+  }
+
+  // Test if paper matches search criteria
+  function matchesSearch(paper, searchGroups) {
+    const searchFields = [
+      paper.title,
+      paper.abbr,
+      ...paper.authors,
+      ...paper.institutions
+    ].join(' ').toLowerCase();
+
+    // Each group is OR-ed with others
+    return searchGroups.some(group => {
+      // Within a group, all terms are AND-ed
+      let matchesGroup = true;
+
+      // All regular terms must match
+      if (group.terms.length > 0) {
+        matchesGroup = group.terms.every(term => searchFields.includes(term));
+      }
+
+      // All exact phrases must match
+      if (matchesGroup && group.exact.length > 0) {
+        matchesGroup = group.exact.every(phrase => searchFields.includes(phrase));
+      }
+
+      // All NOT terms must NOT match
+      if (matchesGroup && group.notTerms.length > 0) {
+        matchesGroup = group.notTerms.every(notTerm => !searchFields.includes(notTerm));
+      }
+
+      return matchesGroup;
+    });
+  }
+
   // Filter papers
   function filterPapers() {
-    const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+    const searchQuery = document.getElementById('search-input').value.trim();
+    const searchGroups = parseSearchQuery(searchQuery);
     const yearFilter = document.getElementById('year-filter').value;
     const venueFilter = document.getElementById('venue-filter').value;
     const keywordFilter = document.getElementById('keyword-filter').value;
@@ -2023,15 +2131,8 @@ function closeLightbox() {
 
     filteredPapers = papers.filter(paper => {
       // Search query
-      if (searchQuery) {
-        const searchFields = [
-          paper.title,
-          paper.abbr,
-          ...paper.authors,
-          ...paper.institutions
-        ].join(' ').toLowerCase();
-
-        if (!searchFields.includes(searchQuery)) {
+      if (searchGroups) {
+        if (!matchesSearch(paper, searchGroups)) {
           return false;
         }
       }
@@ -3408,5 +3509,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-13 03:36:13.977147+00:00
+Build Date UTC : 2026-01-21 10:47:24.232805+00:00
 -->

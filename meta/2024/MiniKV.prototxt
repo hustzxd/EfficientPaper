@@ -17,14 +17,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/akshatsh49/MiniKV-Dev"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: quantization
-  words: kv_cache_management
   words: kv_cache_quant
+  words: kv_cache_sparse
 }
 cover {
   url: "minikv.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768291509

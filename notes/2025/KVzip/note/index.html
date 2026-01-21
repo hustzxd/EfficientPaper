@@ -63,6 +63,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-01-09/">2026-01-09</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-01-16/">2026-01-16</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -116,9 +118,15 @@
 <blockquote>
 <p>Jang-Hyun Kim, Jinuk Kim, Sangwoo Kwon, Jae W. Lee, Sangdoo Yun, Hyun Oh Song</p>
 </blockquote>
-<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
+<p><a class="glightbox" href="../cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.png" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Transformer-based large language models (LLMs) cache context as key-value (KV) pairs during inference. As context length grows, KV cache sizes expand, leading to substantial memory overhead and increased attention latency. This paper introduces KVzip, a query-agnostic KV cache eviction method enabling effective reuse of compressed KV caches across diverse queries. KVzip quantifies the importance of a KV pair using the underlying LLM to reconstruct original contexts from cached KV pairs, subsequently evicting pairs with lower importance. Extensive empirical evaluations demonstrate that KVzip reduces KV cache size by <script type="math/tex">3</script>-<script type="math/tex">4\times</script> and FlashAttention decoding latency by approximately <script type="math/tex">2\times</script>, with negligible performance loss in question-answering, retrieval, reasoning, and code comprehension tasks. Evaluations include various models such as LLaMA3.1, Qwen2.5, and Gemma3, with context lengths reaching up to 170K tokens. KVzip significantly outperforms existing query-aware KV eviction methods, which suffer from performance degradation even at a 90% cache budget ratio under multi-query scenarios.</p>
+<ul>
+<li>Step1: prefill，输入context，得到所有的kv</li>
+<li>Step2: 再次 Prefill, 输入 “Repeat the previous context:” context，此时不需要保留kv，也不需要保留输出，只需要把之前kv 对应的重要性scores 记录统计出来 （相当于又进行了一次prefill，prefill变慢）</li>
+<li>Step3: 根据重要性，把一部分kv 驱逐</li>
+<li>Step4: 在压缩后的kv上进行推理，速度变快</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

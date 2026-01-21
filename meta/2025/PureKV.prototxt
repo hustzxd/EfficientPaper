@@ -21,9 +21,7 @@ code {
   url: ""
 }
 keyword {
-  words: attention_sparsity
-  words: sparse_pruning
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
   url: "fig1.png"
@@ -33,3 +31,4 @@ baseline {
   methods: "2024/SnapKV"
   methods: "2024/StreamingLLM"
 }
+update_time: 1768816533

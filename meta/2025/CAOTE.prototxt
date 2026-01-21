@@ -1,0 +1,32 @@
+paper {
+  title: "CAOTE: KV Cache Selection for LLMs via Attention Output Error-Based Token Eviction"
+  abbr: "CAOTE"
+  url: "http://arxiv.org/abs/2504.14051v6"
+  authors: "Raghavv Goel"
+  authors: "Junyoung Park"
+  authors: "Mukul Gagrani"
+  authors: "Dalton Jones"
+  authors: "Matthew Morse"
+  authors: "Harper Langston"
+  authors: "Mingu Lee"
+  authors: "Chris Lott"
+  institutions: "Qualcomm"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1768446513

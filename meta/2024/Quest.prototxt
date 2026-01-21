@@ -19,14 +19,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/mit-han-lab/quest"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: sparse_pruning
-  words: kv_cache_management
-  words: attention_sparsity
+  words: kv_cache_sparse
 }
 cover {
   url: "quest.png"
 }
+baseline {
+  methods: "None"
+}
+update_time: 1768290633
