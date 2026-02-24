@@ -27,9 +27,9 @@ keyword {
   words: structure_design
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "None"
 }
-update_time: 1768291308
+update_time: 1770358676

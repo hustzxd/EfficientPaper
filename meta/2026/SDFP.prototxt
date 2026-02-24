@@ -1,0 +1,34 @@
+paper {
+  title: "SDFP: Speculative Decoding with FIT-Pruned Models for Training-Free and Plug-and-Play LLM Acceleration"
+  abbr: "SDFP"
+  url: "http://arxiv.org/abs/2602.05499v1"
+  authors: "Hanyu Wei"
+  authors: "Zunhai Su"
+  authors: "Peng Lu"
+  authors: "Chao Li"
+  authors: "Spandan Tiwari"
+  authors: "Ashish Sirasao"
+  authors: "Yuhan Dong"
+  institutions: "Tsinghua University"
+  institutions: "Advanced Micro Devices"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+  words: speculative_decoding
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770609325

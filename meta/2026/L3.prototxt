@@ -1,0 +1,27 @@
+paper {
+  title: "L$^3$: Large Lookup Layers"
+  abbr: "L3"
+  url: "http://arxiv.org/abs/2601.21461v2"
+  authors: "Albert Tseng"
+  authors: "Christopher De Sa"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770358583

@@ -1,0 +1,39 @@
+paper {
+  title: "HySparse: A Hybrid Sparse Attention Architecture with Oracle Token Selection and KV Cache Sharing"
+  abbr: "HySparse"
+  url: "http://arxiv.org/abs/2602.03560v1"
+  authors: "Yizhao Gao"
+  authors: "Jianyu Wei"
+  authors: "Qihao Zhang"
+  authors: "Yu Cheng"
+  authors: "Shimao Chen"
+  authors: "Zhengju Tang"
+  authors: "Zihan Jiang"
+  authors: "Yifan Song"
+  authors: "Hailin Zhang"
+  authors: "Liang Zhao"
+  authors: "Bo Yang"
+  authors: "Gang Wang"
+  authors: "Shijie Cao"
+  authors: "Fuli Luo"
+  institutions: "Xiaomi"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770608328

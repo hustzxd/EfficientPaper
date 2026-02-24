@@ -1,0 +1,35 @@
+paper {
+  title: "What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study"
+  abbr: "IBW4TYDG"
+  url: "http://arxiv.org/abs/2601.14888v1"
+  authors: "Keyu Lv"
+  authors: "Manyi Zhang"
+  authors: "Xiaobo Xia"
+  authors: "Jingchen Ni"
+  authors: "Shannan Yan"
+  authors: "Xianzhi Yu"
+  authors: "Lu Hou"
+  authors: "Chun Yuan"
+  authors: "Haoli Bai"
+  institutions: "Tsinghua University"
+  institutions: "Huawei"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770270762

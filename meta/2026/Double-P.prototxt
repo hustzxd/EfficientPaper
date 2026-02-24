@@ -1,0 +1,37 @@
+paper {
+  title: "Double-P: Hierarchical Top-P Sparse Attention for Long-Context LLMs"
+  abbr: "Double-P"
+  url: "http://arxiv.org/abs/2602.05191v1"
+  authors: "Wentao Ni"
+  authors: "Kangqi Zhang"
+  authors: "Zhongming Yu"
+  authors: "Oren Nelson"
+  authors: "Mingu Lee"
+  authors: "Hong Cai"
+  authors: "Fatih Porikli"
+  authors: "Jongryool Kim"
+  authors: "Zhijian Liu"
+  authors: "Jishen Zhao"
+  institutions: "University of California, San Diego"
+  institutions: "University of Michigan"
+  institutions: "Qualcomm"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/Quest"
+}
+update_time: 1770619310

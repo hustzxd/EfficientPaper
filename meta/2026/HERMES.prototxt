@@ -1,0 +1,31 @@
+paper {
+  title: "HERMES: KV Cache as Hierarchical Memory for Efficient Streaming Video Understanding"
+  abbr: "HERMES"
+  url: "http://arxiv.org/abs/2601.14724v1"
+  authors: "Haowei Zhang"
+  authors: "Shudong Yang"
+  authors: "Jinlan Fu"
+  authors: "See-Kiong Ng"
+  authors: "Xipeng Qiu"
+  institutions: "Fudan University"
+  institutions: "Shanghai Innovation Institute"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/haowei-freesky/HERMES"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1769164381

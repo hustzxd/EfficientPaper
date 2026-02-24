@@ -1,0 +1,34 @@
+paper {
+  title: "Prism: Spectral-Aware Block-Sparse Attention"
+  abbr: "Prism"
+  url: "http://arxiv.org/abs/2602.08426v1"
+  authors: "Xinghao Wang"
+  authors: "Pengyu Wang"
+  authors: "Xiaoran Liu"
+  authors: "Fangxu Liu"
+  authors: "Jason Chu"
+  authors: "Kai Song"
+  authors: "Xipeng Qiu"
+  institutions: "Fudan University"
+  institutions: "Shanghai Innovation Institute"
+  institutions: "ByteDance"
+  institutions: "OpenMOSS"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/xinghaow99/prism"
+}
+keyword {
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/FlexPrefill"
+}
+update_time: 1770710228

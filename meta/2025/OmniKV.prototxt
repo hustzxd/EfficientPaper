@@ -1,0 +1,34 @@
+paper {
+  title: "OmniKV: Dynamic Context Selection for Efficient Long-Context LLMs"
+  abbr: "OmniKV"
+  url: "https://openreview.net/forum?id=ulCAPXYXfa"
+  authors: "Jitai Hao"
+  authors: "Yuke Zhu"
+  authors: "Tian Wang"
+  authors: "Jun Yu"
+  authors: "Xin Xin"
+  authors: "Bo Zheng"
+  authors: "Zhaochun Ren"
+  authors: "Sheng Guo"
+  institutions: "Ant Group"
+  institutions: "Shandong University"
+  institutions: "Harbin Institute of Technology"
+}
+pub {
+  where: "ICLR"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/antgroup/OmniKV"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770608554
