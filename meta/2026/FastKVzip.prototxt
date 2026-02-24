@@ -1,0 +1,27 @@
+paper {
+  title: "Fast KVzip: Efficient and Accurate LLM Inference with Gated KV Eviction"
+  abbr: "FastKVzip"
+  url: "http://arxiv.org/abs/2601.17668v1"
+  authors: "Jang-Hyun Kim"
+  authors: "Dongyoon Han"
+  authors: "Sangdoo Yun"
+  institutions: "NAVER AI Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Janghyun1230/FastKVzip"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/KVzip"
+}
+update_time: 1770024041

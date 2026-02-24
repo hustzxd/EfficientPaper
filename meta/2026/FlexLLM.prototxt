@@ -1,0 +1,34 @@
+paper {
+  title: "FlexLLM: Composable HLS Library for Flexible Hybrid LLM Accelerator Design"
+  abbr: "FlexLLM"
+  url: "http://arxiv.org/abs/2601.15710v1"
+  authors: "Jiahao Zhang"
+  authors: "Zifan He"
+  authors: "Nicholas Fraser"
+  authors: "Michaela Blott"
+  authors: "Yizhou Sun"
+  authors: "Jason Cong"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770019562

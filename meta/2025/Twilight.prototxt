@@ -1,0 +1,35 @@
+paper {
+  title: "Twilight: Adaptive Attention Sparsity with Hierarchical Top-$p$ Pruning"
+  abbr: "Twilight"
+  url: "http://arxiv.org/abs/2502.02770v5"
+  authors: "Chaofan Lin"
+  authors: "Jiaming Tang"
+  authors: "Shuo Yang"
+  authors: "Hanshuo Wang"
+  authors: "Tian Tang"
+  authors: "Boyu Tian"
+  authors: "Ion Stoica"
+  authors: "Song Han"
+  authors: "Mingyu Gao"
+  institutions: "Tsinghua University"
+  institutions: "Massachusetts Institute of Technology"
+  institutions: "University of California, Berkeley"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/tsinghua-ideal/Twilight"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/Quest"
+}
+update_time: 1770101535

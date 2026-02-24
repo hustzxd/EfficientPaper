@@ -1,0 +1,31 @@
+paper {
+  title: "Focus-Scan-Refine: From Human Visual Perception to Efficient Visual Token Pruning"
+  abbr: "FSR"
+  url: "http://arxiv.org/abs/2602.05809v1"
+  authors: "Enwei Tong"
+  authors: "Yuanchao Bai"
+  authors: "Yao Zhu"
+  authors: "Junjun Jiang"
+  authors: "Xianming Liu"
+  institutions: "Harbin Institute of Technology"
+  institutions: "Zhejiang University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ILOT-code/FSR"
+}
+keyword {
+  words: sparse_pruning
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770605839

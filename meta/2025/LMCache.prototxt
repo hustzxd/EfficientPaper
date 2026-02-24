@@ -26,6 +26,7 @@ code {
 }
 keyword {
   words: kv_cache_management
+  words: tool
 }
 cover {
   url: "cover.png"
@@ -33,3 +34,4 @@ cover {
 baseline {
   methods: "None"
 }
+update_time: 1769140406

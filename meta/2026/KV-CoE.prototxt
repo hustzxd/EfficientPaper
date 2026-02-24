@@ -1,0 +1,33 @@
+paper {
+  title: "Beyond Speedup -- Utilizing KV Cache for Sampling and Reasoning"
+  abbr: "KV-CoE"
+  url: "http://arxiv.org/abs/2601.20326v1"
+  authors: "Zeyu Xing"
+  authors: "Xing Li"
+  authors: "Hui-Ling Zhen"
+  authors: "Mingxuan Yuan"
+  authors: "Sinno Jialin Pan"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/cmd2001/ICLR2026_KV-Embedding"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: none
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770019215

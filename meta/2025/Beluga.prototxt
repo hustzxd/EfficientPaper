@@ -1,0 +1,36 @@
+paper {
+  title: "Beluga: A CXL-Based Memory Architecture for Scalable and Efficient LLM KVCache Management"
+  abbr: "Beluga"
+  url: "http://arxiv.org/abs/2511.20172v2"
+  authors: "Xinjun Yang"
+  authors: "Qingda Hu"
+  authors: "Junru Li"
+  authors: "Feifei Li"
+  authors: "Yicong Zhu"
+  authors: "Yuqi Zhou"
+  authors: "Qiuru Lin"
+  authors: "Jian Dai"
+  authors: "Yang Kong"
+  authors: "Jiayu Zhang"
+  authors: "Guoqiang Xu"
+  authors: "Qiang Liu"
+  institutions: "Alibaba Cloud"
+}
+pub {
+  where: "SIGMOD"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770343484

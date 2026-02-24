@@ -1,0 +1,33 @@
+paper {
+  title: "SparVAR: Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration"
+  abbr: "SparVAR"
+  url: "http://arxiv.org/abs/2602.04361v1"
+  authors: "Zekun Li"
+  authors: "Ning Wang"
+  authors: "Tongxin Bai"
+  authors: "Changwang Mei"
+  authors: "Peisong Wang"
+  authors: "Shuang Qiu"
+  authors: "Jian Cheng"
+  institutions: "Institute of Automation, Chinese Academy of Sciences"
+  institutions: "University of Chinese Academy of Sciences"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/CAS-CLab/SparVAR"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770620881

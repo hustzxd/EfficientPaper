@@ -1,0 +1,36 @@
+paper {
+  title: "CLaSp: In-Context Layer Skip for Self-Speculative Decoding"
+  abbr: "CLaSp"
+  url: "http://arxiv.org/abs/2505.24196v1"
+  authors: "Longze Chen"
+  authors: "Renke Shan"
+  authors: "Huiming Wang"
+  authors: "Lu Wang"
+  authors: "Ziqiang Liu"
+  authors: "Run Luo"
+  authors: "Jiawei Wang"
+  authors: "Hamid Alinejad-Rokny"
+  authors: "Min Yang"
+  institutions: "Shenzhen Institutes of Advanced Technology(SIAT), Chinese Academy of Science(CAS)"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "Singapore University of Technology and Design"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: structured_sparsity
+  words: speculative_decoding
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770620434

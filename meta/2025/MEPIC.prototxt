@@ -1,0 +1,35 @@
+paper {
+  title: "MEPIC: Memory Efficient Position Independent Caching for LLM Serving"
+  abbr: "MEPIC"
+  url: "http://arxiv.org/abs/2512.16822v1"
+  authors: "Qian Wang"
+  authors: "Zahra Yousefijamarani"
+  authors: "Morgan Lindsay Heisler"
+  authors: "Rongzhi Gu"
+  authors: "Bai Xiaolong"
+  authors: "Shan Yizhou"
+  authors: "Wei Zhang"
+  authors: "Wang Lan"
+  authors: "Ying Xiong"
+  authors: "Yong Zhang"
+  authors: "Zhenan Fan"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770357981

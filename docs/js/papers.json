@@ -1,6 +1,737 @@
 {
   "papers": [
     {
+      "id": "Prism",
+      "title": "Prism: Spectral-Aware Block-Sparse Attention",
+      "abbr": "Prism",
+      "url": "http://arxiv.org/abs/2602.08426v1",
+      "authors": [
+        "Xinghao Wang",
+        "Pengyu Wang",
+        "Xiaoran Liu",
+        "Fangxu Liu",
+        "Jason Chu",
+        "Kai Song",
+        "Xipeng Qiu"
+      ],
+      "institutions": [
+        "Fudan University",
+        "Shanghai Innovation Institute",
+        "ByteDance",
+        "OpenMOSS"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Prism/cover.png",
+      "keywords": [
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/xinghaow99/prism",
+      "note_url": "notes/2026/Prism/note/",
+      "prototxt_path": "meta/2026/Prism.prototxt",
+      "update_time": 1770710228
+    },
+    {
+      "id": "SparVAR",
+      "title": "SparVAR: Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration",
+      "abbr": "SparVAR",
+      "url": "http://arxiv.org/abs/2602.04361v1",
+      "authors": [
+        "Zekun Li",
+        "Ning Wang",
+        "Tongxin Bai",
+        "Changwang Mei",
+        "Peisong Wang",
+        "Shuang Qiu",
+        "Jian Cheng"
+      ],
+      "institutions": [
+        "Institute of Automation, Chinese Academy of Sciences",
+        "University of Chinese Academy of Sciences"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SparVAR/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/CAS-CLab/SparVAR",
+      "note_url": "notes/2026/SparVAR/note/",
+      "prototxt_path": "meta/2026/SparVAR.prototxt",
+      "update_time": 1770620881
+    },
+    {
+      "id": "CLaSp",
+      "title": "CLaSp: In-Context Layer Skip for Self-Speculative Decoding",
+      "abbr": "CLaSp",
+      "url": "http://arxiv.org/abs/2505.24196v1",
+      "authors": [
+        "Longze Chen",
+        "Renke Shan",
+        "Huiming Wang",
+        "Lu Wang",
+        "Ziqiang Liu",
+        "Run Luo",
+        "Jiawei Wang",
+        "Hamid Alinejad-Rokny",
+        "Min Yang"
+      ],
+      "institutions": [
+        "Shenzhen Institutes of Advanced Technology(SIAT), Chinese Academy of Science(CAS)",
+        "University of Chinese Academy of Sciences",
+        "Singapore University of Technology and Design"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/CLaSp/cover.png",
+      "keywords": [
+        "05-Sparsity (Structured)",
+        "30-Speculative Decoding"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/CLaSp/note/",
+      "prototxt_path": "meta/2025/CLaSp.prototxt",
+      "update_time": 1770620434
+    },
+    {
+      "id": "LycheeDecode",
+      "title": "LycheeDecode: Accelerating Long-Context LLM Inference via Hybrid-Head Sparse Decoding",
+      "abbr": "LycheeDecode",
+      "url": "http://arxiv.org/abs/2602.04541v1",
+      "authors": [
+        "Gang Lin",
+        "Dongfang Li",
+        "Zhuoen Chen",
+        "Yukun Shi",
+        "Xuhui Chen",
+        "Baotian Hu",
+        "Min Zhang"
+      ],
+      "institutions": [
+        "Harbin Institute of Technology"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/LycheeDecode/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/HITsz-TMG/TMGNLP/tree/main/LycheeDecode",
+      "note_url": "notes/2026/LycheeDecode/note/",
+      "prototxt_path": "meta/2026/LycheeDecode.prototxt",
+      "update_time": 1770619900
+    },
+    {
+      "id": "DSA",
+      "title": "Transformer Acceleration with Dynamic Sparse Attention",
+      "abbr": "DSA",
+      "url": "http://arxiv.org/abs/2110.11299v1",
+      "authors": [
+        "Liu Liu",
+        "Zheng Qu",
+        "Zhaodong Chen",
+        "Yufei Ding",
+        "Yuan Xie"
+      ],
+      "institutions": [
+        "University of California, Santa Barbara"
+      ],
+      "year": 2022,
+      "venue": "TC",
+      "cover": "notes/2022/DSA/fig2.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2022/DSA/note/",
+      "prototxt_path": "meta/2022/DSA.prototxt",
+      "update_time": 1770619439
+    },
+    {
+      "id": "Double-P",
+      "title": "Double-P: Hierarchical Top-P Sparse Attention for Long-Context LLMs",
+      "abbr": "Double-P",
+      "url": "http://arxiv.org/abs/2602.05191v1",
+      "authors": [
+        "Wentao Ni",
+        "Kangqi Zhang",
+        "Zhongming Yu",
+        "Oren Nelson",
+        "Mingu Lee",
+        "Hong Cai",
+        "Fatih Porikli",
+        "Jongryool Kim",
+        "Zhijian Liu",
+        "Jishen Zhao"
+      ],
+      "institutions": [
+        "University of California, San Diego",
+        "University of Michigan",
+        "Qualcomm",
+        "NVIDIA"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Double-P/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/Double-P/note/",
+      "prototxt_path": "meta/2026/Double-P.prototxt",
+      "update_time": 1770619310
+    },
+    {
+      "id": "SDFP",
+      "title": "SDFP: Speculative Decoding with FIT-Pruned Models for Training-Free and Plug-and-Play LLM Acceleration",
+      "abbr": "SDFP",
+      "url": "http://arxiv.org/abs/2602.05499v1",
+      "authors": [
+        "Hanyu Wei",
+        "Zunhai Su",
+        "Peng Lu",
+        "Chao Li",
+        "Spandan Tiwari",
+        "Ashish Sirasao",
+        "Yuhan Dong"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Advanced Micro Devices"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SDFP/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "05-Sparsity (Structured)",
+        "30-Speculative Decoding"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SDFP/note/",
+      "prototxt_path": "meta/2026/SDFP.prototxt",
+      "update_time": 1770609325
+    },
+    {
+      "id": "OmniKV",
+      "title": "OmniKV: Dynamic Context Selection for Efficient Long-Context LLMs",
+      "abbr": "OmniKV",
+      "url": "https://openreview.net/forum?id=ulCAPXYXfa",
+      "authors": [
+        "Jitai Hao",
+        "Yuke Zhu",
+        "Tian Wang",
+        "Jun Yu",
+        "Xin Xin",
+        "Bo Zheng",
+        "Zhaochun Ren",
+        "Sheng Guo"
+      ],
+      "institutions": [
+        "Ant Group",
+        "Shandong University",
+        "Harbin Institute of Technology"
+      ],
+      "year": 2025,
+      "venue": "ICLR",
+      "cover": "notes/2025/OmniKV/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/antgroup/OmniKV",
+      "note_url": "notes/2025/OmniKV/note/",
+      "prototxt_path": "meta/2025/OmniKV.prototxt",
+      "update_time": 1770608554
+    },
+    {
+      "id": "HySparse",
+      "title": "HySparse: A Hybrid Sparse Attention Architecture with Oracle Token Selection and KV Cache Sharing",
+      "abbr": "HySparse",
+      "url": "http://arxiv.org/abs/2602.03560v1",
+      "authors": [
+        "Yizhao Gao",
+        "Jianyu Wei",
+        "Qihao Zhang",
+        "Yu Cheng",
+        "Shimao Chen",
+        "Zhengju Tang",
+        "Zihan Jiang",
+        "Yifan Song",
+        "Hailin Zhang",
+        "Liang Zhao",
+        "Bo Yang",
+        "Gang Wang",
+        "Shijie Cao",
+        "Fuli Luo"
+      ],
+      "institutions": [
+        "Xiaomi"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/HySparse/cover.png",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/HySparse/note/",
+      "prototxt_path": "meta/2026/HySparse.prototxt",
+      "update_time": 1770608328
+    },
+    {
+      "id": "FSR",
+      "title": "Focus-Scan-Refine: From Human Visual Perception to Efficient Visual Token Pruning",
+      "abbr": "FSR",
+      "url": "http://arxiv.org/abs/2602.05809v1",
+      "authors": [
+        "Enwei Tong",
+        "Yuanchao Bai",
+        "Yao Zhu",
+        "Junjun Jiang",
+        "Xianming Liu"
+      ],
+      "institutions": [
+        "Harbin Institute of Technology",
+        "Zhejiang University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/FSR/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/ILOT-code/FSR",
+      "note_url": "notes/2026/FSR/note/",
+      "prototxt_path": "meta/2026/FSR.prototxt",
+      "update_time": 1770605839
+    },
+    {
+      "id": "MFA",
+      "title": "Multi-matrix Factorization Attention",
+      "abbr": "MFA",
+      "url": "http://arxiv.org/abs/2412.19255v2",
+      "authors": [
+        "Jingcheng Hu",
+        "Houyi Li",
+        "Yinmin Zhang",
+        "Zili Wang",
+        "Shuigeng Zhou",
+        "Xiangyu Zhang",
+        "Heung-Yeung Shum",
+        "Daxin Jiang"
+      ],
+      "institutions": [
+        "StepFun",
+        "Tsinghua University",
+        "Fudan University",
+        "Megvii Technology"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/MFA/cover.png",
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/MFA/note/",
+      "prototxt_path": "meta/2024/MFA.prototxt",
+      "update_time": 1770358676
+    },
+    {
+      "id": "L3",
+      "title": "L$^3$: Large Lookup Layers",
+      "abbr": "L3",
+      "url": "http://arxiv.org/abs/2601.21461v2",
+      "authors": [
+        "Albert Tseng",
+        "Christopher De Sa"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/L3/cover.png",
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/L3/note/",
+      "prototxt_path": "meta/2026/L3.prototxt",
+      "update_time": 1770358583
+    },
+    {
+      "id": "MEPIC",
+      "title": "MEPIC: Memory Efficient Position Independent Caching for LLM Serving",
+      "abbr": "MEPIC",
+      "url": "http://arxiv.org/abs/2512.16822v1",
+      "authors": [
+        "Qian Wang",
+        "Zahra Yousefijamarani",
+        "Morgan Lindsay Heisler",
+        "Rongzhi Gu",
+        "Bai Xiaolong",
+        "Shan Yizhou",
+        "Wei Zhang",
+        "Wang Lan",
+        "Ying Xiong",
+        "Yong Zhang",
+        "Zhenan Fan"
+      ],
+      "institutions": [
+        "Huawei"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/MEPIC/cover.png",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/MEPIC/note/",
+      "prototxt_path": "meta/2025/MEPIC.prototxt",
+      "update_time": 1770357981
+    },
+    {
+      "id": "Beluga",
+      "title": "Beluga: A CXL-Based Memory Architecture for Scalable and Efficient LLM KVCache Management",
+      "abbr": "Beluga",
+      "url": "http://arxiv.org/abs/2511.20172v2",
+      "authors": [
+        "Xinjun Yang",
+        "Qingda Hu",
+        "Junru Li",
+        "Feifei Li",
+        "Yicong Zhu",
+        "Yuqi Zhou",
+        "Qiuru Lin",
+        "Jian Dai",
+        "Yang Kong",
+        "Jiayu Zhang",
+        "Guoqiang Xu",
+        "Qiang Liu"
+      ],
+      "institutions": [
+        "Alibaba Cloud"
+      ],
+      "year": 2025,
+      "venue": "SIGMOD",
+      "cover": "notes/2025/Beluga/cover.png",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/Beluga/note/",
+      "prototxt_path": "meta/2025/Beluga.prototxt",
+      "update_time": 1770343484
+    },
+    {
+      "id": "IBW4TYDG",
+      "title": "What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study",
+      "abbr": "IBW4TYDG",
+      "url": "http://arxiv.org/abs/2601.14888v1",
+      "authors": [
+        "Keyu Lv",
+        "Manyi Zhang",
+        "Xiaobo Xia",
+        "Jingchen Ni",
+        "Shannan Yan",
+        "Xianzhi Yu",
+        "Lu Hou",
+        "Chun Yuan",
+        "Haoli Bai"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Huawei",
+        "National University of Singapore"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/IBW4TYDG/cover.png",
+      "keywords": [
+        "09-Quantization"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/IBW4TYDG/note/",
+      "prototxt_path": "meta/2026/IBW4TYDG.prototxt",
+      "update_time": 1770270762
+    },
+    {
+      "id": "GatedNorm",
+      "title": "A Unified View of Attention and Residual Sinks: Outlier-Driven Rescaling is Essential for Transformer Training",
+      "abbr": "GatedNorm",
+      "url": "http://arxiv.org/abs/2601.22966v1",
+      "authors": [
+        "Zihan Qiu",
+        "Zeyu Huang",
+        "Kaiyue Wen",
+        "Peng Jin",
+        "Bo Zheng",
+        "Yuxin Zhou",
+        "Haofeng Huang",
+        "Zekun Wang",
+        "Xiao Li",
+        "Huaqing Zhang",
+        "Yang Xu",
+        "Haoran Lian",
+        "Siqi Zhang",
+        "Rui Men",
+        "Jianwei Zhang",
+        "Ivan Titov",
+        "Dayiheng Liu",
+        "Jingren Zhou",
+        "Junyang Lin"
+      ],
+      "institutions": [
+        "Qwen Team",
+        "University of Edinburgh",
+        "Stanford University",
+        "Tsinghua University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/GatedNorm/cover.png",
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/GatedNorm/note/",
+      "prototxt_path": "meta/2026/GatedNorm.prototxt",
+      "update_time": 1770258553
+    },
+    {
+      "id": "Twilight",
+      "title": "Twilight: Adaptive Attention Sparsity with Hierarchical Top-$p$ Pruning",
+      "abbr": "Twilight",
+      "url": "http://arxiv.org/abs/2502.02770v5",
+      "authors": [
+        "Chaofan Lin",
+        "Jiaming Tang",
+        "Shuo Yang",
+        "Hanshuo Wang",
+        "Tian Tang",
+        "Boyu Tian",
+        "Ion Stoica",
+        "Song Han",
+        "Mingyu Gao"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Massachusetts Institute of Technology",
+        "University of California, Berkeley"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/Twilight/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/tsinghua-ideal/Twilight",
+      "note_url": "notes/2025/Twilight/note/",
+      "prototxt_path": "meta/2025/Twilight.prototxt",
+      "update_time": 1770101535
+    },
+    {
+      "id": "FastKVzip",
+      "title": "Fast KVzip: Efficient and Accurate LLM Inference with Gated KV Eviction",
+      "abbr": "FastKVzip",
+      "url": "http://arxiv.org/abs/2601.17668v1",
+      "authors": [
+        "Jang-Hyun Kim",
+        "Dongyoon Han",
+        "Sangdoo Yun"
+      ],
+      "institutions": [
+        "NAVER AI Lab"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/FastKVzip/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/Janghyun1230/FastKVzip",
+      "note_url": "notes/2026/FastKVzip/note/",
+      "prototxt_path": "meta/2026/FastKVzip.prototxt",
+      "update_time": 1770024041
+    },
+    {
+      "id": "FlexLLM",
+      "title": "FlexLLM: Composable HLS Library for Flexible Hybrid LLM Accelerator Design",
+      "abbr": "FlexLLM",
+      "url": "http://arxiv.org/abs/2601.15710v1",
+      "authors": [
+        "Jiahao Zhang",
+        "Zifan He",
+        "Nicholas Fraser",
+        "Michaela Blott",
+        "Yizhou Sun",
+        "Jason Cong"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "00-None"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/FlexLLM/note/",
+      "prototxt_path": "meta/2026/FlexLLM.prototxt",
+      "update_time": 1770019562
+    },
+    {
+      "id": "HN5FDNZ3",
+      "title": "Sawtooth Wavefront Reordering: Enhanced CuTile FlashAttention on NVIDIA GB10",
+      "abbr": "HN5FDNZ3",
+      "url": "http://arxiv.org/abs/2601.16032v2",
+      "authors": [
+        "Yifan Zhu",
+        "Yekai Pan",
+        "Chen Ding"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "00-None"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/HN5FDNZ3/note/",
+      "prototxt_path": "meta/2026/HN5FDNZ3.prototxt",
+      "update_time": 1770019541
+    },
+    {
+      "id": "KV-CoE",
+      "title": "Beyond Speedup -- Utilizing KV Cache for Sampling and Reasoning",
+      "abbr": "KV-CoE",
+      "url": "http://arxiv.org/abs/2601.20326v1",
+      "authors": [
+        "Zeyu Xing",
+        "Xing Li",
+        "Hui-Ling Zhen",
+        "Mingxuan Yuan",
+        "Sinno Jialin Pan"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "00-None"
+      ],
+      "code_url": "https://github.com/cmd2001/ICLR2026_KV-Embedding",
+      "note_url": "notes/2026/KV-CoE/note/",
+      "prototxt_path": "meta/2026/KV-CoE.prototxt",
+      "update_time": 1770019215
+    },
+    {
+      "id": "HERMES",
+      "title": "HERMES: KV Cache as Hierarchical Memory for Efficient Streaming Video Understanding",
+      "abbr": "HERMES",
+      "url": "http://arxiv.org/abs/2601.14724v1",
+      "authors": [
+        "Haowei Zhang",
+        "Shudong Yang",
+        "Jinlan Fu",
+        "See-Kiong Ng",
+        "Xipeng Qiu"
+      ],
+      "institutions": [
+        "Fudan University",
+        "Shanghai Innovation Institute",
+        "National University of Singapore"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/HERMES/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/haowei-freesky/HERMES",
+      "note_url": "notes/2026/HERMES/note/",
+      "prototxt_path": "meta/2026/HERMES.prototxt",
+      "update_time": 1769164381
+    },
+    {
+      "id": "LMCache",
+      "title": "LMCache: An Efficient KV Cache Layer for Enterprise-Scale LLM Inference",
+      "abbr": "LMCache",
+      "url": "http://arxiv.org/abs/2510.09665v2",
+      "authors": [
+        "Yuhan Liu",
+        "Yihua Cheng",
+        "Jiayi Yao",
+        "Yuwei An",
+        "Xiaokun Chen",
+        "Shaoting Feng",
+        "Yuyang Huang",
+        "Samuel Shen",
+        "Rui Zhang",
+        "Kuntai Du",
+        "Junchen Jiang"
+      ],
+      "institutions": [
+        "Tensormesh",
+        "University of Chicago"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/LMCache/cover.png",
+      "keywords": [
+        "21-KV Cache Management",
+        "46-Tool"
+      ],
+      "code_url": "https://github.com/LMCache/LMCache",
+      "note_url": "notes/2025/LMCache/note/",
+      "prototxt_path": "meta/2025/LMCache.prototxt",
+      "update_time": 1769140406
+    },
+    {
+      "id": "MixServe",
+      "title": "MixServe: An Automatic Distributed Serving System for MoE Models with Hybrid Parallelism Based on Fused Communication Algorithm",
+      "abbr": "MixServe",
+      "url": "http://arxiv.org/abs/2601.08800v1",
+      "authors": [
+        "Bowen Zhou",
+        "Jinrui Jia",
+        "Wenhao He",
+        "Yong Zhang",
+        "Fang Dong"
+      ],
+      "institutions": [
+        "Southeast University",
+        "The Chinese University of Hong Kong"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "29-Comm-Comp Overlap",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/MixServe/note/",
+      "prototxt_path": "meta/2026/MixServe.prototxt",
+      "update_time": 1769078011
+    },
+    {
       "id": "KVzip",
       "title": "KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction",
       "abbr": "KVzip",
@@ -753,33 +1484,6 @@
       "update_time": 1768799470
     },
     {
-      "id": "MixServe",
-      "title": "MixServe: An Automatic Distributed Serving System for MoE Models with Hybrid Parallelism Based on Fused Communication Algorithm",
-      "abbr": "MixServe",
-      "url": "http://arxiv.org/abs/2601.08800v1",
-      "authors": [
-        "Bowen Zhou",
-        "Jinrui Jia",
-        "Wenhao He",
-        "Yong Zhang",
-        "Fang Dong"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2026,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "00-None"
-      ],
-      "code_url": null,
-      "note_url": "notes/2026/MixServe/note/",
-      "prototxt_path": "meta/2026/MixServe.prototxt",
-      "update_time": 1768533614
-    },
-    {
       "id": "CAOTE",
       "title": "CAOTE: KV Cache Selection for LLMs via Attention Output Error-Based Token Eviction",
       "abbr": "CAOTE",
@@ -948,38 +1652,6 @@
       "note_url": "notes/2024/MiniKV/note/",
       "prototxt_path": "meta/2024/MiniKV.prototxt",
       "update_time": 1768291509
-    },
-    {
-      "id": "MFA",
-      "title": "Multi-matrix Factorization Attention",
-      "abbr": "MFA",
-      "url": "http://arxiv.org/abs/2412.19255v2",
-      "authors": [
-        "Jingcheng Hu",
-        "Houyi Li",
-        "Yinmin Zhang",
-        "Zili Wang",
-        "Shuigeng Zhou",
-        "Xiangyu Zhang",
-        "Heung-Yeung Shum",
-        "Daxin Jiang"
-      ],
-      "institutions": [
-        "StepFun",
-        "Tsinghua University",
-        "Fudan University",
-        "Megvii Technology"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "42-Network Structure Design"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/MFA/note/",
-      "prototxt_path": "meta/2024/MFA.prototxt",
-      "update_time": 1768291308
     },
     {
       "id": "LazyLLM",
@@ -3193,33 +3865,6 @@
       "note_url": "notes/2024/TOVA/note/",
       "prototxt_path": "meta/2024/TOVA.prototxt",
       "update_time": 1768010716
-    },
-    {
-      "id": "DSA",
-      "title": "Transformer Acceleration with Dynamic Sparse Attention",
-      "abbr": "DSA",
-      "url": "http://arxiv.org/abs/2110.11299v1",
-      "authors": [
-        "Liu Liu",
-        "Zheng Qu",
-        "Zhaodong Chen",
-        "Yufei Ding",
-        "Yuan Xie"
-      ],
-      "institutions": [
-        "University of California"
-      ],
-      "year": 2022,
-      "venue": "TC",
-      "cover": "notes/2022/DSA/fig2.png",
-      "keywords": [
-        "01-Sparse/Pruning",
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": null,
-      "note_url": "notes/2022/DSA/note/",
-      "prototxt_path": "meta/2022/DSA.prototxt",
-      "update_time": 1768010701
     },
     {
       "id": "FlashInfer",
@@ -8324,39 +8969,6 @@
       "update_time": 0
     },
     {
-      "id": "LMCache",
-      "title": "LMCache: An Efficient KV Cache Layer for Enterprise-Scale LLM Inference",
-      "abbr": "LMCache",
-      "url": "http://arxiv.org/abs/2510.09665v2",
-      "authors": [
-        "Yuhan Liu",
-        "Yihua Cheng",
-        "Jiayi Yao",
-        "Yuwei An",
-        "Xiaokun Chen",
-        "Shaoting Feng",
-        "Yuyang Huang",
-        "Samuel Shen",
-        "Rui Zhang",
-        "Kuntai Du",
-        "Junchen Jiang"
-      ],
-      "institutions": [
-        "Tensormesh",
-        "University of Chicago"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/LMCache/cover.png",
-      "keywords": [
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/LMCache/LMCache",
-      "note_url": "notes/2025/LMCache/note/",
-      "prototxt_path": "meta/2025/LMCache.prototxt",
-      "update_time": 0
-    },
-    {
       "id": "loftq",
       "title": "LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models",
       "abbr": "LoftQ",
@@ -12597,5 +13209,5 @@
       "47-Benchmark"
     ]
   },
-  "total": 396
+  "total": 416
 }

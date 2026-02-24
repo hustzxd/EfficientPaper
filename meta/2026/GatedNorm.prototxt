@@ -1,0 +1,46 @@
+paper {
+  title: "A Unified View of Attention and Residual Sinks: Outlier-Driven Rescaling is Essential for Transformer Training"
+  abbr: "GatedNorm"
+  url: "http://arxiv.org/abs/2601.22966v1"
+  authors: "Zihan Qiu"
+  authors: "Zeyu Huang"
+  authors: "Kaiyue Wen"
+  authors: "Peng Jin"
+  authors: "Bo Zheng"
+  authors: "Yuxin Zhou"
+  authors: "Haofeng Huang"
+  authors: "Zekun Wang"
+  authors: "Xiao Li"
+  authors: "Huaqing Zhang"
+  authors: "Yang Xu"
+  authors: "Haoran Lian"
+  authors: "Siqi Zhang"
+  authors: "Rui Men"
+  authors: "Jianwei Zhang"
+  authors: "Ivan Titov"
+  authors: "Dayiheng Liu"
+  authors: "Jingren Zhou"
+  authors: "Junyang Lin"
+  institutions: "Qwen Team"
+  institutions: "University of Edinburgh"
+  institutions: "Stanford University"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1770258553

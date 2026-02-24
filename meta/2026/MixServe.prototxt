@@ -7,8 +7,8 @@ paper {
   authors: "Wenhao He"
   authors: "Yong Zhang"
   authors: "Fang Dong"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Southeast University"
+  institutions: "The Chinese University of Hong Kong"
 }
 pub {
   where: "arXiv"
@@ -18,11 +18,9 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: none
+  words: overlap
+  words: deployment
 }
 cover {
   url: ""
@@ -30,4 +28,4 @@ cover {
 baseline {
   methods: "None"
 }
-update_time: 1768533614
+update_time: 1769078011

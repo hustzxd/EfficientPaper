@@ -1,0 +1,32 @@
+paper {
+  title: "LycheeDecode: Accelerating Long-Context LLM Inference via Hybrid-Head Sparse Decoding"
+  abbr: "LycheeDecode"
+  url: "http://arxiv.org/abs/2602.04541v1"
+  authors: "Gang Lin"
+  authors: "Dongfang Li"
+  authors: "Zhuoen Chen"
+  authors: "Yukun Shi"
+  authors: "Xuhui Chen"
+  authors: "Baotian Hu"
+  authors: "Min Zhang"
+  institutions: "Harbin Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/HITsz-TMG/TMGNLP/tree/main/LycheeDecode"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/TidalDecode"
+  methods: "2025/SeerAttention-R"
+}
+update_time: 1770619900
