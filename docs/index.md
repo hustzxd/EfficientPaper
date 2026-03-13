@@ -1959,7 +1959,7 @@ function closeLightbox() {
   async function loadPapers() {
     try {
       // basePath is already defined at module level
-      const response = await fetch(basePath + '/js/papers.json');
+      const response = await fetch(basePath + '/js/papers.json?v=' + Date.now());
       const data = await response.json();
       papers = data.papers;
 
