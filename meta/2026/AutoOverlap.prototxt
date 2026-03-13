@@ -1,0 +1,30 @@
+paper {
+  title: "AutoOverlap: Enabling Fine-Grained Overlap of Computation and Communication with Chunk-Based Scheduling"
+  abbr: "AutoOverlap"
+  url: "http://arxiv.org/abs/2601.20595v1"
+  authors: "Xinwei Qiang"
+  authors: "Yue Guan"
+  authors: "Zhengding Hu"
+  authors: "Yufei Ding"
+  authors: "Adnan Aziz"
+  institutions: "Meta"
+  institutions: "University of California, San Diego"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: overlap
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1772000127

@@ -1,4 +1,4 @@
-// Note Editor for MkDocs
+// Note Editor for MkDocs (EasyMDE version)
 (function() {
   'use strict';
 
@@ -24,18 +24,13 @@
 
   // Get note path from URL
   function getNotePath() {
-    // Try different URL patterns:
-    // - /notes/2025/07NWF4VE/ (with trailing slash)
-    // - /notes/2025/07NWF4VE (without trailing slash)
     const pathname = window.location.pathname;
 
-    // Pattern 1: with trailing slash
     let pathMatch = pathname.match(/\/notes\/(\d+)\/([^\/]+)\//);
     if (pathMatch) {
       return `notes/${pathMatch[1]}/${pathMatch[2]}/note.md`;
     }
 
-    // Pattern 2: without trailing slash (ends with paper ID)
     pathMatch = pathname.match(/\/notes\/(\d+)\/([^\/]+)$/);
     if (pathMatch) {
       return `notes/${pathMatch[1]}/${pathMatch[2]}/note.md`;
@@ -46,14 +41,12 @@
 
   // Create editor UI
   function createEditorUI() {
-    // Create edit button
     const editBtn = document.createElement('button');
     editBtn.id = 'note-edit-btn';
     editBtn.className = 'note-edit-btn';
     editBtn.innerHTML = '✏️ Edit Note';
     editBtn.title = 'Edit this note (requires local server)';
 
-    // Create editor modal
     const editorModal = document.createElement('div');
     editorModal.id = 'note-editor-modal';
     editorModal.className = 'note-editor-modal';
@@ -68,7 +61,7 @@
           </div>
         </div>
         <div class="note-editor-body">
-          <textarea id="note-editor-textarea" placeholder="Write your note in Markdown..."></textarea>
+          <textarea id="note-editor-textarea"></textarea>
         </div>
         <div class="note-editor-footer">
           <span class="note-path"></span>
@@ -77,7 +70,6 @@
       </div>
     `;
 
-    // Insert UI elements - try multiple possible locations
     document.body.appendChild(editBtn);
     document.body.appendChild(editorModal);
 
@@ -87,22 +79,16 @@
   // Load note content
   async function loadNoteContent(notePath) {
     try {
-      // Use the API server to load the raw markdown file
       const response = await fetch(`http://localhost:8001/api/load-note?path=${encodeURIComponent(notePath)}`);
-
       if (response.ok) {
         const data = await response.json();
-
         if (data.exists) {
           return data.content;
         }
       }
-
-      // If file doesn't exist or API fails, return template
       return `# ${document.querySelector('h1')?.textContent || 'Paper Note'}\n\n## Abstract\n\n## Key Points\n\n## Methodology\n\n## Results\n\n## Conclusion\n\n`;
     } catch (error) {
       console.error('Failed to load note:', error);
-      // Return template on error
       return `# ${document.querySelector('h1')?.textContent || 'Paper Note'}\n\n## Abstract\n\n## Key Points\n\n## Methodology\n\n## Results\n\n## Conclusion\n\n`;
     }
   }
@@ -112,21 +98,13 @@
     try {
       const response = await fetch('http://localhost:8001/save_note', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          path: notePath,
-          content: content
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: notePath, content: content })
       });
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      const result = await response.json();
-      return result;
+      return await response.json();
     } catch (error) {
       console.error('Failed to save note:', error);
       throw error;
@@ -137,7 +115,6 @@
   async function initEditor() {
     console.log('[Note Editor] Initializing on path:', window.location.pathname);
 
-    // Check if local server is available first
     const serverAvailable = await checkLocalServer();
     if (!serverAvailable) {
       console.log('[Note Editor] Local server not available, hiding edit button');
@@ -161,71 +138,96 @@
 
     pathDisplay.textContent = notePath;
 
-    console.log('[Note Editor] UI created, button visible:', editBtn.offsetParent !== null);
+    let easyMDE = null;
 
     // Open editor
     editBtn.addEventListener('click', async () => {
       console.log('[Note Editor] Opening editor');
       const content = await loadNoteContent(notePath);
-      textarea.value = content;
+
       editorModal.style.display = 'flex';
-      textarea.focus();
       saveStatus.textContent = '';
+
+      // Initialize EasyMDE after modal is visible (needed for correct rendering)
+      if (easyMDE) {
+        easyMDE.toTextArea();
+        easyMDE = null;
+      }
+
+      textarea.value = content;
+
+      easyMDE = new EasyMDE({
+        element: textarea,
+        autofocus: true,
+        spellChecker: false,
+        status: ['lines', 'words', 'cursor'],
+        minHeight: '400px',
+        maxHeight: '60vh',
+        toolbar: [
+          'bold', 'italic', 'strikethrough', 'heading', '|',
+          'code', 'quote', 'unordered-list', 'ordered-list', '|',
+          'link', 'image', 'table', 'horizontal-rule', '|',
+          'preview', 'side-by-side', 'fullscreen', '|',
+          'undo', 'redo', '|',
+          'guide'
+        ],
+        previewImagesInEditor: true,
+        renderingConfig: {
+          codeSyntaxHighlighting: true
+        },
+        shortcuts: {
+          toggleSideBySide: 'Cmd-P',
+          togglePreview: 'Cmd-Shift-P'
+        }
+      });
     });
 
     // Close editor
     function closeEditor() {
+      if (easyMDE) {
+        easyMDE.toTextArea();
+        easyMDE = null;
+      }
       editorModal.style.display = 'none';
       saveStatus.textContent = '';
     }
 
     cancelBtn.addEventListener('click', closeEditor);
 
-    // Close on overlay click
     editorModal.addEventListener('click', (e) => {
       if (e.target === editorModal) {
         closeEditor();
       }
     });
 
-    // Close on ESC key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && editorModal.style.display === 'flex') {
+        // Don't close if in fullscreen mode
+        if (easyMDE && easyMDE.isFullscreenActive()) return;
         closeEditor();
       }
     });
 
     // Save note
     saveBtn.addEventListener('click', async () => {
-      const content = textarea.value;
+      const content = easyMDE ? easyMDE.value() : textarea.value;
       saveStatus.textContent = 'Saving...';
       saveStatus.className = 'status-saving';
       saveBtn.disabled = true;
 
       try {
         await saveNoteContent(notePath, content);
-        saveStatus.textContent = '✓ Saved! Auto-reload running, refresh browser to see changes.';
+        saveStatus.textContent = '✓ Saved!';
         saveStatus.className = 'status-success';
-
-        // Re-enable save button after a short delay
-        setTimeout(() => {
-          saveBtn.disabled = false;
-        }, 2000);
+        setTimeout(() => { saveBtn.disabled = false; }, 2000);
       } catch (error) {
         saveStatus.textContent = '✗ Failed to save. Make sure the server is running.';
         saveStatus.className = 'status-error';
         saveBtn.disabled = false;
       }
     });
-
-    // Auto-resize textarea
-    textarea.addEventListener('input', () => {
-      textarea.style.height = 'auto';
-      textarea.style.height = textarea.scrollHeight + 'px';
-    });
   }
 
-  // Wait for DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initEditor);
   } else {

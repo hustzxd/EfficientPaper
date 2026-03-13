@@ -500,28 +500,52 @@ code.language-prototxt *,
 .note-editor-body {
     flex: 1;
     padding: 20px 24px;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     flex-direction: column;
 }
 
-#note-editor-textarea {
-    width: 100%;
+/* EasyMDE overrides inside modal */
+.note-editor-body .EasyMDEContainer {
     flex: 1;
-    min-height: 400px;
-    padding: 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
 }
 
-#note-editor-textarea:focus {
-    border-color: #4a90d9;
+.note-editor-body .EasyMDEContainer .CodeMirror {
+    flex: 1;
+    min-height: 400px;
+    max-height: 60vh;
+    border-radius: 0 0 8px 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.note-editor-body .editor-toolbar {
+    border-radius: 8px 8px 0 0;
+}
+
+.note-editor-body .editor-preview,
+.note-editor-body .editor-preview-side {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 16px;
+}
+
+.note-editor-body .editor-preview img,
+.note-editor-body .editor-preview-side img {
+    max-width: 100%;
+}
+
+/* Fullscreen z-index fix */
+.EasyMDEContainer.sided--no-fullscreen {
+    z-index: 10001;
+}
+
+.editor-toolbar.fullscreen,
+.CodeMirror-fullscreen,
+.editor-preview-side.editor-preview-active-side {
+    z-index: 10001;
 }
 
 .note-editor-footer {
@@ -583,7 +607,7 @@ code.language-prototxt *,
         padding: 16px;
     }
 
-    #note-editor-textarea {
+    .note-editor-body .EasyMDEContainer .CodeMirror {
         min-height: 300px;
         font-size: 13px;
     }

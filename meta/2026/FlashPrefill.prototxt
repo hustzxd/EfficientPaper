@@ -1,0 +1,33 @@
+paper {
+  title: "FlashPrefill: Instantaneous Pattern Discovery and Thresholding for Ultra-Fast Long-Context Prefilling"
+  abbr: "FlashPrefill"
+  url: "http://arxiv.org/abs/2603.06199v1"
+  authors: "Qihang Fan"
+  authors: "Huaibo Huang"
+  authors: "Zhiying Wu"
+  authors: "Juqiu Wang"
+  authors: "Bingning Wang"
+  authors: "Ran He"
+  institutions: "WeChat, Tencent"
+  institutions: "UCAS"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/qhfan/FlashPrefill"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/FlexPrefill"
+}
+update_time: 1773368260
+rating: 5

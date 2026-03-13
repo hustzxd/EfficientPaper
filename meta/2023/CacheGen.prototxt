@@ -1,0 +1,42 @@
+paper {
+  title: "CacheGen: KV Cache Compression and Streaming for Fast Large Language Model Serving"
+  abbr: "CacheGen"
+  url: "http://arxiv.org/abs/2310.07240v6"
+  authors: "Yuhan Liu"
+  authors: "Hanchen Li"
+  authors: "Yihua Cheng"
+  authors: "Siddhant Ray"
+  authors: "Yuyang Huang"
+  authors: "Qizheng Zhang"
+  authors: "Kuntai Du"
+  authors: "Jiayi Yao"
+  authors: "Shan Lu"
+  authors: "Ganesh Ananthanarayanan"
+  authors: "Michael Maire"
+  authors: "Henry Hoffmann"
+  authors: "Ari Holtzman"
+  authors: "Junchen Jiang"
+  institutions: "University of Chicago"
+  institutions: "Microsoft"
+  institutions: "Stanford University"
+}
+pub {
+  where: "arXiv"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/UChi-JCL/CacheGen"
+}
+keyword {
+  words: kv_cache_quant
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1773369038
+rating: 3

@@ -76,6 +76,8 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_download_pdf()
         elif parsed_url.path == '/api/find-pdf':
             self.handle_find_pdf()
+        elif parsed_url.path == '/api/save-rating':
+            self.handle_save_rating()
         else:
             self.send_error(404, "Not Found")
 
@@ -129,6 +131,7 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                     'methods': list(pinfo.baseline.methods),
                 },
                 'update_time': pinfo.update_time if pinfo.HasField('update_time') else None,
+                'rating': pinfo.rating if pinfo.HasField('rating') else 0,
             }
 
             self.send_json_response(data)
@@ -292,6 +295,10 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             # Baseline section
             pinfo.baseline.methods.extend(data['baseline']['methods'])
 
+            # Rating
+            if data.get('rating'):
+                pinfo.rating = int(data['rating'])
+
             # Update timestamp
             import datetime
             import time
@@ -305,6 +312,48 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
 
         except Exception as e:
             print(f"Error saving paper: {e}", file=sys.stderr)
+            self.send_json_response({'error': str(e)}, 500)
+
+    def handle_save_rating(self):
+        """Save rating to prototxt file (lightweight, only updates rating field)"""
+        try:
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            request_data = json.loads(body)
+
+            path = request_data.get('path')
+            rating = request_data.get('rating', 0)
+
+            if not path:
+                self.send_json_response({'error': 'Missing path'}, 400)
+                return
+
+            file_path = os.path.join(os.getcwd(), path)
+
+            if not os.path.exists(file_path):
+                self.send_json_response({'error': f'File not found: {path}'}, 404)
+                return
+
+            # Read existing prototxt
+            pinfo = eppb.PaperInfo()
+            with open(file_path, 'r') as f:
+                pb.text_format.Merge(f.read(), pinfo)
+
+            # Update rating
+            rating = int(rating)
+            if rating > 0:
+                pinfo.rating = rating
+            else:
+                pinfo.ClearField('rating')
+
+            # Write back
+            with open(file_path, 'w') as f:
+                f.write(str(pinfo))
+
+            self.send_json_response({'success': True, 'rating': rating})
+
+        except Exception as e:
+            print(f"Error saving rating: {e}", file=sys.stderr)
             self.send_json_response({'error': str(e)}, 500)
 
     def handle_upload_cover(self):

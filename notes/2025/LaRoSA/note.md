@@ -2,7 +2,7 @@
 
 > Kai Liu, Bowen Xu, Shaoyu Wu, Xin Chen, Hao Zhou, Yongliang Tao, Lulu Hu
 
-![](../../blank.jpg)
+![](fig1.png)
 
 ## Abstract
 

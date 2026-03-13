@@ -119,6 +119,7 @@ def generate_search_data():
             "note_url": note_url,
             "prototxt_path": f"meta/{year}/{filename}",
             "update_time": pinfo.update_time if pinfo.HasField('update_time') else 0,
+            "rating": pinfo.rating if pinfo.HasField('rating') else 0,
         }
         data.append(paper_data)
 

@@ -21,6 +21,7 @@
         <option value="update-asc">Sort: Update (Oldest)</option>
         <option value="year-desc">Sort: Published (Newest)</option>
         <option value="year-asc">Sort: Published (Oldest)</option>
+        <option value="rating-desc">Sort: Rating (Highest)</option>
       </select>
       <button id="reset-btn">Reset</button>
       <button id="stats-btn" class="stats-btn">📊 Statistics</button>
@@ -1200,6 +1201,50 @@
   font-weight: 500;
 }
 
+/* Rating Stars */
+.paper-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.paper-rating .star {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.15s;
+}
+
+.paper-rating .star svg {
+  width: 100%;
+  height: 100%;
+  fill: #d0d0d0;
+  stroke: none;
+  transition: fill 0.15s;
+}
+
+.paper-rating .star.filled svg {
+  fill: #f5a623;
+}
+
+.paper-rating:hover .star svg {
+  fill: #e0e0e0;
+}
+
+.paper-rating:hover .star.filled svg {
+  fill: #f5a623;
+}
+
+.paper-rating:hover .star.hover-active svg {
+  fill: #f5a623;
+}
+
+.paper-rating .star:hover {
+  transform: scale(1.15);
+}
+
 .badge-year {
   background: #e3f2fd;
   color: #1565c0;
@@ -1219,6 +1264,9 @@
   font-size: 13px;
   color: #666;
   margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .paper-institutions {
@@ -1818,6 +1866,95 @@ function closeLightbox() {
     return count.toString();
   }
 
+  // --- Rating helpers ---
+  function getLocalRatings() {
+    try {
+      return JSON.parse(localStorage.getItem('paper-ratings') || '{}');
+    } catch { return {}; }
+  }
+
+  function getRating(paper) {
+    const local = getLocalRatings();
+    const path = paper.prototxt_path;
+    if (path && local[path] !== undefined) return local[path];
+    return paper.rating || 0;
+  }
+
+  function renderStars(rating) {
+    const starSvg = '<svg viewBox="0 0 24 24"><path d="M12 2C12.4 2 12.8 2.3 13 2.6L15.5 8 21.4 8.8C22.2 8.9 22.5 9.9 21.9 10.5L17.5 14.7 18.6 20.7C18.7 21.5 17.9 22.1 17.2 21.7L12 19 6.8 21.7C6.1 22.1 5.3 21.5 5.4 20.7L6.5 14.7 2.1 10.5C1.5 9.9 1.8 8.9 2.6 8.8L8.5 8 11 2.6C11.2 2.3 11.6 2 12 2Z"/></svg>';
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+      html += `<span class="star${i <= rating ? ' filled' : ''}" data-value="${i}">${starSvg}</span>`;
+    }
+    return html;
+  }
+
+  function saveRatingLocal(path, rating) {
+    const ratings = getLocalRatings();
+    if (rating > 0) {
+      ratings[path] = rating;
+    } else {
+      delete ratings[path];
+    }
+    localStorage.setItem('paper-ratings', JSON.stringify(ratings));
+  }
+
+  async function saveRatingServer(path, rating) {
+    try {
+      const resp = await fetch('http://localhost:8001/api/save-rating', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path, rating }),
+      });
+      return resp.ok;
+    } catch { return false; }
+  }
+
+  // Event delegation for star clicks
+  document.addEventListener('click', function(e) {
+    const star = e.target.closest('.paper-rating .star');
+    if (!star) return;
+    const container = star.closest('.paper-rating');
+    const path = container.dataset.path;
+    const clickedValue = parseInt(star.dataset.value);
+    const currentRating = parseInt(container.dataset.rating) || 0;
+
+    // Toggle: clicking the same star again clears the rating
+    const newRating = (clickedValue === currentRating) ? 0 : clickedValue;
+
+    // Update UI
+    container.dataset.rating = newRating;
+    container.innerHTML = renderStars(newRating);
+
+    // Also update the paper object in memory
+    const paper = papers.find(p => p.prototxt_path === path);
+    if (paper) paper.rating = newRating;
+
+    // Persist
+    saveRatingLocal(path, newRating);
+    saveRatingServer(path, newRating);
+  });
+
+  // Hover effect for stars
+  document.addEventListener('mouseover', function(e) {
+    const star = e.target.closest('.paper-rating .star');
+    if (!star) return;
+    const container = star.closest('.paper-rating');
+    const hoverValue = parseInt(star.dataset.value);
+    container.querySelectorAll('.star').forEach(s => {
+      s.classList.toggle('hover-active', parseInt(s.dataset.value) <= hoverValue);
+    });
+  });
+
+  document.addEventListener('mouseout', function(e) {
+    const star = e.target.closest('.paper-rating .star');
+    if (!star) return;
+    const container = star.closest('.paper-rating');
+    container.querySelectorAll('.star').forEach(s => {
+      s.classList.remove('hover-active');
+    });
+  });
+
   // Load paper data
   async function loadPapers() {
     try {
@@ -1890,6 +2027,14 @@ function closeLightbox() {
           const abbrA = (a.abbr || '').toLowerCase();
           const abbrB = (b.abbr || '').toLowerCase();
           return abbrA.localeCompare(abbrB);
+        });
+        break;
+      case 'rating-desc': // Rating (highest first)
+        papersArray.sort((a, b) => {
+          const ratingA = getRating(a);
+          const ratingB = getRating(b);
+          if (ratingB !== ratingA) return ratingB - ratingA;
+          return (b.update_time || 0) - (a.update_time || 0);
         });
         break;
       default:
@@ -2134,6 +2279,7 @@ function closeLightbox() {
               <span class="paper-badge badge-year">${paper.year}</span>
               <span class="paper-badge badge-venue">${paper.venue}</span>
               ${paper.keywords.map(k => `<span class="paper-badge badge-keyword">${k}</span>`).join('')}
+              <span class="paper-rating" data-path="${paper.prototxt_path}" data-rating="${getRating(paper)}">${renderStars(getRating(paper))}</span>
             </div>
             ${updateTimeHtml ? `<div class="paper-update-time">${updateTimeHtml}</div>` : ''}
             ${authors ? `<div class="paper-authors">${authors}</div>` : ''}

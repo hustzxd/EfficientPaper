@@ -6,7 +6,7 @@ Each component represents a family of related methods, showing how newer papers 
 
 ## StreamingLLM Family
 
-*36 methods, 52 relationships*
+*37 methods, 53 relationships*
 
 ```mermaid
 flowchart LR
@@ -83,6 +83,8 @@ flowchart LR
     class 2026_Double_P leafNode
     2026_FastKVzip["FastKVzip[2026]"]
     class 2026_FastKVzip leafNode
+    2026_FlashPrefill["FlashPrefill[2026]"]
+    class 2026_FlashPrefill leafNode
     2026_Prism["Prism[2026]"]
     class 2026_Prism leafNode
     PyramidKV["PyramidKV"]
@@ -176,22 +178,24 @@ flowchart LR
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2025_XAttention
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_Prism
+    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    2025_KVzip ==>|" "| 2026_FastKVzip
+    2025_FlexPrefill ==>|" "| 2026_Prism
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    2025_RaaS ==>|" "| 2025_FreeKV
+    2025_KVzip ==>|" "| 2026_FastKVzip
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
-    2025_ShadowKV ==>|" "| 2025_FreeKV
+    2025_RaaS ==>|" "| 2025_FreeKV
     linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_BLASST
+    2025_ShadowKV ==>|" "| 2025_FreeKV
     linkStyle 48 stroke:#9370DB,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_TCA_Attention
+    2025_XAttention ==>|" "| 2025_BLASST
     linkStyle 49 stroke:#FF6347,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_EvolKV
+    2025_XAttention ==>|" "| 2025_TCA_Attention
     linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_UNComp
+    PyramidKV ==>|" "| 2025_EvolKV
     linkStyle 51 stroke:#FFD700,stroke-width:2.5px
+    PyramidKV ==>|" "| 2025_UNComp
+    linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
 ```
 
 ## KIVI Family

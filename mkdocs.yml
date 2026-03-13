@@ -33,11 +33,13 @@ extra_javascript:
   - js/prism-prototxt.js
   - js/preview.js
   - js/back-to-top.js
+  - https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js
   - js/note-editor.js
   - js/auto-reload.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css
+  - https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css
   - css/extra.css
 
 # Copy extra directories to site
