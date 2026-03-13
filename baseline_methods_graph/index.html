@@ -11,6 +11,7 @@
 <link href="../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet"/>
 <link href="../css/extra.css" rel="stylesheet"/>
 <script>
         // Current page data
@@ -83,6 +84,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-02-24/">2026-02-24</a>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-02-27/">2026-02-27</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-03-13/">2026-03-13</a>
+</li>
 <li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -142,7 +147,7 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <p>Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.</p>
 <h2 id="streamingllm-family">StreamingLLM Family</h2>
-<p><em>36 methods, 52 relationships</em></p>
+<p><em>37 methods, 53 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
     classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
@@ -217,6 +222,8 @@
     class 2026_Double_P leafNode
     2026_FastKVzip["FastKVzip[2026]"]
     class 2026_FastKVzip leafNode
+    2026_FlashPrefill["FlashPrefill[2026]"]
+    class 2026_FlashPrefill leafNode
     2026_Prism["Prism[2026]"]
     class 2026_Prism leafNode
     PyramidKV["PyramidKV"]
@@ -310,22 +317,24 @@
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
     2025_FlexPrefill ==&gt;|" "| 2025_XAttention
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2026_Prism
+    2025_FlexPrefill ==&gt;|" "| 2026_FlashPrefill
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    2025_KVzip ==&gt;|" "| 2026_FastKVzip
+    2025_FlexPrefill ==&gt;|" "| 2026_Prism
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    2025_RaaS ==&gt;|" "| 2025_FreeKV
+    2025_KVzip ==&gt;|" "| 2026_FastKVzip
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
-    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
+    2025_RaaS ==&gt;|" "| 2025_FreeKV
     linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_BLASST
+    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
     linkStyle 48 stroke:#9370DB,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
+    2025_XAttention ==&gt;|" "| 2025_BLASST
     linkStyle 49 stroke:#FF6347,stroke-width:2.5px
-    PyramidKV ==&gt;|" "| 2025_EvolKV
+    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
     linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
-    PyramidKV ==&gt;|" "| 2025_UNComp
+    PyramidKV ==&gt;|" "| 2025_EvolKV
     linkStyle 51 stroke:#FFD700,stroke-width:2.5px
+    PyramidKV ==&gt;|" "| 2025_UNComp
+    linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
 </div>
 <h2 id="kivi-family">KIVI Family</h2>
 <p><em>13 methods, 18 relationships</em></p>
@@ -690,6 +699,7 @@
 <script src="../js/prism-prototxt.js"></script>
 <script src="../js/preview.js"></script>
 <script src="../js/back-to-top.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 <script src="../js/note-editor.js"></script>
 <script src="../js/auto-reload.js"></script>
 <script>

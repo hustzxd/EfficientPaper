@@ -1,0 +1,39 @@
+paper {
+  title: "DualPath: Breaking the Storage Bandwidth Bottleneck in Agentic LLM Inference"
+  abbr: "DualPath"
+  url: "http://arxiv.org/abs/2602.21548v2"
+  authors: "Yongtong Wu"
+  authors: "Shaoyuan Chen"
+  authors: "Yinmin Zhong"
+  authors: "Rilin Huang"
+  authors: "Yixuan Tan"
+  authors: "Wentao Zhang"
+  authors: "Liyue Zhang"
+  authors: "Shangyan Zhou"
+  authors: "Yuxuan Liu"
+  authors: "Shunfeng Zhou"
+  authors: "Mingxing Zhang"
+  authors: "Xin Jin"
+  authors: "Panpan Huang"
+  institutions: "Peking University"
+  institutions: "Tsinghua University"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1773368780
