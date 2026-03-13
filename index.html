@@ -2089,7 +2089,7 @@ function closeLightbox() {
   async function loadPapers() {
     try {
       // basePath is already defined at module level
-      const response = await fetch(basePath + '/js/papers.json');
+      const response = await fetch(basePath + '/js/papers.json?v=' + Date.now());
       const data = await response.json();
       papers = data.papers;
 
@@ -3669,5 +3669,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-03-13 03:36:11.289278+00:00
+Build Date UTC : 2026-03-13 03:41:53.852587+00:00
 -->
