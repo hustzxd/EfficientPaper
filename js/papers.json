@@ -1,6 +1,188 @@
 {
   "papers": [
     {
+      "id": "HN5FDNZ3",
+      "title": "Sawtooth Wavefront Reordering: Enhanced CuTile FlashAttention on NVIDIA GB10",
+      "abbr": "HN5FDNZ3",
+      "url": "http://arxiv.org/abs/2601.16032v2",
+      "authors": [
+        "Yifan Zhu",
+        "Yekai Pan",
+        "Chen Ding"
+      ],
+      "institutions": [
+        "University of Rochester"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "39-Performance Modeling"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/HN5FDNZ3/note/",
+      "prototxt_path": "meta/2026/HN5FDNZ3.prototxt",
+      "update_time": 1773631229,
+      "rating": 0
+    },
+    {
+      "id": "FlashAttention-3",
+      "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
+      "abbr": "FlashAttention-3",
+      "url": "http://arxiv.org/abs/2407.08608v2",
+      "authors": [
+        "Jay Shah",
+        "Ganesh Bikshandi",
+        "Ying Zhang",
+        "Vijay Thakkar",
+        "Pradeep Ramani",
+        "Tri Dao"
+      ],
+      "institutions": [
+        "Colfax Research",
+        "Meta",
+        "NVIDIA",
+        "Georgia Tech",
+        "Princeton University",
+        "Together AI"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "44-Layer Fusion (Reduce IO)",
+        "46-Tool"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/FlashAttention-3/note/",
+      "prototxt_path": "meta/2024/FlashAttention-3.prototxt",
+      "update_time": 1773396138,
+      "rating": 0
+    },
+    {
+      "id": "UNComp",
+      "title": "UNComp: Can Matrix Entropy Uncover Sparsity? -- A Compressor Design from an Uncertainty-Aware Perspective",
+      "abbr": "UNComp",
+      "url": "http://arxiv.org/abs/2410.03090v2",
+      "authors": [
+        "Jing Xiong",
+        "Jianghan Shen",
+        "Fanghua Ye",
+        "Chaofan Tao",
+        "Zhongwei Wan",
+        "Jianqiao Lu",
+        "Xun Wu",
+        "Chuanyang Zheng",
+        "Zhijiang Guo",
+        "Min Yang",
+        "Lingpeng Kong",
+        "Ngai Wong"
+      ],
+      "institutions": [
+        "The University of Hong Kong",
+        "Nanjing University",
+        "University College London",
+        "The Ohio State University",
+        "Microsoft Research Asia",
+        "The Chinese University of Hong Kong",
+        "Hong Kong University of Science and Technology"
+      ],
+      "year": 2025,
+      "venue": "EMNLP",
+      "cover": "notes/2025/UNComp/fig4.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/menik1126/UNComp",
+      "note_url": "notes/2025/UNComp/note/",
+      "prototxt_path": "meta/2025/UNComp.prototxt",
+      "update_time": 1773395962,
+      "rating": 0
+    },
+    {
+      "id": "K-Search",
+      "title": "K-Search: LLM Kernel Generation via Co-Evolving Intrinsic World Model",
+      "abbr": "K-Search",
+      "url": "http://arxiv.org/abs/2602.19128v1",
+      "authors": [
+        "Shiyi Cao",
+        "Ziming Mao",
+        "Joseph E. Gonzalez",
+        "Ion Stoica"
+      ],
+      "institutions": [
+        "UC Berkeley"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/K-Search/cover.png",
+      "keywords": [
+        "49-Kernel Generation"
+      ],
+      "code_url": "https://github.com/caoshiyi/K-Search",
+      "note_url": "notes/2026/K-Search/note/",
+      "prototxt_path": "meta/2026/K-Search.prototxt",
+      "update_time": 1773395925,
+      "rating": 4
+    },
+    {
+      "id": "FlashAttention-2",
+      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+      "abbr": "FlashAttention-2",
+      "url": "https://arxiv.org/abs/2307.08691",
+      "authors": [
+        "Tri Dao"
+      ],
+      "institutions": [
+        "Stanford University"
+      ],
+      "year": 2024,
+      "venue": "ICLR",
+      "cover": null,
+      "keywords": [
+        "44-Layer Fusion (Reduce IO)"
+      ],
+      "code_url": "https://github.com/Dao-AILab/flash-attention",
+      "note_url": "notes/2024/FlashAttention-2/note/",
+      "prototxt_path": "meta/2024/FlashAttention-2.prototxt",
+      "update_time": 1773387045,
+      "rating": 0
+    },
+    {
+      "id": "FlashAttention-4",
+      "title": "FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling",
+      "abbr": "FlashAttention-4",
+      "url": "http://arxiv.org/abs/2603.05451v1",
+      "authors": [
+        "Ted Zadouri",
+        "Markus Hoehnerbach",
+        "Jay Shah",
+        "Timmy Liu",
+        "Vijay Thakkar",
+        "Tri Dao"
+      ],
+      "institutions": [
+        "Princeton University",
+        "Meta",
+        "Colfax Research",
+        "NVIDIA",
+        "Georgia Tech",
+        "Together AI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/FlashAttention-4/cover.png",
+      "keywords": [
+        "44-Layer Fusion (Reduce IO)",
+        "46-Tool"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/FlashAttention-4/note/",
+      "prototxt_path": "meta/2026/FlashAttention-4.prototxt",
+      "update_time": 1773386981,
+      "rating": 0
+    },
+    {
       "id": "GLM-5",
       "title": "GLM-5: from Vibe Coding to Agentic Engineering",
       "abbr": "GLM-5",
@@ -207,7 +389,7 @@
       "note_url": "notes/2026/GLM-5/note/",
       "prototxt_path": "meta/2026/GLM-5.prototxt",
       "update_time": 1773369437,
-      "rating": 0
+      "rating": 4
     },
     {
       "id": "CacheGen",
@@ -283,7 +465,7 @@
       "note_url": "notes/2026/DualPath/note/",
       "prototxt_path": "meta/2026/DualPath.prototxt",
       "update_time": 1773368780,
-      "rating": 0
+      "rating": 4
     },
     {
       "id": "FlashPrefill",
@@ -923,60 +1105,6 @@
       "rating": 0
     },
     {
-      "id": "HN5FDNZ3",
-      "title": "Sawtooth Wavefront Reordering: Enhanced CuTile FlashAttention on NVIDIA GB10",
-      "abbr": "HN5FDNZ3",
-      "url": "http://arxiv.org/abs/2601.16032v2",
-      "authors": [
-        "Yifan Zhu",
-        "Yekai Pan",
-        "Chen Ding"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2026,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "00-None"
-      ],
-      "code_url": null,
-      "note_url": "notes/2026/HN5FDNZ3/note/",
-      "prototxt_path": "meta/2026/HN5FDNZ3.prototxt",
-      "update_time": 1770019541,
-      "rating": 0
-    },
-    {
-      "id": "KV-CoE",
-      "title": "Beyond Speedup -- Utilizing KV Cache for Sampling and Reasoning",
-      "abbr": "KV-CoE",
-      "url": "http://arxiv.org/abs/2601.20326v1",
-      "authors": [
-        "Zeyu Xing",
-        "Xing Li",
-        "Hui-Ling Zhen",
-        "Mingxuan Yuan",
-        "Sinno Jialin Pan"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2026,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "00-None"
-      ],
-      "code_url": "https://github.com/cmd2001/ICLR2026_KV-Embedding",
-      "note_url": "notes/2026/KV-CoE/note/",
-      "prototxt_path": "meta/2026/KV-CoE.prototxt",
-      "update_time": 1770019215,
-      "rating": 0
-    },
-    {
       "id": "HERMES",
       "title": "HERMES: KV Cache as Hierarchical Memory for Efficient Streaming Video Understanding",
       "abbr": "HERMES",
@@ -1305,46 +1433,6 @@
       "note_url": "notes/2025/HATA/note/",
       "prototxt_path": "meta/2025/HATA.prototxt",
       "update_time": 1768877641,
-      "rating": 0
-    },
-    {
-      "id": "UNComp",
-      "title": "UNComp: Can Matrix Entropy Uncover Sparsity? -- A Compressor Design from an Uncertainty-Aware Perspective",
-      "abbr": "UNComp",
-      "url": "http://arxiv.org/abs/2410.03090v2",
-      "authors": [
-        "Jing Xiong",
-        "Jianghan Shen",
-        "Fanghua Ye",
-        "Chaofan Tao",
-        "Zhongwei Wan",
-        "Jianqiao Lu",
-        "Xun Wu",
-        "Chuanyang Zheng",
-        "Zhijiang Guo",
-        "Min Yang",
-        "Lingpeng Kong",
-        "Ngai Wong"
-      ],
-      "institutions": [
-        "The University of Hong Kong",
-        "Nanjing University",
-        "University College London",
-        "The Ohio State University",
-        "Microsoft Research Asia",
-        "The Chinese University of Hong Kong",
-        "Hong Kong University of Science and Technology"
-      ],
-      "year": 2025,
-      "venue": "EMNLP",
-      "cover": "notes/2025/UNComp/fig4.png",
-      "keywords": [
-        "20-Sparse/Eviction (KV Cache)"
-      ],
-      "code_url": "https://github.com/menik1126/UNComp",
-      "note_url": "notes/2025/UNComp/note/",
-      "prototxt_path": "meta/2025/UNComp.prototxt",
-      "update_time": 1768874671,
       "rating": 0
     },
     {
@@ -8363,29 +8451,6 @@
       "rating": 0
     },
     {
-      "id": "flashattention2",
-      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
-      "abbr": "FlashAttention-2",
-      "url": "https://arxiv.org/abs/2307.08691",
-      "authors": [
-        "Tri Dao"
-      ],
-      "institutions": [
-        "Stanford University"
-      ],
-      "year": 2024,
-      "venue": "ICLR",
-      "cover": null,
-      "keywords": [
-        "44-Layer Fusion (Reduce IO)"
-      ],
-      "code_url": "https://github.com/Dao-AILab/flash-attention",
-      "note_url": null,
-      "prototxt_path": "meta/2024/flashattention2.prototxt",
-      "update_time": 0,
-      "rating": 0
-    },
-    {
       "id": "flashattention",
       "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
       "abbr": "FlashAttention",
@@ -13916,7 +13981,6 @@
       "github"
     ],
     "keywords": [
-      "00-None",
       "01-Sparse/Pruning",
       "02-Sparsity (Attention)",
       "03-Sparsity (Activation)",
@@ -13936,8 +14000,9 @@
       "44-Layer Fusion (Reduce IO)",
       "45-Efficient Training",
       "46-Tool",
-      "47-Benchmark"
+      "47-Benchmark",
+      "49-Kernel Generation"
     ]
   },
-  "total": 420
+  "total": 422
 }

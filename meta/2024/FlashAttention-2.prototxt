@@ -13,12 +13,13 @@ code {
   type: "Pytorch"
   url: "https://github.com/Dao-AILab/flash-attention"
 }
-note {
-  url: ""
-}
 keyword {
   words: fusion
 }
 cover {
   url: ""
 }
+baseline {
+  methods: "2022/FlashAttention"
+}
+update_time: 1773387045

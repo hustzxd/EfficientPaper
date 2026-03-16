@@ -1,0 +1,29 @@
+paper {
+  title: "K-Search: LLM Kernel Generation via Co-Evolving Intrinsic World Model"
+  abbr: "K-Search"
+  url: "http://arxiv.org/abs/2602.19128v1"
+  authors: "Shiyi Cao"
+  authors: "Ziming Mao"
+  authors: "Joseph E. Gonzalez"
+  authors: "Ion Stoica"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/caoshiyi/K-Search"
+}
+keyword {
+  words: kernel_generation
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1773395925
+rating: 4

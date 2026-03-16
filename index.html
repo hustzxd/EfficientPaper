@@ -54,21 +54,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-09/">2026-01-09</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-16/">2026-01-16</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-23/">2026-01-23</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-01-30/">2026-01-30</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-02-06/">2026-02-06</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-02-24/">2026-02-24</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-02-27/">2026-02-27</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-03-13/">2026-03-13</a>
+                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-03-16/">2026-03-16</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -97,6 +87,16 @@
                 <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2025-12-26/">2025-12-26</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-02-06/">2026-02-06</a>
                 </li>
     </ul>
                   </li>
@@ -585,11 +585,49 @@
 }
 
 .paper-checkbox {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 4px;
   cursor: pointer;
-  margin-right: 12px;
+  background: rgba(255,255,255,0.5);
+  transition: all 0.2s;
+  opacity: 0;
+  z-index: 2;
+  margin: 0;
+}
+
+.paper-card:hover .paper-checkbox,
+.paper-checkbox:checked {
+  opacity: 1;
+}
+
+.paper-checkbox:hover {
+  border-color: #4a90d9;
+  background: rgba(255,255,255,0.8);
+}
+
+.paper-checkbox:checked {
+  background: #4a90d9;
+  border-color: #4a90d9;
+}
+
+.paper-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* Statistics Panel */
@@ -2006,7 +2044,11 @@ function closeLightbox() {
   function getRating(paper) {
     const local = getLocalRatings();
     const path = paper.prototxt_path;
+
+    // localStorage = user's personal rating, takes priority
     if (path && local[path] !== undefined) return local[path];
+
+    // Fall back to prototxt/papers.json (author's rating) as default
     return paper.rating || 0;
   }
 
@@ -3669,5 +3711,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-03-13 03:41:53.852587+00:00
+Build Date UTC : 2026-03-16 08:55:29.854828+00:00
 -->
