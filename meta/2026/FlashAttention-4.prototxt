@@ -1,0 +1,36 @@
+paper {
+  title: "FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling"
+  abbr: "FlashAttention-4"
+  url: "http://arxiv.org/abs/2603.05451v1"
+  authors: "Ted Zadouri"
+  authors: "Markus Hoehnerbach"
+  authors: "Jay Shah"
+  authors: "Timmy Liu"
+  authors: "Vijay Thakkar"
+  authors: "Tri Dao"
+  institutions: "Princeton University"
+  institutions: "Meta"
+  institutions: "Colfax Research"
+  institutions: "NVIDIA"
+  institutions: "Georgia Tech"
+  institutions: "Together AI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: fusion
+  words: tool
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/FlashAttention-3"
+}
+update_time: 1773386981

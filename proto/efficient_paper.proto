@@ -72,6 +72,8 @@ message Keyword {
         efficient_training = 46;
         tool = 47;
         benchmark = 48;
+
+        kernel_generation = 50;
         // TODO: please add your key words here.
     }
 }

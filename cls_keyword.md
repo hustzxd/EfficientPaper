@@ -4,16 +4,6 @@
 </summary> 
 <p>
 
-<details open><summary><b>00-None</b></summary> 
-<p>
-
-
-| Meta | Title | Cover | Publish | Code | Note |
-|:-----|:------|:------|:--------|:-----|:-----|
-| [KV-CoE](./meta/2026/KV-CoE.prototxt) | [Beyond Speedup -- Utilizing KV Cache for Sampling and Reasoning](http://arxiv.org/abs/2601.20326v1) |  | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/cmd2001/ICLR2026_KV-Embedding)](https://github.com/cmd2001/ICLR2026_KV-Embedding) | [note](./notes/2026/KV-CoE/note.md) |
-| [HN5FDNZ3](./meta/2026/HN5FDNZ3.prototxt) | [Sawtooth Wavefront Reordering: Enhanced CuTile FlashAttention on NVIDIA GB10](http://arxiv.org/abs/2601.16032v2) |  | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/HN5FDNZ3/note.md) |
-</p>
-</details>
 <details open><summary><b>01-Sparse/Pruning</b></summary> 
 <p>
 
@@ -637,6 +627,7 @@
 | [AMALI](./meta/2025/AMALI.prototxt) | [AMALI: An Analytical Model for Accurately Modeling LLM Inference on Modern GPUs](https://dl.acm.org/doi/10.1145/3695053.3731064) | ![cover](./notes/2025/AMALI/fig6.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) |  | [note](./notes/2025/AMALI/note.md) |
 | [LIMINAL](./meta/2025/LIMINAL.prototxt) | [Efficient LLM Inference: Bandwidth, Compute, Synchronization, and Capacity are all you need](http://arxiv.org/abs/2507.14397v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/LIMINAL/note.md) |
 | [H2VD7Q70](./meta/2025/H2VD7Q70.prototxt) | [Hardware-Centric Analysis of DeepSeek's Multi-Head Latent Attention](http://arxiv.org/abs/2506.02523v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/H2VD7Q70/note.md) |
+| [HN5FDNZ3](./meta/2026/HN5FDNZ3.prototxt) | [Sawtooth Wavefront Reordering: Enhanced CuTile FlashAttention on NVIDIA GB10](http://arxiv.org/abs/2601.16032v2) |  | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/HN5FDNZ3/note.md) |
 </p>
 </details>
 <details open><summary><b>40-LLM Deployment</b></summary> 
@@ -780,7 +771,9 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [FlashAttention](./meta/2022/flashattention.prototxt) | [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135) | ![cover](./notes/2022/flashattention/cover.jpg) | ![Publish](https://img.shields.io/badge/2022-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention)](https://github.com/Dao-AILab/flash-attention) |  |
-| [FlashAttention-2](./meta/2024/flashattention2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) |  | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention)](https://github.com/Dao-AILab/flash-attention) |  |
+| [FlashAttention-2](./meta/2024/FlashAttention-2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) |  | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention)](https://github.com/Dao-AILab/flash-attention) | [note](./notes/2024/FlashAttention-2/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>
 </details>
 <details open><summary><b>45-Efficient Training</b></summary> 
@@ -815,6 +808,7 @@
 | [vLLM](./meta/2023/SGLang-Code.prototxt) | vLLM |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/vllm-project/vllm)](https://github.com/vllm-project/vllm) | [note](./notes/2023/SGLang-Code/note.md) |
 | [Flash-Decoding](./meta/2023/FlashDecoding.prototxt) | [Flash-Decoding for long-context inference](https://crfm.stanford.edu/2023/10/12/flashdecoding.html) | ![cover](./notes/2023/FlashDecoding/cover.gif) | ![Publish](https://img.shields.io/badge/2023-blog-green) |  | [note](./notes/2023/FlashDecoding/note.md) |
 | [FT](./meta/2023/fastertransfomer.prototxt) | [FasterTransformer](https://github.com/NVIDIA/FasterTransformer) |  | ![Publish](https://img.shields.io/badge/2023-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/FasterTransformer)](https://github.com/NVIDIA/FasterTransformer) |  |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [Mooncake](./meta/2024/Mooncake.prototxt) | [Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving](http://arxiv.org/abs/2407.00079v4) | ![cover](./notes/2024/Mooncake/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/kvcache-ai/Mooncake)](https://github.com/kvcache-ai/Mooncake) | [note](./notes/2024/Mooncake/note.md) |
 | [SCBench](./meta/2024/SCBench.prototxt) | [SCBench: A KV Cache-Centric Analysis of Long-Context Methods](http://arxiv.org/abs/2412.10319v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/microsoft/MInference)](https://github.com/microsoft/MInference) | [note](./notes/2024/SCBench/note.md) |
 | [TorchAO](./meta/2025/TorchAO.prototxt) | [TorchAO: PyTorch-Native Training-to-Serving Model Optimization](http://arxiv.org/abs/2507.16099v1) | ![cover](./notes/2025/TorchAO/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICML_Workshop-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/pytorch/ao)](https://github.com/pytorch/ao) | [note](./notes/2025/TorchAO/note.md) |
@@ -827,6 +821,7 @@
 | [DeepEP](./meta/2025/DeepEP.prototxt) | [DeepEP: an efficient expert-parallel communication library](https://github.com/deepseek-ai/DeepEP) | ![cover](./notes/2025/DeepEP/low-latency.png) | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepEP)](https://github.com/deepseek-ai/DeepEP) | [note](./notes/2025/DeepEP/note.md) |
 | [KVCache-Factory](./meta/2025/KVCache-Factory.prototxt) | [Unified KV Cache Compression Methods for Auto-Regressive Models](https://github.com/Zefan-Cai/KVCache-Factory) | ![cover](./notes/2025/KVCache-Factory/cover.png) | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/KVCache-Factory)](https://github.com/Zefan-Cai/KVCache-Factory) | [note](./notes/2025/KVCache-Factory/note.md) |
 | [kvpress](./meta/2025/kvpress.prototxt) | [kvpress: LLM KV cache compression made easy](https://github.com/NVIDIA/kvpress) | ![cover](./notes/2025/kvpress/cover.jpg) | ![Publish](https://img.shields.io/badge/2025-github-2F4F4F) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/kvpress)](https://github.com/NVIDIA/kvpress) | [note](./notes/2025/kvpress/note.md) |
+| [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>
 </details>
 <details open><summary><b>47-Benchmark</b></summary> 
@@ -837,6 +832,15 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [InfiniteBench](./meta/2024/InfiniteBench.prototxt) | [$\infty$Bench: Extending Long Context Evaluation Beyond 100K Tokens](http://arxiv.org/abs/2402.13718v3) | ![cover](./notes/2024/InfiniteBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/OpenBMB/InfiniteBench)](https://github.com/OpenBMB/InfiniteBench) | [note](./notes/2024/InfiniteBench/note.md) |
 | [LongBench](./meta/2024/LongBench.prototxt) | [LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding](http://arxiv.org/abs/2308.14508v2) | ![cover](./notes/2024/LongBench/cover.png) | ![Publish](https://img.shields.io/badge/2024-ACL-4169E1) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/LongBench)](https://github.com/THUDM/LongBench) | [note](./notes/2024/LongBench/note.md) |
+</p>
+</details>
+<details open><summary><b>49-Kernel Generation</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [K-Search](./meta/2026/K-Search.prototxt) | [K-Search: LLM Kernel Generation via Co-Evolving Intrinsic World Model](http://arxiv.org/abs/2602.19128v1) | ![cover](./notes/2026/K-Search/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/caoshiyi/K-Search)](https://github.com/caoshiyi/K-Search) | [note](./notes/2026/K-Search/note.md) |
 </p>
 </details>
 </p>

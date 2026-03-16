@@ -5,8 +5,7 @@ paper {
   authors: "Yifan Zhu"
   authors: "Yekai Pan"
   authors: "Chen Ding"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Rochester"
 }
 pub {
   where: "arXiv"
@@ -16,11 +15,8 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: none
+  words: performance_modeling
 }
 cover {
   url: ""
@@ -28,4 +24,4 @@ cover {
 baseline {
   methods: "None"
 }
-update_time: 1770019541
+update_time: 1773631229

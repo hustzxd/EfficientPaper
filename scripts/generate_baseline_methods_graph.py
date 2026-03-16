@@ -31,10 +31,17 @@ def main():
                     G.add_node(bl_method, name=f"{name}[{year}]")
                     G.add_edge(bl_method, cur_node)
 
-    components = list(nx.weakly_connected_components(G))
+    # Transitive reduction: remove edges that are implied by longer paths
+    # e.g., if A→B→C exists, remove A→C
+    G_reduced = nx.transitive_reduction(G)
+    # transitive_reduction loses node attributes, copy them back
+    for node in G_reduced.nodes():
+        G_reduced.nodes[node].update(G.nodes[node])
+
+    components = list(nx.weakly_connected_components(G_reduced))
     # Sort components by size (descending) then by node names for consistency
     components.sort(key=lambda c: (-len(c), sorted(c)[0] if c else ''))
-    subgraphs = [G.subgraph(c).copy() for c in components]
+    subgraphs = [G_reduced.subgraph(c).copy() for c in components]
 
     # collect markdown with multiple mermaid blocks
     md_lines = [
@@ -54,10 +61,10 @@ def main():
             # Find the most representative name for this component
             # Use the node with highest out-degree (most cited as baseline by others)
             representative_node = max(subgraph.nodes(),
-                                    key=lambda n: G.out_degree(n))
+                                    key=lambda n: G_reduced.out_degree(n))
 
             # Extract readable name from node
-            node_data = G.nodes[representative_node]
+            node_data = G_reduced.nodes[representative_node]
             component_name = node_data.get('name', str(representative_node))
             # Remove year suffix like [2020] for cleaner display
             component_name = re.sub(r'\[\d{4}\]', '', component_name).strip()

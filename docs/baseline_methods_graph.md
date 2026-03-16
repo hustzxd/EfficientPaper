@@ -4,9 +4,9 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.
 
-## StreamingLLM Family
+## SnapKV Family
 
-*37 methods, 53 relationships*
+*37 methods, 43 relationships*
 
 ```mermaid
 flowchart LR
@@ -114,93 +114,73 @@ flowchart LR
     linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
     2024_LazyLLM ==>|" "| 2025_SlimInfer
     linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2024_MInference ==>|" "| 2025_BLASST
-    linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
     2024_MInference ==>|" "| 2025_FlexPrefill
-    linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    2024_MInference ==>|" "| 2025_SharePrefill
-    linkStyle 14 stroke:#FFA500,stroke-width:2.5px
-    2024_MInference ==>|" "| 2025_SlimInfer
-    linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
-    2024_MInference ==>|" "| 2025_XAttention
-    linkStyle 16 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
     2024_Quest ==>|" "| 2025_CTkvr
-    linkStyle 17 stroke:#FF6347,stroke-width:2.5px
+    linkStyle 13 stroke:#00CED1,stroke-width:2.5px
     2024_Quest ==>|" "| 2025_FreeKV
-    linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
+    linkStyle 14 stroke:#FFA500,stroke-width:2.5px
     2024_Quest ==>|" "| 2025_Kascade
-    linkStyle 19 stroke:#FFD700,stroke-width:2.5px
+    linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
     2024_Quest ==>|" "| 2025_Twilight
-    linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 16 stroke:#9370DB,stroke-width:2.5px
     2024_Quest ==>|" "| 2025_UNComp
-    linkStyle 21 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 17 stroke:#FF6347,stroke-width:2.5px
     2024_Quest ==>|" "| 2026_Double_P
-    linkStyle 22 stroke:#FFA500,stroke-width:2.5px
+    linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_CTkvr
-    linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 19 stroke:#FFD700,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_DefensiveKV
-    linkStyle 24 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_EvolKV
-    linkStyle 25 stroke:#FF6347,stroke-width:2.5px
+    linkStyle 21 stroke:#00CED1,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_KVzip
-    linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
+    linkStyle 22 stroke:#FFA500,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_LAVa
-    linkStyle 27 stroke:#FFD700,stroke-width:2.5px
+    linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_PureKV
-    linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 24 stroke:#9370DB,stroke-width:2.5px
     2024_SnapKV ==>|" "| 2025_UNComp
-    linkStyle 29 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 25 stroke:#FF6347,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2024_InfLLM
-    linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_MInference
-    linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2024_RazorAttention
-    linkStyle 32 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 27 stroke:#FFD700,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2025_EvolKV
-    linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_FlexPrefill
-    linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
+    linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2025_HashAttention
-    linkStyle 35 stroke:#FFD700,stroke-width:2.5px
+    linkStyle 29 stroke:#00CED1,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2025_PureKV
-    linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 30 stroke:#FFA500,stroke-width:2.5px
     2024_StreamingLLM ==>|" "| 2025_UNComp
-    linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_XAttention
-    linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_BLASST
-    linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2025_SharePrefill
-    linkStyle 40 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 32 stroke:#9370DB,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2025_SlimInfer
-    linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_TCA_Attention
-    linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
+    linkStyle 33 stroke:#FF6347,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2025_XAttention
-    linkStyle 43 stroke:#FFD700,stroke-width:2.5px
+    linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2026_FlashPrefill
-    linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 35 stroke:#FFD700,stroke-width:2.5px
     2025_FlexPrefill ==>|" "| 2026_Prism
-    linkStyle 45 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
     2025_KVzip ==>|" "| 2026_FastKVzip
-    linkStyle 46 stroke:#FFA500,stroke-width:2.5px
+    linkStyle 37 stroke:#00CED1,stroke-width:2.5px
     2025_RaaS ==>|" "| 2025_FreeKV
-    linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 38 stroke:#FFA500,stroke-width:2.5px
     2025_ShadowKV ==>|" "| 2025_FreeKV
-    linkStyle 48 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
     2025_XAttention ==>|" "| 2025_BLASST
-    linkStyle 49 stroke:#FF6347,stroke-width:2.5px
+    linkStyle 40 stroke:#9370DB,stroke-width:2.5px
     2025_XAttention ==>|" "| 2025_TCA_Attention
-    linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
+    linkStyle 41 stroke:#FF6347,stroke-width:2.5px
     PyramidKV ==>|" "| 2025_EvolKV
-    linkStyle 51 stroke:#FFD700,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_UNComp
-    linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
 ```
 
 ## KIVI Family
 
-*13 methods, 18 relationships*
+*13 methods, 15 relationships*
 
 ```mermaid
 flowchart LR
@@ -244,34 +224,28 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
     2024_KIVI ==>|" "| 2025_MILLION
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_MixKVQ
-    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
     2024_KIVI ==>|" "| 2025_QJL
-    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
     2024_KIVI ==>|" "| 2025_RotateKV
-    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_VecInfer
-    linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
     2024_KVQuant ==>|" "| 2025_KVmix
-    linkStyle 8 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
     2024_KVQuant ==>|" "| 2025_MILLION
-    linkStyle 9 stroke:#FF6347,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_MixKVQ
-    linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
+    linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
     2024_KVQuant ==>|" "| 2025_QJL
-    linkStyle 11 stroke:#FFD700,stroke-width:2.5px
+    linkStyle 8 stroke:#9370DB,stroke-width:2.5px
     2024_KVQuant ==>|" "| 2025_RotateKV
-    linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 9 stroke:#FF6347,stroke-width:2.5px
     2024_MiKV ==>|" "| 2025_RotateKV
-    linkStyle 13 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
     2024_ZipCache ==>|" "| 2025_RotateKV
-    linkStyle 14 stroke:#FFA500,stroke-width:2.5px
+    linkStyle 11 stroke:#FFD700,stroke-width:2.5px
     2025_MILLION ==>|" "| 2025_VecInfer
-    linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
     2025_RotateKV ==>|" "| 2025_MixKVQ
-    linkStyle 16 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 13 stroke:#00CED1,stroke-width:2.5px
     Loki ==>|" "| 2025_H1B_KV
-    linkStyle 17 stroke:#FF6347,stroke-width:2.5px
+    linkStyle 14 stroke:#FFA500,stroke-width:2.5px
 ```
 
 ## SVG Family
@@ -320,7 +294,7 @@ flowchart LR
 
 ## PagedAttention Family
 
-*8 methods, 10 relationships*
+*8 methods, 9 relationships*
 
 ```mermaid
 flowchart LR
@@ -352,25 +326,55 @@ flowchart LR
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
     2023_PagedAttention ==>|" "| 2025_TileLink
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
-    2023_PagedAttention ==>|" "| 2025_TokenWeave
-    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
     2024_Async_TP ==>|" "| 2025_TileLink
-    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
     2024_Async_TP ==>|" "| 2026_FlashOverlap
-    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
     2024_FLUX ==>|" "| 2025_TileLink
-    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
+    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
     2024_FLUX ==>|" "| 2026_FlashOverlap
-    linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
+    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
     2025_NanoFlow ==>|" "| 2025_TokenWeave
-    linkStyle 8 stroke:#9370DB,stroke-width:2.5px
+    linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
     2025_TileLink ==>|" "| 2025_TokenWeave
-    linkStyle 9 stroke:#FF6347,stroke-width:2.5px
+    linkStyle 8 stroke:#9370DB,stroke-width:2.5px
 ```
 
-## SparseGPT Family
+## FlashAttention Family
 
-*5 methods, 7 relationships*
+*5 methods, 4 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2022_FlashAttention["FlashAttention[2022]"]
+    class 2022_FlashAttention rootNode
+    2023_FlashDecoding["FlashDecoding[2023]"]
+    class 2023_FlashDecoding leafNode
+    2024_FlashAttention_2["FlashAttention-2[2024]"]
+    class 2024_FlashAttention_2 defaultNode
+    2024_FlashAttention_3["FlashAttention-3[2024]"]
+    class 2024_FlashAttention_3 defaultNode
+    2026_FlashAttention_4["FlashAttention-4[2026]"]
+    class 2026_FlashAttention_4 leafNode
+
+    2022_FlashAttention ==>|" "| 2023_FlashDecoding
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2022_FlashAttention ==>|" "| 2024_FlashAttention_2
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2024_FlashAttention_2 ==>|" "| 2024_FlashAttention_3
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+    2024_FlashAttention_3 ==>|" "| 2026_FlashAttention_4
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+```
+
+## Wanda Family
+
+*5 methods, 4 relationships*
 
 ```mermaid
 flowchart LR
@@ -390,20 +394,14 @@ flowchart LR
     2025_SDS["SDS[2025]"]
     class 2025_SDS leafNode
 
-    2023_SparseGPT ==>|" "| 2024_Pruner_Zero
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
     2023_SparseGPT ==>|" "| 2024_Wanda
-    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
-    2023_SparseGPT ==>|" "| 2025_BaWA
-    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
-    2023_SparseGPT ==>|" "| 2025_SDS
-    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
     2024_Wanda ==>|" "| 2024_Pruner_Zero
-    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
     2024_Wanda ==>|" "| 2025_BaWA
-    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
     2024_Wanda ==>|" "| 2025_SDS
-    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
 ```
 
 ## GPTQ Family
@@ -458,7 +456,7 @@ flowchart LR
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 ```
 
-## SeerAttention-R Family
+## TidalDecode Family
 
 *3 methods, 2 relationships*
 
@@ -480,26 +478,6 @@ flowchart LR
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
     2025_TidalDecode ==>|" "| 2026_LycheeDecode
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
-```
-
-## FlashAttention Family
-
-*2 methods, 1 relationships*
-
-```mermaid
-flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2022_FlashAttention["FlashAttention[2022]"]
-    class 2022_FlashAttention rootNode
-    2023_FlashDecoding["FlashDecoding[2023]"]
-    class 2023_FlashDecoding leafNode
-
-    2022_FlashAttention ==>|" "| 2023_FlashDecoding
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```
 
 ## CLA Family

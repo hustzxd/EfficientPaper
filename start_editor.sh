@@ -86,21 +86,20 @@ class ChangeHandler(FileSystemEventHandler):
         self.last_modified = time.time()
         self.debounce_seconds = 2
 
-    def on_modified(self, event):
+    def _should_handle(self, event):
         if event.is_directory:
-            return
-
-        # Only watch .prototxt and .md files
-        if not (event.src_path.endswith(".prototxt") or event.src_path.endswith(".md")):
-            return
-
-        # Debounce rapid changes
+            return False
+        src = event.src_path
+        if not (src.endswith(".prototxt") or src.endswith(".md")):
+            return False
         current_time = time.time()
         if (current_time - self.last_modified) < self.debounce_seconds:
-            return
-
+            return False
         self.last_modified = current_time
-        print(f"\033[1;33mFile change detected: {event.src_path}\033[0m")
+        return True
+
+    def _regenerate(self, event, action):
+        print(f"\033[1;33mFile {action}: {event.src_path}\033[0m")
         print("\033[1;33mRegenerating...\033[0m")
         subprocess.run(["bash", "refresh_and_upload.sh"],
                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -125,6 +124,18 @@ class ChangeHandler(FileSystemEventHandler):
             f.write(str(proc.pid))
         time.sleep(2)
         print("\033[0;32mMkDocs restarted!\033[0m")
+
+    def on_modified(self, event):
+        if self._should_handle(event):
+            self._regenerate(event, "modified")
+
+    def on_deleted(self, event):
+        if self._should_handle(event):
+            self._regenerate(event, "deleted")
+
+    def on_created(self, event):
+        if self._should_handle(event):
+            self._regenerate(event, "created")
 
 # Set up observer
 observer = Observer()

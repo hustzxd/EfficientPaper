@@ -455,11 +455,49 @@
 }
 
 .paper-checkbox {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 4px;
   cursor: pointer;
-  margin-right: 12px;
+  background: rgba(255,255,255,0.5);
+  transition: all 0.2s;
+  opacity: 0;
+  z-index: 2;
+  margin: 0;
+}
+
+.paper-card:hover .paper-checkbox,
+.paper-checkbox:checked {
+  opacity: 1;
+}
+
+.paper-checkbox:hover {
+  border-color: #4a90d9;
+  background: rgba(255,255,255,0.8);
+}
+
+.paper-checkbox:checked {
+  background: #4a90d9;
+  border-color: #4a90d9;
+}
+
+.paper-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* Statistics Panel */
@@ -1876,7 +1914,11 @@ function closeLightbox() {
   function getRating(paper) {
     const local = getLocalRatings();
     const path = paper.prototxt_path;
+
+    // localStorage = user's personal rating, takes priority
     if (path && local[path] !== undefined) return local[path];
+
+    // Fall back to prototxt/papers.json (author's rating) as default
     return paper.rating || 0;
   }
 

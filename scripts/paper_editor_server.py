@@ -537,7 +537,7 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
 
             self.send_json_response({
                 'success': True,
-                'message': 'Paper deleted successfully. Run ./start_editor.sh to see updates.',
+                'message': 'Paper deleted successfully. Auto-refreshing...',
                 'deleted': deleted_items
             })
 

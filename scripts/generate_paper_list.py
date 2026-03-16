@@ -95,6 +95,8 @@ word_pb2str = {
     eppb.Keyword.Word.speculative_decoding: "Speculative Decoding",
     eppb.Keyword.Word.performance_modeling: "Performance Modeling",
     eppb.Keyword.Word.benchmark: "Benchmark",
+
+    eppb.Keyword.Word.kernel_generation: "Kernel Generation"
 }
 
 for k, v in word_pb2str.items():

@@ -40,8 +40,7 @@ baseline {
   methods: "2023/H2O"
   methods: "2024/StreamingLLM"
   methods: "2024/SnapKV"
-  methods: "PyramidKV"
   methods: "2024/Quest"
   methods: "2024/DoubleSparsity"
 }
-update_time: 1768874671
+update_time: 1773395962

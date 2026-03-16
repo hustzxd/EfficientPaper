@@ -1,0 +1,36 @@
+paper {
+  title: "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision"
+  abbr: "FlashAttention-3"
+  url: "http://arxiv.org/abs/2407.08608v2"
+  authors: "Jay Shah"
+  authors: "Ganesh Bikshandi"
+  authors: "Ying Zhang"
+  authors: "Vijay Thakkar"
+  authors: "Pradeep Ramani"
+  authors: "Tri Dao"
+  institutions: "Colfax Research"
+  institutions: "Meta"
+  institutions: "NVIDIA"
+  institutions: "Georgia Tech"
+  institutions: "Princeton University"
+  institutions: "Together AI"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: fusion
+  words: tool
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/FlashAttention-2"
+}
+update_time: 1773396138
