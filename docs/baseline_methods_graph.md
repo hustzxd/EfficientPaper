@@ -432,6 +432,30 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
+## DHC Family
+
+*3 methods, 2 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_DHC["DHC[2025]"]
+    class 2025_DHC rootNode
+    2025_mHC["mHC[2025]"]
+    class 2025_mHC defaultNode
+    2026_AttentionResiduals["AttentionResiduals[2026]"]
+    class 2026_AttentionResiduals leafNode
+
+    2025_DHC ==>|" "| 2025_mHC
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2025_mHC ==>|" "| 2026_AttentionResiduals
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+```
+
 ## NSA Family
 
 *3 methods, 2 relationships*
@@ -497,25 +521,5 @@ flowchart LR
     class 2025_FusedKV leafNode
 
     2024_CLA ==>|" "| 2025_FusedKV
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-```
-
-## DHC Family
-
-*2 methods, 1 relationships*
-
-```mermaid
-flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2025_DHC["DHC[2025]"]
-    class 2025_DHC rootNode
-    2025_mHC["mHC[2025]"]
-    class 2025_mHC leafNode
-
-    2025_DHC ==>|" "| 2025_mHC
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```

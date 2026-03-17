@@ -2,7 +2,7 @@
 
 > Jay Shah, Ganesh Bikshandi, Ying Zhang, Vijay Thakkar, Pradeep Ramani, Tri Dao
 
-![111](../../blank.jpg)
+![111](cover.png)
 
 ## Abstract
 

@@ -373,7 +373,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>
 </details>
@@ -588,7 +588,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [GEAR](./meta/2024/GEAR.prototxt) | [GEAR: An Efficient KV Cache Compression Recipe for Near-Lossless Generative Inference of LLM](http://arxiv.org/abs/2403.05527v4) | ![cover](./notes/2024/GEAR/overview.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/HaoKang-Timmy/GEAR)](https://github.com/HaoKang-Timmy/GEAR) | [note](./notes/2024/GEAR/note.md) |
 | [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>
@@ -1059,6 +1059,15 @@
 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | ![cover](./notes/2024/DSnoT/dsnot.png) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT)](https://github.com/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |
 </p>
 </details>
+<details open><summary><b>Kimi</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>King’s College London</b></summary> 
 <p>
 
@@ -1211,7 +1220,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Wanda](./meta/2024/Wanda.prototxt) | [A Simple and Effective Pruning Approach for Large Language Models](http://arxiv.org/abs/2306.11695) | ![cover](./notes/2024/Wanda/wanda.png) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/wanda)](https://github.com/locuslab/wanda) | [note](./notes/2024/Wanda/note.md) |
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [massive-activations](./meta/2024/massive-activations.prototxt) | [Massive Activations in Large Language Models](http://arxiv.org/abs/2402.17762v2) | ![cover](./notes/2024/massive-activations/massive_act.jpg) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/locuslab/massive-activations)](https://github.com/locuslab/massive-activations) | [note](./notes/2024/massive-activations/note.md) |
 | [2ZU1IWL6](./meta/2025/2ZU1IWL6.prototxt) | [Fast and Simplex: 2-Simplicial Attention in Triton](http://arxiv.org/abs/2507.02754v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/2ZU1IWL6/note.md) |
 | [MoR](./meta/2025/VFPWFOQA.prototxt) | [MoR: Mixture Of Representations For Mixed-Precision Training](http://arxiv.org/abs/2512.22804v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/VFPWFOQA/note.md) |
@@ -1499,7 +1508,7 @@
 | [MaskLLM](./meta/2024/MaskLLM.prototxt) | [MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models](http://arxiv.org/abs/2409.17481v1) | ![cover](./notes/2024/MaskLLM/maskllm.png) | ![Publish](https://img.shields.io/badge/2024-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/MaskLLM)](https://github.com/NVlabs/MaskLLM) | [note](./notes/2024/MaskLLM/note.md) |
 | [Minitron](./meta/2024/Minitron.prototxt) | [Compact Language Models via Pruning and Knowledge Distillation](https://arxiv.org/abs/2408.11796v2) | ![cover](./notes/2024/Minitron/minitron.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVlabs/Minitron)](https://github.com/NVlabs/Minitron) | [note](./notes/2024/Minitron/note.md) |
 | [DuoAttention](./meta/2024/DuoAttention.prototxt) | [DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads](http://arxiv.org/abs/2410.10819v1) | ![cover](./notes/2024/DuoAttention/duoattention.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/duo-attention)](https://github.com/mit-han-lab/duo-attention) | [note](./notes/2024/DuoAttention/note.md) |
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [XGrammar](./meta/2024/XGrammar.prototxt) | [XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models](http://arxiv.org/abs/2411.15100v2) | ![cover](./notes/2024/XGrammar/fig1.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mlc-ai/xgrammar)](https://github.com/mlc-ai/xgrammar) | [note](./notes/2024/XGrammar/note.md) |
 | [SVG](./meta/2025/SVG.prototxt) | [Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity](http://arxiv.org/abs/2502.01776v2) |  | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/svg-project/Sparse-VideoGen)](https://github.com/svg-project/Sparse-VideoGen) | [note](./notes/2025/SVG/note.md) |
 | [StarAttention](./meta/2025/StarAttention.prototxt) | [Star Attention: Efficient LLM Inference over Long Sequences](https://openreview.net/forum?id=QY7Au9nZwp) | ![cover](./notes/2025/StarAttention/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/Star-Attention)](https://github.com/NVIDIA/Star-Attention) | [note](./notes/2025/StarAttention/note.md) |
@@ -1841,7 +1850,7 @@
 | [AdaLoRA](./meta/2023/adalora.prototxt) | [AdaLoRA: Adaptive Budget Allocation for Parameter-Efficient Fine-Tuning](https://arxiv.org/pdf/2303.10512.pdf) | ![cover](./notes/2023/adalora/adalora.jpg) | ![Publish](https://img.shields.io/badge/2023-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/QingruZhang/AdaLoRA)](https://github.com/QingruZhang/AdaLoRA) |  |
 | [MeZO](./meta/2023/MeZO.prototxt) | [Fine-Tuning Language Models with Just Forward Passes](http://arxiv.org/abs/2305.17333v3) |  | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/MeZO)](https://github.com/princeton-nlp/MeZO) | [note](./notes/2023/MeZO/note.md) |
 | [LLM-shearing](./meta/2023/LLM_shearing.prototxt) | [Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning](https://xiamengzhou.github.io/sheared-llama/) | ![cover](./notes/2023/LLM_shearing/cover.jpg) | ![Publish](https://img.shields.io/badge/2023-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/princeton-nlp/LLM-Shearing)](https://github.com/princeton-nlp/LLM-Shearing) | [note](./notes/2023/LLM_shearing/note.md) |
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [SnapKV](./meta/2024/SnapKV.prototxt) | [SnapKV: LLM Knows What You are Looking for Before Generation](http://arxiv.org/abs/2404.14469v2) | ![cover](./notes/2024/SnapKV/fig1.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/SnapKV)](https://github.com/FasterDecoding/SnapKV) | [note](./notes/2024/SnapKV/note.md) |
 | [TEAL](./meta/2025/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | ![cover](./notes/2025/TEAL/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)](https://github.com/FasterDecoding/TEAL) | [note](./notes/2025/TEAL/note.md) |
 | [Marconi](./meta/2025/Marconi.prototxt) | [Marconi: Prefix Caching for the Era of Hybrid LLMs](http://arxiv.org/abs/2411.19379v3) |  | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) |  | [note](./notes/2025/Marconi/note.md) |
@@ -2495,7 +2504,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [TEAL](./meta/2025/TEAL.prototxt) | [Training-Free Activation Sparsity in Large Language Models](http://arxiv.org/abs/2408.14690v1) | ![cover](./notes/2025/TEAL/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/FasterDecoding/TEAL)](https://github.com/FasterDecoding/TEAL) | [note](./notes/2025/TEAL/note.md) |
 | [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>

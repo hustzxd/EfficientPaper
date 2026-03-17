@@ -185,7 +185,6 @@ def main():
 
     # Search for papers in batches
     total_results = 300  # 设置想要获取的总论文数
-    papers_per_batch = 100  # arXiv API的每页限制
     markdown_content = f"# {today}\n\n"
     papers_found = 0
 
@@ -279,8 +278,6 @@ def main():
         with open(file_name, "w") as wf:
             wf.write(markdown_content)
         
-        os.system(f"/Users/xiandong/miniconda3/bin/markdown-toc {file_name}")
-        os.system(f"/Users/xiandong/miniconda3/bin/python /Users/xiandong/projects/EfficientPaper/scripts/fix_mkdocs_links.py {file_name}")
 
     else:
         print("No new papers found, skipping file creation")

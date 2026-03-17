@@ -16,6 +16,15 @@
       <select id="keyword-filter">
         <option value="">All Keywords</option>
       </select>
+      <select id="rating-filter">
+        <option value="">All Ratings</option>
+        <option value="5">⭐ 5</option>
+        <option value="4">⭐ 4</option>
+        <option value="3">⭐ 3</option>
+        <option value="2">⭐ 2</option>
+        <option value="1">⭐ 1</option>
+        <option value="0">Unrated</option>
+      </select>
       <select id="sort-filter">
         <option value="update-desc">Sort: Update (Newest)</option>
         <option value="update-asc">Sort: Update (Oldest)</option>
@@ -47,8 +56,18 @@
     </div>
     <div class="stats-content">
       <div class="stat-card">
-        <h3>Year Distribution</h3>
-        <div id="year-chart" class="bar-chart"></div>
+        <h3>Top 20 Keywords</h3>
+        <div id="keyword-cloud" class="keyword-cloud"></div>
+      </div>
+      <div class="stats-row-2col">
+        <div class="stat-card">
+          <h3>Year Distribution</h3>
+          <div id="year-chart" class="bar-chart"></div>
+        </div>
+        <div class="stat-card">
+          <h3>Rating Distribution</h3>
+          <div id="rating-chart" class="bar-chart"></div>
+        </div>
       </div>
       <div class="stat-card">
         <h3>Top 10 Venues</h3>
@@ -61,10 +80,6 @@
       <div class="stat-card">
         <h3>Top 20 Institutions</h3>
         <div id="institution-chart" class="horizontal-bar-chart"></div>
-      </div>
-      <div class="stat-card">
-        <h3>Top 20 Keywords</h3>
-        <div id="keyword-cloud" class="keyword-cloud"></div>
       </div>
     </div>
   </div>
@@ -566,6 +581,18 @@
   gap: 30px;
 }
 
+.stats-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .stats-row-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .stat-card {
   background: #f9f9f9;
   border: 1px solid #e0e0e0;
@@ -602,6 +629,19 @@
   opacity: 0.8;
 }
 
+.clickable-year {
+  cursor: pointer;
+}
+
+.clickable-year .bar-label {
+  transition: color 0.2s;
+}
+
+.clickable-year:hover .bar-label {
+  color: #2563eb;
+  font-weight: 600;
+}
+
 .bar-label {
   position: absolute;
   bottom: -25px;
@@ -620,6 +660,14 @@
   font-size: 11px;
   font-weight: 600;
   color: #333;
+}
+
+.rating-summary {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #888;
 }
 
 /* Horizontal Bar Chart */
@@ -705,6 +753,18 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 8px;
+}
+
+.h-bar-fill-venue {
+  background: linear-gradient(to right, #7b1fa2, #9c27b0);
+}
+
+.h-bar-fill-author {
+  background: linear-gradient(to right, #1565c0, #42a5f5);
+}
+
+.h-bar-fill-institution {
+  background: linear-gradient(to right, #e65100, #ff9800);
 }
 
 .h-bar-value {
@@ -2197,6 +2257,7 @@ function closeLightbox() {
     const yearFilter = document.getElementById('year-filter').value;
     const venueFilter = document.getElementById('venue-filter').value;
     const keywordFilter = document.getElementById('keyword-filter').value;
+    const ratingFilter = document.getElementById('rating-filter').value;
     const sortFilter = document.getElementById('sort-filter').value;
 
     filteredPapers = papers.filter(paper => {
@@ -2220,6 +2281,13 @@ function closeLightbox() {
       // Keyword filter
       if (keywordFilter && !paper.keywords.includes(keywordFilter)) {
         return false;
+      }
+
+      // Rating filter
+      if (ratingFilter !== '') {
+        if (getRating(paper) !== parseInt(ratingFilter)) {
+          return false;
+        }
       }
 
       return true;
@@ -2517,6 +2585,7 @@ function closeLightbox() {
     document.getElementById('year-filter').value = '';
     document.getElementById('venue-filter').value = '';
     document.getElementById('keyword-filter').value = '';
+    document.getElementById('rating-filter').value = '';
     document.getElementById('sort-filter').value = 'update-desc'; // Reset to default sort
     filterPapers();
   }
@@ -2527,11 +2596,22 @@ function closeLightbox() {
     panel.style.display = 'block';
     document.body.style.overflow = 'hidden';
 
-    generateYearChart();
-    generateVenueChart();
-    generateAuthorChart();
-    generateInstitutionChart();
-    generateKeywordCloud();
+    // Use filteredPapers so stats reflect the current filter state
+    const source = filteredPapers.length > 0 ? filteredPapers : papers;
+    const isFiltered = filteredPapers.length !== papers.length;
+
+    // Update stats header to indicate filtered state
+    const header = panel.querySelector('.stats-header h2');
+    header.textContent = isFiltered
+      ? `📊 Paper Statistics (${source.length} of ${papers.length} papers)`
+      : `📊 Paper Statistics (${papers.length} papers)`;
+
+    generateYearChart(source);
+    generateVenueChart(source);
+    generateAuthorChart(source);
+    generateInstitutionChart(source);
+    generateRatingChart(source);
+    generateKeywordCloud(source);
   }
 
   function closeStatistics() {
@@ -2539,9 +2619,9 @@ function closeLightbox() {
     document.body.style.overflow = '';
   }
 
-  function generateYearChart() {
+  function generateYearChart(source) {
     const yearCounts = {};
-    papers.forEach(paper => {
+    source.forEach(paper => {
       yearCounts[paper.year] = (yearCounts[paper.year] || 0) + 1;
     });
 
@@ -2552,7 +2632,7 @@ function closeLightbox() {
       const count = yearCounts[year];
       const height = (count / maxCount) * 100;
       return `
-        <div class="bar-item" style="height: ${height}%">
+        <div class="bar-item clickable-year" data-year="${year}" style="height: ${height}%" title="Click to filter papers from ${year}">
           <span class="bar-value">${count}</span>
           <span class="bar-label">${year}</span>
         </div>
@@ -2560,11 +2640,28 @@ function closeLightbox() {
     }).join('');
 
     document.getElementById('year-chart').innerHTML = chartHtml;
+
+    // Add click event listeners to year bars
+    document.querySelectorAll('.clickable-year').forEach(yearEl => {
+      yearEl.addEventListener('click', function() {
+        filterByYear(this.dataset.year);
+      });
+    });
   }
 
-  function generateVenueChart() {
+  function filterByYear(year) {
+    closeStatistics();
+    document.getElementById('year-filter').value = year;
+    document.getElementById('search-input').value = '';
+    document.getElementById('venue-filter').value = '';
+    document.getElementById('keyword-filter').value = '';
+    filterPapers();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function generateVenueChart(source) {
     const venueCounts = {};
-    papers.forEach(paper => {
+    source.forEach(paper => {
       venueCounts[paper.venue] = (venueCounts[paper.venue] || 0) + 1;
     });
 
@@ -2573,14 +2670,15 @@ function closeLightbox() {
       .slice(0, 10);
 
     const maxCount = sortedVenues[0][1];
+    const sqrtMax = Math.sqrt(maxCount);
 
     const chartHtml = sortedVenues.map(([venue, count]) => {
-      const width = (count / maxCount) * 100;
+      const width = (Math.sqrt(count) / sqrtMax) * 100;
       return `
         <div class="h-bar-item">
           <div class="h-bar-label clickable-venue" data-venue="${venue}" title="Click to filter papers by ${venue}">${venue}</div>
           <div class="h-bar-container">
-            <div class="h-bar-fill" style="width: ${width}%">
+            <div class="h-bar-fill h-bar-fill-venue" style="width: ${width}%">
               <span class="h-bar-value">${count}</span>
             </div>
           </div>
@@ -2618,9 +2716,9 @@ function closeLightbox() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function generateAuthorChart() {
+  function generateAuthorChart(source) {
     const authorCounts = {};
-    papers.forEach(paper => {
+    source.forEach(paper => {
       paper.authors.forEach(author => {
         authorCounts[author] = (authorCounts[author] || 0) + 1;
       });
@@ -2643,7 +2741,7 @@ function closeLightbox() {
         <div class="h-bar-item">
           <div class="h-bar-label clickable-author" data-author="${author}" title="Click to filter papers by ${author}">${author}</div>
           <div class="h-bar-container">
-            <div class="h-bar-fill" style="width: ${width}%">
+            <div class="h-bar-fill h-bar-fill-author" style="width: ${width}%">
               <span class="h-bar-value">${count}</span>
             </div>
           </div>
@@ -2682,9 +2780,9 @@ function closeLightbox() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function generateInstitutionChart() {
+  function generateInstitutionChart(source) {
     const institutionCounts = {};
-    papers.forEach(paper => {
+    source.forEach(paper => {
       paper.institutions.forEach(institution => {
         institutionCounts[institution] = (institutionCounts[institution] || 0) + 1;
       });
@@ -2707,7 +2805,7 @@ function closeLightbox() {
         <div class="h-bar-item">
           <div class="h-bar-label clickable-institution" data-institution="${institution}" title="Click to filter papers by ${institution}">${institution}</div>
           <div class="h-bar-container">
-            <div class="h-bar-fill" style="width: ${width}%">
+            <div class="h-bar-fill h-bar-fill-institution" style="width: ${width}%">
               <span class="h-bar-value">${count}</span>
             </div>
           </div>
@@ -2746,9 +2844,59 @@ function closeLightbox() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function generateKeywordCloud() {
+  function generateRatingChart(source) {
+    const ratingCounts = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    source.forEach(paper => {
+      const rating = getRating(paper);
+      ratingCounts[rating] = (ratingCounts[rating] || 0) + 1;
+    });
+
+    const unratedCount = ratingCounts[0];
+    const ratedCount = source.length - unratedCount;
+    const labels = ['⭐ 1', '⭐ 2', '⭐ 3', '⭐ 4', '⭐ 5'];
+    const colors = ['#ef5350', '#ff9800', '#ffca28', '#66bb6a', '#42a5f5'];
+    const maxCount = Math.max(ratingCounts[1], ratingCounts[2], ratingCounts[3], ratingCounts[4], ratingCounts[5], 1);
+
+    const barsHtml = [1, 2, 3, 4, 5].map((rating, i) => {
+      const count = ratingCounts[rating];
+      const height = (count / maxCount) * 100;
+      return `
+        <div class="bar-item clickable-rating" data-rating="${rating}" style="height: ${Math.max(height, 2)}%; background: linear-gradient(to top, ${colors[i]}, ${colors[i]}dd); cursor: pointer;" title="Click to filter ${labels[i]} papers">
+          <span class="bar-value">${count}</span>
+          <span class="bar-label">${labels[i]}</span>
+        </div>
+      `;
+    }).join('');
+
+    const summaryHtml = `<div class="rating-summary">Rated: ${ratedCount} / ${source.length} papers (${unratedCount} unrated)</div>`;
+
+    document.getElementById('rating-chart').innerHTML = barsHtml + summaryHtml;
+
+    // Add click event listeners to rating bars
+    document.querySelectorAll('.clickable-rating').forEach(el => {
+      el.addEventListener('click', function() {
+        filterByRating(parseInt(this.dataset.rating));
+      });
+    });
+  }
+
+  function filterByRating(rating) {
+    closeStatistics();
+
+    // Set rating filter dropdown and reset others
+    document.getElementById('search-input').value = '';
+    document.getElementById('year-filter').value = '';
+    document.getElementById('venue-filter').value = '';
+    document.getElementById('keyword-filter').value = '';
+    document.getElementById('rating-filter').value = String(rating);
+
+    filterPapers();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function generateKeywordCloud(source) {
     const keywordCounts = {};
-    papers.forEach(paper => {
+    source.forEach(paper => {
       paper.keywords.forEach(keyword => {
         keywordCounts[keyword] = (keywordCounts[keyword] || 0) + 1;
       });
@@ -2758,12 +2906,18 @@ function closeLightbox() {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 20);
 
+    if (sortedKeywords.length === 0) {
+      document.getElementById('keyword-cloud').innerHTML = '<div class="no-data">No keyword data available</div>';
+      return;
+    }
+
     const maxCount = sortedKeywords[0][1];
     const minCount = sortedKeywords[sortedKeywords.length - 1][1];
+    const range = maxCount - minCount;
 
     const cloudHtml = sortedKeywords.map(([keyword, count]) => {
       let sizeClass = 'size-sm';
-      const ratio = (count - minCount) / (maxCount - minCount);
+      const ratio = range > 0 ? (count - minCount) / range : 1;
 
       if (ratio > 0.75) sizeClass = 'size-xl';
       else if (ratio > 0.5) sizeClass = 'size-lg';
@@ -3326,6 +3480,7 @@ function closeLightbox() {
     document.getElementById('year-filter').addEventListener('change', filterPapers);
     document.getElementById('venue-filter').addEventListener('change', filterPapers);
     document.getElementById('keyword-filter').addEventListener('change', filterPapers);
+    document.getElementById('rating-filter').addEventListener('change', filterPapers);
     document.getElementById('sort-filter').addEventListener('change', filterPapers);
     document.getElementById('reset-btn').addEventListener('click', resetFilters);
 

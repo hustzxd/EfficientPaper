@@ -456,6 +456,16 @@
 | [eLLM](./meta/2025/eLLM.prototxt) | [eLLM: Elastic Memory Management Framework for Efficient LLM Serving](http://arxiv.org/abs/2506.15155v1) | ![cover](./notes/2025/eLLM/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/eLLM/note.md) |
 </p>
 </details>
+<details open><summary><b>Chao Hong</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>Chao Li</b></summary> 
 <p>
 
@@ -1165,6 +1175,16 @@
 | [MiniMax-M1](./meta/2025/MiniMax-M1.prototxt) | [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](http://arxiv.org/abs/2506.13585v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MiniMax-AI/MiniMax-M1)](https://github.com/MiniMax-AI/MiniMax-M1) | [note](./notes/2025/MiniMax-M1/note.md) |
 </p>
 </details>
+<details open><summary><b>Enzhe Lu</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>Erhang Li</b></summary> 
 <p>
 
@@ -1383,6 +1403,16 @@
 | [MoA](./meta/2024/MoA.prototxt) | [MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression](http://arxiv.org/abs/2406.14909v2) | ![cover](./notes/2024/MoA/moa.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/thu-nics/MoA)](https://github.com/thu-nics/MoA) | [note](./notes/2024/MoA/note.md) |
 | [SpecEE](./meta/2025/SpecEE.prototxt) | [SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting](http://arxiv.org/abs/2504.08850v1) | ![cover](./notes/2025/SpecEE/fig9.png) | ![Publish](https://img.shields.io/badge/2025-ISCA-9932CC) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/SpecEE)](https://github.com/infinigence/SpecEE) | [note](./notes/2025/SpecEE/note.md) |
 | [FlashOverlap](./meta/2026/FlashOverlap.prototxt) | [FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation](http://arxiv.org/abs/2504.19519v1) | ![cover](./notes/2026/FlashOverlap/fig3.png) | ![Publish](https://img.shields.io/badge/2026-EuroSys-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/infinigence/FlashOverlap)](https://github.com/infinigence/FlashOverlap) | [note](./notes/2026/FlashOverlap/note.md) |
+</p>
+</details>
+<details open><summary><b>Guokun Lai</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Guowei Li</b></summary> 
@@ -2041,7 +2071,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>
 </details>
@@ -2233,6 +2263,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Centauri](./meta/2024/Centauri.prototxt) | [Centauri: Enabling Efficient Scheduling for Communication-Computation Overlap in Large Model Training via Communication Partitioning](https://dl.acm.org/doi/10.1145/3620666.3651379) | ![cover](./notes/2024/Centauri/fig3.png) | ![Publish](https://img.shields.io/badge/2024-ASPLOS-9370DB) |  | [note](./notes/2024/Centauri/note.md) |
 | [SampleAttention](./meta/2024/SampleAttention.prototxt) | [SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention](http://arxiv.org/abs/2406.15486v2) | ![cover](./notes/2024/SampleAttention/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/SampleAttention/note.md) |
+</p>
+</details>
+<details open><summary><b>Jianlin Su</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Jianqiao Lu</b></summary> 
@@ -2749,6 +2789,7 @@
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
 | [MiniMax-01](./meta/2025/MiniMax-01.prototxt) | [MiniMax-01: Scaling Foundation Models with Lightning Attention](http://arxiv.org/abs/2501.08313v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MiniMax-AI/MiniMax-01)](https://github.com/MiniMax-AI/MiniMax-01) | [note](./notes/2025/MiniMax-01/note.md) |
 | [MiniMax-M1](./meta/2025/MiniMax-M1.prototxt) | [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](http://arxiv.org/abs/2506.13585v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MiniMax-AI/MiniMax-M1)](https://github.com/MiniMax-AI/MiniMax-M1) | [note](./notes/2025/MiniMax-M1/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Junkai Zhi</b></summary> 
@@ -4513,6 +4554,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Shaowei Liu</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>Shengding Hu</b></summary> 
 <p>
 
@@ -5149,7 +5200,7 @@
 | [FlashAttention](./meta/2022/flashattention.prototxt) | [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135) | ![cover](./notes/2022/flashattention/cover.jpg) | ![Publish](https://img.shields.io/badge/2022-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention)](https://github.com/Dao-AILab/flash-attention) |  |
 | [Flash-Decoding](./meta/2023/FlashDecoding.prototxt) | [Flash-Decoding for long-context inference](https://crfm.stanford.edu/2023/10/12/flashdecoding.html) | ![cover](./notes/2023/FlashDecoding/cover.gif) | ![Publish](https://img.shields.io/badge/2023-blog-green) |  | [note](./notes/2023/FlashDecoding/note.md) |
 | [FlashAttention-2](./meta/2024/FlashAttention-2.prototxt) | [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691) |  | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/flash-attention)](https://github.com/Dao-AILab/flash-attention) | [note](./notes/2024/FlashAttention-2/note.md) |
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [Marconi](./meta/2025/Marconi.prototxt) | [Marconi: Prefix Caching for the Era of Hybrid LLMs](http://arxiv.org/abs/2411.19379v3) |  | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) |  | [note](./notes/2025/Marconi/note.md) |
 | [GLA](./meta/2025/GLA.prototxt) | [Hardware-Efficient Attention for Fast Decoding](http://arxiv.org/abs/2505.21487v1) | ![cover](./notes/2025/GLA/gla.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Dao-AILab/grouped-latent-attention)](https://github.com/Dao-AILab/grouped-latent-attention) | [note](./notes/2025/GLA/note.md) |
 | [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
@@ -5174,7 +5225,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [DistGEMM](./meta/2024/DistGEMM.prototxt) | [A novel CUTLASS-based implementation of Tensor Parallelism for NVLink-enabled systems](https://blog.shi-labs.com/distributed-gemm-88be6a481e2b) | ![cover](./notes/2024/DistGEMM/fig1.gif) | ![Publish](https://img.shields.io/badge/2024-Blog-696969) | [![GitHub Repo stars](https://img.shields.io/github/stars/NVIDIA/cutlass)](https://github.com/NVIDIA/cutlass) | [note](./notes/2024/DistGEMM/note.md) |
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [FlashAttention-4](./meta/2026/FlashAttention-4.prototxt) | [FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling](http://arxiv.org/abs/2603.05451v1) | ![cover](./notes/2026/FlashAttention-4/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/FlashAttention-4/note.md) |
 </p>
 </details>
@@ -5348,6 +5399,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Mooncake](./meta/2024/Mooncake.prototxt) | [Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving](http://arxiv.org/abs/2407.00079v4) | ![cover](./notes/2024/Mooncake/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/kvcache-ai/Mooncake)](https://github.com/kvcache-ai/Mooncake) | [note](./notes/2024/Mooncake/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Weixuan Sun</b></summary> 
@@ -6029,6 +6081,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Mooncake](./meta/2024/Mooncake.prototxt) | [Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving](http://arxiv.org/abs/2407.00079v4) | ![cover](./notes/2024/Mooncake/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/kvcache-ai/Mooncake)](https://github.com/kvcache-ai/Mooncake) | [note](./notes/2024/Mooncake/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Xinxia Shan</b></summary> 
@@ -6071,6 +6124,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [0VRXJQ3F](./meta/2025/0VRXJQ3F.prototxt) | [Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving](http://arxiv.org/abs/2503.24000v1) | ![cover](./notes/2025/0VRXJQ3F/tab1.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/LLMkvsys/rethink-kv-compression)](https://github.com/LLMkvsys/rethink-kv-compression) | [note](./notes/2025/0VRXJQ3F/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Xinyuan Li</b></summary> 
@@ -6449,6 +6503,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Yanru Chen</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>Yao Li</b></summary> 
 <p>
 
@@ -6764,7 +6828,7 @@
 
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
-| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
+| [FlashAttention-3](./meta/2024/FlashAttention-3.prototxt) | [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](http://arxiv.org/abs/2407.08608v2) | ![cover](./notes/2024/FlashAttention-3/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/FlashAttention-3/note.md) |
 | [GLM-4.5](./meta/2025/GLM-4.5.prototxt) | [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](http://arxiv.org/abs/2508.06471v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-4.5)](https://github.com/zai-org/GLM-4.5) | [note](./notes/2025/GLM-4.5/note.md) |
 | [GLM-5](./meta/2026/GLM-5.prototxt) | [GLM-5: from Vibe Coding to Agentic Engineering](http://arxiv.org/abs/2602.15763v1) | ![cover](./notes/2026/GLM-5/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-5)](https://github.com/zai-org/GLM-5) | [note](./notes/2026/GLM-5/note.md) |
 </p>
@@ -7060,6 +7124,16 @@
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
 </p>
 </details>
+<details open><summary><b>Yu Zhang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [Awesome-Efficient-Arch](./meta/2025/Awesome-Efficient-Arch.prototxt) | [Speed Always Wins: A Survey on Efficient Architectures for Large Language Models](http://arxiv.org/abs/2508.09834v1) | ![cover](./notes/2025/Awesome-Efficient-Arch/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/weigao266/Awesome-Efficient-Arch)](https://github.com/weigao266/Awesome-Efficient-Arch) | [note](./notes/2025/Awesome-Efficient-Arch/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>Yuan Feng</b></summary> 
 <p>
 
@@ -7323,6 +7397,16 @@
 | [FastKV](./meta/2025/FastKV.prototxt) | [FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation](http://arxiv.org/abs/2502.01068v1) | ![cover](./notes/2025/FastKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/dongwonjo/FastKV)](https://github.com/dongwonjo/FastKV) | [note](./notes/2025/FastKV/note.md) |
 </p>
 </details>
+<details open><summary><b>Yulun Du</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
+</p>
+</details>
 <details open><summary><b>Yunan Huang</b></summary> 
 <p>
 
@@ -7551,6 +7635,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [AVSS](./meta/2024/AVSS.prototxt) | [AVSS: Layer Importance Evaluation in Large Language Models via Activation Variance-Sparsity Analysis](http://arxiv.org/abs/2411.02117v1) | ![cover](./notes/2024/AVSS/avss.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) |  | [note](./notes/2024/AVSS/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Yuxin Zhou</b></summary> 
@@ -7624,6 +7709,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [DeepSeek-V3](./meta/2024/DeepSeek-V3.prototxt) | [DeepSeek-V3 Technical Report](http://arxiv.org/abs/2412.19437v1) | ![cover](./notes/2024/DeepSeek-V3/fig5.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-V3)](https://github.com/deepseek-ai/DeepSeek-V3) | [note](./notes/2024/DeepSeek-V3/note.md) |
 | [DeepSeek-R1](./meta/2025/DeepSeek-R1.prototxt) | [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](http://arxiv.org/abs/2501.12948v1) | ![cover](./notes/2025/DeepSeek-R1/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/DeepSeek-R1)](https://github.com/deepseek-ai/DeepSeek-R1) | [note](./notes/2025/DeepSeek-R1/note.md) |
+</p>
+</details>
+<details open><summary><b>Yuzhi Wang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Z. F. Wu</b></summary> 
@@ -8088,6 +8183,16 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [LServer](./meta/2025/LServer.prototxt) | [LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention](http://arxiv.org/abs/2502.14866v1) | ![cover](./notes/2025/LServer/fig5.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/mit-han-lab/omniserve)](https://github.com/mit-han-lab/omniserve) | [note](./notes/2025/LServer/note.md) |
 | [Double-P](./meta/2026/Double-P.prototxt) | [Double-P: Hierarchical Top-P Sparse Attention for Long-Context LLMs](http://arxiv.org/abs/2602.05191v1) | ![cover](./notes/2026/Double-P/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/Double-P/note.md) |
+</p>
+</details>
+<details open><summary><b>Zhilin Yang</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [AttentionResiduals](./meta/2026/AttentionResiduals.prototxt) | [Attention Residuals](http://arxiv.org/abs/2603.15031v1) | ![cover](./notes/2026/AttentionResiduals/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/Attention-Residuals)](https://github.com/MoonshotAI/Attention-Residuals) | [note](./notes/2026/AttentionResiduals/note.md) |
 </p>
 </details>
 <details open><summary><b>Zhipeng Xu</b></summary> 
