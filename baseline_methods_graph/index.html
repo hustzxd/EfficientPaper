@@ -59,13 +59,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#gptq-family">GPTQ Family</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#dhc-family">DHC Family</a>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#nsa-family">NSA Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#tidaldecode-family">TidalDecode Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#cla-family">CLA Family</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#dhc-family">DHC Family</a>
 </li>
 </ul>
 </li>
@@ -77,6 +77,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-02-27/">2026-02-27</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-03-16/">2026-03-16</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-03-17/">2026-03-17</a>
 </li>
 <li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
@@ -546,6 +548,26 @@
     2024_AWQ ==&gt;|" "| 2025_SignRoundV2
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 </div>
+<h2 id="dhc-family">DHC Family</h2>
+<p><em>3 methods, 2 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_DHC["DHC[2025]"]
+    class 2025_DHC rootNode
+    2025_mHC["mHC[2025]"]
+    class 2025_mHC defaultNode
+    2026_AttentionResiduals["AttentionResiduals[2026]"]
+    class 2026_AttentionResiduals leafNode
+
+    2025_DHC ==&gt;|" "| 2025_mHC
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2025_mHC ==&gt;|" "| 2026_AttentionResiduals
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+</div>
 <h2 id="nsa-family">NSA Family</h2>
 <p><em>3 methods, 2 relationships</em></p>
 <div class="mermaid">flowchart LR
@@ -600,22 +622,6 @@
     class 2025_FusedKV leafNode
 
     2024_CLA ==&gt;|" "| 2025_FusedKV
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-</div>
-<h2 id="dhc-family">DHC Family</h2>
-<p><em>2 methods, 1 relationships</em></p>
-<div class="mermaid">flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2025_DHC["DHC[2025]"]
-    class 2025_DHC rootNode
-    2025_mHC["mHC[2025]"]
-    class 2025_mHC leafNode
-
-    2025_DHC ==&gt;|" "| 2025_mHC
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 </div>
 <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->

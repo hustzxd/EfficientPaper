@@ -1,0 +1,61 @@
+paper {
+  title: "Attention Residuals"
+  abbr: "AttentionResiduals"
+  url: "http://arxiv.org/abs/2603.15031v1"
+  authors: "Kimi Team"
+  authors: "Guangyu Chen"
+  authors: "Yu Zhang"
+  authors: "Jianlin Su"
+  authors: "Weixin Xu"
+  authors: "Siyuan Pan"
+  authors: "Yaoyu Wang"
+  authors: "Yucheng Wang"
+  authors: "Guanduo Chen"
+  authors: "Bohong Yin"
+  authors: "Yutian Chen"
+  authors: "Junjie Yan"
+  authors: "Ming Wei"
+  authors: "Y. Zhang"
+  authors: "Fanqing Meng"
+  authors: "Chao Hong"
+  authors: "Xiaotong Xie"
+  authors: "Shaowei Liu"
+  authors: "Enzhe Lu"
+  authors: "Yunpeng Tai"
+  authors: "Yanru Chen"
+  authors: "Xin Men"
+  authors: "Haiqing Guo"
+  authors: "Y. Charles"
+  authors: "Haoyu Lu"
+  authors: "Lin Sui"
+  authors: "Jinguo Zhu"
+  authors: "Zaida Zhou"
+  authors: "Weiran He"
+  authors: "Weixiao Huang"
+  authors: "Xinran Xu"
+  authors: "Yuzhi Wang"
+  authors: "Guokun Lai"
+  authors: "Yulun Du"
+  authors: "Yuxin Wu"
+  authors: "Zhilin Yang"
+  authors: "Xinyu Zhou"
+  institutions: "Kimi"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/MoonshotAI/Attention-Residuals"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/mHC"
+}
+update_time: 1773730937
