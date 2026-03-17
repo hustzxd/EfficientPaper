@@ -740,17 +740,18 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
                         stdin=input_file,
                         capture_output=True,
                         text=True,
-                        timeout=30
+                        timeout=60
                     )
 
                 if result.returncode == 0:
                     # Extract the prototxt path from output
                     prototxt_path = None
+                    year = None
                     for line in result.stdout.split('\n'):
                         if 'Writing paper information into' in line:
                             # Extract path from message like: Writing paper information into ./meta/2025/ABCD1234.prototxt
                             import re
-                            match = re.search(r'into\s+\./meta/(\d+)/([^/]+\.prototxt)', line)
+                            match = re.search(r'into\s+\./?meta/(\d+)/([^/]+\.prototxt)', line)
                             if match:
                                 year = match.group(1)
                                 filename = match.group(2)
