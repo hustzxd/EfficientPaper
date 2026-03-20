@@ -1,0 +1,35 @@
+paper {
+  title: "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse"
+  abbr: "IndexCache"
+  url: "http://arxiv.org/abs/2603.12201v1"
+  authors: "Yushi Bai"
+  authors: "Qian Dong"
+  authors: "Ting Jiang"
+  authors: "Xin Lv"
+  authors: "Zhengxiao Du"
+  authors: "Aohan Zeng"
+  authors: "Jie Tang"
+  authors: "Juanzi Li"
+  institutions: "Tsinghua University"
+  institutions: "Zhipu AI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/THUDM/IndexCache"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1773972530
+rating: 4

@@ -1,6 +1,128 @@
 {
   "papers": [
     {
+      "id": "IndexCache",
+      "title": "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse",
+      "abbr": "IndexCache",
+      "url": "http://arxiv.org/abs/2603.12201v1",
+      "authors": [
+        "Yushi Bai",
+        "Qian Dong",
+        "Ting Jiang",
+        "Xin Lv",
+        "Zhengxiao Du",
+        "Aohan Zeng",
+        "Jie Tang",
+        "Juanzi Li"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Zhipu AI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/IndexCache/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/THUDM/IndexCache",
+      "note_url": "notes/2026/IndexCache/note/",
+      "prototxt_path": "meta/2026/IndexCache.prototxt",
+      "update_time": 1773972530,
+      "rating": 4
+    },
+    {
+      "id": "FlashAttention-2",
+      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+      "abbr": "FlashAttention-2",
+      "url": "https://arxiv.org/abs/2307.08691",
+      "authors": [
+        "Tri Dao"
+      ],
+      "institutions": [
+        "Stanford University"
+      ],
+      "year": 2024,
+      "venue": "ICLR",
+      "cover": "notes/2024/FlashAttention-2/cover.png",
+      "keywords": [
+        "44-Layer Fusion (Reduce IO)"
+      ],
+      "code_url": "https://github.com/Dao-AILab/flash-attention",
+      "note_url": "notes/2024/FlashAttention-2/note/",
+      "prototxt_path": "meta/2024/FlashAttention-2.prototxt",
+      "update_time": 1773911370,
+      "rating": 0
+    },
+    {
+      "id": "VQKV",
+      "title": "VQKV: High-Fidelity and High-Ratio Cache Compression via Vector-Quantization",
+      "abbr": "VQKV",
+      "url": "http://arxiv.org/abs/2603.16435v1",
+      "authors": [
+        "Yixuan Wang",
+        "Qingyu Shi",
+        "Jiayu Zhou",
+        "Dianbo Liu",
+        "Ziwei He",
+        "Zhouhan Lin"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Shanghai Innovation Institute",
+        "Shanghai Artificial Intelligence Laboratory",
+        "University of Cambridge",
+        "National University of Singapore"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/VQKV/cover.png",
+      "keywords": [
+        "19-Quantization (KV Cache)",
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/LUMIA-Group/VQKV",
+      "note_url": "notes/2026/VQKV/note/",
+      "prototxt_path": "meta/2026/VQKV.prototxt",
+      "update_time": 1773885719,
+      "rating": 0
+    },
+    {
+      "id": "FlashAttention-3",
+      "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
+      "abbr": "FlashAttention-3",
+      "url": "http://arxiv.org/abs/2407.08608v2",
+      "authors": [
+        "Jay Shah",
+        "Ganesh Bikshandi",
+        "Ying Zhang",
+        "Vijay Thakkar",
+        "Pradeep Ramani",
+        "Tri Dao"
+      ],
+      "institutions": [
+        "Colfax Research",
+        "Meta",
+        "NVIDIA",
+        "Georgia Tech",
+        "Princeton University",
+        "Together AI"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/FlashAttention-3/cover.png",
+      "keywords": [
+        "44-Layer Fusion (Reduce IO)",
+        "46-Tool"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/FlashAttention-3/note/",
+      "prototxt_path": "meta/2024/FlashAttention-3.prototxt",
+      "update_time": 1773800443,
+      "rating": 0
+    },
+    {
       "id": "AttentionResiduals",
       "title": "Attention Residuals",
       "abbr": "AttentionResiduals",
@@ -60,40 +182,6 @@
       "rating": 0
     },
     {
-      "id": "FlashAttention-3",
-      "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
-      "abbr": "FlashAttention-3",
-      "url": "http://arxiv.org/abs/2407.08608v2",
-      "authors": [
-        "Jay Shah",
-        "Ganesh Bikshandi",
-        "Ying Zhang",
-        "Vijay Thakkar",
-        "Pradeep Ramani",
-        "Tri Dao"
-      ],
-      "institutions": [
-        "Colfax Research",
-        "Meta",
-        "NVIDIA",
-        "Georgia Tech",
-        "Princeton University",
-        "Together AI"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/FlashAttention-3/cover.png",
-      "keywords": [
-        "44-Layer Fusion (Reduce IO)",
-        "46-Tool"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/FlashAttention-3/note/",
-      "prototxt_path": "meta/2024/FlashAttention-3.prototxt",
-      "update_time": 1773730158,
-      "rating": 0
-    },
-    {
       "id": "HN5FDNZ3",
       "title": "Sawtooth Wavefront Reordering: Enhanced CuTile FlashAttention on NVIDIA GB10",
       "abbr": "HN5FDNZ3",
@@ -116,7 +204,7 @@
       "note_url": "notes/2026/HN5FDNZ3/note/",
       "prototxt_path": "meta/2026/HN5FDNZ3.prototxt",
       "update_time": 1773631229,
-      "rating": 0
+      "rating": 2
     },
     {
       "id": "UNComp",
@@ -183,29 +271,6 @@
       "prototxt_path": "meta/2026/K-Search.prototxt",
       "update_time": 1773395925,
       "rating": 4
-    },
-    {
-      "id": "FlashAttention-2",
-      "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
-      "abbr": "FlashAttention-2",
-      "url": "https://arxiv.org/abs/2307.08691",
-      "authors": [
-        "Tri Dao"
-      ],
-      "institutions": [
-        "Stanford University"
-      ],
-      "year": 2024,
-      "venue": "ICLR",
-      "cover": null,
-      "keywords": [
-        "44-Layer Fusion (Reduce IO)"
-      ],
-      "code_url": "https://github.com/Dao-AILab/flash-attention",
-      "note_url": "notes/2024/FlashAttention-2/note/",
-      "prototxt_path": "meta/2024/FlashAttention-2.prototxt",
-      "update_time": 1773387045,
-      "rating": 0
     },
     {
       "id": "FlashAttention-4",
@@ -1161,7 +1226,7 @@
       "note_url": "notes/2026/FastKVzip/note/",
       "prototxt_path": "meta/2026/FastKVzip.prototxt",
       "update_time": 1770024041,
-      "rating": 0
+      "rating": 4
     },
     {
       "id": "HERMES",
@@ -3262,7 +3327,7 @@
       "note_url": "notes/2025/NSA/note/",
       "prototxt_path": "meta/2025/NSA.prototxt",
       "update_time": 1768270494,
-      "rating": 0
+      "rating": 5
     },
     {
       "id": "QServer",
@@ -14063,5 +14128,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 423
+  "total": 425
 }

@@ -983,6 +983,12 @@
       const file = e.target.files[0];
       if (!file) return;
 
+      // Immediately show local preview
+      const previewContainer = document.getElementById('cover-preview-container');
+      const previewImg = document.getElementById('cover-preview');
+      previewImg.src = URL.createObjectURL(file);
+      previewContainer.style.display = 'block';
+
       const uploadStatus = document.getElementById('upload-status');
       uploadStatus.textContent = 'Uploading...';
       uploadStatus.style.color = '#888';
@@ -1000,15 +1006,7 @@
         const result = await response.json();
 
         if (response.ok) {
-          // Update the cover URL field with the filename
           document.getElementById('cover-url').value = result.filename;
-
-          // Show preview
-          const previewContainer = document.getElementById('cover-preview-container');
-          const previewImg = document.getElementById('cover-preview');
-          previewImg.src = result.url;
-          previewContainer.style.display = 'block';
-
           uploadStatus.textContent = `✓ ${result.message || 'Uploaded successfully'}`;
           uploadStatus.style.color = '#27ae60';
         } else {
