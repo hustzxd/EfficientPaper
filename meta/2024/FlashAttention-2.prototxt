@@ -17,9 +17,9 @@ keyword {
   words: fusion
 }
 cover {
-  url: ""
+  url: "cover.png"
 }
 baseline {
   methods: "2022/FlashAttention"
 }
-update_time: 1773387045
+update_time: 1773911370

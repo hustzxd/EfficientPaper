@@ -1,0 +1,35 @@
+paper {
+  title: "VQKV: High-Fidelity and High-Ratio Cache Compression via Vector-Quantization"
+  abbr: "VQKV"
+  url: "http://arxiv.org/abs/2603.16435v1"
+  authors: "Yixuan Wang"
+  authors: "Qingyu Shi"
+  authors: "Jiayu Zhou"
+  authors: "Dianbo Liu"
+  authors: "Ziwei He"
+  authors: "Zhouhan Lin"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Shanghai Innovation Institute"
+  institutions: "Shanghai Artificial Intelligence Laboratory"
+  institutions: "University of Cambridge"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/LUMIA-Group/VQKV"
+}
+keyword {
+  words: kv_cache_quant
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/KIVI"
+}
+update_time: 1773885719

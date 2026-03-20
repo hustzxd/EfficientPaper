@@ -82,6 +82,24 @@ def main():
             md_lines.append("```")
             md_lines.append("")
 
+    # Build paper-to-family mapping for Index → Graph navigation
+    # Key: paper name (matches paper.id in papers.json), Value: family anchor
+    paper_family_map = {}
+    for subgraph in subgraphs:
+        if subgraph.number_of_edges() >= 1:
+            representative_node = max(subgraph.nodes(),
+                                    key=lambda n: G_reduced.out_degree(n))
+            node_data = G_reduced.nodes[representative_node]
+            component_name = node_data.get('name', str(representative_node))
+            component_name = re.sub(r'\[\d{4}\]', '', component_name).strip()
+            # MkDocs readthedocs theme generates anchors like #snapkv-family
+            anchor = f"{component_name.lower().replace(' ', '-')}-family"
+
+            for node in subgraph.nodes():
+                # node is "year/name" or just "name" (for no-year nodes)
+                name = node.split("/")[-1] if "/" in node else node
+                paper_family_map[name] = anchor
+
     project_root = os.path.dirname(os.path.dirname(__file__))
     docs_dir = os.path.join(project_root, "docs")
     os.makedirs(docs_dir, exist_ok=True)
@@ -89,6 +107,13 @@ def main():
     with open(target_md, "w", encoding="utf-8") as f:
         f.write("\n".join(md_lines))
     print(f"Written Mermaid graphs to {target_md}")
+
+    # Write paper-family mapping JSON
+    import json
+    mapping_path = os.path.join(docs_dir, "js", "paper_graph_map.json")
+    with open(mapping_path, "w", encoding="utf-8") as f:
+        json.dump(paper_family_map, f, ensure_ascii=False, indent=2)
+    print(f"Written paper-family mapping to {mapping_path} ({len(paper_family_map)} entries)")
 
 def export_mermaid(graph: nx.DiGraph) -> str:
     """Export a NetworkX DiGraph to Mermaid flowchart text with enhanced styling.
@@ -134,6 +159,10 @@ def export_mermaid(graph: nx.DiGraph) -> str:
             lines.append(f"    class {nid} leafNode")
         else:
             lines.append(f"    class {nid} defaultNode")
+
+        # Add click event to navigate to index page with search query
+        search_name = re.sub(r'\[\d{4}\]', '', label).strip()
+        lines.append(f'    click {nid} "../?search={search_name}" _blank')
 
     lines.append("")
 

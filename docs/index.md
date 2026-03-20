@@ -1059,6 +1059,24 @@
   cursor: not-allowed;
 }
 
+.server-disabled {
+  opacity: 0.45;
+  cursor: not-allowed !important;
+  filter: grayscale(100%);
+  position: relative;
+}
+
+button.server-disabled {
+  background: #e0e0e0 !important;
+  color: #999 !important;
+  border-color: #ccc !important;
+}
+
+a.server-disabled {
+  color: #bbb !important;
+  text-decoration: none !important;
+}
+
 .btn-secondary {
   padding: 10px 20px;
   font-size: 14px;
@@ -1859,6 +1877,7 @@ function closeLightbox() {
 (function() {
   let papers = [];
   let filteredPapers = [];
+  let paperGraphMap = {}; // paper name → graph family anchor
   let currentPage = 1;
   const itemsPerPage = 10;
   let selectedPapers = new Set(); // Track selected papers by index or ID
@@ -1894,16 +1913,36 @@ function closeLightbox() {
     serverButtons.forEach(id => {
       const btn = document.getElementById(id);
       if (btn) {
-        btn.style.display = isLocalServerAvailable ? '' : 'none';
+        btn.disabled = !isLocalServerAvailable;
+        btn.classList.toggle('server-disabled', !isLocalServerAvailable);
+        btn.title = isLocalServerAvailable ? '' : 'Clone the repo and start local server to enable this feature';
+        if (!isLocalServerAvailable) {
+          btn.onclick = null;
+        }
       }
     });
 
     // Update PDF and Edit buttons in paper cards
     document.querySelectorAll('.pdf-btn').forEach(btn => {
-      btn.style.display = isLocalServerAvailable ? '' : 'none';
+      btn.disabled = !isLocalServerAvailable;
+      btn.classList.toggle('server-disabled', !isLocalServerAvailable);
+      if (!isLocalServerAvailable) {
+        btn.title = 'Clone the repo and start local server to enable';
+        btn.removeAttribute('onclick');
+      }
     });
     document.querySelectorAll('.edit-link').forEach(link => {
-      link.style.display = isLocalServerAvailable ? '' : 'none';
+      link.classList.toggle('server-disabled', !isLocalServerAvailable);
+      if (!isLocalServerAvailable) {
+        link.dataset.href = link.href;
+        link.removeAttribute('href');
+        link.title = 'Clone the repo and start local server to enable';
+        link.onclick = (e) => { e.preventDefault(); };
+      } else if (link.dataset.href) {
+        link.href = link.dataset.href;
+        link.title = '';
+        link.onclick = null;
+      }
     });
   }
 
@@ -2065,6 +2104,12 @@ function closeLightbox() {
       const data = await response.json();
       papers = data.papers;
 
+      // Load paper-to-graph-family mapping
+      try {
+        const mapResp = await fetch(basePath + '/js/paper_graph_map.json?v=' + Date.now());
+        paperGraphMap = await mapResp.json();
+      } catch (e) { paperGraphMap = {}; }
+
       // Also expose papers globally for auto-reload script
       window.papers = papers;
 
@@ -2078,6 +2123,14 @@ function closeLightbox() {
       sortPapers(filteredPapers, defaultSort);
       renderPapers(filteredPapers);
       updateStats();
+
+      // Apply URL search parameter (e.g., ?search=SnapKV from graph page)
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchParam = urlParams.get('search');
+      if (searchParam) {
+        document.getElementById('search-input').value = searchParam;
+        filterPapers();
+      }
     } catch (error) {
       console.error('Failed to load papers:', error);
       document.getElementById('paper-list').innerHTML =
@@ -2403,6 +2456,7 @@ function closeLightbox() {
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
               <button class="pdf-btn" data-abbr="${paper.abbr || ''}" data-year="${paper.year || ''}" data-url="${paper.url || ''}" data-title="${paper.title.replace(/'/g, "\\'")}" onclick="openLocalPdf('${paper.abbr || 'paper'}', '${paper.title.replace(/'/g, "\\'")}', '${paper.year || ''}', '${paper.url || ''}')" title="Open local PDF or download (requires local server)">📄 PDF</button>
               ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server" class="edit-link">Edit 🔧</a>` : ''}
+              ${paperGraphMap[paper.id] ? `<a href="baseline_methods_graph/#${paperGraphMap[paper.id]}" target="_blank" class="graph-link" title="View in relationship graph">Graph 🔗</a>` : ''}
             </div>
           </div>
         </div>
