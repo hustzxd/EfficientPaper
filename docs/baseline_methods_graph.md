@@ -4,9 +4,9 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.
 
-## SnapKV Family
+## KIVI Family
 
-*37 methods, 43 relationships*
+*55 methods, 65 relationships*
 
 ```mermaid
 flowchart LR
@@ -27,15 +27,30 @@ flowchart LR
     2024_DuoAttention["DuoAttention[2024]"]
     class 2024_DuoAttention rootNode
     click 2024_DuoAttention "../?search=DuoAttention" _blank
+    2024_GEAR["GEAR[2024]"]
+    class 2024_GEAR rootNode
+    click 2024_GEAR "../?search=GEAR" _blank
     2024_InfLLM["InfLLM[2024]"]
     class 2024_InfLLM defaultNode
     click 2024_InfLLM "../?search=InfLLM" _blank
+    2024_KIVI["KIVI[2024]"]
+    class 2024_KIVI rootNode
+    click 2024_KIVI "../?search=KIVI" _blank
+    2024_KVQuant["KVQuant[2024]"]
+    class 2024_KVQuant rootNode
+    click 2024_KVQuant "../?search=KVQuant" _blank
     2024_LazyLLM["LazyLLM[2024]"]
     class 2024_LazyLLM rootNode
     click 2024_LazyLLM "../?search=LazyLLM" _blank
     2024_MInference["MInference[2024]"]
     class 2024_MInference defaultNode
     click 2024_MInference "../?search=MInference" _blank
+    2024_MiKV["MiKV[2024]"]
+    class 2024_MiKV rootNode
+    click 2024_MiKV "../?search=MiKV" _blank
+    2024_PyramidKV["PyramidKV[2024]"]
+    class 2024_PyramidKV defaultNode
+    click 2024_PyramidKV "../?search=PyramidKV" _blank
     2024_Quest["Quest[2024]"]
     class 2024_Quest rootNode
     click 2024_Quest "../?search=Quest" _blank
@@ -48,6 +63,12 @@ flowchart LR
     2024_StreamingLLM["StreamingLLM[2024]"]
     class 2024_StreamingLLM rootNode
     click 2024_StreamingLLM "../?search=StreamingLLM" _blank
+    2024_TOVA["TOVA[2024]"]
+    class 2024_TOVA rootNode
+    click 2024_TOVA "../?search=TOVA" _blank
+    2024_ZipCache["ZipCache[2024]"]
+    class 2024_ZipCache rootNode
+    click 2024_ZipCache "../?search=ZipCache" _blank
     2025_BLASST["BLASST[2025]"]
     class 2025_BLASST leafNode
     click 2025_BLASST "../?search=BLASST" _blank
@@ -69,9 +90,15 @@ flowchart LR
     2025_FreeKV["FreeKV[2025]"]
     class 2025_FreeKV leafNode
     click 2025_FreeKV "../?search=FreeKV" _blank
+    2025_H1B_KV["H1B-KV[2025]"]
+    class 2025_H1B_KV leafNode
+    click 2025_H1B_KV "../?search=H1B-KV" _blank
     2025_HashAttention["HashAttention[2025]"]
     class 2025_HashAttention leafNode
     click 2025_HashAttention "../?search=HashAttention" _blank
+    2025_KVmix["KVmix[2025]"]
+    class 2025_KVmix leafNode
+    click 2025_KVmix "../?search=KVmix" _blank
     2025_KVzip["KVzip[2025]"]
     class 2025_KVzip defaultNode
     click 2025_KVzip "../?search=KVzip" _blank
@@ -81,15 +108,27 @@ flowchart LR
     2025_LAVa["LAVa[2025]"]
     class 2025_LAVa leafNode
     click 2025_LAVa "../?search=LAVa" _blank
+    2025_MILLION["MILLION[2025]"]
+    class 2025_MILLION defaultNode
+    click 2025_MILLION "../?search=MILLION" _blank
+    2025_MixKVQ["MixKVQ[2025]"]
+    class 2025_MixKVQ leafNode
+    click 2025_MixKVQ "../?search=MixKVQ" _blank
     2025_PruLong["PruLong[2025]"]
     class 2025_PruLong leafNode
     click 2025_PruLong "../?search=PruLong" _blank
     2025_PureKV["PureKV[2025]"]
     class 2025_PureKV leafNode
     click 2025_PureKV "../?search=PureKV" _blank
+    2025_QJL["QJL[2025]"]
+    class 2025_QJL leafNode
+    click 2025_QJL "../?search=QJL" _blank
     2025_RaaS["RaaS[2025]"]
     class 2025_RaaS rootNode
     click 2025_RaaS "../?search=RaaS" _blank
+    2025_RotateKV["RotateKV[2025]"]
+    class 2025_RotateKV defaultNode
+    click 2025_RotateKV "../?search=RotateKV" _blank
     2025_ShadowKV["ShadowKV[2025]"]
     class 2025_ShadowKV rootNode
     click 2025_ShadowKV "../?search=ShadowKV" _blank
@@ -108,6 +147,9 @@ flowchart LR
     2025_UNComp["UNComp[2025]"]
     class 2025_UNComp leafNode
     click 2025_UNComp "../?search=UNComp" _blank
+    2025_VecInfer["VecInfer[2025]"]
+    class 2025_VecInfer leafNode
+    click 2025_VecInfer "../?search=VecInfer" _blank
     2025_XAttention["XAttention[2025]"]
     class 2025_XAttention defaultNode
     click 2025_XAttention "../?search=XAttention" _blank
@@ -120,148 +162,18 @@ flowchart LR
     2026_FlashPrefill["FlashPrefill[2026]"]
     class 2026_FlashPrefill leafNode
     click 2026_FlashPrefill "../?search=FlashPrefill" _blank
+    2026_KVTC["KVTC[2026]"]
+    class 2026_KVTC leafNode
+    click 2026_KVTC "../?search=KVTC" _blank
     2026_Prism["Prism[2026]"]
     class 2026_Prism leafNode
     click 2026_Prism "../?search=Prism" _blank
-    PyramidKV["PyramidKV"]
-    class PyramidKV rootNode
-    click PyramidKV "../?search=PyramidKV" _blank
-
-    2023_H2O ==>|" "| 2024_InfLLM
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-    2023_H2O ==>|" "| 2024_RazorAttention
-    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
-    2023_H2O ==>|" "| 2025_HashAttention
-    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
-    2023_H2O ==>|" "| 2025_PureKV
-    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
-    2023_H2O ==>|" "| 2025_UNComp
-    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
-    2024_AdaKV ==>|" "| 2025_DefensiveKV
-    linkStyle 5 stroke:#00CED1,stroke-width:2.5px
-    2024_AdaKV ==>|" "| 2025_FastKV
-    linkStyle 6 stroke:#FFA500,stroke-width:2.5px
-    2024_DoubleSparsity ==>|" "| 2025_UNComp
-    linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
-    2024_DuoAttention ==>|" "| 2025_DefensiveKV
-    linkStyle 8 stroke:#9370DB,stroke-width:2.5px
-    2024_DuoAttention ==>|" "| 2025_PruLong
-    linkStyle 9 stroke:#FF6347,stroke-width:2.5px
-    2024_InfLLM ==>|" "| 2024_MInference
-    linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
-    2024_LazyLLM ==>|" "| 2025_SlimInfer
-    linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2024_MInference ==>|" "| 2025_FlexPrefill
-    linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_CTkvr
-    linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_FreeKV
-    linkStyle 14 stroke:#FFA500,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_Kascade
-    linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_Twilight
-    linkStyle 16 stroke:#9370DB,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_UNComp
-    linkStyle 17 stroke:#FF6347,stroke-width:2.5px
-    2024_Quest ==>|" "| 2026_Double_P
-    linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_CTkvr
-    linkStyle 19 stroke:#FFD700,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_DefensiveKV
-    linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_EvolKV
-    linkStyle 21 stroke:#00CED1,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_KVzip
-    linkStyle 22 stroke:#FFA500,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_LAVa
-    linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_PureKV
-    linkStyle 24 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_UNComp
-    linkStyle 25 stroke:#FF6347,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_InfLLM
-    linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_RazorAttention
-    linkStyle 27 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_EvolKV
-    linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_HashAttention
-    linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_PureKV
-    linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_UNComp
-    linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_SharePrefill
-    linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_SlimInfer
-    linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_XAttention
-    linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
-    linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_Prism
-    linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
-    2025_KVzip ==>|" "| 2026_FastKVzip
-    linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2025_RaaS ==>|" "| 2025_FreeKV
-    linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2025_ShadowKV ==>|" "| 2025_FreeKV
-    linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_BLASST
-    linkStyle 40 stroke:#9370DB,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_TCA_Attention
-    linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    PyramidKV ==>|" "| 2025_EvolKV
-    linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
-```
-
-## KIVI Family
-
-*14 methods, 16 relationships*
-
-```mermaid
-flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2024_GEAR["GEAR[2024]"]
-    class 2024_GEAR rootNode
-    click 2024_GEAR "../?search=GEAR" _blank
-    2024_KIVI["KIVI[2024]"]
-    class 2024_KIVI rootNode
-    click 2024_KIVI "../?search=KIVI" _blank
-    2024_KVQuant["KVQuant[2024]"]
-    class 2024_KVQuant rootNode
-    click 2024_KVQuant "../?search=KVQuant" _blank
-    2024_MiKV["MiKV[2024]"]
-    class 2024_MiKV rootNode
-    click 2024_MiKV "../?search=MiKV" _blank
-    2024_ZipCache["ZipCache[2024]"]
-    class 2024_ZipCache rootNode
-    click 2024_ZipCache "../?search=ZipCache" _blank
-    2025_H1B_KV["H1B-KV[2025]"]
-    class 2025_H1B_KV leafNode
-    click 2025_H1B_KV "../?search=H1B-KV" _blank
-    2025_KVmix["KVmix[2025]"]
-    class 2025_KVmix leafNode
-    click 2025_KVmix "../?search=KVmix" _blank
-    2025_MILLION["MILLION[2025]"]
-    class 2025_MILLION defaultNode
-    click 2025_MILLION "../?search=MILLION" _blank
-    2025_MixKVQ["MixKVQ[2025]"]
-    class 2025_MixKVQ leafNode
-    click 2025_MixKVQ "../?search=MixKVQ" _blank
-    2025_QJL["QJL[2025]"]
-    class 2025_QJL leafNode
-    click 2025_QJL "../?search=QJL" _blank
-    2025_RotateKV["RotateKV[2025]"]
-    class 2025_RotateKV defaultNode
-    click 2025_RotateKV "../?search=RotateKV" _blank
-    2025_VecInfer["VecInfer[2025]"]
-    class 2025_VecInfer leafNode
-    click 2025_VecInfer "../?search=VecInfer" _blank
+    2026_Tactic["Tactic[2026]"]
+    class 2026_Tactic leafNode
+    click 2026_Tactic "../?search=Tactic" _blank
+    2026_TurboQuant["TurboQuant[2026]"]
+    class 2026_TurboQuant leafNode
+    click 2026_TurboQuant "../?search=TurboQuant" _blank
     2026_VQKV["VQKV[2026]"]
     class 2026_VQKV leafNode
     click 2026_VQKV "../?search=VQKV" _blank
@@ -269,38 +181,136 @@ flowchart LR
     class Loki rootNode
     click Loki "../?search=Loki" _blank
 
-    2024_GEAR ==>|" "| 2025_RotateKV
+    2023_H2O ==>|" "| 2024_InfLLM
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_H1B_KV
+    2023_H2O ==>|" "| 2024_PyramidKV
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_KVmix
+    2023_H2O ==>|" "| 2024_RazorAttention
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_MILLION
+    2023_H2O ==>|" "| 2025_HashAttention
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_QJL
+    2023_H2O ==>|" "| 2025_PureKV
     linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_RotateKV
+    2023_H2O ==>|" "| 2025_UNComp
     linkStyle 5 stroke:#00CED1,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2026_VQKV
+    2023_H2O ==>|" "| 2026_KVTC
     linkStyle 6 stroke:#FFA500,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_KVmix
+    2024_AdaKV ==>|" "| 2025_DefensiveKV
     linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_MILLION
+    2024_AdaKV ==>|" "| 2025_FastKV
     linkStyle 8 stroke:#9370DB,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_QJL
+    2024_DoubleSparsity ==>|" "| 2025_UNComp
     linkStyle 9 stroke:#FF6347,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_RotateKV
+    2024_DuoAttention ==>|" "| 2025_DefensiveKV
     linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
-    2024_MiKV ==>|" "| 2025_RotateKV
+    2024_DuoAttention ==>|" "| 2025_PruLong
     linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2024_ZipCache ==>|" "| 2025_RotateKV
+    2024_GEAR ==>|" "| 2025_RotateKV
     linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
-    2025_MILLION ==>|" "| 2025_VecInfer
+    2024_InfLLM ==>|" "| 2024_MInference
     linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    2025_RotateKV ==>|" "| 2025_MixKVQ
+    2024_KIVI ==>|" "| 2025_H1B_KV
     linkStyle 14 stroke:#FFA500,stroke-width:2.5px
-    Loki ==>|" "| 2025_H1B_KV
+    2024_KIVI ==>|" "| 2025_KVmix
     linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
+    2024_KIVI ==>|" "| 2025_MILLION
+    linkStyle 16 stroke:#9370DB,stroke-width:2.5px
+    2024_KIVI ==>|" "| 2025_QJL
+    linkStyle 17 stroke:#FF6347,stroke-width:2.5px
+    2024_KIVI ==>|" "| 2025_RotateKV
+    linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
+    2024_KIVI ==>|" "| 2026_KVTC
+    linkStyle 19 stroke:#FFD700,stroke-width:2.5px
+    2024_KIVI ==>|" "| 2026_TurboQuant
+    linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
+    2024_KIVI ==>|" "| 2026_VQKV
+    linkStyle 21 stroke:#00CED1,stroke-width:2.5px
+    2024_KVQuant ==>|" "| 2025_KVmix
+    linkStyle 22 stroke:#FFA500,stroke-width:2.5px
+    2024_KVQuant ==>|" "| 2025_MILLION
+    linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
+    2024_KVQuant ==>|" "| 2025_QJL
+    linkStyle 24 stroke:#9370DB,stroke-width:2.5px
+    2024_KVQuant ==>|" "| 2025_RotateKV
+    linkStyle 25 stroke:#FF6347,stroke-width:2.5px
+    2024_LazyLLM ==>|" "| 2025_SlimInfer
+    linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
+    2024_MInference ==>|" "| 2025_FlexPrefill
+    linkStyle 27 stroke:#FFD700,stroke-width:2.5px
+    2024_MiKV ==>|" "| 2025_RotateKV
+    linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
+    2024_PyramidKV ==>|" "| 2025_EvolKV
+    linkStyle 29 stroke:#00CED1,stroke-width:2.5px
+    2024_Quest ==>|" "| 2025_CTkvr
+    linkStyle 30 stroke:#FFA500,stroke-width:2.5px
+    2024_Quest ==>|" "| 2025_FreeKV
+    linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
+    2024_Quest ==>|" "| 2025_Kascade
+    linkStyle 32 stroke:#9370DB,stroke-width:2.5px
+    2024_Quest ==>|" "| 2025_Twilight
+    linkStyle 33 stroke:#FF6347,stroke-width:2.5px
+    2024_Quest ==>|" "| 2025_UNComp
+    linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
+    2024_Quest ==>|" "| 2026_Double_P
+    linkStyle 35 stroke:#FFD700,stroke-width:2.5px
+    2024_Quest ==>|" "| 2026_Tactic
+    linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2024_PyramidKV
+    linkStyle 37 stroke:#00CED1,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2025_CTkvr
+    linkStyle 38 stroke:#FFA500,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2025_DefensiveKV
+    linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2025_KVzip
+    linkStyle 40 stroke:#9370DB,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2025_LAVa
+    linkStyle 41 stroke:#FF6347,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2025_PureKV
+    linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
+    2024_SnapKV ==>|" "| 2025_UNComp
+    linkStyle 43 stroke:#FFD700,stroke-width:2.5px
+    2024_StreamingLLM ==>|" "| 2024_InfLLM
+    linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
+    2024_StreamingLLM ==>|" "| 2024_PyramidKV
+    linkStyle 45 stroke:#00CED1,stroke-width:2.5px
+    2024_StreamingLLM ==>|" "| 2024_RazorAttention
+    linkStyle 46 stroke:#FFA500,stroke-width:2.5px
+    2024_StreamingLLM ==>|" "| 2025_HashAttention
+    linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
+    2024_StreamingLLM ==>|" "| 2025_PureKV
+    linkStyle 48 stroke:#9370DB,stroke-width:2.5px
+    2024_StreamingLLM ==>|" "| 2025_UNComp
+    linkStyle 49 stroke:#FF6347,stroke-width:2.5px
+    2024_TOVA ==>|" "| 2026_KVTC
+    linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
+    2024_ZipCache ==>|" "| 2025_RotateKV
+    linkStyle 51 stroke:#FFD700,stroke-width:2.5px
+    2025_FlexPrefill ==>|" "| 2025_SharePrefill
+    linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
+    2025_FlexPrefill ==>|" "| 2025_SlimInfer
+    linkStyle 53 stroke:#00CED1,stroke-width:2.5px
+    2025_FlexPrefill ==>|" "| 2025_XAttention
+    linkStyle 54 stroke:#FFA500,stroke-width:2.5px
+    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
+    linkStyle 55 stroke:#7B68EE,stroke-width:2.5px
+    2025_FlexPrefill ==>|" "| 2026_Prism
+    linkStyle 56 stroke:#9370DB,stroke-width:2.5px
+    2025_KVzip ==>|" "| 2026_FastKVzip
+    linkStyle 57 stroke:#FF6347,stroke-width:2.5px
+    2025_MILLION ==>|" "| 2025_VecInfer
+    linkStyle 58 stroke:#20B2AA,stroke-width:2.5px
+    2025_RaaS ==>|" "| 2025_FreeKV
+    linkStyle 59 stroke:#FFD700,stroke-width:2.5px
+    2025_RotateKV ==>|" "| 2025_MixKVQ
+    linkStyle 60 stroke:#FF69B4,stroke-width:2.5px
+    2025_ShadowKV ==>|" "| 2025_FreeKV
+    linkStyle 61 stroke:#00CED1,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2025_BLASST
+    linkStyle 62 stroke:#FFA500,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2025_TCA_Attention
+    linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
+    Loki ==>|" "| 2025_H1B_KV
+    linkStyle 64 stroke:#9370DB,stroke-width:2.5px
 ```
 
 ## SVG Family
@@ -571,7 +581,7 @@ flowchart LR
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 ```
 
-## TidalDecode Family
+## SeerAttention-R Family
 
 *3 methods, 2 relationships*
 

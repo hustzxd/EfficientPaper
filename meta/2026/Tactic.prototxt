@@ -1,0 +1,37 @@
+paper {
+  title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution Fitting for Long-Context LLMs"
+  abbr: "Tactic"
+  url: "http://arxiv.org/abs/2502.12216v1"
+  authors: "Kan Zhu"
+  authors: "Tian Tang"
+  authors: "Qinyu Xu"
+  authors: "Yile Gu"
+  authors: "Zhichen Zeng"
+  authors: "Rohan Kadekodi"
+  authors: "Liangyu Zhao"
+  authors: "Ang Li"
+  authors: "Arvind Krishnamurthy"
+  authors: "Baris Kasikci"
+  institutions: "University of Washington"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "ICLR"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/Quest"
+}
+update_time: 1774345663
+rating: 2

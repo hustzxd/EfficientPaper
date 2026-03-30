@@ -1,0 +1,33 @@
+paper {
+  title: "DualMap: Enabling Both Cache Affinity and Load Balancing for Distributed LLM Serving"
+  abbr: "DualMap"
+  url: "http://arxiv.org/abs/2602.06502v1"
+  authors: "Ying Yuan"
+  authors: "Pengfei Zuo"
+  authors: "Bo Wang"
+  authors: "Zhangyu Chen"
+  authors: "Zhipeng Tan"
+  authors: "Zhou Yu"
+  institutions: "Huazhong University of Science and Technology"
+  institutions: "Huawei"
+}
+pub {
+  where: "ICLR"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ASISys/DualMap"
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1774346603
+rating: 3
