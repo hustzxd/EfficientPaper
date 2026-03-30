@@ -1,0 +1,32 @@
+paper {
+  title: "TurboQuant: Online Vector Quantization with Near-optimal Distortion Rate"
+  abbr: "TurboQuant"
+  url: "http://arxiv.org/abs/2504.19874v1"
+  authors: "Amir Zandieh"
+  authors: "Majid Daliri"
+  authors: "Majid Hadian"
+  authors: "Vahab Mirrokni"
+  institutions: "Google Research"
+  institutions: "New York University"
+  institutions: "Google DeepMind"
+}
+pub {
+  where: "ICLR"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/TheTom/turboquant_plus"
+}
+keyword {
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/KIVI"
+}
+update_time: 1774495442
+rating: 3

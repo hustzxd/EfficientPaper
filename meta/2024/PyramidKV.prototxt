@@ -1,0 +1,44 @@
+paper {
+  title: "PyramidKV: Dynamic KV Cache Compression based on Pyramidal Information Funneling"
+  abbr: "PyramidKV"
+  url: "http://arxiv.org/abs/2406.02069v4"
+  authors: "Zefan Cai"
+  authors: "Yichi Zhang"
+  authors: "Bofei Gao"
+  authors: "Yuliang Liu"
+  authors: "Yucheng Li"
+  authors: "Tianyu Liu"
+  authors: "Keming Lu"
+  authors: "Wayne Xiong"
+  authors: "Yue Dong"
+  authors: "Junjie Hu"
+  authors: "Wen Xiao"
+  institutions: "University of Wisconsin-Madison"
+  institutions: "Peking University"
+  institutions: "Nanjing University"
+  institutions: "University of Surrey"
+  institutions: "Qwen"
+  institutions: "University of California, Riverside"
+  institutions: "Microsoft"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Zefan-Cai/PyramidKV"
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/StreamingLLM"
+  methods: "2023/H2O"
+  methods: "2024/SnapKV"
+}
+update_time: 1774495880

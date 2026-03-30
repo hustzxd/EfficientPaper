@@ -1,0 +1,30 @@
+paper {
+  title: "KV Cache Transform Coding for Compact Storage in LLM Inference"
+  abbr: "KVTC"
+  url: "http://arxiv.org/abs/2511.01815v2"
+  authors: "Konrad Staniszewski"
+  authors: "Adrian Łańcucki"
+  institutions: "NVIDIA"
+  institutions: "University of Warsaw"
+}
+pub {
+  where: "ICLR"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_quant
+  words: kv_cache_management
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/KIVI"
+  methods: "2024/TOVA"
+  methods: "2023/H2O"
+}
+update_time: 1774840513

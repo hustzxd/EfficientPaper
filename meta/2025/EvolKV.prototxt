@@ -25,6 +25,6 @@ cover {
 baseline {
   methods: "2024/StreamingLLM"
   methods: "2024/SnapKV"
-  methods: "PyramidKV"
+  methods: "2024/PyramidKV"
 }
-update_time: 1768007970
+update_time: 1774495917

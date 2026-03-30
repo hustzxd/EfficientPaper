@@ -1,6 +1,222 @@
 {
   "papers": [
     {
+      "id": "KVTC",
+      "title": "KV Cache Transform Coding for Compact Storage in LLM Inference",
+      "abbr": "KVTC",
+      "url": "http://arxiv.org/abs/2511.01815v2",
+      "authors": [
+        "Konrad Staniszewski",
+        "Adrian Łańcucki"
+      ],
+      "institutions": [
+        "NVIDIA",
+        "University of Warsaw"
+      ],
+      "year": 2026,
+      "venue": "ICLR",
+      "cover": "notes/2026/KVTC/cover.png",
+      "keywords": [
+        "19-Quantization (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/KVTC/note/",
+      "prototxt_path": "meta/2026/KVTC.prototxt",
+      "update_time": 1774840513,
+      "rating": 0
+    },
+    {
+      "id": "EvolKV",
+      "title": "EvolKV: Evolutionary KV Cache Compression for LLM Inference",
+      "abbr": "EvolKV",
+      "url": "http://arxiv.org/abs/2509.08315v1",
+      "authors": [
+        "Bohan Yu",
+        "Yekun Chai"
+      ],
+      "institutions": [
+        "University of Chinese Academy of Sciences",
+        "Institute of Automation",
+        "ETH Zurich"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/EvolKV/fig1.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/EvolKV/note/",
+      "prototxt_path": "meta/2025/EvolKV.prototxt",
+      "update_time": 1774495917,
+      "rating": 0
+    },
+    {
+      "id": "PyramidKV",
+      "title": "PyramidKV: Dynamic KV Cache Compression based on Pyramidal Information Funneling",
+      "abbr": "PyramidKV",
+      "url": "http://arxiv.org/abs/2406.02069v4",
+      "authors": [
+        "Zefan Cai",
+        "Yichi Zhang",
+        "Bofei Gao",
+        "Yuliang Liu",
+        "Yucheng Li",
+        "Tianyu Liu",
+        "Keming Lu",
+        "Wayne Xiong",
+        "Yue Dong",
+        "Junjie Hu",
+        "Wen Xiao"
+      ],
+      "institutions": [
+        "University of Wisconsin-Madison",
+        "Peking University",
+        "Nanjing University",
+        "University of Surrey",
+        "Qwen",
+        "University of California, Riverside",
+        "Microsoft"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/PyramidKV/cover.png",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": "https://github.com/Zefan-Cai/PyramidKV",
+      "note_url": "notes/2024/PyramidKV/note/",
+      "prototxt_path": "meta/2024/PyramidKV.prototxt",
+      "update_time": 1774495880,
+      "rating": 0
+    },
+    {
+      "id": "TurboQuant",
+      "title": "TurboQuant: Online Vector Quantization with Near-optimal Distortion Rate",
+      "abbr": "TurboQuant",
+      "url": "http://arxiv.org/abs/2504.19874v1",
+      "authors": [
+        "Amir Zandieh",
+        "Majid Daliri",
+        "Majid Hadian",
+        "Vahab Mirrokni"
+      ],
+      "institutions": [
+        "Google Research",
+        "New York University",
+        "Google DeepMind"
+      ],
+      "year": 2026,
+      "venue": "ICLR",
+      "cover": "notes/2026/TurboQuant/cover.png",
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/TheTom/turboquant_plus",
+      "note_url": "notes/2026/TurboQuant/note/",
+      "prototxt_path": "meta/2026/TurboQuant.prototxt",
+      "update_time": 1774495442,
+      "rating": 3
+    },
+    {
+      "id": "DualMap",
+      "title": "DualMap: Enabling Both Cache Affinity and Load Balancing for Distributed LLM Serving",
+      "abbr": "DualMap",
+      "url": "http://arxiv.org/abs/2602.06502v1",
+      "authors": [
+        "Ying Yuan",
+        "Pengfei Zuo",
+        "Bo Wang",
+        "Zhangyu Chen",
+        "Zhipeng Tan",
+        "Zhou Yu"
+      ],
+      "institutions": [
+        "Huazhong University of Science and Technology",
+        "Huawei"
+      ],
+      "year": 2026,
+      "venue": "ICLR",
+      "cover": "notes/2026/DualMap/cover.png",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/ASISys/DualMap",
+      "note_url": "notes/2026/DualMap/note/",
+      "prototxt_path": "meta/2026/DualMap.prototxt",
+      "update_time": 1774346603,
+      "rating": 3
+    },
+    {
+      "id": "Tactic",
+      "title": "Tactic: Adaptive Sparse Attention with Clustering and Distribution Fitting for Long-Context LLMs",
+      "abbr": "Tactic",
+      "url": "http://arxiv.org/abs/2502.12216v1",
+      "authors": [
+        "Kan Zhu",
+        "Tian Tang",
+        "Qinyu Xu",
+        "Yile Gu",
+        "Zhichen Zeng",
+        "Rohan Kadekodi",
+        "Liangyu Zhao",
+        "Ang Li",
+        "Arvind Krishnamurthy",
+        "Baris Kasikci"
+      ],
+      "institutions": [
+        "University of Washington",
+        "Tsinghua University"
+      ],
+      "year": 2026,
+      "venue": "ICLR",
+      "cover": "notes/2026/Tactic/cover.png",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/Tactic/note/",
+      "prototxt_path": "meta/2026/Tactic.prototxt",
+      "update_time": 1774345663,
+      "rating": 2
+    },
+    {
+      "id": "ZipServ",
+      "title": "ZipServ: Fast and Memory-Efficient LLM Inference with Hardware-Aware Lossless Compression",
+      "abbr": "ZipServ",
+      "url": "http://arxiv.org/abs/2603.17435v1",
+      "authors": [
+        "Ruibo Fan",
+        "Xiangrui Yu",
+        "Xinglin Pan",
+        "Zeyu Li",
+        "Weile Luo",
+        "Qiang Wang",
+        "Wei Wang",
+        "Xiaowen Chu"
+      ],
+      "institutions": [
+        "Hong Kong University of Science and Technology",
+        "Harbin Institute of Technology"
+      ],
+      "year": 2026,
+      "venue": "ASPLOS",
+      "cover": "notes/2026/ZipServ/cover.png",
+      "keywords": [
+        "44-Layer Fusion (Reduce IO)"
+      ],
+      "code_url": "https://github.com/HPMLL/ZipServ_ASPLOS26",
+      "note_url": "notes/2026/ZipServ/note/",
+      "prototxt_path": "meta/2026/ZipServ.prototxt",
+      "update_time": 1774331558,
+      "rating": 2
+    },
+    {
       "id": "IndexCache",
       "title": "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse",
       "abbr": "IndexCache",
@@ -53,7 +269,7 @@
       "note_url": "notes/2024/FlashAttention-2/note/",
       "prototxt_path": "meta/2024/FlashAttention-2.prototxt",
       "update_time": 1773911370,
-      "rating": 0
+      "rating": 2
     },
     {
       "id": "VQKV",
@@ -86,7 +302,7 @@
       "note_url": "notes/2026/VQKV/note/",
       "prototxt_path": "meta/2026/VQKV.prototxt",
       "update_time": 1773885719,
-      "rating": 0
+      "rating": 2
     },
     {
       "id": "FlashAttention-3",
@@ -4719,32 +4935,6 @@
       "note_url": "notes/2025/Chelsea/note/",
       "prototxt_path": "meta/2025/Chelsea.prototxt",
       "update_time": 1768009905,
-      "rating": 0
-    },
-    {
-      "id": "EvolKV",
-      "title": "EvolKV: Evolutionary KV Cache Compression for LLM Inference",
-      "abbr": "EvolKV",
-      "url": "http://arxiv.org/abs/2509.08315v1",
-      "authors": [
-        "Bohan Yu",
-        "Yekun Chai"
-      ],
-      "institutions": [
-        "University of Chinese Academy of Sciences",
-        "Institute of Automation",
-        "ETH Zurich"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/EvolKV/fig1.png",
-      "keywords": [
-        "20-Sparse/Eviction (KV Cache)"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/EvolKV/note/",
-      "prototxt_path": "meta/2025/EvolKV.prototxt",
-      "update_time": 1768007970,
       "rating": 0
     },
     {
@@ -14128,5 +14318,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 425
+  "total": 431
 }
