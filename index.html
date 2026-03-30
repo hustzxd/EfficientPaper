@@ -1263,6 +1263,11 @@ a.server-disabled {
   border-color: #d0d0d0;
 }
 
+.paper-card.shared-focus {
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.12);
+}
+
 /* Note Preview Tooltip */
 .note-preview {
   position: absolute;
@@ -1591,8 +1596,41 @@ a.server-disabled {
   text-decoration: underline;
 }
 
+.share-btn {
+  font-size: 13px;
+  color: #00897b;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.share-btn:hover {
+  color: #00695c;
+  text-decoration: underline;
+}
+
+.share-btn:disabled {
+  opacity: 0.65;
+  cursor: default;
+  text-decoration: none;
+}
+
 .copy-btn.copied {
   color: #43a047;
+}
+
+.share-btn.shared {
+  color: #43a047;
+}
+
+.share-btn.failed {
+  color: #d32f2f;
 }
 
 .pdf-btn {
@@ -1614,7 +1652,8 @@ a.server-disabled {
   text-decoration: underline;
 }
 
-.copy-btn svg {
+.copy-btn svg,
+.share-btn svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
@@ -2019,6 +2058,11 @@ function closeLightbox() {
   let selectedPapers = new Set(); // Track selected papers by index or ID
   let starCache = {}; // Cache GitHub star counts
   let basePath = window.location.pathname.includes('/search') ? '..' : '.'; // Base path for relative URLs
+  let activeSharedPaperId = null;
+  const paperShareLookup = new Map();
+  const shareIconSvg = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.02-4.11A2.99 2.99 0 0 0 18 7.91a3 3 0 1 0-3-3c0 .24.04.47.09.69L8.07 9.71A3 3 0 0 0 6 9a3 3 0 1 0 0 6c.82 0 1.56-.33 2.11-.85l7.02 4.11c-.05.21-.08.43-.08.65a3 3 0 1 0 3-2.83Z"/></svg>';
+  const successIconSvg = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+  const errorIconSvg = '<svg viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
   // Expose variables to window for auto-reload state restoration
   window.papers = papers;
@@ -2138,6 +2182,187 @@ function closeLightbox() {
     }
     return count.toString();
   }
+
+  function escapeHtmlAttr(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function getPaperShareId(paper) {
+    return paper.prototxt_path || paper.id || paper.abbr || paper.title;
+  }
+
+  function getPaperShareUrl(paper) {
+    return paper.url || paper.note_url || window.location.href;
+  }
+
+  function buildPaperShareText(paper, link) {
+    const authorText = Array.isArray(paper.authors) && paper.authors.length
+      ? paper.authors.slice(0, 6).join(', ') + (paper.authors.length > 6 ? ', et al.' : '')
+      : '';
+
+    return [
+      paper.title,
+      [paper.venue, paper.year].filter(Boolean).join(' · '),
+      authorText ? `Authors: ${authorText}` : '',
+      link || getPaperShareUrl(paper)
+    ].filter(Boolean).join('\n');
+  }
+
+  function buildPaperShareLink(paper) {
+    const url = new URL(window.location.href);
+    url.hash = '';
+    url.search = '';
+    url.searchParams.set('paper', getPaperShareId(paper));
+    return url.toString();
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    return new Promise((resolve, reject) => {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        const success = document.execCommand('copy');
+        textarea.remove();
+        if (success) {
+          resolve();
+        } else {
+          reject(new Error('Copy command failed'));
+        }
+      } catch (error) {
+        textarea.remove();
+        reject(error);
+      }
+    });
+  }
+
+  function clearPaperShareParam() {
+    activeSharedPaperId = null;
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has('paper')) return;
+    url.searchParams.delete('paper');
+    history.replaceState({}, '', url);
+  }
+
+  function findPaperByShareId(shareId) {
+    if (!shareId) return null;
+    return papers.find(paper => {
+      const candidates = [
+        paper.prototxt_path,
+        paper.id,
+        paper.abbr,
+        paper.title
+      ].filter(Boolean).map(String);
+      return candidates.includes(String(shareId));
+    }) || null;
+  }
+
+  function focusSharedPaperCard(shareId) {
+    requestAnimationFrame(() => {
+      const cards = Array.from(document.querySelectorAll('.paper-card'));
+      const targetCard = cards.find(card => card.dataset.shareId === String(shareId));
+      if (!targetCard) return;
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  function showSharedPaper(paper, options = {}) {
+    const shareId = getPaperShareId(paper);
+    activeSharedPaperId = shareId;
+
+    document.getElementById('search-input').value = '';
+    document.getElementById('year-filter').value = '';
+    document.getElementById('venue-filter').value = '';
+    document.getElementById('keyword-filter').value = '';
+    document.getElementById('rating-filter').value = '';
+    document.getElementById('sort-filter').value = 'update-desc';
+
+    filteredPapers = [paper];
+    window.filteredPapers = filteredPapers;
+    currentPage = 1;
+    window.currentPage = currentPage;
+
+    if (options.updateUrl !== false) {
+      const url = new URL(window.location.href);
+      url.hash = '';
+      url.search = '';
+      url.searchParams.set('paper', shareId);
+      history.replaceState({}, '', url);
+    }
+
+    renderPapers(filteredPapers);
+    updateStats();
+    focusSharedPaperCard(shareId);
+  }
+
+  function applySharedPaperFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paperParam = urlParams.get('paper');
+    if (!paperParam) return false;
+
+    const paper = findPaperByShareId(paperParam);
+    if (!paper) {
+      clearPaperShareParam();
+      return false;
+    }
+
+    showSharedPaper(paper, { updateUrl: false });
+    return true;
+  }
+
+  function showTemporaryButtonFeedback(button, html, statusClass, originalHTML, duration = 2000) {
+    if (!button) return;
+
+    button.disabled = false;
+    button.classList.remove('shared', 'failed');
+    button.innerHTML = html;
+
+    if (statusClass) {
+      button.classList.add(statusClass);
+    }
+
+    setTimeout(() => {
+      button.innerHTML = originalHTML;
+      button.classList.remove('shared', 'failed');
+    }, duration);
+  }
+
+  window.sharePaperCard = function(paperId, button) {
+    const paper = paperShareLookup.get(paperId);
+    if (!paper) {
+      console.warn('Paper not found for sharing:', paperId);
+      return;
+    }
+
+    const originalHTML = button ? button.innerHTML : '';
+    if (button) {
+      button.disabled = true;
+      button.innerHTML = `${shareIconSvg} Copying`;
+    }
+
+    const shareLink = buildPaperShareLink(paper);
+    copyText(shareLink).then(() => {
+      showTemporaryButtonFeedback(button, `${successIconSvg} Link Copied`, 'shared', originalHTML, 2400);
+    }).catch(error => {
+      console.error('Failed to share paper card:', error);
+      const fallbackText = buildPaperShareText(paper, shareLink);
+      alert(`Copy failed. You can share this link manually:\n\n${fallbackText}`);
+      showTemporaryButtonFeedback(button, `${errorIconSvg} Failed`, 'failed', originalHTML);
+    });
+  };
 
   // --- Rating helpers ---
   function getLocalRatings() {
@@ -2259,6 +2484,10 @@ function closeLightbox() {
       sortPapers(filteredPapers, defaultSort);
       renderPapers(filteredPapers);
       updateStats();
+
+      if (applySharedPaperFromUrl()) {
+        return;
+      }
 
       // Apply URL search parameter (e.g., ?search=SnapKV from graph page)
       const urlParams = new URLSearchParams(window.location.search);
@@ -2441,6 +2670,10 @@ function closeLightbox() {
 
   // Filter papers
   function filterPapers() {
+    if (activeSharedPaperId) {
+      clearPaperShareParam();
+    }
+
     const searchQuery = document.getElementById('search-input').value.trim();
     const searchGroups = parseSearchQuery(searchQuery);
     const yearFilter = document.getElementById('year-filter').value;
@@ -2534,11 +2767,15 @@ function closeLightbox() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const papersToShow = papersToRender.slice(startIndex, endIndex);
+    paperShareLookup.clear();
 
     const html = papersToShow.map((paper, index) => {
       const globalIndex = startIndex + index;
       const paperId = paper.prototxt_path || `paper-${globalIndex}`;
+      const shareId = getPaperShareId(paper);
       const isChecked = selectedPapers.has(paperId) ? 'checked' : '';
+      paperShareLookup.set(paperId, paper);
+      const isSharedFocus = activeSharedPaperId === shareId ? ' shared-focus' : '';
 
       const title = highlightText(paper.title, searchQuery);
       const authors = paper.authors.map(a => highlightText(a, searchQuery)).join(', ');
@@ -2564,7 +2801,7 @@ function closeLightbox() {
         : '';
 
       return `
-        <div class="paper-card">
+        <div class="paper-card${isSharedFocus}" data-share-id="${escapeHtmlAttr(shareId)}">
           <input type="checkbox" class="paper-checkbox" data-paper-id="${paperId}" ${isChecked} onchange="togglePaperSelection('${paperId}', this.checked)">
           <div class="paper-cover">
             ${coverHtml}
@@ -2588,6 +2825,10 @@ function closeLightbox() {
                 <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                 Copy
               </button>` : ''}
+              <button class="share-btn" onclick="sharePaperCard('${paperId}', this)" title="Copy shareable link">
+                ${shareIconSvg}
+                Share Link
+              </button>
               ${codeLink}
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
               <button class="pdf-btn" data-abbr="${paper.abbr || ''}" data-year="${paper.year || ''}" data-url="${paper.url || ''}" data-title="${paper.title.replace(/'/g, "\\'")}" onclick="openLocalPdf('${paper.abbr || 'paper'}', '${paper.title.replace(/'/g, "\\'")}', '${paper.year || ''}', '${paper.url || ''}')" title="Open local PDF or download (requires local server)">📄 PDF</button>
@@ -3926,5 +4167,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-03-30 03:22:21.382801+00:00
+Build Date UTC : 2026-03-30 05:31:29.949742+00:00
 -->
