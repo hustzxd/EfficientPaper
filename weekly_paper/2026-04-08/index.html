@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>2026-04-08 - Efficient Paper</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2026-04-08";
+        var mkdocs_page_input_path = "weekly_paper/2026-04-08.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-16/">2026-03-16</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-17/">2026-03-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-20/">2026-03-20</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-03-27/">2026-03-27</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">2026-04-08</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#hybridkv-hybrid-kv-cache-compression-for-efficient-multimodal-large-language-model-inference">HybridKV Hybrid KV Cache Compression for Efficient Multimodal Large Language Model Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#see-the-forest-for-the-trees-loosely-speculative-decoding-via-visual-semantic-guidance-for-efficient-inference-of-video-llms">See the Forest for the Trees Loosely Speculative Decoding via Visual-Semantic Guidance for Efficient Inference of Video LLMs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#graph-based-chain-of-thought-pruning-for-reducing-redundant-reflections-in-reasoning-llms">Graph-Based Chain-of-Thought Pruning for Reducing Redundant Reflections in Reasoning LLMs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#id-selection-importance-diversity-based-visual-token-selection-for-efficient-lvlm-inference">ID-Selection Importance-Diversity Based Visual Token Selection for Efficient LVLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#efficient-inference-for-large-vision-language-models-bottlenecks-techniques-and-prospects">Efficient Inference for Large Vision-Language Models Bottlenecks, Techniques, and Prospects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alto-adaptive-lora-tuning-and-orchestration-for-heterogeneous-lora-training-workloads">ALTO Adaptive LoRA Tuning and Orchestration for Heterogeneous LoRA Training Workloads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multi-drafter-speculative-decoding-with-alignment-feedback">Multi-Drafter Speculative Decoding with Alignment Feedback</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dat-dual-aware-adaptive-transmission-for-efficient-multimodal-llm-inference-in-edge-cloud-systems">DAT Dual-Aware Adaptive Transmission for Efficient Multimodal LLM Inference in Edge-Cloud Systems</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3dturboquant-training-free-near-optimal-quantization-for-3d-reconstruction-models">3DTurboQuant Training-Free Near-Optimal Quantization for 3D Reconstruction Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vla-infoentropy-a-training-free-vision-attention-information-entropy-approach-for-vision-language-action-models-inference-acceleration-and-success">VLA-InfoEntropy A Training-Free Vision-Attention Information Entropy Approach for Vision-Language-Action Models Inference Acceleration and Success</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dualdiffusion-a-speculative-decoding-strategy-for-masked-diffusion-models">DualDiffusion A Speculative Decoding Strategy for Masked Diffusion Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#improving-sparse-memory-finetuning">Improving Sparse Memory Finetuning</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#megatrain-full-precision-training-of-100b-parameter-large-language-models-on-a-single-gpu">MegaTrain Full Precision Training of 100B+ Parameter Large Language Models on a Single GPU</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#triattention-efficient-long-reasoning-with-trigonometric-kv-compression">TriAttention Efficient Long Reasoning with Trigonometric KV Compression</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-27/">2026-02-27</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Weekly Paper</li>
+      <li class="breadcrumb-item active">2026-04-08</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="2026-04-08">2026-04-08</h1>
+<hr />
+<h2 id="hybridkv-hybrid-kv-cache-compression-for-efficient-multimodal-large-language-model-inference">HybridKV Hybrid KV Cache Compression for Efficient Multimodal Large Language Model Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对多模态大语言模型KV缓存内存开销问题，提出混合KV缓存压缩方法，降低内存占用并提升推理效率。</p>
+</blockquote>
+<p><strong>Authors:</strong> Bowen Zeng, Feiyang Ren, Jun Zhang, Xiaoling Gu, Ke Chen, Lidan Shou, Huan Li | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05887v1">http://arxiv.org/abs/2604.05887v1</a></p>
+<details><summary>Abstract</summary>
+
+Multimodal Large Language Models (MLLMs) have advanced unified reasoning over text, images, and videos, but their inference is hindered by the rapid growth of key-value (KV) caches. Each visual input expands into thousands of tokens, causing caches to scale linearly with context length and remain resident in GPU memory throughout decoding, which leads to prohibitive memory overhead and latency even on high-end GPUs. A common solution is to compress caches under a fixed allocated budget at different granularities: token-level uniformly discards less important tokens, layer-level varies retention across layers, and head-level redistributes budgets across heads. Yet these approaches stop at allocation and overlook the heterogeneous behaviors of attention heads that require distinct compression strategies. We propose HybridKV, a hybrid KV cache compression framework that integrates complementary strategies in three stages: heads are first classified into static or dynamic types using text-centric attention; then a top-down budget allocation scheme hierarchically assigns KV budgets; finally, static heads are compressed by text-prior pruning and dynamic heads by chunk-wise retrieval. Experiments on 11 multimodal benchmarks with Qwen2.5-VL-7B show that HybridKV reduces KV cache memory by up to $7.9\times$ and achieves $1.52\times$ faster decoding, with almost no performance drop or even higher relative to the full-cache MLLM.
+
+</details>
+
+<hr />
+<h2 id="see-the-forest-for-the-trees-loosely-speculative-decoding-via-visual-semantic-guidance-for-efficient-inference-of-video-llms">See the Forest for the Trees Loosely Speculative Decoding via Visual-Semantic Guidance for Efficient Inference of Video LLMs</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/acceleration-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对视频LLM推理延迟高问题，提出视觉语义引导的松散推测解码框架，无需训练即可加速推理。</p>
+</blockquote>
+<p><strong>Authors:</strong> Yicheng Ji, Jun Zhang, Jinpeng Chen, Cong Wang, Lidan Shou, Gang Chen, Huan Li | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05650v1">http://arxiv.org/abs/2604.05650v1</a></p>
+<details><summary>Abstract</summary>
+
+Video Large Language Models (Video-LLMs) excel in video understanding but suffer from high inference latency during autoregressive generation. Speculative Decoding (SD) mitigates this by applying a draft-and-verify paradigm, yet existing methods are constrained by rigid exact-match rules, severely limiting the acceleration potential. To bridge this gap, we propose LVSpec, the first training-free loosely SD framework tailored for Video-LLMs. Grounded in the insight that generation is governed by sparse visual-relevant anchors (mandating strictness) amidst abundant visual-irrelevant fillers (permitting loose verification), LVSpec employs a lightweight visual-relevant token identification scheme to accurately pinpoint the former. To further maximize acceptance, we augment this with a position-shift tolerant mechanism that effectively salvages positionally mismatched but semantically equivalent tokens. Experiments demonstrate that LVSpec achieves high fidelity and speed: it preserves >99.8 of target performance while accelerating Qwen2.5-VL-32B by 2.70x and LLaVA-OneVision-72B by 2.94x. Notably, it boosts the mean accepted length and speedup ratio by 136% and 35% compared to SOTA training-free SD methods for Video-LLMs.
+
+</details>
+
+<hr />
+<h2 id="graph-based-chain-of-thought-pruning-for-reducing-redundant-reflections-in-reasoning-llms">Graph-Based Chain-of-Thought Pruning for Reducing Redundant Reflections in Reasoning LLMs</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparsity-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a></p>
+<blockquote>
+<p>针对推理LLM中冗余反思问题，提出基于图的思维链剪枝方法，减少无效中间推理内容。</p>
+</blockquote>
+<p><strong>Authors:</strong> Hongyuan Yuan, Xinran He, Run Shao, Bolei He, Xianwei Xue, Mengke Chen, Qiutong Pan, Haiwei Wang, Haifeng Li | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05643v1">http://arxiv.org/abs/2604.05643v1</a></p>
+<details><summary>Abstract</summary>
+
+Extending CoT through RL has been widely used to enhance the reasoning capabilities of LLMs. However, due to the sparsity of reward signals, it can also induce undesirable thinking patterns such as overthinking, i.e., generating redundant intermediate reasoning content. In this work, we argue that a major source of such redundancy is inefficient reflection, which often manifests in two problematic patterns: Indiscriminate Reflection, where the model performs broad, low-impact checks throughout reasoning, and Repetitive Reflection, where it repeatedly re-verifies an already established conclusion. To address this, we introduce a graph-based CoT optimization framework. Specifically, we convert each linear CoT into a directed acyclic graph (DAG) with explicit dependency edges, and design a dual pruning strategy: branch-level pruning removes weakly contributing reflection branches, while depth-level pruning eliminates late-stage re-verification. We distill this behavior via a three-stage pipeline: (1) SFT to initialize the policy on pruned concise traces, (2) DPO to prefer correct but less redundant trajectories, and (3) GRPO with length penalty to jointly optimize answer correctness and efficiency. Experiments show that our approach reduces the average reasoning tokens by 42\% while maintaining or improving accuracy.
+
+</details>
+
+<hr />
+<h2 id="id-selection-importance-diversity-based-visual-token-selection-for-efficient-lvlm-inference">ID-Selection Importance-Diversity Based Visual Token Selection for Efficient LVLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/token pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/token pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对视觉语言模型推理效率问题，提出重要性-多样性视觉令牌选择方法，平衡令牌保留与多样性。</p>
+</blockquote>
+<p><strong>Authors:</strong> Zhaohong Huang, Wenjing Liu, Yuxin Zhang, Fei Chao, Rongrong Ji | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05601v1">http://arxiv.org/abs/2604.05601v1</a></p>
+<details><summary>Abstract</summary>
+
+Recent advances have explored visual token pruning to accelerate the inference of large vision-language models (LVLMs). However, existing methods often struggle to balance token importance and diversity: importance-based methods tend to retain redundant tokens, whereas diversity-based methods may overlook informative ones. This trade-off becomes especially problematic under high reduction ratios, where preserving only a small subset of visual tokens is critical. To address this issue, we propose ID-Selection, a simple yet effective token selection strategy for efficient LVLM inference. The key idea is to couple importance estimation with diversity-aware iterative selection: each token is first assigned an importance score, after which high-scoring tokens are selected one by one while the scores of similar tokens are progressively suppressed. In this way, ID-Selection preserves informative tokens while reducing redundancy in a unified selection process. Extensive experiments across 5 LVLM backbones and 16 main benchmarks demonstrate that ID-Selection consistently achieves superior performance and efficiency, especially under extreme pruning ratios. For example, on LLaVA-1.5-7B, ID-Selection prunes 97.2% of visual tokens, retaining only 16 tokens, while reducing inference FLOPs by over 97% and preserving 91.8% of the original performance, all without additional training.
+
+</details>
+
+<hr />
+<h2 id="efficient-inference-for-large-vision-language-models-bottlenecks-techniques-and-prospects">Efficient Inference for Large Vision-Language Models Bottlenecks, Techniques, and Prospects</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefilling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefilling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/disaggregate-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/disaggregate-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>系统分析视觉语言模型推理瓶颈，提出围绕编码、预填充和解码的效率技术分类与展望。</p>
+</blockquote>
+<p><strong>Authors:</strong> Jun Zhang, Yicheng Ji, Feiyang Ren, Yihang Li, Bowen Zeng, Zonghao Chen, Ke Chen, Lidan Shou, Gang Chen, Huan Li | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05546v1">http://arxiv.org/abs/2604.05546v1</a></p>
+<details><summary>Abstract</summary>
+
+Large Vision-Language Models (LVLMs) enable sophisticated reasoning over images and videos, yet their inference is hindered by a systemic efficiency barrier known as visual token dominance. This overhead is driven by a multi-regime interplay between high-resolution feature extraction, quadratic attention scaling, and memory bandwidth constraints. We present a systematic taxonomy of efficiency techniques structured around the inference lifecycle, consisting of encoding, prefilling, and decoding. Unlike prior reviews focused on isolated optimizations, we analyze the end-to-end pipeline to reveal how upstream decisions dictate downstream bottlenecks, covering compute-bound visual encoding, the intensive prefilling of massive contexts, and the ''visual memory wall'' in bandwidth-bound decoding. By decoupling the efficiency landscape into the axes of shaping information density, managing long-context attention, and overcoming memory limits, this work provides a structured analysis of how isolated optimizations compose to navigate the trade-off between visual fidelity and system efficiency. The survey concludes by outlining four future frontiers supported by pilot empirical insights, including hybrid compression based on functional unit sensitivity, modality-aware decoding with relaxed verification, progressive state management for streaming continuity, and stage-disaggregated serving through hardware-algorithm co-design. The submitted software contains a snapshot of our literature repository, which is designed to be maintained as a living resource for the community.
+
+</details>
+
+<hr />
+<h2 id="alto-adaptive-lora-tuning-and-orchestration-for-heterogeneous-lora-training-workloads">ALTO Adaptive LoRA Tuning and Orchestration for Heterogeneous LoRA Training Workloads</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LoRA训练工作负载异构性问题，提出自适应LoRA调优与编排系统，提升多任务训练效率。</p>
+</blockquote>
+<p><strong>Authors:</strong> Jingwei Zuo, Xinze Feng, Zien Liu, Kaijian Wang, Fanjiang Ye, Ye Cao, Zhuang Wang, Yuke Wang | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05426v1">http://arxiv.org/abs/2604.05426v1</a></p>
+<details><summary>Abstract</summary>
+
+Low-Rank Adaptation (LoRA) is now the dominant method for parameter-efficient fine-tuning of large language models, but achieving a high-quality adapter often requires systematic hyperparameter tuning because LoRA performance is highly sensitive to configuration choices. In practice, this leads to many concurrent LoRA jobs, often spanning heterogeneous tasks in multi-tenant environments. Existing systems largely handle these jobs independently, which both wastes computation on weak candidates and leaves GPUs underutilized. We present ALTO (Adaptive LoRA Tuning and Orchestration), a co-designed training system that accelerates LoRA hyperparameter tuning while enabling efficient cluster sharing across heterogeneous tasks. The central insight behind ALTO is that when multiple tuning jobs run concurrently over a shared frozen backbone, they expose optimization opportunities that single-job designs cannot exploit. Building on this, ALTO monitors loss trajectories to terminate unpromising configurations early, uses fused grouped GEMM together with a new rank-local adapter parallelism to co-locate surviving adapters and reclaim freed GPU capacity, and combines intra-task and inter-task scheduling to improve multi-task placement by leveraging the predictable duration of LoRA jobs. Extensive evaluation shows that ALTO achieves up to $13.8\times$ speedup over state-of-the-art without sacrificing adapter quality.
+
+</details>
+
+<hr />
+<h2 id="multi-drafter-speculative-decoding-with-alignment-feedback">Multi-Drafter Speculative Decoding with Alignment Feedback</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对推测解码中单个草稿模型局限性问题，提出多草稿器统一框架，动态整合多个草稿模型。</p>
+</blockquote>
+<p><strong>Authors:</strong> Taehyeon Kim, Hojung Jung, Se-Young Yun | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05417v1">http://arxiv.org/abs/2604.05417v1</a></p>
+<details><summary>Abstract</summary>
+
+Speculative decoding (SD) accelerates large language model (LLM) inference by using a smaller model to draft future tokens, which are then verified by the target LLM. This preserves generation quality by accepting only aligned tokens. However, individual drafters, often trained for specific tasks or domains, exhibit limited effectiveness across diverse applications. To address this, we introduce \textsc{MetaSD}, a unified framework that integrates multiple drafters into the SD process. MetaSD dynamically allocates computational resources to heterogeneous drafters by leveraging alignment feedback and framing drafter selection as a multi-armed bandit problem. Extensive experiments show MetaSD consistently outperforms single-drafter approaches.
+
+</details>
+
+<hr />
+<h2 id="dat-dual-aware-adaptive-transmission-for-efficient-multimodal-llm-inference-in-edge-cloud-systems">DAT Dual-Aware Adaptive Transmission for Efficient Multimodal LLM Inference in Edge-Cloud Systems</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/communication-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对边缘云系统中多模态LLM推理开销问题，提出双感知自适应传输方法，实现低延迟事件警报。</p>
+</blockquote>
+<p><strong>Authors:</strong> Qi Guo, Zheming Yang, Yunqing Hu, Chang Zhao, Wen Ji | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05375v1">http://arxiv.org/abs/2604.05375v1</a></p>
+<details><summary>Abstract</summary>
+
+Multimodal large language models (MLLMs) have shown strong capability in semantic understanding and visual reasoning, yet their use on continuous video streams in bandwidth-constrained edge-cloud systems incurs prohibitive computation and communication overhead and hinders low-latency alerting and effective visual evidence delivery. To address this challenge, we propose DAT to achieve high-quality semantic generation, low-latency event alerting, and effective visual evidence supplementation. To reduce unnecessary deep reasoning costs, we propose a collaborative small-large model cascade. A lightweight edge-side small model acts as a gating module to filter non-target-event frames and perform object detection, triggering MLLM inference only for suspicious frames. Building on this, we introduce an efficient fine-tuning strategy with visual guidance and semantic prompting, which improves structured event understanding, object detection, and output consistency. To ensure low-latency semantic alerting and effective visual evidence supplementation under bandwidth constraints, we further devise a semantics and bandwidth-aware multi-stream adaptive transmission optimization method. Experimental results show that DAT achieves 98.83% recognition accuracy and 100% output consistency. Under severe congestion, it reduces weighted semantic alert delay by up to 77.5% and delivers 98.33% of visual evidence within 0.5 s, demonstrating the effectiveness of jointly optimizing cascade inference and elastic transmission.
+
+</details>
+
+<hr />
+<h2 id="3dturboquant-training-free-near-optimal-quantization-for-3d-reconstruction-models">3DTurboQuant Training-Free Near-Optimal Quantization for 3D Reconstruction Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a></p>
+<blockquote>
+<p>针对3D重建模型压缩需场景微调问题，提出训练-free近最优量化方法，无需数据依赖代码本。</p>
+</blockquote>
+<p><strong>Authors:</strong> Jae Joong Lee | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05366v1">http://arxiv.org/abs/2604.05366v1</a></p>
+<details><summary>Abstract</summary>
+
+Every existing method for compressing 3D Gaussian Splatting, NeRF, or transformer-based 3D reconstructors requires learning a data-dependent codebook through per-scene fine-tuning. We show this is unnecessary. The parameter vectors that dominate storage in these models, 45-dimensional spherical harmonics in 3DGS and 1024-dimensional key-value vectors in DUSt3R, fall in a dimension range where a single random rotation transforms any input into coordinates with a known Beta distribution. This makes precomputed, data-independent Lloyd-Max quantization near-optimal, within a factor of 2.7 of the information-theoretic lower bound. We develop 3D, deriving (1) a dimension-dependent criterion that predicts which parameters can be quantized and at what bit-width before running any experiment, (2) norm-separation bounds connecting quantization MSE to rendering PSNR per scene, (3) an entry-grouping strategy extending rotation-based quantization to 2-dimensional hash grid features, and (4) a composable pruning-quantization pipeline with a closed-form compression ratio. On NeRF Synthetic, 3DTurboQuant compresses 3DGS by 3.5x with 0.02dB PSNR loss and DUSt3R KV caches by 7.9x with 39.7dB pointmap fidelity. No training, no codebook learning, no calibration data. Compression takes seconds. The code will be released (https://github.com/JaeLee18/3DTurboQuant)
+
+</details>
+
+<hr />
+<h2 id="vla-infoentropy-a-training-free-vision-attention-information-entropy-approach-for-vision-language-action-models-inference-acceleration-and-success">VLA-InfoEntropy A Training-Free Vision-Attention Information Entropy Approach for Vision-Language-Action Models Inference Acceleration and Success</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对视觉-语言-动作模型推理效率低问题，提出基于信息熵的视觉注意力方法，无需训练即可加速。</p>
+</blockquote>
+<p><strong>Authors:</strong> Chuhang Liu, Yayun He, Zuheng Kang, Xiaoyang Qu, Jianzong Wang | <strong>Date:</strong> 2026-04-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05323v1">http://arxiv.org/abs/2604.05323v1</a></p>
+<details><summary>Abstract</summary>
+
+Vision-Language-Action (VLA) models integrate visual perception, language understanding, and action decision-making for cross-modal semantic alignment, exhibiting broad application potential. However, the joint processing of high-dimensional visual features, complex linguistic inputs, and continuous action sequences incurs significant computational overhead and low inference efficiency, thereby hindering real-time deployment and reliability. To address this issue, we use image entropy to quantify the grayscale distribution characteristics of each visual token and introduce attention entropy to capture the distribution of attention scores over task-related text. Visual entropy identifies texture-rich or structurally informative regions, while attention entropy pinpoints semantically relevant tokens. Combined with timestep information, these metrics enable a dynamic transition strategy that shifts the model's focus from global visual features to attention-guided local informative regions. Thus, the resulting VLA-InfoEntropy method integrates spatial, semantic, and temporal cues to reduce redundancy while preserving critical content. Extensive experiments show that our method reduces inference parameters, accelerates inference speed, and outperforms existing approaches.
+
+</details>
+
+<hr />
+<h2 id="dualdiffusion-a-speculative-decoding-strategy-for-masked-diffusion-models">DualDiffusion A Speculative Decoding Strategy for Masked Diffusion Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/speculative-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/speculative-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对掩码扩散模型推理速度慢问题，提出双扩散推测解码策略，利用KV缓存加速并行生成。</p>
+</blockquote>
+<p><strong>Authors:</strong> Satyam Goyal, Kushal Patel, Tanush Mittal, Arjun Laxman | <strong>Date:</strong> 2026-04-06</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05250v1">http://arxiv.org/abs/2604.05250v1</a></p>
+<details><summary>Abstract</summary>
+
+Masked Diffusion Models (MDMs) offer a promising alternative to autoregressive language models by enabling parallel token generation and bidirectional context modeling. However, their inference speed is significantly limited by the inability to cache key-value pairs due to bidirectional attention, requiring $O(N^2)$ computations at each generation step. While recent methods like FastDLLM and DkvCache improve inference speed through attention approximations and caching strategies, they achieve speedups at the cost of generation quality. We propose DualDiffusion, a speculative decoding framework for MDMs that combines fast drafter models (using efficient approximations) with slower, more accurate verifier models. By running multiple steps of a lightweight drafter followed by a single verification step, DualDiffusion achieves a superior Pareto frontier between generation steps and accuracy compared to existing approaches. We evaluate our method on MMLU and GSM8K, demonstrating that DualDiffusion maintains high accuracy while reducing the number of generation steps required, effectively pushing the quality-efficiency trade-off curve for masked diffusion language models.
+
+</details>
+
+<hr />
+<h2 id="improving-sparse-memory-finetuning">Improving Sparse Memory Finetuning</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a></p>
+<blockquote>
+<p>针对大语言模型持续适应中的灾难性遗忘问题，提出稀疏记忆微调方法，局部更新避免任务干扰。</p>
+</blockquote>
+<p><strong>Authors:</strong> Satyam Goyal, Anirudh Kanchi, Garv Shah, Prakhar Gupta | <strong>Date:</strong> 2026-04-06</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05248v1">http://arxiv.org/abs/2604.05248v1</a></p>
+<details><summary>Abstract</summary>
+
+Large Language Models (LLMs) are typically static after training, yet real-world applications require continual adaptation to new knowledge without degrading existing capabilities. Standard approaches to updating models, like full finetuning or parameter-efficient methods (e.g., LoRA), face a fundamental trade-off: catastrophic forgetting. They modify shared dense representations, causing interference across tasks. Sparse Memory Finetuning (SMF) offers a promising alternative by localizing updates to a small subset of parameters in explicit memory layers. In this work, we present an open-source pipeline to retrofit existing pretrained models (Qwen-2.5-0.5B) with sparse memory modules, enabling effective continual learning on consumer hardware. We extend prior work by introducing a theoretically grounded slot-selection mechanism based on Kullback-Leibler (KL) divergence, which prioritizes memory updates for informationally "surprising" tokens relative to a background distribution. Our experiments demonstrate that our retrofitted models can acquire new factual knowledge with minimal forgetting of held-out capabilities, validating the sparse update hypothesis in a practical setting.
+
+</details>
+
+<hr />
+<h2 id="megatrain-full-precision-training-of-100b-parameter-large-language-models-on-a-single-gpu">MegaTrain Full Precision Training of 100B+ Parameter Large Language Models on a Single GPU</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/overlap-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/offloading-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/offloading-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对超大模型单GPU训练内存限制问题，提出内存中心系统MegaTrain，实现全精度训练并优化带宽瓶颈。</p>
+</blockquote>
+<p><strong>Authors:</strong> Zhengqing Yuan, Hanchi Sun, Lichao Sun, Yanfang Ye | <strong>Date:</strong> 2026-04-06</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.05091v1">http://arxiv.org/abs/2604.05091v1</a></p>
+<details><summary>Abstract</summary>
+
+We present MegaTrain, a memory-centric system that efficiently trains 100B+ parameter large language models at full precision on a single GPU. Unlike traditional GPU-centric systems, MegaTrain stores parameters and optimizer states in host memory (CPU memory) and treats GPUs as transient compute engines. For each layer, we stream parameters in and compute gradients out, minimizing persistent device state. To battle the CPU-GPU bandwidth bottleneck, we adopt two key optimizations. 1) We introduce a pipelined double-buffered execution engine that overlaps parameter prefetching, computation, and gradient offloading across multiple CUDA streams, enabling continuous GPU execution. 2) We replace persistent autograd graphs with stateless layer templates, binding weights dynamically as they stream in, eliminating persistent graph metadata while providing flexibility in scheduling. On a single H200 GPU with 1.5TB host memory, MegaTrain reliably trains models up to 120B parameters. It also achieves 1.84$\times$ the training throughput of DeepSpeed ZeRO-3 with CPU offloading when training 14B models. MegaTrain also enables 7B model training with 512k token context on a single GH200.
+
+</details>
+
+<hr />
+<h2 id="triattention-efficient-long-reasoning-with-trigonometric-kv-compression">TriAttention Efficient Long Reasoning with Trigonometric KV Compression</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对长推理中KV缓存内存瓶颈问题，提出三角注意力方法，利用正弦KV压缩提升推理稳定性。</p>
+</blockquote>
+<p><strong>Authors:</strong> Weian Mao, Xi Lin, Wei Huang, Yuxin Xie, Tianfu Fu, Bohan Zhuang, Song Han, Yukang Chen | <strong>Date:</strong> 2026-04-06</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2604.04921v1">http://arxiv.org/abs/2604.04921v1</a></p>
+<details><summary>Abstract</summary>
+
+Extended reasoning in large language models (LLMs) creates severe KV cache memory bottlenecks. Leading KV cache compression methods estimate KV importance using attention scores from recent post-RoPE queries. However, queries rotate with position during RoPE, making representative queries very few, leading to poor top-key selection and unstable reasoning. To avoid this issue, we turn to the pre-RoPE space, where we observe that Q and K vectors are highly concentrated around fixed non-zero centers and remain stable across positions -- Q/K concentration. We show that this concentration causes queries to preferentially attend to keys at specific distances (e.g., nearest keys), with the centers determining which distances are preferred via a trigonometric series. Based on this, we propose TriAttention to estimate key importance by leveraging these centers. Via the trigonometric series, we use the distance preference characterized by these centers to score keys according to their positions, and also leverage Q/K norms as an additional signal for importance estimation. On AIME25 with 32K-token generation, TriAttention matches Full Attention reasoning accuracy while achieving 2.5x higher throughput or 10.7x KV memory reduction, whereas leading baselines achieve only about half the accuracy at the same efficiency. TriAttention enables OpenClaw deployment on a single consumer GPU, where long context would otherwise cause out-of-memory with Full Attention.
+
+</details>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-03-27/" class="btn btn-neutral float-left" title="2026-03-27"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../legacy/2025-10-09/" class="btn btn-neutral float-right" title="2025-10-09">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2026-03-27/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../legacy/2025-10-09/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../js/prism-prototxt.js"></script>
+      <script src="../../js/preview.js"></script>
+      <script src="../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../js/note-editor.js"></script>
+      <script src="../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

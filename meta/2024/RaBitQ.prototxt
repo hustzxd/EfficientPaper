@@ -1,0 +1,27 @@
+paper {
+  title: "RaBitQ: Quantizing High-Dimensional Vectors with a Theoretical Error Bound for Approximate Nearest Neighbor Search"
+  abbr: "RaBitQ"
+  url: "http://arxiv.org/abs/2405.12497v1"
+  authors: "Jianyang Gao"
+  authors: "Cheng Long"
+  institutions: "Nanyang Technological University"
+}
+pub {
+  where: "SIGMOD"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/gaoj0017/RaBitQ"
+}
+keyword {
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1774945374
