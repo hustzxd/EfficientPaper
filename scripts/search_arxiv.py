@@ -256,7 +256,7 @@ def main():
 
             print(title)
             markdown_content += f"---\n\n"
-            markdown_content += f"## {title}\n\n".replace(":", "")
+            markdown_content += f"## {title}\n\n"
             markdown_content += f"{tags}\n\n" if tags else ""
             one_line = summaries.get(idx, "")
             if one_line:

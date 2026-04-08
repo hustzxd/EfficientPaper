@@ -1,0 +1,38 @@
+paper {
+  title: "HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention"
+  abbr: "HISA"
+  url: "http://arxiv.org/abs/2603.28458v3"
+  authors: "Yufei Xu"
+  authors: "Fanxu Meng"
+  authors: "Fan Jiang"
+  authors: "Yuxuan Wang"
+  authors: "Ruijie Zhou"
+  authors: "Zhaohui Wang"
+  authors: "Jiexi Wu"
+  authors: "Zhixin Pan"
+  authors: "Xiaojuan Tang"
+  authors: "Wenjie Pei"
+  authors: "Tongxuan Liu"
+  authors: "Di Yin"
+  authors: "Xing Sun"
+  authors: "Muhan Zhang"
+  institutions: "Peking University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/DSA"
+}
+update_time: 1775614464

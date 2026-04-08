@@ -527,7 +527,7 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
-## mHC Family
+## DHC Family
 
 *3 methods, 2 relationships*
 
@@ -581,7 +581,7 @@ flowchart LR
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 ```
 
-## SeerAttention-R Family
+## TidalDecode Family
 
 *3 methods, 2 relationships*
 
@@ -627,5 +627,27 @@ flowchart LR
     click 2025_FusedKV "../?search=FusedKV" _blank
 
     2024_CLA ==>|" "| 2025_FusedKV
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+```
+
+## DSA Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_DSA["DSA[2025]"]
+    class 2025_DSA rootNode
+    click 2025_DSA "../?search=DSA" _blank
+    2026_HISA["HISA[2026]"]
+    class 2026_HISA leafNode
+    click 2026_HISA "../?search=HISA" _blank
+
+    2025_DSA ==>|" "| 2026_HISA
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```
