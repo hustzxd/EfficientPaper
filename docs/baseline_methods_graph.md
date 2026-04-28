@@ -522,7 +522,7 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
-## DHC Family
+## mHC Family
 
 *3 methods, 2 relationships*
 
@@ -576,7 +576,7 @@ flowchart LR
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 ```
 
-## TidalDecode Family
+## SeerAttention-R Family
 
 *3 methods, 2 relationships*
 
