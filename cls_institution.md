@@ -262,6 +262,7 @@
 | [Mirage](./meta/2025/MPK-Mirage.prototxt) | [Mirage: A Multi-Level Superoptimizer for Tensor Programs](http://arxiv.org/abs/2405.05751v3) | ![cover](./notes/2025/MPK-Mirage/cover.png) | ![Publish](https://img.shields.io/badge/2025-OSDI-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/mirage-project/mirage)](https://github.com/mirage-project/mirage) | [note](./notes/2025/MPK-Mirage/note.md) |
 | [MPK](./meta/2025/MPK.prototxt) | [Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs](http://arxiv.org/abs/2512.22219v1) | ![cover](./notes/2025/MPK/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/mirage-project/mirage)](https://github.com/mirage-project/mirage) | [note](./notes/2025/MPK/note.md) |
 | [R-KV](./meta/2025/R-KV.prototxt) | [R-KV: Redundancy-aware KV Cache Compression for Training-Free Reasoning Models Acceleration](http://arxiv.org/abs/2505.24133v2) | ![cover](./notes/2025/R-KV/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Zefan-Cai/R-KV)](https://github.com/Zefan-Cai/R-KV) | [note](./notes/2025/R-KV/note.md) |
+| [AdaSplash-2](./meta/2026/AdaSplash-2.prototxt) | [AdaSplash-2: Faster Differentiable Sparse Attention](http://arxiv.org/abs/2604.15180v1) | ![cover](./notes/2026/AdaSplash-2/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/AdaSplash-2/note.md) |
 </p>
 </details>
 <details open><summary><b>CentML</b></summary> 
@@ -355,6 +356,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | ![cover](./notes/2024/SMAT/fig2.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts)](https://github.com/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |
+| [SparKV](./meta/2026/SparKV.prototxt) | [SparKV: Overhead-Aware KV Cache Loading for Efficient On-Device LLM Inference](http://arxiv.org/abs/2604.21231v1) | ![cover](./notes/2026/SparKV/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/SparKV/note.md) |
 </p>
 </details>
 <details open><summary><b>Cohere</b></summary> 
@@ -461,6 +463,7 @@
 | [mHC](./meta/2025/mHC.prototxt) | [mHC: Manifold-Constrained Hyper-Connections](http://arxiv.org/abs/2512.24880v1) | ![cover](./notes/2025/mHC/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/mHC/note.md) |
 | [Engram](./meta/2026/Engram.prototxt) | [Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models](https://github.com/deepseek-ai/Engram/blob/main/Engram_paper.pdf) | ![cover](./notes/2026/Engram/cover.png) | ![Publish](https://img.shields.io/badge/2026-Github-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/deepseek-ai/Engram)](https://github.com/deepseek-ai/Engram) | [note](./notes/2026/Engram/note.md) |
 | [DualPath](./meta/2026/DualPath.prototxt) | [DualPath: Breaking the Storage Bandwidth Bottleneck in Agentic LLM Inference](http://arxiv.org/abs/2602.21548v2) | ![cover](./notes/2026/DualPath/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/DualPath/note.md) |
+| [DeepSeek-V4](./meta/2026/DeepSeek-V4.prototxt) | [DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf) | ![cover](./notes/2026/DeepSeek-V4/cover.png) | ![Publish](https://img.shields.io/badge/2026-huggingface-green) | [Pytorch](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/tree/main) | [note](./notes/2026/DeepSeek-V4/note.md) |
 </p>
 </details>
 <details open><summary><b>DeepSpeed</b></summary> 
@@ -1265,6 +1268,15 @@
 | [TorchAO](./meta/2025/TorchAO.prototxt) | [TorchAO: PyTorch-Native Training-to-Serving Model Optimization](http://arxiv.org/abs/2507.16099v1) | ![cover](./notes/2025/TorchAO/fig1.png) | ![Publish](https://img.shields.io/badge/2025-ICML_Workshop-green) | [![GitHub Repo stars](https://img.shields.io/github/stars/pytorch/ao)](https://github.com/pytorch/ao) | [note](./notes/2025/TorchAO/note.md) |
 </p>
 </details>
+<details open><summary><b>Meta Superintelligence Labs</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SparseForcing](./meta/2026/SparseForcing.prototxt) | [Sparse Forcing: Native Trainable Sparse Attention for Real-time Autoregressive Diffusion Video Generation](http://arxiv.org/abs/2604.21221v1) | ![cover](./notes/2026/SparseForcing/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/SparseForcing/note.md) |
+</p>
+</details>
 <details open><summary><b>Michigan State University</b></summary> 
 <p>
 
@@ -1442,6 +1454,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [Mooncake](./meta/2024/Mooncake.prototxt) | [Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving](http://arxiv.org/abs/2407.00079v4) | ![cover](./notes/2024/Mooncake/cover.png) | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/kvcache-ai/Mooncake)](https://github.com/kvcache-ai/Mooncake) | [note](./notes/2024/Mooncake/note.md) |
 | [MoBA](./meta/2025/MoBA.prototxt) | [MoBA: Mixture of Block Attention for Long-Context LLMs](http://arxiv.org/abs/2502.13189v1) | ![cover](./notes/2025/MoBA/fig1.png) | ![Publish](https://img.shields.io/badge/2025-NeurIPS-FF1493) | [![GitHub Repo stars](https://img.shields.io/github/stars/MoonshotAI/MoBA)](https://github.com/MoonshotAI/MoBA) | [note](./notes/2025/MoBA/note.md) |
+| [PrfaaS](./meta/2026/PrfaaS.prototxt) | [Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter](http://arxiv.org/abs/2604.15039v2) | ![cover](./notes/2026/PrfaaS/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/PrfaaS/note.md) |
 </p>
 </details>
 <details open><summary><b>Moore Threads AI</b></summary> 
@@ -2607,6 +2620,7 @@
 | [DualPath](./meta/2026/DualPath.prototxt) | [DualPath: Breaking the Storage Bandwidth Bottleneck in Agentic LLM Inference](http://arxiv.org/abs/2602.21548v2) | ![cover](./notes/2026/DualPath/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/DualPath/note.md) |
 | [GLM-5](./meta/2026/GLM-5.prototxt) | [GLM-5: from Vibe Coding to Agentic Engineering](http://arxiv.org/abs/2602.15763v1) | ![cover](./notes/2026/GLM-5/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/zai-org/GLM-5)](https://github.com/zai-org/GLM-5) | [note](./notes/2026/GLM-5/note.md) |
 | [IndexCache](./meta/2026/IndexCache.prototxt) | [IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse](http://arxiv.org/abs/2603.12201v1) | ![cover](./notes/2026/IndexCache/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/THUDM/IndexCache)](https://github.com/THUDM/IndexCache) | [note](./notes/2026/IndexCache/note.md) |
+| [PrfaaS](./meta/2026/PrfaaS.prototxt) | [Prefill-as-a-Service: KVCache of Next-Generation Models Could Go Cross-Datacenter](http://arxiv.org/abs/2604.15039v2) | ![cover](./notes/2026/PrfaaS/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/PrfaaS/note.md) |
 | [SDFP](./meta/2026/SDFP.prototxt) | [SDFP: Speculative Decoding with FIT-Pruned Models for Training-Free and Plug-and-Play LLM Acceleration](http://arxiv.org/abs/2602.05499v1) | ![cover](./notes/2026/SDFP/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/SDFP/note.md) |
 | [IBW4TYDG](./meta/2026/IBW4TYDG.prototxt) | [What Makes Low-Bit Quantization-Aware Training Work for Reasoning LLMs? A Systematic Study](http://arxiv.org/abs/2601.14888v1) | ![cover](./notes/2026/IBW4TYDG/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/IBW4TYDG/note.md) |
 </p>
@@ -2695,6 +2709,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [AdaSplash](./meta/2025/AdaSplash.prototxt) | [AdaSplash: Adaptive Sparse Flash Attention](http://arxiv.org/abs/2502.12082) |  | ![Publish](https://img.shields.io/badge/2025-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/deep-spin/adasplash)](https://github.com/deep-spin/adasplash) | [note](./notes/2025/AdaSplash/note.md) |
+| [AdaSplash-2](./meta/2026/AdaSplash-2.prototxt) | [AdaSplash-2: Faster Differentiable Sparse Attention](http://arxiv.org/abs/2604.15180v1) | ![cover](./notes/2026/AdaSplash-2/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/AdaSplash-2/note.md) |
 </p>
 </details>
 <details open><summary><b>University College London</b></summary> 
@@ -2770,6 +2785,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [DSA](./meta/2022/DSA.prototxt) | [Transformer Acceleration with Dynamic Sparse Attention](http://arxiv.org/abs/2110.11299v1) | ![cover](./notes/2022/DSA/fig2.png) | ![Publish](https://img.shields.io/badge/2022-TC-F08080) |  | [note](./notes/2022/DSA/note.md) |
+| [SparseForcing](./meta/2026/SparseForcing.prototxt) | [Sparse Forcing: Native Trainable Sparse Attention for Real-time Autoregressive Diffusion Video Generation](http://arxiv.org/abs/2604.21221v1) | ![cover](./notes/2026/SparseForcing/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/SparseForcing/note.md) |
 </p>
 </details>
 <details open><summary><b>University of Cambridge</b></summary> 

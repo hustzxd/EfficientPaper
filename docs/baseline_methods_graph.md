@@ -6,7 +6,7 @@ Each component represents a family of related methods, showing how newer papers 
 
 ## KIVI Family
 
-*55 methods, 65 relationships*
+*54 methods, 64 relationships*
 
 ```mermaid
 flowchart LR
@@ -177,9 +177,6 @@ flowchart LR
     2026_VQKV["VQKV[2026]"]
     class 2026_VQKV leafNode
     click 2026_VQKV "../?search=VQKV" _blank
-    Loki["Loki"]
-    class Loki rootNode
-    click Loki "../?search=Loki" _blank
 
     2023_H2O ==>|" "| 2024_InfLLM
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
@@ -309,8 +306,6 @@ flowchart LR
     linkStyle 62 stroke:#FFA500,stroke-width:2.5px
     2025_XAttention ==>|" "| 2025_TCA_Attention
     linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
-    Loki ==>|" "| 2025_H1B_KV
-    linkStyle 64 stroke:#9370DB,stroke-width:2.5px
 ```
 
 ## SVG Family
@@ -627,6 +622,50 @@ flowchart LR
     click 2025_FusedKV "../?search=FusedKV" _blank
 
     2024_CLA ==>|" "| 2025_FusedKV
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+```
+
+## DeepSeek-V3 Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2024_DeepSeek_V3["DeepSeek-V3[2024]"]
+    class 2024_DeepSeek_V3 rootNode
+    click 2024_DeepSeek_V3 "../?search=DeepSeek-V3" _blank
+    2026_DeepSeek_V4["DeepSeek-V4[2026]"]
+    class 2026_DeepSeek_V4 leafNode
+    click 2026_DeepSeek_V4 "../?search=DeepSeek-V4" _blank
+
+    2024_DeepSeek_V3 ==>|" "| 2026_DeepSeek_V4
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+```
+
+## AdaSplash Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_AdaSplash["AdaSplash[2025]"]
+    class 2025_AdaSplash rootNode
+    click 2025_AdaSplash "../?search=AdaSplash" _blank
+    2026_AdaSplash_2["AdaSplash-2[2026]"]
+    class 2026_AdaSplash_2 leafNode
+    click 2026_AdaSplash_2 "../?search=AdaSplash-2" _blank
+
+    2025_AdaSplash ==>|" "| 2026_AdaSplash_2
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```
 
