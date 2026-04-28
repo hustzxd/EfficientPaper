@@ -22,6 +22,5 @@ cover {
 }
 baseline {
   methods: "2024/KIVI"
-  methods: "Loki"
 }
-update_time: 1768129295
+update_time: 1776666580

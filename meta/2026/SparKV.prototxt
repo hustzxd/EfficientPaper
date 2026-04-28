@@ -1,0 +1,29 @@
+paper {
+  title: "SparKV: Overhead-Aware KV Cache Loading for Efficient On-Device LLM Inference"
+  abbr: "SparKV"
+  url: "http://arxiv.org/abs/2604.21231v1"
+  authors: "Hongyao Liu"
+  authors: "Liuqun Zhai"
+  authors: "Junyi Wang"
+  authors: "Zhengru Fang"
+  institutions: "City University of Hong Kong"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1777018476

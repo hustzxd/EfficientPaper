@@ -1,0 +1,36 @@
+paper {
+  title: "Sparse Forcing: Native Trainable Sparse Attention for Real-time Autoregressive Diffusion Video Generation"
+  abbr: "SparseForcing"
+  url: "http://arxiv.org/abs/2604.21221v1"
+  authors: "Boxun Xu"
+  authors: "Yuming Du"
+  authors: "Zichang Liu"
+  authors: "Siyu Yang"
+  authors: "Ziyang Jiang"
+  authors: "Siqi Yan"
+  authors: "Rajasi Saha"
+  authors: "Albert Pumarola"
+  authors: "Wenchen Wang"
+  authors: "Peng Li"
+  institutions: "Meta Superintelligence Labs"
+  institutions: "University of California, Santa Barbara"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1777024317

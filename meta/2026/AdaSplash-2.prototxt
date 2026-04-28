@@ -1,0 +1,33 @@
+paper {
+  title: "AdaSplash-2: Faster Differentiable Sparse Attention"
+  abbr: "AdaSplash-2"
+  url: "http://arxiv.org/abs/2604.15180v1"
+  authors: "Nuno Gonçalves"
+  authors: "Hugo Pitorro"
+  authors: "Vlad Niculae"
+  authors: "Edoardo Ponti"
+  authors: "Lei Li"
+  authors: "Andre Martins"
+  authors: "Marcos Treviso"
+  institutions: "Universidade de Lisboa"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2025/AdaSplash"
+}
+update_time: 1776908967

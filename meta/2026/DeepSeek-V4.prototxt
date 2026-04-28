@@ -1,0 +1,28 @@
+paper {
+  title: "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence"
+  abbr: "DeepSeek-V4"
+  url: "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf"
+  authors: "DeepSeek-AI"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "huggingface"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/tree/main"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_management
+  words: structure_design
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2024/DeepSeek-V3"
+}
+update_time: 1777279231
+rating: 5
