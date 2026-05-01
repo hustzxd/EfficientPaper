@@ -522,7 +522,7 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
-## mHC Family
+## DHC Family
 
 *3 methods, 2 relationships*
 

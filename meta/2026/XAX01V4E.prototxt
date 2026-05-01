@@ -1,0 +1,32 @@
+paper {
+  title: "Don\'t Break the Cache: An Evaluation of Prompt Caching for Long-Horizon Agentic Tasks"
+  abbr: "XAX01V4E"
+  url: "http://arxiv.org/abs/2601.06007v2"
+  authors: "Elias Lumer"
+  authors: "Faheem Nizar"
+  authors: "Akshaya Jangiti"
+  authors: "Kevin Frank"
+  authors: "Anmol Gulati"
+  authors: "Mandar Phadate"
+  authors: "Vamse Kumar Subbiah"
+  institutions: "PricewaterhouseCoopers"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: survey
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1777431694

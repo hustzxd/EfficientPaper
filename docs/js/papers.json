@@ -1,6 +1,36 @@
 {
   "papers": [
     {
+      "id": "XAX01V4E",
+      "title": "Don't Break the Cache: An Evaluation of Prompt Caching for Long-Horizon Agentic Tasks",
+      "abbr": "XAX01V4E",
+      "url": "http://arxiv.org/abs/2601.06007v2",
+      "authors": [
+        "Elias Lumer",
+        "Faheem Nizar",
+        "Akshaya Jangiti",
+        "Kevin Frank",
+        "Anmol Gulati",
+        "Mandar Phadate",
+        "Vamse Kumar Subbiah"
+      ],
+      "institutions": [
+        "PricewaterhouseCoopers"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management",
+        "41-Survey"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/XAX01V4E/note/",
+      "prototxt_path": "meta/2026/XAX01V4E.prototxt",
+      "update_time": 1777431694,
+      "rating": 0
+    },
+    {
       "id": "DeepSeek-V4",
       "title": "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
       "abbr": "DeepSeek-V4",
@@ -14529,5 +14559,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 438
+  "total": 439
 }

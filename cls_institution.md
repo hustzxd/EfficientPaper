@@ -1859,6 +1859,15 @@
 | [FlashInfer](./meta/2025/FlashInfer.prototxt) | [FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving](http://arxiv.org/abs/2501.01005v2) | ![cover](./notes/2025/FlashInfer/cover.png) | ![Publish](https://img.shields.io/badge/2025-MLSys-DDA0DD) | [![GitHub Repo stars](https://img.shields.io/github/stars/flashinfer-ai/flashinfer)](https://github.com/flashinfer-ai/flashinfer) | [note](./notes/2025/FlashInfer/note.md) |
 </p>
 </details>
+<details open><summary><b>PricewaterhouseCoopers</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [XAX01V4E](./meta/2026/XAX01V4E.prototxt) | [Don't Break the Cache: An Evaluation of Prompt Caching for Long-Horizon Agentic Tasks](http://arxiv.org/abs/2601.06007v2) |  | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/XAX01V4E/note.md) |
+</p>
+</details>
 <details open><summary><b>Princeton</b></summary> 
 <p>
 
