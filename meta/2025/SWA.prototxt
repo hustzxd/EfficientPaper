@@ -1,0 +1,40 @@
+paper {
+  title: "Sliding Window Attention Training for Efficient Large Language Models"
+  abbr: "SWA"
+  url: "http://arxiv.org/abs/2502.18845v2"
+  authors: "Zichuan Fu"
+  authors: "Wentao Song"
+  authors: "Yejing Wang"
+  authors: "Xian Wu"
+  authors: "Yefeng Zheng"
+  authors: "Yingying Zhang"
+  authors: "Derong Xu"
+  authors: "Xuetao Wei"
+  authors: "Tong Xu"
+  authors: "Xiangyu Zhao"
+  institutions: "City University of Hong Kong"
+  institutions: "Xi’an Jiaotong University"
+  institutions: "Tencent Youtu Lab"
+  institutions: "Westlake University"
+  institutions: "University of Science and Technology of China"
+  institutions: "Southern University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Fzkuji/swat-attention"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1778034822

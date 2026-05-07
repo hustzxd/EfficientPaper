@@ -1,6 +1,44 @@
 {
   "papers": [
     {
+      "id": "SWA",
+      "title": "Sliding Window Attention Training for Efficient Large Language Models",
+      "abbr": "SWA",
+      "url": "http://arxiv.org/abs/2502.18845v2",
+      "authors": [
+        "Zichuan Fu",
+        "Wentao Song",
+        "Yejing Wang",
+        "Xian Wu",
+        "Yefeng Zheng",
+        "Yingying Zhang",
+        "Derong Xu",
+        "Xuetao Wei",
+        "Tong Xu",
+        "Xiangyu Zhao"
+      ],
+      "institutions": [
+        "City University of Hong Kong",
+        "Xi’an Jiaotong University",
+        "Tencent Youtu Lab",
+        "Westlake University",
+        "University of Science and Technology of China",
+        "Southern University of Science and Technology"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/SWA/cover.png",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/Fzkuji/swat-attention",
+      "note_url": "notes/2025/SWA/note/",
+      "prototxt_path": "meta/2025/SWA.prototxt",
+      "update_time": 1778034822,
+      "rating": 0
+    },
+    {
       "id": "XAX01V4E",
       "title": "Don't Break the Cache: An Evaluation of Prompt Caching for Long-Horizon Agentic Tasks",
       "abbr": "XAX01V4E",
@@ -14559,5 +14597,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 439
+  "total": 440
 }
