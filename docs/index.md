@@ -224,6 +224,18 @@
     <img id="lightbox-img" src="" alt="Preview">
     <span class="lightbox-hint">Press ESC or click to close</span>
   </div>
+
+  <!-- Detail Panel (Side Drawer) -->
+  <div id="detail-panel" class="detail-panel">
+    <div class="detail-panel-header">
+      <h2 id="detail-title" class="detail-title"></h2>
+      <button id="close-detail" class="close-detail-btn" title="Close (Esc)">✕</button>
+    </div>
+    <div id="detail-content" class="detail-panel-content">
+      <!-- Content will be loaded dynamically -->
+    </div>
+  </div>
+  <div id="detail-overlay" class="detail-overlay"></div>
 </div>
 
 <style>
@@ -1689,6 +1701,328 @@ a.server-disabled {
   .paper-meta {
     flex-direction: column;
     gap: 4px;
+  }
+}
+
+/* Detail Panel (Side Drawer) */
+.detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 998;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.detail-overlay.active {
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+.detail-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  z-index: 999;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.detail-panel.active {
+  right: 0;
+}
+
+.detail-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.detail-title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #2c3e50;
+  flex: 1;
+  padding-right: 12px;
+}
+
+.close-detail-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.close-detail-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.detail-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Detail Panel Content Styles */
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-authors {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.detail-institutions {
+  font-size: 13px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.detail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail-abstract {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+.detail-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.detail-link:hover {
+  background: #e8e8e8;
+}
+
+.detail-link-icon {
+  font-size: 16px;
+}
+
+.detail-cover {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.detail-cover:hover {
+  opacity: 0.9;
+}
+
+.detail-loading {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+}
+
+.detail-note-preview {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 12px;
+  background: #f9f9fa;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.detail-note-preview h1,
+.detail-note-preview h2,
+.detail-note-preview h3 {
+  font-size: 14px;
+  margin: 12px 0 6px 0;
+  color: #2c3e50;
+}
+
+.detail-note-preview h1:first-child,
+.detail-note-preview h2:first-child,
+.detail-note-preview h3:first-child {
+  margin-top: 0;
+}
+
+.detail-note-preview img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.detail-note-preview p {
+  margin: 6px 0;
+}
+
+.detail-note-preview ul,
+.detail-note-preview ol {
+  margin: 6px 0;
+  padding-left: 20px;
+}
+
+.detail-note-preview code {
+  background: #e9ecef;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+/* Make paper cards clickable */
+.paper-card {
+  cursor: pointer;
+}
+
+.paper-card .paper-content {
+  pointer-events: none;
+}
+
+.paper-card .paper-links,
+.paper-card .paper-checkbox,
+.paper-card .copy-btn,
+.paper-card .share-btn,
+.paper-card .pdf-btn,
+.paper-card .edit-link,
+.paper-card .graph-link,
+.paper-card .paper-rating {
+  pointer-events: auto;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .detail-panel {
+    width: 100%;
+    right: -100%;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .detail-panel.active {
+    right: 0;
+  }
+
+  .detail-panel-header {
+    padding: 16px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .detail-title {
+    font-size: 16px;
+    padding-right: 16px;
+  }
+
+  .close-detail-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+    margin: -8px -8px -8px 0;
+  }
+
+  .detail-panel-content {
+    padding: 16px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .detail-section {
+    margin-bottom: 20px;
+  }
+
+  .detail-link {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .detail-cover {
+    max-height: 200px;
+  }
+
+  /* Swipe indicator */
+  .detail-panel::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    z-index: 11;
+  }
+
+  .detail-panel-header {
+    padding-top: 24px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 375px) {
+  .detail-panel-content {
+    padding: 12px;
+  }
+
+  .detail-title {
+    font-size: 15px;
   }
 }
 </style>
@@ -3761,6 +4095,226 @@ function closeLightbox() {
     }
   }
 
+  // Detail Panel (Side Drawer) functions
+  let currentDetailPaper = null;
+
+  function openDetailPanel(paper) {
+    const panel = document.getElementById('detail-panel');
+    const overlay = document.getElementById('detail-overlay');
+    const titleEl = document.getElementById('detail-title');
+    const contentEl = document.getElementById('detail-content');
+
+    currentDetailPaper = paper;
+
+    // Set title
+    titleEl.textContent = paper.title;
+
+    // Build content HTML
+    let html = '';
+
+    // Cover image
+    if (paper.cover) {
+      const coverSrc = `${basePath}/${paper.cover}`;
+      html += `
+        <div class="detail-section">
+          <img src="${coverSrc}" alt="cover" class="detail-cover" onclick="openLightbox(event, this.src)">
+        </div>
+      `;
+    }
+
+    // Authors and Institutions
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">Authors</div>
+        <div class="detail-authors">${paper.authors.join(', ')}</div>
+        ${paper.institutions.length > 0 ? `<div class="detail-institutions">${paper.institutions.join(', ')}</div>` : ''}
+      </div>
+    `;
+
+    // Meta badges
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">Metadata</div>
+        <div class="detail-badges">
+          <span class="paper-badge badge-year">${paper.year}</span>
+          <span class="paper-badge badge-venue">${paper.venue}</span>
+          ${paper.keywords.map(k => `<span class="paper-badge badge-keyword">${k}</span>`).join('')}
+        </div>
+      </div>
+    `;
+
+    // Rating
+    const rating = getRating(paper);
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">Rating</div>
+        <span class="paper-rating" data-path="${paper.prototxt_path}" data-rating="${rating}" style="font-size: 20px;">${renderStars(rating)}</span>
+      </div>
+    `;
+
+    // Note preview placeholder
+    if (paper.note_url) {
+      html += `
+        <div class="detail-section" id="detail-note-section">
+          <div class="detail-section-title">Notes Preview</div>
+          <div id="detail-note" class="detail-loading">Loading notes...</div>
+        </div>
+      `;
+    }
+
+    // Links
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">Links</div>
+        <div class="detail-links">
+          ${paper.url ? `<a href="${paper.url}" target="_blank" class="detail-link"><span class="detail-link-icon">📄</span> Paper</a>` : ''}
+          ${paper.code_url ? `<a href="${paper.code_url}" target="_blank" class="detail-link"><span class="detail-link-icon">💻</span> Code</a>` : ''}
+          ${paper.note_url ? `<a href="${paper.note_url}" target="_blank" class="detail-link"><span class="detail-link-icon">📝</span> Full Notes</a>` : ''}
+        </div>
+      </div>
+    `;
+
+    contentEl.innerHTML = html;
+
+    // Show panel
+    panel.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Load note preview
+    if (paper.note_url) {
+      loadDetailNotePreview(paper);
+    }
+  }
+
+  async function loadDetailNotePreview(paper) {
+    const noteEl = document.getElementById('detail-note');
+    if (!noteEl) return;
+
+    try {
+      // note_url is like "notes/2025/SWA/note/" - fetch HTML version from mkdocs
+      const noteUrl = paper.note_url.endsWith('/') ? paper.note_url : paper.note_url + '/';
+      const response = await fetch(`${basePath}/${noteUrl}?v=${Date.now()}`);
+
+      if (!response.ok) {
+        noteEl.textContent = 'Notes not available';
+        noteEl.classList.remove('detail-loading');
+        return;
+      }
+
+      const html = await response.text();
+      // Extract main content from the HTML page
+      const content = extractNoteContent(html);
+      noteEl.innerHTML = content;
+      noteEl.classList.remove('detail-loading');
+      noteEl.classList.add('detail-note-preview');
+    } catch (error) {
+      console.error('Failed to load notes:', error);
+      noteEl.textContent = 'Failed to load notes';
+      noteEl.classList.remove('detail-loading');
+    }
+  }
+
+  function extractNoteContent(html) {
+    // Create a temporary DOM element to parse the HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Find the main content area (mkdocs readthedocs theme uses .section)
+    const contentEl = doc.querySelector('.section[itemprop="articleBody"]') ||
+                      doc.querySelector('[role="main"]') ||
+                      doc.querySelector('article') ||
+                      doc.querySelector('main');
+
+    if (!contentEl) {
+      return '<p>Could not extract note content</p>';
+    }
+
+    // Remove navigation elements, headers, footers, comments
+    const toRemove = contentEl.querySelectorAll('nav, footer, .headerlink, .giscus, script, .wy-nav-side');
+    toRemove.forEach(el => el.remove());
+
+    // Get the content after the title (h1)
+    const title = contentEl.querySelector('h1');
+    if (title) {
+      // Remove the title
+      title.remove();
+    }
+
+    // Remove the first image if it's the cover (we already show it)
+    const firstImg = contentEl.querySelector('img');
+    if (firstImg && firstImg.src.includes('cover')) {
+      firstImg.closest('p')?.remove() || firstImg.remove();
+    }
+
+    // Limit content length for preview
+    let content = contentEl.innerHTML;
+    if (content.length > 5000) {
+      content = content.substring(0, 5000) + '...<p><em>Content truncated. Click "Full Notes" to read more.</em></p>';
+    }
+
+    return content;
+  }
+
+  function simpleMarkdownToHtml(markdown) {
+    let html = markdown;
+
+    // Remove title (first # heading)
+    html = html.replace(/^#\s+.*$/m, '');
+
+    // Remove metadata block (--- ... ---)
+    html = html.replace(/^---[\s\S]*?---$/m, '');
+
+    // Convert headings
+    html = html.replace(/^###\s+(.*$)/gm, '<h3>$1</h3>');
+    html = html.replace(/^##\s+(.*$)/gm, '<h2>$1</h2>');
+
+    // Convert images
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+
+    // Convert bold
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+    // Convert italic
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+    // Convert code blocks
+    html = html.replace(/```[\s\S]*?```/g, (match) => {
+      const code = match.replace(/```\w*\n?/g, '').replace(/```$/g, '');
+      return `<pre><code>${code}</code></pre>`;
+    });
+
+    // Convert inline code
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Convert lists
+    html = html.replace(/^\s*[-*]\s+(.*$)/gm, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+
+    // Convert paragraphs (lines that don't start with HTML tags)
+    html = html.replace(/^(?!<[a-z]|$)(.*$)/gm, '<p>$1</p>');
+
+    // Clean up empty paragraphs
+    html = html.replace(/<p>\s*<\/p>/g, '');
+
+    // Limit length for preview
+    if (html.length > 3000) {
+      html = html.substring(0, 3000) + '...';
+    }
+
+    return html;
+  }
+
+  function closeDetailPanel() {
+    const panel = document.getElementById('detail-panel');
+    const overlay = document.getElementById('detail-overlay');
+
+    panel.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    currentDetailPaper = null;
+  }
+
   // Initialize
   function init() {
     // Check local server availability first
@@ -3889,7 +4443,13 @@ function closeLightbox() {
         document.getElementById('search-input').focus();
       }
       if (e.key === 'Escape') {
-        // Close GitHub modal first if open
+        // Close detail panel first if open
+        const detailPanel = document.getElementById('detail-panel');
+        if (detailPanel.classList.contains('active')) {
+          closeDetailPanel();
+          return;
+        }
+        // Close GitHub modal if open
         const githubModal = document.getElementById('github-modal');
         if (githubModal.style.display === 'flex') {
           closeGithubModal();
@@ -3937,6 +4497,97 @@ function closeLightbox() {
 
     // Click overlay to close lightbox
     document.getElementById('lightbox').addEventListener('click', closeLightbox);
+
+    // Detail panel event listeners
+    document.getElementById('close-detail').addEventListener('click', closeDetailPanel);
+    document.getElementById('detail-overlay').addEventListener('click', closeDetailPanel);
+
+    // Paper card click to open detail panel (event delegation)
+    document.getElementById('paper-list').addEventListener('click', function(e) {
+      // Don't open detail if clicking on interactive elements
+      const interactive = e.target.closest('.paper-links, .paper-checkbox, .paper-rating, a, button');
+      if (interactive) return;
+
+      const card = e.target.closest('.paper-card');
+      if (!card) return;
+
+      // Find the paper data
+      const shareId = card.dataset.shareId;
+      const paper = papers.find(p => getPaperShareId(p) === shareId);
+      if (paper) {
+        openDetailPanel(paper);
+      }
+    });
+
+    // Swipe to close on mobile
+    initSwipeToClose();
+  }
+
+  // Swipe to close functionality for mobile
+  function initSwipeToClose() {
+    const panel = document.getElementById('detail-panel');
+    let startY = 0;
+    let startX = 0;
+    let currentY = 0;
+    let isDragging = false;
+    let startTime = 0;
+
+    panel.addEventListener('touchstart', (e) => {
+      // Only handle if touching the panel header or top area
+      const touch = e.touches[0];
+      startY = touch.clientY;
+      startX = touch.clientX;
+      startTime = Date.now();
+      isDragging = false;
+
+      // Check if we're at the top of the scroll
+      const content = panel.querySelector('.detail-panel-content');
+      if (content) {
+        isDragging = content.scrollTop <= 0;
+      }
+    }, { passive: true });
+
+    panel.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+
+      const touch = e.touches[0];
+      currentY = touch.clientY;
+      const deltaY = currentY - startY;
+      const deltaX = touch.clientX - startX;
+
+      // Only handle vertical swipes down
+      if (deltaY > 0 && Math.abs(deltaY) > Math.abs(deltaX)) {
+        // Prevent default to stop scrolling
+        e.preventDefault();
+
+        // Apply transform with resistance
+        const resistance = 0.3;
+        const translateY = deltaY * resistance;
+        panel.style.transform = `translateY(${translateY}px)`;
+        panel.style.transition = 'none';
+      }
+    }, { passive: false });
+
+    panel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+
+      const deltaY = currentY - startY;
+      const deltaTime = Date.now() - startTime;
+      const velocity = deltaY / deltaTime;
+
+      // Reset transform
+      panel.style.transform = '';
+      panel.style.transition = '';
+
+      // Close if swiped down enough or with enough velocity
+      if (deltaY > 100 || velocity > 0.5) {
+        closeDetailPanel();
+      }
+
+      isDragging = false;
+      startY = 0;
+      currentY = 0;
+    }, { passive: true });
   }
 
   // Run on DOM ready

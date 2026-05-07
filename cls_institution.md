@@ -356,6 +356,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [SMAT](./meta/2024/SMAT.prototxt) | [Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts](http://arxiv.org/abs/2403.08477v3) | ![cover](./notes/2024/SMAT/fig2.png) | ![Publish](https://img.shields.io/badge/2024-ICML-FF8C00) | [![GitHub Repo stars](https://img.shields.io/github/stars/szc12153/sparse_interpolated_experts)](https://github.com/szc12153/sparse_interpolated_experts) | [note](./notes/2024/SMAT/note.md) |
 | [CHESS](./meta/2024/CHESS.prototxt) | [Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification](http://arxiv.org/abs/2409.01366v1) |  | ![Publish](https://img.shields.io/badge/2024-arXiv-1E88E5) | [Pytorch](https://anonymous.4open.science/r/CHESS-BA40/README.md) | [note](./notes/2024/CHESS/note.md) |
+| [SWA](./meta/2025/SWA.prototxt) | [Sliding Window Attention Training for Efficient Large Language Models](http://arxiv.org/abs/2502.18845v2) | ![cover](./notes/2025/SWA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Fzkuji/swat-attention)](https://github.com/Fzkuji/swat-attention) | [note](./notes/2025/SWA/note.md) |
 | [SparKV](./meta/2026/SparKV.prototxt) | [SparKV: Overhead-Aware KV Cache Loading for Efficient On-Device LLM Inference](http://arxiv.org/abs/2604.21231v1) | ![cover](./notes/2026/SparKV/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/SparKV/note.md) |
 </p>
 </details>
@@ -2279,6 +2280,15 @@
 | [MixServe](./meta/2026/MixServe.prototxt) | [MixServe: An Automatic Distributed Serving System for MoE Models with Hybrid Parallelism Based on Fused Communication Algorithm](http://arxiv.org/abs/2601.08800v1) |  | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/MixServe/note.md) |
 </p>
 </details>
+<details open><summary><b>Southern University of Science and Technology</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SWA](./meta/2025/SWA.prototxt) | [Sliding Window Attention Training for Efficient Large Language Models](http://arxiv.org/abs/2502.18845v2) | ![cover](./notes/2025/SWA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Fzkuji/swat-attention)](https://github.com/Fzkuji/swat-attention) | [note](./notes/2025/SWA/note.md) |
+</p>
+</details>
 <details open><summary><b>Southwest University</b></summary> 
 <p>
 
@@ -2416,6 +2426,7 @@
 |:-----|:------|:------|:--------|:-----|:-----|
 | [DSnoT](./meta/2024/DSnoT.prototxt) | [Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs](http://arxiv.org/abs/2310.08915v3) | ![cover](./notes/2024/DSnoT/dsnot.png) | ![Publish](https://img.shields.io/badge/2024-ICLR-FF6B6B) | [![GitHub Repo stars](https://img.shields.io/github/stars/zyxxmu/DSnoT)](https://github.com/zyxxmu/DSnoT) | [note](./notes/2024/DSnoT/note.md) |
 | [SSA](./meta/2025/SSA.prototxt) | [SSA: Sparse Sparse Attention by Aligning Full and Sparse Attention Outputs in Feature Space](http://arxiv.org/abs/2511.20102v1) | ![cover](./notes/2025/SSA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/SSA/note.md) |
+| [SWA](./meta/2025/SWA.prototxt) | [Sliding Window Attention Training for Efficient Large Language Models](http://arxiv.org/abs/2502.18845v2) | ![cover](./notes/2025/SWA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Fzkuji/swat-attention)](https://github.com/Fzkuji/swat-attention) | [note](./notes/2025/SWA/note.md) |
 </p>
 </details>
 <details open><summary><b>Tensormesh</b></summary> 
@@ -2982,6 +2993,7 @@
 | [AttentionPredictor](./meta/2025/AttentionPredictor.prototxt) | [AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference](http://arxiv.org/abs/2502.04077v1) | ![cover](./notes/2025/AttentionPredictor/fig1.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/AttentionPredictor/note.md) |
 | [Chelsea](./meta/2025/Chelsea.prototxt) | [Efficient Long-Context LLM Inference via KV Cache Clustering](http://arxiv.org/abs/2506.11418v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/Chelsea/note.md) |
 | [HATA](./meta/2025/HATA.prototxt) | [HATA: Trainable and Hardware-Efficient Hash-Aware Top-k Attention for Scalable Large Model Inference](http://arxiv.org/abs/2506.02572v1) | ![cover](./notes/2025/HATA/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/gpzlx1/HATA)](https://github.com/gpzlx1/HATA) | [note](./notes/2025/HATA/note.md) |
+| [SWA](./meta/2025/SWA.prototxt) | [Sliding Window Attention Training for Efficient Large Language Models](http://arxiv.org/abs/2502.18845v2) | ![cover](./notes/2025/SWA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Fzkuji/swat-attention)](https://github.com/Fzkuji/swat-attention) | [note](./notes/2025/SWA/note.md) |
 | [DefensiveKV](./meta/2025/DefensiveKV.prototxt) | [Taming the Fragility of KV Cache Eviction in LLM Inference](http://arxiv.org/abs/2510.13334v1) |  | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/FFY0/DefensiveKV)](https://github.com/FFY0/DefensiveKV) | [note](./notes/2025/DefensiveKV/note.md) |
 </p>
 </details>
@@ -3202,6 +3214,7 @@
 | Meta | Title | Cover | Publish | Code | Note |
 |:-----|:------|:------|:--------|:-----|:-----|
 | [HSA](./meta/2025/HSA.prototxt) | [Every Token Counts: Generalizing 16M Ultra-Long Context in Large Language Models](http://arxiv.org/abs/2511.23319v1) | ![cover](./notes/2025/HSA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/HSA/note.md) |
+| [SWA](./meta/2025/SWA.prototxt) | [Sliding Window Attention Training for Efficient Large Language Models](http://arxiv.org/abs/2502.18845v2) | ![cover](./notes/2025/SWA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Fzkuji/swat-attention)](https://github.com/Fzkuji/swat-attention) | [note](./notes/2025/SWA/note.md) |
 </p>
 </details>
 <details open><summary><b>Wuhan University</b></summary> 
@@ -3251,6 +3264,15 @@
 | [SpindleKV](./meta/2025/SpindleKV.prototxt) | [SpindleKV: A Novel KV Cache Reduction Method Balancing Both Shallow and Deep Layers](http://arxiv.org/abs/2507.06517v1) | ![cover](./notes/2025/SpindleKV/fig2.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/tyxqc/SpindleKV)](https://github.com/tyxqc/SpindleKV) | [note](./notes/2025/SpindleKV/note.md) |
 | [VecInfer](./meta/2025/VecInfer.prototxt) | [VecInfer: Efficient LLM Inference with Low-Bit KV Cache via Outlier-Suppressed Vector Quantization](http://arxiv.org/abs/2510.06175v1) | ![cover](./notes/2025/VecInfer/fig4.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) |  | [note](./notes/2025/VecInfer/note.md) |
 | [HySparse](./meta/2026/HySparse.prototxt) | [HySparse: A Hybrid Sparse Attention Architecture with Oracle Token Selection and KV Cache Sharing](http://arxiv.org/abs/2602.03560v1) | ![cover](./notes/2026/HySparse/cover.png) | ![Publish](https://img.shields.io/badge/2026-arXiv-1E88E5) |  | [note](./notes/2026/HySparse/note.md) |
+</p>
+</details>
+<details open><summary><b>Xi’an Jiaotong University</b></summary> 
+<p>
+
+
+| Meta | Title | Cover | Publish | Code | Note |
+|:-----|:------|:------|:--------|:-----|:-----|
+| [SWA](./meta/2025/SWA.prototxt) | [Sliding Window Attention Training for Efficient Large Language Models](http://arxiv.org/abs/2502.18845v2) | ![cover](./notes/2025/SWA/cover.png) | ![Publish](https://img.shields.io/badge/2025-arXiv-1E88E5) | [![GitHub Repo stars](https://img.shields.io/github/stars/Fzkuji/swat-attention)](https://github.com/Fzkuji/swat-attention) | [note](./notes/2025/SWA/note.md) |
 </p>
 </details>
 <details open><summary><b>Yale University</b></summary> 
