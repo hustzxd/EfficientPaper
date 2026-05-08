@@ -1,6 +1,6 @@
 # DeepSeek-V3 Technical Report
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

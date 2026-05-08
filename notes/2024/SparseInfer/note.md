@@ -1,6 +1,6 @@
 # SparseInfer: Training-free Prediction of Activation Sparsity for Fast LLM Inference
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

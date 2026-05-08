@@ -29,7 +29,7 @@ keyword {
   words: deployment
 }
 cover {
-  url: "cover.png"
+  url: "cover.jpg"
 }
 baseline {
   methods: "None"

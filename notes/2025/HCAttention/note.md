@@ -2,7 +2,7 @@
 
 > Dongquan Yang, Yifan Yang, Xiaotian Yu, Xianbiao Qi, Rong Xiao
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Zunhai Su, Kehong Yuan
 
-![](fig8.png)
+![](fig8.jpg)
 
 ## Abstract
 
@@ -29,4 +29,4 @@ numerical outliers.
 
 KV Sink现象一般在前几个token，但实际情况也完全一样，本工作通过观察outlier的分布，并分析得到stable outlier，能够高效的预测Sink的位置，基于此进行混合位宽的量化。
 
-![](tab2.png)
+![](tab2.jpg)

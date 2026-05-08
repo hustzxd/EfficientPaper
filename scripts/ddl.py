@@ -1,14 +1,16 @@
 import json
+import os
 from datetime import datetime
 from typing import Any, Dict
 
-import ipdb
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.patches import Patch
 
 from scripts.generate_paper_list import PUBLISH_COLOR
+
+TIMELINE_OUTPUT = "notes/conference_timeline.png"
 
 
 def read_conferences(file_path: str) -> Dict[str, Any]:
@@ -95,6 +97,13 @@ def create_conference_timeline(conferences_data: Dict[str, Any]):
 
 
 def main():
+    # Skip if already generated today
+    if os.path.exists(TIMELINE_OUTPUT):
+        mtime = datetime.fromtimestamp(os.path.getmtime(TIMELINE_OUTPUT))
+        if mtime.date() == datetime.now().date():
+            print(f"Timeline already generated today ({mtime.strftime('%H:%M:%S')}), skipping.")
+            return
+
     # Read conference data
     conferences_data = read_conferences("meta/search/conferences.json")
 
@@ -273,9 +282,8 @@ def main():
     plt.tight_layout()
 
     # Save the plot to file
-    plt.savefig("notes/conference_timeline.png", dpi=300, bbox_inches="tight")
-    # plt.show()
-    print("Chart saved as conference_timeline.png")
+    plt.savefig(TIMELINE_OUTPUT, dpi=300, bbox_inches="tight")
+    print(f"Chart saved as {TIMELINE_OUTPUT}")
 
 
 if __name__ == "__main__":

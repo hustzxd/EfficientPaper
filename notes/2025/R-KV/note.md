@@ -2,7 +2,7 @@
 
 > Zefan Cai, Wen Xiao, Hanshi Sun, Cheng Luo, Yikai Zhang, Ke Wan, Yucheng Li, Yeyang Zhou, Li-Wen Chang, Jiuxiang Gu, Zhen Dong, Anima Anandkumar, Abedelkadir Asi, Junjie Hu
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

@@ -1,6 +1,6 @@
 # Recycled Attention: Efficient inference for long-context language models
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

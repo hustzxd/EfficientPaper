@@ -1,6 +1,6 @@
 # DBudgetKV: Dynamic Budget in KV Cache Compression for Ensuring Optimal Performance
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

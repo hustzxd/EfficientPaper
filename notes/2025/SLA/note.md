@@ -2,7 +2,7 @@
 
 > Jintao Zhang, Haoxu Wang, Kai Jiang, Shuo Yang, Kaiwen Zheng, Haocheng Xi, Ziteng Wang, Hongzhou Zhu, Min Zhao, Ion Stoica, Joseph E. Gonzalez, Jun Zhu, Jianfei Chen
 
-![111](fig4.png)
+![111](fig4.jpg)
 
 ## Abstract
 

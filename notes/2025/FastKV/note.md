@@ -1,6 +1,6 @@
 # FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

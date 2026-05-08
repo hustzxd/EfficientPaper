@@ -2,7 +2,7 @@
 
 > Haowei Zhang, Shudong Yang, Jinlan Fu, See-Kiong Ng, Xipeng Qiu
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

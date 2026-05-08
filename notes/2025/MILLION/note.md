@@ -2,7 +2,7 @@
 
 > Zongwu Wang, Peng Xu, Fangxin Liu, Yiwei Hu, Qingxiao Sun, Gezi Li, Cheng Li, Xuan Wang, Li Jiang, Haibing Guan
 
-![111](fig4.png)
+![111](fig4.jpg)
 
 ## Abstract
 

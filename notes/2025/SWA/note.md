@@ -2,7 +2,7 @@
 
 > Zichuan Fu, Wentao Song, Yejing Wang, Xian Wu, Yefeng Zheng, Yingying Zhang, Derong Xu, Xuetao Wei, Tong Xu, Xiangyu Zhao
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

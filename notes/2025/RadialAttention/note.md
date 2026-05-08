@@ -2,7 +2,7 @@
 
 > Xingyang Li, Muyang Li, Tianle Cai, Haocheng Xi, Shuo Yang, Yujun Lin, Lvmin Zhang, Songlin Yang, Jinbo Hu, Kelly Peng, Maneesh Agrawala, Ion Stoica, Kurt Keutzer, Song Han
 
-![](fig3.png)
+![](fig3.jpg)
 
 ## Abstract
 

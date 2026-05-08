@@ -2,7 +2,7 @@
 
 > Ted Zadouri, Markus Hoehnerbach, Jay Shah, Timmy Liu, Vijay Thakkar, Tri Dao
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

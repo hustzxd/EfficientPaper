@@ -2,7 +2,7 @@
 
 > Jikai Wang, Jianchao Tan, Yuxuan Hu, Jiayu Qin, Yerui Sun, Yuchen Xie, Xunliang Cai, Juntao Li, Min Zhang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

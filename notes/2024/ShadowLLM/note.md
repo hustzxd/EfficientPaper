@@ -1,6 +1,6 @@
 # ShadowLLM: Predictor-based Contextual Sparsity for Large Language Models
 
-![](shadowLLM.png)
+![](shadowLLM.jpg)
 
 ## Abstract
 

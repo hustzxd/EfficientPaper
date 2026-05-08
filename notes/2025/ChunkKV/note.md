@@ -1,6 +1,6 @@
 # ChunkKV: Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

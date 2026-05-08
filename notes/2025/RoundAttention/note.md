@@ -2,7 +2,7 @@
 
 > Yaohua Tang, Zhicheng Hu, Kun Cheng, Fan Mo, Qiheng Lv, Hua Wang, Zhi Chen
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Jiacheng Liu, Peng Tang, Wenfeng Wang, Yuhang Ren, Xiaofeng Hou, Pheng-Ann Heng, Minyi Guo, Chao Li
 
-![](tab1.png)
+![](tab1.jpg)
 
 ## Abstract
 

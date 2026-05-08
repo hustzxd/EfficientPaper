@@ -2,7 +2,7 @@
 
 > Raghavv Goel, Junyoung Park, Mukul Gagrani, Dalton Jones, Matthew Morse, Harper Langston, Mingu Lee, Chris Lott
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

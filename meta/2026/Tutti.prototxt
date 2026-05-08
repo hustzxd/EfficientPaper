@@ -1,0 +1,35 @@
+paper {
+  title: "Tutti: Making SSD-Backed KV Cache Practical for Long-Context LLM Serving"
+  abbr: "Tutti"
+  url: "http://arxiv.org/abs/2605.03375v1"
+  authors: "Shi Qiu"
+  authors: "Yifan Hu"
+  authors: "Xintao Wang"
+  authors: "Wenhao Zhu"
+  authors: "Jianqin Yan"
+  authors: "Hao Chen"
+  authors: "Kaiqiang Xu"
+  authors: "Kai Chen"
+  authors: "Yiming Zhang"
+  institutions: "Xiamen University"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Hong Kong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1778220869

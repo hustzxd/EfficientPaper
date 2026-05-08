@@ -2,7 +2,7 @@
 
 > Yufei Xu, Fanxu Meng, Fan Jiang, Yuxuan Wang, Ruijie Zhou, Zhaohui Wang, Jiexi Wu, Zhixin Pan, Xiaojuan Tang, Wenjie Pei, Tongxuan Liu, Di Yin, Xing Sun, Muhan Zhang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

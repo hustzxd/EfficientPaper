@@ -1,6 +1,6 @@
 # COMET: Towards Partical W4A4KV4 LLMs Serving
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

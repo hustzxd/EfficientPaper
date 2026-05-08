@@ -2,7 +2,7 @@
 
 > Krishna Teja Chitty-Venkata, Jie Ye, Xian-He Sun, Anthony Kougkas, Murali Emani, Venkatram Vishwanath, Bogdan Nicolae
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Pratyush Patel, Esha Choukse, Chaojie Zhang, Aashaka Shah, Íñigo Goiri, Saeed Maleki, Ricardo Bianchini
 
-![111](fig10.png)
+![111](fig10.jpg)
 
 ## Abstract
 

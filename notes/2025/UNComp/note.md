@@ -2,7 +2,7 @@
 
 > Jing Xiong, Jianghan Shen, Fanghua Ye, Chaofan Tao, Zhongwei Wan, Jianqiao Lu, Xun Wu, Chuanyang Zheng, Zhijiang Guo, Min Yang, Lingpeng Kong, Ngai Wong
 
-![111](fig4.png)
+![111](fig4.jpg)
 
 ## Abstract
 

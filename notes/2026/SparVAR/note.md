@@ -2,7 +2,7 @@
 
 > Zekun Li, Ning Wang, Tongxin Bai, Changwang Mei, Peisong Wang, Shuang Qiu, Jian Cheng
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

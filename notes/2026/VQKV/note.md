@@ -2,7 +2,7 @@
 
 > Yixuan Wang, Qingyu Shi, Jiayu Zhou, Dianbo Liu, Ziwei He, Zhouhan Lin
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -1,6 +1,6 @@
 # XAttention: Block Sparse Attention with Antidiagonal Scoring
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

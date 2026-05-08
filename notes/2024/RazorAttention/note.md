@@ -2,7 +2,7 @@
 
 > Hanlin Tang, Yang Lin, Jing Lin, Qingsen Han, Shikuan Hong, Yiwu Yao, Gongyi Wang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

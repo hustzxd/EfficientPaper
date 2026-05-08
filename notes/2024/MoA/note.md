@@ -1,6 +1,6 @@
 # MoA: Mixture of Sparse Attention for Automatic Large Language Model Compression
 
-![](moa.png)
+![](moa.jpg)
 
 ## Abstract
 

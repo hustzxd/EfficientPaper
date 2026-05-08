@@ -2,7 +2,7 @@
 
 > Guanchen Li, Yixing Xu, Zeping Li, Ji Liu, Xuanwu Yin, Dong Li, Emad Barsoum
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

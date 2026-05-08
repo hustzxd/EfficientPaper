@@ -2,7 +2,7 @@
 
 > Guangda Liu, Chengwei Li, Zhenyu Ning, Jing Lin, Yiwu Yao, Danning Ke, Minyi Guo, Jieru Zhao
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Jintao Zhang, Jia Wei, Pengle Zhang, Xiaoming Xu, Haofeng Huang, Haoxu Wang, Kai Jiang, Jun Zhu, Jianfei Chen
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

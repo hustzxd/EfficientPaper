@@ -2,7 +2,7 @@
 
 > Yuhan Liu, Hanchen Li, Yihua Cheng, Siddhant Ray, Yuyang Huang, Qizheng Zhang, Kuntai Du, Jiayi Yao, Shan Lu, Ganesh Ananthanarayanan, Michael Maire, Henry Hoffmann, Ari Holtzman, Junchen Jiang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

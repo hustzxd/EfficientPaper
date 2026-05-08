@@ -1,6 +1,6 @@
 # Beyond KV Caching: Shared Attention for Efficient LLMs
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

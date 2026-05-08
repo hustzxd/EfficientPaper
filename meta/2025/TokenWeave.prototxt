@@ -22,7 +22,7 @@ keyword {
   words: overlap
 }
 cover {
-  url: "fig8.png"
+  url: "fig8.jpg"
 }
 baseline {
   methods: "2025/NanoFlow"

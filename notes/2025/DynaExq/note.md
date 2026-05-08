@@ -2,7 +2,7 @@
 
 > Kexin Chu, Dawei Xiang, Zixu Shen, Yiwei Yang, Zecheng Liu, Wei Zhang
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

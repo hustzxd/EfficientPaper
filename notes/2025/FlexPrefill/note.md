@@ -1,6 +1,6 @@
 # FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Shengzhuang Chen, Jihoon Tack, Yunqiao Yang, Yee Whye Teh, Jonathan Richard Schwarz, Ying Wei
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

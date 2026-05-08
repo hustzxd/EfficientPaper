@@ -2,7 +2,7 @@
 
 > Ruibo Fan, Xiangrui Yu, Xinglin Pan, Zeyu Li, Weile Luo, Qiang Wang, Wei Wang, Xiaowen Chu
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

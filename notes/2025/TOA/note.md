@@ -2,7 +2,7 @@
 
 > Song Yu, Xiaofei Xu, Ke Deng, Li Li, Lin Tian
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

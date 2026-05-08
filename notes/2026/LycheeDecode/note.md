@@ -2,7 +2,7 @@
 
 > Gang Lin, Dongfang Li, Zhuoen Chen, Yukun Shi, Xuhui Chen, Baotian Hu, Min Zhang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

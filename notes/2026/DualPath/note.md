@@ -2,7 +2,7 @@
 
 > Yongtong Wu, Shaoyuan Chen, Yinmin Zhong, Rilin Huang, Yixuan Tan, Wentao Zhang, Liyue Zhang, Shangyan Zhou, Yuxuan Liu, Shunfeng Zhou, Mingxing Zhang, Xin Jin, Panpan Huang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

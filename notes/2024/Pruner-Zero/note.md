@@ -2,7 +2,7 @@
 
 > Peijie Dong, Lujun Li, Zhenheng Tang, Xiang Liu, Xinglin Pan, Qiang Wang, Xiaowen Chu
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

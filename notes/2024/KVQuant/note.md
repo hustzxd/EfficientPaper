@@ -1,6 +1,6 @@
 # KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Wentao Ni, Kangqi Zhang, Zhongming Yu, Oren Nelson, Mingu Lee, Hong Cai, Fatih Porikli, Jongryool Kim, Zhijian Liu, Jishen Zhao
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

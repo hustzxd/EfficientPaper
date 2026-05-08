@@ -1,6 +1,6 @@
 # KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

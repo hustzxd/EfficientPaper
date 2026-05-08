@@ -2,7 +2,7 @@
 
 > Wenhao Sun, Rong-Cheng Tu, Yifu Ding, Zhao Jin, Jingyi Liao, Shunyu Liu, Dacheng Tao
 
-![111](fig6.png)
+![111](fig6.jpg)
 
 ## Abstract
 

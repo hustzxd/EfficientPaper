@@ -27,7 +27,7 @@ keyword {
   words: low_rank
 }
 cover {
-  url: "shadowkv.png"
+  url: "shadowkv.jpg"
 }
 baseline {
   methods: "None"

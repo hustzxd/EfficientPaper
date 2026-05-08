@@ -2,7 +2,7 @@
 
 > Ruoyu Qin, Weiran He, Yaoyu Wang, Zheming Li, Xinran Xu, Yongwei Wu, Weimin Zheng, Mingxing Zhang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

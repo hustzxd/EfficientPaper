@@ -2,7 +2,7 @@
 
 > Yoav Gelberg, Yam Eitan, Michael Bronstein, Yarin Gal, Haggai Maron
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

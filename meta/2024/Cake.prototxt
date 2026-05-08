@@ -17,17 +17,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: kv_cache_management
   words: deployment
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "None"
 }
-update_time: 1778224761
+update_time: 1778225031

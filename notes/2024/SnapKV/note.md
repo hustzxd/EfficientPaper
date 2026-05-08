@@ -1,6 +1,6 @@
 # SnapKV: LLM Knows What You are Looking for Before Generation
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 
@@ -27,6 +27,6 @@ implementation with minor changes, exhibiting only a negligible accuracy drop
 in the Needle-in-a-Haystack test. Further comprehensive studies suggest
 SnapKV's potential for practical applications.
 
-![](list1.png)
+![](list1.jpg)
 
 根据最近的历史token计算得到attention的score，pool topk选择重要的kv cache，压缩kv cache。

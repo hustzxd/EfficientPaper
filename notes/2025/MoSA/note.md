@@ -1,6 +1,6 @@
 # Mixture of Sparse Attention: Content-Based Learnable Sparse Attention via Expert-Choice Routing
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

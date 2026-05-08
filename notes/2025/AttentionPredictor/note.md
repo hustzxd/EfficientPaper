@@ -1,6 +1,6 @@
 # AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

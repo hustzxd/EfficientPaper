@@ -1,6 +1,6 @@
 # CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation
 
-![](framework.png)
+![](framework.jpg)
 
 ## Abstract
 
@@ -49,7 +49,7 @@ CoreInfer 则提出sentence-wise activation sparsity方式，并且没有MLP的p
 
 可以看到分别引入了$\alpha$ $\beta$ 两个超参数，用来控制core neurons的比例。
 
-![](fig2.png)
+![](fig2.jpg)
 通过这种选择策略，只用计算少部分的neurons，便可以维持精度。
 
 另外观察，越临近的tokens的core neurons越相似，所以具有语义相似性。

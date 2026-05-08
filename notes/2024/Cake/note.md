@@ -2,7 +2,7 @@
 
 > Shuowei Jin, Xueshen Liu, Qingzhao Zhang, Z. Morley Mao
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Mengdi Wu, Xinhao Cheng, Shengyu Liu, Chunan Shi, Jianan Ji, Kit Ao, Praveen Velliengiri, Xupeng Miao, Oded Padon, Zhihao Jia
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

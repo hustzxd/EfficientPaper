@@ -72,7 +72,7 @@ pip install protobuf==5.27.2 pandas arxiv
 > 详细使用说明请参考 [PAPER_EDITOR_README.md](PAPER_EDITOR_README.md)
 
 <p align="center">
-<img src="notes/conference_timeline.png" width="800" title="blank">
+<img src="notes/conference_timeline.jpg" width="800" title="blank">
 </p>
 
 

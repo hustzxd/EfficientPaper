@@ -2,7 +2,7 @@
 
 > Chaofan Lin, Jiaming Tang, Shuo Yang, Hanshuo Wang, Tian Tang, Boyu Tian, Ion Stoica, Song Han, Mingyu Gao
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

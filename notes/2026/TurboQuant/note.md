@@ -2,7 +2,7 @@
 
 > Amir Zandieh, Majid Daliri, Majid Hadian, Vahab Mirrokni
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

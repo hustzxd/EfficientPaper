@@ -2,7 +2,7 @@
 
 > Seonghwan Choi, Beomseok Kang, Dongwon Jo, Jae-Joon Kim
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 

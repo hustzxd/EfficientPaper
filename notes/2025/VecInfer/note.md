@@ -2,7 +2,7 @@
 
 > Dingyu Yao, Chenxu Yang, Zhengyang Tong, Zheng Lin, Wei Liu, Jian Luan, Weiping Wang
 
-![111](fig4.png)
+![111](fig4.jpg)
 
 ## Abstract
 

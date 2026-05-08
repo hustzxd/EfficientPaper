@@ -2,7 +2,7 @@
 
 > Yutao Sun, Zhenyu Li, Yike Zhang, Tengyu Pan, Bowen Dong, Yuyi Guo, Jianyong Wang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

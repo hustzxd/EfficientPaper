@@ -2,7 +2,7 @@
 
 > Xinwei Qiang, Yue Guan, Zhengding Hu, Yufei Ding, Adnan Aziz
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -30,7 +30,7 @@ keyword {
   words: kv_cache_quant
 }
 cover {
-  url: "fig4.png"
+  url: "fig4.jpg"
 }
 baseline {
   methods: "2024/KIVI"

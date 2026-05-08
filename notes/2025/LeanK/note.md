@@ -2,7 +2,7 @@
 
 > Yike Zhang, Zhiyuan He, Huiqiang Jiang, Chengruidong Zhang, Yuqing Yang, Jianyong Wang, Lili Qiu
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

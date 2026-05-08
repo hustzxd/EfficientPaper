@@ -2,7 +2,7 @@
 
 > Di Liu, Meng Chen, Baotong Lu, Huiqiang Jiang, Zhenhua Han, Qianxi Zhang, Qi Chen, Chengruidong Zhang, Bailu Ding, Kai Zhang, Chen Chen, Fan Yang, Yuqing Yang, Lili Qiu
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

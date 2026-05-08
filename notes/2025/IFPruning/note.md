@@ -1,6 +1,6 @@
 # Instruction-Following Pruning for Large Language Models
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

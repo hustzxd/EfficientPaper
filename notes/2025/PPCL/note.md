@@ -2,7 +2,7 @@
 
 > Jian Ma, Qirong Peng, Xujie Zhu, Peixing Xie, Chen Chen, Haonan Lu
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 

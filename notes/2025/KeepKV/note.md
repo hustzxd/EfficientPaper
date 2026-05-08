@@ -1,6 +1,6 @@
 # KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

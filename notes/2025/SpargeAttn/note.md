@@ -1,6 +1,6 @@
 # SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference
 
-![](fig3.png)
+![](fig3.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Amey Agrawal, Nitin Kedia, Jayashree Mohan, Ashish Panwar, Nipun Kwatra, Bhargav Gulavani, Ramachandran Ramjee, Alexey Tumanov
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

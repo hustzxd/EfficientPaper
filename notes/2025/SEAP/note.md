@@ -1,6 +1,6 @@
 # SEAP: Training-free Sparse Expert Activation Pruning Unlock the Brainpower of Large Language Models
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

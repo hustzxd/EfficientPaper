@@ -1,4 +1,4 @@
 # CateKV
 
-![](fig1.png)
+![](fig1.jpg)
 

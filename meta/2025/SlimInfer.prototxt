@@ -26,7 +26,7 @@ keyword {
   words: kv_cache_management
 }
 cover {
-  url: "fig4.png"
+  url: "fig4.jpg"
 }
 baseline {
   methods: "2024/LazyLLM"

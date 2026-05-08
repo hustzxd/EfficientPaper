@@ -2,7 +2,7 @@
 
 > Jang-Hyun Kim, Jinuk Kim, Sangwoo Kwon, Jae W. Lee, Sangdoo Yun, Hyun Oh Song
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

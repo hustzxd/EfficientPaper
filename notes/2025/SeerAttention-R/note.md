@@ -1,6 +1,6 @@
 # SeerAttention-R: Sparse Attention Adaptation for Long Reasoning
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

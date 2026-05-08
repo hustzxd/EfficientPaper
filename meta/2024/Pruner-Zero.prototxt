@@ -26,7 +26,7 @@ keyword {
   words: sparse_pruning
 }
 cover {
-  url: "fig1.png"
+  url: "fig1.jpg"
 }
 baseline {
   methods: "2023/SparseGPT"

@@ -2,7 +2,7 @@
 
 > Weigao Sun, Jiaxi Hu, Yucheng Zhou, Jusen Du, Disen Lan, Kexin Wang, Tong Zhu, Xiaoye Qu, Yu Zhang, Xiaoyu Mo, Daizong Liu, Yuxuan Liang, Wenliang Chen, Guoqi Li, Yu Cheng
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

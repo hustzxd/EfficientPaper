@@ -27,7 +27,7 @@ keyword {
   words: attention_sparsity
 }
 cover {
-  url: "flashmask.png"
+  url: "flashmask.jpg"
 }
 baseline {
   methods: "None"

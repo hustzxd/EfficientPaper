@@ -1,6 +1,6 @@
 # Rectified Sparse Attention
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

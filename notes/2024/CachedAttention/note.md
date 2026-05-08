@@ -1,6 +1,6 @@
 # Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

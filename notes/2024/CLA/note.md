@@ -1,6 +1,6 @@
 # Reducing Transformer Key-Value Cache Size with Cross-Layer Attention
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

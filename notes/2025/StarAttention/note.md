@@ -1,6 +1,6 @@
 # Star Attention: Efficient LLM Inference over Long Sequences
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

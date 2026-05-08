@@ -1,6 +1,6 @@
 # AMALI
 
-![](fig6.png)
+![](fig6.jpg)
 
 ## Abstract
 

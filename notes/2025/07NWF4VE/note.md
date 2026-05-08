@@ -1,6 +1,6 @@
 # Accelerating LLM Inference Throughput via Asynchronous KV Cache Prefetching
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Qian Wang, Zahra Yousefijamarani, Morgan Lindsay Heisler, Rongzhi Gu, Bai Xiaolong, Shan Yizhou, Wei Zhang, Wang Lan, Ying Xiong, Yong Zhang, Zhenan Fan
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

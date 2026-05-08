@@ -9,8 +9,8 @@ paper {
   authors: "Key"
   authors: "Rayying"
   authors: "Mingyu Gao"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Tsinghua University"
+  institutions: "Tencent"
 }
 pub {
   where: "arXiv"
@@ -18,19 +18,17 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
-}
-note {
-  url: "note.md"
+  url: "https://github.com/tsinghua-ideal/SparseForge"
 }
 keyword {
   words: sparse_pruning
-  words: structured_sparsity
+  words: weight_sparsity
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2024/Wanda"
+  methods: "2023/SparseGPT"
 }
-update_time: 1778212788
+update_time: 1778230154

@@ -2,7 +2,7 @@
 
 > Weilin Zhao, Zihan Zhou, Zhou Su, Chaojun Xiao, Yuxuan Li, Yanghao Li, Yudi Zhang, Weilun Zhao, Zhen Li, Yuxiang Huang, Ao Sun, Xu Han, Zhiyuan Liu
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Keyu Lv, Manyi Zhang, Xiaobo Xia, Jingchen Ni, Shannan Yan, Xianzhi Yu, Lu Hou, Chun Yuan, Haoli Bai
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

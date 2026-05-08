@@ -1,6 +1,6 @@
 # LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

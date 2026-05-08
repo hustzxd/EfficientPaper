@@ -1,6 +1,6 @@
 # SampleAttention: Near-Lossless Acceleration of Long Context LLM Inference with Adaptive Structured Sparse Attention
 
-![](cover.png)
+![](cover.jpg)
 
 ## Abstract
 

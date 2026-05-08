@@ -2,7 +2,7 @@
 
 > Raja Gond, Nipun Kwatra, Ramachandran Ramjee
 
-![](fig8.png)
+![](fig8.jpg)
 
 ## Abstract
 

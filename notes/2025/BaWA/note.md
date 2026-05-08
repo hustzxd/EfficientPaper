@@ -1,3 +1,3 @@
 # BaWA
 
-![](fig2.png)
+![](fig2.jpg)

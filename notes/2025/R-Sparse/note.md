@@ -1,6 +1,6 @@
 # R-Sparse: Rank-Aware Activation Sparsity for Efficient LLM Inference
 
-![](fig4.png)
+![](fig4.jpg)
 
 ## Abstract
 

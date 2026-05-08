@@ -2,7 +2,7 @@
 
 > Yefei He, Feng Chen, Jing Liu, Wenqi Shao, Hong Zhou, Kaipeng Zhang, Bohan Zhuang
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Ruixuan Huang, Hao Zeng, Hantao Huang, Jinyuan Shi, Minghui Yu, Ian En-Hsu Yen, Shuai Wang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -22,7 +22,7 @@ keyword {
   words: weight_sparsity
 }
 cover {
-  url: "fig5.png"
+  url: "fig5.jpg"
 }
 baseline {
   methods: "None"

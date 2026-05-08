@@ -2,7 +2,7 @@
 
 > Defa Zhu, Hongzhi Huang, Zihao Huang, Yutao Zeng, Yunyao Mao, Banggu Wu, Qiyang Min, Xun Zhou
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

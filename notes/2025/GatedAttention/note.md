@@ -2,7 +2,7 @@
 
 > Zihan Qiu, Zekun Wang, Bo Zheng, Zeyu Huang, Kaiyue Wen, Songlin Yang, Rui Men, Le Yu, Fei Huang, Suozhi Huang, Dayiheng Liu, Jingren Zhou, Junyang Lin
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

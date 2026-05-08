@@ -2,7 +2,7 @@
 
 > Qichen Fu, Minsik Cho, Thomas Merth, Sachin Mehta, Mohammad Rastegari, Mahyar Najibi
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 
@@ -35,4 +35,4 @@ question-answering task, LazyLLM accelerates the prefilling stage of the LLama
 
 [ICLR2025 reject](https://openreview.net/forum?id=am5Z8dXoaV)
 
-![](fig4.png)
+![](fig4.jpg)

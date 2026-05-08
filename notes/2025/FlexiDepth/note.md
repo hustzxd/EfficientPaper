@@ -1,6 +1,6 @@
 # Adaptive Layer-skipping in Pre-trained LLMs
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

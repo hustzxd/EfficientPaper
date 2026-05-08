@@ -1,6 +1,6 @@
 # ZigZagkv: Dynamic KV Cache Compression for Long-context Modeling based on Layer Uncertainty
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

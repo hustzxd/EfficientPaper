@@ -1,6 +1,6 @@
 # Pruning Large Language Models with Semi-Structural Adaptive Sparse Training
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

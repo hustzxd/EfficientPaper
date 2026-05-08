@@ -2,7 +2,7 @@
 
 > Danyang Zhang, Junhao Song, Ziqian Bi, Yingfang Yuan, Tianyang Wang, Joe Yeong, Junfeng Hao
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

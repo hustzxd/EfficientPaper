@@ -35,7 +35,7 @@ keyword {
   words: structure_design
 }
 cover {
-  url: "fig4.png"
+  url: "fig4.jpg"
 }
 baseline {
   methods: "None"

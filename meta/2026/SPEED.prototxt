@@ -7,8 +7,7 @@ paper {
   authors: "Hyunjune Ji"
   authors: "Kyongmin Kong"
   authors: "Jay-Yoon Lee"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "Seoul National University"
 }
 pub {
   where: "arXiv"
@@ -18,17 +17,15 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: kv_cache_sparse
+  words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "None"
 }
-update_time: 1778220027
+update_time: 1778229312
+rating: 2

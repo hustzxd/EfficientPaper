@@ -2,7 +2,7 @@
 
 > Kan Zhu, Tian Tang, Qinyu Xu, Yile Gu, Zhichen Zeng, Rohan Kadekodi, Liangyu Zhao, Ang Li, Arvind Krishnamurthy, Baris Kasikci
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

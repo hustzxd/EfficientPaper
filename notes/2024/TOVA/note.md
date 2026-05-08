@@ -1,6 +1,6 @@
 # Transformers are Multi-State RNNs
 
-![](tova.png)
+![](tova.jpg)
 
 ## Abstract
 

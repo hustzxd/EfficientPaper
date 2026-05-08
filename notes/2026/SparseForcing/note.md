@@ -2,7 +2,7 @@
 
 > Boxun Xu, Yuming Du, Zichang Liu, Siyu Yang, Ziyang Jiang, Siqi Yan, Rajasi Saha, Albert Pumarola, Wenchen Wang, Peng Li
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

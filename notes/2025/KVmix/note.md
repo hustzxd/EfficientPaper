@@ -2,7 +2,7 @@
 
 > Fei Li, Song Liu, Weiguo Wu, Shiqiang Nie, Jinyu Wang
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 

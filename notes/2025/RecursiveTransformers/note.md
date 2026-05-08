@@ -2,7 +2,7 @@
 
 > Sangmin Bae, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Seungyeon Kim, Tal Schuster
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

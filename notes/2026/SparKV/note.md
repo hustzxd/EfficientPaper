@@ -2,7 +2,7 @@
 
 > Hongyao Liu, Liuqun Zhai, Junyi Wang, Zhengru Fang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

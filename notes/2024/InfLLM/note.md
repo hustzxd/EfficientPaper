@@ -2,7 +2,7 @@
 
 > Chaojun Xiao, Pengle Zhang, Xu Han, Guangxuan Xiao, Yankai Lin, Zhengyan Zhang, Zhiyuan Liu, Maosong Sun
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

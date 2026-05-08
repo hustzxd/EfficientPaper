@@ -1,6 +1,6 @@
 # Hardware-Efficient Attention for Fast Decoding
 
-![](gla.png)
+![](gla.jpg)
 
 ## Abstract
 

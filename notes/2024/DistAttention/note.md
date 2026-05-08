@@ -1,6 +1,6 @@
 # Infinite-LLM: Efficient LLM Service for Long Context with DistAttention and Distributed KVCache
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

@@ -27,7 +27,7 @@ keyword {
   words: sparse_pruning
 }
 cover {
-  url: "fig3.png"
+  url: "fig3.jpg"
 }
 baseline {
   methods: "None"

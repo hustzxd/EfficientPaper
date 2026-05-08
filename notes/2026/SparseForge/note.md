@@ -2,7 +2,7 @@
 
 > Liu Hanzuo, Chaofan Lin, Weixuan Sun, Yulong Wang, Key, Rayying, Mingyu Gao
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

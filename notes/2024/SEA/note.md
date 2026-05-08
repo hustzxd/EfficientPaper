@@ -2,7 +2,7 @@
 
 > Heejun Lee, Jina Kim, Jeffrey Willette, Sung Ju Hwang
 
-![111](figure1.png)
+![111](figure1.jpg)
 
 ## Abstract
 

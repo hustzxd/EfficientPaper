@@ -1,6 +1,6 @@
 # A Simple Linear Patch Revives Layer-Pruned Large Language Models
 
-![](fig3.png)
+![](fig3.jpg)
 
 ## Abstract
 

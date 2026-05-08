@@ -31,5 +31,5 @@ keyword {
   words: tool
 }
 cover {
-  url: "vllm.png"
+  url: "vllm.jpg"
 }

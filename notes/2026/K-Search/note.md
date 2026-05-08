@@ -2,7 +2,7 @@
 
 > Shiyi Cao, Ziming Mao, Joseph E. Gonzalez, Ion Stoica
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

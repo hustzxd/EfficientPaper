@@ -2,7 +2,7 @@
 
 > Xinghao Wang, Pengyu Wang, Xiaoran Liu, Fangxu Liu, Jason Chu, Kai Song, Xipeng Qiu
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

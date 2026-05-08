@@ -2,7 +2,7 @@
 
 > Jiayi Yao, Hanchen Li, Yuhan Liu, Siddhant Ray, Yihua Cheng, Qizheng Zhang, Kuntai Du, Shan Lu, Junchen Jiang
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

@@ -7,8 +7,9 @@ paper {
   authors: "Michael Bronstein"
   authors: "Yarin Gal"
   authors: "Haggai Maron"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Oxford"
+  institutions: "Israel Institute of Technology"
+  institutions: "NVIDIA"
 }
 pub {
   where: "arXiv"
@@ -18,17 +19,15 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: kv_cache_sparse
+  words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "None"
 }
-update_time: 1778220082
+update_time: 1778225718
+rating: 2

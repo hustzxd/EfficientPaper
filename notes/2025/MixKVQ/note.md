@@ -2,7 +2,7 @@
 
 > Tao Zhang, Ziqian Zeng, Hao Peng, Huiping Zhuang, Cen Chen
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

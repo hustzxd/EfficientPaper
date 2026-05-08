@@ -2,7 +2,7 @@
 
 > Kan Zhu, Yufei Gao, Yilong Zhao, Liangyu Zhao, Gefei Zuo, Yile Gu, Dedong Xie, Tian Tang, Qinyu Xu, Zihao Ye, Keisuke Kamahori, Chien-Yu Lin, Ziren Wang, Stephanie Wang, Arvind Krishnamurthy, Baris Kasikci
 
-![](SystemDesign.png)
+![](SystemDesign.jpg)
 
 ## Abstract
 
@@ -29,6 +29,6 @@ LLaMA-3-8B, etc. With practical workloads, NanoFlow provides 1.91x throughput
 boost compared to state-of-the-art serving systems achieving 50% to 72% of
 optimal throughput across popular models.
 
-![](pipeline.gif)
+![](pipeline.jpg)
 
-![](fig6.png)
+![](fig6.jpg)

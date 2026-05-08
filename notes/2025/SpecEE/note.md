@@ -1,6 +1,6 @@
 # SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting
 
-![](fig9.png)
+![](fig9.jpg)
 
 ## Abstract
 

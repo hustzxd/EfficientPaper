@@ -2,7 +2,7 @@
 
 > Dhruv Deshmukh, Saurabh Goyal, Nipun Kwatra, Ramachandran Ramjee
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

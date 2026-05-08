@@ -22,7 +22,7 @@ keyword {
   words: kv_cache_sparse
 }
 cover {
-  url: "minikv.png"
+  url: "minikv.jpg"
 }
 baseline {
   methods: "None"

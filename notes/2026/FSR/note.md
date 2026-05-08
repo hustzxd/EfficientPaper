@@ -2,7 +2,7 @@
 
 > Enwei Tong, Yuanchao Bai, Yao Zhu, Junjun Jiang, Xianming Liu
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

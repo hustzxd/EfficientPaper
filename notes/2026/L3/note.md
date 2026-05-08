@@ -2,7 +2,7 @@
 
 > Albert Tseng, Christopher De Sa
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

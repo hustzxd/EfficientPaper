@@ -33,7 +33,7 @@ keyword {
   words: kv_cache_sparse
 }
 cover {
-  url: "h2o.png"
+  url: "h2o.jpg"
 }
 baseline {
   methods: "None"

@@ -2,7 +2,7 @@
 
 > Hongzhan Lin, Zhiqi Bai, Xinmiao Zhang, Sen Yang, Xiang Li, Siran Yang, Yunlong Xu, Jiaheng Liu, Yongchi Zhao, Jiamang Wang, Yuchi Xu, Wenbo Su, Bo Zheng
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

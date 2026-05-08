@@ -2,7 +2,7 @@
 
 > Andrew Or, Apurva Jain, Daniel Vega-Myhre, Jesse Cai, Charles David Hernandez, Zhenrui Zheng, Driss Guessous, Vasiliy Kuznetsov, Christian Puhrsch, Mark Saroufim, Supriya Rao, Thien Tran, Aleksandar Samardžić
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

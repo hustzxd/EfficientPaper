@@ -1,6 +1,6 @@
 # ReAttention: Training-Free Infinite Context with Finite Attention Scope
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

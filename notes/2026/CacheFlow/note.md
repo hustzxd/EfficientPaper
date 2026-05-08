@@ -2,7 +2,7 @@
 
 > Sean Nian, Jiahao Fang, Qilong Feng, Zhiyu Wu, Fan Lai
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -1,6 +1,6 @@
 # Compressing KV Cache for Long-Context LLM Inference with Inter-Layer Attention Similarity
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Junlin Mu, Hantao Huang, Jihang Zhang, Minghui Yu, Tao Wang, Yidong Li
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 

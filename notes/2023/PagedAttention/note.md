@@ -1,6 +1,6 @@
 # Efficient Memory Management for Large Language Model Serving with PagedAttention
 
-![](vllm.png)
+![](vllm.jpg)
 
 ## Abstract
 

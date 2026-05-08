@@ -2,7 +2,7 @@
 
 > Tianchen Zhao, Ke Hong, Xinhao Yang, Xuefeng Xiao, Huixia Li, Feng Ling, Ruiqi Xie, Siqi Chen, Hongyu Zhu, Yichong Zhang, Yu Wang
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 

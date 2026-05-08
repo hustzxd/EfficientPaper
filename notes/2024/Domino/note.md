@@ -2,7 +2,7 @@
 
 > Guanhua Wang, Chengming Zhang, Zheyu Shen, Ang Li, Olatunji Ruwase
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

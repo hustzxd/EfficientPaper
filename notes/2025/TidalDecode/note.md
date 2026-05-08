@@ -2,7 +2,7 @@
 
 > Lijie Yang, Zhihao Zhang, Zhuofu Chen, Zikun Li, Zhihao Jia
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

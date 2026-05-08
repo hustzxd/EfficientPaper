@@ -2,7 +2,7 @@
 
 > Xinhang Chen, Chao Zhang, Jiahuan He, Wei Liu, Jianming Zhang, Wenlong Zhou, Xiao Li, Pai Zeng, Shiyong Li, Yuanpan Qian, Dong Li, Zhaogeng Li
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

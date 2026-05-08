@@ -1,6 +1,6 @@
 # Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

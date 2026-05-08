@@ -2,7 +2,7 @@
 
 > Hao Kang, Qingru Zhang, Souvik Kundu, Geonhwa Jeong, Zaoxing Liu, Tushar Krishna, Tuo Zhao
 
-![111](overview.png)
+![111](overview.jpg)
 
 ## Abstract
 

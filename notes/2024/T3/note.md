@@ -39,4 +39,4 @@ and MT-NLG.
 - transparently
     - 以透明的方式完成这些操作，只需对内核进行少量修改
 
-![](fig7.png)
+![](fig7.jpg)

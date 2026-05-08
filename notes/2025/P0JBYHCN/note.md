@@ -2,7 +2,7 @@
 
 > En-Ming Huang, Li-Shang Lin, Chun-Yi Lee
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

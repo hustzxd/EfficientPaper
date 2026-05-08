@@ -7,8 +7,8 @@ paper {
   authors: "Zhiying Wu"
   authors: "Bingning Wang"
   authors: "Ran He"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "WeChat, Tencent"
+  institutions: "UCAS"
 }
 pub {
   where: "arXiv"
@@ -16,19 +16,18 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
-}
-note {
-  url: "note.md"
+  url: "https://github.com/qhfan/UniPrefill"
 }
 keyword {
   words: sparse_pruning
   words: attention_sparsity
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/XAttention"
+  methods: "2025/FlexPrefill"
+  methods: "2024/MInference"
 }
-update_time: 1778215626
+update_time: 1778230782

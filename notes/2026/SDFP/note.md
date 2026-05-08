@@ -2,7 +2,7 @@
 
 > Hanyu Wei, Zunhai Su, Peng Lu, Chao Li, Spandan Tiwari, Ashish Sirasao, Yuhan Dong
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

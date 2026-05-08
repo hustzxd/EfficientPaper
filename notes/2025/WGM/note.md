@@ -2,7 +2,7 @@
 
 > Xinzhe Zheng, Zhen-Qun Yang, Haoran Xie, S. Joe Qin, Arlene Chen, Fangzhen Lin
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

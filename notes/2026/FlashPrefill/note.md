@@ -2,7 +2,7 @@
 
 > Qihang Fan, Huaibo Huang, Zhiying Wu, Juqiu Wang, Bingning Wang, Ran He
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

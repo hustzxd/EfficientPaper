@@ -2,7 +2,7 @@
 
 > Ke Hong, Xiuhong Li, Minxu Liu, Qiuli Mao, Tianqi Wu, Zixiao Huang, Lufang Chen, Zhong Wang, Yichong Zhang, Zhenhua Zhu, Guohao Dai, Yu Wang
 
-![](fig3.png)
+![](fig3.jpg)
 
 ## Abstract
 

@@ -18,7 +18,7 @@
 - (c) **Route**: the appropriate element-wise products are routed separately for each output.
 - (d) **Sum**: routed products are aggregated and summed to form a separate result for each sparse entity.
 
-![](./SSgif.gif)
+![](./SSgif.jpg)
 
 ### sparse weight and sparse activation
 

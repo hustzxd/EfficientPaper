@@ -2,7 +2,7 @@
 
 > Yushi Huang, Zining Wang, Zhihang Yuan, Yifu Ding, Ruihao Gong, Jinyang Guo, Xianglong Liu, Jun Zhang
 
-![111](fig4.png)
+![111](fig4.jpg)
 
 ## Abstract
 

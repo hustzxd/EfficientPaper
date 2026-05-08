@@ -2,7 +2,7 @@
 
 > Ruihao Li, Shagnik Pal, Vineeth Narayan Pullu, Prasoon Sinha, Jeeho Ryoo, Lizy K. John, Neeraja J. Yadwadkar
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

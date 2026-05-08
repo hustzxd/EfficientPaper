@@ -2,7 +2,7 @@
 
 > Xinrong Zhang, Yingfa Chen, Shengding Hu, Zihang Xu, Junhao Chen, Moo Khai Hao, Xu Han, Zhen Leng Thai, Shuo Wang, Zhiyuan Liu, Maosong Sun
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

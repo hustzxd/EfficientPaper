@@ -2,7 +2,7 @@
 
 > Aditya Desai, Shuo Yang, Alejandro Cuadron, Matei Zaharia, Joseph E. Gonzalez, Ion Stoica
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

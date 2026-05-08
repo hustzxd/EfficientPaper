@@ -1,6 +1,6 @@
 # MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models
 
-![](maskllm.png)
+![](maskllm.jpg)
 
 ## Abstract
 

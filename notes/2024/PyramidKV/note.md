@@ -2,7 +2,7 @@
 
 > Zefan Cai, Yichi Zhang, Bofei Gao, Yuliang Liu, Yucheng Li, Tianyu Liu, Keming Lu, Wayne Xiong, Yue Dong, Junjie Hu, Wen Xiao
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

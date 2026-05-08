@@ -2,7 +2,7 @@
 
 > Albert Tseng, Tao Yu, Youngsuk Park
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

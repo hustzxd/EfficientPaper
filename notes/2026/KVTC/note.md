@@ -2,7 +2,7 @@
 
 > Konrad Staniszewski, Adrian Łańcucki
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

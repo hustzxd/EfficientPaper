@@ -1,6 +1,6 @@
 # PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention
 
-![](fig1.png)
+![](fig1.jpg)
 
 ## Abstract
 

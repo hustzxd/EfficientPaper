@@ -29,7 +29,7 @@ keyword {
   words: kv_cache_quant
 }
 cover {
-  url: "fig5.png"
+  url: "fig5.jpg"
 }
 baseline {
   methods: "None"

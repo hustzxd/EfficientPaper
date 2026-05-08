@@ -23,7 +23,7 @@ keyword {
   words: kv_cache_sparse
 }
 cover {
-  url: "quest.png"
+  url: "quest.jpg"
 }
 baseline {
   methods: "None"

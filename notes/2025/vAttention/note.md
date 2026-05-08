@@ -1,6 +1,6 @@
 # vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Mingkuan Feng, Jinyang Wu, Shuai Zhang, Pengpeng Shao, Ruihan Jin, Zhengqi Wen, Jianhua Tao, Feihu Che
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

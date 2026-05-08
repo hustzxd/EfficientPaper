@@ -2,7 +2,7 @@
 
 > Mengzhao Chen, Yi Liu, Jiahao Wang, Yi Bin, Wenqi Shao, Ping Luo
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

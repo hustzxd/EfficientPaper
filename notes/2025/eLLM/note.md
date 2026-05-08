@@ -2,7 +2,7 @@
 
 > Jiale Xu, Rui Zhang, Yi Xiong, Cong Guo, Zihan Liu, Yangjie Zhou, Weiming Hu, Hao Wu, Changxu Shao, Ziqing Wang, Yongjie Yuan, Junping Zhao, Minyi Guo, Jingwen Leng
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

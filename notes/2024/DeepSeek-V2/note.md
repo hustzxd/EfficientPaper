@@ -1,6 +1,6 @@
 # DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 
@@ -39,7 +39,7 @@ KV的需要经过两次Linear运算才能得到，只保存$C_t^{KV}$，在推�
 ![](eq12.png)
 
 保存的KV cache对比如下图所示：
-![](fig3.png)
+![](fig3.jpg)
 
 ### Decoupled Rotary Position Embedding
 然而，Low-Rank与RoPE不兼容，

@@ -1,6 +1,6 @@
 # SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs
 
-![](seerattention.png)
+![](seerattention.jpg)
 
 ## Abstract
 

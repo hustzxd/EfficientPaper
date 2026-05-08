@@ -2,7 +2,7 @@
 
 > Zirui Liu, Jiayi Yuan, Hongye Jin, Shaochen Zhong, Zhaozhuo Xu, Vladimir Braverman, Beidi Chen, Xia Hu
 
-![111](fig3.png)
+![111](fig3.jpg)
 
 ## Abstract
 

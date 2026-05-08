@@ -2,7 +2,7 @@
 
 > Zhenyi Shen, Junru Lu, Lin Gui, Jiazheng Li, Yulan He, Di Yin, Xing Sun
 
-![111](fig2.png)
+![111](fig2.jpg)
 
 ## Abstract
 

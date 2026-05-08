@@ -2,7 +2,7 @@
 
 > Lingkun Long, Rubing Yang, Yushi Huang, Desheng Hui, Ao Zhou, Jianlei Yang
 
-![111](fig4.png)
+![111](fig4.jpg)
 
 ## Abstract
 

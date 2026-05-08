@@ -2,7 +2,7 @@
 
 > Akide Liu, Zeyu Zhang, Zhexin Li, Xuehai Bai, Yizeng Han, Jiasheng Tang, Yuanjie Xing, Jichao Wu, Mingyang Yang, Weihua Chen, Jiahao He, Yuanyu He, Fan Wang, Gholamreza Haffari, Bohan Zhuang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

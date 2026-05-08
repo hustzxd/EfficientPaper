@@ -2,7 +2,7 @@
 
 > Akide Liu, Jing Liu, Zizheng Pan, Yefei He, Gholamreza Haffari, Bohan Zhuang
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

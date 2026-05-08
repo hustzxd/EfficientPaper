@@ -2,7 +2,7 @@
 
 > Cunchen Hu, Heyang Huang, Junhao Hu, Jiang Xu, Xusheng Chen, Tao Xie, Chenxi Wang, Sa Wang, Yungang Bao, Ninghui Sun, Yizhou Shan
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Nuno Gonçalves, Hugo Pitorro, Vlad Niculae, Edoardo Ponti, Lei Li, Andre Martins, Marcos Treviso
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

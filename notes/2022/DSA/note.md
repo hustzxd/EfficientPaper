@@ -2,7 +2,7 @@
 
 > Liu Liu, Zheng Qu, Zhaodong Chen, Yufei Ding, Yuan Xie
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

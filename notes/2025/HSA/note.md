@@ -2,7 +2,7 @@
 
 > Xiang Hu, Zhanchao Zhou, Ruiqi Liang, Zehuan Li, Wei Wu, Jianguo Li
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

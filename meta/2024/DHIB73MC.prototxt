@@ -33,7 +33,7 @@ keyword {
   words: survey
 }
 cover {
-  url: "efficientinference.png"
+  url: "efficientinference.jpg"
 }
 baseline {
   methods: "None"

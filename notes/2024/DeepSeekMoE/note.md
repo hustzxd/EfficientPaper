@@ -1,6 +1,6 @@
 # DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models
 
-![](fig2.png)
+![](fig2.jpg)
 
 ## Abstract
 

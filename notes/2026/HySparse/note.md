@@ -2,7 +2,7 @@
 
 > Yizhao Gao, Jianyu Wei, Qihao Zhang, Yu Cheng, Shimao Chen, Zhengju Tang, Zihan Jiang, Yifan Song, Hailin Zhang, Liang Zhao, Bo Yang, Gang Wang, Shijie Cao, Fuli Luo
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

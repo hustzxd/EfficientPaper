@@ -2,7 +2,7 @@
 
 > Ying Yuan, Pengfei Zuo, Bo Wang, Zhangyu Chen, Zhipeng Tan, Zhou Yu
 
-![111](cover.png)
+![111](cover.jpg)
 
 ## Abstract
 

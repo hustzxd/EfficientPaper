@@ -2,7 +2,7 @@
 
 > Bohan Yu, Yekun Chai
 
-![111](fig1.png)
+![111](fig1.jpg)
 
 ## Abstract
 

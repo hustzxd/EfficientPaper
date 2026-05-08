@@ -1,6 +1,6 @@
 # Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving
 
-![](tab1.png)
+![](tab1.jpg)
 
 ## Abstract
 

@@ -2,7 +2,7 @@
 
 > Jiawen Qi, Chang Gao, Zhaochun Ren, Qinyu Chen
 
-![](fig5.png)
+![](fig5.jpg)
 
 ## Abstract
 

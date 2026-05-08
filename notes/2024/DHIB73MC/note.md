@@ -1,6 +1,6 @@
 # A Survey on Efficient Inference for Large Language Models
 
-![](efficientinference.png)
+![](efficientinference.jpg)
 
 ## Abstract
 

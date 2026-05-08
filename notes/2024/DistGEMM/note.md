@@ -1,6 +1,6 @@
 # DistributedGEMM
 
-![](fig1.gif)
+![](fig1.jpg)
 
 ## Abstract
 
