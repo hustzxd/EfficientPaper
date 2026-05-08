@@ -1,0 +1,36 @@
+paper {
+  title: "SparseForge: Efficient Semi-Structured LLM Sparsification via Annealing of Hessian-Guided Soft-Mask"
+  abbr: "SparseForge"
+  url: "http://arxiv.org/abs/2605.06402v1"
+  authors: "Liu Hanzuo"
+  authors: "Chaofan Lin"
+  authors: "Weixuan Sun"
+  authors: "Yulong Wang"
+  authors: "Key"
+  authors: "Rayying"
+  authors: "Mingyu Gao"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: sparse_pruning
+  words: structured_sparsity
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1778212788
