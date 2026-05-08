@@ -17,7 +17,7 @@ keyword {
   words: tool
 }
 cover {
-  url: "cover.gif"
+  url: "cover.jpg"
 }
 baseline {
   methods: "2022/FlashAttention"

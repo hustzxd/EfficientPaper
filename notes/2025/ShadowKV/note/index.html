@@ -62,6 +62,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -144,7 +146,7 @@
               
   
                 <h1 id="shadowkv-kv-cache-in-shadows-for-high-throughput-long-context-llm-inference">ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference</h1>
-<p><a class="glightbox" href="../shadowkv.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../shadowkv.png" /></a></p>
+<p><a class="glightbox" href="../shadowkv.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../shadowkv.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>With the widespread deployment of long-context large language models (LLMs),
 there has been a growing demand for efficient support of high-throughput
@@ -174,14 +176,14 @@ at https://github.com/bytedance/ShadowKV.</p>
 </ul>
 <h2 id="shadowkv">ShadowKV</h2>
 <h3 id="pre-filling">Pre-filling</h3>
-<p><a class="glightbox" href="../fig4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.png" /></a></p>
+<p><a class="glightbox" href="../fig4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.jpg" /></a></p>
 <ul>
 <li>对Pre-RoPE的K进行SVD分解，</li>
 <li>对Post-RoPE的K 按照chunk进行分组，每组保留mean</li>
 <li>如果组内的 cosine 相似度很低，那么这组作为outlier来单独保存。</li>
 </ul>
 <h3 id="decoding">Decoding</h3>
-<p><a class="glightbox" href="../fig5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.png" /></a></p>
+<p><a class="glightbox" href="../fig5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.jpg" /></a></p>
 <ul>
 <li>根据K的landmark与Q进行计算，得到softmax的score，</li>
 <li>选择最高的几个score对应的index，根据index选择稀疏V</li>

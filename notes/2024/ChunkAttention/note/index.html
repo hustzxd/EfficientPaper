@@ -62,6 +62,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -144,7 +146,7 @@
               
   
                 <h1 id="chunkattention-efficient-self-attention-with-prefix-aware-kv-cache-and-two-phase-partition">ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition</h1>
-<p><a class="glightbox" href="../chunkattn.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../chunkattn.png" /></a></p>
+<p><a class="glightbox" href="../chunkattn.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../chunkattn.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Self-attention is an essential component of large language models (LLM) but a
 significant source of inference latency for long sequences. In multi-tenant LLM
@@ -162,7 +164,7 @@ computation in the presence of shared system prompts. Experiments show that
 ChunkAttention can speed up the self-attention kernel by 3.2-4.8<script type="math/tex">\times</script>
 compared to the state-of-the-art implementation, with the length of the system
 prompt ranging from 1024 to 4096.</p>
-<p><a class="glightbox" href="../res1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../res1.png" /></a></p>
+<p><a class="glightbox" href="../res1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../res1.jpg" /></a></p>
 <p>从实验结果来看，主要适用于共享prompt的场景，且共享token越多，加速越明显。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->

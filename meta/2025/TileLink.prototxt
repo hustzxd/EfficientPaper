@@ -31,7 +31,7 @@ keyword {
   words: overlap
 }
 cover {
-  url: "fig7.png"
+  url: "fig7.jpg"
 }
 baseline {
   methods: "2024/Async-TP"

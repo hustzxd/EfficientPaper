@@ -28,7 +28,7 @@ keyword {
   words: tool
 }
 cover {
-  url: "cover.png"
+  url: "cover.jpg"
 }
 baseline {
   methods: "2024/FlashAttention-3"

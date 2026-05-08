@@ -1,0 +1,33 @@
+paper {
+  title: "UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification"
+  abbr: "UniPrefill"
+  url: "http://arxiv.org/abs/2605.06221v1"
+  authors: "Qihang Fan"
+  authors: "Huaibo Huang"
+  authors: "Zhiying Wu"
+  authors: "Bingning Wang"
+  authors: "Ran He"
+  institutions: "WeChat, Tencent"
+  institutions: "UCAS"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/qhfan/UniPrefill"
+}
+keyword {
+  words: sparse_pruning
+  words: attention_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/XAttention"
+  methods: "2025/FlexPrefill"
+  methods: "2024/MInference"
+}
+update_time: 1778230782

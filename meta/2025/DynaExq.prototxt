@@ -26,7 +26,7 @@ keyword {
   words: quantization
 }
 cover {
-  url: "fig2.png"
+  url: "fig2.jpg"
 }
 baseline {
   methods: "None"

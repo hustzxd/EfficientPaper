@@ -62,6 +62,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -171,11 +173,11 @@ with the parameter scale, i.e., the activation patterns within LLMs are
 insensitive to the parameter scale. These empirical laws towards LLMs with
 greater activation sparsity have important implications for making LLMs more
 efficient and interpretable.</p>
-<p><a class="glightbox" href="../fig3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.png" /></a></p>
+<p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.jpg" /></a></p>
 <ul>
 <li>提出PPL-p%评估指标，其实就是帕累托曲线，这里p%表示sparsity ratio，越高一半模型的精度也会越差，比如ppl越高。图中给的是activation ratio，正好与p%相加=100%。</li>
 </ul>
-<p><a class="glightbox" href="../fig4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.png" /></a></p>
+<p><a class="glightbox" href="../fig4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.jpg" /></a></p>
 <ul>
 <li>PPL-1%来评估模型对sparse的忍受程度</li>
 <li>ReLU：更多的训练数据可以导致模型更加稀疏</li>
@@ -187,14 +189,14 @@ efficient and interpretable.</p>
 <p>width-depth ratio 表示 hidden dimension 与 layer number的比例，越高证明这个LLM越胖，这个参数也与activation sparsity表现有密切关系</p>
 </li>
 </ul>
-<p><a class="glightbox" href="../fig5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.png" /></a></p>
+<p><a class="glightbox" href="../fig5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.jpg" /></a></p>
 <ul>
 <li>以0.1B模型训练举例</li>
 <li>Fig.5表示Width-Depth Ratio在[0, 114]之间，模型会逐渐变胖，且激活比例越来越高，所以希望模型越瘦越好，有利于activation sparsity</li>
 <li>Fig.6表示Width-Depth Ratio在[74, 182]之间，不胖不瘦时训练loss最好</li>
 <li>综上，可以选取 Width-Depth Ratio=74，可以满足training loss 和 activation sparsity 需求</li>
 </ul>
-<p><a class="glightbox" href="../fig7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig7.png" /></a></p>
+<p><a class="glightbox" href="../fig7.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig7.jpg" /></a></p>
 <ul>
 <li>确定模型的 Width-Depth ，且training data 足够多时，model的参数量对 activation sparsity 影响很小</li>
 <li>但是小模型更加容易收敛 （从 activation sparsity变化的角度）</li>

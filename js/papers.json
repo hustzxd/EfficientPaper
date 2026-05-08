@@ -1,6 +1,214 @@
 {
   "papers": [
     {
+      "id": "UniPrefill",
+      "title": "UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification",
+      "abbr": "UniPrefill",
+      "url": "http://arxiv.org/abs/2605.06221v1",
+      "authors": [
+        "Qihang Fan",
+        "Huaibo Huang",
+        "Zhiying Wu",
+        "Bingning Wang",
+        "Ran He"
+      ],
+      "institutions": [
+        "WeChat, Tencent",
+        "UCAS"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/UniPrefill/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/qhfan/UniPrefill",
+      "note_url": "notes/2026/UniPrefill/note/",
+      "prototxt_path": "meta/2026/UniPrefill.prototxt",
+      "update_time": 1778230782,
+      "rating": 0
+    },
+    {
+      "id": "SparseForge",
+      "title": "SparseForge: Efficient Semi-Structured LLM Sparsification via Annealing of Hessian-Guided Soft-Mask",
+      "abbr": "SparseForge",
+      "url": "http://arxiv.org/abs/2605.06402v1",
+      "authors": [
+        "Liu Hanzuo",
+        "Chaofan Lin",
+        "Weixuan Sun",
+        "Yulong Wang",
+        "Key",
+        "Rayying",
+        "Mingyu Gao"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "Tencent"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SparseForge/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)"
+      ],
+      "code_url": "https://github.com/tsinghua-ideal/SparseForge",
+      "note_url": "notes/2026/SparseForge/note/",
+      "prototxt_path": "meta/2026/SparseForge.prototxt",
+      "update_time": 1778230154,
+      "rating": 0
+    },
+    {
+      "id": "SPEED",
+      "title": "Shallow Prefill, Deep Decoding: Efficient Long-Context Inference via Layer-Asymmetric KV Visibility",
+      "abbr": "SPEED",
+      "url": "http://arxiv.org/abs/2605.06105v1",
+      "authors": [
+        "Jungsuk Oh",
+        "Hyeseo Jeon",
+        "Hyunjune Ji",
+        "Kyongmin Kong",
+        "Jay-Yoon Lee"
+      ],
+      "institutions": [
+        "Seoul National University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SPEED/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SPEED/note/",
+      "prototxt_path": "meta/2026/SPEED.prototxt",
+      "update_time": 1778229312,
+      "rating": 2
+    },
+    {
+      "id": "KV-CAT",
+      "title": "Training Transformers for KV Cache Compressibility",
+      "abbr": "KV-CAT",
+      "url": "http://arxiv.org/abs/2605.05971v1",
+      "authors": [
+        "Yoav Gelberg",
+        "Yam Eitan",
+        "Michael Bronstein",
+        "Yarin Gal",
+        "Haggai Maron"
+      ],
+      "institutions": [
+        "University of Oxford",
+        "Israel Institute of Technology",
+        "NVIDIA"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/KV-CAT/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/KV-CAT/note/",
+      "prototxt_path": "meta/2026/KV-CAT.prototxt",
+      "update_time": 1778225718,
+      "rating": 2
+    },
+    {
+      "id": "CacheFlow",
+      "title": "CacheFlow: Efficient LLM Serving with 3D-Parallel KV Cache Restoration",
+      "abbr": "CacheFlow",
+      "url": "http://arxiv.org/abs/2604.25080v1",
+      "authors": [
+        "Sean Nian",
+        "Jiahao Fang",
+        "Qilong Feng",
+        "Zhiyu Wu",
+        "Fan Lai"
+      ],
+      "institutions": [
+        "University of Illinois Urbana-Champaign",
+        "National University of Singapore"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/CacheFlow/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/CacheFlow/note/",
+      "prototxt_path": "meta/2026/CacheFlow.prototxt",
+      "update_time": 1778225173,
+      "rating": 0
+    },
+    {
+      "id": "Cake",
+      "title": "Compute Or Load KV Cache? Why Not Both?",
+      "abbr": "Cake",
+      "url": "http://arxiv.org/abs/2410.03065v2",
+      "authors": [
+        "Shuowei Jin",
+        "Xueshen Liu",
+        "Qingzhao Zhang",
+        "Z. Morley Mao"
+      ],
+      "institutions": [
+        "inst1",
+        "inst2"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/Cake/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/Cake/note/",
+      "prototxt_path": "meta/2024/Cake.prototxt",
+      "update_time": 1778225031,
+      "rating": 0
+    },
+    {
+      "id": "Tutti",
+      "title": "Tutti: Making SSD-Backed KV Cache Practical for Long-Context LLM Serving",
+      "abbr": "Tutti",
+      "url": "http://arxiv.org/abs/2605.03375v1",
+      "authors": [
+        "Shi Qiu",
+        "Yifan Hu",
+        "Xintao Wang",
+        "Wenhao Zhu",
+        "Jianqin Yan",
+        "Hao Chen",
+        "Kaiqiang Xu",
+        "Kai Chen",
+        "Yiming Zhang"
+      ],
+      "institutions": [
+        "Xiamen University",
+        "Shanghai Jiao Tong University",
+        "Hong Kong University of Science and Technology"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Tutti/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/Tutti/note/",
+      "prototxt_path": "meta/2026/Tutti.prototxt",
+      "update_time": 1778220869,
+      "rating": 0
+    },
+    {
       "id": "SWA",
       "title": "Sliding Window Attention Training for Efficient Large Language Models",
       "abbr": "SWA",
@@ -27,7 +235,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SWA/cover.png",
+      "cover": "notes/2025/SWA/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -81,7 +289,7 @@
       ],
       "year": 2026,
       "venue": "huggingface",
-      "cover": "notes/2026/DeepSeek-V4/cover.png",
+      "cover": "notes/2026/DeepSeek-V4/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "21-KV Cache Management",
@@ -116,7 +324,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/SparseForcing/cover.png",
+      "cover": "notes/2026/SparseForcing/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -143,7 +351,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/SparKV/cover.png",
+      "cover": "notes/2026/SparKV/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "29-Comm-Comp Overlap"
@@ -175,7 +383,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/PrfaaS/cover.png",
+      "cover": "notes/2026/PrfaaS/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -206,7 +414,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/AdaSplash-2/cover.png",
+      "cover": "notes/2026/AdaSplash-2/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -267,7 +475,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/HISA/cover.png",
+      "cover": "notes/2026/HISA/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)"
       ],
@@ -317,7 +525,7 @@
       ],
       "year": 2026,
       "venue": "ICLR",
-      "cover": "notes/2026/KVTC/cover.png",
+      "cover": "notes/2026/KVTC/cover.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "21-KV Cache Management"
@@ -344,7 +552,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/EvolKV/fig1.png",
+      "cover": "notes/2025/EvolKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -383,7 +591,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/PyramidKV/cover.png",
+      "cover": "notes/2024/PyramidKV/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "21-KV Cache Management"
@@ -412,7 +620,7 @@
       ],
       "year": 2026,
       "venue": "ICLR",
-      "cover": "notes/2026/TurboQuant/cover.png",
+      "cover": "notes/2026/TurboQuant/cover.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -442,7 +650,7 @@
       ],
       "year": 2026,
       "venue": "ICLR",
-      "cover": "notes/2026/DualMap/cover.png",
+      "cover": "notes/2026/DualMap/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -476,7 +684,7 @@
       ],
       "year": 2026,
       "venue": "ICLR",
-      "cover": "notes/2026/Tactic/cover.png",
+      "cover": "notes/2026/Tactic/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "21-KV Cache Management"
@@ -508,7 +716,7 @@
       ],
       "year": 2026,
       "venue": "ASPLOS",
-      "cover": "notes/2026/ZipServ/cover.png",
+      "cover": "notes/2026/ZipServ/cover.jpg",
       "keywords": [
         "44-Layer Fusion (Reduce IO)"
       ],
@@ -539,7 +747,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/IndexCache/cover.png",
+      "cover": "notes/2026/IndexCache/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -563,7 +771,7 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "notes/2024/FlashAttention-2/cover.png",
+      "cover": "notes/2024/FlashAttention-2/cover.jpg",
       "keywords": [
         "44-Layer Fusion (Reduce IO)"
       ],
@@ -595,7 +803,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/VQKV/cover.png",
+      "cover": "notes/2026/VQKV/cover.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "20-Sparse/Eviction (KV Cache)"
@@ -689,7 +897,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/AttentionResiduals/cover.png",
+      "cover": "notes/2026/AttentionResiduals/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -754,7 +962,7 @@
       ],
       "year": 2025,
       "venue": "EMNLP",
-      "cover": "notes/2025/UNComp/fig4.png",
+      "cover": "notes/2025/UNComp/fig4.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -780,7 +988,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/K-Search/cover.png",
+      "cover": "notes/2026/K-Search/cover.jpg",
       "keywords": [
         "49-Kernel Generation"
       ],
@@ -813,7 +1021,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/FlashAttention-4/cover.png",
+      "cover": "notes/2026/FlashAttention-4/cover.jpg",
       "keywords": [
         "44-Layer Fusion (Reduce IO)",
         "46-Tool"
@@ -1022,7 +1230,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/GLM-5/cover.png",
+      "cover": "notes/2026/GLM-5/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "42-Network Structure Design"
@@ -1061,7 +1269,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "notes/2023/CacheGen/cover.png",
+      "cover": "notes/2023/CacheGen/cover.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "21-KV Cache Management"
@@ -1099,7 +1307,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/DualPath/cover.png",
+      "cover": "notes/2026/DualPath/cover.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -1128,7 +1336,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/FlashPrefill/cover.png",
+      "cover": "notes/2026/FlashPrefill/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -1157,7 +1365,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/AutoOverlap/cover.png",
+      "cover": "notes/2026/AutoOverlap/cover.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -1189,7 +1397,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/Prism/cover.png",
+      "cover": "notes/2026/Prism/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)"
       ],
@@ -1219,7 +1427,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/SparVAR/cover.png",
+      "cover": "notes/2026/SparVAR/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -1253,7 +1461,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/CLaSp/cover.png",
+      "cover": "notes/2025/CLaSp/cover.jpg",
       "keywords": [
         "05-Sparsity (Structured)",
         "30-Speculative Decoding"
@@ -1283,7 +1491,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/LycheeDecode/cover.png",
+      "cover": "notes/2026/LycheeDecode/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1310,7 +1518,7 @@
       ],
       "year": 2022,
       "venue": "TC",
-      "cover": "notes/2022/DSA/fig2.png",
+      "cover": "notes/2022/DSA/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -1346,7 +1554,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/Double-P/cover.png",
+      "cover": "notes/2026/Double-P/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1376,7 +1584,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/SDFP/cover.png",
+      "cover": "notes/2026/SDFP/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)",
@@ -1410,7 +1618,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/OmniKV/cover.png",
+      "cover": "notes/2025/OmniKV/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1446,7 +1654,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/HySparse/cover.png",
+      "cover": "notes/2026/HySparse/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "42-Network Structure Design"
@@ -1475,7 +1683,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/FSR/cover.png",
+      "cover": "notes/2026/FSR/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "20-Sparse/Eviction (KV Cache)"
@@ -1509,7 +1717,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/MFA/cover.png",
+      "cover": "notes/2024/MFA/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -1534,7 +1742,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/L3/cover.png",
+      "cover": "notes/2026/L3/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -1567,7 +1775,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MEPIC/cover.png",
+      "cover": "notes/2025/MEPIC/cover.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -1634,7 +1842,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/IBW4TYDG/cover.png",
+      "cover": "notes/2026/IBW4TYDG/cover.jpg",
       "keywords": [
         "09-Quantization"
       ],
@@ -1678,7 +1886,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/GatedNorm/cover.png",
+      "cover": "notes/2026/GatedNorm/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -1711,7 +1919,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Twilight/cover.png",
+      "cover": "notes/2025/Twilight/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1736,7 +1944,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/FastKVzip/cover.png",
+      "cover": "notes/2026/FastKVzip/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1765,7 +1973,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/HERMES/cover.png",
+      "cover": "notes/2026/HERMES/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1859,7 +2067,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/KVzip/cover.png",
+      "cover": "notes/2025/KVzip/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1883,7 +2091,7 @@
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/KVzap/cover.png",
+      "cover": "notes/2026/KVzap/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -1913,7 +2121,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/Mooncake/cover.png",
+      "cover": "notes/2024/Mooncake/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "46-Tool"
@@ -1953,7 +2161,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/eLLM/cover.png",
+      "cover": "notes/2025/eLLM/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "46-Tool"
@@ -1989,7 +2197,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/MemServe/cover.png",
+      "cover": "notes/2024/MemServe/cover.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -2027,7 +2235,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/vTensor/cover.png",
+      "cover": "notes/2024/vTensor/cover.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -2067,7 +2275,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/HATA/fig2.png",
+      "cover": "notes/2025/HATA/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2100,7 +2308,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/ReAttention/fig1.png",
+      "cover": "notes/2025/ReAttention/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -2140,7 +2348,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/RetrievalAttention/cover.png",
+      "cover": "notes/2025/RetrievalAttention/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "21-KV Cache Management"
@@ -2179,7 +2387,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/MoA/moa.png",
+      "cover": "notes/2024/MoA/moa.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -2210,7 +2418,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/PrefixQuant/fig2.png",
+      "cover": "notes/2024/PrefixQuant/fig2.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -2243,7 +2451,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/InfLLM/cover.png",
+      "cover": "notes/2024/InfLLM/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2270,7 +2478,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/TidalDecode/fig2.png",
+      "cover": "notes/2025/TidalDecode/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2300,7 +2508,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/SpargeAttn/fig3.png",
+      "cover": "notes/2025/SpargeAttn/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -2333,7 +2541,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/ShadowKV/shadowkv.png",
+      "cover": "notes/2025/ShadowKV/shadowkv.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "43-Low Rank Decomposition"
@@ -2375,7 +2583,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/RadialAttention/fig3.png",
+      "cover": "notes/2025/RadialAttention/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -2415,7 +2623,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/R-KV/fig1.png",
+      "cover": "notes/2025/R-KV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2454,7 +2662,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/QuickSilver/cover.png",
+      "cover": "notes/2025/QuickSilver/cover.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "20-Sparse/Eviction (KV Cache)"
@@ -2511,7 +2719,7 @@
       ],
       "year": 2025,
       "venue": "AAAI",
-      "cover": "notes/2025/QJL/fig1.png",
+      "cover": "notes/2025/QJL/fig1.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -2539,7 +2747,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/PSA/fig4.png",
+      "cover": "notes/2025/PSA/fig4.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2594,7 +2802,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/CAOTE/cover.png",
+      "cover": "notes/2025/CAOTE/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2653,7 +2861,7 @@
       ],
       "year": 2025,
       "venue": "SoCC",
-      "cover": "notes/2025/Oneiros/cover.png",
+      "cover": "notes/2025/Oneiros/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -2739,7 +2947,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/MiniKV/minikv.png",
+      "cover": "notes/2024/MiniKV/minikv.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "20-Sparse/Eviction (KV Cache)"
@@ -2769,7 +2977,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/LazyLLM/fig3.png",
+      "cover": "notes/2024/LazyLLM/fig3.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "20-Sparse/Eviction (KV Cache)"
@@ -2801,7 +3009,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/GEAR/overview.png",
+      "cover": "notes/2024/GEAR/overview.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -2867,7 +3075,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DoubleSparsity/cover.png",
+      "cover": "notes/2024/DoubleSparsity/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "20-Sparse/Eviction (KV Cache)"
@@ -2895,7 +3103,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/RecycledAttention/fig1.png",
+      "cover": "notes/2024/RecycledAttention/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2924,7 +3132,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/Quest/quest.png",
+      "cover": "notes/2024/Quest/quest.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -2961,7 +3169,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/SampleAttention/cover.png",
+      "cover": "notes/2024/SampleAttention/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -2991,7 +3199,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/MiniCache/cover.png",
+      "cover": "notes/2024/MiniCache/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -3020,7 +3228,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/SparQ/cover.png",
+      "cover": "notes/2024/SparQ/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -3052,7 +3260,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/SeerAttention/seerattention.png",
+      "cover": "notes/2024/SeerAttention/seerattention.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -3086,7 +3294,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/SnapKV/fig1.png",
+      "cover": "notes/2024/SnapKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -3119,7 +3327,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/ReSA/fig2.png",
+      "cover": "notes/2025/ReSA/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -3156,7 +3364,7 @@
       ],
       "year": 2026,
       "venue": "Github",
-      "cover": "notes/2026/Engram/cover.png",
+      "cover": "notes/2026/Engram/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "42-Network Structure Design"
@@ -3192,7 +3400,7 @@
       ],
       "year": 2025,
       "venue": "DAC",
-      "cover": "notes/2025/MILLION/fig4.png",
+      "cover": "notes/2025/MILLION/fig4.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -3242,7 +3450,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/MoBA/fig1.png",
+      "cover": "notes/2025/MoBA/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -3489,7 +3697,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MiniCPM4/fig2.png",
+      "cover": "notes/2025/MiniCPM4/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -3667,7 +3875,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MoSA/fig1.png",
+      "cover": "notes/2025/MoSA/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -3735,7 +3943,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/PowerAttention/fig1.png",
+      "cover": "notes/2025/PowerAttention/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -3765,7 +3973,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MixKVQ/cover.png",
+      "cover": "notes/2025/MixKVQ/cover.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -3796,7 +4004,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/PagedEviction/fig1.png",
+      "cover": "notes/2025/PagedEviction/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -3835,7 +4043,7 @@
       ],
       "year": 2025,
       "venue": "ACL",
-      "cover": "notes/2025/NSA/fig2.png",
+      "cover": "notes/2025/NSA/fig2.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "20-Sparse/Eviction (KV Cache)",
@@ -3902,7 +4110,7 @@
       ],
       "year": 2025,
       "venue": "MLSys",
-      "cover": "notes/2025/LServer/fig5.png",
+      "cover": "notes/2025/LServer/fig5.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -3934,7 +4142,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/LeanK/fig2.png",
+      "cover": "notes/2025/LeanK/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "20-Sparse/Eviction (KV Cache)"
@@ -3973,7 +4181,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FusedKV/cover.png",
+      "cover": "notes/2025/FusedKV/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -4026,7 +4234,7 @@
       ],
       "year": 2025,
       "venue": "COLM",
-      "cover": "notes/2025/KVSink/fig8.png",
+      "cover": "notes/2025/KVSink/fig8.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4077,7 +4285,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/KVmix/fig3.png",
+      "cover": "notes/2025/KVmix/fig3.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -4106,7 +4314,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/KVLink/fig1.png",
+      "cover": "notes/2025/KVLink/fig1.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -4127,7 +4335,7 @@
       "institutions": [],
       "year": 2025,
       "venue": "github",
-      "cover": "notes/2025/KVCache-Factory/cover.png",
+      "cover": "notes/2025/KVCache-Factory/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "46-Tool"
@@ -4161,7 +4369,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/KeepKV/fig1.png",
+      "cover": "notes/2025/KeepKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4187,7 +4395,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Kascade/cover.png",
+      "cover": "notes/2025/Kascade/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4214,7 +4422,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/HCAttention/fig1.png",
+      "cover": "notes/2025/HCAttention/fig1.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "20-Sparse/Eviction (KV Cache)"
@@ -4243,7 +4451,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/HashAttention/fig2.png",
+      "cover": "notes/2025/HashAttention/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4306,7 +4514,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FreqKV/fig2.png",
+      "cover": "notes/2025/FreqKV/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4337,7 +4545,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FreeKV/cover.png",
+      "cover": "notes/2025/FreeKV/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -4363,7 +4571,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/GLA/gla.png",
+      "cover": "notes/2025/GLA/gla.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -4396,7 +4604,7 @@
       ],
       "year": 2025,
       "venue": "EuroSys",
-      "cover": "notes/2025/CacheBlend/fig1.png",
+      "cover": "notes/2025/CacheBlend/fig1.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -4425,7 +4633,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/RoundAttention/cover.png",
+      "cover": "notes/2025/RoundAttention/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "21-KV Cache Management"
@@ -4452,7 +4660,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FlowKV/cover.png",
+      "cover": "notes/2025/FlowKV/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4477,7 +4685,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Task-KV/fig6.png",
+      "cover": "notes/2025/Task-KV/fig6.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4536,7 +4744,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/SqueezeLLM/squeezeLLM.png",
+      "cover": "notes/2024/SqueezeLLM/squeezeLLM.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -4625,7 +4833,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/FlexPrefill/fig1.png",
+      "cover": "notes/2025/FlexPrefill/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -4651,7 +4859,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/StarAttention/fig1.png",
+      "cover": "notes/2025/StarAttention/fig1.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -4680,7 +4888,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/SALS/fig3.png",
+      "cover": "notes/2025/SALS/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -4713,7 +4921,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/SageAttention3/cover.png",
+      "cover": "notes/2025/SageAttention3/cover.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -4740,7 +4948,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/RetroAttention/fig3.png",
+      "cover": "notes/2025/RetroAttention/fig3.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "21-KV Cache Management"
@@ -4767,7 +4975,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SALE/fig1.png",
+      "cover": "notes/2025/SALE/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -4799,7 +5007,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SpindleKV/fig2.png",
+      "cover": "notes/2025/SpindleKV/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4828,7 +5036,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SlimInfer/fig4.png",
+      "cover": "notes/2025/SlimInfer/fig4.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -4870,7 +5078,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "notes/2023/H2O/h2o.png",
+      "cover": "notes/2023/H2O/h2o.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4902,7 +5110,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/FlashMask/flashmask.png",
+      "cover": "notes/2024/FlashMask/flashmask.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -4933,7 +5141,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/XAttention/fig1.png",
+      "cover": "notes/2025/XAttention/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -4966,7 +5174,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/ZipVL/fig2.png",
+      "cover": "notes/2024/ZipVL/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -4994,7 +5202,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/TOVA/tova.png",
+      "cover": "notes/2024/TOVA/tova.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5030,7 +5238,7 @@
       ],
       "year": 2025,
       "venue": "MLSys",
-      "cover": "notes/2025/FlashInfer/cover.png",
+      "cover": "notes/2025/FlashInfer/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -5065,7 +5273,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/topk-decoding/alg1.png",
+      "cover": "notes/2025/topk-decoding/alg1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5088,7 +5296,7 @@
       ],
       "year": 2023,
       "venue": "blog",
-      "cover": "notes/2023/FlashDecoding/cover.gif",
+      "cover": "notes/2023/FlashDecoding/cover.jpg",
       "keywords": [
         "46-Tool"
       ],
@@ -5113,7 +5321,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FSA/fig1.png",
+      "cover": "notes/2025/FSA/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -5140,7 +5348,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FastKV/fig2.png",
+      "cover": "notes/2025/FastKV/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5287,7 +5495,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/ZigZagKV/fig1.png",
+      "cover": "notes/2024/ZigZagKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5349,7 +5557,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DuoAttention/duoattention.png",
+      "cover": "notes/2024/DuoAttention/duoattention.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "20-Sparse/Eviction (KV Cache)"
@@ -5410,7 +5618,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/DeltaLLM/fig5.png",
+      "cover": "notes/2025/DeltaLLM/fig5.jpg",
       "keywords": [
         "02-Sparsity (Attention)"
       ],
@@ -5436,7 +5644,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/DeltaAttention/fig4.png",
+      "cover": "notes/2025/DeltaAttention/fig4.jpg",
       "keywords": [
         "02-Sparsity (Attention)"
       ],
@@ -5470,7 +5678,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/CTkvr/cover.png",
+      "cover": "notes/2025/CTkvr/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5501,7 +5709,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/DBudgetKV/fig1.png",
+      "cover": "notes/2025/DBudgetKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5524,7 +5732,7 @@
       ],
       "year": 2025,
       "venue": "Github",
-      "cover": "notes/2025/DSA/fig1.png",
+      "cover": "notes/2025/DSA/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -5561,7 +5769,7 @@
       ],
       "year": 2025,
       "venue": "ASPLOS",
-      "cover": "notes/2025/COMET/fig5.png",
+      "cover": "notes/2025/COMET/fig5.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -5596,7 +5804,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/PoD/fig2.png",
+      "cover": "notes/2025/PoD/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5625,7 +5833,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/ChunkKV/fig1.png",
+      "cover": "notes/2025/ChunkKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5650,7 +5858,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/CateKV/fig1.png",
+      "cover": "notes/2025/CateKV/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5701,7 +5909,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/SharedAttention/fig1.png",
+      "cover": "notes/2024/SharedAttention/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -5735,7 +5943,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/AttentionPredictor/fig1.png",
+      "cover": "notes/2025/AttentionPredictor/fig1.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5816,7 +6024,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/AdaKV/fig2.png",
+      "cover": "notes/2024/AdaKV/fig2.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -5845,7 +6053,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SharePrefill/fig3.png",
+      "cover": "notes/2025/SharePrefill/fig3.jpg",
       "keywords": [
         "02-Sparsity (Attention)"
       ],
@@ -5874,7 +6082,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/07NWF4VE/fig1.png",
+      "cover": "notes/2025/07NWF4VE/fig1.jpg",
       "keywords": [
         "21-KV Cache Management"
       ],
@@ -5905,7 +6113,7 @@
       ],
       "year": 2025,
       "venue": "ISCA",
-      "cover": "notes/2025/SpecEE/fig9.png",
+      "cover": "notes/2025/SpecEE/fig9.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)",
@@ -5970,7 +6178,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/VRPJM9OQ/cover.png",
+      "cover": "notes/2025/VRPJM9OQ/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "03-Sparsity (Activation)",
@@ -6050,7 +6258,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/ESS/cover.png",
+      "cover": "notes/2025/ESS/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "20-Sparse/Eviction (KV Cache)",
@@ -6087,7 +6295,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/PWGG5HBE/fig2.png",
+      "cover": "notes/2024/PWGG5HBE/fig2.jpg",
       "keywords": [
         "19-Quantization (KV Cache)",
         "20-Sparse/Eviction (KV Cache)",
@@ -6145,7 +6353,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/HSA/cover.png",
+      "cover": "notes/2025/HSA/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)"
       ],
@@ -6174,7 +6382,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/RazorAttention/cover.png",
+      "cover": "notes/2024/RazorAttention/cover.jpg",
       "keywords": [
         "20-Sparse/Eviction (KV Cache)"
       ],
@@ -6207,7 +6415,7 @@
       ],
       "year": 2024,
       "venue": "ACL",
-      "cover": "notes/2024/InfiniteBench/cover.png",
+      "cover": "notes/2024/InfiniteBench/cover.jpg",
       "keywords": [
         "47-Benchmark"
       ],
@@ -6231,7 +6439,7 @@
       ],
       "year": 2024,
       "venue": "Blog",
-      "cover": "notes/2024/Async-TP/Figure_2.png",
+      "cover": "notes/2024/Async-TP/Figure_2.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -6315,7 +6523,7 @@
       ],
       "year": 2024,
       "venue": "Blog",
-      "cover": "notes/2024/DistGEMM/fig1.gif",
+      "cover": "notes/2024/DistGEMM/fig1.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -6376,7 +6584,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/LinearPatch/fig3.png",
+      "cover": "notes/2025/LinearPatch/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -6416,7 +6624,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DHIB73MC/efficientinference.png",
+      "cover": "notes/2024/DHIB73MC/efficientinference.jpg",
       "keywords": [
         "41-Survey"
       ],
@@ -6471,7 +6679,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/068ZPAME/tab1.png",
+      "cover": "notes/2024/068ZPAME/tab1.jpg",
       "keywords": [
         "41-Survey",
         "42-Network Structure Design"
@@ -6561,7 +6769,7 @@
       ],
       "year": 2025,
       "venue": "PPoPP",
-      "cover": "notes/2025/Acc-SpMM/fig3.png",
+      "cover": "notes/2025/Acc-SpMM/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning"
       ],
@@ -6693,7 +6901,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/FlexiDepth/fig2.png",
+      "cover": "notes/2025/FlexiDepth/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -6725,7 +6933,7 @@
       ],
       "year": 2025,
       "venue": "AAAI",
-      "cover": "notes/2025/AdaSkip/fig1.png",
+      "cover": "notes/2025/AdaSkip/fig1.jpg",
       "keywords": [
         "05-Sparsity (Structured)",
         "01-Sparse/Pruning",
@@ -6755,7 +6963,7 @@
       ],
       "year": 2025,
       "venue": "ISCA",
-      "cover": "notes/2025/AMALI/fig6.png",
+      "cover": "notes/2025/AMALI/fig6.jpg",
       "keywords": [
         "39-Performance Modeling"
       ],
@@ -6868,7 +7076,7 @@
       ],
       "year": 2017,
       "venue": "NeurIPS",
-      "cover": "notes/2017/Transformer/fig1.png",
+      "cover": "notes/2017/Transformer/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -6946,7 +7154,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/AVSS/avss.png",
+      "cover": "notes/2024/AVSS/avss.jpg",
       "keywords": [
         "01-Sparse/Pruning"
       ],
@@ -6994,7 +7202,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/BaWA/fig2.png",
+      "cover": "notes/2025/BaWA/fig2.jpg",
       "keywords": [
         "04-Sparsity (Weight)",
         "01-Sparse/Pruning"
@@ -7027,7 +7235,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/0Y41U1N2/cover.png",
+      "cover": "notes/2024/0Y41U1N2/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -7085,7 +7293,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/WGM/fig1.png",
+      "cover": "notes/2025/WGM/fig1.jpg",
       "keywords": [
         "09-Quantization"
       ],
@@ -7130,7 +7338,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/BLASST/cover.png",
+      "cover": "notes/2025/BLASST/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "01-Sparse/Pruning",
@@ -7162,7 +7370,7 @@
       ],
       "year": 2025,
       "venue": "COLM",
-      "cover": "notes/2025/BlockFFN/fig2.png",
+      "cover": "notes/2025/BlockFFN/fig2.jpg",
       "keywords": [
         "03-Sparsity (Activation)",
         "42-Network Structure Design"
@@ -7227,7 +7435,7 @@
       ],
       "year": 2022,
       "venue": "ASPLOS",
-      "cover": "notes/2022/CoCoNet/fig9.png",
+      "cover": "notes/2022/CoCoNet/fig9.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -7339,7 +7547,7 @@
       ],
       "year": 2024,
       "venue": "ASPLOS",
-      "cover": "notes/2024/Centauri/fig3.png",
+      "cover": "notes/2024/Centauri/fig3.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -7446,7 +7654,7 @@
       ],
       "year": 2024,
       "venue": "ACL",
-      "cover": "notes/2024/ChunkAttention/chunkattn.png",
+      "cover": "notes/2024/ChunkAttention/chunkattn.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -7482,7 +7690,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/CometSeed/fig3.png",
+      "cover": "notes/2025/CometSeed/fig3.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -7513,7 +7721,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/Minitron/minitron.png",
+      "cover": "notes/2024/Minitron/minitron.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -7601,7 +7809,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/CoreInfer/framework.png",
+      "cover": "notes/2024/CoreInfer/framework.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -7635,7 +7843,7 @@
       ],
       "year": 2024,
       "venue": "ATC",
-      "cover": "notes/2024/CachedAttention/fig5.png",
+      "cover": "notes/2024/CachedAttention/fig5.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -7706,7 +7914,7 @@
       ],
       "year": 2025,
       "venue": "github",
-      "cover": "notes/2025/DeepEP/low-latency.png",
+      "cover": "notes/2025/DeepEP/low-latency.jpg",
       "keywords": [
         "29-Comm-Comp Overlap",
         "46-Tool"
@@ -7929,7 +8137,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/DeepSeek-R1/fig1.png",
+      "cover": "notes/2025/DeepSeek-R1/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -8108,7 +8316,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DeepSeek-V2/fig2.png",
+      "cover": "notes/2024/DeepSeek-V2/fig2.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -8330,7 +8538,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DeepSeek-V3/fig5.png",
+      "cover": "notes/2024/DeepSeek-V3/fig5.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -8371,7 +8579,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DeepSeekMoE/fig2.png",
+      "cover": "notes/2024/DeepSeekMoE/fig2.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -8450,7 +8658,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/Domino/fig5.png",
+      "cover": "notes/2024/Domino/fig5.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -8480,7 +8688,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/DReSS/fig1.png",
+      "cover": "notes/2025/DReSS/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -8557,7 +8765,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/DynaExq/fig2.png",
+      "cover": "notes/2025/DynaExq/fig2.jpg",
       "keywords": [
         "09-Quantization"
       ],
@@ -8591,7 +8799,7 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "notes/2024/DSnoT/dsnot.png",
+      "cover": "notes/2024/DSnoT/dsnot.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -8621,7 +8829,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/PCYZ0DJX/cover.png",
+      "cover": "notes/2025/PCYZ0DJX/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "41-Survey",
@@ -8648,7 +8856,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/P0JBYHCN/cover.png",
+      "cover": "notes/2025/P0JBYHCN/cover.jpg",
       "keywords": [
         "40-LLM Deployment"
       ],
@@ -8698,7 +8906,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "notes/2023/IHOT8YP4/fig1.png",
+      "cover": "notes/2023/IHOT8YP4/fig1.jpg",
       "keywords": [
         "40-LLM Deployment"
       ],
@@ -8756,7 +8964,7 @@
       ],
       "year": 2023,
       "venue": "SOSP",
-      "cover": "notes/2023/PagedAttention/vllm.png",
+      "cover": "notes/2023/PagedAttention/vllm.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment",
@@ -8849,7 +9057,7 @@
       ],
       "year": 2025,
       "venue": "Coling",
-      "cover": "notes/2025/SDS/sds.png",
+      "cover": "notes/2025/SDS/sds.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -9092,7 +9300,7 @@
       ],
       "year": 2026,
       "venue": "EuroSys",
-      "cover": "notes/2026/FlashOverlap/fig3.png",
+      "cover": "notes/2026/FlashOverlap/fig3.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -9156,7 +9364,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/FLUX/fig3.png",
+      "cover": "notes/2024/FLUX/fig3.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -9222,7 +9430,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/FPSAttention/cover.png",
+      "cover": "notes/2025/FPSAttention/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -9251,7 +9459,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/FrameQuant/framequant.png",
+      "cover": "notes/2024/FrameQuant/framequant.jpg",
       "keywords": [
         "09-Quantization"
       ],
@@ -9291,7 +9499,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/GatedAttention/fig1.png",
+      "cover": "notes/2025/GatedAttention/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -9642,7 +9850,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/HelixParallelism/fig4.png",
+      "cover": "notes/2025/HelixParallelism/fig4.jpg",
       "keywords": [
         "29-Comm-Comp Overlap",
         "40-LLM Deployment"
@@ -9673,7 +9881,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/DHC/cover.png",
+      "cover": "notes/2025/DHC/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -9737,7 +9945,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/DistAttention/fig1.png",
+      "cover": "notes/2024/DistAttention/fig1.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -9775,7 +9983,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/InfLLM-V2/fig2.png",
+      "cover": "notes/2025/InfLLM-V2/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -9805,7 +10013,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Adrenaline/fig4.png",
+      "cover": "notes/2025/Adrenaline/fig4.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -9838,7 +10046,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/IFPruning/fig1.png",
+      "cover": "notes/2025/IFPruning/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -9872,7 +10080,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/KIVI/fig3.png",
+      "cover": "notes/2024/KIVI/fig3.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -9928,7 +10136,7 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "notes/2024/KVQuant/fig1.png",
+      "cover": "notes/2024/KVQuant/fig1.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -9983,7 +10191,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/LaRoSA/fig1.png",
+      "cover": "notes/2025/LaRoSA/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -10406,7 +10614,7 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "notes/2024/MaskLLM/maskllm.png",
+      "cover": "notes/2024/MaskLLM/maskllm.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -10476,7 +10684,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MegaScale-MoE/fig8.png",
+      "cover": "notes/2025/MegaScale-MoE/fig8.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -10517,7 +10725,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/mHC/cover.png",
+      "cover": "notes/2025/mHC/cover.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -10588,7 +10796,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MPK/cover.png",
+      "cover": "notes/2025/MPK/cover.jpg",
       "keywords": [
         "29-Comm-Comp Overlap",
         "40-LLM Deployment",
@@ -10626,7 +10834,7 @@
       ],
       "year": 2025,
       "venue": "OSDI",
-      "cover": "notes/2025/MPK-Mirage/cover.png",
+      "cover": "notes/2025/MPK-Mirage/cover.jpg",
       "keywords": [
         "29-Comm-Comp Overlap",
         "40-LLM Deployment",
@@ -10661,7 +10869,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/52A7RO95/fig1.png",
+      "cover": "notes/2025/52A7RO95/fig1.jpg",
       "keywords": [
         "42-Network Structure Design",
         "41-Survey"
@@ -10726,7 +10934,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MoR/fig1.png",
+      "cover": "notes/2025/MoR/fig1.jpg",
       "keywords": [
         "42-Network Structure Design",
         "02-Sparsity (Attention)"
@@ -10759,7 +10967,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/MoDES/fig4.png",
+      "cover": "notes/2025/MoDES/fig4.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -10839,7 +11047,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Mosaic/fig6.png",
+      "cover": "notes/2025/Mosaic/fig6.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -10905,7 +11113,7 @@
       ],
       "year": 2025,
       "venue": "OSDI",
-      "cover": "notes/2025/NanoFlow/pipeline.gif",
+      "cover": "notes/2025/NanoFlow/pipeline.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -10988,7 +11196,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "notes/2023/omniquant/omniquant.png",
+      "cover": null,
       "keywords": [
         "09-Quantization"
       ],
@@ -11171,7 +11379,7 @@
       ],
       "year": 2023,
       "venue": "ASPLOS",
-      "cover": "notes/2023/Dist-Einsum/fig5.png",
+      "cover": "notes/2023/Dist-Einsum/fig5.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -11279,7 +11487,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/PAROAttention/fig3.png",
+      "cover": "notes/2025/PAROAttention/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -11369,7 +11577,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/PPCL/fig3.png",
+      "cover": "notes/2025/PPCL/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning"
       ],
@@ -11442,7 +11650,7 @@
       ],
       "year": 2024,
       "venue": "ENLSP",
-      "cover": "notes/2024/SCAP/fig2.png",
+      "cover": "notes/2024/SCAP/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -11556,7 +11764,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/Pruner-Zero/fig1.png",
+      "cover": "notes/2024/Pruner-Zero/fig1.jpg",
       "keywords": [
         "04-Sparsity (Weight)",
         "01-Sparse/Pruning"
@@ -11587,7 +11795,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Cus-Prun/fig1.png",
+      "cover": "notes/2025/Cus-Prun/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -11641,7 +11849,7 @@
       ],
       "year": 2025,
       "venue": "AAAI",
-      "cover": "notes/2025/AdaptiveSparseTrainer/fig1.png",
+      "cover": "notes/2025/AdaptiveSparseTrainer/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -11878,7 +12086,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Qwen3/fig1.png",
+      "cover": "notes/2025/Qwen3/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -11907,7 +12115,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/R-Sparse/fig4.png",
+      "cover": "notes/2025/R-Sparse/fig4.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -11935,7 +12143,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/CLA/fig1.png",
+      "cover": "notes/2024/CLA/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -11965,7 +12173,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/RecursiveTransformers/fig1.png",
+      "cover": "notes/2025/RecursiveTransformers/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -12040,7 +12248,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/ReMoE/fig1.png",
+      "cover": "notes/2024/ReMoE/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -12069,7 +12277,7 @@
       ],
       "year": 2025,
       "venue": "MLSys",
-      "cover": "notes/2025/0VRXJQ3F/tab1.png",
+      "cover": "notes/2025/0VRXJQ3F/tab1.jpg",
       "keywords": [
         "21-KV Cache Management",
         "01-Sparse/Pruning",
@@ -12138,7 +12346,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/RotateKV/fig3.png",
+      "cover": "notes/2025/RotateKV/fig3.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -12249,7 +12457,7 @@
       ],
       "year": 2024,
       "venue": "ICLR",
-      "cover": "notes/2024/SEA/figure1.png",
+      "cover": "notes/2024/SEA/figure1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -12283,7 +12491,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SEAP/fig2.png",
+      "cover": "notes/2025/SEAP/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -12325,7 +12533,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SeerAttention-R/fig1.png",
+      "cover": "notes/2025/SeerAttention-R/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -12360,7 +12568,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Seesaw/fig8.png",
+      "cover": "notes/2025/Seesaw/fig8.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -12491,7 +12699,7 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "notes/2024/SGLang/fig9.png",
+      "cover": "notes/2024/SGLang/fig9.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -12522,7 +12730,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/ShadowLLM/shadowLLM.png",
+      "cover": "notes/2024/ShadowLLM/shadowLLM.jpg",
       "keywords": [
         "01-Sparse/Pruning"
       ],
@@ -12583,7 +12791,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SLA/fig4.png",
+      "cover": "notes/2025/SLA/fig4.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)",
@@ -12640,7 +12848,7 @@
       ],
       "year": 2024,
       "venue": "NeurIPS",
-      "cover": "notes/2024/SlimGPT/fig1.png",
+      "cover": "notes/2024/SlimGPT/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -12711,7 +12919,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/SparkTransformer/fig2.png",
+      "cover": "notes/2025/SparkTransformer/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -12764,7 +12972,7 @@
       ],
       "year": 2023,
       "venue": "arXiv",
-      "cover": "notes/2023/SquareHead/cover.png",
+      "cover": "notes/2023/SquareHead/cover.jpg",
       "keywords": [
         "01-Sparse/Pruning"
       ],
@@ -12969,7 +13177,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/Sparse-IFT/sparseIFT.png",
+      "cover": "notes/2024/Sparse-IFT/sparseIFT.jpg",
       "keywords": [
         "45-Efficient Training",
         "01-Sparse/Pruning"
@@ -13079,7 +13287,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SparseServe/cover.png",
+      "cover": "notes/2025/SparseServe/cover.jpg",
       "keywords": [
         "02-Sparsity (Attention)",
         "40-LLM Deployment",
@@ -13135,7 +13343,7 @@
       ],
       "year": 2025,
       "venue": "ICML",
-      "cover": "notes/2025/SparsingLaw/fig4.png",
+      "cover": "notes/2025/SparsingLaw/fig4.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -13254,7 +13462,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Awesome-Efficient-Arch/fig1.png",
+      "cover": "notes/2025/Awesome-Efficient-Arch/fig1.jpg",
       "keywords": [
         "41-Survey",
         "02-Sparsity (Attention)",
@@ -13281,7 +13489,7 @@
       ],
       "year": 2025,
       "venue": "EuroSys",
-      "cover": "notes/2025/SpInfer/fig5.png",
+      "cover": "notes/2025/SpInfer/fig5.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -13312,7 +13520,7 @@
       ],
       "year": 2024,
       "venue": "ISCA",
-      "cover": "notes/2024/Splitwise/fig10.png",
+      "cover": "notes/2024/Splitwise/fig10.jpg",
       "keywords": [
         "40-LLM Deployment"
       ],
@@ -13400,7 +13608,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SQ-format/cover.png",
+      "cover": "notes/2025/SQ-format/cover.jpg",
       "keywords": [
         "09-Quantization",
         "04-Sparsity (Weight)"
@@ -13431,7 +13639,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/SSA/fig2.png",
+      "cover": "notes/2025/SSA/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -13704,7 +13912,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/sparse-frontier/tb1.png",
+      "cover": "notes/2025/sparse-frontier/tb1.jpg",
       "keywords": [
         "41-Survey",
         "02-Sparsity (Attention)"
@@ -13739,7 +13947,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/TileLink/fig7.png",
+      "cover": "notes/2025/TileLink/fig7.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -13793,7 +14001,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/TokenWeave/fig8.png",
+      "cover": "notes/2025/TokenWeave/fig8.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -13829,7 +14037,7 @@
       ],
       "year": 2025,
       "venue": "ICML Workshop",
-      "cover": "notes/2025/TorchAO/fig1.png",
+      "cover": "notes/2025/TorchAO/fig1.jpg",
       "keywords": [
         "09-Quantization",
         "04-Sparsity (Weight)",
@@ -13881,7 +14089,7 @@
       ],
       "year": 2025,
       "venue": "AISTATS",
-      "cover": "notes/2025/MXFP4Train/fig1.png",
+      "cover": "notes/2025/MXFP4Train/fig1.jpg",
       "keywords": [
         "09-Quantization",
         "45-Efficient Training"
@@ -13935,7 +14143,7 @@
       ],
       "year": 2025,
       "venue": "ICLR",
-      "cover": "notes/2025/TEAL/fig1.png",
+      "cover": "notes/2025/TEAL/fig1.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "03-Sparsity (Activation)"
@@ -13999,7 +14207,7 @@
       ],
       "year": 2025,
       "venue": "EMNLP Findings",
-      "cover": "notes/2025/TOA/fig1.png",
+      "cover": "notes/2025/TOA/fig1.jpg",
       "keywords": [
         "42-Network Structure Design"
       ],
@@ -14043,7 +14251,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Triton-distributed/fig2.png",
+      "cover": "notes/2025/Triton-distributed/fig2.jpg",
       "keywords": [
         "29-Comm-Comp Overlap"
       ],
@@ -14104,7 +14312,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/Týr-the-Pruner/fig2.png",
+      "cover": "notes/2025/Týr-the-Pruner/fig2.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "05-Sparsity (Structured)"
@@ -14162,7 +14370,7 @@
       ],
       "year": 2024,
       "venue": "ICML",
-      "cover": "notes/2024/SMAT/fig2.png",
+      "cover": "notes/2024/SMAT/fig2.jpg",
       "keywords": [
         "03-Sparsity (Activation)"
       ],
@@ -14214,7 +14422,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/Super-Experts-Profilling/fig3.png",
+      "cover": "notes/2025/Super-Experts-Profilling/fig3.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "42-Network Structure Design"
@@ -14243,7 +14451,7 @@
       ],
       "year": 2025,
       "venue": "ASPLOS",
-      "cover": "notes/2025/vAttention/fig5.png",
+      "cover": "notes/2025/vAttention/fig5.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
@@ -14275,7 +14483,7 @@
       ],
       "year": 2025,
       "venue": "arXiv",
-      "cover": "notes/2025/VecInfer/fig4.png",
+      "cover": "notes/2025/VecInfer/fig4.jpg",
       "keywords": [
         "09-Quantization",
         "19-Quantization (KV Cache)"
@@ -14305,7 +14513,7 @@
       ],
       "year": 2023,
       "venue": "SC",
-      "cover": "notes/2023/VENOM/vnm.png",
+      "cover": "notes/2023/VENOM/vnm.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "04-Sparsity (Weight)"
@@ -14336,7 +14544,7 @@
       ],
       "year": 2024,
       "venue": "MLSys",
-      "cover": "notes/2024/Vidur/fig2.png",
+      "cover": "notes/2024/Vidur/fig2.jpg",
       "keywords": [
         "39-Performance Modeling"
       ],
@@ -14389,7 +14597,7 @@
       ],
       "year": 2025,
       "venue": "NeurIPS",
-      "cover": "notes/2025/VORTA/fig6.png",
+      "cover": "notes/2025/VORTA/fig6.jpg",
       "keywords": [
         "01-Sparse/Pruning",
         "02-Sparsity (Attention)"
@@ -14422,7 +14630,7 @@
       ],
       "year": 2024,
       "venue": "arXiv",
-      "cover": "notes/2024/XGrammar/fig1.png",
+      "cover": "notes/2024/XGrammar/fig1.jpg",
       "keywords": [
         "40-LLM Deployment"
       ],
@@ -14597,5 +14805,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 440
+  "total": 447
 }

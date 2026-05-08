@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>2026-05-08 - Efficient Paper</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2026-05-08";
+        var mkdocs_page_input_path = "weekly_paper/2026-05-08.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-04-08/">2026-04-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-04-10/">2026-04-10</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">2026-05-08</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#unipool-a-globally-shared-expert-pool-for-mixture-of-experts">UniPool: A Globally Shared Expert Pool for Mixture-of-Experts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sparseforge-efficient-semi-structured-llm-sparsification-via-annealing-of-hessian-guided-soft-mask">SparseForge: Efficient Semi-Structured LLM Sparsification via Annealing of Hessian-Guided Soft-Mask</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#resihp-taming-llm-training-failures-with-dynamic-hybrid">ResiHP: Taming LLM Training Failures with Dynamic Hybrid</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pace-prune-and-compress-ensemble-models">PACE: Prune-And-Compress Ensemble Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#memory-inception-latent-space-kv-cache-manipulation-for-steering-llms">Memory Inception: Latent-Space KV Cache Manipulation for Steering LLMs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uniprefill-universal-long-context-prefill-acceleration-via-block-wise-dynamic-sparsification">UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#federation-of-experts-communication-efficient-distributed-inference-for-large-language-models">Federation of Experts: Communication Efficient Distributed Inference for Large Language Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tackling-the-data-parallel-load-balancing-bottleneck-in-llm-serving-practical-online-routing-at-scale">Tackling the Data-Parallel Load Balancing Bottleneck in LLM Serving: Practical Online Routing at Scale</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shallow-prefill-deep-decoding-efficient-long-context-inference-via-layer-asymmetric-kv-visibility">Shallow Prefill, Deep Decoding: Efficient Long-Context Inference via Layer-Asymmetric KV Visibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#potacc-a-pipeline-for-end-to-end-acceleration-of-power-of-two-quantized-dnns">PoTAcc: A Pipeline for End-to-End Acceleration of Power-of-Two Quantized DNNs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#normalized-architectures-are-natively-4-bit">Normalized Architectures are Natively 4-Bit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#relay-buffer-independent-communication-over-pooled-hbm-for-efficient-moe-inference-on-ascend">Relay Buffer Independent Communication over Pooled HBM for Efficient MoE Inference on Ascend</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xtramac-an-efficient-mac-architecture-for-mixed-precision-llm-inference-on-fpga">XtraMAC: An Efficient MAC Architecture for Mixed-Precision LLM Inference on FPGA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requests-of-a-feather-must-flock-together-batch-size-vs-prefix-homogeneity-in-llm-inference">Requests of a Feather Must Flock Together: Batch Size vs. Prefix Homogeneity in LLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quantizing-with-randomized-hadamard-transforms-efficient-heuristic-now-proven">Quantizing With Randomized Hadamard Transforms: Efficient Heuristic Now Proven</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#diba-diagonal-and-binary-matrix-approximation-for-neural-network-weight-compression">DiBA: Diagonal and Binary Matrix Approximation for Neural Network Weight Compression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#training-transformers-for-kv-cache-compressibility">Training Transformers for KV Cache Compressibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vismmoe-exploiting-visual-expert-affinity-for-efficient-visual-language-moe-offloading">VisMMOE: Exploiting Visual-Expert Affinity for Efficient Visual-Language MoE Offloading</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moe-hub-taming-software-complexity-for-seamless-moe-overlap-with-hardware-accelerated-communication-on-multi-gpu-systems">MoE-Hub: Taming Software Complexity for Seamless MoE Overlap with Hardware-Accelerated Communication on Multi-GPU Systems</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hcinfer-an-efficient-inference-system-via-error-compensation-for-resource-constrained-devices">HCInfer: An Efficient Inference System via Error Compensation for Resource-Constrained Devices</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-27/">2026-03-27</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Weekly Paper</li>
+      <li class="breadcrumb-item active">2026-05-08</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="2026-05-08">2026-05-08</h1>
+<hr />
+<h2 id="unipool-a-globally-shared-expert-pool-for-mixture-of-experts">UniPool: A Globally Shared Expert Pool for Mixture-of-Experts</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a></p>
+<blockquote>
+<p>针对MoE专家容量分配僵化问题，提出全局共享专家池，减少参数增长并提升深度扩展效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Minbin Huang, Han Shi, Chuanyang Zheng, Yimeng Wu, Guoxuan Chen, Xintong Yu, Yichun Yin, Hong Cheng | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06665v1">http://arxiv.org/abs/2605.06665v1</a></p>
+<details><summary>Abstract</summary>
+
+Modern Mixture-of-Experts (MoE) architectures allocate expert capacity through a rigid per-layer rule: each transformer layer owns a separate expert set. This convention couples depth scaling with linear expert-parameter growth and assumes that every layer needs isolated expert capacity. However, recent analyses and our routing probe challenge this allocation rule: replacing a deeper layer's learned top-k router with uniform random routing drops downstream accuracy by only 1.0-1.6 points across multiple production MoE models. Motivated by this redundancy, we propose UniPool, an MoE architecture that treats expert capacity as a global architectural budget by replacing per-layer expert ownership with a single shared pool accessed by independent per-layer routers. To enable stable and balanced training under sharing, we introduce a pool-level auxiliary loss that balances expert utilization across the entire pool, and adopt NormRouter to provide sparse and scale-stable routing into the shared expert pool. Across five LLaMA-architecture model scales (182M, 469M, 650M, 830M, and 978M parameters) trained on 30B tokens from the Pile, UniPool consistently improves validation loss and perplexity over the matched vanilla MoE baselines. Across these scales, UniPool reduces validation loss by up to 0.0386 relative to vanilla MoE. Beyond raw loss improvement, our results identify pool size as an explicit depth-scaling hyperparameter: reduced-pool UniPool variants using only 41.6%-66.7% of the vanilla expert-parameter budget match or outperform layer-wise MoE at the tested scales. This shows that, under a shared-pool design, expert parameters need not grow linearly with depth; they can grow sublinearly while remaining more efficient and effective than vanilla MoE. Further analysis shows that UniPool's benefits compose with finer-grained expert decomposition.
+
+</details>
+
+<hr />
+<h2 id="sparseforge-efficient-semi-structured-llm-sparsification-via-annealing-of-hessian-guided-soft-mask">SparseForge: Efficient Semi-Structured LLM Sparsification via Annealing of Hessian-Guided Soft-Mask</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparsity-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对半结构化剪枝质量下降问题，提出热退火软掩码优化框架，提升恢复效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Liu Hanzuo, Chaofan Lin, Weixuan Sun, Yulong Wang, Key, Rayying, Mingyu Gao | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06402v1">http://arxiv.org/abs/2605.06402v1</a></p>
+<details><summary>Abstract</summary>
+
+Semi-structured sparsity provides a practical path to accelerate large language models (LLMs) with native hardware support, but post-training semi-structured pruning often suffers from substantial quality degradation due to strong structural coupling. Existing methods rely on large-scale sparse retraining to recover accuracy, resulting in high computational cost.
+  We propose SparseForge, a post-training framework that improves recovery efficiency by directly optimizing the sparsity mask rather than scaling up retraining tokens. SparseForge combines Hessian-aware importance estimation with progressive annealing of soft masks into hardware-executable structured sparsity, enabling stable and efficient sparse recovery. On LLaMA-2-7B under 2:4 sparsity, SparseForge achieves 57.27% average zero-shot accuracy with only $\textbf{5B}$ retraining tokens, surpassing the dense model's 56.43% accuracy and approaching the 57.52% result of a state-of-the-art method using $\textbf{40B}$ tokens. Such improvements on the accuracy-efficiency trade-off from SparseForge are shown to be consistent across model families.
+
+</details>
+
+<hr />
+<h2 id="resihp-taming-llm-training-failures-with-dynamic-hybrid">ResiHP: Taming LLM Training Failures with Dynamic Hybrid</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a></p>
+<blockquote>
+<p>针对大规模LLM训练故障问题，提出动态混合并行容错系统，提升训练稳定性</p>
+</blockquote>
+<p><strong>Authors:</strong> Tenghui Ma, Jihu Guo, Wei Gao, Sitian Lu, Zhisheng Ye, Hanjing Wang, Dahua Lin | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06374v1">http://arxiv.org/abs/2605.06374v1</a></p>
+<details><summary>Abstract</summary>
+
+Hybrid parallelism underpins large-scale LLM training across tens of thousands of GPUs. At such scale, hardware failures on individual devices lead to performance skew across devices, diminishing overall training efficiency. Existing resilient systems overlook sequence length variability in datasets and device performance skew under hybrid parallelism. As a result, (1) iteration time fluctuations induced by sequence length variability can trigger spurious fail-slow detections, and (2) failures are mitigated through individual adaptations in hybrid parallelism, leading to unnecessary detection overhead and inefficient resilient training. To respond, this paper presents ResiHP, a resilient system that enables robust failure detection and fine-grained adaptation for hybrid parallel training. First, we develop a Detector to accurately identify failures. In particular, it employs a workload-aware execution time predictor that disentangles failures from iteration time fluctuations while remaining lightweight for online detection. Second, we design a Scheduler that dynamically adapts parallelism group sizes, model partitioning, and workload scheduling policies to improve training efficiency under failures. Experiments show that ResiHP improves training throughput by 1.04-4.39$\times$ compared with state-of-the-art resilient training systems under diverse failure scenarios in a 256-GPU cluster.
+
+</details>
+
+<hr />
+<h2 id="pace-prune-and-compress-ensemble-models">PACE: Prune-And-Compress Ensemble Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a></p>
+<blockquote>
+<p>针对集成模型部署难题，提出剪枝与压缩交织框架，平衡性能与效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Fabian Akkerman, Julien Ferry, Théo Guyard, Thibaut Vidal | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06278v1">http://arxiv.org/abs/2605.06278v1</a></p>
+<details><summary>Abstract</summary>
+
+Ensemble models achieve state-of-the-art performance on prediction tasks, but usually require aggregating a large number of weak learners. This can hinder deployment, interpretability, and downstream tasks such as robustness verification. Remedies to this issue fall into two main camps: pruning, which discards redundant learners, and compression, which generates new ones from scratch. We introduce PACE, a framework that interleaves these paradigms in a two-phase strategy. First, new learners are actively generated via a theoretically grounded procedure to enhance the diversity of the initial ensemble. When no more relevant learners can be found, a second phase of pruning is performed on this enriched ensemble. During both operations, PACE allows fine control on the faithfulness to the original ensemble. Experiments show that our method outperforms prior pruning and compression methods while offering principled control of faithfulness guarantees.
+
+</details>
+
+<hr />
+<h2 id="memory-inception-latent-space-kv-cache-manipulation-for-steering-llms">Memory Inception: Latent-Space KV Cache Manipulation for Steering LLMs</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM引导方法局限，提出潜在空间KV缓存操纵技术，实现高效无训练引导</p>
+</blockquote>
+<p><strong>Authors:</strong> Andy Zeyi Liu, Michael Zhang, Ilana Greenberg, Adam Alnasser, Lucas Baker, John Sous | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06225v1">http://arxiv.org/abs/2605.06225v1</a></p>
+<details><summary>Abstract</summary>
+
+Steering large language models (LLMs) is usually done by either instruction prompting or activation steering. Prompting often gives strong control, but caches guidance tokens at every layer and can clutter long interactions; activation steering is compact but typically weaker and does not support large structured reminders. We introduce memory inception (MI), a training-free method that steers in latent attention space by inserting text-derived key-value (KV) banks only at selected layers. Rather than materializing reminder content throughout the prompt cache, MI treats steering as selective KV allocation, injecting latent slots only where the model routes to them. On matched personality-steering tasks, MI gives the best overall control--drift trade-off, remaining competitive with prompting while consistently outperforming CAA. On updateable guidance, MI supports mid-conversation behavior shifts without rewriting the visible transcript, achieving the highest post-shift alignment on Qwen3. On structured reasoning, MI outperforms visible prompting on HARDMath and PHYSICS (10/12 subject$\times$mode cells), serving as proxies for structured reasoning in verifiable domains, while cutting content-matched KV storage by up to 118$\times$. These results position MI as a powerful steering method when guidance is persistent, structured, or expensive to keep in the visible transcript.
+
+</details>
+
+<hr />
+<h2 id="uniprefill-universal-long-context-prefill-acceleration-via-block-wise-dynamic-sparsification">UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/acceleration-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/batching-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/batching-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对长上下文预填充效率问题，提出块级动态稀疏化方法，加速长上下文推理</p>
+</blockquote>
+<p><strong>Authors:</strong> Qihang Fan, Huaibo Huang, Zhiying Wu, Bingning Wang, Ran He | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06221v1">http://arxiv.org/abs/2605.06221v1</a></p>
+<details><summary>Abstract</summary>
+
+As large language models (LLMs) continue to advance rapidly, they are becoming increasingly capable while simultaneously demanding ever-longer context lengths. To improve the inference efficiency of long-context processing, several novel low-complexity hybrid architectures have recently been proposed, effectively alleviating the computational burden of long-context inference. However, existing research on long-context prefill acceleration remains predominantly focused on sparse attention mechanisms, which achieve their maximum speedup only on full-attention models. When transferred to emerging architectures--such as linear/full attention hybrids or sliding window/full attention hybrids--these prefill acceleration approaches suffer significant performance degradation. Furthermore, such methods are generally incompatible with continuous batching, making them difficult to integrate into modern inference engines such as vLLM. To this end, we propose UniPrefill, a prefill acceleration framework applicable to virtually any model architecture, which directly accelerates the model's computation at the token level. We further implement UniPrefill as a continuous batching operator and extend vLLM's scheduling strategy to natively support prefill-decode co-processing and tensor parallel for UniPrefill, enabling its seamless integration into vLLM. UniPrefill achieves up to 2.1x speedup in Time-To-First-Token (TTFT), with the acceleration becoming increasingly pronounced as the number of concurrent requests grows.
+
+</details>
+
+<hr />
+<h2 id="federation-of-experts-communication-efficient-distributed-inference-for-large-language-models">Federation of Experts: Communication Efficient Distributed Inference for Large Language Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/communication-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对分布式MoE通信瓶颈，提出专家联邦架构，降低嵌入传输开销</p>
+</blockquote>
+<p><strong>Authors:</strong> Muhammad Shahir Abdurrahman, Chun Deng, Azalia Mirhoseini, Philip Levis | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06206v1">http://arxiv.org/abs/2605.06206v1</a></p>
+<details><summary>Abstract</summary>
+
+Mixture of experts has emerged as the primary mechanism for making Large Language Models (LLMs) computationally efficient. However, in distributed settings, communicating token embeddings between experts is a significant bottleneck.
+  We present the novel Federation of Experts (FoE) architecture. FoE restructures the MoE block of a transformer layer into multiple MoE clusters. Each cluster is responsible for only one of the KV heads and expert parallelism is applied between those experts. Between clusters, a sum synchronizes the post-attention residuals, which then drives routing and dispatch for the next MoE block. In a single-node setting, FoE completely eliminates all-to-all communication as all experts within a group are contained on the same GPU. In multi-node settings, FoE confines all-to-all communication to the intra-node fabric, thus significantly reducing communication overhead.
+  An implementation of FoE finds that on LongBench, FoE significantly improves inference throughput and latency in both single-node and multi-node settings, reducing the end-to-end forward-pass latency by up to 5.2x, TTFT by 3.62x, and TBT by 1.95x. It does so while achieving comparable generation quality to a mixture of experts model of the same size and training configuration.
+
+</details>
+
+<hr />
+<h2 id="tackling-the-data-parallel-load-balancing-bottleneck-in-llm-serving-practical-online-routing-at-scale">Tackling the Data-Parallel Load Balancing Bottleneck in LLM Serving: Practical Online Routing at Scale</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM服务数据并行负载均衡瓶颈，提出在线路由方案，提升大规模推理效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Tianci Bu, Yuan Lyu, Zixi Chen, Chendong Song, Hong Liang, Tsepten Gurung, Yuwei Fan, Yinyu Ye, Zijie Zhou | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06113v1">http://arxiv.org/abs/2605.06113v1</a></p>
+<details><summary>Abstract</summary>
+
+Data-parallel (DP) load balancing has emerged as a first-order bottleneck in large-scale LLM serving. When a model is sharded across devices via tensor parallelism (TP) or expert parallelism (EP) and replicated across many DP workers, every decode step ends in a synchronization barrier whose latency is set by the most heavily loaded worker; even modest persistent imbalance across DP workers compounds, step after step, into a substantial fraction of wasted compute. The problem is hard for reasons specific to LLM decoding: assignments are sticky (migrating KV caches has a high cost), per-request loads grow over time, arrivals are non-stationary, and the router must decide within a sub-100\,ms decode budget over hundreds of waiting requests and tens of workers. We present \textbf{BalanceRoute}, a family of practical online routing algorithms that target this bottleneck. The first, \textbf{BR-0}, requires no prediction infrastructure and uses a piecewise-linear F-score that captures the sharp asymmetry between admissions that fill safe margin and those that overflow into the envelope; a two-stage decomposition keeps per-step cost compatible with millisecond-scale scheduling. The second, \textbf{BR-H}, generalizes BR-0 with a short, constant lookahead $H$ and a lightweight termination-classifier interface, extending the F-score to a horizon-discounted form. We deploy BalanceRoute on a 144-NPU cluster and evaluate against vLLM baselines on both a proprietary production trace and the public Azure-2024 trace. Across both workloads, BalanceRoute substantially reduces average DP imbalance and improves end-to-end serving throughput.
+
+</details>
+
+<hr />
+<h2 id="shallow-prefill-deep-decoding-efficient-long-context-inference-via-layer-asymmetric-kv-visibility">Shallow Prefill, Deep Decoding: Efficient Long-Context Inference via Layer-Asymmetric KV Visibility</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对长上下文推理成本问题，提出阶段不对称KV可见性策略，优化预填充与解码效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Jungsuk Oh, Hyeseo Jeon, Hyunjune Ji, Kyongmin Kong, Jay-Yoon Lee | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06105v1">http://arxiv.org/abs/2605.06105v1</a></p>
+<details><summary>Abstract</summary>
+
+Long-context inference in decoder-only language models is costly because long prompts are processed during Prefill, cached at every layer, and repeatedly attended to during autoregressive Decode. We introduce \emph{Shallow Prefill, dEEp Decode} (SPEED), a phase-asymmetric KV-visibility policy that materializes non-anchor prompt-token KV states only in lower layers while keeping Decode-phase tokens full-depth. Unlike previous approaches that make upper-layer prompt KV states cheaper to store or construct, SPEED removes prefill tokens from the upper-layer Decode visibility set altogether. With a minimal BoS anchor, this simple change preserves broad benchmark quality while reducing long-context cost. In a controlled Llama-3.1-8B instruction-tuning study, SPEED using only 75\% of layers for prefill tokens reaches 51.2 average score on OLMES-style benchmarks, compared with 51.4 for the full-depth baseline, while improving TTFT by 33\%, TPOT by 22\%, and reducing active KV memory by 25.0\% at 128K context. Layer-wise diagnostics suggest that this cutoff retains the main prompt-selection and representation-stabilization regions of the full-depth model. These results show that long-context prompt tokens need not always persist as full-depth KV-cache objects when Decode-phase tokens remain full-depth.
+
+</details>
+
+<hr />
+<h2 id="potacc-a-pipeline-for-end-to-end-acceleration-of-power-of-two-quantized-dnns">PoTAcc: A Pipeline for End-to-End Acceleration of Power-of-Two Quantized DNNs</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对幂次量化DNN边缘部署性能不足，提出端到端加速流水线，提升推理效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Rappy Saha, Jude Haris, Nicolas Bohm Agostini, David Kaeli, José Cano | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06082v1">http://arxiv.org/abs/2605.06082v1</a></p>
+<details><summary>Abstract</summary>
+
+Power-of-two (PoT) quantization significantly reduces the size of deep neural networks (DNNs) and replaces multiplications with bit-shift operations for inference. Prior work has shown that PoT-quantized DNNs can preserve accuracy for tasks such as image classification; however, their performance on resource-constrained edge devices remains insufficiently understood. While general-purpose edge CPUs and GPUs do not provide optimized backends for bit-shift operations, custom hardware accelerators can better exploit PoT quantization by implementing dedicated shift-based processing elements. However, deploying PoT-quantized models on such accelerators is challenging due to limited support in existing inference frameworks. In addition, the impact of different PoT quantization strategies on hardware design, performance, and energy efficiency during full inference has not been systematically explored.
+  To address these challenges, we propose PoTAcc, an open-source end-to-end pipeline for accelerating and evaluating PoT-quantized DNNs on resource-constrained edge devices. PoTAcc enables seamless preparation and deployment of PoT-quantized models via TensorFlow Lite (TFLite) across heterogeneous platforms, including CPU-only systems and hybrid CPU-FPGA systems with custom accelerators. We design shift-based processing element (shift-PE) accelerators for three PoT quantization methods and implement them on two FPGA platforms. We evaluate accuracy, performance, energy efficiency, and resource utilization across a range of models, including CNNs and Transformer-based architectures. Results show that our CPU-accelerator design achieves up to 3.6x speedup and 78% energy reduction compared to CPU-only execution for PoT-quantized DNNs on PYNQ-Z2 and Kria boards. The code will be publicly released at https://github.com/gicLAB/PoTAcc
+
+</details>
+
+<hr />
+<h2 id="normalized-architectures-are-natively-4-bit">Normalized Architectures are Natively 4-Bit</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对4位训练稳定性问题，提出归一化架构，实现原生4位训练并保持模型质量</p>
+</blockquote>
+<p><strong>Authors:</strong> Maxim Fishman, Brian Chmiel, Ron Banner, Daniel Soudry, Boris Ginsburg | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06067v1">http://arxiv.org/abs/2605.06067v1</a></p>
+<details><summary>Abstract</summary>
+
+Training large language models at 4-bit precision is critical for efficiency. We show that nGPT, an architecture that constrains weights and hidden representations to the unit hypersphere, is inherently more robust to low-precision arithmetic. This removes the need for interventions-such as applying random Hadamard transforms and performing per-tensor scaling calculations-to preserve model quality, and it enables stable end-to-end NVFP4 training. We validate this approach on both a 1.2B dense model and hybrid (Mamba-Transformer) MoE models of up to 3B/30B parameters. We trace this robustness to the dot product: while quantization noise remains largely uncorrelated in both standard and normalized architectures, the signal behaves differently. In nGPT, the hypersphere constraint enhances weak positive correlations among the element-wise products, leading to a constructive accumulation of the signal across the hidden dimension while the noise continues to average out. This yields a higher effective signal-to-noise ratio and a flatter loss landscape, with the effect strengthening as the hidden dimension grows, suggesting increasing advantages at scale. A reference implementation is available at https://github.com/anonymous452026/ngpt-nvfp4
+
+</details>
+
+<hr />
+<h2 id="relay-buffer-independent-communication-over-pooled-hbm-for-efficient-moe-inference-on-ascend">Relay Buffer Independent Communication over Pooled HBM for Efficient MoE Inference on Ascend</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/acceleration-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/communication-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对MoE推理通信开销问题，提出无中继缓冲通信设计，提升Ascend平台效率</p>
+</blockquote>
+<p><strong>Authors:</strong> Tianlun Hu, Tiancheng Hu, Shengsheng Litang, Sheng Wang, Xiaoming Bao, Yuxing Li, Wei Wang, Zhongzhe Hu, Lijun Li, Hongwei Sun, Jingbin Zhou\ | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06055v1">http://arxiv.org/abs/2605.06055v1</a></p>
+<details><summary>Abstract</summary>
+
+Mixture-of-Experts (MoE) inference requires large-scale token exchange across devices, making dispatch and combine major bottlenecks in both prefill and decode. Beyond network transfer, routing-driven layout transformation, temporary relay, and output restoration can add substantial overhead. Existing MoE communication paths are often buffer-centric, using explicit inter-process relay and reordering buffers around collective transfer. This report presents a relay-buffer-free communication design for MoE inference acceleration on Ascend systems. The design reorganizes dispatch and combine around direct placement into destination expert windows and direct reading from remote expert windows. Built on globally pooled high-bandwidth memory and symmetric-memory allocation, it removes most intermediate relay and reordering buffers while retaining only lightweight control state, including counts, offsets, and synchronization metadata. We instantiate the design as two schedules for the main phases of MoE inference: a prefill schedule with richer planning state for throughput-oriented execution, and a compact decode schedule for latency-sensitive execution. Experiments on Ascend-based MoE workloads show reduced dispatch and combine latency in both settings. At the serving level, the implementation improves time to first token (TTFT), preserves competitive time per output token (TPOT), and enlarges the feasible scheduling space under practical latency constraints. These results indicate that, on platforms with globally addressable device memory, reducing intermediate buffering and output restoration around expert execution is an effective direction for accelerating MoE inference.
+
+</details>
+
+<hr />
+<h2 id="xtramac-an-efficient-mac-architecture-for-mixed-precision-llm-inference-on-fpga">XtraMAC: An Efficient MAC Architecture for Mixed-Precision LLM Inference on FPGA</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对混合精度LLM推理硬件需求，提出高效MAC架构，优化FPGA资源利用</p>
+</blockquote>
+<p><strong>Authors:</strong> Feng Yu, Hongshi Tan, Yao Chen, Weng-Fai Wong, Bingsheng He | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06052v1">http://arxiv.org/abs/2605.06052v1</a></p>
+<details><summary>Abstract</summary>
+
+The widespread adoption of mixed-precision quantization in large language models (LLMs) has created demand for hardware that can efficiently perform multiply-accumulate (MAC) operations across mixed datatypes and switch datatypes at runtime. Existing FPGA-based MAC solutions fall short due to limitations in fixed-datatype design, inefficient spatial or temporal resource sharing, and poor support for mixed-precision execution. These limitations collectively lead to under-utilization of DSP resources, limiting achievable parallelism and throughput. In this work, we present XtraMAC, a novel MAC architecture that unifies integer, floating-point, and mixed-precision operations within a single, datatype-adaptive microarchitecture. XtraMAC decomposes all supported MAC formats into a shared integer mantissa product with lightweight sign and exponent handling, enabling dynamic operand packing and efficient DSP resource sharing with constant latency and initiation interval of one across all datatypes. Evaluated on an AMD Xilinx U55c FPGA, XtraMAC achieves 1.4-2.0x higher compute density, reduces per-operation LUT, FF, and DSP consumption by 27-51%, and delivers up to 1.9x greater energy efficiency and 1.2x speedup on representative mixed-precision LLM workloads. The implementation of XtraMAC is open-sourced at https://github.com/Xtra-Computing/XtraMAC.
+
+</details>
+
+<hr />
+<h2 id="requests-of-a-feather-must-flock-together-batch-size-vs-prefix-homogeneity-in-llm-inference">Requests of a Feather Must Flock Together: Batch Size vs. Prefix Homogeneity in LLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/batching-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/batching-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM推理批处理效率问题，提出前缀同质批策略，提升解码吞吐量</p>
+</blockquote>
+<p><strong>Authors:</strong> Saksham Rathi, Preeti, Mythili Vutukuru | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06046v1">http://arxiv.org/abs/2605.06046v1</a></p>
+<details><summary>Abstract</summary>
+
+Auto-regressive token generation in large language models is memory-bound because it requires "attending to" key and value tensors (KV cache) of all previous tokens. Prior work aims to improve the efficiency of this decode process by batching multiple requests together, and maximizing batch size subject to GPU memory constraints. The key observation of our work is that with prefix-sharing workloads, smaller, prefix-homogeneous batches -- where all requests share a common prefix -- can achieve higher decode throughput than larger, heterogeneous batches, due to better spatial and temporal locality during KV cache accesses. However, prefix-aware schedulers in state-of-the-art inference engines maximize prefix reuse within a batch only to reduce KV cache memory footprint, but do not stop batch formation at smaller homogeneous batches that could have performed better. Further, we show that shared prefix detection in existing schedulers relies on radix-tree traversals, incurring substantial CPU overhead that is often comparable to GPU execution time. This paper presents Feather, a prefix-aware scheduler that uses reinforcement learning (RL) to learn the optimal tradeoff between batch size and prefix homogeneity. We also introduce Chunked Hash Tree (CHT), a lightweight data structure that enables fast prefix detection and efficient request selection for the RL scheduler, avoiding expensive tree traversals. We integrate Feather into vLLM and SGLang, and our evaluation shows that Feather achieves 2--10$\times$ higher end-to-end throughput as compared to existing schedulers, while doing no worse than the status quo when the workload does not have enough prefix sharing. Feather achieves these gains by reducing the total number of KV cache accesses, surpassing the performance of prefix-aware attention kernels that have the same goal.
+
+</details>
+
+<hr />
+<h2 id="quantizing-with-randomized-hadamard-transforms-efficient-heuristic-now-proven">Quantizing With Randomized Hadamard Transforms: Efficient Heuristic Now Proven</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/acceleration-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/acceleration-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对量化预处理性能问题，证明随机Hadamard变换高效性，提升最坏情况输入处理</p>
+</blockquote>
+<p><strong>Authors:</strong> Ran Ben-Basat, William Kuszmaul, Michael Mitzenmacher, Amit Portnoy, Shay Vargaftik | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.06014v1">http://arxiv.org/abs/2605.06014v1</a></p>
+<details><summary>Abstract</summary>
+
+Uniform random rotations (URRs) are a common preprocessing step in modern quantization approaches used for gradient compression, inference acceleration, KV-cache compression, model weight quantization, and approximate nearest-neighbor search in vector databases. In practice, URRs are often replaced by randomized Hadamard transforms (RHTs), which preserve orthogonality while admitting fast implementations. The remaining issue is the performance for worst-case inputs. With a URR, each coordinate is individually distributed as a shifted beta distribution, which converges to a Gaussian distribution in high dimensions. Generally, one RHT is not suitable in the worst case, as individual coordinates can be far from these distributions. We show that after composing two RHTs on any $d$-sized input vector, the marginal distribution of every fixed coordinate of the normalized rotated vector is within $O(d^{-1/2})$ of a standard Gaussian both in Kolmogorov distance and in $1$-Wasserstein distance. We then plug these bounds into the analyses of modern compression schemes, namely DRIVE and QUIC-FL, and show that two RHTs achieve performance that asymptotically matches URRs.
+  However, we show that two RHTs may not be sufficient for Vector Quantization (VQ), which often requires weak correlation across fixed-size blocks of coordinates (as opposed to only marginal distribution convergence for single coordinates). We prove that a composition of three RHTs leads to decaying coordinate covariance. This ensures that any fixed, bounded, multi-dimensional VQ codebook optimized for URRs has the same expected error when using three RHTs, up to an additive term that vanishes with the dimension.
+  Finally, because practical inputs are rarely adversarial, we propose a linear-time ${O}(d)$ check on the input's moments to dynamically adapt the number of RHTs used at runtime to improve performance.
+
+</details>
+
+<hr />
+<h2 id="diba-diagonal-and-binary-matrix-approximation-for-neural-network-weight-compression">DiBA: Diagonal and Binary Matrix Approximation for Neural Network Weight Compression</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a></p>
+<blockquote>
+<p>针对神经网络权重压缩问题，提出对角二元矩阵近似方法，降低存储与计算开销</p>
+</blockquote>
+<p><strong>Authors:</strong> Nobutaka Ono | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.05994v1">http://arxiv.org/abs/2605.05994v1</a></p>
+<details><summary>Abstract</summary>
+
+In this paper, we propose DiBA (Diagonal and Binary Matrix Approximation), a compact matrix factorization for neural network weight compression. Many components of modern networks, including linear layers, $1\times1$ convolutions, attention projections, and embedding layers, have dense matrix weights. DiBA approximates $A\in\mathbb{R}^{m\times n}$ by $\widehat A=D_1B_1D_2B_2D_3$, where $D_1,D_2,D_3$ are diagonal matrices and $B_1,B_2$ are $0/1$ binary matrices. The intermediate dimension $k$ controls the trade-off between theoretical storage and approximation accuracy. For matrix-vector products, DiBA decomposes dense multiplication into three element-wise scaling operations and two binary mixing operations, reducing the floating-point multiplication count from $mn$ to $m+k+n$. For optimization, we introduce DiBA-Greedy, an alternating solver that combines closed-form least-squares updates for the diagonal factors with exact one-bit improvement tests for the binary factors. We also introduce DiBARD (DiBA with Retuning only Diagonal factors), which replaces dense-matrix layers by DiBA factors, freezes the binary matrices, and retunes only the diagonal entries on downstream data. This preserves compact binary mixing without discrete search during adaptation. On 40 dense weight matrices extracted from public pretrained models, DiBA-Greedy yields consistent SNR improvements as the theoretical storage ratio increases. After DiBA replacement in two component-replacement studies, DiBARD improves DistilBERT/WikiText masked-token accuracy from 0.4447 to 0.5210 and Speech Commands test accuracy for an Audio Spectrogram Transformer from 0.7684 to 0.9781 without reoptimizing the binary factors.
+
+</details>
+
+<hr />
+<h2 id="training-transformers-for-kv-cache-compressibility">Training Transformers for KV Cache Compressibility</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对KV缓存压缩效果受限问题，提出训练时优化方法，提升长上下文建模压缩性</p>
+</blockquote>
+<p><strong>Authors:</strong> Yoav Gelberg, Yam Eitan, Michael Bronstein, Yarin Gal, Haggai Maron | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.05971v1">http://arxiv.org/abs/2605.05971v1</a></p>
+<details><summary>Abstract</summary>
+
+Long-context language modeling is increasingly constrained by the Key-Value (KV) cache, whose memory and decode-time access costs scale linearly with the prefix length. This bottleneck has motivated a range of context-compression methods, from token-level summarization to recent optimization-based KV compression methods. These post-hoc methods operate on the KV cache of a fixed pretrained model, so their effectiveness is fundamentally limited by how well the model's internal representations can be compressed. In this work, we formalize the notion of KV compressibility and show that it is a property of the learned representations, rather than of the context alone. We prove that almost any sequence-to-vector function admits both highly compressible and inherently non-compressible transformer implementations, highlighting the need to guide transformers toward compressible representations during training. Motivated by this, we propose KV-Compression Aware Training (KV-CAT), a continued pretraining procedure that incentivizes the emergence of compressible representations. We introduce a train-time KV sparsification policy that masks KV slots during training. This forces the model to use fewer KV slots and encourages it to learn representations amenable to post-hoc compression. Empirically, we show that KV-CAT improves the quality-budget tradeoff of downstream compression methods across retrieval, long-context question answering, and perplexity-based evaluation of compressed-prefix continuation.
+
+</details>
+
+<hr />
+<h2 id="vismmoe-exploiting-visual-expert-affinity-for-efficient-visual-language-moe-offloading">VisMMOE: Exploiting Visual-Expert Affinity for Efficient Visual-Language MoE Offloading</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/offloading-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/offloading-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/token pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/token pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对视觉语言MoE卸载效率问题，提出视觉专家亲和性系统，优化视觉重负载部署</p>
+</blockquote>
+<p><strong>Authors:</strong> Cheng Xu, Xiaofeng Hou, Jiacheng Liu, Chao Li | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.05899v1">http://arxiv.org/abs/2605.05899v1</a></p>
+<details><summary>Abstract</summary>
+
+Large-scale vision-language mixture-of-experts (VL-MoE) models provide strong multimodal capability, but efficient deployment on memory-constrained platforms remains difficult. Existing MoE offloading systems are largely designed for text-centric workloads and become much less effective for visual-heavy inputs, where large numbers of visual tokens induce broader and less predictable expert accesses. We present VisMMoE, a VL-MoE offloading system built on a single systems insight: pruning redundant visual tokens can improve offloading not only by reducing computation, but also by reshaping expert demand. We refer to this effect as \textit{visual-expert affinity}: token pruning makes expert accesses more concentrated within layers and more stable across layers, producing a smaller and more predictable expert working set. Guided by this insight, VisMMoE combines affinity-aware token compression, lookahead expert prediction, and cache/pipeline orchestration to improve expert locality and prefetch effectiveness under tight memory budgets. We implement VisMMoE on multiple frameworks and evaluate it on representative VL-MoE models and benchmarks. VisMMoE improves end-to-end inference performance by up to 2.68x and 1.61x, respectively, over strong baselines for today's VL-MoE deployments while maintaining competitive accuracy.
+
+</details>
+
+<hr />
+<h2 id="moe-hub-taming-software-complexity-for-seamless-moe-overlap-with-hardware-accelerated-communication-on-multi-gpu-systems">MoE-Hub: Taming Software Complexity for Seamless MoE Overlap with Hardware-Accelerated Communication on Multi-GPU Systems</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/communication-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/overlap-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/overlapping-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/overlapping-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对MoE多GPU通信瓶颈，提出硬件加速通信重叠框架，简化软件复杂性</p>
+</blockquote>
+<p><strong>Authors:</strong> Zhuoshan Zhou, Chen Zhang, Shuyi Zhang, Qijun Zhang, Haibo Wang, Zhe Zhou, Zhipeng Tu, Guangyu Sun, Yijia Diao, Zhigang Ji, Jingwen Leng, Guanghui He, Minyi Guo | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.05888v1">http://arxiv.org/abs/2605.05888v1</a></p>
+<details><summary>Abstract</summary>
+
+The Mixture-of-Experts (MoE) architecture is crucial for scaling large language models, but its scalability is severely limited by inter-GPU communication bottlenecks in multi-GPU systems. Although overlapping communication with computation is a widely recognized optimization, its effective deployment still remains challenging, both in terms of performance and programmability. In this work, we identify the root cause as a fundamental abstraction mismatch between MoE's dynamic, irregular token-to-expert mapping and the static, address-centric communication model of modern GPUs, which necessitates a complex software mediation phase to resolve addresses before data transfers, limiting performance and software flexibility. To resolve this, we propose MoE-Hub, a hardware-software co-design that introduces a destination-agnostic communication paradigm. MoE-Hub decouples data transmission from address management, allowing producers to send data immediately after routing using only a logical destination, while address allocation and data-flow orchestration are handled transparently by lightweight hardware in the GPU hub. By hardware-accelerating the entire communication control plane, MoE-Hub enables seamless and transparent overlap. Our evaluation shows that MoE-Hub achieves 1.40x-3.08x per-layer and 1.21x-1.98x end-to-end speedup over state-of-the-art systems.
+
+</details>
+
+<hr />
+<h2 id="hcinfer-an-efficient-inference-system-via-error-compensation-for-resource-constrained-devices">HCInfer: An Efficient Inference System via Error Compensation for Resource-Constrained Devices</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/offloading-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/offloading-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对资源受限设备LLM部署问题，提出误差补偿推理系统，提升吞吐量与准确性</p>
+</blockquote>
+<p><strong>Authors:</strong> Shen Xu, Xiangwen Zhuge, Zhe Xu, Yingkun Hu, Zheng Yang, Yunhao Liu | <strong>Date:</strong> 2026-05-07</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.05819v1">http://arxiv.org/abs/2605.05819v1</a></p>
+<details><summary>Abstract</summary>
+
+LLMs often struggle with memory-constrained deployment on consumer-grade hardware due to their massive parameter sizes. While existing solutions such as model compression and offloading improve deployment feasibility, they often suffer from substantial accuracy degradation or severe throughput bottlenecks. Recent error compensation methods recover accuracy through auxiliary LoRA-style branches, and we observe that these branches are inherently amenable to offloading: they require substantial parameter storage but access only a small subset of compensation parameters during each inference step. Motivated by this opportunity, we propose HCInfer, a heterogeneous inference system that offloads residual compensation to the CPU while executing the compressed backbone on the GPU, and further introduces an asynchronous compensation pipeline and sensitivity-aware dynamic rank allocation to hide compensation overhead and maximize accuracy recovery. Experimental results show that HCInfer achieves a maximum accuracy improvement of 5.2% on downstream tasks compared to compression model and sustaining a maximum speedup of 10.4x compared to full-precision model.
+
+</details>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-05-01/" class="btn btn-neutral float-left" title="2026-05-01"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../legacy/2025-10-09/" class="btn btn-neutral float-right" title="2025-10-09">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2026-05-01/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../legacy/2025-10-09/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../js/prism-prototxt.js"></script>
+      <script src="../../js/preview.js"></script>
+      <script src="../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../js/note-editor.js"></script>
+      <script src="../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

@@ -62,6 +62,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -147,7 +149,7 @@
 <blockquote>
 <p>Tianchen Zhao, Ke Hong, Xinhao Yang, Xuefeng Xiao, Huixia Li, Feng Ling, Ruiqi Xie, Siqi Chen, Hongyu Zhu, Yichong Zhang, Yu Wang</p>
 </blockquote>
-<p><a class="glightbox" href="../fig3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig3.png" /></a></p>
+<p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig3.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>In visual generation, the quadratic complexity of attention mechanisms results in high memory and computational costs, especially for longer token sequences required in high-resolution image or multi-frame video generation. To address this, prior research has explored techniques such as sparsification and quantization. However, these techniques face significant challenges under low density and reduced bitwidths. Through systematic analysis, we identify that the core difficulty stems from the dispersed and irregular characteristics of visual attention patterns. Therefore, instead of introducing specialized sparsification and quantization design to accommodate such patterns, we propose an alternative strategy: <em>reorganizing</em> the attention pattern to alleviate the challenges. Inspired by the local aggregation nature of visual feature extraction, we design a novel <strong>Pattern-Aware token ReOrdering (PARO)</strong> technique, which unifies the diverse attention patterns into a hardware-friendly block-wise pattern. This unification substantially simplifies and enhances both sparsification and quantization. We evaluate the performance-efficiency trade-offs of various design choices and finalize a methodology tailored for the unified pattern. Our approach, <strong>PAROAttention</strong>, achieves video and image generation with lossless metrics, and nearly identical results from full-precision (FP) baselines, while operating at notably lower density (~20%-30%) and bitwidth (<strong>INT8/INT4</strong>), achieving a <strong>1.9x</strong> to <strong>2.7x</strong> end-to-end latency speedup.</p>
               

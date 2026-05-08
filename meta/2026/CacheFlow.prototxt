@@ -1,0 +1,31 @@
+paper {
+  title: "CacheFlow: Efficient LLM Serving with 3D-Parallel KV Cache Restoration"
+  abbr: "CacheFlow"
+  url: "http://arxiv.org/abs/2604.25080v1"
+  authors: "Sean Nian"
+  authors: "Jiahao Fang"
+  authors: "Qilong Feng"
+  authors: "Zhiyu Wu"
+  authors: "Fan Lai"
+  institutions: "University of Illinois Urbana-Champaign"
+  institutions: "National University of Singapore"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/Cake"
+}
+update_time: 1778225173

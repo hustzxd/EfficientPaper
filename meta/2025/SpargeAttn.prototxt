@@ -25,7 +25,7 @@ keyword {
   words: attention_sparsity
 }
 cover {
-  url: "fig3.png"
+  url: "fig3.jpg"
 }
 baseline {
   methods: "None"

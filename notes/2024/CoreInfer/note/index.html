@@ -62,6 +62,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -144,7 +146,7 @@
               
   
                 <h1 id="coreinfer-accelerating-large-language-model-inference-with-semantics-inspired-adaptive-sparse-activation">CoreInfer: Accelerating Large Language Model Inference with Semantics-Inspired Adaptive Sparse Activation</h1>
-<p><a class="glightbox" href="../framework.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../framework.png" /></a></p>
+<p><a class="glightbox" href="../framework.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../framework.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>Large language models (LLMs) with billions of parameters have sparked a new
 wave of exciting AI applications. However, their high computational costs and
@@ -183,7 +185,7 @@ compared to the Huggingface implementation and PowerInfer, respectively.</p>
 <p><a class="glightbox" href="../eq2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq2.png" /></a></p>
 <p>可以看到分别引入了<script type="math/tex">\alpha</script>
 <script type="math/tex">\beta</script> 两个超参数，用来控制core neurons的比例。</p>
-<p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.png" /></a>
+<p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a>
 通过这种选择策略，只用计算少部分的neurons，便可以维持精度。</p>
 <p>另外观察，越临近的tokens的core neurons越相似，所以具有语义相似性。</p>
 <p>所以，coreinfer根据历史的core neuron来判断未来的core neuron方法如下：

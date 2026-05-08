@@ -1,0 +1,31 @@
+paper {
+  title: "Shallow Prefill, Deep Decoding: Efficient Long-Context Inference via Layer-Asymmetric KV Visibility"
+  abbr: "SPEED"
+  url: "http://arxiv.org/abs/2605.06105v1"
+  authors: "Jungsuk Oh"
+  authors: "Hyeseo Jeon"
+  authors: "Hyunjune Ji"
+  authors: "Kyongmin Kong"
+  authors: "Jay-Yoon Lee"
+  institutions: "Seoul National University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1778229312
+rating: 2

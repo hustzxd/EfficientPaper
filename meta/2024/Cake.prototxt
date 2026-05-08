@@ -1,0 +1,30 @@
+paper {
+  title: "Compute Or Load KV Cache? Why Not Both?"
+  abbr: "Cake"
+  url: "http://arxiv.org/abs/2410.03065v2"
+  authors: "Shuowei Jin"
+  authors: "Xueshen Liu"
+  authors: "Qingzhao Zhang"
+  authors: "Z. Morley Mao"
+  institutions: "inst1"
+  institutions: "inst2"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1778225031

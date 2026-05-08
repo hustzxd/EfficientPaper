@@ -978,6 +978,44 @@
       }
     });
 
+    // Compress image to under 100KB
+    async function compressImage(file) {
+      const TARGET_SIZE = 100 * 1024; // 100KB
+      if (file.size <= TARGET_SIZE) return file;
+
+      const img = await new Promise((resolve, reject) => {
+        const el = new Image();
+        el.onload = () => resolve(el);
+        el.onerror = reject;
+        el.src = URL.createObjectURL(file);
+      });
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Try progressively smaller scales and quality
+      for (const scale of [1.0, 0.8, 0.6, 0.5, 0.4, 0.3]) {
+        const w = Math.round(img.naturalWidth * scale);
+        const h = Math.round(img.naturalHeight * scale);
+        canvas.width = w;
+        canvas.height = h;
+        ctx.drawImage(img, 0, 0, w, h);
+
+        for (const quality of [0.8, 0.6, 0.45, 0.3, 0.2]) {
+          const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', quality));
+          if (blob.size <= TARGET_SIZE) {
+            const ext = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+            return new File([blob], ext, { type: 'image/jpeg' });
+          }
+        }
+      }
+
+      // Last resort
+      const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.15));
+      const ext = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+      return new File([blob], ext, { type: 'image/jpeg' });
+    }
+
     // Handle cover image upload
     document.getElementById('cover-upload').addEventListener('change', async (e) => {
       const file = e.target.files[0];
@@ -990,12 +1028,27 @@
       previewContainer.style.display = 'block';
 
       const uploadStatus = document.getElementById('upload-status');
-      uploadStatus.textContent = 'Uploading...';
+
+      // Compress if needed
+      let uploadFile = file;
+      if (file.size > 100 * 1024) {
+        uploadStatus.textContent = `Compressing (${(file.size / 1024).toFixed(0)}KB → target 100KB)...`;
+        uploadStatus.style.color = '#888';
+        try {
+          uploadFile = await compressImage(file);
+          uploadStatus.textContent = `Compressed: ${(file.size / 1024).toFixed(0)}KB → ${(uploadFile.size / 1024).toFixed(0)}KB. Uploading...`;
+        } catch (err) {
+          console.warn('Compression failed, uploading original:', err);
+          uploadStatus.textContent = 'Uploading original...';
+        }
+      } else {
+        uploadStatus.textContent = 'Uploading...';
+      }
       uploadStatus.style.color = '#888';
 
       try {
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('file', uploadFile);
         formData.append('path', currentPath);
 
         const response = await fetch(`${API_BASE_URL}/api/upload-cover`, {

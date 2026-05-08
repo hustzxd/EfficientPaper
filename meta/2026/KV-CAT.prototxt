@@ -1,0 +1,33 @@
+paper {
+  title: "Training Transformers for KV Cache Compressibility"
+  abbr: "KV-CAT"
+  url: "http://arxiv.org/abs/2605.05971v1"
+  authors: "Yoav Gelberg"
+  authors: "Yam Eitan"
+  authors: "Michael Bronstein"
+  authors: "Yarin Gal"
+  authors: "Haggai Maron"
+  institutions: "University of Oxford"
+  institutions: "Israel Institute of Technology"
+  institutions: "NVIDIA"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1778225718
+rating: 2

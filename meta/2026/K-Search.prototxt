@@ -20,7 +20,7 @@ keyword {
   words: kernel_generation
 }
 cover {
-  url: "cover.png"
+  url: "cover.jpg"
 }
 baseline {
   methods: "None"

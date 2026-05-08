@@ -51,9 +51,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pagedattention-family">PagedAttention Family</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#flashattention-family">FlashAttention Family</a>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#wanda-family">Wanda Family</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#flashattention-family">FlashAttention Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#gptq-family">GPTQ Family</a>
 </li>
@@ -61,9 +61,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#nsa-family">NSA Family</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#tidaldecode-family">TidalDecode Family</a>
+<li class="toctree-l2"><a class="reference internal" href="#seerattention-r-family">SeerAttention-R Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#cla-family">CLA Family</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cake-family">Cake Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#deepseek-v3-family">DeepSeek-V3 Family</a>
 </li>
@@ -85,6 +87,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-04-24/">2026-04-24</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-01/">2026-05-01</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-08/">2026-05-08</a>
 </li>
 <li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
@@ -167,7 +171,7 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <p>Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.</p>
 <h2 id="kivi-family">KIVI Family</h2>
-<p><em>54 methods, 64 relationships</em></p>
+<p><em>55 methods, 65 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
     classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
@@ -333,6 +337,9 @@
     2026_TurboQuant["TurboQuant[2026]"]
     class 2026_TurboQuant leafNode
     click 2026_TurboQuant "../?search=TurboQuant" _blank
+    2026_UniPrefill["UniPrefill[2026]"]
+    class 2026_UniPrefill leafNode
+    click 2026_UniPrefill "../?search=UniPrefill" _blank
     2026_VQKV["VQKV[2026]"]
     class 2026_VQKV leafNode
     click 2026_VQKV "../?search=VQKV" _blank
@@ -465,6 +472,8 @@
     linkStyle 62 stroke:#FFA500,stroke-width:2.5px
     2025_XAttention ==&gt;|" "| 2025_TCA_Attention
     linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2026_UniPrefill
+    linkStyle 64 stroke:#9370DB,stroke-width:2.5px
 </div>
 <h2 id="svg-family">SVG Family</h2>
 <p><em>8 methods, 7 relationships</em></p>
@@ -566,6 +575,44 @@
     2025_TileLink ==&gt;|" "| 2025_TokenWeave
     linkStyle 8 stroke:#9370DB,stroke-width:2.5px
 </div>
+<h2 id="wanda-family">Wanda Family</h2>
+<p><em>6 methods, 5 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2023_SparseGPT["SparseGPT[2023]"]
+    class 2023_SparseGPT rootNode
+    click 2023_SparseGPT "../?search=SparseGPT" _blank
+    2024_Pruner_Zero["Pruner-Zero[2024]"]
+    class 2024_Pruner_Zero leafNode
+    click 2024_Pruner_Zero "../?search=Pruner-Zero" _blank
+    2024_Wanda["Wanda[2024]"]
+    class 2024_Wanda defaultNode
+    click 2024_Wanda "../?search=Wanda" _blank
+    2025_BaWA["BaWA[2025]"]
+    class 2025_BaWA leafNode
+    click 2025_BaWA "../?search=BaWA" _blank
+    2025_SDS["SDS[2025]"]
+    class 2025_SDS leafNode
+    click 2025_SDS "../?search=SDS" _blank
+    2026_SparseForge["SparseForge[2026]"]
+    class 2026_SparseForge leafNode
+    click 2026_SparseForge "../?search=SparseForge" _blank
+
+    2023_SparseGPT ==&gt;|" "| 2024_Wanda
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2024_Wanda ==&gt;|" "| 2024_Pruner_Zero
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2024_Wanda ==&gt;|" "| 2025_BaWA
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+    2024_Wanda ==&gt;|" "| 2025_SDS
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+    2024_Wanda ==&gt;|" "| 2026_SparseForge
+    linkStyle 4 stroke:#FF69B4,stroke-width:2.5px
+</div>
 <h2 id="flashattention-family">FlashAttention Family</h2>
 <p><em>5 methods, 4 relationships</em></p>
 <div class="mermaid">flowchart LR
@@ -597,39 +644,6 @@
     2024_FlashAttention_2 ==&gt;|" "| 2024_FlashAttention_3
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
     2024_FlashAttention_3 ==&gt;|" "| 2026_FlashAttention_4
-    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
-</div>
-<h2 id="wanda-family">Wanda Family</h2>
-<p><em>5 methods, 4 relationships</em></p>
-<div class="mermaid">flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2023_SparseGPT["SparseGPT[2023]"]
-    class 2023_SparseGPT rootNode
-    click 2023_SparseGPT "../?search=SparseGPT" _blank
-    2024_Pruner_Zero["Pruner-Zero[2024]"]
-    class 2024_Pruner_Zero leafNode
-    click 2024_Pruner_Zero "../?search=Pruner-Zero" _blank
-    2024_Wanda["Wanda[2024]"]
-    class 2024_Wanda defaultNode
-    click 2024_Wanda "../?search=Wanda" _blank
-    2025_BaWA["BaWA[2025]"]
-    class 2025_BaWA leafNode
-    click 2025_BaWA "../?search=BaWA" _blank
-    2025_SDS["SDS[2025]"]
-    class 2025_SDS leafNode
-    click 2025_SDS "../?search=SDS" _blank
-
-    2023_SparseGPT ==&gt;|" "| 2024_Wanda
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-    2024_Wanda ==&gt;|" "| 2024_Pruner_Zero
-    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
-    2024_Wanda ==&gt;|" "| 2025_BaWA
-    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
-    2024_Wanda ==&gt;|" "| 2025_SDS
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
 </div>
 <h2 id="gptq-family">GPTQ Family</h2>
@@ -706,7 +720,7 @@
     2025_NSA ==&gt;|" "| 2025_InfLLM_V2
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 </div>
-<h2 id="tidaldecode-family">TidalDecode Family</h2>
+<h2 id="seerattention-r-family">SeerAttention-R Family</h2>
 <p><em>3 methods, 2 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
@@ -745,6 +759,24 @@
     click 2025_FusedKV "../?search=FusedKV" _blank
 
     2024_CLA ==&gt;|" "| 2025_FusedKV
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+</div>
+<h2 id="cake-family">Cake Family</h2>
+<p><em>2 methods, 1 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2024_Cake["Cake[2024]"]
+    class 2024_Cake rootNode
+    click 2024_Cake "../?search=Cake" _blank
+    2026_CacheFlow["CacheFlow[2026]"]
+    class 2026_CacheFlow leafNode
+    click 2026_CacheFlow "../?search=CacheFlow" _blank
+
+    2024_Cake ==&gt;|" "| 2026_CacheFlow
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 </div>
 <h2 id="deepseek-v3-family">DeepSeek-V3 Family</h2>

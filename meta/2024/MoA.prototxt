@@ -33,7 +33,7 @@ keyword {
   words: attention_sparsity
 }
 cover {
-  url: "moa.png"
+  url: "moa.jpg"
 }
 baseline {
   methods: "None"

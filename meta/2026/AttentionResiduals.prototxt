@@ -53,7 +53,7 @@ keyword {
   words: structure_design
 }
 cover {
-  url: "cover.png"
+  url: "cover.jpg"
 }
 baseline {
   methods: "2025/mHC"

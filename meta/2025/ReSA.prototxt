@@ -27,7 +27,7 @@ keyword {
   words: kv_cache_sparse
 }
 cover {
-  url: "fig2.png"
+  url: "fig2.jpg"
 }
 baseline {
   methods: "None"

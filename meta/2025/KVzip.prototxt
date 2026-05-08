@@ -24,7 +24,7 @@ keyword {
   words: kv_cache_sparse
 }
 cover {
-  url: "cover.png"
+  url: "cover.jpg"
 }
 baseline {
   methods: "2024/SnapKV"

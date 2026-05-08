@@ -62,6 +62,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
@@ -144,7 +146,7 @@
               
   
                 <h1 id="deepseek-v2-a-strong-economical-and-efficient-mixture-of-experts-language-model">DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</h1>
-<p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.png" /></a></p>
+<p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>We present DeepSeek-V2, a strong Mixture-of-Experts (MoE) language model
 characterized by economical training and efficient inference. It comprises 236B
@@ -176,7 +178,7 @@ KV的需要经过两次Linear运算才能得到，只保存<script type="math/te
 另外，也对Q进行了Low-Rank运算，虽然不能减少Cache，但是能减少training中的激活值的Memory。
 <a class="glightbox" href="../eq12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq12.png" /></a></p>
 <p>保存的KV cache对比如下图所示：
-<a class="glightbox" href="../fig3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.png" /></a></p>
+<a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.jpg" /></a></p>
 <h3 id="decoupled-rotary-position-embedding">Decoupled Rotary Position Embedding</h3>
 <p>然而，Low-Rank与RoPE不兼容，</p>
               
