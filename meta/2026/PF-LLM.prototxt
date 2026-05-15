@@ -1,0 +1,37 @@
+paper {
+  title: "PF-LLM: Large Language Model Hinted Hardware Prefetching"
+  abbr: "PF-LLM"
+  url: "https://fact-lab.hkust.edu.hk/publications/conference-paper/2025/xu-2025-pf-llm/3779212.3790202.pdf"
+  authors: "Ceyu Xu"
+  authors: "Xiangfeng Sun"
+  authors: "Weihang Li"
+  authors: "Chen Bai"
+  authors: "Bangyan Wang"
+  authors: "Mengming Li"
+  authors: "Zhiyao Xie"
+  authors: "Yuan Xie"
+  institutions: "The Hong Kong University of Science and Technology"
+  institutions: "Duke University"
+}
+pub {
+  where: "ASPLOS"
+  year: 2026
+}
+code {
+  type: ""
+  url: ""
+}
+keyword {
+  words: deployment
+  words: performance_modeling
+  words: structure_design
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/RPG2"
+  methods: "2023/Micro-Armed Bandit"
+}
+update_time: 1778833881
+rating: 1
