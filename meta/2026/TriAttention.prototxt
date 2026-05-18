@@ -1,0 +1,43 @@
+paper {
+  title: "TriAttention: Efficient Long Reasoning with Trigonometric KV Compression"
+  abbr: "TriAttention"
+  url: "http://arxiv.org/abs/2604.04921v1"
+  authors: "Weian Mao"
+  authors: "Xi Lin"
+  authors: "Wei Huang"
+  authors: "Yuxin Xie"
+  authors: "Tianfu Fu"
+  authors: "Bohan Zhuang"
+  authors: "Song Han"
+  authors: "Yukang Chen"
+  institutions: "MIT"
+  institutions: "NVIDIA"
+  institutions: "Zhejiang University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/WeianMao/triattention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/R-KV"
+  methods: "2023/H2O"
+  methods: "2024/SnapKV"
+  methods: "2024/StreamingLLM"
+  methods: "2024/PyramidKV"
+}
+update_time: 1779069294
+rating: 4
