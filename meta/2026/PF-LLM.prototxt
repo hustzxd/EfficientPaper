@@ -18,20 +18,18 @@ pub {
   year: 2026
 }
 code {
-  type: ""
+  type: "Pytorch"
   url: ""
 }
 keyword {
-  words: deployment
   words: performance_modeling
+  words: deployment
   words: structure_design
 }
 cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2024/RPG2"
-  methods: "2023/Micro-Armed Bandit"
+  methods: "None"
 }
-update_time: 1778833881
-rating: 1
+update_time: 1778834899

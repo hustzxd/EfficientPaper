@@ -1,6 +1,186 @@
 {
   "papers": [
     {
+      "id": "PredictKV",
+      "title": "Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference",
+      "abbr": "PredictKV",
+      "url": "http://arxiv.org/abs/2604.26968v1",
+      "authors": [
+        "Sanjeev Rao Ganjihal"
+      ],
+      "institutions": [
+        "Independent Researcher"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/PredictKV/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/PredictKV/note/",
+      "prototxt_path": "meta/2026/PredictKV.prototxt",
+      "update_time": 1779074166,
+      "rating": 0
+    },
+    {
+      "id": "OmniDrop",
+      "title": "OmniDrop: Layer-wise Token Pruning for Omni-modal LLMs via Query-Guidance",
+      "abbr": "OmniDrop",
+      "url": "http://arxiv.org/abs/2605.14458v1",
+      "authors": [
+        "Yeo Jeong Park",
+        "Hyemi Jang",
+        "Minseo Choi",
+        "Jongsun Lee",
+        "Jooyoung Choi",
+        "Yongkweon Jeon"
+      ],
+      "institutions": [
+        "Samsung Research"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/OmniDrop/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "03-Sparsity (Activation)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/OmniDrop/note/",
+      "prototxt_path": "meta/2026/OmniDrop.prototxt",
+      "update_time": 1779073840,
+      "rating": 0
+    },
+    {
+      "id": "Bidaw",
+      "title": "Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via Bidirectional Computation-Storage Awareness",
+      "abbr": "Bidaw",
+      "url": "https://www.usenix.org/system/files/fast26-hu-shipeng.pdf",
+      "authors": [
+        "Shipeng Hu",
+        "Guangyan Zhang",
+        "Yuqi Zhou",
+        "Yaya Wei",
+        "Ziyan Zhong",
+        "Jike Chen"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "China University of Geosciences Beijing",
+        "China Telecom Omni-channel Operation Center"
+      ],
+      "year": 2026,
+      "venue": "FAST",
+      "cover": "notes/2026/Bidaw/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/Bidaw/note/",
+      "prototxt_path": "meta/2026/Bidaw.prototxt",
+      "update_time": 1779073442,
+      "rating": 0
+    },
+    {
+      "id": "TriAttention",
+      "title": "TriAttention: Efficient Long Reasoning with Trigonometric KV Compression",
+      "abbr": "TriAttention",
+      "url": "http://arxiv.org/abs/2604.04921v1",
+      "authors": [
+        "Weian Mao",
+        "Xi Lin",
+        "Wei Huang",
+        "Yuxin Xie",
+        "Tianfu Fu",
+        "Bohan Zhuang",
+        "Song Han",
+        "Yukang Chen"
+      ],
+      "institutions": [
+        "MIT",
+        "NVIDIA",
+        "Zhejiang University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/TriAttention/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": "https://github.com/WeianMao/triattention",
+      "note_url": "notes/2026/TriAttention/note/",
+      "prototxt_path": "meta/2026/TriAttention.prototxt",
+      "update_time": 1779070345,
+      "rating": 0
+    },
+    {
+      "id": "PF-LLM",
+      "title": "PF-LLM: Large Language Model Hinted Hardware Prefetching",
+      "abbr": "PF-LLM",
+      "url": "https://fact-lab.hkust.edu.hk/publications/conference-paper/2025/xu-2025-pf-llm/3779212.3790202.pdf",
+      "authors": [
+        "Ceyu Xu",
+        "Xiangfeng Sun",
+        "Weihang Li",
+        "Chen Bai",
+        "Bangyan Wang",
+        "Mengming Li",
+        "Zhiyao Xie",
+        "Yuan Xie"
+      ],
+      "institutions": [
+        "The Hong Kong University of Science and Technology",
+        "Duke University"
+      ],
+      "year": 2026,
+      "venue": "ASPLOS",
+      "cover": "notes/2026/PF-LLM/cover.jpg",
+      "keywords": [
+        "39-Performance Modeling",
+        "40-LLM Deployment",
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/PF-LLM/note/",
+      "prototxt_path": "meta/2026/PF-LLM.prototxt",
+      "update_time": 1778834899,
+      "rating": 0
+    },
+    {
+      "id": "nGPT-NVFP4",
+      "title": "Normalized Architectures are Natively 4-Bit",
+      "abbr": "nGPT-NVFP4",
+      "url": "http://arxiv.org/abs/2605.06067v1",
+      "authors": [
+        "Maxim Fishman",
+        "Brian Chmiel",
+        "Ron Banner",
+        "Daniel Soudry",
+        "Boris Ginsburg"
+      ],
+      "institutions": [
+        "NVIDIA",
+        "Technion"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "09-Quantization",
+        "42-Network Structure Design",
+        "45-Efficient Training"
+      ],
+      "code_url": "https://github.com/anonymous452026/ngpt-nvfp4",
+      "note_url": "notes/2026/nGPT-NVFP4/note/",
+      "prototxt_path": "meta/2026/nGPT-NVFP4.prototxt",
+      "update_time": 1778309793,
+      "rating": 3
+    },
+    {
       "id": "UniPrefill",
       "title": "UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification",
       "abbr": "UniPrefill",
@@ -14751,6 +14931,7 @@
       "EMNLP Findings",
       "ENLSP",
       "EuroSys",
+      "FAST",
       "Github",
       "ICCV",
       "ICLR",
@@ -14805,5 +14986,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 447
+  "total": 453
 }

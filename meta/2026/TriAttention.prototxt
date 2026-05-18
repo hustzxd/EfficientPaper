@@ -22,15 +22,12 @@ code {
   type: "Pytorch"
   url: "https://github.com/WeianMao/triattention"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: kv_cache_sparse
   words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2025/R-KV"
@@ -39,5 +36,4 @@ baseline {
   methods: "2024/StreamingLLM"
   methods: "2024/PyramidKV"
 }
-update_time: 1779069294
-rating: 4
+update_time: 1779070345

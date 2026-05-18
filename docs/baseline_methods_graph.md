@@ -6,7 +6,7 @@ Each component represents a family of related methods, showing how newer papers 
 
 ## KIVI Family
 
-*55 methods, 65 relationships*
+*57 methods, 67 relationships*
 
 ```mermaid
 flowchart LR
@@ -123,6 +123,9 @@ flowchart LR
     2025_QJL["QJL[2025]"]
     class 2025_QJL leafNode
     click 2025_QJL "../?search=QJL" _blank
+    2025_R_KV["R-KV[2025]"]
+    class 2025_R_KV rootNode
+    click 2025_R_KV "../?search=R-KV" _blank
     2025_RaaS["RaaS[2025]"]
     class 2025_RaaS rootNode
     click 2025_RaaS "../?search=RaaS" _blank
@@ -171,6 +174,9 @@ flowchart LR
     2026_Tactic["Tactic[2026]"]
     class 2026_Tactic leafNode
     click 2026_Tactic "../?search=Tactic" _blank
+    2026_TriAttention["TriAttention[2026]"]
+    class 2026_TriAttention leafNode
+    click 2026_TriAttention "../?search=TriAttention" _blank
     2026_TurboQuant["TurboQuant[2026]"]
     class 2026_TurboQuant leafNode
     click 2026_TurboQuant "../?search=TurboQuant" _blank
@@ -241,76 +247,80 @@ flowchart LR
     linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
     2024_PyramidKV ==>|" "| 2025_EvolKV
     linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_CTkvr
+    2024_PyramidKV ==>|" "| 2026_TriAttention
     linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_FreeKV
+    2024_Quest ==>|" "| 2025_CTkvr
     linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_Kascade
+    2024_Quest ==>|" "| 2025_FreeKV
     linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_Twilight
+    2024_Quest ==>|" "| 2025_Kascade
     linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_UNComp
+    2024_Quest ==>|" "| 2025_Twilight
     linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    2024_Quest ==>|" "| 2026_Double_P
+    2024_Quest ==>|" "| 2025_UNComp
     linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    2024_Quest ==>|" "| 2026_Tactic
+    2024_Quest ==>|" "| 2026_Double_P
     linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2024_PyramidKV
+    2024_Quest ==>|" "| 2026_Tactic
     linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_CTkvr
+    2024_SnapKV ==>|" "| 2024_PyramidKV
     linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_DefensiveKV
+    2024_SnapKV ==>|" "| 2025_CTkvr
     linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_KVzip
+    2024_SnapKV ==>|" "| 2025_DefensiveKV
     linkStyle 40 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_LAVa
+    2024_SnapKV ==>|" "| 2025_KVzip
     linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_PureKV
+    2024_SnapKV ==>|" "| 2025_LAVa
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_UNComp
+    2024_SnapKV ==>|" "| 2025_PureKV
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_InfLLM
+    2024_SnapKV ==>|" "| 2025_UNComp
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_PyramidKV
+    2024_StreamingLLM ==>|" "| 2024_InfLLM
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_RazorAttention
+    2024_StreamingLLM ==>|" "| 2024_PyramidKV
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_HashAttention
+    2024_StreamingLLM ==>|" "| 2024_RazorAttention
     linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_PureKV
+    2024_StreamingLLM ==>|" "| 2025_HashAttention
     linkStyle 48 stroke:#9370DB,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_UNComp
+    2024_StreamingLLM ==>|" "| 2025_PureKV
     linkStyle 49 stroke:#FF6347,stroke-width:2.5px
-    2024_TOVA ==>|" "| 2026_KVTC
+    2024_StreamingLLM ==>|" "| 2025_UNComp
     linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
-    2024_ZipCache ==>|" "| 2025_RotateKV
+    2024_TOVA ==>|" "| 2026_KVTC
     linkStyle 51 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_SharePrefill
+    2024_ZipCache ==>|" "| 2025_RotateKV
     linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_SlimInfer
+    2025_FlexPrefill ==>|" "| 2025_SharePrefill
     linkStyle 53 stroke:#00CED1,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_XAttention
+    2025_FlexPrefill ==>|" "| 2025_SlimInfer
     linkStyle 54 stroke:#FFA500,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
+    2025_FlexPrefill ==>|" "| 2025_XAttention
     linkStyle 55 stroke:#7B68EE,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_Prism
+    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
     linkStyle 56 stroke:#9370DB,stroke-width:2.5px
-    2025_KVzip ==>|" "| 2026_FastKVzip
+    2025_FlexPrefill ==>|" "| 2026_Prism
     linkStyle 57 stroke:#FF6347,stroke-width:2.5px
-    2025_MILLION ==>|" "| 2025_VecInfer
+    2025_KVzip ==>|" "| 2026_FastKVzip
     linkStyle 58 stroke:#20B2AA,stroke-width:2.5px
-    2025_RaaS ==>|" "| 2025_FreeKV
+    2025_MILLION ==>|" "| 2025_VecInfer
     linkStyle 59 stroke:#FFD700,stroke-width:2.5px
-    2025_RotateKV ==>|" "| 2025_MixKVQ
+    2025_R_KV ==>|" "| 2026_TriAttention
     linkStyle 60 stroke:#FF69B4,stroke-width:2.5px
-    2025_ShadowKV ==>|" "| 2025_FreeKV
+    2025_RaaS ==>|" "| 2025_FreeKV
     linkStyle 61 stroke:#00CED1,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_BLASST
+    2025_RotateKV ==>|" "| 2025_MixKVQ
     linkStyle 62 stroke:#FFA500,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_TCA_Attention
+    2025_ShadowKV ==>|" "| 2025_FreeKV
     linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2026_UniPrefill
+    2025_XAttention ==>|" "| 2025_BLASST
     linkStyle 64 stroke:#9370DB,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2025_TCA_Attention
+    linkStyle 65 stroke:#FF6347,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2026_UniPrefill
+    linkStyle 66 stroke:#20B2AA,stroke-width:2.5px
 ```
 
 ## SVG Family
@@ -500,6 +510,43 @@ flowchart LR
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
 ```
 
+## Mooncake Family
+
+*5 methods, 4 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2023_vLLM["vLLM[2023]"]
+    class 2023_vLLM rootNode
+    click 2023_vLLM "../?search=vLLM" _blank
+    2024_CachedAttention["CachedAttention[2024]"]
+    class 2024_CachedAttention rootNode
+    click 2024_CachedAttention "../?search=CachedAttention" _blank
+    2024_Mooncake["Mooncake[2024]"]
+    class 2024_Mooncake rootNode
+    click 2024_Mooncake "../?search=Mooncake" _blank
+    2025_LMCache["LMCache[2025]"]
+    class 2025_LMCache rootNode
+    click 2025_LMCache "../?search=LMCache" _blank
+    2026_Bidaw["Bidaw[2026]"]
+    class 2026_Bidaw leafNode
+    click 2026_Bidaw "../?search=Bidaw" _blank
+
+    2023_vLLM ==>|" "| 2026_Bidaw
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2024_CachedAttention ==>|" "| 2026_Bidaw
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2024_Mooncake ==>|" "| 2026_Bidaw
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+    2025_LMCache ==>|" "| 2026_Bidaw
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+```
+
 ## GPTQ Family
 
 *4 methods, 3 relationships*
@@ -529,6 +576,38 @@ flowchart LR
     2023_GPTQ ==>|" "| 2025_SignRoundV2
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
     2024_AWQ ==>|" "| 2025_SignRoundV2
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+```
+
+## Cake Family
+
+*4 methods, 3 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2024_Cake["Cake[2024]"]
+    class 2024_Cake rootNode
+    click 2024_Cake "../?search=Cake" _blank
+    2026_CacheFlow["CacheFlow[2026]"]
+    class 2026_CacheFlow defaultNode
+    click 2026_CacheFlow "../?search=CacheFlow" _blank
+    2026_PredictKV["PredictKV[2026]"]
+    class 2026_PredictKV leafNode
+    click 2026_PredictKV "../?search=PredictKV" _blank
+    2026_Tutti["Tutti[2026]"]
+    class 2026_Tutti rootNode
+    click 2026_Tutti "../?search=Tutti" _blank
+
+    2024_Cake ==>|" "| 2026_CacheFlow
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2026_CacheFlow ==>|" "| 2026_PredictKV
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2026_Tutti ==>|" "| 2026_PredictKV
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
@@ -586,7 +665,7 @@ flowchart LR
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 ```
 
-## SeerAttention-R Family
+## TidalDecode Family
 
 *3 methods, 2 relationships*
 
@@ -632,28 +711,6 @@ flowchart LR
     click 2025_FusedKV "../?search=FusedKV" _blank
 
     2024_CLA ==>|" "| 2025_FusedKV
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-```
-
-## Cake Family
-
-*2 methods, 1 relationships*
-
-```mermaid
-flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2024_Cake["Cake[2024]"]
-    class 2024_Cake rootNode
-    click 2024_Cake "../?search=Cake" _blank
-    2026_CacheFlow["CacheFlow[2026]"]
-    class 2026_CacheFlow leafNode
-    click 2026_CacheFlow "../?search=CacheFlow" _blank
-
-    2024_Cake ==>|" "| 2026_CacheFlow
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```
 
@@ -720,5 +777,27 @@ flowchart LR
     click 2026_HISA "../?search=HISA" _blank
 
     2025_DSA ==>|" "| 2026_HISA
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+```
+
+## MXFP4Train Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_MXFP4Train["MXFP4Train[2025]"]
+    class 2025_MXFP4Train rootNode
+    click 2025_MXFP4Train "../?search=MXFP4Train" _blank
+    2026_nGPT_NVFP4["nGPT-NVFP4[2026]"]
+    class 2026_nGPT_NVFP4 leafNode
+    click 2026_nGPT_NVFP4 "../?search=nGPT-NVFP4" _blank
+
+    2025_MXFP4Train ==>|" "| 2026_nGPT_NVFP4
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```

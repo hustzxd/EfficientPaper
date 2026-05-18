@@ -18,18 +18,14 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: sparse_pruning
   words: activation_sparsity
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
-  methods: ""
+  methods: "None"
 }
-update_time: 1778834432
-rating: 2
+update_time: 1779073840

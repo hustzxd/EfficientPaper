@@ -2,7 +2,7 @@
 
 > Weian Mao, Xi Lin, Wei Huang, Yuxin Xie, Tianfu Fu, Bohan Zhuang, Song Han, Yukang Chen
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

@@ -18,13 +18,10 @@ code {
   type: "Pytorch"
   url: "https://github.com/anonymous452026/ngpt-nvfp4"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: quantization
-  words: efficient_training
   words: structure_design
+  words: efficient_training
 }
 cover {
   url: ""
@@ -32,5 +29,5 @@ cover {
 baseline {
   methods: "2025/MXFP4Train"
 }
-update_time: 1778308116
+update_time: 1778309793
 rating: 3

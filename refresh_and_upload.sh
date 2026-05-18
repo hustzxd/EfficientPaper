@@ -7,16 +7,12 @@ python proto/gene_template.py
 
 python scripts/ddl.py
 python scripts/split_by_year.py
-python scripts/generate_reference.py
 python scripts/generate_baseline_methods_graph.py
 python scripts/generate_search_data.py
 
 if [ -z "$1" ]; then
-    python scripts/generate_paper_list.py
-    echo "Refresh Readme Done"
+    echo "Refresh done"
 else
-    python scripts/generate_paper_list.py
-    echo "Refresh Readme Done"
     echo "Upload changes to github"
     git add .
     git commit -m $1

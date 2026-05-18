@@ -7,7 +7,7 @@
 A curated collection of **450+** research papers on **Pruning**, **Quantization**, and **Efficient Inference/Training** for large language models and deep neural networks.
 
 <p align="center">
-<img src="docs/images/efficient_paper.png" width="800" title="EfficientPaper">
+<img src="/images/efficient_paper.png" width="800" title="EfficientPaper">
 </p>
 
 ## Getting Started
@@ -86,7 +86,7 @@ Contributions are welcome! To add a paper:
 ## Conference Timeline
 
 <p align="center">
-<img src="notes/conference_timeline.png" width="800" title="Conference Timeline">
+<img src="/notes/conference_timeline.png" width="800" title="Conference Timeline">
 </p>
 
 ## 招聘

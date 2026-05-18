@@ -2,7 +2,7 @@
 
 > Shipeng Hu, Guangyan Zhang, Yuqi Zhou, Yaya Wei, Ziyan Zhong, Jike Chen
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

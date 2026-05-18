@@ -2,7 +2,7 @@
 
 > Yeo Jeong Park, Hyemi Jang, Minseo Choi, Jongsun Lee, Jooyoung Choi, Yongkweon Jeon
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

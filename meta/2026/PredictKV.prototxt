@@ -13,20 +13,16 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: kv_cache_sparse
+  words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2024/Cake"
   methods: "2026/CacheFlow"
   methods: "2026/Tutti"
 }
-update_time: 1778946900
-rating: 3
+update_time: 1779074166

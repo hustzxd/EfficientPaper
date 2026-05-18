@@ -17,19 +17,15 @@ pub {
   year: 2026
 }
 code {
-  type: ""
+  type: "Pytorch"
   url: ""
-}
-note {
-  url: "note.md"
 }
 keyword {
   words: kv_cache_management
   words: deployment
-  words: scheduling
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2023/vLLM"
@@ -37,5 +33,4 @@ baseline {
   methods: "2024/Mooncake"
   methods: "2025/LMCache"
 }
-update_time: 1779068865
-rating: 4
+update_time: 1779073442

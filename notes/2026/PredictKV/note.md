@@ -2,7 +2,7 @@
 
 > Sanjeev Rao Ganjihal
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 
