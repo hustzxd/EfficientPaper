@@ -55,17 +55,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#flashattention-family">FlashAttention Family</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#mooncake-family">Mooncake Family</a>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#gptq-family">GPTQ Family</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cake-family">Cake Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dhc-family">DHC Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#nsa-family">NSA Family</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#seerattention-r-family">SeerAttention-R Family</a>
+<li class="toctree-l2"><a class="reference internal" href="#tidaldecode-family">TidalDecode Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#cla-family">CLA Family</a>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#cake-family">Cake Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#deepseek-v3-family">DeepSeek-V3 Family</a>
 </li>
@@ -73,15 +75,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dsa-family">DSA Family</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#mxfp4train-family">MXFP4Train Family</a>
+</li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Weekly Paper</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-04-08/">2026-04-08</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-04-10/">2026-04-10</a>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-04-17/">2026-04-17</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-04-24/">2026-04-24</a>
@@ -89,6 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-01/">2026-05-01</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-08/">2026-05-08</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-15/">2026-05-15</a>
 </li>
 <li class="toctree-l1"><a class="reference internal">Legacy</a>
 <ul>
@@ -140,7 +142,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+</li>
 </ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about/">Readme</a>
 </li>
 </ul>
 <ul>
@@ -171,7 +181,7 @@
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <p>Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.</p>
 <h2 id="kivi-family">KIVI Family</h2>
-<p><em>55 methods, 65 relationships</em></p>
+<p><em>57 methods, 67 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
     classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
@@ -286,6 +296,9 @@
     2025_QJL["QJL[2025]"]
     class 2025_QJL leafNode
     click 2025_QJL "../?search=QJL" _blank
+    2025_R_KV["R-KV[2025]"]
+    class 2025_R_KV rootNode
+    click 2025_R_KV "../?search=R-KV" _blank
     2025_RaaS["RaaS[2025]"]
     class 2025_RaaS rootNode
     click 2025_RaaS "../?search=RaaS" _blank
@@ -334,6 +347,9 @@
     2026_Tactic["Tactic[2026]"]
     class 2026_Tactic leafNode
     click 2026_Tactic "../?search=Tactic" _blank
+    2026_TriAttention["TriAttention[2026]"]
+    class 2026_TriAttention leafNode
+    click 2026_TriAttention "../?search=TriAttention" _blank
     2026_TurboQuant["TurboQuant[2026]"]
     class 2026_TurboQuant leafNode
     click 2026_TurboQuant "../?search=TurboQuant" _blank
@@ -404,76 +420,80 @@
     linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
     2024_PyramidKV ==&gt;|" "| 2025_EvolKV
     linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_CTkvr
+    2024_PyramidKV ==&gt;|" "| 2026_TriAttention
     linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_FreeKV
+    2024_Quest ==&gt;|" "| 2025_CTkvr
     linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_Kascade
+    2024_Quest ==&gt;|" "| 2025_FreeKV
     linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_Twilight
+    2024_Quest ==&gt;|" "| 2025_Kascade
     linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_UNComp
+    2024_Quest ==&gt;|" "| 2025_Twilight
     linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2026_Double_P
+    2024_Quest ==&gt;|" "| 2025_UNComp
     linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2026_Tactic
+    2024_Quest ==&gt;|" "| 2026_Double_P
     linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2024_PyramidKV
+    2024_Quest ==&gt;|" "| 2026_Tactic
     linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_CTkvr
+    2024_SnapKV ==&gt;|" "| 2024_PyramidKV
     linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_DefensiveKV
+    2024_SnapKV ==&gt;|" "| 2025_CTkvr
     linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_KVzip
+    2024_SnapKV ==&gt;|" "| 2025_DefensiveKV
     linkStyle 40 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_LAVa
+    2024_SnapKV ==&gt;|" "| 2025_KVzip
     linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_PureKV
+    2024_SnapKV ==&gt;|" "| 2025_LAVa
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_UNComp
+    2024_SnapKV ==&gt;|" "| 2025_PureKV
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_InfLLM
+    2024_SnapKV ==&gt;|" "| 2025_UNComp
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_PyramidKV
+    2024_StreamingLLM ==&gt;|" "| 2024_InfLLM
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_RazorAttention
+    2024_StreamingLLM ==&gt;|" "| 2024_PyramidKV
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_HashAttention
+    2024_StreamingLLM ==&gt;|" "| 2024_RazorAttention
     linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_PureKV
+    2024_StreamingLLM ==&gt;|" "| 2025_HashAttention
     linkStyle 48 stroke:#9370DB,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_UNComp
+    2024_StreamingLLM ==&gt;|" "| 2025_PureKV
     linkStyle 49 stroke:#FF6347,stroke-width:2.5px
-    2024_TOVA ==&gt;|" "| 2026_KVTC
+    2024_StreamingLLM ==&gt;|" "| 2025_UNComp
     linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
-    2024_ZipCache ==&gt;|" "| 2025_RotateKV
+    2024_TOVA ==&gt;|" "| 2026_KVTC
     linkStyle 51 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_SharePrefill
+    2024_ZipCache ==&gt;|" "| 2025_RotateKV
     linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_SlimInfer
+    2025_FlexPrefill ==&gt;|" "| 2025_SharePrefill
     linkStyle 53 stroke:#00CED1,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_XAttention
+    2025_FlexPrefill ==&gt;|" "| 2025_SlimInfer
     linkStyle 54 stroke:#FFA500,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2026_FlashPrefill
+    2025_FlexPrefill ==&gt;|" "| 2025_XAttention
     linkStyle 55 stroke:#7B68EE,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2026_Prism
+    2025_FlexPrefill ==&gt;|" "| 2026_FlashPrefill
     linkStyle 56 stroke:#9370DB,stroke-width:2.5px
-    2025_KVzip ==&gt;|" "| 2026_FastKVzip
+    2025_FlexPrefill ==&gt;|" "| 2026_Prism
     linkStyle 57 stroke:#FF6347,stroke-width:2.5px
-    2025_MILLION ==&gt;|" "| 2025_VecInfer
+    2025_KVzip ==&gt;|" "| 2026_FastKVzip
     linkStyle 58 stroke:#20B2AA,stroke-width:2.5px
-    2025_RaaS ==&gt;|" "| 2025_FreeKV
+    2025_MILLION ==&gt;|" "| 2025_VecInfer
     linkStyle 59 stroke:#FFD700,stroke-width:2.5px
-    2025_RotateKV ==&gt;|" "| 2025_MixKVQ
+    2025_R_KV ==&gt;|" "| 2026_TriAttention
     linkStyle 60 stroke:#FF69B4,stroke-width:2.5px
-    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
+    2025_RaaS ==&gt;|" "| 2025_FreeKV
     linkStyle 61 stroke:#00CED1,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_BLASST
+    2025_RotateKV ==&gt;|" "| 2025_MixKVQ
     linkStyle 62 stroke:#FFA500,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
+    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
     linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2026_UniPrefill
+    2025_XAttention ==&gt;|" "| 2025_BLASST
     linkStyle 64 stroke:#9370DB,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
+    linkStyle 65 stroke:#FF6347,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2026_UniPrefill
+    linkStyle 66 stroke:#20B2AA,stroke-width:2.5px
 </div>
 <h2 id="svg-family">SVG Family</h2>
 <p><em>8 methods, 7 relationships</em></p>
@@ -646,6 +666,39 @@
     2024_FlashAttention_3 ==&gt;|" "| 2026_FlashAttention_4
     linkStyle 3 stroke:#FFD700,stroke-width:2.5px
 </div>
+<h2 id="mooncake-family">Mooncake Family</h2>
+<p><em>5 methods, 4 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2023_vLLM["vLLM[2023]"]
+    class 2023_vLLM rootNode
+    click 2023_vLLM "../?search=vLLM" _blank
+    2024_CachedAttention["CachedAttention[2024]"]
+    class 2024_CachedAttention rootNode
+    click 2024_CachedAttention "../?search=CachedAttention" _blank
+    2024_Mooncake["Mooncake[2024]"]
+    class 2024_Mooncake rootNode
+    click 2024_Mooncake "../?search=Mooncake" _blank
+    2025_LMCache["LMCache[2025]"]
+    class 2025_LMCache rootNode
+    click 2025_LMCache "../?search=LMCache" _blank
+    2026_Bidaw["Bidaw[2026]"]
+    class 2026_Bidaw leafNode
+    click 2026_Bidaw "../?search=Bidaw" _blank
+
+    2023_vLLM ==&gt;|" "| 2026_Bidaw
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2024_CachedAttention ==&gt;|" "| 2026_Bidaw
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2024_Mooncake ==&gt;|" "| 2026_Bidaw
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+    2025_LMCache ==&gt;|" "| 2026_Bidaw
+    linkStyle 3 stroke:#FFD700,stroke-width:2.5px
+</div>
 <h2 id="gptq-family">GPTQ Family</h2>
 <p><em>4 methods, 3 relationships</em></p>
 <div class="mermaid">flowchart LR
@@ -672,6 +725,34 @@
     2023_GPTQ ==&gt;|" "| 2025_SignRoundV2
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
     2024_AWQ ==&gt;|" "| 2025_SignRoundV2
+    linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
+</div>
+<h2 id="cake-family">Cake Family</h2>
+<p><em>4 methods, 3 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2024_Cake["Cake[2024]"]
+    class 2024_Cake rootNode
+    click 2024_Cake "../?search=Cake" _blank
+    2026_CacheFlow["CacheFlow[2026]"]
+    class 2026_CacheFlow defaultNode
+    click 2026_CacheFlow "../?search=CacheFlow" _blank
+    2026_PredictKV["PredictKV[2026]"]
+    class 2026_PredictKV leafNode
+    click 2026_PredictKV "../?search=PredictKV" _blank
+    2026_Tutti["Tutti[2026]"]
+    class 2026_Tutti rootNode
+    click 2026_Tutti "../?search=Tutti" _blank
+
+    2024_Cake ==&gt;|" "| 2026_CacheFlow
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+    2026_CacheFlow ==&gt;|" "| 2026_PredictKV
+    linkStyle 1 stroke:#FF6347,stroke-width:2.5px
+    2026_Tutti ==&gt;|" "| 2026_PredictKV
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 </div>
 <h2 id="dhc-family">DHC Family</h2>
@@ -720,7 +801,7 @@
     2025_NSA ==&gt;|" "| 2025_InfLLM_V2
     linkStyle 1 stroke:#FF6347,stroke-width:2.5px
 </div>
-<h2 id="seerattention-r-family">SeerAttention-R Family</h2>
+<h2 id="tidaldecode-family">TidalDecode Family</h2>
 <p><em>3 methods, 2 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
@@ -759,24 +840,6 @@
     click 2025_FusedKV "../?search=FusedKV" _blank
 
     2024_CLA ==&gt;|" "| 2025_FusedKV
-    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
-</div>
-<h2 id="cake-family">Cake Family</h2>
-<p><em>2 methods, 1 relationships</em></p>
-<div class="mermaid">flowchart LR
-    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
-    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
-    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    linkStyle default stroke:#9370DB,stroke-width:2px
-
-    2024_Cake["Cake[2024]"]
-    class 2024_Cake rootNode
-    click 2024_Cake "../?search=Cake" _blank
-    2026_CacheFlow["CacheFlow[2026]"]
-    class 2026_CacheFlow leafNode
-    click 2026_CacheFlow "../?search=CacheFlow" _blank
-
-    2024_Cake ==&gt;|" "| 2026_CacheFlow
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 </div>
 <h2 id="deepseek-v3-family">DeepSeek-V3 Family</h2>
@@ -833,6 +896,24 @@
     2025_DSA ==&gt;|" "| 2026_HISA
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 </div>
+<h2 id="mxfp4train-family">MXFP4Train Family</h2>
+<p><em>2 methods, 1 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2025_MXFP4Train["MXFP4Train[2025]"]
+    class 2025_MXFP4Train rootNode
+    click 2025_MXFP4Train "../?search=MXFP4Train" _blank
+    2026_nGPT_NVFP4["nGPT-NVFP4[2026]"]
+    class 2026_nGPT_NVFP4 leafNode
+    click 2026_nGPT_NVFP4 "../?search=nGPT-NVFP4" _blank
+
+    2025_MXFP4Train ==&gt;|" "| 2026_nGPT_NVFP4
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+</div>
 <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
   // 使用 JavaScript 来判断 URL 路径
@@ -862,7 +943,7 @@
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href=".." title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../weekly_paper/2026-04-08/" title="2026-04-08">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../weekly_paper/2026-04-17/" title="2026-04-17">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
@@ -878,7 +959,7 @@
 <div aria-label="Versions" class="rst-versions" role="note">
 <span class="rst-current-version" data-toggle="rst-current-version">
 <span><a href=".." style="color: #fcfcfc">« Previous</a></span>
-<span><a href="../weekly_paper/2026-04-08/" style="color: #fcfcfc">Next »</a></span>
+<span><a href="../weekly_paper/2026-04-17/" style="color: #fcfcfc">Next »</a></span>
 </span>
 </div>
 <script src="../js/jquery-3.6.0.min.js"></script>

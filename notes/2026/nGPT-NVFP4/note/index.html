@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Normalized Architectures are Natively 4-Bit - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Normalized Architectures are Natively 4-Bit";
+        var mkdocs_page_input_path = "notes/2026/nGPT-NVFP4/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Normalized Architectures are Natively 4-Bit</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="normalized-architectures-are-natively-4-bit">Normalized Architectures are Natively 4-Bit</h1>
+<blockquote>
+<p>Maxim Fishman, Brian Chmiel, Ron Banner, Daniel Soudry, Boris Ginsburg</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>Training large language models at 4-bit precision is critical for efficiency. We show that nGPT, an architecture that constrains weights and hidden representations to the unit hypersphere, is inherently more robust to low-precision arithmetic. This removes the need for interventions-such as applying random Hadamard transforms and performing per-tensor scaling calculations-to preserve model quality, and it enables stable end-to-end NVFP4 training. We validate this approach on both a 1.2B dense model and hybrid (Mamba-Transformer) MoE models of up to 3B/30B parameters. We trace this robustness to the dot product: while quantization noise remains largely uncorrelated in both standard and normalized architectures, the signal behaves differently. In nGPT, the hypersphere constraint enhances weak positive correlations among the element-wise products, leading to a constructive accumulation of the signal across the hidden dimension while the noise continues to average out. This yields a higher effective signal-to-noise ratio and a flatter loss landscape, with the effect strengthening as the hidden dimension grows, suggesting increasing advantages at scale. A reference implementation is available at https://github.com/anonymous452026/ngpt-nvfp4</p>
+<hr />
+<h2 id="gpt-summary">GPT Summary</h2>
+<blockquote>
+<p>由 GPT 自动生成，请人工核验。</p>
+</blockquote>
+<h3 id="1">1. 研究背景与动机</h3>
+<p>4-bit NVFP4 训练对降低大模型训练成本很重要，但标准 Transformer 在低精度训练中容易受到 outlier、scale 波动和量化噪声影响。已有 NVFP4 recipe 往往依赖 Randomized Hadamard Transform、dynamic per-tensor scaling、stochastic rounding 或 mixed-precision exception 来避免发散，这些技巧虽然有效，但会引入额外计算和系统开销。</p>
+<p>这篇论文提出的问题是：是否存在一种架构本身就对 4-bit arithmetic 更鲁棒，从而减少这些后处理量化补丁？</p>
+<h3 id="2-ngpt-nvfp4">2. nGPT-NVFP4 核心思想</h3>
+<p>论文研究 nGPT，即将 hidden representations 和 weights 约束到 unit hypersphere 的 normalized Transformer。核心观点是：nGPT 的低精度鲁棒性不是来自更小的局部量化噪声，而是来自更好的 <strong>signal accumulation</strong>。</p>
+<p>在标准 GPT 中，模型可以依赖少数大 coordinate 主导 dot product，这些 outlier 在 4-bit 下很难稳定表示。nGPT 阻止单个 coordinate 任意放大，迫使模型在许多维度上学习 distributed alignment。这样 element-wise products 会出现弱但稳定的正相关，signal 在高维求和中建设性累积，而量化噪声仍近似不相关并被平均掉，因此有效 SNR 更高。</p>
+<h3 id="3">3. 关键技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit hypersphere constraint</td>
+<td>将 hidden states 和 weights 约束到单位球面，减少 outlier coordinate 对输出的支配。</td>
+</tr>
+<tr>
+<td>NVFP4 end-to-end training</td>
+<td>面向 NVIDIA Blackwell 原生支持的 NVFP4 训练格式，验证 4-bit 训练稳定性。</td>
+</tr>
+<tr>
+<td>去除 RHT 与动态 scaling</td>
+<td>nGPT activation scale 更稳定，可去掉 Randomized Hadamard Transform 和 dynamic per-tensor scaling。</td>
+</tr>
+<tr>
+<td>Dot-product SNR analysis</td>
+<td>分析量化前后 dot product 的 signal-to-noise ratio，说明优势来自 signal 更一致地累积。</td>
+</tr>
+<tr>
+<td>Loss landscape analysis</td>
+<td>nGPT 对权重扰动更不敏感，论文报告 GPT loss 退化速度约为 nGPT 的 3.5 倍。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">4. 实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.2B dense model, 1T tokens</td>
+<td>nGPT-NVFP4 在去掉 RHT/per-tensor scaling 后仍取得比标准 GPT-NVFP4 更低 relative error，并在多个下游任务上更好。</td>
+</tr>
+<tr>
+<td>Hybrid Mamba-Transformer MoE 400M/600M</td>
+<td>nGPT 架构优势可迁移到 hybrid MoE，降低 relative error 并去除 RHT/scaling 开销。</td>
+</tr>
+<tr>
+<td>Hybrid Mamba-Transformer MoE 3B/30B</td>
+<td>训练约 500B tokens 后，nGPT-NVFP4 relative error 接近 0%，说明优势在更大模型上仍存在。</td>
+</tr>
+<tr>
+<td>Learning rate robustness</td>
+<td>nGPT 在 BF16 与 NVFP4 下最佳 LR 基本一致，可直接迁移；标准 GPT 的 NVFP4 最佳 LR 明显偏移。</td>
+</tr>
+<tr>
+<td>GB200 layer speed</td>
+<td>大 hidden size 下，nGPT-NVFP4 单层相对 BF16 GPT baseline 达到约 3.3–3.6× speedup。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5">5. 核心贡献</h3>
+<ol>
+<li>证明 normalized architecture 可以天然具备 4-bit quantization robustness。</li>
+<li>提出 signal accumulation 解释：nGPT 优势来自 signal 在高维 dot product 中一致累积，而不是局部噪声显著变小。</li>
+<li>展示 nGPT 可去掉 RHT 和 dynamic per-tensor scaling，减少低精度训练路径开销。</li>
+<li>在 1.2B dense model 和最高 3B/30B hybrid MoE 上验证 NVFP4 训练稳定性。</li>
+<li>对我们当前方向而言，该论文偏训练和架构设计，不属于近期 deployment-only 主线，但对理解 4-bit outlier 控制和低精度鲁棒性有参考价值。</li>
+</ol>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

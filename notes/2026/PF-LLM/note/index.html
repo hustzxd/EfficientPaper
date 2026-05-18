@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>PF-LLM: Large Language Model Hinted Hardware Prefetching - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PF-LLM: Large Language Model Hinted Hardware Prefetching";
+        var mkdocs_page_input_path = "notes/2026/PF-LLM/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">PF-LLM: Large Language Model Hinted Hardware Prefetching</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="pf-llm-large-language-model-hinted-hardware-prefetching">PF-LLM: Large Language Model Hinted Hardware Prefetching</h1>
+<blockquote>
+<p>Ceyu Xu, Xiangfeng Sun, Weihang Li, Chen Bai, Bangyan Wang, Mengming Li, Zhiyao Xie, Yuan Xie</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>Hardware data prefetching is a critical technique for mitigating memory latency in modern processors. While sophisticated hardware prefetching algorithms exist, their exclusive reliance on runtime information limits their ability to adapt quickly and comprehend broader program context. The key insight of PF-LLM is that the optimal prefetching strategy for a load instruction is often inferable from its static code context. PF-LLM fine-tunes a coding LLM to analyze assembly context around each load instruction and generate offline prefetching hints, which are consumed at runtime by a lightweight LMHint Prefetcher ensemble. Evaluation on memory-intensive SPEC 2017 benchmarks reports 9.8% average IPC improvement over state-of-the-art single prefetchers and 18.9% over state-of-the-art ensemble methods.</p>
+<hr />
+<h1 id="pf-llm-large-language-model-hinted-hardware-prefetching_1">PF-LLM: Large Language Model Hinted Hardware Prefetching</h1>
+<blockquote>
+<p>来源: https://fact-lab.hkust.edu.hk/publications/conference-paper/2025/xu-2025-pf-llm/3779212.3790202.pdf
+DOI: https://doi.org/10.1145/3779212.3790202
+由 GPT 自动生成，请人工核验。</p>
+</blockquote>
+<h3 id="1">1. 研究背景与动机</h3>
+<p>现代处理器的单线程性能仍受到 memory wall 限制，硬件 data prefetching 是隐藏内存延迟的重要手段。已有 prefetcher 往往针对 stride、stream、spatial locality、irregular sequence 等特定访问模式设计；真实程序会在不同 phase 间切换，因此单一 prefetcher 覆盖不足，ensemble prefetcher 又需要在线选择策略。</p>
+<p>现有在线 ensemble 方法的问题是：</p>
+<ul>
+<li>需要 trial-and-error 学习过程，面对快速 phase 切换时收敛慢；</li>
+<li>受片上面积和时延约束，只能使用简单启发式，无法利用更大范围的程序上下文；</li>
+<li>错误选择可能污染 cache、浪费带宽，甚至破坏子 prefetcher 的内部状态。</li>
+</ul>
+<p>PF-LLM 的核心观察是：很多 load instruction 的最佳 prefetch 策略可以从静态代码语义中推断出来，例如 atomic lock 不应 prefetch、struct array 遍历适合 stride、struct field 访问适合 spatial、字符串读取适合 stream。因此，作者尝试把复杂策略选择从 runtime hardware 移到 offline LLM 分析阶段。</p>
+<h3 id="2-pf-llm">2. PF-LLM 核心思想</h3>
+<p>PF-LLM 是一个面向硬件预取提示生成的 fine-tuned coding LLM。它离线分析目标 load instruction 前后各 128 行 assembly context，预测该 load 的 prefetching hints；运行时，LMHint Prefetcher 根据这些 per-PC hints 编排多个传统子 prefetcher。</p>
+<p>一句话概括：<strong>用离线 LLM 读静态汇编上下文，为每条 load 指令生成“选择哪个 prefetcher、预取多激进、是否过滤 demand request”的硬件提示，从而让 runtime prefetcher 近似拥有零延迟 oracle policy。</strong></p>
+<h3 id="3">3. 关键技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Assembly-context hinting</strong></td>
+<td>输入目标 load 前后各 128 行汇编，共 257 行上下文；相比源码/IR，汇编可从任意静态二进制反汇编得到。</td>
+</tr>
+<tr>
+<td><strong>Small coding LLM fine-tuning</strong></td>
+<td>基于 Qwen-2.5-Coder-0.5B-Instruct 微调，不改模型结构；训练目标只计算 JSON hint 输出部分的 loss。</td>
+</tr>
+<tr>
+<td><strong>Simulator-generated labels</strong></td>
+<td>用 ChampSim 生成每个 load PC 的 ground-truth prefetch policy，训练集来自 SPEC 2006，测试/评估保留 SPEC 2017，避免 benchmark 泄漏。</td>
+</tr>
+<tr>
+<td><strong>Three-part prefetch hint</strong></td>
+<td>输出 prefetcher selection、prefetch degree、demand request filtering 三类提示；selection 是主要收益来源，degree/filtering 提供细粒度增益。</td>
+</tr>
+<tr>
+<td><strong>LMHint Prefetcher</strong></td>
+<td>运行时硬件 ensemble，根据 PC 查询 hint，控制允许哪个子 prefetcher 发出请求、设置 aggressiveness，并过滤不相关 demand request。</td>
+</tr>
+<tr>
+<td><strong>PHT + PHB hint storage</strong></td>
+<td>离线 JSON hints 转为紧凑二进制，存入主存 Prefetch Hint Table；片上 256-entry Prefetch Hint Buffer 类似 TLB 缓存最近 hint。</td>
+</tr>
+<tr>
+<td><strong>Reduced-cost ensemble</strong></td>
+<td>LMHint-SDFR 只保留最常被选择的 4 个子 prefetcher，在不重新训练模型的情况下接近/略优于完整 11 子 prefetcher 版本。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">4. 实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>会议/出处</td>
+<td>ASPLOS 2026, Volume 2</td>
+</tr>
+<tr>
+<td>训练基础模型</td>
+<td>Qwen-2.5-Coder-0.5B-Instruct</td>
+</tr>
+<tr>
+<td>训练配置</td>
+<td>8×NVIDIA H20，BF16，learning rate 1e-5，effective batch size 64，2 epochs</td>
+</tr>
+<tr>
+<td>标签/训练 benchmark</td>
+<td>SPEC 2006 + ChampSim 模拟生成 labels</td>
+</tr>
+<tr>
+<td>主评估 benchmark</td>
+<td>memory-intensive SPEC 2017</td>
+</tr>
+<tr>
+<td>PF-LLM hint 预测准确率</td>
+<td><strong>95.0%</strong> held-out accuracy</td>
+</tr>
+<tr>
+<td>相比最佳 single prefetcher</td>
+<td><strong>+9.8%</strong> average IPC over Sandbox</td>
+</tr>
+<tr>
+<td>相比最佳 prior ensemble</td>
+<td><strong>+18.9%</strong> average IPC over Alecto</td>
+</tr>
+<tr>
+<td>Web serving workload</td>
+<td>Apache、MySQL、RocksDB、Xapian 上也优于现有 single/ensemble baseline，但收益较 SPEC 更 modest</td>
+</tr>
+<tr>
+<td>离线推理吞吐</td>
+<td>1×H20 上最高约 <strong>234 requests/s</strong></td>
+</tr>
+<tr>
+<td>SPEC 2017 全套 hint 生成时间</td>
+<td>8-GPU 系统约 <strong>38.5 min</strong>，与编译时间同量级</td>
+</tr>
+<tr>
+<td>Runtime hint 存储开销</td>
+<td>每 load 约 7 bytes；约 <strong>74.34 KB/MB binary</strong>，静态程序 footprint 增加 <strong>7.26%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5">5. 核心贡献</h3>
+<ol>
+<li>提出 <strong>LLM-guided microarchitecture</strong> 范式：用离线 LLM 分析静态代码语义，指导运行时硬件动态决策。</li>
+<li>将 prefetcher ensemble 的复杂策略选择从片上在线学习转移到离线分析，避免 runtime trial-and-error 和片上复杂学习器。</li>
+<li>设计 PF-LLM + LMHint Prefetcher 接口，以 per-load PC hints 连接离线语义理解和在线硬件 prefetch。</li>
+<li>证明小模型也足够：0.5B coding LLM 经 simulator labels 微调后可达到 95% prefetch policy 预测准确率。</li>
+<li>在 SPEC 2017 上取得显著 IPC 提升，并展示 reduced-cost ensemble 可以减少硬件复杂度而不牺牲性能。</li>
+</ol>
+<h3 id="6">6. 局限性与讨论</h3>
+<ul>
+<li><strong>静态二进制依赖</strong>：当前方法不原生支持 JIT 或 bytecode runtime，例如 Java；作者建议未来可分析 IR。</li>
+<li><strong>ASLR 映射问题</strong>：hints 以静态 PC 为索引，地址随机化会破坏映射；需要 OS loader 协同修正偏移。</li>
+<li><strong>硬件配置依赖</strong>：最优 prefetch policy 与 cache size、bandwidth 等微架构参数有关；不同平台可能需要重新训练或把硬件参数加入 prompt。</li>
+<li><strong>与当前 LLM serving 主线的关系</strong>：这篇不是 LLM 推理优化本身，而是用 LLM 作为离线程序分析器指导 CPU microarchitecture；对“training-free runtime policy + offline semantic hint”有启发价值。</li>
+</ul>
+<h3 id="7">7. 对当前研究的启发</h3>
+<ul>
+<li>可以借鉴其 <strong>offline semantic hint + lightweight runtime policy</strong> 模式：在 LLM serving 中，离线/低频分析 prompt、代码仓库、RAG 文档或历史 session，生成 runtime KV cache/offload/prefetch hints。</li>
+<li>PF-LLM 的 per-PC hint 类似 KV cache 系统中的 per-chunk/per-layer/per-head hint：不必在线做复杂推理，只需 runtime 快速查表和执行。</li>
+<li>研究可转化为 <strong>LLM-guided memory management</strong>：用小模型或离线 profiling 预测 chunk reuse、KV hotness、recompute-vs-load 决策，再由 serving runtime 低开销执行。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

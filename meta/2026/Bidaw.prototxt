@@ -1,0 +1,36 @@
+paper {
+  title: "Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via Bidirectional Computation-Storage Awareness"
+  abbr: "Bidaw"
+  url: "https://www.usenix.org/system/files/fast26-hu-shipeng.pdf"
+  authors: "Shipeng Hu"
+  authors: "Guangyan Zhang"
+  authors: "Yuqi Zhou"
+  authors: "Yaya Wei"
+  authors: "Ziyan Zhong"
+  authors: "Jike Chen"
+  institutions: "Tsinghua University"
+  institutions: "China University of Geosciences Beijing"
+  institutions: "China Telecom Omni-channel Operation Center"
+}
+pub {
+  where: "FAST"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/vLLM"
+  methods: "2024/CachedAttention"
+  methods: "2024/Mooncake"
+  methods: "2025/LMCache"
+}
+update_time: 1779073442

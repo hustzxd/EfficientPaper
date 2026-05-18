@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via Bidirectional Computation-Storage Awareness - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via Bidirectional Computation-Storage Awareness";
+        var mkdocs_page_input_path = "notes/2026/Bidaw/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via Bidirectional Computation-Storage Awareness</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="bidaw-enhancing-key-value-caching-for-interactive-llm-serving-via-bidirectional-computation-storage-awareness">Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via Bidirectional Computation-Storage Awareness</h1>
+<blockquote>
+<p>Shipeng Hu, Guangyan Zhang, Yuqi Zhou, Yaya Wei, Ziyan Zhong, Jike Chen</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>In interactive LLM serving, historical key-value tensors of multi-round conversations are often cached in a two-tier storage system consisting of host memory and SSDs. However, loading KVs from two-tier storage in existing approaches increases serving latency by up to 3.8x and decreases throughput by up to 2.0x compared to an ideal large-memory setting. Bidaw improves KV caching with bidirectional awareness between compute and storage: the compute engine schedules requests with KV-loading latency awareness, while the storage system uses LLM-generated response length to predict user access patterns during eviction. Bidaw further balances storage footprint and computational savings by selectively caching storage-efficient history tensors. Experiments show up to 3.58x response-latency reduction and up to 1.83x throughput improvement over state-of-the-art approaches.</p>
+<hr />
+<h2 id="_1">论文详细总结</h2>
+<blockquote>
+<p>由 GPT 自动生成，请人工核验。</p>
+</blockquote>
+<h3 id="1">1. 研究背景与动机</h3>
+<p>交互式 LLM serving 中，用户和模型进行多轮对话。每一轮回答都依赖之前轮次的 KV cache 来保持上下文一致性；如果每轮结束后直接从 GPU 删除 KV，下轮请求到来时就需要重新计算历史上下文。论文的真实交互 workload 显示，用户平均有 <strong>22.4</strong> 轮对话，历史重计算最高可占总计算量 <strong>93.1%</strong>。</p>
+<p>因此，多轮交互服务通常需要把历史 KV 缓存在 GPU 外部。现有两层存储方案通常使用 <strong>host memory + SSD</strong>：host memory 作为 performance layer，SSD 作为 capacity layer。但作者发现现有方法在交互式 workload 上 KV loading 效率很差：相比所有 KV 都在 host memory 的理想大内存设置，响应延迟最高增加 <strong>3.8×</strong>，吞吐最高下降 <strong>2.0×</strong>。</p>
+<p>根因是 <strong>compute engine 和 two-tier storage 互相无感知</strong>：</p>
+<ul>
+<li>compute scheduler 不知道每个请求的 KV 在 host memory 还是 SSD，也不知道 KV 大小，容易让慢 I/O 请求阻塞后续快请求；</li>
+<li>storage eviction 只看历史访问/队列信息，不理解对话行为；交互式对话相邻访问间隔长，KV 访问 temporal locality 差，导致 host memory hit rate 低。</li>
+</ul>
+<h3 id="2-bidaw">2. Bidaw 核心思想</h3>
+<p>Bidaw 是一个面向交互式 LLM serving 的两层 KV caching 系统，通过 <strong>bidirectional computation-storage awareness</strong> 提升 KV loading 效率：</p>
+<ul>
+<li>compute 侧感知 storage I/O latency，按 KV 所在层级和大小调度请求，减少 I/O-induced blocking；</li>
+<li>storage 侧感知 compute 生成的模型回答，用回答长度预测用户下一次访问时间，从而改进 KV eviction；</li>
+<li>进一步选择性缓存 storage-efficient history tensor，在存储开销和未来计算节省之间做权衡。</li>
+</ul>
+<p>一句话概括：<strong>Bidaw 不是单纯把 KV 放到 host/SSD，而是让计算调度知道 KV 加载成本，让存储淘汰知道对话行为。</strong></p>
+<h3 id="3">3. 关键技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>I/O-aware request scheduling</strong></td>
+<td>请求到达时获取其 KV 所在 storage layer 和 KV size；避免长 SSD I/O 请求阻塞短 host-memory I/O 请求。</td>
+</tr>
+<tr>
+<td><strong>Dual queues</strong></td>
+<td>将请求分为 ready queue 和 preparing queue：KV 在 performance layer 的请求进入 ready queue，可直接调度 GPU；KV 在 capacity layer 的请求先进入 preparing queue，加载到 performance layer 后再提升。</td>
+</tr>
+<tr>
+<td><strong>KV-size-based reordering</strong></td>
+<td>preparing queue 中按 KV size 和等待时间给请求排序，优先加载预计 I/O 时间短的请求，同时避免 starvation。</td>
+</tr>
+<tr>
+<td><strong>Previous-answer-based eviction</strong></td>
+<td>利用上一轮 LLM answer 长度预测下一次 KV 访问的 weighted reuse distance；回答越长，用户阅读/思考越久，下一次访问越晚。</td>
+</tr>
+<tr>
+<td><strong>Ghost cache hit-probability estimation</strong></td>
+<td>维护使用未来信息的 optimal eviction ghost cache，根据过去 I/O trace 估计不同 weighted reuse distance 的 hit probability。</td>
+</tr>
+<tr>
+<td><strong>Storage-efficient history tensor caching</strong></td>
+<td>在 GPU 推理产生的多种中间 tensor 中，选择“单位存储开销可节省更多计算”的 history tensor 缓存；MHA 模型收益明显，GQA 模型更适合直接缓存 KV。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">4. 实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>会议</td>
+<td>FAST 2026</td>
+</tr>
+<tr>
+<td>评测 workload</td>
+<td>真实交互式 conversation workload + public ShareGPT multi-round workload</td>
+</tr>
+<tr>
+<td>模型</td>
+<td>OPT-6.7B、Qwen-7B、OPT-13B、Qwen-14B、OPT-30B</td>
+</tr>
+<tr>
+<td>对比系统</td>
+<td>vLLM、CachedAttention、FlashGen，以及 ideal large host memory upper bound</td>
+</tr>
+<tr>
+<td>主结果</td>
+<td>相比 SOTA 方法，响应延迟最多降低 <strong>3.58×</strong>，吞吐最多提升 <strong>1.83×</strong></td>
+</tr>
+<tr>
+<td>ShareGPT 结果</td>
+<td>相比 FlashGen，在相近平均延迟下支持 <strong>1.40×</strong> 更多 users/min；响应延迟相比 vLLM/CachedAttention/FlashGen 分别最多降低 <strong>69.8% / 65.8% / 56.9%</strong></td>
+</tr>
+<tr>
+<td>Host memory sensitivity</td>
+<td>在 host memory 从 120GB 到 200GB 变化时，Bidaw 仍支持 <strong>1.75×–2.19×</strong> 更高 user arrival rate</td>
+</tr>
+<tr>
+<td>Miss rate</td>
+<td>previous-answer-based eviction 相比 queue-enhanced miss rate 最多降低 <strong>57.6%</strong>，相比通用 eviction 策略最多降低 <strong>69.9%</strong></td>
+</tr>
+<tr>
+<td>Request queueing</td>
+<td>I/O-aware scheduler 将平均排队时间从 <strong>5.76s</strong> 降到 <strong>2.45s</strong>，降低 <strong>57.5%</strong></td>
+</tr>
+<tr>
+<td>Overhead</td>
+<td>scheduling 平均 <strong>0.62ms</strong>；eviction 平均 <strong>0.35ms</strong>；history tensor → KV 转换为几十毫秒，在低优先级 CUDA stream 上执行</td>
+</tr>
+<tr>
+<td>Tail latency</td>
+<td>OPT-30B 上 P90/P95/P99 latency 相比 FlashGen 分别降低 <strong>66.63% / 62.64% / 56.81%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5">5. 核心贡献</h3>
+<ol>
+<li>指出交互式 LLM serving 中，两层 KV storage 的主要瓶颈不是容量，而是 compute 与 storage 缺少协同。</li>
+<li>提出 <strong>I/O-aware request scheduling</strong>，把 KV 所在层级和 KV size 纳入 GPU 请求调度。</li>
+<li>提出 <strong>previous-answer-based eviction</strong>，把 LLM answer length 作为预测用户下一次访问时间的信号。</li>
+<li>提出 <strong>storage-efficient history tensor caching</strong>，从“缓存什么 tensor”角度优化 KV reuse 的存储收益比。</li>
+<li>在真实交互式 workload 和 ShareGPT workload 上显著优于 vLLM/CachedAttention/FlashGen，并接近大 host memory 理想上界。</li>
+</ol>
+<h3 id="6">6. 局限性与讨论</h3>
+<ul>
+<li>Bidaw 主要针对 <strong>interactive multi-round conversation</strong>；对于单轮请求、短上下文或高度批处理的离线生成场景，previous-answer-based eviction 的收益可能较弱。</li>
+<li>previous-answer 信号依赖真实用户阅读/思考时间；在 ShareGPT 这类无时间戳、需用 Poisson 模拟 timestamp 的 workload 上，eviction 收益下降。</li>
+<li>系统假设两层 storage 主要是 host memory + SSD，未扩展到 CXL/RDMA/多节点 KV pool；可与 LMCache/Mooncake/CacheFlow 这类更大范围 KV 管理互补。</li>
+<li>storage-efficient tensor caching 对 MHA-based 模型更通用；GQA-based 模型因 KV 本身更小，直接缓存 KV 更合适。</li>
+</ul>
+<h3 id="7">7. 对当前研究的启发</h3>
+<ul>
+<li>Bidaw 与 PredictKV 的方向高度互补：Bidaw 给出了真实系统实现和 FAST 评测，PredictKV 更偏多层级投影设计；后续可以把 Bidaw 的 previous-answer signal 扩展到 CXL/RDMA/SSD 分层 KV 管理。</li>
+<li>对 agentic serving 很有启发：tool call 输出长度、模型回答长度、用户停顿时间都可以作为 session-level reuse predictor，而不仅仅依赖 LRU/recent/sink。</li>
+<li>可尝试做 <strong>conversation-aware KV offload scheduler</strong>：把 request scheduling、KV prefetch、eviction、tensor format 选择统一建模为 compute-storage co-design。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

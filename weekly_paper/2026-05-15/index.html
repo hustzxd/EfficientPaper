@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>2026-05-15 - Efficient Paper</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2026-05-15";
+        var mkdocs_page_input_path = "weekly_paper/2026-05-15.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">2026-05-15</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#widening-the-gap-exploiting-llm-quantization-via-outlier-injection">Widening the Gap: Exploiting LLM Quantization via Outlier Injection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#forgetting-that-sticks-quantization-permanent-unlearning-via-circuit-attribution">Forgetting That Sticks: Quantization-Permanent Unlearning via Circuit Attribution</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#an-interpretable-latency-model-for-speculative-decoding-in-llm-serving">An Interpretable Latency Model for Speculative Decoding in LLM Serving</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#performance-driven-policy-optimization-for-speculative-decoding-with-adaptive-windowing">Performance-Driven Policy Optimization for Speculative Decoding with Adaptive Windowing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-hardware-aware-per-layer-methodology-for-post-training-quantization-of-large-language-models">A Hardware-Aware, Per-Layer Methodology for Post-Training Quantization of Large Language Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#heatkv-head-tuned-kv-cache-compression-for-visual-autoregressive-modeling">HeatKV: Head-tuned KV-cache Compression for Visual Autoregressive Modeling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xfp-quality-targeted-adaptive-codebook-quantization-with-sparse-outlier-separation-for-llm-inference">XFP: Quality-Targeted Adaptive Codebook Quantization with Sparse Outlier Separation for LLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tapioca-why-task-aware-pruning-improves-ood-model-capability">TAPIOCA: Why Task- Aware Pruning Improves OOD model Capability</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#endprompt-efficient-long-context-extension-via-terminal-anchoring">EndPrompt: Efficient Long-Context Extension via Terminal Anchoring</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#omnidrop-layer-wise-token-pruning-for-omni-modal-llms-via-query-guidance">OmniDrop: Layer-wise Token Pruning for Omni-modal LLMs via Query-Guidance</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-10/">2026-04-10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Weekly Paper</li>
+      <li class="breadcrumb-item active">2026-05-15</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="2026-05-15">2026-05-15</h1>
+<hr />
+<h2 id="widening-the-gap-exploiting-llm-quantization-via-outlier-injection">Widening the Gap: Exploiting LLM Quantization via Outlier Injection</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM量化安全风险，提出异常值注入攻击方法，揭示量化模型潜在恶意行为</p>
+</blockquote>
+<p><strong>Authors:</strong> Xiaohua Zhan, Kazuki Egashira, Robin Staab, Mark Vero, Martin Vechev | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.15152v1">http://arxiv.org/abs/2605.15152v1</a></p>
+<details><summary>Abstract</summary>
+
+LLM quantization has become essential for memory-efficient deployment. Recent work has shown that quantization schemes can pose critical security risks: an adversary may release a model that appears benign in full precision but exhibits malicious behavior once quantized by users. However, existing quantization-conditioned attacks have been limited to relatively simple quantization methods, where the attacker can estimate weight regions that remain invariant under the target quantization. Notably, prior attacks have consistently failed to compromise more popular and sophisticated schemes, limiting their practical impact. In this work, we introduce the first quantization-conditioned attack that consistently induces malicious behavior that can be triggered by a broad range of advanced quantization techniques, including AWQ, GPTQ, and GGUF I-quants. Our attack exploits a simple property shared by many modern quantization methods: large outliers can cause other weights to be rounded to zero. Consequently, by injecting outliers into specific weight blocks, an adversary can therefore induce a targeted, predictable weight collapse in the model. This effect can be used to craft seemingly benign full-precision models that exhibit a wide range of malicious behaviors after quantization. Through extensive evaluation across three attack scenarios and LLMs, we show that our attack achieves high success rates against a broad range of quantization methods on which prior attacks fail. Our results demonstrate, for the first time, that the security risks of quantization are not restricted to simpler schemes but are broadly relevant across complex, widely-used quantization methods.
+
+</details>
+
+<hr />
+<h2 id="forgetting-that-sticks-quantization-permanent-unlearning-via-circuit-attribution">Forgetting That Sticks: Quantization-Permanent Unlearning via Circuit Attribution</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparsity-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparsity-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>解决量化导致遗忘失效问题，提出电路归因量化永久遗忘方法，保持压缩后遗忘效果</p>
+</blockquote>
+<p><strong>Authors:</strong> Saisab Sadhu, Pratinav Seth, Vinay Kumar Sankarapu | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.15138v1">http://arxiv.org/abs/2605.15138v1</a></p>
+<details><summary>Abstract</summary>
+
+Standard unlearning evaluations measure behavioral suppression in full precision, immediately after training, despite every deployed language model being quantized first. Recent work has shown that 4-bit post-training quantization can reverse machine unlearning; we show this is not a tuning artefact but a systematic dual failure: gradient-based methods that achieve meaningful forgetting lose it under compression, while methods that survive quantization barely change the model. Both failures trace to the same root cause: across all baselines, per-parameter updates lie 47-828x below the NF4 quantization bin width; updates diffused across billions of parameters cannot clear quantization bin boundaries, a consequence we formalize as a sparsity-permanence tradeoff. We present MANSU (Mechanistic-Aligned Null-Space Unlearning), which resolves both modes by combining causal circuit attribution to isolate the minimal forget-set subgraph, circuit-restricted null-space projection with a diagonal-Fisher retain bound, and a per-parameter magnitude floor guaranteeing quantization survival by construction. We additionally introduce Circuit Attribution Divergence (CAD), a mechanistic verification metric distinguishing structural erasure from behavioral suppression, a distinction existing metrics cannot make. Across multiple model families and hazard benchmarks, MANSU is the first method to jointly satisfy all four properties with margin on each (meaningful forgetting, retain preservation, non-positive PTQ gap, and structural erasure), while gradient-based baselines recover up to +0.05 accuracy under compression.
+
+</details>
+
+<hr />
+<h2 id="an-interpretable-latency-model-for-speculative-decoding-in-llm-serving">An Interpretable Latency Model for Speculative Decoding in LLM Serving</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对推测解码生产环境理解不足，提出可解释延迟模型，优化动态批处理下的性能</p>
+</blockquote>
+<p><strong>Authors:</strong> Linghao Kong, Megan Flynn, Michael Peng, Nir Shavit, Mark Kurtz, Alexandre Marques | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.15051v1">http://arxiv.org/abs/2605.15051v1</a></p>
+<details><summary>Abstract</summary>
+
+Speculative decoding (SD) accelerates large language model (LLM) inference by using a smaller draft model to propose multiple tokens that are verified by a larger target model in parallel. While prior work demonstrates substantial speedups in isolated or fixed-batch settings, the behavior of SD in production serving systems remains poorly understood: request load varies over time, and effective batch size emerges from the serving system rather than being directly controlled or observed. In this work, we develop a simple and interpretable latency model for SD in LLM serving. We infer effective batch size from request rate using Little's Law and decompose per-request demand into load-independent and load-dependent components for prefill, drafting, and verification. We validate our model using extensive measurements from vLLM across verifier and drafter model sizes, prefill and decode lengths, request rates, draft lengths, and acceptance probabilities. The model accurately describes observed latency, explains why speedups often diminish as server load increases, and characterizes how draft length, acceptance rate, and verifier-drafter size shape latency across serving conditions, with implications for configuring SD in deployed systems. We further show how the framework extends to mixture of experts models, where sparse expert activation changes the effective service costs across load regimes. Together, our results provide a structured framework for understanding SD in real LLM serving systems.
+
+</details>
+
+<hr />
+<h2 id="performance-driven-policy-optimization-for-speculative-decoding-with-adaptive-windowing">Performance-Driven Policy Optimization for Speculative Decoding with Adaptive Windowing</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/speculative-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/speculative-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>解决推测解码硬草稿位置瓶颈，提出性能驱动策略优化与自适应窗口，提升接受率</p>
+</blockquote>
+<p><strong>Authors:</strong> Jie Jiang, Xing Sun | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14978v1">http://arxiv.org/abs/2605.14978v1</a></p>
+<details><summary>Abstract</summary>
+
+Speculative decoding accelerates LLM inference by having a lightweight draft model propose speculative windows of candidate tokens for parallel verification by a larger target model. In practice, speculative efficiency is often bottlenecked by hard-to-draft positions, where an early mismatch truncates the accepted prefix and invalidates the rest of the speculative window. Most learning-based drafters are still optimized with token-level supervised objectives, even though speculative utility is inherently window-level and prefix-sensitive. We propose PPOW (Performance-Driven Policy Optimization with Adaptive Windowing), a reinforcement learning framework that shifts drafter optimization from token-level imitation to window-level optimization. PPOW combines a Cost-Aware Speedup Reward, a Distribution-Based Proximity Reward, and Adaptive Divergence-Aware Windowing, which prioritizes informative windows with high confidence-weighted draft-target divergence. PPOW achieves average acceptance lengths of 6.29-6.52 and speedups of 3.39-4.36$\times$ across multiple model families and benchmarks under a unified decoding protocol. These results show that performance-driven window-level optimization is a practical approach to improving speculative decoding efficiency.
+
+</details>
+
+<hr />
+<h2 id="a-hardware-aware-per-layer-methodology-for-post-training-quantization-of-large-language-models">A Hardware-Aware, Per-Layer Methodology for Post-Training Quantization of Large Language Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>提出硬件感知逐层量化方法，通过代码库搜索与异常值校正实现近无损4.5-6比特量化</p>
+</blockquote>
+<p><strong>Authors:</strong> Earl Killian | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14929v1">http://arxiv.org/abs/2605.14929v1</a></p>
+<details><summary>Abstract</summary>
+
+Scaled Outer Product (SOP) is a post-training quantization methodology for large language model weights, designed to deliver near-lossless fidelity at 4.5--6 bits per weight on hardware with per-layer LUT decode. The methodology combines per-layer search of fixed and dynamic codebook pairs selected by a per-block selection bit, signed per-block scales, activation-weighted cosine selection, and multiple-choice knapsack promotion of sensitive layers with outlier and sparse-residual correction. Fixed codebooks include NF4, BOF4, Split87, and SH4; per-layer optimized codebooks (DD4) are hosted in LUT SRAM. A new hardware-efficient LUT output format (HIF) is proposed to improve performance, energy, and cost. Across six open model families, the recommended FP6 operating point (E2M3sUE4M4, 6.5 bpw) achieves lower weight reconstruction error than the conventional per-layer-POT FP8 baseline (E4M3, 8.0 bpw) at 1.5 bpw lower storage cost, demonstrating that block-scaled small atoms with carefully chosen scale precision can replace conventionally-deployed FP8. Full evaluation across the 4.5--6 bpw range, including layer promotion and sparse residual correction, is reported in a companion paper.
+
+</details>
+
+<hr />
+<h2 id="heatkv-head-tuned-kv-cache-compression-for-visual-autoregressive-modeling">HeatKV: Head-tuned KV-cache Compression for Visual Autoregressive Modeling</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a></p>
+<blockquote>
+<p>解决视觉自回归模型KV缓存内存瓶颈，提出头部调优压缩方法，动态分配缓存降低内存</p>
+</blockquote>
+<p><strong>Authors:</strong> Jonathan Cederlund, Axel Berg, Durmus Alp Emre Acar, Chuteng Zhou, Pontus Giselsson | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14877v1">http://arxiv.org/abs/2605.14877v1</a></p>
+<details><summary>Abstract</summary>
+
+Visual Autoregressive (VAR) models have recently demonstrated impressive image generation quality while maintaining low latency. However, they suffer from severe KV-cache memory constraints, often requiring gigabytes of memory per generated image. We introduce HeatKV, a novel compression method that adapts cache allocation in each head based on its attention to previously generated scales. Using a small offline calibration set, the attention heads are ranked according to their attention scores over prior scales. Based on this ranking, we construct a static pruning schedule tailored to a given memory budget. Applied to the Infinity-2B model, HeatKV achieves $2 \times$ higher compression ratio in memory allocation for KV cache compared to existing methods, while maintaining similar or better image fidelity, prompt alignment and human perception score. Our method achieves a new state-of-the-art (SOTA) for VAR model KV-cache compression, showcasing the effectiveness of fine-grained, head-specific cache allocation.
+
+</details>
+
+<hr />
+<h2 id="xfp-quality-targeted-adaptive-codebook-quantization-with-sparse-outlier-separation-for-llm-inference">XFP: Quality-Targeted Adaptive Codebook Quantization with Sparse Outlier Separation for LLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>提出质量目标自适应量化方法XFP，自动确定代码库大小与异常值预算，无需校准数据</p>
+</blockquote>
+<p><strong>Authors:</strong> Thomas Witt | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14844v1">http://arxiv.org/abs/2605.14844v1</a></p>
+<details><summary>Abstract</summary>
+
+We introduce XFP, a dynamic weight quantizer for LLM inference that inverts the conventional workflow: the operator specifies reconstruction quality floors on per-channel cosine similarity (one strict floor for attention and shared experts, one lazy floor for routed-expert MoE); XFP determines codebook size, outlier budget, and packing per layer automatically -- no Hessian, no calibration data, no manual bit-width selection. Each weight matrix is decomposed into a sparse fp16 outlier residual and a dense sub-byte index tensor into a per-group learned codebook. Two storage modes share one auto-select frontend and one fused decode kernel: V2 (per-channel Lloyd) and V2a (shared library of L=32 codebooks per layer). On Qwen3.5-122B-A10B under V2, XFP reaches 138 tok/s single-stream decode on workstation hardware (RTX PRO 6000 Blackwell, TP=2) at 94.49% GSM8K strict-match (3 seeds, n=3957), and is 49% faster than Marlin INT4 at TP=1. For models that do not fit in the target memory envelope, we present the H-Process: a quality-driven iteration over the two cosine thresholds that finds the operating point at which the model just fits while still producing sensible output. Three constraints define its search space: the operator-set thresholds, an OOM boundary at quantize-on-load, and a garbage boundary in generation (cosine similarity steers; benches verify). On Qwen3.5-397B-A17B (512 routed experts/layer), the H-Process fits the full expert population into 2x96 GB at ~3.4 effective bits and delivers 100.9 tok/s long-output decode at 66.72% GSM8K strict-match on the full 1319-problem set (single seed at submission; multi-seed evaluation in progress), exceeding INT4 with routed-expert pruning on memory, throughput, and accuracy simultaneously.
+
+</details>
+
+<hr />
+<h2 id="tapioca-why-task-aware-pruning-improves-ood-model-capability">TAPIOCA: Why Task- Aware Pruning Improves OOD model Capability</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>揭示任务感知剪枝提升OOD能力机制，通过层范数与距离变化解释分布外泛化改进</p>
+</blockquote>
+<p><strong>Authors:</strong> Krish Sharma, Omar Naim, Soumadeep Saha, Nicholas Asher | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14738v1">http://arxiv.org/abs/2605.14738v1</a></p>
+<details><summary>Abstract</summary>
+
+Recent work has promoted task-aware layer pruning as a way to improve model performance on particular tasks, as shown by TALE. In this paper, we investigate when such improvements occur and why. We show first that, across controlled polynomial regression tasks and large language models, such pruning yields no benefit on in-distribution (ID) data but consistently improves out-of-distribution (OOD) accuracy. We further show empirically that OOD inputs induce layerwise norm and pairwise-distance profiles that deviate from the corresponding ID profiles. This leads to a geometric explanation of task-aware pruning: each task induces a task-adapted geometry, characterized empirically by the representation profiles observed on ID inputs. OOD inputs can introduce a distorted version of the task-adapted geometry. Task-aware pruning identifies layers that create or amplify this distortion; by removing them, it shifts OOD representational norms and pairwise distances toward those observed on the adapted distribution. This realigns OOD inputs with the model's task-adapted geometry and improves performance. We provide causal evidence through controlled distribution shifts and residual-scaling interventions, and demonstrate consistent behavior across model scales.
+
+</details>
+
+<hr />
+<h2 id="endprompt-efficient-long-context-extension-via-terminal-anchoring">EndPrompt: Efficient Long-Context Extension via Terminal Anchoring</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>提出EndPrompt方法，通过终端锚定实现高效长上下文扩展，仅需短序列训练</p>
+</blockquote>
+<p><strong>Authors:</strong> Han Tian, Luxuan Chen, Xinran Chen, Rui Kong, Fang Wang, Jiamin Chen, Jinman Zhao, Yuchen Li, Jiashu Zhao, Shuaiqiang Wang, Haoyi Xiong, Dawei Yin | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14589v1">http://arxiv.org/abs/2605.14589v1</a></p>
+<details><summary>Abstract</summary>
+
+Extending the context window of large language models typically requires training on sequences at the target length, incurring quadratic memory and computational costs that make long-context adaptation expensive and difficult to reproduce. We propose EndPrompt, a method that achieves effective context extension using only short training sequences. The core insight is that exposing a model to long-range relative positional distances does not require constructing full-length inputs: we preserve the original short context as an intact first segment and append a brief terminal prompt as a second segment, assigning it positional indices near the target context length. This two-segment construction introduces both local and long-range relative distances within a short physical sequence while maintaining the semantic continuity of the training text--a property absent in chunk-based simulation approaches that split contiguous context. We provide a theoretical analysis grounded in Rotary Position Embedding and the Bernstein inequality, showing that position interpolation induces a rigorous smoothness constraint over the attention function, with shared Transformer parameters further suppressing unstable extrapolation to unobserved intermediate distances. Applied to LLaMA-family models extending the context window from 8K to 64K, EndPrompt achieves an average RULER score of 76.03 and the highest average on LongBench, surpassing LCEG (72.24), LongLoRA (72.95), and full-length fine-tuning (69.23) while requiring substantially less computation. These results demonstrate that long-context generalization can be induced from sparse positional supervision, challenging the prevailing assumption that dense long-sequence training is necessary for reliable context-window extension. The code is available at https://github.com/clx1415926/EndPrompt.
+
+</details>
+
+<hr />
+<h2 id="omnidrop-layer-wise-token-pruning-for-omni-modal-llms-via-query-guidance">OmniDrop: Layer-wise Token Pruning for Omni-modal LLMs via Query-Guidance</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/token pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/token pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对多模态LLM令牌爆炸问题，提出查询引导分层令牌剪枝，优化实时应用性能</p>
+</blockquote>
+<p><strong>Authors:</strong> Yeo Jeong Park, Hyemi Jang, Minseo Choi, Jongsun Lee, Jooyoung Choi, Yongkweon Jeon | <strong>Date:</strong> 2026-05-14</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.14458v1">http://arxiv.org/abs/2605.14458v1</a></p>
+<details><summary>Abstract</summary>
+
+Omni-modal large language models have demonstrated remarkable potential in holistic multimodal understanding; however, the token explosion caused by high-resolution audio and video inputs remains a critical bottleneck for real-time applications and long-form reasoning. Existing omni-modal token compression methods typically prune tokens at the input embedding level, relying on audio-video similarity or temporal co-occurrence as proxies for semantic relevance. In practice, such assumptions are often unreliable. To address this limitation, we propose OmniDrop, a training-free, layer-wise token pruning framework that progressively prunes audiovisual tokens within the LLM decoder layers rather than at the input-level, allowing early layers to preserve sufficient omni-modal information fusion before aggressively removing tokens in deeper layers. We further utilize text queries as guidance for modality-agnostic and task-adaptive token pruning. We also introduce a temporal diversity score that encourages balanced token survival to preserve global temporal context. Experimental results across various audiovisual benchmarks demonstrate that OmniDrop outperforms all baselines by up to 3.58 points while reducing prefill latency by up to 40% and memory usage by up to 14.7%.
+
+</details>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-05-08/" class="btn btn-neutral float-left" title="2026-05-08"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../legacy/2025-10-09/" class="btn btn-neutral float-right" title="2025-10-09">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2026-05-08/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../legacy/2025-10-09/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../js/prism-prototxt.js"></script>
+      <script src="../../js/preview.js"></script>
+      <script src="../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../js/note-editor.js"></script>
+      <script src="../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

@@ -1,0 +1,31 @@
+paper {
+  title: "OmniDrop: Layer-wise Token Pruning for Omni-modal LLMs via Query-Guidance"
+  abbr: "OmniDrop"
+  url: "http://arxiv.org/abs/2605.14458v1"
+  authors: "Yeo Jeong Park"
+  authors: "Hyemi Jang"
+  authors: "Minseo Choi"
+  authors: "Jongsun Lee"
+  authors: "Jooyoung Choi"
+  authors: "Yongkweon Jeon"
+  institutions: "Samsung Research"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: sparse_pruning
+  words: activation_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1779073840

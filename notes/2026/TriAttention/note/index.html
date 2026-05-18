@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>TriAttention: Efficient Long Reasoning with Trigonometric KV Compression - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TriAttention: Efficient Long Reasoning with Trigonometric KV Compression";
+        var mkdocs_page_input_path = "notes/2026/TriAttention/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">TriAttention: Efficient Long Reasoning with Trigonometric KV Compression</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="triattention-efficient-long-reasoning-with-trigonometric-kv-compression">TriAttention: Efficient Long Reasoning with Trigonometric KV Compression</h1>
+<blockquote>
+<p>Weian Mao, Xi Lin, Wei Huang, Yuxin Xie, Tianfu Fu, Bohan Zhuang, Song Han, Yukang Chen</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>Extended reasoning in large language models (LLMs) creates severe KV cache memory bottlenecks. Leading KV cache compression methods estimate KV importance using attention scores from recent post-RoPE queries. However, queries rotate with position during RoPE, making representative queries very few, leading to poor top-key selection and unstable reasoning. To avoid this issue, we turn to the pre-RoPE space, where we observe that Q and K vectors are highly concentrated around fixed non-zero centers and remain stable across positions -- Q/K concentration. We show that this concentration causes queries to preferentially attend to keys at specific distances (e.g., nearest keys), with the centers determining which distances are preferred via a trigonometric series. Based on this, we propose TriAttention to estimate key importance by leveraging these centers. Via the trigonometric series, we use the distance preference characterized by these centers to score keys according to their positions, and also leverage Q/K norms as an additional signal for importance estimation. On AIME25 with 32K-token generation, TriAttention matches Full Attention reasoning accuracy while achieving 2.5x higher throughput or 10.7x KV memory reduction, whereas leading baselines achieve only about half the accuracy at the same efficiency. TriAttention enables OpenClaw deployment on a single consumer GPU, where long context would otherwise cause out-of-memory with Full Attention.</p>
+<hr />
+<p><em>以下总结由 MiMo 生成：</em></p>
+<p>这篇论文旨在解决大语言模型在长推理任务中KV缓存内存瓶颈的问题。为此，作者提出了一种名为TriAttention的方法，通过利用RoPE前空间中Q/K向量的浓度特性，结合三角级数来估计键的重要性。该方法在保持全注意力推理精度的同时，实现了2.5倍的吞吐量提升或10.7倍的KV内存减少，显著优于现有基线方法。</p>
+<hr />
+<h2 id="_1">论文详细总结</h2>
+<blockquote>
+<p>由 GPT 自动生成，请人工核验。</p>
+</blockquote>
+<h3 id="1">1. 研究背景与动机</h3>
+<p>长推理模型会生成数万 token 的 chain-of-thought，KV cache 随生成长度线性增长，成为显存瓶颈。现有 KV cache compression 通常用最近若干 post-RoPE query 的 attention score 来估计 key 重要性，例如 H2O、SnapKV、R-KV、LazyEviction 等。</p>
+<p>TriAttention 指出现有方法在长推理中不稳定的根因：<strong>RoPE 会随位置旋转 query 方向</strong>，导致只有极少数最近 query 的方向仍然“新鲜”且可代表未来 query。观察窗口太短时，某些当前低 attention、未来关键的 token 会被永久淘汰，尤其会破坏 reasoning chain 或 retrieval head 的长期记忆。</p>
+<h3 id="2-triattention">2. TriAttention 核心思想</h3>
+<p>作者转向 <strong>pre-RoPE space</strong>，发现 Q/K 向量在很多 attention head 中会集中在固定非零中心附近，并且这种 <strong>Q/K concentration</strong> 跨位置、跨输入内容和跨领域都稳定。由于 RoPE 本质是按位置旋转，当 pre-RoPE Q/K 近似为固定中心时，attention logit 可以化简为只依赖 Q-K 距离的 <strong>trigonometric series</strong>。</p>
+<p>一句话概括：<strong>TriAttention 用 pre-RoPE Q/K 中心推导未来 query 对不同距离 key 的偏好，再结合 key norm，对 KV 中的 key 进行重要性打分和保留。</strong></p>
+<h3 id="3">3. 关键技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Q/K concentration</strong></td>
+<td>pre-RoPE Q/K 在大量 head 中围绕固定非零中心集中；Qwen3-8B 上 Math/Coding/Chat 的 MRL 约 0.977–0.980，约 90% heads 的 R &gt; 0.95。</td>
+</tr>
+<tr>
+<td><strong>Trigonometric distance preference</strong></td>
+<td>将 Q/K 中心代入 RoPE attention 公式后，logit 变为关于 Q-K 距离的三角级数，可预测某些距离上的 key 更容易被关注。</td>
+</tr>
+<tr>
+<td><strong>Trigonometric score <code>Strig</code></strong></td>
+<td>用 calibration data 得到 Q center，再对 cache 中每个 key 按多个未来 offset 计算距离偏好分数。</td>
+</tr>
+<tr>
+<td><strong>Norm-based score <code>Snorm</code></strong></td>
+<td>对 Q/K concentration 较弱的 head，用 query/key norm 作为补充信号，避免只依赖中心近似。</td>
+</tr>
+<tr>
+<td><strong>Concentration-adaptive weighting</strong></td>
+<td>用 Mean Resultant Length <code>R</code> 自动平衡 <code>Strig</code> 和 <code>Snorm</code>：R 高时信任三角级数，R 低时增加 norm 信号权重。</td>
+</tr>
+<tr>
+<td><strong>Periodic pruning</strong></td>
+<td>与 R-KV 类似，每生成 128 tokens 触发一次压缩，将 KV cache 剪回指定 budget。</td>
+</tr>
+<tr>
+<td><strong>Cross-domain calibration</strong></td>
+<td>Q/K 中心是 model-intrinsic property，用 coding 数据校准后在 reasoning benchmark 上仍能工作，说明不强依赖校准数据语义。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">4. 实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主任务</td>
+<td>Mathematical reasoning：AIME24、AIME25、MATH 500</td>
+</tr>
+<tr>
+<td>泛化任务</td>
+<td>LongBench、RULER，附录中还比较 H2O 等方法</td>
+</tr>
+<tr>
+<td>主模型</td>
+<td>Qwen3-8B、DeepSeek-R1 distilled Qwen/Llama 系模型；OpenClaw demo 用 Qwen3-32B INT4</td>
+</tr>
+<tr>
+<td>AIME25 主结果</td>
+<td>32K generation 下匹配 Full Attention accuracy，同时实现 <strong>2.5× throughput</strong> 或 <strong>10.7× KV memory reduction</strong></td>
+</tr>
+<tr>
+<td>MATH 500</td>
+<td>相近准确率下 throughput 从 Full Attention <strong>222.8 tokens/s</strong> 提升到 <strong>1405.2 tokens/s</strong>，约 <strong>6.3×</strong></td>
+</tr>
+<tr>
+<td>与 R-KV 比较</td>
+<td>相近 accuracy 下 KV budget 减半（1024 vs 2048）且 throughput 提升 <strong>85%</strong>（1405.2 vs 760.4 tokens/s）</td>
+</tr>
+<tr>
+<td>相同 memory budget</td>
+<td>TriAttention 在 MATH 500 上比 R-KV 高 <strong>8.0 points</strong>，AIME24 高 <strong>15.4 points</strong></td>
+</tr>
+<tr>
+<td>Ablation <code>Strig</code></td>
+<td>去掉 trigonometric series 后 AIME24/AIME25 从 42.1/32.9 降到 18.8/21.2，说明距离偏好是核心。</td>
+</tr>
+<tr>
+<td>LongBench / RULER</td>
+<td>LongBench 平均 48.1，超过 Ada-KV+SnapKV 的 45.6；RULER 平均 66.1，超过 SnapKV 10.5 points。</td>
+</tr>
+<tr>
+<td>OpenClaw 部署</td>
+<td>Qwen3-32B INT4 在单张 RTX 4090 上，Full Attention 多轮长上下文 OOM，TriAttention 可运行。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5">5. 核心贡献</h3>
+<ol>
+<li>发现并系统验证 <strong>pre-RoPE Q/K concentration</strong>，指出其是跨领域、跨架构较稳定的模型内在属性。</li>
+<li>推导 Q/K concentration 下 RoPE attention 与 Q-K distance 的三角级数关系，为 KV key importance 提供非 recent-query 的预测信号。</li>
+<li>提出 TriAttention，将 trigonometric distance preference、Q/K norm 和 concentration-adaptive weighting 结合做 KV cache pruning。</li>
+<li>在长推理任务中显著优于基于 post-RoPE recent attention 的方法，缓解 R-KV 等方法因短观察窗口造成的关键 token 遗漏。</li>
+<li>展示 TriAttention 可让长推理 agent 在消费级 GPU 上部署，具备实际 serving 价值。</li>
+</ol>
+<h3 id="6">6. 局限性与讨论</h3>
+<ul>
+<li>TriAttention 需要离线 calibration 来收集 Q/K center 和 norm 统计；虽然作者显示跨领域 calibration 稳定，但不同模型/attention 架构仍需重新统计。</li>
+<li>其剪枝目标主要是 reasoning generation 中的 KV cache，和多轮交互式 KV offload、跨请求复用等系统问题互补。</li>
+<li>方法依赖 RoPE 结构与 pre-RoPE 表征集中性；对非 RoPE 或表征不集中的模型需要重新验证。</li>
+<li>当前总结中的性能数据主要来自论文报告；实际 serving 集成还需考察 pruning overhead、batching、paged KV layout 和 FlashAttention kernel 兼容性。</li>
+</ul>
+<h3 id="7">7. 对当前研究的启发</h3>
+<ul>
+<li>TriAttention 提供了一个比 recent attention 更稳定的 token importance 信号，可用于 <strong>training-free KV eviction / sparse KV retention</strong>。</li>
+<li>它提示 layer/head 级统计量可以作为 runtime policy 的低成本先验：例如把 Q/K concentration 与 KV offload、prefetch、recompute 策略结合。</li>
+<li>可与 Bidaw/PredictKV 互补：TriAttention 解决“哪些 token/head 重要”，Bidaw/PredictKV 解决“重要 KV 放在哪一层、何时加载/淘汰”。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

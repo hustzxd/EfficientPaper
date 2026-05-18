@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference";
+        var mkdocs_page_input_path = "notes/2026/PredictKV/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-17/">2026-04-17</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-24/">2026-04-24</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="predictive-multi-tier-memory-management-for-kv-cache-in-large-scale-gpu-inference">Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference</h1>
+<blockquote>
+<p>Sanjeev Rao Ganjihal</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<h2 id="abstract">Abstract</h2>
+<p>Key-value (KV) cache memory management is the primary bottleneck limiting throughput and cost-efficiency in large-scale GPU inference serving. Current systems suffer from three compounding inefficiencies: (1) the absence of unified KV cache sizing across all attention architectures--particularly multi-head latent attention (MLA), which is unsupported in general-purpose frameworks, resulting in up to 57x memory over-provisioning; (2) confinement of KV cache to a single memory tier (GPU HBM) despite the availability of a rich hierarchy spanning CPU DRAM, CXL-attached memory, NVMe via GPUDirect Storage, RDMA fabric, and parallel filesystems; and (3) reactive eviction policies that discard reusable state, forcing redundant recomputation. We present a unified system that addresses all three problems. Our architecture-variant-aware sizing engine computes exact memory requirements per attention type, enabling up to 7.4x higher batch sizes. A six-tier memory hierarchy extends effective KV cache capacity from 40 GB to over 38 TB per node while maintaining sub-millisecond time-to-first-token (TTFT) for hot entries. A Bayesian reuse predictor with Beta conjugate priors over 16 (block-type, transition-type) pairs achieves 70-84% cache hit rates, combined with EMA-scored head-granular eviction and RoPE-aware prefetching. Component-level validation on trace replay using ShareGPT, LMSYS-Chat-1M, and agentic workloads demonstrates 70-84% cache hit rates. Analytical projections combining validated component behavior with published hardware specifications indicate 1.4-2.1x projected TTFT reduction, 1.7-2.9x throughput improvement, and 47% cost reduction compared to state-of-the-art baselines.</p>
+<hr />
+<p><em>以下总结由 MiMo 生成：</em></p>
+<p>这篇论文针对大规模GPU推理中KV缓存内存管理的瓶颈问题，提出了一种统一的多层内存管理系统。该系统通过架构感知的内存需求计算、六层内存层次扩展以及基于贝叶斯的重用预测器，解决了KV缓存尺寸不统一、内存层级利用不足和被动淘汰策略低效三大问题。实验表明，该系统能实现高达7.4倍的批量大小提升、70-84%的缓存命中率，并在投影中实现1.4-2.1倍的首词生成时间减少、1.7-2.9倍的吞吐量提升和47%的成本降低。</p>
+<hr />
+<h2 id="_1">论文详细总结</h2>
+<blockquote>
+<p>由 GPT 自动生成，请人工核验。</p>
+</blockquote>
+<h3 id="1">1. 研究背景与动机</h3>
+<p>大规模 GPU LLM 推理中，KV cache 已成为吞吐和成本效率的核心瓶颈。论文指出，70B 模型在 128K context 下，单请求 KV cache 可能超过 40GB HBM，显著限制 batch size。作者总结当前系统的三个问题：</p>
+<ul>
+<li><strong>跨 attention 架构 sizing 不统一</strong>：MHA/GQA/MQA/MLA 的 KV cache 形态不同，但通用 serving 框架缺少统一 sizing engine；MLA 若按 MHA 等价方式估算，会产生最高 <strong>57×</strong> 内存高估。</li>
+<li><strong>单层 HBM confinement</strong>：vLLM/SGLang/TensorRT-LLM 等主要系统通常将 KV cache 限制在 GPU HBM，未系统利用 CPU DRAM、CXL、NVMe、RDMA、parallel filesystem 等数据中心内存层级。</li>
+<li><strong>Reactive eviction</strong>：GPU 内存满后用 LRU/random 等被动策略丢弃 cache，忽略 system prompt、tool context、agent workflow、RoPE sequential locality 等可预测复用模式。</li>
+</ul>
+<h3 id="2">2. 核心思想</h3>
+<p>论文提出一个 <strong>predictive multi-tier KV cache management system</strong>：先用 architecture-aware sizing 精确计算不同 attention 架构的 KV memory budget，再把 KV cache 放入六级内存层级，并用 Bayesian reuse predictor 主动决定 promotion/demotion/eviction/prefetch。</p>
+<p>一句话概括：<strong>把 KV cache 从“HBM 内的被动 LRU 缓存”扩展为“跨 HBM/DRAM/CXL/NVMe/RDMA/FS 的预测式分层记忆系统”。</strong></p>
+<h3 id="3">3. 关键技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture-aware KV sizing</strong></td>
+<td>分别支持 MHA、GQA、MQA、MLA 的 KV cache 公式，避免在 MLA/GQA 模型上按 MHA 过度预留内存。</td>
+</tr>
+<tr>
+<td><strong>Six-tier memory hierarchy</strong></td>
+<td>T0 GPU HBM、T1 CPU DRAM、T2 CXL 3.0 memory、T3 NVMe + GPUDirect Storage、T4 RDMA network pool、T5 parallel filesystem。</td>
+</tr>
+<tr>
+<td><strong>Bayesian reuse predictor</strong></td>
+<td>用 Beta conjugate priors 维护 16 个 <code>(block_type, transition_type)</code> 组合的复用概率，block 类型包括 system prompt、tool context、user context、intermediate reasoning 等。</td>
+</tr>
+<tr>
+<td><strong>Latency-aware placement</strong></td>
+<td>根据预测复用概率、重计算成本和各 tier 存储/访问成本计算 value score，异步执行 promotion/demotion，避免阻塞 decode path。</td>
+</tr>
+<tr>
+<td><strong>Head-granular eviction</strong></td>
+<td>使用 EMA 跟踪 attention head 级重要性，并结合 recency 与 positional distance decay，避免整块粗粒度 eviction。</td>
+</tr>
+<tr>
+<td><strong>RoPE-aware prefetching</strong></td>
+<td>利用 rotary position encoding 带来的顺序局部性，预测附近位置的 KV block 访问。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4">4. 实验与投影结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>论文状态</td>
+<td>arXiv preprint，文中注明 under review；部分实现细节因 patent examination 保留</td>
+</tr>
+<tr>
+<td>MLA sizing 示例</td>
+<td>DeepSeek-V3 每 token 每层实际 KV 约 <strong>1,152 bytes</strong>，MHA 等价估算 <strong>65,536 bytes</strong>，差 <strong>57×</strong></td>
+</tr>
+<tr>
+<td>Batch size 示例</td>
+<td>DeepSeek-V3 on 80GB H100，MLA-aware sizing 将 batch size 从 <strong>15</strong> 提升到 <strong>104</strong>，约 <strong>7×</strong></td>
+</tr>
+<tr>
+<td>有效 KV 容量</td>
+<td>单节点从 <strong>40GB</strong> HBM 扩展到超过 <strong>38TB</strong> multi-tier capacity</td>
+</tr>
+<tr>
+<td>Cache hit rate</td>
+<td>ShareGPT、LMSYS-Chat-1M、agentic workloads trace replay 上 <strong>70–84%</strong></td>
+</tr>
+<tr>
+<td>投影 TTFT</td>
+<td><strong>1.4–2.1×</strong> projected TTFT reduction</td>
+</tr>
+<tr>
+<td>投影吞吐</td>
+<td><strong>1.7–2.9×</strong> projected throughput improvement</td>
+</tr>
+<tr>
+<td>投影成本</td>
+<td>约 <strong>47%</strong> projected cost reduction</td>
+</tr>
+<tr>
+<td>64-GPU H100 projection</td>
+<td>约 <strong>4,150 tokens/s/GPU</strong>，$0.43 / million tokens</td>
+</tr>
+</tbody>
+</table>
+<p>注意：论文多处强调结果是 <strong>component-level validation + analytical projections</strong>，不是完整生产系统的端到端实测。</p>
+<h3 id="5">5. 核心贡献</h3>
+<ol>
+<li>将 KV cache management 统一到 MHA/GQA/MQA/MLA 多 attention 架构下，解决异构模型 fleet 的 sizing 问题。</li>
+<li>明确提出六级 memory hierarchy，把 CXL、NVMe GDS、RDMA、parallel filesystem 纳入 KV cache 管理。</li>
+<li>用轻量 Bayesian predictor 对跨请求 KV block 复用建模，重点覆盖 system prompt、tool context、agent workflow 等高复用模式。</li>
+<li>将 eviction 从 block-level reactive LRU 推进到 head-granular、RoPE-aware、prediction-driven policy。</li>
+<li>方向上与当前 long-context serving / KV offload / prefix sharing / agent cache 管理高度相关。</li>
+</ol>
+<h3 id="6">6. 局限性与风险</h3>
+<ul>
+<li><strong>端到端验证不足</strong>：核心收益主要来自 trace replay 与 analytical projection，完整 CXL/RDMA/NVMe 多层系统仍需 full-stack validation。</li>
+<li><strong>工程复杂度高</strong>：跨 HBM、CPU、CXL、NVMe、RDMA、FS 的一致接口、异步调度、故障退化和 SLO 控制都很复杂。</li>
+<li><strong>预测粒度较粗</strong>：16 个 <code>(block_type, transition_type)</code> 组合非常轻量，但可能无法捕获复杂 prompt/session 语义差异。</li>
+<li><strong>专利/实现细节保留</strong>：论文说明部分 implementation details withheld pending patent examination，可复现性需要谨慎评估。</li>
+</ul>
+<h3 id="7">7. 对当前研究的启发</h3>
+<ul>
+<li>这篇可以作为 <strong>Query/Agent-aware hierarchical KV cache</strong> 方向的系统化参考：从 token eviction 扩展到跨请求、跨 tier、跨 workflow 的 KV memory system。</li>
+<li>与 Cake/Tutti/CacheFlow 相比，它更强调 <strong>architecture-aware sizing + Bayesian reuse prediction + CXL/RDMA tiering</strong>，适合启发一个更完整的 KV cache scheduler 设计。</li>
+<li>值得优先验证其中低成本部分：block type/transition type 复用预测、system prompt/tool context 跨请求共享、compute-vs-load value score，而不是一开始实现完整六级系统。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

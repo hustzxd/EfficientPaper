@@ -1,0 +1,28 @@
+paper {
+  title: "Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference"
+  abbr: "PredictKV"
+  url: "http://arxiv.org/abs/2604.26968v1"
+  authors: "Sanjeev Rao Ganjihal"
+  institutions: "Independent Researcher"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/Cake"
+  methods: "2026/CacheFlow"
+  methods: "2026/Tutti"
+}
+update_time: 1779074166

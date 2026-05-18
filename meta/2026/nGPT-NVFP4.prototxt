@@ -1,0 +1,33 @@
+paper {
+  title: "Normalized Architectures are Natively 4-Bit"
+  abbr: "nGPT-NVFP4"
+  url: "http://arxiv.org/abs/2605.06067v1"
+  authors: "Maxim Fishman"
+  authors: "Brian Chmiel"
+  authors: "Ron Banner"
+  authors: "Daniel Soudry"
+  authors: "Boris Ginsburg"
+  institutions: "NVIDIA"
+  institutions: "Technion"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/anonymous452026/ngpt-nvfp4"
+}
+keyword {
+  words: quantization
+  words: structure_design
+  words: efficient_training
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/MXFP4Train"
+}
+update_time: 1778309793
+rating: 3
