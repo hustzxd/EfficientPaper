@@ -1,0 +1,49 @@
+paper {
+  title: "KVServe: Service-Aware KV Cache Compression for Communication-Efficient Disaggregated LLM Serving"
+  abbr: "KVServe"
+  url: "http://arxiv.org/abs/2605.13734v1"
+  authors: "Zedong Liu"
+  authors: "Xinyang Ma"
+  authors: "Dejun Luo"
+  authors: "Hairui Zhao"
+  authors: "Bing Lu"
+  authors: "Wenjing Huang"
+  authors: "Yida Gu"
+  authors: "Xingchen Liu"
+  authors: "Zheng Wei"
+  authors: "Jinyang Liu"
+  authors: "Dingwen Tao"
+  authors: "Guangming Tan"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "Institute of Computing Technology, Chinese Academy of Sciences"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/hpdps-group/KVServe"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: kv_cache_sparse
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/CacheGen"
+  methods: "2024/KIVI"
+  methods: "2024/KVQuant"
+  methods: "2024/QuaRot"
+  methods: "2024/DuoAttention"
+  methods: "2025/LMCache"
+}
+update_time: 1779120032
+
+rating: 5
