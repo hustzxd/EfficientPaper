@@ -2,7 +2,7 @@
 
 > Zedong Liu, Xinyang Ma, Dejun Luo, Hairui Zhao, Bing Lu, Wenjing Huang, Yida Gu, Xingchen Liu, Zheng Wei, Jinyang Liu, Dingwen Tao, Guangming Tan
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

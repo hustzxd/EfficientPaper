@@ -316,7 +316,7 @@ def main():
         if paper is not None:
             note_content += f"""> {", ".join(authors)}\n\n"""
         # note_content += """<p align="center">\n<img src="../../blank.jpg" width="600" title="blank">\n</p>\n\n"""
-        note_content += f"""![111](../../blank.jpg)\n\n"""
+        note_content += f"""![cover](../../blank.jpg)\n\n"""
         note_content += f"""## Abstract\n\n{summary}\n"""
 
         # Generate MiMo summary

@@ -1,0 +1,32 @@
+paper {
+  title: "ContiguousKV: Accelerating LLM Prefill with Granularity-Aligned KV Cache Management"
+  abbr: "ContiguousKV"
+  url: "http://arxiv.org/abs/2601.13631"
+  authors: "Jing Zou"
+  authors: "Shangyu Wu"
+  authors: "Hancong Duan"
+  authors: "Qiao Li"
+  authors: "Chun Jason Xue"
+  institutions: "UESTC"
+  institutions: "MBZUAI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/H2O"
+  methods: "2023/FlexGen"
+}
+update_time: 1779849429

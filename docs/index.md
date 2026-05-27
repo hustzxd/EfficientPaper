@@ -49,6 +49,7 @@
       <button id="stats-btn" class="stats-btn">📊 Statistics</button>
       <button id="add-arxiv-btn" class="add-arxiv-btn" title="Add paper from arXiv (requires local server)">➕ Add from arXiv</button>
       <button id="upload-github-btn" class="upload-github-btn" title="Upload changes to GitHub (requires local server)">☁️ Upload to GitHub</button>
+      <button id="pull-github-btn" class="pull-github-btn" title="Pull latest changes from GitHub (requires local server)">🔄 Pull from GitHub</button>
       <button id="export-selected-btn" class="export-btn" style="display: none;" title="Export selected papers">📥 Export Selected (<span id="selected-count">0</span>)</button>
       <button id="pdf-path-btn" class="pdf-path-btn" title="Set local PDF folder path">📁 Set PDF Path</button>
     </div>
@@ -161,6 +162,25 @@
     </div>
   </div>
 
+  <!-- Pull from GitHub Modal -->
+  <div id="pull-github-modal" class="arxiv-modal" style="display: none;">
+    <div class="arxiv-modal-content">
+      <div class="arxiv-modal-header">
+        <h2>🔄 Pull from GitHub</h2>
+        <button id="close-pull-github" class="close-arxiv">✕</button>
+      </div>
+      <div class="arxiv-modal-body">
+        <p style="margin-bottom: 12px; color: #555;">This will run <code>git pull</code> in the repository root and sync the latest remote changes.</p>
+        <p style="margin-bottom: 16px; color: #777; font-size: 14px;">If you have local uncommitted edits that conflict with remote changes, the pull may fail.</p>
+        <div id="pull-github-status" class="arxiv-status"></div>
+      </div>
+      <div class="arxiv-modal-footer">
+        <button id="pull-github-submit-btn" class="btn-primary">Pull</button>
+        <button id="pull-github-cancel-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <!-- PDF Path Modal -->
   <div id="pdf-modal" class="arxiv-modal" style="display: none;">
     <div class="arxiv-modal-content">
@@ -224,6 +244,34 @@
         <button id="export-copy-btn" class="btn-primary">📋 Copy to Clipboard</button>
         <button id="export-download-btn" class="btn-primary">💾 Download File</button>
         <button id="export-cancel-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Paper Modal -->
+  <div id="delete-paper-modal" class="arxiv-modal" style="display: none;">
+    <div class="arxiv-modal-content">
+      <div class="arxiv-modal-header">
+        <h2>Delete Paper</h2>
+        <button id="close-delete-paper" class="close-arxiv">✕</button>
+      </div>
+      <div class="arxiv-modal-body">
+        <div class="delete-paper-warning">This will permanently remove the paper metadata and its note folder.</div>
+        <div class="delete-paper-summary">
+          <div class="delete-paper-title" id="delete-paper-title"></div>
+          <div class="delete-paper-path" id="delete-paper-prototxt"></div>
+          <div class="delete-paper-path" id="delete-paper-note"></div>
+        </div>
+        <div class="form-group">
+          <label for="delete-confirm-input">Type <code>DELETE</code> to confirm</label>
+          <input type="text" id="delete-confirm-input" placeholder="DELETE" autocomplete="off">
+          <small>This action cannot be undone.</small>
+        </div>
+        <div id="delete-paper-status" class="arxiv-status"></div>
+      </div>
+      <div class="arxiv-modal-footer">
+        <button id="delete-paper-submit-btn" class="btn-danger">Delete</button>
+        <button id="delete-paper-cancel-btn" class="btn-secondary">Cancel</button>
       </div>
     </div>
   </div>
@@ -394,6 +442,21 @@
 
 .upload-github-btn:hover {
   background: #e65100;
+}
+
+.pull-github-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #00897b;
+  border-radius: 6px;
+  background: #00897b;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pull-github-btn:hover {
+  background: #00695c;
 }
 
 .pdf-path-btn {
@@ -1084,6 +1147,27 @@
   cursor: not-allowed;
 }
 
+.btn-danger {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #d32f2f;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+}
+
+.btn-danger:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
 .server-disabled {
   opacity: 0.45;
   cursor: not-allowed !important;
@@ -1155,6 +1239,79 @@ a.server-disabled {
 .paper-card.shared-focus {
   border-color: #4a90d9;
   box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.12);
+}
+
+.paper-delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.78);
+  color: #9e9e9e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+  z-index: 3;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.paper-card:hover .paper-delete-btn,
+.paper-delete-btn:focus-visible {
+  opacity: 0.72;
+}
+
+.paper-delete-btn:hover {
+  color: #d32f2f;
+  background: rgba(255,255,255,0.96);
+  transform: scale(1.05);
+}
+
+.paper-delete-btn svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+}
+
+.delete-paper-warning {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff4f4;
+  border: 1px solid #ffd7d7;
+  color: #a12626;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.delete-paper-summary {
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f7f8fa;
+  border: 1px solid #e5e7eb;
+}
+
+.delete-paper-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.delete-paper-path {
+  font-size: 12px;
+  color: #666;
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+  word-break: break-all;
 }
 
 /* Note Preview Tooltip */
@@ -1696,6 +1853,10 @@ a.server-disabled {
     flex-direction: column;
   }
 
+  .paper-delete-btn {
+    opacity: 0.38;
+  }
+
   .paper-cover {
     width: 100%;
     height: 150px;
@@ -1948,6 +2109,7 @@ a.server-disabled {
 
 .paper-card .paper-links,
 .paper-card .paper-checkbox,
+.paper-card .paper-delete-btn,
 .paper-card .copy-btn,
 .paper-card .share-btn,
 .paper-card .pdf-btn,
@@ -2270,6 +2432,7 @@ function closeLightbox() {
   let starCache = {}; // Cache GitHub star counts
   let basePath = window.location.pathname.includes('/search') ? '..' : '.'; // Base path for relative URLs
   let activeSharedPaperId = null;
+  let pendingDeletePaper = null;
   const paperShareLookup = new Map();
   const shareIconSvg = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.02-4.11A2.99 2.99 0 0 0 18 7.91a3 3 0 1 0-3-3c0 .24.04.47.09.69L8.07 9.71A3 3 0 0 0 6 9a3 3 0 1 0 0 6c.82 0 1.56-.33 2.11-.85l7.02 4.11c-.05.21-.08.43-.08.65a3 3 0 1 0 3-2.83Z"/></svg>';
   const successIconSvg = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
@@ -2300,7 +2463,7 @@ function closeLightbox() {
 
   // Update UI elements that depend on local server
   function updateServerDependentUI() {
-    const serverButtons = ['add-arxiv-btn', 'upload-github-btn', 'pdf-path-btn'];
+    const serverButtons = ['add-arxiv-btn', 'upload-github-btn', 'pull-github-btn', 'pdf-path-btn'];
     serverButtons.forEach(id => {
       const btn = document.getElementById(id);
       if (btn) {
@@ -2334,6 +2497,11 @@ function closeLightbox() {
         link.title = '';
         link.onclick = null;
       }
+    });
+    document.querySelectorAll('.paper-delete-btn').forEach(btn => {
+      btn.disabled = !isLocalServerAvailable;
+      btn.classList.toggle('server-disabled', !isLocalServerAvailable);
+      btn.title = isLocalServerAvailable ? 'Delete this paper' : 'Clone the repo and start local server to enable';
     });
   }
 
@@ -2400,6 +2568,12 @@ function closeLightbox() {
       .replace(/"/g, '&quot;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
+  }
+
+  function getNotePathFromPrototxt(prototxtPath) {
+    const match = String(prototxtPath || '').match(/^meta\/([^/]+)\/([^/]+)\.prototxt$/);
+    if (!match) return '';
+    return `notes/${match[1]}/${match[2]}/note.md`;
   }
 
   function getPaperShareId(paper) {
@@ -3014,6 +3188,9 @@ function closeLightbox() {
       return `
         <div class="paper-card${isSharedFocus}" data-share-id="${escapeHtmlAttr(shareId)}">
           <input type="checkbox" class="paper-checkbox" data-paper-id="${paperId}" ${isChecked} onchange="togglePaperSelection('${paperId}', this.checked)">
+          ${paper.prototxt_path ? `<button class="paper-delete-btn" data-path="${escapeHtmlAttr(paper.prototxt_path)}" title="Delete this paper" aria-label="Delete this paper">
+            <svg viewBox="0 0 24 24"><path d="M9 3h6l1 2h4v2H4V5h4l1-2Zm1 6h2v8h-2V9Zm4 0h2v8h-2V9ZM7 9h2v8H7V9Zm-1 11h12l1-13H5l1 13Z"/></svg>
+          </button>` : ''}
           <div class="paper-cover">
             ${coverHtml}
           </div>
@@ -3696,6 +3873,127 @@ function closeLightbox() {
     document.getElementById('arxiv-id-input').focus();
   }
 
+  function removeDeletedPaperFromState(deletedPath) {
+    const deletedPaper = papers.find(paper => paper.prototxt_path === deletedPath) || null;
+
+    papers = papers.filter(paper => paper.prototxt_path !== deletedPath);
+    filteredPapers = filteredPapers.filter(paper => paper.prototxt_path !== deletedPath);
+    window.papers = papers;
+
+    if (deletedPaper && activeSharedPaperId === getPaperShareId(deletedPaper)) {
+      clearPaperShareParam();
+      filteredPapers = [...papers];
+      const currentSort = document.getElementById('sort-filter')?.value || 'update-desc';
+      sortPapers(filteredPapers, currentSort);
+    }
+
+    if (currentDetailPaper && currentDetailPaper.prototxt_path === deletedPath) {
+      closeDetailPanel();
+    }
+
+    selectedPapers.delete(deletedPath);
+    saveRatingLocal(deletedPath, 0);
+
+    const totalPages = Math.max(1, Math.ceil(filteredPapers.length / itemsPerPage));
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+
+    window.filteredPapers = filteredPapers;
+    window.currentPage = currentPage;
+    renderPapers(filteredPapers);
+  }
+
+  function showDeletePaperModal(prototxtPath) {
+    const paper = papers.find(item => item.prototxt_path === prototxtPath);
+    if (!paper || !paper.prototxt_path) return;
+
+    pendingDeletePaper = paper;
+
+    document.getElementById('delete-paper-title').textContent = paper.title || '(Untitled)';
+    document.getElementById('delete-paper-prototxt').textContent = `prototxt: ${paper.prototxt_path}`;
+    document.getElementById('delete-paper-note').textContent = `note: ${getNotePathFromPrototxt(paper.prototxt_path)}`;
+    document.getElementById('delete-confirm-input').value = '';
+    document.getElementById('delete-paper-submit-btn').disabled = false;
+    document.getElementById('delete-paper-status').textContent = '';
+    document.getElementById('delete-paper-status').className = 'arxiv-status';
+
+    const modal = document.getElementById('delete-paper-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      document.getElementById('delete-confirm-input').focus();
+    }, 10);
+  }
+
+  function closeDeletePaperModal() {
+    pendingDeletePaper = null;
+    const modal = document.getElementById('delete-paper-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('delete-confirm-input').value = '';
+    document.getElementById('delete-paper-submit-btn').disabled = false;
+    document.getElementById('delete-paper-status').textContent = '';
+    document.getElementById('delete-paper-status').className = 'arxiv-status';
+  }
+
+  async function confirmDeletePaper() {
+    const statusEl = document.getElementById('delete-paper-status');
+    const submitBtn = document.getElementById('delete-paper-submit-btn');
+    const confirmInput = document.getElementById('delete-confirm-input');
+
+    if (!pendingDeletePaper || !pendingDeletePaper.prototxt_path) {
+      statusEl.textContent = 'No paper selected for deletion.';
+      statusEl.className = 'arxiv-status status-error';
+      return;
+    }
+
+    if (confirmInput.value !== 'DELETE') {
+      statusEl.textContent = 'Type DELETE exactly to confirm.';
+      statusEl.className = 'arxiv-status status-error';
+      return;
+    }
+
+    statusEl.textContent = 'Deleting paper...';
+    statusEl.className = 'arxiv-status status-loading';
+    submitBtn.disabled = true;
+
+    try {
+      const serverCheck = await fetch('http://localhost:8001/api/get-keywords', { method: 'GET' });
+      if (!serverCheck.ok) {
+        throw new Error(`Server responded with status ${serverCheck.status}`);
+      }
+
+      const response = await fetch('http://localhost:8001/api/delete-paper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          path: pendingDeletePaper.prototxt_path,
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        const deletedPath = pendingDeletePaper.prototxt_path;
+        statusEl.textContent = '✓ Paper deleted successfully. Auto-reload will refresh generated data.';
+        statusEl.className = 'arxiv-status status-success';
+        removeDeletedPaperFromState(deletedPath);
+        setTimeout(() => {
+          closeDeletePaperModal();
+        }, 1200);
+      } else {
+        throw new Error(result.error || 'Failed to delete paper');
+      }
+    } catch (error) {
+      statusEl.textContent = `✗ Error: ${error.message}`;
+      statusEl.className = 'arxiv-status status-error';
+      submitBtn.disabled = false;
+    }
+  }
+
   async function addPaperFromArxiv() {
     const arxivId = document.getElementById('arxiv-id-input').value.trim();
     const abbr = document.getElementById('abbr-input').value.trim();
@@ -3750,6 +4048,7 @@ function closeLightbox() {
     const modal = document.getElementById('github-modal');
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    document.getElementById('github-submit-btn').disabled = false;
     document.getElementById('commit-message-input').focus();
     document.getElementById('github-status').textContent = '';
     document.getElementById('github-status').className = 'arxiv-status';
@@ -3759,9 +4058,28 @@ function closeLightbox() {
     const modal = document.getElementById('github-modal');
     modal.style.display = 'none';
     document.body.style.overflow = '';
+    document.getElementById('github-submit-btn').disabled = false;
     document.getElementById('commit-message-input').value = '';
     document.getElementById('github-status').textContent = '';
     document.getElementById('github-status').className = 'arxiv-status';
+  }
+
+  function showPullGithubModal() {
+    const modal = document.getElementById('pull-github-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('pull-github-submit-btn').disabled = false;
+    document.getElementById('pull-github-status').textContent = '';
+    document.getElementById('pull-github-status').className = 'arxiv-status';
+  }
+
+  function closePullGithubModal() {
+    const modal = document.getElementById('pull-github-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('pull-github-submit-btn').disabled = false;
+    document.getElementById('pull-github-status').textContent = '';
+    document.getElementById('pull-github-status').className = 'arxiv-status';
   }
 
   async function uploadToGithub() {
@@ -3827,6 +4145,63 @@ function closeLightbox() {
       }
     } catch (error) {
       console.error('[GitHub Upload] Error:', error);
+      statusEl.textContent = `✗ Error: ${error.message}`;
+      statusEl.className = 'arxiv-status status-error';
+      submitBtn.disabled = false;
+    }
+  }
+
+  async function pullFromGithub() {
+    const statusEl = document.getElementById('pull-github-status');
+    const submitBtn = document.getElementById('pull-github-submit-btn');
+
+    statusEl.textContent = 'Pulling latest changes from GitHub... This may take a few moments.';
+    statusEl.className = 'arxiv-status status-loading';
+    submitBtn.disabled = true;
+
+    try {
+      console.log('[GitHub Pull] Checking server connectivity...');
+      statusEl.textContent = 'Checking server connection...';
+
+      let serverCheck;
+      try {
+        serverCheck = await fetch('http://localhost:8001/api/get-keywords', { method: 'GET' });
+        console.log('[GitHub Pull] Server check response:', serverCheck.status);
+        if (!serverCheck.ok) {
+          throw new Error(`Server responded with status ${serverCheck.status}`);
+        }
+      } catch (e) {
+        console.error('[GitHub Pull] Server check failed:', e);
+        throw new Error('Cannot connect to server at localhost:8001. Please make sure ./start_editor.sh is running.');
+      }
+
+      console.log('[GitHub Pull] Server is reachable, sending pull request...');
+      statusEl.textContent = 'Pulling latest changes from GitHub... This may take a few moments.';
+
+      const response = await fetch('http://localhost:8001/api/pull-github', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({})
+      });
+
+      console.log('[GitHub Pull] Pull response status:', response.status);
+      const result = await response.json();
+      console.log('[GitHub Pull] Pull result:', result);
+
+      if (response.ok && result.success) {
+        statusEl.textContent = '✓ Successfully pulled latest changes from GitHub. Auto-reload will refresh updated content if needed.';
+        statusEl.className = 'arxiv-status status-success';
+
+        setTimeout(() => {
+          closePullGithubModal();
+        }, 3000);
+      } else {
+        throw new Error(result.error || 'Failed to pull from GitHub');
+      }
+    } catch (error) {
+      console.error('[GitHub Pull] Error:', error);
       statusEl.textContent = `✗ Error: ${error.message}`;
       statusEl.className = 'arxiv-status status-error';
       submitBtn.disabled = false;
@@ -4370,6 +4745,28 @@ function closeLightbox() {
       }
     });
 
+    // Delete paper modal
+    document.getElementById('close-delete-paper').addEventListener('click', closeDeletePaperModal);
+    document.getElementById('delete-paper-cancel-btn').addEventListener('click', closeDeletePaperModal);
+    document.getElementById('delete-paper-submit-btn').addEventListener('click', confirmDeletePaper);
+    document.getElementById('delete-confirm-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        confirmDeletePaper();
+      }
+    });
+    document.getElementById('delete-paper-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'delete-paper-modal') {
+        closeDeletePaperModal();
+      }
+    });
+    document.getElementById('paper-list').addEventListener('click', (e) => {
+      const deleteBtn = e.target.closest('.paper-delete-btn');
+      if (!deleteBtn || deleteBtn.disabled) return;
+      e.preventDefault();
+      e.stopPropagation();
+      showDeletePaperModal(deleteBtn.dataset.path);
+    });
+
     // Statistics panel
     document.getElementById('stats-btn').addEventListener('click', showStatistics);
     document.getElementById('close-stats').addEventListener('click', closeStatistics);
@@ -4428,6 +4825,19 @@ function closeLightbox() {
       }
     });
 
+    // GitHub pull modal
+    document.getElementById('pull-github-btn').addEventListener('click', showPullGithubModal);
+    document.getElementById('close-pull-github').addEventListener('click', closePullGithubModal);
+    document.getElementById('pull-github-cancel-btn').addEventListener('click', closePullGithubModal);
+    document.getElementById('pull-github-submit-btn').addEventListener('click', pullFromGithub);
+
+    // Close GitHub pull modal on overlay click
+    document.getElementById('pull-github-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'pull-github-modal') {
+        closePullGithubModal();
+      }
+    });
+
     // PDF path modal
     document.getElementById('pdf-path-btn').addEventListener('click', showPdfModal);
     document.getElementById('close-pdf').addEventListener('click', closePdfModal);
@@ -4462,10 +4872,22 @@ function closeLightbox() {
           closeDetailPanel();
           return;
         }
+        // Close delete paper modal if open
+        const deletePaperModal = document.getElementById('delete-paper-modal');
+        if (deletePaperModal.style.display === 'flex') {
+          closeDeletePaperModal();
+          return;
+        }
         // Close GitHub modal if open
         const githubModal = document.getElementById('github-modal');
         if (githubModal.style.display === 'flex') {
           closeGithubModal();
+          return;
+        }
+        // Close GitHub pull modal if open
+        const pullGithubModal = document.getElementById('pull-github-modal');
+        if (pullGithubModal.style.display === 'flex') {
+          closePullGithubModal();
           return;
         }
         // Close PDF modal if open

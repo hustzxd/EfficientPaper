@@ -1,0 +1,35 @@
+paper {
+  title: "KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference"
+  abbr: "KVDrive"
+  url: "https://arxiv.org/abs/2605.18071"
+  authors: "Jian Lin"
+  authors: "Jiazhi Mi"
+  authors: "Zicong Hong"
+  authors: "Haodong Wang"
+  authors: "Qianli Liu"
+  authors: "Haoyue Zhang"
+  authors: "Peng Li"
+  authors: "Song Guo"
+  institutions: "Hong Kong University of Science and Technology"
+  institutions: "Xi\'an Jiaotong University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/Quest"
+  methods: "2025/ShadowKV"
+  methods: "2025/PQCache"
+}
+update_time: 1779691414

@@ -1,6 +1,308 @@
 {
   "papers": [
     {
+      "id": "FlexGen",
+      "title": "FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU",
+      "abbr": "FlexGen",
+      "url": "http://arxiv.org/abs/2303.06865v2",
+      "authors": [
+        "Ying Sheng",
+        "Lianmin Zheng",
+        "Binhang Yuan",
+        "Zhuohan Li",
+        "Max Ryabinin",
+        "Daniel Y. Fu",
+        "Zhiqiang Xie",
+        "Beidi Chen",
+        "Clark Barrett",
+        "Joseph E. Gonzalez",
+        "Percy Liang",
+        "Christopher Ré",
+        "Ion Stoica",
+        "Ce Zhang"
+      ],
+      "institutions": [
+        "Stanford University",
+        "UC Berkeley",
+        "ETH Zurich",
+        "Yandex",
+        "HSE University",
+        "Meta",
+        "Carnegie Mellon University"
+      ],
+      "year": 2023,
+      "venue": "ICML",
+      "cover": null,
+      "keywords": [
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/FMInference/FlexGen",
+      "note_url": "notes/2023/FlexGen/note/",
+      "prototxt_path": "meta/2023/FlexGen.prototxt",
+      "update_time": 1779849750,
+      "rating": 0
+    },
+    {
+      "id": "ContiguousKV",
+      "title": "ContiguousKV: Accelerating LLM Prefill with Granularity-Aligned KV Cache Management",
+      "abbr": "ContiguousKV",
+      "url": "http://arxiv.org/abs/2601.13631",
+      "authors": [
+        "Jing Zou",
+        "Shangyu Wu",
+        "Hancong Duan",
+        "Qiao Li",
+        "Chun Jason Xue"
+      ],
+      "institutions": [
+        "UESTC",
+        "MBZUAI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/ContiguousKV/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/ContiguousKV/note/",
+      "prototxt_path": "meta/2026/ContiguousKV.prototxt",
+      "update_time": 1779849429,
+      "rating": 0
+    },
+    {
+      "id": "KVDrive",
+      "title": "KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-Context LLM Inference",
+      "abbr": "KVDrive",
+      "url": "https://arxiv.org/abs/2605.18071",
+      "authors": [
+        "Jian Lin",
+        "Jiazhi Mi",
+        "Zicong Hong",
+        "Haodong Wang",
+        "Qianli Liu",
+        "Haoyue Zhang",
+        "Peng Li",
+        "Song Guo"
+      ],
+      "institutions": [
+        "Hong Kong University of Science and Technology",
+        "Xi'an Jiaotong University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/KVDrive/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/KVDrive/note/",
+      "prototxt_path": "meta/2026/KVDrive.prototxt",
+      "update_time": 1779691414,
+      "rating": 0
+    },
+    {
+      "id": "KunServe",
+      "title": "KunServe: Parameter-centric Memory Management for Efficient Memory Overloading Handling in LLM Serving",
+      "abbr": "KunServe",
+      "url": "https://arxiv.org/abs/2412.18169",
+      "authors": [
+        "Rongxin Cheng",
+        "Yuxin Lai",
+        "Xingda Wei",
+        "Rong Chen",
+        "Haibo Chen"
+      ],
+      "institutions": [
+        "Institute of Parallel and Distributed Systems, Shanghai Jiao Tong University",
+        "Huazhong University of Science and Technology"
+      ],
+      "year": 2026,
+      "venue": "EuroSys",
+      "cover": "notes/2026/KunServe/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/KunServe/note/",
+      "prototxt_path": "meta/2026/KunServe.prototxt",
+      "update_time": 1779675064,
+      "rating": 0
+    },
+    {
+      "id": "CompactAttention",
+      "title": "CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection",
+      "abbr": "CompactAttention",
+      "url": "http://arxiv.org/abs/2605.16839v1",
+      "authors": [
+        "Jiwon Song",
+        "Dongwon Jo",
+        "Beomseok Kang",
+        "Jae-Joon Kim"
+      ],
+      "institutions": [
+        "Seoul National University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/CompactAttention/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning"
+      ],
+      "code_url": "https://github.com/jiwonsong-dev/CompactAttention",
+      "note_url": "notes/2026/CompactAttention/note/",
+      "prototxt_path": "meta/2026/CompactAttention.prototxt",
+      "update_time": 1779415520,
+      "rating": 0
+    },
+    {
+      "id": "DySHARP",
+      "title": "Accelerating MoE with Dynamic In-Switch Computing on Multi-GPUs",
+      "abbr": "DySHARP",
+      "url": "http://arxiv.org/abs/2605.05607v1",
+      "authors": [
+        "Qijun Zhang",
+        "Chen Zhang",
+        "Zhuoshan Zhou",
+        "Haibo Wang",
+        "Zhe Zhou",
+        "Zhipeng Tu",
+        "Guangyu Sun",
+        "Zhiyao Xie",
+        "Yijia Diao",
+        "Zhigang Ji",
+        "Jingwen Leng",
+        "Guanghui He",
+        "Minyi Guo"
+      ],
+      "institutions": [
+        "Hong Kong University of Science and Technology",
+        "Shanghai Jiao Tong University",
+        "Huawei Technologies",
+        "Peking University",
+        "Shanghai Qi Zhi Institute"
+      ],
+      "year": 2026,
+      "venue": "ISCA",
+      "cover": null,
+      "keywords": [
+        "45-Efficient Training"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/DySHARP/note/",
+      "prototxt_path": "meta/2026/DySHARP.prototxt",
+      "update_time": 1779414551,
+      "rating": 0
+    },
+    {
+      "id": "FLOW",
+      "title": "Accelerating LLM Inference with Flexible N:M Sparsity via A Fully Digital Compute-in-Memory Accelerator",
+      "abbr": "FLOW",
+      "url": "http://arxiv.org/abs/2504.14365v1",
+      "authors": [
+        "Akshat Ramachandran",
+        "Souvik Kundu",
+        "Arnab Raha",
+        "Shamik Kundu",
+        "Deepak K. Mathaikutty",
+        "Tushar Krishna"
+      ],
+      "institutions": [
+        "Georgia Institute of Technology",
+        "Intel Labs",
+        "Intel Corporation"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/FLOW/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "04-Sparsity (Weight)",
+        "05-Sparsity (Structured)"
+      ],
+      "code_url": "https://github.com/FLOW-open-project/FLOW",
+      "note_url": "notes/2025/FLOW/note/",
+      "prototxt_path": "meta/2025/FLOW.prototxt",
+      "update_time": 1779348389,
+      "rating": 0
+    },
+    {
+      "id": "KVServe",
+      "title": "KVServe: Service-Aware KV Cache Compression for Communication-Efficient Disaggregated LLM Serving",
+      "abbr": "KVServe",
+      "url": "http://arxiv.org/abs/2605.13734v1",
+      "authors": [
+        "Zedong Liu",
+        "Xinyang Ma",
+        "Dejun Luo",
+        "Hairui Zhao",
+        "Bing Lu",
+        "Wenjing Huang",
+        "Yida Gu",
+        "Xingchen Liu",
+        "Zheng Wei",
+        "Jinyang Liu",
+        "Dingwen Tao",
+        "Guangming Tan"
+      ],
+      "institutions": [
+        "University of Chinese Academy of Sciences",
+        "Institute of Computing Technology, Chinese Academy of Sciences",
+        "Shanghai Jiao Tong University"
+      ],
+      "year": 2026,
+      "venue": "SIGCOMM",
+      "cover": "notes/2026/KVServe/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": "https://github.com/hpdps-group/KVServe",
+      "note_url": "notes/2026/KVServe/note/",
+      "prototxt_path": "meta/2026/KVServe.prototxt",
+      "update_time": 1779173514,
+      "rating": 0
+    },
+    {
+      "id": "QuaRot",
+      "title": "QuaRot: Outlier-Free 4-Bit Inference in Rotated LLMs",
+      "abbr": "QuaRot",
+      "url": "http://arxiv.org/abs/2404.00456v2",
+      "authors": [
+        "Saleh Ashkboos",
+        "Amirkeivan Mohtashami",
+        "Maximilian L. Croci",
+        "Bo Li",
+        "Pashmina Cameron",
+        "Martin Jaggi",
+        "Dan Alistarh",
+        "Torsten Hoefler",
+        "James Hensman"
+      ],
+      "institutions": [
+        "ETH Zurich",
+        "EPFL",
+        "Microsoft Research",
+        "Microsoft",
+        "IST Austria",
+        "NeuralMagic"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS",
+      "cover": null,
+      "keywords": [
+        "09-Quantization",
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/spcl/QuaRot",
+      "note_url": "notes/2024/QuaRot/note/",
+      "prototxt_path": "meta/2024/QuaRot.prototxt",
+      "update_time": 1779081471,
+      "rating": 4
+    },
+    {
       "id": "PredictKV",
       "title": "Predictive Multi-Tier Memory Management for KV Cache in Large-Scale GPU Inference",
       "abbr": "PredictKV",
@@ -14948,6 +15250,7 @@
       "OSDI",
       "PPoPP",
       "SC",
+      "SIGCOMM",
       "SIGMOD",
       "SOSP",
       "SoCC",
@@ -14986,5 +15289,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 453
+  "total": 462
 }

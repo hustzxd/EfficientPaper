@@ -2,7 +2,7 @@
 
 > Akshat Ramachandran, Souvik Kundu, Arnab Raha, Shamik Kundu, Deepak K. Mathaikutty, Tushar Krishna
 
-![111](../../blank.jpg)
+![111](cover.jpg)
 
 ## Abstract
 

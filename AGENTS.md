@@ -1,0 +1,183 @@
+# AGENTS.md
+
+This repository is a MkDocs-based paper collection site for efficient AI research. The primary user-facing page is `docs/index.md`, which acts as the main application surface rather than a simple Markdown landing page.
+
+## Primary Page
+
+- Main page: `docs/index.md`
+- Site navigation is defined in `mkdocs.yml`
+- The Home entry points to `index.md`, so any description of the current UI should treat this file as the canonical main page
+
+## Current UI and Features
+
+### 1. Search Header
+
+The top area of `docs/index.md` is a search-and-filter workspace for browsing papers.
+
+- Search input supports plain keywords, quoted phrases, `AND`, negative terms with `-key`, and keyboard shortcuts:
+  - `/` focuses the search box
+  - `Esc` clears or closes active overlays
+- Filter bar includes:
+  - year filter
+  - venue filter
+  - keyword filter
+  - rating filter
+  - sort selector
+  - reset button
+  - statistics button
+  - add-from-arXiv button
+  - upload-to-GitHub button
+  - pull-from-GitHub button
+  - export-selected button
+  - local PDF path button
+- Search stats area shows:
+  - current result count
+  - select-all checkbox for the current filtered set
+
+### 2. Paper List
+
+Search results render as paginated paper cards, 10 items per page.
+
+Each card can include:
+
+- selection checkbox
+- subtle delete button in the top-right corner
+- cover image with lightbox preview
+- title and optional abbreviation
+- year and venue badges
+- keyword badges
+- interactive star rating
+- update time
+- authors
+- institutions
+- action links and buttons
+
+Card actions currently include:
+
+- `Copy`: copy title and URL
+- `Share Link`: copy a deep link to the card
+- `Code`: external repository link with async GitHub star count
+- `Note`: open the paper note page
+- `PDF`: open or locate a local PDF, with download fallback through the local server
+- `Edit`: open `docs/edit.html` for metadata editing
+- `Graph`: jump to the related component in `docs/baseline_methods_graph.md`
+- `Delete`: a low-visibility card control that removes the paper's `.prototxt` and note folder after explicit confirmation
+
+### 3. Detail Panel
+
+Clicking a non-interactive area of a paper card opens a right-side detail drawer.
+
+The detail drawer shows:
+
+- larger cover image
+- authors and institutions
+- metadata badges
+- rating
+- note preview
+- main links for the paper
+
+On mobile, the drawer supports swipe-to-close behavior.
+
+### 4. Statistics Panel
+
+The `Statistics` button opens an in-page panel with aggregate views over the current dataset.
+
+Current sections include:
+
+- top keywords
+- year distribution
+- rating distribution
+- top venues
+- top authors
+- top institutions
+
+### 5. Modal Workflows
+
+The home page contains several modal-based workflows:
+
+- Add from arXiv
+  - accepts arXiv ID
+  - performs live lookup
+  - shows detected title, authors, year, institutions, and code URL
+  - can create a new paper entry with optional custom abbreviation
+- Upload to GitHub
+  - accepts a commit message
+  - triggers local upload/deploy flow through the local server
+- Pull from GitHub
+  - opens a confirmation-style modal
+  - runs `git pull` in the repository root through the local server
+  - is intended to sync the latest remote changes into the local workspace
+- Delete Paper
+  - opens a confirmation modal from the paper card
+  - shows the target `prototxt` and derived `note.md` path
+  - requires typing `DELETE` before removal
+- Set PDF Path
+  - saves a local PDF directory path in the browser
+  - supports manual input and folder browse
+  - validates the path through the local server
+- Export Selected Papers
+  - exports selected items as Markdown, plain text, BibTeX, or JSON
+  - supports copy-to-clipboard and file download
+
+### 6. Local-Server-Aware Behavior
+
+Several controls depend on the local editor server at `http://localhost:8001`.
+
+When the server is unavailable:
+
+- `Add from arXiv` is disabled
+- `Upload to GitHub` is disabled
+- `Pull from GitHub` is disabled
+- `Set PDF Path` is disabled
+- per-card `PDF` actions are disabled
+- per-card `Edit` links are disabled
+- per-card delete controls are disabled
+
+This graceful degradation is part of the current UX and should be preserved.
+
+## Other User-Facing Pages
+
+- `docs/baseline_methods_graph.md`
+  - relationship graph page
+  - renders method families with Mermaid
+  - nodes link back to the Home page search
+- `docs/weekly_paper/`
+  - weekly paper digests
+  - long-form curated summaries
+- `docs/about.md`
+  - repository overview / README-style page
+- `docs/contributors.md`
+  - contributor listing
+- `docs/edit.html`
+  - standalone metadata editor for `.prototxt` entries
+  - intended for local use with the editor server
+
+## Note Editing
+
+Paper note pages under `notes/<year>/<paper>/note.md` support in-browser editing when the local server is running.
+
+The injected note editor:
+
+- appears only on note pages
+- loads note content from the local server
+- uses EasyMDE
+- saves back to the repository through the local API
+
+## Data and Backend Files
+
+Important files tied to the current interface:
+
+- `docs/index.md`: main page HTML, CSS, and JavaScript
+- `docs/js/papers.json`: frontend search dataset
+- `docs/js/paper_graph_map.json`: mapping from paper IDs to graph anchors
+- `meta/<year>/*.prototxt`: structured paper metadata source
+- `notes/<year>/<paper>/note.md`: note content
+- `notes/<year>/<paper>/cover.*`: cover assets
+- `scripts/paper_editor_server.py`: local API server for edit/save/search/upload/pull/delete/PDF actions
+
+## Change Guidance for Future Agents
+
+- Treat `docs/index.md` as the primary application file for homepage UI changes
+- Keep local-server-dependent actions optional and visibly disabled when unavailable
+- Preserve existing routes between Home, Graph, Note, and Edit views
+- Prefer updating generated data through existing scripts instead of hand-editing large generated JSON files unless the task explicitly requires it

@@ -19,22 +19,19 @@ paper {
   institutions: "Shanghai Jiao Tong University"
 }
 pub {
-  where: "arXiv"
+  where: "SIGCOMM"
   year: 2026
 }
 code {
   type: "Pytorch"
   url: "https://github.com/hpdps-group/KVServe"
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
   words: kv_cache_sparse
+  words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2023/CacheGen"
@@ -44,6 +41,4 @@ baseline {
   methods: "2024/DuoAttention"
   methods: "2025/LMCache"
 }
-update_time: 1779120032
-
-rating: 5
+update_time: 1779173514

@@ -1,0 +1,31 @@
+paper {
+  title: "KunServe: Parameter-centric Memory Management for Efficient Memory Overloading Handling in LLM Serving"
+  abbr: "KunServe"
+  url: "https://arxiv.org/abs/2412.18169"
+  authors: "Rongxin Cheng"
+  authors: "Yuxin Lai"
+  authors: "Xingda Wei"
+  authors: "Rong Chen"
+  authors: "Haibo Chen"
+  institutions: "Institute of Parallel and Distributed Systems, Shanghai Jiao Tong University"
+  institutions: "Huazhong University of Science and Technology"
+}
+pub {
+  where: "EuroSys"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/vLLM"
+}
+update_time: 1779675064

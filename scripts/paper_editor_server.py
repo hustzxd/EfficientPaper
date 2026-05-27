@@ -7,6 +7,7 @@ Runs on a separate port from MkDocs (default: 8001)
 
 import json
 import os
+import re
 import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
@@ -18,6 +19,14 @@ import google.protobuf.text_format
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from proto import efficient_paper_pb2 as eppb
+
+
+PLACEHOLDER_COVER_PATTERNS = [
+    re.compile(r'!\[cover\]\(\.\./\.\./blank\.jpg\)'),
+    re.compile(r'!\[111\]\(\.\./\.\./blank\.jpg\)'),
+    re.compile(r'!\[\]\(\.\./\.\./blank\.jpg\)'),
+]
+EXISTING_COVER_PATTERN = re.compile(r'!\[(?:cover|111)?\]\((?:\./)?cover\.[^)]+\)')
 
 
 class PaperEditorHandler(BaseHTTPRequestHandler):
@@ -66,6 +75,8 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             self.handle_add_from_arxiv()
         elif parsed_url.path == '/api/upload-github':
             self.handle_upload_github()
+        elif parsed_url.path == '/api/pull-github':
+            self.handle_pull_github()
         elif parsed_url.path == '/api/browse-folder':
             self.handle_browse_folder()
         elif parsed_url.path == '/api/verify-pdf-path':
@@ -437,21 +448,42 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             with open(file_path, 'wb') as f:
                 f.write(file_data)
 
+            # Clean up stale cover files with different extensions
+            try:
+                for name in os.listdir(notes_dir):
+                    if name.startswith('cover.') and name != saved_filename:
+                        stale_path = os.path.join(notes_dir, name)
+                        try:
+                            os.remove(stale_path)
+                            print(f"Removed stale cover file: {stale_path}")
+                        except OSError as remove_err:
+                            print(f"Warning: could not remove stale cover {stale_path}: {remove_err}", file=sys.stderr)
+            except OSError as list_err:
+                print(f"Warning: could not list notes dir for stale cover cleanup: {list_err}", file=sys.stderr)
+
             # Update note.md if it exists
             note_md_path = os.path.join(notes_dir, 'note.md')
             if os.path.exists(note_md_path):
                 try:
-                    import re
                     with open(note_md_path, 'r', encoding='utf-8') as f:
                         note_content = f.read()
 
-                    # Use regex to replace any ![111](...) pattern with the new cover image
-                    # This handles ../../blank.jpg, cover.png, or any other existing path
-                    updated_content = re.sub(
-                        r'!\[111\]\([^)]+\)',
-                        f'![111]({saved_filename})',
-                        note_content
-                    )
+                    updated_content = note_content
+                    cover_markdown = f'![cover]({saved_filename})'
+
+                    for pattern in PLACEHOLDER_COVER_PATTERNS:
+                        updated_content, count = pattern.subn(cover_markdown, updated_content, count=1)
+                        if count:
+                            break
+                    else:
+                        updated_content, count = EXISTING_COVER_PATTERN.subn(
+                            cover_markdown,
+                            updated_content,
+                            count=1,
+                        )
+
+                        if count == 0:
+                            updated_content = f'{cover_markdown}\n\n{updated_content}'
 
                     with open(note_md_path, 'w', encoding='utf-8') as f:
                         f.write(updated_content)
@@ -881,6 +913,49 @@ class PaperEditorHandler(BaseHTTPRequestHandler):
             traceback.print_exc()
             self.send_json_response({'error': str(e)}, 500)
 
+    def handle_pull_github(self):
+        """Pull latest changes from GitHub"""
+        try:
+            # Read request body if present
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length > 0:
+                self.rfile.read(content_length)
+
+            print("Pulling latest changes from GitHub")
+
+            import subprocess
+
+            try:
+                result_pull = subprocess.run(
+                    ['git', 'pull'],
+                    capture_output=True,
+                    text=True,
+                    timeout=60
+                )
+
+                if result_pull.returncode != 0:
+                    error_message = result_pull.stderr.strip() or result_pull.stdout.strip() or 'git pull failed'
+                    raise Exception(f"git pull failed: {error_message}")
+
+                output = result_pull.stdout.strip()
+                if result_pull.stderr.strip():
+                    output = f"{output}\n{result_pull.stderr.strip()}".strip()
+
+                self.send_json_response({
+                    'success': True,
+                    'message': 'Successfully pulled latest changes from GitHub',
+                    'output': output
+                })
+
+            except subprocess.TimeoutExpired:
+                raise Exception("git pull timed out")
+
+        except Exception as e:
+            print(f"Error pulling from GitHub: {e}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
+            self.send_json_response({'error': str(e)}, 500)
+
     def handle_browse_folder(self):
         """Open a folder selection dialog and return the selected path"""
         try:
@@ -1278,6 +1353,7 @@ def main():
     print(f"  - POST http://localhost:{port}/api/delete-paper")
     print(f"  - POST http://localhost:{port}/api/add-from-arxiv")
     print(f"  - POST http://localhost:{port}/api/upload-github")
+    print(f"  - POST http://localhost:{port}/api/pull-github")
     print(f"  - POST http://localhost:{port}/api/browse-folder")
     print(f"  - POST http://localhost:{port}/api/verify-pdf-path")
     print(f"  - POST http://localhost:{port}/api/open-pdf")

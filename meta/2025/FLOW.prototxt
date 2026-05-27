@@ -20,17 +20,15 @@ code {
   type: "Pytorch"
   url: "https://github.com/FLOW-open-project/FLOW"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: sparse_pruning
+  words: weight_sparsity
   words: structured_sparsity
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2022/STA"
 }
-update_time: 1779334418
+update_time: 1779348389

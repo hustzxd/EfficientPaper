@@ -2,6 +2,10 @@
 
 ![111](cover.jpg)
 
+## External Guides
+
+- [NPU DeepSeek-V4 推理优化实践](deepseek_v4_inference_guide.md)：来自本地 guide 的 Ascend/NPU 推理部署、融合 kernel、量化、多流并行与 benchmark 说明。
+
 ## Abstract
 
 DeepSeek-V4 是 DeepSeek-AI 发布的百万 token 上下文 MoE 语言模型系列预览版，包括 DeepSeek-V4-Pro（1.6T 总参数，49B 激活）和 DeepSeek-V4-Flash（284B 总参数，13B 激活）。论文的核心目标是突破超长上下文下 vanilla attention 的计算和 KV cache 瓶颈，使百万 token 级上下文能够在训练、推理和 test-time scaling 中更常规地使用。
