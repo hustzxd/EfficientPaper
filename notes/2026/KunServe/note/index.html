@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>KunServe: Parameter-centric Memory Management for Efficient Memory Overloading Handling in LLM Serving - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "KunServe: Parameter-centric Memory Management for Efficient Memory Overloading Handling in LLM Serving";
+        var mkdocs_page_input_path = "notes/2026/KunServe/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">KunServe: Parameter-centric Memory Management for Efficient Memory Overloading Handling in LLM Serving</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="kunserve-parameter-centric-memory-management-for-efficient-memory-overloading-handling-in-llm-serving">KunServe: Parameter-centric Memory Management for Efficient Memory Overloading Handling in LLM Serving</h1>
+<blockquote>
+<p>Rongxin Cheng, Yuxin Lai, Xingda Wei, Rong Chen, Haibo Chen</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Serving LLMs with a cluster of GPUs is common nowadays, where the serving system must meet strict latency SLOs required by applications. However, the stateful nature of LLM serving requires maintaining huge states (i.e., KVCache) in limited GPU memory. Under spikes in real-world workloads, GPU memory can be easily overloaded, leading to orders of magnitude higher response latency due to queuing introduced by waiting for KVCache to be reclaimed. Prior KVCache-centric approaches handle overloading by dropping, migrating, or swapping KVCache. These methods fail to release sufficient memory quickly with requests still queued. This paper proposes the first parameter-centric approach to handling overloading by selectively dropping replicated parameters to instantly free memory for requests, based on an unnoticed observation that model parameters are commonly replicated across GPUs for serving LLMs. With additional memory, all requests can be served with a larger batch without queuing. To make the parameter-centric approach correct and efficient, we cooperatively execute requests on GPUs with a complete copy of parameters using pipeline parallelism, and derive an appropriate drop plan without unnecessary cooperation. We also design techniques to minimize the performance overhead due to pipeline parallelism with the execution patterns of requests under drop. Evaluations show that KunServe reduces the tail TTFT of requests under overloading by up to 72.2× compared to the state-of-the-art systems including Llumnix, vLLM and InferCept.</p>
+<h2 id="_1">一句话总结</h2>
+<p>KunServe 将 LLM serving 的“爆发期显存过载”问题从传统的 KVCache-centric 处理（丢弃、迁移、swap KV）转向 parameter-centric 处理：在多实例中临时丢弃部分重复模型参数，为 KVCache 和排队请求释放显存，并用 pipeline parallelism、协调式 KVCache 交换和 lookahead batch formulation 保持正确性与效率。</p>
+<h2 id="_2">背景与问题</h2>
+<p>LLM 在线服务通常需要在 GPU HBM 中同时放置模型参数和请求状态，其中 KVCache 会随并发请求数、输入长度和输出长度增长。在真实 workload 的 burst 场景下，KVCache 可能迅速耗尽 HBM，使新请求必须排队等待已有请求释放 KVCache，从而导致 TTFT（time-to-first-token）出现数量级级别的尾延迟尖峰。</p>
+<p>已有系统大多围绕 KVCache 本身做管理：</p>
+<ul>
+<li><strong>drop / recompute KVCache</strong>：可以释放显存，但之后需要重算，增加计算浪费；</li>
+<li><strong>swap KVCache 到 CPU/外存</strong>：释放 GPU 显存，但受 PCIe/网络/存储延迟影响，新请求仍可能排队；</li>
+<li><strong>migrate KVCache 到其他 GPU</strong>：需要足够空闲 GPU 与网络传输时间，且不能总是在 burst 初期快速释放足够空间。</li>
+</ul>
+<p>论文的关键观察是：在 LLM serving 集群中，同一个模型的参数经常在多个 serving instance 上重复加载。相较于只盯着 KVCache，可以在短时过载期间临时丢弃部分“重复参数”，把原本被参数占用的 HBM 转换为可容纳更多 KVCache/请求的空间。只要一个协作组内仍然保留完整的一份模型参数，就可以通过 pipeline parallelism 正确执行请求。</p>
+<h2 id="_3">核心方法</h2>
+<p>KunServe 的核心思想是 <strong>parameter-centric memory management</strong>：当监控到显存过载时，不优先移动 KVCache，而是生成一个 parameter drop plan，在多个 serving instances 之间选择性丢弃重复层参数。丢弃后，每个实例可能只保留模型的一部分层；多个实例组合起来仍覆盖完整模型，因此请求可以跨实例以 pipeline parallelism 执行。</p>
+<p>系统包含几个关键组件：</p>
+<ol>
+<li><strong>全局 dispatcher / monitor / memory manager</strong>：dispatcher 负责请求路由，monitor 收集各实例负载与显存使用，global memory manager 在过载时生成参数丢弃计划。</li>
+<li><strong>Local manager / local executor</strong>：每个实例本地执行参数丢弃、恢复和请求调度。</li>
+<li><strong>Drop plan generation</strong>：在线快速决定哪些实例分组、哪些层参数可以被丢弃，以释放足够显存并尽量减少 pipeline stages。</li>
+<li><strong>Coordinated KVCache exchange</strong>：参数布局变化后，已有请求的 KVCache 也需要跨实例交换，以保证每个 layer stage 能拿到对应层的 KVCache。</li>
+<li><strong>Lookahead batch formulation</strong>：过载期间队列中通常有足够请求，KunServe 利用这一点重新组织 microbatch，降低 pipeline bubbles。</li>
+<li><strong>Dynamic restoration</strong>：burst 结束、显存压力下降后，系统动态恢复被丢弃参数，回到普通非 pipeline 或低协作执行状态，避免长期 pipeline 开销。</li>
+</ol>
+<h2 id="_4">技术细节</h2>
+<h3 id="1-pipeline-stages">1. 参数丢弃计划：尽量少引入 pipeline stages</h3>
+<p>参数丢弃要满足三个条件：在线生成速度快、执行正确、性能损失尽量小。正确性要求是：一个协作组内的所有实例合起来仍有完整模型参数。但丢弃越多，通常需要越多 pipeline stages，microbatch 也会更细，容易降低 GPU batch execution efficiency 并引入 pipeline bubbles。</p>
+<p>KunServe 因此采用贪心分组策略：</p>
+<ul>
+<li>初始时每个实例是单独 group；</li>
+<li>根据排队请求的显存需求计算需要释放多少空间；</li>
+<li>迭代地选择较小 group 合并，并丢弃合并后冗余的参数副本；</li>
+<li>每次释放显存后更新可用显存，直到满足排队请求需求；</li>
+<li>目标是在释放足够 HBM 的同时，让每个请求涉及的实例数尽量少。</li>
+</ul>
+<p>这个设计本质上把“释放参数空间”和“pipeline 并行开销”放到同一个在线决策中，而不是简单地最大化可释放显存。</p>
+<h3 id="2-kvcache-recomputation">2. KVCache 交换：避免 recomputation</h3>
+<p>参数丢弃会改变 layer 到 instance 的映射。假设请求原本在实例 A 上运行，A 与 B 合并后 A 只保留前半层、B 只保留后半层，那么 B 执行后半层时需要该请求后半层对应的 KVCache；如果 KVCache 仍在 A 上，就不能直接继续 decode。</p>
+<p>直观方案是重算 KVCache，但这会让排队请求继续等待。KunServe 选择通过网络交换 KVCache：协作组内实例互相发送已有请求在对应层上的 KVCache。论文指出，在 200Gbps RDMA 网络上，KVCache 交换通常带来 1–2 秒 stall；如果请求后续有约 200 个 decode tokens，摊到 TPOT 上约为 10ms 级别，通常可接受。</p>
+<p>但 KVCache 交换和 pipeline execution 的 activation transfer 会竞争网络带宽。如果不协调，长时间 KVCache exchange 会阻塞 activation transfer，使 GPU idle。KunServe 因此采用 coordinated exchange：优先保障 pipeline activation 等短关键路径传输，将大块 KVCache exchange 以协调方式穿插执行，减少对新请求 prefill/decode 的影响。</p>
+<h3 id="3-lookahead-batch-formulation-pipeline-bubbles">3. Lookahead batch formulation：减少 pipeline bubbles</h3>
+<p>普通 pipeline/chunked prefill 常按 token count 形成 microbatch，假设 token 数近似决定执行时间。但在 LLM 中 attention computation 与上下文长度相关，并非简单线性：同样 token 数的 chunk，如果带有更长 prefix，后续 attention 计算更重。因此 token-count-based chunking 可能产生不同 microbatch 执行时间不平衡，导致 pipeline bubbles。</p>
+<p>KunServe 利用 burst 期间请求队列较长这一事实，对排队请求做 lookahead：不是只看当前到达请求，而是从队列中重新组合 microbatch，并用考虑 attention cost 的代价模型估计不同组合的执行时间。论文提出一个启发式 divide-and-conquer 算法来生成更均衡的 batch formulation，使不同 pipeline stage 的 microbatch 时间更接近。</p>
+<h3 id="4">4. 动态恢复与容错</h3>
+<p>Parameter dropping 只适用于过载期。正常负载下继续 pipeline execution 会导致频繁 weight loading、pipeline bubbles 和额外网络传输。KunServe 在总 KVCache usage 低于阈值时触发参数恢复，从其他实例、主机 DRAM 或 SSD 拉取缺失参数，回到普通执行模式。恢复过程与请求处理重叠，并使用类似 coordinated transfer 的策略，避免参数恢复传输阻塞正常 pipeline activation。</p>
+<p>容错方面，由于协作组内实例通过 pipeline 共同服务请求，一个节点故障会影响同组其他节点。KunServe 的处理方式是让受影响实例动态恢复参数，重新形成可独立执行的完整实例；只要主机 DRAM/SSD 或其他副本中保留参数，就能完成恢复。</p>
+<h2 id="_5">实验设置</h2>
+<p>论文在两个 GPU cluster 上评估 KunServe：一个集群用于较小模型（例如 Qwen-2.5-14B），另一个含多 GPU/NVLink 的集群用于较大模型（例如 Qwen-2.5-72B，结合 tensor parallelism）。评估模型包括 Qwen-2.5-14B 和 Qwen-2.5-72B，二者使用 GQA，KVCache 已比 MHA 模型更省；作者指出如果服务更 KV-heavy 的模型，KunServe 的收益可能更明显。</p>
+<p>Workload 方面，论文以真实 burst trace <strong>BurstGPT</strong> 为主要到达模式，并结合不同数据集代表不同输入/输出长度场景，包括 BurstGPT、ShareGPT、LongBench 等。对比系统包括 vLLM、vLLM pipeline parallelism 变体、Llumnix、InferCept 等。主要指标包括 P50/P90/P99/P999 TTFT、TPOT、SLO violation、throughput、bubble time 和显存使用。</p>
+<h2 id="_6">主要结果</h2>
+<h3 id="end-to-end-latency">End-to-end latency</h3>
+<p>KunServe 在不同 workload 和模型上显著降低 tail TTFT。论文报告相较 Llumnix、vLLM、InferCept 等系统，KunServe 的 P99 TTFT 提升达到 <strong>12.7×–72.2×</strong>。原因是 KunServe 通过参数丢弃快速释放显存，让原本排队的新请求可以以更大 batch 执行；而其他系统在过载时仍受 recomputation、swapping、migration 或等待已有请求释放 KVCache 的影响。</p>
+<h3 id="tpot-trade-off">TPOT trade-off</h3>
+<p>KunServe 不是免费午餐。它通过更大 batch 和 pipeline execution 消除排队，因此部分场景下 P50/P99 TPOT 会略升。例如论文提到 LongBench-14B workload 中，P50 TPOT 相比其他 baseline 高约 15.8%–22.7%。但作者认为这是合理 trade-off：相比 TTFT 的数量级尾延迟下降，TPOT 增加仍在目标应用 SLO 内。</p>
+<h3 id="ablation">Ablation</h3>
+<p>消融实验显示各组件都有明确贡献：</p>
+<ul>
+<li><strong>Dynamic parameter drop</strong> 是主要收益来源：在 LongBench workload 上，P90/P99/P999 TTFT 相比 vLLM DP 分别降低约 8.8×、11.7×、10.3×，因为它直接消除了排队。</li>
+<li><strong>Coordinated exchange</strong> 进一步降低 P99/P999 TTFT 约 1.5×/1.4×，并降低部分 TPOT，因为它避免 KVCache exchange 阻塞 pipeline activation。</li>
+<li><strong>Lookahead batch formulation</strong> 降低 P90/P99/P999 TPOT 约 4.5%、10.6%、9.7%，减少 pipeline bubble。</li>
+<li><strong>Cost model</strong> 相比不考虑 attention cost 的模型更准确，偏差低于 5%；而忽略 attention cost 的模型在某些 request/chunk 场景中偏差可达 48%–74%。</li>
+</ul>
+<h3 id="dynamic-restoration">Dynamic restoration</h3>
+<p>在包含多次过载的长时间 BurstGPT run 中，动态恢复可以减少正常期不必要的 pipeline 开销。论文报告 restoration 使 P50 TTFT/TPOT 分别降低约 28%/23%，P99 TTFT/TPOT 分别改善约 6.4×/1.2×。没有 restoration 时，系统长期类似 vLLM PP，正常期 throughput 降低，反而使下一波 burst 更容易积累显存压力。</p>
+<h3 id="extreme-burst">Extreme burst</h3>
+<p>在极端重复 burst 设置下，KunServe 的可释放显存仍受模型参数大小上限约束，并不能无限处理请求。但它能比 vLLM 更久地维持服务：在 Qwen-2.5-72B 上，KunServe 到达显存极限的时间约为 152 秒，比 vLLM 长 1.5×；在到达极限前，KunServe 没有出现 SLO(5×) violation，而 vLLM 的 TTFT 可上升到 42×。这说明 KunServe 适合作为 autoscaling cold start 前的“短时吸震器”。</p>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ul>
+<li><strong>新颖的问题切入点</strong>：不是继续在 KVCache 上做 drop/swap/migration，而是利用模型参数副本冗余，把参数显存转化为短时 KVCache 容量。</li>
+<li><strong>适合 burst handling</strong>：对真实 workload 中短时负载尖峰尤其有效，可以在 autoscaling 生效前降低 TTFT 尾延迟。</li>
+<li><strong>系统设计完整</strong>：不仅提出 parameter drop，还处理了 KVCache exchange、pipeline bubble、dynamic restoration 和 fault tolerance。</li>
+<li><strong>与现有 serving 并行方式正交</strong>：论文讨论了与 tensor parallelism、expert parallelism、sequence parallelism 的兼容性；KunServe 主要改变跨实例的 layer/parameter layout。</li>
+</ul>
+<h3 id="_9">局限</h3>
+<ul>
+<li><strong>收益受模型参数大小上限约束</strong>：可释放显存最多来自可丢弃的重复参数，无法应对无限长或超大 burst。</li>
+<li><strong>依赖多实例参数副本冗余</strong>：如果部署本身已经极致 sharding、没有足够重复参数，KunServe 的空间来源会减少。</li>
+<li><strong>需要较好的跨实例网络</strong>：KVCache exchange 和 pipeline activation transfer 都依赖网络，低带宽或高拥塞环境下可能降低收益。</li>
+<li><strong>TPOT 可能上升</strong>：通过 pipeline 和更大 batch 换取 TTFT 尾延迟下降，适合 TTFT/SLO 敏感场景，但不一定适合极端 TPOT 敏感场景。</li>
+<li><strong>实现复杂度较高</strong>：需要跨实例全局调度、显存管理、KVCache relocation、pipeline scheduler 和参数恢复机制协同。</li>
+</ul>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>KunServe 属于 <strong>KV cache management / deployment / LLM serving</strong> 方向，但它的重要性在于扩展了 KV 管理的 action space：当 KVCache 造成显存过载时，系统不一定只能操作 KVCache，也可以操作参数布局，用“参数副本冗余”换取“短时请求状态容量”。</p>
+<p>这对 EfficientPaper 当前的 KV 管理研究脉络有两个启发：</p>
+<ol>
+<li><strong>KV lifecycle optimizer 的 action space 应包含 parameter layout</strong>。未来统一决策器不应只在 compression、eviction、prefetch、tier placement 中选择，还应考虑是否通过参数重排、临时 pipeline grouping、甚至 autoscaling 协同释放显存。</li>
+<li><strong>Serving 系统的短时弹性不只来自新机器，也来自已有副本的重构</strong>。KunServe 类似一种 software-defined memory elasticity：在不启动新实例的情况下，动态调整参数/KV 的显存占比，应对 burst 的 cold-start gap。</li>
+</ol>
+<h2 id="_10">可复现/实现要点</h2>
+<ul>
+<li>需要 global monitor 精确追踪每个实例的 HBM 使用、KVCache demand 和请求队列。</li>
+<li>Drop plan 生成需要同时考虑可释放显存和 pipeline stage 数，不能只最大化 drop ratio。</li>
+<li>参数丢弃后必须处理 ongoing requests 的 KVCache relocation，否则 decode 无法继续正确执行。</li>
+<li>KVCache exchange 与 activation transfer 应该有网络优先级或协调机制，否则交换会阻塞 pipeline。</li>
+<li>Batch formulation 的 cost model 需要考虑 attention cost 和 prefix/chunk 位置，简单 token count 不足以均衡 microbatch。</li>
+<li>参数恢复应与请求执行重叠，并在网络上让位于 latency-critical activation transfer。</li>
+</ul>
+<h2 id="_11">个人备注</h2>
+<p>KunServe 的研究价值不只是“又一个 LLM serving 系统”，而是提供了一个新的系统杠杆：在模型参数和请求状态之间做动态显存再分配。它与 KV compression、hierarchical KV cache、disaggregated serving、autoscaling 都可以组合。后续值得追的问题包括：</p>
+<ul>
+<li>参数丢弃是否能与 KVCache 压缩/分层 placement 放到同一个 cost model 中联合优化？</li>
+<li>对 MoE 模型，能否根据 expert hotness 动态丢弃/恢复冷 expert 参数，同时保持 expert parallelism 的通信效率？</li>
+<li>在跨机 pipeline 下，activation transfer、KV exchange、parameter restore 三类网络流是否需要统一 QoS/scheduling？</li>
+<li>是否可以设计“burst predictor”，在过载真正发生前提前生成 drop/restoration plan？</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

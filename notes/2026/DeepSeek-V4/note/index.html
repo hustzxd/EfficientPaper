@@ -52,15 +52,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-17/">2026-04-17</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-04-24/">2026-04-24</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -116,6 +114,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -153,6 +155,10 @@
   
                 <h1 id="deepseek-v4-towards-highly-efficient-million-token-context-intelligence">DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence</h1>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<h2 id="external-guides">External Guides</h2>
+<ul>
+<li><a href="../deepseek_v4_inference_guide/">NPU DeepSeek-V4 推理优化实践</a>：来自本地 guide 的 Ascend/NPU 推理部署、融合 kernel、量化、多流并行与 benchmark 说明。</li>
+</ul>
 <h2 id="abstract">Abstract</h2>
 <p>DeepSeek-V4 是 DeepSeek-AI 发布的百万 token 上下文 MoE 语言模型系列预览版，包括 DeepSeek-V4-Pro（1.6T 总参数，49B 激活）和 DeepSeek-V4-Flash（284B 总参数，13B 激活）。论文的核心目标是突破超长上下文下 vanilla attention 的计算和 KV cache 瓶颈，使百万 token 级上下文能够在训练、推理和 test-time scaling 中更常规地使用。</p>
 <p>方法上，DeepSeek-V4 引入混合注意力架构，将 Compressed Sparse Attention（CSA）和 Heavily Compressed Attention（HCA）结合起来：CSA 在序列维压缩 KV cache 后执行稀疏注意力，HCA 采用更激进的 KV 压缩但保持 dense attention。同时，模型使用 Manifold-Constrained Hyper-Connections（mHC）增强残差连接，并采用 Muon optimizer 改善收敛和训练稳定性。系统层面，论文还强调 MoE 通信-计算重叠、TileLang kernel 开发、确定性 kernel、长上下文并行、异构 KV cache 和 on-disk KV cache 复用等基础设施优化。</p>

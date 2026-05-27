@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU";
+        var mkdocs_page_input_path = "notes/2023/FlexGen/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="flexgen-high-throughput-generative-inference-of-large-language-models-with-a-single-gpu">FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU</h1>
+<blockquote>
+<p>Ying Sheng, Lianmin Zheng, Binhang Yuan, Zhuohan Li, Max Ryabinin, Daniel Y. Fu, Zhiqiang Xie, Beidi Chen, Clark Barrett, Joseph E. Gonzalez, Percy Liang, Christopher Ré, Ion Stoica, Ce Zhang</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>LLM 推理的高计算和内存需求使其通常只能在多个高端加速器上运行。本文面向延迟不敏感的批处理任务（如信息提取、数据清洗、基准测试），研究如何在有限资源（如单个消费级 GPU）上实现高吞吐 LLM 推理。FlexGen 通过聚合 GPU、CPU 和磁盘的内存与计算资源，用线性规划搜索最优的张量存储和访问策略，并将权重和注意力缓存压缩到 4-bit，在 OPT-175B 上实现了单 T4 GPU 上首次达到 1 token/s 的生成吞吐。</p>
+<h2 id="_1">一句话总结</h2>
+<p>通过线性规划搜索最优的 GPU/CPU/Disk 三级卸载策略（zig-zag block schedule + I/O overlapping）并结合 4-bit 量化，FlexGen 在单个消费级 GPU 上实现了比 DeepSpeed/Accelerate 高 100 倍的 OPT-175B 推理吞吐。</p>
+<h2 id="_2">背景与问题</h2>
+<h3 id="_3">吞吐导向推理场景</h3>
+<p>除了交互式聊天场景，LLM 还广泛用于"后台"批处理任务：基准测试、信息提取、数据清洗、表单处理等。这些任务的关键特征是：
+- 需要对大量 token 批量推理
+- 对延迟不敏感
+- 可以用延迟换取更高吞吐</p>
+<h3 id="_4">现有系统的局限</h3>
+<ol>
+<li><strong>模型压缩方向</strong>：假设模型能放入 GPU 显存，无法在单个消费级 GPU 上运行 175B 模型</li>
+<li><strong>协作推理方向</strong>：分布式网络延迟和带宽限制性能</li>
+<li><strong>卸载方向</strong>（DeepSpeed Zero-Inference、HuggingFace Accelerate）：</li>
+<li>继承自训练系统的卸载策略，未针对推理特性优化</li>
+<li>I/O 调度效率低，batch size 极小（OPT-175B 仅 1-2）</li>
+<li>无法充分利用三级存储层次的带宽</li>
+</ol>
+<h2 id="_5">核心方法</h2>
+<h3 id="1">1. 卸载策略搜索空间</h3>
+<p>FlexGen 将推理建模为<strong>计算图遍历问题</strong>。计算图是一个二维网格：横轴是 batch 维度（无限数据集），纵轴是 layer 维度。目标是找到一条遍历所有节点的有效路径，最小化总执行时间（计算 + I/O）。</p>
+<p><strong>三个关键决策维度：</strong></p>
+<h4 id="compute-schedule">计算调度（Compute Schedule）</h4>
+<ul>
+<li><strong>逐行调度</strong>（row-by-row）：现有系统默认方式，每次处理一个 batch 的所有层。问题：相邻行不共享权重，导致反复加载权重，I/O 开销巨大。</li>
+<li><strong>Zig-zag Block 调度</strong>：先沿列方向遍历（同一层的多个 batch 共享权重），当激活/KV Cache 满内存时再切换方向。I/O 复杂度证明在最优解的 2x 以内。</li>
+</ul>
+<h4 id="tensor-placement">张量放置（Tensor Placement）</h4>
+<p>用 9 个变量定义权重(w)、激活(h)、KV Cache(c) 在 GPU(g)、CPU(c)、Disk(d) 上的分配比例：
+- wg, wc, wd：权重放置比例
+- hg, hc, hd：激活放置比例
+- cg, cc, cd：KV Cache 放置比例</p>
+<p>粒度从粗到细：模型级 → 层级 → 级别内的张量头</p>
+<h4 id="computation-delegation">计算委托（Computation Delegation）</h4>
+<p>指定在哪个设备上执行计算（GPU 或 CPU）。</p>
+<h3 id="2">2. 线性规划优化器</h3>
+<p>FlexGen 构建了一个<strong>解析代价模型</strong>，将搜索空间编码为线性规划问题：
+- 决策变量：上述 9 个放置比例 + block size 等
+- 目标函数：最大化吞吐（tokens/s）
+- 约束：各设备内存容量限制</p>
+<p>该优化器可根据不同硬件规格灵活配置，也可扩展延迟和吞吐约束。</p>
+<h3 id="3-io">3. I/O 重叠与流水线</h3>
+<p>Block Schedule 的内层循环中，6 个操作可以并行执行：
+1. 加载下一层权重
+2. 存储上一个 batch 的激活
+3. 存储上一个 batch 的 KV Cache
+4. 加载下一个 batch 的 KV Cache
+5. 加载下一个 batch 的激活
+6. 计算当前 batch</p>
+<p>最后同步所有设备。依赖操作系统和 CUDA 驱动调度底层硬件资源。</p>
+<h3 id="4-4-bit">4. 4-bit 量化</h3>
+<p>FlexGen 对权重和 KV Cache 均采用 <strong>fine-grained group-wise 量化</strong>到 4-bit：
+- 无需重训练或校准
+- 精度损失可忽略
+- 显著减少 I/O 传输量和内存占用
+- 使得权重可以完全放在 CPU 内存中，避免磁盘卸载</p>
+<h2 id="_6">技术细节</h2>
+<h3 id="_7">理论保证</h3>
+<p><strong>定理 4.1</strong>：Zig-zag block schedule 的 I/O 复杂度在最优解的 2x 以内。</p>
+<h3 id="opt-175b-fp16">内存分析（OPT-175B, FP16）</h3>
+<ul>
+<li>模型权重：325 GB（l=96, h1=12288, h2=49152）</li>
+<li>KV Cache 峰值（b=512, s=512, n=32）：1.2 TB（权重的 3.8 倍）</li>
+<li>大 batch 下 KV Cache 成为新瓶颈</li>
+</ul>
+<h3 id="_8">实现细节</h3>
+<ul>
+<li>基于 PyTorch 实现</li>
+<li>支持 GPU 计算委托（CUDA kernel）和 CPU 计算委托</li>
+<li>Pipeline 并行支持多 GPU 场景</li>
+</ul>
+<h2 id="_9">实验设置</h2>
+<h3 id="_10">硬件</h3>
+<ul>
+<li>NVIDIA T4 (16GB GPU) — 消费级 GPU</li>
+<li>208 GB CPU DRAM</li>
+<li>1.5 TB SSD</li>
+</ul>
+<h3 id="_11">模型</h3>
+<ul>
+<li>OPT-30B, OPT-66B, OPT-175B</li>
+</ul>
+<h3 id="baseline">Baseline</h3>
+<ul>
+<li>DeepSpeed Zero-Inference</li>
+<li>HuggingFace Accelerate</li>
+<li>Petals（协作推理）</li>
+</ul>
+<h3 id="_12">配置</h3>
+<ul>
+<li>输入序列长度：512</li>
+<li>输出序列长度：32</li>
+</ul>
+<h2 id="_13">主要结果</h2>
+<h3 id="opt-175b-t4-gpu">OPT-175B 单 T4 GPU</h3>
+<ul>
+<li><strong>DeepSpeed/Accelerate</strong>：batch size 最多 2，因 OOM 无法扩大</li>
+<li><strong>FlexGen</strong>：</li>
+<li>同延迟(5000s)下，吞吐比 DeepSpeed 高 <strong>40x</strong>（batch 64 vs 1）</li>
+<li>允许更高延迟(12000s)时，最大吞吐高 <strong>69x</strong>（batch 256）</li>
+<li>启用 4-bit 压缩后，最大吞吐高 <strong>100x</strong>（batch 144，4000s）</li>
+</ul>
+<h3 id="opt-30b">OPT-30B</h3>
+<ul>
+<li>FlexGen 在 Pareto 前沿上全面优于 DeepSpeed 和 Accelerate</li>
+</ul>
+<h3 id="helm-benchmark">HELM Benchmark</h3>
+<ul>
+<li>FlexGen 可在单 16GB GPU 上 21 小时内完成 30B 模型的 7 个代表性子场景基准测试</li>
+</ul>
+<h3 id="petals">与 Petals 对比</h3>
+<ul>
+<li>FlexGen 在单 GPU 吞吐上优于 Petals 集群</li>
+<li>某些场景下延迟也更低</li>
+</ul>
+<h2 id="_14">优点与局限</h2>
+<h3 id="_15">优点</h3>
+<ol>
+<li><strong>形式化建模</strong>：将卸载策略搜索建模为线性规划问题，有理论保证（2x 最优性）</li>
+<li><strong>灵活配置</strong>：自动适配不同硬件规格（GPU/CPU/Disk 容量和带宽）</li>
+<li><strong>实用性强</strong>：首次在单消费级 GPU 上运行 OPT-175B 达到 1 token/s</li>
+<li><strong>量化 + 卸载协同</strong>：4-bit 量化使权重可完全放在 CPU，避免磁盘 I/O</li>
+<li><strong>开源</strong>：代码完整可用</li>
+</ol>
+<h3 id="_16">局限</h3>
+<ol>
+<li><strong>吞吐导向</strong>：牺牲延迟换取吞吐，不适合交互式场景</li>
+<li><strong>模型范围</strong>：主要在 OPT 系列上验证，未覆盖 GQA 架构（如 Llama/Qwen）</li>
+<li><strong>4-bit 精度</strong>：虽声称精度损失可忽略，但在复杂推理任务上的影响未充分评估</li>
+<li><strong>单 GPU 限制</strong>：多 GPU 场景仅简单扩展，未深入优化</li>
+<li><strong>已过时</strong>：后续工作（如 vLLM、SGLang）在延迟导向场景上大幅超越；FlexGen 的卸载思路被 ContiguousKV 等新工作继承和发展</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>FlexGen 属于 <strong>部署/Serving</strong>（deployment）领域，是 LLM 推理卸载（offloading）方向的奠基性工作。核心贡献：
+- 首次系统性地研究 GPU/CPU/Disk 三级存储层次下的 LLM 推理卸载策略
+- 线性规划驱动的自动策略搜索
+- 证明了吞吐导向场景下通过大 batch + I/O overlapping 可以在有限资源上运行超大模型</p>
+<p>对后续工作的影响：ContiguousKV 直接基于 FlexGen 框架构建，将其卸载策略扩展到共享前缀 KV Cache 的 Re-Prefill 场景。</p>
+<h2 id="_17">可复现/实现要点</h2>
+<ol>
+<li><strong>框架</strong>：PyTorch 实现，开源可用</li>
+<li><strong>关键参数</strong>：</li>
+<li>GPU batch size</li>
+<li>Block size（= GPU batch size × GPU batches per block）</li>
+<li>9 个张量放置比例（权重/激活/KV Cache × GPU/CPU/Disk）</li>
+<li><strong>优化器</strong>：线性规划求解最优配置</li>
+<li><strong>量化</strong>：group-wise 4-bit，无需校准</li>
+</ol>
+<h2 id="_18">个人备注</h2>
+<ul>
+<li>FlexGen 的 LP 搜索框架思路优雅，但实际部署中手动调参可能更实用</li>
+<li>后续的 KV Cache 卸载工作（AttentionStore、IMPRESS、ContiguousKV）都继承了 FlexGen 的三级存储层次思想</li>
+<li>对比 vLLM 的 paged attention，FlexGen 的 block schedule 更适合静态批处理场景</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

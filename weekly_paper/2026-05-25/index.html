@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>2026-05-25 - Efficient Paper</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2026-05-25";
+        var mkdocs_page_input_path = "weekly_paper/2026-05-25.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">2026-05-25</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cacheprune-privacy-aware-and-fine-grained-kv-cache-sharing-for-efficient-llm-inference">CachePrune: Privacy-Aware and Fine-Grained KV Cache Sharing for Efficient LLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alignedserve-orchestrating-prefix-aware-batching-to-build-a-high-throughput-and-computing-efficient-llm-serving-system">AlignedServe: Orchestrating Prefix-aware Batching to Build a High-throughput and Computing-efficient LLM Serving System</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nasic-3d-nand-based-cam-selected-multibit-cim-architecture-for-efficient-on-device-mixture-of-experts-llm-inference">NASiC: 3D NAND-based CAM-Selected Multibit CIM Architecture for Efficient On-Device Mixture-of-Experts LLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-simple-plug-in-for-improving-eviction-based-kv-cache-compression">A Simple Plug-in for Improving Eviction-Based KV Cache Compression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adaptive-mass-segmented-kv-compression-for-long-context-reasoning">Adaptive Mass-Segmented KV Compression for Long-Context Reasoning</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#thriftattention-selective-mixed-precision-for-long-context-fp4-attention">ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gemq-global-expert-level-mixed-precision-quantization-for-moe-llms">GEMQ: Global Expert-Level Mixed-Precision Quantization for MoE LLMs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#modeswitch-llm-a-lightweight-phase-aware-controller-for-cross-mode-llm-inference-on-a-single-gpu">ModeSwitch-LLM: A Lightweight Phase-Aware Controller for Cross-Mode LLM Inference on a Single GPU</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Weekly Paper</li>
+      <li class="breadcrumb-item active">2026-05-25</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="2026-05-25">2026-05-25</h1>
+<hr />
+<h2 id="cacheprune-privacy-aware-and-fine-grained-kv-cache-sharing-for-efficient-llm-inference">CachePrune: Privacy-Aware and Fine-Grained KV Cache Sharing for Efficient LLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对KV缓存共享的隐私泄露问题，提出细粒度隐私感知共享机制，在保障安全的同时提升缓存复用效率。</p>
+</blockquote>
+<p><strong>Authors:</strong> Guanlong Wu, Zhaohan li, Yao Zhang, Zheng Zhang, Jianyu Niu, Ye Wu, Yinqian Zhang | <strong>Date:</strong> 2026-05-22</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23640v1">http://arxiv.org/abs/2605.23640v1</a></p>
+<details><summary>Abstract</summary>
+
+Large Language Models (LLMs) rely on Key-Value (KV) caching to accelerate inference, and many serving systems further share the KV cache across users' requests to reduce redundant computation. While widely adopted, unrestricted cross-user sharing introduces side-channel vulnerabilities, allowing an adversary to infer user inputs by probing for cache reuse. Existing defenses disable sharing entirely to prevent leakage; yet such a coarse-grained strategy sacrifices substantial reuse potential, since prompts often include large portions of privacy-irrelevant segments, such as system instructions or publicly accessible materials. Building on this, we present CachePrune, a privacy-aware KV cache sharing mechanism that enables fine-grained reuse of KV entries across requests. Realizing such fine granularity requires token-level cache management, as reusable segments vary in length and position due to sensitivity masking, making reuse more complex than the fixed-size or sentence-level chunking used in existing coarse-grained schemes. Specifically, CachePrune makes fine-grained reuse practical by addressing two key challenges: accurately and efficiently deriving reusable KV segments and efficiently retrieving them over variable-length spans. We implement CachePrune on top of vLLM and evaluate it on three datasets, showing that it eliminates direct leakage through KV cache reuse side channels while reducing TTFT by 4.5x and increasing cache hit rates by 44% compared with state-of-the-art approaches.
+
+</details>
+
+<hr />
+<h2 id="alignedserve-orchestrating-prefix-aware-batching-to-build-a-high-throughput-and-computing-efficient-llm-serving-system">AlignedServe: Orchestrating Prefix-aware Batching to Build a High-throughput and Computing-efficient LLM Serving System</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/batching-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/batching-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM推理中的迭代内延迟问题，提出前缀感知批处理系统，通过协调解码迭代提升吞吐量和计算效率。</p>
+</blockquote>
+<p><strong>Authors:</strong> Fengyao Bai, Hongbin Zhang, Zhitao Chen, Jiangsu Du, Zhiguang Chen, Yutong Lu | <strong>Date:</strong> 2026-05-22</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23389v1">http://arxiv.org/abs/2605.23389v1</a></p>
+<details><summary>Abstract</summary>
+
+High-throughput inference serving is essential for applications built on large language models (LLMs). Existing serving frameworks reduce request-level and batch-level bubbles through batching and scheduling, but often overlook bubbles within each decode iteration. Tokens generated in the same iteration may incur different costs because they depend on KV caches of different lengths; tokens with long KV caches can become bottlenecks and delay the next iteration. We propose AlignedServe, an LLM serving framework built around prefix-aware batching. It groups requests with similar KV-cache lengths into the same batch to reduce iteration-level bubbles. To support this policy efficiently, AlignedServe uses large CPU memory to maintain sufficient in-flight requests for batching and applies a batch-level scheduling policy to reduce batch-level bubbles. It also introduces a GPU-Prefetch-For-GPU architecture, where one GPU prefetches KV cache for another to reduce CPU-to-GPU transfer latency. Experiments on synthetic and application workloads show that AlignedServe improves decoding throughput by up to 1.98 times and reduces latency by up to 7.4 times over state-of-the-art systems.
+
+</details>
+
+<hr />
+<h2 id="nasic-3d-nand-based-cam-selected-multibit-cim-architecture-for-efficient-on-device-mixture-of-experts-llm-inference">NASiC: 3D NAND-based CAM-Selected Multibit CIM Architecture for Efficient On-Device Mixture-of-Experts LLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对MoE模型设备端部署的内存挑战，提出基于3D NAND的存算一体架构，实现高效稀疏专家推理。</p>
+</blockquote>
+<p><strong>Authors:</strong> Weikai Xu, Meng Li, Shuzhang Zhong, Tianyang Luo, Dongxue Zhao, Ling Liang, Zongwei Wang, Qianqian Huang, Yimao Cai, Ru Huang | <strong>Date:</strong> 2026-05-22</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23294v1">http://arxiv.org/abs/2605.23294v1</a></p>
+<details><summary>Abstract</summary>
+
+The Mixture-of-Experts (MoE) models have emerged as the state-of-the-art paradigm for scaling up large language models (LLMs) without proportionally increased computational cost. However, its on-device deployment faces a critical challenge due to the large memory requirement for storing all expert parameters. 3D NAND-based computing-in-memory (CIM) architectures uniquely offer high storage capacity and reduced data movement, while they are ill-suited for MoE models with dynamically sparse expert activation, leading to a degradation of effective computational parallelism, along with underutilization of multibit storage capability of Flash cells. In this work, we proposed a 3D NAND-based content addressable-selected CIM architecture, dubbed as NASiC, which is tailored to MoE models. By leveraging the intrinsic string structure of 3D NAND technology, NASiC fuses the dynamical expert selection through CAM-based masking mechanism and activated expert computation through CIM into a single computation cycle, eradicating redundant computation and enhancing computational parallelism. Moreover, circuit-level optimizations and multibit CIM cell are co-designed with proposed NASiC architecture, featuring block-wise parallel computation with in-situ signed multibit input and weight expansion, substantially improving the throughput and energy-efficiency of NAND CIM array, as well as the utilization of high-density 3D NAND technology for MoE models. With extensive experimental results, we demonstrate NASiC achieves 4-114.8x improved performance and 3.9-70x improved energy efficiency over state-of-the-art designs, along with high accuracy, showing its great potential for efficient on-device MoE LLM inference.
+
+</details>
+
+<hr />
+<h2 id="a-simple-plug-in-for-improving-eviction-based-kv-cache-compression">A Simple Plug-in for Improving Eviction-Based KV Cache Compression</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对KV缓存压缩的令牌利用不足问题，提出VECTOR插件，通过三路令牌路由提升压缩效果和推理质量。</p>
+</blockquote>
+<p><strong>Authors:</strong> Yuping Lin, Jiayuan Ding, Yue Xing, Pengfei He, Jiliang Tang, Subhabrata Mukherjee | <strong>Date:</strong> 2026-05-22</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23258v1">http://arxiv.org/abs/2605.23258v1</a></p>
+<details><summary>Abstract</summary>
+
+KV cache growth is a major bottleneck for long-context inference in large language models. Existing methods are often dominated by binary eviction or representation approximation, which may underutilize tokens that are not critical for exact retention but are still reconstructable. We present VECTOR, a plug-and-play augmentation for eviction-based pipelines that introduces three-way token routing: retention, approximation, and eviction. VECTOR combines an importance signal from the base scorer with a reconstructability signal from an offline-calibrated regression-based value estimation. By leveraging reconstructability, VECTOR recovers useful value information that would otherwise be irreversibly lost under binary eviction, while preserving key vectors for attention routing stability. Experimental results show that VECTOR improves quality-memory trade-offs under medium-to-high compression, with especially clear gains in stricter budget regimes.
+
+</details>
+
+<hr />
+<h2 id="adaptive-mass-segmented-kv-compression-for-long-context-reasoning">Adaptive Mass-Segmented KV Compression for Long-Context Reasoning</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/sparse-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/sparse-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对长上下文推理中KV压缩的区域擦除问题，提出自适应分段压缩框架，保持逻辑连贯性并提升性能。</p>
+</blockquote>
+<p><strong>Authors:</strong> Junzhe Yang, Xiaoyu Shen | <strong>Date:</strong> 2026-05-22</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23200v1">http://arxiv.org/abs/2605.23200v1</a></p>
+<details><summary>Abstract</summary>
+
+The linear growth of the Key-Value (KV) cache is a critical bottleneck in long-form LLM inference. Existing KV compression methods mitigate this by evicting tokens based on importance scores. However, we show that their reliance on global Top-k selection triggers Region Wipe-out: the severe eviction of contiguous reasoning blocks that derails logical coherence. To address this, we propose Adaptive Mass-Segmented (AMS) KV Compression, a framework that shifts the paradigm from token-level competition to region-aware quota allocation. AMS adaptively partitions the KV cache based on the spatial distribution of attention mass, ensuring structurally vital reasoning segments receive guaranteed memory quotas. To ensure stability during iterative decoding, an EMA-based smoothing mechanism is incorporated to prevent jitter in segment boundaries. Crucially, AMS is a universal plug-and-play layer that is orthogonal to existing scorers. It can be seamlessly integrated into representative methods such as TOVA, Expected Attention, KeyDiff, R-KV and TriAttention. AMS is also system-compatible with modern paged-KV serving frameworks such as vLLM, supporting efficient gather-and-compact KV execution without introducing additional steady-state attention overhead. Extensive experiments across a diverse suite of tasks, including mathematical reasoning (MATH500, AIME, GSM8K), code completion, open-domain QA, and sparse retrieval, demonstrate that AMS consistently mitigates structural fragmentation and boosts model performance.
+
+</details>
+
+<hr />
+<h2 id="thriftattention-selective-mixed-precision-for-long-context-fp4-attention">ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/low-bit-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/low-bit-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对长上下文FP4注意力的质量退化问题，提出选择性混合精度方法，减少量化误差并提升准确性。</p>
+</blockquote>
+<p><strong>Authors:</strong> Joe Sharratt | <strong>Date:</strong> 2026-05-21</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23081v1">http://arxiv.org/abs/2605.23081v1</a></p>
+<details><summary>Abstract</summary>
+
+Efficient attention algorithms are critical to mitigate the quadratic cost of attention in long-context workloads. Prior work utilises block-scaled quantisation techniques on Blackwell GPUs to move attention computation to 4-bit precision to accelerate inference. However, these techniques result in significant quality degradation in long-context settings. We show that the output impact of quantisation error is highly non-uniform and increases with the importance of each query-key interaction, concentrating functionally relevant error in a small number of attention blocks that contain the most important tokens. We propose ThriftAttention, a low-bit attention variant that delivers near-FP16 long-context quality at FP4 inference efficiency. This approach proceeds in two stages. First, a heuristic rapidly selects a small number of important query-key block pairs for FP16 precision. Second, the selected blocks are computed in FP16 and the remaining blocks in FP4, with both paths merged via online softmax into a single output. We demonstrate across long-context benchmarks and model families that by computing only 5% of query-key blocks in FP16, ThriftAttention recovers on average 89.1% of the FP4-to-FP16 performance gap. We show ThriftAttention's advantage grows with sequence length, mitigating the systematic FP4 quality degradation observed at longer contexts. The code is available at https://github.com/joesharratt1229/ThriftAttention.
+
+</details>
+
+<hr />
+<h2 id="gemq-global-expert-level-mixed-precision-quantization-for-moe-llms">GEMQ: Global Expert-Level Mixed-Precision Quantization for MoE LLMs</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/low-bit-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/low-bit-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对MoE模型量化中的路由器偏移问题，提出全局专家级混合精度量化，优化内存-精度权衡。</p>
+</blockquote>
+<p><strong>Authors:</strong> Jianing Deng, Song Wang, Dongwei Wang, Zijie Liu, Tianlong Chen, Huanrui Yang, Jingtong Hu | <strong>Date:</strong> 2026-05-21</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23078v1">http://arxiv.org/abs/2605.23078v1</a></p>
+<details><summary>Abstract</summary>
+
+Mixture-of-Experts Large Language Models (MoE-LLMs) achieve strong performance but incur substantial memory overhead due to massive expert parameters. Mixed-precision quantization mitigates this cost by allocating expert-wise bit-widths based on their importance, approaching the accuracy-memory Pareto frontier and enabling extreme low-bit quantization. However, existing methods rely on layer-wise importance estimation and overlook router shifts induced by quantization, resulting in suboptimal allocation and routing. In this work, we propose Global Expert-level Mixed-precision Quantization (GEMQ) to overcome these limitations via (1) a global linear-programming formulation that captures model-wide expert importance based on quantization error analysis, and (2) efficient router fine-tuning to adapt routing to quantized experts. These components are integrated into a progressive quantization framework that iteratively refines importance estimation and allocation. Experiments demonstrate that GEMQ significantly reduces memory and accelerates inference with minimal accuracy degradation. Source code is available at https://github.com/jndeng/GEMQ .
+
+</details>
+
+<hr />
+<h2 id="modeswitch-llm-a-lightweight-phase-aware-controller-for-cross-mode-llm-inference-on-a-single-gpu">ModeSwitch-LLM: A Lightweight Phase-Aware Controller for Cross-Mode LLM Inference on a Single GPU</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/speculative-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/speculative-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/batching-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/batching-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对单GPU推理效率问题，提出轻量级阶段感知控制器，动态路由请求至最优推理模式以提升效率。</p>
+</blockquote>
+<p><strong>Authors:</strong> Aman Sunesh, Ali Alshehhi, Hivansh Dhakne | <strong>Date:</strong> 2026-05-21</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2605.23057v1">http://arxiv.org/abs/2605.23057v1</a></p>
+<details><summary>Abstract</summary>
+
+ModeSwitch-LLM is a lightweight request-boundary controller for improving single-GPU large language model inference efficiency by routing each request to an appropriate fixed inference mode. Instead of relying on one static serving configuration, the system selects among FP16, quantized modes, speculative decoding, and hybrid modes such as GPTQ plus prefix caching and INT8 plus continuous batching using cheap workload-level features. We evaluate ModeSwitch-LLM on Meta-Llama-3.1-8B-Instruct served on a single NVIDIA A100 GPU. On deployment-style synthetic workloads, the online controller achieves a 2.10x mean latency speedup over FP16 and a 0.48x mean energy ratio, corresponding to 51.7% lower energy per token. On automatic benchmarks used as a quality gate, accuracy remains close to FP16 with a mean delta of +0.17 percentage points. We also evaluate lightweight learned routers, but find that they do not clearly outperform the rule-based controller because they add routing overhead and more often select modes that violate quality, energy, or memory constraints. These results show that simple request-aware routing can recover substantial efficiency from existing inference modes without retraining the model or changing its architecture.
+
+</details>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-05-15/" class="btn btn-neutral float-left" title="2026-05-15"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../legacy/2025-10-09/" class="btn btn-neutral float-right" title="2025-10-09">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2026-05-15/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../legacy/2025-10-09/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../js/prism-prototxt.js"></script>
+      <script src="../../js/preview.js"></script>
+      <script src="../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../js/note-editor.js"></script>
+      <script src="../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

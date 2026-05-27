@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection";
+        var mkdocs_page_input_path = "notes/2026/CompactAttention/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="compactattention-accelerating-chunked-prefill-with-block-union-kv-selection">CompactAttention: Accelerating Chunked Prefill with Block-Union KV Selection</h1>
+<blockquote>
+<p>Jiwon Song, Dongwon Jo, Beomseok Kang, Jae-Joon Kim<br />
+Seoul National University<br />
+arXiv:2605.16839v1 · 2026<br />
+Code: https://github.com/jiwonsong-dev/CompactAttention</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a>
+这里dense compute是精髓，由于chunk内共享mask，所以只用load 部分kv cache block，kernel本质上是dense 运算；等到下一个chunk prefill时，允许不同的mask，这也是和one-shot prefill不同的关键</p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Chunked prefill has become a widely adopted serving strategy for long-context large language models, but efficient attention computation in this regime remains challenging. Existing sparse attention methods are primarily designed for one-shot prefill and do not translate efficiently to chunked prefill: block-sparse kernels lose efficiency when the query length is limited by the chunk size, while fine-grained pattern search becomes costly when repeated over the accumulated KV cache at every chunk. QUOKA, a recent method that directly targets chunked prefill, avoids sparse-kernel overhead but relies on query-subsampled, token-level KV selection, which can miss query-specific KV entries and introduce explicit KV-copy overhead. To address these limitations, we propose CompactAttention, a chunked-prefill attention mechanism based on Block-Union KV Selection. CompactAttention treats 2D block-sparse masks as KV-selection signals rather than direct sparse-kernel execution plans, and converts them into GQA-aware per-group KV block tables through Q-block union and intra-group union. This construction produces the minimal block tables that preserve all KV blocks selected by the input masks under paged execution constraints, enabling selected KV blocks to be accessed in place without explicit KV compaction. On LLaMA-3.1-8B-Instruct, CompactAttention maintains accuracy close to dense attention on the RULER benchmark while delivering up to 2.72× attention speedup at 128K context length under chunked prefill.</p>
+<h2 id="_1">一句话总结</h2>
+<p>CompactAttention 面向长上下文 LLM serving 中的 chunked prefill 场景，把传统 2D block-sparse attention mask 降维为 GQA-aware 的 per-group KV block table，并用 zero-copy paged attention 原地访问被选中的 KV block，从而绕开 chunked prefill 下 block-sparse kernel 效率低和 token-level KV 选择需要显式拷贝的问题。在 LLaMA-3.1-8B-Instruct 128K 上，它在 RULER/LongBench V2 精度接近 dense attention 的同时，最高获得 2.72× attention speedup 和 1.96× end-to-end speedup。</p>
+<h2 id="_2">背景与问题</h2>
+<p>长上下文 LLM 已经扩展到数十万甚至百万 token，典型应用包括长文档理解、代码分析、多步 agentic workload 和长程推理。一次性 one-shot prefill 会遇到两个明显瓶颈：</p>
+<ol>
+<li>full-sequence attention 的计算量随上下文长度二次增长；</li>
+<li>在线 serving 中长 prefill 会阻塞 decode 请求，破坏 time-between-token（TBT）等服务质量目标。</li>
+</ol>
+<p>因此 vLLM、SGLang 等 serving 框架广泛采用 <strong>chunked prefill</strong>：把长输入切成固定大小的 chunk 顺序处理，每个 chunk 的 query 同时 attend 到当前 chunk 和过去累积的 KV cache。这个调度方式缓解了 serving 层面的阻塞，但也改变了 attention 的形态：每次 attention 的 <code>Q</code> 只等于 chunk size，而 <code>KV</code> 随上下文长度持续增长，即典型的 <code>Q ≪ KV</code>。</p>
+<p>已有长上下文加速方法主要来自 block-sparse attention。它们先找出重要 attention block，再用 block-sparse kernel 只计算被选中的 tile。该范式在 one-shot prefill 中有效，因为 query 和 KV 都足够长，稀疏 kernel 的不规则访存和 mask 解释开销可以被摊销；但在 chunked prefill 中会暴露两类问题：</p>
+<ul>
+<li><strong>kernel inefficiency</strong>：query block 数太少，block-sparse kernel 难以获得足够并行度，实际 speedup 远低于理论 sparsity；</li>
+<li><strong>pattern search overhead</strong>：每个 chunk 都要在不断增长的 KV cache 上重新搜索 sparse pattern，累计开销变成一阶成本。</li>
+</ul>
+<p>另一条路线是 QUOKA 这类直接 KV selection：采样部分 query token 作为 evaluator，对 KV token 做重要性打分，然后对选中的 KV 做 dense attention。这避免了 sparse kernel 开销，但带来两个新问题：</p>
+<ul>
+<li>query-subsampled selection 可能漏掉只对未采样 query 重要的 query-specific KV；</li>
+<li>token-level KV selection 需要 gather/pack 成新的紧凑 KV tensor，显式 KV copy 开销随 context length 和 batch size 增长。</li>
+</ul>
+<p>CompactAttention 的目标就是在 chunked prefill 下同时满足三点：覆盖所有 query block、避免短 query 下的 sparse-kernel 低效、并以 block granularity 原地访问 KV，避免显式 compaction。</p>
+<h2 id="_3">核心方法</h2>
+<p>CompactAttention 的核心思想是：<strong>把 block-sparse mask 当作 KV-selection signal，而不是直接当作 sparse-kernel execution plan</strong>。</p>
+<p>整体分为两个阶段：</p>
+<ol>
+<li>
+<p><strong>KV selection：Block-Union KV Table Construction</strong><br />
+   输入可以是任意轻量 block-sparse pattern search 方法产生的 2D per-head block mask，例如 SeerAttention 或 FlashPrefill。CompactAttention 不直接用这个 mask 调 sparse attention kernel，而是通过 union 操作把它转换为可被 paged dense attention 使用的 per-group KV block table。</p>
+</li>
+<li>
+<p><strong>Execution：Zero-Copy Paged Attention</strong><br />
+   生成的 KV block table 作为 page metadata 传给 paged attention kernel。kernel 直接在原始 KV cache 中访问被选中的 page/block，不把 KV payload 拷贝到新的 compact buffer。</p>
+</li>
+</ol>
+<p>这种设计把“如何选择 KV block”和“如何执行 attention”解耦：selection 阶段复用已有 lightweight block-sparse selector，execution 阶段则走对 chunked prefill 更友好的 dense paged attention backend。</p>
+<h2 id="_4">技术细节</h2>
+<h3 id="1-q-block-union">1. Q-block union</h3>
+<p>设输入 mask 为 <code>M_{b,h,i,j} ∈ {0,1}</code>，其中 <code>b</code> 是 batch，<code>h</code> 是 query head，<code>i</code> 是当前 chunk 内的 query block，<code>j</code> 是 KV block。传统 block-sparse 方法会直接按 <code>(i,j)</code> 的 2D mask 执行 sparse attention。</p>
+<p>CompactAttention 首先对同一 head 内所有 query block 做 union：</p>
+<pre><code class="language-text">M̄_{b,h,j} = OR_i M_{b,h,i,j}
+</code></pre>
+<p>这样每个 query head 得到一个 1D KV block mask。原因是 dense paged attention 对一组一起执行的 query block 需要共享一个 KV block list，而不能为每个 query block 使用不同 list。</p>
+<h3 id="2-intra-group-union">2. Intra-group union</h3>
+<p>在 GQA 模型中，多个 query head 共享同一个 KV head。CompactAttention 进一步对同一 execution group 内的 query heads 做 union：</p>
+<pre><code class="language-text">G_{b,g,j} = OR_{h ∈ H(g)} M̄_{b,h,j}
+T_{b,g} = { j | G_{b,g,j} = 1 }
+</code></pre>
+<p>其中 <code>T_{b,g}</code> 就是 batch <code>b</code>、execution group <code>g</code> 的 KV block table。这个 table 有两个性质：</p>
+<ul>
+<li><strong>coverage-preserving</strong>：任意 query block / query head 在原始 2D mask 中选中的 KV block 都会被保留；</li>
+<li><strong>minimal under paged execution constraint</strong>：在同一 execution group 必须共享一个 block table 的约束下，任何不在 <code>T_{b,g}</code> 中的 KV block 都没有被该 group 的任何 query 选中，因此可以安全排除。</li>
+</ul>
+<p>union 会降低 sparsity，因为只要一个 query block 或 head 选中某个 KV block，该 block 就会保留。论文的做法是使用更激进的初始 pattern search 来抵消 union 后的 sparsity loss。例如 CompactAttention-FP 使用比 FlashPrefill 更激进的 threshold，union 之后仍能达到与 FlashPrefill 相近的 executed sparsity。</p>
+<h3 id="3-sub-kv-group-union">3. Sub-KV-group union</h3>
+<p>对 GQA ratio 较大的模型（如 Qwen3-30B-A3B-Instruct-2507 的 8:1），如果直接对整个 KV group 内所有 query head 做 union，会损失过多 sparsity。论文提出把每个 KV group 切成更小的 execution subgroup，默认 subgroup size 为 4。这样既减少 union 带来的 sparsity loss，又避免 subgroup 太小造成过多 block table 构造和 metadata overhead。</p>
+<h3 id="4-zero-copy-paged-execution">4. Zero-copy paged execution</h3>
+<p>CompactAttention 要让不同 execution group 使用不同 KV block table，同时不拷贝 K/V payload。为此，它采用 <strong>KV-head-major layout</strong>：</p>
+<pre><code class="language-text">[B, H_kv, L, D]
+</code></pre>
+<p>这样每个 <code>(batch, KV head, block)</code> 都对应一段连续 <code>[block_size, D]</code> 内存，可以直接视作 page。CompactAttention 只构造 CSR-style metadata：</p>
+<ul>
+<li><code>kv_indptr</code></li>
+<li><code>kv_indices</code></li>
+</ul>
+<p>然后把这些 metadata 传给 FlashInfer paged attention backend。K/V 本体仍留在原 KV cache 中，不发生 gather/pack。</p>
+<p>实现上，论文把 batch 和 KV-head 维度 flatten 成 pseudo-batch，并以 <code>num_kv_heads = 1</code> 调用 backend，使每个 pseudo-sequence 可以拥有独立 page list。当前 chunk 始终保持 fully open，以避免在 compacted-position space 上错误应用 causal mask。</p>
+<h2 id="_5">实验设置</h2>
+<h3 id="_6">模型与任务</h3>
+<p>论文评估了两个长上下文开源模型：</p>
+<ul>
+<li><strong>LLaMA-3.1-8B-Instruct</strong>：dense LLM，128K context window；</li>
+<li><strong>Qwen3-30B-A3B-Instruct-2507</strong>：MoE LLM，256K context window。</li>
+</ul>
+<p>准确率 benchmark：</p>
+<ul>
+<li><strong>RULER</strong>：长上下文检索/推理评测；</li>
+<li><strong>LongBench V2</strong>：更偏深层理解和长上下文推理。</li>
+</ul>
+<h3 id="baselines">Baselines</h3>
+<ul>
+<li>Dense attention：FlashInfer 0.6.9，底层使用 FlashAttention-2 或 FlashAttention-3；</li>
+<li>Block-sparse attention：SeerAttention、XAttention、FlashPrefill；</li>
+<li>Chunked-prefill KV selection：QUOKA；</li>
+<li>CompactAttention variants：</li>
+<li><strong>CompactAttention-SA</strong>：使用 SeerAttention selector；</li>
+<li><strong>CompactAttention-FP</strong>：使用 FlashPrefill-style training-free selector。</li>
+</ul>
+<p>QUOKA 使用原论文固定的 25% KV budget；其他 sparse 方法分别调 sparsity hyperparameter 到 accuracy-preserving operating point。CompactAttention-FP 在 LLaMA 上使用更 aggressive 的 <code>α=0.06</code>，FlashPrefill baseline 使用 <code>α=0.01</code>；在 Qwen3 上 CompactAttention-FP 使用 <code>α=0.12</code>，FlashPrefill 使用 <code>α=0.02</code>。</p>
+<h3 id="_7">硬件与配置</h3>
+<ul>
+<li>RTX PRO 6000：TP=2，batch size 4，chunk size 512；</li>
+<li>H200 SXM：TP=2，batch size 8，chunk size 1024；</li>
+<li>主要 latency 关注 attention-level speedup 和 end-to-end chunked prefill latency。</li>
+</ul>
+<h2 id="_8">主要结果</h2>
+<h3 id="1-llama-31-8b-instruct">1. LLaMA-3.1-8B-Instruct 上的速度</h3>
+<p>在 H200、128K context、chunk size 1024 下：</p>
+<ul>
+<li>Dense attention latency：55,678.4 ms；</li>
+<li>FlashPrefill attention latency：24,886.5 ms；</li>
+<li>CompactAttention-FP attention latency：20,489.7 ms；</li>
+<li>对 dense 的 attention speedup：<strong>2.72×</strong>；</li>
+<li>end-to-end latency 从 71,015.1 ms 降到 36,265.4 ms，对 dense 的 end-to-end speedup：<strong>1.96×</strong>。</li>
+</ul>
+<p>在 RTX PRO 6000、128K context、chunk size 512 下：</p>
+<ul>
+<li>CompactAttention-FP attention latency 为 24,055.4 ms，相比 dense 的 65,971.1 ms 约 <strong>2.74×</strong>；</li>
+<li>end-to-end latency 为 54,130.6 ms，相比 dense 的 94,944.3 ms 约 <strong>1.75×</strong>。</li>
+</ul>
+<p>论文同时观察到：QUOKA 的 token-level gather/pack 开销抵消了选择更少 KV 的收益；XAttention 和 SeerAttention 在 chunked prefill 下经常慢于 dense，说明 repeated pattern search 和 Q≪KV 下的 block-sparse execution 开销很重；FlashPrefill 是最强 block-sparse baseline，但 CompactAttention 在长上下文下仍能进一步超过它。</p>
+<h3 id="2-ruler">2. RULER 准确率</h3>
+<p>在 chunk size 1024 下，LLaMA-3.1-8B-Instruct 的 RULER 平均准确率：</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th style="text-align: right;">32K</th>
+<th style="text-align: right;">64K</th>
+<th style="text-align: right;">128K</th>
+<th style="text-align: right;">Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td style="text-align: right;">88.23</td>
+<td style="text-align: right;">83.52</td>
+<td style="text-align: right;">76.59</td>
+<td style="text-align: right;">82.78</td>
+</tr>
+<tr>
+<td>QUOKA</td>
+<td style="text-align: right;">83.52</td>
+<td style="text-align: right;">79.99</td>
+<td style="text-align: right;">70.44</td>
+<td style="text-align: right;">77.98</td>
+</tr>
+<tr>
+<td>XAttention</td>
+<td style="text-align: right;">89.16</td>
+<td style="text-align: right;">83.27</td>
+<td style="text-align: right;">74.50</td>
+<td style="text-align: right;">82.31</td>
+</tr>
+<tr>
+<td>SeerAttention</td>
+<td style="text-align: right;">90.23</td>
+<td style="text-align: right;">83.82</td>
+<td style="text-align: right;">73.34</td>
+<td style="text-align: right;">82.46</td>
+</tr>
+<tr>
+<td>CompactAttention-SA</td>
+<td style="text-align: right;">88.92</td>
+<td style="text-align: right;">84.12</td>
+<td style="text-align: right;">74.28</td>
+<td style="text-align: right;">82.44</td>
+</tr>
+<tr>
+<td>FlashPrefill</td>
+<td style="text-align: right;">88.99</td>
+<td style="text-align: right;">83.94</td>
+<td style="text-align: right;">74.12</td>
+<td style="text-align: right;">82.35</td>
+</tr>
+<tr>
+<td>CompactAttention-FP</td>
+<td style="text-align: right;">88.77</td>
+<td style="text-align: right;">83.96</td>
+<td style="text-align: right;">74.17</td>
+<td style="text-align: right;">82.30</td>
+</tr>
+</tbody>
+</table>
+<p>CompactAttention 的平均精度与对应 block-sparse baseline 基本一致，说明 Q-block union 和 intra-group union 保留了 selector 的选择质量；同时 QUOKA 明显掉点，尤其是在需要 distributed information access 的任务上。</p>
+<p>Qwen3-30B-A3B-Instruct-2507 上，CompactAttention-FP 的 RULER 平均准确率为 89.29，接近 dense 的 90.46，并优于 QUOKA 的 80.19 和 FlashPrefill 的 88.68。</p>
+<h3 id="3-longbench-v2">3. LongBench V2 准确率</h3>
+<p>在 LLaMA-3.1-8B-Instruct、chunk size 1024 下，CompactAttention-FP 的 LongBench V2 overall accuracy 为 <strong>30.4</strong>，与 dense attention 的 <strong>30.4</strong> 相同；CompactAttention-SA 为 29.6，接近 dense。QUOKA 为 26.8，明显低于 dense，尤其在 Hard 样本上下降更明显。</p>
+<p>这说明 CompactAttention 不只是保住 synthetic retrieval 类任务，在更真实、更难的长上下文理解与推理任务上也能维持较好精度。</p>
+<h3 id="4-ablationsparsity-execution-strategy">4. Ablation：sparsity 与 execution strategy</h3>
+<p>在 RULER 128K 上：</p>
+<ul>
+<li>FlashPrefill <code>α=0.01</code> 的 sparsity 为 69.8%；</li>
+<li>CompactAttention-FP 初始 mask 使用 <code>α=0.06</code>，pre-union sparsity 为 89.8%；</li>
+<li>经过 Q-block union 和 intra-group union 后 sparsity 降为 70.2%。</li>
+</ul>
+<p>这支持论文的设计：可以先用更 aggressive selector 获取更稀疏的 2D mask，再通过 union 得到 accuracy-preserving 且可执行的 block table。</p>
+<p>execution-only ablation 进一步证明：在相同 unioned block mask 下，zero-copy paged execution 比 block-sparse kernel 和显式 KV copy 更快。论文报告在 RTX PRO 6000、128K、batch size 4、chunk size 512 下：</p>
+<ul>
+<li>block-sparse execution：15.64 ms/layer/chunk；</li>
+<li>CompactAttention-FP with copy：6.54 ms/layer/chunk；</li>
+<li>CompactAttention-FP zero-copy：5.03 ms/layer/chunk。</li>
+</ul>
+<p>batch-size scaling 也显示 copy overhead 随 batch size 增长明显，而 metadata overhead 增长较慢，进一步支持 zero-copy 设计。</p>
+<h3 id="5-chunk-size-qwen3">5. Chunk size 与 Qwen3 扩展性</h3>
+<p>chunk size sensitivity 显示，H200、LLaMA 128K 下，CompactAttention-FP 在 chunk size 512/1024/2048 上分别获得 2.85×、2.72×、2.38× attention speedup。chunk 越大，迭代次数减少但 Q-block union 范围变大、effective sparsity 下降，因此相对 speedup 略降，但仍明显快于 dense。</p>
+<p>在 Qwen3-30B-A3B-Instruct-2507 上，CompactAttention-FP 从 64K 开始超过 QUOKA 和 FlashPrefill，并在 256K context 下达到 <strong>1.64× attention speedup</strong>，说明方法对更大 MoE 模型和更长上下文也有收益。</p>
+<h2 id="_9">优点与局限</h2>
+<h3 id="_10">优点</h3>
+<ul>
+<li><strong>针对真实 serving 场景</strong>：论文没有停留在 one-shot prefill，而是直接面向 vLLM/SGLang 常用的 chunked prefill。</li>
+<li><strong>selection/execution 解耦</strong>：可复用 SeerAttention、FlashPrefill 等 selector，也能受益于未来更快的 pattern search 方法。</li>
+<li><strong>覆盖性强于 query subsampling</strong>：所有 query block 都参与 block-level selection，避免 QUOKA 采样 query 导致的 query-specific KV 遗漏。</li>
+<li><strong>zero-copy</strong>：通过 paged metadata 原地访问 KV，避免 token-level KV selection 的 gather/pack 成本。</li>
+<li><strong>工程路径清晰</strong>：基于 FlashInfer paged attention backend，KV-head-major layout 和 CSR metadata 都比较贴近高性能 serving 实现。</li>
+</ul>
+<h3 id="_11">局限</h3>
+<ul>
+<li><strong>依赖底层 selector 质量</strong>：如果输入 block-sparse mask 漏掉重要 KV block，union 操作不能恢复它们。</li>
+<li><strong>union 会损失 sparsity</strong>：Q-block union 和 intra-group union 会保留任意 query/head 选中的 block，因此需要更 aggressive 的初始 selector 或 sub-KV-group union 平衡 sparsity。</li>
+<li><strong>收益依赖上下文长度</strong>：当 KV cache 不够大时，pattern search 和 metadata construction 可能无法被充分摊销，短上下文或小 batch 下收益可能有限。</li>
+<li><strong>需要特定 KV cache layout 与 kernel 支持</strong>：KV-head-major layout、group-dependent page table、FlashInfer paged attention backend 都需要 serving 系统配合；不是简单替换 attention kernel 即可。</li>
+<li><strong>主要实验仍是离线评估</strong>：虽然面向 serving，但论文没有完整展示多租户在线调度、decode interleaving、真实 arrival pattern 下的端到端 SLO 影响。</li>
+</ul>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>这篇论文属于 <strong>LLM inference serving / long-context attention / sparse attention / KV cache execution</strong> 方向。它不是压缩模型权重或减少参数，而是优化长上下文 chunked prefill 的 attention 执行路径，尤其强调：</p>
+<ul>
+<li>long-context prefill acceleration；</li>
+<li>block-sparse attention 在 serving 场景下的 kernel inefficiency；</li>
+<li>GQA-aware KV block selection；</li>
+<li>paged attention 与 KV cache layout；</li>
+<li>zero-copy KV access。</li>
+</ul>
+<p>在 EfficientPaper 中可归入 <code>sparse_pruning</code> 或更宽泛的 inference/KV-cache efficiency 类别。若后续维护更细粒度 taxonomy，建议标注为 <code>long_context_inference</code>、<code>sparse_attention</code>、<code>kv_cache</code>、<code>serving</code>。</p>
+<h2 id="_12">可复现/实现要点</h2>
+<ul>
+<li>代码仓库：<code>https://github.com/jiwonsong-dev/CompactAttention</code>。</li>
+<li>selector 可以接入 SeerAttention 或 FlashPrefill；CompactAttention 本身关注把 selector 的 2D block mask lowering 成 executable KV block tables。</li>
+<li>当前 chunk 必须 fully open，否则 compacted-position space 下的 causal mask 会破坏原始 causal attention 语义。</li>
+<li>对大 GQA ratio 模型，建议使用 sub-KV-group union，论文默认 subgroup size 为 4。</li>
+<li>KV cache 需要采用 <code>[B, H_kv, L, D]</code> 的 KV-head-major layout，以便每个 <code>(batch, KV head, block)</code> 作为独立 page 被 metadata 引用。</li>
+<li>paged attention 调用只传 metadata（如 <code>kv_indptr</code>、<code>kv_indices</code>），不复制 K/V payload。</li>
+<li>性能收益主要出现在长上下文、大 KV cache、batch serving 场景；短上下文下 metadata/search overhead 可能抵消收益。</li>
+</ul>
+<h2 id="_13">个人备注</h2>
+<p>这篇工作的关键价值在于指出：chunked prefill 下 sparse attention 的瓶颈不只是“选哪些 KV block”，还包括“选中的 block 如何执行”。把 block-sparse mask 作为 selection signal、再通过 paged dense attention 执行，是一个很适合现有 serving infrastructure 的折中。后续值得关注的问题包括：</p>
+<ul>
+<li>CompactAttention 如何与 vLLM/SGLang 的 continuous batching、prefix cache、speculative decoding 等机制组合；</li>
+<li>selector 的在线 pattern search 成本能否进一步降低，甚至离线/缓存化；</li>
+<li>在多请求 heterogeneous context length 下，per-group page table 的调度和内存碎片问题；</li>
+<li>是否能把这种 block-union lowering 推广到 decode 阶段或多模态长上下文模型。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

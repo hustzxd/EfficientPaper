@@ -1,0 +1,45 @@
+paper {
+  title: "Accelerating MoE with Dynamic In-Switch Computing on Multi-GPUs"
+  abbr: "DySHARP"
+  url: "http://arxiv.org/abs/2605.05607v1"
+  authors: "Qijun Zhang"
+  authors: "Chen Zhang"
+  authors: "Zhuoshan Zhou"
+  authors: "Haibo Wang"
+  authors: "Zhe Zhou"
+  authors: "Zhipeng Tu"
+  authors: "Guangyu Sun"
+  authors: "Zhiyao Xie"
+  authors: "Yijia Diao"
+  authors: "Zhigang Ji"
+  authors: "Jingwen Leng"
+  authors: "Guanghui He"
+  authors: "Minyi Guo"
+  institutions: "Hong Kong University of Science and Technology"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Huawei Technologies"
+  institutions: "Peking University"
+  institutions: "Shanghai Qi Zhi Institute"
+}
+pub {
+  where: "ISCA"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: efficient_training
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/DeepEP"
+  methods: "2025/COMET"
+}
+update_time: 1779414551

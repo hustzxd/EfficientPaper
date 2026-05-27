@@ -1,0 +1,47 @@
+paper {
+  title: "QuaRot: Outlier-Free 4-Bit Inference in Rotated LLMs"
+  abbr: "QuaRot"
+  url: "http://arxiv.org/abs/2404.00456v2"
+  authors: "Saleh Ashkboos"
+  authors: "Amirkeivan Mohtashami"
+  authors: "Maximilian L. Croci"
+  authors: "Bo Li"
+  authors: "Pashmina Cameron"
+  authors: "Martin Jaggi"
+  authors: "Dan Alistarh"
+  authors: "Torsten Hoefler"
+  authors: "James Hensman"
+  institutions: "ETH Zurich"
+  institutions: "EPFL"
+  institutions: "Microsoft Research"
+  institutions: "Microsoft"
+  institutions: "IST Austria"
+  institutions: "NeuralMagic"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/spcl/QuaRot"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/QuIP"
+  methods: "2024/KVQuant"
+  methods: "2024/KIVI"
+  methods: "2024/SliceGPT"
+}
+update_time: 1779081471
+
+rating: 4

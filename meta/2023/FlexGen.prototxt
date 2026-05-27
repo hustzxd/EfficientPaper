@@ -1,0 +1,47 @@
+paper {
+  title: "FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU"
+  abbr: "FlexGen"
+  url: "http://arxiv.org/abs/2303.06865v2"
+  authors: "Ying Sheng"
+  authors: "Lianmin Zheng"
+  authors: "Binhang Yuan"
+  authors: "Zhuohan Li"
+  authors: "Max Ryabinin"
+  authors: "Daniel Y. Fu"
+  authors: "Zhiqiang Xie"
+  authors: "Beidi Chen"
+  authors: "Clark Barrett"
+  authors: "Joseph E. Gonzalez"
+  authors: "Percy Liang"
+  authors: "Christopher Ré"
+  authors: "Ion Stoica"
+  authors: "Ce Zhang"
+  institutions: "Stanford University"
+  institutions: "UC Berkeley"
+  institutions: "ETH Zurich"
+  institutions: "Yandex"
+  institutions: "HSE University"
+  institutions: "Meta"
+  institutions: "Carnegie Mellon University"
+}
+pub {
+  where: "ICML"
+  year: 2023
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FMInference/FlexGen"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1779849750

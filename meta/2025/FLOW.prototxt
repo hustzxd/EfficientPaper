@@ -1,0 +1,34 @@
+paper {
+  title: "Accelerating LLM Inference with Flexible N:M Sparsity via A Fully Digital Compute-in-Memory Accelerator"
+  abbr: "FLOW"
+  url: "http://arxiv.org/abs/2504.14365v1"
+  authors: "Akshat Ramachandran"
+  authors: "Souvik Kundu"
+  authors: "Arnab Raha"
+  authors: "Shamik Kundu"
+  authors: "Deepak K. Mathaikutty"
+  authors: "Tushar Krishna"
+  institutions: "Georgia Institute of Technology"
+  institutions: "Intel Labs"
+  institutions: "Intel Corporation"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/FLOW-open-project/FLOW"
+}
+keyword {
+  words: sparse_pruning
+  words: weight_sparsity
+  words: structured_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2022/STA"
+}
+update_time: 1779348389
