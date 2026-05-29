@@ -4,9 +4,9 @@ This page visualizes baseline-method relationships extracted from meta files.
 
 Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.
 
-## KIVI Family
+## H2O Family
 
-*74 methods, 88 relationships*
+*80 methods, 95 relationships*
 
 ```mermaid
 flowchart LR
@@ -78,6 +78,9 @@ flowchart LR
     2024_RazorAttention["RazorAttention[2024]"]
     class 2024_RazorAttention leafNode
     click 2024_RazorAttention "../?search=RazorAttention" _blank
+    2024_SGLang["SGLang[2024]"]
+    class 2024_SGLang rootNode
+    click 2024_SGLang "../?search=SGLang" _blank
     2024_SeerAttention["SeerAttention[2024]"]
     class 2024_SeerAttention rootNode
     click 2024_SeerAttention "../?search=SeerAttention" _blank
@@ -165,6 +168,9 @@ flowchart LR
     2025_RotateKV["RotateKV[2025]"]
     class 2025_RotateKV defaultNode
     click 2025_RotateKV "../?search=RotateKV" _blank
+    2025_SageAttention3["SageAttention3[2025]"]
+    class 2025_SageAttention3 rootNode
+    click 2025_SageAttention3 "../?search=SageAttention3" _blank
     2025_ShadowKV["ShadowKV[2025]"]
     class 2025_ShadowKV rootNode
     click 2025_ShadowKV "../?search=ShadowKV" _blank
@@ -174,6 +180,9 @@ flowchart LR
     2025_SlimInfer["SlimInfer[2025]"]
     class 2025_SlimInfer leafNode
     click 2025_SlimInfer "../?search=SlimInfer" _blank
+    2025_Strata["Strata[2025]"]
+    class 2025_Strata leafNode
+    click 2025_Strata "../?search=Strata" _blank
     2025_TCA_Attention["TCA-Attention[2025]"]
     class 2025_TCA_Attention leafNode
     click 2025_TCA_Attention "../?search=TCA-Attention" _blank
@@ -204,6 +213,9 @@ flowchart LR
     2026_FastKVzip["FastKVzip[2026]"]
     class 2026_FastKVzip leafNode
     click 2026_FastKVzip "../?search=FastKVzip" _blank
+    2026_FlashCache["FlashCache[2026]"]
+    class 2026_FlashCache leafNode
+    click 2026_FlashCache "../?search=FlashCache" _blank
     2026_FlashPrefill["FlashPrefill[2026]"]
     class 2026_FlashPrefill defaultNode
     click 2026_FlashPrefill "../?search=FlashPrefill" _blank
@@ -225,6 +237,9 @@ flowchart LR
     2026_Tactic["Tactic[2026]"]
     class 2026_Tactic leafNode
     click 2026_Tactic "../?search=Tactic" _blank
+    2026_ThriftAttention["ThriftAttention[2026]"]
+    class 2026_ThriftAttention leafNode
+    click 2026_ThriftAttention "../?search=ThriftAttention" _blank
     2026_TriAttention["TriAttention[2026]"]
     class 2026_TriAttention leafNode
     click 2026_TriAttention "../?search=TriAttention" _blank
@@ -234,6 +249,9 @@ flowchart LR
     2026_UniPrefill["UniPrefill[2026]"]
     class 2026_UniPrefill leafNode
     click 2026_UniPrefill "../?search=UniPrefill" _blank
+    2026_VECTOR["VECTOR[2026]"]
+    class 2026_VECTOR leafNode
+    click 2026_VECTOR "../?search=VECTOR" _blank
     2026_VQKV["VQKV[2026]"]
     class 2026_VQKV leafNode
     click 2026_VQKV "../?search=VQKV" _blank
@@ -256,164 +274,178 @@ flowchart LR
     linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
     2023_H2O ==>|" "| 2026_ContiguousKV
     linkStyle 8 stroke:#9370DB,stroke-width:2.5px
-    2023_H2O ==>|" "| 2026_KVTC
+    2023_H2O ==>|" "| 2026_FlashCache
     linkStyle 9 stroke:#FF6347,stroke-width:2.5px
-    2023_QuIP ==>|" "| 2024_QuaRot
+    2023_H2O ==>|" "| 2026_KVTC
     linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
-    2023_vLLM ==>|" "| 2026_Bidaw
+    2023_QuIP ==>|" "| 2024_QuaRot
     linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2023_vLLM ==>|" "| 2026_KunServe
+    2023_vLLM ==>|" "| 2026_Bidaw
     linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
-    2024_AdaKV ==>|" "| 2025_DefensiveKV
+    2023_vLLM ==>|" "| 2026_KunServe
     linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    2024_AdaKV ==>|" "| 2025_FastKV
+    2024_AdaKV ==>|" "| 2025_DefensiveKV
     linkStyle 14 stroke:#FFA500,stroke-width:2.5px
-    2024_CachedAttention ==>|" "| 2026_Bidaw
+    2024_AdaKV ==>|" "| 2025_FastKV
     linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
-    2024_DoubleSparsity ==>|" "| 2025_UNComp
+    2024_CachedAttention ==>|" "| 2025_Strata
     linkStyle 16 stroke:#9370DB,stroke-width:2.5px
-    2024_DuoAttention ==>|" "| 2025_DefensiveKV
+    2024_CachedAttention ==>|" "| 2026_Bidaw
     linkStyle 17 stroke:#FF6347,stroke-width:2.5px
-    2024_DuoAttention ==>|" "| 2025_PruLong
+    2024_DoubleSparsity ==>|" "| 2025_UNComp
     linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
-    2024_DuoAttention ==>|" "| 2026_KVServe
+    2024_DuoAttention ==>|" "| 2025_DefensiveKV
     linkStyle 19 stroke:#FFD700,stroke-width:2.5px
-    2024_GEAR ==>|" "| 2025_RotateKV
+    2024_DuoAttention ==>|" "| 2025_PruLong
     linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
-    2024_InfLLM ==>|" "| 2024_MInference
+    2024_DuoAttention ==>|" "| 2026_KVServe
     linkStyle 21 stroke:#00CED1,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2024_QuaRot
+    2024_GEAR ==>|" "| 2025_RotateKV
     linkStyle 22 stroke:#FFA500,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_H1B_KV
+    2024_InfLLM ==>|" "| 2024_MInference
     linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_KVmix
+    2024_KIVI ==>|" "| 2024_QuaRot
     linkStyle 24 stroke:#9370DB,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_MILLION
+    2024_KIVI ==>|" "| 2025_H1B_KV
     linkStyle 25 stroke:#FF6347,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_QJL
+    2024_KIVI ==>|" "| 2025_KVmix
     linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2025_RotateKV
+    2024_KIVI ==>|" "| 2025_MILLION
     linkStyle 27 stroke:#FFD700,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2026_KVTC
+    2024_KIVI ==>|" "| 2025_QJL
     linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2026_TurboQuant
+    2024_KIVI ==>|" "| 2025_RotateKV
     linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2024_KIVI ==>|" "| 2026_VQKV
+    2024_KIVI ==>|" "| 2026_KVTC
     linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2024_QuaRot
+    2024_KIVI ==>|" "| 2026_TurboQuant
     linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_KVmix
+    2024_KIVI ==>|" "| 2026_VQKV
     linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_MILLION
+    2024_KVQuant ==>|" "| 2024_QuaRot
     linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_QJL
+    2024_KVQuant ==>|" "| 2025_KVmix
     linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    2024_KVQuant ==>|" "| 2025_RotateKV
+    2024_KVQuant ==>|" "| 2025_MILLION
     linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    2024_LazyLLM ==>|" "| 2025_SlimInfer
+    2024_KVQuant ==>|" "| 2025_QJL
     linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
-    2024_MInference ==>|" "| 2025_FlexPrefill
+    2024_KVQuant ==>|" "| 2025_RotateKV
     linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2024_MiKV ==>|" "| 2025_RotateKV
+    2024_LazyLLM ==>|" "| 2025_SlimInfer
     linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2024_Mooncake ==>|" "| 2026_Bidaw
+    2024_MInference ==>|" "| 2025_FlexPrefill
     linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
-    2024_PyramidKV ==>|" "| 2025_EvolKV
+    2024_MiKV ==>|" "| 2025_RotateKV
     linkStyle 40 stroke:#9370DB,stroke-width:2.5px
-    2024_PyramidKV ==>|" "| 2026_TriAttention
+    2024_Mooncake ==>|" "| 2026_Bidaw
     linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    2024_QuaRot ==>|" "| 2026_KVServe
+    2024_PyramidKV ==>|" "| 2025_EvolKV
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_CTkvr
+    2024_PyramidKV ==>|" "| 2026_TriAttention
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_FreeKV
+    2024_PyramidKV ==>|" "| 2026_VECTOR
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_Kascade
+    2024_QuaRot ==>|" "| 2026_KVServe
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_Twilight
+    2024_Quest ==>|" "| 2025_CTkvr
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
-    2024_Quest ==>|" "| 2025_UNComp
+    2024_Quest ==>|" "| 2025_FreeKV
     linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
-    2024_Quest ==>|" "| 2026_Double_P
+    2024_Quest ==>|" "| 2025_Kascade
     linkStyle 48 stroke:#9370DB,stroke-width:2.5px
-    2024_Quest ==>|" "| 2026_KVDrive
+    2024_Quest ==>|" "| 2025_Twilight
     linkStyle 49 stroke:#FF6347,stroke-width:2.5px
-    2024_Quest ==>|" "| 2026_Tactic
+    2024_Quest ==>|" "| 2025_UNComp
     linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
-    2024_SeerAttention ==>|" "| 2026_CompactAttention
+    2024_Quest ==>|" "| 2026_Double_P
     linkStyle 51 stroke:#FFD700,stroke-width:2.5px
-    2024_SliceGPT ==>|" "| 2024_QuaRot
+    2024_Quest ==>|" "| 2026_KVDrive
     linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2024_PyramidKV
+    2024_Quest ==>|" "| 2026_Tactic
     linkStyle 53 stroke:#00CED1,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_CTkvr
+    2024_Quest ==>|" "| 2026_ThriftAttention
     linkStyle 54 stroke:#FFA500,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_DefensiveKV
+    2024_SGLang ==>|" "| 2025_Strata
     linkStyle 55 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_KVzip
+    2024_SeerAttention ==>|" "| 2026_CompactAttention
     linkStyle 56 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_LAVa
+    2024_SliceGPT ==>|" "| 2024_QuaRot
     linkStyle 57 stroke:#FF6347,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_PureKV
+    2024_SnapKV ==>|" "| 2024_PyramidKV
     linkStyle 58 stroke:#20B2AA,stroke-width:2.5px
-    2024_SnapKV ==>|" "| 2025_UNComp
+    2024_SnapKV ==>|" "| 2025_CTkvr
     linkStyle 59 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_InfLLM
+    2024_SnapKV ==>|" "| 2025_DefensiveKV
     linkStyle 60 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_PyramidKV
+    2024_SnapKV ==>|" "| 2025_KVzip
     linkStyle 61 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2024_RazorAttention
+    2024_SnapKV ==>|" "| 2025_LAVa
     linkStyle 62 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_HashAttention
+    2024_SnapKV ==>|" "| 2025_PureKV
     linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_PureKV
+    2024_SnapKV ==>|" "| 2025_UNComp
     linkStyle 64 stroke:#9370DB,stroke-width:2.5px
-    2024_StreamingLLM ==>|" "| 2025_UNComp
+    2024_StreamingLLM ==>|" "| 2024_InfLLM
     linkStyle 65 stroke:#FF6347,stroke-width:2.5px
-    2024_TOVA ==>|" "| 2026_KVTC
+    2024_StreamingLLM ==>|" "| 2024_PyramidKV
     linkStyle 66 stroke:#20B2AA,stroke-width:2.5px
-    2024_ZipCache ==>|" "| 2025_RotateKV
+    2024_StreamingLLM ==>|" "| 2024_RazorAttention
     linkStyle 67 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_SharePrefill
+    2024_StreamingLLM ==>|" "| 2025_HashAttention
     linkStyle 68 stroke:#FF69B4,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_SlimInfer
+    2024_StreamingLLM ==>|" "| 2025_PureKV
     linkStyle 69 stroke:#00CED1,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2025_XAttention
+    2024_StreamingLLM ==>|" "| 2025_UNComp
     linkStyle 70 stroke:#FFA500,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
+    2024_TOVA ==>|" "| 2026_KVTC
     linkStyle 71 stroke:#7B68EE,stroke-width:2.5px
-    2025_FlexPrefill ==>|" "| 2026_Prism
+    2024_ZipCache ==>|" "| 2025_RotateKV
     linkStyle 72 stroke:#9370DB,stroke-width:2.5px
-    2025_KVzip ==>|" "| 2026_FastKVzip
+    2025_FlexPrefill ==>|" "| 2025_SharePrefill
     linkStyle 73 stroke:#FF6347,stroke-width:2.5px
-    2025_LMCache ==>|" "| 2026_Bidaw
+    2025_FlexPrefill ==>|" "| 2025_SlimInfer
     linkStyle 74 stroke:#20B2AA,stroke-width:2.5px
-    2025_LMCache ==>|" "| 2026_KVServe
+    2025_FlexPrefill ==>|" "| 2025_XAttention
     linkStyle 75 stroke:#FFD700,stroke-width:2.5px
-    2025_MILLION ==>|" "| 2025_VecInfer
+    2025_FlexPrefill ==>|" "| 2026_FlashPrefill
     linkStyle 76 stroke:#FF69B4,stroke-width:2.5px
-    2025_PQCache ==>|" "| 2026_KVDrive
+    2025_FlexPrefill ==>|" "| 2026_Prism
     linkStyle 77 stroke:#00CED1,stroke-width:2.5px
-    2025_R_KV ==>|" "| 2026_TriAttention
+    2025_KVzip ==>|" "| 2026_FastKVzip
     linkStyle 78 stroke:#FFA500,stroke-width:2.5px
-    2025_RaaS ==>|" "| 2025_FreeKV
+    2025_LMCache ==>|" "| 2025_Strata
     linkStyle 79 stroke:#7B68EE,stroke-width:2.5px
-    2025_RotateKV ==>|" "| 2025_MixKVQ
+    2025_LMCache ==>|" "| 2026_Bidaw
     linkStyle 80 stroke:#9370DB,stroke-width:2.5px
-    2025_ShadowKV ==>|" "| 2025_FreeKV
+    2025_LMCache ==>|" "| 2026_KVServe
     linkStyle 81 stroke:#FF6347,stroke-width:2.5px
-    2025_ShadowKV ==>|" "| 2026_KVDrive
+    2025_MILLION ==>|" "| 2025_VecInfer
     linkStyle 82 stroke:#20B2AA,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_BLASST
+    2025_PQCache ==>|" "| 2026_KVDrive
     linkStyle 83 stroke:#FFD700,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2025_TCA_Attention
+    2025_R_KV ==>|" "| 2026_TriAttention
     linkStyle 84 stroke:#FF69B4,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2026_CompactAttention
+    2025_RaaS ==>|" "| 2025_FreeKV
     linkStyle 85 stroke:#00CED1,stroke-width:2.5px
-    2025_XAttention ==>|" "| 2026_UniPrefill
+    2025_RotateKV ==>|" "| 2025_MixKVQ
     linkStyle 86 stroke:#FFA500,stroke-width:2.5px
-    2026_FlashPrefill ==>|" "| 2026_CompactAttention
+    2025_SageAttention3 ==>|" "| 2026_ThriftAttention
     linkStyle 87 stroke:#7B68EE,stroke-width:2.5px
+    2025_ShadowKV ==>|" "| 2025_FreeKV
+    linkStyle 88 stroke:#9370DB,stroke-width:2.5px
+    2025_ShadowKV ==>|" "| 2026_KVDrive
+    linkStyle 89 stroke:#FF6347,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2025_BLASST
+    linkStyle 90 stroke:#20B2AA,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2025_TCA_Attention
+    linkStyle 91 stroke:#FFD700,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2026_CompactAttention
+    linkStyle 92 stroke:#FF69B4,stroke-width:2.5px
+    2025_XAttention ==>|" "| 2026_UniPrefill
+    linkStyle 93 stroke:#00CED1,stroke-width:2.5px
+    2026_FlashPrefill ==>|" "| 2026_CompactAttention
+    linkStyle 94 stroke:#FFA500,stroke-width:2.5px
 ```
 
 ## SVG Family
@@ -640,7 +672,7 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
-## Cake Family
+## Tutti Family
 
 *4 methods, 3 relationships*
 
@@ -672,7 +704,7 @@ flowchart LR
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 ```
 
-## DeepEP Family
+## COMET Family
 
 *3 methods, 2 relationships*
 
@@ -821,6 +853,28 @@ flowchart LR
     click 2026_DeepSeek_V4 "../?search=DeepSeek-V4" _blank
 
     2024_DeepSeek_V3 ==>|" "| 2026_DeepSeek_V4
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+```
+
+## EAGLE Family
+
+*2 methods, 1 relationships*
+
+```mermaid
+flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2024_EAGLE["EAGLE[2024]"]
+    class 2024_EAGLE rootNode
+    click 2024_EAGLE "../?search=EAGLE" _blank
+    2026_DFlash["DFlash[2026]"]
+    class 2026_DFlash leafNode
+    click 2026_DFlash "../?search=DFlash" _blank
+
+    2024_EAGLE ==>|" "| 2026_DFlash
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 ```
 

@@ -101,7 +101,7 @@ def summarize_papers_with_llm(papers):
 def fetch_papers_with_retry(client, search, max_retries=5):
     """Fetch papers with exponential backoff retry on rate limit errors."""
     retry_count = 0
-    base_delay = 10  # Start with 10 seconds
+    base_delay = 30  # Start with 30 seconds
 
     while retry_count < max_retries:
         try:
@@ -109,7 +109,7 @@ def fetch_papers_with_retry(client, search, max_retries=5):
             for paper in client.results(search):
                 papers.append(paper)
                 print(f"\rFetching papers... {len(papers)}/{search.max_results}", end="", flush=True)
-                time.sleep(0.5)
+                time.sleep(1.0)
             print()  # newline after progress
             return papers
         except arxiv.HTTPError as e:
@@ -181,7 +181,7 @@ def main():
     query = query.replace(")", "%29")
 
     # Construct the default API client.
-    client = arxiv.Client()
+    client = arxiv.Client(delay_seconds=5.0)
 
     # Search for papers in batches
     total_results = 300  # 设置想要获取的总论文数

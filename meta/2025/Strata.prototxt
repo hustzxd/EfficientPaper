@@ -1,0 +1,40 @@
+paper {
+  title: "Strata: Hierarchical Context Caching for Long Context Language Model Serving"
+  abbr: "Strata"
+  url: "http://arxiv.org/abs/2508.18572"
+  authors: "Zhiqiang Xie"
+  authors: "Ziyi Xu"
+  authors: "Mark Zhao"
+  authors: "Yuwei An"
+  authors: "Vikram Sharma Mailthody"
+  authors: "Scott Mahlke"
+  authors: "Michael Garland"
+  authors: "Christos Kozyrakis"
+  institutions: "Stanford University"
+  institutions: "NVIDIA"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "University of Colorado Boulder"
+  institutions: "Carnegie Mellon University"
+  institutions: "University of Michigan"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sgl-project/sglang"
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+  methods: "2025/LMCache"
+  methods: "2024/CachedAttention"
+}
+update_time: 1779932350

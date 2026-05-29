@@ -16,7 +16,10 @@
 <div id="paper-search-app">
   <div class="search-header">
     <div class="search-box">
-      <input type="text" id="search-input" placeholder="Search: key1 key2 (OR), key1 AND key2, -key (NOT), &quot;phrase&quot;" autofocus>
+      <div class="search-input-row">
+        <img src="images/logo.svg" alt="logo" class="search-logo">
+        <input type="text" id="search-input" placeholder="Search: key1 key2 (OR), key1 AND key2, -key (NOT), &quot;phrase&quot;" autofocus>
+      </div>
       <span class="search-hint">Press <kbd>/</kbd> to focus, <kbd>Esc</kbd> to clear</span>
     </div>
     <div class="filter-bar">
@@ -321,8 +324,21 @@
   margin-bottom: 12px;
 }
 
+.search-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
 #search-input {
-  width: 100%;
+  flex: 1;
   padding: 12px 16px;
   font-size: 16px;
   border: 2px solid #e0e0e0;

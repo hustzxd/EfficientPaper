@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+<link rel="icon" type="image/svg+xml" href="{{ base_url }}/images/logo.svg">
+{% endblock %}
+
 {% block content %}
   {{ super() }}
   {% include "partials/comments.html" %}
