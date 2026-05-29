@@ -1,6 +1,148 @@
 {
   "papers": [
     {
+      "id": "ThriftAttention",
+      "title": "ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention",
+      "abbr": "ThriftAttention",
+      "url": "https://arxiv.org/abs/2605.23081",
+      "authors": [
+        "Joe Sharratt"
+      ],
+      "institutions": [
+        ""
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "09-Quantization"
+      ],
+      "code_url": "https://github.com/joesharratt1229/ThriftAttention",
+      "note_url": "notes/2026/ThriftAttention/note/",
+      "prototxt_path": "meta/2026/ThriftAttention.prototxt",
+      "update_time": 1780019035,
+      "rating": 0
+    },
+    {
+      "id": "VECTOR",
+      "title": "A Simple Plug-in for Improving Eviction-Based KV Cache Compression",
+      "abbr": "VECTOR",
+      "url": "https://arxiv.org/abs/2605.23258",
+      "authors": [
+        "Yuping Lin",
+        "Jiayuan Ding",
+        "Yue Xing",
+        "Pengfei He",
+        "Jiliang Tang",
+        "Subhabrata Mukherjee"
+      ],
+      "institutions": [
+        "Michigan State University",
+        "Hippocratic AI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/VECTOR/note/",
+      "prototxt_path": "meta/2026/VECTOR.prototxt",
+      "update_time": 1780018679,
+      "rating": 0
+    },
+    {
+      "id": "DFlash",
+      "title": "DFlash: Block Diffusion for Flash Speculative Decoding",
+      "abbr": "DFlash",
+      "url": "http://arxiv.org/abs/2602.06036",
+      "authors": [
+        "Jian Chen",
+        "Yesheng Liang",
+        "Zhijian Liu"
+      ],
+      "institutions": [
+        "UC San Diego"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/DFlash/cover.jpg",
+      "keywords": [
+        "30-Speculative Decoding"
+      ],
+      "code_url": "https://github.com/z-lab/dflash",
+      "note_url": "notes/2026/DFlash/note/",
+      "prototxt_path": "meta/2026/DFlash.prototxt",
+      "update_time": 1779965965,
+      "rating": 0
+    },
+    {
+      "id": "Strata",
+      "title": "Strata: Hierarchical Context Caching for Long Context Language Model Serving",
+      "abbr": "Strata",
+      "url": "http://arxiv.org/abs/2508.18572",
+      "authors": [
+        "Zhiqiang Xie",
+        "Ziyi Xu",
+        "Mark Zhao",
+        "Yuwei An",
+        "Vikram Sharma Mailthody",
+        "Scott Mahlke",
+        "Michael Garland",
+        "Christos Kozyrakis"
+      ],
+      "institutions": [
+        "Stanford University",
+        "NVIDIA",
+        "Shanghai Jiao Tong University",
+        "University of Colorado Boulder",
+        "Carnegie Mellon University",
+        "University of Michigan"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/Strata/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/sgl-project/sglang",
+      "note_url": "notes/2025/Strata/note/",
+      "prototxt_path": "meta/2025/Strata.prototxt",
+      "update_time": 1779932350,
+      "rating": 0
+    },
+    {
+      "id": "ContiguousKV",
+      "title": "ContiguousKV: Accelerating LLM Prefill with Granularity-Aligned KV Cache Management",
+      "abbr": "ContiguousKV",
+      "url": "http://arxiv.org/abs/2601.13631",
+      "authors": [
+        "Jing Zou",
+        "Shangyu Wu",
+        "Hancong Duan",
+        "Qiao Li",
+        "Chun Jason Xue"
+      ],
+      "institutions": [
+        "UESTC",
+        "MBZUAI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/ContiguousKV/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/ContiguousKV/note/",
+      "prototxt_path": "meta/2026/ContiguousKV.prototxt",
+      "update_time": 1779862107,
+      "rating": 0
+    },
+    {
       "id": "FlexGen",
       "title": "FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU",
       "abbr": "FlexGen",
@@ -39,36 +181,41 @@
       "code_url": "https://github.com/FMInference/FlexGen",
       "note_url": "notes/2023/FlexGen/note/",
       "prototxt_path": "meta/2023/FlexGen.prototxt",
-      "update_time": 1779849750,
+      "update_time": 1779862107,
       "rating": 0
     },
     {
-      "id": "ContiguousKV",
-      "title": "ContiguousKV: Accelerating LLM Prefill with Granularity-Aligned KV Cache Management",
-      "abbr": "ContiguousKV",
-      "url": "http://arxiv.org/abs/2601.13631",
+      "id": "FlashCache",
+      "title": "Revisiting Multimodal KV Cache Compression: A Frequency-Domain-Guided Outlier-KV-Aware Approach",
+      "abbr": "FlashCache",
+      "url": "http://arxiv.org/abs/2511.16786",
       "authors": [
-        "Jing Zou",
-        "Shangyu Wu",
-        "Hancong Duan",
-        "Qiao Li",
-        "Chun Jason Xue"
+        "Yaoxin Yang",
+        "Peng Ye",
+        "Xudong Tan",
+        "Chongjun Tu",
+        "Maosen Zhao",
+        "Jia Hao",
+        "Tao Chen"
       ],
       "institutions": [
-        "UESTC",
-        "MBZUAI"
+        "Fudan University",
+        "Shanghai Innovation Institute",
+        "The Chinese University of Hong Kong",
+        "Shanghai Artificial Intelligence Laboratory",
+        "Zhangjiang Laboratory"
       ],
       "year": 2026,
       "venue": "arXiv",
-      "cover": "notes/2026/ContiguousKV/cover.jpg",
+      "cover": null,
       "keywords": [
         "20-Sparse/Eviction (KV Cache)",
         "21-KV Cache Management"
       ],
       "code_url": null,
-      "note_url": "notes/2026/ContiguousKV/note/",
-      "prototxt_path": "meta/2026/ContiguousKV.prototxt",
-      "update_time": 1779849429,
+      "note_url": "notes/2026/FlashCache/note/",
+      "prototxt_path": "meta/2026/FlashCache.prototxt",
+      "update_time": 1779862107,
       "rating": 0
     },
     {
@@ -688,7 +835,7 @@
       "note_url": "notes/2026/Tutti/note/",
       "prototxt_path": "meta/2026/Tutti.prototxt",
       "update_time": 1778220869,
-      "rating": 0
+      "rating": 3
     },
     {
       "id": "SWA",
@@ -13130,32 +13277,6 @@
       "rating": 0
     },
     {
-      "id": "vLLM",
-      "title": "SGLang",
-      "abbr": "SGLang-Code",
-      "url": "",
-      "authors": [
-        "Name1",
-        "Name2"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2023,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "40-LLM Deployment",
-        "46-Tool"
-      ],
-      "code_url": "https://github.com/sgl-project/sglang",
-      "note_url": "notes/2023/vLLM/note/",
-      "prototxt_path": "meta/2023/vLLM.prototxt",
-      "update_time": 0,
-      "rating": 0
-    },
-    {
       "id": "SGLang",
       "title": "SGLang: Efficient Execution of Structured Language Model Programs",
       "abbr": "SGLang",
@@ -15037,30 +15158,6 @@
       "rating": 0
     },
     {
-      "id": "SGLang-Code",
-      "title": "vLLM",
-      "abbr": "vLLM",
-      "url": "",
-      "authors": [
-        "Name2"
-      ],
-      "institutions": [
-        "inst1"
-      ],
-      "year": 2023,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "40-LLM Deployment",
-        "46-Tool"
-      ],
-      "code_url": "https://github.com/vllm-project/vllm",
-      "note_url": "notes/2023/SGLang-Code/note/",
-      "prototxt_path": "meta/2023/SGLang-Code.prototxt",
-      "update_time": 0,
-      "rating": 0
-    },
-    {
       "id": "VORTA",
       "title": "VORTA: Efficient Video Diffusion via Routing Sparse Attention",
       "abbr": "VORTA",
@@ -15289,5 +15386,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 462
+  "total": 465
 }

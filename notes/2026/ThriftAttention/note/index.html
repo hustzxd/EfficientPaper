@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>SGLang-Code - Efficient Paper</title>
+    <title>ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,8 +15,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "SGLang-Code";
-        var mkdocs_page_input_path = "notes/2023/SGLang-Code/note.md";
+        var mkdocs_page_name = "ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention";
+        var mkdocs_page_input_path = "notes/2026/ThriftAttention/note.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -24,7 +24,9 @@
       <script src="../../../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
@@ -143,7 +145,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">SGLang-Code</li>
+      <li class="breadcrumb-item active">ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -153,9 +155,141 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="sglang-code">SGLang-Code</h1>
-<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
+                <h1 id="thriftattention-selective-mixed-precision-for-long-context-fp4-attention">ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention</h1>
+<blockquote>
+<p>Joe Sharratt</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
+<p>Efficient attention algorithms are critical to mitigate the quadratic cost of attention in long-context workloads. Prior work utilises block-scaled quantisation techniques on Blackwell GPUs to move attention computation to 4-bit precision to accelerate inference. However, these techniques result in significant quality degradation in long-context settings. We show that the output impact of quantisation error is highly non-uniform and increases with the importance of each query-key interaction, concentrating functionally relevant error in a small number of attention blocks that contain the most important tokens. We propose ThriftAttention, a low-bit attention variant that delivers near-FP16 long-context quality at FP4 inference efficiency. This approach proceeds in two stages. First, a heuristic rapidly selects a small number of important query-key block pairs for FP16 precision. Second, the selected blocks are computed in FP16 and the remaining blocks in FP4, with both paths merged via online softmax into a single output. We demonstrate across long-context benchmarks and model families that by computing only 5% of query-key blocks in FP16, ThriftAttention recovers on average 89.1% of the FP4-to-FP16 performance gap. We show ThriftAttention's advantage grows with sequence length, mitigating the systematic FP4 quality degradation observed at longer contexts.</p>
+<h2 id="_1">一句话总结</h2>
+<p>ThriftAttention 是一种 training-free 的混合精度 attention 机制，在 Blackwell GPU 上将 95% 的 QK block pair 用 FP4 计算、仅对最重要的 5% 用 FP16，通过 online softmax 合并，以接近 FP4 的推理效率恢复近 FP16 的长上下文质量（平均恢复 89.1% 的 FP4→FP16 性能差距）。</p>
+<h2 id="_2">背景与问题</h2>
+<p>NVIDIA Blackwell 架构引入原生 FP4 Tensor Core，算力是 FP16 的 4 倍。SageAttention3 等工作利用这一硬件将 attention 计算迁移到 FP4 精度以加速推理。但在长上下文场景下，均匀 FP4 attention 导致严重的质量退化——随着序列长度增加，per-token 量化误差在更多位置上累积，质量退化系统性恶化。</p>
+<p><strong>关键观察：FP4 量化误差的影响是高度非均匀的。</strong></p>
+<p>从一阶扰动分析出发，attention 输出的量化误差可分解为：</p>
+<pre><code>||δo|| ≤ Σ_j |ε_j| · p_j · ||v_j - o||
+</code></pre>
+<p>其中 ε_j 是 score 量化误差，p_j 是 attention weight，||v_j - o|| 是 value 偏差。p_j 因子使得高 attention score 的 token 的量化误差被 softmax 指数放大——<strong>功能相关的量化误差集中在少数包含最重要 token 的 attention block 中</strong>。</p>
+<p>这启发了一个简单思路：只对这些高误差 block 用 FP16，其余用 FP4。</p>
+<h2 id="_3">核心方法</h2>
+<p>ThriftAttention 是一个两阶段的混合精度 attention 算法：</p>
+<h3 id="stage-1-block-importance-scoring">Stage 1: Block-Importance Scoring</h3>
+<p>将 Q 分为 T_q = N/B_q 个 block，K/V 分为 T_k = N/B_k 个 block。对每个 block 计算 token 均值，然后用均值的内积作为 block pair 重要性分数：</p>
+<pre><code>S̃_ij = Q̄_i · K̄_j^T
+</code></pre>
+<p>这是一个极轻量的启发式——只需对 block 均值做矩阵乘法，复杂度远低于完整 QK^T。</p>
+<h3 id="stage-2-mixed-precision-attention">Stage 2: Mixed-Precision Attention</h3>
+<p>对每个 query block i，选取 top-k 个最重要的 key block 进入 FP16 路径，其余进入 FP4 路径：</p>
+<ul>
+<li><strong>FP16 路径</strong>（j ∈ T_i）：标准 FP16 矩阵乘 S_ij = Q_i K_j^T / √d，follow FlashAttention-2 online softmax</li>
+<li><strong>FP4 路径</strong>（j ∉ T_i）：用 NVFP4 microscaling 格式（E2M1 + E4M3 per-group scale），probability block 也用 SageAttention3 的两级量化方案</li>
+</ul>
+<p>两条路径通过 online softmax 在线合并为统一输出。关键设计：<strong>所有 block 都被计算</strong>（只是精度不同），不像 sparse 方法直接丢弃 block，因此误差上界是 FP4 量化噪声而非完全丢失。</p>
+<h3 id="_4">实现优化</h3>
+<ul>
+<li>单一 fused CUDA kernel，FP16 query fragment 仅在 selected-block 阶段加载到寄存器</li>
+<li>共享内存 region 在 K/V tile 的 FP16 和 FP4 路径间复用</li>
+<li>FP4 KV tile 使用 double-buffering 隐藏内存加载延迟</li>
+<li>不包含 top-k block 的 warps/CTA 完全跳过 FP16 路径</li>
+</ul>
+<h2 id="_5">技术细节</h2>
+<h3 id="_6">量化格式</h3>
+<p>使用 NVFP4 microscaling 格式（Blackwell 原生支持）：
+- 元素：E2M1 格式（1 符号 + 2 指数 + 1 尾数）
+- Per-group scale：E4M3 格式（FP8）
+- Group size = 16
+- Q、K、V 独立量化</p>
+<h3 id="_7">因果掩码</h3>
+<p>对 causal LLM attention，block 选择限制在因果可见的 key block 范围内。</p>
+<h3 id="kv-cache">KV Cache 内存开销</h3>
+<p>论文提到 ThriftAttention 增加 28% 的 KV cache 内存占用（同时存储 FP16 和 FP4 cache），这是一个 trade-off。</p>
+<h2 id="_8">实验设置</h2>
+<ul>
+<li><strong>硬件</strong>：RTX PRO 6000 (Blackwell)</li>
+<li><strong>模型</strong>：Llama3.2-3B, Llama3.1-8B, Qwen3-4B, Qwen3-8B, Ministral3-8B</li>
+<li><strong>基准</strong>：LongBench-v1, HELMET, RULER, PG-19</li>
+<li><strong>Baseline</strong>：FlashAttention-2 (FP16), SageAttention3 (FP4), Quest (sparse), Sparse Top-k</li>
+<li><strong>Block size</strong>：B_q = B_k = 64</li>
+<li><strong>FP16 budget</strong>：5%, 10%, 25%</li>
+</ul>
+<h2 id="_9">主要结果</h2>
+<h3 id="_10">质量恢复</h3>
+<table>
+<thead>
+<tr>
+<th>FP16 Budget</th>
+<th>平均恢复率（FP4→FP16 差距）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5%</td>
+<td>89.1%</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>91.8%</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>92.4%</td>
+</tr>
+</tbody>
+</table>
+<p>边际收益递减明显——5% 已恢复绝大部分差距。</p>
+<h3 id="_11">推理效率</h3>
+<ul>
+<li><strong>Prefill kernel</strong>：最高 1.7× 加速（vs FlashAttention-2）</li>
+<li><strong>Decode kernel</strong>：3×–5.5× 加速（vs FlashAttention-2），接近纯 FP4 延迟</li>
+<li><strong>端到端 decode</strong>：131k 上下文下 ~2× 加速（vs FP16）</li>
+</ul>
+<h3 id="_12">长上下文优势</h3>
+<p>ThriftAttention 的优势随序列长度增长而扩大：
+- 8k：FP4 保留 50% 质量，ThriftAttention ~2× FP4
+- 131k：FP4 仅保留 32% 质量，ThriftAttention ~2.2× FP4</p>
+<p>NLL 分析显示，128k 序列末尾 token 的 FP4 ΔNLL 高达 0.10，ThriftAttention 将其降至 ≤0.02（~5× 改善）。</p>
+<h3 id="vs-sparse-attentionmatched-compute">vs Sparse Attention（matched compute）</h3>
+<p>在等效 FLOP 预算下（ThriftAttention 5% FP16 = Sparse 28.7% FP16）：
+- ThriftAttention：0.599
+- Sparse Top-k：0.036
+- Quest：0.142</p>
+<p>核心差异：sparse 方法完全丢弃 block 导致不可逆信息丢失，ThriftAttention 保留所有 block 在低精度，退化更平滑。</p>
+<h2 id="_13">优点与局限</h2>
+<p><strong>优点：</strong>
+- Training-free，无需模型修改或重训练
+- 仅 5% FP16 block 即可恢复 ~89% 质量差距
+- 优势随序列长度增长而扩大，正中长上下文推理痛点
+- 相比 sparse 方法在 matched compute 下大幅领先
+- 已开源 CUDA kernel</p>
+<p><strong>局限：</strong>
+- KV cache 内存增加 28%（同时存 FP16 和 FP4）
+- 目前仅针对 Blackwell GPU（consumer 级），data-center Blackwell (SM100) 的扩展待实现
+- 当前仅用于推理加速，训练场景待探索
+- Block importance 评分使用 token 均值内积，是近似启发式而非精确重要性</p>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>ThriftAttention 属于 <strong>quantization</strong> 领域，具体聚焦于 <strong>attention 计算的混合精度量化</strong>。与 SageAttention3（均匀 FP4 attention）直接对比，也与 Quest 等 sparse attention 方法形成互补视角：与其丢弃 block 不如保留低精度版本。这为 EfficientPaper 的量化和 attention 优化方向提供了一个新的混合精度范式。</p>
+<h2 id="_14">可复现/实现要点</h2>
+<ol>
+<li><strong>硬件要求</strong>：Blackwell GPU（RTX PRO 6000 或更高）</li>
+<li><strong>量化格式</strong>：NVFP4（E2M1 + E4M3 microscale），Blackwell 原生支持</li>
+<li><strong>Block size</strong>：B_q = B_k = 64</li>
+<li><strong>Block importance</strong>：token 均值内积 Q̄_i · K̄_j^T，top-k 选择</li>
+<li><strong>Kernel</strong>：单一 fused CUDA kernel，FP16/FP4 双路径，online softmax 合并</li>
+<li><strong>代码</strong>：https://github.com/joesharratt1229/ThriftAttention</li>
+<li><strong>评估</strong>：LongBench-v1, HELMET, RULER, PG-19，使用 NLL 和 task-specific metrics</li>
+</ol>
+<h2 id="_15">个人备注</h2>
+<ul>
+<li>与 VECTOR 的思路有概念相似性：两者都识别出"重要"交互需要更高精度/更多信息，但 VECTOR 在 KV cache 层面做 token 级分配，ThriftAttention 在 attention 计算层面做 block 级精度分配</li>
+<li>Block importance 用均值内积是极简启发式，是否可以用 attention sink pattern 或 pre-RoPE Q/K concentration 做更精确的选择？</li>
+<li>28% KV cache 内存增加是一个实际 trade-off，在内存受限场景下需要权衡</li>
+<li>与 FlashAttention-4 的关系值得探索：FA4 是异构流水线，ThriftAttention 是混合精度，两者是否可组合？</li>
+<li>对 Blackwell data-center GPU (SM100) 的扩展可能会带来更大加速（更高的 FP4 吞吐）</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

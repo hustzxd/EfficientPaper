@@ -24,7 +24,9 @@
       <script src="../../../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
@@ -163,6 +165,30 @@
 <hr />
 <p><em>以下总结由 MiMo 生成：</em></p>
 <p>这篇论文针对长上下文大语言模型服务中KV缓存容量不足的问题，提出了一种基于SSD的高效缓存方案。研究团队设计了Tutti系统，通过GPU中心化的对象存储和异步I/O机制，消除了CPU在关键数据路径上的干预。实验表明，Tutti在严格SLO约束下将首token延迟降低了78.3%，请求吞吐量提升2倍，服务成本降低27%，同时实现了接近DRAM缓存的推理性能。</p>
+<hr />
+<h2 id="tutti-vs-stratagpu-centric-io">Tutti vs Strata：GPU-centric I/O 的两种路径</h2>
+<p>两者都以 GPU 为中心优化 KV cache 的数据搬运，但解决的问题层级不同：</p>
+<h3 id="strata-gpu-io">Strata 的 GPU 辅助 I/O</h3>
+<ul>
+<li><strong>数据源</strong>：CPU DRAM → GPU HBM</li>
+<li><strong>瓶颈</strong>：PCIe 带宽利用率低（碎片化小页面传输，仅利用 22% 理论带宽）</li>
+<li><strong>机制</strong>：用 CUDA kernel 替代 cudaMemcpyAsync，GPU 线程直接从 CPU pinned memory 读数据到寄存器再写到 HBM</li>
+<li><strong>参数</strong>：2 个 CUDA block × 1024 线程，~50 GB/s，&lt;5% 计算干扰</li>
+<li><strong>附带收益</strong>：传输过程中零开销做 layout 变换（layer-first ↔ page-first）</li>
+<li><strong>本质</strong>：GPU 线程接管搬运工作，用 GPU 大规模并行解决小粒度传输的并发度不足</li>
+</ul>
+<h3 id="tutti-gpu-centric-ssd-object-store">Tutti 的 GPU-Centric SSD Object Store</h3>
+<ul>
+<li><strong>数据源</strong>：SSD → GPU HBM（绕过 CPU）</li>
+<li><strong>瓶颈</strong>：CPU 在 SSD restore path 上成为瓶颈（即使 GDS 也需要 CPU 发起每个 I/O）</li>
+<li><strong>机制</strong>：GPU-native 对象抽象 + GPU io_uring 异步直接 I/O + slack-aware I/O 调度</li>
+<li><strong>关键设计</strong>：CPU 仅负责每层异步加载一次 I/O kernel，之后完全由 GPU 线程管理 SSD 数据路径</li>
+<li><strong>本质</strong>：把 SSD→CPU→GPU 两级路径变成 GPU 直接管理 SSD 数据，消除 CPU 中间人</li>
+</ul>
+<h3 id="_1">互补关系</h3>
+<pre><code>SSD ──(Tutti: GPU 直管 SSD, 绕过 CPU)──→ CPU DRAM ──(Strata: GPU 辅助搬运)──→ GPU HBM
+</code></pre>
+<p>在完整的分层缓存体系中，Tutti 优化 SSD→CPU 这一段（存储层），Strata 优化 CPU→GPU 这一段（传输层）。两者结合可实现从 SSD 到 GPU HBM 的全链路高效数据路径。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

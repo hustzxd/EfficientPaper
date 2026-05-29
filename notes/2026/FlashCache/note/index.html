@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Revisiting Multimodal KV Cache Compression: A Frequency-Domain-Guided Outlier-KV-Aware Approach - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Revisiting Multimodal KV Cache Compression: A Frequency-Domain-Guided Outlier-KV-Aware Approach";
+        var mkdocs_page_input_path = "notes/2026/FlashCache/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Revisiting Multimodal KV Cache Compression: A Frequency-Domain-Guided Outlier-KV-Aware Approach</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="revisiting-multimodal-kv-cache-compression-a-frequency-domain-guided-outlier-kv-aware-approach">Revisiting Multimodal KV Cache Compression: A Frequency-Domain-Guided Outlier-KV-Aware Approach</h1>
+<blockquote>
+<p>Yaoxin Yang, Peng Ye, Xudong Tan, Chongjun Tu, Maosen Zhao, Jia Hao, Tao Chen</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>多模态大语言模型（MLLM）的推理开销很大，因为多模态 KV Cache 随视觉输入长度成比例增长。现有压缩方法主要依赖注意力分数来缩减缓存大小，这与 FlashAttention 等高效注意力内核不兼容，且忽略了 Value 向量对注意力输出的贡献。</p>
+<p>本文从 KV 矩阵分布的角度重新审视多模态 KV Cache 压缩。首先发现多模态 KV 矩阵的频域能量主要集中在低频；进一步发现，移除偏离主能量较大的 KV 对会导致显著性能下降，定义为 Outlier KV。提出 FlashCache，一个频域引导的、Outlier-KV 感知的压缩框架，在多个 MLLM 和基准上实现最高 1.69x 解码加速、80% KV 内存降低，同时保持任务性能。</p>
+<h2 id="_1">一句话总结</h2>
+<p>通过 DCT 频域分析发现多模态 KV 矩阵的低频能量集中特性，定义偏离主能量的 Outlier KV 为关键信息载体，并设计 Outlier KV 识别 + 动态预算分配模块，在不依赖注意力分数的情况下实现高效的多模态 KV Cache 压缩。</p>
+<h2 id="_2">背景与问题</h2>
+<h3 id="kv-cache">多模态 KV Cache 的瓶颈</h3>
+<p>MLLM 在长上下文多图/高分辨率/视频场景下，视觉 token 数量可达文本 token 的数百甚至数千倍，导致：
+- KV Cache 内存急剧膨胀
+- 解码阶段显著减速</p>
+<h3 id="_3">现有方法的局限</h3>
+<p>现有 KV Cache 压缩方法（LOOK-M、MEDA 等）依赖注意力分数：
+1. <strong>与 FlashAttention 不兼容</strong>：FlashAttention 不显式输出完整注意力矩阵，重计算引入额外开销
+2. <strong>忽略 Value 贡献</strong>：注意力分数仅反映 Q-K 交互，忽略了 V 矩阵对输出的信息贡献</p>
+<p><strong>核心问题</strong>：如何在不依赖注意力分数的情况下进行高效的多模态 KV Cache 压缩？</p>
+<h2 id="_4">核心方法</h2>
+<h3 id="_5">关键发现</h3>
+<p><strong>发现 1：频域低频集中</strong>。对 KV 矩阵做 DCT 变换后，频域能量主要集中在低频分量，高频分量占比很小。</p>
+<p><strong>发现 2：Outlier KV 假说</strong>。用低通滤波提取主能量（Base KV）后，计算每个 KV 对与 Base KV 的偏差。实验证明：
+- 移除<strong>偏差大</strong>的 KV 对 → 性能急剧下降
+- 移除<strong>偏差小</strong>的 KV 对 → 性能影响较小
+- 说明偏差大的 KV 对（Outlier KV）编码了推理关键特征</p>
+<h3 id="flashcache">FlashCache 框架</h3>
+<p>FlashCache 在 prefill 阶段结束后一次性压缩 KV Cache，包含两个核心模块：</p>
+<h4 id="1-outlier-kv-recognition-module">1. Outlier KV Recognition Module</h4>
+<p>对每层的 KV 矩阵执行：
+1. <strong>DCT 变换</strong>：将 KV 矩阵映射到频域
+2. <strong>低通滤波</strong>：保留低频分量（截断因子 γ=0.1~0.2），丢弃高频
+3. <strong>IDCT 逆变换</strong>：回到时域，得到平滑的 Base KV
+4. <strong>偏差计算</strong>：对每个 KV 对计算与 Base KV 的 MSE 偏差（分别计算 K 和 V 的偏差）
+5. <strong>Top-R 选择</strong>：按偏差得分排序，保留偏差最大的 R 个 KV 对（Outlier KV）</p>
+<h4 id="2-dynamic-budget-allocation-module">2. Dynamic Budget Allocation Module</h4>
+<p>观察到不同层的低频集中程度不同，因此动态分配每层的 KV Cache 预算：
+1. 对每层计算频域中 outlier 信息能量与总能量的比值
+2. 将比值归一化为权重
+3. 在全局缓存预算下，为每层分配不同的保留配额</p>
+<p>低频集中度高的层 → outlier 信息少 → 分配较少预算
+低频集中度低的层 → outlier 信息多 → 分配较多预算</p>
+<h2 id="_6">技术细节</h2>
+<h3 id="dct">DCT 与低通滤波</h3>
+<ul>
+<li>使用离散余弦变换（DCT）将 KV 矩阵映射到频域</li>
+<li>截断因子 γ 控制低通滤波的截止频率（γ 越小保留越多低频）</li>
+<li>实验最优 γ 范围：0.1~0.2</li>
+<li>使用 NVIDIA CuPy 加速 DCT 运算</li>
+</ul>
+<h3 id="_7">偏差得分</h3>
+<p>对第 l 层的第 i 个 KV 对：
+- DEV_k = MSE(K_i, K_base_i)（Key 偏差）
+- DEV_v = MSE(V_i, V_base_i)（Value 偏差）
+- 综合偏差得分用于排序选择 Outlier KV</p>
+<h3 id="_8">压缩时机</h3>
+<p>在 prefill 阶段结束后一次性执行压缩，不影响解码阶段的正常流程。压缩后的 KV Cache 直接兼容 FlashAttention。</p>
+<h2 id="_9">实验设置</h2>
+<h3 id="_10">模型</h3>
+<ul>
+<li>LLaVA-OneVision-1.5-8B-Instruct</li>
+<li>Qwen2.5-VL-7B-Instruct</li>
+<li>Qwen2.5-VL-32B-Instruct</li>
+</ul>
+<h3 id="_11">硬件</h3>
+<ul>
+<li>单卡 NVIDIA H200 (141GB)</li>
+<li>使用 FlashAttention</li>
+</ul>
+<h3 id="_12">基准</h3>
+<ul>
+<li><strong>多图理解</strong>：MileBench, MUIRBench, MMMU</li>
+<li><strong>高分辨率</strong>：V*, HR-Bench</li>
+<li><strong>视频</strong>：FAVOR-Bench</li>
+</ul>
+<h3 id="baseline">Baseline</h3>
+<ul>
+<li>StreamingLLM, H2O, SnapKV, LOOK-M, MEDA</li>
+</ul>
+<h3 id="_13">配置</h3>
+<ul>
+<li>KV Cache 保留率：ρ = 0.8, 0.6, 0.4, 0.2, 0.1, 0.05</li>
+<li>重点评估 ρ = 0.2（高压缩）和 ρ = 0.1/0.05（极高压缩）</li>
+</ul>
+<h2 id="_14">主要结果</h2>
+<h3 id="milebench-02">多图理解（MileBench, ρ=0.2）</h3>
+<ul>
+<li>FlashCache 在多数任务上优于所有 baseline</li>
+<li>在 Needle-In-A-Haystack 任务上优势尤其显著（保留检索关键 KV）</li>
+</ul>
+<h3 id="005">极低保留率（ρ=0.05）</h3>
+<ul>
+<li>其他方法在 MUIRBench 上 OOM，FlashCache 正常运行</li>
+<li>在 V* 上 FlashCache 达到 79.66%（vs Full Cache 80.23%），仅 0.57% 差距</li>
+</ul>
+<h3 id="_15">高分辨率场景</h3>
+<ul>
+<li>ρ=0.1 时 FlashCache 在 V* 上达到 80.23%（与 Full Cache 持平）</li>
+</ul>
+<h3 id="_16">解码加速</h3>
+<ul>
+<li>ρ=0.2 时最高 <strong>1.69x</strong> 解码加速</li>
+<li>长序列下加速效果更显著（64K input 时延迟几乎恒定）</li>
+<li>KV 内存降低 <strong>80%</strong></li>
+</ul>
+<h3 id="_17">方法开销对比</h3>
+<p>FlashCache 额外开销远低于基于注意力的方法：
+- 2K input：1.66ms（vs MEDA 16.6ms, LOOK-M 6.93ms）
+- 8K input：6.77ms（vs MEDA 83.75ms, LOOK-M 53.97ms）</p>
+<h3 id="_18">消融实验</h3>
+<ul>
+<li><strong>截断因子 γ</strong>：0.1~0.2 最优，过大会丢失 Base KV 主成分</li>
+<li><strong>动态预算分配（DBA）</strong>：移除后性能明显下降（INIAH: 29.69→24.69, CLEVR: 41.04→35.85）</li>
+</ul>
+<h2 id="_19">优点与局限</h2>
+<h3 id="_20">优点</h3>
+<ol>
+<li><strong>无需注意力分数</strong>：与 FlashAttention 完全兼容，无需重计算注意力矩阵</li>
+<li><strong>训练无关</strong>：纯推理时压缩，无需微调或校准</li>
+<li><strong>低开销</strong>：DCT + MSE 的计算开销远低于注意力计算</li>
+<li><strong>考虑 Value 贡献</strong>：同时计算 K 和 V 的偏差，而非仅看 Q-K 交互</li>
+<li><strong>动态预算分配</strong>：自适应不同层的冗余程度</li>
+<li><strong>鲁棒性好</strong>：在极低保留率下性能衰减缓慢</li>
+</ol>
+<h3 id="_21">局限</h3>
+<ol>
+<li><strong>仅验证 MLLM</strong>：未在纯文本 LLM 上测试（文本 KV 的频域特性可能不同）</li>
+<li><strong>DCT 开销</strong>：虽然用 CuPy 加速，但 DCT 本身仍有额外计算（64K+ 输入时可能显著）</li>
+<li><strong>单次压缩</strong>：只在 prefill 后压缩一次，不支持解码阶段的动态调整</li>
+<li><strong>截断因子 γ 需调优</strong>：虽然 0.1~0.2 通用，但不同模型/任务可能需要不同值</li>
+<li><strong>代码未开源</strong></li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>FlashCache 属于 <strong>KV Cache 稀疏化</strong>（kv_cache_sparse）和 <strong>KV Cache 管理</strong>（kv_cache_management）交叉领域。核心创新点：</p>
+<ul>
+<li><strong>频域视角</strong>：首次从频域分析多模态 KV 矩阵的分布特征</li>
+<li><strong>注意力无关</strong>：不依赖注意力分数进行 KV 选择，开辟了新的压缩范式</li>
+<li><strong>多模态特化</strong>：针对多模态场景中视觉 token 的特殊冗余模式</li>
+</ul>
+<p>与 EfficientPaper 中的 H2O、SnapKV 等注意力分数方法形成互补。</p>
+<h2 id="_22">可复现/实现要点</h2>
+<ol>
+<li><strong>DCT 实现</strong>：使用 NVIDIA CuPy 加速</li>
+<li><strong>关键参数</strong>：截断因子 γ=0.1~0.2</li>
+<li><strong>压缩流程</strong>：prefill 后一次性执行 DCT→滤波→IDCT→MSE→排序→选择</li>
+<li><strong>兼容性</strong>：压缩后直接用 FlashAttention，无需特殊 kernel</li>
+</ol>
+<h2 id="_23">个人备注</h2>
+<ul>
+<li>频域分析视角新颖，但 DCT 是否是最优的频域变换值得探讨（小波变换？）</li>
+<li>Outlier KV 的定义类似于量化中的 outlier 概念，两者可以结合</li>
+<li>在纯文本 LLM 上的效果有待验证——文本 KV 的频域分布是否也呈现低频集中？</li>
+<li>与 ContiguousChunk 思路的对比：FlashCache 是 token 级选择，ContiguousKV 是 chunk 级</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

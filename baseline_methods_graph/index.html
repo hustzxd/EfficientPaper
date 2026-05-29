@@ -24,11 +24,12 @@
     <![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../images/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    .gslide-image img { background: white; }</style> <script src="../assets/javascripts/glightbox.min.js"></script></link></head>
 <body class="wy-body-for-nav" role="document">
 <div class="wy-grid-for-nav">
 <nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
@@ -45,7 +46,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current" href="#">Graph</a>
 <ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="#kivi-family">KIVI Family</a>
+<li class="toctree-l2"><a class="reference internal" href="#h2o-family">H2O Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#svg-family">SVG Family</a>
 </li>
@@ -57,9 +58,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#gptq-family">GPTQ Family</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#cake-family">Cake Family</a>
+<li class="toctree-l2"><a class="reference internal" href="#tutti-family">Tutti Family</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#deepep-family">DeepEP Family</a>
+<li class="toctree-l2"><a class="reference internal" href="#comet-family">COMET Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dhc-family">DHC Family</a>
 </li>
@@ -70,6 +71,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#cla-family">CLA Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#deepseek-v3-family">DeepSeek-V3 Family</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eagle-family">EAGLE Family</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#adasplash-family">AdaSplash Family</a>
 </li>
@@ -182,8 +185,8 @@
 <h1 id="baseline-methods-graph">Baseline Methods Graph</h1>
 <p>This page visualizes baseline-method relationships extracted from meta files.</p>
 <p>Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.</p>
-<h2 id="kivi-family">KIVI Family</h2>
-<p><em>74 methods, 88 relationships</em></p>
+<h2 id="h2o-family">H2O Family</h2>
+<p><em>80 methods, 95 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
     classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
@@ -253,6 +256,9 @@
     2024_RazorAttention["RazorAttention[2024]"]
     class 2024_RazorAttention leafNode
     click 2024_RazorAttention "../?search=RazorAttention" _blank
+    2024_SGLang["SGLang[2024]"]
+    class 2024_SGLang rootNode
+    click 2024_SGLang "../?search=SGLang" _blank
     2024_SeerAttention["SeerAttention[2024]"]
     class 2024_SeerAttention rootNode
     click 2024_SeerAttention "../?search=SeerAttention" _blank
@@ -340,6 +346,9 @@
     2025_RotateKV["RotateKV[2025]"]
     class 2025_RotateKV defaultNode
     click 2025_RotateKV "../?search=RotateKV" _blank
+    2025_SageAttention3["SageAttention3[2025]"]
+    class 2025_SageAttention3 rootNode
+    click 2025_SageAttention3 "../?search=SageAttention3" _blank
     2025_ShadowKV["ShadowKV[2025]"]
     class 2025_ShadowKV rootNode
     click 2025_ShadowKV "../?search=ShadowKV" _blank
@@ -349,6 +358,9 @@
     2025_SlimInfer["SlimInfer[2025]"]
     class 2025_SlimInfer leafNode
     click 2025_SlimInfer "../?search=SlimInfer" _blank
+    2025_Strata["Strata[2025]"]
+    class 2025_Strata leafNode
+    click 2025_Strata "../?search=Strata" _blank
     2025_TCA_Attention["TCA-Attention[2025]"]
     class 2025_TCA_Attention leafNode
     click 2025_TCA_Attention "../?search=TCA-Attention" _blank
@@ -379,6 +391,9 @@
     2026_FastKVzip["FastKVzip[2026]"]
     class 2026_FastKVzip leafNode
     click 2026_FastKVzip "../?search=FastKVzip" _blank
+    2026_FlashCache["FlashCache[2026]"]
+    class 2026_FlashCache leafNode
+    click 2026_FlashCache "../?search=FlashCache" _blank
     2026_FlashPrefill["FlashPrefill[2026]"]
     class 2026_FlashPrefill defaultNode
     click 2026_FlashPrefill "../?search=FlashPrefill" _blank
@@ -400,6 +415,9 @@
     2026_Tactic["Tactic[2026]"]
     class 2026_Tactic leafNode
     click 2026_Tactic "../?search=Tactic" _blank
+    2026_ThriftAttention["ThriftAttention[2026]"]
+    class 2026_ThriftAttention leafNode
+    click 2026_ThriftAttention "../?search=ThriftAttention" _blank
     2026_TriAttention["TriAttention[2026]"]
     class 2026_TriAttention leafNode
     click 2026_TriAttention "../?search=TriAttention" _blank
@@ -409,6 +427,9 @@
     2026_UniPrefill["UniPrefill[2026]"]
     class 2026_UniPrefill leafNode
     click 2026_UniPrefill "../?search=UniPrefill" _blank
+    2026_VECTOR["VECTOR[2026]"]
+    class 2026_VECTOR leafNode
+    click 2026_VECTOR "../?search=VECTOR" _blank
     2026_VQKV["VQKV[2026]"]
     class 2026_VQKV leafNode
     click 2026_VQKV "../?search=VQKV" _blank
@@ -431,164 +452,178 @@
     linkStyle 7 stroke:#7B68EE,stroke-width:2.5px
     2023_H2O ==&gt;|" "| 2026_ContiguousKV
     linkStyle 8 stroke:#9370DB,stroke-width:2.5px
-    2023_H2O ==&gt;|" "| 2026_KVTC
+    2023_H2O ==&gt;|" "| 2026_FlashCache
     linkStyle 9 stroke:#FF6347,stroke-width:2.5px
-    2023_QuIP ==&gt;|" "| 2024_QuaRot
+    2023_H2O ==&gt;|" "| 2026_KVTC
     linkStyle 10 stroke:#20B2AA,stroke-width:2.5px
-    2023_vLLM ==&gt;|" "| 2026_Bidaw
+    2023_QuIP ==&gt;|" "| 2024_QuaRot
     linkStyle 11 stroke:#FFD700,stroke-width:2.5px
-    2023_vLLM ==&gt;|" "| 2026_KunServe
+    2023_vLLM ==&gt;|" "| 2026_Bidaw
     linkStyle 12 stroke:#FF69B4,stroke-width:2.5px
-    2024_AdaKV ==&gt;|" "| 2025_DefensiveKV
+    2023_vLLM ==&gt;|" "| 2026_KunServe
     linkStyle 13 stroke:#00CED1,stroke-width:2.5px
-    2024_AdaKV ==&gt;|" "| 2025_FastKV
+    2024_AdaKV ==&gt;|" "| 2025_DefensiveKV
     linkStyle 14 stroke:#FFA500,stroke-width:2.5px
-    2024_CachedAttention ==&gt;|" "| 2026_Bidaw
+    2024_AdaKV ==&gt;|" "| 2025_FastKV
     linkStyle 15 stroke:#7B68EE,stroke-width:2.5px
-    2024_DoubleSparsity ==&gt;|" "| 2025_UNComp
+    2024_CachedAttention ==&gt;|" "| 2025_Strata
     linkStyle 16 stroke:#9370DB,stroke-width:2.5px
-    2024_DuoAttention ==&gt;|" "| 2025_DefensiveKV
+    2024_CachedAttention ==&gt;|" "| 2026_Bidaw
     linkStyle 17 stroke:#FF6347,stroke-width:2.5px
-    2024_DuoAttention ==&gt;|" "| 2025_PruLong
+    2024_DoubleSparsity ==&gt;|" "| 2025_UNComp
     linkStyle 18 stroke:#20B2AA,stroke-width:2.5px
-    2024_DuoAttention ==&gt;|" "| 2026_KVServe
+    2024_DuoAttention ==&gt;|" "| 2025_DefensiveKV
     linkStyle 19 stroke:#FFD700,stroke-width:2.5px
-    2024_GEAR ==&gt;|" "| 2025_RotateKV
+    2024_DuoAttention ==&gt;|" "| 2025_PruLong
     linkStyle 20 stroke:#FF69B4,stroke-width:2.5px
-    2024_InfLLM ==&gt;|" "| 2024_MInference
+    2024_DuoAttention ==&gt;|" "| 2026_KVServe
     linkStyle 21 stroke:#00CED1,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2024_QuaRot
+    2024_GEAR ==&gt;|" "| 2025_RotateKV
     linkStyle 22 stroke:#FFA500,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2025_H1B_KV
+    2024_InfLLM ==&gt;|" "| 2024_MInference
     linkStyle 23 stroke:#7B68EE,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2025_KVmix
+    2024_KIVI ==&gt;|" "| 2024_QuaRot
     linkStyle 24 stroke:#9370DB,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2025_MILLION
+    2024_KIVI ==&gt;|" "| 2025_H1B_KV
     linkStyle 25 stroke:#FF6347,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2025_QJL
+    2024_KIVI ==&gt;|" "| 2025_KVmix
     linkStyle 26 stroke:#20B2AA,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2025_RotateKV
+    2024_KIVI ==&gt;|" "| 2025_MILLION
     linkStyle 27 stroke:#FFD700,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2026_KVTC
+    2024_KIVI ==&gt;|" "| 2025_QJL
     linkStyle 28 stroke:#FF69B4,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2026_TurboQuant
+    2024_KIVI ==&gt;|" "| 2025_RotateKV
     linkStyle 29 stroke:#00CED1,stroke-width:2.5px
-    2024_KIVI ==&gt;|" "| 2026_VQKV
+    2024_KIVI ==&gt;|" "| 2026_KVTC
     linkStyle 30 stroke:#FFA500,stroke-width:2.5px
-    2024_KVQuant ==&gt;|" "| 2024_QuaRot
+    2024_KIVI ==&gt;|" "| 2026_TurboQuant
     linkStyle 31 stroke:#7B68EE,stroke-width:2.5px
-    2024_KVQuant ==&gt;|" "| 2025_KVmix
+    2024_KIVI ==&gt;|" "| 2026_VQKV
     linkStyle 32 stroke:#9370DB,stroke-width:2.5px
-    2024_KVQuant ==&gt;|" "| 2025_MILLION
+    2024_KVQuant ==&gt;|" "| 2024_QuaRot
     linkStyle 33 stroke:#FF6347,stroke-width:2.5px
-    2024_KVQuant ==&gt;|" "| 2025_QJL
+    2024_KVQuant ==&gt;|" "| 2025_KVmix
     linkStyle 34 stroke:#20B2AA,stroke-width:2.5px
-    2024_KVQuant ==&gt;|" "| 2025_RotateKV
+    2024_KVQuant ==&gt;|" "| 2025_MILLION
     linkStyle 35 stroke:#FFD700,stroke-width:2.5px
-    2024_LazyLLM ==&gt;|" "| 2025_SlimInfer
+    2024_KVQuant ==&gt;|" "| 2025_QJL
     linkStyle 36 stroke:#FF69B4,stroke-width:2.5px
-    2024_MInference ==&gt;|" "| 2025_FlexPrefill
+    2024_KVQuant ==&gt;|" "| 2025_RotateKV
     linkStyle 37 stroke:#00CED1,stroke-width:2.5px
-    2024_MiKV ==&gt;|" "| 2025_RotateKV
+    2024_LazyLLM ==&gt;|" "| 2025_SlimInfer
     linkStyle 38 stroke:#FFA500,stroke-width:2.5px
-    2024_Mooncake ==&gt;|" "| 2026_Bidaw
+    2024_MInference ==&gt;|" "| 2025_FlexPrefill
     linkStyle 39 stroke:#7B68EE,stroke-width:2.5px
-    2024_PyramidKV ==&gt;|" "| 2025_EvolKV
+    2024_MiKV ==&gt;|" "| 2025_RotateKV
     linkStyle 40 stroke:#9370DB,stroke-width:2.5px
-    2024_PyramidKV ==&gt;|" "| 2026_TriAttention
+    2024_Mooncake ==&gt;|" "| 2026_Bidaw
     linkStyle 41 stroke:#FF6347,stroke-width:2.5px
-    2024_QuaRot ==&gt;|" "| 2026_KVServe
+    2024_PyramidKV ==&gt;|" "| 2025_EvolKV
     linkStyle 42 stroke:#20B2AA,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_CTkvr
+    2024_PyramidKV ==&gt;|" "| 2026_TriAttention
     linkStyle 43 stroke:#FFD700,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_FreeKV
+    2024_PyramidKV ==&gt;|" "| 2026_VECTOR
     linkStyle 44 stroke:#FF69B4,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_Kascade
+    2024_QuaRot ==&gt;|" "| 2026_KVServe
     linkStyle 45 stroke:#00CED1,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_Twilight
+    2024_Quest ==&gt;|" "| 2025_CTkvr
     linkStyle 46 stroke:#FFA500,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2025_UNComp
+    2024_Quest ==&gt;|" "| 2025_FreeKV
     linkStyle 47 stroke:#7B68EE,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2026_Double_P
+    2024_Quest ==&gt;|" "| 2025_Kascade
     linkStyle 48 stroke:#9370DB,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2026_KVDrive
+    2024_Quest ==&gt;|" "| 2025_Twilight
     linkStyle 49 stroke:#FF6347,stroke-width:2.5px
-    2024_Quest ==&gt;|" "| 2026_Tactic
+    2024_Quest ==&gt;|" "| 2025_UNComp
     linkStyle 50 stroke:#20B2AA,stroke-width:2.5px
-    2024_SeerAttention ==&gt;|" "| 2026_CompactAttention
+    2024_Quest ==&gt;|" "| 2026_Double_P
     linkStyle 51 stroke:#FFD700,stroke-width:2.5px
-    2024_SliceGPT ==&gt;|" "| 2024_QuaRot
+    2024_Quest ==&gt;|" "| 2026_KVDrive
     linkStyle 52 stroke:#FF69B4,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2024_PyramidKV
+    2024_Quest ==&gt;|" "| 2026_Tactic
     linkStyle 53 stroke:#00CED1,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_CTkvr
+    2024_Quest ==&gt;|" "| 2026_ThriftAttention
     linkStyle 54 stroke:#FFA500,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_DefensiveKV
+    2024_SGLang ==&gt;|" "| 2025_Strata
     linkStyle 55 stroke:#7B68EE,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_KVzip
+    2024_SeerAttention ==&gt;|" "| 2026_CompactAttention
     linkStyle 56 stroke:#9370DB,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_LAVa
+    2024_SliceGPT ==&gt;|" "| 2024_QuaRot
     linkStyle 57 stroke:#FF6347,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_PureKV
+    2024_SnapKV ==&gt;|" "| 2024_PyramidKV
     linkStyle 58 stroke:#20B2AA,stroke-width:2.5px
-    2024_SnapKV ==&gt;|" "| 2025_UNComp
+    2024_SnapKV ==&gt;|" "| 2025_CTkvr
     linkStyle 59 stroke:#FFD700,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_InfLLM
+    2024_SnapKV ==&gt;|" "| 2025_DefensiveKV
     linkStyle 60 stroke:#FF69B4,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_PyramidKV
+    2024_SnapKV ==&gt;|" "| 2025_KVzip
     linkStyle 61 stroke:#00CED1,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2024_RazorAttention
+    2024_SnapKV ==&gt;|" "| 2025_LAVa
     linkStyle 62 stroke:#FFA500,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_HashAttention
+    2024_SnapKV ==&gt;|" "| 2025_PureKV
     linkStyle 63 stroke:#7B68EE,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_PureKV
+    2024_SnapKV ==&gt;|" "| 2025_UNComp
     linkStyle 64 stroke:#9370DB,stroke-width:2.5px
-    2024_StreamingLLM ==&gt;|" "| 2025_UNComp
+    2024_StreamingLLM ==&gt;|" "| 2024_InfLLM
     linkStyle 65 stroke:#FF6347,stroke-width:2.5px
-    2024_TOVA ==&gt;|" "| 2026_KVTC
+    2024_StreamingLLM ==&gt;|" "| 2024_PyramidKV
     linkStyle 66 stroke:#20B2AA,stroke-width:2.5px
-    2024_ZipCache ==&gt;|" "| 2025_RotateKV
+    2024_StreamingLLM ==&gt;|" "| 2024_RazorAttention
     linkStyle 67 stroke:#FFD700,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_SharePrefill
+    2024_StreamingLLM ==&gt;|" "| 2025_HashAttention
     linkStyle 68 stroke:#FF69B4,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_SlimInfer
+    2024_StreamingLLM ==&gt;|" "| 2025_PureKV
     linkStyle 69 stroke:#00CED1,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2025_XAttention
+    2024_StreamingLLM ==&gt;|" "| 2025_UNComp
     linkStyle 70 stroke:#FFA500,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2026_FlashPrefill
+    2024_TOVA ==&gt;|" "| 2026_KVTC
     linkStyle 71 stroke:#7B68EE,stroke-width:2.5px
-    2025_FlexPrefill ==&gt;|" "| 2026_Prism
+    2024_ZipCache ==&gt;|" "| 2025_RotateKV
     linkStyle 72 stroke:#9370DB,stroke-width:2.5px
-    2025_KVzip ==&gt;|" "| 2026_FastKVzip
+    2025_FlexPrefill ==&gt;|" "| 2025_SharePrefill
     linkStyle 73 stroke:#FF6347,stroke-width:2.5px
-    2025_LMCache ==&gt;|" "| 2026_Bidaw
+    2025_FlexPrefill ==&gt;|" "| 2025_SlimInfer
     linkStyle 74 stroke:#20B2AA,stroke-width:2.5px
-    2025_LMCache ==&gt;|" "| 2026_KVServe
+    2025_FlexPrefill ==&gt;|" "| 2025_XAttention
     linkStyle 75 stroke:#FFD700,stroke-width:2.5px
-    2025_MILLION ==&gt;|" "| 2025_VecInfer
+    2025_FlexPrefill ==&gt;|" "| 2026_FlashPrefill
     linkStyle 76 stroke:#FF69B4,stroke-width:2.5px
-    2025_PQCache ==&gt;|" "| 2026_KVDrive
+    2025_FlexPrefill ==&gt;|" "| 2026_Prism
     linkStyle 77 stroke:#00CED1,stroke-width:2.5px
-    2025_R_KV ==&gt;|" "| 2026_TriAttention
+    2025_KVzip ==&gt;|" "| 2026_FastKVzip
     linkStyle 78 stroke:#FFA500,stroke-width:2.5px
-    2025_RaaS ==&gt;|" "| 2025_FreeKV
+    2025_LMCache ==&gt;|" "| 2025_Strata
     linkStyle 79 stroke:#7B68EE,stroke-width:2.5px
-    2025_RotateKV ==&gt;|" "| 2025_MixKVQ
+    2025_LMCache ==&gt;|" "| 2026_Bidaw
     linkStyle 80 stroke:#9370DB,stroke-width:2.5px
-    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
+    2025_LMCache ==&gt;|" "| 2026_KVServe
     linkStyle 81 stroke:#FF6347,stroke-width:2.5px
-    2025_ShadowKV ==&gt;|" "| 2026_KVDrive
+    2025_MILLION ==&gt;|" "| 2025_VecInfer
     linkStyle 82 stroke:#20B2AA,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_BLASST
+    2025_PQCache ==&gt;|" "| 2026_KVDrive
     linkStyle 83 stroke:#FFD700,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
+    2025_R_KV ==&gt;|" "| 2026_TriAttention
     linkStyle 84 stroke:#FF69B4,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2026_CompactAttention
+    2025_RaaS ==&gt;|" "| 2025_FreeKV
     linkStyle 85 stroke:#00CED1,stroke-width:2.5px
-    2025_XAttention ==&gt;|" "| 2026_UniPrefill
+    2025_RotateKV ==&gt;|" "| 2025_MixKVQ
     linkStyle 86 stroke:#FFA500,stroke-width:2.5px
-    2026_FlashPrefill ==&gt;|" "| 2026_CompactAttention
+    2025_SageAttention3 ==&gt;|" "| 2026_ThriftAttention
     linkStyle 87 stroke:#7B68EE,stroke-width:2.5px
+    2025_ShadowKV ==&gt;|" "| 2025_FreeKV
+    linkStyle 88 stroke:#9370DB,stroke-width:2.5px
+    2025_ShadowKV ==&gt;|" "| 2026_KVDrive
+    linkStyle 89 stroke:#FF6347,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2025_BLASST
+    linkStyle 90 stroke:#20B2AA,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2025_TCA_Attention
+    linkStyle 91 stroke:#FFD700,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2026_CompactAttention
+    linkStyle 92 stroke:#FF69B4,stroke-width:2.5px
+    2025_XAttention ==&gt;|" "| 2026_UniPrefill
+    linkStyle 93 stroke:#00CED1,stroke-width:2.5px
+    2026_FlashPrefill ==&gt;|" "| 2026_CompactAttention
+    linkStyle 94 stroke:#FFA500,stroke-width:2.5px
 </div>
 <h2 id="svg-family">SVG Family</h2>
 <p><em>9 methods, 8 relationships</em></p>
@@ -794,7 +829,7 @@
     2024_AWQ ==&gt;|" "| 2025_SignRoundV2
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 </div>
-<h2 id="cake-family">Cake Family</h2>
+<h2 id="tutti-family">Tutti Family</h2>
 <p><em>4 methods, 3 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
@@ -822,7 +857,7 @@
     2026_Tutti ==&gt;|" "| 2026_PredictKV
     linkStyle 2 stroke:#20B2AA,stroke-width:2.5px
 </div>
-<h2 id="deepep-family">DeepEP Family</h2>
+<h2 id="comet-family">COMET Family</h2>
 <p><em>3 methods, 2 relationships</em></p>
 <div class="mermaid">flowchart LR
     classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
@@ -948,6 +983,24 @@
     click 2026_DeepSeek_V4 "../?search=DeepSeek-V4" _blank
 
     2024_DeepSeek_V3 ==&gt;|" "| 2026_DeepSeek_V4
+    linkStyle 0 stroke:#9370DB,stroke-width:2.5px
+</div>
+<h2 id="eagle-family">EAGLE Family</h2>
+<p><em>2 methods, 1 relationships</em></p>
+<div class="mermaid">flowchart LR
+    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff
+    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    linkStyle default stroke:#9370DB,stroke-width:2px
+
+    2024_EAGLE["EAGLE[2024]"]
+    class 2024_EAGLE rootNode
+    click 2024_EAGLE "../?search=EAGLE" _blank
+    2026_DFlash["DFlash[2026]"]
+    class 2026_DFlash leafNode
+    click 2026_DFlash "../?search=DFlash" _blank
+
+    2024_EAGLE ==&gt;|" "| 2026_DFlash
     linkStyle 0 stroke:#9370DB,stroke-width:2.5px
 </div>
 <h2 id="adasplash-family">AdaSplash Family</h2>

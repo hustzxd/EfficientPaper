@@ -1,0 +1,39 @@
+paper {
+  title: "Revisiting Multimodal KV Cache Compression: A Frequency-Domain-Guided Outlier-KV-Aware Approach"
+  abbr: "FlashCache"
+  url: "http://arxiv.org/abs/2511.16786"
+  authors: "Yaoxin Yang"
+  authors: "Peng Ye"
+  authors: "Xudong Tan"
+  authors: "Chongjun Tu"
+  authors: "Maosen Zhao"
+  authors: "Jia Hao"
+  authors: "Tao Chen"
+  institutions: "Fudan University"
+  institutions: "Shanghai Innovation Institute"
+  institutions: "The Chinese University of Hong Kong"
+  institutions: "Shanghai Artificial Intelligence Laboratory"
+  institutions: "Zhangjiang Laboratory"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/H2O"
+}
+update_time: 1779862107

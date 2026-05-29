@@ -1,0 +1,27 @@
+paper {
+  title: "DFlash: Block Diffusion for Flash Speculative Decoding"
+  abbr: "DFlash"
+  url: "http://arxiv.org/abs/2602.06036"
+  authors: "Jian Chen"
+  authors: "Yesheng Liang"
+  authors: "Zhijian Liu"
+  institutions: "UC San Diego"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/z-lab/dflash"
+}
+keyword {
+  words: speculative_decoding
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/EAGLE"
+}
+update_time: 1779965965

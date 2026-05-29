@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>DFlash: Block Diffusion for Flash Speculative Decoding - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DFlash: Block Diffusion for Flash Speculative Decoding";
+        var mkdocs_page_input_path = "notes/2026/DFlash/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DFlash: Block Diffusion for Flash Speculative Decoding</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="dflash-block-diffusion-for-flash-speculative-decoding">DFlash: Block Diffusion for Flash Speculative Decoding</h1>
+<blockquote>
+<p>Jian Chen, Yesheng Liang, Zhijian Liu</p>
+<p>UC San Diego (Z Lab)</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>自回归 LLM 推理存在固有的串行解码瓶颈。投机解码（speculative decoding）通过轻量 draft 模型并行提议 token 来缓解此问题，但现有方法（如 EAGLE-3）仍依赖自回归 drafting，本质上是串行的，加速上限约 2-3×。扩散语言模型（dLLM）可并行生成，但质量通常不如自回归模型。本文提出 DFlash，一个使用轻量 block diffusion 模型进行并行 drafting 的投机解码框架。通过单次前向传播生成 draft token，并利用目标模型的隐藏特征作为条件，DFlash 实现了高质量 drafting 和更高接受率。实验表明 DFlash 在多种模型和任务上实现超过 6× 无损加速，比 EAGLE-3 高出 2.5×。</p>
+<h2 id="_1">一句话总结</h2>
+<p>DFlash 用 block diffusion 替代自回归 draft 模型做投机解码的并行 drafting，通过 KV 注入目标模型特征实现高质量条件生成，单次前向传播完成 drafting，在 Qwen3-8B 上实现 6× 加速，比 EAGLE-3 快 2.5×。</p>
+<h2 id="_2">背景与问题</h2>
+<h3 id="_3">投机解码的核心矛盾</h3>
+<p>投机解码的加速公式：<code>η = L_target / (T_draft + T_verify / τ)</code></p>
+<p>其中 T_draft 是 drafting 耗时，τ 是期望接受长度。加速的关键是：<strong>降低 T_draft</strong> 或 <strong>提高 τ</strong>。</p>
+<p>自回归 draft 模型（如 EAGLE-3）的困境：
+- T_draft = γ · t_step（γ 个 token 需要 γ 次前向传播，<strong>线性增长</strong>）
+- 为控制延迟，draft 模型必须非常浅（如单层 transformer），限制了模型容量
+- 增加 γ 会增加 drafting 成本，但 τ 因容量不足很快饱和
+- 实际加速天花板约 2-3×</p>
+<h3 id="_4">扩散模型的潜力与困境</h3>
+<p>Block diffusion 可以<strong>单次前向传播</strong>并行生成 γ 个 token：T_draft = t_parallel ≪ γ · t_step。</p>
+<p>但直接用小型扩散模型做 drafter（如 PARD）效果不好：
+- 没有目标模型的上下文指导 → draft 质量差 → 接受长度有限
+- 加速天花板约 3×</p>
+<h2 id="_5">核心方法</h2>
+<h3 id="the-target-knows-best">核心洞察：The Target Knows Best</h3>
+<p>大型自回归模型的隐藏特征隐式编码了未来 token 的信息。DFlash 利用这些特征作为条件，让 draft 模型成为目标模型的"扩散适配器"。</p>
+<h3 id="figure-2">推理流程（Figure 2）</h3>
+<ol>
+<li><strong>目标模型 prefill</strong>：处理输入 prompt，生成第一个 token</li>
+<li><strong>提取隐藏特征</strong>：从目标模型的 5 个均匀采样层提取 hidden states</li>
+<li><strong>特征融合</strong>：拼接后通过轻量投影层融合为紧凑的 target context feature</li>
+<li><strong>KV 注入</strong>：将融合特征注入 draft 模型每一层的 Key 和 Value 投影中（存入 draft 模型的 KV cache）</li>
+<li><strong>并行 drafting</strong>：block diffusion 单次前向传播生成 γ 个 draft token</li>
+<li><strong>验证</strong>：目标模型并行验证所有 draft token</li>
+</ol>
+<h3 id="kv-vs">关键设计：KV 注入 vs 输入拼接</h3>
+<ul>
+<li><strong>EAGLE-3 的做法</strong>：将目标模型特征与 draft token embedding 拼接，仅作为 draft 模型的输入。随着 draft 模型加深，目标信息被稀释 → 增加层数收益递减。</li>
+<li><strong>DFlash 的做法</strong>：将 target context feature 注入每一层的 KV cache，提供<strong>持久、强条件信号</strong>。这使得接受长度能随 draft 层数有效增长。</li>
+</ul>
+<h3 id="_6">训练策略</h3>
+<ol>
+<li><strong>KV 注入训练</strong>：干净序列通过目标模型提取特征，注入 draft 模型 KV</li>
+<li><strong>随机 anchor 采样</strong>：从 response 中随机采样 anchor token 作为 block 起点，mask 后续位置。匹配推理时行为（目标模型产生的 bonus token 作为 anchor）</li>
+<li><strong>稀疏注意力</strong>：block 内双向注意力 + 到 target context 的注意力，block 间不交叉。用 Flex Attention 高效实现</li>
+<li><strong>指数衰减损失权重</strong>：block 内早期位置更重要（错误会级联），权重 wk = exp(-(k-1)/γ)</li>
+<li><strong>共享 embedding 和 LM head</strong>：draft 模型与目标模型共享 embedding 层和 LM head（冻结），仅训练 draft transformer 层</li>
+</ol>
+<h2 id="_7">技术细节</h2>
+<h3 id="draft">Draft 模型配置</h3>
+<ul>
+<li>Qwen3-4B/8B：5 层 draft 模型，block size 16</li>
+<li>Qwen3-Coder-30B-A3B：8 层 draft 模型</li>
+<li>LLaMA-3.1-8B：block size 10</li>
+<li>特征提取：从目标模型的 5 个均匀采样层（第 2 层到倒数第 3 层）</li>
+</ul>
+<h3 id="_8">训练数据</h3>
+<p>约 800K 样本，来自 NVIDIA Nemotron Post-Training Dataset V2 和 CodeAlpaca。使用目标模型生成的 response（而非原始数据集）以实现更好的目标对齐。</p>
+<h3 id="drafting">Drafting 延迟对比</h3>
+<ul>
+<li>EAGLE-3（1 层）：生成 16 个 token 约 10ms</li>
+<li>DFlash（5 层）：生成 16 个 token 约 8ms（更快且更深）</li>
+<li>DFlash 的并行性使得可以用更深的模型而不需要更多时间</li>
+</ul>
+<h2 id="_9">实验设置</h2>
+<h3 id="_10">模型</h3>
+<ul>
+<li>Qwen3-4B, Qwen3-8B（thinking mode disabled/enabled）</li>
+<li>Qwen3-Coder-30B-A3B-Instruct</li>
+<li>LLaMA-3.1-8B-Instruct</li>
+</ul>
+<h3 id="_11">评估任务</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Math</td>
+<td>GSM8K, MATH-500, AIME25</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>HumanEval, MBPP, LiveCodeBench</td>
+</tr>
+<tr>
+<td>Chat</td>
+<td>MT-Bench, Alpaca</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">硬件</h3>
+<ul>
+<li>NVIDIA H200（主要评估）</li>
+<li>NVIDIA B200（SGLang 评估）</li>
+</ul>
+<h3 id="_13">基线</h3>
+<ul>
+<li>Autoregressive decoding（baseline）</li>
+<li>EAGLE-3（tree size 16 和 60）</li>
+</ul>
+<h2 id="_14">主要结果</h2>
+<h3 id="transformers-qwen3thinking-mode-offgreedy">Transformers 后端（Qwen3，thinking mode off，greedy）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>平均加速</th>
+<th>平均 τ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-4B</td>
+<td>EAGLE-3 (16)</td>
+<td>1.84×</td>
+<td>3.05</td>
+</tr>
+<tr>
+<td>Qwen3-4B</td>
+<td>EAGLE-3 (60)</td>
+<td>2.08×</td>
+<td>3.48</td>
+</tr>
+<tr>
+<td>Qwen3-4B</td>
+<td><strong>DFlash (16)</strong></td>
+<td><strong>4.91×</strong></td>
+<td><strong>6.54</strong></td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td>EAGLE-3 (16)</td>
+<td>1.76×</td>
+<td>2.96</td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td>EAGLE-3 (60)</td>
+<td>2.02×</td>
+<td>3.40</td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td><strong>DFlash (16)</strong></td>
+<td><strong>4.86×</strong></td>
+<td><strong>6.49</strong></td>
+</tr>
+</tbody>
+</table>
+<p>DFlash 在相同 draft budget（16 tokens）下，比 EAGLE-3 快约 <strong>2.5×</strong>，接受长度翻倍。</p>
+<h3 id="reasoning-thinking-mode-enabled">Reasoning 模型（thinking mode enabled）</h3>
+<ul>
+<li>Qwen3-4B：4.23×-4.59× 加速（greedy）</li>
+<li>Qwen3-8B：4.17×-4.64× 加速（greedy）</li>
+<li>对长 CoT 推理场景价值显著</li>
+</ul>
+<h3 id="sglang-b200fa4">SGLang 生产级评估（B200，FA4 后端）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>并发 1</th>
+<th>并发 8</th>
+<th>并发 32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-4B Math500</td>
+<td>4.8×</td>
+<td>4.1×</td>
+<td>2.9×</td>
+</tr>
+<tr>
+<td>Qwen3-8B Math500</td>
+<td>5.1×</td>
+<td>4.5×</td>
+<td>2.8×</td>
+</tr>
+<tr>
+<td>Qwen3-Coder-30B HumanEval</td>
+<td>3.5×</td>
+<td>3.2×</td>
+<td>3.1×</td>
+</tr>
+</tbody>
+</table>
+<p>高并发下加速有所下降但仍稳定，验证了实际 serving 场景的实用性。</p>
+<h3 id="llama-31-8b">LLaMA-3.1-8B 对比</h3>
+<p>在 SGLang 上，DFlash（block size 10）持续优于 EAGLE-3：
+- DFlash 在 concurrency=1 时 2.4-2.8×，EAGLE-3 (10) 仅 1.5-2.0×
+- EAGLE-3 (60) 在高并发下性能崩溃（0.6-0.9×），DFlash 仍保持 1.6-1.8×</p>
+<h2 id="_15">优点与局限</h2>
+<h3 id="_16">优点</h3>
+<ol>
+<li><strong>范式创新</strong>：首次证明 block diffusion 是 speculative decoding 的理想 drafter 形态——并行生成 + 高质量条件生成</li>
+<li><strong>KV 注入机制</strong>：比输入拼接更有效地传递目标模型信息，接受长度随层数线性增长</li>
+<li><strong>延迟-质量 Pareto 最优</strong>：5 层 DFlash 比 1 层 EAGLE-3 更快且接受率更高</li>
+<li><strong>实际可用</strong>：已在 SGLang 上集成评估，支持多种模型和并发级别</li>
+<li><strong>训练高效</strong>：共享 embedding/LM head，仅训练 draft transformer 层；随机 anchor 采样提供有效数据增强</li>
+</ol>
+<h3 id="_17">局限</h3>
+<ol>
+<li><strong>需要训练 draft 模型</strong>：每个目标模型需要单独训练对应的 DFlash draft 模型</li>
+<li><strong>Block size 固定</strong>：当前 block size 是超参数，未实现自适应调整</li>
+<li><strong>仅与 EAGLE-3 对比</strong>：论文提到其他 dLLM-based 方法（DiffuSpec、SpecDiff-2 等）因缺乏开源实现未纳入对比</li>
+<li><strong>Temperature 敏感</strong>：temperature=1 时加速有所下降（从 4.9× 降到 4.1×）</li>
+<li><strong>长上下文场景未充分评估</strong>：主要在标准 benchmark 上评估，长上下文/长生成场景的表现有待验证</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>本文属于 <strong>投机解码</strong>（speculative_decoding）方向，但引入了一个全新的 drafting 范式：</p>
+<ol>
+<li><strong>突破自回归 drafting 瓶颈</strong>：现有投机解码方法（EAGLE 系列、Medusa 等）都受限于自回归 drafting 的串行性，DFlash 用扩散模型打破了这一限制</li>
+<li><strong>扩散模型 × 推理加速的交叉点</strong>：将 dLLM 的并行生成能力与投机解码的无损验证结合，为扩散语言模型找到了一个实际高价值的应用场景</li>
+<li><strong>与 serving 系统的集成</strong>：在 SGLang 上验证，展示了与现有推理框架的兼容性</li>
+</ol>
+<h2 id="_18">可复现/实现要点</h2>
+<ol>
+<li><strong>代码</strong>：https://github.com/z-lab/dflash</li>
+<li><strong>模型</strong>：Hugging Face 上有预训练的 draft 模型（如 z-lab/Qwen3.5-35B-A3B-DFlash）</li>
+<li><strong>Draft 模型架构</strong>：标准 transformer，block 内双向注意力 + causal cross-block mask</li>
+<li><strong>特征提取</strong>：从目标模型 5 个均匀采样层提取 hidden states，拼接后线性投影</li>
+<li><strong>训练数据</strong>：800K 样本，使用目标模型生成的 response</li>
+<li><strong>推理框架</strong>：支持 Transformers 后端和 SGLang（FA4 + Spec-v2 scheduling）</li>
+</ol>
+<h2 id="_19">个人备注</h2>
+<h3 id="_20">开放问题</h3>
+<ol>
+<li>DFlash 能否与 KV cache 压缩/稀疏化结合？draft 模型的 KV cache 管理开销如何？</li>
+<li>自适应 block size：根据生成难度动态调整 block 大小？</li>
+<li>多目标模型共享 draft 模型的可能性？</li>
+<li>在长上下文场景（100K+ tokens）中，特征提取的开销是否成为瓶颈？</li>
+<li>与 EAGLE-4 或其他下一代自回归 drafting 方法的对比？</li>
+</ol>
+<h3 id="_21">延伸阅读</h3>
+<ul>
+<li>EAGLE-3 (Li et al., 2025b)：当前 SOTA 自回归投机解码</li>
+<li>LLaDA (Nie et al., 2025)：大规模扩散语言模型</li>
+<li>Fast-dLLM v2 / SDAR：block diffusion 的自回归适配</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

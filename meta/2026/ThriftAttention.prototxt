@@ -1,0 +1,29 @@
+paper {
+  title: "ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention"
+  abbr: "ThriftAttention"
+  url: "https://arxiv.org/abs/2605.23081"
+  authors: "Joe Sharratt"
+  institutions: ""
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/joesharratt1229/ThriftAttention"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/SageAttention3"
+  methods: "2024/Quest"
+}
+update_time: 1780019035

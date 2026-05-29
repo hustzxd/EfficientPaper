@@ -1,0 +1,35 @@
+paper {
+  title: "A Simple Plug-in for Improving Eviction-Based KV Cache Compression"
+  abbr: "VECTOR"
+  url: "https://arxiv.org/abs/2605.23258"
+  authors: "Yuping Lin"
+  authors: "Jiayuan Ding"
+  authors: "Yue Xing"
+  authors: "Pengfei He"
+  authors: "Jiliang Tang"
+  authors: "Subhabrata Mukherjee"
+  institutions: "Michigan State University"
+  institutions: "Hippocratic AI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/SnapKV"
+  methods: "2024/PyramidKV"
+}
+update_time: 1780018679

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Strata: Hierarchical Context Caching for Long Context Language Model Serving - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Strata: Hierarchical Context Caching for Long Context Language Model Serving";
+        var mkdocs_page_input_path = "notes/2025/Strata/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph/">Graph</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Strata: Hierarchical Context Caching for Long Context Language Model Serving</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="strata-hierarchical-context-caching-for-long-context-language-model-serving">Strata: Hierarchical Context Caching for Long Context Language Model Serving</h1>
+<blockquote>
+<p>Zhiqiang Xie, Ziyi Xu, Mark Zhao, Yuwei An, Vikram Sharma Mailthody, Scott Mahlke, Michael Garland, Christos Kozyrakis</p>
+<p>Stanford University, NVIDIA, Shanghai Jiao Tong University, University of Colorado Boulder, Carnegie Mellon University, University of Michigan</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>随着 LLM 上下文窗口不断扩大，缓存 KV 状态对于避免冗余计算至关重要，但长上下文缓存的存储占用很快超出 GPU 显存容量，迫使生产系统采用跨内存层级的分层缓存。然而，将大量缓存上下文传回 GPU 会带来严重性能瓶颈：分页布局导致的碎片化 I/O 无法充分利用带宽，且现有调度器未考虑缓存加载延迟，导致系统受限于加载而非计算。本文提出 Strata，一个面向高效长上下文 LLM 推理的分层上下文缓存框架。Strata 引入 GPU 辅助 I/O 以对抗 KV 缓存碎片化，解耦 GPU 与 CPU 内存布局，并采用缓存感知的请求调度来平衡计算与 I/O 延迟、将不可避免的停顿与互补任务重叠。基于 SGLang 构建并已在生产环境部署，Strata 在长上下文基准测试中实现高达 5× 的 TTFT 降低（对比 vLLM + LMCache）和 3.75× 的加速（对比 NVIDIA TensorRT-LLM），同时不损害短上下文性能。</p>
+<h2 id="_1">一句话总结</h2>
+<p>Strata 通过 GPU 辅助 I/O 解决分层 KV 缓存中碎片化传输的带宽利用率问题，结合缓存感知调度（平衡批处理、延迟命中规避、停顿填充）实现长上下文 LLM 推理的显著加速。</p>
+<h2 id="_2">背景与问题</h2>
+<h3 id="_3">问题领域</h3>
+<p>LLM 推理系统中，KV 缓存的分层管理（GPU HBM → CPU DRAM → 外部存储）是支撑长上下文推理的关键基础设施。然而现有系统面临两个核心瓶颈：</p>
+<h3 id="io">瓶颈一：I/O 带宽利用率低</h3>
+<ul>
+<li><strong>根因</strong>：PagedAttention 等系统为提高内存利用率和缓存命中率使用小页面（如 1-32 tokens/页），但小页面导致碎片化数据传输。</li>
+<li><strong>量化影响</strong>：在 PCIe 5.0 上仅能利用约 22% 的理论带宽；在 GH200 的 NVLink 上更低至 5%。</li>
+<li><strong>矛盾</strong>：增大页面虽可提高传输效率，但会严重降低缓存命中率（页面大小从 1 增至 1024 时，命中率显著下降，TTFT 增加 2-2.9×）。</li>
+<li><strong>物理约束</strong>：Little's Law 表明吞吐量 X = C·S/L，提高传输大小 S 是最实际的手段，但小页面限制了 S。</li>
+</ul>
+<h3 id="_4">瓶颈二：调度器对缓存加载延迟无感知</h3>
+<ul>
+<li>现有系统假设层间计算足以隐藏 PCIe 传输延迟，但长上下文场景下该假设不再成立。</li>
+<li>实测表明即使 I/O 达到 75% 理论带宽，仍有高达 24% 的预填充执行时间被 I/O 停顿占据。</li>
+<li><strong>延迟命中（Delay Hit）</strong>：多个请求命中同一缓存缺失时产生冗余计算，异步调度器加剧了这一问题。</li>
+</ul>
+<h2 id="_5">核心方法</h2>
+<h3 id="_6">系统架构</h3>
+<p>Strata 由两个核心组件构成：</p>
+<ol>
+<li><strong>Strata Cache Controller（数据平面）</strong>：管理跨内存层级的 KV 缓存数据，引入优化的 GPU-CPU 数据传输机制和灵活的内存布局。</li>
+<li><strong>Strata Scheduler（控制平面）</strong>：以缓存资源感知的方式智能调度请求，基于 HiRadixTree（SGLang RadixTree 的扩展）进行页面级元数据追踪。</li>
+</ol>
+<h3 id="gpu-io">技术一：GPU 辅助 I/O</h3>
+<ul>
+<li><strong>核心思路</strong>：用 CUDA kernel 替代 cudaMemcpyAsync 进行小粒度数据传输。每个线程负责加载一小块数据，GPU 提供数千并发操作（vs CPU 通常仅数十个）。</li>
+<li><strong>效率保障</strong>：GPU 上 128 字节粒度即可高效传输，足以覆盖单页 KV 缓存（KB 级别），无需增大页面。</li>
+<li><strong>干扰控制</strong>：仅使用 2 个 CUDA block（各 1024 线程），可实现约 50 GB/s 传输吞吐量，同时对 prefill 仅造成 &lt;5% 性能损失、decode &lt;10%。通过绕过 cache 的低级指令进一步减少缓存污染。</li>
+<li><strong>内存布局解耦</strong>：GPU 保持计算友好的 layer-first 布局，CPU/外部存储采用传输友好的 page-first 布局。GPU 辅助 I/O 在传输时进行近乎零开销的布局转换（仅一次额外算术运算），实现两全其美。</li>
+</ul>
+<h3 id="_7">技术二：缓存感知调度</h3>
+<p>调度器通过三个策略层层递进：</p>
+<ol>
+<li><strong>延迟命中规避（Deferral on Delay Hit）</strong>：</li>
+<li>在 HiRadixTree 中引入 transient 节点（标记 in-queue / in-flight）</li>
+<li>当请求匹配到 transient 节点（表示缓存正在计算中），将其推迟到下一轮调度，避免冗余计算</li>
+<li>
+<p>可配置阈值（默认 100 tokens）控制推迟条件</p>
+</li>
+<li>
+<p><strong>平衡批处理（Balanced Batch Formation）</strong>：</p>
+</li>
+<li>遵循 FIFO 但引入 loading_bound 检测（加载/计算比，默认阈值 100）</li>
+<li>当添加某请求会导致 batch 变为 loading-bound 时，将其放入低优先级列表</li>
+<li>
+<p>优先添加 bundle hit 请求（共享同一上下文的请求），既平衡加载又减少 GPU 显存压力</p>
+</li>
+<li>
+<p><strong>停顿填充（Bubble Filling / Stall Hiding）</strong>：</p>
+</li>
+<li>当 batch 仍为 loading-bound 时，插入解码批次以填充 I/O 停顿</li>
+<li>解码批次主要饱和 HBM 带宽，而加载任务饱和 PCIe 带宽，两者可重叠且资源争用最小</li>
+</ol>
+<h3 id="_8">技术三：外部存储预取</h3>
+<ul>
+<li>Cache Controller 在检测到存储层缓存命中时，利用请求排队延迟进行机会性预取</li>
+<li>调度器分发请求时终止未完成的预取，使用已有的缓存数据（best-effort 策略）</li>
+</ul>
+<h2 id="_9">技术细节</h2>
+<h3 id="gpu-io_1">GPU 辅助 I/O 微基准</h3>
+<p>在 H200 GPU 上，2 个 CUDA block + 1024 线程/block 配置下：
+- 传输吞吐量：~50 GB/s
+- Prefill 性能干扰：&lt;5%
+- Decode 性能干扰：&lt;10%</p>
+<h3 id="gh200">GH200 平台适配</h3>
+<ul>
+<li>GH200 的 NVLink 提供 6× PCIe 5.0 带宽，但标准 cudaMemcpyAsync 仅利用 ~28% (10.8→19.4 GB/s)</li>
+<li>Strata-IO 将利用率提升至 150.5 GB/s</li>
+<li>完整 Strata 在 GH200 上接近 Oracle（无限带宽）性能</li>
+</ul>
+<h3 id="_10">页面大小解耦</h3>
+<ul>
+<li>SGLang-HiCache 最优页面大小为 512，但仅达到 Strata-IO 性能的 93%（因命中率低 2.4%）</li>
+<li>Strata 在所有页面大小下均保持高性能，消除用户调参负担</li>
+</ul>
+<h2 id="_11">实验设置</h2>
+<h3 id="_12">平台</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>GPU</th>
+<th>CPU</th>
+<th>内存</th>
+<th>互连</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H200</td>
+<td>8× H200 (NVLink)</td>
+<td>Intel Sapphire Rapids</td>
+<td>1.6 TB DRAM</td>
+<td>PCIe 5.0 x16 (64 GB/s)</td>
+</tr>
+<tr>
+<td>GH200</td>
+<td>1× H100</td>
+<td>NVIDIA Grace 64-core ARM</td>
+<td>464 GB LPDDR5X</td>
+<td>NVLink (384 GB/s)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">模型</h3>
+<ul>
+<li>Llama-3.1-8B-Instruct（128K 上下文，单 GPU）</li>
+<li>Qwen2.5-14B-Instruct-1M（1M 上下文，单 GPU）</li>
+<li>Llama-3.1-70B-Instruct（128K 上下文，4 GPU TP）</li>
+</ul>
+<h3 id="_14">数据集</h3>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th>平均输入 tokens</th>
+<th>平均输出 tokens</th>
+<th>上下文数</th>
+<th>查询数</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LooGLE</td>
+<td>21,613</td>
+<td>15.6</td>
+<td>105</td>
+<td>2,410</td>
+<td>RAG 长文档 QA</td>
+</tr>
+<tr>
+<td>NarrativeQA</td>
+<td>54,797</td>
+<td>13.0</td>
+<td>50</td>
+<td>1,461</td>
+<td>长文本阅读理解</td>
+</tr>
+<tr>
+<td>ReviewMT</td>
+<td>17,708</td>
+<td>208.3</td>
+<td>100</td>
+<td>1,092</td>
+<td>多智能体长对话</td>
+</tr>
+<tr>
+<td>ShareGPT</td>
+<td>680.9</td>
+<td>260.9</td>
+<td>-</td>
+<td>200,869</td>
+<td>短上下文对话</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">基线</h3>
+<ul>
+<li>vLLM v0.8.5 + LMCache v0.2.1（chunk size 256, page size 32）</li>
+<li>TensorRT-LLM v0.17.0 + HiCache（page size 32）</li>
+<li>SGLang v0.4.5（page size 1）</li>
+<li>SGLang-HiCache（page size 32，layer-wise overlapping，cudaMemcpyAsync）</li>
+</ul>
+<h2 id="_16">主要结果</h2>
+<h3 id="loogle-h200">长上下文性能（LooGLE, H200）</h3>
+<table>
+<thead>
+<tr>
+<th>对比基线</th>
+<th>Llama-8B 加速比</th>
+<th>Qwen-14B 加速比</th>
+<th>Llama-70B 加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SGLang-HiCache</td>
+<td>3.2×</td>
+<td>3.9×</td>
+<td>5×</td>
+</tr>
+<tr>
+<td>vLLM-LMCache</td>
+<td>2.6×</td>
+<td>2.1×</td>
+<td>5×</td>
+</tr>
+<tr>
+<td>TensorRT-HiCache</td>
+<td>1.9×</td>
+<td>1.9×</td>
+<td>3.75×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="narrativeqa">温缓存稳态性能（NarrativeQA）</h3>
+<p>对比 vLLM-LMCache：Llama-8B 2.3×, Qwen-14B 2.6×, Llama-70B 2.5×。</p>
+<h3 id="sharegpt">短上下文性能（ShareGPT）</h3>
+<p>Strata 与其他系统在短上下文场景下性能相当，不引入退化。</p>
+<h3 id="_17">消融分析</h3>
+<ul>
+<li>Strata-Schedule-Only：峰值吞吐量提升 1.8×（vs SGLang-HiCache）</li>
+<li>Strata-IO：峰值吞吐量提升 2.3×</li>
+<li>低请求率时调度优化收益更大，高请求率时 I/O 优化更关键</li>
+</ul>
+<h3 id="_18">缓存距离适应性</h3>
+<ul>
+<li>最小缓存距离：延迟命中规避贡献 42% 峰值吞吐量提升</li>
+<li>最大缓存距离：I/O 效率机制贡献 95% 提升</li>
+</ul>
+<h2 id="_19">优点与局限</h2>
+<h3 id="_20">优点</h3>
+<ol>
+<li><strong>系统性解决方案</strong>：同时从 I/O 机制和调度策略两个维度解决分层缓存瓶颈，非单一优化。</li>
+<li><strong>生产级实现</strong>：基于 SGLang 构建，已在头部 AI 公司生产环境部署。</li>
+<li><strong>硬件适应性强</strong>：GPU 辅助 I/O 在 PCIe 和 NVLink 平台上均有效，且兼容 AMD ROCm 后端。</li>
+<li><strong>页面大小解耦</strong>：消除了页面大小选择的工程负担，用户无需在命中率和 I/O 效率之间权衡。</li>
+<li><strong>不损害短上下文</strong>：对非长上下文场景保持性能中性。</li>
+</ol>
+<h3 id="_21">局限</h3>
+<ol>
+<li><strong>GPU 资源占用</strong>：虽然控制在 &lt;5% 干扰，但仍消耗了 SM 资源，在极端负载下可能有累积影响。</li>
+<li><strong>调度复杂度</strong>：三阶段调度（延迟规避→平衡批处理→停顿填充）增加了系统复杂度和调试难度。</li>
+<li><strong>单实例设计</strong>：聚焦于单计算实例内的内存管理和调度，不涉及跨节点分布式缓存池。</li>
+<li><strong>评估范围</strong>：磁盘存储层评估有限（基线系统支持不足），主要关注 CPU DRAM 层。</li>
+<li><strong>停顿填充灵活性</strong>：目前主要插入解码批次，在 P-D 分离架构下可插入预填充批次，但未充分探索。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>本文属于 <strong>KV Cache 管理</strong>（kv_cache_management）和 <strong>推理部署</strong>（deployment）的核心交叉领域。具体关联：</p>
+<ol>
+<li><strong>KV 缓存分层管理</strong>：解决 KV 缓存在 GPU/CPU/磁盘多层存储间高效传输的关键问题。</li>
+<li><strong>推理系统优化</strong>：从系统工程角度优化 LLM 推理的 TTFT 和吞吐量。</li>
+<li><strong>与已有工作的关系</strong>：</li>
+<li>扩展了 SGLang 的 RadixTree 为 HiRadixTree</li>
+<li>改进了 CachedAttention 的层间重叠策略</li>
+<li>与 LMCache 互补（后者关注缓存压缩和传输，Strata 关注调度和 I/O 机制）</li>
+</ol>
+<h2 id="_22">可复现/实现要点</h2>
+<ol>
+<li><strong>代码基础</strong>：构建在 SGLang v0.4.5 之上（https://github.com/sgl-project/sglang）</li>
+<li><strong>GPU 辅助 I/O 核心</strong>：</li>
+<li>2 个 CUDA block × 1024 线程/block 用于 CPU→GPU 加载</li>
+<li>1 个 block 用于 GPU→CPU 备份</li>
+<li>使用绕过 L1 cache 的加载指令减少污染</li>
+<li><strong>调度器参数</strong>：</li>
+<li>Loading bound 阈值：100（加载/计算比）</li>
+<li>延迟命中推迟阈值：100 tokens</li>
+<li><strong>内存布局</strong>：GPU 保持 layer-first，CPU/存储使用 page-first，传输时在线转换</li>
+<li><strong>GPU 显存分配</strong>：遵循各引擎默认策略，ShareGPT 限制约 500K tokens</li>
+<li><strong>CPU 缓存配置</strong>：H200 分配 1 TB pinned DRAM，GH200 分配 400 GB</li>
+</ol>
+<h2 id="_23">个人备注</h2>
+<h3 id="_24">开放问题</h3>
+<ol>
+<li>GPU 辅助 I/O 的 SM 资源占用在更细粒度（如 H100 MIG 分区）下表现如何？</li>
+<li>与分布式 KV 缓存池（如 Mooncake、MemServe）结合时，Strata 的调度策略是否需要扩展？</li>
+<li>在 P-D 分离架构中，bubble filling 插入预填充批次的具体实现和收益？</li>
+<li>对于超长上下文（&gt;1M tokens），多层缓存（GPU→CPU→SSD→网络）下各层的调度策略如何协调？</li>
+</ol>
+<h3 id="_25">延伸阅读</h3>
+<ul>
+<li>CachedAttention (USENIX ATC'24)：层间重叠的先驱工作</li>
+<li>Pensieve (EuroSys'25)：有状态 LLM 推理服务</li>
+<li>Mooncake (FAST'25)：大规模 KV 缓存解聚</li>
+<li>MemServe：弹性内存池的全局调度</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>
