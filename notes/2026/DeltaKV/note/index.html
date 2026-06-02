@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity";
+        var mkdocs_page_input_path = "notes/2026/DeltaKV/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="deltakv-residual-based-kv-cache-compression-via-long-range-similarity">DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity</h1>
+<blockquote>
+<p>Jitai Hao, Qiang Huang, Yaowei Wang, Min Zhang, Jun Yu</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>The deployment of efficient long-context LLMs in applications like autonomous agents, long-chain reasoning, and creative writing is fundamentally bottlenecked by the linear growth of KV cache memory. Existing compression and eviction methods often struggle to balance accuracy, compression ratio, and hardware efficiency. We propose DeltaKV, a residual-based KV cache compression framework motivated by two empirical findings: long-range inter-token similarity and highly shared latent components in KV representations. Instead of discarding tokens, DeltaKV encodes semantic residuals relative to retrieved historical references, preserving fidelity while substantially reducing storage. To translate compression gains into real system speedups, we further introduce Sparse-vLLM, a high-performance inference engine with decoupled memory management and kernels optimized for sparse and irregular KV layouts. Experiments show that DeltaKV reduces KV cache memory to 29\% of the original while maintaining near-lossless accuracy on LongBench, SCBench, and AIME. When integrated with Sparse-vLLM, it achieves up to 2<script type="math/tex">\times</script> throughput improvement over vLLM in long-context scenarios, demonstrating a practical path toward scalable long-context LLM deployment. Code, model checkpoints, and datasets are available at https://github.com/CURRENTF/Sparse-vLLM.</p>
+<h2 id="_1">一句话总结</h2>
+<p>DeltaKV 是一个面向长上下文 LLM 推理的 KV cache 压缩框架：它不直接丢 token，也不只做局部聚类，而是从全局历史中找相似参考 token，存储当前 KV 相对参考 KV 的低维 residual，并在 Sparse-vLLM 中按 sparse attention 需要选择性重建，从而把 KV cache 内存降到原始的约 29\%，同时在长上下文场景下取得最高约 2<script type="math/tex">\times</script> decoding throughput 提升。</p>
+<h2 id="_2">背景与问题</h2>
+<p>长上下文 LLM 的推理成本主要有两个瓶颈：prefill 阶段 attention 计算随上下文长度近似二次增长，decode 阶段 KV cache 显存随序列长度线性增长。论文以 Llama-3.1-8B-Instruct 为例指出，128K 上下文、batch size 为 8 时，KV cache 可超过 130GB，单卡无法容纳。</p>
+<p>现有方法大致分为三类：</p>
+<ol>
+<li><strong>静态 eviction / pruning</strong>：例如 SnapKV、PyramidKV、AdaKV，根据 attention score 或层/头预算丢弃 token。问题是多轮对话和复杂推理中，早期看似不重要的 token 之后可能再次变关键。</li>
+<li><strong>动态 sparse attention</strong>：例如 Quest、OmniKV，根据当前 query 选择 token 参与 attention。它们能减少计算，但往往仍要保留完整 KV cache，因此不能根本降低显存。</li>
+<li><strong>KV compression / clustering</strong>：例如 CacheGen、Chelsea、PQCache、Lexico、Palu 等。问题在于局部相似性假设、复杂 codebook 或 CPU/host-side 数据结构会带来 GPU 不友好的访问模式和系统集成开销。</li>
+</ol>
+<p>DeltaKV 的出发点是：如果 KV cache 中存在跨长距离的冗余共享成分，那么压缩目标不应只是“找哪些 token 可以删”，而应改为“用少量参考 token 表达共享成分，只保存每个 token 的差异量”。</p>
+<h2 id="_3">核心观察</h2>
+<p>论文的经验分析给出两个关键观察。</p>
+<h3 id="1-token">1. 长距离 token 间相似性</h3>
+<p>自然语言中的 token 冗余并不局限在局部邻域。论文发现，一个 token 在 KV 表示空间里的最相似历史 token 经常位于很远的位置；超过 60\% 的最相似 token 距离大于 16。这意味着只在局部窗口内做 KV 合并或 residual coding 会错过大量全局相似性。</p>
+<h3 id="2-kv-latent-components">2. KV 表示中存在高度共享的 latent components</h3>
+<p>原始 KV cache 具有明显 anisotropy：少数高范数 latent directions 承载了跨大量 token 共享的语言/结构信息。通过减去相似历史参考后，残差 KV 的谱更平坦、范数更小、数值分布更集中在 0 附近。这个性质使 residual 更适合低维编码与进一步量化。</p>
+<p>这两个观察共同支持 DeltaKV 的基本判断：KV cache 的大部分容量消耗在共享结构上，真正 token-specific 的信息是低能量、低幅值且更容易压缩的 residual。</p>
+<h2 id="_4">核心方法</h2>
+<p>DeltaKV 将 KV cache 分为两部分：</p>
+<ul>
+<li>少量未压缩的 <strong>reference tokens</strong>；</li>
+<li>大量以 residual code 形式存储的 <strong>compressed tokens</strong>。</li>
+</ul>
+<p>对当前 token <script type="math/tex">i</script>，令 <script type="math/tex">kv_i</script> 表示该 token across heads 拼接后的 key-value 状态。DeltaKV 维护一个按 stride <script type="math/tex">s</script> 采样的 reference set：</p>
+<p>
+<script type="math/tex; mode=display">
+T = \{ kv_t \mid t \bmod s = 0,\ t < i \}.
+</script>
+</p>
+<p>在压缩 token <script type="math/tex">i</script> 时，从 <script type="math/tex">T</script> 中检索 <script type="math/tex">k</script> 个最近邻参考 token：</p>
+<p>
+<script type="math/tex; mode=display">
+R_i = \operatorname{arg\ topk}_{kv_j \in T}\left(-\lVert kv_i - kv_j \rVert_2^2\right).
+</script>
+</p>
+<p>然后计算参考表示均值：</p>
+<p>
+<script type="math/tex; mode=display">
+KV_R = \frac{1}{k}\sum_{j \in R_i} kv_j.
+</script>
+</p>
+<p>DeltaKV 不直接压缩 <script type="math/tex">kv_i</script>，而是先分别把当前 KV 和参考均值映射到低维空间，再保存二者差值：</p>
+<p>
+<script type="math/tex; mode=display">
+z_{\Delta} = f_c(KV) - f_c(KV_R),
+</script>
+</p>
+<p>其中 <script type="math/tex">f_c: \mathbb{R}^{2d_k} \rightarrow \mathbb{R}^{d_c}</script> 是轻量 compressor。重建时通过 decompressor <script type="math/tex">f_d</script> 得到 residual，再加回 reference：</p>
+<p>
+<script type="math/tex; mode=display">
+\widehat{KV}_{\Delta} = f_d(z_{\Delta}), \qquad
+\widehat{KV}_i = \widehat{KV}_{\Delta} + KV_R.
+</script>
+</p>
+<p>一个实现细节很重要：DeltaKV 在 <strong>pre-RoPE</strong> 的 key-value states 上操作，以避免位置编码破坏全局相似性，使 residual compressor 更具有长度泛化能力。</p>
+<h2 id="_5">训练目标</h2>
+<p>如果只最小化 KV 重建误差，可能会压掉数值幅度小但对 attention / generation 关键的特征。因此 DeltaKV 使用 hybrid objective：</p>
+<p>
+<script type="math/tex; mode=display">
+\mathcal{L} = \sum \lVert KV - \widehat{KV} \rVert_2^2 + \mathcal{L}_{\mathrm{ntp}}(\theta, \phi),
+</script>
+</p>
+<p>其中 <script type="math/tex">\theta</script> 是冻结的 LLM 参数，<script type="math/tex">\phi</script> 是 DeltaKV 的可学习模块参数，<script type="math/tex">\mathcal{L}_{\mathrm{ntp}}</script> 是 next-token prediction loss。论文的 ablation 显示，MSE-only 能降低 NTP loss，但 NTP-only 不一定降低 MSE；二者结合效果最好。</p>
+<p>训练开销相对较低：标准 7B/8B 模型只需约 160M tokens，单张 NVIDIA RTX PRO 6000 上约 8 GPU hours。</p>
+<h2 id="sparse-vllm">推理与 Sparse-vLLM 系统</h2>
+<p>DeltaKV 与 OmniKV 这类 dynamic sparse attention 方法配合使用。OmniKV 在少数 filter layers 中用 full KV cache 计算全局 attention scores，其他 sparse layers 只对选中的 KV tokens 做 attention。</p>
+<p>DeltaKV 的关键系统优势是 <strong>selective decompression</strong>：</p>
+<ul>
+<li>filter layers 不压缩，以避免全量重建开销；</li>
+<li>sparse layers 中只重建 sparse attention mask 选中的 KV pairs；</li>
+<li>未被当前 query 访问的 compressed KV 不需要解压，减少 memory I/O 和 compute。</li>
+</ul>
+<p>为把算法收益转化为真实吞吐，论文实现了 Sparse-vLLM。它的设计重点包括：</p>
+<ol>
+<li><strong>Modular CacheManager</strong>：解耦物理内存分配与 logical-to-physical mapping，支持 sparse/irregular KV layout。</li>
+<li><strong>Sparse Controller</strong>：在 forward 前构造 sparse view，在 forward 后管理 KV lifecycle。</li>
+<li><strong>Kernel execution</strong>：复用 LightLLM 的 token-level Triton attention operator 处理非连续内存，并把 attention score extraction 融合到 Triton kernel，避免 PyTorch 级重复计算。</li>
+</ol>
+<p>这部分贡献很关键，因为很多 KV compression / sparsity 论文只报告理论或离线指标，缺少可落地 inference engine。DeltaKV 明确把 layout、lifecycle、kernel 与 compression 共同设计。</p>
+<h2 id="_6">实验设置</h2>
+<p>论文在以下模型上评估：</p>
+<ul>
+<li>Llama-3.1-8B-Instruct；</li>
+<li>Qwen2.5-7B-Instruct-1M；</li>
+<li>Qwen2.5-32B-Instruct；</li>
+<li>DeepSeek-R1-Distill-Qwen-7B。</li>
+</ul>
+<p>评测任务包括：</p>
+<ul>
+<li>LongBench：通用长上下文理解；</li>
+<li>SCBench：多轮对话与 retrieval KV 等任务；</li>
+<li>AIME：复杂数学推理。</li>
+</ul>
+<p>对比方法分三类：</p>
+<ul>
+<li>static eviction：SnapKV、PyramidKV、AdaKV；</li>
+<li>dynamic sparsity：Quest、OmniKV；</li>
+<li>KV cache compression：Palu；同时论文在相关工作中讨论了 CacheGen、Chelsea、ClusterKV、PQCache、Lexico 等。</li>
+</ul>
+<p>效率指标主要是：</p>
+<ul>
+<li>KR：KV Cache Keep Ratio；</li>
+<li>CR：KV Cache Compute Ratio；</li>
+<li>decoding throughput。</li>
+</ul>
+<h2 id="_7">主要结果</h2>
+<h3 id="longbench">LongBench：近无损，同时显存更低</h3>
+<p>在 Llama-3.1-8B 上，Full Attention overall score 为 50.0。OmniKV 在 <script type="math/tex">CR=30\%</script> 时 overall 为 50.2，但需要 <script type="math/tex">KR=100\%</script>，即保留完整 KV cache。DeltaKV 在 <script type="math/tex">KR=45\%, CR=30\%</script> 时 overall 仍为 50.2；进一步 4-bit 量化 compressed KV 后，<script type="math/tex">KR</script> 降到 29\%，overall 仍为 50.3。</p>
+<p>这说明 DeltaKV 相比只做 sparse attention 的方法，多解决了显存问题；相比 static eviction，它在不永久丢失 token 信息的情况下保留了更好的质量。</p>
+<h3 id="scbench">SCBench：多轮场景优于静态淘汰</h3>
+<p>SCBench 中 static eviction 的弱点非常明显。以 Llama-3.1-8B 的 Retrieval KV 任务为例，SnapKV 的 R.KV 分数从 full 的 79.0 降到 0.4，而 OmniKV 为 72.2，DeltaKV 为 58.0，DeltaKV<script type="math/tex">^{\dagger}</script> 为 60.4。DeltaKV 仍有下降，但远好于静态丢弃，说明 residual compression 至少保留了部分未来可恢复的信息。</p>
+<h3 id="aime">AIME：复杂推理中保持较好质量</h3>
+<p>在 DeepSeek-Qwen-7B 的 AIME benchmark 上，Full 为 50.0，SnapKV 降到 33.3，OmniKV 为 46.7，DeltaKV 为 43.3。DeltaKV 低于 OmniKV，但明显优于静态 eviction；这是显存压缩与复杂推理质量之间的 trade-off。</p>
+<h3 id="sparse-vllm_1">Sparse-vLLM：长上下文下真实吞吐提升</h3>
+<p>在单张 NVIDIA RTX PRO 6000 上，Sparse-vLLM 本身对 full attention 的 overhead 很小：128K context 下 vLLM 为 143.2 tokens/s，Sparse-vLLM full attention 为 135.0 tokens/s。</p>
+<p>开启 DeltaKV 后，优势随上下文变长而增强：</p>
+<ul>
+<li>128K：DeltaKV<script type="math/tex">^{\dagger}</script> 达到 187.0 tokens/s；</li>
+<li>256K：DeltaKV<script type="math/tex">^{\dagger}</script> 为 120.6 tokens/s，而 vLLM full attention 为 70.2 tokens/s，约 1.7<script type="math/tex">\times</script>；</li>
+<li>512K：DeltaKV<script type="math/tex">^{\dagger}</script> 为 67.7 tokens/s，而 vLLM 为 33.1 tokens/s，约 2<script type="math/tex">\times</script>；</li>
+<li>900K：DeltaKV<script type="math/tex">^{\dagger}</script> 支持 batch size 2，吞吐 38.9 tokens/s，而 vLLM full attention batch size 1 为 18.6 tokens/s。</li>
+</ul>
+<p>论文也坦诚指出，当前实现还没有 fully fused reconstruction-attention kernel；如果把重建和 attention 融合，仍有进一步加速空间。</p>
+<h2 id="ablation">Ablation 与设计分析</h2>
+<ol>
+<li><strong>量化友好性</strong>：compressed residual values 分布更均匀且集中在 0 附近，适合 token-wise quantization。使用 KIVI 风格量化进一步压缩 compressed KV 后仍基本近无损。</li>
+<li><strong>短训长测</strong>：compressor 只在 8,192 长度训练，却能泛化到 100K+ 上下文。论文认为原因是 pre-RoPE compression 让映射基本 position-invariant。</li>
+<li><strong>模块消融</strong>：去掉 compressor/decompressor 或去掉 reference tokens 都会明显降低 LongBench overall，说明 residual construction 和 learned compression 都不是可有可无的组件。</li>
+<li><strong>reference stride trade-off</strong>：stride 更小会带来更高精度，但 reference 存储与检索开销也会上升，吞吐下降。这暴露出 DeltaKV 的一个核心系统参数：reference density 应由质量-显存-吞吐 cost model 决定，而不是固定手调。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>DeltaKV 属于 <strong>KV cache management / KV cache compression / sparse attention runtime co-design</strong>。它和 EfficientPaper 中已有方向的关系如下：</p>
+<ul>
+<li>相比 SnapKV、PyramidKV、AdaKV：DeltaKV 不是永久性 eviction，而是 residual compression，可在需要时重建被压缩 token。</li>
+<li>相比 Quest、OmniKV：DeltaKV 不只降低 attention compute，还降低 KV cache memory；但它通常需要和 sparse attention 结合，单独使用的系统收益有限。</li>
+<li>相比 Chelsea / CacheGen：DeltaKV 强调全局长距离相似性，而不是局部相似或局部聚类。</li>
+<li>相比 KV-CAT：KV-CAT 从训练模型本身提高 KV compressibility，DeltaKV 是后训练 compression module；两者可以视为 train-time compressibility 与 inference-time residual coding 的互补路线。</li>
+<li>相比 OScaR / KIVI：量化主要降低 bitwidth，DeltaKV 先把 raw KV 变成 residual code，再进一步利用 residual 分布做量化。</li>
+</ul>
+<p>因此它强化了一个趋势：KV cache 优化正在从单一“压缩率”问题，转变为 <strong>reference selection + residual representation + sparse access + runtime memory layout + kernel fusion</strong> 的联合设计问题。</p>
+<h2 id="_8">优点与局限</h2>
+<h3 id="_9">优点</h3>
+<ul>
+<li><strong>不直接丢 token</strong>：相比 eviction，更适合多轮和复杂推理场景。</li>
+<li><strong>利用全局相似性</strong>：突破局部窗口/邻近 token 相似性的限制。</li>
+<li><strong>与 sparse attention 兼容</strong>：只重建当前需要的 KV，避免全量 decompression。</li>
+<li><strong>系统落地性强</strong>：Sparse-vLLM 证明了稀疏/压缩 KV layout 可以转化为实际 throughput，而不只是理论内存节省。</li>
+<li><strong>量化友好</strong>：residual code 分布集中，进一步 4-bit 量化效果好。</li>
+</ul>
+<h3 id="_10">局限</h3>
+<ul>
+<li><strong>仍依赖 learned compressor/decompressor</strong>：需要额外训练，不是完全 plug-and-play；不同模型可能需要各自训练。</li>
+<li><strong>reference retrieval 有成本</strong>：top-<script type="math/tex">k</script> 检索、reference stride、reference set 存储都会影响吞吐和实现复杂度。</li>
+<li><strong>复杂推理仍有质量差距</strong>：AIME 上 DeltaKV 低于 OmniKV，SCBench R.KV 也有明显下降。</li>
+<li><strong>filter layers 不压缩</strong>：为了避免全量重建，部分层仍保留完整 KV，这限制了极限压缩率。</li>
+<li><strong>kernel 尚未完全融合</strong>：当前 reconstruction 与 attention 仍有进一步 fusion 空间。</li>
+</ul>
+<h2 id="_11">可复现/实现要点</h2>
+<p>如果实现 DeltaKV，关键点不是只写一个 autoencoder，而是要同时处理五件事：</p>
+<ol>
+<li>在 pre-RoPE KV states 上做 reference retrieval 和 residual coding；</li>
+<li>用 strided reference set 控制检索成本；</li>
+<li>compressor/decompressor 采用 MSE + NTP hybrid objective 训练；</li>
+<li>推理时和 sparse attention mask 联动，只重建 selected tokens；</li>
+<li>KV layout 必须支持 sparse/irregular access，否则压缩节省会被 defragmentation 和 memory movement 抵消。</li>
+</ol>
+<p>代码仓库：<a href="https://github.com/CURRENTF/Sparse-vLLM">https://github.com/CURRENTF/Sparse-vLLM</a></p>
+<h2 id="_12">个人备注</h2>
+<p>DeltaKV 最有价值的地方不是“又一个 KV 压缩率数字”，而是把 KV compression 从 token eviction 推进到 <strong>similarity-aware residual representation</strong>。它和 Chelsea 代表的 token/KV clustering 方向有明显联系，但 DeltaKV 更像是在 cluster/reference 的基础上保存 residual，而不是把 cluster 内 token 合并成 centroid。</p>
+<p>后续值得追踪的问题：</p>
+<ol>
+<li>reference set 是否可以由 runtime cost model 自适应选择，而不是固定 stride；</li>
+<li>residual compressor 是否能与 KV-CAT 这类 train-time compressibility 方法联合训练；</li>
+<li>reconstruction-attention fusion 能否把 DeltaKV 的理论优势进一步转化为更高吞吐；</li>
+<li>对 agentic workload，多轮对话中 reference tokens 的生命周期是否应与 prompt cache / session cache 统一管理；</li>
+<li>residual coding 是否可以与 Moment-KV / VECTOR 这类 temporal importance 或 reconstructability 信号结合，决定哪些 token retain、compress、approximate 或 evict。</li>
+</ol>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

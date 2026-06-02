@@ -26,6 +26,6 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2023/vLLM"
+  methods: "2023/PagedAttention"
 }
 update_time: 1779675064

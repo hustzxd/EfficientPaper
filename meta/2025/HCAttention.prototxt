@@ -25,6 +25,6 @@ cover {
   url: "fig1.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/MILLION"
 }
 update_time: 1768199096

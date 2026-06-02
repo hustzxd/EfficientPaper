@@ -21,6 +21,7 @@ cover {
   url: "fig8.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/AttentionSinks"
+  methods: "2024/KVQuant"
 }
 update_time: 1768208382

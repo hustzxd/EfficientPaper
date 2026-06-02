@@ -1,0 +1,58 @@
+paper {
+  title: "RTP-LLM: High-Performance Alibaba LLM Inference Engine"
+  abbr: "RTP-LLM"
+  url: "https://arxiv.org/abs/2605.29639"
+  authors: "Boyu Tan"
+  authors: "Jiarui Guo"
+  authors: "Zongwei Lv"
+  authors: "Haobo Sun"
+  authors: "Tong Yang"
+  authors: "Kan Liu"
+  authors: "Xinfei Shi"
+  authors: "Zetao Hu"
+  authors: "Yaxin Yu"
+  authors: "Chi Zhang"
+  authors: "Jianning Zhang"
+  authors: "Xi Yang"
+  authors: "Wei Zhang"
+  authors: "Bo Cai"
+  authors: "Silu Zhou"
+  authors: "Xiyu Wang"
+  authors: "Na He"
+  authors: "Yinghao Yu"
+  authors: "Wending Bao"
+  authors: "Guiyang Huang"
+  authors: "Yuxing Yuan"
+  authors: "Juncheng Yin"
+  authors: "Nan Wang"
+  authors: "Lin Yang"
+  authors: "Zechao Zhang"
+  authors: "Lu Chen"
+  authors: "Guoding Li"
+  authors: "Tao Lan"
+  authors: "Lin Qu"
+  institutions: "Alibaba Group"
+  institutions: "Peking University"
+  institutions: "Zhejiang University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_quant
+  words: kv_cache_management
+  words: speculative_decoding
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+}
+update_time: 1780308899

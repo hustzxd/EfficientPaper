@@ -32,3 +32,6 @@ keyword {
 cover {
   url: "fig4.jpg"
 }
+baseline {
+  methods: "2025/DeepSeek-R1"
+}

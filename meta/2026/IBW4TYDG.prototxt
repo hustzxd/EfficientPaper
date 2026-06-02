@@ -30,6 +30,6 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2023/gptq"
 }
 update_time: 1770270762

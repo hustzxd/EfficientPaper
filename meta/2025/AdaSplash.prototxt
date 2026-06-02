@@ -22,6 +22,6 @@ cover {
   url: ""
 }
 baseline {
-  methods: "None"
+  methods: "2024/FlashAttention-2"
 }
 update_time: 1767949876

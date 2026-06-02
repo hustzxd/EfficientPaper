@@ -28,6 +28,8 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/AttentionSinks"
+  methods: "2022/flashattention"
+  methods: "2026/SPEED"
 }
 update_time: 1770620881

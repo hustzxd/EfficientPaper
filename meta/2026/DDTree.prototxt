@@ -1,0 +1,30 @@
+paper {
+  title: "Accelerating Speculative Decoding with Block Diffusion Draft Trees"
+  abbr: "DDTree"
+  url: "https://arxiv.org/abs/2604.12989"
+  authors: "Liran Ringel"
+  authors: "Yaniv Romano"
+  institutions: "Technion – Israel Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/liranringel/ddtree"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: speculative_decoding
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2026/DFlash"
+  methods: "2024/Eagle"
+}
+update_time: 1780284267

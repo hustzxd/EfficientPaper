@@ -46,5 +46,6 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/MPK-Mirage"
+  methods: "2023/sms"
 }

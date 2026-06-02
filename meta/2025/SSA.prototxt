@@ -31,5 +31,7 @@ cover {
   url: "fig2.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/MoBA"
+  methods: "2025/FLOW"
+  methods: "2025/NSA"
 }

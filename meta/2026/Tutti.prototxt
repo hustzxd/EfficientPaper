@@ -30,7 +30,8 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/LMCache"
+  methods: "2025/Strata"
 }
 update_time: 1778220869
 rating: 3

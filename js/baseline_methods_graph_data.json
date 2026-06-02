@@ -1,0 +1,3402 @@
+{
+  "title": "Baseline Methods Graph Interactive",
+  "component_count": 17,
+  "components": [
+    {
+      "title": "Quest",
+      "anchor": "quest-family",
+      "node_count": 131,
+      "edge_count": 153,
+      "width": 1644,
+      "height": 4854,
+      "nodes": [
+        {
+          "id": "2022/flashattention",
+          "label": "flashattention[2022]",
+          "display_name": "flashattention",
+          "year_label": "2022",
+          "search_name": "flashattention",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 867.0
+        },
+        {
+          "id": "2023/CacheGen",
+          "label": "CacheGen[2023]",
+          "display_name": "CacheGen",
+          "year_label": "2023",
+          "search_name": "CacheGen",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 947.0
+        },
+        {
+          "id": "2023/FlexGen",
+          "label": "FlexGen[2023]",
+          "display_name": "FlexGen",
+          "year_label": "2023",
+          "search_name": "FlexGen",
+          "type": "root",
+          "level": 0,
+          "row": 2,
+          "x": 132.0,
+          "y": 1027.0
+        },
+        {
+          "id": "2023/gptq",
+          "label": "gptq[2023]",
+          "display_name": "gptq",
+          "year_label": "2023",
+          "search_name": "gptq",
+          "type": "root",
+          "level": 0,
+          "row": 3,
+          "x": 132.0,
+          "y": 1107.0
+        },
+        {
+          "id": "2023/H2O",
+          "label": "H2O[2023]",
+          "display_name": "H2O",
+          "year_label": "2023",
+          "search_name": "H2O",
+          "type": "root",
+          "level": 0,
+          "row": 4,
+          "x": 132.0,
+          "y": 1187.0
+        },
+        {
+          "id": "2023/omniquant",
+          "label": "omniquant[2023]",
+          "display_name": "omniquant",
+          "year_label": "2023",
+          "search_name": "omniquant",
+          "type": "root",
+          "level": 0,
+          "row": 5,
+          "x": 132.0,
+          "y": 1267.0
+        },
+        {
+          "id": "2023/PagedAttention",
+          "label": "PagedAttention[2023]",
+          "display_name": "PagedAttention",
+          "year_label": "2023",
+          "search_name": "PagedAttention",
+          "type": "root",
+          "level": 0,
+          "row": 6,
+          "x": 132.0,
+          "y": 1347.0
+        },
+        {
+          "id": "2023/QuIP",
+          "label": "QuIP[2023]",
+          "display_name": "QuIP",
+          "year_label": "2023",
+          "search_name": "QuIP",
+          "type": "root",
+          "level": 0,
+          "row": 7,
+          "x": 132.0,
+          "y": 1427.0
+        },
+        {
+          "id": "2024/AdaKV",
+          "label": "AdaKV[2024]",
+          "display_name": "AdaKV",
+          "year_label": "2024",
+          "search_name": "AdaKV",
+          "type": "root",
+          "level": 0,
+          "row": 8,
+          "x": 132.0,
+          "y": 1507.0
+        },
+        {
+          "id": "2024/Async-TP",
+          "label": "Async-TP[2024]",
+          "display_name": "Async-TP",
+          "year_label": "2024",
+          "search_name": "Async-TP",
+          "type": "root",
+          "level": 0,
+          "row": 9,
+          "x": 132.0,
+          "y": 1587.0
+        },
+        {
+          "id": "2024/awq",
+          "label": "awq[2024]",
+          "display_name": "awq",
+          "year_label": "2024",
+          "search_name": "awq",
+          "type": "root",
+          "level": 0,
+          "row": 10,
+          "x": 132.0,
+          "y": 1667.0
+        },
+        {
+          "id": "2024/CachedAttention",
+          "label": "CachedAttention[2024]",
+          "display_name": "CachedAttention",
+          "year_label": "2024",
+          "search_name": "CachedAttention",
+          "type": "root",
+          "level": 0,
+          "row": 11,
+          "x": 132.0,
+          "y": 1747.0
+        },
+        {
+          "id": "2024/Cake",
+          "label": "Cake[2024]",
+          "display_name": "Cake",
+          "year_label": "2024",
+          "search_name": "Cake",
+          "type": "root",
+          "level": 0,
+          "row": 12,
+          "x": 132.0,
+          "y": 1827.0
+        },
+        {
+          "id": "2024/DoubleSparsity",
+          "label": "DoubleSparsity[2024]",
+          "display_name": "DoubleSparsity",
+          "year_label": "2024",
+          "search_name": "DoubleSparsity",
+          "type": "root",
+          "level": 0,
+          "row": 13,
+          "x": 132.0,
+          "y": 1907.0
+        },
+        {
+          "id": "2024/DuoAttention",
+          "label": "DuoAttention[2024]",
+          "display_name": "DuoAttention",
+          "year_label": "2024",
+          "search_name": "DuoAttention",
+          "type": "root",
+          "level": 0,
+          "row": 14,
+          "x": 132.0,
+          "y": 1987.0
+        },
+        {
+          "id": "2024/FLUX",
+          "label": "FLUX[2024]",
+          "display_name": "FLUX",
+          "year_label": "2024",
+          "search_name": "FLUX",
+          "type": "root",
+          "level": 0,
+          "row": 15,
+          "x": 132.0,
+          "y": 2067.0
+        },
+        {
+          "id": "2024/GEAR",
+          "label": "GEAR[2024]",
+          "display_name": "GEAR",
+          "year_label": "2024",
+          "search_name": "GEAR",
+          "type": "root",
+          "level": 0,
+          "row": 16,
+          "x": 132.0,
+          "y": 2147.0
+        },
+        {
+          "id": "2024/KIVI",
+          "label": "KIVI[2024]",
+          "display_name": "KIVI",
+          "year_label": "2024",
+          "search_name": "KIVI",
+          "type": "root",
+          "level": 0,
+          "row": 17,
+          "x": 132.0,
+          "y": 2227.0
+        },
+        {
+          "id": "2024/KVQuant",
+          "label": "KVQuant[2024]",
+          "display_name": "KVQuant",
+          "year_label": "2024",
+          "search_name": "KVQuant",
+          "type": "root",
+          "level": 0,
+          "row": 18,
+          "x": 132.0,
+          "y": 2307.0
+        },
+        {
+          "id": "2024/LazyLLM",
+          "label": "LazyLLM[2024]",
+          "display_name": "LazyLLM",
+          "year_label": "2024",
+          "search_name": "LazyLLM",
+          "type": "root",
+          "level": 0,
+          "row": 19,
+          "x": 132.0,
+          "y": 2387.0
+        },
+        {
+          "id": "2024/MiKV",
+          "label": "MiKV[2024]",
+          "display_name": "MiKV",
+          "year_label": "2024",
+          "search_name": "MiKV",
+          "type": "root",
+          "level": 0,
+          "row": 20,
+          "x": 132.0,
+          "y": 2467.0
+        },
+        {
+          "id": "2024/Mooncake",
+          "label": "Mooncake[2024]",
+          "display_name": "Mooncake",
+          "year_label": "2024",
+          "search_name": "Mooncake",
+          "type": "root",
+          "level": 0,
+          "row": 21,
+          "x": 132.0,
+          "y": 2547.0
+        },
+        {
+          "id": "2024/Quest",
+          "label": "Quest[2024]",
+          "display_name": "Quest",
+          "year_label": "2024",
+          "search_name": "Quest",
+          "type": "root",
+          "level": 0,
+          "row": 22,
+          "x": 132.0,
+          "y": 2627.0
+        },
+        {
+          "id": "2024/SeerAttention",
+          "label": "SeerAttention[2024]",
+          "display_name": "SeerAttention",
+          "year_label": "2024",
+          "search_name": "SeerAttention",
+          "type": "root",
+          "level": 0,
+          "row": 23,
+          "x": 132.0,
+          "y": 2707.0
+        },
+        {
+          "id": "2024/SGLang",
+          "label": "SGLang[2024]",
+          "display_name": "SGLang",
+          "year_label": "2024",
+          "search_name": "SGLang",
+          "type": "root",
+          "level": 0,
+          "row": 24,
+          "x": 132.0,
+          "y": 2787.0
+        },
+        {
+          "id": "2024/SliceGPT",
+          "label": "SliceGPT[2024]",
+          "display_name": "SliceGPT",
+          "year_label": "2024",
+          "search_name": "SliceGPT",
+          "type": "root",
+          "level": 0,
+          "row": 25,
+          "x": 132.0,
+          "y": 2867.0
+        },
+        {
+          "id": "2024/SnapKV",
+          "label": "SnapKV[2024]",
+          "display_name": "SnapKV",
+          "year_label": "2024",
+          "search_name": "SnapKV",
+          "type": "root",
+          "level": 0,
+          "row": 26,
+          "x": 132.0,
+          "y": 2947.0
+        },
+        {
+          "id": "2024/streaming-llm",
+          "label": "streaming-llm[2024]",
+          "display_name": "streaming-llm",
+          "year_label": "2024",
+          "search_name": "streaming-llm",
+          "type": "root",
+          "level": 0,
+          "row": 27,
+          "x": 132.0,
+          "y": 3027.0
+        },
+        {
+          "id": "2024/TOVA",
+          "label": "TOVA[2024]",
+          "display_name": "TOVA",
+          "year_label": "2024",
+          "search_name": "TOVA",
+          "type": "root",
+          "level": 0,
+          "row": 28,
+          "x": 132.0,
+          "y": 3107.0
+        },
+        {
+          "id": "2024/ZipCache",
+          "label": "ZipCache[2024]",
+          "display_name": "ZipCache",
+          "year_label": "2024",
+          "search_name": "ZipCache",
+          "type": "root",
+          "level": 0,
+          "row": 29,
+          "x": 132.0,
+          "y": 3187.0
+        },
+        {
+          "id": "2025/AttentionSinks",
+          "label": "AttentionSinks[2025]",
+          "display_name": "AttentionSinks",
+          "year_label": "2025",
+          "search_name": "AttentionSinks",
+          "type": "root",
+          "level": 0,
+          "row": 30,
+          "x": 132.0,
+          "y": 3267.0
+        },
+        {
+          "id": "2025/DSA",
+          "label": "DSA[2025]",
+          "display_name": "DSA",
+          "year_label": "2025",
+          "search_name": "DSA",
+          "type": "root",
+          "level": 0,
+          "row": 31,
+          "x": 132.0,
+          "y": 3347.0
+        },
+        {
+          "id": "2025/FlashInfer",
+          "label": "FlashInfer[2025]",
+          "display_name": "FlashInfer",
+          "year_label": "2025",
+          "search_name": "FlashInfer",
+          "type": "root",
+          "level": 0,
+          "row": 32,
+          "x": 132.0,
+          "y": 3427.0
+        },
+        {
+          "id": "2025/LMCache",
+          "label": "LMCache[2025]",
+          "display_name": "LMCache",
+          "year_label": "2025",
+          "search_name": "LMCache",
+          "type": "root",
+          "level": 0,
+          "row": 33,
+          "x": 132.0,
+          "y": 3507.0
+        },
+        {
+          "id": "2025/Marconi",
+          "label": "Marconi[2025]",
+          "display_name": "Marconi",
+          "year_label": "2025",
+          "search_name": "Marconi",
+          "type": "root",
+          "level": 0,
+          "row": 34,
+          "x": 132.0,
+          "y": 3587.0
+        },
+        {
+          "id": "2025/PQCache",
+          "label": "PQCache[2025]",
+          "display_name": "PQCache",
+          "year_label": "2025",
+          "search_name": "PQCache",
+          "type": "root",
+          "level": 0,
+          "row": 35,
+          "x": 132.0,
+          "y": 3667.0
+        },
+        {
+          "id": "2025/R-KV",
+          "label": "R-KV[2025]",
+          "display_name": "R-KV",
+          "year_label": "2025",
+          "search_name": "R-KV",
+          "type": "root",
+          "level": 0,
+          "row": 36,
+          "x": 132.0,
+          "y": 3747.0
+        },
+        {
+          "id": "2025/SageAttention3",
+          "label": "SageAttention3[2025]",
+          "display_name": "SageAttention3",
+          "year_label": "2025",
+          "search_name": "SageAttention3",
+          "type": "root",
+          "level": 0,
+          "row": 37,
+          "x": 132.0,
+          "y": 3827.0
+        },
+        {
+          "id": "2025/ShadowKV",
+          "label": "ShadowKV[2025]",
+          "display_name": "ShadowKV",
+          "year_label": "2025",
+          "search_name": "ShadowKV",
+          "type": "root",
+          "level": 0,
+          "row": 38,
+          "x": 132.0,
+          "y": 3907.0
+        },
+        {
+          "id": "2026/SPEED",
+          "label": "SPEED[2026]",
+          "display_name": "SPEED",
+          "year_label": "2026",
+          "search_name": "SPEED",
+          "type": "root",
+          "level": 0,
+          "row": 39,
+          "x": 132.0,
+          "y": 3987.0
+        },
+        {
+          "id": "2023/FlashDecoding",
+          "label": "FlashDecoding[2023]",
+          "display_name": "FlashDecoding",
+          "year_label": "2023",
+          "search_name": "FlashDecoding",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 67.0
+        },
+        {
+          "id": "2024/FlashAttention-2",
+          "label": "FlashAttention-2[2024]",
+          "display_name": "FlashAttention-2",
+          "year_label": "2024",
+          "search_name": "FlashAttention-2",
+          "type": "default",
+          "level": 1,
+          "row": 1,
+          "x": 408.0,
+          "y": 147.0
+        },
+        {
+          "id": "2024/InfLLM",
+          "label": "InfLLM[2024]",
+          "display_name": "InfLLM",
+          "year_label": "2024",
+          "search_name": "InfLLM",
+          "type": "default",
+          "level": 1,
+          "row": 2,
+          "x": 408.0,
+          "y": 227.0
+        },
+        {
+          "id": "2024/PyramidKV",
+          "label": "PyramidKV[2024]",
+          "display_name": "PyramidKV",
+          "year_label": "2024",
+          "search_name": "PyramidKV",
+          "type": "default",
+          "level": 1,
+          "row": 3,
+          "x": 408.0,
+          "y": 307.0
+        },
+        {
+          "id": "2024/QuaRot",
+          "label": "QuaRot[2024]",
+          "display_name": "QuaRot",
+          "year_label": "2024",
+          "search_name": "QuaRot",
+          "type": "default",
+          "level": 1,
+          "row": 4,
+          "x": 408.0,
+          "y": 387.0
+        },
+        {
+          "id": "2024/RazorAttention",
+          "label": "RazorAttention[2024]",
+          "display_name": "RazorAttention",
+          "year_label": "2024",
+          "search_name": "RazorAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 5,
+          "x": 408.0,
+          "y": 467.0
+        },
+        {
+          "id": "2025/0VRXJQ3F",
+          "label": "0VRXJQ3F[2025]",
+          "display_name": "0VRXJQ3F",
+          "year_label": "2025",
+          "search_name": "0VRXJQ3F",
+          "type": "leaf",
+          "level": 1,
+          "row": 6,
+          "x": 408.0,
+          "y": 547.0
+        },
+        {
+          "id": "2025/CacheBlend",
+          "label": "CacheBlend[2025]",
+          "display_name": "CacheBlend",
+          "year_label": "2025",
+          "search_name": "CacheBlend",
+          "type": "leaf",
+          "level": 1,
+          "row": 7,
+          "x": 408.0,
+          "y": 627.0
+        },
+        {
+          "id": "2025/CTkvr",
+          "label": "CTkvr[2025]",
+          "display_name": "CTkvr",
+          "year_label": "2025",
+          "search_name": "CTkvr",
+          "type": "leaf",
+          "level": 1,
+          "row": 8,
+          "x": 408.0,
+          "y": 707.0
+        },
+        {
+          "id": "2025/DefensiveKV",
+          "label": "DefensiveKV[2025]",
+          "display_name": "DefensiveKV",
+          "year_label": "2025",
+          "search_name": "DefensiveKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 9,
+          "x": 408.0,
+          "y": 787.0
+        },
+        {
+          "id": "2025/FastKV",
+          "label": "FastKV[2025]",
+          "display_name": "FastKV",
+          "year_label": "2025",
+          "search_name": "FastKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 10,
+          "x": 408.0,
+          "y": 867.0
+        },
+        {
+          "id": "2025/FoX",
+          "label": "FoX[2025]",
+          "display_name": "FoX",
+          "year_label": "2025",
+          "search_name": "FoX",
+          "type": "leaf",
+          "level": 1,
+          "row": 11,
+          "x": 408.0,
+          "y": 947.0
+        },
+        {
+          "id": "2025/H1B-KV",
+          "label": "H1B-KV[2025]",
+          "display_name": "H1B-KV",
+          "year_label": "2025",
+          "search_name": "H1B-KV",
+          "type": "leaf",
+          "level": 1,
+          "row": 12,
+          "x": 408.0,
+          "y": 1027.0
+        },
+        {
+          "id": "2025/HashAttention",
+          "label": "HashAttention[2025]",
+          "display_name": "HashAttention",
+          "year_label": "2025",
+          "search_name": "HashAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 13,
+          "x": 408.0,
+          "y": 1107.0
+        },
+        {
+          "id": "2025/HATA",
+          "label": "HATA[2025]",
+          "display_name": "HATA",
+          "year_label": "2025",
+          "search_name": "HATA",
+          "type": "leaf",
+          "level": 1,
+          "row": 14,
+          "x": 408.0,
+          "y": 1187.0
+        },
+        {
+          "id": "2025/Kascade",
+          "label": "Kascade[2025]",
+          "display_name": "Kascade",
+          "year_label": "2025",
+          "search_name": "Kascade",
+          "type": "leaf",
+          "level": 1,
+          "row": 15,
+          "x": 408.0,
+          "y": 1267.0
+        },
+        {
+          "id": "2025/KVmix",
+          "label": "KVmix[2025]",
+          "display_name": "KVmix",
+          "year_label": "2025",
+          "search_name": "KVmix",
+          "type": "leaf",
+          "level": 1,
+          "row": 16,
+          "x": 408.0,
+          "y": 1347.0
+        },
+        {
+          "id": "2025/KVSink",
+          "label": "KVSink[2025]",
+          "display_name": "KVSink",
+          "year_label": "2025",
+          "search_name": "KVSink",
+          "type": "leaf",
+          "level": 1,
+          "row": 17,
+          "x": 408.0,
+          "y": 1427.0
+        },
+        {
+          "id": "2025/KVzip",
+          "label": "KVzip[2025]",
+          "display_name": "KVzip",
+          "year_label": "2025",
+          "search_name": "KVzip",
+          "type": "default",
+          "level": 1,
+          "row": 18,
+          "x": 408.0,
+          "y": 1507.0
+        },
+        {
+          "id": "2025/LAVa",
+          "label": "LAVa[2025]",
+          "display_name": "LAVa",
+          "year_label": "2025",
+          "search_name": "LAVa",
+          "type": "leaf",
+          "level": 1,
+          "row": 19,
+          "x": 408.0,
+          "y": 1587.0
+        },
+        {
+          "id": "2025/MILLION",
+          "label": "MILLION[2025]",
+          "display_name": "MILLION",
+          "year_label": "2025",
+          "search_name": "MILLION",
+          "type": "default",
+          "level": 1,
+          "row": 20,
+          "x": 408.0,
+          "y": 1667.0
+        },
+        {
+          "id": "2025/NanoFlow",
+          "label": "NanoFlow[2025]",
+          "display_name": "NanoFlow",
+          "year_label": "2025",
+          "search_name": "NanoFlow",
+          "type": "default",
+          "level": 1,
+          "row": 21,
+          "x": 408.0,
+          "y": 1747.0
+        },
+        {
+          "id": "2025/PagedEviction",
+          "label": "PagedEviction[2025]",
+          "display_name": "PagedEviction",
+          "year_label": "2025",
+          "search_name": "PagedEviction",
+          "type": "leaf",
+          "level": 1,
+          "row": 22,
+          "x": 408.0,
+          "y": 1827.0
+        },
+        {
+          "id": "2025/PruLong",
+          "label": "PruLong[2025]",
+          "display_name": "PruLong",
+          "year_label": "2025",
+          "search_name": "PruLong",
+          "type": "leaf",
+          "level": 1,
+          "row": 23,
+          "x": 408.0,
+          "y": 1907.0
+        },
+        {
+          "id": "2025/PureKV",
+          "label": "PureKV[2025]",
+          "display_name": "PureKV",
+          "year_label": "2025",
+          "search_name": "PureKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 24,
+          "x": 408.0,
+          "y": 1987.0
+        },
+        {
+          "id": "2025/QJL",
+          "label": "QJL[2025]",
+          "display_name": "QJL",
+          "year_label": "2025",
+          "search_name": "QJL",
+          "type": "leaf",
+          "level": 1,
+          "row": 25,
+          "x": 408.0,
+          "y": 2067.0
+        },
+        {
+          "id": "2025/RaaS",
+          "label": "RaaS[2025]",
+          "display_name": "RaaS",
+          "year_label": "2025",
+          "search_name": "RaaS",
+          "type": "default",
+          "level": 1,
+          "row": 26,
+          "x": 408.0,
+          "y": 2147.0
+        },
+        {
+          "id": "2025/RetroAttention",
+          "label": "RetroAttention[2025]",
+          "display_name": "RetroAttention",
+          "year_label": "2025",
+          "search_name": "RetroAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 27,
+          "x": 408.0,
+          "y": 2227.0
+        },
+        {
+          "id": "2025/RotateKV",
+          "label": "RotateKV[2025]",
+          "display_name": "RotateKV",
+          "year_label": "2025",
+          "search_name": "RotateKV",
+          "type": "default",
+          "level": 1,
+          "row": 28,
+          "x": 408.0,
+          "y": 2307.0
+        },
+        {
+          "id": "2025/SignRoundV2",
+          "label": "SignRoundV2[2025]",
+          "display_name": "SignRoundV2",
+          "year_label": "2025",
+          "search_name": "SignRoundV2",
+          "type": "leaf",
+          "level": 1,
+          "row": 29,
+          "x": 408.0,
+          "y": 2387.0
+        },
+        {
+          "id": "2025/SparseServe",
+          "label": "SparseServe[2025]",
+          "display_name": "SparseServe",
+          "year_label": "2025",
+          "search_name": "SparseServe",
+          "type": "leaf",
+          "level": 1,
+          "row": 30,
+          "x": 408.0,
+          "y": 2467.0
+        },
+        {
+          "id": "2025/SQ-format",
+          "label": "SQ-format[2025]",
+          "display_name": "SQ-format",
+          "year_label": "2025",
+          "search_name": "SQ-format",
+          "type": "leaf",
+          "level": 1,
+          "row": 31,
+          "x": 408.0,
+          "y": 2547.0
+        },
+        {
+          "id": "2025/Strata",
+          "label": "Strata[2025]",
+          "display_name": "Strata",
+          "year_label": "2025",
+          "search_name": "Strata",
+          "type": "default",
+          "level": 1,
+          "row": 32,
+          "x": 408.0,
+          "y": 2627.0
+        },
+        {
+          "id": "2025/TileLink",
+          "label": "TileLink[2025]",
+          "display_name": "TileLink",
+          "year_label": "2025",
+          "search_name": "TileLink",
+          "type": "default",
+          "level": 1,
+          "row": 33,
+          "x": 408.0,
+          "y": 2707.0
+        },
+        {
+          "id": "2025/Twilight",
+          "label": "Twilight[2025]",
+          "display_name": "Twilight",
+          "year_label": "2025",
+          "search_name": "Twilight",
+          "type": "leaf",
+          "level": 1,
+          "row": 34,
+          "x": 408.0,
+          "y": 2787.0
+        },
+        {
+          "id": "2025/UNComp",
+          "label": "UNComp[2025]",
+          "display_name": "UNComp",
+          "year_label": "2025",
+          "search_name": "UNComp",
+          "type": "leaf",
+          "level": 1,
+          "row": 35,
+          "x": 408.0,
+          "y": 2867.0
+        },
+        {
+          "id": "2025/vAttention",
+          "label": "vAttention[2025]",
+          "display_name": "vAttention",
+          "year_label": "2025",
+          "search_name": "vAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 36,
+          "x": 408.0,
+          "y": 2947.0
+        },
+        {
+          "id": "2025/WGM",
+          "label": "WGM[2025]",
+          "display_name": "WGM",
+          "year_label": "2025",
+          "search_name": "WGM",
+          "type": "leaf",
+          "level": 1,
+          "row": 37,
+          "x": 408.0,
+          "y": 3027.0
+        },
+        {
+          "id": "2026/Bidaw",
+          "label": "Bidaw[2026]",
+          "display_name": "Bidaw",
+          "year_label": "2026",
+          "search_name": "Bidaw",
+          "type": "leaf",
+          "level": 1,
+          "row": 38,
+          "x": 408.0,
+          "y": 3107.0
+        },
+        {
+          "id": "2026/CacheFlow",
+          "label": "CacheFlow[2026]",
+          "display_name": "CacheFlow",
+          "year_label": "2026",
+          "search_name": "CacheFlow",
+          "type": "default",
+          "level": 1,
+          "row": 39,
+          "x": 408.0,
+          "y": 3187.0
+        },
+        {
+          "id": "2026/ContiguousKV",
+          "label": "ContiguousKV[2026]",
+          "display_name": "ContiguousKV",
+          "year_label": "2026",
+          "search_name": "ContiguousKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 40,
+          "x": 408.0,
+          "y": 3267.0
+        },
+        {
+          "id": "2026/Double-P",
+          "label": "Double-P[2026]",
+          "display_name": "Double-P",
+          "year_label": "2026",
+          "search_name": "Double-P",
+          "type": "leaf",
+          "level": 1,
+          "row": 41,
+          "x": 408.0,
+          "y": 3347.0
+        },
+        {
+          "id": "2026/FlashCache",
+          "label": "FlashCache[2026]",
+          "display_name": "FlashCache",
+          "year_label": "2026",
+          "search_name": "FlashCache",
+          "type": "leaf",
+          "level": 1,
+          "row": 42,
+          "x": 408.0,
+          "y": 3427.0
+        },
+        {
+          "id": "2026/FlashOverlap",
+          "label": "FlashOverlap[2026]",
+          "display_name": "FlashOverlap",
+          "year_label": "2026",
+          "search_name": "FlashOverlap",
+          "type": "leaf",
+          "level": 1,
+          "row": 43,
+          "x": 408.0,
+          "y": 3507.0
+        },
+        {
+          "id": "2026/GLM-5",
+          "label": "GLM-5[2026]",
+          "display_name": "GLM-5",
+          "year_label": "2026",
+          "search_name": "GLM-5",
+          "type": "default",
+          "level": 1,
+          "row": 44,
+          "x": 408.0,
+          "y": 3587.0
+        },
+        {
+          "id": "2026/HISA",
+          "label": "HISA[2026]",
+          "display_name": "HISA",
+          "year_label": "2026",
+          "search_name": "HISA",
+          "type": "leaf",
+          "level": 1,
+          "row": 45,
+          "x": 408.0,
+          "y": 3667.0
+        },
+        {
+          "id": "2026/IBW4TYDG",
+          "label": "IBW4TYDG[2026]",
+          "display_name": "IBW4TYDG",
+          "year_label": "2026",
+          "search_name": "IBW4TYDG",
+          "type": "leaf",
+          "level": 1,
+          "row": 46,
+          "x": 408.0,
+          "y": 3747.0
+        },
+        {
+          "id": "2026/K-Search",
+          "label": "K-Search[2026]",
+          "display_name": "K-Search",
+          "year_label": "2026",
+          "search_name": "K-Search",
+          "type": "leaf",
+          "level": 1,
+          "row": 47,
+          "x": 408.0,
+          "y": 3827.0
+        },
+        {
+          "id": "2026/KunServe",
+          "label": "KunServe[2026]",
+          "display_name": "KunServe",
+          "year_label": "2026",
+          "search_name": "KunServe",
+          "type": "leaf",
+          "level": 1,
+          "row": 48,
+          "x": 408.0,
+          "y": 3907.0
+        },
+        {
+          "id": "2026/KVBuffer",
+          "label": "KVBuffer[2026]",
+          "display_name": "KVBuffer",
+          "year_label": "2026",
+          "search_name": "KVBuffer",
+          "type": "leaf",
+          "level": 1,
+          "row": 49,
+          "x": 408.0,
+          "y": 3987.0
+        },
+        {
+          "id": "2026/KVDrive",
+          "label": "KVDrive[2026]",
+          "display_name": "KVDrive",
+          "year_label": "2026",
+          "search_name": "KVDrive",
+          "type": "leaf",
+          "level": 1,
+          "row": 50,
+          "x": 408.0,
+          "y": 4067.0
+        },
+        {
+          "id": "2026/KVServe",
+          "label": "KVServe[2026]",
+          "display_name": "KVServe",
+          "year_label": "2026",
+          "search_name": "KVServe",
+          "type": "leaf",
+          "level": 1,
+          "row": 51,
+          "x": 408.0,
+          "y": 4147.0
+        },
+        {
+          "id": "2026/KVTC",
+          "label": "KVTC[2026]",
+          "display_name": "KVTC",
+          "year_label": "2026",
+          "search_name": "KVTC",
+          "type": "leaf",
+          "level": 1,
+          "row": 52,
+          "x": 408.0,
+          "y": 4227.0
+        },
+        {
+          "id": "2026/L3",
+          "label": "L3[2026]",
+          "display_name": "L3",
+          "year_label": "2026",
+          "search_name": "L3",
+          "type": "leaf",
+          "level": 1,
+          "row": 53,
+          "x": 408.0,
+          "y": 4307.0
+        },
+        {
+          "id": "2026/RTP-LLM",
+          "label": "RTP-LLM[2026]",
+          "display_name": "RTP-LLM",
+          "year_label": "2026",
+          "search_name": "RTP-LLM",
+          "type": "leaf",
+          "level": 1,
+          "row": 54,
+          "x": 408.0,
+          "y": 4387.0
+        },
+        {
+          "id": "2026/SparVAR",
+          "label": "SparVAR[2026]",
+          "display_name": "SparVAR",
+          "year_label": "2026",
+          "search_name": "SparVAR",
+          "type": "leaf",
+          "level": 1,
+          "row": 55,
+          "x": 408.0,
+          "y": 4467.0
+        },
+        {
+          "id": "2026/Tactic",
+          "label": "Tactic[2026]",
+          "display_name": "Tactic",
+          "year_label": "2026",
+          "search_name": "Tactic",
+          "type": "leaf",
+          "level": 1,
+          "row": 56,
+          "x": 408.0,
+          "y": 4547.0
+        },
+        {
+          "id": "2026/ThriftAttention",
+          "label": "ThriftAttention[2026]",
+          "display_name": "ThriftAttention",
+          "year_label": "2026",
+          "search_name": "ThriftAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 57,
+          "x": 408.0,
+          "y": 4627.0
+        },
+        {
+          "id": "2026/TurboQuant",
+          "label": "TurboQuant[2026]",
+          "display_name": "TurboQuant",
+          "year_label": "2026",
+          "search_name": "TurboQuant",
+          "type": "default",
+          "level": 1,
+          "row": 58,
+          "x": 408.0,
+          "y": 4707.0
+        },
+        {
+          "id": "2026/VQKV",
+          "label": "VQKV[2026]",
+          "display_name": "VQKV",
+          "year_label": "2026",
+          "search_name": "VQKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 59,
+          "x": 408.0,
+          "y": 4787.0
+        },
+        {
+          "id": "2024/FlashAttention-3",
+          "label": "FlashAttention-3[2024]",
+          "display_name": "FlashAttention-3",
+          "year_label": "2024",
+          "search_name": "FlashAttention-3",
+          "type": "default",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 1747.0
+        },
+        {
+          "id": "2024/MInference",
+          "label": "MInference[2024]",
+          "display_name": "MInference",
+          "year_label": "2024",
+          "search_name": "MInference",
+          "type": "default",
+          "level": 2,
+          "row": 1,
+          "x": 684.0,
+          "y": 1827.0
+        },
+        {
+          "id": "2025/AdaSplash",
+          "label": "AdaSplash[2025]",
+          "display_name": "AdaSplash",
+          "year_label": "2025",
+          "search_name": "AdaSplash",
+          "type": "default",
+          "level": 2,
+          "row": 2,
+          "x": 684.0,
+          "y": 1907.0
+        },
+        {
+          "id": "2025/EvolKV",
+          "label": "EvolKV[2025]",
+          "display_name": "EvolKV",
+          "year_label": "2025",
+          "search_name": "EvolKV",
+          "type": "leaf",
+          "level": 2,
+          "row": 3,
+          "x": 684.0,
+          "y": 1987.0
+        },
+        {
+          "id": "2025/FreeKV",
+          "label": "FreeKV[2025]",
+          "display_name": "FreeKV",
+          "year_label": "2025",
+          "search_name": "FreeKV",
+          "type": "leaf",
+          "level": 2,
+          "row": 4,
+          "x": 684.0,
+          "y": 2067.0
+        },
+        {
+          "id": "2025/HCAttention",
+          "label": "HCAttention[2025]",
+          "display_name": "HCAttention",
+          "year_label": "2025",
+          "search_name": "HCAttention",
+          "type": "leaf",
+          "level": 2,
+          "row": 5,
+          "x": 684.0,
+          "y": 2147.0
+        },
+        {
+          "id": "2025/MixKVQ",
+          "label": "MixKVQ[2025]",
+          "display_name": "MixKVQ",
+          "year_label": "2025",
+          "search_name": "MixKVQ",
+          "type": "leaf",
+          "level": 2,
+          "row": 6,
+          "x": 684.0,
+          "y": 2227.0
+        },
+        {
+          "id": "2025/TokenWeave",
+          "label": "TokenWeave[2025]",
+          "display_name": "TokenWeave",
+          "year_label": "2025",
+          "search_name": "TokenWeave",
+          "type": "leaf",
+          "level": 2,
+          "row": 7,
+          "x": 684.0,
+          "y": 2307.0
+        },
+        {
+          "id": "2025/VecInfer",
+          "label": "VecInfer[2025]",
+          "display_name": "VecInfer",
+          "year_label": "2025",
+          "search_name": "VecInfer",
+          "type": "leaf",
+          "level": 2,
+          "row": 8,
+          "x": 684.0,
+          "y": 2387.0
+        },
+        {
+          "id": "2026/FastKVzip",
+          "label": "FastKVzip[2026]",
+          "display_name": "FastKVzip",
+          "year_label": "2026",
+          "search_name": "FastKVzip",
+          "type": "leaf",
+          "level": 2,
+          "row": 9,
+          "x": 684.0,
+          "y": 2467.0
+        },
+        {
+          "id": "2026/HARP",
+          "label": "HARP[2026]",
+          "display_name": "HARP",
+          "year_label": "2026",
+          "search_name": "HARP",
+          "type": "leaf",
+          "level": 2,
+          "row": 10,
+          "x": 684.0,
+          "y": 2547.0
+        },
+        {
+          "id": "2026/IndexCache",
+          "label": "IndexCache[2026]",
+          "display_name": "IndexCache",
+          "year_label": "2026",
+          "search_name": "IndexCache",
+          "type": "leaf",
+          "level": 2,
+          "row": 11,
+          "x": 684.0,
+          "y": 2627.0
+        },
+        {
+          "id": "2026/KVzap",
+          "label": "KVzap[2026]",
+          "display_name": "KVzap",
+          "year_label": "2026",
+          "search_name": "KVzap",
+          "type": "leaf",
+          "level": 2,
+          "row": 12,
+          "x": 684.0,
+          "y": 2707.0
+        },
+        {
+          "id": "2026/Moment-KV",
+          "label": "Moment-KV[2026]",
+          "display_name": "Moment-KV",
+          "year_label": "2026",
+          "search_name": "Moment-KV",
+          "type": "leaf",
+          "level": 2,
+          "row": 13,
+          "x": 684.0,
+          "y": 2787.0
+        },
+        {
+          "id": "2026/OScaR",
+          "label": "OScaR[2026]",
+          "display_name": "OScaR",
+          "year_label": "2026",
+          "search_name": "OScaR",
+          "type": "leaf",
+          "level": 2,
+          "row": 14,
+          "x": 684.0,
+          "y": 2867.0
+        },
+        {
+          "id": "2026/TriAttention",
+          "label": "TriAttention[2026]",
+          "display_name": "TriAttention",
+          "year_label": "2026",
+          "search_name": "TriAttention",
+          "type": "leaf",
+          "level": 2,
+          "row": 15,
+          "x": 684.0,
+          "y": 2947.0
+        },
+        {
+          "id": "2026/Tutti",
+          "label": "Tutti[2026]",
+          "display_name": "Tutti",
+          "year_label": "2026",
+          "search_name": "Tutti",
+          "type": "default",
+          "level": 2,
+          "row": 16,
+          "x": 684.0,
+          "y": 3027.0
+        },
+        {
+          "id": "2026/VECTOR",
+          "label": "VECTOR[2026]",
+          "display_name": "VECTOR",
+          "year_label": "2026",
+          "search_name": "VECTOR",
+          "type": "leaf",
+          "level": 2,
+          "row": 17,
+          "x": 684.0,
+          "y": 3107.0
+        },
+        {
+          "id": "2025/FlexPrefill",
+          "label": "FlexPrefill[2025]",
+          "display_name": "FlexPrefill",
+          "year_label": "2025",
+          "search_name": "FlexPrefill",
+          "type": "default",
+          "level": 3,
+          "row": 0,
+          "x": 960.0,
+          "y": 2307.0
+        },
+        {
+          "id": "2026/AdaSplash-2",
+          "label": "AdaSplash-2[2026]",
+          "display_name": "AdaSplash-2",
+          "year_label": "2026",
+          "search_name": "AdaSplash-2",
+          "type": "leaf",
+          "level": 3,
+          "row": 1,
+          "x": 960.0,
+          "y": 2387.0
+        },
+        {
+          "id": "2026/FlashAttention-4",
+          "label": "FlashAttention-4[2026]",
+          "display_name": "FlashAttention-4",
+          "year_label": "2026",
+          "search_name": "FlashAttention-4",
+          "type": "leaf",
+          "level": 3,
+          "row": 2,
+          "x": 960.0,
+          "y": 2467.0
+        },
+        {
+          "id": "2026/PredictKV",
+          "label": "PredictKV[2026]",
+          "display_name": "PredictKV",
+          "year_label": "2026",
+          "search_name": "PredictKV",
+          "type": "leaf",
+          "level": 3,
+          "row": 3,
+          "x": 960.0,
+          "y": 2547.0
+        },
+        {
+          "id": "2025/SharePrefill",
+          "label": "SharePrefill[2025]",
+          "display_name": "SharePrefill",
+          "year_label": "2025",
+          "search_name": "SharePrefill",
+          "type": "leaf",
+          "level": 4,
+          "row": 0,
+          "x": 1236.0,
+          "y": 2267.0
+        },
+        {
+          "id": "2025/SlimInfer",
+          "label": "SlimInfer[2025]",
+          "display_name": "SlimInfer",
+          "year_label": "2025",
+          "search_name": "SlimInfer",
+          "type": "leaf",
+          "level": 4,
+          "row": 1,
+          "x": 1236.0,
+          "y": 2347.0
+        },
+        {
+          "id": "2025/XAttention",
+          "label": "XAttention[2025]",
+          "display_name": "XAttention",
+          "year_label": "2025",
+          "search_name": "XAttention",
+          "type": "default",
+          "level": 4,
+          "row": 2,
+          "x": 1236.0,
+          "y": 2427.0
+        },
+        {
+          "id": "2026/FlashPrefill",
+          "label": "FlashPrefill[2026]",
+          "display_name": "FlashPrefill",
+          "year_label": "2026",
+          "search_name": "FlashPrefill",
+          "type": "default",
+          "level": 4,
+          "row": 3,
+          "x": 1236.0,
+          "y": 2507.0
+        },
+        {
+          "id": "2026/Prism",
+          "label": "Prism[2026]",
+          "display_name": "Prism",
+          "year_label": "2026",
+          "search_name": "Prism",
+          "type": "leaf",
+          "level": 4,
+          "row": 4,
+          "x": 1236.0,
+          "y": 2587.0
+        },
+        {
+          "id": "2025/BLASST",
+          "label": "BLASST[2025]",
+          "display_name": "BLASST",
+          "year_label": "2025",
+          "search_name": "BLASST",
+          "type": "leaf",
+          "level": 5,
+          "row": 0,
+          "x": 1512.0,
+          "y": 2307.0
+        },
+        {
+          "id": "2025/TCA-Attention",
+          "label": "TCA-Attention[2025]",
+          "display_name": "TCA-Attention",
+          "year_label": "2025",
+          "search_name": "TCA-Attention",
+          "type": "leaf",
+          "level": 5,
+          "row": 1,
+          "x": 1512.0,
+          "y": 2387.0
+        },
+        {
+          "id": "2026/CompactAttention",
+          "label": "CompactAttention[2026]",
+          "display_name": "CompactAttention",
+          "year_label": "2026",
+          "search_name": "CompactAttention",
+          "type": "leaf",
+          "level": 5,
+          "row": 2,
+          "x": 1512.0,
+          "y": 2467.0
+        },
+        {
+          "id": "2026/UniPrefill",
+          "label": "UniPrefill[2026]",
+          "display_name": "UniPrefill",
+          "year_label": "2026",
+          "search_name": "UniPrefill",
+          "type": "leaf",
+          "level": 5,
+          "row": 3,
+          "x": 1512.0,
+          "y": 2547.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2022/flashattention",
+          "target": "2023/FlashDecoding"
+        },
+        {
+          "source": "2022/flashattention",
+          "target": "2024/FlashAttention-2"
+        },
+        {
+          "source": "2022/flashattention",
+          "target": "2025/FoX"
+        },
+        {
+          "source": "2022/flashattention",
+          "target": "2025/vAttention"
+        },
+        {
+          "source": "2022/flashattention",
+          "target": "2026/SparVAR"
+        },
+        {
+          "source": "2023/CacheGen",
+          "target": "2026/KVServe"
+        },
+        {
+          "source": "2023/FlexGen",
+          "target": "2026/ContiguousKV"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2024/InfLLM"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2024/PyramidKV"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2024/RazorAttention"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2025/HashAttention"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2025/PureKV"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2025/UNComp"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2026/ContiguousKV"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2026/FlashCache"
+        },
+        {
+          "source": "2023/H2O",
+          "target": "2026/KVTC"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2025/0VRXJQ3F"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2025/NanoFlow"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2025/SparseServe"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2025/TileLink"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2025/vAttention"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2026/Bidaw"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2026/KunServe"
+        },
+        {
+          "source": "2023/QuIP",
+          "target": "2024/QuaRot"
+        },
+        {
+          "source": "2023/gptq",
+          "target": "2025/SQ-format"
+        },
+        {
+          "source": "2023/gptq",
+          "target": "2025/SignRoundV2"
+        },
+        {
+          "source": "2023/gptq",
+          "target": "2025/WGM"
+        },
+        {
+          "source": "2023/gptq",
+          "target": "2026/HARP"
+        },
+        {
+          "source": "2023/gptq",
+          "target": "2026/IBW4TYDG"
+        },
+        {
+          "source": "2023/omniquant",
+          "target": "2026/HARP"
+        },
+        {
+          "source": "2024/AdaKV",
+          "target": "2025/DefensiveKV"
+        },
+        {
+          "source": "2024/AdaKV",
+          "target": "2025/FastKV"
+        },
+        {
+          "source": "2024/Async-TP",
+          "target": "2025/TileLink"
+        },
+        {
+          "source": "2024/Async-TP",
+          "target": "2026/FlashOverlap"
+        },
+        {
+          "source": "2024/CachedAttention",
+          "target": "2025/Strata"
+        },
+        {
+          "source": "2024/CachedAttention",
+          "target": "2026/Bidaw"
+        },
+        {
+          "source": "2024/Cake",
+          "target": "2026/CacheFlow"
+        },
+        {
+          "source": "2024/DoubleSparsity",
+          "target": "2025/UNComp"
+        },
+        {
+          "source": "2024/DuoAttention",
+          "target": "2025/DefensiveKV"
+        },
+        {
+          "source": "2024/DuoAttention",
+          "target": "2025/PruLong"
+        },
+        {
+          "source": "2024/DuoAttention",
+          "target": "2026/KVServe"
+        },
+        {
+          "source": "2024/FLUX",
+          "target": "2025/TileLink"
+        },
+        {
+          "source": "2024/FLUX",
+          "target": "2026/FlashOverlap"
+        },
+        {
+          "source": "2024/FlashAttention-2",
+          "target": "2024/FlashAttention-3"
+        },
+        {
+          "source": "2024/FlashAttention-2",
+          "target": "2025/AdaSplash"
+        },
+        {
+          "source": "2024/FlashAttention-3",
+          "target": "2026/FlashAttention-4"
+        },
+        {
+          "source": "2024/GEAR",
+          "target": "2025/RotateKV"
+        },
+        {
+          "source": "2024/InfLLM",
+          "target": "2024/MInference"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2024/QuaRot"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2025/H1B-KV"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2025/KVmix"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2025/MILLION"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2025/QJL"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2025/RotateKV"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2026/KVTC"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2026/TurboQuant"
+        },
+        {
+          "source": "2024/KIVI",
+          "target": "2026/VQKV"
+        },
+        {
+          "source": "2024/KVQuant",
+          "target": "2024/QuaRot"
+        },
+        {
+          "source": "2024/KVQuant",
+          "target": "2025/KVSink"
+        },
+        {
+          "source": "2024/KVQuant",
+          "target": "2025/KVmix"
+        },
+        {
+          "source": "2024/KVQuant",
+          "target": "2025/MILLION"
+        },
+        {
+          "source": "2024/KVQuant",
+          "target": "2025/QJL"
+        },
+        {
+          "source": "2024/KVQuant",
+          "target": "2025/RotateKV"
+        },
+        {
+          "source": "2024/LazyLLM",
+          "target": "2025/SlimInfer"
+        },
+        {
+          "source": "2024/MInference",
+          "target": "2025/FlexPrefill"
+        },
+        {
+          "source": "2024/MiKV",
+          "target": "2025/RotateKV"
+        },
+        {
+          "source": "2024/Mooncake",
+          "target": "2026/Bidaw"
+        },
+        {
+          "source": "2024/PyramidKV",
+          "target": "2025/EvolKV"
+        },
+        {
+          "source": "2024/PyramidKV",
+          "target": "2026/Moment-KV"
+        },
+        {
+          "source": "2024/PyramidKV",
+          "target": "2026/TriAttention"
+        },
+        {
+          "source": "2024/PyramidKV",
+          "target": "2026/VECTOR"
+        },
+        {
+          "source": "2024/QuaRot",
+          "target": "2026/HARP"
+        },
+        {
+          "source": "2024/QuaRot",
+          "target": "2026/OScaR"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/CTkvr"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/HATA"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/Kascade"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/PagedEviction"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/RaaS"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/RetroAttention"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/Twilight"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2025/UNComp"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2026/Double-P"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2026/KVDrive"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2026/Tactic"
+        },
+        {
+          "source": "2024/Quest",
+          "target": "2026/ThriftAttention"
+        },
+        {
+          "source": "2024/SGLang",
+          "target": "2025/Strata"
+        },
+        {
+          "source": "2024/SGLang",
+          "target": "2026/KVBuffer"
+        },
+        {
+          "source": "2024/SGLang",
+          "target": "2026/RTP-LLM"
+        },
+        {
+          "source": "2024/SeerAttention",
+          "target": "2025/HATA"
+        },
+        {
+          "source": "2024/SeerAttention",
+          "target": "2026/CompactAttention"
+        },
+        {
+          "source": "2024/SliceGPT",
+          "target": "2024/QuaRot"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2024/PyramidKV"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/CTkvr"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/DefensiveKV"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/HATA"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/KVzip"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/LAVa"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/PureKV"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2025/UNComp"
+        },
+        {
+          "source": "2024/TOVA",
+          "target": "2026/KVTC"
+        },
+        {
+          "source": "2024/ZipCache",
+          "target": "2025/RotateKV"
+        },
+        {
+          "source": "2024/awq",
+          "target": "2025/SignRoundV2"
+        },
+        {
+          "source": "2024/awq",
+          "target": "2026/HARP"
+        },
+        {
+          "source": "2024/streaming-llm",
+          "target": "2024/InfLLM"
+        },
+        {
+          "source": "2024/streaming-llm",
+          "target": "2024/PyramidKV"
+        },
+        {
+          "source": "2024/streaming-llm",
+          "target": "2024/RazorAttention"
+        },
+        {
+          "source": "2024/streaming-llm",
+          "target": "2025/HashAttention"
+        },
+        {
+          "source": "2024/streaming-llm",
+          "target": "2025/PureKV"
+        },
+        {
+          "source": "2024/streaming-llm",
+          "target": "2025/UNComp"
+        },
+        {
+          "source": "2025/AdaSplash",
+          "target": "2026/AdaSplash-2"
+        },
+        {
+          "source": "2025/AttentionSinks",
+          "target": "2025/KVSink"
+        },
+        {
+          "source": "2025/AttentionSinks",
+          "target": "2026/SparVAR"
+        },
+        {
+          "source": "2025/DSA",
+          "target": "2026/GLM-5"
+        },
+        {
+          "source": "2025/DSA",
+          "target": "2026/HISA"
+        },
+        {
+          "source": "2025/FlashInfer",
+          "target": "2025/vAttention"
+        },
+        {
+          "source": "2025/FlashInfer",
+          "target": "2026/K-Search"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2025/SharePrefill"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2025/SlimInfer"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2025/XAttention"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2026/FlashPrefill"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2026/Prism"
+        },
+        {
+          "source": "2025/KVzip",
+          "target": "2026/FastKVzip"
+        },
+        {
+          "source": "2025/KVzip",
+          "target": "2026/KVzap"
+        },
+        {
+          "source": "2025/LMCache",
+          "target": "2025/CacheBlend"
+        },
+        {
+          "source": "2025/LMCache",
+          "target": "2025/Strata"
+        },
+        {
+          "source": "2025/LMCache",
+          "target": "2026/Bidaw"
+        },
+        {
+          "source": "2025/LMCache",
+          "target": "2026/KVServe"
+        },
+        {
+          "source": "2025/MILLION",
+          "target": "2025/HCAttention"
+        },
+        {
+          "source": "2025/MILLION",
+          "target": "2025/VecInfer"
+        },
+        {
+          "source": "2025/Marconi",
+          "target": "2026/KVBuffer"
+        },
+        {
+          "source": "2025/NanoFlow",
+          "target": "2025/TokenWeave"
+        },
+        {
+          "source": "2025/PQCache",
+          "target": "2026/KVDrive"
+        },
+        {
+          "source": "2025/R-KV",
+          "target": "2026/TriAttention"
+        },
+        {
+          "source": "2025/RaaS",
+          "target": "2025/FreeKV"
+        },
+        {
+          "source": "2025/RotateKV",
+          "target": "2025/MixKVQ"
+        },
+        {
+          "source": "2025/RotateKV",
+          "target": "2026/OScaR"
+        },
+        {
+          "source": "2025/SageAttention3",
+          "target": "2026/ThriftAttention"
+        },
+        {
+          "source": "2025/ShadowKV",
+          "target": "2025/FreeKV"
+        },
+        {
+          "source": "2025/ShadowKV",
+          "target": "2026/KVDrive"
+        },
+        {
+          "source": "2025/Strata",
+          "target": "2026/Tutti"
+        },
+        {
+          "source": "2025/TileLink",
+          "target": "2025/TokenWeave"
+        },
+        {
+          "source": "2025/XAttention",
+          "target": "2025/BLASST"
+        },
+        {
+          "source": "2025/XAttention",
+          "target": "2025/TCA-Attention"
+        },
+        {
+          "source": "2025/XAttention",
+          "target": "2026/CompactAttention"
+        },
+        {
+          "source": "2025/XAttention",
+          "target": "2026/UniPrefill"
+        },
+        {
+          "source": "2026/CacheFlow",
+          "target": "2026/PredictKV"
+        },
+        {
+          "source": "2026/FlashPrefill",
+          "target": "2026/CompactAttention"
+        },
+        {
+          "source": "2026/GLM-5",
+          "target": "2026/IndexCache"
+        },
+        {
+          "source": "2026/SPEED",
+          "target": "2026/IndexCache"
+        },
+        {
+          "source": "2026/SPEED",
+          "target": "2026/L3"
+        },
+        {
+          "source": "2026/SPEED",
+          "target": "2026/SparVAR"
+        },
+        {
+          "source": "2026/TurboQuant",
+          "target": "2026/OScaR"
+        },
+        {
+          "source": "2026/Tutti",
+          "target": "2026/PredictKV"
+        }
+      ]
+    },
+    {
+      "title": "SVG",
+      "anchor": "svg-family",
+      "node_count": 15,
+      "edge_count": 14,
+      "width": 816,
+      "height": 614,
+      "nodes": [
+        {
+          "id": "2022/44KWQAWO",
+          "label": "44KWQAWO[2022]",
+          "display_name": "44KWQAWO",
+          "year_label": "2022",
+          "search_name": "44KWQAWO",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 107.0
+        },
+        {
+          "id": "2024/SageAttention",
+          "label": "SageAttention[2024]",
+          "display_name": "SageAttention",
+          "year_label": "2024",
+          "search_name": "SageAttention",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 187.0
+        },
+        {
+          "id": "2025/MoBA",
+          "label": "MoBA[2025]",
+          "display_name": "MoBA",
+          "year_label": "2025",
+          "search_name": "MoBA",
+          "type": "root",
+          "level": 0,
+          "row": 2,
+          "x": 132.0,
+          "y": 267.0
+        },
+        {
+          "id": "2025/NSA",
+          "label": "NSA[2025]",
+          "display_name": "NSA",
+          "year_label": "2025",
+          "search_name": "NSA",
+          "type": "root",
+          "level": 0,
+          "row": 3,
+          "x": 132.0,
+          "y": 347.0
+        },
+        {
+          "id": "2025/RadialAttention",
+          "label": "RadialAttention[2025]",
+          "display_name": "RadialAttention",
+          "year_label": "2025",
+          "search_name": "RadialAttention",
+          "type": "root",
+          "level": 0,
+          "row": 4,
+          "x": 132.0,
+          "y": 427.0
+        },
+        {
+          "id": "2025/SVG",
+          "label": "SVG[2025]",
+          "display_name": "SVG",
+          "year_label": "2025",
+          "search_name": "SVG",
+          "type": "root",
+          "level": 0,
+          "row": 5,
+          "x": 132.0,
+          "y": 507.0
+        },
+        {
+          "id": "2025/FLOW",
+          "label": "FLOW[2025]",
+          "display_name": "FLOW",
+          "year_label": "2025",
+          "search_name": "FLOW",
+          "type": "default",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 67.0
+        },
+        {
+          "id": "2025/FPSAttention",
+          "label": "FPSAttention[2025]",
+          "display_name": "FPSAttention",
+          "year_label": "2025",
+          "search_name": "FPSAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 1,
+          "x": 408.0,
+          "y": 147.0
+        },
+        {
+          "id": "2025/FSA",
+          "label": "FSA[2025]",
+          "display_name": "FSA",
+          "year_label": "2025",
+          "search_name": "FSA",
+          "type": "leaf",
+          "level": 1,
+          "row": 2,
+          "x": 408.0,
+          "y": 227.0
+        },
+        {
+          "id": "2025/InfLLM-V2",
+          "label": "InfLLM-V2[2025]",
+          "display_name": "InfLLM-V2",
+          "year_label": "2025",
+          "search_name": "InfLLM-V2",
+          "type": "default",
+          "level": 1,
+          "row": 3,
+          "x": 408.0,
+          "y": 307.0
+        },
+        {
+          "id": "2025/LiteAttention",
+          "label": "LiteAttention[2025]",
+          "display_name": "LiteAttention",
+          "year_label": "2025",
+          "search_name": "LiteAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 4,
+          "x": 408.0,
+          "y": 387.0
+        },
+        {
+          "id": "2025/PAROAttention",
+          "label": "PAROAttention[2025]",
+          "display_name": "PAROAttention",
+          "year_label": "2025",
+          "search_name": "PAROAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 5,
+          "x": 408.0,
+          "y": 467.0
+        },
+        {
+          "id": "2025/SVG2",
+          "label": "SVG2[2025]",
+          "display_name": "SVG2",
+          "year_label": "2025",
+          "search_name": "SVG2",
+          "type": "leaf",
+          "level": 1,
+          "row": 6,
+          "x": 408.0,
+          "y": 547.0
+        },
+        {
+          "id": "2025/NOSA",
+          "label": "NOSA[2025]",
+          "display_name": "NOSA",
+          "year_label": "2025",
+          "search_name": "NOSA",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 267.0
+        },
+        {
+          "id": "2025/SSA",
+          "label": "SSA[2025]",
+          "display_name": "SSA",
+          "year_label": "2025",
+          "search_name": "SSA",
+          "type": "leaf",
+          "level": 2,
+          "row": 1,
+          "x": 684.0,
+          "y": 347.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2022/44KWQAWO",
+          "target": "2025/FLOW"
+        },
+        {
+          "source": "2022/44KWQAWO",
+          "target": "2025/FPSAttention"
+        },
+        {
+          "source": "2024/SageAttention",
+          "target": "2025/FPSAttention"
+        },
+        {
+          "source": "2025/FLOW",
+          "target": "2025/SSA"
+        },
+        {
+          "source": "2025/InfLLM-V2",
+          "target": "2025/NOSA"
+        },
+        {
+          "source": "2025/MoBA",
+          "target": "2025/SSA"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2025/FSA"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2025/InfLLM-V2"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2025/SSA"
+        },
+        {
+          "source": "2025/RadialAttention",
+          "target": "2025/LiteAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/FPSAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/LiteAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/PAROAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/SVG2"
+        }
+      ]
+    },
+    {
+      "title": "DeepSeek-R1",
+      "anchor": "deepseek-r1-family",
+      "node_count": 10,
+      "edge_count": 9,
+      "width": 540,
+      "height": 534,
+      "nodes": [
+        {
+          "id": "2024/DeepSeek-V3",
+          "label": "DeepSeek-V3[2024]",
+          "display_name": "DeepSeek-V3",
+          "year_label": "2024",
+          "search_name": "DeepSeek-V3",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 147.0
+        },
+        {
+          "id": "2025/DeepSeek-R1",
+          "label": "DeepSeek-R1[2025]",
+          "display_name": "DeepSeek-R1",
+          "year_label": "2025",
+          "search_name": "DeepSeek-R1",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 227.0
+        },
+        {
+          "id": "2025/Qwen3",
+          "label": "Qwen3[2025]",
+          "display_name": "Qwen3",
+          "year_label": "2025",
+          "search_name": "Qwen3",
+          "type": "root",
+          "level": 0,
+          "row": 2,
+          "x": 132.0,
+          "y": 307.0
+        },
+        {
+          "id": "2025/SLA",
+          "label": "SLA[2025]",
+          "display_name": "SLA",
+          "year_label": "2025",
+          "search_name": "SLA",
+          "type": "root",
+          "level": 0,
+          "row": 3,
+          "x": 132.0,
+          "y": 387.0
+        },
+        {
+          "id": "2025/CloudMatrix384",
+          "label": "CloudMatrix384[2025]",
+          "display_name": "CloudMatrix384",
+          "year_label": "2025",
+          "search_name": "CloudMatrix384",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 67.0
+        },
+        {
+          "id": "2025/HelixParallelism",
+          "label": "HelixParallelism[2025]",
+          "display_name": "HelixParallelism",
+          "year_label": "2025",
+          "search_name": "HelixParallelism",
+          "type": "leaf",
+          "level": 1,
+          "row": 1,
+          "x": 408.0,
+          "y": 147.0
+        },
+        {
+          "id": "2025/PanguUltra",
+          "label": "PanguUltra[2025]",
+          "display_name": "PanguUltra",
+          "year_label": "2025",
+          "search_name": "PanguUltra",
+          "type": "leaf",
+          "level": 1,
+          "row": 2,
+          "x": 408.0,
+          "y": 227.0
+        },
+        {
+          "id": "2025/Step-3",
+          "label": "Step-3[2025]",
+          "display_name": "Step-3",
+          "year_label": "2025",
+          "search_name": "Step-3",
+          "type": "leaf",
+          "level": 1,
+          "row": 3,
+          "x": 408.0,
+          "y": 307.0
+        },
+        {
+          "id": "2026/DeepSeek-V4",
+          "label": "DeepSeek-V4[2026]",
+          "display_name": "DeepSeek-V4",
+          "year_label": "2026",
+          "search_name": "DeepSeek-V4",
+          "type": "leaf",
+          "level": 1,
+          "row": 4,
+          "x": 408.0,
+          "y": 387.0
+        },
+        {
+          "id": "2026/MixServe",
+          "label": "MixServe[2026]",
+          "display_name": "MixServe",
+          "year_label": "2026",
+          "search_name": "MixServe",
+          "type": "leaf",
+          "level": 1,
+          "row": 5,
+          "x": 408.0,
+          "y": 467.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2024/DeepSeek-V3",
+          "target": "2025/Step-3"
+        },
+        {
+          "source": "2024/DeepSeek-V3",
+          "target": "2026/DeepSeek-V4"
+        },
+        {
+          "source": "2025/DeepSeek-R1",
+          "target": "2025/CloudMatrix384"
+        },
+        {
+          "source": "2025/DeepSeek-R1",
+          "target": "2025/HelixParallelism"
+        },
+        {
+          "source": "2025/DeepSeek-R1",
+          "target": "2025/PanguUltra"
+        },
+        {
+          "source": "2025/DeepSeek-R1",
+          "target": "2026/MixServe"
+        },
+        {
+          "source": "2025/Qwen3",
+          "target": "2025/Step-3"
+        },
+        {
+          "source": "2025/Qwen3",
+          "target": "2026/MixServe"
+        },
+        {
+          "source": "2025/SLA",
+          "target": "2025/Step-3"
+        }
+      ]
+    },
+    {
+      "title": "Wanda",
+      "anchor": "wanda-family",
+      "node_count": 8,
+      "edge_count": 7,
+      "width": 816,
+      "height": 454,
+      "nodes": [
+        {
+          "id": "2023/sparsegpt",
+          "label": "sparsegpt[2023]",
+          "display_name": "sparsegpt",
+          "year_label": "2023",
+          "search_name": "sparsegpt",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 187.0
+        },
+        {
+          "id": "2024/flap",
+          "label": "flap[2024]",
+          "display_name": "flap",
+          "year_label": "2024",
+          "search_name": "flap",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 267.0
+        },
+        {
+          "id": "2024/Wanda",
+          "label": "Wanda[2024]",
+          "display_name": "Wanda",
+          "year_label": "2024",
+          "search_name": "Wanda",
+          "type": "default",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 227.0
+        },
+        {
+          "id": "2024/Pruner-Zero",
+          "label": "Pruner-Zero[2024]",
+          "display_name": "Pruner-Zero",
+          "year_label": "2024",
+          "search_name": "Pruner-Zero",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 67.0
+        },
+        {
+          "id": "2025/BaWA",
+          "label": "BaWA[2025]",
+          "display_name": "BaWA",
+          "year_label": "2025",
+          "search_name": "BaWA",
+          "type": "leaf",
+          "level": 2,
+          "row": 1,
+          "x": 684.0,
+          "y": 147.0
+        },
+        {
+          "id": "2025/SDS",
+          "label": "SDS[2025]",
+          "display_name": "SDS",
+          "year_label": "2025",
+          "search_name": "SDS",
+          "type": "leaf",
+          "level": 2,
+          "row": 2,
+          "x": 684.0,
+          "y": 227.0
+        },
+        {
+          "id": "2025/SEAP",
+          "label": "SEAP[2025]",
+          "display_name": "SEAP",
+          "year_label": "2025",
+          "search_name": "SEAP",
+          "type": "leaf",
+          "level": 2,
+          "row": 3,
+          "x": 684.0,
+          "y": 307.0
+        },
+        {
+          "id": "2026/SparseForge",
+          "label": "SparseForge[2026]",
+          "display_name": "SparseForge",
+          "year_label": "2026",
+          "search_name": "SparseForge",
+          "type": "leaf",
+          "level": 2,
+          "row": 4,
+          "x": 684.0,
+          "y": 387.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2023/sparsegpt",
+          "target": "2024/Wanda"
+        },
+        {
+          "source": "2024/Wanda",
+          "target": "2024/Pruner-Zero"
+        },
+        {
+          "source": "2024/Wanda",
+          "target": "2025/BaWA"
+        },
+        {
+          "source": "2024/Wanda",
+          "target": "2025/SDS"
+        },
+        {
+          "source": "2024/Wanda",
+          "target": "2025/SEAP"
+        },
+        {
+          "source": "2024/Wanda",
+          "target": "2026/SparseForge"
+        },
+        {
+          "source": "2024/flap",
+          "target": "2025/SEAP"
+        }
+      ]
+    },
+    {
+      "title": "DFlash",
+      "anchor": "dflash-family",
+      "node_count": 4,
+      "edge_count": 3,
+      "width": 816,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2024/Eagle",
+          "label": "Eagle[2024]",
+          "display_name": "Eagle",
+          "year_label": "2024",
+          "search_name": "Eagle",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/DFlash",
+          "label": "DFlash[2026]",
+          "display_name": "DFlash",
+          "year_label": "2026",
+          "search_name": "DFlash",
+          "type": "default",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/DDTree",
+          "label": "DDTree[2026]",
+          "display_name": "DDTree",
+          "year_label": "2026",
+          "search_name": "DDTree",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 90.0
+        },
+        {
+          "id": "2026/Domino",
+          "label": "Domino[2026]",
+          "display_name": "Domino",
+          "year_label": "2026",
+          "search_name": "Domino",
+          "type": "leaf",
+          "level": 2,
+          "row": 1,
+          "x": 684.0,
+          "y": 170.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2024/Eagle",
+          "target": "2026/DFlash"
+        },
+        {
+          "source": "2026/DFlash",
+          "target": "2026/DDTree"
+        },
+        {
+          "source": "2026/DFlash",
+          "target": "2026/Domino"
+        }
+      ]
+    },
+    {
+      "title": "COMET",
+      "anchor": "comet-family",
+      "node_count": 4,
+      "edge_count": 3,
+      "width": 816,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/CometSeed",
+          "label": "CometSeed[2025]",
+          "display_name": "CometSeed",
+          "year_label": "2025",
+          "search_name": "CometSeed",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 90.0
+        },
+        {
+          "id": "2025/DeepEP",
+          "label": "DeepEP[2025]",
+          "display_name": "DeepEP",
+          "year_label": "2025",
+          "search_name": "DeepEP",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 170.0
+        },
+        {
+          "id": "2025/COMET",
+          "label": "COMET[2025]",
+          "display_name": "COMET",
+          "year_label": "2025",
+          "search_name": "COMET",
+          "type": "default",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/DySHARP",
+          "label": "DySHARP[2026]",
+          "display_name": "DySHARP",
+          "year_label": "2026",
+          "search_name": "DySHARP",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/COMET",
+          "target": "2026/DySHARP"
+        },
+        {
+          "source": "2025/CometSeed",
+          "target": "2025/COMET"
+        },
+        {
+          "source": "2025/DeepEP",
+          "target": "2026/DySHARP"
+        }
+      ]
+    },
+    {
+      "title": "MPK-Mirage",
+      "anchor": "mpk-mirage-family",
+      "node_count": 3,
+      "edge_count": 2,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2023/sms",
+          "label": "sms[2023]",
+          "display_name": "sms",
+          "year_label": "2023",
+          "search_name": "sms",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 90.0
+        },
+        {
+          "id": "2025/MPK-Mirage",
+          "label": "MPK-Mirage[2025]",
+          "display_name": "MPK-Mirage",
+          "year_label": "2025",
+          "search_name": "MPK-Mirage",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 170.0
+        },
+        {
+          "id": "2025/MPK",
+          "label": "MPK[2025]",
+          "display_name": "MPK",
+          "year_label": "2025",
+          "search_name": "MPK",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2023/sms",
+          "target": "2025/MPK"
+        },
+        {
+          "source": "2025/MPK-Mirage",
+          "target": "2025/MPK"
+        }
+      ]
+    },
+    {
+      "title": "CATS",
+      "anchor": "cats-family",
+      "node_count": 3,
+      "edge_count": 2,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2024/CATS",
+          "label": "CATS[2024]",
+          "display_name": "CATS",
+          "year_label": "2024",
+          "search_name": "CATS",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 90.0
+        },
+        {
+          "id": "2025/TEAL",
+          "label": "TEAL[2025]",
+          "display_name": "TEAL",
+          "year_label": "2025",
+          "search_name": "TEAL",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 170.0
+        },
+        {
+          "id": "2025/LaRoSA",
+          "label": "LaRoSA[2025]",
+          "display_name": "LaRoSA",
+          "year_label": "2025",
+          "search_name": "LaRoSA",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2024/CATS",
+          "target": "2025/LaRoSA"
+        },
+        {
+          "source": "2025/TEAL",
+          "target": "2025/LaRoSA"
+        }
+      ]
+    },
+    {
+      "title": "DHC",
+      "anchor": "dhc-family",
+      "node_count": 3,
+      "edge_count": 2,
+      "width": 816,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/DHC",
+          "label": "DHC[2025]",
+          "display_name": "DHC",
+          "year_label": "2025",
+          "search_name": "DHC",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2025/mHC",
+          "label": "mHC[2025]",
+          "display_name": "mHC",
+          "year_label": "2025",
+          "search_name": "mHC",
+          "type": "default",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/AttentionResiduals",
+          "label": "AttentionResiduals[2026]",
+          "display_name": "AttentionResiduals",
+          "year_label": "2026",
+          "search_name": "AttentionResiduals",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/DHC",
+          "target": "2025/mHC"
+        },
+        {
+          "source": "2025/mHC",
+          "target": "2026/AttentionResiduals"
+        }
+      ]
+    },
+    {
+      "title": "TidalDecode",
+      "anchor": "tidaldecode-family",
+      "node_count": 3,
+      "edge_count": 2,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/SeerAttention-R",
+          "label": "SeerAttention-R[2025]",
+          "display_name": "SeerAttention-R",
+          "year_label": "2025",
+          "search_name": "SeerAttention-R",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 90.0
+        },
+        {
+          "id": "2025/TidalDecode",
+          "label": "TidalDecode[2025]",
+          "display_name": "TidalDecode",
+          "year_label": "2025",
+          "search_name": "TidalDecode",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 170.0
+        },
+        {
+          "id": "2026/LycheeDecode",
+          "label": "LycheeDecode[2026]",
+          "display_name": "LycheeDecode",
+          "year_label": "2026",
+          "search_name": "LycheeDecode",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/SeerAttention-R",
+          "target": "2026/LycheeDecode"
+        },
+        {
+          "source": "2025/TidalDecode",
+          "target": "2026/LycheeDecode"
+        }
+      ]
+    },
+    {
+      "title": "lora",
+      "anchor": "lora-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2022/lora",
+          "label": "lora[2022]",
+          "display_name": "lora",
+          "year_label": "2022",
+          "search_name": "lora",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2025/RecursiveTransformers",
+          "label": "RecursiveTransformers[2025]",
+          "display_name": "RecursiveTransformers",
+          "year_label": "2025",
+          "search_name": "RecursiveTransformers",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2022/lora",
+          "target": "2025/RecursiveTransformers"
+        }
+      ]
+    },
+    {
+      "title": "CLA",
+      "anchor": "cla-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2024/CLA",
+          "label": "CLA[2024]",
+          "display_name": "CLA",
+          "year_label": "2024",
+          "search_name": "CLA",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2025/FusedKV",
+          "label": "FusedKV[2025]",
+          "display_name": "FusedKV",
+          "year_label": "2025",
+          "search_name": "FusedKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2024/CLA",
+          "target": "2025/FusedKV"
+        }
+      ]
+    },
+    {
+      "title": "DeepSeek-V2",
+      "anchor": "deepseek-v2-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2024/DeepSeek-V2",
+          "label": "DeepSeek-V2[2024]",
+          "display_name": "DeepSeek-V2",
+          "year_label": "2024",
+          "search_name": "DeepSeek-V2",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2025/H2VD7Q70",
+          "label": "H2VD7Q70[2025]",
+          "display_name": "H2VD7Q70",
+          "year_label": "2025",
+          "search_name": "H2VD7Q70",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2024/DeepSeek-V2",
+          "target": "2025/H2VD7Q70"
+        }
+      ]
+    },
+    {
+      "title": "Chelsea",
+      "anchor": "chelsea-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/Chelsea",
+          "label": "Chelsea[2025]",
+          "display_name": "Chelsea",
+          "year_label": "2025",
+          "search_name": "Chelsea",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/DeltaKV",
+          "label": "DeltaKV[2026]",
+          "display_name": "DeltaKV",
+          "year_label": "2026",
+          "search_name": "DeltaKV",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/Chelsea",
+          "target": "2026/DeltaKV"
+        }
+      ]
+    },
+    {
+      "title": "MXFP4Train",
+      "anchor": "mxfp4train-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/MXFP4Train",
+          "label": "MXFP4Train[2025]",
+          "display_name": "MXFP4Train",
+          "year_label": "2025",
+          "search_name": "MXFP4Train",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/nGPT-NVFP4",
+          "label": "nGPT-NVFP4[2026]",
+          "display_name": "nGPT-NVFP4",
+          "year_label": "2026",
+          "search_name": "nGPT-NVFP4",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/MXFP4Train",
+          "target": "2026/nGPT-NVFP4"
+        }
+      ]
+    },
+    {
+      "title": "MoR",
+      "anchor": "mor-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/MoR",
+          "label": "MoR[2025]",
+          "display_name": "MoR",
+          "year_label": "2025",
+          "search_name": "MoR",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2025/VFPWFOQA",
+          "label": "VFPWFOQA[2025]",
+          "display_name": "VFPWFOQA",
+          "year_label": "2025",
+          "search_name": "VFPWFOQA",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/MoR",
+          "target": "2025/VFPWFOQA"
+        }
+      ]
+    },
+    {
+      "title": "SWA",
+      "anchor": "swa-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/SWA",
+          "label": "SWA[2025]",
+          "display_name": "SWA",
+          "year_label": "2025",
+          "search_name": "SWA",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/HySparse",
+          "label": "HySparse[2026]",
+          "display_name": "HySparse",
+          "year_label": "2026",
+          "search_name": "HySparse",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/SWA",
+          "target": "2026/HySparse"
+        }
+      ]
+    }
+  ]
+}

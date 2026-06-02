@@ -29,6 +29,6 @@ cover {
 baseline {
   methods: "2023/H2O"
   methods: "2024/SnapKV"
-  methods: "2024/StreamingLLM"
+  methods: "2024/streaming-llm"
 }
 update_time: 1768816533

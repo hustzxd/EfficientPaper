@@ -26,6 +26,7 @@ cover {
   url: ""
 }
 baseline {
-  methods: "None"
+  methods: "2025/DeepSeek-R1"
+  methods: "2025/Qwen3"
 }
 update_time: 1769078011

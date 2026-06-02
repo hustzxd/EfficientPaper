@@ -29,7 +29,7 @@ cover {
 }
 baseline {
   methods: "2024/MInference"
-  methods: "2024/StreamingLLM"
+  methods: "2024/streaming-llm"
   methods: "2025/FlexPrefill"
 }
 update_time: 1768012233

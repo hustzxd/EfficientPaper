@@ -38,7 +38,7 @@ cover {
 }
 baseline {
   methods: "2023/H2O"
-  methods: "2024/StreamingLLM"
+  methods: "2024/streaming-llm"
   methods: "2024/SnapKV"
   methods: "2024/Quest"
   methods: "2024/DoubleSparsity"

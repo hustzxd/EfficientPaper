@@ -29,6 +29,6 @@ cover {
   url: "fig1.jpg"
 }
 baseline {
-  methods: "2023/SparseGPT"
+  methods: "2023/sparsegpt"
   methods: "2024/Wanda"
 }

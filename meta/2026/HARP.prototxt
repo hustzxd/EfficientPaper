@@ -1,0 +1,34 @@
+paper {
+  title: "HARP: Hadamard-Preconditioned Adaptive Rotation Processor for Extreme LLM Quantization"
+  abbr: "HARP"
+  url: "https://arxiv.org/abs/2605.29843"
+  authors: "Artur Zagitov"
+  authors: "Gleb Molodtsov"
+  authors: "Aleksandr Beznosikov"
+  institutions: "BRAIn Lab"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/brain-lab-research/HARP"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: quantization
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/QuIP"
+  methods: "2024/QuaRot"
+  methods: "2024/awq"
+  methods: "2023/gptq"
+  methods: "2023/omniquant"
+}
+update_time: 1780294805

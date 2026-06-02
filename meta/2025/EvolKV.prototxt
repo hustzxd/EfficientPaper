@@ -23,7 +23,7 @@ cover {
   url: "fig1.jpg"
 }
 baseline {
-  methods: "2024/StreamingLLM"
+  methods: "2024/streaming-llm"
   methods: "2024/SnapKV"
   methods: "2024/PyramidKV"
 }

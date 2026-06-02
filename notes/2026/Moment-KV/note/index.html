@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Moment-KV: Momentum-Based Decode-Time KV Cache Compression for Long Generation - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Moment-KV: Momentum-Based Decode-Time KV Cache Compression for Long Generation";
+        var mkdocs_page_input_path = "notes/2026/Moment-KV/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Moment-KV: Momentum-Based Decode-Time KV Cache Compression for Long Generation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="moment-kv-momentum-based-decode-time-kv-cache-compression-for-long-generation">Moment-KV: Momentum-Based Decode-Time KV Cache Compression for Long Generation</h1>
+<blockquote>
+<p>Soumyadeep Jana, Sagar Nishad, Sanasam Ranbir Singh</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>KV cache 是长生成任务中部署大语言模型的主要瓶颈。已有 KV cache 压缩工作通常统一处理 prefill cache 与 decoding cache，或者主要关注 prefill 阶段；但压缩 prefill cache 可能破坏关键上下文和指令语义，造成性能下降。相反，decoding cache 会随输出长度持续增长，是长生成时显存增长的直接来源，却相对缺少专门研究。本文分析长生成中的 attention dynamics，发现重要 token 往往具有跨长时间的持续影响，但 attention 会出现短暂低谷；局部推理也会带来短期 burst。基于 instantaneous attention 或固定 recency window 的方法容易过早淘汰重要 token，或者保留大量已经 stale 的近邻 token。</p>
+<p>Moment-KV 提出一种 decode-time KV cache compression 方法：冻结完整 prefill cache，只对 decoding cache 施加容量预算；每个 decoding token 维护一个带动量的 attention importance state，用指数衰减聚合历史 attention，并在超出预算时淘汰 importance 最低的 token。实验表明，在 LongGenBench 和 HelloBench 长输出任务中，Moment-KV 在 512/1024 decode-token budget 下优于现有 baselines，在保持相近 decoding throughput 的同时提升生成质量；并且可以作为 plug-in decode-time 策略与 SnapKV、PyramidKV 等 prefill-time compression 方法结合。</p>
+<h2 id="_1">一句话总结</h2>
+<p>Moment-KV 的核心判断是：长生成中的 decoding KV 不应该靠“最近 token 必然重要”或单步 attention 来管理，而应该把 token 重要性看成随时间演化的状态；用 momentum 聚合 attention 后，系统可以保留长期 heavy hitters、淘汰真正 stale 的 decoded tokens，同时完整保留 prefill context。</p>
+<h2 id="_2">背景与问题</h2>
+<p>长输出任务（大段代码生成、长文写作、多步推理）会让 autoregressive decoding 的 KV cache 逐步增长。以 Llama-3.1-8B-Instruct 为例，16-bit KV cache 每 token 约 128KB；生成 100K tokens 时，仅 KV cache 就接近 13GB，可能超过模型权重本身的显存占用。</p>
+<p>论文强调应区分两个 cache 阶段：</p>
+<ul>
+<li><strong>Prefill cache</strong>：由输入 prompt 一次并行计算得到，编码任务指令、约束与上下文语义；</li>
+<li><strong>Decoding cache</strong>：生成过程中逐步追加，每步新增一个 token 的 K/V，是长输出时显存线性增长的主要来源。</li>
+</ul>
+<p>已有方法的不足在于：</p>
+<ol>
+<li><strong>统一压缩 prefill + decode</strong>：可能误删 prompt 中关键指令或上下文，影响 reasoning 和 instruction following；</li>
+<li><strong>固定 recent window</strong>：假设最近 token 一定重要，但长生成中最近窗口内的 attention mass 往往高度集中，许多近邻 token 贡献很低；</li>
+<li><strong>instantaneous attention</strong>：单步 attention 会短暂波动，长期重要 token 可能在某些局部推理阶段出现 attention dip，被错误淘汰。</li>
+</ol>
+<p>因此，decode-time KV compression 的关键问题不是“如何压缩所有 KV”，而是：<strong>如何在完整保留 prefill context 的前提下，对持续增长的 generated-token KV 做时间感知的容量管理。</strong></p>
+<h2 id="_3">核心方法</h2>
+<p>Moment-KV 的策略非常直接：</p>
+<ol>
+<li>将 KV cache 拆成两个 sub-pools：</li>
+<li>
+<script type="math/tex">\Phi_p</script>：prefill pool，冻结并完整保留；</li>
+<li>
+<script type="math/tex">\Phi_d</script>：decoding pool，受固定 budget <script type="math/tex">B_d</script> 约束。</li>
+<li>每个 decoding token i 维护一个 importance score <script type="math/tex">I_i(t)</script>。</li>
+<li>每个 decoding step t 后，根据当前 query 对 decoding cache 的 attention 更新 importance：</li>
+</ol>
+<p>
+<script type="math/tex; mode=display">
+   I_i(t) = \alpha \cdot I_i(t-1) + \bar{a}_i(t)
+   </script>
+</p>
+<p>其中 <script type="math/tex">\bar{a}_i(t)</script> 是 across-head mean attention，<script type="math/tex">\alpha</script> 是 momentum factor。
+   若 <script type="math/tex">|\Phi_d| > B_d</script>，淘汰 importance 最低的若干 decoded tokens。</p>
+<p>这个设计同时处理两个问题：</p>
+<ul>
+<li>对长期 heavy hitters：即使某一步 attention 下降，历史 importance 仍可保护其不被立即淘汰；</li>
+<li>对 recent stale tokens：即使 token 很近，只要累计 attention 很低，也会被淘汰，不再占用固定 recent window。</li>
+</ul>
+<h2 id="_4">技术细节</h2>
+<h3 id="1-cache-architecture">1. Cache architecture</h3>
+<p>总 cache pool 表示为：</p>
+<p>
+<script type="math/tex; mode=display">
+\Phi_t = \Phi_p \cup \Phi^d_t
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\Phi^d_t = \{(K_s, V_s) : s \in \{1, \ldots, t\}\}
+</script>
+</p>
+<p>Moment-KV 令 prefill pool <script type="math/tex">\Phi_p</script> 的大小 <script type="math/tex">M</script> 始终固定，且不参与 eviction。decoding pool <script type="math/tex">\Phi_d</script> 的容量受 <script type="math/tex">B_d</script> 限制，因此总 cache 大小满足：</p>
+<p>
+<script type="math/tex; mode=display">
+|\Phi_t| \le M + B_d
+</script>
+</p>
+<p>这种拆分非常关键：它承认 prompt/prefill token 与 generated token 的角色不同。前者承载任务语义，错误淘汰代价高；后者持续增长，需要动态管理。</p>
+<h3 id="2-momentum-based-attention-aggregation">2. Momentum-based attention aggregation</h3>
+<p>每一步 decoding 后，模型会计算当前 query 对完整 cache 的 attention。Moment-KV 只取其中 decoding sub-cache 对应的 attention，并对 heads 求平均：</p>
+<p>
+<script type="math/tex; mode=display">
+\bar{a}_i(t) = \frac{1}{H} \sum_h a^h_t[i],\quad i \in \Phi^d_t
+</script>
+</p>
+<p>然后更新 importance：</p>
+<p>
+<script type="math/tex; mode=display">
+I_i(t) = \alpha \cdot I_i(t-1) + \bar{a}_i(t)
+</script>
+</p>
+<p>
+<script type="math/tex">\alpha</script> 控制记忆 horizon：</p>
+<ul>
+<li>
+<script type="math/tex">\alpha</script> 大：历史 attention 衰减慢，更保护长期 heavy hitters；</li>
+<li>
+<script type="math/tex">\alpha</script> 小：更强调近期 attention，更接近短期 relevance。</li>
+</ul>
+<p>论文实验显示，较大的 <script type="math/tex">\alpha</script> 通常更适合长生成，因为长生成依赖跨较长 horizon 的语义保持；同时性能对 <script type="math/tex">\alpha</script> 并不过度敏感。</p>
+<h3 id="3-token">3. 新 token 处理</h3>
+<p>新生成 token 的 importance 初始化为 0，但 eviction 在 importance update 之后执行。因此新 token 至少获得一次当前 step 的 self-attention contribution：</p>
+<p>
+<script type="math/tex; mode=display">
+I_x(t) = \alpha \cdot 0 + \bar{a}_x(t)
+</script>
+</p>
+<p>这避免了“新 token 还没机会证明自己就被立即淘汰”的问题；但如果新 token 的初始 attention 仍低于其他历史 token，它也可以被淘汰。</p>
+<h3 id="4-capacity-enforcement">4. Capacity enforcement</h3>
+<p>若 decoding cache 超出 budget：</p>
+<p>
+<script type="math/tex; mode=display">
+overflow = \max(0, |\Phi^d_t| - B_d)
+</script>
+</p>
+<p>Moment-KV 选择 importance 最低的 <script type="math/tex">overflow</script> 个 token 淘汰：</p>
+<p>
+<script type="math/tex; mode=display">
+E_t = \arg\min_{S \subseteq \Phi^d_t,\ |S| = overflow} \sum_{i \in S} I_i(t)
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\Phi^d_{t+1} = \Phi^d_t \setminus E_t
+</script>
+</p>
+<p>这个 rule 没有 recency bias：任何 decoding token，无论新旧，只要 score 足够低都可淘汰；任何旧 token，只要长期 attention 高，都可保留。</p>
+<h2 id="_5">实验设置</h2>
+<h3 id="benchmarks">Benchmarks</h3>
+<p>论文选择长输出任务，因为 Moment-KV 针对 decoding-time growth：</p>
+<ul>
+<li><strong>LongGenBench</strong>：输出长度 4K / 8K，包含 GSM8K、CSQA、MMLU；</li>
+<li><strong>HelloBench HTG</strong>：启发式文本生成任务，输出长度 2K / 4K / 8K / 16K；</li>
+<li><strong>∞Bench EnSum</strong>：长文本摘要，平均输出约 1.1K tokens。</li>
+</ul>
+<h3 id="models">Models</h3>
+<ul>
+<li>LLaMA-3.1-8B-Instruct</li>
+<li>Mistral-7B-Instruct-v0.3</li>
+</ul>
+<h3 id="baselines">Baselines</h3>
+<ul>
+<li>Full Cache</li>
+<li>StreamingLLM</li>
+<li>H2O</li>
+<li>PyramidInfer</li>
+<li>SCOPE</li>
+<li>与 prefill compression 组合：SnapKV、PyramidKV</li>
+</ul>
+<h3 id="compression-settings">Compression settings</h3>
+<ul>
+<li>decoding budget：1024 tokens 与 512 tokens；</li>
+<li>prefill cache 完整保留，不压缩；</li>
+<li>对 unified compression baselines，作者约束其总容量为 prompt length + decode budget，以保证公平比较。</li>
+</ul>
+<h2 id="_6">主要结果</h2>
+<h3 id="1-longgenbench">1. LongGenBench</h3>
+<p>在 LLaMA-3.1-8B-Instruct 上：</p>
+<ul>
+<li>4K 输出、1024 decode budget：Moment-KV 平均 <code>60.27</code>，超过 Full Cache <code>59.63</code> 与 SCOPE <code>58.91</code>；</li>
+<li>4K 输出、512 decode budget：Moment-KV 平均 <code>59.89</code>，明显高于 SCOPE <code>58.62</code>、StreamingLLM <code>57.30</code>、H2O <code>51.58</code>；</li>
+<li>8K 输出、512 decode budget：Moment-KV 平均 <code>49.63</code>，是该设置下最高平均分。</li>
+</ul>
+<p>在 Mistral-7B-Instruct-v0.3 上，Moment-KV 也在多数设置下达到最好或高度竞争的平均表现，尤其在更紧的 decoding budget 下优势更明显。</p>
+<p>论文摘要中给出的总体提升为：LongGenBench 上平均相对提升 <code>2.32%</code>，HelloBench 上平均相对提升 <code>3.26%</code>。</p>
+<h3 id="2-hellobench">2. HelloBench</h3>
+<p>HelloBench HTG 任务衡量模型生成原创长文本的能力。Moment-KV 在 2K、4K、8K generation length 下达到最佳 overall performance；在 16K 时与 Full Cache 接近。说明 momentum importance 对 generation-intensive tasks 有效，尤其当 token relevance 随生成过程持续变化时。</p>
+<h3 id="3-prefill-compression">3. 与 prefill compression 的组合</h3>
+<p>论文将 Moment-KV 与 SnapKV、PyramidKV 结合，在 LongGenBench-4K GSM8K 上测试。结果显示，在 prefill budget 为 2048、decode budget 为 512 时，Moment-KV 相对 SCOPE 更稳健：<code>25.19</code> vs <code>22.56</code>。论文报告组合 prefill-time compression 时平均提升 <code>7.26%</code>。</p>
+<p>这说明 Moment-KV 并不是替代 SnapKV/PyramidKV，而是补上 decode-time 管理维度。</p>
+<h3 id="4-throughput">4. Throughput</h3>
+<p>吞吐实验显示：</p>
+<ul>
+<li>Full Cache：<code>34.32 tokens/s</code>，最高，因为没有 cache management overhead；</li>
+<li>StreamingLLM：<code>22.37 tokens/s</code>；</li>
+<li>H2O：<code>20.78 tokens/s</code>；</li>
+<li>PyramidInfer：<code>20.81 tokens/s</code>；</li>
+<li>SCOPE：<code>20.71 tokens/s</code>；</li>
+<li>Moment-KV：<code>20.65 tokens/s</code>。</li>
+</ul>
+<p>Moment-KV 比 SCOPE 略低，但差距很小，说明 momentum tracking 的 overhead 可控。</p>
+<h3 id="5">5. 分析结果</h3>
+<p>论文通过 attention distribution 和 sequential reasoning accuracy 分析表明：</p>
+<ul>
+<li>SCOPE 更集中在最新 tokens，大量 recent-window slots 实际低 attention；</li>
+<li>Moment-KV 的 cache utilization 更分散，更能覆盖仍有用的 tokens；</li>
+<li>随着生成长度和 reasoning step 增加，SCOPE accuracy 下降更快，而 Moment-KV 更稳；</li>
+<li>
+<script type="math/tex">\alpha</script> 较大时性能更好，支持“长期 heavy hitters 需要历史记忆”的假设。</li>
+</ul>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>问题拆分正确</strong>：明确区分 prefill cache 与 decoding cache，避免把两类 token 混在一起压缩。</li>
+<li><strong>方法简单可插拔</strong>：只需要维护 attention momentum score，不需要训练模型或修改权重。</li>
+<li><strong>适合长输出</strong>：直接针对生成长度增加导致的 decode KV growth，而不是只看长 prompt。</li>
+<li><strong>与 prefill compression 兼容</strong>：可叠加 SnapKV/PyramidKV，形成 prefill + decode 双阶段压缩。</li>
+<li><strong>overhead 小</strong>：吞吐接近 SCOPE/H2O/PyramidInfer 等轻量方法。</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>importance proxy 仍是 attention</strong>：attention 不一定等于语义重要性，尤其在某些 reasoning 或 copy 场景下可能误判。</li>
+<li><strong>只处理 decoding tokens</strong>：prefill cache 完整保留，适合 prompt 不极长但 output 很长的任务；若 prompt 本身也很长，仍需额外 prefill compression。</li>
+<li><strong>没有显式 layer/head 差异建模</strong>：论文使用 across-head mean attention，对不同 head/layer 的功能差异利用有限。</li>
+<li><strong>系统实现细节较少</strong>：论文报告 throughput，但未深入讨论 paged KV layout、eviction compaction、batch serving 下的碎片管理。</li>
+<li><strong>budget policy 固定</strong>：decode budget 512/1024 是实验设定，真实 serving 中可根据 request SLO、生成长度预测、batch pressure 自适应调整。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>Moment-KV 属于 <strong>KV Cache 稀疏/淘汰</strong>，也和 KV lifecycle management 方向直接相关。</p>
+<p>它对现有 EfficientPaper 脉络的贡献是：</p>
+<ul>
+<li>SnapKV/PyramidKV/KeyDiff 等主要关注 prefill cache 的筛选；</li>
+<li>StreamingLLM/H2O 等统一处理 cache，但没有充分区分 prefill 与 decode 的语义差异；</li>
+<li>SCOPE 开始关注 decode-time compression，但仍依赖较短期/启发式信号；</li>
+<li>Moment-KV 把 decode-time token importance 建模为时间状态，强调 heavy hitter 的长期持续性与 temporary attention dip。</li>
+</ul>
+<p>这与 Research Brainstorm 中“KV lifecycle optimizer”方向高度一致：KV 管理不应只看静态 importance，而应引入时间动态、reuse horizon、token role（prefill vs decode）和 phase-specific action space。</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li>推理 runtime 中需要将 prefill KV 与 decode KV 在逻辑上分池管理。</li>
+<li>prefill pool 不参与 Moment-KV eviction；decode pool 设置固定 budget。</li>
+<li>每步 attention 计算后取 decoding sub-cache 对应 attention，最好按 head/layer 做可配置聚合。</li>
+<li>为每个 decode token 维护 <script type="math/tex">I_i</script>，按 <script type="math/tex">I_i \leftarrow \alpha I_i + attention_i</script> 更新。</li>
+<li>超出 budget 时，淘汰 score 最低 token，同时同步删除对应 K/V 和 score。</li>
+<li>若使用 paged attention，需要处理 token eviction 后的 page compaction 或 free-list 回收。</li>
+<li>Moment-KV 可与 prefill compression 组合：prefill 先由 SnapKV/PyramidKV 压缩，decode 再由 Moment-KV 管理。</li>
+<li>真实 serving 中可把 <script type="math/tex">\alpha</script> 与 budget 设为 workload-aware 参数，例如长输出任务使用更大 <script type="math/tex">\alpha</script>，短生成任务降低 history horizon。</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>Moment-KV 最有价值的点不是公式复杂，而是把 decode-time KV 管理独立出来。很多 KV compression 论文默认 prompt KV 和 generated KV 可统一处理，但在 agentic/long generation 中二者生命周期完全不同。</li>
+<li>这篇可以和 KVBuffer、VECTOR、TriAttention 一起看：KVBuffer 关注 linear attention state write-back，VECTOR 关注 retain/approximate/evict 的 action space，TriAttention 关注稳定 importance signal，Moment-KV 则补充了 temporal state。</li>
+<li>未来很自然的方向是把 Moment-KV 的 momentum score 与质量损失估计结合：例如 high momentum + low reconstructability 保留，low momentum + high reconstructability 近似或淘汰。</li>
+<li>系统侧还缺一块：decode KV 的动态淘汰会影响 paged attention layout、batch 内不同请求的 compaction 和 tree/speculative verification 的临时 KV 管理。这些问题若解决得好，Moment-KV 才能从算法 heuristic 变成 serving scheduler 的一部分。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

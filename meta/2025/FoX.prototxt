@@ -26,3 +26,6 @@ keyword {
 cover {
   url: ""
 }
+baseline {
+  methods: "2022/flashattention"
+}

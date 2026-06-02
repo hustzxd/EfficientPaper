@@ -66,5 +66,5 @@ cover {
   url: ""
 }
 baseline {
-  methods: "None"
+  methods: "2025/DeepSeek-R1"
 }

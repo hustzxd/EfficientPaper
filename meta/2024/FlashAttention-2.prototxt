@@ -20,7 +20,7 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2022/FlashAttention"
+  methods: "2022/flashattention"
 }
 update_time: 1773911370
 rating: 2

@@ -1,0 +1,34 @@
+paper {
+  title: "Moment-KV: Momentum-Based Decode-Time KV Cache Compression for Long Generation"
+  abbr: "Moment-KV"
+  url: "https://arxiv.org/abs/2605.29873"
+  authors: "Soumyadeep Jana"
+  authors: "Sagar Nishad"
+  authors: "Sanasam Ranbir Singh"
+  institutions: "Indian Institute of Technology Guwahati"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/streaming-llm"
+  methods: "2023/H2O"
+  methods: "2024/SnapKV"
+  methods: "2024/PyramidKV"
+}
+update_time: 1780294805
+rating: 1

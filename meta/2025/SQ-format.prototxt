@@ -29,5 +29,5 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2023/GPTQ"
+  methods: "2023/gptq"
 }

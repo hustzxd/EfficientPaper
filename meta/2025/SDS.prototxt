@@ -30,5 +30,5 @@ cover {
 }
 baseline {
   methods: "2024/Wanda"
-  methods: "2023/SparseGPT"
+  methods: "2023/sparsegpt"
 }

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>OScaR: The Occam's Razor for Extreme KV Cache Quantization in LLMs and Beyond - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OScaR: The Occam\u0027s Razor for Extreme KV Cache Quantization in LLMs and Beyond";
+        var mkdocs_page_input_path = "notes/2026/OScaR/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">OScaR: The Occam's Razor for Extreme KV Cache Quantization in LLMs and Beyond</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="oscar-the-occams-razor-for-extreme-kv-cache-quantization-in-llms-and-beyond">OScaR: The Occam's Razor for Extreme KV Cache Quantization in LLMs and Beyond</h1>
+<blockquote>
+<p>Zunhai Su, Rui Yang, Chao Zhang, Yaxiu Liu, Yifan Zhang, Wei Wu, Jing Xiong, Dayou Du, Xialie Zhuang, Yulei Qian, Yuchen Xie, Yik-Chung Wu, Hongxia Yang, Ngai Wong</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>长上下文推理、多模态理解和 omni-modal 智能的发展让 KV cache 的显存占用成为高效部署的主要瓶颈。已有 per-channel quantization 能较好处理 Key tensor 中固有的 channel-wise outliers，但在 INT2 等极端压缩下性能显著下降。本文从经验和理论两方面重新审视 per-channel quantization 的局限，指出 <strong>Token Norm Imbalance (TNI)</strong> 是量化保真度的主要瓶颈：当一组 token 的范数差异很大，却必须共享同一组量化参数时，误差会被系统性放大。</p>
+<p>OScaR（Omni-Scaled Canalized Rotation）提出一个面向 X-LLMs（text-only、multi-modal、omni-modal LLMs）的轻量、无需训练的 KV cache compression 框架。它在 per-channel paradigm 上加入两步核心处理：先做 <strong>Canalized Rotation</strong>，再做 <strong>Omni-Token Scaling</strong>，用尽量简单的 pipeline 缓解 TNI 引起的 sequence-dimensional variance。论文还提供优化过的 system design 和 CUDA kernels。实验显示，OScaR 在 INT2 量化下可达到接近无损的效果；相对 BF16 FlashDecoding-v2 baseline，最高实现 3.0× decoding speedup、5.3× memory footprint reduction、4.1× throughput increase。</p>
+<h2 id="_1">一句话总结</h2>
+<p>OScaR 的核心观点是：极低比特 KV cache 量化失败的根源不只是 Key 的 channel-wise outlier，而是同一 per-channel quantization group 内 token norm 差异过大；用 Hadamard-based Canalized Rotation 先抹平 outlier channel，再做 Omni-Token Scaling 平衡 token norm，就能以非常简单的训练无关 pipeline 在 INT2 下接近无损压缩 KV cache。</p>
+<h2 id="_2">背景与问题</h2>
+<p>自回归推理中，KV cache 避免了重复计算，但其显存占用随上下文长度线性增长。对于长上下文、streaming、视觉/音频多模态输入，prompt sequence 可能包含大量文本 token、视觉特征和音频 embedding，KV cache 很快成为 HBM 的主导占用，限制 batch size 和吞吐。</p>
+<p>KV cache quantization 是直接缓解该问题的重要路线。现有经验表明：</p>
+<ul>
+<li><strong>Key</strong> 中存在明显 channel-wise outliers，因此常用 per-channel quantization；</li>
+<li><strong>Value</strong> 分布相对均匀，因此常用 per-token quantization；</li>
+<li>KIVI 代表的 block-wise per-channel Key quantization 在低比特下有效，但需要 residual window 支持在线生成；</li>
+<li>QuaRot、RotateKV、ZipCache、TurboQuant 等方法通过 rotation、smoothing、outlier protection 或更复杂的 error correction 改善量化质量。</li>
+</ul>
+<p>论文认为：这些方法虽然有效，但在 INT2 等极端压缩下，per-channel Key quantization 仍有一个更基本的弱点——它假设同一 channel/block 内不同 token 的数值范围可以由共享 scale/zero-point 覆盖。但真实模型中存在显著 <strong>Token Norm Imbalance</strong>：一些 token 的范数异常低或异常高，尤其与 attention sink、多模态 token 分布差异有关。共享量化参数为了覆盖这些差异会扩大 dynamic range，使多数普通 token 的有效量化分辨率下降。</p>
+<h2 id="_3">核心方法</h2>
+<p>OScaR 包含两个互相依赖的算法组件：</p>
+<ol>
+<li><strong>Canalized Rotation (CR)</strong>：先对 Key / Query / Value 相关路径做 Hadamard transform，将 outlier channel 的能量扩散到所有维度，避免某些 channel 主导 token norm。</li>
+<li><strong>Omni-Token Scaling (OTS)</strong>：在 rotation 之后，对 token 做 sequence-level normalization，平衡不同 token 的范数，降低 TNI 对 per-channel quantization 的影响。</li>
+</ol>
+<p>关键是顺序不能反：直接 token-wise scaling 看似能平衡 token norm，但会引入 <strong>Scaling-Induced Outlier Artifact</strong>。如果低范数 outlier tokens 被直接放大到普通 token 范数，它们在本来很小的 channel 上会变成人造 outlier，反而扩大 per-channel quantization range。Canalized Rotation 先把 channel outlier 能量打散，使后续 token scaling 不会制造新的局部极端值。</p>
+<p>因此，OScaR 的设计可以理解为：</p>
+<pre><code class="language-text">原始 KV 分布
+  → Canalized Rotation：处理 channel-wise outlier / 防止 scaling artifact
+  → Omni-Token Scaling：处理 token norm imbalance
+  → 极低比特量化：Key per-channel, Value per-token
+</code></pre>
+<h2 id="_4">技术细节</h2>
+<h3 id="1-tniper-channel-quantization">1. TNI：per-channel quantization 的结构性瓶颈</h3>
+<p>在 block-wise per-channel Key quantization 中，对于某个 Key cache block <code>K ∈ R^{S×d}</code>，每个 channel j 在 block g 内用同一组量化 step size 和 zero-point：</p>
+<pre><code class="language-text">Δ_{j,g} = (max_{i∈g} K_{i,j} - min_{i∈g} K_{i,j}) / (2^b - 1)
+z_{j,g} = ceil(-min_{i∈g} K_{i,j} / Δ_{j,g})
+</code></pre>
+<p>如果 block 内 token norm 差异很大，少数极端 token 会扩大 <code>max-min</code> range，导致普通 token 的 quantization step 过粗。论文通过 token-wise norm profiling 发现：</p>
+<ul>
+<li>text-only LLM 中，Query/Key/Value 都有一小部分低范数 outlier tokens；</li>
+<li>这些 token 与 attention sink tokens 对应，且跨 attention states 稳定出现；</li>
+<li>multi-modal LLM 中 TNI 更复杂：既有 text-only 类似的 attention-sink outliers，也有跨模态范数差异，以及部分超大范数 outlier tokens。</li>
+</ul>
+<p>理论推导进一步指出，per-channel quantization block 的重建误差受 block 内 token norm range 支配，因此 TNI 会系统性放大误差。Value 的 per-token quantization 虽然也存在 TNI，但范数差异被局限在单个 token 内，不会像 per-channel Key quantization 那样跨 token 相互干扰。</p>
+<h3 id="2-token-wise-scaling">2. 为什么不能直接做 token-wise scaling？</h3>
+<p>直接把所有 token 缩放到相同范数，看起来能解决 TNI，但实际可能退化。原因是普通 token 往往被少数 outlier channels 主导，而低范数 attention-sink token 的各 channel 值可能整体较小且更均匀。直接放大这些低范数 token 后，它们会在普通 token 原本很小的 channel 上产生新 outlier，扩大 per-channel range。</p>
+<p>论文称这种现象为 <strong>Scaling-Induced Outlier Artifact</strong>。这解释了为什么单独的 token-wise normalization 不可靠：它解决了 token norm imbalance，但破坏了 channel-wise quantization 的分布结构。</p>
+<h3 id="3-canalized-rotation">3. Canalized Rotation</h3>
+<p>Canalized Rotation 使用 Hadamard transform 先重新分布 channel outlier 的能量。Hadamard transform 的优势是：</p>
+<ul>
+<li>与普通矩阵乘相比复杂度更低，FHT 可达到 <code>O(d log d)</code>；</li>
+<li>能把局部 channel outlier 的能量扩散到更多维度，使 channel 分布更平滑；</li>
+<li>为后续 token scaling 创造更安全的数值条件。</li>
+</ul>
+<p>对于 attention 计算，Key 经过 rotation 后，Query 也需要在线 FHT，以隐式抵消 Key 上的旋转，保证 attention 语义一致。Value 路径则可以把 Hadamard transform offline merge 到 attention output weight 中，减少 runtime overhead。</p>
+<h3 id="4-omni-token-scaling">4. Omni-Token Scaling</h3>
+<p>在 Canalized Rotation 后，OScaR 计算每个 token 的范数，并做 token-wise scaling，使 sequence dimension 上的 token norm 更均衡。dequantization 时再做 inverse scaling 恢复原始范数。论文强调 OTS 是 omni-directional / sequence-level normalization，目标是同时处理 text-only、多模态、omni-modal 场景中多样的 TNI 模式。</p>
+<p>实现上，Omni-Token Scaling 使用硬件加速的 <code>rsqrt</code> 指令来降低开销。</p>
+<h3 id="5-system-design-cuda-kernels">5. System design 和 CUDA kernels</h3>
+<p>OScaR 实现了三个 CUDA kernels，并基于 HadaCore 与 BitDecoding 做适配：</p>
+<ol>
+<li><strong>Online FHT and Scaling kernel</strong>：对 Key 做 fused FHT + token scaling，同时对 Query 应用 FHT；</li>
+<li><strong>Quantization kernel</strong>：对 Key 和 Value 做 GPU-efficient quantization；</li>
+<li><strong>Dequantization, De-Scaling, and Attention kernel</strong>：处理 Key/Value dequantization、Key inverse scaling 和 attention computation。</li>
+</ol>
+<p>这种设计的重点是把算法处理尽量融合到推理路径里，避免复杂 pipeline 的额外 memory movement 和 kernel launch overhead。</p>
+<h2 id="_5">实验设置</h2>
+<h3 id="_6">模型</h3>
+<p>论文覆盖三类 X-LLMs：</p>
+<ul>
+<li>text-only LLMs：Llama-3.1-8B、Qwen3-8B</li>
+<li>multi-modal LLMs：LLaVA-v1.6-vicuna-7B、Qwen3-VL-4B/8B-Instruct</li>
+<li>omni-modal LLMs：Qwen3-Omni-30B-A3B</li>
+</ul>
+<h3 id="_7">任务</h3>
+<ul>
+<li>text-only：LongBench-E、Needle-in-a-Haystack (NIAH)</li>
+<li>multi-modal：OCRBench、DocVQA</li>
+<li>omni-modal：MMAU-Pro</li>
+</ul>
+<p>这些任务强调长上下文、多模态输入和检索能力，适合测试极低比特 KV cache quantization 的鲁棒性。</p>
+<h3 id="baselines">Baselines</h3>
+<p>论文比较三类 baselines：</p>
+<ul>
+<li>per-channel Key quantization：KIVI、OTT</li>
+<li>rotation-based per-token Key quantization：QuaRot、RotateKV</li>
+<li>LUT / 更复杂 quantization pipeline：TurboQuant / TurboQuant+</li>
+</ul>
+<p>其中 TurboQuant+ 使用 2.5-bit；其它方法包括 OScaR 大多采用 INT2，group size 为 32。KIVI、OTT、OScaR 的 residual length 统一设为 128；OTT 使用 5 个高精度 outlier tokens。</p>
+<h2 id="_8">主要结果</h2>
+<h3 id="1-text-only-longbench-e">1. Text-only LongBench-E</h3>
+<p>在 LongBench-E 上，OScaR 是所有 quantized methods 中平均分最高的方法：</p>
+<ul>
+<li>Llama-3.1-8B：OScaR 平均 <code>41.75</code>，高于 OTT <code>40.74</code>、TurboQuant+ <code>40.03</code>、KIVI <code>39.84</code>；</li>
+<li>Qwen3-8B：16-bit baseline 平均 <code>49.56</code>，OScaR <code>48.74</code>，只下降约 <code>1.7%</code>，并高于 OTT <code>48.21</code>、KIVI <code>47.95</code>、TurboQuant+ <code>47.56</code>。</li>
+</ul>
+<p>在 NIAH 长上下文检索任务中，OScaR 达到 <code>96.5%</code> retrieval accuracy，高于第二名 <code>92.7%</code>，甚至略高于 16-bit baseline 的 <code>96.0%</code>。</p>
+<h3 id="2-multi-modal-omni-modal">2. Multi-modal / Omni-modal</h3>
+<p>在 OCRBench、DocVQA 和 MMAU-Pro 上，OScaR 在 2-bit KV quantization 下仍接近 16-bit baseline：</p>
+<ul>
+<li>OCRBench：在 Qwen3-VL-4B 上比第二好方法高 <code>2.5</code> 个百分点；</li>
+<li>MMAU-Pro：在 open-ended QA、Good Rate 和 audio instruction following 三个指标上均为 quantized methods 最优，分别超过第二名 <code>1.2</code>、<code>2.8</code>、<code>4.6</code> 个百分点。</li>
+</ul>
+<p>这说明 OScaR 不只是 text-only LLM 的技巧，也能处理多模态 token 分布差异带来的 TNI。</p>
+<h3 id="3-efficiency">3. Efficiency</h3>
+<p>效率实验在单张 H20 GPU（141GB）上进行，使用 Qwen3-8B，BF16 FlashDecoding-v2 作为 baseline。</p>
+<p>主要结果：</p>
+<ul>
+<li>context length 128K、batch size 1：OScaR 达到最高 <code>3.0×</code> decoding speedup；</li>
+<li>context length 4K、batch size 48：memory footprint 降低 <code>5.3×</code>，throughput 提升 <code>4.1×</code>。</li>
+</ul>
+<p>论文给出的分析是：OScaR 的低复杂度算法与 CUDA kernel fusion 让 INT2 KV cache 的带宽/容量收益能够转化为实际 latency 和 throughput 收益，而不是被复杂量化 pipeline 的 overhead 抵消。</p>
+<h3 id="4-ablation-pareto-front">4. Ablation 与 Pareto front</h3>
+<p>论文在附录中进一步分析 CR 和 OTS 的互补性：</p>
+<ul>
+<li>只做 Canalized Rotation：能改善 channel distribution，但不能充分平衡 token norm；</li>
+<li>只做 Omni-Token Scaling：会制造 Scaling-Induced Outlier Artifact；</li>
+<li>完整 OScaR：同时降低 channel outlier 和 TNI，避免 artifact。</li>
+</ul>
+<p>Pareto front 分析显示，在 accuracy-efficiency tradeoff 上，OScaR 处于比 TurboQuant+ 等方法更有利的位置：更简单、更低开销，同时保持更好精度。</p>
+<h2 id="_9">优点与局限</h2>
+<h3 id="_10">优点</h3>
+<ol>
+<li><strong>问题定位清晰</strong>：把 INT2 KV quantization 的瓶颈从“Key 有 channel outlier”推进到“per-channel group 内 token norm imbalance”。</li>
+<li><strong>方法简单</strong>：CR + OTS 两步，训练无关，不需要复杂 residual correction 或大量额外参数。</li>
+<li><strong>覆盖 X-LLMs</strong>：同时验证 text-only、multi-modal、omni-modal LLM，比很多只测文本模型的 KV quantization 工作更全面。</li>
+<li><strong>系统实现完整</strong>：不仅提出算法，还给出 CUDA kernels 和端到端 latency/throughput/memory 结果。</li>
+<li><strong>INT2 近无损</strong>：在 LongBench-E、NIAH、多模态和 omni-modal benchmarks 上普遍接近 16-bit baseline。</li>
+</ol>
+<h3 id="_11">局限</h3>
+<ol>
+<li><strong>仍依赖 per-channel/per-token paradigm</strong>：OScaR 是对现有量化范式的增强，不是完全新的 KV representation；对更低于 2-bit 或非均匀编码的探索有限。</li>
+<li><strong>旋转与 scaling 的硬件收益依赖实现</strong>：论文提供 CUDA kernels，但在不同 GPU、runtime、attention kernel、batch shape 下收益可能变化。</li>
+<li><strong>动态 workload 下的策略未充分讨论</strong>：长上下文 serving 中可能存在 prefix reuse、KV tiering、eviction、partial recomputation 等策略，OScaR 主要关注单模型/单请求路径上的 quantization fidelity 和 kernel efficiency。</li>
+<li><strong>多模态 token 类型的细粒度策略仍有空间</strong>：虽然 OScaR 证明统一处理有效，但 text / image / audio token 的范数结构不同，未来可能需要 modality-aware scaling 或 group policy。</li>
+<li><strong>与 KV cache 稀疏/淘汰方法的组合尚未系统评估</strong>：OScaR 可以与 eviction / sparsity 结合，但论文主要比较 quantization baselines。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>OScaR 属于 <strong>kv_cache_quant</strong>，同时与 KV cache management 和硬件感知算法设计有交叉。</p>
+<p>它对 EfficientPaper 当前研究脉络的增量在于：</p>
+<ul>
+<li>TurboQuant 代表复杂但理论上接近最优的 online vector quantization；</li>
+<li>VECTOR 把 KV compression 从 retain/evict 扩展到 retain/approximate/evict，并引入 reconstructability；</li>
+<li>OScaR 则回到更基础的 INT2 quantization fidelity，指出 per-channel quantization 失败的关键结构原因是 TNI，并用更简单的 CR + OTS pipeline 取得更好的 accuracy-efficiency Pareto。</li>
+</ul>
+<p>这说明 KV cache quantization 虽然在 Brainstorm 中被标记为“成熟/收益递减”，但在 <strong>极低比特 + 长上下文 + X-LLM + 系统 kernel co-design</strong> 条件下仍有非平凡增量。尤其是多模态/omni-modal KV cache 的 token norm distribution 更复杂，可能成为下一阶段 KV quantization 的主要新战场。</p>
+<h2 id="_12">可复现/实现要点</h2>
+<ol>
+<li>对 Key 使用 per-channel quantization，对 Value 使用 per-token quantization，保持与 KIVI-style pipeline 兼容。</li>
+<li>在 Key 量化前做 online Fast Hadamard Transform，再做 token-wise norm scaling。</li>
+<li>Query 路径也要做对应 FHT，以保证 attention score 语义与旋转后的 Key 对齐。</li>
+<li>Key dequantization 后需要 inverse scaling。</li>
+<li>Value 的 Hadamard transform 可 offline merge 到 output projection weight，降低 runtime overhead。</li>
+<li>FHT、scaling、quantization、dequantization 和 attention 应尽量融合为少数 CUDA kernels，避免额外 memory movement。</li>
+<li>对 INT2 设置，group size、residual length、scale/zero-point 存储开销需要计入真实 memory footprint。</li>
+<li>多模态模型应分别检查 text/image/audio token 的 norm 分布，确认 OTS 是否需要 modality-aware 变体。</li>
+</ol>
+<h2 id="_13">个人备注</h2>
+<ul>
+<li>OScaR 的论文标题里 “Occam's Razor” 是准确的：它不是堆复杂 correction，而是找到了 per-channel quantization 在极低比特下的一个结构性失败模式，然后用 rotation + scaling 两个必要步骤解决。</li>
+<li>这篇与 TurboQuant 形成很好的对比：TurboQuant 更偏理论/复杂 quantization pipeline，OScaR 更偏部署友好的低复杂度数值变换 + CUDA kernel。真正落地时，后者可能更容易获得端到端收益。</li>
+<li>值得进一步追问：TNI 是否也可以作为 KV eviction / tier placement 的 signal？低范数 attention-sink token 对量化 range 影响大，但语义/attention 重要性可能也特殊；这和 VECTOR 的 reconstructability、TriAttention 的 token importance 可以合并成统一质量模型。</li>
+<li>另一个开放方向是 modality-aware OTS：如果 image/audio tokens 与 text tokens 的 norm 分布系统性不同，统一 scaling 是否会过度拉平 modality-specific signal？论文结果说明统一 OScaR 已有效，但可能还不是最优。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

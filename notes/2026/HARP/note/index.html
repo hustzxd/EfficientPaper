@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>HARP: Hadamard-Preconditioned Adaptive Rotation Processor for Extreme LLM Quantization - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "HARP: Hadamard-Preconditioned Adaptive Rotation Processor for Extreme LLM Quantization";
+        var mkdocs_page_input_path = "notes/2026/HARP/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">HARP: Hadamard-Preconditioned Adaptive Rotation Processor for Extreme LLM Quantization</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="harp-hadamard-preconditioned-adaptive-rotation-processor-for-extreme-llm-quantization">HARP: Hadamard-Preconditioned Adaptive Rotation Processor for Extreme LLM Quantization</h1>
+<blockquote>
+<p>Artur Zagitov, Gleb Molodtsov, Aleksandr Beznosikov</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Post-training quantization (PTQ) 是在内存和带宽受限环境中部署 LLM 的关键技术，但极低比特量化对 activation outliers 和 anisotropic weight curvature 非常敏感。已有 incoherence-based PTQ 方法通常使用固定 randomized Hadamard transforms (RHTs) 来混合坐标、降低 outlier 对量化的影响；RHT 高效、正交、易部署，但不能根据 layer、calibration distribution 或 downstream quantizer 自适应调整旋转基。</p>
+<p>HARP（Hadamard-preconditioned Adaptive Rotation Processor）提出一个可学习的 structured two-sided orthogonal processor，用来替换固定 Hadamard/RHT mixing，同时保持 full-precision computation 等价。它把每个 rotation 表示为 sparse butterfly-like block-orthogonal stages 的乘积，支持 Mixed-Radix schedule 处理非 2 的幂维度，并初始化为与 RHT 等价的处理器，再用 calibration data 学到 layer/backend-specific 的结构化 refinement。实验显示，在 1B 到 70B 模型的 2–4 bit 设置中，HARP 相对固定 RHT 改善 perplexity 和 zero-shot accuracy；同时保留大部分部署效率，例如 2-bit Llama 2 7B 达到 128 tok/s，而 FP16 为 61 tok/s。</p>
+<h2 id="_1">一句话总结</h2>
+<p>HARP 的核心是把 QuIP#/QTIP 这类 Hadamard-based PTQ 中“固定随机旋转”替换成“从 calibration data 学出来的结构化正交旋转”：仍然是 exact change of basis、仍然接近 Hadamard 的 <code>O(d log d)</code> 成本，但能更好适配每层曲率、权重分布和 blockwise quantizer。</p>
+<h2 id="_2">背景与问题</h2>
+<p>LLM 推理常受内存带宽限制，PTQ 通过把权重和激活压到低比特来降低带宽与存储压力。进入 2–4 bit 极低比特区域后，量化误差高度受以下因素影响：</p>
+<ul>
+<li>权重/激活中的 heavy-tailed outliers；</li>
+<li>Hessian 或 second-moment curvature 的 anisotropy；</li>
+<li>blockwise / vector quantizer 的固定分组结构；</li>
+<li>量化 codebook 是否能有效表示旋转后的权重块。</li>
+</ul>
+<p>QuIP、QuIP#、QTIP 等 incoherence processing 方法的基本思想是：在量化前做正交 change of basis，把 weight mass 和 curvature-sensitive directions 从少数坐标轴上打散，降低 blockwise quantization 的难度。随机 Hadamard transform (RHT) 很受欢迎，因为它正交、快速、支持 <code>O(d log d)</code> kernel。</p>
+<p>但固定 RHT 的局限也很明显：它是通用随机混合，不知道某一层的 calibration distribution，也不知道下游 quantizer 的 block structure/codebook。论文提出的问题是：<strong>能否学习一个 data-aware 的旋转，让它像 RHT 一样高效且保持 full-precision 等价，但比固定 RHT 更适合当前层和当前量化后端？</strong></p>
+<h2 id="_3">核心方法</h2>
+<p>HARP 是一个 two-sided orthogonal processor。对于线性层 <code>W ∈ R^{d_out × d_in}</code> 和 calibration input second moment <code>H = E[xx^T]</code>，HARP 学习两个正交矩阵：</p>
+<pre><code class="language-text">U ∈ O(d_out),  V ∈ O(d_in)
+</code></pre>
+<p>量化前旋转：</p>
+<pre><code class="language-text">W~ = U^T W V
+H~ = V^T H V
+</code></pre>
+<p>量化后映射回原空间：</p>
+<pre><code class="language-text">W_hat = U W~_hat V^T
+</code></pre>
+<p>由于 <code>U</code> 与 <code>V</code> 正交，full-precision computation 与 Hessian-weighted reconstruction objective 在数学上保持等价；改变的只是 quantizer 看到的坐标基。</p>
+<p>HARP 的主要创新是如何参数化和学习 <code>U,V</code>：</p>
+<ol>
+<li>用 sparse stride stages / butterfly-like block-orthogonal factors 表示旋转，而不是 dense <code>d×d</code> 矩阵；</li>
+<li>每个 stage 由许多小 block-orthogonal kernels 组成；</li>
+<li>block kernel 写成 <code>Q(θ) G_b</code>：<code>G_b</code> 是固定 Hadamard/QR base mixer，<code>Q(θ)</code> 是可学习正交 residual；</li>
+<li>初始化 <code>θ=0</code> 时，<code>Q=I</code>，整个 processor 恢复 RHT/QuIP# 的 Hadamard preprocessing；</li>
+<li>在 calibration data 上优化 <code>θ</code>，让旋转后的权重更容易被 downstream quantizer 表示。</li>
+</ol>
+<h2 id="_4">技术细节</h2>
+<h3 id="1-layerwise-ptq-objective">1. Layerwise PTQ objective</h3>
+<p>HARP 采用 PTQ 中常见的 layerwise reconstruction 视角。给定线性层权重 <code>W</code> 和 calibration inputs 的 second moment：</p>
+<pre><code class="language-text">H = E[x x^T]
+</code></pre>
+<p>量化目标可写为 Hessian-weighted output error：</p>
+<pre><code class="language-text">L(W, W_hat) = Tr((W - W_hat) H (W - W_hat)^T)
+</code></pre>
+<p>在正交变换后：</p>
+<pre><code class="language-text">W~ = U^T W V
+H~ = V^T H V
+</code></pre>
+<p>目标等价为：</p>
+<pre><code class="language-text">L(W, W_hat) = Tr((W~ - W~_hat) H~ (W~ - W~_hat)^T)
+</code></pre>
+<p>因此，HARP 不改变 full-precision model，只改变有限 code quantizer 的工作坐标。</p>
+<h3 id="2-structured-orthogonal-stages">2. Structured orthogonal stages</h3>
+<p>dense learned rotation 存储和计算都是 <code>O(d^2)</code>，对 LLM 隐层维度不可行。HARP 使用 Mixed-Radix schedule：</p>
+<pre><code class="language-text">b = (b_0, ..., b_{m-1}),   Π_t b_t = d
+</code></pre>
+<p>每个 stage 只混合长度为 <code>b_t</code> 的小组。stage operator 可表示为：</p>
+<pre><code class="language-text">S_t(Θ_t) = P_t^T BlockDiag(B_{t,1}, ..., B_{t,D_t}) P_t
+</code></pre>
+<p>整个 transform 为：</p>
+<pre><code class="language-text">T(Θ) = S_{m-1}(Θ_{m-1}) ... S_0(Θ_0)
+</code></pre>
+<p>每个 block 都正交，因此整个 <code>T(Θ)</code> 正交。实际实现不显式 materialize permutation，而是通过 reshape/transpose 暴露 stride groups，再做 blockwise multiplication。</p>
+<h3 id="3-hadamard-preconditioned-block-kernels">3. Hadamard-preconditioned block kernels</h3>
+<p>每个 block kernel 定义为：</p>
+<pre><code class="language-text">B_{t,c}(θ_{t,c}) = Q_{t,c}(θ_{t,c}) G_{b_t}
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>G_b</code> 是固定 base mixer；若 radix 为 2 的幂，使用 normalized Sylvester Hadamard；非 2 的幂时用固定 Gaussian matrix 的 QR 正交 fallback；</li>
+<li><code>Q(θ)</code> 是可学习正交矩阵；</li>
+<li><code>θ=0</code> 时 <code>Q=I</code>，所以 block 等于 base mixer。</li>
+</ul>
+<p>这带来两个好处：</p>
+<ol>
+<li><strong>强初始化</strong>：训练开始时就是 RHT-like processor，而不是随机 dense rotation；</li>
+<li><strong>局部 refinement</strong>：学习的是围绕 Hadamard baseline 的结构化 residual，更适合非平滑的极低比特量化目标。</li>
+</ol>
+<h3 id="4">4. 正交参数化</h3>
+<ul>
+<li>对 <code>b=2</code>，使用 Givens rotation；</li>
+<li>对 <code>b&gt;2</code>，使用 Cayley map：</li>
+</ul>
+<pre><code class="language-text">Q(θ) = (I + A(θ))^{-1}(I - A(θ))
+</code></pre>
+<p>其中 <code>A(θ)</code> 是 skew-symmetric matrix。这样保证每个 block 始终正交。</p>
+<h3 id="5-mixed-radix-2">5. Mixed-Radix 与非 2 的幂维度</h3>
+<p>HARP 支持非 power-of-two dimensions。例如 <code>5120</code> 可以用 schedule <code>(8, 8, 8, 5, 2)</code>，其中 radix-5 stage 使用 QR fallback base mixer。这避免了 padding，同时保持正交和 staged execution。</p>
+<p>论文还提供 Kronecker fallback，用于更接近 QuIP# 的非 2 的幂 Hadamard convention，并降低 learnable parameter 数量；但 Mixed-Radix 更通用、更 expressive。</p>
+<h3 id="6-fitting-objective">6. Fitting objective</h3>
+<p>直接把完整 QuIP# LDLQ solver 嵌入 rotation optimizer 过于昂贵。HARP 使用轻量 surrogate：</p>
+<ol>
+<li>对当前旋转后的权重 <code>W~(Θ)</code> 计算 blockwise codebook target <code>Q(W~(Θ))</code>，并 stop-gradient；</li>
+<li>定义量化误差：
+   <code>text
+   Δ(Θ) = W~(Θ) - Q(W~(Θ))</code></li>
+<li>用 rotated Hessian diagonal 作为权重，得到 diagonal Hessian-weighted reconstruction proxy：
+   <code>text
+   L_diag(Θ) = mean_{i,j} Δ_{ij}(Θ)^2 · normalized(|H~_{jj}(Θ)|)</code></li>
+<li>额外惩罚 off-block Hessian energy，使 curvature 更对齐 quantizer 的 contiguous block partition：
+   <code>text
+   R_bd(Θ_V)</code></li>
+<li>总 fitting loss：
+   <code>text
+   L_fit(Θ) = L_diag(Θ) + λ_bd R_bd(Θ_V)</code></li>
+</ol>
+<p>使用 Adam 从 exact RHT initialization 优化 <code>Θ_U, Θ_V</code>。</p>
+<h3 id="7">7. 参数存储与部署</h3>
+<p>训练后，HARP 参数可以 int8 存储。每个 block 的 Givens angle 或 Cayley matrix 上三角 entries 用 per-block scale 量化，runtime 时重建正交 block。实验显示 int8 parameter storage 对 perplexity 影响很小，同时降低 processor overhead。</p>
+<p>部署速度上，HARP 对每个 stride stage 使用 fused Triton GPU kernel，避免 materialized permutations；相对未融合实现延迟降低约 20%。</p>
+<h2 id="_5">实验设置</h2>
+<h3 id="_6">比较范围</h3>
+<p>论文主要隔离一个组件：固定 QuIP#-style backend 中的 incoherence processor。因此主比较是：</p>
+<ul>
+<li>QuIP# with fixed RHT</li>
+<li>QuIP# with HARP</li>
+</ul>
+<p>保持 codebooks、solver、random signs、calibration statistics 和 evaluation pipeline 不变。论文还测试了将 HARP 插入 QTIP backend 的 portability。</p>
+<h3 id="models">Models</h3>
+<ul>
+<li>Llama 3.2：1B、3B</li>
+<li>Llama 2：7B、13B、70B</li>
+</ul>
+<h3 id="metrics">Metrics</h3>
+<ul>
+<li>Perplexity：Wikitext2、C4</li>
+<li>Zero-shot accuracy：ARC-Challenge、ARC-Easy、PIQA、WinoGrande（lm_eval）</li>
+<li>Single-token latency：RTX 5080，batch size 1，sequence length 1，CUDA graphs + SDPA</li>
+</ul>
+<h3 id="bitwidths">Bitwidths</h3>
+<ul>
+<li>2-bit、3-bit、4-bit</li>
+<li>报告 effective BPP，包含 HARP processor parameters / metadata overhead</li>
+<li>HARP 同时报告 floating-point parameters 与 int8 parameter-storage variant</li>
+</ul>
+<h2 id="_7">主要结果</h2>
+<h3 id="1-perplexity">1. Perplexity</h3>
+<p>在 QuIP# backend 中，把 fixed RHT 替换为 HARP 后，2–4 bit 下 perplexity 普遍改善，尤其 2-bit 最明显。</p>
+<p>部分关键结果：</p>
+<ul>
+<li>Llama 3.2 1B，2-bit：</li>
+<li>QuIP# RHT：W2 <code>26.27</code>，C4 <code>25.24</code></li>
+<li>HARP Mixed-Radix：W2 <code>22.30</code>，C4 <code>22.57</code></li>
+<li>HARP + int8 params：W2 <code>22.32</code>，C4 <code>22.57</code></li>
+<li>Llama 3.2 3B，2-bit：</li>
+<li>RHT：W2 <code>16.59</code>，C4 <code>15.88</code></li>
+<li>HARP：W2 <code>15.02</code>，C4 <code>14.77</code></li>
+<li>Llama 2 7B，2-bit：</li>
+<li>RHT：W2 <code>8.22</code>，C4 <code>10.86</code></li>
+<li>HARP：W2 <code>7.23</code>，C4 <code>9.49</code></li>
+<li>Llama 2 70B，2-bit：</li>
+<li>RHT：W2 <code>4.16</code>，C4 <code>6.01</code></li>
+<li>HARP：W2 <code>4.01</code>，C4 <code>5.81</code></li>
+</ul>
+<p>3-bit 与 4-bit 下也有稳定改善，但随着 RHT baseline 接近 FP16，绝对改进自然缩小。</p>
+<h3 id="2-zero-shot-accuracy">2. Zero-shot accuracy</h3>
+<p>在 Llama 2 的 zero-shot evaluation 中，HARP 在 2-bit 下多数任务优于 RHT，尤其 ARC 相关任务提升明显：</p>
+<ul>
+<li>Llama 2 7B，2-bit：ARC-Challenge 从 <code>29.7</code> 提升到 <code>33.0</code>，ARC-Easy 从 <code>56.7</code> 提升到 <code>63.7</code>；</li>
+<li>Llama 2 13B，2-bit：ARC-Challenge 从 <code>33.8</code> 到 <code>36.4</code>，WinoGrande 从 <code>64.3</code> 到 <code>67.2</code>；</li>
+<li>Llama 2 70B，2-bit：ARC-Challenge 从 <code>47.4</code> 到 <code>48.5</code>，ARC-Easy 从 <code>76.9</code> 到 <code>77.8</code>。</li>
+</ul>
+<p>说明 perplexity 改进不是单纯 likelihood artifact，也能转化到下游选择题任务。</p>
+<h3 id="3-inference-latency">3. Inference latency</h3>
+<p>RTX 5080 单 token latency：</p>
+<ul>
+<li>Llama 2 7B：</li>
+<li>FP16：<code>61 tok/s</code></li>
+<li>QuIP# RHT 2-bit：<code>142 tok/s</code></li>
+<li>HARP 2-bit：<code>128 tok/s</code></li>
+<li>HARP 4-bit：<code>91 tok/s</code></li>
+<li>Llama 2 13B：</li>
+<li>FP16：OOM</li>
+<li>HARP 2-bit：<code>84 tok/s</code></li>
+<li>HARP 4-bit：<code>60 tok/s</code></li>
+</ul>
+<p>HARP 相比固定 RHT 有一定额外 staged-rotation overhead，但仍大幅快于 FP16，并能让 13B 在 16GB VRAM 设置中可运行。</p>
+<h3 id="4-backend-portability">4. Backend portability</h3>
+<p>在 QTIP backend 中，HARP 也改善 perplexity：</p>
+<ul>
+<li>Llama 2 7B，2-bit：QTIP RHT W2/C4 为 <code>6.87/9.00</code>，QTIP + HARP 为 <code>6.62/8.79</code>；</li>
+<li>Llama 2 13B，2-bit：<code>5.64/7.46</code> 改善到 <code>5.51/7.34</code>。</li>
+</ul>
+<p>这说明 HARP 不是 QuIP# 专用 trick，而是可作为 RHT-based PTQ backend 的通用 processor module。</p>
+<h3 id="5-published-baselines-context-matched">5. 与 published baselines 的 context-matched 比较</h3>
+<p>在 Llama 2 context length 2048 的 2-bit weight-only PTQ 对比中，HARP 优于 QuIP#、GPTQ、OmniQuant 等：</p>
+<ul>
+<li>Llama 2 7B：HARP W2/C4 <code>7.85/9.68</code>，QuIP# <code>8.95/11.22</code>，OmniQuant <code>11.06/15.02</code>；</li>
+<li>Llama 2 13B：HARP <code>6.13/7.87</code>，QuIP# <code>6.52/8.32</code>。</li>
+</ul>
+<p>AWQ/GPTQ 在 2-bit 下明显崩溃或退化，说明极低比特下 structured rotation + vector/backend-aware quantization 的必要性。</p>
+<h2 id="_8">优点与局限</h2>
+<h3 id="_9">优点</h3>
+<ol>
+<li><strong>保持 full-precision 等价</strong>：HARP 是 exact orthogonal change of basis，不改变未量化模型函数。</li>
+<li><strong>drop-in 升级 RHT</strong>：初始化等价于 RHT，适合替换 QuIP#/QTIP 这类 Hadamard-based pipeline。</li>
+<li><strong>结构化高效</strong>：用 butterfly-like stages 避免 dense rotation 的 <code>O(d^2)</code> 成本。</li>
+<li><strong>data/backend-aware</strong>：从 calibration data 学习适配层、曲率和 quantizer block structure 的旋转。</li>
+<li><strong>实验覆盖较广</strong>：1B–70B、2–4 bit、perplexity、zero-shot、latency、QTIP portability 均有结果。</li>
+<li><strong>部署意识强</strong>：考虑 int8 processor parameter storage 和 fused Triton kernels。</li>
+</ol>
+<h3 id="_10">局限</h3>
+<ol>
+<li><strong>需要额外 calibration/fitting 成本</strong>：相比固定 RHT，HARP 需要逐层优化 rotation 参数；虽然是一次性成本，但工程流程更复杂。</li>
+<li><strong>主要作用于 weight-only / PTQ processor</strong>：它不是端到端 activation/KV quantization 方案，和 OScaR 这类 KV cache quantization 的作用位置不同。</li>
+<li><strong>依赖后端暴露 incoherence-processing step</strong>：最适合 QuIP#/QTIP 风格 pipeline；对普通 scalar RTN/GPTQ pipeline 需要适配。</li>
+<li><strong>latency 不如固定 RHT</strong>：虽然仍快于 FP16，但 staged rotations 相对 RHT 有 8–15% 左右的额外 overhead。</li>
+<li><strong>2-bit 仍有 quality gap</strong>：HARP 显著恢复 FP16 gap，但小模型 2-bit 下与 FP16 仍有明显差距。</li>
+<li><strong>serving 场景评估有限</strong>：主要是 single-token microbenchmark，缺少 batch serving、prefill/decode 分离、长上下文吞吐等系统级评估。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>HARP 属于 <strong>quantization</strong>，并与 hardware-aware algorithm design、structured transforms、post-training compression 相关。</p>
+<p>它和 EfficientPaper 最近新增的 OScaR 形成有趣对照：</p>
+<ul>
+<li>OScaR 处理 KV cache quantization，发现 TNI 是 per-channel Key INT2 的瓶颈，用 Canalized Rotation + Omni-Token Scaling 改善 runtime KV 压缩；</li>
+<li>HARP 处理 weight PTQ 中的 fixed RHT limitation，用 learnable structured orthogonal rotations 改善 weight/codebook/backend 对齐；</li>
+<li>两者都说明：极低比特量化的关键已经从“是否使用 Hadamard/rotation”推进到“rotation 如何适配具体数值结构与硬件后端”。</li>
+</ul>
+<p>HARP 对量化方向的研究启示是：固定随机变换是强 baseline，但未必是终点。可学习、结构化、exact-equivalent 的 rotation processor 可以在保留部署效率的同时，把 calibration statistics 和 quantizer structure 引入低比特模型准备流程。</p>
+<h2 id="_11">可复现/实现要点</h2>
+<ol>
+<li>从已有 QuIP#/QTIP-style RHT pipeline 出发，替换其中 fixed Hadamard mixer。</li>
+<li>对每个 linear layer 构造 input-side <code>V</code> 和 output-side <code>U</code> processors。</li>
+<li>选择 Mixed-Radix schedule，优先 radix 8；非 2 的幂维度用 QR fallback 或 Kronecker fallback。</li>
+<li>block kernel 使用 <code>Q(θ)G_b</code>，并初始化 <code>θ=0</code> 以恢复 RHT。</li>
+<li>用 calibration inputs 估计 <code>H = E[xx^T]</code>。</li>
+<li>优化 <code>L_fit = L_diag + λ_bd R_bd</code>，其中 codebook assignment stop-gradient。</li>
+<li>量化主权重后，将 HARP 参数 int8 打包，runtime 重建 block-orthogonal kernels。</li>
+<li>部署时用 fused kernels 处理 stride-stage transforms，避免显式 permutation/materialization。</li>
+<li>验证时同时报告 BPP overhead，否则 HARP 参数会让 nominal bitwidth 不公平。</li>
+</ol>
+<h2 id="_12">个人备注</h2>
+<ul>
+<li>HARP 的价值在于“learned but exact”：它不像非正交 data-aware transform 那样改变 full-precision 函数，也不像 SpinQuant 那样需要把 rotation 深度嵌入 Transformer graph，而是作为 PTQ backend 的可替换 processor。</li>
+<li>这篇和 OScaR 都在用 Hadamard/rotation，但问题完全不同：OScaR 是 runtime KV cache INT2 量化中的 token norm imbalance；HARP 是 weight PTQ 中的 curvature/outlier/block-codebook alignment。不要把二者混为“都是旋转量化”。</li>
+<li>很值得探索 HARP-style learnable rotation 能否扩展到 KV cache quantization：例如在不破坏 attention 等价性的条件下，为 Key/Value 或不同 token group 学习更适合 INT2 的 structured transform。</li>
+<li>另一个潜在方向是把 HARP 的 off-block Hessian energy 思路迁移到 hardware block layout：不仅让量化误差小，还让 Tensor Core / memory layout 友好。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>
