@@ -32,6 +32,6 @@ cover {
   url: "fig5.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/CometSeed"
 }
 update_time: 1767952262

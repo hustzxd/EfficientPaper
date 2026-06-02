@@ -1,7 +1,17 @@
 from scripts.generate_paper_list import readMeta
+import json
 import networkx as nx
 import os
 import re
+
+
+NODE_WIDTH = 168
+NODE_HEIGHT = 54
+LAYER_GAP = 108
+ROW_GAP = 26
+PADDING_X = 48
+PADDING_Y = 40
+MIN_GRAPH_HEIGHT = 260
 
 
 def main():
@@ -43,57 +53,25 @@ def main():
     components.sort(key=lambda c: (-len(c), sorted(c)[0] if c else ''))
     subgraphs = [G_reduced.subgraph(c).copy() for c in components]
 
-    # collect markdown with multiple mermaid blocks
-    md_lines = [
-        "# Baseline Methods Graph",
-        "",
-        "This page visualizes baseline-method relationships extracted from meta files.",
-        "",
-        "Each component represents a family of related methods, showing how newer papers build upon previous baseline methods.",
-        ""
-    ]
-
-    component_index = 0
+    interactive_components = []
     for subgraph in subgraphs:
         if subgraph.number_of_edges() >= 1:
-            component_index += 1
+            component_name, anchor = describe_component(subgraph, G_reduced)
 
-            # Find the most representative name for this component
-            # Use the node with highest out-degree (most cited as baseline by others)
-            representative_node = max(subgraph.nodes(),
-                                    key=lambda n: G_reduced.out_degree(n))
-
-            # Extract readable name from node
-            node_data = G_reduced.nodes[representative_node]
-            component_name = node_data.get('name', str(representative_node))
-            # Remove year suffix like [2020] for cleaner display
-            component_name = re.sub(r'\[\d{4}\]', '', component_name).strip()
-
-            mermaid_text = export_mermaid(subgraph)
-            node_count = subgraph.number_of_nodes()
-            edge_count = subgraph.number_of_edges()
-
-            md_lines.append(f"## {component_name} Family")
-            md_lines.append("")
-            md_lines.append(f"*{node_count} methods, {edge_count} relationships*")
-            md_lines.append("")
-            md_lines.append("```mermaid")
-            md_lines.append(mermaid_text)
-            md_lines.append("```")
-            md_lines.append("")
+            interactive_components.append(
+                build_interactive_component(
+                    subgraph=subgraph,
+                    component_name=component_name,
+                    anchor=anchor,
+                )
+            )
 
     # Build paper-to-family mapping for Index → Graph navigation
     # Key: paper name (matches paper.id in papers.json), Value: family anchor
     paper_family_map = {}
     for subgraph in subgraphs:
         if subgraph.number_of_edges() >= 1:
-            representative_node = max(subgraph.nodes(),
-                                    key=lambda n: G_reduced.out_degree(n))
-            node_data = G_reduced.nodes[representative_node]
-            component_name = node_data.get('name', str(representative_node))
-            component_name = re.sub(r'\[\d{4}\]', '', component_name).strip()
-            # MkDocs readthedocs theme generates anchors like #snapkv-family
-            anchor = f"{component_name.lower().replace(' ', '-')}-family"
+            _, anchor = describe_component(subgraph, G_reduced)
 
             for node in subgraph.nodes():
                 # node is "year/name" or just "name" (for no-year nodes)
@@ -103,93 +81,120 @@ def main():
     project_root = os.path.dirname(os.path.dirname(__file__))
     docs_dir = os.path.join(project_root, "docs")
     os.makedirs(docs_dir, exist_ok=True)
-    target_md = os.path.join(docs_dir, "baseline_methods_graph.md")
-    with open(target_md, "w", encoding="utf-8") as f:
-        f.write("\n".join(md_lines))
-    print(f"Written Mermaid graphs to {target_md}")
-
     # Write paper-family mapping JSON
-    import json
     mapping_path = os.path.join(docs_dir, "js", "paper_graph_map.json")
     with open(mapping_path, "w", encoding="utf-8") as f:
         json.dump(paper_family_map, f, ensure_ascii=False, indent=2)
     print(f"Written paper-family mapping to {mapping_path} ({len(paper_family_map)} entries)")
 
-def export_mermaid(graph: nx.DiGraph) -> str:
-    """Export a NetworkX DiGraph to Mermaid flowchart text with enhanced styling.
+    interactive_data_path = os.path.join(docs_dir, "js", "baseline_methods_graph_data.json")
+    interactive_payload = {
+        "title": "Baseline Methods Graph Interactive",
+        "component_count": len(interactive_components),
+        "components": interactive_components,
+    }
+    with open(interactive_data_path, "w", encoding="utf-8") as f:
+        json.dump(interactive_payload, f, ensure_ascii=False, indent=2)
+    print(f"Written interactive graph data to {interactive_data_path} ({len(interactive_components)} components)")
 
-    - Direction: left-to-right (LR) for better handling of many nodes
-    - Node id: sanitized from original node key by replacing non [A-Za-z0-9_] with '_'
-    - Node label: prefer node attribute 'name', fallback to node key
-    - Edge direction: u --> v
-    - Styling: colored nodes and styled edges for better visualization
-    """
-    lines = ["flowchart LR"]
 
-    # Add custom styling
-    lines.append("    classDef defaultNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff")
-    lines.append("    classDef rootNode fill:#50C878,stroke:#2E7D4E,stroke-width:3px,color:#fff")
-    lines.append("    classDef leafNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff")
+def describe_component(subgraph: nx.DiGraph, full_graph: nx.DiGraph):
+    # Use the node with highest out-degree (most cited as baseline by others)
+    representative_node = max(subgraph.nodes(), key=lambda n: full_graph.out_degree(n))
+    node_data = full_graph.nodes[representative_node]
+    component_name = node_data.get("name", str(representative_node))
+    component_name = re.sub(r"\[\d{4}\]", "", component_name).strip()
+    return component_name, component_anchor(component_name)
 
-    # Define link styles with different colors for better distinction
-    lines.append("    linkStyle default stroke:#9370DB,stroke-width:2px")
-    lines.append("")
 
-    def sanitize_id(raw: str) -> str:
-        return re.sub(r"[^A-Za-z0-9_]", "_", raw)
+def component_anchor(component_name: str) -> str:
+    return f"{component_name.lower().replace(' ', '-')}-family"
 
-    # Identify root nodes (no predecessors) and leaf nodes (no successors)
-    root_nodes = [n for n in graph.nodes() if graph.in_degree(n) == 0]
-    leaf_nodes = [n for n in graph.nodes() if graph.out_degree(n) == 0]
 
-    node_to_id = {}
-    # Sort nodes for consistent output
-    for node, data in sorted(graph.nodes(data=True), key=lambda x: str(x[0])):
-        nid = sanitize_id(str(node))
-        node_to_id[node] = nid
-        label = str(data.get("name", node))
+def sort_node_key(graph: nx.DiGraph, node: str):
+    year = 0
+    if "/" in node:
+        prefix = node.split("/", 1)[0]
+        if prefix.isdigit():
+            year = int(prefix)
+    label = str(graph.nodes[node].get("name", node))
+    return (year, label.lower(), str(node).lower())
 
-        # Use rounded rectangles for better appearance
-        lines.append(f"    {nid}[\"{label}\"]")
 
-        # Apply class styling
-        if node in root_nodes:
-            lines.append(f"    class {nid} rootNode")
-        elif node in leaf_nodes:
-            lines.append(f"    class {nid} leafNode")
-        else:
-            lines.append(f"    class {nid} defaultNode")
+def build_interactive_component(subgraph: nx.DiGraph, component_name: str, anchor: str):
+    layers = build_layers(subgraph)
+    column_heights = [
+        len(layer) * NODE_HEIGHT + max(len(layer) - 1, 0) * ROW_GAP
+        for layer in layers
+    ] or [MIN_GRAPH_HEIGHT - 2 * PADDING_Y]
+    inner_height = max(max(column_heights), MIN_GRAPH_HEIGHT - 2 * PADDING_Y)
+    width = PADDING_X * 2 + len(layers) * NODE_WIDTH + max(len(layers) - 1, 0) * LAYER_GAP
+    height = PADDING_Y * 2 + inner_height
 
-        # Add click event to navigate to index page with search query
-        search_name = re.sub(r'\[\d{4}\]', '', label).strip()
-        lines.append(f'    click {nid} "../?search={search_name}" _blank')
+    nodes = []
+    for level, layer in enumerate(layers):
+        column_height = len(layer) * NODE_HEIGHT + max(len(layer) - 1, 0) * ROW_GAP
+        start_y = PADDING_Y + (inner_height - column_height) / 2 + NODE_HEIGHT / 2
+        center_x = PADDING_X + NODE_WIDTH / 2 + level * (NODE_WIDTH + LAYER_GAP)
+        for row, node in enumerate(layer):
+            label = str(subgraph.nodes[node].get("name", node))
+            display_name, year_label = split_node_label(label)
+            search_name = re.sub(r"\[\d{4}\]", "", label).strip()
+            center_y = start_y + row * (NODE_HEIGHT + ROW_GAP)
+            node_type = classify_node(subgraph, node)
+            nodes.append({
+                "id": node,
+                "label": label,
+                "display_name": display_name,
+                "year_label": year_label,
+                "search_name": search_name,
+                "type": node_type,
+                "level": level,
+                "row": row,
+                "x": round(center_x, 2),
+                "y": round(center_y, 2),
+            })
 
-    lines.append("")
-
-    # Define color palette for edges
-    edge_colors = [
-        "#9370DB",  # Medium Purple
-        "#FF6347",  # Tomato
-        "#20B2AA",  # Light Sea Green
-        "#FFD700",  # Gold
-        "#FF69B4",  # Hot Pink
-        "#00CED1",  # Dark Turquoise
-        "#FFA500",  # Orange
-        "#7B68EE",  # Medium Slate Blue
+    edges = [
+        {"source": u, "target": v}
+        for u, v in sorted(subgraph.edges(), key=lambda e: (str(e[0]), str(e[1])))
     ]
+    return {
+        "title": component_name,
+        "anchor": anchor,
+        "node_count": subgraph.number_of_nodes(),
+        "edge_count": subgraph.number_of_edges(),
+        "width": round(width, 2),
+        "height": round(height, 2),
+        "nodes": nodes,
+        "edges": edges,
+    }
 
-    edge_index = 0
-    # Sort edges for consistent output
-    for u, v in sorted(graph.edges(), key=lambda e: (str(e[0]), str(e[1]))):
-        uid = node_to_id[u]
-        vid = node_to_id[v]
-        # Assign different colors to edges for better visibility
-        color = edge_colors[edge_index % len(edge_colors)]
-        lines.append(f"    {uid} ==>|\" \"| {vid}")
-        lines.append(f"    linkStyle {edge_index} stroke:{color},stroke-width:2.5px")
-        edge_index += 1
 
-    return "\n".join(lines)
+def build_layers(graph: nx.DiGraph):
+    try:
+        return [
+            sorted(generation, key=lambda node: sort_node_key(graph, node))
+            for generation in nx.topological_generations(graph)
+        ]
+    except nx.NetworkXUnfeasible:
+        # Baseline relationships should be acyclic, but keep a deterministic fallback.
+        return [sorted(graph.nodes(), key=lambda node: sort_node_key(graph, node))]
+
+
+def classify_node(graph: nx.DiGraph, node: str) -> str:
+    if graph.in_degree(node) == 0:
+        return "root"
+    if graph.out_degree(node) == 0:
+        return "leaf"
+    return "default"
+
+
+def split_node_label(label: str):
+    match = re.match(r"^(.*)\[(\d{4})\]$", label)
+    if match:
+        return match.group(1).strip(), match.group(2)
+    return label, ""
 
 def check_exist(bl_method):
     if not isinstance(bl_method, str):

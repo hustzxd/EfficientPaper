@@ -30,6 +30,6 @@ cover {
   url: "fig5.png"
 }
 baseline {
-  methods: "None"
+  methods: "2024/Quest"
 }
 update_time: 1767954056

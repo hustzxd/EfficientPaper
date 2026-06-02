@@ -23,7 +23,7 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/FlashInfer"
 }
 update_time: 1773395925
 rating: 4

@@ -28,7 +28,7 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2023/vLLM"
+  methods: "2023/PagedAttention"
   methods: "2024/CachedAttention"
   methods: "2024/Mooncake"
   methods: "2025/LMCache"

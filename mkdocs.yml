@@ -2,7 +2,7 @@ site_name: Efficient Paper
 
 nav:
   - Home: index.md
-  - Graph: baseline_methods_graph.md
+  - Graph Interactive: baseline_methods_graph_interactive.md
   - Weekly Paper: weekly_paper/
   - Readme: about.md
   - Contributors: contributors.md
@@ -44,7 +44,6 @@ plugins:
   - glightbox
   - literate-nav
   - macros
-  - mermaid2
   # - search
 
   # - git-latest-changes:

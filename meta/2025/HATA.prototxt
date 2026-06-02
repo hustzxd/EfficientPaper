@@ -37,6 +37,8 @@ cover {
   url: "fig2.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2024/SeerAttention"
+  methods: "2024/SnapKV"
+  methods: "2024/Quest"
 }
 update_time: 1768877641

@@ -30,6 +30,6 @@ cover {
   url: "fig1.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/LMCache"
 }
 update_time: 1768186162

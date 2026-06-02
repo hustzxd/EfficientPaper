@@ -1,0 +1,48 @@
+paper {
+  title: "OScaR: The Occam\'s Razor for Extreme KV Cache Quantization in LLMs and Beyond"
+  abbr: "OScaR"
+  url: "https://arxiv.org/abs/2605.19660"
+  authors: "Zunhai Su"
+  authors: "Rui Yang"
+  authors: "Chao Zhang"
+  authors: "Yaxiu Liu"
+  authors: "Yifan Zhang"
+  authors: "Wei Wu"
+  authors: "Jing Xiong"
+  authors: "Dayou Du"
+  authors: "Xialie Zhuang"
+  authors: "Yulei Qian"
+  authors: "Yuchen Xie"
+  authors: "Yik-Chung Wu"
+  authors: "Hongxia Yang"
+  authors: "Ngai Wong"
+  institutions: "Tsinghua University"
+  institutions: "Meituan LongCat Team"
+  institutions: "The University of Hong Kong"
+  institutions: "The University of Edinburgh"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "The Hong Kong Polytechnic University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ZunhaiSu/OScaR-KV-Quant"
+}
+keyword {
+  words: kv_cache_quant
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/KIVI"
+  methods: "2024/KVQuant"
+  methods: "2024/QuaRot"
+  methods: "2025/RotateKV"
+  methods: "2026/TurboQuant"
+  methods: "2024/ZipCache"
+}
+update_time: 1780306355

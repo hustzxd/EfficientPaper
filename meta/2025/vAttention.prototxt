@@ -28,3 +28,8 @@ keyword {
 cover {
   url: "fig5.jpg"
 }
+baseline {
+  methods: "2023/PagedAttention"
+  methods: "2022/flashattention"
+  methods: "2025/FlashInfer"
+}

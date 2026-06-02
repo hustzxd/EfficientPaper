@@ -35,10 +35,7 @@ cover {
 }
 baseline {
   methods: "2023/CacheGen"
-  methods: "2024/KIVI"
-  methods: "2024/KVQuant"
-  methods: "2024/QuaRot"
   methods: "2024/DuoAttention"
   methods: "2025/LMCache"
 }
-update_time: 1779173514
+update_time: 1780303182

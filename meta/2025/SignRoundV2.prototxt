@@ -23,7 +23,7 @@ cover {
   url: ""
 }
 baseline {
-  methods: "2023/GPTQ"
-  methods: "2024/AWQ"
+  methods: "2023/gptq"
+  methods: "2024/awq"
 }
 update_time: 1767864059

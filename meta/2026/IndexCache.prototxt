@@ -29,7 +29,9 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2026/SPEED"
+  methods: "2026/GLM-5"
+  methods: "2025/DSA"
 }
 update_time: 1773972530
 rating: 4

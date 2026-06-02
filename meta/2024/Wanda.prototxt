@@ -25,5 +25,5 @@ cover {
   url: "wanda.png"
 }
 baseline {
-  methods: "2023/SparseGPT"
+  methods: "2023/sparsegpt"
 }

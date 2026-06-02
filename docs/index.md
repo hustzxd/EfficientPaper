@@ -2662,6 +2662,7 @@ function closeLightbox() {
     if (!shareId) return null;
     return papers.find(paper => {
       const candidates = [
+        `${paper.year}/${paper.id}`,
         paper.prototxt_path,
         paper.id,
         paper.abbr,
@@ -3237,7 +3238,7 @@ function closeLightbox() {
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
               <button class="pdf-btn" data-abbr="${paper.abbr || ''}" data-year="${paper.year || ''}" data-url="${paper.url || ''}" data-title="${paper.title.replace(/'/g, "\\'")}" onclick="openLocalPdf('${paper.abbr || 'paper'}', '${paper.title.replace(/'/g, "\\'")}', '${paper.year || ''}', '${paper.url || ''}')" title="Open local PDF or download (requires local server)">📄 PDF</button>
               ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server" class="edit-link">Edit 🔧</a>` : ''}
-              ${paperGraphMap[paper.id] ? `<a href="baseline_methods_graph/#${paperGraphMap[paper.id]}" target="_blank" class="graph-link" title="View in relationship graph">Graph 🔗</a>` : ''}
+              ${paperGraphMap[paper.id] ? `<a href="baseline_methods_graph_interactive/?node=${encodeURIComponent(`${paper.year}/${paper.id}`)}" target="_blank" class="graph-link" title="View in relationship graph">Graph 🔗</a>` : ''}
             </div>
           </div>
         </div>

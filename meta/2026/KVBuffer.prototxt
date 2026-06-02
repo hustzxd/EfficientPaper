@@ -1,0 +1,29 @@
+paper {
+  title: "KVBuffer: IO-aware Serving for Linear Attention"
+  abbr: "KVBuffer"
+  url: "https://arxiv.org/abs/2605.19049v1"
+  authors: "Longwei Zou"
+  authors: "Lin Zhong"
+  institutions: "Yale University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Triton"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: speculative_decoding
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+  methods: "2025/Marconi"
+}
+update_time: 1780278938

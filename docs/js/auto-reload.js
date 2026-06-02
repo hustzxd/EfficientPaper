@@ -5,6 +5,9 @@
     // Configuration
     const CHECK_INTERVAL = 1000; // Check every second
     const RELOAD_DELAY = 500;    // Wait 500ms after detecting change
+    const hasGraphNodeTarget =
+        window.location.pathname.includes('baseline_methods_graph_interactive') &&
+        new URLSearchParams(window.location.search).has('node');
 
     // Files to monitor (relative to site root)
     const WATCH_FILES = [
@@ -67,6 +70,8 @@
 
     // Restore state after reload
     function restoreState() {
+        if (hasGraphNodeTarget) return false;
+
         const saved = sessionStorage.getItem('auto-reload-state');
         if (!saved) return false;
 

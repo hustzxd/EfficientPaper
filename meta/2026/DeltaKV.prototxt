@@ -1,0 +1,29 @@
+paper {
+  title: "DeltaKV: Residual-Based KV Cache Compression via Long-Range Similarity"
+  abbr: "DeltaKV"
+  url: "http://arxiv.org/abs/2602.08005v1"
+  authors: "Jitai Hao"
+  authors: "Qiang Huang"
+  authors: "Yaowei Wang"
+  authors: "Min Zhang"
+  authors: "Jun Yu"
+  institutions: "Harbin Institute of Technology (Shenzhen)"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/CURRENTF/Sparse-vLLM"
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/Chelsea"
+}
+update_time: 1780308310

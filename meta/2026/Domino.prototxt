@@ -1,0 +1,38 @@
+paper {
+  title: "Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding"
+  abbr: "Domino"
+  url: "https://arxiv.org/abs/2605.29707"
+  authors: "Jianuo Huang"
+  authors: "Yaojie Zhang"
+  authors: "Qituan Zhang"
+  authors: "Hao Lin"
+  authors: "Hanlin Xu"
+  authors: "Linfeng Zhang"
+  institutions: "EPIC Lab, Shanghai Jiao Tong University"
+  institutions: "School of Software Engineering, Huazhong University of Science and Technology"
+  institutions: "University of Electronic Science and Technology of China"
+  institutions: "Fudan University"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/jianuo-huang/Domino"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: speculative_decoding
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/Eagle"
+  methods: "2026/DFlash"
+}
+update_time: 1780281248

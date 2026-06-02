@@ -21,6 +21,6 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "None"
+  methods: "2025/KVzip"
 }
 update_time: 1768991644

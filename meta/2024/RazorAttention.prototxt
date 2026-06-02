@@ -26,7 +26,7 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2024/StreamingLLM"
+  methods: "2024/streaming-llm"
   methods: "2023/H2O"
 }
 update_time: 1767863141

@@ -100,4 +100,3 @@ word_pb2str = {
 for k, v in word_pb2str.items():
     word_pb2str[k] = f"{k-1:02}-{v}"
 
-

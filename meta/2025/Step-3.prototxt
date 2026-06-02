@@ -31,3 +31,8 @@ keyword {
 cover {
   url: ""
 }
+baseline {
+  methods: "2024/DeepSeek-V3"
+  methods: "2025/Qwen3"
+  methods: "2025/SLA"
+}
