@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,27 +161,290 @@
   
                 <h1 id="powerattention-exponentially-scaling-of-receptive-fields-for-effective-sparse-attention">PowerAttention: Exponentially Scaling of Receptive Fields for Effective Sparse Attention</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) face efficiency bottlenecks due to the quadratic
-complexity of the attention mechanism when processing long contexts. Sparse
-attention methods offer a promising solution, but existing approaches often
-suffer from incomplete effective context and/or require complex implementation
-of pipeline. We present a comprehensive analysis of sparse attention for
-autoregressive LLMs from the respective of receptive field, recognize the
-suboptimal nature of existing methods for expanding the receptive field, and
-introduce PowerAttention, a novel sparse attention design that facilitates
-effective and complete context extension through the theoretical analysis.
-PowerAttention achieves exponential receptive field growth in <script type="math/tex">d</script>-layer LLMs,
-allowing each output token to attend to <script type="math/tex">2^d</script> tokens, ensuring completeness and
-continuity of the receptive field. Experiments demonstrate that PowerAttention
-outperforms existing static sparse attention methods by <script type="math/tex">5\sim 40\%</script>,
-especially on tasks demanding long-range dependencies like Passkey Retrieval
-and RULER, while maintaining a comparable time complexity to sliding window
-attention. Efficiency evaluations further highlight PowerAttention's superior
-speedup in both prefilling and decoding phases compared with dynamic sparse
-attentions and full attention (<script type="math/tex">3.0\times</script> faster on 128K context), making it a
-highly effective and user-friendly solution for processing long sequences in
-LLMs.</p>
+<blockquote>
+<p><strong>⚠️ 生成声明</strong>：本文 note 由 AI Agent 自动生成，基于 arXiv 论文全文（arXiv:2503.03588v1）的文本提取与分析。生成时间为 2025 年 6 月 4 日。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>PowerAttention 通过在 2 的幂次距离上构建注意力连接，实现了 d 层 LLM 中感受野的指数级扩展（每层可关注 2^d 个 token），在保持与滑动窗口注意力相当的时间复杂度的同时，显著优于现有静态稀疏注意力方法。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）在处理长上下文时，注意力机制的二次复杂度成为效率瓶颈。稀疏注意力方法提供了一种有前景的解决方案，但现有方法往往存在有效上下文不完整和/或需要复杂实现流水线的问题。我们从感受野的角度对自回归 LLM 的稀疏注意力进行了全面分析，识别出现有方法在扩展感受野方面的不足，并提出了 PowerAttention——一种通过理论分析实现有效且完整上下文扩展的新型稀疏注意力设计。PowerAttention 在 d 层 LLM 中实现了感受野的指数级增长，使每个输出 token 能够关注 2^d 个 token，确保感受野的完整性和连续性。实验表明，PowerAttention 比现有静态稀疏注意力方法提升 5%~40%，尤其在需要长程依赖的任务（如 Passkey Retrieval 和 RULER）上表现突出，同时保持与滑动窗口注意力相当的时间复杂度。效率评估进一步显示，PowerAttention 在预填充和解码阶段相比动态稀疏注意力和全注意力均有显著加速（128K 上下文下加速 3.0 倍），使其成为处理 LLM 长序列的高效且用户友好的解决方案。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>随着 LLM 应用场景的扩展（长链推理、复杂环境中的 Agent、长文档问答等），处理长上下文的需求日益增长。然而，Transformer 注意力机制的二次计算复杂度 O(N²) 构成了显著的效率瓶颈。</p>
+<p>现有稀疏注意力方法分为两类：</p>
+<ol>
+<li><strong>静态稀疏注意力</strong>（如滑动窗口注意力）：预定义注意力掩码，在训练和推理中一致使用。虽然效率高，但感受野扩展受限——滑动窗口的线性增长意味着需要 O(N) 层才能覆盖完整序列。</li>
+<li><strong>动态稀疏注意力</strong>（如 MInference）：根据输入内容动态预测注意力模式。虽然性能更好，但引入了额外的实现和计算复杂性（预填充阶段需要 O(N) 的扫描开销）。</li>
+</ol>
+<p>作者指出，<strong>现有方法主要依赖直觉启发式和实验结果，缺乏理论分析来解释其有效性</strong>。特别是：
+- 部分位置的 token 信息无法被最终输出检索到
+- 现有模式在逐层扩展感受野时效率低下（如滑动窗口的线性增长）</p>
+<p>这些不足促使作者从理论角度重新审视稀疏注意力设计，寻找一种能同时实现快速感受野扩展和完整 token 覆盖的方案。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="31-dag">3.1 问题建模：将稀疏注意力建模为 DAG</h3>
+<p>作者将稀疏注意力掩码建模为有向无环图（DAG）的邻接矩阵，其中节点表示 token 位置，边表示注意力连接。每个 token 只能关注它之前的 token（因果约束）。</p>
+<p>关键概念——<strong>模型感受野</strong>：在多层 LLM 中，token x 的感受野不仅仅是其直接关注的 token，而是 DAG 中从 x 可达的所有节点。通过层间信息传播（每层的输出聚合了来自前一层的信息并传递给下一层），感受野可以跨越多层扩展。</p>
+<p>问题形式化为：<strong>在固定最大出度约束下，找到 DAG 中能最大化 l 步内节点可达性的边集</strong>（l 为模型层数）。</p>
+<h3 id="32">3.2 现有方法的局限性分析</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>感受野扩展方式</th>
+<th>到达距离 N 所需层数</th>
+<th>覆盖完整性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>滑动窗口（Sliding Window）</td>
+<td>线性扩展</td>
+<td>O(N)</td>
+<td>完整</td>
+</tr>
+<tr>
+<td>步长斜线（Stride Slash）</td>
+<td>O(√N) 层</td>
+<td>O(√N)</td>
+<td>完整</td>
+</tr>
+<tr>
+<td>膨胀注意力（Dilated）</td>
+<td>-</td>
+<td>-</td>
+<td><strong>不完整</strong>（距离为 2^k+1 的 token 不可达）</td>
+</tr>
+<tr>
+<td>LongNet</td>
+<td>O(log N) 层</td>
+<td>O(log N)</td>
+<td><strong>不完整</strong>（某些位置不可达）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-powerattention">3.3 PowerAttention 的核心设计</h3>
+<p>PowerAttention 的核心思想：<strong>将每个 token 连接到索引差值为 2 的幂次的 token</strong>，即在 2^0, 2^1, 2^2, ..., 2^k 的距离上建立注意力连接。</p>
+<p><strong>关键性质</strong>（附录 B 有严格证明）：
+1. <strong>每个节点的出度 ≤ log n</strong>（保证效率）
+2. <strong>从任意节点 i 到任意前驱节点 j 的最短路径 ≤ log n</strong>（保证快速扩展）
+3. <strong>感受野的指数级增长</strong>：在 d 层 LLM 中，每个输出 token 可以关注 2^d 个 token</p>
+<p><strong>直觉解释</strong>：对于距离 d 的 token，其二进制表示中 1 的个数就是从当前 token 到达该 token 的最少层数。由于 d &lt; n，二进制表示最多有 log n 位，因此最多需要 log n 层。</p>
+<p><strong>实现极其简洁</strong>（Algorithm 1）：</p>
+<pre><code class="language-python"># 构建 PowerAttention 掩码
+mask_power = (blk_qk &amp; (blk_qk - 1)) == 0  # 2 的幂次检测
+# 组合掩码
+mask = causal &amp; (mask_window | mask_power | mask_sink)
+</code></pre>
+<p>PowerAttention 包含三个组件：
+1. <strong>Sink tokens</strong>：序列开头的初始 token
+2. <strong>滑动窗口</strong>（5 个 block）
+3. <strong>Power-of-2 间隔的 slash tokens</strong>（4 个额外 block）</p>
+<p><strong>计算复杂度</strong>：O(N log N)，与滑动窗口注意力的线性复杂度 O(N) 相当。</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">基础模型与设置</h3>
+<ul>
+<li><strong>基础模型</strong>：Qwen2-7B（32K 上下文长度）</li>
+<li><strong>训练</strong>：在 SlimPajama 上继续预训练 1B tokens，然后在 ChatQA 2 上微调</li>
+<li><strong>实现</strong>：256-token 块对齐 GPU 计算核心的内存访问模式</li>
+<li><strong>稀疏性</strong>：所有方法保持 0.94 的稀疏率</li>
+<li><strong>硬件</strong>：NVIDIA A800 GPU</li>
+</ul>
+<h3 id="pg19">语言建模（PG19 数据集）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>4K</th>
+<th>8K</th>
+<th>16K</th>
+<th>32K</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全注意力（Vanilla）</td>
+<td>9.77</td>
+<td>9.72</td>
+<td>9.60</td>
+<td>9.42</td>
+</tr>
+<tr>
+<td>滑动窗口</td>
+<td>9.94</td>
+<td>9.99</td>
+<td>9.99</td>
+<td>9.97</td>
+</tr>
+<tr>
+<td>膨胀注意力</td>
+<td>10.74</td>
+<td>10.72</td>
+<td>10.64</td>
+<td>10.58</td>
+</tr>
+<tr>
+<td>步长斜线</td>
+<td>10.01</td>
+<td>10.11</td>
+<td>10.07</td>
+<td>10.03</td>
+</tr>
+<tr>
+<td>LongNet</td>
+<td>10.14</td>
+<td>10.28</td>
+<td>10.30</td>
+<td>10.31</td>
+</tr>
+<tr>
+<td><strong>PowerAttention</strong></td>
+<td><strong>10.03</strong></td>
+<td><strong>10.08</strong></td>
+<td><strong>10.05</strong></td>
+<td><strong>10.00</strong></td>
+</tr>
+</tbody>
+</table>
+<p>PowerAttention 在语言建模上与滑动窗口和步长斜线表现相当，均优于膨胀注意力和 LongNet。</p>
+<h3 id="passkey-retrieval">Passkey Retrieval（检索任务）</h3>
+<ul>
+<li>滑动窗口在 12K 之前表现良好，但在 16K 和 32K 上显著退化</li>
+<li>膨胀注意力在所有长度上仅能捕获约 50% 的输入</li>
+<li>LongNet 因感受野间隙在特定位置失败</li>
+<li><strong>步长斜线和 PowerAttention 在 32K 上下文内实现全序列覆盖</strong></li>
+<li>在 64K 扩展上下文中，<strong>PowerAttention 的指数级感受野增长优于步长斜线的二次方法</strong></li>
+</ul>
+<h3 id="ruler">RULER 基准测试</h3>
+<p>使用混合架构（每 7 层保留 2 层全注意力，其余层使用稀疏注意力）：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>4K</th>
+<th>8K</th>
+<th>16K</th>
+<th>32K</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全注意力（Vanilla）</td>
+<td>91.77</td>
+<td>86.34</td>
+<td>84.27</td>
+<td>79.24</td>
+</tr>
+<tr>
+<td>滑动窗口</td>
+<td>72.20</td>
+<td>58.17</td>
+<td>49.40</td>
+<td>34.91</td>
+</tr>
+<tr>
+<td>步长斜线</td>
+<td>71.70</td>
+<td>61.53</td>
+<td>54.55</td>
+<td>45.07</td>
+</tr>
+<tr>
+<td>膨胀注意力</td>
+<td>70.29</td>
+<td>63.55</td>
+<td>54.57</td>
+<td>45.37</td>
+</tr>
+<tr>
+<td>LongNet</td>
+<td>70.76</td>
+<td>60.15</td>
+<td>51.66</td>
+<td>39.41</td>
+</tr>
+<tr>
+<td><strong>PowerAttention</strong></td>
+<td><strong>72.40</strong></td>
+<td><strong>64.93</strong></td>
+<td><strong>60.59</strong></td>
+<td><strong>50.74</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PowerAttention 在所有长度上均获得最高分数</strong>，比其他静态稀疏注意力方法高 5%~40%。</p>
+<h3 id="128k">效率评估（128K 上下文）</h3>
+<table>
+<thead>
+<tr>
+<th>比较项</th>
+<th>PowerAttention vs 全注意力</th>
+<th>PowerAttention vs MInference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预填充加速</td>
+<td><strong>3.0×</strong></td>
+<td><strong>1.3×</strong></td>
+</tr>
+<tr>
+<td>解码阶段</td>
+<td>仅需 58% 时间</td>
+<td>仅需 80% 时间</td>
+</tr>
+<tr>
+<td>内核开销（128K）</td>
+<td><strong>21.6×</strong> 更快</td>
+<td><strong>5.3×</strong> 更快</td>
+</tr>
+</tbody>
+</table>
+<p>PowerAttention 的 O(N log N) 复杂度使其增长速率接近滑动窗口的线性复杂度。</p>
+<h3 id="_7">信息流探测分析</h3>
+<p>通过线性分类器探测 LLM 内部信息流：
+1. <strong>层间信息流在 LLM 中天然存在</strong>：即使使用全注意力，注意力头仍表现出空间局部性
+2. <strong>PowerAttention 有效增强了信息流机制</strong>：训练后，信息流边界更清晰，最终 token 分类准确率从 56% 提升到 100%
+3. 滑动窗口训练后信息流反而退化（0.48 → 0.37），暴露了其感受野受限的根本问题</p>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>理论基础扎实</strong>：将稀疏注意力建模为 DAG，提供严谨的数学证明（附录 B），而非仅依赖直觉启发</li>
+<li><strong>指数级感受野扩展</strong>：d 层即可覆盖 2^d 个 token，远超滑动窗口的线性扩展</li>
+<li><strong>完整的 token 覆盖</strong>：与膨胀注意力和 LongNet 不同，PowerAttention 不会产生"盲区"</li>
+<li><strong>极简实现</strong>：核心掩码构建仅需一行代码 <code>(blk_qk &amp; (blk_qk - 1)) == 0</code>，无需复杂流水线</li>
+<li><strong>高效计算</strong>：O(N log N) 时间复杂度，接近滑动窗口的 O(N)，远优于全注意力的 O(N²)</li>
+<li><strong>广泛的适用性</strong>：可作为滑动窗口的直接替代方案，无需架构变更</li>
+<li><strong>预训练适配</strong>：结合 continue pre-training 和 fine-tuning，信息流机制显著增强</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>依赖预训练</strong>：PowerAttention 的优势在 post-training 后才显著体现，原始模型的信息流利用不充分</li>
+<li><strong>稀疏注意力的固有局限</strong>：即使 PowerAttention 表现最优，与全注意力在 RULER 基准上仍有约 30% 的性能差距（尤其在 32K 上下文下）</li>
+<li><strong>仅适用于静态稀疏模式</strong>：未考虑动态稀疏注意力的混合使用（如 MInference 在预填充阶段的动态模式）</li>
+<li><strong>实验规模有限</strong>：仅在 Qwen2-7B 上验证，未在更大模型（如 70B+）上测试</li>
+<li><strong>混合架构的权衡</strong>：RULER 评估中使用了"每 7 层保留 2 层全注意力"的混合架构，这可能掩盖了纯 PowerAttention 的实际性能</li>
+<li><strong>训练数据的特定性</strong>：在 SlimPajama 和 ChatQA 2 上训练，可能对其他领域（如代码、数学）的泛化性不足</li>
+<li><strong>代码尚未开源</strong>：prototxt 中 code URL 为空，缺乏可复现性</li>
+<li><strong>64K+ 长度评估有限</strong>：虽然在 64K 上展示了优势，但更长上下文（128K+）的评估仅涉及效率，未涉及准确性</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>PowerAttention 与 EfficientPaper 的核心关注点高度契合：</p>
+<ol>
+<li><strong>注意力机制效率优化</strong>：PowerAttention 直接针对 LLM 注意力的计算复杂度问题，通过稀疏化实现加速，与 EfficientPaper 中的高效注意力研究方向一致</li>
+<li><strong>静态稀疏注意力设计</strong>：作为静态稀疏注意力的新方法，可与 StreamingLLM、MInference、LongNet 等方法进行对比</li>
+<li><strong>长上下文处理</strong>：PowerAttention 专注于超长序列（32K-128K）的高效处理，与 EfficientPaper 中的长上下文优化方向相关</li>
+<li><strong>混合架构</strong>：PowerAttention 使用混合架构（部分全注意力+部分稀疏注意力），与 Jamba、StripedHyena 等混合模型的研究方向交叉</li>
+<li><strong>KV-Cache 优化</strong>：PowerAttention 的稀疏注意力模式可与 KV-Cache 压缩（如 H2O、SnapKV）结合，进一步降低内存占用</li>
+<li><strong>理论分析框架</strong>：将注意力模式建模为 DAG 的理论框架，可为其他稀疏注意力方法的设计提供参考</li>
+<li><strong>LLM 推理加速</strong>：PowerAttention 在解码阶段的显著加速（5.3×-21.6×），对 LLM 部署的推理优化有重要价值</li>
+<li><strong>与 state-space model（SSM）的互补</strong>：PowerAttention 可与 Mamba 等 SSM 模型结合，利用稀疏注意力补充 SSM 在长程依赖上的不足</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,24 +161,141 @@
   
                 <h1 id="freqkv-frequency-domain-key-value-compression-for-efficient-context-window-extension">FreqKV: Frequency Domain Key-Value Compression for Efficient Context Window Extension</h1>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Frequency-domain compression has proven effective in reducing redundancies
-for spatial signals. In this work, we propose FreqKV, a novel frequency domain
-key-value (KV) compression technique that enables efficient context window
-extension for decoder-only large language models (LLMs). Our approach is
-motivated by a key observation that, in the frequency domain, the energy
-distribution of the KV cache is predominantly concentrated in low-frequency
-components. By discarding high-frequency components, we achieve efficient
-compression of the KV cache with minimal information loss. FreqKV iteratively
-compresses the increasing KV cache to a fixed size in the frequency domain,
-allowing models to process lengthy contexts efficiently. Introducing no
-additional parameters or architectural modifications, FreqKV is applicable to
-both fine-tuning and inference. With minimal fine-tuning, LLMs can learn to
-leverage the limited cache that is compressed in the frequency domain and
-extend the context window. Experiments on a range of long context language
-modeling and understanding tasks demonstrate the efficiency and effectiveness
-of the proposed method.</p>
-<p>在context 扩展训练中使用这个方法，需要训练，并且需要runtime对KV 进行压缩，提升有限，ICLR 2025投稿被拒。</p>
+<blockquote>
+<p><strong>本文由 AI Agent 自动生成，基于论文原文内容整理。生成时间：2025年6月。</strong></p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>FreqKV 提出了一种基于频域的 KV Cache 压缩方法，利用离散余弦变换（DCT）将 KV 状态转换到频域，通过保留低频成分、去除高频成分来实现 KV Cache 的高效压缩，从而在不引入额外参数的情况下实现 LLM 的上下文窗口扩展。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>频域压缩已被证明能有效减少空间信号的冗余。本文提出了 FreqKV，一种新颖的频域键值（KV）压缩技术，能够为仅解码器的大语言模型（LLM）实现高效的上下文窗口扩展。该方法的核心观察是：在频域中，KV Cache 的能量分布主要集中在低频成分。通过丢弃高频成分，可以以最小的信息损失实现 KV Cache 的高效压缩。FreqKV 以迭代方式将不断增长的 KV Cache 压缩到固定大小，使模型能够高效处理长上下文。FreqKV 不引入任何额外参数或架构修改，适用于微调和推理。通过少量微调，LLM 可以学会利用频域中压缩的有限缓存来扩展上下文窗口。在一系列长上下文语言建模和理解任务上的实验验证了该方法的效率和有效性。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 上下文窗口限制</strong>：LLM 通常具有有限的上下文窗口大小，在预训练过程中预定义，当处理超过预设上下文长度的序列时性能会下降。</li>
+<li><strong>注意力计算成本</strong>：自注意力机制的计算成本随上下文长度二次增长，上下文窗口翻倍导致注意力计算成本增加四倍。</li>
+<li><strong>现有方法的局限性</strong>：</li>
+<li><strong>训练方法</strong>：LongLoRA 使用移位稀疏注意力进行微调，但推理时仍需全注意力；LoCoCo 和 Activation Beacon 引入额外模块，增加了参数和内存需求。</li>
+<li><strong>推理方法</strong>：KV Cache 驱逐（如 StreamingLLM、SnapKV）或合并（如 CaM、D2O）方法，虽然保持了 KV Cache 大小限制，但被驱逐的 token 信息会永久丢失，无法完全防止解码性能下降。</li>
+<li><strong>频域学习的启发</strong>：计算机视觉领域已证明低频通道对 CNN 更重要，Fourier Transformer 通过频域处理去除上下文冗余。这些工作启发了在 decoder-only LLM 中利用频域进行 KV 压缩的探索。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="41">4.1 核心观察：频域能量集中</h3>
+<p>对 LLaMA-2-7b 的 KV 状态进行功率谱分析（使用 DCT 将时域信号转换到频域），发现：
+- KV 状态的能量在频域中越来越集中在低频成分。
+- 随着解码层的深入，能量分布逐渐向低频集中。
+- 这表明高频成分可以被丢弃，而不会造成显著信息损失。</p>
+<h3 id="42-kv">4.2 频域 KV 压缩</h3>
+<p><strong>DCT 变换</strong>：沿序列维度对 KV Cache 进行离散余弦变换（DCT-II），将 KV 状态从时域转换到频域：</p>
+<p>
+<script type="math/tex; mode=display">Y^K_{0:N-1} = \text{DCT}(K_{0:N-1}), \quad Y^V_{0:N-1} = \text{DCT}(V_{0:N-1})</script>
+</p>
+<p><strong>频率滤波</strong>：给定保留比例 <script type="math/tex">\gamma</script>，保留大小为 <script type="math/tex">L = \gamma \cdot N</script>，保留低频成分，过滤 <script type="math/tex">N-L</script> 个高频成分：</p>
+<p>
+<script type="math/tex; mode=display">\tilde{Y}^K_{0:L-1} = Y^K_{0:N-1}[0:L-1], \quad \tilde{Y}^V_{0:L-1} = Y^V_{0:N-1}[0:L-1]</script>
+</p>
+<p><strong>IDCT 与重缩放</strong>：对保留的频率成分进行逆 DCT 变换回时域，并通过缩放因子 <script type="math/tex">\sqrt{L/N}</script> 恢复原始幅度：</p>
+<p>
+<script type="math/tex; mode=display">\tilde{K}^{0:N-1}_{0:L-1} = \sqrt{\frac{L}{N}} \cdot \text{IDCT}(\tilde{Y}^K_{0:L-1}), \quad \tilde{V}^{0:N-1}_{0:L-1} = \sqrt{\frac{L}{N}} \cdot \text{IDCT}(\tilde{Y}^V_{0:L-1})</script>
+</p>
+<h3 id="43">4.3 迭代压缩实现上下文扩展</h3>
+<p><strong>核心机制</strong>：
+- 当 KV Cache 达到预设上下文窗口大小时触发压缩。
+- 每次压缩将 KV 状态转换到频域，保留低频成分后转换回时域。
+- 压缩后的 KV Cache 与新进入的 token 拼接，直到再次填满。
+- 早期 token 经历更多次压缩（压缩率更高），近期 token 压缩较少（信息保留更好），这对自回归模型预测下一个 token 有利。
+- <strong>Sink Token 保留</strong>：初始 token（Sink Token，数量 <script type="math/tex">S=4</script>）始终保持不压缩，因为 LLM 倾向于对初始 token 分配高注意力分数。</p>
+<p><strong>注意力计算</strong>：
+<script type="math/tex; mode=display">\tilde{A}(S, N, L, M) = \text{Softmax}\left(\frac{q_M [K_{0:S-1} \oplus \tilde{K}^{0:N-1}_{0:L-1} \oplus K_{N:M}]^T}{\sqrt{d}}\right) \cdot [V_{0:S-1} \oplus \tilde{V}^{0:N-1}_{0:L-1} \oplus V_{N:M}]</script>
+</p>
+<p><strong>RoPE 处理</strong>：Key 状态在压缩和缓存后才应用 RoPE，使用缓存内的位置索引而非原始序列位置，从而避免位置外推或插值问题。</p>
+<h3 id="44">4.4 实现细节</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA-2-7b 和 LLaMA-3-8b</li>
+<li><strong>Sink Token 数量</strong>：<script type="math/tex">S = 4</script>
+</li>
+<li><strong>保留比例</strong>：<script type="math/tex">\gamma = 0.5</script>
+</li>
+<li><strong>训练</strong>：使用 LoRA 微调，rank=8</li>
+<li><strong>数据集</strong>：RedPajama（语言建模）、LongAlpaca（理解任务）</li>
+<li><strong>训练设置</strong>：总 batch size 64，学习率从 1e-6 线性增加到 2e-5，20 步 warm-up</li>
+<li><strong>FlashAttention-2</strong>：用于加速和内存节省</li>
+<li><strong>硬件</strong>：ADA6000 和 H100 GPU</li>
+</ul>
+<h2 id="_5">实验结果</h2>
+<h3 id="61">6.1 长上下文语言建模</h3>
+<p>在 PG-19 和 Proof-pile 数据集上评估，训练长度从 8K 到 32K：</p>
+<ul>
+<li><strong>FreqKV 优势</strong>：</li>
+<li>在 PG-19 上，FreqKV 甚至超过了 Full FT 和 LongLoRA，例如训练长度 32K 时，FreqKV 在 2K 到 32K 评估长度上 PPL 持续较低（约 6.98-7.47）。</li>
+<li>即使仅使用 8K 训练长度，FreqKV 也能在 32K 评估长度上保持良好性能（PPL=7.02），与 LongLoRA 在 32K 训练长度下的 7.22 相当甚至更优。</li>
+<li>优于 LoCoCo 方法，无论是在扩展上下文长度还是较短长度上。</li>
+<li><strong>局限性</strong>：在 Proof-pile（数学文本）上，FreqKV 在长上下文长度上略逊于 LongLoRA，但性能不会随上下文长度增加而退化。</li>
+<li><strong>扩展能力</strong>：使用 8K 训练长度，可将上下文窗口有效扩展到 64K（原始大小的 16 倍）。</li>
+</ul>
+<h3 id="62">6.2 长上下文理解</h3>
+<ul>
+<li><strong>LongBench</strong>：</li>
+<li>在大多数任务上达到 SOTA，平均得分最高（LLaMA-2-chat: 37.85，LLaMA-3-instruct: 43.48）。</li>
+<li>超过 LM-Infinite、LongHeads、FastKV、SnapKV、PyramidKV 等方法。</li>
+<li><strong>Needle-in-a-Haystack</strong>：</li>
+<li>LLaMA-2-chat-7b（4K→8K）：平均准确率 84.2%，远超 PyramidKV（46.7%）和 Dropping（75.5%）。</li>
+<li>LLaMA-3-instruct-8b（8K→16K）：平均准确率 90.7%。</li>
+<li>PyramidKV 在原始窗口边界外性能崩溃，而 FreqKV 能稳定工作。</li>
+<li>Dropping（直接丢弃最早 token）因永久丢失早期 token 信息而表现不佳。</li>
+</ul>
+<h3 id="63">6.3 解码延迟</h3>
+<ul>
+<li><strong>线性增长</strong>：解码时间随序列长度线性增长（而非二次增长）。</li>
+<li><strong>压缩开销极小</strong>：FreqKV 与 Dropping 的解码时间差异仅约 0.64%（32K token 时约 6.5 秒额外延迟）。</li>
+<li><strong>FLOPs 分析</strong>：压缩开销不到 0.5%（32K 长度时仅 0.038%）。</li>
+</ul>
+<h3 id="64">6.4 训练效率</h3>
+<ul>
+<li>FreqKV 显著降低训练时间和内存需求：</li>
+<li>8K 训练：时间 17.07h（Full FT 28.88h），内存 24.58GB（Full FT 44.04GB）</li>
+<li>16K 训练：时间 38.57h，内存 34.00GB</li>
+<li>32K 训练：时间 89.35h，内存 45.37GB</li>
+</ul>
+<h3 id="65">6.5 保留比例分析</h3>
+<p>保留比例越大，性能越好。即使评估长度达到 64K（远超 8K 训练长度），FreqKV 仍能保持低困惑度。</p>
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>无需额外参数</strong>：不引入额外的压缩模块或架构修改，保持模型原有结构。</li>
+<li><strong>频域压缩效率高</strong>：利用 DCT 将 KV Cache 转换到频域，低频成分保留，高频成分丢弃，以最小信息损失实现高效压缩。</li>
+<li><strong>迭代压缩机制</strong>：早期 token 压缩更多，近期 token 保留更多，符合自回归模型的预测需求。</li>
+<li><strong>训练效率高</strong>：显著减少训练时间和内存需求，LoRA 微调只需少量数据。</li>
+<li><strong>上下文扩展能力强</strong>：8K 训练可扩展到 64K（16倍），32K 训练可覆盖更大上下文。</li>
+<li><strong>兼容性好</strong>：适用于 LLaMA-2 和 LLaMA-3 等主流模型，支持 MHA 和 GQA。</li>
+<li><strong>推理开销小</strong>：解码延迟增长近似线性，压缩开销可忽略（&lt;0.5%）。</li>
+<li><strong>无需位置外推</strong>：通过在压缩后应用 RoPE，避免位置外推问题。</li>
+<li><strong>Sink Token 保留</strong>：保持初始 token 不压缩，避免注意力 sink 问题。</li>
+<li><strong>与现有 KV 压缩方法相比性能更优</strong>：在 LongBench 和 Needle-in-a-Haystack 上超越多种方法。</li>
+</ol>
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>需要训练</strong>：FreqKV 不是纯推理方法，需要通过微调（如 LoRA）来适应频域压缩，需要训练数据和计算资源。</li>
+<li><strong>压缩有损</strong>：高频成分的丢弃不可避免地导致信息损失，可能影响需要精确细节的任务（如数学推理，Proof-pile 上表现略逊于 LongLoRA）。</li>
+<li><strong>保留比例需要调优</strong>：保留比例 <script type="math/tex">\gamma</script> 的选择影响性能，需要根据任务和上下文长度进行调优。</li>
+<li><strong>计算开销</strong>：虽然压缩开销极小，但仍需要进行 DCT/IDCT 操作，特别是在长上下文场景下。</li>
+<li><strong>仅适用于 Decoder-only LLM</strong>：该方法主要针对 decoder-only 架构，对于 encoder-decoder 架构可能不适用。</li>
+<li><strong>Sink Token 数量固定</strong>：Sink Token 数量 <script type="math/tex">S</script> 固定为 4，可能不是所有场景的最优选择。</li>
+<li><strong>迭代压缩的累积误差</strong>：随着上下文长度增加，早期 token 经历更多次压缩，累积误差可能导致信息退化。</li>
+<li><strong>缺乏多任务/多语言验证</strong>：实验主要在英文任务上进行，多语言和多任务场景下的表现有待验证。</li>
+<li><strong>未开源代码</strong>：目前未提供开源代码，难以复现。</li>
+<li><strong>论文尚未被顶级会议/期刊接收</strong>：arXiv 预印本，ICLR 2025 投稿被拒（根据现有 note）。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 压缩与稀疏化</strong>：FreqKV 是 KV Cache 压缩领域的代表性方法之一，与 SnapKV、PyramidKV、FastKV、StreamingLLM 等方法属于同一研究方向。该方向关注如何在保持模型性能的同时减少 KV Cache 的内存和计算成本。</li>
+<li><strong>频域学习</strong>：FreqKV 借鉴了计算机视觉领域的频域学习思想（如 FNet、Fourier Transformer），探索频域信号处理在 NLP 中的应用。这一方向可能在模型压缩、加速等方面有更广泛的应用。</li>
+<li><strong>上下文窗口扩展</strong>：FreqKV 属于上下文窗口扩展方法，与 LongLoRA、LoCoCo、Activation Beacon、Landmark Attention 等方法竞争。该方向关注如何在不重新预训练的情况下将模型扩展到更长的上下文。</li>
+<li><strong>注意力机制优化</strong>：FreqKV 的迭代压缩机制与滑动窗口注意力、稀疏注意力等方法相关，为注意力机制的高效计算提供了新思路。</li>
+<li><strong>高效推理</strong>：FreqKV 的线性解码时间增长特性使其适合长上下文推理场景，与 FlashAttention、PagedAttention 等技术互补。</li>
+<li><strong>参数高效微调</strong>：FreqKV 使用 LoRA 进行微调，与参数高效微调（PEFT）方向紧密相关，为长上下文微调提供了高效方案。</li>
+<li><strong>模型部署与推理优化</strong>：FreqKV 的内存和计算效率使其适合资源受限的部署场景，与模型量化、蒸馏等技术结合可能产生更好的效果。</li>
+<li><strong>注意力 Sink 现象</strong>：FreqKV 对 Sink Token 的处理反映了对注意力 Sink 现象的理解，这一现象在长上下文建模中具有重要影响。</li>
+<li><strong>位置编码与上下文扩展</strong>：FreqKV 通过在压缩后应用 RoPE 避免位置外推问题，为位置编码在长上下文场景下的应用提供了参考。</li>
+<li><strong>迭代压缩与信息保留</strong>：FreqKV 的迭代压缩机制体现了在长上下文场景下对信息保留与压缩效率之间权衡的思考，这一思路可扩展到其他序列压缩任务。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

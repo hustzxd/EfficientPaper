@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -161,12 +163,277 @@
 <blockquote>
 <p>Yushi Huang, Zining Wang, Zhihang Yuan, Yifu Ding, Ruihao Gong, Jinyang Guo, Xianglong Liu, Jun Zhang</p>
 </blockquote>
-<p><a class="glightbox" href="../fig4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig4.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Mixture-of-Experts (MoE) Multimodal large language models (MLLMs) excel at vision-language tasks, but they suffer from high computational inefficiency. To reduce inference overhead, expert skipping methods have been proposed to deactivate redundant experts based on the current input tokens. However, we find that applying these methods-originally designed for unimodal large language models (LLMs)-to MLLMs results in considerable performance degradation. This is primarily because such methods fail to account for the heterogeneous contributions of experts across MoE layers and modality-specific behaviors of tokens within these layers. Motivated by these findings, we propose MoDES, the first training-free framework that adaptively skips experts to enable efficient and accurate MoE MLLM inference. It incorporates a globally-modulated local gating (GMLG) mechanism that integrates global layer-wise importance into local routing probabilities to accurately estimate per-token expert importance. A dual-modality thresholding (DMT) method is then applied, which processes tokens from each modality separately, to derive the skipping schedule. To set the optimal thresholds, we introduce a frontier search algorithm that exploits monotonicity properties, cutting convergence time from several days to a few hours. Extensive experiments for 3 model series across 13 benchmarks demonstrate that MoDES far outperforms previous approaches. For instance, when skipping 88% experts for Qwen3-VL-MoE-30B-A3B-Instruct, the performance boost is up to 10.67% (97.33% vs. 86.66%). Furthermore, MoDES significantly enhances inference speed, improving the prefilling time by 2.16<script type="math/tex">\times</script> and the decoding time by 1.26<script type="math/tex">\times</script>.</p>
+<p><a class="glightbox" href="../fig4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="fig4" src="../fig4.jpg" /></a></p>
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent 自动生成，仅供参考。生成时间：2025 年。</strong></p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>MoDES 是首个针对多模态大语言模型（MLLM）的无训练动态专家跳过框架，通过全局调制的局部门控（GMLG）和双模态阈值（DMT）机制，在跳过 88% 专家的情况下仍保持 97.33% 的原始性能，同时将预填充速度提升 2.16 倍、解码速度提升 1.26 倍。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>混合专家（MoE）多模态大语言模型（MLLM）在视觉-语言任务中表现出色，但计算效率低下。为减少推理开销，已有方法提出根据当前输入 token 跳过冗余专家。然而，我们将这些最初为单模态大语言模型（LLM）设计的方法应用于 MLLM 时，发现性能显著下降。这主要是因为这些方法未能考虑专家在 MoE 各层中的异构贡献，以及不同模态 token 在这些层中的行为差异。基于这些发现，我们提出了 MoDES，首个无训练的自适应专家跳过框架，可实现高效且准确的 MoE MLLM 推理。它引入了全局调制的局部门控（GMLG）机制，将全局层重要性整合到局部路由概率中，以准确估计每个 token 的专家重要性。随后应用双模态阈值（DMT）方法，对每种模态的 token 分别处理，以生成跳过调度。为设置最优阈值，我们引入了一种利用单调性特性的前沿搜索算法，将收敛时间从数天缩短至数小时。在 3 个模型系列、13 个基准上的大量实验表明，MoDES 远超先前方法。例如，当为 Qwen3-VL-MoE-30B-A3B-Instruct 跳过 88% 专家时，性能提升最高达 10.67%（97.33% vs. 86.66%）。此外，MoDES 显著提升了推理速度，预填充时间提升 2.16 倍，解码时间提升 1.26 倍。</p>
+<h2 id="_3">研究动机</h2>
+<p>多模态大语言模型（MLLM）已成为视觉-语言任务的主流范式，但随着模型规模增大，推理时面临严重的计算瓶颈。例如，Qwen2-VL（72B 参数）在 2×A100 GPU 上处理 4K token 输入时速度不到 10 tokens/s。</p>
+<p>MoE 架构通过稀疏激活部分专家来降低计算成本，但现有 MoE 模型存在<strong>专家利用不充分</strong>的问题——所有 token 都激活相同数量的专家，导致推理效率低下。</p>
+<p>已有的专家跳过方法（如 NAEE、MC-MoE、DiEP）专为单模态 LLM 设计，直接应用于 MoE MLLM 会导致<strong>性能严重下降</strong>（跳过 83% 专家时精度下降超过 10%）。</p>
+<p><strong>两个关键洞察：</strong>
+1. <strong>全局贡献不平衡</strong>：浅层专家比深层专家对最终输出影响更大。浅层的错误会被后续层放大，导致严重的误差爆炸。现有方法仅考虑层内路由概率，忽略了这一跨层贡献差异。
+2. <strong>模态差距</strong>：文本 token 和视觉 token 在 FFN 中的行为显著不同。FFN 对视觉 token 的更新幅度较小（视觉 token 与 FFN 权重更正交），而文本 token 经历更大幅更新。现有方法未考虑这种模态差异。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<p>MoDES 是首个针对 MoE MLLM 的无训练动态专家跳过框架，包含两个核心组件和一个高效搜索算法：</p>
+<h3 id="1-globally-modulated-local-gating-gmlg">1. 全局调制的局部门控（Globally-Modulated Local Gating, GMLG）</h3>
+<p><strong>核心思想</strong>：将专家的全局层贡献与局部路由概率相结合，计算更准确的专家重要性分数。</p>
+<p><strong>重要性分数公式</strong>：
+<script type="math/tex; mode=display">s_i^{(l)} = \alpha^{(l)} \cdot \pi_i^{(l)}</script>
+</p>
+<p>其中：
+- <script type="math/tex">\pi_i^{(l)}</script> 是局部路由概率（softmax 归一化后的路由 logit）
+- <script type="math/tex">\alpha^{(l)}</script> 是全局调制因子，反映第 <script type="math/tex">l</script> 层专家对最终预测的影响</p>
+<p><strong><script type="math/tex">\alpha^{(l)}</script> 的计算（离线校准）</strong>：
+<script type="math/tex; mode=display">\alpha^{(l)} = \frac{1}{N} \sum_{j=1}^{N} D_{KL}\left(\text{prob}_j \| \text{prob}_j^{(l)}\right)</script>
+</p>
+<p>通过计算原始模型与跳过第 <script type="math/tex">l</script> 层专家的模型之间输出分布的 KL 散度来量化该层专家的敏感性。该过程在离线校准中完成（使用 1024 个 GQA 样本），推理时无额外开销。</p>
+<p><strong>关键优势</strong>：浅层 <script type="math/tex">\alpha^{(l)}</script> 较大（更重要），深层 <script type="math/tex">\alpha^{(l)}</script> 较小（更可跳过），因此浅层专家被更保守地保留，深层专家被更激进地跳过。</p>
+<h3 id="2-dual-modality-thresholding-dmt">2. 双模态阈值（Dual-Modality Thresholding, DMT）</h3>
+<p><strong>核心思想</strong>：为文本 token 和视觉 token 分别设置不同的跳过阈值，考虑模态差异。</p>
+<p><strong>跳过规则</strong>：
+<script type="math/tex; mode=display">\{\text{Expert}_i^{(l)} | s_i^{(l)} < \tau_t \cdot I_t + \tau_v \cdot I_v\}</script>
+</p>
+<p>其中：
+- <script type="math/tex">\tau_t</script> 和 <script type="math/tex">\tau_v</script> 分别是文本和视觉模态的阈值
+- <script type="math/tex">I_t</script> 和 <script type="math/tex">I_v</script> 是模态指示函数</p>
+<p><strong>实验验证</strong>：视觉 token 可以更激进地跳过专家（因为 FFN 对视觉 token 更新较小，冗余更多），文本 token 需要更保守地保留专家。</p>
+<h3 id="3-frontier-search">3. 前沿搜索算法（Frontier Search）</h3>
+<p><strong>目标</strong>：在满足目标跳过比例 <script type="math/tex">\rho</script> 的约束下，找到最小化输出分布差异的最优阈值对 <script type="math/tex">(\tau_t, \tau_v)</script>。</p>
+<p><strong>问题建模</strong>：
+<script type="math/tex; mode=display">\min_{\tau_t \in \mathcal{B}, \tau_v \in \mathcal{B}} f(\tau_t, \tau_v) \quad \text{s.t.} \quad g(\tau_t, \tau_v) \geq \rho</script>
+</p>
+<p>其中 <script type="math/tex">f</script> 是平均 KL 散度，<script type="math/tex">g</script> 是跳过比例。</p>
+<p><strong>关键假设（单调性）</strong>：
+- <script type="math/tex">f</script> 对各自参数是非递减的（阈值越高 → 跳过越多 → 精度越低）
+- <script type="math/tex">g</script> 对各自参数也是非递减的</p>
+<p><strong>算法复杂度</strong>：
+- 暴力搜索：<script type="math/tex">O(ND^2)</script>（遍历所有阈值对）
+- 前沿搜索：<script type="math/tex">O(ND)</script>（利用单调性，约 45 倍加速）</p>
+<p><strong>搜索空间</strong>：<script type="math/tex">\mathcal{B}</script> 由 100 个网格点组成（在 (0,1) 区间均匀采样）。</p>
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
 <ul>
-<li>不同层的Expert重要性不同，浅层更重要</li>
-<li>text token和vision token 分开控制expert 的 sparse</li>
+<li><strong>模型</strong>：3 个 MoE MLLM 系列</li>
+<li>Kimi-VL-A3B-Instruct（64 个路由专家，k=6）</li>
+<li>Qwen3-VL-MoE-30B-A3B-Instruct（128 个路由专家，k=8）</li>
+<li>InternVL-3.5（30B/20B 模型，32-128 个路由专家）</li>
+<li><strong>基准</strong>：13 个任务（8 个图像理解 + 5 个视频理解）</li>
+<li>图像：TextVQA, ChartQA, MMStar, MMBench, MMVet, MME, RealWorldQA, COCO</li>
+<li>视频：MVBench, EgoSchema, VideoMME, LongVideoBench, VideoMMMU</li>
+<li><strong>评测工具</strong>：lmms-eval，MMBench 和 MMVet 使用 DeepSeek-V3.1 评分</li>
+</ul>
+<h3 id="_7">主要结果</h3>
+<p><strong>与基线方法对比（Kimi-VL-A3B-Instruct）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>跳过比例</th>
+<th>MoDES</th>
+<th>最佳基线</th>
+<th>优势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50%</td>
+<td>99.91%</td>
+<td>98.17% (DiEP)</td>
+<td>+1.74%</td>
+</tr>
+<tr>
+<td>67%</td>
+<td>98.46%</td>
+<td>95.45% (MC-MoE)</td>
+<td>+3.01%</td>
+</tr>
+<tr>
+<td>83%</td>
+<td>96.25%</td>
+<td>88.32% (MC-MoE)</td>
+<td>+7.93%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>跨模型性能（Qwen3-VL-MoE-30B-A3B-Instruct，跳过 88%）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>平均性能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k=1（基线）</td>
+<td>60.11%</td>
+</tr>
+<tr>
+<td>NAEE</td>
+<td>80.60%</td>
+</tr>
+<tr>
+<td>MC-MoE</td>
+<td>86.66%</td>
+</tr>
+<tr>
+<td>DiEP</td>
+<td>85.30%</td>
+</tr>
+<tr>
+<td><strong>MoDES</strong></td>
+<td><strong>97.33%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>跨模型性能（InternVL-3.5-30B-A3B-HF，跳过 88%）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>平均性能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k=1（基线）</td>
+<td>59.63%</td>
+</tr>
+<tr>
+<td>NAEE</td>
+<td>78.88%</td>
+</tr>
+<tr>
+<td>MC-MoE</td>
+<td>86.20%</td>
+</tr>
+<tr>
+<td>DiEP</td>
+<td>83.26%</td>
+</tr>
+<tr>
+<td><strong>MoDES</strong></td>
+<td><strong>97.03%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>推理加速：</strong>
+- 预填充（prefilling）：~2× 加速（2.04×-2.16×）
+- 解码（decoding）：~1.2× 加速（1.19×-1.26×）
+- 解码加速较小的原因：解码阶段仅处理文本 token，且 MoE 层的计算减少受限于内存瓶颈</p>
+<p><strong>与量化结合：</strong>
+- 2.5-bit 量化 + MoDES 在 Kimi-VL 上保留 &gt;90% 性能
+- 1.5-bit 量化 + MoDES 性能下降 17.30%，优于 MC-MoE 的 &gt;20%</p>
+<p><strong>校准和搜索效率：</strong>
+- 前沿搜索约 45 倍加速于暴力搜索
+- 对 20-30B 参数模型，校准+搜索总耗时 20 分钟至 4 小时（8×H200 GPU）</p>
+<h3 id="_8">消融实验</h3>
+<p><strong>各组件贡献（Kimi-VL-A3B-Instruct，跳过 67%）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>ChartQA</th>
+<th>MME</th>
+<th>MMBench</th>
+<th>LVB</th>
+<th>VMMMU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thresholding</td>
+<td>85.48</td>
+<td>2030</td>
+<td>77.67</td>
+<td>57.97</td>
+<td>45.56</td>
+</tr>
+<tr>
+<td>+ GMLG</td>
+<td>87.64</td>
+<td>2172</td>
+<td>79.46</td>
+<td>60.24</td>
+<td>46.48</td>
+</tr>
+<tr>
+<td>DMT</td>
+<td>87.47</td>
+<td>2158</td>
+<td>81.07</td>
+<td>61.26</td>
+<td>46.88</td>
+</tr>
+<tr>
+<td>DMT + GMLG (MoDES)</td>
+<td><strong>88.24</strong></td>
+<td><strong>2204</strong></td>
+<td><strong>82.73</strong></td>
+<td><strong>62.90</strong></td>
+<td><strong>48.78</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GMLG 对 Thresholding 和 DMT 都有显著提升</li>
+<li>DMT 相比单阈值方法有大幅提升</li>
+<li>随跳过比例增加，GMLG 和 DMT 的提升更明显</li>
+</ul>
+<p><strong>校准数据选择鲁棒性</strong>：
+- 使用 GQA、COCO、VMMMU 三种数据集进行校准和搜索，性能一致
+- MoDES 对校准数据选择不敏感</p>
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>首个 MLLM 专用的无训练专家跳过框架</strong>：专门为多模态 MoE 模型设计，填补了该领域的空白</li>
+<li><strong>双洞察驱动</strong>：同时考虑层间全局贡献差异和模态差异，比现有方法更准确地识别冗余专家</li>
+<li><strong>无训练成本</strong>：离线校准 + 搜索的总成本较低（20 分钟到 4 小时），无需重新训练</li>
+<li><strong>显著性能优势</strong>：在高跳过比例（≥80%）下，性能提升 7.93%-10.67%，同时保持 &gt;95% 原始性能</li>
+<li><strong>有效推理加速</strong>：预填充 ~2×，解码 ~1.2×</li>
+<li><strong>与量化兼容</strong>：与混合精度量化结合时，性能下降显著小于 MC-MoE</li>
+<li><strong>高效搜索算法</strong>：前沿搜索 O(ND) 复杂度，比暴力搜索快约 45 倍</li>
+<li><strong>跨模型泛化</strong>：在 Kimi-VL、Qwen3-VL、InternVL-3.5 上均表现优异</li>
+<li><strong>不敏感于校准数据选择</strong>：使用不同数据集校准，性能基本一致</li>
+<li><strong>可发现并移除干扰专家</strong>：在部分基准上，跳过专家后精度反而提升，说明某些专家可能干扰推理</li>
+</ol>
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>依赖离线校准</strong>：虽然校准成本相对较低，但仍需在 GPU 上运行数小时，且需要校准数据</li>
+<li><strong>解码加速有限</strong>：解码阶段仅处理文本 token，且受限于内存瓶颈，加速比仅约 1.2×</li>
+<li><strong>仅针对 MoE 架构</strong>：方法依赖 MoE 层的路由机制，不适用于非 MoE 架构</li>
+<li><strong>需要预定义跳过比例</strong>：需要用户指定目标跳过比例 <script type="math/tex">\rho</script>，虽然有搜索算法，但仍需人为设定</li>
+<li><strong>依赖超参数</strong>：搜索空间 D=100、校准样本数 N=1024 等超参数可能需要针对不同模型调整</li>
+<li><strong>未与其他高效技术联合</strong>：作者提到未来将探索与剪枝和蒸馏等技术结合，但目前未实现</li>
+<li><strong>基准范围有限</strong>：仅在 13 个基准上测试，未涉及更广泛的多模态任务</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_11">关键词关联</h3>
+<ul>
+<li><strong>sparse_pruning</strong>：MoDES 的专家跳过可视为一种结构化稀疏剪枝方法</li>
+<li><strong>structured_sparsity</strong>：跳过整个专家网络实现结构化稀疏，减少计算量</li>
+</ul>
+<h3 id="_12">相关研究方向</h3>
+<ol>
+<li><strong>MoE 量化与剪枝</strong>：MoDES 可与 MC-MoE 等量化方法结合，进一步压缩模型</li>
+<li><strong>多模态高效推理</strong>：MoDES 为多模态模型的高效推理提供了新范式</li>
+<li><strong>动态稀疏激活</strong>：不同于静态剪枝，MoDES 根据输入动态决定跳过哪些专家</li>
+<li><strong>层间重要性分析</strong>：MoDES 的全局调制机制揭示了 MoE 层间重要性差异</li>
+<li><strong>模态感知高效计算</strong>：DMT 方法展示了模态差异在高效推理中的重要性</li>
+<li><strong>无训练模型压缩</strong>：MoDES 无需重新训练，属于无训练高效方法</li>
+<li><strong>自适应推理加速</strong>：根据输入动态调整计算量，与投机解码（Speculative Decoding）等技术有相似之处</li>
+<li><strong>多模态 MoE 架构优化</strong>：为 MoE MLLM 的架构设计提供参考（浅层应更关键）</li>
+</ol>
+<h3 id="efficientpaper_1">与 EfficientPaper 现有论文的关系</h3>
+<ul>
+<li><strong>DiEP</strong>（2025）：同为 MoE 压缩方法，MoDES 在多模态场景下显著优于 DiEP</li>
+<li><strong>MC-MoE</strong>（2024）：MoDES 与 MC-MoE 的量化策略兼容，且性能更优</li>
+<li><strong>NAEE</strong>（2024）：MoDES 解决了 NAEE 在 MLLM 上的性能下降问题</li>
+<li><strong>MoE-Llava</strong>（2024）：MoDES 可应用于类似 MoE MLLM 架构的模型</li>
+<li><strong>Switch Transformers</strong>（2022）：MoDES 基于 MoE 路由机制，是其高效化的延续</li>
 </ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->

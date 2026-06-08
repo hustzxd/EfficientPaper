@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,26 +164,353 @@
 <p>Mengzhao Chen, Yi Liu, Jiahao Wang, Yi Bin, Wenqi Shao, Ping Luo</p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Existing weight-activation quantization methods for Large Language Models
-(LLMs) primarily address channel-wise outliers but often neglect token-wise
-outliers, which limits the accuracy of quantized models. In this work, we
-propose PrefixQuant, a novel quantization method that achieves state-of-the-art
-performance across various precision levels (W4A4KV4 and W4A8KV4) and
-granularities (dynamic and static quantization) by effectively isolating
-token-wise outliers. First, PrefixQuant eliminates token-wise outliers by
-prefixing outlier tokens in the KV cache, a process that is training-free and
-highly efficient (e.g., 1 minutes for Llama-3-70B). Second, PrefixQuant
-introduces new trainable parameters for block-wise training to compensate for
-quantization error. Our experiments show that PrefixQuant significantly
-outperforms existing dynamic quantization methods, even under coarser static
-quantization settings. For instance, PrefixQuant achieves an average accuracy
-improvement of +3.08 and +2.85 points over SpinQuant (dynamic quantization) on
-five zero-shot reasoning tasks under dynamic and static quantization settings,
-respectively, on W4A4KV4 Llama-3-8B. Additionally, we demonstrate up to 2.74x
-prefilling speedup and 2.16x decoding speedup for LLMs using W4A4 PrefixQuant.
-Our code is available at https://github.com/ChenMnZ/PrefixQuant.</p>
-<p>将特定的一些token标记为outlier</p>
+<h2 id="_1">一句话总结</h2>
+<p>PrefixQuant 提出了一种通过在 KV 缓存中前缀化 outlier token 来消除 token 级别异常值的量化方法，以训练无关且高效的方式实现了 W4A4KV4/W4A8KV4 量化下的 SOTA 性能，显著优于 SpinQuant、QuaRot 等现有动态量化方法。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>现有的大语言模型（LLM）权重-激活量化方法主要关注通道级异常值（channel-wise outliers），但往往忽略了 token 级别异常值（token-wise outliers），这限制了量化模型的精度。在本文中，我们提出了 PrefixQuant，一种新颖的量化方法，通过有效隔离 token 级别异常值，在各种精度级别（W4A4KV4 和 W4A8KV4）和粒度（动态量化和静态量化）下实现了最先进的性能。首先，PrefixQuant 通过在 KV 缓存中前缀化异常值 token 来消除 token 级别异常值，这一过程无需训练且高效（例如，Llama-3-70B 仅需 1 分钟）。其次，PrefixQuant 引入了新的可训练参数进行分块训练以补偿量化误差。我们的实验表明，PrefixQuant 显著优于现有的动态量化方法，即使在更粗糙的静态量化设置下也是如此。例如，在 W4A4KV4 Llama-3-8B 上，PrefixQuant 在动态和静态量化设置下，在五个零样本推理任务上的平均精度分别比 SpinQuant（动态量化）提高了 +3.08 和 +2.85 个百分点。此外，我们展示了使用 W4A4 PrefixQuant 可实现高达 2.74 倍的预填充加速和 2.16 倍的解码加速。</p>
+<h2 id="_3">研究动机</h2>
+<p>大语言模型（LLM）的参数量和计算需求带来了显著的部署挑战，量化技术成为降低内存使用和加速推理的关键手段。然而，LLM 激活值中的异常值（outliers）会导致严重的量化误差和精度退化。</p>
+<p>现有方法主要关注通道级异常值，通过通道级缩放（如 SmoothQuant）、混合精度量化（如 Atom、QUIK）、Hadamard 旋转（如 QuaRot、SpinQuant）等方式进行处理。但这些方法忽略了 token 级别异常值的问题。</p>
+<p>本文的关键发现是：在 2048 个 token 的输入上下文中，仅 2 个异常值 token 就贡献了 94.7% 的量化误差。具体而言，在 Llama-2-7B 的第 2 个 Transformer 块中，两个异常值 token 贡献了 51.7（占总量化误差的 94.7%），而其余 2046 个 token 仅贡献 2.9（占 5.3%）。即使使用 Hadamard 旋转（QuaRot），异常值 token 的最大值仍比正常 token 大数百倍，导致量化误差为 7.88。</p>
+<p>因此，如何有效消除 token 级别异常值成为提升量化模型精度的关键问题。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="41-token">4.1 异常值 Token 的深入分析</h3>
+<p><strong>异常值 Token 的定义：</strong> 给定 token 序列的绝对值矩阵 X ∈ R^{T×C}，计算每个 token 的逐 token 最大值 M ∈ R^T，第 i 个 token 的异常值程度通过与 M 的中位数比较来衡量：</p>
+<p>R_i = M_i / median(M)</p>
+<p>当 R_i &gt; η₁（上异常值，η₁=64）或 R_i^{-1} &gt; η₂（下异常值，η₂=8）时，该 token 被分类为异常值 token。</p>
+<p><strong>异常值 Token 的特征：</strong>
+- <strong>数量：</strong> 异常值 token 仅占输入序列的很小比例（例如 Llama-2-7B 仅 2 个位置）
+- <strong>位置：</strong> 初始 token 几乎在所有模型中都是异常值 token（与 attention sinks 现象一致），此外序列前部的某些位置也可能是异常值 token
+- <strong>内容：</strong> 初始 token 始终是异常值 token，不论其内容如何；某些模型（如 Llama-2-7B）在分隔符 token（如"."或"\n"）上也表现为异常值</p>
+<p><strong>异常值类型：</strong>
+1. <strong>上异常值：</strong> 出现在 down_proj 线性层的输入和 Transformer 块的输出中，max(top-1/median) 可达 4161
+2. <strong>下异常值：</strong> 出现在自注意力机制的 Q/K 中，某些 token 表现出极小值，max(median/min-1) &gt; 9</p>
+<h3 id="42-prefixed-outliers">4.2 前缀化异常值（Prefixed Outliers）</h3>
+<p>核心思想：将高频异常值 token 前缀化到输入序列的开头，将异常值 token 约束到前缀 token 中。由于前缀 token 在所有输入中保持一致，可以离线进行预填充并存储其 KV 缓存，从而在推理时复用。</p>
+<p><strong>前缀 token 的选择：</strong>
+- 通过分析少量校准数据集确定异常值 token 的数量 o
+- 前缀化 top-o 个高频异常值 token（排除初始 token）
+- 对于特殊模型（如 Llama-3-8B、Qwen-2-7B），仅将 [BOS] 作为前缀 token
+- 所有模型均将 [BOS] 作为最后一个前缀 token</p>
+<p><strong>KV 缓存中的前缀 token 计算：</strong></p>
+<p>在 LLM 的自回归推理中，前缀 token 的 KV 缓存通过以下注意力机制公式计算：</p>
+<p>Attention(Q, K, V; k', v') = Softmax(QK^T / √d) [V; v'^T]</p>
+<p>其中 k', v' ∈ R^{o×C} 是存储在 KV 缓存中的前缀 token，在一次全精度模型的预填充过程中计算得到，并在量化模型推理时复用。注意，KV 缓存中的前缀 token 即使在使用量化模型时也保持全精度。</p>
+<p><strong>不同模型的前缀 token：</strong>
+- Llama-2-7B: 3 个前缀 token（".\n[BOS]"）
+- Llama-2-13B: 3 个（"the.[BOS]"）
+- Llama-2-70B: 4 个（"\n"[BOS]"）
+- Llama-3-8B(-Instruct): 1 个（"[BOS]"）
+- Llama-3-70B(-Instruct): 3 个（", [BOS]"）
+- Mistral-v0.3-7B: 4 个（"\n.to[BOS]"）
+- Qwen-2-7B: 1 个（"[BOS]"）</p>
+<p><strong>分布改善效果：</strong>
+- down_proj 输入的 max(top-1/median) 比率从 461 降至 2.4
+- Q/K 的 max(median/min-1) 比率从 &gt;9 降至 &lt;3.5</p>
+<h3 id="43-block-wise-fine-tuning">4.3 分块微调（Block-wise Fine-tuning）</h3>
+<p>引入可训练参数的分块微调来进一步降低量化误差，具体包括：</p>
+<p><strong>动态激活量化（PrefixQuant-O1）：</strong>
+- 设置 tensor 级别的裁剪因子（clipping factors）为可训练参数
+- 裁剪因子不能是 token 级别的，因为长上下文场景中 token 级裁剪因子会带来过大的存储开销</p>
+<p><strong>静态激活量化（PrefixQuant-O2）：</strong>
+- 量化参数（缩放因子和零点）本身是可训练的</p>
+<p><strong>权重量化：</strong>
+- 采用 EfficientQAT 的方法，使所有权重和权重量化参数均可训练</p>
+<p><strong>训练配置：</strong>
+- 使用 Pile 数据集的 512 个样本，1024 上下文长度
+- 学习率：量化参数 5e-5，全精度权重 5e-6（Llama-3-70B 使用 2e-5 和 2e-6）
+- Batch size: 4
+- Epochs: W4A8KV4 为 10，W4A4KV4 为 20
+- 优化目标：块输出的均方误差（MSE）</p>
+<h3 id="_5">量化设置</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>权重</th>
+<th>激活</th>
+<th>KV 缓存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SmoothQuant</td>
+<td>per-channel</td>
+<td>per-token 动态</td>
+<td>per-token 动态</td>
+</tr>
+<tr>
+<td>Atom</td>
+<td>group-wise</td>
+<td>group-wise 动态</td>
+<td>group-wise 动态</td>
+</tr>
+<tr>
+<td>QuaRot/SpinQuant</td>
+<td>per-channel</td>
+<td>per-token 动态</td>
+<td>group-wise 动态</td>
+</tr>
+<tr>
+<td>PrefixQuant-O1</td>
+<td>per-channel</td>
+<td>per-token 动态</td>
+<td>group-wise 动态</td>
+</tr>
+<tr>
+<td>PrefixQuant-O2</td>
+<td>per-channel</td>
+<td>per-tensor 静态</td>
+<td>per-head 静态</td>
+</tr>
+</tbody>
+</table>
+<p>所有 group-wise 量化设置 group size 为 128。PrefixQuant-O1 与现有方法一致以进行公平比较，PrefixQuant-O2 更高效（即更低延迟）。</p>
+<h2 id="_6">实验结果</h2>
+<h3 id="w4a4kv4-llama">W4A4KV4 结果（Llama 系列模型）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>PPL</th>
+<th>Acc.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-2-7B</td>
+<td>FP16</td>
+<td>5.47</td>
+<td>69.04</td>
+</tr>
+<tr>
+<td></td>
+<td>Atom</td>
+<td>6.12</td>
+<td>59.73</td>
+</tr>
+<tr>
+<td></td>
+<td>QuaRot</td>
+<td>6.19</td>
+<td>64.69</td>
+</tr>
+<tr>
+<td></td>
+<td>DuQuant</td>
+<td>6.20</td>
+<td>66.25</td>
+</tr>
+<tr>
+<td></td>
+<td>SpinQuant</td>
+<td>5.95</td>
+<td>65.35</td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O1</td>
+<td><strong>5.93</strong></td>
+<td><strong>66.74</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O2</td>
+<td>6.01</td>
+<td>66.37</td>
+</tr>
+<tr>
+<td>Llama-2-13B</td>
+<td>SpinQuant</td>
+<td>5.24</td>
+<td>69.24</td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O1</td>
+<td><strong>5.24</strong></td>
+<td><strong>70.05</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O2</td>
+<td>5.32</td>
+<td>70.36</td>
+</tr>
+<tr>
+<td>Llama-2-70B</td>
+<td>SpinQuant</td>
+<td>3.70</td>
+<td>75.19</td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O1</td>
+<td><strong>3.62</strong></td>
+<td><strong>76.23</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O2</td>
+<td>3.81</td>
+<td>75.48</td>
+</tr>
+<tr>
+<td>Llama-3-8B</td>
+<td>SpinQuant</td>
+<td>7.36</td>
+<td>68.23</td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O1</td>
+<td><strong>7.26</strong></td>
+<td><strong>71.31</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O2</td>
+<td>7.43</td>
+<td>71.08</td>
+</tr>
+<tr>
+<td>Llama-3-70B</td>
+<td>DuQuant</td>
+<td>5.67</td>
+<td>74.89</td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O1</td>
+<td><strong>4.16</strong></td>
+<td><strong>77.08</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>PrefixQuant-O2</td>
+<td>4.41</td>
+<td>77.18</td>
+</tr>
+</tbody>
+</table>
+<h3 id="w4a8kv4">W4A8KV4 结果</h3>
+<p>PrefixQuant-O1 和 O2 在大多数模型上均优于 QoQ 和 QuaRot。例如，在 Llama-3-8B 上，PrefixQuant-O1 比 QoQ 提高了 0.31 困惑度和 +1.22 个百分点精度。</p>
+<h3 id="mmlu-llama-3-8b">MMLU 结果（Llama-3-8B）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>精度</th>
+<th>MMLU Acc.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>-</td>
+<td>62.07</td>
+</tr>
+<tr>
+<td>SpinQuant</td>
+<td>W4A4KV4</td>
+<td>51.93</td>
+</tr>
+<tr>
+<td>PrefixQuant-O1</td>
+<td>W4A4KV4</td>
+<td><strong>56.00</strong></td>
+</tr>
+<tr>
+<td>PrefixQuant-O2</td>
+<td>W4A4KV4</td>
+<td>54.65</td>
+</tr>
+<tr>
+<td>SpinQuant</td>
+<td>W4A8KV4</td>
+<td>58.25</td>
+</tr>
+<tr>
+<td>PrefixQuant-O1</td>
+<td>W4A8KV4</td>
+<td><strong>60.49</strong></td>
+</tr>
+<tr>
+<td>PrefixQuant-O2</td>
+<td>W4A8KV4</td>
+<td>59.20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="llama-3-8b">消融实验（Llama-3-8B）</h3>
+<p>W4A4KV4 的逐步改进：
+- RTN: 1282.34 → +旋转: 24.98 → +Grid Search: 11.70
+- PrefixQuant-O1 (+前缀化异常值): 7.53 → +分块微调: <strong>7.23</strong>
+- PrefixQuant-O2 (+静态量化): 141.02 → +前缀化异常值: 7.93 → +分块微调: <strong>7.41</strong></p>
+<h3 id="w4a4-llama-2-7b">推理加速（W4A4 Llama-2-7B）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>预填充 (ms)</th>
+<th>解码 (token/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>489</td>
+<td>43</td>
+</tr>
+<tr>
+<td>PrefixQuant-O1</td>
+<td>183 (2.67x)</td>
+<td>91 (2.11x)</td>
+</tr>
+<tr>
+<td>PrefixQuant-O2</td>
+<td>178 (2.74x)</td>
+<td>93 (2.16x)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">优势</h2>
+<ol>
+<li><strong>无需训练的异常值消除：</strong> PrefixQuant 通过前缀化异常值 token 来隔离 token 级别异常值，这一过程不需要任何重新训练，且极其高效（Llama-2-7B 仅需 12 秒，Llama-3-70B 仅需 1 分钟）</li>
+<li><strong>显著的精度提升：</strong> 在 W4A4KV4 Llama-3-8B 上，比 SpinQuant（动态量化）平均提高 +3.08（动态）和 +2.85（静态）个百分点</li>
+<li><strong>首次突破：</strong> 据作者所知，PrefixQuant 是首个使用更粗糙的 per-tensor 静态量化超越先前 per-token 动态量化方法的方法</li>
+<li><strong>广泛的适用性：</strong> 兼容 W4A4KV4 和 W4A8KV4 多种精度，支持动态和静态量化两种粒度</li>
+<li><strong>显著的推理加速：</strong> W4A4 下实现高达 2.74 倍预填充加速和 2.16 倍解码加速</li>
+<li><strong>与 Hadamard 旋转正交：</strong> PrefixQuant 关注 token 级别异常值，与处理通道级异常值的 Hadamard 旋转方法互补，可以叠加使用</li>
+<li><strong>兼顾上异常值和下异常值：</strong> 不同于先前只关注大值异常值的方法，PrefixQuant 还识别了自注意力 Q/K 中的极小值异常值</li>
+<li><strong>高效检测：</strong> 前缀 token 的检测不需要任何重新训练，比 QFeP（12 小时）和 Cushion-Cache（12 小时）等方法快得多（12 秒）</li>
+</ol>
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>前缀 token 的数量有限：</strong> 异常值 token 通常只有少量（如 Llama-2-7B 仅 2 个），这限制了异常值隔离的覆盖面</li>
+<li><strong>静态量化设置的效率问题：</strong> 虽然 PrefixQuant-O2 在静态量化下性能优异，但静态量化的预计算过程（使用校准数据集）可能不如动态量化灵活</li>
+<li><strong>KV 缓存中的全精度存储：</strong> 前缀 token 在 KV 缓存中保持全精度，这会增加一定的内存开销（虽然前缀 token 数量通常很少）</li>
+<li><strong>对特定模型的依赖：</strong> 不同模型的前缀 token 内容和数量不同，需要针对每个模型进行单独分析</li>
+<li><strong>裁剪因子的限制：</strong> 在动态激活量化中，裁剪因子是 tensor 级别的而非 token 级别的，这可能限制了某些场景下的性能</li>
+<li><strong>异常值 token 位置的不确定性：</strong> 异常值 token 的位置依赖于输入序列且变化显著，因此不适合进行离线混合精度量化</li>
+<li><strong>训练数据和配置的敏感性：</strong> 分块微调需要特定的训练数据（Pile 512 样本）和超参数设置，可能存在过拟合风险</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 量化：</strong> PrefixQuant 直接处理 KV 缓存中的异常值 token，与 KV Cache 量化研究密切相关，是提升量化精度的有效方向</li>
+<li><strong>异常值处理：</strong> PrefixQuant 提供了对 token 级别异常值的系统性分析，对 LLM 量化中的异常值处理研究具有重要参考价值</li>
+<li><strong>动态 vs 静态量化：</strong> PrefixQuant 展示了静态量化可以超越动态量化，这对量化策略选择的研究方向有重要启示</li>
+<li><strong>训练无关量化：</strong> PrefixQuant 的前缀化过程无需训练，属于高效、低成本的量化方法</li>
+<li><strong>块级微调：</strong> PrefixQuant 使用分块微调来补偿量化误差，与 EfficientQAT 等方法相关</li>
+<li><strong>加速推理：</strong> PrefixQuant 展示了显著的推理加速效果（2.74x 预填充、2.16x 解码），对 LLM 部署优化具有重要价值</li>
+<li><strong>多精度量化：</strong> PrefixQuant 兼容 W4A4KV4 和 W4A8KV4 多种精度，对低比特量化研究有指导意义</li>
+<li><strong>Attention Sink 与异常值：</strong> PrefixQuant 的发现与 Attention Sink 现象相关，为理解 LLM 中的异常值模式提供了新视角</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>本笔记由 AI Agent（Hermes Agent）基于论文 PDF 文本自动提取和分析生成。笔记内容涵盖了论文的核心方法、实验结果和关键发现，但可能存在对原文细节的简化或遗漏。建议读者参考原文进行深入研究。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

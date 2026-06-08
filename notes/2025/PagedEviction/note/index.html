@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,29 +162,295 @@
                 <h1 id="pagedeviction-structured-block-wise-kv-cache-pruning-for-efficient-large-language-model-inference">PagedEviction: Structured Block-wise KV Cache Pruning for Efficient Large Language Model Inference</h1>
 <blockquote>
 <p>Krishna Teja Chitty-Venkata, Jie Ye, Xian-He Sun, Anthony Kougkas, Murali Emani, Venkatram Vishwanath, Bogdan Nicolae</p>
+<p><strong>ArXiv</strong>: <a href="http://arxiv.org/abs/2509.04377v1">2509.04377v1</a> | <strong>Year</strong>: 2025 | <strong>Keywords</strong>: kv_cache_sparse | <strong>Baseline</strong>: <a href="../2024/Quest/note.md">Quest</a></p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>KV caching significantly improves the efficiency of Large Language Model
-(LLM) inference by storing attention states from previously processed tokens,
-enabling faster generation of subsequent tokens. However, as sequence length
-increases, the KV cache quickly becomes a major memory bottleneck. To address
-this, we propose PagedEviction, a novel fine-grained, structured KV cache
-pruning strategy that enhances the memory efficiency of vLLM's PagedAttention.
-Unlike existing approaches that rely on attention-based token importance or
-evict tokens across different vLLM pages, PagedEviction introduces an efficient
-block-wise eviction algorithm tailored for paged memory layouts. Our method
-integrates seamlessly with PagedAttention without requiring any modifications
-to its CUDA attention kernels. We evaluate PagedEviction across
-Llama-3.1-8B-Instruct, Llama-3.2-1B-Instruct, and Llama-3.2-3B-Instruct models
-on the LongBench benchmark suite, demonstrating improved memory usage with
-better accuracy than baselines on long context tasks.</p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>声明</strong>：本 note 由 AI Agent 自动生成，基于论文全文阅读和中文翻译整理。内容仅供参考，如有疏漏请以原文为准。生成时间：2025 年。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>PagedEviction 是一种专为 vLLM PagedAttention 设计的结构化块级 KV Cache 淘汰算法，通过基于 Key/Value L2 范数比值的 token 重要性估计，在预填充和解码阶段分别进行 token 级和 block 级淘汰，无需修改 CUDA 注意力内核即可在长上下文任务中实现更好的内存效率和推理精度。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>KV 缓存通过存储先前处理的 token 的注意力状态，显著提高了大语言模型（LLM）推理效率，实现了后续 token 的更快生成。然而，随着序列长度增加，KV 缓存很快成为主要的内存瓶颈。为解决这一问题，本文提出了 PagedEviction，一种新颖的细粒度结构化 KV 缓存剪枝策略，增强了 vLLM PagedAttention 的内存效率。与现有依赖基于注意力的 token 重要性或跨不同 vLLM 页面淘汰 token 的方法不同，PagedEviction 引入了一种高效的块级淘汰算法，专门为分页内存布局定制。该方法与 PagedAttention 无缝集成，无需修改其 CUDA 注意力内核。作者在 Llama-3.1-8B-Instruct、Llama-3.2-1B-Instruct 和 Llama-3.2-3B-Instruct 模型上，使用 LongBench 基准测试套件进行了评估，证明了在长上下文任务中实现了更好的内存使用和优于基线的准确度。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>KV 缓存内存瓶颈</strong>：LLM 推理中 KV 缓存随序列长度线性增长，对于数万 token 的序列，KV 缓存消耗的 GPU 内存可能超过模型本身，严重限制了推理吞吐量。</li>
+<li><strong>现有方法的局限</strong>：</li>
+<li><strong>依赖注意力分数</strong>：如 H2O 等方法需要获取注意力权重（Q×Kᵀ），但 FlashAttention 在推理过程中不返回注意力分数，导致需要修改 CUDA 内核或引入额外内存开销。</li>
+<li><strong>不考虑分页结构</strong>：现有压缩方法不考虑 vLLM 的块结构，在淘汰 token 时跨不同页面操作，导致块碎片化，破坏了 PagedAttention 设计的内存布局。</li>
+<li><strong>逐 token 频繁淘汰</strong>：如 StreamingLLM、H2O 等在每个解码步骤都执行淘汰，导致高频更新 KV 缓存表，增加延迟和吞吐量开销。</li>
+<li><strong>核心挑战</strong>：需要一种既兼容 vLLM 分页内存结构，又不依赖注意力分数，且能高效进行块级淘汰的方法。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="41-token">4.1 Token 重要性评估</h3>
+<p>PagedEviction 使用一种<strong>无需注意力分数的代理重要性指标</strong>，基于 Key 和 Value 张量的 L2 范数比值：</p>
+<p>
+<script type="math/tex; mode=display">S_i = \frac{\|V_i\|_2}{\|K_i\|_2}</script>
+</p>
 <ul>
-<li>使用KV 的静态L2 Norm信息估计他们的重要性</li>
-<li>Prefill时采用token-wise evication策略，然后再划分block 存储</li>
-<li>Decode时，如果新的token填满一个block时，则evict最不重要的一个block</li>
-<li>实验部分没有和quest比较，精度下降3–5%</li>
+<li><strong>原理</strong>：先前研究（Devoto et al., 2024）发现 Key 张量的 L2 范数与累积注意力分数成反比。因此，Value 的 L2 范数与 Key 的 L2 范数之比可以作为 token 重要性的有效代理指标。</li>
+<li><strong>优势</strong>：直接从 KV 缓存中计算，无需存储注意力权重，与 FlashAttention 兼容，无需修改 CUDA 内核。</li>
+<li><strong>块级评分</strong>：对于 block 模式，将块内所有 token 的评分取平均值作为块重要性分数：</li>
 </ul>
+<p>
+<script type="math/tex; mode=display">S_j = \frac{1}{B} \sum_{i \in \text{block } j} \frac{\|V_i\|_2}{\|K_i\|_2}</script>
+</p>
+<h3 id="42-prefill-phase">4.2 预填充阶段（Prefill Phase）</h3>
+<ul>
+<li><strong>流程</strong>：在 prefill 阶段，所有 prompt token 通过一次前向传播处理，生成初始 KV 缓存。</li>
+<li><strong>淘汰时机</strong>：在 Key 和 Value 状态被划分为不同 page <strong>之前</strong>进行 token 级淘汰（而非之后），避免跨块的内存重排和移动。</li>
+<li><strong>淘汰策略</strong>：计算每个 token 的重要性分数 <script type="math/tex">S_i</script>，淘汰分数最低的 <script type="math/tex">E = L - C</script> 个 token（<script type="math/tex">L</script> 为输入长度，<script type="math/tex">C</script> 为缓存预算）。</li>
+<li><strong>效果</strong>：在解码开始前压缩 KV 缓存，减少内存使用，同时保留重要的 KV 状态。</li>
+</ul>
+<h3 id="43-decode-phase">4.3 解码阶段（Decode Phase）</h3>
+<ul>
+<li><strong>淘汰触发</strong>：仅在当前块（最近的 block）被新生成的 token 填满时（即序列长度 <script type="math/tex">L</script> 是块大小 <script type="math/tex">B</script> 的整数倍）触发淘汰。</li>
+<li><strong>淘汰粒度</strong>：<strong>块级淘汰</strong>——评估所有现有缓存页面的重要性，淘汰得分最低的整个页面/块。</li>
+<li><strong>块表更新</strong>：淘汰后更新 vLLM 内部的 KV 缓存块表。</li>
+<li><strong>优势</strong>：</li>
+<li>避免频繁的逐 token 淘汰操作，减少每步开销。</li>
+<li>保持块大小一致，与 vLLM 的 PagedAttention 完全兼容。</li>
+<li>一次淘汰整个块，最大化空间利用率。</li>
+<li>与 FlashAttention 兼容，无需修改内核。</li>
+</ul>
+<h3 id="44">4.4 算法流程概要</h3>
+<ol>
+<li><strong>Prefill</strong>：前向传播 → 计算 token 重要性 → 淘汰不重要 token → 划分为 page</li>
+<li><strong>Decode</strong>：逐 token 生成 → 当前块满时 → 计算各块重要性 → 淘汰最不重要的整块 → 更新块表</li>
+</ol>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.2-1B-Instruct、Llama-3.2-3B-Instruct、Llama-3.1-8B-Instruct</li>
+<li><strong>数据集</strong>：LongBench（HotpotQA、Qasper、GovReport、MultiNews、MultiFieldQA）</li>
+<li><strong>缓存预算</strong>：256、512、1024、2048、4096 token</li>
+<li><strong>页大小</strong>：16（vLLM 最优设置）</li>
+<li><strong>基线方法</strong>：Full Cache（无淘汰）、StreamingLLM、Inverse Key L2-Norm、KeyDiff</li>
+<li><strong>硬件</strong>：NVIDIA A100 40GB GPU</li>
+<li><strong>吞吐量测试</strong>：输入 1024 token，输出 8192 token，64 并发请求</li>
+</ul>
+<h3 id="longbench">准确度（LongBench）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>数据集</th>
+<th>缓存预算 1024</th>
+<th>关键结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-3.2-1B</td>
+<td>GovReport</td>
+<td>1024</td>
+<td>ROUGE ~24.5，比 StreamingLLM（~21）和 KeyDiff（~21.2）高 15–20%</td>
+</tr>
+<tr>
+<td>LLaMA-3.2-1B</td>
+<td>GovReport</td>
+<td>4096</td>
+<td>ROUGE ~29.5，接近 Full Cache（~30）</td>
+</tr>
+<tr>
+<td>LLaMA-3.2-3B</td>
+<td>MultiNews</td>
+<td>1024</td>
+<td>ROUGE ~23.6，比 Inverse Key L2-Norm（~22.5）高 ~1.1</td>
+</tr>
+<tr>
+<td>LLaMA-3.2-3B</td>
+<td>MultiNews</td>
+<td>4096</td>
+<td>ROUGE ~24.5，接近 Full Cache</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>总体表现</strong>：在所有模型和数据集上，PagedEviction 在紧缩预算下表现最优，尤其在 256–1024 token 预算下。</li>
+<li><strong>精度下降</strong>：相比 Full Cache，PagedEviction 的精度下降约 3–5%（ROUGE 指标）。</li>
+</ul>
+<h3 id="_7">吞吐量和延迟</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-1B 吞吐量</td>
+<td>~3020 tokens/sec（预算 1024），比 Full Cache（~2200）提升 37%，比 Inverse Key L2-Norm（~2170）提升 39%</td>
+</tr>
+<tr>
+<td>延迟降低</td>
+<td>1B: 12%，3B: 10%，8B: 11%（相比 Full Cache）</td>
+</tr>
+<tr>
+<td>延迟缩放</td>
+<td>随模型规模亚线性增长</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">消融实验（不同页大小）</h3>
+<ul>
+<li>页大小 8、16、32 均进行测试</li>
+<li>PagedEviction 在页大小 16 和 32 时表现最佳</li>
+<li>吞吐量相比 Full Cache 最高提升 3.1×</li>
+<li>精度下降不超过 3–5%</li>
+<li>KeyDiff 和 Inverse Key L2-Norm 在某些设置下精度下降达 20%</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>无需修改 CUDA 内核</strong>：与 PagedAttention 无缝集成，兼容 FlashAttention，可直接部署到 vLLM。</li>
+<li><strong>结构化块级淘汰</strong>：保持块对齐，避免内存碎片化，最大化内存利用率。</li>
+<li><strong>双阶段淘汰策略</strong>：Prefill 阶段进行 token 级精细淘汰，Decode 阶段进行块级粗粒度淘汰，兼顾精度和效率。</li>
+<li><strong>高效的 token 重要性估计</strong>：基于 Key/Value L2 范数比值，无需存储注意力分数，计算开销低。</li>
+<li><strong>低频淘汰</strong>：仅在新块填满时触发淘汰，减少每步操作开销。</li>
+<li><strong>高吞吐量和低延迟</strong>：吞吐量提升 37%，延迟降低 10–12%，在不同模型规模下表现稳健。</li>
+<li><strong>紧缩预算下表现优异</strong>：在 256–1024 token 预算下仍能保持较好精度，优于 StreamingLLM、Inverse Key L2-Norm、KeyDiff 等方法。</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>精度下降</strong>：相比 Full Cache，精度下降约 3–5%，在某些任务上可能更明显。</li>
+<li><strong>块级粒度限制</strong>：块级淘汰可能导致不够精细的剪枝，部分情况下不如 token 级淘汰灵活。</li>
+<li><strong>未与 Quest 等基于注意力分数的方法比较</strong>：实验中仅与无注意力分数的基线比较，未与 Quest 等强基线对比。</li>
+<li><strong>仅在 LongBench 上评估</strong>：实验范围有限，未在更多任务或更大规模模型上验证。</li>
+<li><strong>依赖静态 KV 信息</strong>：重要性估计仅基于 Key/Value 的 L2 范数，可能不如基于注意力分数的方法精确。</li>
+<li><strong>未提供开源代码</strong>：代码 URL 为空，复现可能需要额外工作。</li>
+<li><strong>仅验证了 vLLM 框架</strong>：未在其他推理框架（如 TensorRT-LLM）上验证兼容性。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1-kv-cache-kv_cache_sparse">1. KV Cache 稀疏化（kv_cache_sparse）</h3>
+<p>PagedEviction 属于 KV Cache 稀疏化方法，通过淘汰不重要的 token 来减少缓存大小。这是 EfficientPaper 中的重要研究方向，与以下方法密切相关：
+- <strong>Quest</strong>（2024）：基于注意力分数的 KV 缓存稀疏化方法（本论文的 baseline）
+- <strong>H2O</strong>（2023）：基于累积注意力分数的 token 淘汰方法
+- <strong>StreamingLLM</strong>（2023）：滑动窗口 + 注意力sink方法
+- <strong>KeyDiff</strong>（2025）：基于 Key 相似度的淘汰方法</p>
+<h3 id="2-pagedattention">2. PagedAttention 与内存管理</h3>
+<p>PagedEviction 与 vLLM 的 PagedAttention 紧密结合，涉及以下方向：
+- <strong>PagedAttention</strong>（2023）：分页内存管理的基础工作
+- <strong>KV Cache 量化</strong>（如 QAQ、KVQuant、KIVI）：可与 PagedEviction 互补
+- <strong>KV Cache 合并</strong>（如 MiniCache、CaM）：可与块级淘汰结合</p>
+<h3 id="3-llm">3. LLM 推理加速</h3>
+<p>PagedEviction 提升了推理吞吐量和降低了延迟，与以下方向相关：
+- <strong>PyramidInfer</strong>：层间动态 KV 缓存大小调整
+- <strong>AdaKV</strong>：自适应 KV 缓存预算分配
+- <strong>SnapKV</strong>：基于重要性评分的 KV 缓存压缩</p>
+<h3 id="4">4. 潜在研究方向</h3>
+<ul>
+<li>将 PagedEviction 与 KV Cache 量化结合（如 Q+PagedEviction）</li>
+<li>将块级淘汰策略扩展到更大模型（如 70B+）和更长上下文（如 100K+ token）</li>
+<li>探索动态块大小和自适应预算分配</li>
+<li>与层间预算分配方法（PyramidInfer）结合</li>
+<li>在其他推理框架（如 TensorRT-LLM）上验证兼容性</li>
+</ul>
+<hr />
+<h2 id="_11">论文结构</h2>
+<table>
+<thead>
+<tr>
+<th>章节</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§1 Introduction</td>
+<td>背景、现有方法局限、PagedEviction 高层目标</td>
+</tr>
+<tr>
+<td>§2 Background</td>
+<td>Self-Attention、KV Cache、KV Cache Eviction、PagedAttention</td>
+</tr>
+<tr>
+<td>§3 Challenges</td>
+<td>四大局限（内存组织、块感知、注意力依赖、逐步淘汰）及解决方案</td>
+</tr>
+<tr>
+<td>§4 PagedEviction</td>
+<td>Token 重要性、Prefill 阶段、Decode 阶段（含算法伪代码）</td>
+</tr>
+<tr>
+<td>§5 Evaluation</td>
+<td>实验设置、基线方法、LongBench 结果、吞吐量/延迟、消融实验</td>
+</tr>
+<tr>
+<td>§6 Conclusion</td>
+<td>总结贡献</td>
+</tr>
+<tr>
+<td>Appendix</td>
+<td>StreamingLLM 图示、非结构化淘汰图示、相关工作综述（压缩、合并、预算分配、量化）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_12">参考方法对比</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>是否依赖注意力分数</th>
+<th>是否结构化</th>
+<th>兼容 vLLM</th>
+<th>本论文结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Cache</td>
+<td>无淘汰</td>
+<td>否</td>
+<td>-</td>
+<td>是</td>
+<td>基准</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>token 级淘汰</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+<td>精度低 15-20%</td>
+</tr>
+<tr>
+<td>Inverse Key L2-Norm</td>
+<td>token 级淘汰</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+<td>吞吐量低 39%</td>
+</tr>
+<tr>
+<td>KeyDiff</td>
+<td>token 级淘汰</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+<td>精度低 15-20%</td>
+</tr>
+<tr>
+<td><strong>PagedEviction</strong></td>
+<td><strong>块级淘汰</strong></td>
+<td><strong>否</strong></td>
+<td><strong>是</strong></td>
+<td><strong>是</strong></td>
+<td><strong>最优</strong></td>
+</tr>
+</tbody>
+</table>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

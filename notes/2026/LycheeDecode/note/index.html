@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,10 +162,247 @@
                 <h1 id="lycheedecode-accelerating-long-context-llm-inference-via-hybrid-head-sparse-decoding">LycheeDecode: Accelerating Long-Context LLM Inference via Hybrid-Head Sparse Decoding</h1>
 <blockquote>
 <p>Gang Lin, Dongfang Li, Zhuoen Chen, Yukun Shi, Xuhui Chen, Baotian Hu, Min Zhang</p>
+<p>Harbin Institute of Technology, Shenzhen</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The proliferation of long-context large language models (LLMs) exposes a key bottleneck: the rapidly expanding key-value cache during decoding, which imposes heavy memory and latency costs. While recent approaches attempt to alleviate this by sharing a single set of crucial tokens across layers, such coarse-grained sharing undermines model performance by neglecting the functional diversity of attention heads. To address this, we propose LycheeDecode, an efficient decoding method centered on a fine-grained hybrid-head attention mechanism that employs a hardware-efficient top-k selection strategy. Specifically, the novel HardKuma-based mechanism partitions attention heads into a small subset of retrieval heads that dynamically identify crucial tokens and a majority of sparse heads that reuse them for efficient computation. Through extensive experiments on leading models like Llama3 and Qwen3 across diverse benchmarks for long-context understanding (e.g., LongBench, RULER) and complex reasoning (e.g., AIME24, OlympiadBench), we demonstrate that LycheeDecode achieves generative quality comparable to, and at times surpassing even the full-attention baseline. Crucially, this is accomplished with up to a 2.7x speedup at a 128K context length. By preserving the functional diversity of attention heads, our fine-grained strategy overcomes the performance bottlenecks of existing methods, providing a powerful and validated pathway to both efficient and high-quality long-context LLM inference.</p>
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成</strong>（基于 arXiv 论文全文阅读），内容可能存在偏差，请以原论文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>LycheeDecode 提出了一种基于混合注意力头（Hybrid-Head）的稀疏解码方法，通过将注意力头区分为"检索头"（Retrieval Head）和"稀疏头"（Sparse Head），并利用 HardKuma 分布实现端到端的头角色学习，在 128K 上下文长度下实现 2.7 倍加速，同时保持甚至超越全注意力基线的生成质量。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>长上下文大语言模型（LLM）的普及暴露了一个关键瓶颈：解码过程中快速膨胀的键值（KV）缓存，这带来了巨大的内存和延迟开销。近期方法试图通过跨层共享单一的关键 token 集来缓解这一问题，但这种粗粒度的共享忽略了注意力头的功能多样性，从而损害了模型性能。为解决此问题，我们提出 LycheeDecode，一种以细粒度混合注意力头机制为核心的高效解码方法，采用硬件高效的 top-k 选择策略。具体而言，新型的基于 HardKuma 的机制将注意力头分为少量"检索头"（动态识别关键 token）和多数"稀疏头"（复用检索结果以高效计算）。通过对 Llama3 和 Qwen3 等领先模型在长上下文理解（如 LongBench、RULER）和复杂推理（如 AIME24、OlympiadBench）等多种基准上进行大量实验，我们证明 LycheeDecode 可以达到与全注意力基线相当、有时甚至超越的生成质量。关键是，这在 128K 上下文长度下实现了高达 2.7 倍的加速。通过保持注意力头的功能多样性，我们的细粒度策略克服了现有方法的性能瓶颈，为高效且高质量的长上下文 LLM 推理提供了一条经过验证的强大途径。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>长上下文推理的 KV 缓存瓶颈</strong>：随着 LLM 支持的上下文长度从数千扩展到百万级 token，自回归解码中 KV 缓存的线性增长导致内存占用和推理延迟急剧增加。</li>
+<li><strong>现有层级共享策略的局限</strong>：TidalDecode、OmniKV 等方法发现相邻层间关键 token 高度相似，采用层级共享策略。但论文通过热力图可视化发现，同一层不同注意力头的 top-k 重叠率差异巨大（从 0% 到 100%），说明统一的层级共享过于简化。</li>
+<li><strong>头角色识别的离散优化难题</strong>：DuoAttention 等方法通过学习连续变量来区分头类型，但推理时需要四舍五入为二值，导致训练-推理不一致，影响性能。</li>
+<li><strong>核心洞察</strong>：注意力头具有功能多样性，应该采用更细粒度的头级策略来区分"检索头"和"稀疏头"，实现更精确的 token 选择与共享。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">整体框架</h3>
+<p>LycheeDecode 将每个注意力头分配为两种角色之一：</p>
+<ul>
+<li><strong>检索头（Retrieval Head, h ∈ H_R）</strong>：执行全上下文注意力计算，从完整 KV 缓存中识别并选择 top-k 关键 token，将选中的 token 集传播到下一层对应头。</li>
+<li><strong>稀疏头（Sparse Head, h ∈ H_S）</strong>：仅在前一层传播的 token 集上执行稀疏注意力计算，不再重新选择 token，因此可大幅减少计算量和 KV 缓存加载开销。</li>
+</ul>
+<h3 id="_6">头级稀疏解码</h3>
+<ul>
+<li><strong>检索头操作</strong>：标准密集注意力 A(l)_h = softmax(q(l)_h (K(l)_h)^T / √d_k)，然后通过 argsTopK 选出 top-k 个最高注意力权重的 token 索引，传递给下一层。</li>
+<li><strong>稀疏头操作</strong>：O(l)_h = softmax(q(l)_h (K(l)_h[S(l)_h])^T / √d_k) · V(l)_h[S(l)_h]，其中 S(l)_h 是从前一层继承的 token 集，稀疏头不选择新 token，集合不变传播。</li>
+</ul>
+<h3 id="hardkuma">HardKuma 分布用于头角色学习</h3>
+<ul>
+<li><strong>问题</strong>：头类型分配是离散二值优化问题，直接优化连续变量（如 DuoAttention）会导致训练-推理不一致。</li>
+<li><strong>解决方案</strong>：引入 Hard Kumaraswamy (HardKuma) 分布，这是一种可重参数化的近二值分布：</li>
+<li>从均匀分布采样 u ~ U(0,1)，通过 Kumaraswamy 分布的逆 CDF 变换为 s = (1 - u^(1/β))^(1/α)</li>
+<li>线性拉伸到更宽区间 (p, q)，其中 p &lt; 0, q &gt; 1</li>
+<li>通过 hard-sigmoid 截断：z = min(1, max(0, s'))</li>
+<li>
+<p>该过程使概率质量集中在 0 和 1 处，同时保持几乎处处可微</p>
+</li>
+<li>
+<p><strong>训练阶段</strong>：每个头计算全注意力和稀疏注意力两种注意力图，通过 HardKuma 采样值线性组合：Ã(l)_h = z(l)_h · A(l)_R,h + (1 - z(l)_h) · A(l)_S,h</p>
+</li>
+<li><strong>推理阶段</strong>：确定性分配——若 E[z(l)_h] &gt; 0.5 则为检索头，否则为稀疏头。</li>
+<li><strong>损失函数</strong>：知识蒸馏损失 L_distill，对齐学生模型 logits 与全注意力教师模型 logits。</li>
+<li><strong>稀疏度控制</strong>：拉格朗日松弛，通过可学习拉格朗日乘子 λ 自适应地约束活跃检索头数量（目标 L0 范数 E[∥z∥₀]）。</li>
+</ul>
+<h3 id="_7">自定义高效内核</h3>
+<ul>
+<li>使用 TileLang 实现混合头块稀疏解码内核。</li>
+<li><strong>工作负载均衡策略</strong>：将所有头的块计算聚合为统一工作池，再均匀分割给 GPU 线程块，避免因头类型不同导致的负载不均。</li>
+<li>采用在线 softmax 算法处理分块注意力计算。</li>
+<li>在 128K 上下文、batch size=8 的全稀疏配置下，内核最高可实现 7 倍加速（相对于 FlashAttention-2）。</li>
+</ul>
+<h3 id="_8">训练设置</h3>
+<ul>
+<li>在 Booksum 数据集上插入 passkey，通过蒸馏损失训练。</li>
+<li>单卡 A100 80G，3000 步，单 batch，仅需数小时。</li>
+<li>HardKuma 参数 α, β 初始化为 1（均匀分布）。</li>
+<li>关键 token 预算：序列长度的 30%。</li>
+<li>检索头预算：32 个（与 TidalDecode 的两层全注意力 + 两层选择层的 8 KV 头数量一致）。</li>
+</ul>
+<hr />
+<h2 id="_9">实验结果</h2>
+<h3 id="longbench">长上下文理解（LongBench）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>预算</th>
+<th>平均分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-3-8B</td>
+<td>Full Attention</td>
+<td>-</td>
+<td>32.33</td>
+</tr>
+<tr>
+<td>Llama-3-8B</td>
+<td>TidalDecode</td>
+<td>1024</td>
+<td>30.75</td>
+</tr>
+<tr>
+<td>Llama-3-8B</td>
+<td>LycheeDecode</td>
+<td>1024</td>
+<td>31.02</td>
+</tr>
+<tr>
+<td>Llama-3-8B</td>
+<td>LycheeDecode</td>
+<td>4096</td>
+<td><strong>33.07</strong>（超过全注意力）</td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td>Full Attention</td>
+<td>-</td>
+<td>33.02</td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td>SeerAttention-R</td>
+<td>4096</td>
+<td>33.38</td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td>LycheeDecode</td>
+<td>4096</td>
+<td><strong>33.48</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>LycheeDecode 在所有设置下均优于 TidalDecode 和 DuoAttention。</li>
+<li>在 Llama-3-8B 上以 4096 预算甚至超越全注意力基线（33.07 vs 32.33）。</li>
+<li>在 Qwen3-8B 上与 SeerAttention-R 相当或略优。</li>
+</ul>
+<h3 id="_10">复杂推理任务（数学推理）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>AIME24</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeepSeek-R1-Distill-Llama-8B</td>
+<td>Full Attention</td>
+<td>23.3</td>
+<td>35.4</td>
+</tr>
+<tr>
+<td>DeepSeek-R1-Distill-Llama-8B</td>
+<td>TidalDecode w/ Cache Correction</td>
+<td>33.3</td>
+<td>35.7</td>
+</tr>
+<tr>
+<td>DeepSeek-R1-Distill-Llama-8B</td>
+<td>LycheeDecode w/ Cache Correction</td>
+<td><strong>40.0</strong></td>
+<td><strong>40.3</strong></td>
+</tr>
+<tr>
+<td>DeepSeek-R1-Distill-Qwen-7B</td>
+<td>Full Attention</td>
+<td>40.0</td>
+<td>43.0</td>
+</tr>
+<tr>
+<td>DeepSeek-R1-Distill-Qwen-7B</td>
+<td>LycheeDecode w/ Cache Correction</td>
+<td><strong>46.7</strong></td>
+<td><strong>44.9</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>引入 Cache Correction（每 32 个 token 执行一次密集注意力修正）后，LycheeDecode 在数学推理上显著优于全注意力基线和 TidalDecode。</li>
+</ul>
+<h3 id="_11">效率评估</h3>
+<ul>
+<li><strong>端到端加速</strong>：在 128K 上下文、单 batch 下，LycheeDecode 相比全注意力加速 2.7 倍，相比 TidalDecode 快 1.73 倍。</li>
+<li><strong>内核级加速</strong>：在 128K 上下文、batch size=8 的全稀疏配置下，自定义内核相比 FlashAttention-2 最高实现 7 倍加速。</li>
+<li>TidalDecode 在短序列时延迟高于全注意力，仅在 &gt;64K 时才优于全注意力；LycheeDecode 在所有长度上均保持低延迟。</li>
+<li>TidalDecode 仅支持单 batch；LycheeDecode 支持多 batch。</li>
+</ul>
+<h3 id="_12">消融实验</h3>
+<ul>
+<li><strong>不同稀疏方法</strong>：Top-k、Top-p、Threshold、Ratio 四种策略中，Ratio 方法在同等稀疏度下通常表现最佳。</li>
+<li><strong>头识别方法</strong>：HardKuma 分布优于直接优化和 HardConcrete 分布。</li>
+<li><strong>训练-推理一致性</strong>：可视化显示 LycheeDecode 的 HardKuma 分布在训练中迅速收敛到 0/1 二值，而 DuoAttention 的连续变量在 1000 步后仍有大量灰色区域（0.4-0.6）。</li>
+</ul>
+<h3 id="ruler">RULER 基准</h3>
+<ul>
+<li>在短上下文（4K-8K）场景下与全注意力高度接近（62.79 vs 63.30）。</li>
+<li>在长上下文（32K-64K）下有轻微性能下降，但在固定 4096 token 预算下属于合理权衡。</li>
+</ul>
+<hr />
+<h2 id="_13">优势</h2>
+<ol>
+<li><strong>细粒度头级策略</strong>：相比 TidalDecode 等层级共享方法，LycheeDecode 在头级别区分检索头和稀疏头，更好地捕捉注意力头的功能多样性，从而获得更好的性能。</li>
+<li><strong>HardKuma 分布解决训练-推理不一致</strong>：通过近二值分布实现端到端可微的头类型学习，避免了连续松弛到二值转换的精度损失。</li>
+<li><strong>显著加速</strong>：在 128K 上下文下实现 2.7 倍端到端加速，内核级最高 7 倍加速。</li>
+<li><strong>性能无损甚至提升</strong>：在多个基准上达到或超越全注意力基线，特别是在数学推理任务中表现突出。</li>
+<li><strong>训练高效</strong>：仅需单卡 A100，3000 步，数小时即可完成训练。</li>
+<li><strong>噪声过滤效应</strong>：稀疏头通过仅关注检索头筛选的关键 token，天然过滤了无关上下文噪声，这是超越全注意力基线的一个可能原因。</li>
+<li><strong>多 batch 支持</strong>：相比 TidalDecode 仅支持单 batch，LycheeDecode 支持多 batch 部署。</li>
+</ol>
+<hr />
+<h2 id="_14">局限</h2>
+<ol>
+<li><strong>固定预算分配</strong>：当前为每个稀疏头分配固定预算，未考虑动态预算分配（如 Ada-KV），可能不是最优策略。</li>
+<li><strong>仅限文本模型</strong>：实验局限于纯文本 LLM，未扩展到多模态 LLM。</li>
+<li><strong>未集成推理服务框架</strong>：未与 vLLM 等高度优化的推理服务框架集成。</li>
+<li><strong>长上下文性能衰减</strong>：在 RULER 基准的超长上下文（64K）场景下，性能有所下降。</li>
+<li><strong>稀疏头的局限</strong>：稀疏头仅使用前一层传播的 token 集，可能无法完全捕捉长距离依赖。</li>
+<li><strong>训练数据依赖</strong>：头角色学习依赖 Passkey Retrieval 数据集，对特定任务的泛化性有待进一步验证。</li>
+<li><strong>训练阶段开销</strong>：训练时每个头需同时计算全注意力和稀疏注意力，增加了训练时的计算量。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>LycheeDecode 属于 <strong>KV Cache 稀疏化</strong>（kv_cache_sparse）研究方向，与以下研究密切相关：</p>
+<ol>
+<li><strong>基线方法</strong>：</li>
+<li><strong>TidalDecode (2025)</strong>：层级共享策略，LycheeDecode 的主要对比基线，在性能和多 batch 支持上均优于 TidalDecode。</li>
+<li>
+<p><strong>SeerAttention-R (2025)</strong>：基于可训练门控网络的方法，LycheeDecode 以更轻量的头识别策略达到可比性能。</p>
+</li>
+<li>
+<p><strong>相关工作</strong>：</p>
+</li>
+<li><strong>DuoAttention (2025)</strong>：检索头与流式头的分类，但使用连续松弛变量，训练-推理一致性较差。</li>
+<li><strong>RazorAttention (2025)</strong>：免训练压缩技术，仅对检索头保持全 KV 缓存。</li>
+<li><strong>Native Sparse Attention (2025)</strong>：通过大量后训练实现稀疏注意力。</li>
+<li>
+<p><strong>MiniCPM (2025)</strong>：端设备高效 LLM，也使用稀疏注意力。</p>
+</li>
+<li>
+<p><strong>研究方向拓展</strong>：</p>
+</li>
+<li><strong>KV 缓存压缩与选择</strong>：LycheeDecode 的头级策略可与 KV 缓存压缩方法（如 SnapKV、Ada-KV）结合。</li>
+<li><strong>多模态 LLM 高效推理</strong>：论文提出将该方法扩展到多模态 LLM（如 Uni-MoE）。</li>
+<li><strong>动态预算分配</strong>：结合 Ada-KV 等动态预算分配方法，可能进一步提升性能。</li>
+<li><strong>推理服务集成</strong>：与 vLLM 等框架集成是未来重要方向。</li>
+<li><strong>注意力头功能分析</strong>：LycheeDecode 的头级视角为理解 Transformer 注意力机制提供了新角度，与 "retrieval head" 相关研究（Wu et al., 2025）紧密相关。</li>
+<li><strong>自定义高效内核</strong>：TileLang 在混合头稀疏注意力中的应用，为 GPU kernel 优化提供了新的范式。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

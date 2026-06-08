@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,31 +161,252 @@
   
                 <h1 id="hashattention-semantic-sparsity-for-faster-inference">HashAttention: Semantic Sparsity for Faster Inference</h1>
 <blockquote>
-<p>Aditya Desai, Shuo Yang, Alejandro Cuadron, Matei Zaharia, Joseph E. Gonzalez, Ion Stoica</p>
+<p>Aditya Desai, Shuo Yang, Alejandro Cuadron, Matei Zaharia, Joseph E. Gonzalez, Ion Stoica
+UC Berkeley / ETH Zurich | ICML 2025 | <a href="https://arxiv.org/abs/2412.14468">arXiv:2412.14468</a> | <a href="https://openreview.net/forum?id=Em2oaXd8Dc">OpenReview</a> | <a href="https://github.com/xAlg-ai/HashAttention-1.0">Code</a></p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Leveraging long contexts is crucial for advanced AI systems, but attention
-computation poses a scalability challenge. While scaled dot-product attention
-(SDPA) exhibits token sparsity, i.e. only a few pivotal tokens significantly
-contribute to output, exploiting this sparsity remains challenging. Existing
-methods either suffer from quality degradation or require substantial
-additional resources. We show that identifying pivotal tokens is a Maximum
-Inner Product Search (MIPS) problem. However, existing MIPS solutions are not
-well-suited for SDPA, as they are not GPU-friendly and often underperform due
-to the separated query and key distributions. This paper introduces
-HashAttention, framing pivotal token identification as a recommendation
-problem. Given a query, HashAttention encodes keys and queries in Hamming
-space, capturing the required semantic similarity, using learned mapping
-functions. HashAttention efficiently identifies pivotal tokens for a given
-query using bitwise operations and computes attention using only these tokens,
-improving the overall attention efficiency. Trained on generic data,
-HashAttention reduces tokens used by up to <script type="math/tex">16\times</script> with minimal quality
-loss, requiring only 32 bits of auxiliary memory per token. Sparsity can be
-further improved to <script type="math/tex">32\times</script> through task-specific fine-tuning. On A100 GPU,
-at <script type="math/tex">32\times</script> sparsity, incorporating HashAttention reduces attention latency
-by up to <script type="math/tex">4.3\times</script> in GPT-FAST and <script type="math/tex">2.54\times</script> in FlashDecode, and achieves
-up to <script type="math/tex">3.12\times</script> higher throughput for GPT-FAST.</p>
+<blockquote>
+<p>⚠️ 本 note 由 AI Agent 自动生成，基于 arXiv 论文全文阅读后撰写，生成时间：2026-06-04。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>HashAttention 将注意力机制中的关键 token 识别问题转化为最大内积搜索（MIPS）问题，通过学习映射函数将 query 和 key 编码到 Hamming 空间，利用位运算高效筛选关键 token，实现最高 32× 的 KV Cache 稀疏化，同时仅需 32 位/token 的辅助内存开销。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>利用长上下文对高级 AI 系统至关重要，但注意力计算面临可扩展性挑战。虽然缩放点积注意力（SDPA）具有 token 稀疏性——即只有少数关键 token 对输出有显著贡献——但利用这种稀疏性仍然具有挑战性。现有方法要么存在质量下降问题，要么需要大量额外资源。本文证明了识别关键 token 是一个最大内积搜索（MIPS）问题。然而，现有的 MIPS 解决方案不适合 SDPA，因为它们对 GPU 不友好，并且由于 query 和 key 分布分离而经常表现不佳。本文提出 HashAttention，将关键 token 识别构建为推荐问题。给定一个 query，HashAttention 使用学习的映射函数将 key 和 query 编码到 Hamming 空间，捕获所需的语义相似性。HashAttention 使用位运算高效识别给定 query 的关键 token，仅使用这些 token 计算注意力，从而提高整体注意力效率。在通用数据上训练的 HashAttention 在最小质量损失下，将使用的 token 减少最多 16×，每个 token 仅需 32 位辅助内存。通过任务特定微调，稀疏度可进一步提高到 32×。在 A100 GPU 上，以 32× 稀疏度，结合 HashAttention 可将 GPT-FAST 中的注意力延迟降低最多 4.3×，FlashDecode 中降低最多 2.54×，GPT-FAST 吞吐量提高最多 3.12×。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">长上下文的挑战</h3>
+<p>现代 AI 应用（如长文档处理、多轮对话）需要高效的长上下文处理能力。LLM 模型需要预处理和存储大量文本为 KV Cache，用于处理各种 prompt。然而，SDPA 的计算成本随上下文长度线性增长。例如，Llama-3.1-8B 模型的 512K token KV Cache 高达 64GB（每 token 约 0.125 MB）。</p>
+<h3 id="_5">注意力稀疏性</h3>
+<p>SDPA 存在自然的 token 稀疏性——由于 softmax 操作，只有少数关键 token 对最终注意力计算有显著贡献。高效识别这些关键 token 是实现高效注意力的关键。</p>
+<h3 id="_6">现有方法的局限</h3>
+<ul>
+<li><strong>固定稀疏模式</strong>（如 StreamingLLM）：忽略上下文稀疏性的动态性，导致次优质量</li>
+<li><strong>KV Cache 丢弃策略</strong>（如 H2O、ScissorHands）：基于历史重要性丢弃 token，但丢弃后无法恢复，在多轮对话等场景中失效</li>
+<li><strong>基于启发式的动态稀疏</strong>（如 InfLLM、Quest）：召回率低，且需要大量辅助内存</li>
+<li><strong>基于图的近邻搜索</strong>（如 RetrievalAttention）：对 GPU 不友好，导致额外延迟</li>
+</ul>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="_8">核心思想</h3>
+<p>HashAttention 将注意力中的关键 token 识别问题建模为推荐问题：给定 query（用户）和 key-value 对（物品），选择最相关的子集。这个问题可以形式化为最大内积搜索（MIPS）问题。</p>
+<h3 id="_9">理论基础</h3>
+<h4 id="lemma-41">Lemma 4.1（最佳稀疏解）</h4>
+<p>在孤立 token 分析下，token i 对最终输出的贡献正比于 <script type="math/tex">a_i \|v_i\|_2</script>，其中 <script type="math/tex">a_i</script> 是注意力分数，<script type="math/tex">\|v_i\|_2</script> 是 value 向量的范数。</p>
+<h4 id="lemma-42mips">Lemma 4.2（MIPS 问题等价性）</h4>
+<p>token 重要性排序等价于内积 <script type="math/tex">\langle [q, 1], [k, \log(\|v\|_2)] \rangle</script> 的排序。因此，MIPS 可以转化为余弦相似度搜索（通过非对称变换）。</p>
+<h4 id="_10">位签名近似</h4>
+<p>余弦相似度可以通过随机签名投影的位签名近似（Locality-Sensitive Hashing，LSH）。但 HashAttention 使用学习的映射函数替代随机投影，以利用查询和键的分布模式。</p>
+<h3 id="hashattention">HashAttention 架构</h3>
+<h4 id="_11">三个子程序</h4>
+<ol>
+<li><strong>SCORE</strong>：给定 query 和 key-value 对，为每个 token 分配分数</li>
+<li><strong>TOPK</strong>：对分数进行 top-k 选择</li>
+<li><strong>GATHER-ATT</strong>：仅使用选中的 token 计算注意力</li>
+</ol>
+<h4 id="score">SCORE 函数</h4>
+<p>HashAttention 使用两个可学习的映射函数：
+- <script type="math/tex">\phi_{kv}: \mathbb{R}^{2d} \rightarrow [0,1]^b</script>：将 key-value 对编码到 b 维 Hamming 空间
+- <script type="math/tex">\phi_q: \mathbb{R}^d \rightarrow [0,1]^b</script>：将 query 编码到 b 维 Hamming 空间</p>
+<p>映射函数形式：
+<script type="math/tex; mode=display">\phi(x) = \text{relu}(\text{sign}(F(x)))</script>
+其中 <script type="math/tex">F</script> 是前馈网络（FFN），sign 函数提取位。位被打包到整数中。</p>
+<p>SCORE 函数定义为：
+<script type="math/tex; mode=display">\text{SCORE}(k, v, q) = -H(\phi_{kv}(k, v), \phi_q(q))</script>
+其中 <script type="math/tex">H</script> 是 Hamming 距离。</p>
+<h4 id="_12">推理时的位操作</h4>
+<p>在解码热路径中：
+- 计算 query 签名
+- 使用位运算计算 Hamming 距离：
+  <script type="math/tex; mode=display">H(\phi_{kv}(k,v), \phi_q(q)) = \text{bitcount}(\text{bitwise\_xor}(\phi_{int,kv}(k,v), \phi_{int,q}(q)))</script>
+</p>
+<h3 id="_13">训练细节</h3>
+<h4 id="_14">训练目标</h4>
+<p>将 HashAttention 训练为分类问题：每个嵌入预测与其关联注意力头的 top-k token。使用二元交叉熵损失的多分类设置。</p>
+<h4 id="_15">类别不平衡处理</h4>
+<p>随着上下文长度增加，类别不平衡加剧（如 64K 上下文时，top-64 token 仅占 0.1%）。使用类别权重：
+<script type="math/tex; mode=display">\text{class1-weight} = \alpha + \beta \times \text{context-length}</script>
+其中 <script type="math/tex">\alpha</script> 和 <script type="math/tex">\beta</script> 是超参数。</p>
+<h4 id="_16">软分区</h4>
+<p>训练时使用 tanh 函数替代 sign 函数作为软版本。</p>
+<h4 id="_17">训练数据</h4>
+<ul>
+<li>在通用数据集（OpenWebText）上训练，适用于多种任务</li>
+<li>可在任务特定数据上微调以获得更好结果</li>
+<li>在短序列（&lt;=64K）上训练的 HashAttention 不能自然扩展到更长序列</li>
+<li>以块（chunk）方式运行 LLM 推理，每个块结束后独立训练 HashAttention 模块</li>
+</ul>
+<h3 id="token-vs">Token 级稀疏 vs 块级稀疏</h3>
+<p>与 Quest 或 InfLLM 的块级稀疏不同，HashAttention 使用 token 级稀疏。token 级稀疏在推理时不可避免，因为训练假设全注意力，重要 token 可能不在同一块中。</p>
+<h4 id="gpu">GPU 内存访问优化</h4>
+<p>HashAttention 基于 vLLM 的分页注意力框架实现，每个 token 对应一个页（页大小=1）。通过页注意力内核选择性计算注意力，利用 GPU 缓存行（128 字节）实现最优内存带宽利用。</p>
+<hr />
+<h2 id="_18">实验结果</h2>
+<h3 id="_19">质量评估</h3>
+<h4 id="table-1longbench">Table 1：固定预算下各方法对比（LongBench）</h4>
+<p>在 512 关键 token 预算下，使用 Llama-3.1-8B-Instruct：
+- <strong>HashAttention</strong>（32 bits PTPA）：平均 64.15 分，最佳
+- <strong>Double Sparsity</strong>（64 bits）：62.78 分
+- <strong>Quest</strong>（64 bits）：63.33 分
+- <strong>InfLLM</strong>（256 bits）：48.23 分
+- <strong>H2O</strong>：43.47 分
+- <strong>StreamingLLM</strong>：33.28 分</p>
+<h4 id="table-2longbench-16">Table 2：LongBench 全面评测（16× 稀疏度）</h4>
+<p>Llama-3.1-8B-Instruct：
+- Full 模型：48.78（AVG），51.48（AVG̅_pc）
+- HashAttention-16×：48.00（AVG），51.08（AVG̅_pc）
+- 质量下降仅 0.78 分</p>
+<h4 id="table-3ruler16k">Table 3：RULER@16K 评测</h4>
+<p>Llama-3.1-8B-Instruct：
+- Full 模型：90.66
+- HashAttention-16×：89.53
+- 质量下降仅 1.13 分</p>
+<h4 id="pareto">Pareto 曲线分析</h4>
+<ul>
+<li>HashAttention 在 32 bits PTPA 辅助内存下，比 Quest 和 DS 高效约 4×</li>
+<li>在 16× 稀疏度下，HashAttention 几乎保持完整模型质量</li>
+<li>通过微调（HashAttention*），LLama-3.1-8B-Instruct 可在 32× 稀疏度下保持完整模型质量</li>
+<li>某些稀疏度在某些任务上反而提升质量（可能是稀疏注意力避免了干扰 token）</li>
+</ul>
+<h3 id="_20">效率评估</h3>
+<h4 id="gpt-fast32">注意力延迟（GPT-FAST，32× 稀疏度）</h4>
+<ul>
+<li>GPT-FAST 延迟：最高 4.3× 降低（在 8K 上下文后）</li>
+<li>FlashDecode 延迟：最高 2.54× 降低（在 65K 上下文后）</li>
+</ul>
+<h4 id="gpt-fast">端到端吞吐量（GPT-FAST）</h4>
+<ul>
+<li>32K 序列长度：最高 3.12× 吞吐量提升</li>
+<li>吞吐量提升比率随序列长度增加而下降（TOPK 操作在更长序列上变得昂贵）</li>
+</ul>
+<h4 id="score-vs">SCORE 计算延迟 vs 完整内积</h4>
+<p>即使使用 512 位，位运算内核的延迟仍低于完整内积计算（128 维向量，float16 精度）</p>
+<h3 id="_21">消融实验</h3>
+<h4 id="vs-lsh">学习位签名 vs LSH 位签名</h4>
+<ul>
+<li>HashAttention 使用 32 位签名即可获得良好性能</li>
+<li>LSH 即使使用超过 1000 位也难以达到可比性能</li>
+<li>LSH 不利用数据分布，因此效率较低</li>
+</ul>
+<h4 id="query-key">Query 和 Key 分布对齐</h4>
+<p>HashAttention 学习的映射函数使 query 和 key 分布更接近（余弦相似度显著提高）</p>
+<h4 id="_22">位宽度与质量</h4>
+<p>更多位带来更好的 top-k 预测质量（cross-entropy loss 降低）</p>
+<hr />
+<h2 id="_23">优势</h2>
+<ol>
+<li><strong>高效稀疏化</strong>：最高 32× 稀疏度，仅需 32 位/token 辅助内存</li>
+<li><strong>GPU 友好</strong>：基于位运算，可完全在 GPU 上运行，无需 CPU 卸载</li>
+<li><strong>高质量</strong>：在所有基线方法中，以最小辅助内存实现最佳质量</li>
+<li><strong>动态稀疏性</strong>：基于 query 动态选择关键 token，优于固定稀疏模式</li>
+<li><strong>可微调</strong>：可在任务特定数据上进一步微调以获得更好结果</li>
+<li><strong>Token 级稀疏</strong>：避免块级稀疏的局限性</li>
+<li><strong>通用性</strong>：在通用数据集上训练，适用于多种任务</li>
+<li><strong>理论基础扎实</strong>：有严格的数学推导支持（MIPS 到 Hamming 空间的转化）</li>
+<li><strong>端到端加速</strong>：不仅优化注意力计算，还优化整体推理吞吐量</li>
+</ol>
+<hr />
+<h2 id="_24">局限</h2>
+<ol>
+<li><strong>需要训练</strong>：每个模型需要单独训练 HashAttention（不像 DS 等方法只需校准）</li>
+<li><strong>上下文长度限制</strong>：在短序列上训练的 HashAttention 不能自然扩展到更长序列</li>
+<li><strong>GPU 内存限制</strong>：仅评估了 KV Cache 在 GPU 上的情况，未评估 KV Cache 在 CPU RAM 的极长上下文场景</li>
+<li><strong>当前实现</strong>：<script type="math/tex">\phi_{kv}</script> 仅作用于 key 向量，未利用 value 向量特征</li>
+<li><strong>长序列吞吐量下降</strong>：随序列长度增加，TOPK 操作变得昂贵，吞吐量提升比率下降</li>
+<li><strong>中文任务质量下降</strong>：在中文数据集上（训练时仅用英文数据）质量下降较明显（平均 2.66 分）</li>
+<li><strong>并非完全免训练</strong>：虽然比训练密集型方法轻量，但仍需要至少一次训练</li>
+<li><strong>单一实验框架</strong>：主要在 GPT-FAST 和 FlashDecode 上评估，未在其他推理框架上验证</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv-cache">KV Cache 稀疏化方向</h3>
+<p>HashAttention 是 KV Cache 稀疏化的重要进展，与以下研究方向密切相关：
+- <strong>StreamingLLM</strong>（固定稀疏模式）→ HashAttention（动态学习稀疏模式）
+- <strong>H2O/ScissorHands</strong>（KV Cache 丢弃）→ HashAttention（不丢弃 token，动态选择）
+- <strong>Double Sparsity</strong>（通道选择）→ HashAttention（学习位签名）
+- <strong>Quest/InfLLM</strong>（块级稀疏）→ HashAttention（token 级稀疏）</p>
+<h3 id="_25">推荐系统与注意力机制的交叉</h3>
+<p>HashAttention 将注意力机制中的关键 token 识别问题建模为推荐问题，这为推荐系统和注意力机制的交叉研究提供了新视角。未来可以探索：
+- 更复杂的推荐模型（如协同过滤、图神经网络）在注意力机制中的应用
+- 多模态注意力的稀疏化
+- 跨语言注意力的稀疏化</p>
+<h3 id="_26">量化与稀疏化的结合</h3>
+<p>HashAttention 使用 32 位位签名，与量化方法（如 Double Sparsity 的量化）具有互补性。未来可以探索：
+- 量化与哈希的联合优化
+- 更低比特量化下的哈希精度
+- 端到端量化-哈希联合训练</p>
+<h3 id="_27">极长上下文处理</h3>
+<p>HashAttention 的 token 级稀疏和 GPU 友好性使其适合极长上下文场景。未来可以探索：
+- 超长上下文（&gt;1M token）的稀疏化
+- 分布式 KV Cache 管理
+- 与 RingAttention 等分布式注意力方法的结合</p>
+<h3 id="_28">实用化与工程优化</h3>
+<p>HashAttention 的实际应用需要考虑：
+- 与现有推理框架（如 vLLM、TensorRT-LLM）的集成
+- 自动化训练和微调流程
+- 在线学习和自适应稀疏化
+- 与 FlashAttention 的进一步结合</p>
+<hr />
+<h2 id="_29">关键数据</h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>稀疏度（通用）</td>
+<td>16×</td>
+</tr>
+<tr>
+<td>稀疏度（微调后）</td>
+<td>32×</td>
+</tr>
+<tr>
+<td>辅助内存</td>
+<td>32 bits/token</td>
+</tr>
+<tr>
+<td>GPT-FAST 延迟降低</td>
+<td>4.3×</td>
+</tr>
+<tr>
+<td>FlashDecode 延迟降低</td>
+<td>2.54×</td>
+</tr>
+<tr>
+<td>GPT-FAST 吞吐量提升</td>
+<td>3.12×</td>
+</tr>
+<tr>
+<td>LongBench 质量下降（16×）</td>
+<td>0.78 分</td>
+</tr>
+<tr>
+<td>RULER@16K 质量下降（16×）</td>
+<td>1.13 分</td>
+</tr>
+<tr>
+<td>模型</td>
+<td>Llama-3.1-8B-Instruct, Mistral-7B-Instruct-v0.3</td>
+</tr>
+<tr>
+<td>评估数据集</td>
+<td>LongBench, RULER@16K</td>
+</tr>
+<tr>
+<td>训练数据</td>
+<td>OpenWebText</td>
+</tr>
+<tr>
+<td>论文页数</td>
+<td>17 页</td>
+</tr>
+</tbody>
+</table>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

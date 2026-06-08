@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,25 +164,537 @@
 <p>MiniMax, Aonian Li, Bangwei Gong, Bo Yang, Boji Shan, Chang Liu, Cheng Zhu, Chunhao Zhang, Congchao Guo, Da Chen, Dong Li, Enwei Jiao, Gengxin Li, Guojun Zhang, Haohai Sun, Houze Dong, Jiadai Zhu, Jiaqi Zhuang, Jiayuan Song, Jin Zhu, Jingtao Han, Jingyang Li, Junbin Xie, Junhao Xu, Junjie Yan, Kaishun Zhang, Kecheng Xiao, Kexi Kang, Le Han, Leyang Wang, Lianfei Yu, Liheng Feng, Lin Zheng, Linbo Chai, Long Xing, Meizhi Ju, Mingyuan Chi, Mozhi Zhang, Peikai Huang, Pengcheng Niu, Pengfei Li, Pengyu Zhao, Qi Yang, Qidi Xu, Qiexiang Wang, Qin Wang, Qiuhui Li, Ruitao Leng, Shengmin Shi, Shuqi Yu, Sichen Li, Songquan Zhu, Tao Huang, Tianrun Liang, Weigao Sun, Weixuan Sun, Weiyu Cheng, Wenkai Li, Xiangjun Song, Xiao Su, Xiaodong Han, Xinjie Zhang, Xinzhu Hou, Xu Min, Xun Zou, Xuyang Shen, Yan Gong, Yingjie Zhu, Yipeng Zhou, Yiran Zhong, Yongyi Hu, Yuanxiang Fan, Yue Yu, Yufeng Yang, Yuhao Li, Yunan Huang, Yunji Li, Yunpeng Huang, Yunzhi Xu, Yuxin Mao, Zehan Li, Zekang Li, Zewei Tao, Zewen Ying, Zhaoyang Cong, Zhen Qin, Zhenhua Fan, Zhihang Yu, Zhuo Jiang, Zijia Wu</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>We introduce MiniMax-01 series, including MiniMax-Text-01 and MiniMax-VL-01,
-which are comparable to top-tier models while offering superior capabilities in
-processing longer contexts. The core lies in lightning attention and its
-efficient scaling. To maximize computational capacity, we integrate it with
-Mixture of Experts (MoE), creating a model with 32 experts and 456 billion
-total parameters, of which 45.9 billion are activated for each token. We
-develop an optimized parallel strategy and highly efficient
-computation-communication overlap techniques for MoE and lightning attention.
-This approach enables us to conduct efficient training and inference on models
-with hundreds of billions of parameters across contexts spanning millions of
-tokens. The context window of MiniMax-Text-01 can reach up to 1 million tokens
-during training and extrapolate to 4 million tokens during inference at an
-affordable cost. Our vision-language model, MiniMax-VL-01 is built through
-continued training with 512 billion vision-language tokens. Experiments on both
-standard and in-house benchmarks show that our models match the performance of
-state-of-the-art models like GPT-4o and Claude-3.5-Sonnet while offering 20-32
-times longer context window. We publicly release MiniMax-01 at
-https://github.com/MiniMax-AI.</p>
+<blockquote>
+<p><strong>⚠️ 本文档由 AI Agent 自动生成，仅供学术参考，内容基于论文原文。生成时间：2025年。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>MiniMax-01 是首个将 Lightning Attention（线性注意力）大规模应用于商用级基础模型的系列，通过混合架构（7个线性注意力 + 1个 softmax 注意力）结合 MoE（32 个专家，456B 总参数，45.9B 激活参数），实现百万级上下文窗口，性能媲美 GPT-4o 和 Claude-3.5-Sonnet，同时拥有 20-32 倍更长的上下文处理能力。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>我们推出 MiniMax-01 系列，包括 MiniMax-Text-01 和 MiniMax-VL-01，它们在处理更长上下文方面具有卓越能力，同时性能与顶级模型相当。核心在于 Lightning Attention 及其高效扩展。为最大化计算能力，我们将其与混合专家（MoE）相结合，构建了一个拥有 32 个专家、4560 亿总参数的模型，其中每个 token 激活 459 亿参数。我们开发了优化的并行策略和高效的计算-通信重叠技术，用于 MoE 和 Lightning Attention。该方法使我们能够在拥有数十亿参数的模型上，跨越数百万 token 的上下文窗口进行高效训练和推理。MiniMax-Text-01 的上下文窗口在训练时可达 100 万 token，在推理时以可承受的成本扩展至 400 万 token。我们的视觉语言模型 MiniMax-VL-01 通过 5120 亿视觉语言 token 的持续训练构建。在标准和内部基准上的实验表明，我们的模型在性能上与 GPT-4o 和 Claude-3.5-Sonnet 等最先进模型相当，同时提供 20-32 倍更长的上下文窗口。我们已在 https://github.com/MiniMax-AI 公开发布 MiniMax-01。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">问题背景</h3>
+<ol>
+<li><strong>长上下文需求与现实差距</strong>：当前大多数 LLM 的上下文窗口为 32K-256K token，远不能满足实际需求——无论是处理整本专业书籍、辅助整个编程项目，还是通过多示例充分利用上下文学习。</li>
+<li><strong>Transformer 架构的计算瓶颈</strong>：标准 softmax 注意力的 O(n²) 复杂度使得扩展上下文窗口变得极为困难，计算需求增长远超硬件能力。</li>
+<li><strong>现有替代方案的局限</strong>：稀疏注意力、线性注意力、状态空间模型（Mamba 系列）、线性 RNN 等方法虽然有理论优势，但在商业规模模型中尚未成功部署。</li>
+<li><strong>核心目标</strong>：构建一个在标准基准上性能与顶级商业模型相当，但上下文窗口长一个数量级的模型。</li>
+</ol>
+<h3 id="_5">创新驱动力</h3>
+<ul>
+<li>需要<strong>在实践中高效</strong>的线性注意力，而非仅理论可行</li>
+<li>需要在<strong>性能、效率、长上下文</strong>三者间取得平衡</li>
+<li>需要<strong>从头设计</strong>训练和推理框架，因为现有框架主要为 softmax 注意力优化</li>
+</ul>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1">1. 模型架构设计</h3>
+<h4 id="11">1.1 混合注意力架构</h4>
+<p>MiniMax-Text-01 采用混合架构，结合 Lightning Attention（线性注意力）和 Softmax Attention：
+- <strong>架构模式</strong>：每 7 个 TransNormer 块（线性注意力）后接 1 个 Transformer 块（softmax 注意力），共 80 层
+- <strong>注意力头</strong>：64 个头，每个头维度 128
+- <strong>GQA（分组查询注意力）</strong>：softmax 注意力层使用 group size 为 8 的 GQA
+- <strong>RoPE（旋转位置编码）</strong>：仅应用于 softmax 注意力一半的维度，base frequency 为 10,000
+- <strong>隐藏维度</strong>：6144</p>
+<h4 id="12-mixture-of-experts-moe">1.2 Mixture of Experts (MoE)</h4>
+<ul>
+<li><strong>专家数量</strong>：32 个专家</li>
+<li><strong>路由策略</strong>：Top-2 路由</li>
+<li><strong>参数规模</strong>：总参数 456B，每个 token 激活 45.9B 参数</li>
+<li><strong>FFN 隐藏维度</strong>：9216</li>
+<li><strong>训练策略</strong>：Token-drop 策略（非 dropless），每个专家设有容量上限</li>
+<li><strong>负载均衡</strong>：Global Router 策略（基于 GShard 改进），通过额外的 allgather 通信同步各 EP 组的 token 数量</li>
+<li><strong>辅助损失</strong>：<script type="math/tex">L_{aux} = \alpha_{aux} \cdot \frac{1}{E} \sum_{i=1}^{E} f_i \cdot m_i</script>
+</li>
+</ul>
+<h4 id="13-lightning-attention">1.3 Lightning Attention（核心创新）</h4>
+<p><strong>基本原理</strong>：
+- 线性注意力利用"右乘核技巧"将二次复杂度转化为线性复杂度
+- 标准 softmax 注意力：<script type="math/tex">O = \text{Softmax}(QK^T/\sqrt{d})V</script>，复杂度 O(nd²)
+- 线性注意力：<script type="math/tex">O = \text{Norm}(Q(K^TV))</script>，复杂度 O(nd²)</p>
+<p><strong>Lightning Attention 的关键技术</strong>：
+- <strong>I/O 感知的分块（Tiling）技术</strong>：避免 cumsum 操作
+- <strong>块内（intra-block）计算</strong>：使用左乘（left product）
+- <strong>块间（inter-block）计算</strong>：使用右乘（right product）
+- <strong>递归更新 KV</strong>：<script type="math/tex">kv_t = kv_{t-1} + k_t v_t^T</script>
+- <strong>最终复杂度</strong>：<script type="math/tex">O(nd² + nBd)</script>，其中 B 为块大小
+- <strong>推理复杂度</strong>：<script type="math/tex">O(d²)</script>（与序列长度无关），而 softmax 注意力为 O(nd²)</p>
+<p><strong>为何选择混合而非纯线性注意力</strong>：
+- 纯线性注意力在检索任务（NIAH）上表现不佳，不适合 LLM
+- 混合模型（7:1 比例）不仅匹配，而且<strong>超越</strong> softmax 注意力在检索和外推任务上的表现
+- 原因分析：softmax 注意力的循环容量为 O(d)，而 lightning attention 的容量为 O(d²/h)（d &gt; h），因此具有更大容量</p>
+<h3 id="2">2. 分布式训练优化</h3>
+<h4 id="21-moe">2.1 MoE 优化</h4>
+<ul>
+<li><strong>EP-ETP 重叠策略</strong>：引入 Expert Tensor Parallel (ETP) 和 Expert Data Parallel (EDP)</li>
+<li><strong>通信优化</strong>：将 all-to-all 通信与专家计算重叠，减少 50% 纯通信开销</li>
+<li><strong>并行策略解耦</strong>：MoE 组件与非 MoE 组件的并行策略完全解耦</li>
+</ul>
+<h4 id="22">2.2 长上下文优化</h4>
+<ul>
+<li><strong>Varlen Ring Attention</strong>：针对数据打包格式优化的 Ring Attention，避免 padding 浪费</li>
+<li><strong>LASP+（改进的线性注意力序列并行）</strong>：</li>
+<li>原始 LASP 存在串行依赖，计算效率低</li>
+<li>LASP+ 通过本地前缀和 + AllGather + 全局前缀和，将串行计算转为并行</li>
+<li>支持 varlen 特性处理不同长度的 batch 输入</li>
+</ul>
+<h4 id="23">2.3 推理优化</h4>
+<ul>
+<li><strong>Batched Kernel Fusion</strong>：融合多个 memory-bound 内核，减少中间结果存储和内存访问</li>
+<li><strong>分离 Prefill 和 Decoding 执行</strong>：使用两个不同内核和 CUDA 流并行调度</li>
+<li><strong>多级 Padding</strong>：动态选择计算规模（32/64/128/256），最小化 padding 开销</li>
+<li><strong>StridedBatchedMatmul 扩展</strong>：利用 NVIDIA cuBLAS 库优化 GEMM 操作</li>
+<li><strong>最终效果</strong>：MFU &gt; 75%（H20 GPU），在 1M token 序列长度下，softmax 注意力占延迟 95%，lightning attention 不到 12%</li>
+</ul>
+<h3 id="3">3. 预训练</h3>
+<h4 id="31">3.1 数据</h4>
+<ul>
+<li><strong>语料来源</strong>：学术文献、书籍、网页内容、编程代码</li>
+<li><strong>质量增强</strong>：基于奖励模型（前代 5B 激活/60B 总参数 MoE 模型）的多维质量评估，聚焦知识深度、实用性、类别分布</li>
+<li><strong>格式优化</strong>：嵌套文档格式，平衡自然理解与结构一致性</li>
+<li><strong>数据混合</strong>：平衡采样策略，高权重于高质量内容，同时保持类别多样性</li>
+<li><strong>Tokenizer</strong>：Byte-level BPE，词表大小 200K，多语言上采样</li>
+</ul>
+<h4 id="32">3.2 训练策略</h4>
+<ul>
+<li><strong>初始化</strong>：Xavier 初始化，DeepNorm 缩放因子 α=(2N)^0.25, β=(8N)^(-0.25)</li>
+<li><strong>优化器</strong>：AdamW（β1=0.9, β2=0.95, weight decay=0.1）</li>
+<li><strong>序列长度</strong>：8192</li>
+<li><strong>批大小</strong>：逐步从 16M → 32M（69B tokens）→ 64M（790B tokens）→ 128M（4.7T tokens），基于临界批大小与训练损失的幂律关系</li>
+<li><strong>学习率</strong>：线性预热 500 步至 2×10⁻⁴，恒定学习率训练 7.2T tokens，后续调整为 1.3×10⁻⁴（3.2T tokens），快速衰减阶段指数衰减至 3×10⁻⁵</li>
+<li><strong>总训练量</strong>：超过 10T tokens</li>
+<li><strong>MoE 辅助损失系数</strong>：0.01</li>
+</ul>
+<h4 id="33">3.3 长上下文扩展（三阶段）</h4>
+<ol>
+<li><strong>128K</strong>：RoPE 频率 5M，300B tokens，短/中/长数据比例 30%/70%/0%</li>
+<li><strong>512K</strong>：RoPE 频率 10M，32B tokens，比例 35%/35%/30%</li>
+<li><strong>1M</strong>：RoPE 频率 10M，26B tokens，比例 30%/30%/40%</li>
+</ol>
+<h4 id="34">3.4 模型规格确定</h4>
+<ul>
+<li>目标约束：单机 8×80G GPU，8-bit 量化下处理 1M+ tokens</li>
+<li>优化问题：在总参数 &lt; 500B、计算预算约束下，最小化损失</li>
+<li>通过缩放定律拟合和小模型实验，最终确定 45.9B 激活参数、456B 总参数</li>
+</ul>
+<h3 id="4-post-training">4. 后训练（Post-training）</h3>
+<h4 id="41-sft">4.1 SFT（监督微调）</h4>
+<ul>
+<li>多阶段构建：使用领域专家模型，通过迭代 SFT 和 RL 生成高质量响应</li>
+<li>拒绝采样：多温度采样，通过奖励层次选择最佳示范</li>
+</ul>
+<h4 id="42-rldpo">4.2 离线 RL（DPO）</h4>
+<ul>
+<li>在 SFT 训练的 prompt 分布上进行</li>
+<li>生成不同温度的响应，通过奖励模型选择最佳/最差响应构建偏好对</li>
+</ul>
+<h4 id="43-rl-grpo">4.3 在线 RL（改进的 GRPO）</h4>
+<ul>
+<li><strong>重要性采样权重裁剪</strong>：解决梯度不稳定性</li>
+<li><strong>KL 散度优化</strong>：通过方差-偏差权衡分析，降低梯度方差</li>
+<li><strong>平衡优势估计</strong>：确保正负样本的奖励贡献均衡</li>
+</ul>
+<h4 id="44">4.4 安全对齐</h4>
+<ul>
+<li>安全类别特化 prompt + 真实用户数据收集 + prompt 增强</li>
+<li>无害奖励模型：基于安全规则，同时融入 helpfulness 原则，防止不合理拒绝</li>
+</ul>
+<h4 id="45">4.5 多阶段长上下文适配训练</h4>
+<ol>
+<li><strong>Stage I</strong>：短上下文 SFT（8192 tokens），2 epochs</li>
+<li><strong>Stage II</strong>：扩展上下文训练（1,032,192 tokens），50% 长上下文 prompt，2 epochs</li>
+<li><strong>Stage III</strong>：短上下文 DPO（8192 tokens），1 epoch</li>
+<li><strong>Stage IV</strong>：长上下文 DPO（1,032,192 tokens），1 epoch</li>
+<li><strong>Stage V</strong>：短上下文在线 RL（8192 tokens），1 epoch</li>
+</ol>
+<h3 id="5-minimax-vl-01">5. 视觉语言模型（MiniMax-VL-01）</h3>
+<h4 id="51">5.1 架构</h4>
+<ul>
+<li><strong>ViT-MLP-LLM 范式</strong>：ViT 编码器（303M 参数）+ 两层 MLP 投影器（随机初始化）+ MiniMax-Text-01</li>
+<li><strong>视觉编码器</strong>：ViT-L/14，对比学习（CoCa 方式），336×336 分辨率下 ImageNet-1K 零样本分类准确率 80.55%</li>
+<li><strong>动态分辨率策略</strong>：输入图像按预定义网格配置列表调整（336×336 至 2016×2016），保留标准缩略图（336×336）</li>
+<li><strong>特点</strong>：利用长上下文处理能力，直接使用原始高维特征（无降采样），避免信息损失</li>
+</ul>
+<h4 id="52">5.2 训练流程</h4>
+<ul>
+<li><strong>Stage I（模态对齐）</strong>：80B tokens，仅更新图像适配器和视觉编码器，336×336 分辨率</li>
+<li><strong>Stage II（视觉理解增强）</strong>：420B 多模态 tokens，全部参数更新，多模态数据与文本后训练数据比例 20:1</li>
+<li><strong>Stage III（用户体验增强）</strong>：44.8B 多模态 tokens，1 epoch，真实用户交互风格数据</li>
+<li><strong>Stage IV（偏好增强）</strong>：DPO，40,000 图文对，早期停止防止过拟合</li>
+</ul>
+<h4 id="53">5.3 数据规模</h4>
+<ul>
+<li><strong>Caption 数据</strong>：6.94 亿唯一图文对，1.8 亿精炼 caption</li>
+<li><strong>Description 数据</strong>：1 亿图像，每图约 300 tokens 描述</li>
+<li><strong>Instruction 数据</strong>：覆盖文档/文本处理（36.1%）、图像分析（20.6%）、物体识别（18.8%）、数学（5.1%）等 13 个类别</li>
+<li><strong>总训练 tokens</strong>：5120 亿视觉语言 tokens</li>
+</ul>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="1-minimax-text-01">1. 核心文本基准性能（MiniMax-Text-01）</h3>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>GPT-4o</th>
+<th>Claude-3.5-Sonnet</th>
+<th>DeepSeek-V3</th>
+<th>MiniMax-Text-01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMLU*</td>
+<td>85.7</td>
+<td>88.3</td>
+<td>88.5</td>
+<td><strong>88.5</strong></td>
+</tr>
+<tr>
+<td>MMLU-Pro*</td>
+<td>74.4</td>
+<td>78.0</td>
+<td>75.9</td>
+<td><strong>75.7</strong></td>
+</tr>
+<tr>
+<td>C-SimpleQA</td>
+<td>64.6</td>
+<td>56.8</td>
+<td>64.8</td>
+<td><strong>67.4</strong></td>
+</tr>
+<tr>
+<td>IFEval (avg)</td>
+<td>84.1</td>
+<td>90.1</td>
+<td>87.3</td>
+<td><strong>89.1</strong></td>
+</tr>
+<tr>
+<td>GPQA* (diamond)</td>
+<td>46.0</td>
+<td>65.0</td>
+<td>59.1</td>
+<td>54.4</td>
+</tr>
+<tr>
+<td>MATH*</td>
+<td>76.6</td>
+<td>74.1</td>
+<td>84.6</td>
+<td><strong>77.4</strong></td>
+</tr>
+<tr>
+<td>HumanEval</td>
+<td>90.2</td>
+<td>93.7</td>
+<td>92.1</td>
+<td>86.9</td>
+</tr>
+<tr>
+<td>Arena-Hard</td>
+<td>92.4</td>
+<td>87.6</td>
+<td>91.4</td>
+<td>89.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- C-SimpleQA 上超越所有模型（67.4），中文知识边界更广
+- MMLU、IFEval、Arena-Hard 均进入前三
+- MATH 优于 GPT-4o、Claude-3.5-Sonnet、Llama-3.1-405B
+- GPQA Diamond 超过大多数开源指令微调 LLM 和 GPT-4o</p>
+<h3 id="2_1">2. 长上下文性能</h3>
+<h4 id="ruler-13">RULER 基准（长上下文理解，13 任务平均准确率）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>4k</th>
+<th>8k</th>
+<th>16k</th>
+<th>32k</th>
+<th>64k</th>
+<th>128k</th>
+<th>256k</th>
+<th>512k</th>
+<th>1M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-4o</td>
+<td>0.970</td>
+<td>0.921</td>
+<td>0.890</td>
+<td>0.888</td>
+<td>0.884</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Claude-3.5-Sonnet</td>
+<td>0.965</td>
+<td>0.960</td>
+<td>0.957</td>
+<td>0.950</td>
+<td>0.952</td>
+<td>0.938</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Gemini-1.5-Pro</td>
+<td>0.962</td>
+<td>0.960</td>
+<td>0.960</td>
+<td>0.958</td>
+<td>0.938</td>
+<td>0.917</td>
+<td>0.916</td>
+<td>0.861</td>
+<td>0.850</td>
+</tr>
+<tr>
+<td>MiniMax-Text-01</td>
+<td>0.963</td>
+<td>0.961</td>
+<td>0.953</td>
+<td>0.954</td>
+<td>0.943</td>
+<td><strong>0.947</strong></td>
+<td><strong>0.945</strong></td>
+<td><strong>0.928</strong></td>
+<td><strong>0.910</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 128K 以上，MiniMax-Text-01 建立显著优势
+- 1M token 上下文下，MiniMax-Text-01（0.910）远超 Gemini-1.5-Pro（0.850）
+- 在超过 200K 的长上下文场景中表现显著优于竞争模型</p>
+<h4 id="longbench-v2w-cot">LongBench-V2（w/ CoT）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>overall</th>
+<th>easy</th>
+<th>hard</th>
+<th>short</th>
+<th>medium</th>
+<th>long</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-4o</td>
+<td>51.4</td>
+<td>54.2</td>
+<td>49.7</td>
+<td>59.6</td>
+<td>48.6</td>
+<td>43.5</td>
+</tr>
+<tr>
+<td>Claude-3.5-Sonnet</td>
+<td>46.7</td>
+<td>55.2</td>
+<td>41.5</td>
+<td>53.9</td>
+<td>41.9</td>
+<td>44.4</td>
+</tr>
+<tr>
+<td>MiniMax-Text-01</td>
+<td><strong>56.5</strong></td>
+<td><strong>66.1</strong></td>
+<td><strong>50.5</strong></td>
+<td><strong>61.7</strong></td>
+<td><strong>56.7</strong></td>
+<td>47.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 在 w/ CoT 设置下达到所有评测系统的 SOTA
+- 在 w/o CoT 下同样表现优异</p>
+<h4 id="mr-niah-niah">MR-NIAH（多轮 NIAH）</h4>
+<ul>
+<li>MiniMax-Text-01 在英中文评价中均展现强劲性能</li>
+<li>在大长度输入时性能下降更少，体现长上下文检索的鲁棒性</li>
+</ul>
+<h4 id="mtob">MTOB（长上下文学习，机器翻译）</h4>
+<ul>
+<li>eng→kalam (ChrF) 增量：delta half book 45.7，delta full book 45.6，均超越所有竞争模型</li>
+<li>证明了长上下文训练过程中 in-context learning 能力逐步增强</li>
+</ul>
+<h3 id="3_1">3. 预填充延迟</h3>
+<ul>
+<li>MiniMax-Text-01 在 H800 GPU 上的预填充延迟显著低于 GPT-4o、Claude-3.5-Sonnet、Qwen2.5-72B、DeepSeek V3 的 API</li>
+<li>与 Llama-3-70B（H800）相比，MiniMax-Text-01 在长序列上表现更优</li>
+</ul>
+<h3 id="4-minimax-vl-01">4. 视觉语言模型性能（MiniMax-VL-01）</h3>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>GPT-4o</th>
+<th>Claude-3.5-Sonnet</th>
+<th>Gemini-2.0-Flash</th>
+<th>MiniMax-VL-01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMMU*</td>
+<td>63.5</td>
+<td>72.0</td>
+<td>70.6</td>
+<td>68.5</td>
+</tr>
+<tr>
+<td>ChartQA*</td>
+<td>88.1</td>
+<td>90.8</td>
+<td>88.3</td>
+<td><strong>91.7</strong></td>
+</tr>
+<tr>
+<td>DocVQA*</td>
+<td>91.1</td>
+<td>94.2</td>
+<td>92.9</td>
+<td><strong>96.4</strong></td>
+</tr>
+<tr>
+<td>OCRBench</td>
+<td>806</td>
+<td>790</td>
+<td>846</td>
+<td><strong>865</strong></td>
+</tr>
+<tr>
+<td>AI2D*</td>
+<td>83.1</td>
+<td>82.0</td>
+<td>85.1</td>
+<td>83.3</td>
+</tr>
+<tr>
+<td>MathVista*</td>
+<td>62.1</td>
+<td>65.4</td>
+<td>73.1</td>
+<td>68.6</td>
+</tr>
+<tr>
+<td>M-LongDoc</td>
+<td>41.4</td>
+<td>31.4</td>
+<td>31.4</td>
+<td>32.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 在 ChartQA（91.7）、DocVQA（96.4）、OCRBench（865）上超越 GPT-4o
+- 在长上下文文档理解上表现优异
+- 高级数学推理（OlympiadBench）仍有差距
+- 在内部用户体验基准上接近 GPT-4o 水平</p>
+<h3 id="5">5. 训练速度</h3>
+<ul>
+<li>Lightning Attention 在序列长度变化时保持恒定训练速度</li>
+<li>是唯一一个训练速度超过 FlashAttention2 的线性模型</li>
+</ul>
+<h3 id="6">6. 架构消融实验</h3>
+<ul>
+<li><strong>Hybrid-lightning vs. 纯 softmax</strong>：在 MoE 架构中，Hybrid-lightning 在多数基准上优于纯 softmax</li>
+<li><strong>PostNorm vs. PreNorm</strong>：PostNorm（使用 DeepNorm）在所有评估指标上一致优于 PreNorm</li>
+<li><strong>MoE vs. Dense</strong>：在相同计算预算下，MoE 模型显著优于 Dense 模型</li>
+</ul>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>超长上下文能力</strong>：训练时 1M tokens，推理时可扩展至 4M tokens，远超 GPT-4o（128K）和 Claude-3.5-Sonnet（200K）</li>
+<li><strong>性能与效率的平衡</strong>：456B 总参数但仅 45.9B 激活，在性能上媲美甚至超越顶级商业模型</li>
+<li><strong>线性注意力的首次大规模成功部署</strong>：通过混合架构解决了线性注意力的检索能力不足问题</li>
+<li><strong>高效推理</strong>：MFU &gt; 75%（H20 GPU），预填充延迟显著低于竞争对手</li>
+<li><strong>开源</strong>：模型权重和 API 公开发布，促进社区发展</li>
+<li><strong>视觉-语言多模态能力</strong>：MiniMax-VL-01 在多个视觉理解基准上表现优异</li>
+<li><strong>完善的训练流程</strong>：从数据处理、预训练、长上下文扩展到后训练对齐，形成了系统化的方法论</li>
+<li><strong>创新的分布式训练框架</strong>：EP-ETP 重叠、LASP+、Varlen Ring Attention 等关键技术</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>长上下文评估不足</strong>：当前评估数据集主要针对人工或简化场景，实际应用中的长文本推理评估有限</li>
+<li><strong>架构残余</strong>：仍保留 1/8 的 vanilla softmax 注意力，限制了完全消除计算开销的可能性</li>
+<li><strong>复杂编程任务表现不足</strong>：预训练阶段的编程数据集仍有限，高级编程任务性能有待提升</li>
+<li><strong>部分基准表现</strong>：GPQA Diamond（54.4）低于 Claude-3.5-Sonnet（65.0）和 Gemini-2.0-Flash（62.1）</li>
+<li><strong>VL 模型高级数学推理</strong>：OlympiadBench（24.2）低于 Gemini-2.0-Flash（46.1）</li>
+<li><strong>硬件依赖</strong>：需要大量 GPU 资源（1500-2500 个 H800 GPU），限制了可复现性</li>
+<li><strong>纯线性注意力的限制</strong>：虽然混合架构效果良好，但纯线性注意力在 LLM 中仍不适用（检索能力不足）</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1_1">1. 高效注意力机制</h3>
+<ul>
+<li><strong>线性注意力的规模化部署</strong>：MiniMax-01 证明了线性注意力可以大规模商用，为后续研究提供了重要参考</li>
+<li><strong>混合注意力架构设计</strong>：7:1 的 lightning/softmax 比例是一个有效的平衡点，但是否可以通过更好的设计消除 softmax 注意力</li>
+<li><strong>I/O 感知的高效实现</strong>：Lightning Attention 的 tiling 技术和 kernel 优化对硬件效率至关重要</li>
+</ul>
+<h3 id="2-moe">2. 高效 MoE 架构</h3>
+<ul>
+<li><strong>负载均衡策略</strong>：Global Router 和 EP-ETP 重叠策略对 MoE 训练效率的提升</li>
+<li><strong>专家并行优化</strong>：ETP/EDP 并行策略可以推广到其他 MoE 模型</li>
+</ul>
+<h3 id="3_2">3. 高效长上下文处理</h3>
+<ul>
+<li><strong>Varlen Ring Attention</strong>：解决数据打包格式下的 ring attention 问题</li>
+<li><strong>LASP+</strong>：将串行计算转为并行，大幅提升线性注意力的训练效率</li>
+<li><strong>推理优化技术</strong>：Kernel 融合、多级 Padding、分离 Prefill/Decoding 等技术</li>
+</ul>
+<h3 id="4">4. 高效训练策略</h3>
+<ul>
+<li><strong>三阶段长上下文扩展</strong>：通过渐进式数据混合和 RoPE 频率调整实现上下文窗口扩展</li>
+<li><strong>数据效率研究</strong>：重复感知的实验框架、平衡采样策略</li>
+<li><strong>临界批大小</strong>：基于训练损失的幂律关系动态调整批大小</li>
+</ul>
+<h3 id="5_1">5. 多模态高效架构</h3>
+<ul>
+<li><strong>ViT-MLP-LLM 范式</strong>：轻量视觉编码器 + MLP 投影器 + 长上下文 LLM</li>
+<li><strong>动态分辨率策略</strong>：利用长上下文处理能力避免降采样信息损失</li>
+</ul>
+<h3 id="6_1">6. 高效对齐方法</h3>
+<ul>
+<li><strong>多阶段对齐训练</strong>：SFT → DPO → 在线 RL 的完整流程</li>
+<li><strong>改进的 GRPO</strong>：重要性采样权重裁剪、KL 散度优化、平衡优势估计</li>
+</ul>
+<h3 id="7">7. 未来研究方向</h3>
+<ul>
+<li>完全消除 softmax 注意力的架构</li>
+<li>更高效的长上下文评估方法</li>
+<li>更强的编程和推理能力</li>
+<li>更低资源消耗的训练和推理方案</li>
+</ul>
+<hr />
+<h2 id="_10">参考信息</h2>
+<ul>
+<li><strong>论文标题</strong>：MiniMax-01: Scaling Foundation Models with Lightning Attention</li>
+<li><strong>发表时间</strong>：2025年1月14日</li>
+<li><strong>arXiv</strong>：https://arxiv.org/abs/2501.08313v1</li>
+<li><strong>代码</strong>：https://github.com/MiniMax-AI/MiniMax-01</li>
+<li><strong>机构</strong>：MiniMax</li>
+<li><strong>关键词</strong>：structure_design, Lightning Attention, MoE, Linear Attention, Long Context</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

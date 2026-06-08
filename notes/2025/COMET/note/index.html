@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>COMET: Towards Partical W4A4KV4 LLMs Serving - Efficient Paper</title>
+    <title>COMET: Towards Practical W4A4KV4 LLMs Serving - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "COMET: Towards Partical W4A4KV4 LLMs Serving";
+        var mkdocs_page_name = "COMET: Towards Practical W4A4KV4 LLMs Serving";
         var mkdocs_page_input_path = "notes/2025/COMET/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">COMET: Towards Partical W4A4KV4 LLMs Serving</li>
+      <li class="breadcrumb-item active">COMET: Towards Practical W4A4KV4 LLMs Serving</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,31 +159,260 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="comet-towards-partical-w4a4kv4-llms-serving">COMET: Towards Partical W4A4KV4 LLMs Serving</h1>
+                <h1 id="comet-towards-practical-w4a4kv4-llms-serving">COMET: Towards Practical W4A4KV4 LLMs Serving</h1>
+<blockquote>
+<p><strong>本笔记由 AI Agent 自动生成，基于论文全文阅读与分析。生成时间：2026-06-05。</strong></p>
+</blockquote>
 <p><a class="glightbox" href="../fig5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Quantization is a widely-used compression technology to reduce the overhead
-of serving large language models (LLMs) on terminal devices and in cloud data
-centers. However, prevalent quantization methods, such as 8-bit
-weight-activation or 4-bit weight-only quantization, achieve limited
-performance improvements due to poor support for low-precision (e.g., 4-bit)
-activation. This work, for the first time, realizes practical W4A4KV4 serving
-for LLMs, fully utilizing the INT4 tensor cores on modern GPUs and reducing the
-memory bottleneck caused by the KV cache. Specifically, we propose a novel
-fine-grained mixed-precision quantization algorithm (FMPQ) that compresses most
-activations into 4-bit with negligible accuracy loss. To support
-mixed-precision matrix multiplication for W4A4 and W4A8, we develop a highly
-optimized W4Ax kernel. Our approach introduces a novel mixed-precision data
-layout to facilitate access and fast dequantization for activation and weight
-tensors, utilizing the GPU's software pipeline to hide the overhead of data
-loading and conversion. Additionally, we propose fine-grained streaming
-multiprocessor (SM) scheduling to achieve load balance across different SMs. We
-integrate the optimized W4Ax kernel into our inference framework, COMET, and
-provide efficient management to support popular LLMs such as LLaMA-3-70B.
-Extensive evaluations demonstrate that, when running LLaMA family models on a
-single A100-80G-SMX4, COMET achieves a kernel-level speedup of
-\textbf{<script type="math/tex">2.88\times</script>} over cuBLAS and a \textbf{<script type="math/tex">2.02 \times</script>} throughput
-improvement compared to TensorRT-LLM from an end-to-end framework perspective.</p>
+<h2 id="_1">一句话总结</h2>
+<p>COMET 首次实现了实用的 W4A4KV4 LLM 推理服务，通过细粒度混合精度量化算法 FMPQ 和高度优化的 W4Ax 核函数，在单卡 A100-80G 上实现了 2.88× 的内核加速和 2.02× 的端到端吞吐提升。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>量化是一种广泛使用的压缩技术，用于降低在终端设备和云数据中心服务大型语言模型（LLM）的开销。然而，现有的量化方法（如 8-bit 权重-激活量化或 4-bit 仅权重量化）由于对低精度（如 4-bit）激活的支持不足，只能实现有限的性能提升。本文首次实现了实用的 W4A4KV4 LLM 服务，充分利用现代 GPU 的 INT4 张量核心，并减少由 KV 缓存引起的内存瓶颈。具体而言，我们提出了一种新颖的细粒度混合精度量化算法（FMPQ），可以将大多数激活压缩为 4-bit，且精度损失可忽略不计。为了支持 W4A4 和 W4A8 的混合精度矩阵乘法，我们开发了一个高度优化的 W4Ax 核函数。我们的方法引入了一种新颖的混合精度数据布局，便于激活和权重张量的访问和快速反量化，利用 GPU 的软件流水线隐藏数据加载和转换的开销。此外，我们提出了细粒度流多处理器（SM）调度，以实现不同 SM 之间的负载平衡。我们将优化的 W4Ax 核函数集成到推理框架 COMET 中，并提供高效的管理以支持 LLaMA-3-70B 等主流 LLM。大量评估表明，在单卡 A100-80G-SMX4 上运行 LLaMA 系列模型时，COMET 实现了内核级别相对于 cuBLAS 的 2.88× 加速，以及端到端框架视角下相对于 TensorRT-LLM 的 2.02× 吞吐提升。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="llm">LLM 推理挑战</h3>
+<p>随着 LLM 参数量增长至数百亿，推理系统面临两大核心挑战：
+1. <strong>内存瓶颈</strong>：大模型需要大量显存，而多数系统在单 GPU 上推理，显存有限
+2. <strong>高服务成本</strong>：LLM 推理按 token 计费，长序列处理进一步增加成本</p>
+<h3 id="_4">现有量化方法的局限</h3>
+<ul>
+<li><strong>仅权重量化（W4A16）</strong>：权重反量化到 16-bit 与激活对齐，浪费计算资源，无法充分利用现代 GPU 的 4-bit 张量核心；在大 batch 和长序列场景下，KV 缓存成为主要瓶颈</li>
+<li><strong>W8A8 量化（SmoothQuant）</strong>：虽然同时量化权重和激活，但采用保守的缩放策略，仍局限于 INT8 格式，无法充分发挥低精度计算能力</li>
+</ul>
+<h3 id="_5">核心洞察</h3>
+<ul>
+<li>LLM 激活中的离群值（outlier）集中在特定特征维度（&lt;1% 的通道），可分离量化</li>
+<li>现代 GPU（如 A100）的 INT4 张量核心吞吐量是 INT8 的 2×，应充分利用</li>
+<li>KV 缓存是内存瓶颈（128K 序列长度时占总存储 72%），应低比特量化</li>
+<li>激活-激活运算（KV 缓存相关）是内存带宽受限，权重-激活运算在大 batch 下是计算受限</li>
+</ul>
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1-fmpq">1. FMPQ 算法：细粒度混合精度量化</h3>
+<h4 id="_7">激活分布分析</h4>
+<ul>
+<li>LLM 激活中存在离群值，其幅度是典型值的 10-100 倍</li>
+<li>这些离群值集中在特定通道（如 LLaMA-7B 的某些激活通道）</li>
+<li>不能丢弃离群值（对模型表示能力至关重要）</li>
+<li>解决方案：对离群值通道用 8-bit 量化，正常值通道用 4-bit 量化</li>
+</ul>
+<h4 id="_8">块级混合精度量化</h4>
+<ul>
+<li><strong>核心问题</strong>：传统通道级量化与 GPU 最小计算粒度不对齐（A100 的 FP16 张量核心最小粒度为 64×64×32），导致计算效率低</li>
+<li><strong>解决方案</strong>：将激活张量沿通道维度分块，块大小 k=128，与 GPU 计算粒度对齐</li>
+<li><strong>通道置换策略</strong>：</li>
+<li>通过数据采样识别含离群值的通道</li>
+<li>使用置换策略将这些通道聚集到同一个块中</li>
+<li>对应的权重矩阵也需要置换以保持计算等价性</li>
+<li>效果：仅 &lt;20% 的块需要 8-bit 量化，其余均为 4-bit</li>
+<li>通道置换开销仅占总运行时间的 0.7%</li>
+</ul>
+<h4 id="kv">KV 缓存量化策略</h4>
+<ul>
+<li>KV 缓存用于激活-激活运算，高度内存带宽受限</li>
+<li>更适合低比特量化，且 KV 缓存比输入激活更易量化</li>
+<li>采用通道级 4-bit 非对称分组量化</li>
+<li>实验验证精度损失可忽略</li>
+</ul>
+<h4 id="_9">量化比例</h4>
+<ul>
+<li>平均 84% 以上的 GEMM 运算使用 W4A4</li>
+<li>LLaMA-30B 仅 8% 的激活需要 8-bit 量化</li>
+<li>平均仅 16% 的激活量化为 8-bit</li>
+</ul>
+<h3 id="2-comet-w4ax">2. COMET-W4Ax 内核设计</h3>
+<h4 id="_10">设计概述</h4>
+<ul>
+<li>基于 tile 的 GEMM 计算，不同 tile 使用不同精度（INT4 或 INT8）</li>
+<li>每个 tile 调用一个线程块（TB）计算</li>
+<li>使用 reduction 运算符跨多个 TB 累积结果</li>
+<li>解决两大挑战：(1) 混合精度编码的数据管理开销；(2) W4A4 和 W4A8 GEMM 操作引起的负载不平衡</li>
+</ul>
+<h4 id="simt">SIMT 增强的软件流水线</h4>
+<ul>
+<li><strong>两级重叠策略</strong>：</li>
+<li>第一级：将片外内存加载隐藏在数据转换和张量核心计算阶段中</li>
+<li>第二级：利用 GPU 双缓冲隐藏张量核心计算和数据传输/转换的开销</li>
+<li><strong>具体实现</strong>：</li>
+<li>使用两个共享内存缓冲区（buffer0 和 buffer1）存储不同数据 tile</li>
+<li>迭代 0：张量核心从 buffer0 加载并计算，同时 buffer1 从全局内存加载数据</li>
+<li>迭代 1：张量核心从 buffer1 加载并计算，同时 buffer0 预取数据</li>
+<li>通过 cp.async 指令从全局内存加载数据到共享内存</li>
+<li>使用 async_copy_barrier 和 sync_threads 确保数据一致性和线程同步</li>
+<li><strong>W4A4 vs W4A8</strong>：</li>
+<li>W4A4：直接使用 mma 指令</li>
+<li>W4A8：使用 CUDA 核心将 INT4 转换为 INT8，结果存储在共享内存中</li>
+</ul>
+<h4 id="_11">混合精度数据管理</h4>
+<p><strong>权重交织（Weight Interleave）用于 W4A8 GEMM</strong>：
+- 直接在 8-bit 格式中传输 4-bit 权重会导致共享内存冲突
+- 解决方案：重新排列权重数据布局，使单个线程所需的权重地址连续
+- 效果：避免共享内存冲突，减少 ldmatrix 指令使用（从 2 条减少到 1 条）</p>
+<p><strong>快速 INT4to8 转换</strong>：
+- 朴素方法：每个转换需要最多 10 条指令
+- 优化策略：
+  1. 位置交换：交换 W1 和 W2 的存储位置，使数据直接对齐 8-bit 格式地址
+  2. 零扩展替代符号扩展：零扩展可用单条零填充指令实现，每个值乘以 16，在缩放参数中除以 16 保证一致性
+- 效果：每个值的转换开销从 10 条指令减少到仅 2 条</p>
+<h4 id="sm">细粒度 SM 调度</h4>
+<p><strong>问题</strong>：不同 block 需要不同精度的 mma 指令，导致 SM 利用率低
+- W4A4 的 INT4 张量核心吞吐量是 INT8 的 2×，但需要等待其他 SM 同步</p>
+<p><strong>三大策略</strong>：</p>
+<ol>
+<li><strong>同步屏障最小化</strong>：</li>
+<li>不需要每次 mma 迭代都插入同步屏障</li>
+<li>仅在所有迭代完成后需要同步</li>
+<li>
+<p>减少 SM 间通信开销</p>
+</li>
+<li>
+<p><strong>Tile 重映射（Tile Remapping）</strong>：</p>
+</li>
+<li>不将 INT4 和 INT8 mma 计算固定映射到特定 SM</li>
+<li>将 INT4 和 INT8 mma 计算均匀分布到所有 SM</li>
+<li>
+<p>确保每个 SM 负载平衡</p>
+</li>
+<li>
+<p><strong>Tile 分解（Tile Decomposition）</strong>：</p>
+</li>
+<li>传统的 tile-SM 绑定是一对一的</li>
+<li>通过任务窃取（task-stealing）机制实现一对多绑定</li>
+<li>空闲 SM 可从繁忙 SM 偷取计算任务</li>
+<li>例如：SM2 和 SM3 空闲时，从 SM0 和 SM1 偷取部分计算</li>
+</ol>
+<h3 id="3-comet">3. COMET 系统实现</h3>
+<ul>
+<li><strong>代码规模</strong>：基于 TensorRT-LLM 和 CUTLASS，额外实现 7,000 行 C++ 和 CUDA 代码</li>
+<li><strong>内核接口</strong>：W4Ax 内核可编译为独立的 .so 动态库</li>
+<li><strong>API 设计</strong>：</li>
+<li>C++ API：便于集成到 TensorRT-LLM 和 DeepSpeed 等推理系统</li>
+<li>Python 接口（通过 pybind）：便于集成到 PyTorch 和 Huggingface</li>
+<li><strong>内存管理</strong>：采用 vLLM 的 KV 缓存管理优化（PagedAttention）</li>
+<li><strong>Tile 配置</strong>：</li>
+<li>大多数情况：128 × 128 × 128（m×n×k）</li>
+<li>INT4 张量核心：warp shape 为 64 × 64 × 128</li>
+<li>INT8 张量核心：warp shape 为 64 × 64 × 64</li>
+<li>W4A4 tile 的 warp 数量仅为 W4A8 tile 的一半</li>
+</ul>
+<h2 id="_12">实验结果</h2>
+<h3 id="_13">算法评估</h3>
+<p><strong>评测数据集</strong>：
+- 困惑度（Perplexity）：WikiText2
+- 零样本准确率：PIQA、ARC（含 ARC-e 和 ARC-c）、HellaSwag、WinoGrande</p>
+<p><strong>评测模型</strong>：LLaMA-1/2/3 系列（7B/13B/30B/65B/70B/8B）</p>
+<p><strong>算法基线</strong>：
+- W8A8：SmoothQuant
+- W4A16：GPTQ、AWQ、OmniQuant
+- W4Ax：FMPQ
+- W4A4：OmniQuant（全 W4A4）
+- W4A8 KV4：QoQ
+- W4AxKV4：FMPQ</p>
+<p><strong>困惑度结果</strong>：
+- FMPQ（W4Ax）：相比 W8A8 SmoothQuant 和 W4A16 OmniQuant，仅增加极少困惑度（LLaMA-1-7B 仅增加 0.10）
+- FMPQ（W4AxKV4）：引入 KV 缓存量化后，平均困惑度增加仅 0.05，可忽略
+- 全 W4A4 OmniQuant：困惑度增加超过 5.21，无法实用
+- 仅 16% 的激活被量化为 8-bit（LLaMA-30B 仅 8%）</p>
+<p><strong>零样本准确率结果</strong>（LLaMA-3 系列）：
+- FMPQ（W4AxKV4）相比 W4A16 OmniQuant，准确率仅下降 0.75%
+- LLaMA-3-8B：FMPQ 在 HellaSwag 上甚至优于 OmniQuant
+- LLaMA-3-8B：FMPQ 在 HellaSwag 上甚至优于 W4A8 KV4 方法 QoQ</p>
+<h3 id="_14">内核性能</h3>
+<p><strong>评测环境</strong>：NVIDIA A100-80G-SXM4，CUDA 12.1</p>
+<p><strong>评测模型</strong>：LLaMA 系列、Mistral-7B、Qwen2-72B、OPT-175B</p>
+<p><strong>基线</strong>：
+- cuBLAS-W16A16
+- TRT-LLM-W4A16
+- TRT-LLM-W8A8</p>
+<p><strong>结果</strong>：
+- COMET-W4Ax 平均加速：<strong>2.88×</strong>（相对于 cuBLAS-W16A16）
+- 相对于 TRT-LLM-W4A16：<strong>1.77×</strong>
+- 相对于 TRT-LLM-W8A8：<strong>1.33×</strong>
+- 不同 batch size 下的表现：
+  - BS=16：2.91×
+  - BS=64：2.97×
+  - BS=256：2.75×
+- TRT-LLM-W4A16 在小 batch 时性能好，大 batch 时性能提升有限（1.10× 和 1.38×）
+- COMET-W4Ax 在所有 batch size 下均表现优异</p>
+<h3 id="_15">消融实验</h3>
+<p><strong>评测模型</strong>：LLaMA-3-8B、LLaMA-3-70B</p>
+<p><strong>比较版本</strong>：
+- W4A8（仅 8-bit）
+- W4Ax w/o optimization（朴素实现）
+- W4Ax w/ remapping（tile 重映射）
+- COMET-W4Ax（完全优化）</p>
+<p><strong>结果</strong>：
+- 朴素 W4Ax 实现仅获得 1.31× 和 1.18× 加速
+- 加入 tile/SM 重映射后提升到 1.56× 和 1.60×
+- 完全优化的 COMET-W4Ax 达到 1.71× 和 1.67×
+- 验证了各优化策略的有效性</p>
+<h3 id="_16">端到端评估</h3>
+<p><strong>评测环境</strong>：单卡 A100-80G-SXM4</p>
+<p><strong>评测设置</strong>：
+- 输入/输出序列长度：1024/512 和 128/128
+- 评测模型：Mistral-7B、LLaMA 系列、Qwen1.5-72B</p>
+<p><strong>基线</strong>：TRT-LLM-W4A16</p>
+<p><strong>结果</strong>：
+- 平均吞吐提升：<strong>2.02×</strong>（1024/512）和 <strong>1.63×</strong>（128/128）
+- 模型级别提升：
+  - 7B/8B：1.18-1.93×
+  - LLaMA-2-13B：1.74×
+  - LLaMA-1-30B：2.81×
+  - 70B/72B：1.28-3.27×
+- 在相同 batch size 下，COMET 持续优于 TRT-LLM 最佳配置，加速 1.37×
+- 在长输出序列（512 tokens）下表现更好（4-bit KV 缓存缓解了大 batch 执行瓶颈）
+- 即使在小模型（8B）和短输出（128/128）下，COMET 仍实现 1.56× 吞吐提升</p>
+<h2 id="_17">优势</h2>
+<ol>
+<li><strong>首创性</strong>：首次实现实用的 W4A4KV4 LLM 推理服务，充分挖掘 INT4 张量核心的计算能力</li>
+<li><strong>高效量化</strong>：FMPQ 算法仅 16% 激活需要 8-bit 量化（LLaMA-30B 仅 8%），大部分使用 W4A4，精度损失可忽略</li>
+<li><strong>系统级优化</strong>：COMET-W4Ax 内核从算法到系统层面进行深度优化，包括数据布局、软件流水线、SM 调度</li>
+<li><strong>显著加速</strong>：内核级 2.88× 加速（cuBLAS），端到端 2.02× 吞吐提升（TRT-LLM）</li>
+<li><strong>通用性</strong>：支持 LLaMA 系列、Mistral、Qwen 等多种模型，跨 7B 到 175B</li>
+<li><strong>易集成</strong>：提供 C++ API 和 Python 接口，可无缝集成到 TensorRT-LLM、DeepSpeed 等推理系统</li>
+<li><strong>KV 缓存优化</strong>：4-bit KV 缓存有效缓解长序列场景下的内存瓶颈，支持更大 batch size</li>
+<li><strong>可扩展性</strong>：在大 batch 和长序列场景下性能提升更显著</li>
+</ol>
+<h2 id="_18">局限</h2>
+<ol>
+<li><strong>GPU 平台限制</strong>：主要在 NVIDIA A100-80G-SXM4 上评估，对其他 GPU（如 H100、AMD GPU）的适应性有待验证</li>
+<li><strong>模型范围</strong>：主要评估 LLaMA 系列和少量其他模型，对非 Transformer 架构的适用性未验证</li>
+<li><strong>量化粒度固定</strong>：块大小 k=128 是基于实验选择的固定值，可能不是所有场景的最优</li>
+<li><strong>内核实现复杂度</strong>：7,000 行 C++ 和 CUDA 代码，实现复杂，维护成本高</li>
+<li><strong>精度-性能权衡</strong>：虽然精度损失可忽略，但在某些极端场景（如长上下文、复杂推理）下可能出现问题</li>
+<li><strong>仅支持推理</strong>：未涉及训练或微调场景</li>
+<li><strong>与现有系统集成</strong>：虽然提供了 API，但与 TensorRT-LLM 等系统的集成可能需要额外工作</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1">1. 低比特量化推理优化</h3>
+<p>COMET 的核心贡献在于实现了 W4A4KV4 的实用推理，这与 EfficientPaper 关注的高效推理方向高度相关。相关研究方向包括：
+- 更激进的量化方案（如 2-bit、3-bit）的探索
+- 量化与蒸馏、剪枝等技术的联合优化
+- 量化模型在边缘设备上的部署</p>
+<h3 id="2-kv">2. KV 缓存优化</h3>
+<p>COMET 的 4-bit KV 缓存量化解决了长序列场景下的内存瓶颈，相关方向：
+- KV 缓存压缩与稀疏化
+- 动态 KV 缓存管理
+- 长上下文推理的内存效率优化</p>
+<h3 id="3">3. 异构计算与内核优化</h3>
+<p>COMET 的 W4Ax 内核设计和 SM 调度策略，展示了现代 GPU 上混合精度计算的优化方法，相关方向：
+- 针对新硬件（如 H100、AMD MI300）的内核优化
+- 异构 GPU 架构下的负载均衡
+- 软件流水线与数据布局的协同设计</p>
+<h3 id="4">4. 混合精度推理框架</h3>
+<p>COMET 作为推理框架的设计思路，与 EfficientPaper 关注的系统级优化相关：
+- 推理框架的可扩展性设计
+- 量化与内存管理的协同优化
+- 端到端推理系统的性能建模</p>
+<h3 id="5">5. 量化算法研究</h3>
+<p>FMPQ 的细粒度混合精度量化方法，为高效推理提供了新的算法思路：
+- 离群值感知的量化策略
+- 硬件友好的量化粒度设计
+- 后训练量化（PTQ）的精度-效率权衡</p>
+<h3 id="6-cometseed">6. 与 CometSeed 的关系</h3>
+<p>COMET（本文）的 baseline 引用了 CometSeed（2025/CometSeed），后者是关于 Mixture-of-Experts 模型的计算-通信重叠优化。两者共同推动了高效 LLM 推理的发展，但方向不同：COMET 关注量化推理，CometSeed 关注 MoE 模型的并行化优化。</p>
+<hr />
+<blockquote>
+<p><strong>注意</strong>：本笔记由 AI Agent 自动生成，基于论文全文阅读与分析。内容可能存在偏差，请以论文原文为准。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

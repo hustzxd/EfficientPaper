@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,28 +161,123 @@
   
                 <h1 id="keepkv-eliminating-output-perturbation-in-kv-cache-compression-for-efficient-llms-inference">KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Efficient inference of large language models (LLMs) is hindered by an
-ever-growing key-value (KV) cache, making KV cache compression a critical
-research direction. Traditional methods selectively evict less important KV
-cache entries based on attention scores or position heuristics, which leads to
-information loss and hallucinations. Recently, merging-based strategies have
-been explored to retain more information by merging KV pairs that would be
-discarded; however, these existing approaches inevitably introduce
-inconsistencies in attention distributions before and after merging, causing
-output perturbation and degraded generation quality. To overcome this
-challenge, we propose KeepKV, a novel adaptive KV cache merging method designed
-to eliminate output perturbation while preserving performance under strict
-memory constraints. KeepKV introduces the Electoral Votes mechanism that
-records merging history and adaptively adjusts attention scores. Moreover, it
-further leverages a novel Zero Inference-Perturbation Merging methods, keeping
-attention consistency and compensating for attention loss resulting from cache
-merging. KeepKV successfully retains essential context information within a
-significantly compressed cache. Extensive experiments on various benchmarks and
-LLM architectures demonstrate that KeepKV substantially reduces memory usage,
-enhances inference throughput by more than 2x and keeps superior generation
-quality even with 10% KV cache budgets.</p>
-<p>kv merge 的方法</p>
+<blockquote>
+<p><strong>本文由 AI Agent 自动生成，生成时间：2026-06-04。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>KeepKV 通过引入选举票数（Electoral Votes）机制和零推理扰动合并（ZIP-Merging）方法，从理论上保证 KV Cache 压缩过程中注意力分布的零扰动，从而在仅保留 5%~10% KV Cache 预算时仍能保持接近全缓存的生成质量。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）的高效推理受到不断增长的 KV Cache 的阻碍，使得 KV Cache 压缩成为一个关键研究方向。传统方法基于注意力分数或位置启发式选择性驱逐不重要的 KV Cache 条目，导致信息丢失和幻觉。最近，合并策略通过合并将被丢弃的 KV 对来保留更多信息；然而，现有方法不可避免地引入合并前后注意力分布的不一致，导致输出扰动和生成质量下降。为克服这一挑战，作者提出 KeepKV，一种自适应 KV Cache 合并方法，旨在消除输出扰动，同时在严格内存约束下保持性能。KeepKV 引入了选举票数（Electoral Votes）机制来记录合并历史并自适应调整注意力分数，并进一步利用零推理扰动合并（ZIP-Merging）方法保持注意力一致性并补偿缓存合并导致的注意力损失。KeepKV 成功地在显著压缩的缓存中保留了关键上下文信息。在各种基准和 LLM 架构上的大量实验表明，KeepKV 大幅减少了内存使用，将推理吞吐量提高了 2 倍以上，即使在 10% KV Cache 预算下也能保持优异的生成质量。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>KV Cache 内存瓶颈</strong>：随着 LLM 支持的上下文长度越来越长，KV Cache 大小快速增长，成为推理的主要瓶颈。例如，LLaMA-3-70B 在 batch size=128、8K 上下文下需要高达 320GB 的 KV Cache 内存。</li>
+<li><strong>驱逐方法的不可逆信息丢失</strong>：传统驱逐方法（如 H2O、StreamingLLM、SnapKV）根据注意力分数或位置丢弃 KV 条目，一旦丢弃信息永久丢失，导致幻觉和上下文不一致。</li>
+<li><strong>现有合并方法的"注意力塌陷"（Attention Sag）问题</strong>：现有合并方法（如 D2O、KVMerger）通过凸组合（加权平均）合并 KV 对，但作者证明这种凸组合必然导致合并后 KV 的注意力分数低于合并前各 KV 分数之和（即 Attention Sag），引入不可避免的输出扰动。</li>
+<li><strong>缺乏理论保证</strong>：现有合并方法的候选选择和权重计算缺乏坚实的理论基础，依赖于经验设计（如余弦相似度、高斯核权重），无法保证注意力一致性。</li>
+</ol>
+<hr />
+<h2 id="_4">方法</h2>
+<h3 id="_5">核心思想</h3>
+<p>KeepKV 从"消除输出扰动"的角度重新审视 KV Cache 压缩问题，通过两个核心机制实现注意力一致性：</p>
+<h3 id="1-electoral-votes">1. 选举票数机制（Electoral Votes）</h3>
+<ul>
+<li>为每个 KV 对维护一个"票数" <script type="math/tex">p_i</script>（初始化为 1），记录该 KV 对被合并的次数。</li>
+<li>类比美国选举人团制度：每个选举人持有的票数与其代表的州人口成比例，而非均等份额。</li>
+<li>注意力计算中，每个 KV 的注意力分数按其票数缩放：<script type="math/tex">p_i \cdot s_i</script>。</li>
+<li>合并后的新 KV 票数为原始票数之和：<script type="math/tex">p_r = p_e + p_c</script>。</li>
+<li>作用：使压缩后的缓存在注意力计算中等价于原始多个 KV 的组合，保留合并历史信息。</li>
+</ul>
+<h3 id="2-zip-merging">2. 零推理扰动合并（ZIP-Merging）</h3>
+<p>在 Electoral Votes 基础上，推导出新的合并公式，使合并前后输出完全一致：</p>
+<p>
+<script type="math/tex; mode=display">k_r = \frac{(w_e k_e + w_c k_c) \cdot \ln \frac{p_e + p_c}{p_e + p_c}}{w_e \ln s_e + w_c \ln s_c}, \quad v_r = \frac{w_e v_e + w_c v_c}{w_e + w_c}</script>
+</p>
+<p>其中 <script type="math/tex">w_e = p_e \cdot s_e</script>，<script type="math/tex">w_c = p_c \cdot s_c</script>（基于注意力分数的加权）。</p>
+<p><strong>定理 3.3 保证</strong>：合并后输出与原始输出的差异为零，即 <script type="math/tex">\|o'_t - o_t\| = 0</script>。</p>
+<p><strong>直观理解</strong>：ZIP-Merging 不是简单的凸组合，而是通过适当的缩放和对数变换补偿合并带来的注意力损失，使注意力分布保持一致。</p>
+<h3 id="3-ema">3. 多步生成扩展（EMA 注意力分数）</h3>
+<ul>
+<li>注意力分数具有强局部性（相邻步骤间变化平滑）。</li>
+<li>使用指数移动平均（EMA）带偏差修正来预测未来注意力分数，使用最近窗口长度 <script type="math/tex">w</script>。</li>
+<li>将所有注意力分数替换为 EMA 估计值后，推导出多步生成的输出扰动上界。</li>
+</ul>
+<p><strong>定理 3.5</strong>：对于第 <script type="math/tex">t'</script> 步，设预测误差 <script type="math/tex">|\hat{s}_i / s_i - 1| \leq \epsilon</script>，输出扰动满足 <script type="math/tex">\Theta_{t'} < \frac{2\epsilon(1+\epsilon)\gamma}{(1-\epsilon)^2}</script>。</p>
+<p><strong>引理 3.6</strong>：当预测误差 <script type="math/tex">\epsilon = 0</script> 或合并候选完全相同时，扰动降为零。这为"优先合并高相似度 KV 对"提供了理论依据。</p>
+<h3 id="4">4. 相似度驱动合并</h3>
+<ul>
+<li>每个被驱逐的 KV 与保留 KV 中余弦相似度最高的进行合并。</li>
+<li>使用预定义阈值 <script type="math/tex">T</script> 判断是否合并，避免动态调整的开销。</li>
+<li>兼容各种 token 选择和缓存分配策略（如 PyramidInfer），具有强适应性。</li>
+</ul>
+<h3 id="_6">实现细节</h3>
+<ul>
+<li>合并阈值 <script type="math/tex">T = 0.8</script>，指数预测系数 <script type="math/tex">\beta = 1.2</script>
+</li>
+<li>缓存分配策略：PyramidInfer 的固定缓存预算策略</li>
+<li>框架：Hugging Face Transformers</li>
+<li>硬件：NVIDIA A100 80GB GPU</li>
+</ul>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>任务</strong>：问答（COPA、MathQA、OpenBookQA）、摘要（XSUM、CNN/DailyMail）、长上下文（LongBench，含单文档QA、多文档QA、摘要、合成任务）</li>
+<li><strong>模型</strong>：OPT、Llama-2、Llama-3、Mistral</li>
+<li><strong>基线</strong>：StreamingLLM、H2O、PyramidInfer（驱逐方法）；CaM、D2O（合并方法）</li>
+<li><strong>评估框架</strong>：lm-eval-harness、HELM</li>
+</ul>
+<h3 id="_9">主要结果</h3>
+<ol>
+<li><strong>KV Cache 压缩比率准确度</strong>：KeepKV 在各种压缩比率下一致优于所有压缩方法，尤其在极低压缩率（如 5%~10%）下表现显著优于其他方法。</li>
+<li><strong>长上下文任务</strong>（LongBench，10% KV Cache 预算）：KeepKV 在大多数任务上接近全缓存基线，显著优于驱逐方法和现有合并方法。</li>
+<li><strong>推理吞吐量</strong>：超过 2 倍提升。</li>
+<li><strong>摘要任务性能</strong>（图 2）：在 5% 压缩率下，KeepKV 是最接近全 KV（100%）的方法，而 CaM、Pyramid、H2O、Streaming、Local 等方法性能大幅下降。</li>
+</ol>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>理论保证</strong>：首次从消除输出扰动的角度分析 KV Cache 压缩，提供扰动上界保证，理论基础扎实。</li>
+<li><strong>零扰动合并</strong>：ZIP-Merging 在当前步理论上保证零输出扰动（<script type="math/tex">\|o'_t - o_t\| = 0</script>），这是现有方法无法做到的。</li>
+<li><strong>强适应性</strong>：不依赖特定的 token 选择或缓存分配策略，可与多种主流方法（如 PyramidInfer）组合使用。</li>
+<li><strong>多步生成保证</strong>：通过 EMA 注意力分数和理论推导，对多步生成的扰动有可控上界。</li>
+<li><strong>高性能</strong>：即使在 5%~10% 的极端压缩率下仍保持优异性能，显著优于现有驱逐和合并方法。</li>
+<li><strong>可与量化方法结合</strong>：与 KV Cache 量化方法（如 KVQuant、GEAR）正交，可进一步组合使用。</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>预测误差累积</strong>：预测越远的注意力分布越困难，扰动上界会显著增大，多步生成中可能存在误差累积。</li>
+<li><strong>固有输入差异不可消除</strong>：<script type="math/tex">\gamma</script>（KV 向量之间的固有差异）无法通过算法设计消除，这是 KV Cache 压缩的根本限制。</li>
+<li><strong>计算开销</strong>：ZIP-Merging 涉及对数运算和额外的票数维护，可能增加一定的计算开销。</li>
+<li><strong>合并阈值选择</strong>：相似度阈值 <script type="math/tex">T</script> 需要预定义，不同任务和模型可能需要不同的设置。</li>
+<li><strong>无公开代码</strong>：论文未提供开源代码（prototxt 中 code URL 为空），难以复现和验证。</li>
+<li><strong>实验模型规模有限</strong>：主要评估 OPT、Llama-2/3、Mistral 等较小规模模型，对更大规模模型（如 70B+）的效果有待验证。</li>
+<li><strong>合成实验环境</strong>：所有实验基于 NVIDIA A100 80GB GPU，可能需要进一步在更多硬件环境下验证。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>KV Cache 压缩</strong>：KeepKV 属于 KV Cache 合并方法，是 KV Cache 压缩的重要研究方向，与驱逐方法（H2O、PyramidInfer）、量化方法（KVQuant、GEAR）形成互补。</li>
+<li><strong>注意力机制优化</strong>：Electoral Votes 机制提供了新的注意力分数调整思路，可扩展到其他注意力优化场景。</li>
+<li><strong>LLM 推理效率</strong>：在保持生成质量的同时大幅减少内存使用和提高吞吐量，是 LLM 高效推理的关键研究方向。</li>
+<li><strong>长上下文处理</strong>：KeepKV 在长上下文任务（LongBench）上表现出色，与长上下文 LLM 的研究密切相关。</li>
+<li><strong>KV Cache 合并与驱逐的结合</strong>：KeepKV 的理论框架可扩展到更复杂的缓存压缩策略，如混合驱逐与合并。</li>
+<li><strong>理论分析方法</strong>：从输出扰动角度分析 KV Cache 压缩的理论方法，为后续研究提供了新的分析范式。</li>
+</ul>
+<hr />
+<h2 id="_12">论文信息</h2>
+<ul>
+<li><strong>标题</strong>：KeepKV: Eliminating Output Perturbation in KV Cache Compression for Efficient LLMs Inference</li>
+<li><strong>作者</strong>：Yuxuan Tian, Zihan Wang, Yebo Peng, Aomufei Yuan, Zhiming Wang, Bairen Yi, Xin Liu, Yong Cui, Tong Yang</li>
+<li><strong>机构</strong>：Peking University, ByteDance, Tsinghua University</li>
+<li><strong>年份</strong>：2025</li>
+<li><strong>来源</strong>：arXiv (2504.09936v1)</li>
+<li><strong>代码</strong>：未公开</li>
+<li><strong>关键词</strong>：kv_cache_sparse</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

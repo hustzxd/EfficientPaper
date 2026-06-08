@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>SlimInfer: Accelerating Long-Context LLM Inference via Dynamic Token Pruning - Efficient Paper</title>
+    <title>SlimInfer: 通过动态 Token 剪枝加速长上下文 LLM 推理 - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "SlimInfer: Accelerating Long-Context LLM Inference via Dynamic Token Pruning";
+        var mkdocs_page_name = "SlimInfer: \u901a\u8fc7\u52a8\u6001 Token \u526a\u679d\u52a0\u901f\u957f\u4e0a\u4e0b\u6587 LLM \u63a8\u7406";
         var mkdocs_page_input_path = "notes/2025/SlimInfer/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">SlimInfer: Accelerating Long-Context LLM Inference via Dynamic Token Pruning</li>
+      <li class="breadcrumb-item active">SlimInfer: 通过动态 Token 剪枝加速长上下文 LLM 推理</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,31 +159,222 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="sliminfer-accelerating-long-context-llm-inference-via-dynamic-token-pruning">SlimInfer: Accelerating Long-Context LLM Inference via Dynamic Token Pruning</h1>
+                <h1 id="sliminfer-token-llm">SlimInfer: 通过动态 Token 剪枝加速长上下文 LLM 推理</h1>
 <blockquote>
-<p>Lingkun Long, Rubing Yang, Yushi Huang, Desheng Hui, Ao Zhou, Jianlei Yang</p>
+<p>Lingkun Long, Rubing Yang, Yushi Huang, Desheng Hui, Ao Zhou, Jianlei Yang
+北京航空航天大学 / 香港科技大学</p>
 </blockquote>
 <p><a class="glightbox" href="../fig4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig4.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Long-context inference for Large Language Models (LLMs) is heavily limited by
-high computational demands. While several existing methods optimize attention
-computation, they still process the full set of hidden states at each layer,
-limiting overall efficiency. In this work, we propose SlimInfer, an innovative
-framework that aims to accelerate inference by directly pruning less critical
-prompt tokens during the forward pass. Our key insight is an information
-diffusion phenomenon: As information from critical tokens propagates through
-layers, it becomes distributed across the entire sequence. This diffusion
-process suggests that LLMs can maintain their semantic integrity when excessive
-tokens, even including these critical ones, are pruned in hidden states.
-Motivated by this, SlimInfer introduces a dynamic fine-grained pruning
-mechanism that accurately removes redundant tokens of hidden state at
-intermediate layers. This layer-wise pruning naturally enables an asynchronous
-KV cache manager that prefetches required token blocks without complex
-predictors, reducing both memory usage and I/O costs. Extensive experiments
-show that SlimInfer can achieve up to <script type="math/tex">\mathbf{2.53\times}</script> time-to-first-token
-(TTFT) speedup and <script type="math/tex">\mathbf{1.88\times}</script> end-to-end latency reduction for
-LLaMA3.1-8B-Instruct on a single RTX 4090, without sacrificing performance on
-LongBench. Our code will be released upon acceptance.</p>
+<blockquote>
+<p>⚠️ <strong>本文由 AI Agent 自动生成</strong>，基于论文全文阅读与分析。生成时间：2025年。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>SlimInfer 利用"信息扩散现象"，在 Transformer 中间层对隐藏状态进行动态细粒度剪枝，并结合无预测器的异步 KV Cache 管理，在不牺牲 LongBench 性能的前提下实现最高 2.53× TTFT 加速和 1.88× 端到端延迟降低。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>长上下文推理对大语言模型（LLM）的计算需求提出了巨大挑战。尽管已有多种方法优化了注意力计算，但它们在每一层仍需处理完整的隐藏状态集，从而限制了整体效率。本文提出 SlimInfer，一个在前向传播过程中直接剪枝不太关键的 prompt token 的创新框架。核心洞察是<strong>信息扩散现象</strong>：随着关键 token 的信息在各层间传播，它会逐渐分散到整个序列中。这意味着即使在隐藏状态中剪枝掉过多 token（包括这些关键 token），LLM 仍能保持语义完整性。基于此，SlimInfer 引入了动态细粒度剪枝机制，在中间层精确移除冗余 token。这种逐层剪枝自然支持了一个无需复杂预测器的异步 KV Cache 管理器，可预取所需的 token 块，同时降低内存使用和 I/O 开销。大量实验表明，SlimInfer 在单张 RTX 4090 上为 LLaMA3.1-8B-Instruct 实现了最高 2.53× TTFT 加速和 1.88× 端到端延迟降低，且在 LongBench 上不牺牲性能。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>长上下文 LLM 推理面临两大核心瓶颈：</p>
+<ol>
+<li><strong>注意力计算的二次复杂度</strong>：Self-attention 在 prefill 阶段对序列长度的二次时间复杂度，是长上下文场景下延迟的主要来源。</li>
+<li><strong>KV Cache 的线性内存增长</strong>：KV Cache 随输入长度线性增长，导致显著的 GPU 内存消耗。</li>
+</ol>
+<p>现有方法存在以下关键局限：</p>
+<ul>
+<li><strong>仅优化解码阶段</strong>（如 StreamingLLM、H2O、SnapKV、LazyLLM）：对 TTFT 改善有限，且不可逆的 token 驱逐可能导致准确率显著下降。</li>
+<li><strong>仅稀疏化注意力模式</strong>（如 FlexPrefill、MInference）：仍需在每层处理完整序列的隐藏状态，FFN 等非注意力组件未被优化，加速效果受限。</li>
+<li><strong>KV Cache 管理的 I/O 开销</strong>（如 Quest、InfiniGen、AttentionPredictor）：CPU 卸载引入显著 I/O 延迟，预取依赖预测机制，增加了计算和工程开销。</li>
+</ul>
+<hr />
+<h2 id="_4">方法</h2>
+<h3 id="41">4.1 框架概述</h3>
+<p>SlimInfer 的核心设计基于两个关键洞察：</p>
+<h4 id="information-diffusion">信息扩散现象（Information Diffusion）</h4>
+<p>论文通过在 LLaMA3.1-8B-Instruct 上的探测实验发现：当在<strong>较深层</strong>（如 Layer 25）剪枝关键 token "278" 的隐藏状态时，模型仍能正确回忆答案；但在<strong>较早层</strong>（如 Layer 5）剪枝则会导致错误输出。</p>
+<p>原因：关键 token 的语义信息在早期层逐步"扩散"到其他 token 表示中。在较深层，语义已充分分布，此时剪枝不会破坏推理过程。</p>
+<p>由此产生两条设计原则：
+- <strong>早期层保留所有 token</strong>，保证信息扩散完整。
+- <strong>后期层可安全剪枝</strong>，包括原本重要的 token，因为其语义已扩散。</p>
+<h4 id="prefetching-opportunity">预取机会（Prefetching Opportunity）</h4>
+<p>SlimInfer 的逐层隐藏状态剪枝设计自然支持无预测器的异步 KV Cache 预取：
+- 在 Attention 计算后进行剪枝，剪枝决策是确定性的（不依赖预测器）。
+- KV Cache 的获取可以与下一层的 FFN 和 QKV 生成并行重叠（overlap）。</p>
+<h3 id="42-prompt-token">4.2 块级 Prompt Token 剪枝</h3>
+<p>将 prompt token 划分为固定大小的块（block size = 64），每个块进一步划分为多个 <strong>Token Unit</strong>（size = 8），实现细粒度语义评估。</p>
+<p><strong>重要性评分机制</strong>：
+1. 对每个 block Bj 中的每个 token unit，计算代表性 Key 向量：<script type="math/tex">k_{rep}(j,m) = \text{Mean}(\{key \in \text{TokenUnit}_{j,m}\})</script>
+2. 构造局部 Query 窗口 <script type="math/tex">q_l</script>（取最近 w=4 个 token 的 Query 平均）
+3. 计算 block 级重要性得分：<script type="math/tex">r_{block}(q_l, B_j) = \max_m (\frac{1}{H}\sum_{h=1}^{H} |q_h^l \cdot k_{rep}^h(j,m)|)</script>
+4. 选择 top-k blocks 作为活跃集，被剪枝的 block 的 KV Cache 被卸载到 CPU 内存（可恢复）。</p>
+<p><strong>额外保留策略</strong>：prompt 的首个 block（attention sink）始终保留在活跃集中。</p>
+<h3 id="43-kv-cache">4.3 无预测器的 KV Cache 预取</h3>
+<p>通过 <strong>Overlap-aware KV Swapping</strong> 算法实现高效数据传输：</p>
+<ul>
+<li>维护活跃块集合 <script type="math/tex">B_{active}(t)</script>，其 KV Cache 在 GPU 内存中。</li>
+<li>计算候选集与前一活跃集的重叠比（overlap ratio）。</li>
+<li>若 overlap &lt; 阈值 γ（默认 0.9），触发交换操作：</li>
+<li>异步卸载不再需要的块（GPU→CPU）</li>
+<li>异步预取新需要的块（CPU→GPU）</li>
+<li>在独立 CUDA 流上执行，与 FFN 和 QKV 生成重叠。</li>
+</ul>
+<p>若 overlap ≥ γ，直接复用上一步的活跃集，避免不必要的数据传输。</p>
+<p><strong>关键优势</strong>：不需要任何预测器或启发式策略（如 InfiniGen 的 SVD、AttentionPredictor 的 CNN），纯粹基于确定性的剪枝决策。</p>
+<h3 id="_5">实现细节</h3>
+<ul>
+<li>构建于 LazyLLM 之上，集成到 Transformers 库</li>
+<li>Block size = 64，Token Unit size = 8，KV swap 阈值 γ = 0.9，局部 Query 窗口 w = 4</li>
+<li>LLaMA3.1：在 layers 10, 20, 30 剪枝，保留 8k, 4k, 2k tokens</li>
+<li>Qwen2.5：在 layers 9, 18, 26 剪枝，保留 12k, 6k, 4k tokens</li>
+<li>仅对 prompt token 剪枝，所有生成的 response token 完全保留</li>
+</ul>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="longbench">准确率（LongBench）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA3.1 平均</th>
+<th>Qwen2.5 平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full KV</td>
+<td>48.08%</td>
+<td>47.76%</td>
+</tr>
+<tr>
+<td>LazyLLM</td>
+<td>47.23%</td>
+<td>45.48%</td>
+</tr>
+<tr>
+<td>MInference</td>
+<td>47.17%</td>
+<td>47.25%</td>
+</tr>
+<tr>
+<td>FlexPrefill</td>
+<td>46.38%</td>
+<td>44.61%</td>
+</tr>
+<tr>
+<td><strong>SlimInfer</strong></td>
+<td><strong>47.65%</strong></td>
+<td><strong>47.38%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SlimInfer 在两个模型上均达到最高平均准确率</li>
+<li>相比 Full KV 仅下降约 0.4%，远优于其他剪枝方法</li>
+</ul>
+<h3 id="llama31-8b-instruct-rtx-4090">效率（LLaMA3.1-8B-Instruct，单 RTX 4090）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>32k 上下文加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TTFT</td>
+<td><strong>2.53×</strong></td>
+</tr>
+<tr>
+<td>E2E</td>
+<td><strong>1.88×</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">内存效率</h3>
+<table>
+<thead>
+<tr>
+<th>上下文长度</th>
+<th>Full KV</th>
+<th>SlimInfer</th>
+<th>节省</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8k</td>
+<td>1.00 GB</td>
+<td>0.80 GB</td>
+<td>20.3%</td>
+</tr>
+<tr>
+<td>16k</td>
+<td>2.00 GB</td>
+<td>1.11 GB</td>
+<td>44.5%</td>
+</tr>
+<tr>
+<td>24k</td>
+<td>3.00 GB</td>
+<td>1.42 GB</td>
+<td>52.6%</td>
+</tr>
+<tr>
+<td>32k</td>
+<td>4.00 GB</td>
+<td>1.73 GB</td>
+<td>56.6%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">消融实验</h3>
+<ul>
+<li><strong>剪枝起始层</strong>：中期层开始剪枝效果最佳；过早阻碍信息扩散，过晚保留的 token 不足。</li>
+<li><strong>Token Unit 评分</strong>：优于 Avg-Pooling 和 Max-Pooling 基线。</li>
+<li><strong>异步 KV Cache</strong>：32k 时从 1.60× 提升至 1.88×。</li>
+<li><strong>块大小</strong>：64 为最佳（平衡精度和延迟）。</li>
+<li><strong>局部 Query 窗口</strong>：w=4 最优。</li>
+<li><strong>交换阈值 γ</strong>：0.90 为最佳平衡点。</li>
+</ul>
+<h3 id="jetson-agx-orin-32gb">边缘设备性能（Jetson AGX Orin 32GB）</h3>
+<ul>
+<li>32k 上下文：TTFT 加速 1.94×，E2E 加速 1.69×</li>
+<li>证明 SlimInfer 在边缘设备上同样有效</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>信息扩散理论</strong>：基于可验证的现象而非经验启发式，提供了坚实的设计依据。</li>
+<li><strong>端到端优化</strong>：同时优化 prefill 和解码阶段，不仅稀疏化注意力，还通过剪枝隐藏状态减少 FFN 计算。</li>
+<li><strong>无预测器预取</strong>：利用逐层剪枝的确定性设计，天然支持无预测器的 KV Cache 异步预取，避免了 InfiniGen/AttentionPredictor 的额外开销。</li>
+<li><strong>可恢复剪枝</strong>：被剪枝的 token 并非不可逆丢弃，而是卸载到 CPU 内存，可按需恢复，显著优于 StreamingLLM/H2O/LazyLLM 等方法。</li>
+<li><strong>显著加速且不牺牲性能</strong>：在 LongBench 上接近 Full KV 的准确率，同时实现 2.53× TTFT 和 1.88× E2E 加速。</li>
+<li><strong>内存效率</strong>：32k 上下文下 KV Cache 内存节省 56.6%。</li>
+<li><strong>跨模型/跨设备泛化</strong>：在 LLaMA3.1-8B 和 Qwen2.5-7B 上均有效，且在边缘设备（Jetson AGX Orin）上表现优异。</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>仅优化 prompt token</strong>：不处理生成 token 的 KV Cache，解码阶段的优化依赖传统的 token 衰减策略。</li>
+<li><strong>固定剪枝层</strong>：当前使用固定的中间层进行剪枝（如 LLaMA3.1 的 layers 10, 20, 30），缺乏对不同任务/输入的自适应调整。</li>
+<li><strong>块级粒度</strong>：尽管引入了 Token Unit 细粒度评分，但剪枝仍以块为单位，可能丢失块内 token 的差异化重要性。</li>
+<li><strong>CPU-GPU 数据传输</strong>：虽然通过异步预取和重叠优化了 I/O，但仍依赖 CPU-GPU 通信，可能在某些硬件/网络配置下成为瓶颈。</li>
+<li><strong>CPU 内存占用</strong>：被卸载的 KV Cache 需要 CPU 内存存储，在极端长上下文场景下可能导致 CPU 内存压力。</li>
+<li><strong>缺乏代码公开</strong>：论文声明代码将在接受后发布，当前无法复现。</li>
+<li><strong>特定超参数敏感性</strong>：消融实验显示剪枝层数、token 保留数量、局部查询窗口等参数对性能有显著影响，调参成本较高。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>SlimInfer 所属的关键研究领域包括：</p>
+<ol>
+<li><strong>稀疏注意力（Sparse Attention）</strong>：与 FlexPrefill、MInference、SpargeAttn 等方法同属一类，但 SlimInfer 独特之处在于直接剪枝隐藏状态而非仅优化注意力计算。</li>
+<li><strong>KV Cache 管理（KV Cache Management）</strong>：与 Quest、InfiniGen、AttentionPredictor 等方法构成同一研究方向，但 SlimInfer 实现了无预测器的异步预取。</li>
+<li><strong>Token 剪枝（Token Pruning）</strong>：与 LazyLLM、StreamingLLM、H2O、SnapKV 等方法同属一类，但 SlimInfer 的关键区别在于可恢复剪枝和隐藏状态级别的剪枝。</li>
+<li><strong>长上下文推理优化</strong>：这是 EfficientPaper 的核心研究方向之一，SlimInfer 为 LLM 在边缘设备和服务器端的长上下文部署提供了实用的加速方案。</li>
+<li><strong>信息扩散现象（Information Diffusion）</strong>：这是一个值得关注的新发现，可能启发更多基于信息流分析的模型压缩和加速方法。</li>
+<li><strong>边缘部署优化</strong>：SlimInfer 在 Jetson AGX Orin 上的表现表明，该方法在资源受限设备上具有实际应用价值，与 EfficientPaper 关注的高效推理主题高度契合。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

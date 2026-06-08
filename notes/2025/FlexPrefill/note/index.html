@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,29 +161,253 @@
   
                 <h1 id="flexprefill-a-context-aware-sparse-attention-mechanism-for-efficient-long-sequence-inference">FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) encounter computational challenges during
-long-sequence inference, especially in the attention pre-filling phase, where
-the complexity grows quadratically with the prompt length. Previous efforts to
-mitigate these challenges have relied on fixed sparse attention patterns or
-identifying sparse attention patterns based on limited cases. However, these
-methods lacked the flexibility to efficiently adapt to varying input demands.
-In this paper, we introduce FlexPrefill, a Flexible sparse Pre-filling
-mechanism that dynamically adjusts sparse attention patterns and computational
-budget in real-time to meet the specific requirements of each input and
-attention head. The flexibility of our method is demonstrated through two key
-innovations: 1) Query-Aware Sparse Pattern Determination: By measuring
-Jensen-Shannon divergence, this component adaptively switches between
-query-specific diverse attention patterns and predefined attention patterns. 2)
-Cumulative-Attention Based Index Selection: This component dynamically selects
-query-key indexes to be computed based on different attention patterns,
-ensuring the sum of attention scores meets a predefined threshold. FlexPrefill
-adaptively optimizes the sparse pattern and sparse ratio of each attention head
-based on the prompt, enhancing efficiency in long-sequence inference tasks.
-Experimental results show significant improvements in both speed and accuracy
-over prior methods, providing a more flexible and efficient solution for LLM
-inference.</p>
-<p>做法和MInfernce非常像，只是选择patter设置时有一定的区别</p>
+<blockquote>
+<p><strong>注意：本 note 由 AI Agent 自动生成，仅供参考。生成时间：2025年。</strong></p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>FlexPrefill 提出了一种自适应的稀疏注意力机制，通过动态调整稀疏模式和计算预算（Query-Aware 模式判断 + 累积注意力索引选择），在长序列推理中实现比 MInference 和 StreamingLLM 更优的速度-精度平衡。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）在长序列推理时面临计算挑战，特别是在注意力预填充（pre-filling）阶段，计算复杂度随提示长度呈二次方增长。此前方法依赖固定稀疏注意力模式或基于有限案例识别稀疏模式，但缺乏灵活适应不同输入需求的能力。本文提出 FlexPrefill，一种灵活的稀疏预填充机制，能够实时动态调整稀疏注意力模式和计算预算，以满足每个输入和注意力头的特定需求。该方法的灵活性体现在两个关键创新：1）<strong>查询感知的稀疏模式确定</strong>：通过测量 Jensen-Shannon 散度，自适应地在查询特定的多样化注意力模式和预定义注意力模式之间切换；2）<strong>基于累积注意力的索引选择</strong>：基于不同注意力模式动态选择计算的查询-键索引，确保注意力分数总和满足预定义阈值。实验结果表明，在速度和精度上均有显著提升，为 LLM 推理提供了更灵活高效的解决方案。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>长序列推理瓶颈</strong>：随着 LLM 支持的上下文长度增加（从 128k 到 512k+），注意力预填充阶段成为推理瓶颈。全注意力机制的计算复杂度为 O(n²d)，随序列长度 n 二次方增长。</li>
+<li><strong>现有方法的局限</strong>：</li>
+<li><strong>固定稀疏模式</strong>（如 BigBird、Sliding Window）：灵活性差，往往需要额外训练或微调。</li>
+<li><strong>StreamingLLM</strong>：结合初始 token 与滑动窗口，但长序列性能严重退化（128k 上下文下 LLaMA 平均分仅 61.62 vs 全注意力 88.70）。</li>
+<li><strong>MInference</strong>：使用离线搜索的固定稀疏模式和比率，无法适应不同输入的动态变化。</li>
+<li><strong>核心观察</strong>：</li>
+<li>注意力模式在不同注意力头间变化显著：有的头呈 <strong>多样化模式（Diverse pattern）</strong>，有的呈 <strong>结构化模式（Vertical-Slash pattern）</strong>。</li>
+<li>不同样本需要不同的稀疏比率：具有长距离依赖的样本需要较低的稀疏比率，而局部依赖的样本可以使用较高比率。</li>
+<li>固定稀疏比率对所有输入统一应用，无法根据输入复杂度动态调整。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<p>FlexPrefill 包含两个核心组件，整体流程为：<strong>模式判断 → 索引选择 → 稀疏注意力计算</strong>。</p>
+<h3 id="1-query-aware-sparse-pattern-determination">1. 查询感知的稀疏模式确定（Query-Aware Sparse Pattern Determination）</h3>
+<p>将注意力头分为两类：
+- <strong>Query-Aware 头</strong>：需要根据查询位置动态估计稀疏模式
+- <strong>Vertical-Slash 头</strong>：处理 LLM 中常见的结构化稀疏注意力模式</p>
+<p><strong>决策流程</strong>：
+1. 选择最后 <code>block_size</code> 个查询向量作为代表性子集 <script type="math/tex">\hat{Q}</script>
+2. 计算两种块级注意力分布：
+   - <script type="math/tex">\bar{a}</script> = softmax(avgpool(<script type="math/tex">\hat{Q}</script>)·avgpool(K)ᵀ/√d)（估计分布）
+   - <script type="math/tex">\hat{a}</script> = sumpool(softmax(<script type="math/tex">\hat{Q}</script>·Kᵀ/√d))（真实分布）
+3. 使用 <strong>Jensen-Shannon 散度（JSD）</strong> 量化两个分布的差异：
+   - D_JS(<script type="math/tex">\bar{a}</script>, <script type="math/tex">\hat{a}</script>) = √JSD(<script type="math/tex">\bar{a}</script> || <script type="math/tex">\hat{a}</script>)
+4. <strong>自适应决策</strong>：
+   - 若 D_JS &lt; τ（阈值，设为 0.1）：使用 Query-Aware 模式
+   - 否则：回退到 Vertical-Slash 模式</p>
+<h3 id="2-cumulative-attention-based-index-selection">2. 基于累积注意力的索引选择（Cumulative-Attention Based Index Selection）</h3>
+<p><strong>目标</strong>：为每个查询位置 i 选择最小的子集 <script type="math/tex">S_i</script>，使得所选位置的归一化注意力分数总和满足预定义阈值 γ（如 0.9 或 0.95）。</p>
+<p><strong>对于 Query-Aware 头</strong>：
+- 用池化后的查询和键计算块级注意力分数
+- 按降序排列，依次选择块直到累积分数超过阈值 γ
+- 形成稀疏索引集 S</p>
+<p><strong>对于 Vertical-Slash 头</strong>：
+- 选择代表性查询子集 <script type="math/tex">\hat{Q}</script>，计算注意力分数
+- 计算垂直线和斜线方向的平均分数
+- 按降序排列，选择垂直线和斜线直到累积分数超过阈值
+- 扩展到整个注意力矩阵</p>
+<h3 id="_5">算法伪代码概要</h3>
+<pre><code>Algorithm 1 (主流程):
+输入: Q, K, V, τ, γ
+1. pattern ← Sparse Pattern Search(Q, K, τ)
+2. 若 pattern == query_specific:
+     S ← Query Aware Index(Q, K, γ)
+   否则:
+     S ← Vertical Slash Index(Q, K, γ)
+3. y ← A(Q, K, V, S)
+4. 返回 y
+</code></pre>
+<h3 id="_6">关键超参数</h3>
+<ul>
+<li><strong>block_size = 128</strong>：Triton 块大小</li>
+<li><strong>τ = 0.1</strong>：JSD 阈值（决定 Query-Aware 还是 Vertical-Slash）</li>
+<li><strong>γ = 0.9~0.95</strong>：累积注意力阈值（控制计算预算）</li>
+<li><strong>最小计算预算 = 1024 tokens</strong>：防止注意力头因过高稀疏率而失效</li>
+</ul>
+<h3 id="_7">计算复杂度分析</h3>
+<ul>
+<li>代表注意力分数计算：O(bnd)</li>
+<li>模式搜索：O(bn)</li>
+<li>稀疏索引构建：O(n log n)</li>
+<li>稀疏注意力计算：O(αn²d)，其中 α 为稀疏因子</li>
+<li>总开销远小于 O(n²d) 的全注意力</li>
+</ul>
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">评估模型</h3>
+<ul>
+<li>Meta-Llama-3.1-8B-Instruct-128k</li>
+<li>GLM-4-9B-Chat-1024k</li>
+<li>Yi-9B-200K</li>
+<li>Qwen2-7B-Instruct-128k</li>
+</ul>
+<h3 id="_10">评估基准</h3>
+<ul>
+<li><strong>RULER</strong>：可定制序列长度和任务复杂度的合成基准</li>
+<li><strong>InfiniteBench</strong>：平均 214k token 的长上下文理解基准</li>
+</ul>
+<h3 id="ruler">RULER 结果（主要发现）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>4k</th>
+<th>8k</th>
+<th>16k</th>
+<th>32k</th>
+<th>64k</th>
+<th>128k</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA</td>
+<td>Full-attn</td>
+<td>95.67</td>
+<td>93.75</td>
+<td>93.03</td>
+<td>87.26</td>
+<td>84.37</td>
+<td>78.13</td>
+<td>88.70</td>
+</tr>
+<tr>
+<td>LLaMA</td>
+<td>MInference</td>
+<td>95.67</td>
+<td>93.99</td>
+<td>93.27</td>
+<td>86.54</td>
+<td>84.86</td>
+<td>58.17</td>
+<td>85.42</td>
+</tr>
+<tr>
+<td>LLaMA</td>
+<td><strong>FlexPrefill</strong></td>
+<td>95.43</td>
+<td>93.51</td>
+<td><strong>94.71</strong></td>
+<td><strong>89.42</strong></td>
+<td>82.93</td>
+<td><strong>79.09</strong></td>
+<td><strong>89.18</strong></td>
+</tr>
+<tr>
+<td>GLM</td>
+<td>Full-attn</td>
+<td>93.75</td>
+<td>93.03</td>
+<td>89.66</td>
+<td>90.63</td>
+<td>85.34</td>
+<td>81.97</td>
+<td>89.06</td>
+</tr>
+<tr>
+<td>GLM</td>
+<td><strong>FlexPrefill</strong></td>
+<td>93.51</td>
+<td>91.83</td>
+<td>89.90</td>
+<td><strong>91.35</strong></td>
+<td><strong>86.06</strong></td>
+<td><strong>83.41</strong></td>
+<td><strong>89.34</strong></td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td>Full-attn</td>
+<td>89.90</td>
+<td>88.70</td>
+<td>80.77</td>
+<td>79.33</td>
+<td>56.49</td>
+<td>17.79</td>
+<td>68.83</td>
+</tr>
+<tr>
+<td>Qwen</td>
+<td><strong>FlexPrefill</strong></td>
+<td><strong>90.39</strong></td>
+<td><strong>89.91</strong></td>
+<td><strong>83.17</strong></td>
+<td><strong>81.25</strong></td>
+<td><strong>59.14</strong></td>
+<td><strong>20.67</strong></td>
+<td><strong>70.75</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- FlexPrefill 在所有 4 个模型上均达到或超越全注意力性能（LLaMA 89.18 vs 88.70，GLM 89.34 vs 89.06，Qwen 70.75 vs 68.83）
+- StreamingLLM 在 128k 上下文下性能严重退化
+- MInference 在某些模型和长度上表现不佳（如 LLaMA 128k: 58.17 vs FlexPrefill 79.09）</p>
+<h3 id="_11">加速比</h3>
+<ul>
+<li>在 128k 上下文下，FlexPrefill 可实现 <strong>2.43x~3.49x</strong> 加速（相对全注意力）</li>
+<li>在 64k 上下文下，加速比为 <strong>4.8x~6.2x</strong></li>
+<li>在 512k 上下文下，加速比可达 <strong>8.0x~9.6x</strong></li>
+</ul>
+<h3 id="infinitebench">InfiniteBench 结果</h3>
+<ul>
+<li>在检索任务（Retr.PassKey、Retr.Number）中，FlexPrefill 接近全注意力（98.64~100.00 vs 99.15~100.00）</li>
+<li>在数学和代码任务中保持有效性能</li>
+</ul>
+<h3 id="_12">延迟分析</h3>
+<ul>
+<li>在 128k 上下文下（LLaMA）：Full-attn 658.83ms vs FlexPrefill (γ=0.95) 271.07ms vs MInference 215.53ms</li>
+<li>FlexPrefill (γ=0.9) 的 128k 延迟仅 185.75ms，远低于 MInference</li>
+<li>在所有上下文长度下，FlexPrefill 均实现更低延迟和更高性能的平衡</li>
+</ul>
+<h3 id="_13">消融实验</h3>
+<ol>
+<li><strong>固定预算 vs 动态预算</strong>：动态预算显著优于固定预算</li>
+<li><strong>Query-Aware 头阈值 τ</strong>：适当的 τ（0.1）能提升性能，τ 过大则可能导致不准确的注意力估计被误判为 Query-Aware</li>
+<li><strong>最小计算预算限制</strong>：设置最小预算（1024 tokens）可防止注意力头因过高稀疏率而失效</li>
+<li><strong>块大小</strong>：block_size（64 vs 128）对性能影响不显著</li>
+<li><strong>代表性查询子集位置</strong>：使用最后 block_size 查询向量效果最佳（用于 Vertical-Slash 索引选择）</li>
+</ol>
+<h2 id="_14">优势</h2>
+<ol>
+<li><strong>真正的自适应性</strong>：不同于固定稀疏模式方法，FlexPrefill 根据输入动态调整每个注意力头的稀疏模式和比率</li>
+<li><strong>速度-精度平衡灵活可调</strong>：通过 γ 参数可在推理速度和模型质量之间灵活切换</li>
+<li><strong>无需训练</strong>：与 FlashAttention 兼容，基于 PyTorch + Triton 实现，无需额外训练</li>
+<li><strong>跨模型泛化</strong>：在 LLaMA、GLM、Yi、Qwen 等多种模型上表现一致</li>
+<li><strong>显著加速</strong>：在 128k 上下文下实现 2.43x~3.49x 加速，同时保持甚至提升性能</li>
+<li><strong>理论基础扎实</strong>：通过拉格朗日对偶性推导，建立了稀疏注意力优化的理论基础</li>
+</ol>
+<h2 id="_15">局限</h2>
+<ol>
+<li><strong>仅限预填充阶段</strong>：FlexPrefill 仅优化 pre-filling 阶段，未涉及解码（decoding）阶段</li>
+<li><strong>额外开销</strong>：引入了模式搜索（JSD 计算）和索引构建的额外开销，在短序列（&lt; 8k）上开销占比显著</li>
+<li><strong>参数选择依赖经验</strong>：γ 和 τ 的最优值因模型而异，需要经验调优</li>
+<li><strong>依赖固定块大小</strong>：block_size 参数需要针对不同硬件优化</li>
+<li><strong>对极端长序列的验证有限</strong>：主要在 128k 以下评估，更长序列的泛化性待验证</li>
+<li><strong>模型架构依赖</strong>：主要针对 Transformer 架构，未涉及 State Space Model 等替代架构</li>
+<li><strong>硬件依赖</strong>：基于 NVIDIA A100 GPU 和 Triton 优化，在其他硬件上性能可能不同</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏注意力与 KV Cache 压缩</strong>：FlexPrefill 的动态稀疏模式思想可与 KV Cache 压缩技术（如 SnapKV、H2O、PQCache）结合，在预填充和解码阶段同时优化</li>
+<li><strong>注意力模式自适应</strong>：FlexPrefill 的 JSD 模式判断方法可扩展到自适应注意力头选择，可能与 MoE（Mixture of Experts）架构结合</li>
+<li><strong>长上下文推理加速</strong>：与 MInference、StreamingLLM、InfLLM 等方法的对比研究，以及与 FlashAttention-3、RingAttention 等硬件优化方法的协同</li>
+<li><strong>动态稀疏比率的端到端训练</strong>：当前方法为训练免费，但可以探索将动态稀疏比率纳入模型训练，进一步优化性能</li>
+<li><strong>跨模态长序列推理</strong>：将 FlexPrefill 扩展到多模态模型（如视觉-语言模型）的长序列推理</li>
+<li><strong>稀疏注意力与混合架构</strong>：结合 State Space Model（如 Mamba）与 Transformer 的混合架构，利用 FlexPrefill 的自适应稀疏机制优化混合架构的推理效率</li>
+</ol>
+<h2 id="_16">参考信息</h2>
+<ul>
+<li><strong>论文</strong>：FlexPrefill: A Context-Aware Sparse Attention Mechanism for Efficient Long-Sequence Inference</li>
+<li><strong>发表</strong>：ICLR 2025</li>
+<li><strong>作者</strong>：Xunhao Lai (PKU), Jianqiao Lu (HKU), Yao Luo (ByteDance), Yiyuan Ma (ByteDance), Xun Zhou (ByteDance)</li>
+<li><strong>代码</strong>：https://github.com/bytedance/FlexPrefill</li>
+<li><strong>arXiv</strong>：http://arxiv.org/abs/2502.20766v1</li>
+<li><strong>关键词</strong>：sparse_pruning, attention_sparsity</li>
+<li><strong>Baseline</strong>：MInference (2024), StreamingLLM (2024)</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

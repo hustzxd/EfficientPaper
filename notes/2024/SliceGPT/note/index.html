@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,27 +161,221 @@
   
                 <h1 id="slicegpt-compress-large-language-models-by-deleting-rows-and-columns">SliceGPT: Compress Large Language Models by Deleting Rows and Columns</h1>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models have become the cornerstone of natural language
-processing, but their use comes with substantial costs in terms of compute and
-memory resources. Sparsification provides a solution to alleviate these
-resource constraints, and recent works have shown that trained models can be
-sparsified post-hoc. Existing sparsification techniques face challenges as they
-need additional data structures and offer constrained speedup with current
-hardware. In this paper we present SliceGPT, a new post-training sparsification
-scheme which replaces each weight matrix with a smaller (dense) matrix,
-reducing the embedding dimension of the network. Through extensive
-experimentation, we show that SliceGPT can remove up to 25% of the model
-parameters (including embeddings) for LLAMA2-70B, OPT 66B and Phi-2 models
-while maintaining 99%, 99% and 90% zero-shot task performance of the dense
-model respectively. Our sliced models run on fewer GPUs and run faster without
-any additional code optimization: on 24GB consumer GPUs we reduce the total
-compute for inference on LLAMA2-70B to 64% of that of the dense model; on 40GB
-A100 GPUs we reduce it to 66%. We offer a new insight, computational invariance
-in transformer networks, which enables SliceGPT and we hope it will inspire and
-enable future avenues to reduce memory and computation demands for pre-trained
-models. Code is available at:
-https://github.com/microsoft/TransformerCompression</p>
+<h2 id="_1">一句话总结</h2>
+<p>SliceGPT 是一种基于<strong>计算不变性（Computational Invariance）</strong>的后训练结构化剪枝方法，通过对 Transformer 权重矩阵施加正交变换（PCA）后直接删除行和列，从而压缩模型的嵌入维度，实现了在不进行恢复微调的情况下移除高达 25% 参数并保持接近原始模型性能的零样本表现，同时带来显著的推理加速。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型已成为自然语言处理的基石，但其使用伴随着巨大的计算和内存资源开销。稀疏化为缓解这些资源限制提供了方案，近期研究表明训练好的模型可以在后训练阶段被稀疏化。现有稀疏化技术面临挑战，因为它们需要额外的数据结构，且在当前硬件上提供的加速受限。本文提出了 SliceGPT，一种新的后训练稀疏化方案，它用更小的（密集）矩阵替换每个权重矩阵，从而减少网络的嵌入维度。通过大量实验，我们表明 SliceGPT 可以为 LLAMA-2 70B、OPT 66B 和 Phi-2 模型移除高达 25% 的参数（包括嵌入层），同时分别保持密集模型 99%、99% 和 90% 的零样本任务性能。我们的切片模型在更少的 GPU 上运行且速度更快，无需任何额外的代码优化：在 24GB 消费级 GPU 上，我们将 LLAMA-2 70B 推理的总计算量减少到密集模型的 64%；在 40GB A100 GPU 上减少到 66%。我们提出了一个新的洞察——Transformer 网络中的计算不变性，它使 SliceGPT 得以实现，我们希望它能启发并开启未来减少预训练模型内存和计算需求的新途径。代码地址：https://github.com/microsoft/TransformerCompression</p>
+<h2 id="_3">研究动机</h2>
+<p>大语言模型（LLMs）的参数规模达到数十亿甚至上千亿，部署成本极高。许多模型需要多块 GPU 才能进行预测，且由于自回归特性，生成文本需要多次前向传播。因此，降低模型的计算需求具有广泛的研究兴趣。</p>
+<p>现有的模型压缩技术主要分为四类：蒸馏、张量分解（包括低秩因子化）、剪枝和量化。其中，剪枝方法虽然历史悠久，但大多数方法需要在剪枝后进行恢复微调（RFT）才能维持性能，使整个过程昂贵且难以扩展。此外，现有的非结构化和半结构化剪枝方法面临以下问题：</p>
+<ol>
+<li><strong>非结构化稀疏</strong>（如 SparseGPT）虽然能够达到较高的稀疏率，但在当前硬件上无法实现端到端的加速，因为稀疏模式需要额外的数据结构支持。</li>
+<li><strong>2:4 结构化稀疏</strong>虽然能够利用硬件加速，但模型精度维持不如预期。</li>
+<li><strong>低秩分解</strong>方法需要将内维度压缩到原始维度的一半以下，且通常需要微调步骤。</li>
+<li><strong>基于范数的列/行剪枝</strong>效果极差，WikiText-2 困惑度在剪枝少量列后就飙升到 1000 以上。</li>
+</ol>
+<p>SliceGPT 的核心动机是：<strong>是否存在一种方法，能够将权重矩阵直接替换为更小的密集矩阵，减少网络的嵌入维度，同时不需要恢复微调？</strong> 答案是肯定的，通过利用 Transformer 架构中固有的计算不变性来实现。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="computational-invariance">核心思想：计算不变性（Computational Invariance）</h3>
+<p>SliceGPT 的核心洞察是 Transformer 网络中存在<strong>计算不变性</strong>：对每个权重矩阵施加一个正交变换 <script type="math/tex">Q</script>（满足 <script type="math/tex">Q^TQ = QQ^T = I</script>），不改变模型的输出。这是因为 RMSNorm 操作与正交变换可交换：</p>
+<p>
+<script type="math/tex; mode=display">\text{RMSNorm}(XQ)Q^T = \text{RMSNorm}(X)</script>
+</p>
+<p>这意味着我们可以对 Transformer 中所有权重矩阵应用任意正交变换 <script type="math/tex">Q</script>，而不会改变模型的预测结果。具体来说，对于第 <script type="math/tex">\ell</script> 个块：</p>
+<ul>
+<li>嵌入矩阵：<script type="math/tex">\tilde{W}_{\text{embd}} = W_{\text{embd}} Q</script>
+</li>
+<li>输入权重矩阵：<script type="math/tex">\tilde{W}_{\text{in}}^\ell = Q^T W_{\text{in}}^\ell</script>
+</li>
+<li>输出权重矩阵：<script type="math/tex">\tilde{W}_{\text{out}}^\ell = W_{\text{out}}^\ell Q</script>
+</li>
+<li>偏置向量：<script type="math/tex">\tilde{b}_{\text{out}}^\ell = Q^T b_{\text{out}}^\ell</script>
+</li>
+<li>头矩阵：<script type="math/tex">\tilde{W}_{\text{head}} = Q^T W_{\text{head}}</script>
+</li>
+</ul>
+<h3 id="layernorm-rmsnorm">LayerNorm 到 RMSNorm 的转换</h3>
+<p>计算不变性仅适用于 RMSNorm 连接的 Transformer 网络。对于使用 LayerNorm 的模型，需要先将其转换为 RMSNorm，具体做法是：</p>
+<ul>
+<li>将 LayerNorm 的缩放矩阵 <script type="math/tex">\text{diag}(\alpha)</script> 吸收到后续的权重矩阵 <script type="math/tex">W_{\text{in}}</script> 中</li>
+<li>将均值减去矩阵 <script type="math/tex">M</script> 乘到每个块的输出矩阵 <script type="math/tex">W_{\text{out}}</script> 上</li>
+<li>嵌入矩阵 <script type="math/tex">W_{\text{embd}}</script> 需要均值减去，<script type="math/tex">W_{\text{head}}</script> 需要按最后一个 LayerNorm 的缩放进行缩放</li>
+</ul>
+<h3 id="_5">每个块独立的变换矩阵</h3>
+<p>由于不同块的信号对齐不同，需要为每个块计算独立的正交矩阵 <script type="math/tex">Q_\ell</script>。这引入了额外的残差连接操作 <script type="math/tex">Q_{\ell-1}^T Q_\ell</script>，但这些操作无法预计算，给模型增加了少量（<script type="math/tex">D \times D</script>）开销。</p>
+<h3 id="pca">基于 PCA 的变换矩阵计算</h3>
+<p>使用 PCA（主成分分析）计算每个块的正交矩阵 <script type="math/tex">Q_\ell</script>：</p>
+<ol>
+<li>从训练集中选择校准数据集</li>
+<li>运行模型（LayerNorm 转换为 RMSNorm 后）提取信号</li>
+<li>对第 <script type="math/tex">\ell</script> 个 RMSNorm 块的输出 <script type="math/tex">X_{\ell,i}</script> 计算协方差矩阵：
+   <script type="math/tex; mode=display">C_\ell = \sum_i X_{\ell,i}^T X_{\ell,i}</script>
+</li>
+<li>将 <script type="math/tex">Q_\ell</script> 设为 <script type="math/tex">C_\ell</script> 的特征向量，按特征值降序排列</li>
+</ol>
+<h3 id="slicing">切片（Slicing）</h3>
+<p>在应用正交变换后，通过删除权重矩阵的行和列来压缩模型：</p>
+<ul>
+<li>删除 <script type="math/tex">W_{\text{in}}</script> 的行（对应次要主成分）</li>
+<li>删除 <script type="math/tex">W_{\text{out}}</script> 和 <script type="math/tex">W_{\text{embd}}</script> 的列</li>
+<li>删除残差连接中 <script type="math/tex">Q_{\ell-1}^T Q_\ell</script> 矩阵的行和列</li>
+</ul>
+<p>这样，权重矩阵变得更小，块之间传递的信号也更小（嵌入维度减小），实现了真正的结构化压缩。</p>
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">数据集和模型</h3>
+<ul>
+<li><strong>模型</strong>：OPT（125M 到 66B）、LLAMA-2（7B 到 70B）、Phi-2（2.8B）</li>
+<li><strong>校准集</strong>：WikiText-2 训练集和 Alpaca 训练集</li>
+<li><strong>评估任务</strong>：WikiText-2 生成任务（困惑度）、五个零样本任务（PIQA、WinoGrande、HellaSwag、ARC-e、ARC-c）</li>
+<li><strong>硬件</strong>：Quadro RTX6000（24GB 消费级）、A100（40GB 数据中心级）、H100（80GB 数据中心级）</li>
+<li><strong>计算成本</strong>：单张 H100 GPU，约 3.5 小时完成 LLAMA-2 70B 的计算</li>
+</ul>
+<h3 id="wikitext-2">WikiText-2 困惑度结果</h3>
+<p>SliceGPT 在 OPT 模型上的表现优于 LLAMA-2，且性能随模型规模增大而提升。具体数据（25% 切片）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Dense</th>
+<th>SliceGPT 25%</th>
+<th>SparseGPT 2:4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT 66B</td>
+<td>9.33</td>
+<td>9.68</td>
+<td>10.22</td>
+</tr>
+<tr>
+<td>LLAMA-2 70B</td>
+<td>3.32</td>
+<td>4.60</td>
+<td>4.98</td>
+</tr>
+<tr>
+<td>OPT 30B</td>
+<td>9.56</td>
+<td>10.04</td>
+<td>10.53</td>
+</tr>
+</tbody>
+</table>
+<p>SliceGPT 在所有 LLAMA-2 模型上优于 SparseGPT 2:4，在 OPT 模型上（除 2.7B 外）也优于 SparseGPT 2:4。</p>
+<h3 id="_8">零样本任务表现</h3>
+<ul>
+<li><strong>OPT 66B</strong>：25% 切片后保持 99% 密集模型性能</li>
+<li><strong>LLAMA-2 70B</strong>：25% 切片后保持 96% 性能，加上 RFT 后提升到 99%</li>
+<li><strong>Phi-2</strong>：25% 切片后保持 87% 性能，加上 RFT 后提升到 90%</li>
+</ul>
+<p>使用 Alpaca 作为校准和 RFT 数据集时，LLAMA-2 70B 在 30% 切片后平均准确率达 74.3%（密集模型 76.6%），切片后模型约 51.6B 参数。</p>
+<h3 id="_9">吞吐量和推理加速</h3>
+<p><strong>吞吐量（H100 GPU）</strong>：
+- 25% 切片：最高 1.55× 吞吐量提升
+- 50% 切片：最大模型只需 1 块 GPU 而非 2 块，3.13× 和 1.87× 吞吐量提升
+- 固定 GPU 数量下，50% 切片可达 6.26× 和 3.75× 密集模型吞吐量</p>
+<p><strong>推理时间</strong>：
+- 在 Quadro RTX6000 上，25% 切片带来 16-17% 加速
+- 在 A100 上，25% 切片带来 11-13% 加速
+- LLAMA-2 70B 在 RTX6000 上，计算量从 1764 GPUms 减少到 1075 GPUms（64%）
+- LLAMA-2 70B 在 A100 上，计算量从 500 GPUms 减少到 330 GPUms（66%）</p>
+<h3 id="_10">计算成本</h3>
+<p>所有 LLAMA-2、OPT 和 Phi-2 模型可在单块 GPU 上 1-3 小时内完成切片。加上恢复微调（RFT），总时间 1-5 小时：
+- LLAMA-2 7B：1 小时 7 分钟（1xH100）
+- LLAMA-2 13B：1 小时 52 分钟（1xH100）
+- LLAMA-2 70B：5 小时 6 分钟（1xH100 切片 + 4xH100 RFT）
+- Phi-2：2 小时 48 分钟（1xV100）</p>
+<h3 id="_11">校准集敏感性</h3>
+<ul>
+<li>校准集大小至少 128 个样本即可获得合理结果</li>
+<li>更大的序列长度（如 2048）能带来更好的困惑度</li>
+<li>主实验使用校准集大小 1024，序列长度 2048</li>
+</ul>
+<h2 id="_12">优势</h2>
+<ol>
+<li>
+<p><strong>无需恢复微调</strong>：SliceGPT 在不进行 RFT 的情况下仍能保持较好的性能，而大多数结构化剪枝方法（如 LLM-Pruner）需要昂贵的微调步骤。</p>
+</li>
+<li>
+<p><strong>真正的结构化压缩</strong>：不同于非结构化稀疏或 2:4 结构化稀疏，SliceGPT 直接删除权重矩阵的行和列，减少了嵌入维度，使得模型能使用密集矩阵内核，无需额外的稀疏数据结构支持。</p>
+</li>
+<li>
+<p><strong>显著的加速效果</strong>：由于减小了嵌入维度，SliceGPT 在减少参数的同时也减少了计算量和数据移动，带来真实的端到端加速（在消费者级 GPU 上可达 16-17% 加速）。</p>
+</li>
+<li>
+<p><strong>计算成本低</strong>：仅需单块 GPU 和数小时即可完成，远低于需要多次迭代训练的压缩方法。</p>
+</li>
+<li>
+<p><strong>利用计算不变性</strong>：理论基础扎实，通过正交变换和 RMSNorm 的可交换性，保证了变换后模型输出不变，提供了简洁的理论框架。</p>
+</li>
+<li>
+<p><strong>模型越大效果越好</strong>：更大的模型（如 LLAMA-2 70B）能够承受更高的压缩率，且保持较好的性能，说明该方法对大模型特别有效。</p>
+</li>
+<li>
+<p><strong>可与量化等方法结合</strong>：SliceGPT 的结构化压缩可以与量化（如 GPTQ、SmoothQuant）结合，进一步压缩模型。</p>
+</li>
+</ol>
+<h2 id="_13">局限</h2>
+<ol>
+<li>
+<p><strong>需要额外的残差连接操作</strong>：每个块需要插入 <script type="math/tex">Q_{\ell-1}^T Q_\ell</script> 的线性变换，虽然开销较小但无法预计算，增加了少量 <script type="math/tex">D \times D</script> 的计算。</p>
+</li>
+<li>
+<p><strong>需要校准数据集</strong>：计算 PCA 变换矩阵需要从训练集中选择校准数据集，且校准集的大小和序列长度对性能有影响，增加了额外的数据依赖。</p>
+</li>
+<li>
+<p><strong>大模型上 FP32 PCA 更准确</strong>：使用 FP32 进行 PCA 计算需要更高的精度，这在大模型上可能影响数值稳定性（论文发现单精度会导致精度下降）。</p>
+</li>
+<li>
+<p><strong>对小模型效果有限</strong>：虽然 Phi-2（2.8B）等小模型也能被压缩，但切片后模型与相同参数量的小模型相比仍有差距，说明压缩后的效果不如同等规模的原生模型。</p>
+</li>
+<li>
+<p><strong>无法进行完全的端到端加速优化</strong>：虽然提供了加速，但在某些情况下（如通过 Hugging Face 推理）无法享受连续批处理和模型分片的优化。</p>
+</li>
+<li>
+<p><strong>恢复微调效果依赖于校准集</strong>：使用 WikiText-2 进行 RFT 效果远不如 Alpaca，说明 RFT 效果高度依赖于校准数据集与目标任务的相似性。</p>
+</li>
+<li>
+<p><strong>50% 切片时困惑度较高</strong>：当切片率超过 25% 时（如 50%），WikiText-2 的困惑度比 SparseGPT 2:4 更差，尽管吞吐量更高。</p>
+</li>
+<li>
+<p><strong>OPT 模型的 RFT 效果有限</strong>：论文尝试了大量搜索，未能找到使 OPT 模型在 RFT 后性能提升的参数。</p>
+</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li>
+<p><strong>结构化剪枝（Structured Pruning）</strong>：SliceGPT 属于结构化剪枝范畴，与 LLM-Pruner、LLM Surgeon 等方法相关。EfficientPaper 项目关注高效模型压缩技术，SliceGPT 的结构化剪枝方法是其中的重要方向。</p>
+</li>
+<li>
+<p><strong>计算不变性（Computational Invariance）</strong>：这是一个新的理论洞察，可能启发更多关于 Transformer 架构中正交变换的研究，如在不同层之间应用正交变换以优化模型结构。</p>
+</li>
+<li>
+<p><strong>后训练压缩（Post-training Compression）</strong>：SliceGPT 的后训练剪枝方式与 GPTQ（量化）、SparseGPT（非结构化剪枝）等方法形成互补，为后训练压缩提供了新的思路。</p>
+</li>
+<li>
+<p><strong>模型稀疏化（Model Sparsification）</strong>：通过删除行和列实现的结构化稀疏化，与非结构化稀疏（如 SparseGPT 的 2:4 模式）和低秩分解方法形成对比，提供了不同稀疏化策略的研究方向。</p>
+</li>
+<li>
+<p><strong>模型部署优化（Model Deployment Optimization）</strong>：SliceGPT 在减少 GPU 需求和推理时间方面的效果，对于模型部署和推理优化有重要价值，特别是对于资源受限的消费级 GPU 环境。</p>
+</li>
+<li>
+<p><strong>与量化的结合（Compression Combination）</strong>：SliceGPT 可以与量化方法（如 GPTQ、SmoothQuant、LLM.int8()）结合，实现更高效的模型压缩，这是当前研究的热门方向。</p>
+</li>
+<li>
+<p><strong>大模型压缩（Large Model Compression）</strong>：SliceGPT 对大模型（如 LLAMA-2 70B）的高效压缩，与 EfficientPaper 项目中关注的大模型效率研究方向高度一致。</p>
+</li>
+<li>
+<p><strong>校准数据集研究（Calibration Dataset Study）</strong>：SliceGPT 对校准数据集大小和序列长度的敏感性研究，为后续工作提供了重要参考，可能启发更多关于校准数据选择和优化的研究。</p>
+</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）基于论文 SliceGPT 的 PDF 全文和元数据自动生成。内容经过结构化整理和中文翻译，但部分细节可能需要人工校对。本笔记仅供参考，不构成学术建议。</p>
+<hr />
+<p><em>生成时间：2026-06-05</em>
+<em>模型：MiMo-V2.5</em>
+<em>方法：PyMuPDF (fitz) 文本提取</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

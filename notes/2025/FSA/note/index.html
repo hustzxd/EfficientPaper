@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel - Efficient Paper</title>
+    <title>FSA - Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel";
+        var mkdocs_page_name = "FSA - Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel";
         var mkdocs_page_input_path = "notes/2025/FSA/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel</li>
+      <li class="breadcrumb-item active">FSA - Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,32 +159,164 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="flash-sparse-attention-an-alternative-efficient-implementation-of-native-sparse-attention-kernel">Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel</h1>
+                <h1 id="fsa-flash-sparse-attention-an-alternative-efficient-implementation-of-native-sparse-attention-kernel">FSA - Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel</h1>
 <blockquote>
-<p>Ran Yan, Youhe Jiang, Binhang Yuan</p>
+<p>⚠️ 本文档由 AI Agent 自动生成，内容基于 arXiv 论文 2508.18224v1。生成时间：2026-06-05。</p>
 </blockquote>
-<p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Recent progress in sparse attention mechanisms has demonstrated strong
-potential for reducing the computational cost of long-context training and
-inference in large language models (LLMs). Native Sparse Attention (NSA), a
-state-of-the-art approach, introduces natively trainable, hardware-aligned
-sparse attention that delivers substantial system-level performance gains while
-maintaining accuracy comparable to full attention. However, the kernel
-implementation of NSA relies on a query-grouping strategy that is efficient
-only with large Grouped Query Attention (GQA) sizes, whereas modern LLMs
-typically adopt much smaller GQA groups, which limits the applicability of this
-sparse algorithmic advance. In this work, we propose Flash Sparse Attention
-(FSA), which includes an alternative kernel design that enables efficient NSA
-computation across a wide range of popular LLMs with varied smaller GQA group
-sizes on modern GPUs. Compared to vanilla NSA kernel implementation, our
-empirical evaluation demonstrates that FSA achieves (i) up to 3.5<script type="math/tex">\times</script> and
-on average 1.6<script type="math/tex">\times</script> kernel-level latency reduction, (ii) up to 1.25<script type="math/tex">\times</script>
-and 1.09<script type="math/tex">\times</script> on average end-to-end training speedup on state-of-the-art
-LLMs, and (iii) up to 1.36<script type="math/tex">\times</script> and 1.11<script type="math/tex">\times</script> on average end-to-end
-prefill speedup on state-of-the-art LLMs. The source code is open-sourced and
-publicly available at
-https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention.</p>
+<h2 id="_1">一句话总结</h2>
+<p>FSA 通过交换 NSA 稀疏注意力内核的循环顺序（外层遍历 KV block，内层遍历 query token），消除小 GQA 组大小下的填充开销，在小 GQA 组配置下实现最高 3.5× 内核延迟降低和 1.09× 端到端训练加速。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>近年来，稀疏注意力机制在降低长上下文训练和推理的计算成本方面展现出强大潜力。NSA（Native Sparse Attention）引入了原生可训练、硬件对齐的稀疏注意力，同时保持与全注意力相当的精度。然而，NSA 的内核实现依赖 query-grouping 策略，仅在大 GQA（Grouped Query Attention）组大小时高效，而现代 LLM 通常采用较小的 GQA 组，限制了该稀疏算法的应用范围。FSA 提出了替代的内核设计，支持在多种 GQA 组大小下高效计算 NSA。实验表明，FSA 相比 NSA 内核实现可实现：(i) 最高 3.5×、平均 1.6× 的内核级延迟降低；(ii) 最高 1.25×、平均 1.09× 的端到端训练加速；(iii) 最高 1.36×、平均 1.11× 的端到端 prefill 加速。源代码已在 GitHub 开源。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<ul>
+<li>长上下文 LLM 中，full self-attention 的 O(N²) 时间和内存复杂度成为瓶颈</li>
+<li>在 64k token 上下文中，attention 占总解码延迟的 70-80%</li>
+<li>处理 100 万 token prompt（8B 模型）在单 GPU 上可能需要约 30 分钟</li>
+<li>NSA 是当前最先进的稀疏注意力框架，但其内核实现存在系统瓶颈</li>
+</ul>
+<h3 id="nsa">现有 NSA 的局限</h3>
+<ul>
+<li>NSA 的 selected attention 内核采用两层循环：外层遍历 query token，内层遍历 KV block</li>
+<li>外层循环批处理共享同一 KV head 的 query heads</li>
+<li>当 GQA 组大小较小时，query heads 数量不足以满足 GPU 矩阵乘法的最小维度要求（Hopper GPU 要求每个维度至少 8）</li>
+<li>需要填充额外的 query heads 来满足硬件要求，导致不必要的内存访问和计算开销</li>
+<li>问题根源：现代 GPU 期望 SM 上执行的矩阵 tile 具有特定形状，小 GQA 组大小使得矩阵乘法形状不匹配</li>
+</ul>
+<h2 id="_5">方法（技术细节）</h2>
+<h3 id="_6">核心设计：交换循环顺序</h3>
+<p>FSA 的核心创新是交换 NSA 两层循环的顺序：
+- <strong>NSA</strong>：外层遍历 query token，内层遍历 KV block
+- <strong>FSA</strong>：外层遍历 KV block，内层遍历 query token</p>
+<h3 id="_7">前向传播内核实现</h3>
+<ol>
+<li><strong>FSA selected attention kernel</strong>：</li>
+<li>每个 thread block 处理一个 (Query head, KV block) 对</li>
+<li>KV block 只从主存加载一次</li>
+<li>通过索引张量 Ii/Oi 非连续地批处理 query token</li>
+<li>当记录在 Ii 中的 query batch 耗尽时，thread block 早退（early return），无额外内存访问</li>
+<li>
+<p>索引张量从 NSA 的稀疏选择 KV 索引张量 T ∈RhK×N×T 计算得出</p>
+</li>
+<li>
+<p><strong>FSA online softmax &amp; reduction kernel</strong>：</p>
+</li>
+<li>解耦注意力结果的计算与累加</li>
+<li>采用两阶段过程：<ul>
+<li>阶段一：FSA selected attention kernel 计算部分 query 注意力结果，不执行 reduction，写入中间缓冲区 Obuf</li>
+<li>阶段二：专用 reduction kernel 将部分结果高效 reduce 到最终输出张量，同时考虑 online softmax</li>
+</ul>
+</li>
+<li>通过独立的 online softmax kernel 预计算 online softmax 统计量（running max 和 sum of exponentials）</li>
+<li>
+<p>避免原子操作（atomic additions）的开销</p>
+</li>
+<li>
+<p><strong>反向传播</strong>：</p>
+</li>
+<li>类似前向传播，非连续加载 query token 并计算梯度</li>
+<li>索引张量 Ii, Oi 从缓存中提取</li>
+</ol>
+<h3 id="_8">关键优化</h3>
+<ul>
+<li><strong>Early return 机制</strong>：使用索引张量减少非连续内存访问</li>
+<li><strong>Online softmax 解耦</strong>：将统计计算从主内核分离到独立的预计算内核</li>
+<li><strong>注意力累加解耦</strong>：从主内核分离到另一个 kernel，还原原始循环顺序</li>
+</ul>
+<h3 id="gpu">GPU 硬件特性</h3>
+<ul>
+<li>使用 Triton 编译器实现高效内核</li>
+<li>Hopper GPU 的 PTX warp-level 矩阵乘法要求每个维度至少 8</li>
+<li>FSA 避免了小 GQA 组大小下的填充需求，因为批处理 query token 通常满足最小维度要求</li>
+</ul>
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">评估设置</h3>
+<ul>
+<li>硬件：NVIDIA H20 和 H200 GPU</li>
+<li>模型：Llama3-8B、Qwen3-14B、Qwen2.5-32B</li>
+<li>配置：GQA=1 和 GQA=4，序列长度 32K/64K</li>
+<li>对比基线：NSA 和 Full Attention</li>
+<li>训练数据：ML-ArXiv-Papers 数据集</li>
+</ul>
+<h3 id="kernel">Kernel 级性能</h3>
+<ul>
+<li>相比 NSA：最高 3.5×、平均 1.6× 内核延迟降低</li>
+<li>与 Full Attention 对比：由于稀疏性，性能提升更显著</li>
+</ul>
+<h3 id="_11">端到端训练性能</h3>
+<ul>
+<li>相比 NSA：最高 1.25×、平均 1.09× 端到端训练加速</li>
+<li>训练收敛性：FSA、NSA、Full Attention 三者损失曲线相似，验证了 FSA 内核设计的正确性</li>
+</ul>
+<h3 id="prefill">端到端 prefill 性能</h3>
+<ul>
+<li>相比 NSA：最高 1.36×、平均 1.11× prefill 加速</li>
+</ul>
+<h3 id="_12">三模块分解</h3>
+<ul>
+<li>Selected attention 是 NSA 三个注意力机制（compressed、selected、sliding）中的主要系统瓶颈</li>
+<li>Selected attention 占总注意力开销的最高 79%、平均 65%</li>
+<li>FSA 在 selected attention 阶段实现最高 7.6×、平均 3.4× 延迟降低</li>
+</ul>
+<h3 id="_13">消融实验</h3>
+<ul>
+<li>禁用 inner loop 优化：性能下降最高 18.9%、平均 11.9%</li>
+<li>禁用 early return 设计：性能下降最高 25.2%、平均 18.2%</li>
+</ul>
+<h3 id="_14">端到端分解分析</h3>
+<ul>
+<li>FSA 的性能提升来源于 attention 计算部分</li>
+<li>在 attention 组件中，FSA 实现最高 1.4×、平均 1.23× 延迟降低（vs NSA）</li>
+<li>FSA 实现最高 3.87×、平均 2.91× 延迟降低（vs Full Attention）</li>
+</ul>
+<h2 id="_15">优势</h2>
+<ol>
+<li><strong>更广泛的适用性</strong>：支持小 GQA 组大小，适用于更多现代 LLM 架构（Llama3、Qwen 等）</li>
+<li><strong>消除填充开销</strong>：通过交换循环顺序，避免了小 GQA 组大小下的 padding 问题</li>
+<li><strong>内核级显著加速</strong>：相比 NSA 实现最高 3.5× 延迟降低</li>
+<li><strong>端到端性能提升</strong>：训练和 prefill 阶段均有加速</li>
+<li><strong>算法正确性</strong>：通过 loss 对比验证，FSA 与 NSA 保持相同的收敛行为</li>
+<li><strong>开源可复现</strong>：源代码在 GitHub 开放</li>
+</ol>
+<h2 id="_16">局限</h2>
+<ol>
+<li><strong>适用场景有限</strong>：仅针对 NSA 的 selected attention 内核进行优化，对 compressed 和 sliding attention 无改进</li>
+<li><strong>非连续内存访问</strong>：batching 非连续 query token 降低 GPU L2 缓存命中率</li>
+<li><strong>额外的 reduction kernel 开销</strong>：解耦的 reduction kernel 增加了额外的内核启动和通信开销</li>
+<li><strong>仅针对训练和 prefill</strong>：未详细讨论 decode 阶段的性能（decode 阶段 GQA 组大小通常更小，可能受益更大）</li>
+<li><strong>硬件依赖性</strong>：内核实现依赖 Triton，需要特定 GPU 架构（Hopper）支持</li>
+<li><strong>模型规模限制</strong>：实验仅在 8B-32B 规模模型上验证，更大模型性能未验证</li>
+<li><strong>缺乏理论分析</strong>：主要以实验驱动，缺少严格的理论复杂度分析</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏注意力机制优化</strong>：FSA 是 NSA 内核的系统优化，与稀疏注意力研究方向高度相关</li>
+<li><strong>硬件高效的注意力内核</strong>：展示了算法-系统协同设计的重要性，将理论效率转化为实际加速</li>
+<li><strong>GQA 架构优化</strong>：解决了小 GQA 组大小下的内核效率问题，对 GQA 架构的实践部署有指导意义</li>
+<li><strong>长上下文 LLM 训练</strong>：为长序列训练提供更高效的注意力计算方式</li>
+<li><strong>GPU 内核编程</strong>：展示了 Triton 在稀疏注意力内核中的应用，可作为内核开发参考</li>
+<li><strong>Attention 机制与 KV 缓存</strong>：FSA 的 KV block 处理方式可与 KV 缓存压缩、KV 缓存管理等研究方向结合</li>
+<li><strong>系统性能优化</strong>：解耦计算与累加、early return 机制等优化技巧具有通用性</li>
+</ol>
+<h2 id="_17">论文信息</h2>
+<ul>
+<li><strong>标题</strong>: Flash Sparse Attention: An Alternative Efficient Implementation of Native Sparse Attention Kernel</li>
+<li><strong>作者</strong>: Ran Yan, Youhe Jiang, Binhang Yuan</li>
+<li><strong>机构</strong>: The Hong Kong University of Science and Technology</li>
+<li><strong>年份</strong>: 2025</li>
+<li><strong>来源</strong>: arXiv:2508.18224v1 [cs.DC]</li>
+<li><strong>代码</strong>: https://github.com/Relaxed-System-Lab/Flash-Sparse-Attention</li>
+<li><strong>关键词</strong>: sparse_pruning, attention</li>
+</ul>
+<h2 id="_18">关键图表说明</h2>
+<ul>
+<li><strong>Figure 1</strong>: NSA 与 FSA 的两层循环顺序对比（左：NSA 外层遍历 query，内层遍历 KV；右：FSA 外层遍历 KV，内层遍历 query）</li>
+<li><strong>Figure 7</strong>: FSA、NSA 和 Full Attention 的前向/反向计算延迟分解</li>
+<li><strong>Figure 8</strong>: Selected、compressed、sliding 三模块延迟分解，selected attention 占主导</li>
+<li><strong>Figure 9</strong>: FSA 消融实验（禁用 inner loop 和 early return）</li>
+<li><strong>Figure 10</strong>: Llama3-8B 训练中 FSA、NSA、Full Attention 的 loss 对比</li>
+<li><strong>Figure 11</strong>: 端到端训练中 attention 和 MLP 的计算时间分解</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

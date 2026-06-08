@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,14 +164,154 @@
 <p>Jang-Hyun Kim, Jinuk Kim, Sangwoo Kwon, Jae W. Lee, Sangdoo Yun, Hyun Oh Song</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Transformer-based large language models (LLMs) cache context as key-value (KV) pairs during inference. As context length grows, KV cache sizes expand, leading to substantial memory overhead and increased attention latency. This paper introduces KVzip, a query-agnostic KV cache eviction method enabling effective reuse of compressed KV caches across diverse queries. KVzip quantifies the importance of a KV pair using the underlying LLM to reconstruct original contexts from cached KV pairs, subsequently evicting pairs with lower importance. Extensive empirical evaluations demonstrate that KVzip reduces KV cache size by <script type="math/tex">3</script>-<script type="math/tex">4\times</script> and FlashAttention decoding latency by approximately <script type="math/tex">2\times</script>, with negligible performance loss in question-answering, retrieval, reasoning, and code comprehension tasks. Evaluations include various models such as LLaMA3.1, Qwen2.5, and Gemma3, with context lengths reaching up to 170K tokens. KVzip significantly outperforms existing query-aware KV eviction methods, which suffer from performance degradation even at a 90% cache budget ratio under multi-query scenarios.</p>
+<h2 id="_1">一句话总结</h2>
+<p>KVzip 提出了一种查询无关（query-agnostic）的 KV 缓存驱逐方法，通过让 LLM 从压缩的 KV 缓存中重构原始上下文来评估每个 KV 对的重要性，从而在一次预填充后即可跨多种查询高效复用压缩缓存，实现 3-4× 的 KV 缓存压缩和约 2× 的解码延迟降低。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>基于 Transformer 的大语言模型（LLM）在推理过程中将上下文缓存为键值（KV）对。随着上下文长度增长，KV 缓存大小随之膨胀，导致显著的内存开销和注意力延迟增加。本文提出 KVzip，一种查询无关的 KV 缓存驱逐方法，能够有效地在不同查询间复用压缩后的 KV 缓存。KVzip 利用底层 LLM 从缓存的 KV 对中重构原始上下文来量化每个 KV 对的重要性，随后驱逐重要性较低的 KV 对。大量实验评估表明，KVzip 将 KV 缓存大小减少 3-4 倍，FlashAttention 解码延迟降低约 2 倍，在问答、检索、推理和代码理解任务中性能损失可忽略不计。评估涵盖 LLaMA3.1、Qwen2.5 和 Gemma3 等多种模型，上下文长度可达 170K tokens。KVzip 显著优于现有的查询感知 KV 驱逐方法，后者即使在 90% 缓存预算比例下也会出现性能退化。</p>
+<h2 id="_3">研究动机</h2>
+<p>Transformer 架构的 LLM 在推理时需要缓存所有 token 的 KV 对，随着上下文长度的增加，KV 缓存的内存消耗迅速增长。例如，在 Qwen2.5-14B 中缓存 120K tokens（FP16 精度）需要约 33 GB 内存，超过了模型参数存储的 28 GB。</p>
+<p>现有的 KV 缓存压缩方法主要分为以下几类：
+- <strong>注意力头合并</strong>（如 GQA）
+- <strong>KV 对压缩</strong>为更短序列
+- <strong>滑动窗口</strong>技术限制上下文窗口
+- <strong>动态 KV 驱逐</strong>（如 H2O、SnapKV、PyramidKV）</p>
+<p>然而，现有的驱逐方法主要是<strong>查询感知（query-aware）</strong>的，即根据当前查询计算 KV 对的重要性分数进行驱逐。这种方法在<strong>单查询</strong>场景下表现良好，但在<strong>多查询</strong>场景下存在严重问题：
+1. 每个新查询都需要重新进行预填充和驱逐，造成重复计算开销
+2. 如果复用基于第一个查询压缩的缓存，后续查询的性能会显著下降（因为保留的 KV 对过度拟合于初始查询）</p>
+<p>因此，本文提出一种查询无关的 KV 缓存驱逐方法，使得压缩后的缓存可以跨多种查询有效复用。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">核心思想</h3>
+<p>KVzip 的核心思想是将 Transformer LLM 视为一个<strong>编码器-解码器</strong>架构，其中上下文被编码为 KV 对（类似传统压缩方法 Zip）。通过让 LLM 从压缩后的 KV 缓存中重构原始上下文，可以验证压缩缓存是否保留了完整的上下文信息。如果压缩后的缓存能够让模型准确重构原始上下文，那么它也应该能在各种下游任务中有效工作。</p>
+<h3 id="kv-kv-importance-scoring">KV 重要性评分（KV Importance Scoring）</h3>
+<ol>
+<li><strong>构建输入序列</strong>：给定上下文长度 <script type="math/tex">n_c</script>，构造输入序列 <script type="math/tex">n_{in} = n_{prompt} + n_c</script>，其中 <script type="math/tex">n_{prompt}</script> 是重复提示词（repeat prompt，如 "Repeat the previous context:"）的长度。</li>
+<li><strong>前向传播</strong>：将该输入序列通过 LLM <script type="math/tex">f_{LM}</script> 前向传播，同时使用已有的 KV 缓存 <script type="math/tex">KV_c</script>，生成查询特征 <script type="math/tex">Q_{l,h} \in \mathbb{R}^{G \times n_{in} \times d}</script> 和键特征 <script type="math/tex">K_{l,h} \in \mathbb{R}^{(n_c + n_{in}) \times d}</script>。</li>
+<li><strong>计算注意力矩阵</strong>：计算分组注意力 <script type="math/tex">A_{l,h} = \text{Softmax}(Q_{l,h} K_{l,h}^\top)</script>。</li>
+<li><strong>提取注意力分数</strong>：提取对应于 <script type="math/tex">KV_c</script> 中键的切片注意力矩阵 <script type="math/tex">\bar{A}_{l,h}</script>。</li>
+<li><strong>计算重要性分数</strong>：对每个 KV 对，取跨分组查询的最大注意力分数作为重要性分数：
+   <script type="math/tex; mode=display">S_{l,h} = \max_{g=1,...,G; i=1,...,n_{in}} \bar{A}_{l,h}[g, i]</script>
+</li>
+</ol>
+<h3 id="chunked-scoring">分块评分（Chunked Scoring）</h3>
+<p>由于注意力矩阵的大小随上下文长度 <script type="math/tex">n_c</script> 二次方增长，直接计算对长上下文不可行。KVzip 提出分块评分策略：</p>
+<ol>
+<li>将上下文 token 分成固定大小的块（chunk），每块大小为 <script type="math/tex">m = 2K</script>。</li>
+<li>对每个块，将重复提示词与该块拼接，通过 LLM 前向传播。</li>
+<li>对每个 Transformer 层，对 <script type="math/tex">KV_c</script> 中对应于该块的键进行子采样，获得较小的注意力矩阵。</li>
+<li>重复上述过程对所有块进行评分，然后聚合得到完整的 <script type="math/tex">KV_c</script> 重要性分数。</li>
+</ol>
+<p><strong>复杂度分析</strong>：
+- 每个块的计算复杂度为 <script type="math/tex">O(m^2)</script>，总复杂度为 <script type="math/tex">O(m \cdot n_c)</script>，与上下文长度线性相关。
+- 峰值内存开销为 <script type="math/tex">O(m^2)</script>，与 <script type="math/tex">n_c</script> 无关。</p>
+<h3 id="_6">关键观察</h3>
+<ol>
+<li><strong>重构中的注意力稀疏性</strong>：交叉注意力模式比初始预填充时的自注意力模式更加稀疏，这有效识别并移除冗余 KV 对。</li>
+<li><strong>跨任务注意力重叠</strong>：重构时的注意力模式与下游任务（QA、摘要、推理）的注意力模式有显著重叠，表明重构关键的 KV 对对下游任务同样重要。</li>
+</ol>
+<h3 id="_7">支持的驱逐策略</h3>
 <ul>
-<li>Step1: prefill，输入context，得到所有的kv</li>
-<li>Step2: 再次 Prefill, 输入 “Repeat the previous context:” context，此时不需要保留kv，也不需要保留输出，只需要把之前kv 对应的重要性scores 记录统计出来 （相当于又进行了一次prefill，prefill变慢）</li>
-<li>Step3: 根据重要性，把一部分kv 驱逐</li>
-<li>Step4: 在压缩后的kv上进行推理，速度变快</li>
+<li><strong>上下文相关驱逐</strong>（Context-dependent）：对每个上下文进行重要性评分，压缩率更高但有额外开销。</li>
+<li><strong>上下文无关驱逐</strong>（Context-independent）：对每个模型进行一次重要性评分（静态头部级重要性分数），部署后无压缩开销，但压缩率适中。</li>
+<li><strong>头部级驱逐</strong>（Head-level）：计算头部级分数（取序列维度最大值），支持非均匀和均匀头部预算分配。</li>
 </ul>
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>评估框架</strong>：查询无关框架（先压缩上下文 KV 缓存，再进行多查询评估）</li>
+<li><strong>模型</strong>：Qwen2.5-7B-1M、Qwen2.5-14B-1M、LLaMA3.1-3B/8B、Gemma3-12B、LLaMA3-8B-W8A8KV4（量化）</li>
+<li><strong>数据集</strong>：SQuAD、GSM8K、NIAH、SCBench（9个任务），上下文长度 100-170K tokens</li>
+<li><strong>基线方法</strong>：H2O、SnapKV、PyramidKV、DuoAttention</li>
+<li><strong>硬件</strong>：NVIDIA A100 80GB GPU，Bfloat16 精度</li>
+</ul>
+<h3 id="_10">主要结果</h3>
+<ol>
+<li><strong>多查询任务泛化（Qwen2.5-7B-1M，12个数据集）</strong>：</li>
+<li><strong>检索密集型任务</strong>（Retr.KV、Retr.Prefix-Suffix、Code.RepoQA）：在 30% 缓存比例下仍保持性能，而基线方法在 90% 缓存比例下即开始退化。</li>
+<li><strong>上下文理解任务</strong>（SQuAD、GSM8K、En.QA 等）：在 20%-30% 缓存比例下实现近乎无损压缩。</li>
+<li>
+<p><strong>高冗余上下文任务</strong>（En.Summary、En.MultiChoice、ICL.ManyShot）：可激进压缩至 10% 而不退化，甚至偶有性能提升。</p>
+</li>
+<li>
+<p><strong>模型规模和架构泛化</strong>：</p>
+</li>
+<li>在 Qwen2.5-14B-1M、LLaMA3.1-8B、Gemma3-12B 上均表现优异。</li>
+<li>
+<p>Gemma3 使用混合注意力机制（全局+滑动窗口），KVzip 仅对全局注意力层进行驱逐。</p>
+</li>
+<li>
+<p><strong>KV 量化集成</strong>：</p>
+</li>
+<li>
+<p>与 QServe 量化框架（4-bit KV cache）结合，70% 驱逐比例 + 4-bit 量化可将 16.3GB 缓存缩减至 1.2GB，性能损失可忽略。</p>
+</li>
+<li>
+<p><strong>上下文无关驱逐</strong>：</p>
+</li>
+<li>与 DuoAttention 对比（LLaMA3-8B），KVzip 仅需几分钟的前向传播（DuoAttention 需数小时 GPU 优化），且性能更优。</li>
+<li>
+<p>DuoAttention 优化的是合成 passkey 检索，KVzip 基于自然语言文本的上下文重构，更通用。</p>
+</li>
+<li>
+<p><strong>RULER Benchmark（Qwen3-8B）</strong>：</p>
+</li>
+<li>
+<p>在 25% 压缩率下仍保持性能，而其他方法已显著退化。</p>
+</li>
+<li>
+<p><strong>重复提示词敏感性分析</strong>：</p>
+</li>
+<li>不同重复提示词（原始、改写、无）对性能影响极小（&lt;1%），验证了方法的鲁棒性。</li>
+<li>98.1% 的 KV 对的最大注意力来自重复上下文（而非重复提示词）。</li>
+</ol>
+<h3 id="_11">计算开销</h3>
+<ul>
+<li><strong>压缩开销</strong>：约为初始预填充成本的 2 倍（使用 FlashAttention），峰值内存增加不到 2%。</li>
+<li><strong>推理效率</strong>：FlashAttention 解码延迟降低约 2 倍，KV 缓存大小减少 3-4 倍。</li>
+<li><strong>chunk 大小影响</strong>：默认 2K，不同 chunk 大小（1K-8K）的性能差异 &lt;2%。</li>
+</ul>
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>查询无关设计</strong>：压缩后的 KV 缓存可跨多种查询有效复用，避免重复预填充和驱逐开销。</li>
+<li><strong>显著的压缩效果</strong>：3-4× KV 缓存压缩，约 2× 解码延迟降低，性能损失可忽略。</li>
+<li><strong>多查询鲁棒性</strong>：在多查询场景下显著优于现有方法（SnapKV、H2O 等在 90% 缓存比例下即退化）。</li>
+<li><strong>广泛的模型和任务支持</strong>：在 LLaMA3.1、Qwen2.5、Gemma3 等模型上验证，覆盖 QA、检索、推理、代码等 12 个数据集，上下文长度达 170K tokens。</li>
+<li><strong>可与量化方法结合</strong>：与 KV cache 量化（如 QServe 4-bit）互补，进一步减少内存占用。</li>
+<li><strong>支持上下文无关驱逐</strong>：无需运行时压缩开销，适合部署场景。</li>
+<li><strong>计算效率</strong>：分块评分策略使复杂度从 <script type="math/tex">O(n_c^2)</script> 降至 <script type="math/tex">O(m \cdot n_c)</script>。</li>
+<li><strong>与 DuoAttention 相比更高效</strong>：仅需几分钟前向传播（vs DuoAttention 数小时 GPU 优化），且性能更优。</li>
+<li><strong>理论直觉清晰</strong>：基于"重构-压缩"范式，类比自监督学习（如 BERT、MAE），具有良好的泛化性。</li>
+</ol>
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>缺乏理论保证</strong>：主要采用实证方法，没有对压缩导致的信息损失提供理论保证。</li>
+<li><strong>隐私泄漏风险</strong>：KV 驱逐可能导致模型行为变化（如 Table 1 中，压缩后模型可能泄露隐私信息）。虽然实际影响有限（缓存上下文通常隐含用户许可），但这一观察与浅层对齐问题相关。</li>
+<li><strong>压缩开销</strong>：上下文相关驱逐需要额外的预填充/评分开销（约为初始预填充的 2 倍），虽然可被多查询摊销，但对单次查询场景可能不划算。</li>
+<li><strong>上下文无关驱逐的压缩效率有限</strong>：虽然无运行时开销，但压缩效果低于上下文相关驱逐（如 Figure 11 所示）。</li>
+<li><strong>Softmax-free 变体的性能权衡</strong>：实现无 Softmax 的注意力评分可减少约 10% 的计算开销，但压缩率下降约 10%。</li>
+<li><strong>实验主要基于 Greedy Decoding</strong>：未验证在其他解码策略（如 beam search、采样）下的表现。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_14">基础方法</h3>
+<ul>
+<li><strong>SnapKV</strong>（2024）：查询感知的 KV 缓存驱逐方法，KVzip 的基线方法之一。</li>
+<li><strong>H2O</strong>（2023）：基于注意力分数的动态 KV 驱逐方法。</li>
+<li><strong>PyramidKV</strong>（2024）：基于金字塔信息漏斗的 KV 缓存压缩。</li>
+<li><strong>DuoAttention</strong>（2025）：基于头部级注意力模式的 KV 缓存压缩。</li>
+<li><strong>GQA</strong>（2023）：分组查询注意力，减少 KV 头数量。</li>
+</ul>
+<h3 id="_15">相关研究方向</h3>
+<ul>
+<li><strong>KV 缓存量化</strong>（如 KIVI、QServe）：与 KVzip 互补的压缩技术。</li>
+<li><strong>稀疏注意力</strong>（如 MInference、Quest）：减少注意力计算的技术路线。</li>
+<li><strong>长上下文处理</strong>（如 LongBench、SCBench、RULER）：长上下文评估基准。</li>
+<li><strong>高效 LLM 推理</strong>：包括 PagedAttention、FlashAttention 等系统优化。</li>
+<li><strong>自监督学习与重构</strong>：BERT、MAE 等基于重构的预训练方法，与 KVzip 的重构思路相通。</li>
+<li><strong>浅层对齐问题</strong>：KV 驱逐可能导致的安全性变化（如 Table 1 所示）。</li>
+</ul>
+<hr />
+<blockquote>
+<p>本笔记由 AI Agent 自动生成。生成时间：2026-06-04。内容基于论文原文提取和分析，仅供参考。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

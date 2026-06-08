@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Adaptive Layer-skipping in Pre-trained LLMs - Efficient Paper</title>
+    <title>FlexiDepth: 预训练 LLM 中的自适应层跳过 - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Adaptive Layer-skipping in Pre-trained LLMs";
+        var mkdocs_page_name = "FlexiDepth: \u9884\u8bad\u7ec3 LLM \u4e2d\u7684\u81ea\u9002\u5e94\u5c42\u8df3\u8fc7";
         var mkdocs_page_input_path = "notes/2025/FlexiDepth/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Adaptive Layer-skipping in Pre-trained LLMs</li>
+      <li class="breadcrumb-item active">FlexiDepth: 预训练 LLM 中的自适应层跳过</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,33 +159,276 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="adaptive-layer-skipping-in-pre-trained-llms">Adaptive Layer-skipping in Pre-trained LLMs</h1>
-<p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Various layer-skipping methods have been proposed to accelerate token
-generation in large language models (LLMs). However, they have overlooked a
-fundamental question: How do computational demands vary across the generation
-of different tokens? In this work, we introduce FlexiDepth, a method that
-dynamically adjusts the number of Transformer layers used in text generation.
-By incorporating a plug-in router and adapter, FlexiDepth enables adaptive
-layer-skipping in LLMs without modifying their original parameters. Introducing
-FlexiDepth to Llama-3-8B model achieves layer skipping of 8 layers out of 32,
-and meanwhile maintains the full 100\% benchmark performance. Experimental
-results with FlexiDepth demonstrate that computational demands in LLMs
-significantly vary based on token type. Specifically, generating repetitive
-tokens or fixed phrases requires fewer layers, whereas producing tokens
-involving computation or high uncertainty requires more layers. Interestingly,
-this adaptive allocation pattern aligns with human intuition. To advance
-research in this area, we open sourced FlexiDepth and a dataset documenting
-FlexiDepth's layer allocation patterns for future exploration.</p>
+                <h1 id="flexidepth-llm">FlexiDepth: 预训练 LLM 中的自适应层跳过</h1>
+<blockquote>
+<p>本笔记由 AI Agent（Hermes Agent）于 2026 年 6 月 5 日自动生成，基于论文原文全文阅读。所有内容均为中文，生成代码块已包含声明。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>FlexiDepth 通过在预训练 LLM 的每个解码层插入轻量路由器和适配器，实现逐 token 的自适应层跳过，在跳过 8/32 层的情况下仍保持 100.7% 的基准性能，显著优于现有层跳过方法。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>各种层跳过方法已被提出用于加速大语言模型（LLM）中的 token 生成。然而，它们忽略了一个基本问题：不同 token 生成时的计算需求如何变化？本文引入 FlexiDepth，一种动态调整文本生成中所用 Transformer 层数量的方法。通过引入即插即用的路由器和适配器，FlexiDepth 在不修改原始参数的前提下实现了 LLM 的自适应层跳过。将 FlexiDepth 应用于 Llama-3-8B 模型，在跳过 32 层中的 8 层的同时，保持了完整的 100% 基准性能。FlexiDepth 的实验结果表明，LLM 的计算需求随 token 类型显著变化：生成重复 token 或固定短语需要较少层数，而涉及计算或高不确定性的 token 需要更多层数。有趣的是，这种自适应分配模式与人类直觉一致。为了推进该领域的研究，我们开源了 FlexiDepth 及一个记录其层分配模式的数据集。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>均匀计算分配的低效性</strong>：当前 LLM 为每个 token 执行完整的前向传播，所有层一视同仁。然而，简单的任务（如复制文本）和复杂的任务（如数学推理）显然需要不同的计算量，这种均匀分配既浪费资源也可能导致过拟合。</li>
+<li><strong>现有方法的局限</strong>：</li>
+<li><strong>静态层剪枝</strong>（如 ShortGPT）：根据输入-输出差异永久删除层，无法适应不同 token 的动态需求。</li>
+<li><strong>早期退出</strong>（如 LayerSkip）：在中间点跳过后续所有层，粒度粗糙且对长序列生成任务性能损失严重。</li>
+<li><strong>Mixture-of-Depth（MoD）</strong>：需要从头训练，无法应用于预训练模型。</li>
+<li><strong>核心问题</strong>：不同 token 生成时的计算需求如何变化？FlexiDepth 旨在回答这一问题。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<p>FlexiDepth 的核心设计是在每个 Transformer 解码层中插入两个轻量级即插即用模块：<strong>路由器（Router）</strong>和<strong>适配器（Adapter）</strong>。原始 LLM 参数完全冻结，仅训练路由器和适配器。</p>
+<h3 id="21">2.1 路由器设计</h3>
 <ul>
-<li>复杂一些的router设计</li>
-<li>相较于单个Linear Layer，效果更好</li>
-<li>Attention skipping</li>
-<li>跳过query对应的运算，但仍然计算KV cache</li>
-<li>MLP Skipping</li>
-<li>使用更小的MLP替换，而不是直接去掉</li>
+<li>输入：归一化后的隐藏状态 <script type="math/tex">X = [x_1, x_2, \ldots, x_T] \in \mathbb{R}^{T \times d}</script>
+</li>
+<li>路由器计算门控分数 <script type="math/tex">G = \sigma(\text{Router}(\text{Norm}(X)))</script>，其中 <script type="math/tex">\sigma</script> 为 sigmoid 函数</li>
+<li><strong>关键创新</strong>：路由器采用<strong>瓶颈 MLP</strong>（bottlenecked MLP）而非简单线性变换：
+  <script type="math/tex; mode=display">\text{Router}(z) = W_r \cdot (W_\uparrow \cdot \text{Norm}(\tanh(W_\downarrow z)))</script>
+  其中 <script type="math/tex">W_\downarrow \in \mathbb{R}^{d_r \times d}</script>，<script type="math/tex">W_\uparrow \in \mathbb{R}^{d \times d_r}</script>，<script type="math/tex">W_r \in \mathbb{R}^{1 \times d}</script>，<script type="math/tex">d_r = d/16</script>。</li>
+<li><strong>路由策略</strong>：阈值 <script type="math/tex">\tau</script> 判定——若 <script type="math/tex">g_i > \tau</script> 则走全处理路径（输出乘以 <script type="math/tex">g_i</script> 保持梯度流），否则走跳过路径（输出乘以 <script type="math/tex">(1-g_i)</script>）。</li>
+<li>使用 SparseMixer 确保可微性。</li>
 </ul>
+<h3 id="22-attention-skipping">2.2 注意力跳过（Attention Skipping）</h3>
+<ul>
+<li>跳过的 token <strong>绕过 query 计算和缩放点积操作</strong>，但<strong>仍计算 KV cache</strong>。</li>
+<li>这样做的原因是：如果跳过的 token 不产生 KV cache，后续 token 的 query 将无法注意到这些 token，导致上下文信息永久丢失。</li>
+<li>与不做 KV cache 的版本相比，保留 KV cache 的方案性能从 84.3% 提升至 100.7%（保留率）。</li>
+</ul>
+<h3 id="23-ffn-ffn-skipping">2.3 FFN 跳过（FFN Skipping）</h3>
+<ul>
+<li>直接跳过 FFN 会导致严重的表示不一致（FFN 包含非线性变换，跳过与不跳过的隐藏状态不在同一隐空间）。</li>
+<li><strong>解决方案</strong>：使用一个轻量级适配器（结构与 FFN 相同，但中间维度缩小 16 倍）来对齐跳过路径的表示。</li>
+<li>适配器是 FlexiDepth 性能的关键（消融实验表明去掉适配器后性能降至 28.1%）。</li>
+</ul>
+<h3 id="24-layer-skipping-loss">2.4 层跳过损失（Layer-skipping Loss）</h3>
+<p>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{skip}} = \frac{1}{T} \sum_{t=1}^{T} \left( \sum_{l=1}^{L} g_t^l \right)^2</script>
+</p>
+<ul>
+<li>平方损失对使用更多层的 token 施加更大惩罚，防止模型走入极端模式（全部跳过或不跳过）。</li>
+<li>最终损失：<script type="math/tex">\mathcal{L} = \alpha \cdot \mathcal{L}_{\text{skip}} + \mathcal{L}_{\text{lm}}</script>，其中 <script type="math/tex">\alpha = 1 \times 10^{-3}</script>。</li>
+</ul>
+<h3 id="25">2.5 训练细节</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3-8B-Instruct（32 层），将后 16 层转换为 FlexiDepth 层。</li>
+<li><strong>训练数据</strong>：Tulu-v2 数据集，3 个 epoch。</li>
+<li><strong>优化器</strong>：AdamW，lr=1e-4，β1=0.9，β2=0.999，warmup=0.03。</li>
+<li><strong>批量大小</strong>：64。</li>
+<li><strong>硬件</strong>：8× NVIDIA A100-PCIE-40GB GPU，约 7 小时。</li>
+<li><strong>路由器瓶颈维度</strong>：<script type="math/tex">d_r = d/16</script>。</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="1">主要结果（表 1）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>跳过层数</th>
+<th>单 token 任务</th>
+<th>多 token 任务</th>
+<th>保留率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vanilla</td>
+<td>0</td>
+<td>0.673/0.706/0.744</td>
+<td>0.679/0.299/0.784</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>LayerSkip</td>
+<td>4</td>
+<td>0.659/0.636/0.676</td>
+<td>0.004/0.0/0.350</td>
+<td>54.0%</td>
+</tr>
+<tr>
+<td>ShortGPT</td>
+<td>4</td>
+<td>0.664/0.662/0.700</td>
+<td>0.536/0.092/0.145</td>
+<td>69.1%</td>
+</tr>
+<tr>
+<td>LaCo</td>
+<td>4</td>
+<td>0.671/0.693/0.724</td>
+<td>0.581/0.031/0.778</td>
+<td>81.7%</td>
+</tr>
+<tr>
+<td>MindSkip</td>
+<td>4</td>
+<td>0.664/0.698/0.722</td>
+<td>0.378/0.189/0.720</td>
+<td>84.2%</td>
+</tr>
+<tr>
+<td><strong>FlexiDepth</strong></td>
+<td><strong>4</strong></td>
+<td><strong>0.663/0.724/0.756</strong></td>
+<td><strong>0.695/0.390/0.810</strong></td>
+<td><strong>106.5%</strong></td>
+</tr>
+<tr>
+<td><strong>FlexiDepth</strong></td>
+<td><strong>8</strong></td>
+<td><strong>0.616/0.705/0.735</strong></td>
+<td><strong>0.662/0.341/0.801</strong></td>
+<td><strong>100.7%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>跳过 4 层时：FlexiDepth 达到 106.5% 保留率，甚至超越原始模型。</li>
+<li>跳过 8 层时：FlexiDepth 保留 100.7%，而基线方法在多 token 生成任务上严重退化（LayerSkip 仅 43.9%，ShortGPT 32.0%）。</li>
+</ul>
+<h3 id="2">跨模型泛化（表 2）</h3>
+<ul>
+<li><strong>Llama-2-13B-Instruct</strong>：跳过约 7 层，保留 100.2%。</li>
+<li><strong>Llama-3-8B-Instruct</strong>：跳过约 6 层，保留 102.1%。</li>
+<li><strong>Qwen-2.5-3B-Instruct</strong>：仅跳过 1-2 层，保留 101.5%。</li>
+<li><strong>结论</strong>：更大模型具有更高冗余度，允许更激进的层跳过。</li>
+</ul>
+<h3 id="3">消融实验（表 3）</h3>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>保留率</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完整 FlexiDepth</td>
+<td>102.1%</td>
+<td>基线</td>
+</tr>
+<tr>
+<td>线性路由器</td>
+<td>68.7%</td>
+<td>GSM8K 从 0.657 降至 0.131</td>
+</tr>
+<tr>
+<td>无 KV cache</td>
+<td>84.3%</td>
+<td>上下文信息丢失</td>
+</tr>
+<tr>
+<td>无适配器</td>
+<td>28.1%</td>
+<td>表示对齐失败</td>
+</tr>
+</tbody>
+</table>
+<h3 id="token-depth-map">层分配模式（Token Depth Map）</h3>
+<ul>
+<li><strong>文本任务</strong>：复制（21.95层）&lt; 摘要（28.65层）&lt; 续写（30.27层）</li>
+<li><strong>数学任务</strong>：重复（20.09层）&lt; 加法（22.45层）&lt; 乘法（23.90层）</li>
+<li>这与人类直觉一致：简单复制/重复需要更少层数，复杂推理需要更多层数。</li>
+<li>乘法方程的右侧 token（如 "945", "40515"）使用几乎全部层数，而左侧 token 使用较少层。</li>
+</ul>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>无需修改原始参数</strong>：仅插入轻量路由器和适配器，适用于任何预训练 LLM。</li>
+<li><strong>卓越的性能保留</strong>：跳过 8/32 层后仍保持 100.7% 基准性能，远超现有方法。</li>
+<li><strong>自适应粒度</strong>：逐 token 决定跳过层数，而非统一跳过固定层数。</li>
+<li><strong>KV cache 保持</strong>：确保自回归生成的上下文完整性。</li>
+<li><strong>可解释性</strong>：Token Depth Map 揭示了不同 token 的计算需求差异，具有研究价值。</li>
+<li><strong>跨模型泛化</strong>：在多种模型（Llama-2-13B、Llama-3-8B、Qwen-2.5-3B）上均有效。</li>
+<li><strong>潜在正则化效果</strong>：跳过噪声或信息量少的参数可能起到隐式正则化作用，提升泛化能力。</li>
+<li><strong>开源</strong>：提供模型和层分配数据集，促进后续研究。</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>实际吞吐量未提升</strong>：虽然减少了 FLOPs，但由于 batch 内 token 走不同路径，控制流管理和不规则内存访问的开销抵消了理论加速。</li>
+<li><strong>仅对后 16 层应用</strong>：跳过早期层会显著降低性能，因此只能对后半部分层进行自适应跳过。</li>
+<li><strong>仅在 Llama-3-8B 上全面验证</strong>：对更大规模模型（如 70B+）的验证不足。</li>
+<li><strong>训练成本</strong>：需要 8×A100 GPU 训练 7 小时，对资源要求较高。</li>
+<li><strong>阈值超参数</strong>：需要根据目标跳过层数调整 α 系数，不同任务可能需要不同的 α。</li>
+<li><strong>缺乏真实硬件加速</strong>：论文明确承认在现有 GPU 硬件上无法获得实际吞吐量提升，需要硬件感知的优化（如 token grouping、expert sharding）。</li>
+<li><strong>仅支持 decoder-only 模型</strong>：虽然论文聚焦于 decoder-only 架构，但其方法可推广至 encoder-decoder 模型。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_8">关键词关联</h3>
+<p>本论文涉及的核心研究方向：
+- <strong>sparse_pruning</strong>（稀疏剪枝）
+- <strong>structured_sparsity</strong>（结构化稀疏）</p>
+<h3 id="_9">相关研究方向</h3>
+<ol>
+<li><strong>动态计算分配（Adaptive Computation）</strong>：</li>
+<li>与 Mixture-of-Depth、Mixture-of-Experts (MoE) 等动态路由方法密切相关。</li>
+<li>
+<p>探索在推理阶段按需分配计算资源，提升效率。</p>
+</li>
+<li>
+<p><strong>层跳过/层剪枝（Layer Skipping/Pruning）</strong>：</p>
+</li>
+<li>与 ShortGPT、LaCo、MindSkip、LayerSkip 等方法构成同一研究谱系。</li>
+<li>
+<p>但 FlexiDepth 的逐 token 自适应跳过机制是该方向的重要进展。</p>
+</li>
+<li>
+<p><strong>KV Cache 优化</strong>：</p>
+</li>
+<li>FlexiDepth 的 KV cache 保持策略与高效推理中的 KV cache 管理相关。</li>
+<li>
+<p>可与 vLLM、PagedAttention 等 KV cache 优化技术结合。</p>
+</li>
+<li>
+<p><strong>高效微调（Parameter-Efficient Fine-tuning）</strong>：</p>
+</li>
+<li>仅训练路由器和适配器，与 LoRA、Adapter 等 PEFT 方法具有方法论上的相似性。</li>
+<li>
+<p>可探索 FlexiDepth 与其他 PEFT 方法的联合优化。</p>
+</li>
+<li>
+<p><strong>硬件感知优化（Hardware-Aware Optimization）</strong>：</p>
+</li>
+<li>论文明确指出需要 token grouping、expert sharding、load balancing 等技术来实现实际加速。</li>
+<li>
+<p>与 GPU 架构优化、内存访问模式优化等研究方向密切相关。</p>
+</li>
+<li>
+<p><strong>可解释性与层分析（Interpretability &amp; Layer Analysis）</strong>：</p>
+</li>
+<li>Token Depth Map 提供了一种可视化和理解 LLM 内部计算模式的方法。</li>
+<li>
+<p>与模型可解释性、层功能分析等研究方向相关。</p>
+</li>
+<li>
+<p><strong>推理效率（Inference Efficiency）</strong>：</p>
+</li>
+<li>FlexiDepth 可与 speculative decoding、early exit、模型蒸馏等技术结合，进一步提升推理效率。</li>
+<li>可探索 FlexiDepth 在 edge devices、mobile devices 等资源受限场景的应用。</li>
+</ol>
+<hr />
+<h2 id="_10">参考信息</h2>
+<ul>
+<li><strong>论文标题</strong>：Adaptive Layer-skipping in Pre-trained LLMs</li>
+<li><strong>作者</strong>：Xuan Luo, Weizhi Wang, Xifeng Yan（UC Santa Barbara）</li>
+<li><strong>发表时间</strong>：2025 年 3 月 31 日</li>
+<li><strong>平台</strong>：arXiv (2503.23798v1)</li>
+<li><strong>模型</strong>：Llama-3-8B-Instruct（32 层）</li>
+<li><strong>开源</strong>：</li>
+<li>模型：xuan-luo/FlexiDepth-Llama-3-8B-Instruct</li>
+<li>数据集：xuan-luo/FlexiPatterns-Llama-3-8B-Instruct</li>
+<li><strong>关键词</strong>：sparse_pruning, structured_sparsity</li>
+</ul>
+<hr />
+<p><em>本笔记由 AI Agent（Hermes Agent）自动生成，基于论文原文全文阅读，仅供参考。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

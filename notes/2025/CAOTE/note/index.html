@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,10 +162,200 @@
                 <h1 id="caote-kv-cache-selection-for-llms-via-attention-output-error-based-token-eviction">CAOTE: KV Cache Selection for LLMs via Attention Output Error-Based Token Eviction</h1>
 <blockquote>
 <p>Raghavv Goel, Junyoung Park, Mukul Gagrani, Dalton Jones, Matthew Morse, Harper Langston, Mingu Lee, Chris Lott</p>
+<p>Qualcomm AI Research</p>
+<p><strong>一句话总结：</strong> CAOTE 通过闭式计算每个 token 被驱逐后对注意力输出的误差贡献（同时考虑注意力分数和 Value 向量），实现最优的 KV Cache 驱逐策略；该方法可作为元启发式方法与任何现有驱逐方法结合使用，始终提升下游任务准确率。</p>
 </blockquote>
-<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>While long context support of large language models has extended their abilities, it also incurs challenges in memory and compute which becomes crucial bottlenecks in resource-restricted devices. Token eviction, a widely adopted post-training methodology designed to alleviate the bottlenecks by evicting less important tokens from the cache, typically uses attention scores as proxy metrics for token importance. However, one major limitation of attention score as a token-wise importance metrics is that it lacks the information about contribution of tokens to the attention output. In this paper, we propose a simple eviction criterion based on the contribution of cached tokens to attention outputs. Our method, CAOTE, optimizes for eviction error due to token eviction, by seamlessly integrating attention scores and value vectors. This is the first method which uses value tokens on top of attention-based eviction scores in closed-form. Additionally, CAOTE can act as a meta-heuristic method with flexible usage with any token eviction method. We show that CAOTE, when combined with the state-of-the-art attention score-based methods, always improves accuracies on the downstream task, indicating the importance of leveraging information from values during token eviction process.</p>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../cover.jpg" /></a></p>
+<h2 id="_1">摘要翻译</h2>
+<p>虽然大语言模型的长上下文支持扩展了其能力，但也带来了内存和计算方面的挑战，成为资源受限设备上的关键瓶颈。Token 驱逐是一种广泛采用的训练后方法，通过从缓存中驱逐不太重要的 token 来缓解瓶颈，通常使用注意力分数作为 token 重要性的代理指标。然而，注意力分数作为 token 级别重要性指标的一个主要限制是，它缺乏关于 token 对注意力输出贡献的信息。在本文中，我们提出了一种基于缓存 token 对注意力输出贡献的简单驱逐准则。我们的方法 <strong>CAOTE</strong> 通过无缝整合注意力分数和 Value 向量来优化因 token 驱逐产生的误差。这是首个在闭式形式中使用 Value token 信息叠加注意力分数的驱逐方法。此外，CAOTE 可以作为一种元启发式方法，灵活地与任何 token 驱逐方法结合使用。我们表明，当 CAOTE 与最先进的基于注意力分数的方法结合时，在下游任务中总是提升准确率，这说明在 token 驱逐过程中利用 Value 信息的重要性。</p>
+<h2 id="_2">研究动机</h2>
+<h3 id="_3">背景问题</h3>
+<ul>
+<li><strong>长上下文 LLM 的 KV 缓存瓶颈：</strong> 随着上下文长度增加，KV 缓存的内存消耗可能超过模型本身（如 LLaMA 系列在长序列场景下 KV 缓存可达数十 GB），成为资源受限设备上的关键瓶颈。</li>
+<li><strong>自注意力的二次复杂度：</strong> 自注意力机制的计算复杂度为 O(n²)，KV 缓存虽能避免重复计算，但在长上下文场景下内存消耗仍然巨大。</li>
+<li><strong>现有驱逐方法的局限：</strong> 现有 token 驱逐方法（如 H2O、TOVA、SnapKV）主要依赖<strong>注意力分数</strong>（Query-Key 交互）作为 token 重要性的代理指标，但忽略了 <strong>Value 向量</strong>对注意力输出的贡献。</li>
+</ul>
+<h3 id="_4">核心问题</h3>
+<ul>
+<li>注意力分数仅反映 Query 与 Key 的对齐程度，但注意力输出是注意力分数与 Value 向量的加权组合。</li>
+<li>忽略 Value 信息可能导致次优的驱逐决策——即使某个 token 的注意力分数较低，其 Value 向量可能对输出有显著贡献。</li>
+<li>需要一种能够同时考虑注意力分数和 Value 向量的驱逐评分机制。</li>
+</ul>
+<h2 id="_5">方法（技术细节）</h2>
+<p>CAOTE 的核心思想是直接优化<strong>驱逐误差</strong>——即 token 被驱逐前后注意力输出的变化量。该方法由两个关键洞察驱动：(i) 现有驱逐策略主要依赖 Query 和 Key 的注意力分数，(ii) 注意力输出是 Value 的线性组合。</p>
+<h3 id="1-caote-score">1. CAOTE Score（驱逐误差的闭式计算）</h3>
+<p><strong>驱逐误差的定义：</strong> 对于预算为 b 的缓存，当前有 b+1 个 token。驱逐 token j 后的注意力输出变化为：</p>
+<p>
+<script type="math/tex; mode=display">e_{\text{eviction},j} = \| X_{\text{attn}} - X'_{\text{attn},j} \|^2</script>
+</p>
+<p>其中 <script type="math/tex">X_{\text{attn}}</script> 是驱逐前的注意力输出，<script type="math/tex">X'_{\text{attn},j}</script> 是驱逐 token j 后的注意力输出。</p>
+<p><strong>CAOTE Score 的定义：</strong> 给定注意力分数 <script type="math/tex">A = [\alpha_1, \ldots, \alpha_{b+1}]</script> 和 Value 向量 <script type="math/tex">V = [v_1, \ldots, v_{b+1}]</script>，token j 的 CAOTE score 为：</p>
+<p>
+<script type="math/tex; mode=display">c_j = \frac{\alpha_j}{1 - \alpha_j} \| V A^T - v_j \|^2</script>
+</p>
+<p>其中 <script type="math/tex">V A^T = X_{\text{attn}}</script> 是驱逐前的注意力输出。</p>
+<p><strong>理论保证（Theorem 3.2）：</strong> CAOTE score 与驱逐误差完全等价，即 <script type="math/tex">c_j = e_{\text{eviction},j}</script>。</p>
+<p><strong>关键定理（Theorem 3.1）：</strong> 驱逐 token j 后，其余 token 的注意力分数变为 <script type="math/tex">\alpha'_i = \frac{\alpha_i}{1 - \alpha_j}</script>。</p>
+<p><strong>并行计算：</strong> CAOTE score 可以对所有 token 并行计算，仅依赖于注意力分数和 Value 向量。使用 L2 范数作为距离度量（基于经验选择）。</p>
+<h3 id="2-caote-meta-heuristic">2. CAOTE 与通用驱逐方法的结合（Meta-Heuristic）</h3>
+<p>CAOTE 可以与任何基于分数的驱逐方法结合，只需对原始分数进行归一化处理：</p>
+<p>
+<script type="math/tex; mode=display">c_j = f_{\text{caote}}(f_{\text{norm}}(H), V) = \frac{h^{\text{norm}}_j}{1 - h^{\text{norm}}_j} \| V (H^{\text{norm}})^T - v_j \|^2</script>
+</p>
+<p>其中 <script type="math/tex">H</script> 是原始驱逐分数集合，<script type="math/tex">f_{\text{norm}}</script> 是归一化函数。</p>
+<p><strong>H2O 结合：</strong> H2O 的分数基于累积注意力分数（<script type="math/tex">\sum h_j > 1</script>），归一化后可直接应用 CAOTE。</p>
+<p><strong>TOVA 结合：</strong> TOVA 的分数默认和为 1，可直接使用。</p>
+<h3 id="3-fastcaote">3. FastCAOTE（高效近似版本）</h3>
+<p>FastCAOTE 将预驱逐注意力输出 <script type="math/tex">X_{\text{attn}}</script> 替换为 Value 向量的均值：</p>
+<p>
+<script type="math/tex; mode=display">c_j = \frac{\alpha_j}{1 - \alpha_j} \| \frac{1}{b+1} \sum_{i=1}^{b+1} v_i - v_j \|^2</script>
+</p>
+<p><strong>经验验证：</strong> CAOTE 与 FastCAOTE 之间存在高度相关性（Spearman 相关系数 ≥ 0.8），在所有 28 层上均如此（如 Llama3.2-3B-Instruct 上层 1-14 相关系数 0.81-0.99，层 15-28 为 0.88-0.99）。</p>
+<p><strong>计算开销：</strong> FastCAOTE 的额外 FLOPs 仅为预填充/生成 FLOPs 的 10⁻⁵ 量级（如序列长度 8k 时为 5.28e-5），几乎无开销。</p>
+<h3 id="4-token">4. 多 Token 驱逐</h3>
+<p>论文推导了多 token 联合驱逐的闭式公式。例如驱逐 token 1 和 token 2 的联合误差为：</p>
+<p>
+<script type="math/tex; mode=display">c_{[1,2]} = \frac{1}{1 - \alpha_1 - \alpha_2} \| \alpha_1 (X_{\text{attn}} - v_1) + \alpha_2 (X_{\text{attn}} - v_2) \|^2</script>
+</p>
+<p>但由于组合数为 <script type="math/tex">\binom{n}{m}</script>，精确计算对大 m 不可行，论文采用贪心策略（逐个驱逐）进行近似，实验证明效果依然良好。</p>
+<h3 id="5-caote-logit">5. CAOTE 与输出 Logit 的关系</h3>
+<p>论文进一步证明了驱逐误差与最终 logit 误差的关系。对于单头单层网络：</p>
+<p>
+<script type="math/tex; mode=display">\Delta l_{b+1} = W_H W_O \Delta_A</script>
+</p>
+<p>其中 <script type="math/tex">\Delta_A = e_{\text{eviction}}</script>。这表明注意力输出的误差会直接影响 logit 空间，从而影响下游任务性能。</p>
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">实验设置</h3>
+<ul>
+<li><strong>模型：</strong> Llama 3.2-3B-Instruct、Llama 3.1-8B-Instruct、Qwen 2.5-3B-Instruct、Qwen 2.5-7B-Instruct</li>
+<li><strong>基准：</strong> LongBench（16 个任务，涵盖单文档 QA、多文档 QA、摘要、Few-shot 学习、合成任务、代码生成）、Booksum 困惑度、Needle-in-a-Haystack 检索</li>
+<li><strong>基线方法：</strong> H2O、TOVA、SnapKV</li>
+<li><strong>缓存预算：</strong> 2048、4096、6144、8192（2k/4k/6k/8k）</li>
+<li><strong>Prompt 消费策略：</strong> 采用分块预填充（block-wise prefill），块大小为 128，即每次推理处理 128 个新 token 并在缓存满时驱逐 128 个 token</li>
+</ul>
+<h3 id="longbench">LongBench 主要结果</h3>
+<ul>
+<li><strong>Llama 3.1-8B-Instruct（2k 预算）：</strong></li>
+<li>H2O + CAOTE/FastCAOTE：平均分从 16.89 提升到 33.31/34.07（<strong>&gt;30% 提升</strong>）</li>
+<li>TOVA + CAOTE/FastCAOTE：平均分从 37.52 提升到 38.08/38.19</li>
+<li>SnapKV + CAOTE/FastCAOTE：平均分从 39.60 提升到 40.05/40.73</li>
+<li>
+<p><strong>最佳：</strong> SnapKV-FastCAOTE（40.73）</p>
+</li>
+<li>
+<p><strong>Llama 3.1-8B-Instruct（4k 预算）：</strong></p>
+</li>
+<li>H2O + CAOTE/FastCAOTE：平均分从 26.37 提升到 40.42/42.09</li>
+<li>
+<p><strong>最佳：</strong> SnapKV-FastCAOTE（45.75）</p>
+</li>
+<li>
+<p><strong>Qwen 2.5-7B-Instruct（2k 预算）：</strong></p>
+</li>
+<li>H2O + CAOTE/FastCAOTE：平均分从 12.89 提升到 23.47/23.62</li>
+<li>
+<p><strong>最佳：</strong> SnapKV-CAOTE/FastCAOTE（29.24/29.69）</p>
+</li>
+<li>
+<p><strong>Qwen 2.5-3B-Instruct（2k 预算）：</strong></p>
+</li>
+<li>H2O + CAOTE/FastCAOTE：平均分从 12.68 提升到 23.98/24.12</li>
+<li><strong>最佳：</strong> SnapKV-CAOTE（29.15）</li>
+</ul>
+<h3 id="perplexity">困惑度（Perplexity）</h3>
+<p>使用 Booksum 数据集测量生成困惑度（与无驱逐基准的差值，越低越好）：</p>
+<ul>
+<li><strong>Llama 3.1-8B-Instruct：</strong></li>
+<li>2k 预算：H2O（+2.007）→ H2O-CAOTE（-0.046）、SnapKV（+1.891）→ SnapKV-CAOTE（-0.097）</li>
+<li>4k 预算：H2O（+1.284）→ H2O-CAOTE（-0.047）、SnapKV（+1.061）→ SnapKV-CAOTE（-0.080）</li>
+<li>
+<p>6k 预算：所有方法使用 CAOTE 后困惑度接近或优于无驱逐基准（负值表示优于 dense）</p>
+</li>
+<li>
+<p><strong>关键发现：</strong> CAOTE 在所有预算和模型上均能改善困惑度，部分组合甚至优于无驱逐基准（负值）。</p>
+</li>
+</ul>
+<h3 id="needle-in-a-haystack">Needle-in-a-Haystack</h3>
+<ul>
+<li><strong>Llama 3.1-8B-Instruct：</strong></li>
+<li>2k 预算：H2O（0.174）→ H2O-CAOTE（0.270）、H2O-FastCAOTE（0.264）</li>
+<li>4k 预算：H2O（0.330）→ H2O-CAOTE（0.538）、H2O-FastCAOTE（0.568），<strong>提升 30-60%</strong></li>
+<li>
+<p>6k 预算：H2O（0.544）→ H2O-CAOTE（0.698）、H2O-FastCAOTE（0.676）</p>
+</li>
+<li>
+<p><strong>Llama 3.2-3B-Instruct：</strong></p>
+</li>
+<li>
+<p>H2O-FastCAOTE 在所有预算上表现最佳</p>
+</li>
+<li>
+<p><strong>可视化分析（Figure 2）：</strong> CAOTE 改进了现有驱逐方法，甚至能在缓存预算之外的深度范围内保持检索准确率。</p>
+</li>
+</ul>
+<h3 id="6k8k">补充实验（6k/8k 预算）</h3>
+<ul>
+<li>6k/8k 预算下的 LongBench 结果趋势与 2k/4k 一致</li>
+<li>H2O + CAOTE 的提升最为显著（&gt;30%），TOVA、SnapKV 也有明显改善</li>
+<li>SnapKV-FastCAOTE 在 Llama3 模型上表现最佳，SnapKV-CAOTE 在 Qwen2.5 模型上表现最佳</li>
+</ul>
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>理论基础严谨：</strong> 通过严格的数学证明（Theorem 3.1 和 3.2），证明 CAOTE score 等于驱逐误差，具有理论保证。</li>
+<li><strong>闭式可计算：</strong> CAOTE score 可以在闭式形式下并行计算，仅依赖注意力分数和 Value 向量，无需额外的近似或采样。</li>
+<li><strong>元启发式特性：</strong> CAOTE 可以与任何基于分数的驱逐方法（如 H2O、TOVA、SnapKV）结合使用，作为增强模块，不改变原始方法的核心逻辑。</li>
+<li><strong>一致性提升：</strong> 在所有基准任务（LongBench、Perplexity、Needle-in-Haystack）和所有模型（Llama3、Qwen2.5）上，结合 CAOTE 总是提升性能，无例外。</li>
+<li><strong>计算开销极低：</strong> FastCAOTE 的额外 FLOPs 仅为预填充/生成的 10⁻⁵ 量级，几乎无额外开销，适合部署在资源受限设备上。</li>
+<li><strong>高效近似：</strong> FastCAOTE 与 CAOTE 的 Spearman 相关系数 ≥ 0.8，用 Value 均值替代注意力输出，性能损失可忽略。</li>
+<li><strong>分块预填充策略：</strong> 采用 block-wise prefill（块大小 128），在预填充阶段也能进行驱逐，降低内存峰值，缩短首 token 时间。</li>
+<li><strong>多模型验证：</strong> 在 Llama3（3B/8B）和 Qwen2.5（3B/7B）两个模型家族上验证，具有良好的泛化性。</li>
+</ol>
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>贪心策略（Myopic/Greedy）：</strong> CAOTE 采用逐个驱逐的贪心策略，未考虑多 token 联合驱逐的交互效应，可能在某些场景下不是全局最优。</li>
+<li><strong>单 token 驱逐假设：</strong> CAOTE 的评分框架基于每轮驱逐 1 个 token 的假设，在预填充阶段（需要驱逐多个 token）时该假设不成立。虽然实验中独立驱逐仍有效，但多 token 驱逐的精确计算存在组合爆炸问题（<script type="math/tex">\binom{n}{m}</script>）。</li>
+<li><strong>无代码开源：</strong> 代码 URL 为空，无法直接复现实验结果。</li>
+<li><strong>仅限 Post-Training：</strong> 该方法仅在推理阶段应用，无法通过训练进一步优化驱逐策略。</li>
+<li><strong>缓存预算敏感：</strong> 在极低预算（如 2k）下，CAOTE 的提升虽然显著，但绝对性能仍较低，说明驱逐本身带来的信息损失不可避免。</li>
+<li><strong>模型范围有限：</strong> 仅在 3B 和 7B 规模的 Llama3/Qwen2.5 上验证，未在更大规模（如 70B）或更多架构（如 Mamba、混合模型）上测试。</li>
+<li><strong>与 Full Cache 的差距：</strong> 虽然 CAOTE 接近 Full Cache 性能，但在部分任务上仍存在一定差距，尤其是对于信息密度高的 QA 任务。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv-cache">KV Cache 优化</h3>
+<ul>
+<li>本文属于 <strong>KV Cache 驱逐</strong> 类方法，与 H2O、TOVA、SnapKV、StreamingLLM、Quest、CaM 等工作直接相关</li>
+<li>CAOTE 提出的 Value 中心评分机制是现有注意力分数方法的正交补充</li>
+<li>可与 <strong>KV Cache 量化</strong>（如 KVQuant、KIVI）结合，实现内存和计算的双重压缩</li>
+<li>可与 <strong>自适应缓存分配</strong>（如 AdaKV）结合，实现层间预算的动态优化</li>
+</ul>
+<h3 id="_10">高效推理</h3>
+<ul>
+<li>与 <strong>稀疏注意力</strong>（如 SpAtten、BigBird）正交，可在稀疏注意力的基础上进一步压缩 KV 缓存</li>
+<li>可与 <strong>FlashAttention</strong> 等注意力加速方法结合使用</li>
+<li>可与 <strong>分块推理</strong>（如 Sarathi、DeepSpeed-FastGen）结合，优化预填充阶段的内存和延迟</li>
+</ul>
+<h3 id="_11">长上下文处理</h3>
+<ul>
+<li>CAOTE 在长上下文场景下（如 Needle-in-Haystack 32K 长度）表现优异，与 <strong>长上下文扩展</strong>（如 YaRN、LongLoRA、Ring Attention）互补</li>
+<li>可应用于 <strong>长文档理解</strong>（如 RAG、多轮对话、摘要）等场景</li>
+<li>分块预填充策略有助于在资源受限设备上处理超长输入</li>
+</ul>
+<h3 id="_12">注意力机制研究</h3>
+<ul>
+<li>CAOTE 的注意力输出误差分析为理解 Transformer 的注意力机制提供了新视角</li>
+<li>Value 向量的信息利用是现有方法的盲区，CAOTE 的公式化方法为未来研究提供了理论基础</li>
+<li>可与 <strong>DuoAttention</strong>（注意力头选择）等方法结合，实现头级别和 token 级别的双重优化</li>
+</ul>
+<h3 id="_13">硬件部署与优化</h3>
+<ul>
+<li>与 <strong>模型量化</strong>（如 GPTQ、AWQ）结合，可在有限硬件资源下实现更大上下文窗口</li>
+<li>FastCAOTE 的极低计算开销使其适合在移动设备、边缘设备等资源受限环境中部署</li>
+<li>可与 <strong>推测解码</strong>（Speculative Decoding）等技术结合，提升推理吞吐量</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>生成声明：</strong> 本 note 由 AI Agent 自动生成，基于 arXiv 论文（arXiv:2504.14051v6）的全文内容，使用 /Users/xiandong/miniconda3/bin/python + fitz 提取文本并进行分析。生成时间：2025 年 6 月。所有内容以中文撰写。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

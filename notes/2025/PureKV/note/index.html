@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,33 +164,324 @@
 <p>Zhonghua Jiang, Kunxi Li, Yiyun Zhou, Sihao Liu, Zhaode Wang, Chengfei lv, Shengyu Zhang</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.png" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Vision-Language Large Models (VLLMs) face significant efficiency challenges
-when processing high-resolution inputs. The quadratic complexity in attention
-and autoregressive generation, as well as the constantly growing key value (KV)
-cache size, severely hinder the prefilling and decoding stages. Recent efforts
-have attempted to compress KV cache by identifying and pruning KV cache of less
-important tokens, but these methods typically rely on attention scores to
-estimate token importance, making them incompatible with efficient attention
-mechanisms such as FlashAttention and Sparse Attention, which do not explicitly
-compute attention matrices. Moreover, existing methods overlook how sparse
-attention, while accelerating the prefilling stage, alters the information
-structure of the KV cache, thereby compromising the effectiveness of downstream
-KV cache compression strategies. To address this issue, we propose PureKV, a
-plug-and-play framework for joint optimization of sparse attention and KV cache
-compression. We first introduce a KV cache compression strategy that is fully
-compatible with efficient attention accelerators. Our method utilizes lower
-layer attention scores to estimate the importance of high layers' KV cache,
-enabling active pruning without compromising accuracy. In addition, we have
-designed a Spatial-Temporal Sparse Attention (ST-SpAttn) module specifically
-tailored for video KV cache compression algorithms. This module combines
-spatial and temporal attention sparsity to improve the compression efficiency
-of KV cache optimization algorithms by purifying spatial noise and temporal
-redundancy in KV cache. At the same time, ST-SpAttn also accelerated the
-prefilling stage of VLLMs. Extensive experiments on VLLMs (VideoLLaMA2,
-Qwen2.5-VL) have shown that PureKV achieves 5.0 times KV cache compression and
-3.16 times prefill acceleration, with negligible quality degradation.</p>
-<p>使用上一层的attention score，预测下一层的kv重要性</p>
+<blockquote>
+<p>⚠️ <strong>注意：本 note 由 AI Agent 自动生成，仅供参考，内容可能存在不准确之处。</strong>
+生成时间：2025年</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>PureKV 是一种即插即用的 KV 缓存优化框架，通过跨层重要性估计和时空稀疏注意力（ST-SpAttn）联合优化稀疏注意力与 KV 缓存压缩，在 VideoLLaMA2 和 Qwen2.5-VL 上实现 5.0× KV 缓存压缩和 3.16× 预填充加速，且性能损失可忽略不计。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>视觉语言大模型（VLLMs）在处理高分辨率输入时面临显著的效率挑战。注意力机制的二次复杂度和自回归生成，以及不断增长的 KV 缓存大小，严重阻碍了预填充和解码阶段。近期的尝试试图通过识别和修剪不重要的 token 的 KV 缓存来压缩 KV 缓存，但这些方法通常依赖注意力分数来估计 token 重要性，使其与 FlashAttention 和 Sparse Attention 等高效注意力机制不兼容，因为后者不会显式计算注意力矩阵。此外，现有方法忽略了稀疏注意力在加速预填充阶段的同时如何改变 KV 缓存的信息结构，从而损害下游 KV 缓存压缩策略的有效性。为解决这一问题，我们提出 PureKV，一个用于稀疏注意力和 KV 缓存压缩联合优化的即插即用框架。我们首先引入了一种与高效注意力加速器完全兼容的 KV 缓存压缩策略。该方法利用低层注意力分数估计高层 KV 缓存的重要性，实现主动修剪而不牺牲准确性。此外，我们设计了一个专为视频 KV 缓存压缩算法量身定制的时空稀疏注意力（ST-SpAttn）模块。该模块结合空间和时间注意力稀疏性，通过净化 KV 缓存中的空间噪声和时间冗余来提高 KV 缓存优化算法的压缩效率。同时，ST-SpAttn 也加速了 VLLMs 的预填充阶段。在 VLLMs（VideoLLaMA2、Qwen2.5-VL）上的大量实验表明，PureKV 实现了 5.0× KV 缓存压缩和 3.16× 预填充加速，且质量退化可忽略不计。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="vllms">VLLMs 的推理效率瓶颈</h3>
+<p>视觉语言大模型（VLLMs）如 LLaVA、VideoLLaMA2、Qwen2.5-VL 在视频理解、视觉问答、多模态内容生成等任务上表现突出。然而，高分辨率视觉输入导致处理的视觉 token 数量剧增，带来了严重的内存占用和计算效率挑战。自回归解码中，KV 缓存随序列长度线性增长，注意力计算复杂度为二次方，这是推理阶段的核心瓶颈。</p>
+<h3 id="kv">现有 KV 缓存压缩方法的局限</h3>
+<p><strong>1. 基于注意力分数的方法与高效注意力机制不兼容</strong>
+- H2O、SnapKV 等方法依赖每层的注意力分数来评估 token 重要性，需要显式计算注意力矩阵
+- FlashAttention、Sparse Attention 等高效注意力机制不暴露或计算显式注意力矩阵
+- 这种依赖关系使得传统注意力分数方法与高效注意力机制天然不兼容</p>
+<p><strong>2. 窗口方法缺乏动态语义保留能力</strong>
+- StreamingLLM 等滑动窗口方法保留初始 token 和最近窗口，避免了分数计算，但缺乏动态保留语义关键 token 的能力
+- 容易过早淘汰重要信息，导致模型性能下降</p>
+<p><strong>3. 稀疏注意力改变 KV 缓存的信息结构</strong>
+- 现有稀疏注意力机制在加速预填充的同时，会改变 KV 缓存的信息结构
+- 因果注意力导致第 i 层位置 j 的 KV 缓存聚合了第 i-1 层前 j+1 个 token 的信息，使得重要和不重要信息逐渐混杂
+- 这种信息纠缠严重影响了高层 KV 缓存重要性估计的准确性
+- 现有 KV 缓存压缩策略未考虑这种结构变化</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">整体框架</h3>
+<p>PureKV 是一个即插即用的 KV 缓存优化框架，包含两个核心组件：</p>
+<ol>
+<li><strong>轻量级 KV 缓存重要性估计器</strong>（Cross-Layer Importance Estimation, CLIE）：利用低层注意力分数估计高层 KV 缓存重要性，与高效注意力机制完全兼容</li>
+<li><strong>时空稀疏注意力</strong>（Spatial-Temporal Sparse Attention, ST-SpAttn）：结合空间和时间稀疏性净化 KV 缓存，同时加速预填充阶段</li>
+</ol>
+<h3 id="1-kv-clie">1. 轻量级 KV 缓存重要性估计器（CLIE）</h3>
+<h4 id="_6">核心思想</h4>
+<p>传统方法在每层计算注意力分数来评估 token 重要性，但这与 FlashAttention 和 Sparse Attention 不兼容。PureKV 利用低层注意力分数来估计高层 KV 缓存重要性，使高层可以使用高效注意力机制。</p>
+<h4 id="_7">低层注意力分数计算</h4>
+<p>对于长度为 l 的输入序列，低层保留最近窗口大小 w，同时在非最近片段中保留最重要的 h 个 KV 缓存。</p>
+<p>计算注意力分数矩阵：</p>
+<p>
+<script type="math/tex; mode=display">A_{low} = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)</script>
+</p>
+<h4 id="_8">消除偏置的累积注意力分数</h4>
+<p>现有方法（如 H2O、SnapKV）依赖累积注意力分数来识别重要 token，但由于注意力矩阵的下三角结构，这种方法天然偏向早期 token。PureKV 计算最近窗口内 token 对非最近片段的累积注意力分数：</p>
+<p>
+<script type="math/tex; mode=display">C_{low} = \sum_{i=l-w}^{i<l} A_{i,j}, \quad 0 \leq j < l-w</script>
+</p>
+<h4 id="v-l2">结合 V 向量 L2 范数的重要性评分</h4>
+<p>之前的工作主要依赖注意力相关指标评估 KV 缓存重要性，忽略了 V 向量对输出的影响。研究表明，在固定注意力权重条件下，V 向量的大小也显著影响注意力机制的输出结果。</p>
+<p>PureKV 将累积注意力分数与对应 V 向量的 L2 范数加权：</p>
+<p>
+<script type="math/tex; mode=display">S_{low} = C_{low} \odot \|V_{0:l-w}^{low}\|</script>
+</p>
+<p>其中 <script type="math/tex">S_{low}</script> 是非最近片段 token 的最终重要性分数，保留最近 w 个 token 并选择非最近片段中最重要的 h 个 token。</p>
+<h4 id="_9">跨层重要性估计</h4>
+<p>对于高层，PureKV 复用低层的累积注意力分数 <script type="math/tex">C_{low}</script>，并计算高层 V 向量的 L2 范数来估计 KV 缓存重要性：</p>
+<p>
+<script type="math/tex; mode=display">\hat{S}_{high} = C_{low} \odot \|V_{0:l-w}^{high}\|</script>
+</p>
+<p>这一跨层重要性估计使得无需在高层计算注意力分数，即可准确选择 KV 缓存，从而与 FlashAttention 和其他高性能注意力后端完全兼容。</p>
+<h4 id="_10">统计验证</h4>
+<p>使用 Spearman 秩相关系数验证跨层重要性估计的有效性。实验表明，在大多数层中 Spearman 相关系数超过 0.4，且相关性统计显著（p &lt; 0.05），为跨层重要性估计策略提供了强有力的实证支持。</p>
+<h3 id="2-st-spattn">2. 时空稀疏注意力（ST-SpAttn）</h3>
+<h4 id="_11">问题：密集聚焦导致的信息纠缠</h4>
+<p>因果注意力导致高层 KV 缓存中重要和不重要信息逐渐混杂，这严重影响了高层 KV 缓存重要性估计的准确性。</p>
+<h4 id="_12">设计目标</h4>
+<p>设计结构化的稀疏模式，净化 KV 缓存中的空间噪声和时间冗余，同时加速预填充阶段。</p>
+<h4 id="_13">空间稀疏注意力</h4>
+<p>保留两种交互关系：
+1. <strong>每个 token 与第一帧之间的注意力</strong>：捕获远程视觉一致性
+2. <strong>当前帧内的帧内注意力</strong>：保留局部空间上下文</p>
+<p>这种设计有效抑制了背景噪声和不相关的视觉干扰。</p>
+<h4 id="_14">时间稀疏注意力</h4>
+<p>保留两种交互关系：
+1. <strong>每个 token 与前一帧对应 token 之间的注意力</strong>：增强时间连贯性
+2. <strong>与第一帧的注意力连接</strong>：保持全局上下文锚定</p>
+<p>这种设计减少了来自高度相似连续帧的冗余信息。</p>
+<h4 id="_15">双路径设计的优势</h4>
+<ul>
+<li>生成更干净、更结构化的 KV 缓存</li>
+<li>减少噪声，同时保留关键时空依赖</li>
+<li>净化后的 KV 缓存显著提高了后续压缩策略的准确性和鲁棒性</li>
+<li>同时加速 VLLMs 的预填充阶段</li>
+</ul>
+<h3 id="kv_1">与现有 KV 压缩算法的集成</h3>
+<p>PureKV 可以无缝集成到现有的 KV 缓存压缩算法中。实验表明，将 PureKV 的 CLIE 和 ST-SpAttn 机制集成到 H2O、SnapKV、StreamingLLM、FastV 等方法中，均能显著提升性能，证明了其通用性和鲁棒性。</p>
+<hr />
+<h2 id="_16">实验结果</h2>
+<h3 id="_17">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：VideoLLaMA2、Qwen2.5-VL-7B</li>
+<li><strong>基准</strong>：MVBench（多模态视频理解基准，包含 14 个视频理解任务）</li>
+<li><strong>评估指标</strong>：ROUGE</li>
+<li><strong>对比方法</strong>：H2O、SnapKV、StreamingLLM（文本场景）、FastV、LOOK-M（视觉任务）</li>
+<li><strong>硬件</strong>：NVIDIA A100 40GB</li>
+</ul>
+<h3 id="_18">主要结果</h3>
+<h4 id="qwen25-vl-7bmvbench">Qwen2.5-VL-7B（MVBench）</h4>
+<table>
+<thead>
+<tr>
+<th>预算</th>
+<th>H2O</th>
+<th>SnapKV</th>
+<th>StreamingLLM</th>
+<th>FastV</th>
+<th>LOOK-M</th>
+<th>PureKV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20%</td>
+<td>0.4695</td>
+<td>0.4808</td>
+<td>0.4941</td>
+<td>0.5154</td>
+<td>0.0610</td>
+<td><strong>0.5429</strong></td>
+</tr>
+<tr>
+<td>10%</td>
+<td>0.4234</td>
+<td>0.4505</td>
+<td>0.4801</td>
+<td>0.5072</td>
+<td>0.0389</td>
+<td><strong>0.5360</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="videollama2mvbench">VideoLLaMA2（MVBench）</h4>
+<table>
+<thead>
+<tr>
+<th>预算</th>
+<th>H2O</th>
+<th>SnapKV</th>
+<th>StreamingLLM</th>
+<th>FastV</th>
+<th>PureKV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20%</td>
+<td>0.3084</td>
+<td>0.4811</td>
+<td>0.5274</td>
+<td>0.5068</td>
+<td><strong>0.6189</strong></td>
+</tr>
+<tr>
+<td>10%</td>
+<td>0.2449</td>
+<td>0.3500</td>
+<td>0.4451</td>
+<td>0.3193</td>
+<td><strong>0.5047</strong></td>
+</tr>
+</tbody>
+</table>
+<p>PureKV 在两种 VLLM 上均显著优于所有基线方法。在 20% 预算下，Qwen2.5-VL 上 PureKV（0.5429）相比全缓存（0.5136）甚至有轻微提升，而其他方法均有性能下降。</p>
+<h3 id="videollama2">推理速度（VideoLLaMA2）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>预算</th>
+<th>预填充延迟</th>
+<th>解码延迟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Cache</td>
+<td>100%</td>
+<td>0.1190 ms/token</td>
+<td>36.73 ms/token</td>
+</tr>
+<tr>
+<td>PureKV</td>
+<td>50%</td>
+<td>0.0366 ms/token</td>
+<td>31.87 ms/token</td>
+</tr>
+<tr>
+<td>PureKV</td>
+<td>20%</td>
+<td>0.0376 ms/token</td>
+<td>28.32 ms/token</td>
+</tr>
+<tr>
+<td>PureKV</td>
+<td>5%</td>
+<td>0.0355 ms/token</td>
+<td>27.92 ms/token</td>
+</tr>
+</tbody>
+</table>
+<p>PureKV 在 20% 预算下实现约 3.16× 预填充加速和约 1.3× 解码加速，且 5% 极端预算下仍保持稳定性能。</p>
+<h3 id="_19">消融实验</h3>
+<p>在 Qwen2.5-VL 和 VideoLLaMA2 上的消融实验（Action Sequence 任务）：</p>
+<table>
+<thead>
+<tr>
+<th>CLIE</th>
+<th>ST-SpAttn</th>
+<th>V 加权</th>
+<th>Qwen2.5-VL</th>
+<th>VideoLLaMA2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✘</td>
+<td>✘</td>
+<td>✔</td>
+<td>0.7307</td>
+<td>0.6985</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>✘</td>
+<td>✔</td>
+<td>0.7311</td>
+<td>0.7020</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>✔</td>
+<td>✘</td>
+<td>0.7212</td>
+<td>0.6936</td>
+</tr>
+<tr>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td><strong>0.7490</strong></td>
+<td><strong>0.7588</strong></td>
+</tr>
+</tbody>
+</table>
+<p>三个组件均有贡献，完整 PureKV 性能最佳。</p>
+<h3 id="_20">超参数分析</h3>
+<ul>
+<li><strong>CLIE 层索引</strong>：设为 0 时性能显著下降（初始层缺乏足够上下文信息）；设为 2 时性能最佳</li>
+<li><strong>ST-SpAttn 层索引</strong>：高层激活效果更好，但不会无限增长</li>
+</ul>
+<h3 id="kv_2">与现有 KV 压缩算法的集成</h3>
+<p>将 PureKV 的 CLIE 和 ST-SpAttn 机制集成到 H2O、SnapKV、StreamingLLM、FastV 等现有方法中，均能显著提升性能（如 H2O+PureKV 从 0.3084 提升至 0.4950，SnapKV+PureKV 从 0.4811 提升至 0.5680）。</p>
+<h3 id="llm">音频视频 LLM 中的应用</h3>
+<p>在 AVSD 数据集上的实验表明，PureKV 显著优于所有基线方法（0.4265 vs H2O 0.3527、SnapKV 0.4249、StreamingLLM 0.4249、FastV 0.4224）。</p>
+<hr />
+<h2 id="_21">优势</h2>
+<ol>
+<li><strong>即插即用框架</strong>：PureKV 可无缝集成到现有 KV 缓存压缩算法中（H2O、SnapKV、StreamingLLM、FastV），显著提升其性能，无需大量修改。</li>
+<li><strong>与高效注意力机制兼容</strong>：通过跨层重要性估计，PureKV 不需要在高层计算注意力分数，与 FlashAttention、Sparse Attention 等高效注意力机制完全兼容。</li>
+<li><strong>V 向量感知的重要性估计</strong>：结合累积注意力分数和 V 向量的 L2 范数，获得更准确、更鲁棒的 KV 缓存重要性评分。</li>
+<li><strong>时空双路径稀疏</strong>：ST-SpAttn 同时净化空间噪声和时间冗余，使 KV 缓存信息结构更清晰，提高后续压缩策略的有效性。</li>
+<li><strong>高压缩率与低性能损失</strong>：5.0× KV 缓存压缩和 3.16× 预填充加速，且质量退化可忽略不计。</li>
+<li><strong>跨架构泛化</strong>：在 VideoLLaMA2 和 Qwen2.5-VL 两种不同架构上均表现优异，且在音频视频 LLM（AVSD 数据集）上也有效。</li>
+<li><strong>鲁棒的低预算性能</strong>：即使仅保留 10% KV 缓存，PureKV 仍保持稳定性能，而其他方法在低预算下性能显著下降。</li>
+<li><strong>消融实验验证组件贡献</strong>：CLIE、ST-SpAttn、V 加权三个组件均有独立贡献，完整组合效果最佳。</li>
+</ol>
+<hr />
+<h2 id="_22">局限</h2>
+<ol>
+<li><strong>代码开源缺失</strong>：论文未提供开源代码（代码 URL 为空），可复现性受限。</li>
+<li><strong>模型规模限制</strong>：实验仅在 VideoLLaMA2 和 Qwen2.5-VL-7B 上进行，未验证在更大规模模型（如 70B+）上的表现。</li>
+<li><strong>基准限制</strong>：主要在 MVBench 视频理解基准上评估，未涵盖文本生成、多模态对话等更广泛的场景。</li>
+<li><strong>超参数调优</strong>：CLIE 层索引、ST-SpAttn 层索引、窗口大小 w、保留 token 数 h 等超参数需要针对不同场景调优，论文仅报告了单一配置的结果。</li>
+<li><strong>稀疏注意力模式设计</strong>：ST-SpAttn 仅考虑空间和时间两个维度的稀疏性，未探索更细粒度的稀疏模式（如注意力头级别、特征通道级别等）。</li>
+<li><strong>实际硬件加速验证</strong>：虽然理论分析表明与 FlashAttention 兼容，但论文未提供详细的端到端硬件加速实验数据。</li>
+<li><strong>长序列扩展性</strong>：实验主要在较短的视频序列上进行，未验证在超长视频（如数分钟）上的表现。</li>
+<li><strong>通用性验证不足</strong>：实验主要在英文和中文数据上进行，未验证在多语言、多模态等更广泛场景下的表现。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_23">相关关键词</h3>
+<ul>
+<li><code>kv_cache_sparse</code>：KV 缓存稀疏压缩是 PureKV 的核心关注点</li>
+</ul>
+<h3 id="baseline">相关 baseline 方法</h3>
+<ul>
+<li><code>2023/H2O</code>：基于注意力分数的 KV 缓存压缩</li>
+<li><code>2024/SnapKV</code>：基于注意力分数的 KV 缓存压缩</li>
+<li><code>2024/streaming-llm</code>：滑动窗口 KV 缓存管理</li>
+</ul>
+<h3 id="_24">研究方向</h3>
+<ol>
+<li>
+<p><strong>KV 缓存压缩与高效注意力的协同优化</strong>：PureKV 展示了如何将 KV 缓存压缩与高效注意力机制（FlashAttention、Sparse Attention）协同设计，使两者不再相互制约。未来可探索更多协同优化策略。</p>
+</li>
+<li>
+<p><strong>跨层重要性估计</strong>：PureKV 利用低层注意力分数估计高层 KV 缓存重要性，这一思路可扩展到更多层间信息传递机制，如利用浅层特征预测深层 token 重要性。</p>
+</li>
+<li>
+<p><strong>时空稀疏注意力设计</strong>：ST-SpAttn 在视频理解中有效抑制了空间噪声和时间冗余，未来可探索更细粒度的时空稀疏模式，以及在更长视频序列上的稀疏策略。</p>
+</li>
+<li>
+<p><strong>即插即用的 KV 缓存优化框架</strong>：PureKV 的即插即用特性使其能无缝集成到现有 KV 缓存压缩算法中，这一设计理念可扩展到更多场景，如 KV 缓存量化、KV 缓存蒸馏等。</p>
+</li>
+<li>
+<p><strong>多模态 KV 缓存管理</strong>：PureKV 在音频视频 LLM 上的实验表明，其方法可扩展到多模态场景。未来可探索更通用的多模态 KV 缓存管理策略。</p>
+</li>
+<li>
+<p><strong>低预算 KV 缓存压缩的鲁棒性</strong>：PureKV 在 10% 极端预算下仍保持稳定性能，这一特性对于资源受限的部署场景（如边缘设备、移动端）具有重要意义。</p>
+</li>
+<li>
+<p><strong>V 向量感知的重要性估计</strong>：PureKV 引入 V 向量 L2 范数来加权注意力分数，这一设计思路可扩展到更多注意力机制中，提高 token 重要性估计的准确性。</p>
+</li>
+</ol>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，内容基于论文原文，仅供参考。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

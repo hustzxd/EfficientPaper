@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,28 +161,220 @@
   
                 <h1 id="recycled-attention-efficient-inference-for-long-context-language-models">Recycled Attention: Efficient inference for long-context language models</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Generating long sequences of tokens given a long-context input imposes a
-heavy computational burden for large language models (LLMs). One of the
-computational bottleneck comes from computing attention over a long sequence of
-input at each generation step. In this paper, we propose Recycled Attention, an
-inference-time method which alternates between full context attention and
-attention over a subset of input tokens. When performing partial attention, we
-recycle the attention pattern of a previous token that has performed full
-attention and attend only to the top K most attended tokens, reducing the cost
-of data movement and attention computation. Compared to previously proposed
-inference-time acceleration method which attends only to local context or
-tokens with high accumulative attention scores, our approach flexibly chooses
-tokens that are relevant to the current decoding step. We evaluate our methods
-on RULER, a suite of tasks designed to comprehensively evaluate long-context
-abilities, and long-context language modeling tasks. Applying our method to
-off-the-shelf LLMs achieves comparable speedup to baselines which only consider
-local context while improving the performance by 2x. We further explore two
-ideas to improve performance-efficiency trade-offs: (1) dynamically decide when
-to perform recycled or full attention step based on the query similarities and
-(2) continued pre-training the model with Recycled Attention.</p>
-<p>方法比较简单，ICLR审稿意见也说方法创新性低
-https://openreview.net/forum?id=8qYuxV4lRu</p>
+<h2 id="_1">一句话总结</h2>
+<p>Recycled Attention 是一种推理时加速方法，通过在完整注意力和基于注意力模式的稀疏注意力之间交替执行，在不牺牲长上下文性能的前提下实现与现有 KV 缓存驱逐方法相当的推理加速，同时在 RULER 基准上将性能提升至 2 倍。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>生成长序列 token 时，长上下文输入对大语言模型（LLM）施加了沉重的计算负担。其中一个计算瓶颈来自每个生成步骤中对长序列输入的注意力计算。本文提出了 <strong>Recycled Attention</strong>，一种推理时方法，在完整上下文注意力和仅对输入 token 子集的注意力之间交替执行。在执行部分注意力时，我们回收先前进行过完整注意力的 token 的注意力模式，仅关注注意力得分最高的 top K token，从而降低数据移动和注意力计算的开销。与先前提出的仅关注局部上下文或累积注意力得分较高的 token 的推理时加速方法不同，我们的方法可以灵活选择与当前解码步骤相关的 token。我们在 RULER（一套全面评估长上下文能力的任务套件）和长上下文语言建模任务上评估了我们的方法。将该方法应用于现成的 LLM，实现了与仅考虑局部上下文的基线相当的加速，同时将性能提升了 2 倍。我们进一步探索了两个改进性能-效率权衡的思路：（1）基于查询相似度动态决定何时执行回收或完整注意力步骤；（2）使用 Recycled Attention 进行持续预训练。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">长上下文推理的计算瓶颈</h3>
+<p>随着 LLM 处理越来越长的上下文（如 128K tokens），推理时面临两个主要瓶颈：</p>
+<ol>
+<li><strong>注意力计算的二次复杂度</strong>：注意力计算的时间复杂度与输入长度 L 成二次关系，导致推理延迟随上下文长度急剧增加。</li>
+<li><strong>KV 缓存的数据移动开销</strong>：大 KV 缓存需要从 GPU HBM 移动到计算单元，带来显著延迟（据报道可达推理延迟的 40%）。</li>
+</ol>
+<p>例如，Adnan 等人 (2024) 显示，MPT-7B 模型在上下文长度增加 16 倍时，延迟增加了 50 倍。</p>
+<h3 id="_5">现有方法的局限性</h3>
+<p>现有方法主要采用 KV 缓存驱逐策略：</p>
+<ul>
+<li><strong>StreamingLLM</strong>：仅保留 sink token 和最近 token，对非局部上下文信息无法恢复。</li>
+<li><strong>H2O</strong>：保留累积注意力得分较高的 token，但一旦 token 被驱逐，后续步骤无法恢复访问。</li>
+</ul>
+<p>这些方法在需要综合非局部上下文信息的任务（如 needle-in-a-haystack）上表现不佳（&lt; 8% 准确率，而完整注意力为 100%）。</p>
+<p><strong>核心假设</strong>：相邻的生成 token 通常将大部分注意力集中在相似的上下文 token 子集上，这一假设可以通过实验验证来提升推理效率。</p>
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="_7">算法框架</h3>
+<p>Recycled Attention 维护两个 KV 缓存：</p>
+<ul>
+<li><strong>Cf（Full KV Cache）</strong>：完整的 KV 缓存，大小为 L 个 token，用于完整注意力步骤。</li>
+<li><strong>Cr（Recycled KV Cache）</strong>：回收的 KV 缓存，大小为 K 个 token（K &lt;&lt; L），用于回收注意力步骤。</li>
+</ul>
+<h3 id="_8">生成过程</h3>
+<ol>
+<li><strong>Prefilling 阶段</strong>：</li>
+<li>使用标准全注意力对输入序列 x1, ..., xL 进行预填充</li>
+<li>初始化完整 KV 缓存 Cf</li>
+<li>获取最后一个 token xL 的注意力得分 aL（所有层的所有 query head）</li>
+<li>
+<p>基于 aL 为每个层的每个 KV head 选择 top K token，初始化回收 KV 缓存 Cr</p>
+</li>
+<li>
+<p><strong>回收注意力步骤（Recycling Step）</strong>：</p>
+</li>
+<li>使用回收缓存 Cr 计算注意力，生成下一个 token</li>
+<li>将新 token 的 KV 对添加到 Cr</li>
+<li>移除 Cr 中注意力得分最低的 token（保持固定大小）</li>
+<li>
+<p>优势：仅需移动较小的 KV 缓存 Cr，减少数据移动和计算开销</p>
+</li>
+<li>
+<p><strong>完整注意力步骤（Full Attention Step）</strong>：</p>
+</li>
+<li>用回收步骤生成的 token 更新完整缓存 Cf</li>
+<li>使用完整缓存 Cf 计算注意力，生成下一个 token</li>
+<li>重新初始化回收缓存 Cr：基于当前步骤的注意力得分，选择 top K token</li>
+</ol>
+<h3 id="_9">调度策略</h3>
+<p><strong>固定调度（Fixed Schedule）</strong>：
+- 每 S 步执行一次完整注意力，其余 S-1 步执行回收注意力
+- 实验发现 S=50 时效果良好</p>
+<p><strong>动态调度（Dynamic Schedule）</strong>：
+- 每 S 步检查当前 query 向量与最近一次完整注意力步骤的 query 向量的余弦相似度
+- 如果相似度低于阈值 s（如 0.8），则执行完整注意力；否则使用回收缓存
+- 允许不同层使用不同调度策略</p>
+<h3 id="_10">关键直觉：注意力模式的可复用性</h3>
+<p>实验验证了核心假设：在 8K token 的预填充后，后续 token 的 topK token 恢复率超过 90%（对比 StreamingLLM 的 ~65%）。这表明相邻 token 的注意力模式高度相似，可以有效复用。</p>
+<h3 id="flash-attention">与 Flash Attention 的兼容性</h3>
+<p>由于 Recycled Attention 需要注意力得分来选择 topK token，而 Flash Attention 不存储完整的注意力矩阵，因此在完整注意力步骤中需要重新计算注意力得分。但由于完整注意力仅每 S 步执行一次，额外开销不大。</p>
+<h2 id="_11">实验结果</h2>
+<h3 id="_12">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.1-8B（128K 上下文）、Qwen2-7B（128K 上下文）</li>
+<li><strong>硬件</strong>：单张 A100 80GB GPU</li>
+<li><strong>基线</strong>：Vanilla attention、StreamingLLM、StreamingLLM++（带周期性完整注意力）、H2O</li>
+<li><strong>评估任务</strong>：RULER 基准（13 个子任务）、语言建模（Arxiv、Book、PG19）</li>
+</ul>
+<h3 id="ruler">RULER 基准结果（核心结果）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Llama-3.1 32K 准确率</th>
+<th>Llama-3.1 32K 时间(s)</th>
+<th>Llama-3.1 64K 准确率</th>
+<th>Llama-3.1 64K 时间(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vanilla</td>
+<td>90</td>
+<td>1.71</td>
+<td>82</td>
+<td>2.40</td>
+</tr>
+<tr>
+<td>H2O (K=4096)</td>
+<td>21</td>
+<td>2.15</td>
+<td>11</td>
+<td>2.29</td>
+</tr>
+<tr>
+<td>StreamingLLM (K=4096)</td>
+<td>22</td>
+<td>1.23</td>
+<td>17</td>
+<td>1.21</td>
+</tr>
+<tr>
+<td>Recycled (K=4096, S=50)</td>
+<td><strong>63</strong></td>
+<td>1.27</td>
+<td><strong>50</strong></td>
+<td>1.38</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- Recycled Attention 在 RULER 基准上比 StreamingLLM 和 H2O 提升约 2 倍准确率
+- Llama-3.1-8B：63% vs 22%（32K 上下文）
+- 推理速度与基线方法相当（1.27s vs 1.23s）
+- 在检索类任务（NIAH、QA、VT）上表现尤为突出：单 NIAH 达 98%（32K），远超基线的 8%</p>
+<h3 id="_13">语言建模结果</h3>
+<p><strong>16K 上下文（Arxiv/Book）</strong>：
+- Recycled Attention (K=2048, S=10)：PPL 2.36/7.49，时间 7.14s
+- StreamingLLM (K=2048)：PPL 2.62/7.94，时间 6.92s
+- Vanilla：PPL 2.22/7.07，时间 7.63s</p>
+<p><strong>100K 上下文（PG19）</strong>：
+- Recycled Attention (K=2048, S=256)：PPL 9.31，时间 6.10s
+- StreamingLLM (K=2048)：PPL 9.53，时间 5.94s</p>
+<h3 id="_14">动态调度改进</h3>
+<p>动态调度策略（基于查询相似度）在相似解码时间下进一步提升了困惑度：
+- 动态调度（QC=5, s=0.8）：PPL 2.32（Arxiv），时间 7.07s
+- 固定调度 S=10：PPL 2.36，时间 7.17s</p>
+<h3 id="_15">持续预训练改进</h3>
+<p>使用 Recycled Attention 进行持续预训练：
+- Recycled (S=50) + CPT：PPL 2.87（base: 2.96）
+- Recycled (S=25) + CPT：PPL 2.81（base: 2.90）
+- CPT 使更高步长（50）达到更低困惑度，实现更好的性能-效率权衡</p>
+<h2 id="_16">优势</h2>
+<ol>
+<li>
+<p><strong>显著的性能提升</strong>：在 RULER 基准上比 StreamingLLM 和 H2O 等基线提升约 2 倍准确率，同时保持相当的推理速度。</p>
+</li>
+<li>
+<p><strong>灵活的注意力模式</strong>：不同于 StreamingLLM 和 H2O 仅关注局部或累积得分高的 token，Recycled Attention 可以灵活选择与当前解码步骤相关的 token，包括局部和非局部 token。</p>
+</li>
+<li>
+<p><strong>无永久 token 驱逐</strong>：维护完整 KV 缓存，不永久驱逐任何 token，避免了信息丢失问题。</p>
+</li>
+<li>
+<p><strong>与 Flash Attention 兼容</strong>：通过在完整注意力步骤中重新计算注意力得分实现兼容，额外开销有限。</p>
+</li>
+<li>
+<p><strong>即插即用</strong>：可应用于任何现成的 LLM，无需重新训练。</p>
+</li>
+<li>
+<p><strong>可通过持续预训练进一步提升</strong>：使用 Recycled Attention 进行持续预训练可以改善性能-效率权衡。</p>
+</li>
+</ol>
+<h2 id="_17">局限</h2>
+<ol>
+<li>
+<p><strong>不减少内存需求</strong>：维护完整 KV 缓存（L 个 token），不减少内存占用，可能成为某些用例的瓶颈。</p>
+</li>
+<li>
+<p><strong>短输出场景收益有限</strong>：在输出长度很短时，效率提升很小。</p>
+</li>
+<li>
+<p><strong>实验规模有限</strong>：</p>
+</li>
+<li>仅在两个模型（Llama-3.1-8B、Qwen2-7B）和两个评估设置上进行实验</li>
+<li>未测试更多语言模型和更多长上下文基准（如 Needle-in-a-haystack、LongBench 等）</li>
+<li>
+<p>由于计算资源限制，未能覆盖所有可能的长上下文基准</p>
+</li>
+<li>
+<p><strong>对 Qwen2-7B 效果有限</strong>：在 100K 上下文下，Recycled Attention 对 Qwen2-7B 的改进有限，可能与该模型仅持续预训练到 32K 上下文有关。</p>
+</li>
+<li>
+<p><strong>方法创新性有限</strong>：ICLR 审稿意见认为方法创新性较低（https://openreview.net/forum?id=8qYuxV4lRu）。</p>
+</li>
+<li>
+<p><strong>未探索其他调度策略</strong>：虽然探索了基于查询相似度的动态调度，但未深入探索其他调度策略（如基于层的自定义步长）。</p>
+</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv">KV 缓存优化</h3>
+<ul>
+<li><strong>KV 缓存压缩</strong>：通过量化（如 GPTQ、AWQ）减少 KV 缓存的内存占用，可与 Recycled Attention 结合使用。</li>
+<li><strong>KV 缓存驱逐策略</strong>：H2O、StreamingLLM、TOVA 等方法的进一步改进，或与 Recycled Attention 结合。</li>
+<li><strong>动态 KV 缓存管理</strong>：基于注意力模式的自适应 KV 缓存管理。</li>
+</ul>
+<h3 id="_18">稀疏注意力</h3>
+<ul>
+<li><strong>训练时稀疏注意力</strong>：如 BigBird、Longformer 等固定稀疏模式。</li>
+<li><strong>推理时稀疏注意力</strong>：如 Unlimiformer、InfLLM、MInference、SparQ 等方法。</li>
+<li><strong>自适应稀疏注意力</strong>：根据输入内容动态选择注意力模式。</li>
+</ul>
+<h3 id="_19">推理加速</h3>
+<ul>
+<li><strong>Flash Attention 优化</strong>：进一步优化注意力计算。</li>
+<li><strong>投机解码（Speculative Decoding）</strong>：利用小模型提供草稿，大模型验证。</li>
+<li><strong>KV 缓存压缩与量化</strong>：结合 KV 缓存压缩和量化。</li>
+</ul>
+<h3 id="_20">长上下文模型</h3>
+<ul>
+<li><strong>长上下文扩展</strong>：通过持续预训练或位置编码改进扩展上下文窗口。</li>
+<li><strong>长上下文评估</strong>：RULER、LongBench、Needle-in-a-haystack 等基准的改进。</li>
+</ul>
+<h3 id="_21">多模态扩展</h3>
+<ul>
+<li><strong>视觉 Transformer</strong>：Recycled Attention 可应用于视觉 Transformer 的推理加速。</li>
+<li><strong>多模态长上下文</strong>：结合视觉和文本的长上下文推理。</li>
+</ul>
+<h2 id="ai">AI 生成声明</h2>
+<p>本文档由 AI Agent（Hermes Agent）自动生成，基于对论文 "Recycled Attention: Efficient inference for long-context language models"（arXiv: 2411.05787v1）的分析。AI Agent 使用 PyMuPDF (fitz) 提取论文文本，并基于提取内容生成中文摘要和分析。本文档仅供参考，不构成任何学术建议或论文解读的权威来源。请读者自行验证论文中的具体内容和结论。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

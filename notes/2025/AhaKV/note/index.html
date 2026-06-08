@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,29 +162,284 @@
                 <h1 id="ahakv-adaptive-holistic-attention-driven-kv-cache-eviction-for-efficient-inference-of-large-language-models">AhaKV: Adaptive Holistic Attention-Driven KV Cache Eviction for Efficient Inference of Large Language Models</h1>
 <blockquote>
 <p>Yifeng Gu, Zicong Jiang, Jianxiu Jin, Kailing Guo, Ziyang Zhang, Xiangmin Xu</p>
+<p>South China University of Technology / Pazhou Laboratory</p>
+<p><strong>一句话总结：</strong> AhaKV 通过自适应步增 Softmax（SG-softmax）消除累积注意力分数的位置偏差，并利用 Value 向量模长作为先验权重，实现无偏、全局的 KV Cache 驱逐策略，在固定缓存预算下达到 SOTA 性能。</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) have significantly advanced the field of
-Artificial Intelligence. However, their deployment is resource-intensive, not
-only due to the large number of model parameters but also because the
-(Key-Value) KV cache consumes a lot of memory during inference. While several
-works propose reducing the KV cache by evicting the unnecessary tokens, these
-approaches rely on accumulated attention score as eviction score to quantify
-the importance of the token. We identify the accumulated attention score is
-biased and it decreases with the position of the tokens in the mathematical
-expectation. As a result, the retained tokens concentrate on the initial
-positions, limiting model's access to global contextual information. To address
-this issue, we propose Adaptive holistic attention KV (AhaKV), it addresses the
-bias of the accumulated attention score by adaptively tuning the scale of
-softmax according the expectation of information entropy of attention scores.
-To make use of the holistic attention information in self-attention mechanism,
-AhaKV utilize the information of value vectors, which is overlooked in previous
-works, to refine the adaptive score. We show theoretically that our method is
-well suited for bias reduction. We deployed AhaKV on different models with a
-fixed cache budget. Experiments show that AhaKV successfully mitigates bias and
-retains crucial tokens across global context and achieve state-of-the-art
-results against other related work on several benchmark tasks.</p>
+<h2 id="_1">摘要翻译</h2>
+<p>大语言模型（LLM）在人工智能领域取得了显著进展。然而，其部署成本高昂，不仅因为模型参数量大，还因为推理过程中 KV 缓存消耗大量内存。现有方法通过驱逐不必要的 token 来减少 KV 缓存，但这些方法依赖累积注意力分数作为驱逐分数来衡量 token 的重要性。本文发现累积注意力分数存在偏差——其期望值随 token 位置递减，导致保留的 token 集中在序列初始位置，限制了模型获取全局上下文信息的能力。为此，本文提出 <strong>AhaKV</strong>（Adaptive Holistic Attention KV），通过根据注意力分数信息熵的期望自适应调节 softmax 的缩放来解决累积注意力分数的偏差问题，并利用自注意力机制中被忽视的 Value 向量信息来细化驱逐分数。理论上证明了该方法适合偏差消除。实验表明，AhaKV 在多个基准任务上成功缓解偏差，在全局上下文中保留关键 token，并在多项对比中达到 SOTA 结果。</p>
+<h2 id="_2">研究动机</h2>
+<h3 id="_3">背景问题</h3>
+<ul>
+<li>LLM 推理中的 <strong>KV 缓存内存瓶颈</strong>：以 LLaMA-2-7B 为例，当 batch size=8、上下文长度达 32K tokens 时，KV 缓存可达 128GB，远超模型参数本身的内存需求。</li>
+<li>现有 KV 缓存驱逐方法（如 H2O）依赖<strong>累积注意力分数</strong>作为驱逐分数，但存在两个关键问题：</li>
+</ul>
+<h3 id="positional-bias">问题一：累积注意力分数的位置偏差（Positional Bias）</h3>
+<ul>
+<li>由于因果掩码（causal mask），位置 j 的 token 只能被位置 i≥j 的 token 注意到，因此 token j 的累积注意力分数为 <script type="math/tex">S_j = \sum_{i=j}^{n} a_{i,j}</script>，其累加项数量随 j 增大而减少。</li>
+<li>通过数学证明：<script type="math/tex">E(S_{j+1} - S_j) < 0</script>，即累积注意力分数的期望值单调递减。</li>
+<li>实际表现为：位置靠后的 token 被系统性低估重要性，导致大量上下文信息丢失（如 3600 token 序列中，位置 1500 之后的 token 被不成比例地驱逐）。</li>
+</ul>
+<h3 id="value">问题二：忽视 Value 向量信息</h3>
+<ul>
+<li>现有方法仅使用 Query 和 Key 的信息，忽略了 Value 向量在自注意力机制中的关键作用。</li>
+<li>Value 向量携带上下文预测信息，利用 Value 的模长可以提供额外的 token 重要性信号。</li>
+</ul>
+<h2 id="_4">方法（技术细节）</h2>
+<p>AhaKV 由三个核心组件组成，共同实现无偏、全局的 KV 缓存驱逐：</p>
+<h3 id="1-softmaxstep-gain-softmax-sg-softmax">1. 步增 Softmax（Step Gain Softmax, SG-softmax）</h3>
+<p><strong>动机：</strong> 随着序列长度增加，softmax 将固定总概率（和为 1）分配到更多 token 上，导致每个 token 的注意力分数被稀释（平铺化）。</p>
+<p><strong>方法：</strong> 引入缩放参数 λ，对 softmax 进行自适应调整：
+<script type="math/tex; mode=display">\text{SG-softmax}(x_i, \lambda_i) = \frac{\lambda x_i}{\sum_{j=0}^{n} e^{\lambda x_j}}</script>
+</p>
+<p><strong>理论推导：</strong> 
+- 信息熵的期望为 <script type="math/tex">E[H_i] = \log i - \frac{\lambda^2 d}{2}</script>
+- 目标：使期望信息熵等于最大信息熵（与 token 数量无关），即 <script type="math/tex">\log i - \frac{\lambda^2 d}{2} = -\log \frac{1}{k}</script>
+- 求解得：<script type="math/tex">\lambda = \sqrt{\frac{2 \log(i/k)}{d}}</script>，其中 i 为总 token 数，k 为缓存预算。</p>
+<h3 id="2-recent-accumulation">2. 近期累积（Recent Accumulation）</h3>
+<p><strong>动机：</strong> 直接对所有行累积注意力分数，位置靠前的 token 有更多累积项，导致偏差。</p>
+<p><strong>方法：</strong> 仅对最近 r 行的注意力分数进行累积，确保每个 token 的累积项数量一致：
+<script type="math/tex; mode=display">S_j = \sum_{i=n-r}^{n} a_{i,j}</script>
+</p>
+<h3 id="3-value-value-prior-enhance">3. Value 先验增强（Value-Prior Enhance）</h3>
+<p><strong>动机：</strong> 利用 Value 向量的信息来增强驱逐分数。</p>
+<p><strong>方法：</strong>
+1. 计算每个 token 的 Value 向量 L2 范数的平方：<script type="math/tex">\nu_i = \|V_i\|^2</script>
+2. 使用均值池化平滑模长：<script type="math/tex">\gamma = \text{AvgPool}(\nu)</script>
+3. 归一化：<script type="math/tex">\bar{\gamma}_i = \frac{\gamma_i}{\max(\gamma)}</script>
+4. 用归一化后的 Value 先验作为先验权重，细化自适应累积注意力分数：
+<script type="math/tex; mode=display">\hat{S}_i = \bar{\gamma}_i \cdot S_i</script>
+</p>
+<p><strong>算法流程：</strong>
+- <strong>Prefill 阶段：</strong> 计算 QKV，对最近 Br 行使用 SG-softmax 计算驱逐分数，结合 Value 先验，通过 TopK 选择 Bs 个 token
+- <strong>Generation 阶段：</strong> 新 token 加入缓存后，继续使用 SG-softmax 更新驱逐分数，动态维护固定预算</p>
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>模型：</strong> LLaMA3-8B-Inst、Qwen2-7B-Inst、LLaMA2-7B-Chat、Gemma-7B-Inst、Qwen2-1.5B-Inst、Qwen1.5-4B-Chat、Qwen1.5-14B-Chat</li>
+<li><strong>基准：</strong> LongBench（21 个数据集，6 个类别）、ARC-E、OpenBookQA、WiC、WinoGrande</li>
+<li><strong>缓存预算：</strong> 720（LLaMA2-7B）/ 1000（其他），recent budget 固定为 32</li>
+<li><strong>硬件：</strong> NVIDIA A800 80GB GPU</li>
+</ul>
+<h3 id="longbench">主要结果（LongBench 平均分）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA3-8B-Inst</th>
+<th>Qwen2-7B-Inst</th>
+<th>LLaMA2-7B-Chat</th>
+<th>Gemma-7B-Inst</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Cache</td>
+<td>41.94</td>
+<td>42.47</td>
+<td>27.28</td>
+<td>33.25</td>
+</tr>
+<tr>
+<td>Sink</td>
+<td>33.55</td>
+<td>32.46</td>
+<td>23.27</td>
+<td>27.18</td>
+</tr>
+<tr>
+<td>H2O</td>
+<td>38.93</td>
+<td>36.24</td>
+<td>24.51</td>
+<td>31.09</td>
+</tr>
+<tr>
+<td>SnapKV</td>
+<td>40.99</td>
+<td>41.30</td>
+<td>26.39</td>
+<td>32.39</td>
+</tr>
+<tr>
+<td>NACL</td>
+<td>40.77</td>
+<td>39.27</td>
+<td>26.04</td>
+<td>31.77</td>
+</tr>
+<tr>
+<td>TOVA</td>
+<td>40.18</td>
+<td>37.99</td>
+<td>24.66</td>
+<td>30.80</td>
+</tr>
+<tr>
+<td><strong>AhaKV</strong></td>
+<td><strong>41.63</strong></td>
+<td><strong>41.84</strong></td>
+<td><strong>26.78</strong></td>
+<td><strong>33.08</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AhaKV 在所有 4 个 7B 模型上平均分最高，接近 Full Cache 水平</li>
+<li>在代码完成任务上，LLaMA3-8B-Inst 和 Gemma-7B-Inst 上分别超越 Full Cache 2.67% 和 2.46%</li>
+<li>在段落检索任务上，LLaMA3-8B-Inst 上比次优方法高 0.5%</li>
+</ul>
+<h3 id="appendix-b">多尺度模型验证（Appendix B）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Qwen2-1.5B-Inst</th>
+<th>Qwen1.5-4B-Chat</th>
+<th>Qwen1.5-14B-Chat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Cache</td>
+<td>32.03</td>
+<td>34.02</td>
+<td>44.11</td>
+</tr>
+<tr>
+<td>H2O</td>
+<td>25.78</td>
+<td>31.61</td>
+<td>42.48</td>
+</tr>
+<tr>
+<td><strong>AhaKV</strong></td>
+<td><strong>31.39</strong></td>
+<td><strong>33.09</strong></td>
+<td><strong>43.87</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在 1.5B、4B、14B 规模模型上均取得 SOTA，验证了方法的可扩展性</li>
+</ul>
+<h3 id="_7">短文本结果</h3>
+<ul>
+<li>在 ARC-E、OpenBookQA、WiC、WinoGrande 上，AhaKV 在极低压缩率（仅 4% 预算）下仍表现优异</li>
+<li>随着压缩率增大（预算减小），AhaKV 相比 H2O 和其他方法准确率更高</li>
+</ul>
+<h3 id="ablation-study">消融实验（Ablation Study）</h3>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>2Wiki</th>
+<th>TriQA</th>
+<th>Multi-EN</th>
+<th>lcc</th>
+<th>Samsum</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w/o RA</td>
+<td>30.26</td>
+<td>84.47</td>
+<td>36.44</td>
+<td>55.77</td>
+<td>39.70</td>
+<td>49.33</td>
+</tr>
+<tr>
+<td>w/o SGS</td>
+<td>30.50</td>
+<td>82.85</td>
+<td>37.89</td>
+<td>58.00</td>
+<td>39.60</td>
+<td>49.76</td>
+</tr>
+<tr>
+<td>w/o VPE</td>
+<td>29.54</td>
+<td>82.94</td>
+<td>33.96</td>
+<td>58.16</td>
+<td>41.06</td>
+<td>49.13</td>
+</tr>
+<tr>
+<td><strong>AhaKV</strong></td>
+<td><strong>30.91</strong></td>
+<td><strong>84.34</strong></td>
+<td><strong>39.21</strong></td>
+<td><strong>58.40</strong></td>
+<td><strong>40.10</strong></td>
+<td><strong>50.59</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>去除 RA（近期累积）：平均准确率下降 1.26%，确认了稳定累积项的必要性</li>
+<li>去除 SGS（步增 Softmax）：平均准确率下降 0.83%</li>
+<li>去除 VPE（Value 先验增强）：平均准确率下降 1.46%，证明了 Value 先验对细化驱逐分数的有效性</li>
+</ul>
+<h3 id="_8">推理速度</h3>
+<ul>
+<li>结合 FlashAttention，AhaKV 可显著降低推理延迟</li>
+<li>32K 输入 + 512 输出时，原始 FlashAttention 的 KV 缓存占 5.98G 内存，AhaKV（保留 2048 KV 对）仅占 0.39G</li>
+</ul>
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>理论基础扎实：</strong> 从数学上证明了累积注意力分数的位置偏差，并提出了系统性的偏差消除方案</li>
+<li><strong>全局上下文保留：</strong> 通过 Recent Accumulation 和 SG-softmax 消除位置偏差，保留序列中任意位置的关键 token</li>
+<li><strong>充分利用 QKV 信息：</strong> 率先利用 Value 向量信息增强驱逐分数，实现对 self-attention 机制的更全面利用</li>
+<li><strong>计算开销低：</strong> SG-softmax 仅需计算最近 r 行的注意力分数，额外计算量很小，与 FlashAttention 兼容</li>
+<li><strong>泛化性强：</strong> 在 1.5B、4B、7B、14B 多种规模模型上均表现优异</li>
+<li><strong>内存节省显著：</strong> 从 5.98G 降至 0.39G（32K 输入场景），部署成本大幅降低</li>
+<li><strong>与现有方法正交：</strong> 可与其他优化技术（量化、剪枝等）结合使用</li>
+</ol>
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>长文本验证不足：</strong> 受资源限制，未在超长文本上进行实验，虽然理论推导支持适应更长文本</li>
+<li><strong>累积策略选择有限：</strong> Prefill 阶段使用最近行累积，虽然有效但非唯一选择，例如 TopK 策略可能也是一种可行方案</li>
+<li><strong>无代码开源：</strong> 代码 URL 为空，无法直接复现实验结果</li>
+<li><strong>训练无关：</strong> 该方法仅在推理阶段应用，无法通过训练进一步优化驱逐策略</li>
+<li><strong>参数选择：</strong> λ 的计算依赖于缓存预算 k 的预设，不同任务可能需要调整</li>
+<li><strong>与 Full Cache 的差距：</strong> 虽然接近 Full Cache，但在部分任务上仍有一定差距</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv-cache">KV Cache 优化</h3>
+<ul>
+<li>本文属于 <strong>KV Cache 驱逐</strong> 类方法，与 H2O、SnapKV、NACL、StreamingLLM 等工作直接相关</li>
+<li>可与 <strong>KV Cache 量化</strong>（如 KVQuant、KIVI）结合，进一步压缩内存</li>
+<li>可与 <strong>稀疏注意力</strong>（如 BigBird、Longformer、SpAtten）正交集成</li>
+</ul>
+<h3 id="_11">高效推理</h3>
+<ul>
+<li>与 <strong>剪枝</strong>（如 SparseGPT、LLM-Pruner）、<strong>量化</strong>（如 GPTQ）等推理优化技术互补</li>
+<li>可与 <strong>FlashAttention</strong> 等注意力计算加速方法结合使用</li>
+</ul>
+<h3 id="_12">长上下文处理</h3>
+<ul>
+<li>与 <strong>长上下文扩展</strong>（如 YaRN、LongLoRA、RingAttention）相关</li>
+<li>可应用于 <strong>长文档处理</strong>、<strong>多轮对话</strong> 等场景</li>
+</ul>
+<h3 id="_13">注意力机制研究</h3>
+<ul>
+<li>本文对注意力分数的位置偏差分析为理解 Transformer 的注意力机制提供了新视角</li>
+<li>Value 向量的信息利用为未来研究提供了思路</li>
+</ul>
+<h3 id="rag">检索增强生成（RAG）</h3>
+<ul>
+<li>AhaKV 在段落检索任务上的优异表现，与 RAG 中的信息检索密切相关</li>
+<li>可作为 RAG 系统中的高效 token 筛选策略</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>生成声明：</strong> 本 note 由 AI Agent 自动生成，基于 arXiv 论文（arXiv:2506.03762v1）的全文内容，使用 fitz 提取文本并进行分析。生成时间：2025 年。所有内容以中文撰写。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

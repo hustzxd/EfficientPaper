@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,30 +161,275 @@
   
                 <h1 id="h1b-kv-hybrid-one-bit-caches-for-memory-efficient-large-language-model-inference">H1B-KV: Hybrid One-Bit Caches for Memory-Efficient Large Language Model Inference</h1>
 <blockquote>
-<p>Harshil Vejendla</p>
+<p>Harshil Vejendla · Rutgers University</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Autoregressive decoding in large language models (LLMs) requires caching a
-growing list of past key-value (KV) pairs, making long-context inference a
-memory-bound problem. While recent methods have explored quantizing the cache,
-evicting tokens, or using binary sketches for keys (e.g., Loki), these
-approaches often provide an incomplete solution by leaving one component (like
-values) uncompressed or by discarding context information. This paper
-introduces the Hybrid One-Bit KV Cache (H1B-KV), a comprehensive compression
-scheme that radically reduces memory usage without sacrificing context. H1B-KV
-represents each key vector using a 1-bit binary sketch, enabling
-hardware-friendly bitwise attention, and further compresses value vectors using
-4-bit quantization. This holistic, hybrid approach allows a 7-billion parameter
-LLM to handle an 8k-token context with under 60 MB of cache memory - a 70x
-reduction. We demonstrate that after a lightweight finetuning, H1B-KV matches
-full-precision performance not only on perplexity benchmarks but also on
-complex downstream tasks like mathematical reasoning (GSM8K), multi-task
-understanding (MMLU), and code generation (HumanEval). Our results show H1B-KV
-significantly outperforms leading quantization (KIVI), token eviction
-(SparseLLM), and key-only sketching (Loki) methods in quality-per-byte,
-establishing it as a robust solution for deploying LLMs in memory-constrained
-environments.</p>
+<hr />
+<blockquote>
+<p><strong>⚠ 生成声明</strong>：本 note 由 AI Agent（Hermes Agent）于 2026 年 6 月自动生成，基于 arXiv 论文原文（2510.05529v1）进行阅读、分析与中文撰写。内容仅供参考，可能与原文存在理解偏差。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>H1B-KV 提出了一种混合 KV 缓存压缩方案：将 Key 用 1-bit 二值随机投影（binary sketch）表示，Value 用 4-bit 量化，通过轻量微调恢复模型性能，实现 7B 模型在 8k 上下文下仅需 ~59 MB 缓存（约 70 倍压缩），在内存、延迟和能效方面显著优于 KIVI、SparseLLM、Loki 等方法。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）的自回归解码需要缓存过去所有的 Key-Value（KV）对，使长上下文推理成为内存瓶颈问题。虽然近期方法探索了量化缓存、驱逐 token 或对 Key 使用二值草图（如 Loki），但这些方法通常不完整——要么 Value 未压缩，要么丢弃上下文信息。本文提出 Hybrid One-Bit KV Cache（H1B-KV），一种全面的压缩方案，能在不牺牲上下文的情况下大幅减少内存使用。H1B-KV 用 1-bit 二值草图表示每个 Key 向量，实现硬件友好的位运算注意力，并用 4-bit 量化压缩 Value 向量。这种整体混合方案使 7B 参数 LLM 在 8k token 上下文中仅需不到 60 MB 缓存——约 70 倍缩减。论文证明，经过轻量微调，H1B-KV 在困惑度基准以及数学推理（GSM8K）、多任务理解（MMLU）和代码生成（HumanEval）等复杂下游任务上匹配全精度性能，且显著优于 KIVI（量化）、SparseLLM（token 驱逐）和 Loki（仅 Key 草图）方法。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>KV 缓存内存瓶颈</strong>：LLM 自回归解码中，KV 缓存随序列长度线性增长。7B 模型在 32k token 上下文中，FP16 精度下缓存可超过 16 GB，使边缘设备（手机、嵌入式系统）部署不可行。</p>
+</li>
+<li>
+<p><strong>现有方法的不足</strong>：</p>
+</li>
+<li><strong>量化方法</strong>（KIVI、MiniCache）：虽有效但仍存储多字节浮点/整数表示，内存和带宽占用仍显著。</li>
+<li><strong>Token 驱逐方法</strong>（SparseLLM、Keyformer）：丢弃"不重要"的 token，但对需要长距离依赖的任务（数学推理、代码生成）可能导致灾难性失败。</li>
+<li>
+<p><strong>Key 侧草图方法</strong>（Loki）：仅压缩 Key 为 1-bit，Value 仍为 FP16，价值缓存仍占原始内存 50%，属于不完整方案。</p>
+</li>
+<li>
+<p><strong>核心问题</strong>：能否用极端的二值草图替换高维 Key 向量，同时压缩 Value 向量，而不损害模型性能？</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-lsh">1. 理论基础：局部敏感哈希（LSH）</h3>
+<ul>
+<li>设 q, k ∈ R^d 为单位范数向量（query 和 key 通常经过层归一化）。</li>
+<li>使用固定随机矩阵 R ∈ R^{b×d}（b &lt; d，b 为草图宽度，如 256），R_ij ~ N(0,1)。</li>
+<li>二值草图：s_q, s_k ∈ {−1,1}^b，由 s = sign(Rv) 生成。</li>
+</ul>
+<p><strong>核心命题（Proposition 1）</strong>：两个二值草图的归一化 Hamming 内积的期望值为：</p>
+<p>
+<script type="math/tex; mode=display">E\left[\frac{1}{b} s_q^T s_k\right] = 1 - \frac{2}{\pi} \arccos(q^T k)</script>
+</p>
+<p>即二值注意力分数是原始余弦相似度的有原则的非线性近似。通过微调 softmax 温度 T 来重新校准分数分布，恢复模型性能。</p>
+<h3 id="2-one-bit-key-sketching">2. One-Bit Key Sketching</h3>
+<ul>
+<li>每个注意力头的 key 向量 k ∈ R^d 由固定随机矩阵 R 投影一次：s_k = sign(Rk)</li>
+<li>存储仅需 b bits（如 256 bits = 32 bytes）</li>
+<li>解码时，query q 用同一矩阵 R 投影得 s_q</li>
+<li>注意力分数直接在二值空间计算：a_t = (1/b) s_q^T s_k</li>
+<li>使用 XNOR 和 POPCOUNT 位运算指令高效实现</li>
+</ul>
+<h3 id="3-hybrid-cache-with-value-quantization">3. Hybrid Cache with Value Quantization</h3>
+<ul>
+<li>仅压缩 Key 不够，Value 向量仍是重要瓶颈</li>
+<li>对 Value 使用 per-tensor 仿射量化：v_q = round(v/s + z)，其中 s 为 scale，z 为 zero-point</li>
+<li>每个 token 存储：b-bit key sketch + d × 4-bit 量化 value 向量</li>
+<li>压缩比极低：1-bit key + 4-bit value，整体约 98% 压缩</li>
+</ul>
+<h3 id="4-lightweight-finetuning">4. 轻量微调（Lightweight Finetuning）</h3>
+<ul>
+<li><strong>不微调</strong>原模型参数，只训练极少量参数（&lt; 0.1%）：</li>
+<li>全局 softmax 温度标量 T</li>
+<li>Value 的仿射投影层（V_proj）</li>
+<li>注意力输出：Attention(q, K, V) = softmax(a_t / T) · V_dequant</li>
+<li>60M 模型：约 2 小时（单 A100 GPU）</li>
+<li>7B 模型：约 5 A100 小时</li>
+<li>一次性成本，相对于推理时的长期节省可忽略</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="60m-8k">主要对比（60M 模型，8k 上下文）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>缓存大小 (MB)</th>
+<th>WikiText-2 PPL</th>
+<th>QpB</th>
+<th>PTB PPL</th>
+<th>QpB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>67.1</td>
+<td>9.20</td>
+<td>1.63</td>
+<td>5.98</td>
+<td>2.50</td>
+</tr>
+<tr>
+<td>MiniCache 4-b</td>
+<td>16.8</td>
+<td>9.42</td>
+<td>6.30</td>
+<td>6.10</td>
+<td>10.15</td>
+</tr>
+<tr>
+<td>KIVI 2-b</td>
+<td>8.4</td>
+<td>9.65</td>
+<td>12.28</td>
+<td>6.25</td>
+<td>19.04</td>
+</tr>
+<tr>
+<td>SparseLLM</td>
+<td>8.4</td>
+<td>9.58</td>
+<td>12.44</td>
+<td>6.20</td>
+<td>19.22</td>
+</tr>
+<tr>
+<td>Loki (1-bit K)</td>
+<td>33.7</td>
+<td>9.24</td>
+<td>3.23</td>
+<td>6.01</td>
+<td>5.51</td>
+</tr>
+<tr>
+<td><strong>H1B-KV (Ours)</strong></td>
+<td><strong>5.3</strong></td>
+<td><strong>9.28</strong></td>
+<td><strong>20.35</strong></td>
+<td><strong>6.02</strong></td>
+<td><strong>31.37</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>H1B-KV 将 8k 上下文缓存从 67 MB 压缩至 5.3 MB（~12x 压缩）</li>
+<li>QpB（质量-字节比）比次优方法高 5-8 倍</li>
+</ul>
+<h3 id="7b">7B 模型可扩展性</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>缓存大小 (MB)</th>
+<th>WikiText-2 PPL</th>
+<th>QpB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>4300.2</td>
+<td>5.05</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>KIVI 2-b</td>
+<td>537.5</td>
+<td>5.30</td>
+<td>0.35</td>
+</tr>
+<tr>
+<td>SparseLLM</td>
+<td>537.5</td>
+<td>5.25</td>
+<td>0.36</td>
+</tr>
+<tr>
+<td>Loki (1-bit K)</td>
+<td>2150.1</td>
+<td>5.08</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td><strong>H1B-KV</strong></td>
+<td><strong>58.7</strong></td>
+<td><strong>5.15</strong></td>
+<td><strong>3.31</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>从 4.3 GB 压缩至 58.7 MB（~73x 压缩）</li>
+<li>PPL 接近 FP16 基线</li>
+</ul>
+<h3 id="7b_1">下游任务（7B 模型）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>GSM8K (%)</th>
+<th>MMLU (%)</th>
+<th>HumanEval pass@1 (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>54.2</td>
+<td>68.1</td>
+<td>28.5</td>
+</tr>
+<tr>
+<td>KIVI 2-b</td>
+<td>52.8</td>
+<td>67.5</td>
+<td>27.1</td>
+</tr>
+<tr>
+<td>SparseLLM</td>
+<td>15.7</td>
+<td>65.2</td>
+<td>9.3</td>
+</tr>
+<tr>
+<td><strong>H1B-KV</strong></td>
+<td><strong>53.5</strong></td>
+<td><strong>67.9</strong></td>
+<td><strong>28.1</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>H1B-KV 与 FP16 差距极小</li>
+<li>SparseLLM 在 GSM8K 上崩溃（15.7% vs 54.2%），因驱逐 token 导致关键信息丢失</li>
+</ul>
+<h3 id="7b8k">硬件延迟与能效（7B，8k 上下文）</h3>
+<ul>
+<li>Raspberry Pi 5：2.8x 加速，能耗降低 60%</li>
+<li>NVIDIA Jetson Nano：2.1x 加速</li>
+<li>Cache Load 从 25ms 降至 3ms，Attention Compute 从 41ms 降至 11ms</li>
+</ul>
+<h3 id="_6">消融实验</h3>
+<ul>
+<li><strong>1-Bit-Key Only</strong>（FP16 Values）：PPL 好但内存节省不够（33.8 MB）</li>
+<li><strong>无温度微调</strong>：PPL 大幅劣化（12.51 vs 9.28），确认温度 T 的关键作用</li>
+<li><strong>草图宽度 b</strong>：b=256 最佳平衡；b&lt;64 时近似质量急剧下降</li>
+</ul>
+<hr />
+<h2 id="_7">优势</h2>
+<ol>
+<li><strong>极端压缩</strong>：98% 压缩率，7B 模型在 8k 上下文下仅需 ~59 MB</li>
+<li><strong>完整上下文保留</strong>：不同于 token 驱逐方法，H1B-KV 保留全部 token，避免信息丢失</li>
+<li><strong>硬件友好</strong>：位运算（XNOR + POPCOUNT）可高效在 CPU/GPU 上实现</li>
+<li><strong>轻量微调</strong>：仅需 &lt; 0.1% 参数更新，一次性成本低</li>
+<li><strong>广泛适用</strong>：60M 到 7B 模型均可适配，理论基础扎实（LSH）</li>
+<li><strong>下游任务表现优秀</strong>：在 GSM8K、MMLU、HumanEval 上接近全精度性能</li>
+<li><strong>边缘设备部署可行</strong>：在 Raspberry Pi 5 和 Jetson Nano 上有显著加速和节能</li>
+</ol>
+<hr />
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>草图宽度下限</strong>：b &lt; 64 时近似质量急剧下降，不适合极低维表示</li>
+<li><strong>微调范围有限</strong>：未联合优化随机投影矩阵 R 或量化参数，可能进一步提升性能</li>
+<li><strong>多模态模型待探索</strong>：未验证在具有不同数据分布的多模态模型上的适用性</li>
+<li><strong>需要微调</strong>：不同于 KIVI 的 tuning-free 方案，H1B-KV 需要轻量微调步骤</li>
+<li><strong>仅单次投影</strong>：随机矩阵 R 是预生成的，非学习得到</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 量化</strong>：H1B-KV 是 KV 缓存压缩的重要进展，可与 KIVI、MiniCache 等方法对比或结合使用。</li>
+<li><strong>边缘推理部署</strong>：该方法在 Raspberry Pi 5 和 Jetson Nano 上的实验证明其对边缘设备部署的价值。</li>
+<li><strong>比特级压缩</strong>：1-bit Key + 4-bit Value 的混合方案为 KV 缓存的极低比特压缩提供了新思路。</li>
+<li><strong>轻量微调策略</strong>：仅微调 &lt; 0.1% 参数的方案对高效适配模型提供了参考。</li>
+<li><strong>Local-Sensitive Hashing 在 LLM 中的应用</strong>：将 LSH 理论应用于 Transformer 注意力机制，为稀疏/近似注意力研究提供理论基础。</li>
+<li><strong>对比学习方向</strong>：与 Loki（仅 Key 草图）、KIVI（2-bit 量化）、SparseLLM（token 驱逐）的对比分析有助于理解不同压缩策略的优劣。</li>
+<li><strong>未来方向</strong>：可学习投影矩阵、多模态模型扩展、更激进的 Value 压缩（如 2-bit）等。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

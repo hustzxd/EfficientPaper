@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,14 +161,110 @@
   
                 <h1 id="adasplash-2-faster-differentiable-sparse-attention">AdaSplash-2: Faster Differentiable Sparse Attention</h1>
 <blockquote>
-<p>Nuno Gonçalves, Hugo Pitorro, Vlad Niculae, Edoardo Ponti, Lei Li, Andre Martins, Marcos Treviso</p>
+<p>本 note 由 AI Agent 自动生成，基于论文原文提取。如有错误请以原文为准。</p>
 </blockquote>
-<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Sparse attention has been proposed as a way to alleviate the quadratic cost of transformers, a central bottleneck in long-context training. A promising line of work is <script type="math/tex">α</script>-entmax attention, a differentiable sparse alternative to softmax that enables input-dependent sparsity yet has lagged behind softmax due to the computational overhead necessary to compute the normalizer <script type="math/tex">τ</script>. In this paper, we introduce AdaSplash-2, which addresses this limitation through a novel histogram-based initialization that reduces the number of iterations needed to compute <script type="math/tex">τ</script> to typically 1--2. The key idea is to compute a coarse histogram of attention scores on the fly and store it in on-chip SRAM, yielding a more accurate initialization that enables fast forward and backward computation. Combined with a sparsity-aware GPU implementation that skips zero blocks with low overhead, AdaSplash-2 matches or improves per-step training time relative to FlashAttention-2 when block sparsity is moderate-to-high (e.g., <script type="math/tex">></script>60\%), which often occurs at long-context lengths. On downstream tasks, models trained with our efficient <script type="math/tex">α</script>-entmax attention match softmax baselines at short-context lengths and achieve substantial gains in long-context settings.</p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文旨在解决Transformer模型在长上下文训练中因稀疏注意力计算开销大而导致的效率瓶颈问题。为此，作者提出了AdaSplash-2方法，通过一种新颖的基于直方图的初始化技术，将计算归一化因子τ所需的迭代次数减少到通常1-2次，并结合稀疏感知的GPU实现来跳过零块。该方法在块稀疏度中等至较高（如&gt;60%）时，训练速度与FlashAttention-2相当或更优，并在下游任务中，使用其高效α-entmax注意力训练的模型在短上下文长度下与softmax基线匹配，在长上下文设置中取得了显著提升。</p>
+<h2 id="_1">一句话总结</h2>
+<p>AdaSplash-2 是针对 α-entmax 稀疏注意力的高效 GPU 实现，通过直方图初始化将归一化阈值 τ 的计算迭代次数降至 1–2 次，结合 Triton 上的稀疏感知 kernel，在中高稀疏度下匹配或超越 FlashAttention-2 的训练速度。</p>
+<hr />
+<h2 id="abstract">摘要 (Abstract)</h2>
+<p>Sparse attention 提出以缓解 Transformer 的二次计算成本，但 α-entmax attention 因归一化器 τ 的计算开销而滞后于 softmax。AdaSplash-2 通过直方图初始化将 τ 的迭代次数降至 1–2 次，结合稀疏感知 GPU 实现跳过零块，在块稀疏度 &gt;60%（常见于长上下文）时匹配或超越 FlashAttention-2 的每步训练时间。下游任务中，使用 α-entmax 注意力训练的模型在短上下文与 softmax 基线匹配，在长上下文中取得显著收益。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li><strong>二次计算瓶颈</strong>：Transformer 的自注意力在长序列上具有二次时间/内存复杂度，FlashAttention 解决了这一问题但 attention 仍是密集的</li>
+<li><strong>α-entmax 的优势与问题</strong>：</li>
+<li>α-entmax 是 softmax 的可微分稀疏替代，能产生输入依赖的精确零值</li>
+<li>在长上下文泛化上优于 softmax</li>
+<li>但归一化常数 τ 需要迭代求解，计算开销大</li>
+<li><strong>AdaSplash 的不足</strong>：前代 AdaSplash 仍需要多次 pass 来计算 τ，且块掩码策略效率不高</li>
+</ol>
+<hr />
+<h2 id="_3">方法</h2>
+<h3 id="1">1. 核心思想：直方图初始化</h3>
+<p><strong>关键创新</strong>：在 SRAM 上构建紧凑的 attention scores 直方图，提供 τ* 的高质量初始估计，使后续求解器在 1–2 次迭代内收敛。</p>
+<p><strong>直方图构建</strong>：
+- 将 attention scores z 映射到 [0,1] 区间，划分为 B 个等宽 bin
+- 在 SRAM 上维护直方图 H，每个 bin 记录计数
+- 存储开销 O(B)，与序列长度 n 无关</p>
+<p><strong>理论保证</strong>：
+- 直方图目标函数 f_h(τ) 的根 τ_h 满足：τ<em> - h &lt; τ_h ≤ τ</em>
+- 近似误差 &lt; 1/B，随 bin 数增加收敛到精确解</p>
+<h3 id="2">2. 安全混合求解器</h3>
+<p>根据 α 值选择不同的求解策略：
+- α ∈ (1, 1.5]：Halley 步（f'' 有界，数值稳定）
+- α ∈ (1.5, 2]：Newton 步（f' 行为良好，f'' 无界）
+- α ≥ 2：割线步（f' 无界）
+- 始终回退到二分法（保证收敛）</p>
+<h3 id="3-gpu-triton">3. GPU 实现（Triton）</h3>
+<p><strong>4 阶段流程</strong>：
+1. <strong>Phase 1 (最大值)</strong>：流式计算每行的 max m_i
+2. <strong>Phase 2 (直方图)</strong>：在 SRAM 上构建 B-bin 直方图，使用 bit-packing 避免原子操作
+3. <strong>Phase 3 (精炼)</strong>：从 τ_h 开始，1 次迭代精炼；同时构建块掩码 M（bit-packing 编码）
+4. <strong>Phase 4 (输出)</strong>：使用 GPU 原生 fns 指令遍历非零块，计算 O(|M|) 复杂度</p>
+<p><strong>反向传播</strong>：复用前向块掩码，仅遍历非零块，使用 fns 和 popc 指令。</p>
+<h3 id="4">4. 直方图容量</h3>
+<ul>
+<li>默认配置（w=64, B=8, Bc=64）：每查询块最大容量 16,320 个 key，足够 16K token</li>
+<li>超长序列时使用周期性刷新</li>
+</ul>
+<hr />
+<h2 id="_4">实验结果</h2>
+<h3 id="1_1">1. 归一化求解器分析</h3>
+<ul>
+<li>直方图初始化使求解器在第 1 次迭代后比无直方图的 Hybrid 方法精确 10000 倍</li>
+<li>更多 bin（B=16）提供更好初始估计</li>
+</ul>
+<h3 id="2-nvidia-a6000-gpu">2. 效率基准（NVIDIA A6000 GPU）</h3>
+<p><strong>稀疏度-速度权衡</strong>：
+- 在块稀疏度 &gt;60% 时超越 FlashAttention-2（CUDA 和 Triton）
+- 高稀疏度下实现 &gt;2× 加速</p>
+<p><strong>上下文长度扩展</strong>（1B 模型，4K–128K token）：
+- 前向 pass：短上下文下比 FlashAttention-2 略慢（额外 τ 计算），但长上下文下差距缩小
+- 反向 pass：即使短上下文也更快，长上下文优势更明显
+- 总体训练时间：在中高稀疏度（&gt;60%）时匹配或超越 FlashAttention-2</p>
+<h3 id="3-ruler-1b">3. 下游任务（RULER 基准，1B 模型）</h3>
+<ul>
+<li><strong>短上下文（4K）</strong>：α-entmax 与 softmax 基线匹配或略优</li>
+<li><strong>长上下文（32K）</strong>：α-entmax 在部分任务上优于 softmax（如 MK-1: 88.2 vs 41.4）</li>
+<li>Entmax 模型在长上下文泛化上表现更稳定</li>
+</ul>
+<hr />
+<h2 id="_5">优势</h2>
+<ol>
+<li><strong>显著加速</strong>：在中高稀疏度（&gt;60%）下超越 FlashAttention-2，高稀疏度 &gt;2× 加速</li>
+<li><strong>理论保证</strong>：直方图初始化提供可证明的下界，确保收敛</li>
+<li><strong>硬件友好</strong>：SRAM 上构建直方图，bit-packing 掩码，GPU 原生 fns 指令</li>
+<li><strong>可微分稀疏</strong>：α-entmax 产生输入依赖的精确零值，支持端到端训练</li>
+<li><strong>长上下文泛化</strong>：在长上下文设置中优于 softmax 注意力</li>
+</ol>
+<hr />
+<h2 id="_6">局限性</h2>
+<ol>
+<li><strong>短上下文开销</strong>：前向 pass 在短上下文下可能比 FlashAttention-2 略慢（额外 τ 计算）</li>
+<li><strong>稀疏度依赖</strong>：加速效果依赖于块稀疏度，低稀疏度下无优势</li>
+<li><strong>Triton 实现</strong>：未利用 Hopper GPU 特性（如 TMA、WGMMA），有进一步优化空间</li>
+<li><strong>直方图容量限制</strong>：超长序列（&gt;16K）需要额外刷新机制</li>
+<li><strong>α 值选择</strong>：需要根据任务选择 α，不同 α 值下收敛行为不同</li>
+<li><strong>仅针对训练</strong>：主要关注训练效率，对推理优化较少</li>
+</ol>
+<hr />
+<h2 id="_7">关联工作</h2>
+<ul>
+<li><strong>Attention 优化</strong>：FlashAttention, FlashAttention-2, FlashAttention-3, FlashInfer</li>
+<li><strong>稀疏注意力</strong>：Sparsemax, α-entmax, AdaSplash</li>
+<li><strong>GPU Kernel 优化</strong>：Triton, CUDA, HBM/SRAM 内存层次</li>
+<li><strong>长上下文</strong>：RoPE, 位置编码, 长序列泛化</li>
+</ul>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>Attention 稀疏化</strong>：动态稀疏模式、输入依赖的零值</li>
+<li><strong>稀疏注意力 GPU 加速</strong>：Triton 实现、块稀疏跳过、SRAM 直方图</li>
+<li><strong>长上下文训练</strong>：稀疏注意力在长序列上的效率与泛化</li>
+</ul>
+<hr />
+<p><em>Generated by AI Agent on 2026-06-04. Source: arXiv:2604.15180v1</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

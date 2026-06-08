@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,11 +161,231 @@
   
                 <h1 id="k-search-llm-kernel-generation-via-co-evolving-intrinsic-world-model">K-Search: LLM Kernel Generation via Co-Evolving Intrinsic World Model</h1>
 <blockquote>
-<p>Shiyi Cao, Ziming Mao, Joseph E. Gonzalez, Ion Stoica</p>
+<p>Shiyi Cao, Ziming Mao, Joseph E. Gonzalez, Ion Stoica
+UC Berkeley</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Optimizing GPU kernels is critical for efficient modern machine learning systems yet remains challenging due to the complex interplay of design factors and rapid hardware evolution. Existing automated approaches typically treat Large Language Models (LLMs) merely as stochastic code generators within heuristic-guided evolutionary loops. These methods often struggle with complex kernels requiring coordinated, multi-step structural transformations, as they lack explicit planning capabilities and frequently discard promising strategies due to inefficient or incorrect intermediate implementations. To address this, we propose Search via Co-Evolving World Model and build K-Search based on this method. By replacing static search heuristics with a co-evolving world model, our framework leverages LLMs' prior domain knowledge to guide the search, actively exploring the optimization space. This approach explicitly decouples high-level algorithmic planning from low-level program instantiation, enabling the system to navigate non-monotonic optimization paths while remaining resilient to temporary implementation defects. We evaluate K-Search on diverse, complex kernels from FlashInfer, including GQA, MLA, and MoE kernels. Our results show that K-Search significantly outperforms state-of-the-art evolutionary search methods, achieving an average 2.10x improvement and up to a 14.3x gain on complex MoE kernels. On the GPUMode TriMul task, K-Search achieves state-of-the-art performance on H100, reaching 1030us and surpassing both prior evolution and human-designed solutions.</p>
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成</strong>（基于论文全文阅读），仅供参考，如有疏漏请以原文为准。
+生成时间：2026-06-04</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>K-Search 通过将 LLM 作为协同进化的内在世界模型来指导搜索过程，将高层算法规划与底层代码生成解耦，在 FlashInfer 复杂 GPU kernel 优化上实现了平均 2.10×、最高 14.3× 的性能提升，并在 GPUMode TriMul 竞赛中取得 SOTA。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>优化 GPU kernel 对高效现代机器学习系统至关重要，但由于设计因素的复杂交互和硬件的快速演进，仍极具挑战。现有自动化方法通常仅将大语言模型（LLM）作为启发式进化循环中的随机代码生成器。这些方法往往难以处理需要协调的、多步骤结构变换的复杂 kernel，因为它们缺乏显式的规划能力，且经常因低效或错误的中间实现而丢弃有前景的策略。为此，我们提出了 Search via Co-Evolving World Model 方法，并构建了 K-Search 框架。通过用协同进化的世界模型替代静态搜索启发式，我们的框架利用 LLM 的先验领域知识来引导搜索，主动探索优化空间。该方法明确将高层算法规划与底层程序实例化解耦，使系统能够导航非单调的优化路径，同时对暂时性实现缺陷保持鲁棒。我们在 FlashInfer 的多种复杂 kernel（包括 GQA、MLA 和 MoE）上评估了 K-Search。结果表明，K-Search 显著优于最先进的进化搜索方法，平均提升 2.10×，在复杂 MoE kernel 上最高提升 14.3×。在 GPUMode TriMul 任务上，K-Search 在 H100 上达到 1030µs 的 SOTA 性能，超越了先前的进化方法和人工设计方案。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>GPU kernel 优化的固有困难</strong>：现代 GPU 需要在 tiling、内存布局、同步、架构特定指令等大量设计空间中导航，加之硬件快速演进（如从 Hopper 到 Blackwell），优化难度极高。</li>
+<li><strong>现有 LLM 进化方法的局限</strong>：OpenEvolve 等方法将 LLM 仅视为随机代码生成器，依赖 MAP-Elites 等进化启发式在程序空间直接搜索。然而，高性能 kernel 往往需要多步骤结构变换（如先重构内存布局再向量化），中间步骤可能不会立即带来性能提升。缺乏显式规划机制导致：</li>
+<li>无法规划多步优化序列（中间编辑可能不改善目标）</li>
+<li>因临时编译错误而过早丢弃理论上合理的策略</li>
+<li>难以发现深度结构优化以达到 SOTA 性能</li>
+<li><strong>核心洞察</strong>：LLM 不仅是代码生成器，还具有内在的规划能力和领域先验知识，可以作为世界模型来指导搜索过程。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="co-evolving-world-model">核心思想：协同进化的世界模型（Co-Evolving World Model）</h3>
+<p>K-Search 将 GPU kernel 合成形式化为在固定评估预算下的优化问题，核心是用 LLM 作为内在世界模型，将搜索过程组织为一棵结构化的搜索树，明确将<strong>高层算法规划</strong>与<strong>底层程序实例化</strong>解耦。</p>
+<h3 id="_5">形式化定义</h3>
+<ul>
+<li><strong>Kernel 程序</strong> x ∈ X</li>
+<li><strong>观测元组</strong> o = (s, p, m) = E(x)，其中 s 为正确性，p 为性能指标（延迟），m 为元数据</li>
+<li><strong>目标函数</strong> J(x) = s · pref/p · 100（相对于参考 SOTA 的加速比）</li>
+<li><strong>搜索状态</strong> S_t 包含：探索历史、前沿动作集合 A(S_t)、优先级评分 V</li>
+</ul>
+<h3 id="_6">三阶段迭代流程</h3>
+<p><strong>1. 动作选择（Action Selection）</strong>：
+- 从搜索状态前沿中选择优先级评分最高的动作：a_t = argmax V(a|S_t)
+- 动作 a_t = (x_parent, δ)，其中 δ 为自然语言描述的优化意图（如"Resolve bank conflicts via padding"）</p>
+<p><strong>2. 程序实例化（Program Instantiation）</strong>：
+- 使用 LLM 作为随机策略 π_code 生成具体实现：x_t ~ π_code(·|a_t)
+- 执行评估 o_t = E(x_t)
+- <strong>局部精炼循环</strong>：重复采样直到停滞（连续 K 次无改进）
+- 确保有效动作不会因临时语法错误被丢弃</p>
+<p><strong>3. 世界模型协同进化（World Model Co-Evolution）</strong>：
+- 观察执行结果后，世界模型通过上下文学习（in-context learning）更新搜索状态
+- 三种树编辑操作：
+  - <strong>Insert</strong>：添加新的子节点扩展当前状态
+  - <strong>Update</strong>：根据新证据重新评估现有前沿节点的优先级（如 V 从 0.9 降到 0.6）
+  - <strong>Prune</strong>：永久移除不可行或冗余分支，集中资源到有前景的方向</p>
+<h3 id="_7">搜索树结构</h3>
+<ul>
+<li><strong>Closed 节点</strong>（蓝色）：已访问状态，附带最佳程序</li>
+<li><strong>Open 节点</strong>（橙色）：前沿的待探索动作，包含 (x_parent, δ) 和优先级评分 V</li>
+</ul>
+<h3 id="_8">关键设计要点</h3>
+<ul>
+<li><strong>解耦规划与实现</strong>：世界模型负责高层规划（意图选择、优先级评估），代码生成器负责底层实现</li>
+<li><strong>非单调优化路径</strong>：系统可以导航非单调的优化路径，对暂时性实现缺陷保持鲁棒</li>
+<li><strong>协同进化</strong>：世界模型通过 in-context learning 持续细化其过渡动态，动态更新先验信念</li>
+<li><strong>预算控制</strong>：B=120 次评估，停滞阈值 K=7</li>
+</ul>
+<hr />
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">评估设置</h3>
+<ul>
+<li><strong>Kernel 来源</strong>：FlashInfer 高度优化的 kernel（GQA、MLA、MoE）</li>
+<li><strong>硬件</strong>：NVIDIA H100 和 B200 GPU（CUDA 12.8, FlashInfer 0.5.3, PyTorch 2.8.0）</li>
+<li><strong>预算</strong>：每个 kernel 120 次迭代，重复 3 次</li>
+<li><strong>基线</strong>：OpenEvolve、ShinkaEvolve（使用 gemini-3-pro-preview 和 Qwen3-8B）</li>
+<li><strong>评估器</strong>：FlashInfer-Bench</li>
+</ul>
+<h3 id="_11">主要结果</h3>
+<table>
+<thead>
+<tr>
+<th>Kernel</th>
+<th>K-Search</th>
+<th>OpenEvolve</th>
+<th>ShinkaEvolve</th>
+<th>K-Search vs OpenEvolve</th>
+<th>K-Search vs ShinkaEvolve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>总体平均</strong></td>
+<td><strong>56.13</strong></td>
+<td>26.68</td>
+<td>25.37</td>
+<td><strong>2.10×</strong></td>
+<td><strong>2.21×</strong></td>
+</tr>
+<tr>
+<td>GQA Decode</td>
+<td><strong>76.0</strong></td>
+<td>44.2</td>
+<td>27.7</td>
+<td>1.72×</td>
+<td>2.74×</td>
+</tr>
+<tr>
+<td>MLA Prefill</td>
+<td><strong>57.4</strong></td>
+<td>19.5</td>
+<td>11.3</td>
+<td>2.95×</td>
+<td>5.10×</td>
+</tr>
+<tr>
+<td>MLA Decode</td>
+<td><strong>47.1</strong></td>
+<td>39.9</td>
+<td>34.7</td>
+<td>18%</td>
+<td>36%</td>
+</tr>
+<tr>
+<td><strong>FP8 MoE (Blackwell)</strong></td>
+<td><strong>44.1</strong></td>
+<td>3.09</td>
+<td>27.9</td>
+<td><strong>14.3×</strong></td>
+<td>1.58×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gpumode-trimul">GPUMode TriMul 竞赛</h3>
+<ul>
+<li><strong>任务</strong>：AlphaFold3 中的 Triangle Multiplicative Update，4D 对表示，O(N³) 复杂度</li>
+<li><strong>配置</strong>：K=5，300 次迭代（GPT-5.2 + Gemini-3-Pro）</li>
+<li><strong>结果</strong>：<strong>1030 µs</strong>（几何平均延迟），超越所有人造和自动方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>提交</th>
+<th>语言</th>
+<th>模型</th>
+<th>迭代数</th>
+<th>延迟 (µs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-Search (Ours)</td>
+<td>Triton</td>
+<td>GPT-5.2 + Gemini-3-Pro</td>
+<td>300</td>
+<td><strong>1030</strong></td>
+</tr>
+<tr>
+<td>shiyegao</td>
+<td>CUDA</td>
+<td>–</td>
+<td>–</td>
+<td>1074</td>
+</tr>
+<tr>
+<td>Zeyu Shen</td>
+<td>Triton</td>
+<td>–</td>
+<td>–</td>
+<td>1140</td>
+</tr>
+<tr>
+<td>TTT</td>
+<td>Triton</td>
+<td>GPT-OSS-20B w/ RL</td>
+<td>25,600</td>
+<td>1161</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kernel">Kernel 内部分析</h3>
+<p><strong>FP8 MoE Kernel (Blackwell)</strong>：
+- K-Search 使用 warp 级协作（__shfl_down_sync）找到全局 top-8 experts
+- 使用 tensor cores（WMMA）和双缓冲，跳过零 token 的 experts
+- OpenEvolve 使用 persistent kernel 但需要 atomicAdd，ShinkaEvolve 不使用 tensor cores</p>
+<p><strong>GQA Paged Decode (Hopper)</strong>：
+- K-Search 使用 split-K 并行化，将 KV 序列分配给多个 block
+- 使用双缓冲重叠内存和计算
+- OpenEvolve 和 ShinkaEvolve 使用单 block，无法充分利用并行性</p>
+<p><strong>MLA Paged Prefill (Hopper)</strong>：
+- K-Search 在 GPU 上动态处理变长批次边界
+- 保持所有线程在计算阶段忙碌</p>
+<p><strong>MLA Paged Decode (Hopper)</strong>：
+- K-Search 将 Q 向量存储在寄存器中而非共享内存
+- 使用更深的预取管线（加载 chunk i+2 而非仅 i+1）
+- 自适应分割数量</p>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>显著性能提升</strong>：平均 2.10× 优于 OpenEvolve，在 MoE kernel 上达到 14.3×</li>
+<li><strong>规划与实现解耦</strong>：将高层意图与底层代码分离，避免因临时错误丢弃好的策略</li>
+<li><strong>协同进化机制</strong>：世界模型通过 in-context learning 持续学习和调整搜索策略</li>
+<li><strong>非单调优化</strong>：能够导航非单调路径，对暂时性缺陷保持鲁棒</li>
+<li><strong>高效搜索</strong>：避免在程序空间中枚举大量稀疏搜索空间，而是从高层意图出发</li>
+<li><strong>SOTA 竞赛表现</strong>：在 GPUMode TriMul 上仅用 300 次迭代就超越了使用 25,600 次迭代的 RL 方法</li>
+<li><strong>通用性</strong>：支持多种 kernel（GQA、MLA、MoE）和两种硬件（H100、B200）</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>依赖 LLM 的领域先验</strong>：搜索效果受限于 LLM 对 GPU kernel 优化的理解程度</li>
+<li><strong>in-context learning 的局限</strong>：当前版本的世界模型进化仅通过上下文学习实现，可能存在上下文窗口限制</li>
+<li><strong>小批量性能</strong>：在 batch_size=1 时，K-Search 的 split-K 策略反而带来额外同步开销，性能不如简单的单 block 设计</li>
+<li><strong>评估预算依赖</strong>：需要大量的编译和性能评估（每个 kernel 120 次迭代），计算成本较高</li>
+<li><strong>依赖 FlashInfer-Bench</strong>：实验主要基于 FlashInfer kernel，对其他 kernel 类型的泛化性有待验证</li>
+<li><strong>LLM 成本</strong>：使用了 gemini-3-pro-preview 等大模型，推理成本较高</li>
+<li><strong>未超越 FlashInfer SOTA</strong>：生成的 kernel 很少超越专家手动优化的 FlashInfer kernel（加速比多在 0.36-1.0 之间）</li>
+<li><strong>缺乏理论保证</strong>：搜索过程依赖启发式和经验，缺乏收敛性保证</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>GPU kernel 自动优化</strong>：直接关联到 FlashInfer 等高效推理系统的 kernel 优化</li>
+<li><strong>LLM 辅助代码生成</strong>：将 LLM 从代码生成器提升为规划引擎，对高效 AI 系统有重要影响</li>
+<li><strong>进化搜索算法</strong>：与 OpenEvolve、ShinkaEvolve 等进化方法形成对比，提供新的搜索范式</li>
+<li><strong>AI 驱动的编译器优化</strong>：与 TVM、Ansor 等自动调优系统形成互补</li>
+<li><strong>高效 LLM 服务</strong>：通过优化 kernel 支持 GQA、MLA 等新注意力机制的高效推理</li>
+<li><strong>世界模型在规划中的应用</strong>：将 LLM 作为世界模型用于搜索和规划，为 AI Agent 提供新的范式</li>
+<li><strong>混合精度计算</strong>：FP8 MoE kernel 优化对混合精度训练和推理有重要意义</li>
+<li><strong>Triton 生态</strong>：在 GPUMode TriMul 中使用 Triton 语言，对 Triton 生态的自动化发展有推动作用</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

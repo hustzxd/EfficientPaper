@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,17 +161,204 @@
   
                 <h1 id="massive-activations-in-large-language-models">Massive Activations in Large Language Models</h1>
 <p><a class="glightbox" href="../massive_act.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../massive_act.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>We observe an empirical phenomenon in Large Language Models (LLMs) -- very
-few activations exhibit significantly larger values than others (e.g., 100,000
-times larger). We call them massive activations. First, we demonstrate the
-widespread existence of massive activations across various LLMs and
-characterize their locations. Second, we find their values largely stay
-constant regardless of the input, and they function as indispensable bias terms
-in LLMs. Third, these massive activations lead to the concentration of
-attention probabilities to their corresponding tokens, and further, implicit
-bias terms in the self-attention output. Last, we also study massive
-activations in Vision Transformers.</p>
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent（Hermes Agent）自动生成，基于论文原文提取与分析，仅供参考。</strong>
+<strong>生成时间：2025-06</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>本文发现并系统研究了大型语言模型（LLM）中普遍存在的一种现象——"巨大激活"（massive activations），即极少数激活值比其他激活值高出数个数量级（如 10 万倍），它们在模型中充当不可替代的固定偏置项，并与自注意力机制紧密相关，通过将注意力集中到特定 token 上来实现隐式偏置。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>我们在大型语言模型（LLM）中观察到一个经验性现象——极少数激活值表现出远大于其他激活值的数值（例如大 100,000 倍）。我们称其为"巨大激活"（massive activations）。首先，我们证明了巨大激活在各种 LLM 中广泛存在，并对其位置进行了刻画。其次，我们发现它们的值在不同输入下基本保持恒定，充当 LLM 中不可或缺的偏置项。第三，这些巨大激活导致注意力概率集中在对应的 token 上，进而在自注意力输出中形成隐式偏置项。最后，我们还研究了视觉 Transformer（ViT）中的巨大激活现象。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<p>当前关于 LLM 的研究大多聚焦于其外部行为（如任务性能评估、提示工程等），但对其内部工作机制的了解仍然有限。随着 LLM 越来越多地被集成到实际应用中，深入理解其内部机制变得至关重要。</p>
+<h3 id="_5">核心发现</h3>
+<p>作者发现 LLM 的隐藏状态中存在极少数激活值，其幅度比其他激活值大 4 个数量级以上（例如在 LLaMA2-70B 中绝对值超过 15,000），尽管存在归一化层。这些激活极为稀少——在数千万个激活中往往不到 10 个。这一现象此前未被系统研究。</p>
+<h3 id="_6">与现有工作的关系</h3>
+<ul>
+<li><strong>与 outlier features 的区别</strong>：outlier features 是向量，对应所有 token 的激活；而 massive activations 是标量，由序列和特征维度共同决定，仅在极少数 token 上出现。</li>
+<li><strong>与 attention sinks 的扩展</strong>：Xiao et al. (2023b) 发现 LLM 会将大量注意力分配给第一个 token，本文发现 LLM 将注意力集中在更多与巨大激活相关的 token 上，并深入分析了这些注意力集中模式的成因。</li>
+</ul>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="1">1. 巨大激活的定义</h3>
+<p>论文给出一个宽松但通用的定义：一个激活值如果其绝对值超过 100，且比其隐藏状态的中位数大 1,000 倍左右，则被视为巨大激活。具体地，在 LLaMA2-7B 中，最大激活值约 2,622，而中位数仅约 0.2，差距超过 10,000 倍。</p>
+<h3 id="2">2. 位置分析</h3>
+<p><strong>深度维度（层）</strong>：
+- 巨大激活在中间层的值基本保持恒定
+- 它们在初始几层突然出现（如 LLaMA2-7B 在第 2 层），在最后几层消失
+- 这种突然出现表明它们不是通过多层逐渐积累形成的</p>
+<p><strong>特征维度</strong>：
+- 巨大激活持续出现在极少数固定的特征维度中（如 LLaMA2-7B 的维度 1415 和 2533）
+- 这些维度是与输入无关的</p>
+<p><strong>序列维度</strong>：
+- 根据巨大激活的位置，LLM 可分为三类：
+  - <strong>仅起始 token</strong>：如 LLaMA2-13B、MPT、GPT-2
+  - <strong>起始 token + 首个强分隔符（如 "." 或 "\n"）</strong>：如 LLaMA2-7B
+  - <strong>起始 token + 分隔符 + 弱语义词（如 "and"、"of"、"from"）</strong>：如 LLaMA2-70B、Mistral-7B、Mixtral-8x7B、Falcon-40B、Phi-2</p>
+<h3 id="3">3. 偏置功能分析</h3>
+<p><strong>干预实验（Intervention Analysis）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>干预方式</th>
+<th>LLaMA2-7B (WikiText)</th>
+<th>LLaMA2-7B (Mean Zero-Shot)</th>
+<th>LLaMA2-13B (WikiText)</th>
+<th>LLaMA2-13B (Mean Zero-Shot)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原始</td>
+<td>5.47</td>
+<td>68.95%</td>
+<td>4.88</td>
+<td>71.94%</td>
+</tr>
+<tr>
+<td>设为 0</td>
+<td>inf</td>
+<td>36.75%</td>
+<td>5729</td>
+<td>37.50%</td>
+</tr>
+<tr>
+<td>设为均值</td>
+<td>5.47</td>
+<td>68.94%</td>
+<td>4.88</td>
+<td>71.92%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>设为零</strong>：模型性能灾难性崩溃（perplexity 爆炸），证明巨大激活不可替代</li>
+<li><strong>设为均值</strong>：几乎无影响，说明其值本质上是与输入无关的常数</li>
+</ul>
+<p><strong>为什么是这些层和 token？</strong>
+- 起始 token 是所有自回归训练实例中唯一在所有前向传递中都使用的 token
+- 分隔符 token 语义值低，存储偏置的代价小
+- 巨大激活仅在初始几层之后出现，可能是因为 LLM 需要先处理与巨大激活相关 token 的语义</p>
+<h3 id="4">4. 与自注意力机制的关系</h3>
+<p><strong>4.1 注意力集中在巨大激活上</strong></p>
+<ul>
+<li>在巨大激活出现的层之后，注意力 logits 主要集中在与巨大激活相关的 token 上</li>
+<li>这些 token 的 key 状态导致的 attention logits 为正值，而其他 token 为负值</li>
+<li>在 softmax 后，这些 token 获得大部分注意力概率</li>
+</ul>
+<p><strong>4.2 巨大激活施加隐式注意力偏置</strong></p>
+<ul>
+<li>通过分析 attention LayerNorm 和 QKV 投影，发现与巨大激活相关的 token 在所有阶段的特征都与其他 token 截然不同</li>
+<li>LayerNorm 的归一化步骤将正常值推近零，同时保留巨大激活的异常特性</li>
+<li>注意力输出的分解表明，来自巨大激活相关 token 的值更新在所有 token 间几乎完全相同——这本质上是一个隐式偏置项</li>
+</ul>
+<p><strong>4.3 显式注意力偏置消除巨大激活</strong></p>
+<p>提出一种新的注意力公式：</p>
+<pre><code>Attention(Q, K, V; k', v') = softmax(QK^T k' / √d) [V; v'^T]
+</code></pre>
+<p>其中 k' 和 v' 是每个 head 的可学习参数，与 key/value 矩阵拼接。</p>
+<ul>
+<li>在 GPT-2 上训练三种模型：标准模型、带 sink token 的模型、带显式注意力偏置的模型</li>
+<li>三种模型收敛后性能相同，但巨大激活状态显著不同</li>
+<li><strong>带显式注意力偏置的 GPT-2 中，巨大激活消失</strong></li>
+<li>这表明显式注意力偏置消除了 LLM 在预训练阶段学习巨大激活的必要性</li>
+</ul>
+<h3 id="5-transformer">5. 视觉 Transformer 中的巨大激活</h3>
+<ul>
+<li>在 CLIP ViT-L 和 DINOv2 ViT-L 中发现巨大激活</li>
+<li>在 MAE ViT-L 中未观察到</li>
+<li>与 LLM 不同，ViT 中的巨大激活出现在随机 patch token 上（非固定位置）</li>
+<li>ViT 中的巨大激活仅在后几层出现</li>
+<li>干预实验（CLIP ViT-L）：设为零导致准确率大幅下降（75.5% → 59.8%），设为均值几乎无影响</li>
+</ul>
+<p><strong>Register tokens 的新解释</strong>：
+- Darcet et al. (2023) 提出在 ViT 中使用额外的 register tokens
+- 本文发现 DINOv2-reg 中的 register 3 包含巨大激活
+- 干预实验表明将 register 特征固定为均值后，性能几乎不变
+- 这说明 register tokens 本质上充当了与巨大激活类似的固定偏置，而非原文所假设的"聚合全局图像信息"</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">模型覆盖范围</h3>
+<p>论文在大量模型上验证了巨大激活的存在：
+- <strong>LLM</strong>：LLaMA2-7B/13B/70B、LLaMA3-8B/70B、Phi-2、Mistral-7B、Mixtral-8x7B、MPT-7B/30B、Falcon-7B/40B、GPT-2/Medium/Large/XL、OPT-7B/13B/30B/66B
+- <strong>微调模型</strong>：LLaMA2-7B-Chat、LLaMA2-13B-Chat、Mistral-7B-Instruct、Mixtral-8x7B-Instruct
+- <strong>ViT</strong>：CLIP ViT-L、DINOv2 ViT-L、DINOv2-reg ViT-G、MAE ViT-L</p>
+<h3 id="_10">关键量化结果</h3>
+<ul>
+<li><strong>Top 激活值</strong>：LLaMA2-7B 约 2,622，Mixtral-8x7B 约 7,100，LLaMA2-70B 约 15,000+</li>
+<li><strong>中位数值</strong>：通常在 0.2-0.4 之间</li>
+<li><strong>差距</strong>：Top 激活值通常比中位数大 4-5 个数量级</li>
+<li><strong>方差</strong>：巨大激活的方差远小于其他激活（如 LLaMA2-7B Top1 均值 2556.8 ± 141.0，标准差仅占均值的约 5.5%）</li>
+</ul>
+<h3 id="_11">显式注意力偏置训练结果</h3>
+<ul>
+<li>标准 GPT-2、带 sink token 的 GPT-2、带显式注意力偏置的 GPT-2 三种模型在 50,000 次迭代后验证集 perplexity 均为 3.04</li>
+<li>但只有带显式注意力偏置的模型中巨大激活消失</li>
+</ul>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>全面的实证分析</strong>：在 20+ 种 LLM 和多种 ViT 模型上验证了巨大激活的普遍存在性</li>
+<li><strong>清晰的机制解释</strong>：通过干预实验和注意力分析，揭示了巨大激活作为偏置项的功能</li>
+<li><strong>创新的解决方案</strong>：提出显式注意力偏置公式，能有效消除巨大激活，同时不影响模型性能</li>
+<li><strong>跨模态的发现</strong>：将分析扩展到视觉 Transformer，展示了该现象的普遍性</li>
+<li><strong>对现有工作的统一理解</strong>：将 attention sinks、outlier features、register tokens 等现象纳入统一框架</li>
+<li><strong>对量化研究的启示</strong>：识别了一种新型异常激活，对 LLM 压缩研究具有重要价值</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>计算资源限制</strong>：显式注意力偏置实验仅在 GPT-2 小模型上进行，未能在更大规模模型上验证</li>
+<li><strong>训练稳定性</strong>：未深入研究显式注意力偏置对大规模 LLM 训练稳定性的影响</li>
+<li><strong>微调影响</strong>：指令微调对巨大激活的影响（如 Mixtral-8x7B-Instruct 中 \n token 上的消失）未被充分研究</li>
+<li><strong>BOS token 影响</strong>：BOS token 对巨大激活位置的影响未被充分理解</li>
+<li><strong>ViT 分析不够深入</strong>：在 ViT 中仅分析了 CLIP 和 DINOv2，未覆盖更多视觉模型</li>
+<li><strong>MAE 未发现巨大激活的原因</strong>：MAE ViT-L 中未观察到巨大激活，但未深入分析原因</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1_1">1. 模型量化与压缩</h3>
+<ul>
+<li>巨大激活是 LLM 量化的主要障碍之一（如 LLM.int8()、SmoothQuant、AWQ 等）</li>
+<li>识别了新类型的异常激活，可能启发新的量化方法</li>
+<li>研究方向：针对巨大激活的专用量化策略</li>
+</ul>
+<h3 id="2_1">2. 注意力机制优化</h3>
+<ul>
+<li>显式注意力偏置公式可作为注意力机制的改进方向</li>
+<li>研究方向：将显式注意力偏置应用于大规模 LLM，探索训练稳定性和性能</li>
+</ul>
+<h3 id="3_1">3. 模型可解释性</h3>
+<ul>
+<li>巨大激活揭示了 LLM 内部偏置的存储机制</li>
+<li>研究方向：将偏置项显式化，提升注意力图的可解释性</li>
+</ul>
+<h3 id="4_1">4. 高效模型设计</h3>
+<ul>
+<li>理解巨大激活的功能有助于设计更高效的模型架构</li>
+<li>研究方向：在模型设计中显式引入偏置项，避免隐式学习</li>
+</ul>
+<h3 id="5-transformer_1">5. 视觉 Transformer 优化</h3>
+<ul>
+<li>register tokens 本质上是偏置项，与巨大激活功能类似</li>
+<li>研究方向：将 register tokens 与显式注意力偏置结合，优化视觉模型</li>
+</ul>
+<h3 id="6">6. 跨模态泛化</h3>
+<ul>
+<li>巨大激活在 LLM 和 ViT 中均存在，但表现形式不同</li>
+<li>研究方向：探索多模态模型中巨大激活的统一规律</li>
+</ul>
+<hr />
+<p><strong>论文信息</strong>：
+- 标题：Massive Activations in Large Language Models
+- 作者：Mingjie Sun (CMU), Xinlei Chen (Meta), J. Zico Kolter (CMU/Bosch), Zhuang Liu (Meta)
+- 机构：Carnegie Mellon University, Meta AI Research, Bosch Center for AI
+- 发表：arXiv:2402.17762v2, COLM 2024
+- 代码：https://github.com/locuslab/massive-activations</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,23 +162,305 @@
                 <h1 id="training-llms-with-mxfp4">Training LLMs with MXFP4</h1>
 <blockquote>
 <p>Albert Tseng, Tao Yu, Youngsuk Park</p>
+<p>Cornell University, AWS AI</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Low precision (LP) datatypes such as MXFP4 can accelerate matrix
-multiplications (GEMMs) and reduce training costs. However, directly using
-MXFP4 instead of BF16 during training significantly degrades model quality. In
-this work, we present the first near-lossless training recipe that uses MXFP4
-GEMMs, which are <script type="math/tex">2\times</script> faster than FP8 on supported hardware. Our key
-insight is to compute unbiased gradient estimates with stochastic rounding
-(SR), resulting in more accurate model updates. However, directly applying SR
-to MXFP4 can result in high variance from block-level outliers, harming
-convergence. To overcome this, we use the random Hadamard tranform to
-theoretically bound the variance of SR. We train GPT models up to 6.7B
-parameters and find that our method induces minimal degradation over
-mixed-precision BF16 training. Our recipe computes <script type="math/tex">>1/2</script> the training FLOPs in
-MXFP4, enabling an estimated speedup of <script type="math/tex">>1.3\times</script> over FP8 and <script type="math/tex">>1.7\times</script>
-over BF16 during backpropagation.</p>
+<blockquote>
+<p><strong>注意：本 note 由 AI Agent 自动生成，仅供学习参考。生成时间：2025 年。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>本文提出首个基于 MXFP4（4-bit Microscaling 浮点）的近无损 LLM 训练方案，通过随机舍入（SR）和随机 Hadamard 变换（RHT）实现无偏低方差梯度估计，使反向传播中超过一半的计算 FLOPs 在 MXFP4 精度下完成，从而在支持硬件上实现超过 1.3×（相对于 FP8）和 1.7×（相对于 BF16）的加速，且模型质量与 BF16 混合精度训练几乎无损。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>低精度（LP）数据类型（如 MXFP4）可以加速矩阵乘法（GEMM）并降低训练成本。然而，在训练中直接使用 MXFP4 替代 BF16 会显著降低模型质量。本文提出首个近无损的 MXFP4 训练方案，该方案使用的 MXFP4 GEMM 在支持的硬件上比 FP8 快 2×。我们的核心洞察是利用随机舍入（SR）计算无偏梯度估计，从而实现更准确的模型更新。然而，直接对 MXFP4 使用 SR 可能由于块级离群值导致高方差，影响收敛。为此，我们使用随机 Hadamard 变换（RHT）从理论上约束 SR 的方差。我们在最大 6.7B 参数的 GPT 模型上进行训练，发现我们的方法相对于混合精度 BF16 训练仅产生极小的性能下降。我们的方案在 MXFP4 中计算超过 1/2 的训练 FLOPs，使反向传播中实现相对于 FP8 超过 1.3× 和相对于 BF16 超过 1.7× 的加速。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景</h3>
+<p>现代大语言模型（LLM）参数规模已达数十亿甚至数千亿级别，训练成本极为高昂。例如，训练 Llama 3.1 405B 需要 <script type="math/tex">3 \times 10^{24}</script> 次浮点运算，消耗超过 10000 个 GPU 运行数月。</p>
+<h3 id="_5">低精度训练的挑战</h3>
+<ul>
+<li><strong>BF16 混合精度</strong>是当前主流方案，能将矩阵乘法成本减半，但进一步降低精度到 4-bit 会导致显著的量化失真和数值不稳定。</li>
+<li><strong>FP8</strong> 是一种已有的低精度训练方案，但其加速比有限。</li>
+<li><strong>MXFP4</strong>（Microscaling FP4）是一种 4-bit 浮点格式，通过组共享的缩放因子扩展可表示数值范围，硬件支持下可比 FP8 快 2×。但直接使用 MXFP4 训练会严重损害模型质量。</li>
+<li>前人工作（如 Xi et al., 2023）使用非随机化的 Hadamard 变换在前向传播中使用 INT4 GEMM，但额外的开销限制了加速效果（仅约 30%）。</li>
+<li>并发工作（Wang et al., 2025）使用 FP4 训练，但困惑度差距大于 0.5。</li>
+</ul>
+<h3 id="_6">核心问题</h3>
+<p>如何在 4-bit 精度下实现近无损的 LLM 训练，同时保持显著的计算加速？</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="1-mxfp4-algorithm-2">1. 无偏 MXFP4 量化（Algorithm 2）</h3>
+<p><strong>问题</strong>：标准 MXFP4 量化算法（Algorithm 1）存在偏差。原因在于 FP4 的最大可表示正常值为 6，而经过共享指数缩放后，最大值可能被截断到 6-8 之间，导致约 3% 的条目被裁剪。</p>
+<p><strong>解决方案</strong>：
+1. <strong>缩放因子 3/4</strong>：对输入值乘以 3/4，防止截断
+2. <strong>随机舍入（SR）</strong>：使用随机舍入代替最近舍入，产生无偏估计</p>
+<p>具体而言：
+- 将输入向量 <script type="math/tex">V</script> 的每个元素乘以 3/4
+- 使用随机舍入将缩放后的值量化为 FP4
+- 结果是输入的 3/4 的无偏估计
+- 由于 SR 使用独立噪声，GEMM 输出是 <script type="math/tex">(3/4)^2 = 9/16</script> 的无偏估计
+- 最终将高精度累加器输出乘以 16/9 即可得到无偏梯度</p>
+<p><strong>引理 3.1</strong>：Algorithm 2 产生输入的 3/4 的无偏 MXFP4 估计。Algorithm 3 结合 Algorithm 2 产生 <script type="math/tex">dL/dx</script> 和 <script type="math/tex">dL/dW</script> 的无偏估计。</p>
+<h3 id="2-hadamard-rht">2. 随机 Hadamard 变换（RHT）约束方差</h3>
+<p><strong>问题</strong>：虽然 SR 产生无偏估计，但 LLM 的激活（x）和权重（W）存在离群值，梯度（<script type="math/tex">dL/dy</script>）也较稀疏。MXFP4 量化依赖组级统计（如最大幅度元素），含离群值的块会遭受高量化失真和 SR 方差。</p>
+<p><strong>解决方案</strong>：使用随机 Hadamard 变换（RHT）在量化前集中梯度、激活和权重，从理论上约束 SR 的方差。</p>
+<p><strong>RHT 的数学性质</strong>：
+- RHT 执行 <script type="math/tex">x \leftarrow HSx</script>，其中 <script type="math/tex">H</script> 是 Hadamard 矩阵，<script type="math/tex">S</script> 是随机符号向量
+- Hadamard 矩阵是递归定义的正交矩阵
+- RHT 完全可逆：<script type="math/tex">(HSA)^T(HSB) = A^TB</script>
+- RHT 变换后，向量元素服从次高斯分布，可以约束 GEMM 输出的方差</p>
+<p><strong>定理 3.2</strong>：无 RHT 时，SR GEMM 的方差为 <script type="math/tex">O(b\Delta^4 \|A\|_\infty \|B\|_\infty)</script>，其中 <script type="math/tex">b</script> 为向量大小，<script type="math/tex">\Delta</script> 为量化器中相邻可表示值的最大间隔。使用 RHT 后，方差降为 <script type="math/tex">O(\Delta^4 \|A\| \|B\| \log(2b/\epsilon))</script>，即从线性依赖变为对数依赖。</p>
+<h3 id="3-rhtblockwise-rht">3. 块级 RHT（Blockwise RHT）</h3>
+<p><strong>问题</strong>：
+1. RHT 沿 batch 维度混合，在数据并行（如 FSDP/ZeRO-3）设置下需要昂贵的跨 GPU 通信
+2. RHT 需要高精度运算，如果比 FP4 矩阵乘法更慢，则没有加速意义</p>
+<p><strong>解决方案</strong>：将 RHT 作为小块上的密集矩阵乘法执行（<script type="math/tex">g = 64</script>）：
+- 运行时复杂度为 <script type="math/tex">O((b+m)ng)</script>
+- IO 成本为 <script type="math/tex">O(bn + nm + bm)</script>
+- 当 <script type="math/tex">g \leq 256</script> 时，该块级 RHT 是内存绑定的（memory bound）
+- 作为数据并行的 drop-in 替换方案，无需跨 GPU 通信</p>
+<h3 id="4-algorithm-3">4. 完整的反向传播流程（Algorithm 3）</h3>
+<p>Algorithm 3 描述了使用 RHT 的 MXFP4 线性层反向传播：
+1. 构造 Hadamard 矩阵 <script type="math/tex">H</script> 和随机符号向量 <script type="math/tex">S</script>
+2. 对梯度 <script type="math/tex">dL/dy</script>、权重 <script type="math/tex">W</script>、激活 <script type="math/tex">x</script> 应用块级 RHT 变换
+3. 执行 MXFP4 GEMM 计算 <script type="math/tex">dL/dx</script> 和 <script type="math/tex">dL/dW</script>
+4. 若使用 Algorithm 2（SR），将结果乘以 16/9</p>
+<p><strong>设计原则</strong>：
+- 仅在反向传播中使用 MXFP4（前向传播保持 BF16/FP8）
+- 反向传播占训练 FLOPs 的超过 1/2，因此仅改变反向传播即可显著加速
+- 保持前向传播精度不降低模型的表示能力</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：GPT 345M、1.3B、6.7B</li>
+<li><strong>数据</strong>：GPT2 Wikipedia 数据集</li>
+<li><strong>框架</strong>：Megatron-LM</li>
+<li><strong>量化库</strong>：Microsoft microxcaling（位精确模拟）</li>
+<li><strong>硬件</strong>：AWS P4 和 G6e EC2 实例，NVIDIA A100/H100 GPU</li>
+<li><strong>前向传播</strong>：BF16 混合精度（部分实验使用 FP8）</li>
+<li><strong>反向传播</strong>：MXFP4 + RHT + SR</li>
+<li><strong>RHT 块大小</strong>：<script type="math/tex">g = 64</script>
+</li>
+<li><strong>训练 token 数</strong>：至少 200 亿</li>
+</ul>
+<h3 id="table-2">核心结果（Table 2）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Token 数</th>
+<th>反向精度</th>
+<th>训练损失</th>
+<th>验证损失</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>345M</td>
+<td>33B</td>
+<td>BF16</td>
+<td>2.58</td>
+<td>2.49</td>
+</tr>
+<tr>
+<td>345M</td>
+<td>33B</td>
+<td>MXFP4</td>
+<td>2.73</td>
+<td>2.60</td>
+</tr>
+<tr>
+<td>345M</td>
+<td>33B</td>
+<td>MXFP4+RHT</td>
+<td>2.60</td>
+<td>2.51</td>
+</tr>
+<tr>
+<td>345M</td>
+<td>33B</td>
+<td>MXFP4+RHT+SR</td>
+<td>2.60</td>
+<td>2.51</td>
+</tr>
+<tr>
+<td>1.3B</td>
+<td>42B</td>
+<td>BF16</td>
+<td>2.28</td>
+<td>2.32</td>
+</tr>
+<tr>
+<td>1.3B</td>
+<td>42B</td>
+<td>MXFP4+RHT+SR</td>
+<td>2.29</td>
+<td>2.32</td>
+</tr>
+<tr>
+<td>1.3B</td>
+<td>210B</td>
+<td>BF16</td>
+<td>2.06</td>
+<td>2.29</td>
+</tr>
+<tr>
+<td>1.3B</td>
+<td>210B</td>
+<td>MXFP4+RHT+SR</td>
+<td>2.07</td>
+<td>2.29</td>
+</tr>
+<tr>
+<td>6.7B</td>
+<td>21B</td>
+<td>BF16</td>
+<td>2.04</td>
+<td>2.27</td>
+</tr>
+<tr>
+<td>6.7B</td>
+<td>21B</td>
+<td>MXFP4+RHT+SR</td>
+<td>2.08</td>
+<td>2.27</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- <strong>短训练（20-40B tokens）</strong>：使用 RHT 或 SR 与 MXFP4 均可实现近无损训练
+- <strong>长训练（210B tokens）</strong>：无偏梯度估计（SR）是必要的，仅使用 RHT 会有约 0.1 的困惑度差距，而使用 SR（有无 RHT）则无差距
+- <strong>纯 MXFP4（无 RHT 无 SR）</strong>：在所有规模上均有显著退化，表明 4-bit 训练必须配合特殊技巧</p>
+<h3 id="rht-table-4">RHT 块大小消融（Table 4）</h3>
+<table>
+<thead>
+<tr>
+<th>反向精度</th>
+<th>g=32</th>
+<th>g=64</th>
+<th>g=128</th>
+<th>g=256</th>
+<th>BF16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>验证 PPL</td>
+<td>12.02</td>
+<td>12.01</td>
+<td>11.98</td>
+<td>11.98</td>
+<td>11.89</td>
+</tr>
+</tbody>
+</table>
+<p>增大 RHT 块大小可改善性能（减少 SR 方差），但 g=64 已足够。</p>
+<h3 id="table-3">下游任务评估（Table 3）</h3>
+<p>GPT 6.7B 模型（20B tokens 预训练）在多个下游任务上：
+- BF16 和 MXFP4+RHT+SR 表现相似
+- 经 Tulu V2 微调后两者表现仍相近
+- 说明 MXFP4 训练的模型质量与 BF16 训练相当</p>
+<h3 id="table-5">吞吐量测试（Table 5）</h3>
+<p>在 NVIDIA A100 上测试 Llama 2 70B 解码器层：
+- INT4+RHT 反向传播比 FP16 快约 70%
+- 端到端比 FP16 快约 40%，比 INT8 快约 20%
+- RHT 增加的端到端开销不到 5%（当 g ≤ 256 时）
+- H100 上，RHT 对 7B 规模增加 9.7% 开销，对 70B 规模增加 1.6%</p>
+<h3 id="sr">SR 开销</h3>
+<ul>
+<li>Amazon Trainium 芯片上，SR 量化从 FP32 到 BF16 的开销小于 2%</li>
+<li>假设 FP4 到 BF16 有 4× 吞吐量提升，SR 开销小于 10%</li>
+</ul>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>近无损训练</strong>：在 GPT 345M 到 6.7B 规模上，MXFP4+RHT+SR 方案与 BF16 混合精度训练的验证损失差距小于 0.1，几乎无损</li>
+<li><strong>显著加速</strong>：在支持硬件上，反向传播可实现超过 1.3×（FP8）和 1.7×（BF16）的加速</li>
+<li><strong>理论保证</strong>：提供了 SR 方差的理论界（定理 3.2），证明 RHT 从线性依赖降为对数依赖</li>
+<li><strong>低开销</strong>：RHT 块级实现（g=64）内存绑定，开销极小（端到端 &lt; 5%）</li>
+<li><strong>兼容性</strong>：与 FP8 前向传播兼容，可进一步加速</li>
+<li><strong>数据并行友好</strong>：块级 RHT 无需跨 GPU 通信，可作为 FSDP/ZeRO-3 的 drop-in 替换</li>
+<li><strong>首次方案</strong>：首个实现近无损 MXFP4 训练的方案，填补了 MXFP4 在训练领域的空白</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>仅反向传播</strong>：本文仅在反向传播中使用 MXFP4，前向传播仍保持 BF16/FP8</li>
+<li><strong>硬件限制</strong>：尚无 MXFP4 专用硬件，目前通过模拟实现，无法实测真正的壁钟时间加速</li>
+<li><strong>模型规模</strong>：仅验证到 6.7B 参数，未扩展到百亿/千亿级模型</li>
+<li><strong>通用性</strong>：仅在 GPT 架构上验证，未涉及视觉模型或其他架构</li>
+<li><strong>量化库依赖</strong>：依赖 Microsoft microxcaling 库进行位精确模拟</li>
+<li><strong>训练数据</strong>：仅在 GPT2 Wikipedia 数据集上实验，未在更大规模数据集上验证</li>
+<li><strong>与 FP4 前向传播的结合</strong>：未探讨同时使用 MXFP4 进行前向和反向传播的完整方案</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>本论文属于 <strong>量化训练</strong>（Quantized Training）和 <strong>高效 LLM 训练</strong>（Efficient LLM Training）领域，与以下研究方向密切相关：</p>
+<ol>
+<li><strong>低精度训练</strong>（Low-Precision Training）</li>
+<li>与 FP8 训练（Peng et al., 2023）、FP16 混合精度训练（Micikevicius et al., 2018）密切相关</li>
+<li>
+<p>进一步推进到 4-bit 训练领域</p>
+</li>
+<li>
+<p><strong>随机舍入</strong>（Stochastic Rounding）</p>
+</li>
+<li>与量化中的舍入策略相关（Croci et al., 2022）</li>
+<li>
+<p>在模型更新中的应用（Yu et al., 2024）</p>
+</li>
+<li>
+<p><strong>Hadamard 变换</strong>（Hadamard Transform）</p>
+</li>
+<li>与 QuIP#（Tseng et al., 2024a）中的 Hadamard 非相干性处理相关</li>
+<li>
+<p>与 INT4 训练中的 Hadamard 变换（Xi et al., 2023）相关</p>
+</li>
+<li>
+<p><strong>Microscaling 格式</strong>（MX Formats）</p>
+</li>
+<li>与 OCP MX 格式规范（Project, 2023）相关</li>
+<li>
+<p>与 MXFP4 推理（Rouhani et al., 2023; NVIDIA, 2024b）相关</p>
+</li>
+<li>
+<p><strong>硬件-软件协同设计</strong>（Hardware-Software Co-Design）</p>
+</li>
+<li>与 NVIDIA Blackwell 架构（NVIDIA, 2024a）相关</li>
+<li>
+<p>与 Amazon Trainium 架构相关</p>
+</li>
+<li>
+<p><strong>LLM 预训练优化</strong>（LLM Pre-training Optimization）</p>
+</li>
+<li>与 Megatron-LM（Shoeybi et al., 2020）相关</li>
+<li>
+<p>与 ZeRO/FSDP 等分布式训练框架相关</p>
+</li>
+<li>
+<p><strong>Scaling Laws for Precision</strong>（Kumar et al., 2025）</p>
+</li>
+<li>
+<p>探讨精度与模型性能的关系</p>
+</li>
+<li>
+<p><strong>并发工作</strong>：Wang et al. (2025) 使用 FP4 训练 LLM，但使用不同的可微梯度估计器和离群值高精度保留方案，困惑度差距大于 0.5</p>
+</li>
+</ol>
+<hr />
+<h2 id="_12">代码</h2>
+<ul>
+<li><strong>代码仓库</strong>：https://github.com/amazon-science/mxfp4-llm</li>
+<li><strong>框架</strong>：PyTorch</li>
+</ul>
+<h2 id="_13">论文链接</h2>
+<ul>
+<li><strong>arXiv</strong>：http://arxiv.org/abs/2502.20586v2</li>
+<li><strong>会议</strong>：AISTATS 2025</li>
+<li><strong>关键词</strong>：quantization, efficient_training</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>SAS - Efficient Paper</title>
+    <title>SAS: Structured Activation Sparsification - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "SAS";
+        var mkdocs_page_name = "SAS: Structured Activation Sparsification";
         var mkdocs_page_input_path = "notes/2024/SAS/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">SAS</li>
+      <li class="breadcrumb-item active">SAS: Structured Activation Sparsification</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,10 +159,141 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="sas">SAS</h1>
+                <h1 id="sas-structured-activation-sparsification">SAS: Structured Activation Sparsification</h1>
+<blockquote>
+<p>本文由 AI Agent 自动生成（基于论文全文阅读），生成时间：2025-06-05。所有内容用中文撰写，仅供参考。</p>
+</blockquote>
 <p><a class="glightbox" href="../sas.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../sas.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>稠密activation映射为稀疏activation，从而提高表达能力，不同的activation选择不同的weight，所以思想也类似于MOE</p>
+<h2 id="_1">一句话总结</h2>
+<p>SAS 提出了一种<strong>结构化激活稀疏化</strong>方法，通过将密集激活映射投影为具有局部稀疏结构的激活图，在不增加计算量的前提下显著提升网络精度，且与 NVIDIA Sparse Tensor Core 兼容，实现了高效的 GPU 推理。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>宽网络通常比窄网络获得更好的精度，但代价是巨大的矩阵乘法计算量。为了打破这一权衡，我们提出了一种新颖的概念——<strong>结构化激活稀疏化（SAS）</strong>，它利用具有特定结构的投影稀疏激活图来提升精度，而不增加计算量。具体来说，投影后的稀疏激活被允许在每 M 个连续激活中有 N 个非零值。由于稀疏性的局部结构，宽权重与稀疏激活之间的宽矩阵乘法可以等价地执行为窄权重与密集激活之间的窄矩阵乘法，这与 NVIDIA 为 N:M 结构化稀疏权重开发的 Sparse Tensor Core 兼容。在大量实验中，我们证明了增加稀疏性可以单调地提升精度（在 CIFAR10 上最高提升 7%），而不增加乘法次数。此外，我们还表明，在相同的计算预算下，激活的结构化稀疏化比权重的结构化稀疏化具有更好的可扩展性。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>现代深度神经网络（DNN）包含大量的矩阵乘法，使其难以部署在资源受限的边缘设备上。缩小激活通道宽度可以减少计算量，但会牺牲精度。现有的加速方法主要集中在：</p>
+<ol>
+<li><strong>量化</strong>（降低精度）</li>
+<li><strong>知识蒸馏</strong></li>
+<li><strong>高效模型架构设计</strong>（如 MobileNet、ConvNeXt）</li>
+<li><strong>结构化权重稀疏化（SWS）</strong>（如通道剪枝、核形状稀疏）</li>
+</ol>
+<p>然而，这些方法主要关注权重稀疏化，而<strong>激活稀疏化</strong>（尤其是结构化的激活稀疏化）是一个未被充分探索的领域。激活稀疏化面临的核心挑战是：与权重不同，激活值取决于输入，因此难以控制其具有结构化的稀疏模式。此外，由 ReLU 等激活函数自然产生的稀疏性是无结构的，难以在 GPU 等向量处理器上并行化。</p>
+<p>SAS 的核心动机是：在不增加计算量的情况下，通过增加激活的宽度（同时保持结构化稀疏性）来提升网络的表达能力，从而获得更好的精度/速度权衡。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-structured-sparsity-in-activation">1. 结构化激活稀疏（Structured Sparsity in Activation）</h3>
+<p>SAS 的核心思想是：将稀疏激活控制为每 M 个连续元素中有 N 个非零值。由于稀疏性具有局部结构，宽权重与稀疏激活之间的矩阵乘法可以等价地转换为窄权重与密集激活之间的矩阵乘法，从而实现向量化执行。</p>
+<p>具体来说，对于密集权重 <script type="math/tex">\tilde{W}</script> 和结构化稀疏激活 <script type="math/tex">\tilde{X}</script>，矩阵乘法 <script type="math/tex">O = \tilde{W}\tilde{X}</script> 可以简化为窄权重 <script type="math/tex">W</script> 和密集激活 <script type="math/tex">X</script> 的乘法 <script type="math/tex">O = WX</script>，且不需要增加计算量。</p>
+<h3 id="2-sasstructured-sparse-projection">2. 通过稀疏投影实现 SAS（Structured Sparse Projection）</h3>
+<p>关键问题：如何构造具有结构化稀疏性的激活？SAS 提出了<strong>结构化稀疏投影</strong> <script type="math/tex">S</script>：</p>
+<p>
+<script type="math/tex; mode=display">S: X \in \mathbb{R}^{\bar{C}_i \times HW} \rightarrow \tilde{X} \in \mathbb{R}^{M/N \bar{C}_i \times HW}</script>
+</p>
+<p>投影规则：源激活 <script type="math/tex">X</script> 中的单个元素被映射到目标稀疏激活 <script type="math/tex">\tilde{X}</script> 中的 M 个连续元素之一。索引 <script type="math/tex">I</script> 的计算方式为：</p>
+<p>
+<script type="math/tex; mode=display">I_{j,u} = \sum_{i=0}^{\log_2 M - 1} (X_{j+i,u} > 0) \cdot 2^i</script>
+</p>
+<p>即通过观察相邻 <script type="math/tex">\log_2 M</script> 个激活值的符号位来确定索引。这使得计算开销极小（仅检查符号位），且可以在线计算。</p>
+<h3 id="3">3. 硬件实现与速度基准</h3>
+<p>SAS 矩阵乘法可以在普通 GPU 上通过<strong>局部路由机制</strong>（如 NVIDIA 的 Sparse Tensor Core）实现向量化执行。推理时，不需要显式构造稀疏激活 <script type="math/tex">\tilde{X}</script>；而是直接从密集激活 <script type="math/tex">X</script> 计算索引 <script type="math/tex">I</script>，然后将 <script type="math/tex">I</script> 和 <script type="math/tex">X</script> 传递给处理器进行并行执行。</p>
+<p>作者开发了一个通用矩阵乘法库 <strong>cuSAS</strong>（基于 CuPy 封装的 cuSPARSELt），首次在 GPU 上实现了结构化稀疏激活的向量化矩阵乘法。实验表明，SAS 相对于 SWS 的额外开销（索引计算、重排序、内存传输）不到 1.5%。</p>
+<h3 id="4-sas">4. 训练 SAS 网络</h3>
+<p>SAS 网络的训练过程：
+- 将原始非线性激活函数（如 ReLU）替换为 SAS 投影 <script type="math/tex">S</script>
+- 训练时，SAS 矩阵乘法先将密集/窄激活投影到结构化稀疏/宽空间（显式构建稀疏激活），然后执行常规密集矩阵乘法
+- 这等价于推理时使用硬件支持的稀疏矩阵乘法</p>
+<h3 id="5-experience-radameradam">5. Experience-RAdam（ERAdam）优化器</h3>
+<p>由于 SAS 网络中每个权重元素接收梯度的频率降低（平均为密集网络的 1/M），自适应学习率在训练早期可能不稳定。ERAdam 通过修改 RAdam 的公式，将每个权重元素的步长 <script type="math/tex">t</script> 缩放为与接收的梯度数量成正比：</p>
+<p>
+<script type="math/tex; mode=display">t_i \leftarrow t_i + \sum_u (\nabla \tilde{X}_{\cdot, u} \neq 0) / HW</script>
+</p>
+<p>ERAdam 配合 CosineDecay 调度器和 k-decay，在大 M 值时效果尤佳。</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>数据集</strong>：CIFAR-10、CIFAR-100、ImageNet</li>
+<li><strong>网络</strong>：ResNet18（CIFAR）、ConvNeXt-B（ImageNet）</li>
+<li><strong>基线</strong>：密集 ReLU 网络（α× 窄宽度）、结构化权重稀疏化（SWS，Zhou et al., 2021）</li>
+<li><strong>变量</strong>：稀疏度 M（2/4/8/16）、基线宽度 α（4/8/16）</li>
+</ul>
+<h3 id="_7">关键发现</h3>
+<ol>
+<li><strong>精度随稀疏度单调提升</strong>：</li>
+<li>在 CIFAR-10 上，SAS 的精度随 M 增大单调提升（最高提升约 7%）</li>
+<li>最显著的增益来自基线 ReLU 网络到 M=2 的稀疏网络</li>
+<li>
+<p>精度在 M=8 或 M=16 附近趋于饱和</p>
+</li>
+<li>
+<p><strong>SAS 优于 SWS</strong>：</p>
+</li>
+<li>在相同计算预算下，SAS 的精度显著优于 SWS</li>
+<li>
+<p>SWS 的精度随 M 变化几乎不变，而 SAS 则明显提升</p>
+</li>
+<li>
+<p><strong>ImageNet 实验</strong>：</p>
+</li>
+<li>ConvNeXt-B（α=2）：基线 80.7%，SWS 81.5%，SAS 82.2%</li>
+<li>
+<p>SAS 在 ImageNet 上也展示了优于 SWS 的精度提升</p>
+</li>
+<li>
+<p><strong>表达能力分析</strong>（轨迹长度分析）：</p>
+</li>
+<li>SAS 的轨迹长度随 M 增大而增长，表明更强的表达能力</li>
+<li>
+<p>SWS 的轨迹长度随 M 变化几乎不变</p>
+</li>
+<li>
+<p><strong>训练特性</strong>：</p>
+</li>
+<li>高稀疏度（大 M）的 SAS 网络需要更多训练轮次才能达到最佳精度</li>
+<li>这可能是因为大 M 时梯度更稀疏</li>
+</ol>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>不增加计算量</strong>：在不增加矩阵乘法次数的前提下提升精度</li>
+<li><strong>硬件兼容</strong>：与 NVIDIA Sparse Tensor Core 兼容，可实现实际加速</li>
+<li><strong>实现简单</strong>：将现有网络的 ReLU 替换为 SAS 投影即可</li>
+<li><strong>精度提升显著</strong>：在 CIFAR-10 上最高提升 7%，ImageNet 上也有明显提升</li>
+<li><strong>可扩展性好</strong>：激活的结构化稀疏化比权重的结构化稀疏化具有更好的可扩展性</li>
+<li><strong>表达能力增强</strong>：通过增加网络宽度（同时保持稀疏性）提升表达能力</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>内存开销增加</strong>：SAS 网络的权重存储随 M 线性增加（×M），而 SWS 的权重存储不变</li>
+<li><strong>硬件支持有限</strong>：当前 NVIDIA GPU 仅支持 1:2 稀疏度（TF32 或 float 矩阵），限制了高稀疏度的实际应用</li>
+<li><strong>索引计算的局限性</strong>：当前的索引计算方法（基于符号位）在 M&gt;2 时，当邻居元素接近零时可能存在问题</li>
+<li><strong>训练收敛较慢</strong>：高稀疏度网络需要更多训练轮次才能达到最佳精度</li>
+<li><strong>缺少主流框架集成</strong>：目前仅有基于 CuPy 的库，尚未集成到 PyTorch、TensorFlow 等主流框架</li>
+<li><strong>未与 SWS 结合探索</strong>：当前 GPU 不支持双侧稀疏矩阵乘法，SAS 与 SWS 的组合探索受限</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>激活稀疏化与权重稀疏化的结合</strong>：未来 GPU 可能支持双侧稀疏矩阵乘法，这将使 SAS 和 SWS 的结合成为可能</li>
+<li><strong>低比特量化与 SAS 结合</strong>：SAS 的主要缺点是内存开销增加，结合低比特权重可以缓解这一问题</li>
+<li><strong>注意力机制用于索引计算</strong>：当前的索引计算方法较简单，使用注意力机制可能进一步提升精度</li>
+<li><strong>硬件协同设计</strong>：针对 SAS 的专用向量处理器设计</li>
+<li><strong>端到端可微的索引学习</strong>：探索学习计算索引的方法，而非使用固定的符号位规则</li>
+<li><strong>与高效架构的结合</strong>：SAS 可与 MobileNet、ConvNeXt 等高效架构结合，进一步提升效率</li>
+<li><strong>SAS 在 Transformer 中的应用</strong>：SAS 的机制也可应用于注意力机制中的矩阵乘法</li>
+</ol>
+<hr />
+<h2 id="_10">参考信息</h2>
+<ul>
+<li><strong>论文链接</strong>：https://openreview.net/forum?id=vZfi5to2Xl</li>
+<li><strong>代码仓库</strong>：https://github.com/DensoITLab/sas_</li>
+<li><strong>关键词</strong>：sparse_pruning, activation_sparsity</li>
+<li><strong>会议</strong>：ICLR 2024</li>
+<li><strong>作者</strong>：Yusuke Sekikawa, Shingo Yashima</li>
+<li><strong>机构</strong>：DENSO IT Lab</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

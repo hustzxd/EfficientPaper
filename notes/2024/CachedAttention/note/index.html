@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,29 +161,201 @@
   
                 <h1 id="cost-efficient-large-language-model-serving-for-multi-turn-conversations-with-cachedattention">Cost-Efficient Large Language Model Serving for Multi-turn Conversations with CachedAttention</h1>
 <p><a class="glightbox" href="../fig5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Interacting with humans through multi-turn conversations is a fundamental
-feature of large language models (LLMs). However, existing LLM serving engines
-executing multi-turn conversations are inefficient due to the need to
-repeatedly compute the key-value (KV) caches of historical tokens, incurring
-high serving costs. To address the problem, this paper proposes
-CachedAttention, a new attention mechanism that enables reuse of KV caches
-across multi-turn conversations, significantly reducing the repetitive
-computation overheads. CachedAttention maintains a hierarchical KV caching
-system that leverages cost-effective memory/storage mediums to save KV caches
-for all requests. To reduce KV cache access overheads from slow mediums,
-CachedAttention employs layer-wise pre-loading and asynchronous saving schemes
-to overlap the KV cache access with the GPU computation. To ensure that the KV
-caches to be accessed are placed in the fastest hierarchy, CachedAttention
-employs scheduler-aware fetching and eviction schemes to consciously place the
-KV caches in different layers based on the hints from the inference job
-scheduler. To avoid the invalidation of the saved KV caches incurred by context
-window overflow, CachedAttention enables the saved KV caches to remain valid
-via decoupling the positional encoding and effectively truncating the KV
-caches. Extensive experimental results demonstrate that CachedAttention
-significantly decreases the time to the first token (TTFT) by up to 87%,
-improves the prompt prefilling throughput by up to 7.8<script type="math/tex">\times</script> for multi-turn
-conversations, and reduces the end-to-end inference cost by up to 70%.</p>
+<h2 id="_1">一句话总结</h2>
+<p>CachedAttention 提出了一种新的注意力机制，通过在多轮对话间复用 KV 缓存，利用层次化存储（主机内存 + 磁盘）和重叠访问技术，将首 token 延迟降低最高 87%，预填充吞吐量提升最高 7.8 倍，端到端推理成本降低最高 70%。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>与人类进行多轮对话是大语言模型（LLM）的基本功能。然而，现有的 LLM 服务引擎在执行多轮对话时效率低下，因为需要反复计算历史 token 的键值（KV）缓存，导致高昂的服务成本。为解决此问题，本文提出了 CachedAttention，一种新的注意力机制，能够在多轮对话间复用 KV 缓存，显著降低重复计算开销。CachedAttention 维护了一个层次化 KV 缓存系统，利用经济高效的内存/存储介质保存所有请求的 KV 缓存。为减少来自慢速介质的 KV 缓存访问开销，CachedAttention 采用了逐层预加载和异步保存方案，将 KV 缓存访问与 GPU 计算重叠执行。为确保要访问的 KV 缓存位于最快的层次，CachedAttention 采用了调度器感知的获取和驱逐方案，根据推理作业调度器的提示，有意识地将 KV 缓存放置在不同层次中。为避免因上下文窗口溢出导致已保存的 KV 缓存失效，CachedAttention 通过解耦位置编码并有效截断 KV 缓存，使已保存的 KV 缓存保持有效。大量实验结果表明，CachedAttention 将首 token 延迟（TTFT）降低了最高 87%，将多轮对话的提示预填充吞吐量提高了最高 7.8 倍，并将端到端推理成本降低了最高 70%。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<ol>
+<li>
+<p><strong>多轮对话的普遍性</strong>：基于 ShareGPT 数据集（从 ChatGPT 收集的超过 90K 条对话）的分析表明，73% 的对话涉及多轮交互，30% 的对话会话超过 4K token。这表明多轮对话是 LLM 应用的核心场景。</p>
+</li>
+<li>
+<p><strong>KV 缓存的重复计算问题</strong>：在当前的 LLM 服务引擎中，当一个对话会话变为非活跃状态时，GPU 高带宽内存（HBM）中存储的 KV 缓存会被丢弃以腾出空间。当会话重新激活时，系统必须重新计算整个 KV 缓存。随着对话轮数增加，重复计算开销线性增长。基于 ShareGPT 的分析显示，高达 99% 的预填充成本来自 KV 缓存的重复计算。</p>
+</li>
+<li>
+<p><strong>推理成本高昂</strong>：LLM 推理需要大量 GPU 资源，推理成本的降低对生成式应用至关重要。</p>
+</li>
+</ol>
+<h3 id="_5">核心挑战</h3>
+<ul>
+<li><strong>高 KV 缓存访问开销</strong>：KV 缓存需要在 GPU HBM 和外部存储之间传输，传输时间不可忽略（例如 LLaMA-65B 的 2K token KV 缓存加载需要约 192ms，而预填充仅需 360ms）。</li>
+<li><strong>高存储容量需求</strong>：KV 缓存占用大量存储空间（例如 LLaMA-65B 每 token 生成 2.5MB KV 缓存），HBM 在 14 秒内即被占满。</li>
+<li><strong>KV 缓存在不同层次间的放置</strong>：磁盘容量大但访问慢，需要智能调度以确保即将访问的 KV 缓存位于主机内存中。</li>
+<li><strong>上下文窗口溢出导致缓存失效</strong>：截断 token 后位置编码失效，已保存的 KV 缓存无法复用。47% 和 30% 的对话会话分别超过 2K 和 4K token。</li>
+</ul>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="31">3.1 整体架构</h3>
+<p>CachedAttention 引入了 <strong>AttentionStore</strong> 作为层次化 KV 缓存系统，包含以下核心组件：</p>
+<ul>
+<li><strong>GPU 集群</strong>（HBM 层）：用于在线推理计算</li>
+<li><strong>主机内存</strong>（DRAM 层）：作为中速存储层</li>
+<li><strong>磁盘</strong>（SSD 层）：作为大容量存储层</li>
+</ul>
+<p>当对话会话非活跃时，KV 缓存被保存到 AttentionStore；会话重新激活时，从 AttentionStore 加载并复用，仅预填充新输入 token。</p>
+<h3 id="32-kv">3.2 重叠 KV 缓存访问</h3>
+<h4 id="321-layer-wise-pre-loading">3.2.1 逐层预加载（Layer-wise Pre-loading）</h4>
+<ul>
+<li><strong>原理</strong>：利用 Transformer 模型的多层结构，当 GPU 执行某一层计算时，同步加载后续层所需的 KV 缓存</li>
+<li><strong>读缓冲区</strong>：预留 HBM 读缓冲区，允许在上一个作业运行时就开始预加载，消除作业间的空隙</li>
+<li><strong>缓冲区大小公式</strong>：<code>Sbuf = B × (Tload × Lhist − Tpref × Lnew)</code>，其中 B 为 PCIe 带宽，Tload 为每 token KV 缓存访问时间，Tpref 为每 token 预填充时间，Lhist 为历史 token 长度，Lnew 为新输入 token 长度</li>
+<li><strong>效果</strong>：使用 PL-B15（15 层缓冲区）时，预填充时间相比无预加载减少 61%</li>
+</ul>
+<h4 id="322-asynchronous-saving">3.2.2 异步保存（Asynchronous Saving）</h4>
+<ul>
+<li><strong>预填充阶段</strong>：逐层保存 KV 缓存，与解码阶段重叠执行</li>
+<li><strong>解码阶段</strong>：逐层写回 KV 缓存，与解码同步进行</li>
+<li><strong>写缓冲区</strong>：预留 HBM 写缓冲区，避免写入未完成时阻塞下一个作业</li>
+<li><strong>效果</strong>：整体执行时间减少 13%~15%</li>
+</ul>
+<h3 id="33-kv">3.3 层次化 KV 缓存放置</h3>
+<h4 id="331-scheduler-aware-fetching">3.3.1 调度器感知的预取（Scheduler-aware Fetching）</h4>
+<ul>
+<li>利用推理作业调度器的提示信息，预判未来需要访问的 KV 缓存</li>
+<li>从磁盘预取到主机内存，确保访问速度最优</li>
+<li>通过预取窗口（prefetching window）管理预取范围</li>
+</ul>
+<h4 id="332-scheduler-aware-eviction">3.3.2 调度器感知的驱逐（Scheduler-aware Eviction）</h4>
+<ul>
+<li>基于调度器提示识别最不值得保留的 KV 缓存</li>
+<li>从主机内存驱逐到磁盘或直接丢弃</li>
+<li>通过驱逐窗口（eviction window）管理驱逐范围</li>
+<li><strong>优势</strong>：相比 LRU（缓存命中率提升 27%）和 FIFO（提升 31%），CA 实现了更高的缓存命中率（最高 86%），且 99.6% 的命中发生在 DRAM 中</li>
+</ul>
+<h3 id="34-kv">3.4 位置编码解耦的 KV 缓存截断</h3>
+<ul>
+<li><strong>问题</strong>：传统方法中位置编码嵌入 KV 缓存，截断后位置信息失效</li>
+<li><strong>方案</strong>：CachedAttention 在保存 KV 缓存时解耦位置编码（仅用于相对位置编码 RPE 的模型，如 LLaMA、T5、Falcon、Mistral、Mixtral 等）</li>
+<li><strong>存储时</strong>：在嵌入位置编码之前保存 K/V</li>
+<li><strong>加载时</strong>：重新嵌入新的位置编码</li>
+<li><strong>截断处理</strong>：可直接对 KV 缓存进行截断，无需重新计算</li>
+<li><strong>兼容性</strong>：支持与 KV 缓存压缩技术（如选择性丢弃不重要的 token）结合使用</li>
+</ul>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>硬件</strong>：4 × NVIDIA A100 GPU（80GB HBM），128GB DRAM，10TB SSD，PCIe Gen 4 连接</li>
+<li><strong>模型</strong>：LLaMA-1-65B、LLaMA-2-13B/70B、Falcon-40B、Mistral-7B</li>
+<li><strong>数据集</strong>：ShareGPT（9K 对话会话，平均 5.75 轮，约 52K 轮）</li>
+<li><strong>基线</strong>：Recomputation (RE)，即传统的重新计算方式</li>
+<li><strong>中间激活</strong>：FP16</li>
+</ul>
+<h3 id="_9">核心实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>LLaMA-13B</th>
+<th>LLaMA-65B</th>
+<th>LLaMA-70B</th>
+<th>Falcon-40B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>缓存命中率</strong></td>
+<td>86%</td>
+<td>71%</td>
+<td>89%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td><strong>TTFT 降低</strong></td>
+<td>85%</td>
+<td>61%</td>
+<td>87%</td>
+<td>86%</td>
+</tr>
+<tr>
+<td><strong>预填充吞吐量提升</strong></td>
+<td>6.8×</td>
+<td>2.6×</td>
+<td>7.8×</td>
+<td>7.2×</td>
+</tr>
+<tr>
+<td><strong>GPU 时间加速</strong></td>
+<td>4.0×</td>
+<td>1.9×</td>
+<td>3.3×</td>
+<td>3.4×</td>
+</tr>
+<tr>
+<td><strong>推理成本降低</strong></td>
+<td>70%</td>
+<td>43%</td>
+<td>66%</td>
+<td>68%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">消融实验</h3>
+<ol>
+<li><strong>重计算 vs CachedAttention</strong>：在不同历史/新 token 比例下，CA 始终优于 RE，且随新 token 比例降低优势更明显</li>
+<li><strong>逐层预加载</strong>：无缓冲区可减少 35% 预填充时间，PL-B15 减少 61%</li>
+<li><strong>异步保存</strong>：整体执行时间减少 13%~15%</li>
+<li><strong>调度器感知策略</strong>：相比 LRU（58% 命中率）和 FIFO（48%），CA 达到 86% 命中率，GPU 时间加速最高 2.7×</li>
+<li><strong>位置编码解耦截断</strong>：保持与标准截断相当的 PPL（差异 &lt; 0.02），避免了 naive KV 缓存截断导致的 PPL 飙升（&gt;1000）</li>
+<li><strong>缓存容量需求</strong>：当 RCC/CCpUT = 0.25 时，缓存命中率可达 98%</li>
+<li><strong>存储介质影响</strong>：仅 HBM 的命中率接近 0%；HBM+DRAM 为 3.4%~19.1%；CA（HBM+DRAM+SSD）达到 86%</li>
+</ol>
+<h3 id="_11">精度保持</h3>
+<p>在 MMLU、LongEval、PIQA 基准测试中，CA 与 TT（标准 token 截断）保持相当的准确率：
+- MMLU：LLaMA-7B CA 43.7% vs TT 43.4%；LLaMA-13B CA 52.3% vs TT 53.2%
+- PPL：CA 与 TT 差异 &lt; 0.02</p>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>显著的性能提升</strong>：TTFT 降低最高 87%，预填充吞吐量提升最高 7.8 倍，端到端推理成本降低最高 70%</li>
+<li><strong>层次化存储设计</strong>：巧妙利用 DRAM 和 SSD 扩展存储容量，避免仅依赖 HBM 导致的容量不足</li>
+<li><strong>调度器感知策略</strong>：利用作业调度器的提示信息进行智能预取和驱逐，实现 86% 缓存命中率且 99.6% 在 DRAM 中命中</li>
+<li><strong>重叠访问技术</strong>：通过逐层预加载和异步保存，将 KV 缓存访问与 GPU 计算重叠，减少关键路径上的延迟</li>
+<li><strong>位置编码解耦</strong>：支持 KV 缓存的直接截断，避免上下文溢出导致的缓存失效，同时保持模型精度</li>
+<li><strong>兼容性好</strong>：支持 RPE 模型（LLaMA、T5、Falcon、Mistral、Mixtral 等主流 LLM）</li>
+<li><strong>可扩展性</strong>：与连续批处理（continuous batching）结合使用，与现有 LLM 服务系统兼容</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>仅支持相对位置编码（RPE）模型</strong>：CachedAttention 依赖于 RPE 的位置编码解耦机制，对于使用绝对位置编码（APE）的模型（如 GPT-2）不适用</li>
+<li><strong>LLaMA-65B 缓存命中率较低（71%）</strong>：由于 LLaMA-65B 每 token KV 缓存占用 2.5MB，存储空间消耗大，在相同可用空间下能缓存的会话数更少</li>
+<li><strong>磁盘访问开销仍存在</strong>：尽管调度器感知预取大幅改善，但当缓存容量不足时，仍有部分 KV 缓存驻留在磁盘，访问性能受限</li>
+<li><strong>缺乏与 KV 缓存压缩技术的深度集成</strong>：虽然论文提到可与 KV 缓存压缩技术（如丢弃不重要 token）结合，但实验主要关注复用和截断，未深入探索压缩的协同效果</li>
+<li><strong>缺乏与其他 KV 缓存复用方法的对比</strong>：基线仅为传统的重新计算方式（RE），未与 vLLM（PagedAttention）、SGLang 等其他先进 LLM 服务系统进行对比</li>
+<li><strong>存储成本</strong>：虽然 GPU 成本显著降低，但 DRAM 和 SSD 的存储成本（约 9%~16.4% 的总成本）不可忽视</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li>
+<p><strong>KV 缓存管理</strong>：CachedAttention 属于 KV 缓存管理领域，与 PagedAttention（vLLM）、SGLang、FlexGen 等工作密切相关。关键词 <code>kv_cache_management</code> 正是 EfficientPaper 中标注的关键词。</p>
+</li>
+<li>
+<p><strong>LLM 推理加速</strong>：与 LLM 推理系统优化相关，如 Sarathi（分块预填充）、Orca（连续批处理）、Deja Vu（上下文稀疏性）等。</p>
+</li>
+<li>
+<p><strong>存储层次化优化</strong>：层次化存储设计（HBM → DRAM → SSD）与 LLM-in-a-Flash、DeepSpeed-Infinity 等工作在存储优化方面有相似理念。</p>
+</li>
+<li>
+<p><strong>多轮对话优化</strong>：针对多轮对话场景的优化，与 Pensieve（有状态 LLM 服务）、SkipDecode 等工作相关。</p>
+</li>
+<li>
+<p><strong>位置编码研究</strong>：位置编码解耦技术与 RoPE、Attention Sinks 等位置编码相关研究有交叉。</p>
+</li>
+<li>
+<p><strong>LLM 部署（Deployment）</strong>：关键词 <code>deployment</code> 指向 LLM 系统部署和推理优化，CachedAttention 提供了面向实际部署场景的高效 KV 缓存管理方案。</p>
+</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p><strong>声明</strong>：本笔记由 AI Agent（Hermes Agent）基于论文原文和元数据自动生成。笔记内容包括对论文的中文摘要翻译、研究动机、方法细节、实验结果、优缺点分析和相关研究方向的总结，仅供学术参考。AI 生成的内容可能存在不准确或遗漏之处，请以原文为准。生成时间：2026-06-05。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

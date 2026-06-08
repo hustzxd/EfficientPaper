@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,28 +164,278 @@
 <p>Jiacheng Liu, Peng Tang, Wenfeng Wang, Yuhang Ren, Xiaofeng Hou, Pheng-Ann Heng, Minyi Guo, Chao Li</p>
 </blockquote>
 <p><a class="glightbox" href="../tab1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The emergence of large-scale Mixture of Experts (MoE) models represents a
-significant advancement in artificial intelligence, offering enhanced model
-capacity and computational efficiency through conditional computation. However,
-deploying and running inference on these models presents significant challenges
-in computational resources, latency, and energy efficiency. This comprehensive
-survey analyzes optimization techniques for MoE models across the entire system
-stack. We first establish a taxonomical framework that categorizes optimization
-approaches into model-level, system-level, and hardware-level optimizations. At
-the model level, we examine architectural innovations including efficient
-expert design, attention mechanisms, various compression techniques such as
-pruning, quantization, and knowledge distillation, as well as algorithm
-improvement including dynamic routing strategies and expert merging methods. At
-the system level, we investigate distributed computing approaches, load
-balancing mechanisms, and efficient scheduling algorithms that enable scalable
-deployment. Furthermore, we delve into hardware-specific optimizations and
-co-design strategies that maximize throughput and energy efficiency. This
-survey provides both a structured overview of existing solutions and identifies
-key challenges and promising research directions in MoE inference optimization.
-To facilitate ongoing updates and the sharing of cutting-edge advances in MoE
-inference optimization research, we have established a repository accessible at
-https://github.com/MoE-Inf/awesome-moe-inference/.</p>
+<h2 id="_1">一句话总结</h2>
+<p>本文是一篇全面的综述论文，系统地梳理了混合专家模型（MoE）推理优化技术，从模型层、系统层和硬件层三个抽象层次构建了完整的分类框架，覆盖了高效专家设计、模型压缩、动态路由、分布式并行、专家卸载和硬件加速等关键领域，为 MoE 模型的高效部署提供了结构化的技术路线图。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大规模混合专家（MoE）模型的出现代表了人工智能领域的重大进展，通过条件计算提供了增强的模型容量和计算效率。然而，部署和运行这些模型的推理过程在计算资源、延迟和能源效率方面带来了重大挑战。本综合综述分析了整个系统栈中 MoE 模型的优化技术。我们首先建立了一个分类框架，将优化方法分为模型层、系统层和硬件层优化。在模型层，我们研究了包括高效专家设计、注意力机制、各种压缩技术（如剪枝、量化和知识蒸馏）以及算法改进（包括动态路由策略和专家合并方法）在内的架构创新。在系统层，我们研究了分布式计算方法、负载均衡机制和高效调度算法，以实现可扩展部署。此外，我们深入探讨了硬件特定优化和协同设计策略，以最大化吞吐量和能源效率。本综述既提供了现有解决方案的结构化概述，也确定了 MoE 推理优化中的关键挑战和有前景的研究方向。为了促进 MoE 推理优化研究的持续更新和前沿进展的共享，我们建立了一个可访问的仓库：https://github.com/MoE-Inf/awesome-moe-inference/。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="1-moe">1. MoE 模型的崛起与推理挑战</h3>
+<p>大语言模型（LLM）通过 GPT-4、Claude、Gemini 等取得了显著进展，但其规模增长带来了巨大的计算效率挑战。MoE 通过稀疏激活机制，将模型容量分布在多个专家子网络上，仅对每个输入选择性激活相关专家，从而在保持大规模参数的同时控制计算成本。Mixtral 8x7B、DeepSeek-V3、DBRX 等模型已证明 MoE 在扩展语言模型方面的有效性。</p>
+<h3 id="2">2. 高效推理部署的独特困难</h3>
+<p>MoE 模型的高效推理部署面临三大挑战：
+- <strong>模型层</strong>：专家架构设计需平衡模型容量与计算效率，路由机制需优化专家选择和负载分配
+- <strong>系统层</strong>：分布式计算需要复杂的调度算法管理专家放置和激活，负载均衡需处理动态工作负载变化，内存管理需高效处理专家参数的加载和卸载
+- <strong>硬件层</strong>：传统硬件架构为密集计算优化，与 MoE 推理的稀疏、动态特性存在根本性不匹配</p>
+<h3 id="3">3. 缺乏系统化框架</h3>
+<p>现有文献的缺口在于缺乏系统化框架来分析和开发 MoE 模型的全面推理优化解决方案。虽然相关综述讨论了 LLM 效率和 MoE 架构，但尚无专门聚焦于 MoE 推理优化技术的综述。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">分类框架概览</h3>
+<p>本文提出了三层分类框架（如图 1 所示）：</p>
+<h3 id="1-model-level">1. 模型层优化（Model-level）</h3>
+<h4 id="11">1.1 高效模型架构设计</h4>
+<p><strong>MoE-based 注意力设计</strong>：
+- <strong>MAE</strong>：首个从 MoE 视角解释多头注意力机制，使用学习到的门控函数为不同输入激活不同专家
+- <strong>MoA</strong> 和 <strong>BAM</strong>：选择 k 个注意力头，共享键投影和值投影权重
+- <strong>SwitchHead</strong>：共享键投影和查询投影权重以提高计算效率
+- <strong>MoH</strong>：引入共享头和两阶段路由过程，优于 MoA
+- <strong>ModuleFormer</strong>：扩展稀疏模块到注意力和前馈层
+- <strong>JetMoE-8B</strong>：开发强大的开源模型，具有稀疏注意力和稀疏前馈层
+- <strong>DS-MoE</strong>：提出混合密集训练和稀疏推理框架
+- <strong>SUT</strong> 和 <strong>MoEUT</strong>：使用稀疏注意力和稀疏前馈层构建高效的稀疏通用 Transformer 模型</p>
+<p><strong>MoE-based FFN 设计</strong>：
+- <strong>MoE++</strong>：引入三种基于标准专家的零计算专家，减少计算开销
+- <strong>SCoMoE</strong>：利用结构化全对全通信降低并行 MoE 计算的通信成本
+- <strong>Pre-gated MoE</strong>：提出预门控 MoE 模块，预取所需专家以提高推理速度
+- <strong>COMET</strong>：引入基于树的稀疏专家选择机制优化传统门控模块
+- <strong>MoELoRA</strong>：将 LoRA 重新想象为 MoE，实现更参数高效的微调</p>
+<h4 id="12">1.2 模型压缩技术</h4>
+<p><strong>专家剪枝</strong>（表 2 总结）：
+- <strong>结构化剪枝</strong>：直接移除不重要的专家或将多组合并为一个专家
+- <strong>非结构化剪枝</strong>：基于权重幅度进行剪枝
+- <strong>TSEP</strong>：移除非目标任务的非专业专家，同时微调专业专家
+- <strong>NAEE</strong>：通过评估校准数据集上的专家组合消除不重要专家
+- <strong>UNCURL</strong>：基于 MoE 路由器 logits 减少专家数量
+- <strong>PEMPE</strong>：剪枝路由器 l2 范数变化较小的专家
+- <strong>SEER-MoE</strong>：采用重击者计数方法进行专家剪枝
+- <strong>MoE-I²</strong>：提出层遗传搜索和块级 KT 接收域，使用非均匀剪枝比率
+- <strong>MoE-Pruner</strong>：基于路由器提示剪枝幅度最小的权重
+- <strong>MoE-Compression</strong>：提出统一框架，结合结构化和非结构化剪枝
+- <strong>Branch-Train-Merge / Branch-Train-Mix</strong>：独立训练不同部分后合并参数
+- <strong>HC-SMoE</strong>：使用层次聚类合并专家，无需重新训练
+- <strong>MEO</strong>：系统研究 MoE 的计算成本</p>
+<p><strong>专家量化</strong>（表 3 总结）：
+- <strong>MC-MoE</strong>：利用访问频率和激活权重评估专家重要性，通过整数规划确定最佳量化配置
+- <strong>MoE-CSP</strong>：将专家权重量化为 4 位或 8 位，设计特定 CUDA 内核加速计算
+- <strong>MoQE</strong>：将专家权重量化为 2 位，基于观察到量化 FFN 层到 2 位不会显著影响模型质量
+- <strong>QMoE</strong> 和 <strong>CMoE</strong>：激进压缩至 1 位
+- <strong>MoE-MPTQS</strong> 和 <strong>HOBBIT</strong>：基于当前输入动态选择量化专家
+- <strong>EdgeMoE</strong>：通过校准数据集确定适当的专家位宽</p>
+<p><strong>专家知识蒸馏</strong>（图 4-c）：
+- <strong>LLaVA-MoD</strong>：结合 MoE 结构与知识蒸馏，通过模仿蒸馏和偏好蒸馏训练小模型
+- <strong>DeepSpeed-MoE</strong>：采用分阶段知识蒸馏创建蒸馏版本 MoS
+- <strong>OneS</strong>：通过知识收集和知识蒸馏两步从 MoE 生成密集模型
+- <strong>MoE-KD</strong> 和 <strong>CMoE</strong>：将 MoE 语音识别模型蒸馏为密集模型
+- <strong>Switch Transformers</strong> 和 <strong>ELSM</strong>：探索将稀疏模型转换为密集模型
+- <strong>LaDiMo</strong>：通过层间蒸馏将密集模型转换为稀疏 MoE 模型</p>
+<p><strong>专家分解</strong>（图 4-d）：
+- <strong>MPOE</strong>：采用张量分解技术将专家权重矩阵分解为中心张量和辅助张量
+- <strong>MC-SMoE</strong>：先分组合并专家，再应用低秩分解
+- <strong>MoE-I²</strong>：识别专家重要性，为重要专家分配更高秩</p>
+<h4 id="13">1.3 算法改进</h4>
+<p><strong>动态门控</strong>（表 4 总结）：
+- <strong>Li et al.</strong>：提出自适应门控机制，动态确定每个 token 所需专家数量
+- <strong>DynMoE</strong>：引入两种创新方法：自上而下门控和自适应机制
+- <strong>XMoE</strong>：采用较小但更多的专家策略，基于阈值动态激活
+- <strong>AdapMoE</strong>：边设备上的协同设计框架，自适应应用专家激活、预取和 GPU 缓存分配
+- <strong>DA-MoE</strong>：引入基于注意力机制的 token 重要性预测方法指导专家分配</p>
+<p><strong>稀疏到密集</strong>：
+- <strong>XFT</strong>：通过可学习的合并机制将稀疏 MoE 转换为高效的密集 LLM
+- <strong>Switch Transformers</strong>：蒸馏压缩 97% 参数后保留 30% 以上性能
+- <strong>ELSM</strong>：密集学生模型可匹配甚至超越教师模型
+- <strong>OneS</strong>：使用四种方法生成密集模型
+- <strong>EWA</strong>：训练时用 MoE 替换 FFN，推理时恢复密集 ViT
+- <strong>AdaMoLE</strong>：结合 LoRA 结构和专用网络调整激活阈值</p>
+<h3 id="2-system-level">2. 系统层优化（System-level）</h3>
+<h4 id="21-7-a">2.1 专家并行（图 7-a）</h4>
+<p><strong>并行策略设计</strong>（表 5 总结训练加速比）：
+- <strong>Tutel</strong>：动态切换并行策略，无额外开销
+- <strong>Alpa</strong>：重新分类为算子内和算子间并行，自动推导高效执行计划
+- <strong>DeepSpeed-TED</strong>：混合数据、张量和专家并行，设计分片优化器降低峰值内存
+- <strong>BaGuaLu</strong>：提出 MoDa 策略，结合 MoE 并行和数据并行
+- <strong>SmartMoE</strong>：探索异构工作负载感知的混合并行空间
+- <strong>MPMoE</strong>：基于轻量级配置文件的算法，运行时优化流水线并行
+- <strong>MoE-SLC</strong>：贝叶斯优化框架，优化服务器计算中的 MoE 部署</p>
+<p><strong>负载均衡</strong>：
+- <strong>Switch Transformers / Gshard</strong>：添加辅助负载均衡损失项
+- <strong>HashLayer</strong>：使用特殊哈希函数的门控模块防止负载不均衡
+- <strong>Prophet</strong>：构建负载均衡性能模型，使用贪心搜索算法
+- <strong>MoE-Prediction</strong>：跟踪和分析训练过程中每个专家的负载
+- <strong>Lazarus</strong>：使用最优放置算法为热门专家分配更多副本
+- <strong>FlexMoE</strong>：采用细粒度复制策略，动态调整运行时映射
+- <strong>MoE-Deploy / Brainstorm</strong>：依赖历史分配数据和专家重排序
+- <strong>Lynx</strong>：减少批量推理中的活跃专家数量
+- <strong>BaseLayers</strong>：将 token 到专家分配建模为线性分配问题
+- <strong>MoE-ECR</strong>：允许专家选择 top-k token</p>
+<p><strong>全对全通信优化</strong>：
+- <strong>Tutel / HetuMoE / DeepSpeed-MoE</strong>：使用层次全对全算法优化通信
+- <strong>DeepSpeed-TED / TA-MoE</strong>：数据压缩策略减少传输开销
+- <strong>Janus</strong>：数据为中心方法，移动专家而非 token
+- <strong>ExFlow</strong>：将全对全操作从两次减少到一次
+- <strong>Aurora</strong>：对 token 传输排序避免带宽竞争
+- <strong>LocMoE / Parm</strong>：将节点间通信转换为节点内操作
+- <strong>Lina</strong>：优先全对全操作而非全归约操作</p>
+<p><strong>任务调度</strong>：
+- <strong>ScMoE</strong>：引入快捷连接 MoE 架构，有效解耦通信
+- <strong>HiDup</strong>：将输入数据分成两个微批次并行训练
+- <strong>MoESys</strong>：弹性 MoE 训练策略，2D 预取和融合通信
+- <strong>ScheMoE</strong>：模块化计算和通信任务，自适应调度算法
+- <strong>PipeMoE</strong>：性能模型预测计算和通信成本
+- <strong>EPS-MoE</strong>：动态选择最优内核实现自适应重叠</p>
+<p><strong>推理加速性能</strong>（表 6、7）：
+- DeepSpeed-MoE 在推理时加速 7.25x（基于 PyTorch 基线）
+- Lina 实现 1.63x 推理加速，优先全对全通信
+- Brainstorm 实现 3.33x 推理加速，使用配置文件预加载权重</p>
+<h4 id="22-7-b">2.2 专家卸载（图 7-b）</h4>
+<p><strong>专家预取</strong>：
+- <strong>Mixtral-Offloading / AdapMoE / HOBBIT</strong>：使用当前门控输入预测下一层所需专家，预测准确率约 90%
+- <strong>Pre-gated MoE</strong>：在当前层计算时识别下一层所需专家并预加载
+- <strong>EdgeMoE</strong>：使用校准数据集构建预测表
+- <strong>DyNN-Offload</strong>：训练先导模型预测下一层所需专家
+- <strong>MoE-Infinity</strong>：基于请求级使用频率追踪预取高优先级专家
+- <strong>ProMoE</strong>：使用学习到的预测器滑动窗口预取
+- <strong>ExpertFlow</strong>：训练基于 Transformer 的预测器预测当前前向传递所需全部专家
+- <strong>SiDA</strong>：使用基于网络的哈希函数预测激活专家
+- <strong>Read-ME</strong>：构建预门控路由器预测所有所需专家</p>
+<p><strong>专家缓存</strong>（表 8、9 总结卸载系统性能）：
+- <strong>LRU 策略</strong>：Mixtral-Offloading、AdapMoE、EdgeMoE 等
+- <strong>MoE-Infinity</strong>：使用变体 LFU 策略
+- <strong>Fiddler</strong>：静态数据集分析专家活跃次数
+- <strong>SwapMoE</strong>：基于专家重要性分数存储关键专家
+- <strong>AdapMoE</strong>：为不同模型层引入动态缓存大小
+- <strong>HOBBIT</strong>：多维缓存策略，结合 LRU、LFU 和 LHU（最少高精度使用）
+- <strong>CacheMoE</strong>：缓存感知策略调整路由器 logits</p>
+<p><strong>专家加载</strong>：
+- <strong>EdgeMoE / HOBBIT</strong>：使用低精度专家减少加载时间
+- <strong>HOBBIT</strong>：token 级动态专家加载机制，基于门控模块输出计算专家重要性分数
+- <strong>AdapMoE</strong>：使用 Fisher 信息矩阵计算专家重要性</p>
+<p><strong>CPU 协助</strong>：
+- <strong>Fiddler</strong>：在 CPU 上执行 MoE 计算，实现 8.20x 加速
+- <strong>HOBBIT</strong>：使用低精度专家在 CPU 上计算
+- <strong>MoE-Lightning</strong>：引入 CPU-GPU-I/O 流水线策略，实现 3.50x 加速</p>
+<p><strong>框架统计</strong>（表 10）：
+- 并行系统：PyTorch（12）、Transformers（5）、DeepSpeed（9）
+- 卸载系统：Transformers（7）、PyTorch（4）
+- 其他：Llama.cpp、vLLM、FasterTransformer</p>
+<h3 id="3-hardware-level">3. 硬件层优化（Hardware-level）</h3>
+<ul>
+<li><strong>MoNDE</strong>：引入近数据处理（NDP）方案，集成 CXL 控制器和专用 NDP 核心，GPU 处理热专家，NDP 单元处理冷专家，实现并发执行</li>
+<li><strong>FLAME</strong>：首个在 FPGA 上利用 MoE 稀疏性的加速框架，使用 M:N 剪枝减少不必要的计算，通过圆形专家预测（CEPR）提高专家预测准确率，使用双缓冲机制加载预测专家</li>
+<li><strong>M3ViT / Edge-MoE</strong>：基于多任务场景中注意力计算重排序构建 FPGA 架构</li>
+<li><strong>Duplex</strong>：结合 xPU 和逻辑 PIM 的设备执行每层，通过 PIM 微架构优化低 Op/B 操作</li>
+<li><strong>Space-mate</strong>：用于移动设备 SLAM 任务的加速器设计，包含乱序 SMoE 路由器和异构核心架构</li>
+</ul>
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">模型层压缩结果</h3>
+<ul>
+<li><strong>量化方法</strong>（表 3）：大多数方法实现 4x 以上内存减少；QMoE 可达 20x 内存减少但有 5% 开销；CMoE 实现 150x 压缩但准确率下降 23.81%；EdgeMoE 在 2-8 位量化下实现 1.05-1.18x 内存减少和 1.11-2.78x 推理加速</li>
+<li><strong>剪枝方法</strong>（表 2）：支持 25%-96.875% 的最大剪枝比率，包含结构化和非结构化方法</li>
+<li><strong>动态门控</strong>（表 4）：Li et al. 实现 38.2% FLOPs 减少和 1.32x 加速；DynMoE 实现 9% FLOPs 减少和 1.37x 加速；XMoE 实现 75% FLOPs 减少；AdapMoE 减少 25% 专家</li>
+</ul>
+<h3 id="_8">系统层性能</h3>
+<ul>
+<li><strong>并行系统训练加速</strong>（表 5）：</li>
+<li>HetuMoE：相比 DeepSpeed-MoE 加速 5.88x</li>
+<li>Lazarus：加速 3.40x（tokens/sec）</li>
+<li>Parm：加速 3.00x</li>
+<li>Prophet：加速 2.39x</li>
+<li><strong>推理加速</strong>（表 6）：</li>
+<li>DeepSpeed-MoE（PyTorch 基线）：7.25x</li>
+<li>Brainstorm（Tutel 基线）：3.33x</li>
+<li>MoE-Deploy（Tutel 基线）：3.32x tokens/sec</li>
+<li>ExFlow（DeepSpeed-MoE 基线）：2.2x tokens/sec</li>
+<li><strong>卸载系统性能</strong>（表 8、9）：</li>
+<li>Fiddler（Mixtral-8x7B）：8.20x tokens/sec</li>
+<li>ExpertFlow（Switch Transformer）：5.23x tokens/sec</li>
+<li>MoE-Infinity（Switch Transformer）：4.53x latency/token</li>
+<li>SIDA（Switch Transformer）：3.93x samples/sec</li>
+<li>MoE-Lightning（FlexGen 基线）：3.50x tokens/sec</li>
+</ul>
+<h3 id="_9">硬件层性能</h3>
+<ul>
+<li>MoNDE 通过 NDP 架构实现热/冷专家并发执行</li>
+<li>FLAME 在 FPGA 上实现 MoE 稀疏性加速</li>
+<li>Space-mate 在 303.5mW 功耗下实现 SLAM 任务实时处理</li>
+</ul>
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>系统化分类框架</strong>：首次专门针对 MoE 推理优化的三层分类框架（模型、系统、硬件），为研究者提供清晰的技术路线图</li>
+<li><strong>全面覆盖</strong>：涵盖 200+ 相关方法，从架构设计到硬件加速，从理论到实践，全面覆盖 MoE 推理优化的各个方面</li>
+<li><strong>详细对比分析</strong>：提供多张对比表格（表 2-10），系统比较不同方法的性能指标、优劣势和适用场景</li>
+<li><strong>实用性强</strong>：对每种方法进行了深入分析，包括技术细节、实现方式和实际效果，对工程师和研究者具有很高的参考价值</li>
+<li><strong>前沿性</strong>：涵盖了截至 2024 年底/2025 年初的最新进展，包括 DeepSeek-V3、Mixtral 等最新 MoE 模型</li>
+<li><strong>开源仓库</strong>：配套的 awesome-moe-inference 仓库持续更新，方便研究者跟踪最新进展</li>
+<li><strong>多层次优化视角</strong>：从模型架构、系统调度到硬件加速的多维度视角，帮助读者全面理解 MoE 推理优化的全貌</li>
+</ol>
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>实验结果对比困难</strong>：由于不同系统使用不同的基线和评估配置，跨系统比较性能存在挑战（如表 6、8、9 所示）</li>
+<li><strong>缺乏统一基准</strong>：当前缺乏针对 MoE 的标准化基准测试框架，现有评估方法在不同研究之间差异显著</li>
+<li><strong>硬件层覆盖有限</strong>：硬件层优化部分相对较薄，仅有少数方法（MoNDE、FLAME、M3ViT、Edge-MoE、Duplex、Space-mate），缺乏对更多新型硬件加速器的深入讨论</li>
+<li><strong>能耗分析不足</strong>：虽然提到了能耗效率的重要性，但本文主要关注吞吐量和延迟指标，能耗和碳排放优化方面讨论较少</li>
+<li><strong>实时性和可靠性</strong>：对 MoE 推理中的实时性保证和系统可靠性（如故障容错）讨论不够深入</li>
+<li><strong>跨模态适用性</strong>：主要聚焦于语言模型，对 MoE 在计算机视觉、多模态任务中的推理优化讨论较少</li>
+<li><strong>时间约束</strong>：论文为预印本（arXiv），部分最新进展可能未被纳入</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>基于 EfficientPaper 项目对高效 AI 研究的持续关注，本论文提供了多个相关的研究方向：</p>
+<ol>
+<li><strong>结构设计（structure_design）</strong>：</li>
+<li>高效专家架构设计（MoE-based Attention / FFN）</li>
+<li>稀疏激活模式优化</li>
+<li>
+<p>动态路由策略和专家合并方法</p>
+</li>
+<li>
+<p><strong>模型压缩（model_compression）</strong>：</p>
+</li>
+<li>专家剪枝、量化和知识蒸馏</li>
+<li>低秩分解技术</li>
+<li>
+<p>稀疏到密集的转换</p>
+</li>
+<li>
+<p><strong>分布式推理（distributed_inference）</strong>：</p>
+</li>
+<li>专家并行和负载均衡</li>
+<li>全对全通信优化</li>
+<li>
+<p>任务调度策略</p>
+</li>
+<li>
+<p><strong>内存优化（memory_optimization）</strong>：</p>
+</li>
+<li>专家卸载和预取</li>
+<li>专家缓存策略</li>
+<li>
+<p>CPU-GPU 协同计算</p>
+</li>
+<li>
+<p><strong>硬件协同设计（hardware_co_design）</strong>：</p>
+</li>
+<li>近数据处理架构</li>
+<li>FPGA 上的 MoE 加速</li>
+<li>
+<p>异构计算架构</p>
+</li>
+<li>
+<p><strong>评测基准（benchmarking）</strong>：</p>
+</li>
+<li>建立统一的 MoE 推理评估基准</li>
+<li>
+<p>标准化的性能指标和评估方法</p>
+</li>
+<li>
+<p><strong>新兴方向</strong>：</p>
+</li>
+<li>能耗感知部署策略</li>
+<li>量子计算与 MoE 结合</li>
+<li>神经形态计算与 MoE 结合</li>
+<li>多模态 MoE 推理优化</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>本笔记由 AI Agent（Hermes Agent）自动生成，基于论文全文文本提取和分析。笔记内容仅供参考，不构成对原论文的完全准确引用。如需准确引用，请参考原论文：arXiv:2412.14219v2。生成时间：2026年6月5日。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

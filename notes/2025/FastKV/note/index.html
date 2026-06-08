@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,25 +161,246 @@
   
                 <h1 id="fastkv-kv-cache-compression-for-fast-long-context-processing-with-token-selective-propagation">FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation</h1>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>While large language models (LLMs) excel at handling long-context sequences,
-they require substantial key-value (KV) caches to store contextual information,
-which can heavily burden computational efficiency and memory usage. Previous
-efforts to compress these KV caches primarily focused on reducing memory
-demands but were limited in enhancing latency. To address this issue, we
-introduce FastKV, a KV cache compression method designed to enhance latency for
-long-context sequences. To enhance processing speeds while maintaining
-accuracy, FastKV adopts a novel Token-Selective Propagation (TSP) approach that
-retains the full context information in the initial layers of LLMs and
-selectively propagates only a portion of this information in deeper layers even
-in the prefill stage. Additionally, FastKV incorporates grouped-query attention
-(GQA)-aware KV cache compression to exploit the advantages of GQA in both
-memory and computational efficiency. Our experimental results show that FastKV
-achieves 2.00<script type="math/tex">\times</script> and 1.40<script type="math/tex">\times</script> improvements in time-to-first-token
-(TTFT) and throughput, respectively, compared to HeadKV, the state-of-the-art
-KV cache compression method. Moreover, FastKV successfully maintains accuracy
-on long-context benchmarks at levels comparable to the baselines. Our code is
-available at https://github.com/dongwonjo/FastKV.</p>
+<blockquote>
+<p>⚠️ 本 note 由 AI Agent 自动生成，基于论文原文提取与分析，仅供参考。生成时间：2025年。</p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>FastKV 通过在 LLM 前半层保留完整上下文、后半层选择性传播关键 token 的双阶段策略（TSP），结合 GQA 感知的 KV 缓存压缩，在长上下文推理中实现 <strong>2.00× TTFT 加速</strong> 和 <strong>1.40× 吞吐提升</strong>（对比 HeadKV），同时保持与基线相当的精度。</p>
+<h2 id="_2">摘要（中文翻译）</h2>
+<p>大型语言模型（LLM）在处理长上下文序列方面表现优异，但需要大量的 KV 缓存来存储上下文信息，这严重增加了计算效率和内存使用负担。以往压缩 KV 缓存的方法主要关注减少内存需求，但在降低延迟方面存在局限。为解决此问题，本文提出 FastKV，一种旨在提升长上下文序列延迟性能的 KV 缓存压缩方法。为在保持精度的同时提升处理速度，FastKV 采用了全新的 <strong>Token 选择性传播（TSP）</strong> 方法：在 LLM 的初始层保留完整的上下文信息，而在深层仅选择性地传播部分信息（即使在 prefill 阶段）。此外，FastKV 集成了 <strong>GQA 感知的 KV 缓存压缩</strong>，以利用分组查询注意力（GQA）在内存和计算效率方面的优势。实验结果显示，与当前最先进的 KV 缓存压缩方法 HeadKV 相比，FastKV 在首 token 时间（TTFT）和吞吐量方面分别实现了 <strong>2.00×</strong> 和 <strong>1.40×</strong> 的提升，同时在长上下文基准测试中成功保持了与基线相当的精度。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<ol>
+<li><strong>长上下文推理的瓶颈</strong>：LLM 支持处理 128k 甚至更长的上下文序列，但 KV 缓存的大小随序列长度线性增长，成为推理服务的关键瓶颈。以 LLaMA-3.1-8B 为例，处理 128k token 需要 17.12GB KV 缓存，超过模型本身大小（16.06GB）。</li>
+<li><strong>现有方法的不足</strong>：</li>
+<li><strong>SnapKV / AdaKV / HeadKV</strong>：通过注意力头级别的 token 裁剪保留精度，但需在整个 prefill 阶段处理完整上下文，<strong>无法加速 prefill</strong>（TTFT 甚至比 Full KV 更慢）。</li>
+<li><strong>GemFilter</strong>：通过在中间层过滤 token 并重算 prefill 来加速，但丢弃的 token 信息完全丢失，<strong>精度下降严重</strong>（KV budget=512 时精度下降高达 13%）。</li>
+<li><strong>核心矛盾</strong>：现有方法无法同时实现 <strong>精度保持</strong> 和 <strong>prefill 阶段加速</strong>。</li>
+</ol>
+<h3 id="_5">研究洞察</h3>
+<p>作者通过分析 LLM 注意力模式发现：
+- <strong>浅层</strong>：注意力分布广泛，涉及大量 token，模式多样
+- <strong>深层</strong>：注意力集中在少量关键 token 上，且这些关键 token 在层间具有一致性
+- 仅 <strong>2k 个重要 token（占总数 1.56%）</strong> 在深层可接收超过 50%（甚至 80%）的注意力分数</p>
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1-token-selective-propagation-tsp">1. Token-Selective Propagation (TSP)</h3>
+<p><strong>核心思想</strong>：在 LLM 中间层（TSP 层）作为分界点，前半层保留完整上下文传播，后半层仅传播选定的关键 token。</p>
+<p><strong>三个关键设计参数</strong>：
+- <strong>TSP 层位置</strong>：设在 LLM 的中间层（LLaMA-3.1-8B: 第15层，Mistral-Nemo-12B: 第19层）
+- <strong>TSP 长度</strong>（TSPlength）：选定传播的 token 数量，设为 2048
+- <strong>KV 预算</strong>（KV budget）：最终存储的 KV 缓存大小，独立于 TSP 长度</p>
+<p><strong>算法流程</strong>（Algorithm 1）：</p>
+<pre><code>输入: 输入序列 {I}, 层数 {L}, TSP层, TSP长度, KV预算
+1. X ← Embedding(I)
+2. 对于 l = 0 到 L-1:
+   如果 l ≤ TSP层:
+     X, Att, KX, VX ← layer_l(X)    # 完整上下文前向传播
+     K, V ← KV_Compress(KX, VX, Att, KV_budget)  # GQA感知压缩
+     如果 l == TSP层:
+       x ← HiddenCompress(X, Att, TSP_length)  # 选择关键 token
+   否则:
+     x, Att, Kx, Vx = layer_l(x)    # 仅传播选定 token
+     K, V ← KV_Compress(Kx, Vx, Att, KV_budget)
+   C ← update(K, V)
+3. O ← LMHead(x)
+返回 O, C
+</code></pre>
+<p><strong>关键设计特点</strong>：
+- TSP 层之前：完整上下文传播（但 KV 缓存压缩），确保关键信息不丢失
+- TSP 层之后：仅传播 TSP_length 个关键 token，显著减少计算量
+- TSP 长度与 KV 预算独立：例如 TSP_length=2048，KV budget=512 时，传播 2048 个 token，但只存储 512 个到 KV 缓存
+- 直接向后传播（不同于 GemFilter 的回退重算），更好适应 token 重要性的层间变化</p>
+<h3 id="2-token">2. 重要 token 识别</h3>
+<p><strong>关键发现</strong>（Section 3.3-3.4）：
+- <strong>注意力集中性</strong>：仅 2k 个 token（1.56%）在深层接收超过 50% 的注意力分数
+- <strong>层间一致性</strong>：中间层及之后，重要 token 的最小匹配率超过 25%（即至少 512 个 token 在层间保持一致）
+- <strong>t-SNE 分析</strong>：从深层丢弃 token 对输出 logit 影响极小，而从浅层丢弃则导致显著偏差</p>
+<p><strong>Token 重要性评估公式</strong>：
+- 基于 SnapKV 的公式（Equation 1），但增加了 TSP 层的跨注意力头聚合（Equation 2）：
+  - 对所有注意力头的得分求平均：<script type="math/tex">S_i^{TSP} = \frac{1}{H} \sum_{h=0}^{H-1} S_i^{TSP,h}</script>
+</p>
+<h3 id="3-gqa-kv">3. GQA 感知 KV 缓存压缩</h3>
+<ul>
+<li>在早期层，采用 GQA 兼容的 KV 缓存压缩（源自 AdaKV）</li>
+<li>在每个注意力组内聚合注意力分数，选择 top-K 重要 token 的 KV 缓存</li>
+<li>公式（Equation 3）：<script type="math/tex">S_i^{l,g} = \frac{1}{H_G} \sum_{h=h_g}^{h_g+H_G} S_i^{j,h}</script>
+</li>
+</ul>
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA-3.1-8B-Instruct（32层）、Mistral-Nemo-12B-Instruct（40层）</li>
+<li><strong>基准测试</strong>：LongBench（14个子任务）、Needle-in-a-Haystack</li>
+<li><strong>基线方法</strong>：SnapKV、AdaKV、HeadKV、GemFilter</li>
+<li><strong>硬件</strong>：NVIDIA A100 GPU</li>
+<li><strong>超参数</strong>：TSP 层=15/19，TSP 长度=2048，观察窗口=8，池化核=7</li>
+</ul>
+<h3 id="longbench">精度评估（LongBench）</h3>
+<table>
+<thead>
+<tr>
+<th>KV Budget</th>
+<th>方法</th>
+<th>LLaMA-3.1-8B 平均精度</th>
+<th>Mistral-Nemo-12B 平均精度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full</td>
+<td>Full KV</td>
+<td>48.63%</td>
+<td>48.33%</td>
+</tr>
+<tr>
+<td>512</td>
+<td>SnapKV</td>
+<td>46.60%</td>
+<td>46.07%</td>
+</tr>
+<tr>
+<td>512</td>
+<td>AdaKV</td>
+<td>46.20%</td>
+<td>46.52%</td>
+</tr>
+<tr>
+<td>512</td>
+<td>HeadKV</td>
+<td>47.76%</td>
+<td>46.93%</td>
+</tr>
+<tr>
+<td>512</td>
+<td>GemFilter</td>
+<td>35.64%</td>
+<td>42.32%</td>
+</tr>
+<tr>
+<td><strong>512</strong></td>
+<td><strong>FastKV</strong></td>
+<td><strong>46.90%</strong></td>
+<td><strong>46.63%</strong></td>
+</tr>
+<tr>
+<td>2048</td>
+<td>SnapKV</td>
+<td>48.00%</td>
+<td>47.85%</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>AdaKV</td>
+<td>48.37%</td>
+<td>47.88%</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>HeadKV</td>
+<td>48.23%</td>
+<td>47.92%</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>GemFilter</td>
+<td>43.90%</td>
+<td>46.59%</td>
+</tr>
+<tr>
+<td><strong>2048</strong></td>
+<td><strong>FastKV</strong></td>
+<td><strong>48.10%</strong></td>
+<td><strong>48.11%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- FastKV 在 KV budget=512 时保持与 SnapKV/AdaKV/HeadKV 相当的精度，远超 GemFilter
+- FastKV 在 KV budget=2048 时精度甚至略优于部分基线
+- 准确性下降不到 1%，与 HeadKV 相当</p>
+<h3 id="_9">延迟与吞吐量评估</h3>
+<p><strong>TTFT（128k 输入，KV budget=512）</strong>：
+| 方法 | TTFT (秒) |
+|------|----------|
+| Full KV | ~28.3 |
+| SnapKV | ~28.3 |
+| AdaKV | ~28.4 |
+| HeadKV | ~28.3 |
+| GemFilter | 12.51 |
+| <strong>FastKV</strong> | <strong>14.14</strong> |</p>
+<ul>
+<li>FastKV 相比 Full KV 加速 <strong>~2.00×</strong></li>
+<li>FastKV 相比 HeadKV 加速 <strong>~2.00×</strong></li>
+<li>GemFilter 略快，但精度远低于 FastKV</li>
+</ul>
+<p><strong>吞吐量（128k 输入，KV budget=512）</strong>：
+| 方法 | 吞吐量 (tokens/sec) |
+|------|-------------------|
+| Full KV | ~12.7 |
+| SnapKV | 48.71 |
+| AdaKV | 50.57 |
+| HeadKV | 45.64 |
+| GemFilter | 63.40 |
+| <strong>FastKV</strong> | <strong>63.84</strong> |</p>
+<ul>
+<li>FastKV 吞吐量是 Full KV 的 <strong>5.07×</strong>，HeadKV 的 <strong>1.40×</strong></li>
+<li>与 GemFilter 相当，但精度显著更高</li>
+</ul>
+<h3 id="needle-in-a-haystack">Needle-in-a-Haystack 结果</h3>
+<ul>
+<li>FastKV 在 512 KV budget 下实现最佳性能</li>
+<li>相比 HeadKV 有轻微改进</li>
+<li>GemFilter 表现最差</li>
+</ul>
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>首个同时提升 TTFT 和吞吐的 KV 缓存压缩方法</strong>：在 prefill 阶段显著加速（2.00× TTFT），同时保持精度</li>
+<li><strong>双阶段策略设计精巧</strong>：早期层保留完整上下文，深层选择性传播，有效平衡精度和效率</li>
+<li><strong>TSP 长度与 KV 预算解耦</strong>：允许传播更多 token 以捕获上下文信息，同时 KV 缓存大小受限</li>
+<li><strong>GQA 感知压缩</strong>：利用 GQA 架构的优势，进一步提升内存和计算效率</li>
+<li><strong>实际可部署</strong>：在 512 和 2048 KV budget 下均保持高精度，适用于实际应用</li>
+<li><strong>实现简洁</strong>：基于 HuggingFace Transformers 的自注意力实现 + FlashAttention-2，易于集成</li>
+</ol>
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>TSP 层位置固定</strong>：采用中间层作为 TSP 层，可能不是所有模型和任务的最优选择</li>
+<li><strong>TSP 长度需要调参</strong>：不同模型和任务可能需要不同的 TSP 长度（如 512 可能信息损失过大）</li>
+<li><strong>仅在 prefill 阶段加速</strong>：虽然论文主要关注 TTFT，但生成阶段的加速效果未详细评估</li>
+<li><strong>依赖注意力模式的层间一致性</strong>：如果模型的注意力模式在层间变化剧烈（如某些特定架构），TSP 效果可能受限</li>
+<li><strong>未与其他非 KV 缓存压缩方法对比</strong>：如量化、蒸馏等方法，可能有互补效果</li>
+<li><strong>模型规模限制</strong>：实验仅在 8B 和 12B 模型上验证，更大模型（如 70B）的效果未确认</li>
+<li><strong>GQA 感知压缩的适用性</strong>：主要针对 GQA 架构设计，对非 GQA 架构的适用性需进一步研究</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV 缓存压缩</strong>：FastKV 是 KV 缓存压缩领域的重要进展，可与 AdaKV、HeadKV、SnapKV 等方法进行对比研究</li>
+<li><strong>注意力机制优化</strong>：TSP 方法基于注意力模式的层间一致性，可启发新的注意力机制设计</li>
+<li><strong>长上下文推理</strong>：在 128k 甚至更长上下文场景下的高效推理，是当前 LLM 应用的关键需求</li>
+<li><strong>推理加速</strong>：TTFT 和吞吐量的提升对于实时应用（如对话系统、代码生成）至关重要</li>
+<li><strong>硬件-算法协同</strong>：GQA 感知压缩与硬件架构（如 GPU 内存层次）的协同优化</li>
+<li><strong>模型部署</strong>：在资源受限场景（如边缘设备）下的 LLM 推理优化</li>
+<li><strong>动态 KV 预算分配</strong>：FastKV 的 TSP 长度和 KV 预算解耦设计，可启发自适应 KV 预算分配策略</li>
+</ol>
+<h2 id="_12">论文信息</h2>
+<ul>
+<li><strong>标题</strong>: FastKV: KV Cache Compression for Fast Long-Context Processing with Token-Selective Propagation</li>
+<li><strong>作者</strong>: Dongwon Jo<em>, Jiwon Song</em>, Yulhwa Kim, Jae-Joon Kim</li>
+<li><strong>机构</strong>: Seoul National University</li>
+<li><strong>年份</strong>: 2025</li>
+<li><strong>来源</strong>: arXiv</li>
+<li><strong>链接</strong>: http://arxiv.org/abs/2502.01068v1</li>
+<li><strong>代码</strong>: https://github.com/dongwonjo/FastKV</li>
+<li><strong>关键词</strong>: kv_cache_sparse</li>
+</ul>
+<h2 id="_13">关键图表</h2>
+<ul>
+<li><strong>Figure 2</strong>（主图）：不同 KV 缓存压缩方法的对比（FastKV 双阶段策略示意）</li>
+<li><strong>Figure 3</strong>：Top 2k 重要 token 的注意力分数占比（深层超过 50%，甚至 80%）</li>
+<li><strong>Figure 4</strong>：重要 token 在层间的最小匹配率（中间层超过 25%）</li>
+<li><strong>Figure 5</strong>：t-SNE 可视化，深层丢弃 token 对输出 logit 影响极小</li>
+<li><strong>Figure 7</strong>：不同 TSP 长度和 KV budget 下的精度与 TTFT</li>
+<li><strong>Table 1</strong>：LongBench 完整对比结果</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

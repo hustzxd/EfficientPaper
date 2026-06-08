@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,27 +164,240 @@
 <p>Yucheng Li, Huiqiang Jiang, Chengruidong Zhang, Qianhui Wu, Xufang Luo, Surin Ahn, Amir H. Abdi, Dongsheng Li, Jianfeng Gao, Yuqing Yang, Lili Qiu</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The integration of long-context capabilities with visual understanding
-unlocks unprecedented potential for Vision Language Models (VLMs). However, the
-quadratic attention complexity during the pre-filling phase remains a
-significant obstacle to real-world deployment. To overcome this limitation, we
-introduce MMInference (Multimodality Million tokens Inference), a dynamic
-sparse attention method that accelerates the prefilling stage for long-context
-multi-modal inputs. First, our analysis reveals that the temporal and spatial
-locality of video input leads to a unique sparse pattern, the Grid pattern.
-Simultaneously, VLMs exhibit markedly different sparse distributions across
-different modalities. We introduce a permutation-based method to leverage the
-unique Grid pattern and handle modality boundary issues. By offline search the
-optimal sparse patterns for each head, MMInference constructs the sparse
-distribution dynamically based on the input. We also provide optimized GPU
-kernels for efficient sparse computations. Notably, MMInference integrates
-seamlessly into existing VLM pipelines without any model modifications or
-fine-tuning. Experiments on multi-modal benchmarks-including Video QA,
-Captioning, VisionNIAH, and Mixed-Modality NIAH-with state-of-the-art
-long-context VLMs (LongVila, LlavaVideo, VideoChat-Flash, Qwen2.5-VL) show that
-MMInference accelerates the pre-filling stage by up to 8.3x at 1M tokens while
-maintaining accuracy. Our code is available at https://aka.ms/MMInference.</p>
+<h2 id="_1">一句话总结</h2>
+<p>MMInference 是一种基于模态感知排列的动态稀疏注意力方法，通过利用多模态 VLM 中独特的 Grid 稀疏模式和模态边界特性，将长上下文 VLM 预填充阶段加速最高 8.3 倍（在 1M token 时），且无需任何模型修改或微调。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>将长上下文能力与视觉理解相结合，为视觉语言模型（VLM）释放了前所未有的潜力。然而，预填充阶段的二次注意力复杂度仍是实际部署的重大障碍。为克服这一限制，我们提出了 MMInference（Multimodality Million tokens Inference），一种动态稀疏注意力方法，用于加速长上下文多模态输入的预填充阶段。</p>
+<p>首先，我们的分析揭示了视频输入的时空局部性导致了一种独特的稀疏模式——Grid 模式。同时，VLM 在不同模态间表现出明显不同的稀疏分布。我们引入了一种基于排列的方法来利用独特的 Grid 模式并处理模态边界问题。通过离线搜索每个注意力头的最优稀疏模式，MMInference 根据输入动态构建稀疏分布。我们还提供了优化的 GPU 内核以实现高效的稀疏计算。值得注意的是，MMInference 可无缝集成到现有 VLM 管线中，无需任何模型修改或微调。</p>
+<p>在多模态基准测试（包括 Video QA、Captioning、VisionNIAH 和 Mixed-Modality NIAH）上的实验，使用最前沿的长上下文 VLM（LongVila、LlavaVideo、VideoChat-Flash、Qwen2.5-VL）表明，MMInference 在 1M token 时可将预填充阶段加速最高 8.3 倍，同时保持精度。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>长上下文 VLM 的实际部署瓶颈</strong>：随着 VLM 上下文长度扩展到处理长视频和多模态输入，预填充阶段的注意力计算复杂度为 O(n²)，导致极高的 Time-to-First-Token 延迟。例如，256 帧视频的预填充可能需要数分钟，严重阻碍了长上下文 VLM 在实际应用中的广泛采用。</p>
+</li>
+<li>
+<p><strong>现有稀疏注意力方法的局限</strong>：虽然 MInference 等方法已提出动态稀疏注意力用于长上下文 LLM 加速，但这些方法未能有效利用 VLM 中独特的稀疏模式，且难以处理混合或交错模态输入，限制了其在多模态场景中的适用性。</p>
+</li>
+<li>
+<p><strong>VLM 独特的稀疏模式</strong>：VLM 的注意力矩阵具有独特的稀疏模式，包括由视频输入时空局部性产生的 Grid 模式，以及由不同模态间注意力分布差异产生的模态边界问题。这些特性需要专门的稀疏注意力策略。</p>
+</li>
+<li>
+<p><strong>模态边界问题</strong>：多模态输入中，不同模态（如视觉和语言）之间的注意力模式存在明显边界，现有的稀疏注意力方法无法有效处理这些边界，导致性能下降。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">核心框架</h3>
+<p>MMInference 由三个模块组成，覆盖了模态内和模态间稀疏注意力模式：</p>
+<h4 id="1-grid-head">1. Grid Head 稀疏注意力（模态内）</h4>
+<p><strong>动机</strong>：视频和图像输入的时空局部性导致注意力图中出现均匀间隔的水平和垂直线，形成 Grid 模式。这种模式与文本 LLM 中的垂直斜线模式（Vertical-Slash）截然不同。</p>
+<p><strong>方法</strong>：
+- <strong>在线搜索</strong>：利用最后一个查询向量（lastq=64）与 Key 的近似注意力矩阵，通过 view 操作快速搜索 Grid 的步长和相位（stride 和 phase）
+- <strong>排列优化</strong>：使用识别出的 Grid 步长和相位对 Q、K、V 张量进行排列，将稀疏的 Grid 模式转换为连续的块稀疏索引，便于硬件高效计算
+- <strong>实现优化</strong>：在内核中动态加载和写入张量，避免显式排列的开销</p>
+<p><strong>算法流程</strong>（Algorithm 1）：
+1. 用 lastq 个查询向量近似注意力矩阵
+2. 在线搜索 Grid 步长和相位
+3. 对 Q、K、V 进行排列
+4. 使用动态块稀疏注意力（FlashAttention）计算
+5. 稀疏混合分数和值</p>
+<h4 id="2">2. 混合模态稀疏注意力（模态间）</h4>
+<p>将 VLM 中的模态边界分为四类：</p>
+<ul>
+<li><strong>No-Boundary</strong>：无明显模态边界</li>
+<li><strong>K-Boundary</strong>：仅在 Key 维度有边界</li>
+<li><strong>Q-Boundary</strong>：在 Query 维度有边界</li>
+<li><strong>2D-Boundary</strong>：在 Query 和 Key 维度均有边界</li>
+</ul>
+<p><strong>Q-Boundary Head</strong>：
+- 使用行排列（row-wise permutation）按模态分组 Q 张量
+- 对每个模态分别应用离线优化的稀疏注意力（A-shape、Vertical-Slash、Grid Head）
+- 利用每个模态末尾的查询向量动态近似稀疏索引</p>
+<p><strong>2D-Boundary Head</strong>：
+- 在 Query 和 Key 维度均执行排列
+- 对 Q、K、V 按模态分组
+- 对每对模态进行迭代遍历，分别计算动态稀疏注意力
+- 使用 Triton 实现注意力掩码构建</p>
+<h4 id="3">3. 模态感知稀疏注意力搜索算法</h4>
+<p>分三步进行：
+1. <strong>模态内搜索</strong>：在每个模态内搜索最优稀疏模式
+2. <strong>跨模态搜索</strong>：在所有模态对之间搜索
+3. <strong>模态间搜索</strong>：基于前两步的结果进行联合优化</p>
+<p>搜索空间基于实际 GPU 内核测量的 FLOPs（而非理论估计），确保实际效率。搜索时间约 15 分钟（单张 A100），使用一个 egoschema 任务的样本作为校准集。</p>
+<h3 id="gpu">优化的 GPU 内核</h3>
+<ul>
+<li><strong>Grid-Shape Flash Attention</strong>：集成块稀疏 FlashDecoding（Q 端稀疏）和块稀疏 FlashAttention-2（K 端稀疏）</li>
+<li><strong>Q-Boundary Flash Attention</strong>：沿 Query 维度引入稀疏性</li>
+<li><strong>2D-Boundary Flash Attention</strong>：在 Query 和 Key 维度均应用稀疏性</li>
+</ul>
+<p>所有内核使用 Triton 和 FlashAttention 实现，通过 PIT（Permutation Invariant Transformation）动态稀疏编译器进行优化。</p>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">主要实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llava-Video-7B、LongVILA-7B、Qwen2.5-VL-7B、VideoChat-Flash</li>
+<li><strong>基准测试</strong>：Video QA（ActNet-QA、EgoSchema、Next-QA）、PerceptionTest、VideoDC、VideoMME、V-NIAH、MM-NIAH</li>
+<li><strong>硬件</strong>：单张 NVIDIA A100（bfloat16）</li>
+</ul>
+<h3 id="_8">关键结果</h3>
+<h4 id="1-table-1">1. 视频理解任务（Table 1）</h4>
+<ul>
+<li><strong>Llava-Video-7B</strong>（110帧，20K tokens）：</li>
+<li>MMInference：47.3% FLOPs，平均精度 57.6%，与全注意力（57.6%）持平</li>
+<li>MInference：78.8% FLOPs，平均精度 57.5%</li>
+<li>
+<p>Tri-shape：49.0% FLOPs，平均精度 56.7%</p>
+</li>
+<li>
+<p><strong>LongVILA-7B</strong>（256帧，65K tokens）：</p>
+</li>
+<li>MMInference：31.8% FLOPs，平均精度 55.4%，优于全注意力（55.5%）</li>
+<li>
+<p>MInference：47.0% FLOPs，平均精度 55.2%</p>
+</li>
+<li>
+<p><strong>Qwen2.5-VL-7B-Instruct</strong>（256帧，33K tokens）：</p>
+</li>
+<li>MMInference：41.3% FLOPs，平均精度 59.4%，与全注意力（59.5%）持平</li>
+</ul>
+<h4 id="2-video-needle-in-a-haystackv-niah">2. Video Needle In A Haystack（V-NIAH）</h4>
+<ul>
+<li>MMInference 达到 97.7% 的召回率（LongVILA-1M），几乎与全注意力（98.3%）一致</li>
+<li>在 6000 帧（约 1.1M tokens）的超长上下文中保持稳定性能</li>
+<li>A-shape 在 300 帧即开始退化，Tri-shape 在 3900 帧后急剧下降</li>
+</ul>
+<h4 id="3-mixed-modality-niahmm-niah">3. Mixed-Modality NIAH（MM-NIAH）</h4>
+<ul>
+<li>MMInference 达到 91.3% 的召回率，优于全注意力（90.9%）</li>
+<li>在混合模态输入中，MMInference 通过模态间稀疏模式保持性能</li>
+<li>MInference 在 2700 帧后显著下降，而 MMInference 持续稳定</li>
+</ul>
+<h4 id="4">4. 延迟分析</h4>
+<ul>
+<li><strong>端到端加速</strong>：</li>
+<li>相比 FlashAttention-2：最高 8.3× 加速（1M tokens）</li>
+<li>相比 MInference：最高 1.7× 加速（1M tokens）</li>
+<li><strong>内核级加速</strong>：Grid 模式在 1M tokens 时达到 12× 内核级加速</li>
+<li><strong>延迟对比</strong>：</li>
+<li>Grid 模式：358ms（1M tokens，单 A100）</li>
+<li>Vertical-Slash：显著更高延迟</li>
+<li>Grid 模式比 Vertical-Slash 快 2-3×</li>
+</ul>
+<h4 id="5">5. 与其他方法对比</h4>
+<ul>
+<li><strong>与 token 压缩方法（如 VisionZip）集成</strong>：可无缝集成，实现近乎无损性能</li>
+<li><strong>VideoChat-Flash</strong>：MMInference 在 512 帧时保持与原始模型相当的性能</li>
+<li><strong>基线方法对比</strong>：A-shape、SF-fixed、SF-strided、Tri-shape、MInference 在不同场景下各有优劣，但 MMInference 在所有场景下表现最佳</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li>
+<p><strong>无需模型修改或微调</strong>：MMInference 可无缝集成到现有 VLM 管线中，无需任何模型架构修改或重新训练。</p>
+</li>
+<li>
+<p><strong>显著的加速效果</strong>：在 1M token 时实现最高 8.3× 加速（端到端）和 12× 内核级加速，大幅降低预填充延迟。</p>
+</li>
+<li>
+<p><strong>保持精度</strong>：在所有基准测试中，MMInference 的精度与全注意力方法持平甚至略优，且仅需约 30-50% 的 FLOPs。</p>
+</li>
+<li>
+<p><strong>处理混合模态输入</strong>：通过 Q-Boundary 和 2D-Boundary 模式有效处理多模态输入中的模态边界问题，这是现有方法的盲区。</p>
+</li>
+<li>
+<p><strong>动态稀疏模式</strong>：基于输入动态构建稀疏分布，而非使用固定的静态模式，更好地适应不同的上下文和模态。</p>
+</li>
+<li>
+<p><strong>可扩展性强</strong>：在超长上下文（1M tokens，6000 帧）中保持稳定性能，适用于超长视频理解场景。</p>
+</li>
+<li>
+<p><strong>GPU 优化实现</strong>：使用 Triton、FlashAttention 和 PIT 编译器，实现高效的稀疏计算内核。</p>
+</li>
+<li>
+<p><strong>可与 token 压缩方法集成</strong>：与 VideoChat-Flash 等视觉 token 压缩方法无缝集成，实现近乎无损的性能。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li>
+<p><strong>搜索开销</strong>：虽然搜索时间约 15 分钟（单 A100），但对于需要快速部署的场景，这可能构成一定开销。</p>
+</li>
+<li>
+<p><strong>对 VLM 架构的依赖</strong>：MMInference 的效果依赖于 VLM 中注意力头的特定稀疏模式（如 Grid 模式），对于不同架构的 VLM，稀疏模式可能有所不同，需要重新搜索。</p>
+</li>
+<li>
+<p><strong>多模态类型的泛化</strong>：虽然论文分析了视觉和语言模态，但对于音频、3D 等其他模态的泛化性未充分验证。</p>
+</li>
+<li>
+<p><strong>训练时未涉及</strong>：MMInference 仅在推理阶段使用，未考虑在训练阶段的加速，可能需要额外的适配。</p>
+</li>
+<li>
+<p><strong>计算资源需求</strong>：虽然加速显著，但 GPU 内核的实现和优化需要较高的技术门槛和硬件支持（如 A100、Triton 编译器）。</p>
+</li>
+<li>
+<p><strong>对不同任务的适应性</strong>：在一些任务中（如 EgoSchema），静态稀疏模式（如 Tri-shape）在特定情况下仍可能优于动态稀疏，说明不同任务可能需要不同的策略。</p>
+</li>
+<li>
+<p><strong>模态边界检测的准确性</strong>：模态边界检测依赖于在线估计，可能在复杂场景中存在误判。</p>
+</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_11">相关关键词</h3>
+<ul>
+<li><strong>sparse_pruning</strong>：稀疏注意力模式的动态构建和优化</li>
+<li><strong>attention_sparsity</strong>：VLM 中注意力矩阵的动态稀疏性</li>
+</ul>
+<h3 id="_12">相关研究方向</h3>
+<ol>
+<li><strong>稀疏注意力加速</strong>：</li>
+<li>MInference（Jiang et al., 2024）：MMInference 的前作，专注于文本 LLM 的动态稀疏注意力</li>
+<li>Native Sparse Attention（Yuan et al., 2025）：硬件对齐的原生可训练稀疏注意力</li>
+<li>xAttention（Xu et al., 2025b）：块稀疏注意力与反对角评分</li>
+<li>
+<p>FlexPrefill（Lai et al., 2025）：上下文感知的稀疏注意力机制</p>
+</li>
+<li>
+<p><strong>长上下文 VLM 效率</strong>：</p>
+</li>
+<li>LongVILA（Chen et al., 2025）：多模态序列并行化加速视频微调</li>
+<li>VideoChat-Flash（Li et al., 2025）：层级压缩用于长上下文视频建模</li>
+<li>LongLLaVA（Wang et al., 2024b）：混合架构扩展多模态 LLM</li>
+<li>
+<p>VL-Cache（Tu et al., 2025）：稀疏性和模态感知的 KV 缓存压缩</p>
+</li>
+<li>
+<p><strong>视觉 token 压缩</strong>：</p>
+</li>
+<li>VisionZip（Yang et al., 2024）：视觉 token 压缩方法</li>
+<li>Token Merging（Bolya et al., 2023）：Token 合并加速 ViT</li>
+<li>
+<p>ZipVL（He et al., 2024）：动态 token 稀疏化和 KV 缓存压缩</p>
+</li>
+<li>
+<p><strong>DiT 推理加速</strong>：</p>
+</li>
+<li>Sparse VideoGen（Xi et al., 2025）：时空稀疏加速视频扩散 Transformer</li>
+<li>NATTEN（Hassani et al., 2023）：邻域注意力 Transformer</li>
+<li>
+<p>Efficient-VDIT（Ding et al., 2025）：注意力 Tile 加速视频扩散</p>
+</li>
+<li>
+<p><strong>动态稀疏计算</strong>：</p>
+</li>
+<li>PIT（Zheng et al., 2023）：动态稀疏深度学习模型的排列不变变换优化</li>
+<li>FlashAttention-2（Dao, 2024）：更快的注意力实现</li>
+<li>Triton（Tillet et al., 2019）：用于瓦片神经网络计算的中间语言和编译器</li>
+</ol>
+<h3 id="_13">方法论意义</h3>
+<p>MMInference 的核心贡献在于将稀疏注意力从纯文本 LLM 扩展到多模态 VLM，通过模态感知排列解决了模态边界问题。这一思路可推广到其他多模态任务（如音频、3D 点云等），为高效多模态推理提供了新的技术路径。同时，其排列优化的思想也可应用于 DiT（Diffusion Transformer）等生成模型的推理加速。</p>
+<hr />
+<blockquote>
+<p><strong>声明</strong>：本 note 由 AI Agent（Hermes Agent）基于论文全文自动生成，内容仅供参考。生成时间：2025年6月。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

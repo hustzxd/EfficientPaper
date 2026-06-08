@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,66 +164,364 @@
 <p>Liu Hanzuo, Chaofan Lin, Weixuan Sun, Yulong Wang, Key, Rayying, Mingyu Gao</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Semi-structured sparsity provides a practical path to accelerate large language models (LLMs) with native hardware support, but post-training semi-structured pruning often suffers from substantial quality degradation due to strong structural coupling. Existing methods rely on large-scale sparse retraining to recover accuracy, resulting in high computational cost.
-  We propose SparseForge, a post-training framework that improves recovery efficiency by directly optimizing the sparsity mask rather than scaling up retraining tokens. SparseForge combines Hessian-aware importance estimation with progressive annealing of soft masks into hardware-executable structured sparsity, enabling stable and efficient sparse recovery. On LLaMA-2-7B under 2:4 sparsity, SparseForge achieves 57.27% average zero-shot accuracy with only <script type="math/tex">\textbf{5B}</script> retraining tokens, surpassing the dense model's 56.43% accuracy and approaching the 57.52% result of a state-of-the-art method using <script type="math/tex">\textbf{40B}</script> tokens. Such improvements on the accuracy-efficiency trade-off from SparseForge are shown to be consistent across model families.</p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文针对大语言模型半结构化稀疏化中因结构耦合导致精度显著下降的问题，提出了一种名为SparseForge的后训练框架。该方法通过结合Hessian感知的重要性估计与软掩码的渐进退火，直接优化稀疏掩码而非扩大重训练数据量，从而高效生成硬件可执行的结构化稀疏模式。在LLaMA-2-7B模型2:4稀疏度下，SparseForge仅用5B重训练词元就实现了57.27%的零样本准确率，超越了稠密模型的56.43%，并接近使用40B词元的先进方法水平，显著优化了精度与效率的权衡。</p>
+<p><em>以下内容由 AI Agent 自动生成（生成时间：2026-06-04），基于论文全文阅读。</em></p>
 <hr />
-<h2 id="_1">论文详细总结</h2>
-<h3 id="1">1. 研究背景与动机</h3>
-<p>半结构化稀疏性（如 2:4 格式）是加速 LLM 的实用路径，硬件原生支持。但训练后剪枝面临严重<strong>质量退化</strong>，原因是强结构性耦合。现有方法依赖大规模稀疏重训练（40B+ tokens），计算成本极高。</p>
-<h3 id="2-sparseforge">2. SparseForge 核心思想</h3>
-<p><strong>训练后框架</strong>，直接优化稀疏掩码（sparsity mask），而非增加重训练数据量来恢复性能。</p>
-<h3 id="3">3. 两大关键技术</h3>
-<table>
-<thead>
-<tr>
-<th>技术</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Hessian-Guided Soft-Mask</strong></td>
-<td>利用 Hessian 矩阵信息估计权重重要性，生成连续软掩码</td>
-</tr>
-<tr>
-<td><strong>Progressive Annealing</strong></td>
-<td>渐进式退火，逐步将软掩码硬化为满足 2:4 硬件约束的离散结构化稀疏模式</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-llama-2-7b-24">4. 实验结果（LLaMA-2-7B, 2:4 稀疏）</h3>
-<table>
-<thead>
-<tr>
-<th>指标</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>重训练 token 数</td>
-<td><strong>5B</strong>（vs 其他方法 40B，减少 <strong>8 倍</strong>）</td>
-</tr>
-<tr>
-<td>零样本精度</td>
-<td><strong>57.27%</strong>（超越稠密模型 56.43%）</td>
-</tr>
-<tr>
-<td>接近 SOTA</td>
-<td>用 5B token 接近其他方法 40B token 的 57.52%</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5">5. 核心贡献</h3>
+<h2 id="_1">一句话总结</h2>
+<p>SparseForge 通过 Hessian 感知的软掩码渐进退火机制，仅用 5B 重训练 token 即可实现 LLaMA-2-7B 2:4 半结构化稀疏模型 57.27% 的零样本准确率，超越稠密模型并接近用 40B token 的 SOTA 方法，将重训练成本降低约 8 倍。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>半结构化稀疏性为加速大语言模型（LLM）提供了具有硬件原生支持的实用路径，但训练后半结构化剪枝常因强结构耦合导致显著质量退化。现有方法依赖大规模稀疏重训练来恢复精度，计算成本极高。</p>
+<p>我们提出 SparseForge，一个后训练框架，通过直接优化稀疏掩码而非扩大重训练 token 数来提升恢复效率。SparseForge 结合 Hessian 感知的重要性估计与软掩码的渐进退火，将其转化为硬件可执行的结构化稀疏模式，实现稳定高效的稀疏恢复。在 LLaMA-2-7B 的 2:4 稀疏度下，SparseForge 仅用 5B 重训练 token 即达到 57.27% 的平均零样本准确率，超越稠密模型的 56.43%，并接近使用 40B token 的 SOTA 方法（57.52%）。该精度-效率权衡的改进在不同模型族中表现一致。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
 <ol>
-<li>将重训练数据需求从 40B 降低到 <strong>5B token</strong>（8 倍减少）</li>
-<li>融合 <strong>Hessian 信息 + 渐进式退火</strong>，实现软掩码到硬掩码稳定过渡</li>
-<li>极低计算开销下<strong>恢复甚至超越</strong>稠密模型精度，且跨模型族一致性好</li>
+<li><strong>半结构化稀疏的硬件优势</strong>：2:4 稀疏模式被 NVIDIA Ampere 架构的稀疏 Tensor Core 原生支持，是目前少数能同时实现有意义压缩和硬件加速的稀疏模式。</li>
+<li><strong>训练后剪枝的核心瓶颈</strong>：在半结构化约束下，权重在每个组内竞争，过早的硬二值化决策会将优化器锁定在次优稀疏子空间。现有方法（如 SparseGPT、Wanda）依赖一次性重要性评分加硬投影，在半结构化场景下表现脆弱。</li>
+<li><strong>重训练效率低下</strong>：现有重训练方法（如 CAST）通过扩大重训练 token 规模来恢复精度，但作者发现<strong>掩码质量而非重训练规模</strong>才是瓶颈——即使大量重训练，精度仍受所选稀疏模式支配。</li>
+<li><strong>核心洞察</strong>：应将掩码视为可连续优化的变量，而非过早固定为离散二值模式；改善掩码优化质量可以大幅降低对大规模重训练的依赖。</li>
 </ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<p>SparseForge 采用 <strong>掩码退火（Mask Annealing）</strong> 管线，分为<strong>加热阶段（Heating）</strong>和<strong>淬火阶段（Quenching）</strong>：</p>
+<h3 id="1-heating-stage">1. 双轨重训练循环（Heating Stage）</h3>
+<p>在加热阶段，SparseForge 在统一的重训练循环中联合优化模型权重 <script type="math/tex">W</script> 和软掩码 <script type="math/tex">m \in [0,1]^{D \times C}</script>：</p>
+<ul>
+<li><strong>权重更新</strong>：遵循 AST/CAST 范式，使用带掩码的前向传播，可选加入 SLoRB（稀疏低秩分支）补偿剪枝造成的容量损失。</li>
+<li><strong>掩码更新</strong>：每隔 <script type="math/tex">T_{update}</script> 步通过专用学习规则更新，与权重更新解耦，确保在半结构化约束下更稳定。</li>
+<li><strong>损失函数</strong>：<script type="math/tex">L = \lambda_{task} L_{task} + \lambda_{KL} L_{KL} + \lambda_{mid} L_{mid}</script>，其中 <script type="math/tex">L_{mid}</script> 是为掩码设计的二值偏好正则项。</li>
+</ul>
+<h3 id="2-hessian-42">2. Hessian 感知软掩码更新（§4.2）</h3>
+<p>利用二阶 Hessian 信息估计权重重要性：</p>
+<ul>
+<li><strong>重要性得分</strong>：<script type="math/tex">s = (H + \epsilon) \odot W^2</script>，其中 <script type="math/tex">H</script> 是近似 Hessian 对角线，通过 Hutchinson 随机估计器（<script type="math/tex">E[(Hv) \odot v] = \text{diag}(H)</script>，<script type="math/tex">v \sim \text{Rademacher}(\pm 1)</script>）计算，维护指数移动平均。</li>
+<li><strong>软门控</strong>：对组内得分标准化后，通过 sigmoid 温度控制的软门控 <script type="math/tex">G = \sigma((\tilde{s} - \tau)/T)</script> 和硬目标 <script type="math/tex">\bar{G} = \text{TopK}_N(\tilde{s})</script>，编码 N:M 竞争。</li>
+<li><strong>掩码更新规则</strong>：通过中惩罚残差 <script type="math/tex">\delta = m - \bar{G}</script> 推动软掩码向结构化目标靠拢，最终用 EMA 更新：<script type="math/tex">m \leftarrow (1-\alpha) \cdot m + \alpha \cdot \tilde{G}</script>。</li>
+</ul>
+<h3 id="3-43">3. 渐进软到硬掩码淬火（§4.3）</h3>
+<p>通过三个退火控制量实现平滑过渡：</p>
+<ul>
+<li><strong>二值偏好正则项</strong>：<script type="math/tex">L_{mid} = \frac{1}{|m|} \sum_{i,j} m_{ij}(1 - m_{ij})</script>，在 <script type="math/tex">m=0.5</script> 时最大，<script type="math/tex">m \in \{0,1\}</script> 时最小，权重 <script type="math/tex">\lambda_{mid}</script> 随训练逐步加强。</li>
+<li><strong>结构混合因子 <script type="math/tex">\beta</script></strong>：将软门控 <script type="math/tex">G</script> 与硬目标 <script type="math/tex">\bar{G}</script> 渐进混合，<script type="math/tex">G \leftarrow (1-\beta)G + \beta\bar{G}</script>，<script type="math/tex">\beta: 0 \to 1</script>，使用三次 Hermite 曲线平滑调度。</li>
+<li><strong>温度退火</strong>：<script type="math/tex">T \leftarrow \gamma T</script>（<script type="math/tex">\gamma \in (0,1)</script>），使软阈值随训练单调锐化。</li>
+<li><strong>最终淬火</strong>：通过线性插值 <script type="math/tex">m_{eff} = x \cdot m + (1-x) \cdot \mathbf{1}[m > \theta]</script>，<script type="math/tex">x</script> 从 1 到 0 退火，达到 0 后执行最终结构投影，冻结二值掩码，进行短时微调。</li>
+</ul>
+<h3 id="4-algorithm-1">4. 算法伪代码（Algorithm 1）</h3>
+<pre><code>初始化: W 密集权重, m ← 1, T ← T0, β ← 0
+可选初始化 SLoRB 分支 (P, B)
+for t = 1 to Tmax:
+    采样批次 (X, Y)
+    计算带软掩码 m 的稀疏前向传播
+    通过 STE 更新 W 和 B
+    if t mod Tupdate = 0:
+        计算 Hessian 重要性得分 s
+        合成软门控 G 和硬目标 ¯G
+        混合结构: G ← (1-β)G + β ¯G
+        注入中惩罚: ˜G ← clamp(G - η·λmid·(m - ¯G), 0, 1)
+        更新掩码: m ← (1-α)·m + α·˜G
+        退火调度: T ← γT; 推进 β, λmid
+返回: 近硬掩码 m 和训练模型
+</code></pre>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="llama-2-7b-24">主要结果（LLaMA-2-7B, 2:4 稀疏）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>模式</th>
+<th>重训练 Token</th>
+<th>平均零样本准确率</th>
+<th>WikiText-2 PPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>Dense</td>
+<td>2T</td>
+<td>56.43%</td>
+<td>5.12</td>
+</tr>
+<tr>
+<td>Wanda</td>
+<td>2:4</td>
+<td>×</td>
+<td>45.98%</td>
+<td>11.29</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>2:4</td>
+<td>×</td>
+<td>47.16%</td>
+<td>10.42</td>
+</tr>
+<tr>
+<td>MaskLLM</td>
+<td>2:4</td>
+<td>2B</td>
+<td>52.09%</td>
+<td>6.72</td>
+</tr>
+<tr>
+<td>Naive Retrain</td>
+<td>2:4</td>
+<td>10B</td>
+<td>54.73%</td>
+<td>5.78</td>
+</tr>
+<tr>
+<td>AST + SLoRB</td>
+<td>2:4</td>
+<td>7.5B</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>CAST</td>
+<td>2:4</td>
+<td>7.5B</td>
+<td>55.91%</td>
+<td>5.58</td>
+</tr>
+<tr>
+<td><strong>CAST†（持续训练）</strong></td>
+<td>2:4</td>
+<td><strong>40B</strong></td>
+<td><strong>57.52%</strong></td>
+<td><strong>5.21</strong></td>
+</tr>
+<tr>
+<td><strong>SparseForge（1.25B）</strong></td>
+<td>2:4</td>
+<td>1.25B</td>
+<td>55.96%</td>
+<td>6.24</td>
+</tr>
+<tr>
+<td><strong>SparseForge†（5B）</strong></td>
+<td>2:4</td>
+<td><strong>5B</strong></td>
+<td><strong>57.27%</strong></td>
+<td><strong>6.09</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心发现</strong>：SparseForge 用 5B token 即可接近 CAST† 用 40B token 达到的精度（57.27% vs 57.52%），重训练成本降低约 8 倍，且超越稠密模型（56.43%）。</p>
+<h3 id="24">跨模型族结果（2:4 稀疏）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Dense 准确率</th>
+<th>SparseForge 准确率</th>
+<th>差值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-2-Medium</td>
+<td>40.97%</td>
+<td>40.31%</td>
+<td>-0.66</td>
+</tr>
+<tr>
+<td>GPT-2-Large</td>
+<td>42.76%</td>
+<td>42.10%</td>
+<td>-0.66</td>
+</tr>
+<tr>
+<td>GPT-2-XL</td>
+<td>45.49%</td>
+<td>44.34%</td>
+<td>-1.15</td>
+</tr>
+<tr>
+<td>OPT-2.7B</td>
+<td>47.76%</td>
+<td>46.67%</td>
+<td>-1.09</td>
+</tr>
+<tr>
+<td>Qwen3-1.7B</td>
+<td>56.51%</td>
+<td>53.33%</td>
+<td>-3.18</td>
+</tr>
+<tr>
+<td>Qwen3-8B</td>
+<td>65.73%</td>
+<td>63.31%</td>
+<td>-2.42</td>
+</tr>
+<tr>
+<td>Qwen3-14B</td>
+<td>68.36%</td>
+<td>65.44%</td>
+<td>-2.93</td>
+</tr>
+<tr>
+<td>DeepSeek-MoE</td>
+<td>59.54%</td>
+<td>58.57%</td>
+<td>-0.97</td>
+</tr>
+</tbody>
+</table>
+<p><strong>跨模型一致性</strong>：在不同架构和规模上，准确率下降幅度较小（0.66%–3.18%），表明连续掩码优化+渐进淬火是跨模型族鲁棒的稀疏恢复策略。</p>
+<h3 id="llama-2-7b-24-c4-125b-token">消融实验（LLaMA-2-7B, 2:4 稀疏, C4 数据, 1.25B token）</h3>
+<table>
+<thead>
+<tr>
+<th>变体</th>
+<th>Wiki PPL</th>
+<th>Mean Acc.</th>
+<th>与完整版差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完整 SparseForge</td>
+<td>6.38</td>
+<td>57.23%</td>
+<td>–</td>
+</tr>
+<tr>
+<td>用 Dolmino-mix 数据</td>
+<td>6.10</td>
+<td>59.22%</td>
+<td>+1.99%</td>
+</tr>
+<tr>
+<td>减半 token (10k 步)</td>
+<td>6.48</td>
+<td>55.89%</td>
+<td>-1.34%</td>
+</tr>
+<tr>
+<td>用 magnitude 评分替代 Hessian</td>
+<td>6.53</td>
+<td>55.61%</td>
+<td>-1.62%</td>
+</tr>
+<tr>
+<td>去掉 SLoRB</td>
+<td>6.36</td>
+<td>55.04%</td>
+<td>-2.19%</td>
+</tr>
+<tr>
+<td>用更大教师模型 (13B)</td>
+<td>6.61</td>
+<td>54.87%</td>
+<td>-2.36%</td>
+</tr>
+<tr>
+<td>去掉蒸馏</td>
+<td>6.66</td>
+<td>55.72%</td>
+<td>-1.51%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 数据质量影响显著：Dolmino-mix 数据使准确率提升近 2%
+- Hessian 感知评分优于 magnitude 评分 1.62%
+- SLoRB 分支贡献最大（-2.19%），蒸馏和教师模型规模也有贡献</p>
+<h3 id="block-16">Block-16 稀疏扩展</h3>
+<p>SparseForge 还在 block-16 稀疏模式下进行了评估：
+- LLaMA-2-7B：从 59.70% 降至 59.02%（仅 -0.68%）
+- OPT-2.7B：从 47.76% 升至 47.93%（+0.17%）
+- 说明该方法不限于 2:4 模式，可扩展到其他结构化稀疏。</p>
+<h3 id="nvidia-h800">端到端推理加速（NVIDIA H800）</h3>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>Sparse</th>
+<th>Dense</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(128, 128)</td>
+<td>108.72 tokens/s</td>
+<td>75.41 tokens/s</td>
+<td>1.44×</td>
+</tr>
+<tr>
+<td>(128, 1024)</td>
+<td>106.18 tokens/s</td>
+<td>74.63 tokens/s</td>
+<td>1.42×</td>
+</tr>
+<tr>
+<td>(1024, 128)</td>
+<td>103.87 tokens/s</td>
+<td>73.62 tokens/s</td>
+<td>1.41×</td>
+</tr>
+<tr>
+<td>(1024, 1024)</td>
+<td>101.29 tokens/s</td>
+<td>72.38 tokens/s</td>
+<td>1.40×</td>
+</tr>
+<tr>
+<td>显存</td>
+<td>7.31 GB</td>
+<td>12.55 GB</td>
+<td>0.58×</td>
+</tr>
+</tbody>
+</table>
+<p>实际部署中，2:4 稀疏模型在 H800 上实现 <strong>1.4×–1.44× 吞吐加速</strong>，模型权重显存降至 <strong>58%</strong>。</p>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>极高的重训练效率</strong>：仅用 5B token（vs CAST† 40B token），实现接近的精度，重训练成本降低 8 倍。</li>
+<li><strong>掩码质量优先策略</strong>：创新性地将瓶颈从重训练规模转移到掩码质量，通过连续优化软掩码实现更好的结构化选择。</li>
+<li><strong>Hessian 感知的重要性估计</strong>：利用二阶信息（Hutchinson 随机估计器）更准确地捕获组内竞争中的权重重要性，优于 magnitude-based 评分。</li>
+<li><strong>渐进退火机制</strong>：通过三个退火控制量（二值偏好正则、结构混合因子、温度退火）实现平滑的软到硬过渡，避免突变投影误差。</li>
+<li><strong>跨模型族鲁棒性</strong>：在 GPT-2、OPT、LLaMA-2、Qwen3、DeepSeek-MoE 等多种架构上均表现一致。</li>
+<li><strong>实际部署友好</strong>：2:4 稀疏模式获得硬件原生支持，在 H800 上实现 1.4× 吞吐加速和 42% 显存节省。</li>
+<li><strong>双轨解耦设计</strong>：权重和掩码优化解耦，掩码更新独立，避免在半结构化约束下不稳定。</li>
+<li><strong>可扩展到其他结构化模式</strong>：Block-16 稀疏扩展实验表明方法不限于 2:4 模式。</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>数据依赖性</strong>：结果对重训练语料选择敏感。Qwen3 系列的较大退化（-3.18%）可能源于其推理导向的预训练混合数据与 C4 通用数据的不匹配。</li>
+<li><strong>稀疏模式范围有限</strong>：主要实验聚焦 2:4 模式，block-16 的研究仅在附录中进行初步评估。</li>
+<li><strong>固定模型族评估</strong>：仅在有限的模型家族上验证，未覆盖更多架构（如 MiMo、Yi 等）。</li>
+<li><strong>精度仍有差距</strong>：虽然接近 SOTA，但 SparseForge†（5B）的 57.27% 仍略低于 CAST†（40B）的 57.52%，说明在极高精度要求下仍可能需要更多 token。</li>
+<li><strong>计算开销</strong>：需要在 32 个 L20A GPU 上训练约 50 GPU 小时，虽然比 CAST 低，但并非零开销。</li>
+<li><strong>PPL 性能偏高</strong>：SparseForge 的 WikiText-2 PPL 为 6.09，高于 CAST† 的 5.21，表明在困惑度指标上仍有改进空间。</li>
+<li><strong>缺乏 1:2 或更高稀疏度评估</strong>：主要实验在 50% 稀疏度（2:4）下进行，未探索更高稀疏度的可行性。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>SparseForge 是 <strong>稀疏剪枝（Sparse Pruning）</strong> 和 <strong>权重量化（Weight Sparsity）</strong> 领域的重要工作，与 EfficientPaper 库中以下研究方向紧密相关：</p>
+<h3 id="baseline">直接相关论文（Baseline）</h3>
+<ul>
+<li><strong>Wanda (2024)</strong>：SparseForge 与其对比，Wanda 是无重训练的剪枝方法，但精度远低于 SparseForge。</li>
+<li><strong>SparseGPT (2023)</strong>：同样是一次性剪枝方法，SparseForge 通过重训练大幅超越其精度。</li>
+</ul>
+<h3 id="_8">相关研究方向</h3>
+<ol>
+<li><strong>半结构化稀疏训练</strong>：SparseForge 与 AST、CAST、MaskLLM 等半结构化方法属于同一技术路线，但通过掩码质量优先策略显著降低重训练成本。</li>
+<li><strong>二阶/信息论剪枝</strong>：SparseForge 使用 Hessian 信息进行重要性估计，与 WoodFisher、OBD 等经典二阶剪枝方法有理论联系。</li>
+<li><strong>连续松弛与可微剪枝</strong>：SparseForge 的软掩码优化与 DiffPruning、Neural Architecture Search 中的可微搜索方法有共通之处。</li>
+<li><strong>知识蒸馏辅助稀疏化</strong>：SparseForge 使用蒸馏损失，与 LLM 剪枝中的蒸馏方法（如 GKD、DistiLLM）相关。</li>
+<li><strong>低秩补偿（SLoRB）</strong>：SparseForge 引入的稀疏低秩分支机制与 LoRA、QLoRA 等参数高效微调方法有交叉。</li>
+<li><strong>硬件对齐的模型压缩</strong>：SparseForge 的 2:4 模式直接利用 NVIDIA Sparse Tensor Core，属于硬件友好的高效推理优化。</li>
+<li><strong>渐进式训练策略</strong>：退火机制与 curriculum learning、progressive training 等训练范式有方法论联系。</li>
+</ol>
+<hr />
+<p><em>注：本 note 由 AI Agent 自动生成，基于 arXiv 论文全文（2605.06402v1）阅读，内容可能存在不完全准确之处，请以原论文为准。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

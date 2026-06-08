@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>FastTree: Optimizing Attention Kernel and Runtime for Tree-Structured LLM Inference - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FastTree: Optimizing Attention Kernel and Runtime for Tree-Structured LLM Inference";
+        var mkdocs_page_input_path = "notes/2025/FastTree/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">FastTree: Optimizing Attention Kernel and Runtime for Tree-Structured LLM Inference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="fasttree-optimizing-attention-kernel-and-runtime-for-tree-structured-llm-inference">FastTree: Optimizing Attention Kernel and Runtime for Tree-Structured LLM Inference</h1>
+<blockquote>
+<p>本 note 由 AI Agent 自动生成，基于论文原文提取。如有错误请以原文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>FastTree 是针对树结构 KV Cache 共享场景的 Attention kernel 和 runtime 优化系统，通过树结构自适应的贪心分组策略和高效 kernel 设计，实现对 FlashAttention/FlashInfer/DeFT 等的 2.1×–10.6× 加速，端到端吞吐提升达 2.2×。</p>
+<hr />
+<h2 id="abstract">摘要 (Abstract)</h2>
+<p>Tree-structured prefix sharing 在 LLM 应用中日益普遍，现有系统通过 radix tree 组织 KV cache 实现跨查询的缓存复用。但现有系统仍采用传统计算模式，导致冗余内存加载和 GPU tensor core 利用不足。FastTree 引入针对树结构 KV cache 的 GPU kernel，结合贪心启发式搜索最优的 context-queries 分组，并在运行时分割长上下文以缓解 GPU 利用不足问题。在 SGLang 上实现，端到端吞吐提升达 2.2×。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li><strong>树结构 LLM 推理的普及</strong>：Few-shot learning、Tree of Thoughts、文档 QA 等应用导致查询间共享共同 token 前缀，形成树结构 KV cache</li>
+<li><strong>现有系统的计算模式问题</strong>：</li>
+<li>虽然 radix tree 优化了内存布局（SGLang），但 attention 计算仍逐查询独立执行</li>
+<li>共享 KV cache 从慢速 HBM 重复加载（shared memory 复用不足）</li>
+<li>解码阶段 Q 矩阵退化为向量（GEMV），难以利用 tensor core（GEMM 更高效）</li>
+<li>FlashAttention 在填充后仅 &lt;1% 有效计算</li>
+<li><strong>核心 gap</strong>：树结构内存布局 vs 查询分离的计算模式之间的不匹配</li>
+</ol>
+<hr />
+<h2 id="_3">方法</h2>
+<h3 id="1">1. 系统架构</h3>
+<p>FastTree 作为 SGLang 的插件，包含两个核心组件：
+- <strong>Tree Structure-Adaptive Runtime</strong>（运行时分组优化）
+- <strong>Efficient Tree-Structured Attention Kernel</strong>（高效 kernel 设计）</p>
+<h3 id="2-context-queries">2. Context-Queries 分组优化</h3>
+<p><strong>问题定义</strong>：给定 radix tree T，寻找最优的边赋值函数 f: E → {0,1}，将节点分组以最小化 kernel 执行延迟。</p>
+<p><strong>关键洞察</strong>：不同的分组方案对计算模式和内存共享的影响差异巨大。例如：
+- 将共享前缀 A1+B1 的查询一起处理，可将 GEMV 转为 GEMM，利用 tensor core
+- 但过度分割可能引入更多中间结果和 reduction 开销</p>
+<p><strong>贪心启发式（Algorithm 1）</strong>：
+- BFS 遍历树，对每条边决定是否将父子节点"拼接"
+- 比较两种赋值的估计开销：SplitKVCost（分割 KV）vs SplitQCost（分割 Q）
+- 开销模型考虑两个因素：
+  1. <strong>Padding 开销</strong>：tile size 不能整除维度时的填充浪费（shared memory + 冗余计算）
+  2. <strong>中间结果开销</strong>：分割产生的额外 reduction 中间结果</p>
+<h3 id="3-gpu-efficient">3. GPU-Efficient 长上下文分割</h3>
+<p>解决两个 GPU 利用不足问题：
+- <strong>Block 并行度不足</strong>：总 block 数小于 GPU 容量，导致 SM 空闲
+- <strong>Tail effect</strong>：部分节点上下文过长，某些 block 执行时间远超其他</p>
+<p><strong>解决方案</strong>：运行时将长上下文节点拆分，虽然引入中间结果开销，但可显著提升 GPU 利用率。</p>
+<h3 id="4-attention-kernel">4. 树结构 Attention Kernel 设计</h3>
+<p><strong>One-kernel-accommodating-all</strong>：
+- 用单个 GPU kernel 处理所有分组，每个分组分配独立 block set
+- 消除 kernel launch 开销</p>
+<p><strong>FlashAttention 风格的分组处理</strong>：
+- QKV 矩阵按 tile 分块，Q 维度并行到不同 block，K/V 维度顺序迭代
+- 使用 online softmax 将 partial softmax 结果存储在 shared memory
+- <strong>关键优势</strong>：
+  - 共享 KV cache 只加载一次（减少 HBM 交易）
+  - 聚合查询将 GEMV 转为 GEMM（利用 tensor core）</p>
+<p><strong>Multi-phase tiling</strong>：
+- 树近根节点（query 多）→ 大 tile size（最大化 KV 复用）
+- 树近叶节点（query 少）→ 小 tile size（避免 shared memory 浪费，提高 SM 占用率）</p>
+<hr />
+<h2 id="_4">实验结果</h2>
+<h3 id="kernel-benchmarkh100-gpu">Kernel Benchmark（H100 GPU）</h3>
+<table>
+<thead>
+<tr>
+<th>Baseline</th>
+<th>FastTree 平均加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FlashAttention</td>
+<td>5.1×</td>
+</tr>
+<tr>
+<td>SGLang Triton</td>
+<td>9.2×</td>
+</tr>
+<tr>
+<td>FlashInfer</td>
+<td>4.2×</td>
+</tr>
+<tr>
+<td>DeFT</td>
+<td>10.6×</td>
+</tr>
+<tr>
+<td>CascadeAttn</td>
+<td>2.1×</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GQA ratio 越低，FastTree 优势越大（因为 GQA 已部分缓解问题）</li>
+<li>即使 GQA ratio=16，FastTree 仍优于所有 baseline</li>
+<li>贪心优化在复杂树结构中可达 2.2× 额外加速</li>
+<li>长上下文分割在特定配置下可达 1.9× 加速</li>
+</ul>
+<h3 id="_5">端到端性能</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>相对 SGLang (Triton)</th>
+<th>相对 SGLang (FlashInfer)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-2-7B</td>
+<td>2.4× 平均</td>
+<td>1.6× 平均</td>
+</tr>
+<tr>
+<td>Mistral-7B</td>
+<td>3.1× 平均</td>
+<td>1.9× 平均</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>端到端吞吐提升达 2.2×</li>
+<li>CPU 预处理开销可忽略（batch size 足够大时 GPU 执行主导）</li>
+<li>Decoding 延迟显著降低</li>
+</ul>
+<h3 id="benchmark">Benchmark 场景</h3>
+<ul>
+<li>(A) Multi-level system prompt</li>
+<li>(B) Multiple few-shot learning</li>
+<li>(C) Multi-chain reasoning</li>
+<li>(D) Multi-document QA</li>
+</ul>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>显著加速</strong>：对现有 attention kernel 5–10× 加速，端到端 2.2×</li>
+<li><strong>即插即用</strong>：作为 SGLang 插件，与现有系统兼容</li>
+<li><strong>运行时自适应</strong>：贪心启发式在线生成最优分组，无需离线搜索</li>
+<li><strong>充分利用硬件</strong>：GEMV→GEMM 转换，利用 tensor core 和 shared memory</li>
+<li><strong>长上下文优化</strong>：分割策略解决 GPU 利用不足</li>
+</ol>
+<hr />
+<h2 id="_7">局限性</h2>
+<ol>
+<li><strong>仅优化 Decoding</strong>：未优化 prefill 阶段（虽然 prefill 问题较小）</li>
+<li><strong>CUDAGraph 兼容性</strong>：动态分组与 CUDAGraph 的静态图要求冲突，需额外适配</li>
+<li><strong>Triton 实现</strong>：未利用 Hopper 特有特性（如 TMA），有进一步优化空间</li>
+<li><strong>贪心启发式的局限</strong>：在简单树结构中与直接聚合差异不大，但在复杂树中优势显著</li>
+<li><strong>仅针对树结构场景</strong>：对非树结构（如纯线性 prefix）无明显优势</li>
+</ol>
+<hr />
+<h2 id="_8">关联工作</h2>
+<ul>
+<li><strong>LLM Serving</strong>：vLLM (PagedAttention), SGLang (Radix Tree), Orca (Continuous Batching), CachedAttention</li>
+<li><strong>Attention Kernel</strong>：FlashAttention, FlashInfer, DeFT, CascadeAttn, Hydragen</li>
+<li><strong>ML Compilers</strong>：TVM, MLIR, Triton</li>
+<li><strong>相关优化</strong>：Pensieve (多轮对话), Parrot (语义变量), RAGCache</li>
+</ul>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>KV Cache 生命周期管理</strong>：树结构 KV cache 的组织与复用</li>
+<li><strong>Attention 稀疏化/加速</strong>：通过 kernel 设计提升 tensor core 利用率</li>
+<li><strong>推理系统优化</strong>：运行时自适应分组与调度</li>
+</ul>
+<hr />
+<p><em>Generated by AI Agent on 2026-06-04. Source: https://openreview.net/pdf?id=BwvHcHZ3kJ</em></p>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

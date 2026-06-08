@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,170 @@
 <p>Jiayi Yuan, Cameron Shinn, Kai Xu, Jingze Cui, George Klimiashvili, Guangxuan Xiao, Perkz Zheng, Bo Li, Yuxin Zhou, Zhouhai Ye, Weijie You, Tian Zheng, Dominic Brown, Pengbo Wang, Richard Cai, Julien Demouth, John D. Owens, Xia Hu, Song Han, Timmy Liu, Huizi Mao</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The growing demand for long-context inference capabilities in Large Language Models (LLMs) has intensified the computational and memory bottlenecks inherent to the standard attention mechanism. To address this challenge, we introduce BLASST, a drop-in sparse attention method that dynamically prunes the attention matrix without any pre-computation or proxy scores. Our method uses a fixed threshold and existing information from online softmax to identify negligible attention scores, skipping softmax computation, Value block loading, and the subsequent matrix multiplication. This fits seamlessly into existing FlashAttention kernel designs with negligible latency overhead. The approach is applicable to both prefill and decode stages across all attention variants (MHA, GQA, MQA, and MLA), providing a unified solution for accelerating long-context inference. We develop an automated calibration procedure that reveals a simple inverse relationship between optimal threshold and context length, enabling robust deployment across diverse scenarios. Maintaining high accuracy, we demonstrate a 1.62x speedup for prefill at 74.7% sparsity and a 1.48x speedup for decode at 73.2% sparsity on modern GPUs. Furthermore, we explore sparsity-aware training as a natural extension, showing that models can be trained to be inherently more robust to sparse attention patterns, pushing the accuracy-sparsity frontier even further.</p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成，仅供参考。</strong> 生成时间：2026-06-05。内容基于 arXiv 论文全文提取与分析，如有疏漏请以原文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>BLASST 提出了一种无需预计算或代理分数的动态块稀疏注意力方法，利用 FlashAttention 在线 softmax 中已有的统计信息（running maximum），通过简单的阈值比较跳过可忽略的注意力块，从而在不损失精度的情况下实现 prefill 阶段 1.62× 和 decode 阶段 1.48× 的加速（H200/B200 GPU）。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）对长上下文推理能力的需求日益增长，这加剧了标准注意力机制固有的计算和内存瓶颈。为应对这一挑战，我们提出 BLASST，一种即插即用的稀疏注意力方法，无需任何预计算或代理分数即可动态剪枝注意力矩阵。该方法使用固定阈值和在线 softmax 中已有的信息来识别可忽略的注意力分数，从而跳过 softmax 计算、Value 块加载以及随后的矩阵乘法。该方法可无缝融入现有的 FlashAttention 内核设计，延迟开销可忽略不计。该方法适用于 prefill 和 decode 两个阶段，支持所有注意力变体（MHA、GQA、MQA 和 MLA），为加速长上下文推理提供了统一解决方案。我们开发了自动校准程序，揭示了最优阈值与上下文长度之间的简单反比关系，使得在不同场景下能够稳健部署。在保持高精度的同时，我们在现代 GPU 上展示了 74.7% 稀疏度下 prefill 阶段 1.62× 加速和 73.2% 稀疏度下 decode 阶段 1.48× 加速。此外，我们探索了稀疏感知训练作为自然延伸，表明模型可以被训练为对稀疏注意力模式具有更强的鲁棒性，进一步推动精度-稀疏度前沿。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>长上下文推理的计算瓶颈</strong>：LLM 的注意力机制具有 O(n²) 的计算复杂度和内存访问开销。随着应用对长上下文窗口（128K-1M tokens）的需求不断增加，这一瓶颈变得越来越严重。即使 FlashAttention 及其后继者通过分块和内核融合优化了内存带宽利用率，它们仍然计算完整的注意力矩阵，未从根本上解决二次复杂度问题。</p>
+</li>
+<li>
+<p><strong>现有稀疏注意力方法的局限</strong>：</p>
+</li>
+<li><strong>需要昂贵的预计算</strong>：MInference 和 XAttention 等方法需要进行昂贵的预计算来确定稀疏模式，这往往会抵消理论加速效果。</li>
+<li><strong>静态稀疏模式不够灵活</strong>：静态稀疏模式虽然避免了预计算，但对不同任务和上下文长度的多样化注意力分布适应性差。</li>
+<li><strong>依赖不准确的代理分数</strong>：大多数现有方法依赖于累积注意力权重或 query-key 相似度等代理重要性分数，这些分数可能不准确，会遗漏关键的 token 交互。</li>
+<li>
+<p><strong>仅关注单一阶段</strong>：大多数现有方法仅关注 prefill 或 decode 阶段之一，错失端到端优化的机会。</p>
+</li>
+<li>
+<p><strong>BLASST 的核心动机</strong>：利用 FlashAttention 在线 softmax 计算中已经存在的统计信息（running maximum），在无需额外开销的情况下动态识别和跳过可忽略的注意力块，实现统一的 prefill + decode 加速。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="running-maximum">核心思想：利用 Running Maximum 进行动态块剪枝</h3>
+<p>BLASST 的核心洞察在于：在 FlashAttention 的分块在线 softmax 计算过程中，许多块对最终输出的贡献可以忽略不计。该方法在前向传播过程中动态识别和跳过这些块，无需预计算或代理分数。</p>
+<p><strong>关键机制</strong>：</p>
+<p>在标准注意力机制中，softmax 计算为：</p>
+<pre><code>Attention(Q, K, V) = softmax(QK^T / √dk) V
+</code></pre>
+<p>在 FlashAttention 的分块计算中，维护一个跨块的 running maximum <script type="math/tex">m_i^{(j)}</script>。如果某个块的局部最大值 <script type="math/tex">\tilde{m}_i^{(j)}</script> 显著小于当前 running maximum（差异超过阈值 <script type="math/tex">\ln(\lambda)</script>），即：
+<script type="math/tex; mode=display">\tilde{m}_i^{(j)} - m_i^{(j)} < \ln(\lambda)</script>
+</p>
+<p>则经过指数运算后，<script type="math/tex">\exp(\tilde{m}_i^{(j)} - m_i^{(j)}) < \lambda \approx 0</script>，该块对最终注意力输出的贡献可忽略不计，可以完全跳过其计算。</p>
+<p><strong>三步近似</strong>：
+1. 每个分数 <script type="math/tex">S_{ij}</script> 的理想重要性是其相对于（未知的）全局最大值的相对值。
+2. 在线计算真实全局最大值代价过高，因此使用 running maximum 作为可处理的代理。
+3. 为实现高效的块级决策，将 token 级的 <script type="math/tex">S_{ij}</script> 替换为块局部最大值，得到高效条件：(block max - running max) &lt; <script type="math/tex">\ln(\lambda)</script>。</p>
+<p><strong>跳过操作</strong>（Algorithm 1）：
+- <strong>计算节省（CUDA 核心）</strong>：跳过 exp(·) 操作（需要 MUFU.EX2、FMUL、FADD 等指令）和归一化的行求和操作（FADD 指令）。
+- <strong>计算节省（Tensor 核心）</strong>：跳过矩阵乘法 <script type="math/tex">\tilde{P}_{ij} V_j</script>（prefill 阶段的关键加速来源）。
+- <strong>内存带宽节省</strong>：跳过从 HBM 加载 Value 块 <script type="math/tex">V_j</script>（decode 阶段的关键加速来源）。</p>
+<h3 id="_5">内核设计</h3>
+<p>BLASST 内核设计遵循两个主要目标：(1) 对现有 FlashAttention 内核接口和实现结构的最小改动；(2) 块跳过决策逻辑的最小开销。关键洞察是复用标准 FlashAttention 算法中已经计算的统计信息——特别是在线 softmax 中每个线程的局部最大值和 running maximum 值。</p>
+<p><strong>Skip Decision 实现</strong>：
+- 每个块仅需少量额外指令：(1) 基于阈值比较设置每个线程的谓词；(2) 发出 VOTE 指令确定 warp 内所有线程是否一致同意跳过；(3) 一个 ATOMIC 指令（由每个 warp 的一个线程向共享内存发出）跨 softmax warpgroup 协调块级决策。
+- 通过精心设计使决策指令隐藏在现有操作之后，增加的延迟开销可忽略不计。</p>
+<p><strong>Prefill 内核（计算密集型优化）</strong>：
+- Prefill 通常受 CUDA 核心（softmax）和 Tensor 核心（矩阵乘法）吞吐量限制，而非内存带宽。
+- 通过跳过 softmax 计算和 MMA 操作（attention-value 乘法）来减少计算量。
+- Value 块仍然从 HBM 加载（因为：(1) 内存带宽不是瓶颈；(2) 预取管道受益于可预测的内存访问模式；(3) 条件性 Value 加载的延迟超过节省量）。
+- 通过跳过计算操作，内核释放执行单元，使后续操作可以更早调度，压缩整个调度时间（从 18 个时间单位压缩到 14 个时间单位）。</p>
+<p><strong>Decode 内核（内存密集型优化）</strong>：
+- Decode 通常受 HBM 带宽限制（需要获取 KV 缓存），而非计算。
+- 主要跳过 Value 矩阵 <script type="math/tex">V_j</script> 的内存密集型加载，直接解决 HBM 瓶颈。
+- 跳过被剪枝块的 V 块加载和 BMM2，GPU 可以更快完成其他 TMA 管道阶段的待处理加载（从 30 个时间单位减少到 23 个时间单位）。
+- 对于像 MLA 这样在 decode 阶段也更偏向计算密集型的注意力机制，额外跳过 softmax 操作。</p>
+<h3 id="calibration">自动校准（Calibration）</h3>
+<p><strong>关键问题</strong>：选择合适的阈值 <script type="math/tex">\lambda</script> 来平衡稀疏度和精度。</p>
+<p><strong>核心发现</strong>：
+- 精度下降主要由稀疏度比率本身决定，而非数据集类型或序列长度。
+- 不同上下文长度需要不同的阈值：例如，实现 75% 稀疏度需要 8K 上下文时 <script type="math/tex">\lambda \approx 1e-4</script>，而 64K 时仅需 <script type="math/tex">1e-5</script>。
+- 最优阈值与上下文长度 L 之间存在反比关系：<script type="math/tex">\lambda = a / L</script>（其中 a 是模型特定常数）。
+- 理论基础：由于注意力分数被行归一化为总和为 1，更长的序列每个 token 的平均分数更低，需要按比例缩小的阈值。</p>
+<p><strong>校准算法（Algorithm 2）</strong>：
+1. 对每个上下文长度 <script type="math/tex">L_k</script>，从数据集采样序列。
+2. 在阈值集合 <script type="math/tex">\Lambda</script> 中搜索最佳阈值 <script type="math/tex">\lambda_{best}</script>，使测量稀疏度接近目标 <script type="math/tex">S</script>（在容差 <script type="math/tex">\delta</script> 内）。
+3. 对转换后的数据点 <script type="math/tex">(1/L_k, \lambda_{best})</script> 进行线性回归，拟合斜率 <script type="math/tex">a</script>。
+4. 返回校准函数 <script type="math/tex">\lambda(L) = a/L</script>。</p>
+<p><strong>校准效果</strong>：固定阈值方法在不同上下文长度下产生高度不稳定的稀疏度（4K 时 23% 到 64K 时 75%），而校准方法将稀疏度控制在目标附近，平均误差仅 1.2%。</p>
+<h3 id="sparsity-aware-training">稀疏感知训练（Sparsity-Aware Training）</h3>
+<p><strong>动机</strong>：如果模型在训练时学会将重要信息集中在高分注意力块中，那么在推理时剪枝这些块时应保持更高的精度。</p>
+<p><strong>方法</strong>：
+- 在微调阶段，在前向传播中应用 BLASST，基于阈值准则跳过可忽略的注意力块。
+- 在反向传播中，被跳过的块自然没有梯度（因为它们在前向传播中未被计算），鼓励模型适应与稀疏度兼容的注意力模式。
+- 无需架构改变或辅助损失——只需使用与推理时相同的稀疏注意力进行训练。</p>
+<p><strong>效果</strong>：在目标稀疏度 50%-75% 范围内，稀疏训练模型比后训练稀疏应用实现更好的精度，将精度降低减少最高 1.7×。</p>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.1-8B-Instruct、Qwen3-8B-Instruct（均支持 128K 上下文）。</li>
+<li><strong>基线</strong>：Dense Attention、MInference、FlexPrefill、XAttention（prefill）；Quest、RocketKV（decode）。</li>
+<li><strong>评估数据集</strong>：</li>
+<li>长上下文任务：RULER（4K-128K 合成检索和推理）、LongBench v2（真实 QA、摘要、代码补全）。</li>
+<li>推理任务：MATH500（数学问题解决）、AIME 2024（高级数学）、GPQA（研究生级科学）、LiveCodeBench（代码生成）。</li>
+<li><strong>实现</strong>：基于 flashinfer 框架的优化 CUDA 内核。</li>
+</ul>
+<h3 id="_8">主要结果</h3>
+<p><strong>整体性能（Table 1）</strong>：
+- BLASST 在 ~50% 和 ~75% 稀疏度下，在 Llama-3.1-8B 和 Qwen3-8B 上实现最少精度损失。
+- 有时甚至优于 dense baseline（如 Qwen3-8B 在 MATH500 上 96.23 vs 95.87，AIME 2024 上 76.50 vs 75.00）。
+- 解释：剪枝低注意力块迫使模型集中概率质量于最相关的 token，有效充当隐式去噪；对于长生成推理任务，跳过可忽略的注意力分数过滤了干扰信息。</p>
+<p><strong>Prefill 阶段对比（Table 2）</strong>：
+- BLASST 在 Llama-3.1-8B 上实现所有稀疏方法中最佳性能（92.87 RULER 平均，31.8 LongBench），接近 dense attention（93.21，31.4）。
+- 显著优于 MInference（84.15 RULER）和 FlexPrefill（87.72 RULER），展示阈值剪枝相对于代理重要性估计的有效性。</p>
+<p><strong>Decode 阶段对比（Table 3）</strong>：
+- BLASST 在 Qwen3-8B 上，在 ~50% 稀疏度下匹配或超过 dense baseline 性能（包括 MATH500、AIME 2024、GPQA、LiveCodeBench、RULER、LongBench）。
+- 优于 Quest（平均 60.75）和 RocketKV（平均 66.91），BLASST 平均 68.97。</p>
+<p><strong>GPU 内核性能（Table 4）</strong>：
+- <strong>Blackwell (B200)</strong>：
+  - ~50% 稀疏度：prefill ~1.24× 加速，decode ~1.23× 加速。
+  - ~70% 稀疏度：prefill 和 decode 加速提升至 ~1.40×。
+  - 最高：prefill 1.79×（91.99% 稀疏度），decode 1.49×（80.35% 稀疏度）。
+- <strong>Hopper (H200)</strong>：
+  - Prefill 最高 1.62× 加速（74.7% 稀疏度）。
+- 0% 稀疏度时无显著性能退化（0.99-1.03× baseline），确保低稀疏度时开销极小。</p>
+<p><strong>校准结果（Table 5）</strong>：
+- 固定阈值方法产生高度不稳定的稀疏度（4K 时 23% 到 64K 时 75%）。
+- 校准方法 <script type="math/tex">\lambda = a/L</script> 将稀疏度控制在目标附近，平均误差仅 1.2%。</p>
+<p><strong>稀疏感知训练结果（Figure 6）</strong>：
+- 稀疏训练模型在低稀疏度时甚至略微超过 dense baseline。
+- 在 50%-75% 目标稀疏度范围内，精度降低减少最高 1.7×。</p>
+<h3 id="_9">消融研究</h3>
+<ul>
+<li><strong>稀疏度分布分析（Figure 7）</strong>：不同层和注意力头表现出显著异质性，BLASST 无需显式机制即可自动适应。</li>
+<li><strong>与其他方法组合（Table 6）</strong>：BLASST 可与 XAttention（prefill）和 RocketKV（KV 缓存压缩）有效组合，精度下降最小。</li>
+<li><strong>极长序列（Table 7）</strong>：在 RepoQA 基准上，200K 上下文时实现 ~58% prefill 稀疏度，精度下降极小。</li>
+<li><strong>Tile 行重排序（Figure 8）</strong>：数据集依赖性行为，对某些数据集有改进，展示 BLASST 对处理顺序的鲁棒性。</li>
+<li><strong>极端稀疏度分析（Figure 9）</strong>：BLASST 在 70-90% 稀疏度下表现出比 XAttention 更稳定的精度退化。</li>
+</ul>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>无需预计算或代理分数</strong>：直接利用 FlashAttention 在线 softmax 中已有的统计信息，无额外开销。</li>
+<li><strong>即插即用（drop-in）</strong>：无需架构改变，可无缝融入现有 FlashAttention 实现。</li>
+<li><strong>统一 prefill + decode 加速</strong>：同时优化两个阶段，支持所有注意力变体（MHA、GQA、MQA、MLA）。</li>
+<li><strong>自动校准</strong>：揭示阈值与上下文长度的反比关系 <script type="math/tex">\lambda = a/L</script>，实现跨场景可靠部署。</li>
+<li><strong>可扩展的稀疏感知训练</strong>：进一步推动精度-稀疏度前沿，精度降低减少最高 1.7×。</li>
+<li><strong>高效内核实现</strong>：高度优化的 CUDA 内核，prefill 最高 1.62× 加速，decode 最高 1.48× 加速。</li>
+<li><strong>与其他方法正交</strong>：可与 XAttention、RocketKV 等方法有效组合，提供灵活部署选项。</li>
+<li><strong>稀疏度自动适应</strong>：无需 top-k 选择或头剪枝等显式机制，自动适应不同层和头的自然注意力分布。</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>需要阈值调优</strong>：虽然有自动校准，但阈值选择仍是一个超参数，需要校准过程。</li>
+<li><strong>稀疏度-精度权衡</strong>：超过 60-70% 稀疏度后精度开始明显下降，与任务和模型相关。</li>
+<li><strong>Prefill 阶段 Value 加载未跳过</strong>：当前 prefill 内核设计中 Value 块仍从 HBM 加载（因为内存带宽不是瓶颈），但未来工作负载或硬件架构可能使这成为瓶颈。</li>
+<li><strong>对注意力模式的依赖</strong>：稀疏度和精度效果依赖于注意力模式的分布，对于某些分布可能效果有限。</li>
+<li><strong>缺乏理论分析</strong>：阈值剪枝的理论保证有限，主要基于经验观察。</li>
+<li><strong>未开源</strong>：代码仓库 URL 为空，无法直接复现。</li>
+<li><strong>评估模型规模有限</strong>：主要在 8B 参数模型上评估，更大规模模型（70B+）的效果未验证。</li>
+<li><strong>校准需要额外数据</strong>：校准过程需要从数据集采样序列，增加部署复杂度。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏注意力（Sparse Attention）</strong>：BLASST 属于动态稀疏注意力方法，与 MInference、XAttention、FlexPrefill、SpargeAttention 等方法密切相关，是该方向的重要进展。</li>
+<li><strong>KV 缓存压缩</strong>：BLASST 与 KV 缓存压缩方法（如 Quest、RocketKV）正交，可组合使用，为端到端长上下文优化提供灵活构建模块。</li>
+<li><strong>FlashAttention 内核优化</strong>：BLASST 直接扩展 FlashAttention 框架，展示了在保持内核兼容性的同时实现显著加速的可能性。</li>
+<li><strong>长上下文推理加速</strong>：BLASST 为 128K-1M token 的长上下文推理提供高效解决方案，与 DeepSeek-R1、Qwen3、Gemini 等模型的长上下文能力互补。</li>
+<li><strong>稀疏感知训练</strong>：BLASST 探索了在训练时引入稀疏注意力的简单方法，为更高效的注意力机制设计提供了新思路。</li>
+<li><strong>硬件感知稀疏模式</strong>：BLASST 的内核设计展示了如何针对不同 GPU 架构（Hopper、Blackwell）和计算特征（计算密集型 vs 内存密集型）进行优化。</li>
+<li><strong>注意力机制变体</strong>：BLASST 支持所有注意力变体（MHA、GQA、MQA、MLA），展示了与不同注意力架构的兼容性。</li>
+<li><strong>自动化部署</strong>：BLASST 的自动校准程序为稀疏注意力方法的生产部署提供了实用工具，与自动化超参数调优相关。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

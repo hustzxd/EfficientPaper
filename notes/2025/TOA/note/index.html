@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,25 +164,299 @@
 <p>Song Yu, Xiaofei Xu, Ke Deng, Li Li, Lin Tian</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) face persistent challenges when handling
-long-context tasks, most notably the lost in the middle issue, where
-information located in the middle of a long input tends to be underutilized.
-Some existing methods that reduce input have the risk of discarding key
-information, while others that extend context windows often lead to attention
-dispersion. To address these limitations, we propose Tree of Agents (TOA), a
-multi-agent reasoning framework that segments the input into chunks processed
-by independent agents. Each agent generates its local cognition, then agents
-dynamically exchange information for collaborative reasoning along
-tree-structured paths. TOA enables agents to probe different reasoning orders
-for multi-perspective understanding, effectively mitigating position bias and
-reducing hallucinations. To improve processing efficiency, we incorporate
-prefix-hash caching and adaptive pruning strategies, achieving significant
-performance improvements with comparable API overhead. Experiments show that
-TOA, powered by compact LLaMA3.1-8B, significantly outperforms multiple
-baselines and demonstrates comparable performance to the latest and much larger
-commercial models, such as Gemini1.5-pro, on various long-context tasks. Code
-is available at https://github.com/Aireduce952/Tree-of-Agents.</p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>声明</strong>：本 note 由 AI Agent（Hermes Agent）自动生成，基于论文全文阅读与分析。生成时间：2025年6月。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>TOA（Tree of Agents）是一种基于树状结构的多智能体推理框架，通过让多个 agent 以不同顺序探读文本片段实现多视角理解，有效缓解长上下文任务中的"中间丢失"问题和位置偏差，以 LLaMA3.1-8B 等轻量模型达到与 Gemini 1.5-pro 等大型商用模型可比的性能。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）在处理长上下文任务时面临持续性挑战，最突出的是"中间丢失"（lost in the middle）问题，即长输入中间部分的信息往往被忽视。一些减少输入的方法有丢弃关键信息的风险，而扩展上下文窗口的方法往往导致注意力分散。为解决这些局限，我们提出了 <strong>Tree of Agents（TOA）</strong>，一种多智能体推理框架，将输入分割为多个块，由独立的 agent 处理。每个 agent 生成其局部认知，然后 agent 之间沿树状结构路径动态交换信息进行协作推理。TOA 使 agent 能够探测不同的推理顺序以实现多视角理解，有效缓解位置偏差并减少幻觉。为提高处理效率，我们引入了前缀哈希缓存和自适应剪枝策略，以相当的 API 开销实现显著的性能提升。实验表明，TOA 在紧凑的 LLaMA3.1-8B 驱动下，在多种长上下文任务上显著优于多个基线，并展示了与最新且更大的商用模型（如 Gemini 1.5-pro）相当的性能。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>长上下文任务（如小说问答、法律合同分析、金融报告理解）对 LLM 构成三大挑战：</p>
+<ol>
+<li><strong>位置偏差</strong>：模型对长输入中间部分的信息利用率不足，即"中间丢失"问题（Liu et al., 2024b）。</li>
+<li><strong>信息稀释</strong>：输入越长，冗余信息越多，可能稀释模型注意力，降低输出质量。</li>
+<li><strong>计算成本</strong>：更长的序列导致训练和推理的计算需求急剧增长。</li>
+</ol>
+<p>现有方法分为三类，但均有不足：
+- <strong>模型优化</strong>（如改进注意力机制、位置编码）：需要大量训练资源，难以直接应用。
+- <strong>输入压缩</strong>（如 RAG、提示压缩）：有丢失关键信息的风险，且对需要全局理解的任务表现有限。
+- <strong>多智能体推理</strong>（如 COA、LONGAGENT）：COA 的单向链式处理容易信息衰减，LONGAGENT 依赖领导者的能力，两者均不支持多视角理解。</p>
+<p>TOA 的核心动机是：通过树状结构的多路径探索，实现多视角理解，从根本上解决位置偏差问题，同时通过缓存和剪枝策略控制计算开销。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<p>TOA 采用<strong>三阶段</strong>推理流程：</p>
+<h3 id="1chunk-perception">阶段 1：块感知（Chunk Perception）</h3>
+<ul>
+<li>将长文档 <script type="math/tex">D = \{t_1, t_2, ..., t_M\}</script> 分割为 <script type="math/tex">N</script> 个文本块 <script type="math/tex">\{c_0, c_1, ..., c_{N-1}\}</script>，每个块大小 <script type="math/tex">M/N</script> 小于 agent 的最大上下文窗口。</li>
+<li>每个块分配给一个独立的 agent <script type="math/tex">A_i</script>。</li>
+<li>Agent <script type="math/tex">A_i</script> 根据查询 <script type="math/tex">q</script>、块 <script type="math/tex">c_i</script> 和提示 <script type="math/tex">p</script> 生成初始认知状态：
+  <script type="math/tex; mode=display">\langle e_i, a_i \rangle = A_i(q, c_i, p)</script>
+  其中 <script type="math/tex">e_i</script> 为支持回答的证据，<script type="math/tex">a_i</script> 为答案。</li>
+<li>初始认知状态存储在缓存 <script type="math/tex">M_i</script> 中：<script type="math/tex">M_i(\langle c_i \rangle) \leftarrow s_i^{(i)}</script>。</li>
+</ul>
+<h3 id="2multi-perspective-understanding">阶段 2：多视角理解（Multi-Perspective Understanding）</h3>
+<ul>
+<li><strong>认知交换</strong>：每个 agent 读取其他 agent 的初始认知状态，决定哪些额外的块可以帮助回答查询，形成块索引集 <script type="math/tex">G_i</script>。</li>
+<li><strong>树状结构多路径探读</strong>：对于 agent <script type="math/tex">A_i</script>，其额外需要阅读的块集合 <script type="math/tex">G_i = \{j_0, j_1, ..., j_{k-1}\}</script>，所有可能的排列 <script type="math/tex">Perm_i</script> 构成树状路径。</li>
+<li>例如 <script type="math/tex">G_i = \{0, 1, 2\}</script>，则 <script type="math/tex">Perm_i = \{(0,1,2), (0,2,1), (1,0,2), (1,2,0), (2,1,0), (2,0,1)\}</script>。</li>
+<li>每条路径代表一种独特的阅读顺序，旨在探索不同的认知顺序，避免固定阅读顺序导致的偏差。</li>
+<li>
+<p>Agent 依次沿路径读取块，认知状态逐步更新：
+    <script type="math/tex; mode=display">s_i^{(i,j_0,...,j_{k-1})} \leftarrow A_i(s_i^{(i,j_0,...,j_{k-2})}, c_{j_{k-1}})</script>
+</p>
+</li>
+<li>
+<p><strong>两个优化策略</strong>：</p>
+</li>
+</ul>
+<p><strong>1) 前缀哈希缓存（Prefix-Hash Caching）</strong>：
+  - 不同路径可能共享相同的前缀序列（如路径 <script type="math/tex">(0,1,2,4)</script> 和 <script type="math/tex">(0,1,2,3)</script> 共享前缀 <script type="math/tex">(0,1,2)</script>）。
+  - 已生成的中间状态直接从缓存 <script type="math/tex">M_i</script> 中检索，避免重复计算。
+  - 这种前缀共享机制将重复计算转化为查找操作。
+  - 实验显示：单独使用缓存可减少 13.0% 的 API 调用（NovelQA 数据集）。</p>
+<p><strong>2) 自适应剪枝（Adaptive Pruning）</strong>：
+  - 如果当前读取的块被判断为无用，则立即终止该路径的剩余部分。
+  - 剪枝依据：如果当前路径的块顺序使信息不合理或无法帮助回答问题，则标记为无用并剪枝。
+  - 保留所有在剪枝前生成的认知状态缓存。
+  - 实验显示：缓存 + 剪枝可减少 50.8% 的 API 调用，token 消耗减少 59%（DeepSeek-V3 + NovelQA）。</p>
+<h3 id="3consensus-formation">阶段 3：共识形成（Consensus Formation）</h3>
+<ul>
+<li><strong>Agent 内聚合</strong>：对于有多个路径的 agent，选择最长的块序列对应的认知状态（认为更长的序列意味着更广泛的上下文整合，减少局部偏差）。
+  <script type="math/tex; mode=display">\sigma_i^* = \arg\max_{\sigma \in M_i} |\sigma|</script>
+<script type="math/tex; mode=display">a_i^{final} = A_i(q, M_i(\sigma_i^*), p)</script>
+</li>
+<li><strong>跨 Agent 多数投票</strong>：
+  <script type="math/tex; mode=display">a^{final} = \text{MajorityVote}(\{a_i^{final}\}_{i=0}^{N-1})</script>
+</li>
+<li>投票平局时，引入额外的独立 agent 进行最终决策。</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>数据集</strong>：</li>
+<li><strong>DetectiveQA</strong>：侦探小说问答数据集，平均问题长度 100K tokens。</li>
+<li><strong>NovelQA</strong>：小说问答数据集，平均输入长度 200K+ tokens，包含 89 部小说和 2305 个问答对。</li>
+<li><strong>Needle-in-a-Haystack</strong>：长文档信息检索基准，支持单针和多针设置。</li>
+<li><strong>基础模型</strong>：LLaMA3.1-8B-instruct（本地部署）、DeepSeek-V3-Chat（API 调用）。</li>
+<li><strong>评估指标</strong>：准确率（Accuracy）、无回答率（None-rate）。</li>
+<li><strong>实验环境</strong>：2× NVIDIA RTX 3090 GPU，Intel Core i9-14900K CPU，128 GB RAM。</li>
+<li><strong>采样</strong>：每个数据集随机抽取 100 个样本，每个实验运行 3 次。</li>
+</ul>
+<h3 id="_7">主要结果</h3>
+<h4 id="2">长上下文推理任务（表 2）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>任务</th>
+<th>DetectorQA Acc</th>
+<th>DetectorQA None</th>
+<th>NovelQA Acc</th>
+<th>NovelQA None</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLaMA3.1-8B</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TOA</td>
+<td></td>
+<td><strong>0.543</strong></td>
+<td><strong>0.017</strong></td>
+<td><strong>0.450</strong></td>
+<td><strong>0.043</strong></td>
+</tr>
+<tr>
+<td>COA</td>
+<td></td>
+<td>0.253</td>
+<td>0.370</td>
+<td>0.263</td>
+<td>0.160</td>
+</tr>
+<tr>
+<td>LONGAGENT</td>
+<td></td>
+<td>0.487</td>
+<td>0.157</td>
+<td>0.373</td>
+<td>0.243</td>
+</tr>
+<tr>
+<td>LongLLMLingua</td>
+<td></td>
+<td>0.307</td>
+<td>0.260</td>
+<td>0.170</td>
+<td>0.500</td>
+</tr>
+<tr>
+<td>LongRAG</td>
+<td></td>
+<td>0.370</td>
+<td>0.217</td>
+<td>0.440</td>
+<td>0.153</td>
+</tr>
+<tr>
+<td>Sequential</td>
+<td></td>
+<td>0.400</td>
+<td>0.143</td>
+<td>0.257</td>
+<td>0.143</td>
+</tr>
+<tr>
+<td>Vote</td>
+<td></td>
+<td>0.330</td>
+<td>0.023</td>
+<td>0.343</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td><strong>DeepSeek-V3</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TOA</td>
+<td></td>
+<td><strong>0.573</strong></td>
+<td>0.140</td>
+<td><strong>0.473</strong></td>
+<td>0.120</td>
+</tr>
+<tr>
+<td><strong>商用模型</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GPT-4o</td>
+<td></td>
+<td>0.560</td>
+<td>0.140</td>
+<td>0.487</td>
+<td>0.270</td>
+</tr>
+<tr>
+<td>Gemini 1.5-pro</td>
+<td></td>
+<td>0.557</td>
+<td><strong>0.090</strong></td>
+<td>0.457</td>
+<td><strong>0.070</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>TOA 在所有任务和模型上均取得最高准确率。</li>
+<li>与 Gemini 1.5-pro（2M 上下文窗口）和 GPT-4o 相当，但使用更小的基础模型（LLaMA3.1-8B）。</li>
+<li>None-rate 极低（DetectiveQA: 1.7%，NovelQA: 4.3%），表明 TOA 能有效避免幻觉。</li>
+</ul>
+<h4 id="needle-in-a-haystack-3-4">Needle-in-a-Haystack（图 3、图 4）</h4>
+<ul>
+<li><strong>单针设置</strong>：TOA 平均得分 9.38，相比基线（COA 8.31、Vote 6.87、Sequential 7.93）提升超 50%。</li>
+<li><strong>多针设置</strong>：TOA 平均得分 7.77，相比基线提升超 100%。</li>
+<li>TOA 在中间段（40%-70%）保持稳定，基线（Sequential、Vote）在此区间显著下降。</li>
+</ul>
+<h4 id="3">块大小影响（表 3）</h4>
+<ul>
+<li>COA 块大小从 4K 到 16K 性能提升，32K 时下降。</li>
+<li>TOA 在 32K 块大小下仍保持最优（DetectiveQA: 0.543，NovelQA: 0.450）。</li>
+</ul>
+<h4 id="5">输入长度鲁棒性（图 5）</h4>
+<ul>
+<li>TOA 在 100K tokens 范围内保持稳定，准确率仅轻微下降，None-rate 一致较低。</li>
+<li>COA 在 64K 以上性能急剧下降，None-rate 上升。</li>
+</ul>
+<h4 id="agent-4">Agent 数量影响（表 4）</h4>
+<ul>
+<li>5 个 agent 时性能最优。</li>
+<li>3 个 agent 时块过大，出现"中间丢失"；7 个 agent 时文本过度碎片化，信息综合困难。</li>
+</ul>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>即插即用（Plug-and-Play）</strong>：无需训练，可直接应用于任何 LLM。</li>
+<li><strong>多视角理解</strong>：通过树状结构探读不同顺序，从根本上缓解位置偏差。</li>
+<li><strong>极低的 None-rate</strong>：能有效避免在不确定时产生幻觉答案。</li>
+<li><strong>参数效率高</strong>：以 LLaMA3.1-8B（8B 参数）达到与 Gemini 1.5-pro（数百亿参数）可比的性能。</li>
+<li><strong>高效优化策略</strong>：前缀哈希缓存 + 自适应剪枝，将 API 调用减少 50.8%，token 消耗减少 59%（DeepSeek-V3）。</li>
+<li><strong>高可解释性</strong>：每个 agent 的推理过程清晰可见，便于理解。</li>
+<li><strong>输入长度鲁棒性</strong>：在 100K+ tokens 范围内保持稳定性能。</li>
+<li><strong>开源实现</strong>：代码和数据集公开。</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>计算开销</strong>：由于需要探读不同顺序的文本块，推理速度比简单基线慢，特别是在块数量多时。</li>
+<li><strong>可扩展性挑战</strong>：大规模部署（如百万级文档）时，路径数量的组合爆炸可能导致计算成本过高。</li>
+<li><strong>块大小依赖</strong>：性能对块大小和 agent 数量敏感，需要精心调优。</li>
+<li><strong>仅支持多选问答</strong>：实验仅在多选问答任务上验证，对其他长上下文任务（如摘要生成、代码理解）的适用性需进一步研究。</li>
+<li><strong>缓存和剪枝效果依赖基础模型能力</strong>：在参数较小的模型上，缓存和剪枝的效果不显著。</li>
+<li><strong>中间阶段的 API 调用仍较多</strong>：即使经过优化，Phase 2 仍需要大量 API 调用（NovelQA 数据集约 1034 次）。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1-multi-agent-reasoning">1. 多智能体推理（Multi-Agent Reasoning）</h3>
+<p>TOA 是多智能体推理在长上下文任务中的最新进展。相关方向包括：
+- <strong>COA（Chain of Agents）</strong>：链式处理，存在信息衰减问题。
+- <strong>LONGAGENT</strong>：领导者-参与者模式，依赖领导者能力。
+- <strong>TOA</strong>：树状结构多路径探读，解决位置偏差。
+- <strong>HOMER</strong>：分块和 token 压缩以减少内存使用。</p>
+<h3 id="2-long-context-modeling">2. 长上下文建模（Long-Context Modeling）</h3>
+<ul>
+<li><strong>模型优化</strong>：RoPE 角度动态调整（Lin et al., 2024）、共线性约束注意力（Zhu et al., 2024）。</li>
+<li><strong>输入压缩</strong>：LongLLMLingua（提示压缩）、LongRAG（检索增强生成）。</li>
+<li><strong>上下文窗口扩展</strong>：SelfExtend（Jin et al., 2024）、LongRoPE（Ding et al., 2024）。</li>
+</ul>
+<h3 id="3-structure-design">3. 结构设计（Structure Design）</h3>
+<p>TOA 的核心创新在于树状结构设计，可扩展至：
+- <strong>图结构</strong>推理（如 Graph of Thoughts）。
+- <strong>层次化结构</strong>（如 HOMER 的分层合并）。
+- <strong>动态结构</strong>（根据查询自适应调整推理路径）。</p>
+<h3 id="4-efficiency-optimization">4. 效率优化（Efficiency Optimization）</h3>
+<p>TOA 的前缀哈希缓存和自适应剪枝策略可推广至：
+- <strong>动态推理</strong>（根据任务复杂度自适应调整推理深度）。
+- <strong>缓存机制</strong>（如 KV Cache 的扩展应用）。
+- <strong>剪枝策略</strong>（如模型剪枝、路径剪枝的结合）。</p>
+<h3 id="5-interpretability">5. 可解释性（Interpretability）</h3>
+<p>TOA 的多智能体推理过程具有高可解释性，可与以下方向结合：
+- <strong>推理链可视化</strong>（如 Chain-of-Thought 可视化）。
+- <strong>证据溯源</strong>（如 RAG 中的证据追踪）。
+- <strong>不确定性量化</strong>（如 None-rate 作为不确定性指标）。</p>
+<hr />
+<h2 id="_10">关键数据</h2>
+<ul>
+<li><strong>论文作者</strong>：Song Yu（西南大学）、Xiaofei Xu（默多克大学）、Ke Deng（RMIT 大学）、Li Li（西南大学）、Lin Tian（悉尼科技大学）</li>
+<li><strong>发表于</strong>：EMNLP Findings 2025</li>
+<li><strong>代码</strong>：https://github.com/Aireduce952/Tree-of-Agents</li>
+<li><strong>基础模型</strong>：LLaMA3.1-8B-instruct、DeepSeek-V3-Chat</li>
+<li><strong>数据集</strong>：DetectiveQA（100K 平均长度）、NovelQA（200K+ 平均长度）、Needle-in-a-Haystack</li>
+<li><strong>实验环境</strong>：2× RTX 3090，i9-14900K，128GB RAM</li>
+<li><strong>API 调用节省</strong>：缓存 + 剪枝减少 50.8%（NovelQA）</li>
+<li><strong>Token 消耗节省</strong>：最多 59%（DeepSeek-V3 + NovelQA）</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,23 +120,55 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Readme</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a>
+    <li class="toctree-l2"><a class="reference internal" href="#what-the-ui-supports">What the UI Supports</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#mimo-api-key-optional">MiMo API Key (Optional)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-searchable-paper-workspace">1. Searchable paper workspace</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#quick-workflow">Quick Workflow</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-interactive-method-graph">2. Interactive method graph</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-local-paper-metadata-editor">3. Local paper metadata editor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-add-papers-from-arxiv">4. Add papers from arXiv</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-upload-local-changes-to-github">5. Upload local changes to GitHub</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#editor-features">Editor Features</a>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-clone-and-install-dependencies">1. Clone and install dependencies</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#file-structure">File Structure</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-optional-mimo-api-key">2. Optional MiMo API key</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-start-the-local-site-and-editor-server">3. Start the local site and editor server</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#typical-workflow">Typical Workflow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#add-from-arxiv-id-or-ui">Add from arXiv ID or UI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#edit-metadata-and-notes-in-browser">Edit metadata and notes in browser</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#refresh-generated-assets">Refresh generated assets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#commit-push-and-deploy">Commit, push, and deploy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#repository-layout">Repository Layout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#local-server-aware-features">Local-server-aware Features</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a>
     </li>
@@ -182,89 +212,136 @@
                 <h1 id="efficientpaper">EfficientPaper</h1>
 <p><a href="https://github.com/hustzxd/EfficientPaper"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/hustzxd/EfficientPaper?style=social" /></a>
 <a href="https://github.com/hustzxd/EfficientPaper"><img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/hustzxd/EfficientPaper" /></a>
-<a href="https://github.com/hustzxd/EfficientPaper"><img alt="Papers" src="https://img.shields.io/badge/papers-450+-blue" /></a></p>
-<p>A curated collection of <strong>450+</strong> research papers on <strong>Pruning</strong>, <strong>Quantization</strong>, and <strong>Efficient Inference/Training</strong> for large language models and deep neural networks.</p>
+<a href="https://github.com/hustzxd/EfficientPaper"><img alt="Papers" src="https://img.shields.io/badge/papers-473-blue" /></a></p>
+<p>EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes <strong>473</strong> papers on <strong>Pruning</strong>, <strong>Quantization</strong>, <strong>KV Cache</strong>, <strong>Speculative Decoding</strong>, <strong>Efficient Inference/Training</strong>, and related system optimization topics.</p>
+<p>The main experience is the Home page at <code>docs/index.md</code>: a searchable paper workspace with local editing, graph navigation, arXiv import, PDF lookup, and GitHub sync.</p>
 <p align="center">
-<a class="glightbox" href="/images/efficient_paper.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/efficient_paper.png" width="800" title="EfficientPaper"></a>
+  <a class="glightbox" href="/images/efficient_paper.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/efficient_paper.png" width="1000" title="EfficientPaper Home"></a>
 </p>
 
-<h2 id="getting-started">Getting Started</h2>
+<h2 id="what-the-ui-supports">What the UI Supports</h2>
+<h3 id="1-searchable-paper-workspace">1. Searchable paper workspace</h3>
+<p>The Home page combines search, filters, stats, and paper actions in one place.</p>
+<ul>
+<li>Keyword search supports plain terms, quoted phrases, <code>AND</code>, and negative terms like <code>-kv</code>.</li>
+<li>Filters include year, venue, keyword, rating, and sort order.</li>
+<li>Result cards support selection, copy/share, note jumping, graph jumping, local PDF lookup, and quick rating.</li>
+<li>A right-side detail drawer shows cover, authors, institutions, tags, note preview, and paper links.</li>
+</ul>
+<h3 id="2-interactive-method-graph">2. Interactive method graph</h3>
+<p>The graph page links baseline methods and derived work, and can jump back to the corresponding paper on Home.</p>
+<p align="center">
+  <a class="glightbox" href="/images/graph.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/graph.png" width="1000" title="Interactive Graph"></a>
+</p>
+
+<h3 id="3-local-paper-metadata-editor">3. Local paper metadata editor</h3>
+<p><code>docs/edit.html</code> provides a standalone editor for <code>.prototxt</code> metadata, including title, abbreviation, venue, authors, institutions, keywords, code URL, rating, and update time.</p>
+<p align="center">
+  <a class="glightbox" href="/images/edit1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/edit1.png" width="1000" title="Edit Paper Metadata"></a>
+</p>
+
+<p>The same editor also supports cover upload, preview, baseline method linking, save, and guarded deletion.</p>
+<p align="center">
+  <a class="glightbox" href="/images/edit2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/edit2.png" width="1000" title="Edit Cover and Baselines"></a>
+</p>
+
+<h3 id="4-add-papers-from-arxiv">4. Add papers from arXiv</h3>
+<p>When the local editor server is running, the Home page can search arXiv by ID, inspect the detected paper, and create a new paper entry with an optional custom abbreviation.</p>
+<p align="center">
+  <a class="glightbox" href="/images/add_from_arxiv.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/add_from_arxiv.png" width="700" title="Add Paper from arXiv"></a>
+</p>
+
+<h3 id="5-upload-local-changes-to-github">5. Upload local changes to GitHub</h3>
+<p>The site can trigger the local refresh and upload flow from the browser. This is intended for local use and depends on the editor server.</p>
+<p align="center">
+  <a class="glightbox" href="/images/upload_to_github.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/upload_to_github.png" width="700" title="Upload to GitHub"></a>
+</p>
+
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="1-clone-and-install-dependencies">1. Clone and install dependencies</h3>
 <pre><code class="language-bash">git clone https://github.com/hustzxd/EfficientPaper
-pip install protobuf==5.27.2 pandas arxiv
+cd EfficientPaper
+pip install protobuf==5.27.2 pandas arxiv openai mkdocs mkdocs-glightbox mkdocs-literate-nav mkdocs-macros-plugin watchdog
 </code></pre>
-<h3 id="mimo-api-key-optional">MiMo API Key (Optional)</h3>
-<p>Adding papers can call Xiaomi MiMo LLM (<code>mimo-v2-flash</code>) to auto-generate Chinese summaries and keyword classification:</p>
-<pre><code class="language-bash">export MIMO_API_KEY=&quot;your-mimo-api-key&quot;  # https://api.xiaomimimo.com/v1
+<p>If <code>protoc</code> is not installed on your machine, install Protocol Buffers first.</p>
+<h3 id="2-optional-mimo-api-key">2. Optional MiMo API key</h3>
+<p>Adding papers can call Xiaomi MiMo LLM (<code>mimo-v2-flash</code>) to auto-generate Chinese summaries and keyword suggestions:</p>
+<pre><code class="language-bash">export MIMO_API_KEY=&quot;your-mimo-api-key&quot;
 </code></pre>
-<blockquote>
-<p>If not configured, auto-summarization is skipped — other features work normally.</p>
-</blockquote>
-<h3 id="quick-workflow">Quick Workflow</h3>
-<p><strong>1. Add paper from PDF:</strong></p>
-<pre><code class="language-bash">./add_paper_info.sh ~/Downloads/2512.01278v1.pdf
-</code></pre>
-<p>Extracts metadata, generates summary via MiMo, creates <code>.prototxt</code> and note files.</p>
-<p><strong>2. Edit in browser:</strong></p>
+<p>If this variable is not set, paper creation still works, but auto summarization and keyword suggestion are skipped.</p>
+<h3 id="3-start-the-local-site-and-editor-server">3. Start the local site and editor server</h3>
 <pre><code class="language-bash">./start_editor.sh
 </code></pre>
-<p>Opens MkDocs (port 8000) + Editor API (port 8001). Visit <code>http://localhost:8000</code> to find, edit, and save papers.</p>
-<p><strong>3. Deploy:</strong></p>
-<pre><code class="language-bash">./refresh_and_upload.sh 'update_paper_info'
+<p>This script will:</p>
+<ul>
+<li>regenerate derived data with <code>refresh_and_upload.sh</code></li>
+<li>start MkDocs at <code>http://localhost:8000</code></li>
+<li>start the editor API at <code>http://localhost:8001</code></li>
+<li>watch <code>meta/</code> and <code>notes/</code> for changes and auto-refresh generated data</li>
+</ul>
+<h2 id="typical-workflow">Typical Workflow</h2>
+<h3 id="add-from-arxiv-id-or-ui">Add from arXiv ID or UI</h3>
+<pre><code class="language-bash">./add_paper_info.sh 2512.01278v1
 </code></pre>
-<p>Regenerates search data, commits, pushes, and deploys to GitHub Pages.</p>
-<h2 id="editor-features">Editor Features</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Category</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Paper Info</strong></td>
-<td style="text-align: left;">Title, abbreviation, URL, authors, institutions</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Publication</strong></td>
-<td style="text-align: left;">Venue (arXiv, ICML, NeurIPS, ICLR, CVPR, ACL, ...) + year</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Code</strong></td>
-<td style="text-align: left;">Repository URL with auto GitHub stars badge</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Keywords</strong></td>
-<td style="text-align: left;">Multi-select: Quantization, Pruning, KV Cache, Sparsity, ...</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Cover</strong></td>
-<td style="text-align: left;">Upload image, auto-saved and auto-referenced in <code>note.md</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Baselines</strong></td>
-<td style="text-align: left;">Format <code>year/abbr</code> with smart auto-complete</td>
-</tr>
-</tbody>
-</table>
-<h2 id="file-structure">File Structure</h2>
-<pre><code>meta/{year}/{paper_id}.prototxt   # Paper metadata
-notes/{year}/{paper_id}/          # note.md + cover image
-docs/js/papers.json               # Search index
-scripts/paper_editor_server.py    # Editor backend
-scripts/generate_search_data.py   # Search data generator
+<p>This wraps <code>scripts/add_paper.py</code>, looks up the paper by arXiv ID, and creates a new <code>.prototxt</code> paper entry plus a note directory under <code>notes/&lt;year&gt;/&lt;paper_id&gt;/</code>.</p>
+<p>You can also open the Home page and use <code>Add from arXiv</code> when the local server is available.</p>
+<h3 id="edit-metadata-and-notes-in-browser">Edit metadata and notes in browser</h3>
+<ul>
+<li>Visit <code>http://localhost:8000</code></li>
+<li>Use the paper card <code>Edit</code> action to open <code>docs/edit.html</code></li>
+<li>Open the paper note page to edit <code>notes/&lt;year&gt;/&lt;paper&gt;/note.md</code> in browser</li>
+</ul>
+<h3 id="refresh-generated-assets">Refresh generated assets</h3>
+<pre><code class="language-bash">./refresh_and_upload.sh
 </code></pre>
+<p>This regenerates protobuf templates, split metadata, graph data, and the search dataset.</p>
+<h3 id="commit-push-and-deploy">Commit, push, and deploy</h3>
+<pre><code class="language-bash">./refresh_and_upload.sh &quot;update_paper_info&quot;
+</code></pre>
+<p>With a commit message, the script additionally runs:</p>
+<ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m ...</code></li>
+<li><code>git push</code></li>
+<li><code>mkdocs build</code></li>
+<li><code>./build_and_deploy.sh</code></li>
+</ul>
+<h2 id="repository-layout">Repository Layout</h2>
+<pre><code class="language-text">docs/index.md                        # Main searchable home page
+docs/baseline_methods_graph_interactive.md
+docs/edit.html                       # Local metadata editor
+docs/js/papers.json                  # Frontend search dataset
+docs/js/paper_graph_map.json         # Home &lt;-&gt; graph mapping
+meta/&lt;year&gt;/*.prototxt               # Structured paper metadata
+notes/&lt;year&gt;/&lt;paper&gt;/note.md         # Paper notes
+notes/&lt;year&gt;/&lt;paper&gt;/cover.*         # Paper cover assets
+scripts/paper_editor_server.py       # Local editor / upload / pull / PDF API
+scripts/generate_search_data.py      # Search dataset generator
+</code></pre>
+<h2 id="local-server-aware-features">Local-server-aware Features</h2>
+<p>Several UI actions depend on <code>http://localhost:8001</code> and are intentionally disabled when the server is unavailable:</p>
+<ul>
+<li><code>Add from arXiv</code></li>
+<li><code>Upload to GitHub</code></li>
+<li><code>Pull from GitHub</code></li>
+<li><code>Set PDF Path</code></li>
+<li>card-level <code>PDF</code></li>
+<li>card-level <code>Edit</code></li>
+<li>card-level delete</li>
+</ul>
+<p>This graceful degradation is part of the intended local workflow.</p>
 <h2 id="contributing">Contributing</h2>
-<p>Contributions are welcome! To add a paper:</p>
+<p>To add or update a paper:</p>
 <ol>
-<li>Fork this repo</li>
-<li>Run <code>./add_paper_info.sh &lt;paper.pdf&gt;</code> to generate metadata</li>
-<li>Run <code>./start_editor.sh</code> and edit paper details in the web UI</li>
-<li>Submit a Pull Request</li>
+<li>Run <code>./add_paper_info.sh &lt;arxiv_id&gt;</code> or use <code>Add from arXiv</code>.</li>
+<li>Start the local tools with <code>./start_editor.sh</code>.</li>
+<li>Edit metadata, note content, cover image, keywords, and baseline links in the browser.</li>
+<li>Run <code>./refresh_and_upload.sh</code> to regenerate derived data.</li>
+<li>Submit a Pull Request, or use the local GitHub upload flow if you are maintaining your own deployment.</li>
 </ol>
 <h2 id="conference-timeline">Conference Timeline</h2>
 <p align="center">
-<a class="glightbox" href="/notes/conference_timeline.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/notes/conference_timeline.png" width="800" title="Conference Timeline"></a>
+  <a class="glightbox" href="/notes/conference_timeline.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/notes/conference_timeline.png" width="1000" title="Conference Timeline"></a>
 </p>
 
 <h2 id="_1">招聘</h2>
@@ -319,7 +396,7 @@ scripts/generate_search_data.py   # Search data generator
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../weekly_paper/legacy/2026-04-24/" class="btn btn-neutral float-left" title="2026-04-24"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../weekly_paper/legacy/2026-05-08/" class="btn btn-neutral float-left" title="2026-05-08"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../contributors/" class="btn btn-neutral float-right" title="Contributors">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -343,7 +420,7 @@ scripts/generate_search_data.py   # Search data generator
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../weekly_paper/legacy/2026-04-24/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../weekly_paper/legacy/2026-05-08/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../contributors/" style="color: #fcfcfc">Next &raquo;</a></span>

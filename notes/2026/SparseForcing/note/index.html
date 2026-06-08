@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,13 +162,278 @@
                 <h1 id="sparse-forcing-native-trainable-sparse-attention-for-real-time-autoregressive-diffusion-video-generation">Sparse Forcing: Native Trainable Sparse Attention for Real-time Autoregressive Diffusion Video Generation</h1>
 <blockquote>
 <p>Boxun Xu, Yuming Du, Zichang Liu, Siyu Yang, Ziyang Jiang, Siqi Yan, Rajasi Saha, Albert Pumarola, Wenchen Wang, Peng Li</p>
+<p>Meta Superintelligence Labs / University of California, Santa Barbara</p>
+<p>arXiv: <a href="http://arxiv.org/abs/2604.21221v1">2604.21221v1</a> | 2026年4月</p>
+<p>项目页面: https://boxunxu.top/SparseForcing</p>
 </blockquote>
-<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>We introduce Sparse Forcing, a training-and-inference paradigm for autoregressive video diffusion models that improves long-horizon generation quality while reducing decoding latency. Sparse Forcing is motivated by an empirical observation in autoregressive diffusion rollouts: attention concentrates on a persistent subset of salient visual blocks, forming an implicit spatiotemporal memory in the KV cache, and exhibits a locally structured block-sparse pattern within sliding windows. Building on this observation, we propose a trainable native sparsity mechanism that learns to compress, preserve, and update these persistent blocks while restricting computation within each local window to a dynamically selected local neighborhood. To make the approach practical at scale for both training and inference, we further propose Persistent Block-Sparse Attention (PBSA), an efficient GPU kernel that accelerates sparse attention and memory updates for low-latency, memory-efficient decoding. Experiments show that Sparse Forcing improves the VBench score by +0.26 over Self-Forcing on 5-second text-to-video generation while delivering a 1.11-1.17x decoding speedup and 42% lower peak KV-cache footprint. The gains are more pronounced on longer-horizon rollouts, delivering improved visual quality with +0.68 and +2.74 VBench improvements, and 1.22x and 1.27x speedups on 20-second and 1-minute generations, respectively.</p>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文针对自回归视频扩散模型在长时程生成中质量下降和解码延迟高的问题，提出了一种名为Sparse Forcing的训练与推理范式。该方法基于注意力机制在KV缓存中形成隐式时空记忆的观察，设计了一种可训练的原生稀疏机制，通过动态选择局部邻域来压缩和更新持久性视觉块。作者进一步提出了高效的GPU内核PBSA，实现了稀疏注意力和内存更新的加速。实验表明，Sparse Forcing在5秒文本到视频生成中VBench分数提升0.26，解码速度提升1.11-1.17倍，KV缓存峰值占用降低42%，在更长时程生成中效果更显著。</p>
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent 自动生成，仅供参考，不替代人工审阅。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Sparse Forcing 通过发现自回归视频扩散模型中注意力的"持续性锚点"与"局部块稀疏"模式，提出了一种可训练的原生稀疏注意力机制和高效的 GPU 内核（PBSA），在提升长时程视频生成质量的同时显著降低了推理延迟和内存占用。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>本文提出了 Sparse Forcing，一种面向自回归视频扩散模型的训练与推理范式，能够在降低解码延迟的同时提升长时程生成质量。Sparse Forcing 的出发点来自一个在自回归扩散展开过程中的经验观察：注意力集中在一组持续存在的显著视觉块上，在 KV 缓存中形成隐式时空记忆，并在滑动窗口内展现出局部结构化的块稀疏模式。基于这一观察，作者提出了一种可训练的原生稀疏机制，学习压缩、保留和更新这些持续性块，同时将每个局部窗口内的计算限制在动态选择的局部邻域内。为了使该方法在训练和推理阶段均能大规模实用，作者进一步提出了持久性块稀疏注意力（Persistent Block-Sparse Attention, PBSA），一种高效的 GPU 内核，可加速稀疏注意力和内存更新，实现低延迟、内存高效的解码。实验表明，Sparse Forcing 在 5 秒文本到视频生成中将 VBench 分数提升 +0.26（相比 Self-Forcing），解码速度提升 1.11–1.17×，峰值 KV 缓存占用降低 42%。在更长时程的生成中效果更为显著，20 秒和 1 分钟生成分别获得 +0.68 和 +2.74 的 VBench 改善，解码速度分别提升 1.22× 和 1.27×。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="1">1. 长时程视频生成的质量与效率瓶颈</h3>
+<p>现代视频扩散模型（如 Diffusion Transformer / DiT）通常采用双向注意力处理完整的时空 token 序列，其注意力复杂度随上下文长度呈二次增长。随着视频时长的增加（如 1 分钟），KV 缓存的内存占用急剧膨胀（对于 1.3B 模型，1 分钟视频的 FP16 KV 缓存可达 44.9 GB，为参数内存的 17.26 倍），使得长时程生成在延迟和内存方面代价极高。</p>
+<h3 id="2">2. 自回归扩散的误差累积问题</h3>
+<p>自回归扩散模型（如 Self-Forcing）在推理时必须以自身的不完美预测为条件，导致误差随时间累积（即"暴露偏差"）。此外，密集注意力为早期错误传播到后续帧提供了丰富的通路，加剧了误差放大。</p>
+<h3 id="3">3. 稀疏注意力的潜力未被充分探索</h3>
+<p>虽然稀疏注意力在语言模型中已有广泛研究，但在自回归视频扩散场景中，如何设计既可训练又与展开兼容的稀疏模式，以及稀疏性是否能同时提升生成质量和推理效率，仍不明确。作者从一个全新的视角指出：<strong>稀疏性不仅是计算优化，更是一种控制误差传播拓扑的结构化机制</strong>——通过限制不确定 token 对后续生成的影响范围和强度，可以同时提升质量和效率。</p>
+<h3 id="4">4. 经验观察的启发</h3>
+<p>作者在自回归扩散展开中发现了两个关键模式：
+- <strong>涌现的持续性</strong>（Emergent Persistency）：在长时程中，注意力集中在少量历史块上，形成"垂直聚集的持久锚点"，携带全局上下文（如主体身份和场景布局）。
+- <strong>局部多样的块稀疏</strong>（Locally Diverse Block Sparsity）：即使在局部窗口内，注意力分配也高度结构化和内容相关，呈局部对角块稀疏模式。在 Top-K=25% 的块级别选择下，注意力 token 召回率达到 0.65 ± 0.11。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1_1">1. 整体架构</h3>
+<p>Sparse Forcing 维护一个有界的 KV 记忆 <script type="math/tex">M^k_t = P_t \cup L^k_t</script>，其中：
+- <strong><script type="math/tex">P_t</script>（持久性记忆）</strong>：一个离散的持久性、完全去噪的时空块集合，从 <script type="math/tex">k=0</script> 时提取，携带长程语义锚点，在扩散步骤间共享。
+- <strong><script type="math/tex">L^k_t</script>（局部窗口）</strong>：包含最近时空连续块的滑动窗口，随时间步 <script type="math/tex">t</script> 前进而更新。</p>
+<h3 id="2-pbsa">2. 持久性块稀疏注意力（PBSA）</h3>
+<p>PBSA 将持久性键值和局部窗口键值拼接后进行掩码注意力计算：</p>
+<p>
+<script type="math/tex; mode=display">K = [K_P; K_L], \quad V = [V_P; V_L]</script>
+</p>
+<p>
+<script type="math/tex; mode=display">Y_{cur} = \text{Softmax}\left(\frac{Q_{cur}K^\top}{\sqrt{d}} + M\right)V</script>
+</p>
+<p>掩码 <script type="math/tex">M</script> 对持久性锚点施加密集访问，对局部窗口施加块稀疏访问：
+- 持久性区域：全零掩码（完全可见）
+- 局部窗口：对角块稀疏掩码（仅可见 Top-K 选择的块）</p>
+<h3 id="3-blockified-compression">3. 块化压缩（Blockified Compression）</h3>
+<p>为实现高效的块级别评分，作者首先将潜在空间张量 <script type="math/tex">X \in \mathbb{R}^{T \times H \times W \times d}</script> 分割为时空块 <script type="math/tex">(B_t, B_h, B_w)</script>，每个块包含 <script type="math/tex">B = B_t \cdot B_h \cdot B_w</script> 个 token。然后通过压缩算子 <script type="math/tex">\phi_Q(\cdot)</script> 和 <script type="math/tex">\phi_K(\cdot)</script>（如平均池化）将每个块的 <script type="math/tex">B</script> 个 token 压缩为单个块表示，序列长度减少 <script type="math/tex">B</script> 倍。这些块表示仅用于粗略评分和掩码生成，细粒度注意力仍操作未掩码的 token。</p>
+<h3 id="4-top-c">4. 粗略评分与 Top-C 持久性更新</h3>
+<p>使用块表示计算块级注意力矩阵 <script type="math/tex">A_t</script>，聚合得到每个历史块的重要性分数 <script type="math/tex">s_t</script>。通过 Top-C 保留机制更新持久性集合：</p>
+<p>
+<script type="math/tex; mode=display">P_t = \text{Top-C}(P_{t-1} \cup E_t; s_t), \quad |P_t| \leq C</script>
+</p>
+<p>其中 <script type="math/tex">E_t</script> 为最近从局部窗口中驱逐的候选块。Sink 块始终保留，不受驱逐。</p>
+<h3 id="5-top-k">5. 局部窗口的行级 Top-K 块选择</h3>
+<p>在局部窗口内，使用压缩块表示计算注意力 <script type="math/tex">A_L</script>，然后通过行级 Top-K 选择确定每个查询块可见的局部块集：</p>
+<p>
+<script type="math/tex; mode=display">\Omega(q) = \arg\text{TopK}_j A_L[q, j], \quad |\Omega(q)| = N_{\ell}^{blk} \times K</script>
+</p>
+<h3 id="6-pbsa-gpu">6. PBSA GPU 内核</h3>
+<p>作者使用 ThunderKittens 框架实现了 PBSA 内核，支持：
+- 持久性块的跨步进保留和更新
+- 非持久性区域的动态块选择
+- 前向和反向传播</p>
+<p>该内核在 NVIDIA H100 GPU 上相比 FlashAttention-2 实现了 1.16× 到 11.11× 的加速（取决于稀疏度、窗口扩展比和持久性-局部比）。</p>
+<h3 id="7">7. 训练策略</h3>
+<ul>
+<li>基础模型：Wan2.1-T2V-1.3B</li>
+<li>蒸馏方法：分布匹配蒸馏（DMD）损失</li>
+<li>训练配置：8× NVIDIA H100 GPU，1200 步，batch size 64，AdamW 优化器</li>
+<li>块大小：<script type="math/tex">[3,4,4]</script> 或 <script type="math/tex">[1,8,8]</script>
+</li>
+<li>持久性记忆容量：<script type="math/tex">C = 6</script> 帧</li>
+<li>局部窗口长度：<script type="math/tex">L_{local} = 6</script> 帧</li>
+<li>Top-K：25%</li>
+<li>扩散步骤：4 步</li>
+<li>关键设计：训练时也启用动态更新的缓存和自适应局部注意力，弥合训练-测试不匹配</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">基准设置</h3>
+<ul>
+<li>评估集：4730 个生成视频（946 个提示 × 5 个样本/提示）</li>
+<li>评估指标：VBench（包含 16 个维度，9 个语义维度 + 7 个感知质量维度）</li>
+<li>训练在 5 秒视频上进行，但可外推到 20 秒和 1 分钟</li>
+</ul>
+<h3 id="5">短视频（5 秒）结果</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>参数量</th>
+<th>分辨率</th>
+<th>吞吐量(FPS)</th>
+<th>延迟(s)</th>
+<th>VBench Total</th>
+<th>Quality</th>
+<th>Semantic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self Forcing</td>
+<td>1.3B</td>
+<td>896×512</td>
+<td>17.0</td>
+<td>0.69</td>
+<td>83.88</td>
+<td>84.60</td>
+<td>81.01</td>
+</tr>
+<tr>
+<td>Sparse Forcing (训练+预训练)</td>
+<td>1.3B</td>
+<td>896×512</td>
+<td>19.9</td>
+<td>0.59</td>
+<td>84.14</td>
+<td>84.84</td>
+<td>81.39</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>VBench 提升：+0.26（Total）、+0.24（Quality）、+0.38（Semantic）</li>
+<li>解码速度提升：1.11–1.17×</li>
+<li>KV 缓存峰值降低：42%</li>
+</ul>
+<h3 id="_7">长视频结果</h3>
+<p><strong>20 秒生成</strong>：
+| 模型 | FPS | 延迟(s) | VBench Total/Quality/Semantic |
+|------|-----|---------|-------------------------------|
+| Self Forcing | 14.4 | 0.83 | 82.09 / 82.48 / 80.51 |
+| Sparse Forcing (训练+预训练) | 18.3 | 0.65 | 82.68 / 83.13 / 80.87 |</p>
+<ul>
+<li>VBench 提升：+0.68（Total）</li>
+<li>解码速度提升：1.27×</li>
+</ul>
+<p><strong>1 分钟生成</strong>：
+| 模型 | FPS | 延迟(s) | VBench Total/Quality/Semantic |
+|------|-----|---------|-------------------------------|
+| Self Forcing | 13.9 | 0.87 | 78.93 / 79.48 / 76.70 |
+| Sparse Forcing (训练+预训练) | 18.0 | 0.66 | 81.96 / 82.25 / 80.82 |</p>
+<ul>
+<li>VBench 提升：+2.74（Total）</li>
+<li>解码速度提升：1.22×</li>
+</ul>
+<h3 id="_8">消融实验</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Dynamic Degree ↑</th>
+<th>Color ↑</th>
+<th>FPS ↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self Forcing</td>
+<td>56.67</td>
+<td>82.07</td>
+<td>14.4</td>
+</tr>
+<tr>
+<td>Sparse Forcing (完整)</td>
+<td>66.39</td>
+<td>89.47</td>
+<td>18.3</td>
+</tr>
+<tr>
+<td>w/o P（无持久性记忆）</td>
+<td>47.22</td>
+<td>80.88</td>
+<td>22.8</td>
+</tr>
+<tr>
+<td>w/o BSA in L（无局部块稀疏）</td>
+<td>50.93</td>
+<td>87.45</td>
+<td>17.6</td>
+</tr>
+<tr>
+<td>w/o Cont. Pretrain（无持续预训练）</td>
+<td>63.06</td>
+<td>87.68</td>
+<td>18.3</td>
+</tr>
+</tbody>
+</table>
+<p>每个组件都有显著贡献，完整模型实现最佳的整体权衡。</p>
+<h3 id="pbsa">PBSA 内核性能</h3>
+<ul>
+<li>PBSA 在所有评估设置中相比 FlashAttention-2 实现 1.16× 到 11.11× 的加速</li>
+<li>稀疏度越高加速越大：Top-K 从 25% 降到 6.25%，峰值加速从 4.34× 升至 11.11×</li>
+<li>更长序列和更大局部窗口获得更高加速</li>
+<li>持久性部分紧凑时 PBSA 最有效</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li>
+<p><strong>质量与效率双赢</strong>：同时提升生成质量和推理速度，而非仅优化效率。通过结构化稀疏控制误差传播拓扑，改善了长时程生成的视觉一致性。</p>
+</li>
+<li>
+<p><strong>训练-测试对齐</strong>：训练时也启用动态缓存和自适应注意力，消除了 train-test 不匹配，比 training-free 方案更稳定。</p>
+</li>
+<li>
+<p><strong>可扩展性强</strong>：在 5 秒短视频上训练，但收益在 20 秒和 1 分钟生成中更加显著，无需任何外推特定优化。</p>
+</li>
+<li>
+<p><strong>高效的 GPU 内核</strong>：PBSA 内核基于 ThunderKittens 实现，支持前向和反向传播，实现了显著的端到端加速。</p>
+</li>
+<li>
+<p><strong>内存高效</strong>：峰值 KV 缓存降低 42%，使长时程生成在有限资源下可行。</p>
+</li>
+<li>
+<p><strong>原生可训练稀疏</strong>：不同于静态或后处理稀疏，Sparse Forcing 的稀疏模式是可训练的端到端优化。</p>
+</li>
+<li>
+<p><strong>结构化块设计</strong>：块化压缩和块级路由保留了时空局部性，便于 GPU 上的高效实现。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li>
+<p><strong>单一基座模型和分辨率</strong>：当前评估仅在 Wan2.1-T2V-1.3B 上进行，且固定分辨率 896×512。扩展到其他骨干网络和更高分辨率是未来方向。</p>
+</li>
+<li>
+<p><strong>运动相关指标略有下降</strong>：在某些设置中，时间闪烁和运动平滑度可能略有降低，可能是维持更丰富动态的代价。</p>
+</li>
+<li>
+<p><strong>训练需要额外计算</strong>：需要使用 DMD 蒸馏损失进行持续预训练（1200 步），虽然效果显著，但增加了训练成本。</p>
+</li>
+<li>
+<p><strong>块大小选择影响</strong>：块大小（如 [3,4,4] 和 [1,8,8]）对性能有影响，需要调优。</p>
+</li>
+<li>
+<p><strong>无开源代码（截至发布时）</strong>：虽然作者计划发布代码、训练/评估方案和 PBSA 内核实现，但发布时可能尚未开放。</p>
+</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1_2">1. 视频生成效率优化</h3>
+<p>与 EfficientPaper 收录的其他视频生成效率研究密切相关：
+- <strong>SANA-Video</strong>：使用块线性注意力和恒定大小 KV 缓存
+- <strong>Sparse VideoGen</strong>：使用空间-时间稀疏加速视频扩散 Transformer
+- <strong>StreamDiT</strong>：实时流式视频生成
+- <strong>LTX-Video</strong>：实时视频潜在扩散</p>
+<h3 id="2_1">2. 稀疏注意力机制</h3>
+<p>与以下方向存在技术联系：
+- <strong>Native Sparse Attention</strong>：硬件对齐的原生可训练稀疏注意力
+- <strong>XAttention</strong>：基于反对角评分的块稀疏注意力
+- <strong>Radial Attention</strong>：O(n log n) 稀疏注意力
+- <strong>Minference</strong>：长上下文 LLM 的动态稀疏注意力</p>
+<h3 id="3-kv">3. KV 缓存压缩</h3>
+<p>与 KV 缓存优化相关：
+- <strong>Scissorhands</strong>：利用重要性持续性假设进行 KV 缓存压缩
+- <strong>H2O</strong>：Heavy-hitter oracle 进行高效生成推理
+- <strong>DuoAttention</strong>：检索和流式头的高效长上下文推理</p>
+<h3 id="4_1">4. 自回归扩散模型</h3>
+<p>与以下工作构成连续谱系：
+- <strong>Self-Forcing</strong>：桥接自回归视频扩散的训练-测试差距（Sparse Forcing 的直接基座）
+- <strong>Diffusion Forcing</strong>：将下一个 token 预测与全序列扩散结合
+- <strong>CausVid</strong>：因果扩散 Transformer
+- <strong>Rolling Forcing</strong>：实时自回归长视频扩散</p>
+<h3 id="5_1">5. 视频生成的长时程扩展</h3>
+<p>与长时程视频生成的多个研究方向相关：
+- <strong>SkyReels-V2</strong>：无限长度电影生成模型
+- <strong>MAGI-1</strong>：大规模自回归视频生成
+- <strong>LongLive</strong>：实时交互长视频生成</p>
+<hr />
+<p><em>本 note 由 AI Agent（Hermes Agent）于 2026 年 6 月自动生成，基于论文全文阅读与结构化分析。内容仅供参考，可能存在理解偏差，建议结合原文核实。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

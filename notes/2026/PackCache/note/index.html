@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,11 +161,341 @@
   
                 <h1 id="packcache-a-training-free-acceleration-method-for-unified-autoregressive-video-generation-via-compact-kv-cache">PackCache: A Training-Free Acceleration Method for Unified Autoregressive Video Generation via Compact KV-Cache</h1>
 <blockquote>
-<p>Kunyang Li, Mubarak Shah, Yuzhang Shang</p>
+<p>Kunyang Li, Mubarak Shah, Yuzhang Shang
+University of Central Florida
+arXiv: 2601.04359v1 | 2026 | keyword: kv_cache_sparse</p>
+<p>⚠️ 本 note 由 AI Agent 自动生成，生成时间：2026-06-04，仅供参考。</p>
 </blockquote>
-<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>A unified autoregressive model is a Transformer-based framework that addresses diverse multimodal tasks (e.g., text, image, video) as a single sequence modeling problem under a shared token space. Such models rely on the KV-cache mechanism to reduce attention computation from O(T^2) to O(T); however, KV-cache size grows linearly with the number of generated tokens, and it rapidly becomes the dominant bottleneck limiting inference efficiency and generative length. Unified autoregressive video generation inherits this limitation. Our analysis reveals that KV-cache tokens exhibit distinct spatiotemporal properties: (i) text and conditioning-image tokens act as persistent semantic anchors that consistently receive high attention, and (ii) attention to previous frames naturally decays with temporal distance. Leveraging these observations, we introduce PackCache, a training-free KV-cache management method that dynamically compacts the KV cache through three coordinated mechanisms: condition anchoring that preserves semantic references, cross-frame decay modeling that allocates cache budget according to temporal distance, and spatially preserving position embedding that maintains coherent 3D structure under cache removal. In terms of efficiency, PackCache accelerates end-to-end generation by 1.7-2.2x on 48-frame long sequences, showcasing its strong potential for enabling longer-sequence video generation. Notably, the final four frames - the portion most impacted by the progressively expanding KV-cache and thus the most expensive segment of the clip - PackCache delivers a 2.6x and 3.7x acceleration on A40 and H200, respectively, for 48-frame videos.</p>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>PackCache 是一种无需训练的 KV-Cache 压缩方法，通过条件锚定、跨帧注意力衰减建模和空间保持位置编码三大机制，在统一自回归视频生成中实现 1.7–2.2× 的端到端加速（48 帧），同时保持视频质量。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>统一自回归模型是一种基于 Transformer 的框架，将多种多模态任务（如文本、图像、视频）统一为共享 token 空间下的单一序列建模问题。这类模型依赖 KV-Cache 机制将注意力计算从 O(T²) 降低到 O(T)；然而，KV-Cache 的大小随生成 token 数量线性增长，迅速成为限制推理效率和生成长度的主要瓶颈。统一自回归视频生成继承了这一限制。</p>
+<p>我们的分析揭示，KV-Cache token 表现出明显的时空特性：(i) 文本和条件图像 token 作为持久的语义锚点，持续获得高注意力；(ii) 对先前帧的注意力随时间距离自然衰减。基于这些观察，我们提出 PackCache——一种无需训练的 KV-Cache 管理方法，通过三个协调机制动态压缩 KV-Cache：条件锚定（保留语义引用）、跨帧衰减建模（根据时间距离分配缓存预算）和空间保持位置嵌入（在缓存移除下保持连贯的 3D 结构）。</p>
+<p>在效率方面，PackCache 在 48 帧长序列上加速端到端生成 1.7–2.2×，展现了其在更长序列视频生成中的强大潜力。值得注意的是，对于最后四帧——受 KV-Cache 逐渐扩展影响最大、因此最昂贵的片段——PackCache 在 A40 和 H200 上分别实现了 2.6× 和 3.7× 的加速（48 帧视频）。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>KV-Cache 瓶颈</strong>：在基于 LLM 的统一自回归视频生成模型中，KV-Cache 随帧数线性增长，导致注意力计算成为主要瓶颈。例如，48 帧 384×672 视频经 Cosmos Tokenizer 编码后约产生 53K token，已超过长上下文阈值。模块级分析表明，注意力占每层计算的 71–76%，而其他组件仅占 24–29%。</p>
+</li>
+<li>
+<p><strong>视觉 token 的特殊性</strong>：语言 token 高度抽象、具有上下文感知能力并使用一维位置嵌入；而视觉 token 具有一定程度的稀疏性，依赖三维位置编码。现有 KV-Cache 管理方法（如 H2O、Quest、SnapKV）主要针对语言 token 设计，不适合直接应用于视觉 token。</p>
+</li>
+<li>
+<p><strong>注意力模式的时空特性</strong>：作者通过分析注意力热图发现，当前帧 token 对较近帧的注意力更强，且文本提示和条件图像作为稳定语义锚点持续获得高注意力。这些特性为设计专门的视频 KV-Cache 管理策略提供了基础。</p>
+</li>
+<li>
+<p><strong>滑动窗口的局限</strong>：简单的滑动窗口策略仅保留最近帧，丢弃所有更早的帧，导致长时间上下文信息丢失、长视频生成时出现时间漂移和结构退化，且保留帧中包含大量浪费缓存容量的 masked token。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="31">3.1 预备知识：统一自回归视频生成</h3>
+<p>基于 AR-DF（Autoregressive Discrete Diffusion Forcing）框架（Lumos-1），每帧在训练时仅暴露先前帧的部分观测。推理时，帧级 Bernoulli 掩码决定哪些已生成 token 被写入 KV-Cache：</p>
+<p>
+<script type="math/tex; mode=display">K = K_{cache} \odot M_{cache}, \quad V = V_{cache} \odot M_{cache}</script>
+</p>
+<p>其中被掩码的条目在注意力计算中被忽略，但仍占用内存。</p>
+<p>位置编码采用 MM-RoPE（多模态旋转位置嵌入），将潜在坐标缩放为 <script type="math/tex">(t, h, w) \times (4, 8, 8)</script>，并将旋转维度分布在时间、高度和宽度轴上。</p>
+<h3 id="32">3.2 注意力动态分析</h3>
+<p>通过分析注意力热图和注意力分布，揭示三个关键模式：</p>
+<ul>
+<li><strong>条件锚定（Condition Anchoring）</strong>：文本提示和条件图像在所有层和扩散步骤中持续获得不可忽视的注意力份额，作为持久的语义和外观锚点。</li>
+<li><strong>跨帧注意力衰减（Cross-frame Attention Decay）</strong>：对先前帧的注意力随时间距离单调递减，近帧获得更多注意力。</li>
+<li><strong>逐步演化（Step-wise Evolution）</strong>：生成步骤中，注意力从依赖先前上下文逐渐转向当前帧 token 的空间细化。</li>
+</ul>
+<h3 id="33-packcache">3.3 PackCache 核心机制</h3>
+<p>PackCache 通过三个阶段工作：</p>
+<h4 id="1-fill-cached_t">(1) 填充缓存（Fill-Cache）阶段（<script type="math/tex">D_t < W</script>）</h4>
+<ul>
+<li>新帧不断追加至缓存，直到达到预算上限 <script type="math/tex">W</script>。</li>
+<li>文本和条件图像作为语义锚点，各分配固定配额 <script type="math/tex">\gamma_{text}</script> 和 <script type="math/tex">\gamma_{cond}</script>，不参与时间衰减分布。</li>
+<li>条件条目排除在时间衰减分配之外，确保持久可访问。</li>
+</ul>
+<h4 id="2-pack-cached_t-w">(2) 压缩缓存（Pack-Cache）阶段（<script type="math/tex">D_t = W</script>）</h4>
+<ul>
+<li>基于跨帧注意力衰减观察，PackCache 使用指数衰减函数建模先前 token 的重要性：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\mu_d = C e^{-\alpha d} = C \rho^d, \quad g(d) = \rho^d</script>
+</p>
+<ul>
+<li>归一化分配函数：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">b_d = \frac{g(d)}{\sum_{j=1}^{W} g(j)}, \quad \sum_{d=1}^{W} b_d = 1</script>
+</p>
+<ul>
+<li>实际部署中使用闭式简化：<script type="math/tex">\rho = 1/2</script>，得到：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">b_d = 2^{-\min(d, W-1)}</script>
+</p>
+<ul>
+<li>
+<p>产生直观的分配模式：<script type="math/tex">[1], [1/2, 1/2], [1/2, 1/4, 1/4], [1/2, 1/4, 1/8, 1/8], \ldots</script>
+</p>
+</li>
+<li>
+<p><strong>关键操作</strong>：移除所有 masked 位置，仅保留未掩码且与注意力相关的 token。</p>
+</li>
+<li>可选最小配额 <script type="math/tex">b_{min}</script> 防止远帧完全消失。</li>
+</ul>
+<h4 id="3-slide-cachet-w">(3) 滑动缓存（Slide-Cache）阶段（<script type="math/tex">t > W</script>）</h4>
+<ul>
+<li>新帧插入时移除最旧帧，每帧在相同分配规则下重新打包。</li>
+<li>保持固定缓存大小 <script type="math/tex">W</script>，在移动时间窗口内维持时间加权打包。</li>
+</ul>
+<h3 id="34-spatially-preserving-position-embedding">3.4 空间保持位置嵌入（Spatially Preserving Position Embedding）</h3>
+<ul>
+<li>滑动窗口下，时间索引变得不连续，破坏 MM-RoPE 的相对位置结构。</li>
+<li>采用轻量级重基（rebase）操作：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">(pos_t, pos_h, pos_w) \leftarrow (pos_t - \Delta t, pos_h, pos_w)</script>
+</p>
+<ul>
+<li>1D 全局索引保持连续，3D 索引中仅更新时间分量，保持 <script type="math/tex">(pos_h, pos_w)</script> 固定以维持空间一致性。</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：3B Lumos-1（目前唯一开源的统一自回归视频生成器）</li>
+<li><strong>分辨率</strong>：672×384</li>
+<li><strong>每帧 token</strong>：4,084 视觉 token + 数百文本 token</li>
+<li><strong>硬件</strong>：NVIDIA A40 (48GB)、H200 (141GB)</li>
+<li><strong>数据集</strong>：VBench I2V 子集（160 张图像）</li>
+<li><strong>基线</strong>：原始 Lumos-1（完整 KV-Cache）、滑动窗口变体</li>
+</ul>
+<h3 id="vbench-i2v">质量评估（VBench-i2v）</h3>
+<table>
+<thead>
+<tr>
+<th>帧数</th>
+<th>方法</th>
+<th>Subj.↑</th>
+<th>Backg.↑</th>
+<th>Motion.↑</th>
+<th>Aesth.↑</th>
+<th>I2V-Sub.↑</th>
+<th>I2V-Back.↑</th>
+<th>DynDeg.↑</th>
+<th>Overall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24</td>
+<td>Baseline</td>
+<td>0.973</td>
+<td>0.960</td>
+<td>0.988</td>
+<td>0.600</td>
+<td>0.969</td>
+<td>0.974</td>
+<td>0.019</td>
+<td>0.783</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Sliding Window</td>
+<td>0.931</td>
+<td>0.948</td>
+<td>0.982</td>
+<td>0.570</td>
+<td>0.948</td>
+<td>0.954</td>
+<td>0.081</td>
+<td>0.773</td>
+</tr>
+<tr>
+<td>24</td>
+<td>PackCache</td>
+<td>0.948</td>
+<td>0.956</td>
+<td>0.986</td>
+<td>0.556</td>
+<td>0.940</td>
+<td>0.948</td>
+<td>0.431</td>
+<td><strong>0.824</strong></td>
+</tr>
+<tr>
+<td>48</td>
+<td>Baseline</td>
+<td>OOM</td>
+<td>OOM</td>
+<td>OOM</td>
+<td>OOM</td>
+<td>OOM</td>
+<td>OOM</td>
+<td>OOM</td>
+<td>OOM</td>
+</tr>
+<tr>
+<td>48</td>
+<td>Sliding Window</td>
+<td>0.860</td>
+<td>0.906</td>
+<td>0.979</td>
+<td>0.549</td>
+<td>0.924</td>
+<td>0.936</td>
+<td>0.031</td>
+<td>0.741</td>
+</tr>
+<tr>
+<td>48</td>
+<td>PackCache</td>
+<td><strong>0.891</strong></td>
+<td><strong>0.920</strong></td>
+<td><strong>0.983</strong></td>
+<td>0.550</td>
+<td>0.915</td>
+<td>0.929</td>
+<td><strong>0.263</strong></td>
+<td><strong>0.779</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>24 帧：PackCache 与完整缓存基线质量相当，同时提供更快推理，Dynamic Degree 指标显著更高。</li>
+<li>48 帧：完整缓存基线 OOM 无法完成推理（即使在 H200 上）。PackCache 在几乎所有指标上超越滑动窗口。</li>
+</ul>
+<h3 id="_7">效率评估</h3>
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>帧数</th>
+<th>方法</th>
+<th>TOTAL (s)</th>
+<th>加速</th>
+<th>LAST (s)</th>
+<th>加速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A40</td>
+<td>24</td>
+<td>Baseline</td>
+<td>731.59</td>
+<td>-</td>
+<td>163.97</td>
+<td>-</td>
+</tr>
+<tr>
+<td>A40</td>
+<td>24</td>
+<td>PackCache</td>
+<td>580.84</td>
+<td>1.26×</td>
+<td>100.53</td>
+<td>1.63×</td>
+</tr>
+<tr>
+<td>A40</td>
+<td>48</td>
+<td>Baseline</td>
+<td>2075.45*</td>
+<td>-</td>
+<td>267.08*</td>
+<td>-</td>
+</tr>
+<tr>
+<td>A40</td>
+<td>48</td>
+<td>PackCache</td>
+<td>1183.99</td>
+<td><strong>1.75×</strong></td>
+<td>101.15</td>
+<td><strong>2.64×</strong></td>
+</tr>
+<tr>
+<td>H200</td>
+<td>24</td>
+<td>Baseline</td>
+<td>201.44</td>
+<td>-</td>
+<td>46.83</td>
+<td>-</td>
+</tr>
+<tr>
+<td>H200</td>
+<td>24</td>
+<td>PackCache</td>
+<td>139.40</td>
+<td>1.45×</td>
+<td>26.89</td>
+<td>1.74×</td>
+</tr>
+<tr>
+<td>H200</td>
+<td>48</td>
+<td>Baseline</td>
+<td>595.33</td>
+<td>-</td>
+<td>79.02</td>
+<td>-</td>
+</tr>
+<tr>
+<td>H200</td>
+<td>48</td>
+<td>PackCache</td>
+<td>272.75</td>
+<td><strong>2.18×</strong></td>
+<td>21.58</td>
+<td><strong>3.66×</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>48 帧视频：端到端 1.75× (A40) / 2.18× (H200)，最后四帧 2.64× (A40) / 3.66× (H200)。</li>
+<li>GPU 内存：基线峰值 42.66 GiB（94.8% A40），PackCache 稳定在约 38 GiB。</li>
+</ul>
+<h3 id="_8">消融实验</h3>
+<ul>
+<li>最佳最小配额为 3 帧等价（<script type="math/tex">b_{min} = 3/W</script>），VBench-i2v 得分为 0.8326。</li>
+<li>过小配额（2 帧）降低最近帧保真度；过大配额（4-5 帧）过早压缩旧上下文。</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>无需训练</strong>：完全免训练，可直接应用于现有模型（如 Lumos-1），无额外训练成本。</li>
+<li><strong>显著加速</strong>：48 帧视频端到端 1.7–2.2× 加速，最后四帧最高 3.7×，显著降低推理延迟。</li>
+<li><strong>质量保持</strong>：在固定缓存预算下保持甚至优于滑动窗口方案的视频质量，尤其在时间一致性和动态度方面。</li>
+<li><strong>内存高效</strong>：缓存大小固定，不随视频长度增长，避免 OOM，使 48 帧视频生成成为可能。</li>
+<li><strong>长上下文保留</strong>：相比滑动窗口仅保留最近帧，PackCache 保留多帧历史信息，显著减少时间漂移。</li>
+<li><strong>轻量开销</strong>：仅添加几十个元 token 用于编码帧边界信息，打包和 RoPE 更新开销极小。</li>
+<li><strong>设计精巧的三机制协同</strong>：条件锚定 + 跨帧衰减 + 空间保持位置编码，分别解决语义锚点保留、时间预算分配和空间一致性维护三个核心问题。</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>依赖特定模型架构</strong>：PackCache 仅在 Lumos-1 上进行了实验验证，尚未在其他统一自回归视频生成模型（如 Magi-1、VideoPoet）上测试。</li>
+<li><strong>衰减函数假设</strong>：使用 <script type="math/tex">\rho = 1/2</script> 的固定衰减因子，可能并非所有视频场景的最优选择。不同内容类型（如快速运动 vs. 静态场景）的注意力衰减模式可能不同。</li>
+<li><strong>窗口大小超参数</strong>：窗口大小 <script type="math/tex">W</script> 和最小配额 <script type="math/tex">b_{min}</script> 需要手动调优，不同视频长度和分辨率可能需要不同的配置。</li>
+<li><strong>与其他 KV-Cache 优化方法的组合</strong>：PackCache 未探索与 MQA、GQA、量化等方法的组合效果，可能存在进一步优化空间。</li>
+<li><strong>代码未开源</strong>：prototxt 中代码 URL 为空，缺少开源代码，限制了社区复现和扩展。</li>
+<li><strong>评估范围有限</strong>：仅在 VBench I2V 子集上评估，未涵盖更广泛的视频质量基准（如 FVD、T2V 场景等）。</li>
+<li><strong>静态衰减策略</strong>：跨帧注意力衰减建模是静态的，未考虑动态内容（如场景切换）对注意力分布的影响。</li>
+<li><strong>仅适用于 2D 位置编码的扩展</strong>：Spatially Preserving RoPE 依赖 MM-RoPE 的特定 3D 结构，对其他位置编码方案的兼容性未验证。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV-Cache 压缩与优化</strong>：PackCache 属于 KV-Cache 管理领域的训练免方法，与 H2O、SnapKV、Quest、PyramidKV 等 LLM KV-Cache 压缩方法形成互补，但专门针对视觉 token 的时空特性设计。研究方向包括：将 PackCache 的条件锚定和衰减建模思想迁移到文本 KV-Cache 优化。</li>
+<li><strong>自回归视频生成加速</strong>：作为 Lumos-1 等统一自回归视频生成模型的推理加速方法，PackCache 属于 EfficientPaper 核心关注的高效推理方向。可扩展至其他自回归视频模型（如 Magi-1、VideoPoet、Loong）。</li>
+<li><strong>长视频生成</strong>：PackCache 使 48 帧视频生成成为可能（基线 OOM），与长视频生成相关研究（如 ArLoN、Pyramidal Flow Matching）形成呼应。未来可探索分钟级视频生成的 KV-Cache 策略。</li>
+<li><strong>注意力稀疏化与高效推理</strong>：PackCache 通过注意力分析揭示了视觉 token 的稀疏性（约 12.3% 的非掩码 token），为视觉注意力稀疏化提供了实证支持。可与 FlashAttention、PagedAttention 等系统级优化结合。</li>
+<li><strong>免训练推理优化</strong>：PackCache 的免训练特性使其可即插即用，与量化、蒸馏、知识蒸馏等免训练方法互补，共同构成高效推理工具箱。</li>
+<li><strong>3D 位置编码与长序列建模</strong>：Spatially Preserving RoPE 为长序列视频生成中的位置编码问题提供了解决方案，与 MM-RoPE 等 3D 位置编码研究相关。</li>
+<li><strong>统一多模态模型的推理效率</strong>：随着统一多模态模型（如 Unified-IO-2、Chameleon、Florence-2）的发展，KV-Cache 管理将成为通用挑战，PackCache 的思想可推广到其他多模态任务。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

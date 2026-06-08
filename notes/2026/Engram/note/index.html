@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Engram - Efficient Paper</title>
+    <title>Engram: Conditional Memory via Scalable Lookup - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Engram";
+        var mkdocs_page_name = "Engram: Conditional Memory via Scalable Lookup";
         var mkdocs_page_input_path = "notes/2026/Engram/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Engram</li>
+      <li class="breadcrumb-item active">Engram: Conditional Memory via Scalable Lookup</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,9 +159,298 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="engram">Engram</h1>
+                <h1 id="engram-conditional-memory-via-scalable-lookup">Engram: Conditional Memory via Scalable Lookup</h1>
+<blockquote>
+<p>Xin Cheng, Wangding Zeng, Damai Dai, Qinyu Chen, Bingxuan Wang, Zhenda Xie, Kezhao Huang, Xingkai Yu, Zhewen Hao, Yukun Li, Han Zhang, Huishuai Zhang, Dongyan Zhao, Wenfeng Liang</p>
+</blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
+<p>While Mixture-of-Experts (MoE) scales capacity via conditional computation, Transformers lack a native primitive for knowledge lookup, forcing them to inefficiently simulate retrieval through computation. To address this, we introduce conditional memory as a complementary sparsity axis, instantiated via Engram, a module that modernizes classic N-gram embedding for O(1) lookup. By formulating the Sparsity Allocation problem, we uncover a U-shaped scaling law that optimizes the trade-off between neural computation (MoE) and static memory (Engram). Guided by this law, we scale Engram to 27B parameters, achieving superior performance over a strictly iso-parameter and iso-FLOPs MoE baseline. Most notably, while the memory module is expected to aid knowledge retrieval (e.g., MMLU +3.4; CMMLU +4.0), we observe even larger gains in general reasoning (e.g., BBH +5.0; ARC-Challenge +3.7) and code/math domains (e.g., HumanEval +3.0; MATH +2.4). Mechanistic analyses reveal that Engram relieves the backbone's early layers from static reconstruction, effectively deepening the network for complex reasoning.</p>
+<h2 id="_1">一句话总结</h2>
+<p>Engram 是 DeepSeek-AI 和北京大学提出的条件记忆模块，将经典 N-gram 嵌入与现代 Transformer 结合，作为 MoE 的互补稀疏轴，通过 O(1) 查找静态知识来释放网络深度用于复杂推理，在 iso-parameter iso-FLOPs 对比下超越纯 MoE 基线。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>MoE 的局限</strong>：MoE 通过条件计算（conditional computation）扩展容量，但缺乏原生的知识查找（knowledge lookup）能力，Transformer 只能通过计算来模拟检索，浪费了宝贵的网络深度。</li>
+<li><strong>语言的双重性</strong>：语言建模包含两个质上不同的子任务：</li>
+<li><strong>组合推理</strong>（compositional reasoning）：需要深度、动态的计算</li>
+<li><strong>知识检索</strong>（knowledge retrieval）：如命名实体、公式化模式，是局部的、静态的、高度刻板的</li>
+<li><strong>N-gram 的启示</strong>：经典 N-gram 模型在捕捉局部依赖方面非常有效，暗示这些规律性可以通过计算廉价的查找来表示。</li>
+<li><strong>Sparsity Allocation 问题</strong>：在固定参数预算下，如何在 MoE 专家和 Engram 嵌入之间分配稀疏容量？</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-engram">1. Engram 架构</h3>
+<p>Engram 是一个条件记忆模块，通过结构化地将静态模式存储与动态计算分离来增强 Transformer backbone：</p>
+<p><strong>三个阶段</strong>：
+1. <strong>稀疏检索</strong>（Sparse Retrieval via Hashed N-grams）：
+   - <strong>Tokenizer 压缩</strong>：通过 NFKC 归一化等操作，将原始 token ID 映射为规范 ID，实现 23% 的词汇表缩减（128k tokenizer）
+   - <strong>Multi-Head Hashing</strong>：使用 K 个不同的哈希头（每个 N-gram 阶数 n），通过确定性哈希函数将压缩后的上下文映射到嵌入表索引。最终记忆向量 e_t ∈ R^{d_mem} 由所有检索到的嵌入拼接而成
+   - <strong>O(1) 查找</strong>：每个位置的检索是确定性的，只需一次哈希计算</p>
+<ol>
+<li><strong>上下文感知门控</strong>（Context-aware Gating）：</li>
+<li>使用当前隐藏状态 h_t 作为动态 Query，检索到的记忆 e_t 作为 Key/Value 投影源</li>
+<li>计算标量门控 α_t ∈ (0,1)，通过 RMSNorm 确保梯度稳定性</li>
+<li>
+<p>如果检索的记忆与当前上下文矛盾，门控趋向于零，有效抑制噪声</p>
+</li>
+<li>
+<p><strong>卷积增强</strong>（Conv1D + Residual）：</p>
+</li>
+<li>引入短的、深度可分离的因果卷积（kernel size=4, dilation=max N-gram 阶数）</li>
+<li>最终输出通过残差连接集成到 backbone</li>
+</ol>
+<h3 id="2-sparsity-allocation">2. Sparsity Allocation 问题</h3>
+<p><strong>关键发现：U 型缩放律</strong></p>
+<ul>
+<li><strong>Allocation ratio ρ</strong> ∈ [0,1]：分配给 MoE 专家的不活跃参数比例</li>
+<li>ρ = 1：纯 MoE 模型</li>
+<li>ρ &lt; 1：减少路由专家数量，释放参数给 Engram 嵌入</li>
+<li><strong>实验结果</strong>：</li>
+<li>在 5.7B 和 9.9B 两个计算规模下，验证损失与 ρ 呈 <strong>U 型关系</strong></li>
+<li>最佳性能出现在 ρ ≈ 75-80%（即 20-25% 参数给 Engram）</li>
+<li>纯 MoE（ρ=100%）被证明是次优的</li>
+</ul>
+<h3 id="3-infinite-memory-regime">3. Infinite Memory Regime</h3>
+<ul>
+<li>Engram 的 O(1) 开销意味着可以无限制扩展内存而不增加计算</li>
+<li>实验验证：增加嵌入槽数量（从 2.58×10^5 到 1.0×10^7）呈现严格的幂律缩放</li>
+<li>Engram 比 OverEncoding（直接平均 N-gram 嵌入）在相同内存预算下释放更大的缩放潜力</li>
+</ul>
+<h3 id="4">4. 系统效率</h3>
+<ul>
+<li><strong>训练</strong>：标准模型并行，将嵌入表分片到多个 GPU，使用 All-to-All 通信</li>
+<li><strong>推理</strong>：确定性检索支持从主机内存异步预取（prefetch-and-overlap），通过 PCIe 传输</li>
+<li><strong>层级缓存</strong>：利用 N-gram 的 Zipf 分布，频繁访问的嵌入缓存在快速存储层（HBM/DRAM），罕见模式存储在大容量存储（NVMe SSD）</li>
+<li><strong>100B 参数嵌入表</strong>离线到主机内存，开销 &lt; 3%</li>
+</ul>
+<h3 id="5-multi-branch">5. Multi-branch 架构集成</h3>
+<ul>
+<li>使用 Manifold-Constrained Hyper-Connections（M=4 branches）</li>
+<li>参数共享策略：单一嵌入表和 Value 投影共享，M 个不同的 Key 投影用于分支特定门控</li>
+<li>线性投影可融合为单一 FP8 矩阵乘法，最大化 GPU 计算利用率</li>
+</ul>
+<h2 id="_4">技术细节</h2>
+<h3 id="engram">Engram 模块位置</h3>
+<ul>
+<li>在 30-block Transformer 中，Engram 放置在第 2 层和第 15 层</li>
+<li>最大 N-gram 阶数为 3，头数为 8，维度为 1280</li>
+<li>优化器：嵌入参数使用 Adam（学习率 5× 缩放，无权重衰减），卷积参数零初始化</li>
+</ul>
+<h3 id="_5">模型配置</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>总参数</th>
+<th>激活参数</th>
+<th>专家数</th>
+<th>Engram 参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense-4B</td>
+<td>4.1B</td>
+<td>3.8B</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>MoE-27B</td>
+<td>26.7B</td>
+<td>3.8B</td>
+<td>72 routed + 2 shared (top-6)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Engram-27B</td>
+<td>26.7B</td>
+<td>3.8B</td>
+<td>55 routed + 2 shared (top-6)</td>
+<td>5.7B</td>
+</tr>
+<tr>
+<td>Engram-40B</td>
+<td>39.5B</td>
+<td>3.8B</td>
+<td>55 routed + 2 shared (top-6)</td>
+<td>18.5B</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">实验设置</h2>
+<ul>
+<li><strong>训练数据</strong>：262B tokens，相同数据课程（token 预算和顺序）</li>
+<li><strong>Tokenizer</strong>：DeepSeek-v3，128k 词汇表</li>
+<li><strong>架构</strong>：30-block Transformer，hidden size 2560，MLA（32 heads），mHC（expansion rate 4）</li>
+<li><strong>优化器</strong>：Muon</li>
+<li><strong>评估基准</strong>：</li>
+<li>语言建模：The Pile, Validation Set</li>
+<li>知识与推理：MMLU, MMLU-Redux, MMLU-Pro, CMMLU, C-Eval, AGIEval, ARC, TriviaQA, BBH, HellaSwag, PIQA, WinoGrande</li>
+<li>阅读理解：DROP, RACE, C3</li>
+<li>代码与数学：HumanEval, MBPP, CruxEval, GSM8K, MGSM, MATH</li>
+<li><strong>长上下文评估</strong>：LongPPL（32k）, RULER（32k）</li>
+</ul>
+<h2 id="_7">主要结果</h2>
+<h3 id="_8">预训练性能对比</h3>
+<table>
+<thead>
+<tr>
+<th>基准</th>
+<th>Dense-4B</th>
+<th>MoE-27B</th>
+<th>Engram-27B</th>
+<th>Engram-40B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pile loss</td>
+<td>-</td>
+<td>2.091</td>
+<td>1.960</td>
+<td>1.942</td>
+</tr>
+<tr>
+<td>Validation loss</td>
+<td>-</td>
+<td>1.768</td>
+<td>1.634</td>
+<td>1.610</td>
+</tr>
+<tr>
+<td>MMLU (5-shot)</td>
+<td>48.6</td>
+<td>57.4</td>
+<td><strong>60.4</strong></td>
+<td>60.6</td>
+</tr>
+<tr>
+<td>CMMLU (5-shot)</td>
+<td>47.9</td>
+<td>57.9</td>
+<td><strong>61.9</strong></td>
+<td>63.4</td>
+</tr>
+<tr>
+<td>BBH (3-shot)</td>
+<td>42.8</td>
+<td>50.9</td>
+<td><strong>55.9</strong></td>
+<td>57.5</td>
+</tr>
+<tr>
+<td>ARC-Challenge (25-shot)</td>
+<td>59.3</td>
+<td>70.1</td>
+<td><strong>73.8</strong></td>
+<td>76.4</td>
+</tr>
+<tr>
+<td>HumanEval (0-shot)</td>
+<td>26.8</td>
+<td>37.8</td>
+<td><strong>40.8</strong></td>
+<td>38.4</td>
+</tr>
+<tr>
+<td>MATH (4-shot)</td>
+<td>15.2</td>
+<td>28.3</td>
+<td><strong>30.7</strong></td>
+<td>30.6</td>
+</tr>
+<tr>
+<td>GSM8K (8-shot)</td>
+<td>35.5</td>
+<td>58.4</td>
+<td><strong>60.6</strong></td>
+<td>62.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">关键发现</h3>
+<ol>
+<li><strong>知识推理增强</strong>：MMLU +3.4, CMMLU +4.0（相比 MoE-27B）</li>
+<li><strong>通用推理提升更大</strong>：BBH +5.0, ARC-Challenge +3.7</li>
+<li><strong>代码数学领域</strong>：HumanEval +3.0, MATH +2.4</li>
+<li><strong>长上下文</strong>：Multi-Query NIAH 84.2 → 97.0（Engram-27B）</li>
+<li><strong>机制分析</strong>：Engram 解除了 backbone 早期层的静态重建负担，有效加深网络深度用于复杂推理</li>
+</ol>
+<h3 id="_10">长上下文性能</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>LongPPL Book</th>
+<th>RULER MQ</th>
+<th>RULER VT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MoE-27B (50k)</td>
+<td>4.38</td>
+<td>84.2</td>
+<td>77.0</td>
+</tr>
+<tr>
+<td>Engram-27B (41k)</td>
+<td>4.37</td>
+<td><strong>97.0</strong></td>
+<td><strong>89.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Engram-27B 仅用 82% 的预训练 FLOPs（41k vs 50k），在长上下文指标上显著超越 MoE-27B。</p>
+<h2 id="_11">优点与局限</h2>
+<h3 id="_12">优点</h3>
+<ol>
+<li><strong>新颖的稀疏轴</strong>：提出 conditional memory 作为 MoE 的互补稀疏轴，而非简单的计算扩展</li>
+<li><strong>U 型缩放律</strong>：首次揭示 MoE/Engram 分配的 U 型关系，为稀疏模型设计提供理论指导</li>
+<li><strong>系统效率</strong>：确定性检索支持从主机内存异步预取，突破 GPU HBM 容量限制</li>
+<li><strong>全面的实验</strong>：在知识、推理、代码、数学、长上下文等多个维度全面验证</li>
+<li><strong>工程可行性</strong>：100B 参数嵌入表离线到主机内存，开销 &lt; 3%</li>
+</ol>
+<h3 id="_13">局限</h3>
+<ol>
+<li><strong>MoE 架构特定</strong>：Engram 与 DeepSeekMoE 架构紧密耦合，是否适用于其他 MoE 变体有待验证</li>
+<li><strong>N-gram 的局限</strong>：基于 N-gram 的查找机制可能无法处理复杂的长距离依赖</li>
+<li><strong>训练开销</strong>：大规模嵌入表的 All-to-All 通信可能成为训练瓶颈</li>
+<li><strong>评估范围</strong>：未在实际应用（如 RAG、多轮对话）中验证</li>
+<li><strong>与 OverEncoding 的比较</strong>：Engram 优于 OverEncoding，但 OverEncoding 的设计可能不是最优基线</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>Engram 属于 <strong>模型/系统结构设计</strong>（<code>structure_design</code>）和 <strong>稀疏剪枝</strong>（<code>sparse_pruning</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>条件记忆</strong>：将 N-gram 嵌入作为 O(1) 查找的条件记忆模块，作为 MoE 的互补稀疏轴</li>
+<li><strong>稀疏分配</strong>：U 型缩放律揭示了 MoE 专家与 Engram 嵌入之间的最优分配</li>
+<li><strong>系统效率</strong>：确定性检索支持异步预取，突破 GPU HBM 限制</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>MoE 相关</strong>：DySHARP（MoE 通信优化）、DeepEP（MoE 专家并行）
+- <strong>稀疏注意力</strong>：SparseForcing（可训练稀疏 attention）
+- <strong>模型结构</strong>：与 MLP-Mixer、RWKV 等非 Transformer 架构有互补关系</p>
+<h2 id="_14">可复现/实现要点</h2>
+<ol>
+<li><strong>Tokenizer 压缩</strong>：通过 NFKC 归一化等操作实现 23% 词汇表缩减</li>
+<li><strong>Multi-Head Hashing</strong>：使用确定性哈希函数，K 个头，每个头映射到素数大小的嵌入表</li>
+<li><strong>门控机制</strong>：RMSNorm + softmax，确保梯度稳定</li>
+<li><strong>卷积层</strong>：kernel size=4, dilation=max N-gram 阶数, SiLU 激活</li>
+<li><strong>Engram 位置</strong>：在 30-block Transformer 中放置在第 2 层和第 15 层</li>
+<li><strong>训练配置</strong>：Muon 优化器，嵌入参数 Adam（lr 5×），卷积参数零初始化</li>
+<li><strong>推理优化</strong>：嵌入表离线到主机内存，异步预取与计算重叠</li>
+</ol>
+<h2 id="_15">个人备注</h2>
+<ul>
+<li>Engram 的核心洞察是：<strong>静态知识应该通过查找而非计算来获取</strong>。这与人类大脑中"自动化记忆"vs"有意识推理"的分工非常相似。</li>
+<li>U 型缩放律是一个重要的发现：MoE 和 Engram 不是互斥的，而是互补的。纯 MoE 在静态知识检索方面浪费了宝贵的网络深度。</li>
+<li>条件记忆作为一个新概念，可能在未来与 MoE、RAG、记忆增强等方向产生有趣的交叉。</li>
+<li>论文来自 DeepSeek-AI，但代码开源在 GitHub，值得注意的是这是一篇技术报告（GitHub 发布），而非传统会议论文。</li>
+<li>值得关注的未来方向：(1) Engram 与 RAG 的结合；(2) 动态 N-gram 阶数选择；(3) 在长上下文场景下的进一步优化。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

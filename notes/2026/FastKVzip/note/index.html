@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,9 +164,208 @@
 <p>Jang-Hyun Kim, Dongyoon Han, Sangdoo Yun</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
 <p>Efficient key-value (KV) cache management is crucial for the practical deployment of large language models (LLMs), yet existing compression techniques often incur a trade-off between performance degradation and computational overhead. We propose a novel gating-based KV cache eviction method for frozen-weight LLMs that achieves high compression ratios with negligible computational cost. Our approach introduces lightweight sink-attention gating modules to identify and retain critical KV pairs, and integrates seamlessly into both the prefill and decoding stages. The proposed gate training algorithm relies on forward passes of an LLM, avoiding expensive backpropagation, while achieving strong task generalization through a task-agnostic reconstruction objective. Extensive experiments across the Qwen2.5-1M, Qwen3, and Gemma3 families show that our method maintains near-lossless performance while evicting up to 70% of the KV cache. The results are consistent across a wide range of tasks, including long-context understanding, code comprehension, and mathematical reasoning, demonstrating the generality of our approach.</p>
-<p>和kvzap非常像</p>
+<h2 id="_1">一句话总结</h2>
+<p>Fast KVzip 是一种基于门控的 KV 缓存剪枝方法，通过轻量级 sink-attention 门控模块识别和保留关键 KV 对，在预填充和解码阶段均能工作，实现高达 70% 的 KV 缓存剪枝且几乎无性能损失，在 Qwen2.5-1M、Qwen3 和 Gemma3 系列上验证了其有效性。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>KV 缓存瓶颈</strong>：随着上下文长度增长，KV 缓存成为 LLM 推理的主要瓶颈。</li>
+<li><strong>现有方法的权衡</strong>：</li>
+<li><strong>低开销方法</strong>（H2O, SnapKV）：压缩开销小，但性能显著下降</li>
+<li><strong>高保真方法</strong>（KVzip）：保留精度，但压缩开销大（预填充时间翻倍）</li>
+<li><strong>核心问题</strong>：如何在<strong>不牺牲精度</strong>的前提下，实现<strong>高效</strong>的 KV 缓存压缩？</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-gating-mechanism">1. 门控机制（Gating Mechanism）</h3>
+<p><strong>设计</strong>：
+- 每个注意力层有一个门控模块 g_l: R^D → [0, 1]^H
+- 门控模块处理隐藏特征，输出 KV 特征的重要性分数
+- 门控分支独立运行，不影响原始注意力输出</p>
+<p><strong>关键洞察</strong>：
+- KV 对的未来使用是内在属性，可以直接从输入隐藏状态解码
+- 不需要像 KVzip 那样重建整个上下文</p>
+<h3 id="2-sink-attention">2. Sink-Attention 门控</h3>
+<ul>
+<li>受 attention sinks 启发，使用 sink-attention 架构</li>
+<li>在输入隐藏状态上操作，而非中间注意力特征</li>
+<li>效果最强</li>
+</ul>
+<h3 id="3">3. 门控训练算法</h3>
+<p><strong>核心特点</strong>：
+- <strong>冻结权重</strong>：LLM 权重保持冻结，只训练门控参数
+- <strong>前向传播</strong>：依赖 LLM 的前向传播，避免昂贵的反向传播
+- <strong>任务无关</strong>：通过任务无关的重建目标实现强大的任务泛化
+- <strong>训练成本低</strong>：14B 规模模型训练不到 1 H100 GPU 小时</p>
+<h3 id="4">4. 推理流程</h3>
+<p><strong>预填充阶段</strong>：
+1. 采用分块预填充（chunked prefill）减少峰值内存
+2. 对每个输入块，计算 KV 特征和对应的重要性分数
+3. 根据分数剪枝低重要性 KV 特征
+4. 保持压缩的 KV 缓存（固定保留率或预定义内存预算）
+5. 保留最近 token 的 KV 特征（经验上提升性能）</p>
+<p><strong>解码阶段</strong>：
+1. 维护小缓冲区（128 tokens）缓存最近隐藏状态
+2. 缓冲区满时，执行门控和剪枝（并行化）
+3. 并行计算减少延迟开销</p>
+<h3 id="5">5. 与现有方法的对比</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>注意力计算</th>
+<th>KV 存储</th>
+<th>门控类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MoD</td>
+<td>条件</td>
+<td>条件</td>
+<td>跳过注意力</td>
+</tr>
+<tr>
+<td>MoBA</td>
+<td>始终</td>
+<td>始终</td>
+<td>选择块</td>
+</tr>
+<tr>
+<td><strong>Fast KVzip</strong></td>
+<td><strong>始终</strong></td>
+<td><strong>条件</strong></td>
+<td><strong>门控 KV 剪枝</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">技术细节</h2>
+<h3 id="_5">门控架构</h3>
+<ul>
+<li><strong>输入</strong>：隐藏状态 h ∈ R^D（每个注意力层）</li>
+<li><strong>输出</strong>：重要性分数 ∈ [0, 1]^H（每个 KV head）</li>
+<li><strong>操作</strong>：独立分支，不影响原始注意力输出</li>
+</ul>
+<h3 id="_6">训练配置</h3>
+<ul>
+<li><strong>权重冻结</strong>：LLM 权重保持冻结</li>
+<li><strong>门控参数</strong>：仅训练门控参数</li>
+<li><strong>训练成本</strong>：14B 模型 &lt; 1 H100 GPU 小时</li>
+<li><strong>训练目标</strong>：任务无关的重建目标</li>
+</ul>
+<h3 id="_7">评估基准</h3>
+<ul>
+<li><strong>模型</strong>：Qwen2.5-7B/14B-1M, Qwen3-8B/14B, Qwen3-8B-FP8, Gemma3-12B</li>
+<li><strong>基准</strong>：</li>
+<li>长上下文：RULER-4K, SCBench, MRCR（上下文长度达 170K tokens）</li>
+<li>推理：AIME24, MATH</li>
+<li>代码：代码理解任务</li>
+</ul>
+<h3 id="_8">评估指标</h3>
+<ul>
+<li><strong>性能</strong>：KVPress 基准（RULER-4K）</li>
+<li><strong>效率</strong>：峰值内存、预填充时间（170K tokens）</li>
+<li><strong>压缩比</strong>：25-70% KV 缓存剪枝</li>
+</ul>
+<h2 id="_9">主要结果</h2>
+<h3 id="kvpress-ruler-4k">KVPress 基准（RULER-4K）</h3>
+<ul>
+<li><strong>Fast KVzip</strong> 匹配 KVzip 的压缩性能</li>
+<li>在 KV budget 比率为 25% 时保持模型精度</li>
+<li>显著优于 2025 年 12 月的现有基线</li>
+</ul>
+<h3 id="170k-tokens">效率对比（170K tokens）</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>No Compression</th>
+<th>KVzip</th>
+<th>Fast KVzip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>峰值 KV 内存</td>
+<td>36 GB</td>
+<td>24 GB</td>
+<td>18 GB</td>
+</tr>
+<tr>
+<td>预填充时间</td>
+<td>150s</td>
+<td>120s</td>
+<td>90s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">跨模型验证</h3>
+<ul>
+<li><strong>Qwen2.5-1M</strong>：长上下文理解</li>
+<li><strong>Qwen3</strong>：推理和代码理解</li>
+<li><strong>Gemma3</strong>：跨架构验证</li>
+<li><strong>FP8 量化</strong>：兼容量化权重</li>
+<li><strong>滑动窗口</strong>：兼容滑动窗口注意力</li>
+</ul>
+<h3 id="_11">关键发现</h3>
+<ol>
+<li><strong>近无损性能</strong>：在 30-40% KV 缓存保留率下保持近无损性能</li>
+<li><strong>门控效果</strong>：输入隐藏状态比中间注意力特征更有效</li>
+<li><strong>Sink-Attention</strong>：受 attention sinks 启发的架构效果最强</li>
+<li><strong>训练成本低</strong>：14B 模型 &lt; 1 H100 GPU 小时</li>
+<li><strong>泛化性强</strong>：任务无关的重建目标实现强泛化</li>
+</ol>
+<h2 id="_12">优点与局限</h2>
+<h3 id="_13">优点</h3>
+<ol>
+<li><strong>高效</strong>：门控机制开销可忽略，预填充时间减少</li>
+<li><strong>高保真</strong>：近无损性能，70% 压缩率</li>
+<li><strong>通用性强</strong>：跨多个模型和任务验证</li>
+<li><strong>训练成本低</strong>：&lt; 1 H100 GPU 小时</li>
+<li><strong>兼容性好</strong>：兼容量化权重和滑动窗口注意力</li>
+<li><strong>开源</strong>：代码在 GitHub 上公开</li>
+</ol>
+<h3 id="_14">局限</h3>
+<ol>
+<li><strong>门控训练</strong>：需要预计算 KV 重要性分数（KVzip），但成本较低</li>
+<li><strong>分块预填充</strong>：使用 16K 分块大小，可能不适用于所有场景</li>
+<li><strong>硬件依赖</strong>：GPU 加速，CPU 性能可能不足</li>
+<li><strong>仅 KV 剪枝</strong>：未探索其他维度的压缩（如特征通道）</li>
+<li><strong>评估范围</strong>：主要在 Qwen 和 Gemma 系列上验证，其他模型需进一步测试</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>Fast KVzip 属于 <strong>KV Cache 稀疏</strong>（<code>kv_cache_sparse</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>门控 KV 剪枝</strong>：使用轻量级门控模块识别和保留关键 KV 对</li>
+<li><strong>高效预填充</strong>：分块预填充减少峰值内存，门控减少预填充时间</li>
+<li><strong>通用性</strong>：跨多个模型和任务验证</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>KVzip</strong>（2025）：Fast KVzip 的基础，KVzip 的高效改进版
+- <strong>KVzap</strong>（2026）：同期工作，类似门控优化目标
+- <strong>H2O</strong>（2023）：KV 缓存剪枝先驱
+- <strong>SnapKV</strong>（2024）：Token 剪枝方法
+- <strong>Expected Attention</strong>（2025）：Query-agnostic 方法</p>
+<h2 id="_15">可复现/实现要点</h2>
+<ol>
+<li><strong>门控模块</strong>：每层一个，处理隐藏状态，输出重要性分数</li>
+<li><strong>Sink-Attention 架构</strong>：受 attention sinks 启发</li>
+<li><strong>训练</strong>：冻结权重，仅训练门控参数，任务无关重建目标</li>
+<li><strong>推理</strong>：分块预填充（16K），解码缓冲区（128 tokens）</li>
+<li><strong>压缩比</strong>：25-70% KV 缓存剪枝</li>
+<li><strong>开源</strong>：https://github.com/Janghyun1230/FastKVzip</li>
+</ol>
+<h2 id="_16">个人备注</h2>
+<ul>
+<li>Fast KVzip 的核心洞察是：<strong>KV 对的未来使用是内在属性，可以直接从输入隐藏状态解码</strong>，不需要像 KVzip 那样重建整个上下文。</li>
+<li>门控机制的训练成本低（&lt; 1 H100 GPU 小时），这使得它在实际部署中非常实用。</li>
+<li>与 KVzap 的对比：Fast KVzip 和 KVzap 都是门控方法，但 Fast KVzip 使用 sink-attention 架构，而 KVzap 使用线性/MLP 代理模型。</li>
+<li>论文来自 NAVER AI Lab，且代码开源，说明这是一个工程友好的方法。</li>
+<li>值得关注的未来方向：(1) 在更大模型上的验证；(2) 与其他 KV 缓存压缩方法的结合；(3) 端到端训练的门控方法。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

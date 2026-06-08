@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,25 +161,326 @@
   
                 <h1 id="turbo-sparse-achieving-llm-sota-performance-with-minimal-activated-parameters">Turbo Sparse: Achieving LLM SOTA Performance with Minimal Activated Parameters</h1>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Exploiting activation sparsity is a promising approach to significantly
-accelerating the inference process of large language models (LLMs) without
-compromising performance. However, activation sparsity is determined by
-activation functions, and commonly used ones like SwiGLU and GeGLU exhibit
-limited sparsity. Simply replacing these functions with ReLU fails to achieve
-sufficient sparsity. Moreover, inadequate training data can further increase
-the risk of performance degradation. To address these challenges, we propose a
-novel dReLU function, which is designed to improve LLM activation sparsity,
-along with a high-quality training data mixture ratio to facilitate effective
-sparsification. Additionally, we leverage sparse activation patterns within the
-Feed-Forward Network (FFN) experts of Mixture-of-Experts (MoE) models to
-further boost efficiency. By applying our neuron sparsification method to the
-Mistral and Mixtral models, only 2.5 billion and 4.3 billion parameters are
-activated per inference iteration, respectively, while achieving even more
-powerful model performance. Evaluation results demonstrate that this sparsity
-achieves a 2-5x decoding speedup. Remarkably, on mobile phones, our
-TurboSparse-Mixtral-47B achieves an inference speed of 11 tokens per second.
-Our models are available at \url{https://huggingface.co/PowerInfer}</p>
+<h2 id="_1">一句话总结</h2>
+<p>TurboSparse 提出了一种新颖的 dReLU 激活函数，通过在 Gated-MLP 的 gate 和 up 两个投影层同时应用 ReLU，将 LLM 推理时的激活稀疏度从 40% 提升至 90%，仅激活 2.5B-4.3B 参数即可在 Mistral-7B 和 Mixtral-47B 上实现 2-5× 解码加速，并在移动端（OnePlus-12）以 11 tokens/s 速度运行 47B 参数模型。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>利用激活稀疏性是显著加速大语言模型（LLM）推理过程的有前景的方法，且不损害模型性能。然而，激活稀疏性由激活函数决定，常用的 SwiGLU 和 GeGLU 等激活函数表现出有限的稀疏性。简单地将这些函数替换为 ReLU 无法实现足够的稀疏性。此外，不充分的训练数据会进一步增加性能下降的风险。为解决这些挑战，我们提出了一种新颖的 dReLU 函数，旨在提高 LLM 激活稀疏性，并结合高质量的训练数据混合比例以促进有效的稀疏化。此外，我们利用混合专家（MoE）模型中前馈网络（FFN）专家的稀疏激活模式来进一步提升效率。通过将我们的神经元稀疏化方法应用于 Mistral 和 Mixtral 模型，每次推理迭代分别仅激活 25 亿和 43 亿参数，同时实现更强大的模型性能。评估结果表明，该稀疏性实现了 2-5 倍的解码加速。值得注意的是，在手机上，我们的 TurboSparse-Mixtral-47B 实现了 11 tokens/s 的推理速度。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<p>当前主流 LLM（如 Llama、Mistral、Gemma）均为稠密模型，推理时使用全部参数。随着模型规模增长，计算资源需求急剧增加，成为 AI 广泛部署的主要障碍。</p>
+<h3 id="_5">已有方法的局限</h3>
+<ol>
+<li><strong>MoE 方法</strong>：通过专家路由实现条件计算，但架构设计复杂，且专家内部仍为稠密激活。</li>
+<li><strong>ReLU 激活稀疏性</strong>：ReLU 天然输出零元素，Deja Vu 可实现 2× 加速，PowerInfer 可达 11× 加速。但当前 LLM 通常使用 SwiGLU/GeGLU，其稀疏性有限（约 40%）。</li>
+<li><strong>ReLUfication（已有最先进方法）</strong>：将激活函数替换为 ReLU 后继续预训练，但存在两个关键缺陷：</li>
+<li>仅替换 gate 投影的 ReLU 效率有限，稀疏度仅从 40% 提升到约 67-71%（ReLULlama-7B）</li>
+<li>训练数据多样性不足、训练 token 数不够，导致能力恢复不完全</li>
+</ol>
+<h3 id="_6">核心洞察</h3>
+<p>作者发现现有 ReLUfication 方法只关注修改 gate 投影，而忽略了 up 投影的激活分布。gate 和 up 投影共同影响神经元激活的稀疏性，up 投影中大量激活值小于 0，这些负值也可被屏蔽，从而引入更强的稀疏性而不牺牲非线性能力。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="1-drelu">1. dReLU 激活函数</h3>
+<p><strong>核心公式</strong>：</p>
+<pre><code>Combined_dReLU(x) := max(0, xW_gate) * max(0, xW_up)
+</code></pre>
+<p>与标准 Gated-MLP 结构的区别：
+- <strong>标准 SwiGLU</strong>：<code>Gate(x) := SiLU(xW_gate)</code>，<code>Combined(x) := Gate(x) * Up(x)</code>
+- <strong>ReLUfication (ReGLU)</strong>：仅在 gate 上应用 ReLU，<code>Gate(x) := max(0, xW_gate)</code>
+- <strong>dReLU（本文方法）</strong>：在 gate 和 up 两个投影上同时应用 ReLU，实现双重稀疏化</p>
+<h3 id="2">2. 小模型验证</h3>
+<p>使用 300M 参数的 decoder-only 架构，dReLU 和 SwiGLU 在 fineweb 数据集上预训练 5B token：
+- dReLU 训练损失：3.154，验证 PPL：28.45
+- SwiGLU 训练损失：3.146，验证 PPL：28.48
+- 结论：dReLU 收敛能力与 SwiGLU 相当，且验证 PPL 略优</p>
+<h3 id="3-">3. 稀疏度-性能权衡分析</h3>
+<p>采用 Top-k% 方法控制稀疏度（取绝对值最大的 k% 激活值）：</p>
+<table>
+<thead>
+<tr>
+<th>Top-k%</th>
+<th>dReLU PPL</th>
+<th>SwiGLU PPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0%</td>
+<td>28.45</td>
+<td>28.48</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>28.45</td>
+<td>28.62</td>
+</tr>
+<tr>
+<td>80%</td>
+<td>28.45</td>
+<td>36.28</td>
+</tr>
+<tr>
+<td>85%</td>
+<td>28.65</td>
+<td>48.55</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>29.19</td>
+<td>112.36</td>
+</tr>
+</tbody>
+</table>
+<p>关键发现：dReLU 在 90% 稀疏度下仍保持竞争力，而 SwiGLU 在 80% 时已严重退化。</p>
+<h3 id="4-moe">4. MoE 模型中的稀疏性</h3>
+<p>对 Deepseek-MoE、Qwen1.5-MoE、Mixtral 进行分析：
+- MoE 模型的 FFN 专家内部仍存在类似稠密模型的稀疏激活模式
+- 稀疏度达 50% 时性能仅下降约 1-2%
+- 这意味着 ReLUfication 可扩展到 MoE 模型，且 FFN 权重占比更高，FLOP 减少更显著</p>
+<h3 id="5">5. 大规模预训练</h3>
+<p><strong>模型</strong>：Mistral-7B 和 Mixtral-47B（将 SwiGLU FFN 替换为 dReLU FFN）</p>
+<p><strong>训练数据混合比例</strong>（约 150B token，不到典型预训练 token 的 1%）：
+- Web 数据（Wanjuan-CC 等）：约 74%
+- 学术数据（Arxiv、PubMed、Philpapers 等）：约 10%
+- 书籍数据：约 7%
+- 数学数据：约 3%
+- 代码数据（Starcoder、GitHub-Code）：约 6%</p>
+<p><strong>超参数</strong>：
+- 序列长度：4096
+- 批量大小：2048
+- 学习率：5e-5 → 5e-6（余弦调度）
+- 预热步数：1000
+- 优化器：AdamW（β1=0.9, β2=0.95）
+- 硬件：64 × A800-80G GPU</p>
+<p><strong>SFT 阶段</strong>：使用 orca-math-word-problems、bagel 等高质量 SFT 数据集，同时为每个 FFN 块训练预测器模块（TurboSparse-Mixtral-47B 为每个专家训练预测器），用于预测哪些神经元将被激活。</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="1">1. 下游任务性能</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>参数量</th>
+<th>激活参数</th>
+<th>ARC-challenge</th>
+<th>Hellaswag</th>
+<th>MMLU</th>
+<th>TruthfulQA</th>
+<th>WinoGrande</th>
+<th>GSM8k</th>
+<th>OpenLLM Avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemma-2B</td>
+<td>2B</td>
+<td>2B</td>
+<td>48.55</td>
+<td>71.02</td>
+<td>40.05</td>
+<td>34.38</td>
+<td>66.06</td>
+<td>18.72</td>
+<td>46.46</td>
+</tr>
+<tr>
+<td>Mistral-7B</td>
+<td>7B</td>
+<td>7B</td>
+<td>61.43</td>
+<td>83.32</td>
+<td>62.65</td>
+<td>44.06</td>
+<td>79.24</td>
+<td>40.17</td>
+<td>61.57</td>
+</tr>
+<tr>
+<td><strong>TurboSparse-Mistral-7B</strong></td>
+<td>7B</td>
+<td><strong>2.5B</strong></td>
+<td>62.20</td>
+<td>82.17</td>
+<td>63.89</td>
+<td>46.64</td>
+<td>76.16</td>
+<td>50.84</td>
+<td><strong>63.65</strong></td>
+</tr>
+<tr>
+<td>Mixtral-47B</td>
+<td>47B</td>
+<td>13B</td>
+<td>68.09</td>
+<td>86.62</td>
+<td>70.53</td>
+<td>48.59</td>
+<td>83.35</td>
+<td>58.91</td>
+<td>69.34</td>
+</tr>
+<tr>
+<td><strong>TurboSparse-Mixtral-47B</strong></td>
+<td>47B</td>
+<td><strong>4.3B</strong></td>
+<td>67.49</td>
+<td>85.22</td>
+<td>70.48</td>
+<td>56.64</td>
+<td>82.24</td>
+<td>68.50</td>
+<td><strong>71.76</strong></td>
+</tr>
+</tbody>
+</table>
+<p>关键发现：
+- TurboSparse-Mistral-7B 仅激活 2.5B 参数，性能优于 Gemma-2B（全参数 2B），且超越原始 Mistral-7B
+- TurboSparse-Mixtral-47B 仅激活 4.3B 参数，性能超越原始 Mixtral-47B（激活 13B 参数）
+- 在 GSM8k 上提升尤为显著（Mistral: 50.84 vs 40.17, Mixtral: 68.50 vs 58.91）</p>
+<h3 id="2_1">2. 稀疏度</h3>
+<ul>
+<li><strong>TurboSparse-Mistral-7B</strong>：平均每层 90% 神经元不激活</li>
+<li><strong>TurboSparse-Mixtral-47B</strong>：每个专家 FFN 平均 85% 不激活；结合 MoE 路由的 75% 稀疏，每个 MoE 层仅激活 3% 的参数</li>
+</ul>
+<h3 id="3">3. 推理加速</h3>
+<p><strong>纯 CPU 推理（tokens/s）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>模型</th>
+<th>PowerInfer</th>
+<th>llama.cpp</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC-2080Ti</td>
+<td>Mistral-7B-FP16</td>
+<td>9.94</td>
+<td>4.78</td>
+<td>2.08×</td>
+</tr>
+<tr>
+<td>PC-2080Ti</td>
+<td>Mixtral-47B-INT4</td>
+<td>11.98</td>
+<td>4.26</td>
+<td>2.81×</td>
+</tr>
+<tr>
+<td>PC-Laptop</td>
+<td>Mistral-7B-FP16</td>
+<td>8.71</td>
+<td>4.13</td>
+<td>2.11×</td>
+</tr>
+<tr>
+<td>PC-Laptop</td>
+<td>Mixtral-47B-INT4</td>
+<td>16.1</td>
+<td>6.91</td>
+<td>2.32×</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CPU/GPU 混合推理（tokens/s）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>模型</th>
+<th>PowerInfer</th>
+<th>llama.cpp</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC-2080Ti</td>
+<td>Mistral-7B-FP16</td>
+<td>35.5</td>
+<td>7.64</td>
+<td><strong>4.64×</strong></td>
+</tr>
+<tr>
+<td>PC-2080Ti</td>
+<td>Mixtral-47B-INT4</td>
+<td>22.24</td>
+<td>6.63</td>
+<td>3.35×</td>
+</tr>
+<tr>
+<td>PC-Laptop</td>
+<td>Mixtral-47B-INT4</td>
+<td>33.12</td>
+<td>13.1</td>
+<td>2.52×</td>
+</tr>
+</tbody>
+</table>
+<p><strong>移动端推理（OnePlus-12）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>PowerInfer-2</th>
+<th>llama.cpp</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixtral-47B-INT4</td>
+<td>11.1 tokens/s</td>
+<td>0.5 tokens/s</td>
+<td><strong>22.2×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>平均生成加速约 2.83×。</p>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>极高的激活稀疏度</strong>：通过 dReLU 将稀疏度从 40% 提升至 90%，MoE 模型结合路由稀疏可达 97%</li>
+<li><strong>性能不降反升</strong>：TurboSparse 模型在多项基准上超越原始模型，特别是在 GSM8k（数学推理）和 TruthfulQA 上</li>
+<li><strong>训练效率高</strong>：仅需约 150B token（不到典型预训练的 1%），大幅降低训练成本</li>
+<li><strong>通用性强</strong>：可同时应用于稠密模型（Mistral-7B）和 MoE 模型（Mixtral-47B）</li>
+<li><strong>实际部署价值</strong>：在移动端实现 22.2× 加速（Mixtral-47B），使大模型在移动设备上可用</li>
+<li><strong>方法简洁</strong>：dReLU 仅修改激活函数（公式简洁），无需复杂的架构改动</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>训练成本仍存在</strong>：虽仅需 150B token，但仍需 64 × A800-80G GPU，对个人开发者有门槛</li>
+<li><strong>稀疏预测器的额外开销</strong>：SFT 阶段需训练每个 FFN 块的预测器，MoE 模型还需为每个专家训练预测器</li>
+<li><strong>对 ReLU 类激活函数的依赖</strong>：方法依赖 ReLU 系列激活函数的稀疏特性，对其他激活函数（如 GELU）可能不适用</li>
+<li><strong>实验模型规模有限</strong>：主要在 7B 和 47B 规模验证，未在更大规模（如 70B、405B）上测试</li>
+<li><strong>移动端验证有限</strong>：仅在 OnePlus-12（Snapdragon 8 Gen 3）上测试，未覆盖更多移动平台</li>
+<li><strong>与量化方法的联合效果未充分探索</strong>：虽然使用了 INT4 量化进行速度对比，但与 dReLU 稀疏化的联合优化未深入研究</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>TurboSparse 与 EfficientPaper 项目中的多个研究方向密切相关：</p>
+<ol>
+<li><strong>激活稀疏性（Activation Sparsity）</strong>：本文的核心研究方向，通过 dReLU 函数实现高稀疏度，与 PowerInfer、Deja Vu 等工作属于同一研究线</li>
+<li><strong>稀疏剪枝（Sparse Pruning）</strong>：本文方法本质上是一种结构化稀疏方法，通过稀疏化激活函数实现高效推理</li>
+<li><strong>混合专家模型（MoE）</strong>：将稀疏激活扩展到 MoE 模型，发现 MoE 专家内部仍存在稀疏性，为 MoE 模型的进一步高效化提供了新思路</li>
+<li><strong>高效推理（Efficient Inference）</strong>：通过稀疏激活显著降低推理 FLOPs，与模型压缩（量化、蒸馏）、推测解码等方法互补</li>
+<li><strong>移动端部署（Mobile Deployment）</strong>：在移动设备上实现高速推理，与端侧 LLM 部署研究方向密切相关</li>
+<li><strong>条件计算（Conditional Computing）</strong>：通过激活稀疏性实现条件计算，是高效 AI 研究的重要方向</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）自动生成，基于论文 PDF 文本提取和元数据信息。笔记内容经过整理和翻译，旨在提供论文的核心信息概览。如有需要，请参考原始论文获取完整细节。</p>
+<hr />
+<p><em>笔记生成时间：2026-06-05</em>
+<em>论文链接：<a href="http://arxiv.org/abs/2406.05955v2">arXiv:2406.05955v2</a></em>
+<em>代码仓库：<a href="https://huggingface.co/PowerInfer">PowerInfer</a></em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

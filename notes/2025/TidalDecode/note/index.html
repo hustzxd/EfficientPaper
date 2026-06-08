@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,30 +162,288 @@
                 <h1 id="tidaldecode-fast-and-accurate-llm-decoding-with-position-persistent-sparse-attention">TidalDecode: Fast and Accurate LLM Decoding with Position Persistent Sparse Attention</h1>
 <blockquote>
 <p>Lijie Yang, Zhihao Zhang, Zhuofu Chen, Zikun Li, Zhihao Jia</p>
+<p>Carnegie Mellon University | ICLR 2025</p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) have driven significant advancements across
-diverse NLP tasks, with long-context models gaining prominence for handling
-extended inputs. However, the expanding key-value (KV) cache size required by
-Transformer architectures intensifies the memory constraints, particularly
-during the decoding phase, creating a significant bottleneck. Existing sparse
-attention mechanisms designed to address this bottleneck have two limitations:
-(1) they often fail to reliably identify the most relevant tokens for
-attention, and (2) they overlook the spatial coherence of token selection
-across consecutive Transformer layers, which can lead to performance
-degradation and substantial overhead in token selection. This paper introduces
-TidalDecode, a simple yet effective algorithm and system for fast and accurate
-LLM decoding through position persistent sparse attention. TidalDecode
-leverages the spatial coherence of tokens selected by existing sparse attention
-methods and introduces a few token selection layers that perform full attention
-to identify the tokens with the highest attention scores, while all other
-layers perform sparse attention with the pre-selected tokens. This design
-enables TidalDecode to substantially reduce the overhead of token selection for
-sparse attention without sacrificing the quality of the generated results.
-Evaluation on a diverse set of LLMs and tasks shows that TidalDecode closely
-matches the generative performance of full attention methods while reducing the
-LLM decoding latency by up to 2.1x.</p>
+<blockquote>
+<p><strong>⚠️ 生成声明</strong>：本 note 由 AI Agent（Hermes）于 2026 年 6 月自动生成，基于 arXiv 论文 PDF 全文提取与分析。内容仅供参考，如有错误请以原文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>TidalDecode 利用相邻 Transformer 层之间注意力模式的<strong>空间连续性（spatial coherence）</strong>，仅在少量层执行全注意力进行 token 选择，其余层复用已选择的 token 集合进行稀疏注意力，从而将 LLM 解码延迟降低最高 <strong>2.1×</strong>，同时保持与全注意力接近的生成质量。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）在自然语言处理任务中取得了显著进展，长上下文模型尤其受到关注。然而，Transformer 架构中不断增长的 KV 缓存大小加剧了内存限制，尤其在解码阶段，形成了显著瓶颈。现有的稀疏注意力机制存在两个局限：（1）往往无法可靠地识别最相关的 token 用于注意力计算；（2）忽略了连续 Transformer 层之间 token 选择的空间连续性，导致性能下降和 token 选择的大量开销。</p>
+<p>本文提出 <strong>TidalDecode</strong>，一种通过位置持续稀疏注意力（Position Persistent Sparse Attention, PPSA）实现快速准确 LLM 解码的算法与系统。TidalDecode 利用现有稀疏注意力方法所选择 token 的空间连续性，引入少量 token 选择层执行全注意力以识别具有最高注意力分数的 token，而所有其他层则使用预选 token 执行稀疏注意力。这种设计使 TidalDecode 能够大幅减少稀疏注意力的 token 选择开销，同时不牺牲生成结果质量。在多种 LLM 和任务上的评估表明，TidalDecode 在接近全注意力方法生成性能的同时，将 LLM 解码延迟降低了最高 <strong>2.1×</strong>。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>LLM 推理分为预填充（prefilling）和解码（decoding）两个阶段。解码阶段需要访问所有先前 token 的 KV 缓存，随着上下文长度增长，KV 缓存急剧膨胀。例如，LLaMA-2-7B 在 128K 上下文长度下，半精度 KV 缓存可达 <strong>64 GB</strong>。解码阶段是<strong>内存瓶颈（memory-bound）</strong>，限制了长上下文 LLM 服务的效率。</p>
+<h3 id="_5">现有方法的不足</h3>
+<p>现有稀疏注意力机制分为两类：
+1. <strong>驱逐型（eviction-based）</strong>：如 H2O、TOVA、StreamingLLM，从 KV 缓存中丢弃不相关 token。问题在于可能过早驱逐携带关键信息的 token，导致性能下降。
+2. <strong>选择型（selection-based）</strong>：如 Quest、Sparq Attention，保留完整 KV 缓存，动态选择少量 token 参与注意力计算。问题在于：
+   - 每层独立进行 token 选择，忽略跨层的空间连续性
+   - token 选择算法（如近似注意力分数估计）引入额外开销，有时甚至超过全注意力的计算成本
+   - 可能存在分布偏移（distribution shift），将稀疏注意力的偏差 KV 表示写回缓存</p>
+<h3 id="_6">关键洞察</h3>
+<p>论文通过大量实验发现：<strong>相邻 Transformer 层所选择的高注意力分数 token 具有显著的重叠</strong>（spatial coherence）。在 LLaMA-3-8B 模型上，100K 上下文长度的 Needle-in-the-Haystack 测试中，连续层的 top-256 token 重叠率很高，且层间重叠呈现明显的模式。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="ppsa">整体架构：位置持续稀疏注意力（PPSA）</h3>
+<p>TidalDecode 在每个解码步骤中使用三种注意力层：
+1. <strong>全注意力层（Full Attention）</strong>：前两层（Layer 0 和 Layer 1）执行全注意力，避免早期性能退化（参考 Quest 的发现）。
+2. <strong>Token 选择层（Token Selection Layer）</strong>：紧接全注意力层之后的一层（如 Layer 2）和一个中间层（如 Layer 13）执行全注意力并进行 token 选择。在计算全注意力时，TidalDecode 在线存储查询（Q）与所有 key（K）的内积值 ⟨Q, K⟩，然后选择内积值最大的 top-k token 作为 token 集合 T。
+3. <strong>位置持续稀疏注意力层（PPSA）</strong>：所有其他层仅加载 token 集合 T 中的 key 和 value 进行稀疏注意力计算，完全复用前一个 token 选择层的结果。</p>
+<h3 id="_8">三种层的协作机制</h3>
+<p>以 32 层 LLaMA 模型为例：
+- Layer 0-1：全注意力
+- Layer 2：全注意力 + Token 选择（首次选择）
+- Layer 3-12：PPSA（使用 Layer 2 选择的 token）
+- Layer 13：全注意力 + Token 重新选择（中间校准）
+- Layer 14-31：PPSA（使用 Layer 13 选择的 token）</p>
+<h3 id="token">Token 选择的具体实现</h3>
+<ul>
+<li>TidalDecode 在全注意力计算时，利用 QK 内积（而非 softmax 后的注意力分数）进行 top-k 选择</li>
+<li>这是等价的，因为 softmax 是单调的（ordering invariant），不影响 top-k 的结果</li>
+<li>避免了不必要的 softmax 计算开销</li>
+<li>选择的 token 集合在后续所有 PPSA 层中复用，无需逐层重复选择</li>
+</ul>
+<h3 id="_9">中间重新选择的重要性</h3>
+<p>如果仅在开始时选择一次 token 而不进行中间重新选择，由于远距离层之间的相关性降低（如 Layer 3 和 Layer 31），性能会大幅下降。实验表明，选择 Layer 13（或 Layer 7 for LLaMA-2）作为中间重新选择层，可将 recall rate 从 ~20% 提升到 ~40%，显著改善模型性能。</p>
+<h3 id="kv-cache-correction">KV 缓存校正机制（Cache Correction）</h3>
+<p>稀疏注意力方法解码的 token 的 KV 表示可能偏离全注意力解码的原始表示（称为"污染 token"），随着这些 KV 对被添加到缓存，错误会累积，导致分布偏移。TidalDecode 引入缓存校正机制：每 T 个解码步骤后，对所有污染 token 执行一次全注意力的预填充，更新其 KV 表示。T 可以是数千步。此校正步骤可与稀疏解码步骤并发执行。（注：论文评估中未使用此机制，以保持与现有方法的公平比较。）</p>
+<h3 id="quest">与 Quest 的关键区别</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Quest</th>
+<th>TidalDecode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Token 选择方式</td>
+<td>每层独立近似（页面级重要性估计）</td>
+<td>少量层精确选择，跨层复用</td>
+</tr>
+<tr>
+<td>Token 选择开销</td>
+<td>每层都有开销，可能超过全注意力</td>
+<td>仅 2 层有开销，其余层无额外开销</td>
+</tr>
+<tr>
+<td>Token 选择精度</td>
+<td>近似估计，可能不准确</td>
+<td>精确内积 top-k 选择</td>
+</tr>
+<tr>
+<td>额外机制</td>
+<td>无</td>
+<td>缓存校正机制（可选）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_10">实验结果</h2>
+<h3 id="_11">评估模型</h3>
+<ul>
+<li>LongChat-7b-v1.5-32k</li>
+<li>LLaMA-3-8B（含 LLaMA-3-8B-Instruct-Gradient-1048k）</li>
+<li>LLaMA-3.1-8B-Instruct</li>
+<li>LLaMA-3-70B-Instruct-Gradient-1048k</li>
+<li>LLaMA-2-7B</li>
+</ul>
+<h3 id="_12">评估任务与数据集</h3>
+<ul>
+<li><strong>Needle-in-the-Haystack</strong>：测试长依赖信息检索能力</li>
+<li><strong>PG-19</strong>：语言建模（困惑度评估）</li>
+<li><strong>LongBench</strong>：长上下文综合评估（单/多文档 QA、摘要、检索）</li>
+</ul>
+<h3 id="_13">核心结果</h3>
+<h4 id="needle-in-the-haystack">Needle-in-the-Haystack 测试</h4>
+<p><strong>LongChat-7b-v1.5-32k（10K 上下文）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>K=32</th>
+<th>K=64</th>
+<th>K=128</th>
+<th>K=256</th>
+<th>K=512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2O</td>
+<td>0%</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>TOVA</td>
+<td>0%</td>
+<td>1%</td>
+<td>1%</td>
+<td>3%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+<td>3%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>Quest</td>
+<td>65%</td>
+<td>99%</td>
+<td>99%</td>
+<td>99%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td><strong>TidalDecode+L7</strong></td>
+<td><strong>73%</strong></td>
+<td>92%</td>
+<td>98%</td>
+<td>99%</td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>LLaMA-3-8B（100K 上下文）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>K=32</th>
+<th>K=64</th>
+<th>K=128</th>
+<th>K=256</th>
+<th>K=512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quest</td>
+<td>38%</td>
+<td>50%</td>
+<td>65%</td>
+<td>87%</td>
+<td>98%</td>
+</tr>
+<tr>
+<td><strong>TidalDecode+L13</strong></td>
+<td><strong>86%</strong></td>
+<td><strong>92%</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>TidalDecode 仅需 <strong>0.1%</strong> 的输入长度（128 tokens / 100K context）即可达到 100% 准确率，而 Quest 需要更多 token。</p>
+<h4 id="pg-19">语言建模（PG-19 困惑度）</h4>
+<p>在 token budget 为 2048 和 4096 时，TidalDecode 的多个重选层变体（L9/L13/L15）均比 Quest 达到更低的困惑度，且随上下文长度增长保持鲁棒性。</p>
+<h4 id="longbench">LongBench 评估</h4>
+<p>在 LLaMA-3-8B-Instruct-Gradient-1048k 上，token budget 为 4096 时：
+- TidalDecode 在 8 个任务中平均得分 <strong>32.86</strong>，超过 Quest 的 <strong>31.13</strong>
+- 在部分任务中甚至超过全注意力基线（如 MFQA、NrtQA、2Wiki、TrQA）
+- 论文假设 TidalDecode 的 token 选择过程能过滤掉不相关信息，因此在某些任务上表现更优</p>
+<h4 id="_14">效率评估（端到端延迟）</h4>
+<p><strong>LLaMA-2-7B（单 A100 80GB）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>上下文长度</th>
+<th>全注意力</th>
+<th>Quest</th>
+<th>TidalDecode</th>
+<th>加速比（vs 全注意力）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10K</td>
+<td>19.22ms</td>
+<td>20.39ms</td>
+<td>16.94ms</td>
+<td>1.13×</td>
+</tr>
+<tr>
+<td>32K</td>
+<td>25.71ms</td>
+<td>20.47ms</td>
+<td>17.89ms</td>
+<td>1.44×</td>
+</tr>
+<tr>
+<td>100K</td>
+<td>45.70ms</td>
+<td>24.93ms</td>
+<td>21.26ms</td>
+<td><strong>2.15×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>在 32 层和 64 层 LLaMA 模型上：
+- TidalDecode vs 全注意力：最高 <strong>5.56×</strong> 加速
+- TidalDecode vs Quest：最高 <strong>2.17×</strong> 加速
+- 稀疏注意力核相比 Quest 核：最高 <strong>3.36×</strong> 加速</p>
+<h3 id="_15">灵敏度分析</h3>
+<p>最优重选层与模型族系相关：
+- LLaMA-2-7B：Layer 7
+- LLaMA-3-8B / LLaMA-3.1-8B：Layer 13
+- LLaMA-3-70B（64 层）：Layer 14 或 Layer 31</p>
+<p>同一模型族系中，最优重选层在不同任务上保持一致。且 3B 小模型（LLaMA-3.2-3B）的最优层为 Layer 12-13。</p>
+<hr />
+<h2 id="_16">优势</h2>
+<ol>
+<li><strong>简洁高效</strong>：仅需 2 个 token 选择层（前部 + 中间），其余层完全复用，设计极简。</li>
+<li><strong>精确 token 选择</strong>：利用全注意力计算内积进行精确 top-k 选择，而非近似估计，选择精度高。</li>
+<li><strong>显著加速</strong>：端到端解码延迟降低最高 2.1×，注意力核加速最高 5.56×。</li>
+<li><strong>质量保持</strong>：在 Needle-in-the-Haystack、PG-19 困惑度、LongBench 等多个任务上保持与全注意力接近甚至更优的生成质量。</li>
+<li><strong>通用性</strong>：适用于 LLaMA-2/3/3.1 多种模型，不同规模（3B/8B/70B）均有效。</li>
+<li><strong>低 token 预算</strong>：仅需 ~0.1%-0.5% 的 token 预算即可达到全注意力精度。</li>
+<li><strong>缓存校正机制</strong>：提供 KV 缓存分布偏移的缓解方案（可选）。</li>
+<li><strong>自定义 GPU 内核</strong>：实现了高效的 PPSA GPU 内核，确保实际部署的效率增益。</li>
+</ol>
+<hr />
+<h2 id="_17">局限</h2>
+<ol>
+<li><strong>重选层选择依赖模型架构</strong>：不同模型族系的最优重选层不同，需要通过灵敏度分析确定，增加了部署时的调优成本。</li>
+<li><strong>缓存校正机制未在评估中使用</strong>：虽然论文提出了缓存校正机制，但评估时并未使用，长期生成场景下可能面临累积误差问题。</li>
+<li><strong>依赖注意力分数的层间连续性</strong>：核心假设（层间 token 选择的重叠）在所有模型/任务中是否总是成立尚未完全验证。</li>
+<li><strong>稀疏注意力的覆盖率问题</strong>：尽管在多个任务上表现优异，token 预算极低时（如 K=32）仍可能有性能损失。</li>
+<li><strong>未考虑多头注意力的差异性</strong>：当前实现对所有头共享相同的 token 选择，可能无法充分利用不同头的注意力模式差异。</li>
+<li><strong>仅评估解码阶段</strong>：未讨论预填充阶段的优化，尽管论文明确聚焦于解码阶段。</li>
+<li><strong>硬件依赖</strong>：自定义 GPU 内核依赖特定硬件配置（A100），在不同 GPU 上的性能表现可能不同。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>TidalDecode 属于 <strong>KV 缓存稀疏化（kv_cache_sparse）</strong> 研究方向，与以下高效 LLM 推理技术密切相关：</p>
+<ol>
+<li><strong>KV 缓存压缩</strong>：如 H2O、TOVA、StreamingLLM 等驱逐型方法，与 TidalDecode 的选择型方法互补。</li>
+<li><strong>稀疏注意力机制</strong>：如 Quest、Sparq Attention、Performer 等，TidalDecode 在这些方法的基础上通过跨层 token 复用进行了改进。</li>
+<li><strong>长上下文 LLM 服务</strong>：如 FlashAttention、PagedAttention 等，TidalDecode 可与这些系统协同工作，进一步提升长上下文推理效率。</li>
+<li><strong>Token 选择与重要性估计</strong>：如何高效准确地识别最重要的 token 是高效 LLM 推理的核心问题，TidalDecode 通过精确内积 top-k 提供了新思路。</li>
+<li><strong>模型层间相关性利用</strong>：TidalDecode 发现并利用了相邻层之间的空间连续性，这一发现可能启发其他效率优化方法。</li>
+<li><strong>推理时剪枝</strong>：TidalDecode 的方法可视为推理时的 token 级剪枝，与训练时剪枝形成互补。</li>
+</ol>
+<hr />
+<h2 id="_18">相关资源</h2>
+<ul>
+<li><strong>arXiv</strong>: <a href="http://arxiv.org/abs/2410.05076v1">http://arxiv.org/abs/2410.05076v1</a></li>
+<li><strong>代码</strong>: <a href="https://github.com/DerrickYLJ/TidalDecode">https://github.com/DerrickYLJ/TidalDecode</a></li>
+<li><strong>关键词</strong>: kv_cache_sparse</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

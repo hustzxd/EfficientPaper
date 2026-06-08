@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,69 +164,290 @@
 <p>Yoav Gelberg, Yam Eitan, Michael Bronstein, Yarin Gal, Haggai Maron</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Long-context language modeling is increasingly constrained by the Key-Value (KV) cache, whose memory and decode-time access costs scale linearly with the prefix length. This bottleneck has motivated a range of context-compression methods, from token-level summarization to recent optimization-based KV compression methods. These post-hoc methods operate on the KV cache of a fixed pretrained model, so their effectiveness is fundamentally limited by how well the model's internal representations can be compressed. In this work, we formalize the notion of KV compressibility and show that it is a property of the learned representations, rather than of the context alone. We prove that almost any sequence-to-vector function admits both highly compressible and inherently non-compressible transformer implementations, highlighting the need to guide transformers toward compressible representations during training. Motivated by this, we propose KV-Compression Aware Training (KV-CAT), a continued pretraining procedure that incentivizes the emergence of compressible representations. We introduce a train-time KV sparsification policy that masks KV slots during training. This forces the model to use fewer KV slots and encourages it to learn representations amenable to post-hoc compression. Empirically, we show that KV-CAT improves the quality-budget tradeoff of downstream compression methods across retrieval, long-context question answering, and perplexity-based evaluation of compressed-prefix continuation.</p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文针对长上下文语言建模中KV缓存内存和解码时间成本随前缀长度线性增长的问题，提出了一种新的训练方法。研究者们发现KV可压缩性是模型学习表征的属性，而非仅依赖于上下文本身，因此设计了KV压缩感知训练（KV-CAT）方法，通过在持续预训练中引入训练时KV稀疏化策略，强制模型使用更少的KV槽位并学习更易压缩的表征。实验表明，KV-CAT在检索、长上下文问答和压缩前缀续写的困惑度评估中，显著提升了下游压缩方法的质量-预算权衡效果。</p>
+<blockquote>
+<p><strong>⚠️ 生成声明</strong>：本笔记由 AI Agent（Hermes Agent）于 2026 年 6 月自动生成，基于论文全文阅读与分析。内容仅供参考，如有疏漏请以原文为准。</p>
+</blockquote>
 <hr />
-<h2 id="_1">论文详细总结</h2>
-<h3 id="1">1. 研究背景与动机</h3>
-<p>长上下文 LLM 的核心瓶颈是 <strong>KV 缓存</strong>——内存和解码访问成本随前缀长度线性增长。现有压缩方法都是对已固定的预训练模型进行后处理，效果受限于模型内部表征本身的可压缩程度。压缩瓶颈不在方法本身，而在模型学到了什么样的表征。</p>
-<h3 id="2-kv-cat">2. KV-CAT 核心思想</h3>
-<p><strong>KV 压缩感知训练</strong>（KV-Compression Aware Training）：在训练过程中激励模型学习可压缩的表征，而非训练后再压缩。</p>
-<h3 id="3">3. 关键技术</h3>
-<table>
-<thead>
-<tr>
-<th>技术</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>KV 遮蔽训练</strong></td>
-<td>训练时随机丢弃 KV 槽位，迫使模型用更少 KV 完成任务</td>
-</tr>
-<tr>
-<td><strong>可压缩性形式化</strong></td>
-<td>证明可压缩性是模型表征的属性，而非上下文本身的属性</td>
-</tr>
-<tr>
-<td><strong>持续预训练</strong></td>
-<td>在现有模型基础上持续训练，使其表征对压缩友好</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4">4. 实验结果</h3>
-<table>
-<thead>
-<tr>
-<th>任务类型</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>检索任务</td>
-<td>提升压缩方法的质量-预算权衡</td>
-</tr>
-<tr>
-<td>长上下文 QA</td>
-<td>同压缩率下更高质量</td>
-</tr>
-<tr>
-<td>困惑度评估</td>
-<td>同质量下更高压缩率</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5">5. 核心贡献</h3>
+<h2 id="_1">一句话总结</h2>
+<p>KV-CAT 提出了一种"压缩感知训练"方法，通过在持续预训练阶段引入 KV 稀疏化策略，使 Transformer 模型学习到更易被后处理压缩的内部表征，从而在不牺牲模型能力的前提下显著提升 KV 缓存压缩的质量-预算权衡。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>长上下文语言建模越来越受到键值（KV）缓存的制约，其内存和解码时间成本随前缀长度线性增长。这一瓶颈催生了多种上下文压缩方法，从 token 级别的摘要到近期的基于优化的 KV 压缩方法。这些后处理方法作用于固定的预训练模型的 KV 缓存，因此其效果从根本上受限于模型内部表征的可压缩程度。本文将 KV 可压缩性形式化，并表明它是学习到的表征的属性，而不仅仅是上下文本身的属性。我们证明了几乎任何序列到向量的函数都既存在高度可压缩的 Transformer 实现，也存在本质上不可压缩的实现，这凸显了在训练期间引导 Transformer 走向可压缩表征的必要性。受此启发，我们提出了 KV 压缩感知训练（KV-Compression Aware Training, KV-CAT），一种持续预训练流程，激励可压缩表征的出现。我们引入了一种训练时 KV 稀疏化策略，在训练期间遮蔽 KV 槽位，迫使模型使用更少的 KV 槽位并鼓励其学习适合后处理压缩的表征。实验表明，KV-CAT 在检索、长上下文问答和压缩前缀续写的困惑度评估中，持续提升了下游压缩方法的质量-预算权衡效果。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>长上下文 LLM 的核心瓶颈是 <strong>KV 缓存</strong>——随着上下文长度的增加，KV 缓存的内存占用和解码访问成本线性增长。现有方法分为两大类：</p>
 <ol>
-<li><strong>理论贡献</strong>：形式化 KV 可压缩性概念，证明可压缩性取决于模型表征</li>
-<li><strong>方法贡献</strong>：提出 KV-CAT 持续预训练方法，使模型表征对压缩友好</li>
-<li><strong>实践价值</strong>：可与现有各种后处理压缩技术结合，具有通用性和可叠加性</li>
+<li><strong>替代架构</strong>（如线性注意力、状态空间模型）：计算效率高但性能通常不如标准 Transformer。</li>
+<li><strong>后处理压缩方法</strong>（如 token 选择、注意力模式、基于优化的压缩）：在推理时直接操作 KV 缓存，但受限于模型本身表征的可压缩性。</li>
 </ol>
+<p><strong>核心问题</strong>：KV 缓存压缩的效果受限于模型内部表征的可压缩程度，而不仅仅是压缩算法本身。不同的 Transformer 实现可以对相同的输入使用不同的内部表征，导致 KV 缓存的可压缩性差异很大。因此，<strong>能否在训练阶段就引导模型学习可压缩的表征</strong>？</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-kv">1. KV 可压缩性形式化</h3>
+<p>论文形式化定义了 KV 可压缩性：一个 Transformer <script type="math/tex">M</script> 是 <script type="math/tex">(N, \varepsilon, r)</script>-可压缩的，如果存在压缩策略 <script type="math/tex">C</script> 使得对所有长度不超过 <script type="math/tex">N</script> 的序列对 <script type="math/tex">(a, b)</script>，压缩模型 <script type="math/tex">M_{C,a}(b)</script> 与原模型 <script type="math/tex">M([a,b])</script> 的输出误差小于 <script type="math/tex">\varepsilon</script>。</p>
+<p><strong>关键理论结果（Theorem 3.1）</strong>：对于几乎任何序列到向量函数，都存在既是高度可压缩的又是本质上不可压缩的 Transformer 实现。通过直方图计算的例子，论文证明了：
+- <strong>不可压缩实现</strong>（Proposition 3.2）：使用均匀注意力权重的简单 Transformer 无法被压缩（因为压缩后无法正确恢复加权平均）。
+- <strong>高度可压缩实现</strong>（Proposition 3.3）：通过保留位置信息并利用位置编码进行归一化修正，可将前缀压缩到仅 1 个 KV 对。</p>
+<h3 id="2-kv-cat">2. KV-CAT 训练流程</h3>
+<p>KV-CAT 是一种持续预训练（CPT）流程，从预训练 Transformer 开始，通过引入训练时 KV 稀疏化策略来激励可压缩表征。</p>
+<h4 id="kv">训练时 KV 稀疏化策略</h4>
+<ul>
+<li><strong>路由器（Router）机制</strong>：在相邻层之间插入可学习的路由器，路由器接收前一层的 token 表征，输出每个 token 的重要性分数（0 到 1），通过阈值 <script type="math/tex">\tau</script>（默认 0.5）生成二值掩码。</li>
+<li><strong>路由器实现</strong>：使用轻量级因果线性注意力模块（线性注意力），参数化为线性投影，不存储路由器 KV 缓存。路由器使用余弦相似度计算保持概率，通过直通估计器（straight-through estimator）实现二值掩码的反向传播。</li>
+<li><strong>路由器跨层共享</strong>：路由器在连续层组之间共享（如 QWEN2.5-0.5B 使用层 0、6、12、18）。</li>
+</ul>
+<h4 id="_5">训练目标</h4>
+<p>
+<script type="math/tex; mode=display">L(\theta) = \lambda_{\text{mask}} L_{\text{mask}} + \lambda_{\text{budget}} L_{\text{budget}} + \lambda_{\text{anchor}} L_{\text{anchor}}</script>
+</p>
+<p>三个损失项：</p>
+<table>
+<thead>
+<tr>
+<th>损失项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><script type="math/tex">L_{\text{mask}}</script>（自蒸馏损失）</strong></td>
+<td>遮蔽前向传播的分布匹配密集前向传播的分布（带 stop-gradient），促使遮蔽模型学习密集模型的行为</td>
+</tr>
+<tr>
+<td><strong><script type="math/tex">L_{\text{budget}}</script>（预算损失）</strong></td>
+<td>控制路由器的保持率 <script type="math/tex">\rho</script>，使用 Hwang et al. 的负载均衡目标，确保路由器按目标保持率工作</td>
+</tr>
+<tr>
+<td><strong><script type="math/tex">L_{\text{anchor}}</script>（锚点损失）</strong></td>
+<td>对密集前向传播应用标准 NTP 损失，保持未压缩模型的行为稳定</td>
+</tr>
+</tbody>
+</table>
+<p>默认超参数：<script type="math/tex">\lambda_{\text{mask}} = 1, \lambda_{\text{anchor}} = 1, \lambda_{\text{budget}} = 0.1</script>，目标保持率 <script type="math/tex">\rho = 50\%</script>。</p>
+<h4 id="_6">推理时</h4>
+<ul>
+<li>使用未遮蔽的前向传播（路由器关闭），输出标准 Transformer。</li>
+<li>在此基础上可应用标准 KV 缓存压缩方法（如 Attention Matching、梯度优化）。</li>
+<li>KV-CAT 的核心价值不在于替代压缩算法，而在于使模型更容易被压缩。</li>
+</ul>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>基础模型</strong>：QWEN2.5-0.5B 和 QWEN2.5-1.5B</li>
+<li><strong>训练数据</strong>：FineWeb-Edu，5.24×10⁹ tokens</li>
+<li><strong>硬件</strong>：8×H100 GPU</li>
+<li><strong>序列长度</strong>：1024 tokens</li>
+<li><strong>训练步数</strong>：40k</li>
+<li><strong>评估压缩方法</strong>：Attention Matching [61]、梯度优化 KV 缓存压缩 [16]</li>
+</ul>
+<h3 id="q1">Q1: 未压缩性能是否保持？</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>基线平均准确率</th>
+<th>KV-CAT 平均准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QWEN2.5-0.5B</td>
+<td>51.5%</td>
+<td>52.2%</td>
+</tr>
+<tr>
+<td>QWEN2.5-1.5B</td>
+<td>60.6%</td>
+<td>60.1%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：KV-CAT 保持了标准密集行为，未牺牲模型能力。</p>
+<h3 id="q2">Q2: 固定优化预算下的压缩质量</h3>
+<p>使用 Attention Matching 压缩 768 token 前缀，评估 256 token 后缀的预测质量：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>保持率</th>
+<th>基线 ΔPPL</th>
+<th>KV-CAT ΔPPL</th>
+<th>改善倍数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QWEN2.5-0.5B</td>
+<td>5%</td>
+<td>0.780</td>
+<td>0.461</td>
+<td>1.69×</td>
+</tr>
+<tr>
+<td>QWEN2.5-0.5B</td>
+<td>40%</td>
+<td>0.592</td>
+<td>0.360</td>
+<td>1.64×</td>
+</tr>
+<tr>
+<td>QWEN2.5-1.5B</td>
+<td>5%</td>
+<td>0.573</td>
+<td>0.292</td>
+<td>1.96×</td>
+</tr>
+<tr>
+<td>QWEN2.5-1.5B</td>
+<td>10%</td>
+<td>1.027</td>
+<td>0.320</td>
+<td>3.21×</td>
+</tr>
+</tbody>
+</table>
+<p>梯度优化方面，KV-CAT 在达到与基线相同性能时需要的优化步数更少，最高可达 <strong>5× 速度提升</strong>。</p>
+<h3 id="q3-needle-in-a-haystack">Q3: 检索准确率（Needle-in-a-Haystack）</h3>
+<table>
+<thead>
+<tr>
+<th>保持率</th>
+<th>基线 0.5B</th>
+<th>KV-CAT 0.5B</th>
+<th>基线 1.5B</th>
+<th>KV-CAT 1.5B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30%</td>
+<td>23%</td>
+<td>34%</td>
+<td>41%</td>
+<td>44%</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>28%</td>
+<td>47%</td>
+<td>49%</td>
+<td>67%</td>
+</tr>
+<tr>
+<td>平均</td>
+<td>19.6%</td>
+<td>26.0%</td>
+<td>31.7%</td>
+<td>36.9%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q4-qalongbench-v2">Q4: 长上下文 QA（LongBench v2）</h3>
+<table>
+<thead>
+<tr>
+<th>保持率</th>
+<th>基线总分</th>
+<th>KV-CAT 总分</th>
+<th>改善</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10%</td>
+<td>22.2%</td>
+<td>30.3%</td>
+<td>+36.5%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>22.2%</td>
+<td>30.8%</td>
+<td>+38.7%</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>25.3%</td>
+<td>31.2%</td>
+<td>+23.3%</td>
+</tr>
+</tbody>
+</table>
+<p>最大改善出现在 Legal 任务（10% 保持率下从 27.3% 提升到 48.5%）和 Table QA（10% 保持率下从 11.1% 提升到 27.8%）。</p>
+<h3 id="_9">消融实验（训练时稀疏化策略）</h3>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>未压缩平均准确率</th>
+<th>压缩性能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROUTER（可学习）</td>
+<td>52.2%</td>
+<td>最佳</td>
+</tr>
+<tr>
+<td>RAND（随机）</td>
+<td>50.7%</td>
+<td>次优</td>
+</tr>
+<tr>
+<td>ATTN（注意力权重）</td>
+<td>50.2%</td>
+<td>次优</td>
+</tr>
+</tbody>
+</table>
+<p>ROUTER 策略在保持未压缩性能和提升压缩质量方面均表现最优。</p>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>理论基础扎实</strong>：首次形式化 KV 可压缩性概念，从理论上证明了压缩性取决于模型表征，为方法提供了坚实依据。</li>
+<li><strong>与现有方法正交</strong>：KV-CAT 不替代后处理压缩方法，而是使模型更易于被压缩，可与任意压缩方法结合使用。</li>
+<li><strong>通用性</strong>：适用于不同模型规模（0.5B、1.5B），在多种任务（检索、QA、困惑度）和压缩方法（Attention Matching、梯度优化）上均有效。</li>
+<li><strong>不牺牲模型能力</strong>：在未压缩场景下保持标准密集性能，无明显精度损失。</li>
+<li><strong>实用的加速效果</strong>：梯度优化方面最高可达 5× 加速，显著降低压缩成本。</li>
+<li><strong>跨域泛化</strong>：压缩改进在 WikiText-103、PG-19、arXiv 等多个域上均有效。</li>
+<li><strong>实现简洁</strong>：路由器使用轻量级线性注意力模块，训练时仅需少量额外计算。</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>训练开销</strong>：需要持续预训练和额外的路由器模块，引入非平凡的训练成本，对低资源场景不友好。</li>
+<li><strong>实现复杂度</strong>：路由器和训练目标增加了实现复杂度，可能阻碍集成到现有生产系统中。</li>
+<li><strong>评估规模有限</strong>：仅在 QWEN2.5-0.5B 和 QWEN2.5-1.5B 上验证，未测试更大规模模型或不同架构（如 LLaMA、Mistral）。</li>
+<li><strong>域内评估</strong>：主要在 FineWeb-Edu 上训练，跨域泛化虽有初步验证，但尚需更广泛测试。</li>
+<li><strong>后处理依赖</strong>：方法仍依赖后处理压缩算法，未直接优化推理时的端到端压缩效果。</li>
+<li><strong>压缩策略限制</strong>：仅测试了 50% 保持率的训练设置，其他保持率的训练可能需要进一步探索。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv_1">KV 缓存管理与压缩</h3>
+<ul>
+<li><strong>KV 缓存稀疏化</strong>（kv_cache_sparse）：直接与本文相关，本文是训练时稀疏化，而其他工作关注推理时稀疏化（如 H2O、SnapKV、PyramidKV、DuoAttention）。</li>
+<li><strong>KV 缓存管理</strong>（kv_cache_management）：本文的持续预训练方法为 KV 缓存管理提供了新的视角——通过训练使模型本身更适合压缩，而非仅在推理时优化。</li>
+</ul>
+<h3 id="_12">相关技术路线</h3>
+<ul>
+<li><strong>基于优化的 KV 压缩</strong>（Cartridges [16]、Attention Matching [61]、Lexico [31]）：KV-CAT 与这些方法正交，可作为其前置训练步骤。</li>
+<li><strong>高效注意力替代架构</strong>（线性注意力、状态空间模型）：KV-CAT 可与这些方法互补，为标准 Transformer 提供更高效的压缩路径。</li>
+<li><strong>提示压缩与摘要</strong>（LLMLingua、LongLLMLingua）：token 级别压缩与 KV 缓存压缩互补。</li>
+<li><strong>上下文学习与记忆</strong>（Recurrent Memory Transformers、AutoCompressors、gist-tokens）：学习记忆与软 token 压缩与 KV 缓存压缩方向相关。</li>
+<li><strong>超网络方法</strong>（Doc-to-LoRA、Shine）：将上下文编码到参数中的方法与 KV 缓存压缩方法可结合使用。</li>
+</ul>
+<h3 id="_13">未来研究方向</h3>
+<ul>
+<li><strong>大模型规模验证</strong>：在 7B、13B、70B 等更大模型上验证 KV-CAT 的效果。</li>
+<li><strong>端到端压缩训练</strong>：将后处理压缩算法直接集成到训练循环中。</li>
+<li><strong>多模态模型</strong>：将 KV-CAT 扩展到视觉-语言模型。</li>
+<li><strong>推理时联合优化</strong>：在推理时同时优化模型表征和压缩策略。</li>
+<li><strong>Chebyshev 系统理论</strong>：论文提到了利用 Chebyshev 系统理论进一步分析 Transformer 压缩性的可能性。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

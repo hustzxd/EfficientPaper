@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,26 +164,132 @@
 <p>Amey Agrawal, Nitin Kedia, Jayashree Mohan, Ashish Panwar, Nipun Kwatra, Bhargav Gulavani, Ramachandran Ramjee, Alexey Tumanov</p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Optimizing the deployment of Large language models (LLMs) is expensive today
-since it requires experimentally running an application workload against an LLM
-implementation while exploring large configuration space formed by system knobs
-such as parallelization strategies, batching techniques, and scheduling
-policies. To address this challenge, we present Vidur - a large-scale,
-high-fidelity, easily-extensible simulation framework for LLM inference
-performance. Vidur models the performance of LLM operators using a combination
-of experimental profiling and predictive modeling, and evaluates the end-to-end
-inference performance for different workloads by estimating several metrics of
-interest such as latency and throughput. We validate the fidelity of Vidur on
-several LLMs and show that it estimates inference latency with less than 9%
-error across the range. Further, we present Vidur-Search, a configuration
-search tool that helps optimize LLM deployment. Vidur-Search uses Vidur to
-automatically identify the most cost-effective deployment configuration that
-meets application performance constraints. For example, Vidur-Search finds the
-best deployment configuration for LLaMA2-70B in one hour on a CPU machine, in
-contrast to a deployment-based exploration which would require 42K GPU hours -
-costing ~218K dollars. Source code for Vidur is available at
-https://github.com/microsoft/vidur.</p>
+<h2 id="_1">一句话总结</h2>
+<p>Vidur 是一个大规模、高保真、可扩展的 LLM 推理性能模拟框架，通过结合实验剖析与预测建模来评估不同工作负载下的端到端推理性能（延迟、吞吐量等），并配套 Vidur-Search 工具自动搜索最优部署配置，可将配置搜索成本降低数个数量级（例如 LLaMA2-70B 最优配置搜索从 42K GPU 小时 / <script type="math/tex">218K 降至 1 小时 CPU 时间 / </script>9.93）。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>优化大语言模型（LLM）的部署目前非常昂贵，因为它需要在由并行化策略、批处理技术和调度策略等系统旋钮构成的大型配置空间中，实验性地运行应用工作负载。为解决这一挑战，我们提出了 Vidur —— 一个大规模、高保真、易于扩展的 LLM 推理性能模拟框架。Vidur 通过结合实验剖析和预测建模来模拟 LLM 算子的性能，并通过估计延迟和吞吐量等多种指标来评估不同工作负载的端到端推理性能。我们在多种 LLM 上验证了 Vidur 的保真度，结果表明其推断推理延迟的误差在 9% 以内。此外，我们提出了 Vidur-Search，一个帮助优化 LLM 部署的配置搜索工具。Vidur-Search 使用 Vidur 自动识别满足应用性能约束的最具成本效益的部署配置。例如，Vidur-Search 在一台 CPU 机器上一小时内找到 LLaMA2-70B 的最佳部署配置，而基于部署的探索则需要 42K GPU 小时——成本约 218K 美元。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 推理成本高昂</strong>：例如 ChatGPT 的推理成本估计为每天 $694K，LLM 推理已成为一个巨大的经济负担。</li>
+<li><strong>配置空间巨大</strong>：LLM 部署需要选择并行化策略（TP/PP）、调度算法（Orca/vLLM/Sarathi-Serve）、批大小、SKU（A100/H100）等大量配置参数，组合数量庞大。</li>
+<li><strong>最优配置依赖于模型-工作负载对</strong>：研究发现，最优配置不是简单地由模型决定的，而是由模型和工作负载共同决定的（Model-Trace Pair）。在一个工作负载上获得的最优配置在另一个工作负载上可能差 2 倍（图1b）。</li>
+<li><strong>现有模拟框架的局限</strong>：现有的 DNN 训练模拟框架（如 Daydream、Habitat、Proteus）不适用于 LLM 推理，因为 LLM 推理在时间粒度、迭代时间变化和误差级联等方面有独特挑战。</li>
+<li><strong>缺乏标准化基准</strong>：目前没有标准化的基准套件来全面评估 LLM 推理性能。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">整体架构</h3>
+<p>Vidur 采用两阶段处理流程：</p>
+<ol>
+<li><strong>模型上舰阶段（Model Onboarding）</strong>：利用模型规格生成需要剖析的计算算子集，Vidur Profiler 收集运行时特征，Runtime Estimator 使用机器学习模型预测未剖析输入大小的运行时间。</li>
+<li><strong>模拟阶段（Simulation）</strong>：用户指定部署配置和工作负载，事件驱动模拟器（Event-driven Simulator）结合层级调度器（Hierarchical Scheduler）模拟完整的推理流程，输出请求级和集群级指标。</li>
+</ol>
+<h3 id="_6">关键洞察</h3>
+<ul>
+<li><strong>LLM 架构相似性</strong>：绝大多数 LLM 共享相似架构（Transformer），差异仅在于激活函数、归一化层、残差连接等。这允许使用统一的声明式模型规格格式和少量共享算子模型。</li>
+<li><strong>算子分类（Operation Triaging）</strong>：LLM 算子可分为三类：</li>
+<li><strong>Token-level Operators</strong>（如线性层、激活函数）：运行时间仅依赖于批中的总 token 数。</li>
+<li><strong>Sequence-level Operators</strong>（如注意力操作）：运行时间依赖于每个请求的上下文长度。</li>
+<li><strong>Communication Operators</strong>（如 all-reduce、all-gather）：运行时间仅依赖于传输数据量。</li>
+<li><strong>自动并行化剖析</strong>：Vidur 通过模型声明式规格自动识别每个设备上的张量分片配置，只需在单个 GPU 上进行最少的剖析即可模拟各种并行化方案。</li>
+</ul>
+<h3 id="profiler">Profiler（剖析器）</h3>
+<ul>
+<li><strong>Token-level Operators</strong>：使用标准 PyTorch 内核和 CUPTI 进行剖析，覆盖所有不同的张量并行分片配置。</li>
+<li><strong>Sequence-level Operators</strong>：</li>
+<li>Prefill 注意力：使用二次复杂度近似，将 batch 中长度为 p_i 的 P 个 prefill 近似为一个等价的长度为 √(Σp_i²) 的 prefill。</li>
+<li>Decode 注意力：由于 decode 阶段主要是内存瓶颈操作，只需对批中请求的总 KV-Cache 数据量建模即可。</li>
+<li><strong>Communication Operators</strong>：独立于模型，使用不同拓扑进行预剖析。</li>
+</ul>
+<h3 id="runtime-estimator">Runtime Estimator（运行时估计器）</h3>
+<ul>
+<li>使用<strong>随机森林（Random Forest）回归模型</strong>进行插值预测，在数据经济性和保真度之间取得平衡。</li>
+<li>相比 MLP 需要大量数据，相比多项式回归无法捕捉非线性特征（如 tile 和 wave quantization），随机森林是最佳选择。</li>
+<li>生成运行时间查找表，供模拟阶段使用。</li>
+</ul>
+<h3 id="hierarchical-scheduler">Hierarchical Scheduler（层级调度器）</h3>
+<p>采用三层架构：
+1. <strong>Global Scheduler</strong>：请求路由，支持轮询、最少未完成请求等负载均衡策略，以及延迟绑定的有状态调度策略。
+2. <strong>Replica Scheduler</strong>：包含 Memory Planner（内存规划）和 Memory Manager（内存管理），支持 5 种批处理策略：FasterTransformers、Orca、Sarathi-Serve、vLLM、LightLLM。所有策略均在不到 150 行 Python 代码中实现。
+3. <strong>Replica Stage Scheduler</strong>：处理流水线阶段内的微批次调度，目前支持同步流水线并行。</p>
+<h3 id="vidur-bench">Vidur-Bench</h3>
+<p>一个即插即用的基准套件，包含：
+- <strong>工作负载</strong>：LMSys-Chat-1M（自然语言对话）、Arxiv-Summarization（论文摘要）、Bilingual-Web-Book（中英双语文档）。
+- <strong>性能指标</strong>：算子级（输入大小和执行时间）、请求级（调度延迟、TTFT、TBT）、副本级（批大小、token 数、忙碌/空闲时间、内存/计算利用率）、硬件级（集群 GPU FLOPs 和内存利用率）。</p>
+<h3 id="vidur-search">Vidur-Search</h3>
+<p>配置搜索工具，帮助优化 LLM 部署：
+- <strong>输入</strong>：LLM 模型、工作负载、可用 GPU SKU、最大 GPU 数。
+- <strong>约束</strong>：TTFT P90 &lt; 2s、TBT P99 &lt; 200ms 等 SLO。
+- <strong>搜索空间</strong>：并行化策略（TP/PP）、并行度、调度策略、调度参数、批大小、GPU SKU 等。
+- <strong>优化目标</strong>：最大化 QPS/美元（每美元查询数）。
+- <strong>方法</strong>：枚举所有可能的部署配置，对每个配置使用二分搜索找到最大 QPS，最终选择最优配置。所有搜索并行化在 CPU 核心上运行。</p>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">模拟器保真度</h3>
+<ul>
+<li><strong>静态工作负载</strong>：Vidur 在 4 个模型（LLaMA2-7B/70B、InternLM-20B、Qwen-72B）和 3 个工作负载（Chat-1M、Arxiv-4K、BWB-4K）上，请求执行时间预测误差在 3.33% 以内（P95）。</li>
+<li><strong>动态工作负载</strong>：在系统容量 85% 处，Vidur 几乎在所有场景下实现 &lt; 5% 的端到端延迟预测误差。</li>
+<li><strong>小模型误差略高</strong>：LLaMA2-7B 因 CPU 开销较高，误差稍大（约 8.5%），但整体仍在可接受范围内。</li>
+<li><strong>尾部延迟预测准确</strong>：即使在 P95 和 P90 尾部延迟上，预测误差也控制在合理范围内。</li>
+</ul>
+<h3 id="what-if">What-if 分析（配置搜索）</h3>
+<ul>
+<li><strong>配置差异显著</strong>：不同工作负载的最优配置差异很大。例如 LLaMA2-70B 在 Chat-1M 上最优批大小为 256，而在 BWB 上为 64（因 BWB 的 KV-Cache 负载高）。</li>
+<li><strong>GPU SKU 变化</strong>：最优 GPU SKU 可能从 H100 变为 A100（取决于工作负载）。</li>
+<li><strong>相似模型性能差异</strong>：LLaMA2-70B 使用 GQA，Qwen-72B 使用 MHA（8× 更高 KV-Cache 负载），导致 Qwen-72B 服务成本约 2×。</li>
+<li><strong>成本节省巨大</strong>：</li>
+<li>完整搜索仅需 <script type="math/tex">125 模拟费用，而实际执行需要 </script>1.14M。</li>
+<li>LLaMA2-70B 最优配置搜索：1 小时 CPU 时间（<script type="math/tex">9.93） vs 42K GPU 小时（</script>218K），节省约 30,000 倍。</li>
+<li>表 2 详细列出了 12 个模型-工作负载组合的成本对比，模拟成本节省从 3,837× 到 33,354× 不等。</li>
+</ul>
+<h3 id="_9">配置稳定性</h3>
+<ul>
+<li>使用一个工作负载的最优配置服务另一个工作负载可能导致 2× 成本增加（如图1b所示）。</li>
+</ul>
+<h3 id="pareto">Pareto 前沿分析</h3>
+<ul>
+<li>SLO 约束的微小变化可导致显著成本差异。例如，对于 LLaMA2-70B-Chat-1M，TBT SLO 从 0.12s 改为 0.14s（仅 20ms 差异），成本可降低约 1.85×。</li>
+</ul>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>高保真度</strong>：在多种模型、硬件和工作负载下，延迟预测误差 &lt; 9%，接近实际部署表现。</li>
+<li><strong>成本极低</strong>：搜索成本相比实际部署降低数千至数万倍（最高节省 33,354×）。</li>
+<li><strong>可扩展性</strong>：基于声明式模型规格和统一的算子模型，新模型接入成本低。</li>
+<li><strong>灵活性</strong>：支持多种并行化策略、调度策略和批处理策略，且易于扩展。</li>
+<li><strong>端到端覆盖</strong>：从算子级到集群级的全面指标，包括 TTFT、TBT、MFU、KV-Cache 利用率等。</li>
+<li><strong>实用性</strong>：通过 Vidur-Search 工具直接支持生产部署决策，降低 misconfiguration 风险。</li>
+<li><strong>开源</strong>：代码公开在 GitHub（https://github.com/microsoft/vidur），可复现。</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>小模型误差较高</strong>：LLaMA2-7B 因 CPU 开销占比较大，预测误差相对较高（约 8.5%-12.65%）。</li>
+<li><strong>高负载下误差级联</strong>：在接近系统容量时（如 95%），预测误差可能因级联效应显著增大。</li>
+<li><strong>仅支持同步流水线并行</strong>：目前只支持同步 PP 调度，尚未实现异步通信、序列并行、投机解码等高级优化。</li>
+<li><strong>未建模量化等优化</strong>：文中未明确讨论量化、蒸馏等模型压缩技术对推理性能的影响。</li>
+<li><strong>CPU 开销未充分建模</strong>：对于小模型，CPU 开销（如调度、内存管理）可能成为主要瓶颈，但模拟器对此建模不足。</li>
+<li><strong>静态工作负载限制</strong>：工作负载基于公开数据集的 trace，可能无法完全反映真实生产场景的动态变化（如突发流量、用户行为变化）。</li>
+<li><strong>不支持所有并行策略</strong>：虽然支持 TP 和 PP，但未覆盖张量并行与流水线并行的混合策略（如 3D 并行）的全面优化。</li>
+<li><strong>验证范围有限</strong>：仅在 4 个模型和 3 个工作负载上验证，对于更广泛的模型架构（如 MoE 模型）和工作负载模式的泛化性尚需进一步验证。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>LLM 推理性能建模与优化</strong>：Vidur 作为 LLM 推理性能模拟的代表性工作，与 EfficientPaper 项目中关注的高效推理方向高度相关。</li>
+<li><strong>部署配置自动优化</strong>：Vidur-Search 的自动化配置搜索方法，为 LLM 部署优化提供了新的思路，可与 AutoML、神经架构搜索（NAS）等方法结合。</li>
+<li><strong>推理基准测试</strong>：Vidur-Bench 作为首个针对 LLM 推理的标准化基准套件，可为后续研究提供评估工具。</li>
+<li><strong>并行化策略研究</strong>：Vidur 对 TP/PP 并行策略的建模和比较，可指导未来更高效并行策略的设计。</li>
+<li><strong>工作负载感知优化</strong>：Vidur 发现最优配置依赖于模型-工作负载对，这提示未来研究需要考虑工作负载感知的优化策略。</li>
+<li><strong>成本效益分析</strong>：Vidur 的成本分析方法（QPS/美元）为 LLM 部署的成本效益评估提供了新的框架。</li>
+<li><strong>推测解码与投机执行</strong>：Vidur 提到未来计划支持投机解码等优化，这与当前 LLM 推理效率研究的热点方向一致。</li>
+<li><strong>硬件协同优化</strong>：Vidur 对 A100/H100 不同 GPU SKU 的建模，可为硬件-软件协同优化提供参考。</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent，由 Nous Research 创建）自动生成。内容基于论文原文（Vidur: A Large-Scale Simulation Framework For LLM Inference, arXiv:2405.05465v2）的全文提取与分析，使用 PyMuPDF (fitz) 进行 PDF 文本提取。笔记中的摘要翻译、方法分析、实验结果总结和研究方向分析均基于论文原始内容，经过结构化整理和中文翻译。所有技术细节和数据均来源于论文原文，未添加额外推测。本笔记仅用于学术研究参考，不构成对原论文的正式评价。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

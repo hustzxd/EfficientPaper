@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,10 +164,110 @@
 <p>Enwei Tong, Yuanchao Bai, Yao Zhu, Junjun Jiang, Xianming Liu</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>Vision-language models (VLMs) often generate massive visual tokens that greatly increase inference latency and memory footprint; while training-free token pruning offers a practical remedy, existing methods still struggle to balance local evidence and global context under aggressive compression. We propose Focus-Scan-Refine (FSR), a human-inspired, plug-and-play pruning framework that mimics how humans answer visual questions: focus on key evidence, then scan globally if needed, and refine the scanned context by aggregating relevant details. FSR first focuses on key evidence by combining visual importance with instruction relevance, avoiding the bias toward visually salient but query-irrelevant regions. It then scans for complementary context conditioned on the focused set, selecting tokens that are most different from the focused evidence. Finally, FSR refines the scanned context by aggregating nearby informative tokens into the scan anchors via similarity-based assignment and score-weighted merging, without increasing the token budget. Extensive experiments across multiple VLM backbones and vision-language benchmarks show that FSR consistently improves the accuracy-efficiency trade-off over existing state-of-the-art pruning methods. The source codes can be found at https://github.com/ILOT-code/FSR</p>
+<p>Vision-language models (VLMs) often generate massive visual tokens that greatly increase inference latency and memory footprint; while training-free token pruning offers a practical remedy, existing methods still struggle to balance local evidence and global context under aggressive compression. We propose Focus-Scan-Refine (FSR), a human-inspired, plug-and-play pruning framework that mimics how humans answer visual questions: focus on key evidence, then scan globally if needed, and refine the scanned context by aggregating relevant details. FSR first focuses on key evidence by combining visual importance with instruction relevance, avoiding the bias toward visually salient but query-irrelevant regions. It then scans for complementary context conditioned on the focused set, selecting tokens that are most different from the focused evidence. Finally, FSR refines the scanned context by aggregating nearby informative tokens into the scan anchors via similarity-based assignment and score-weighted merging, without increasing the token budget. Extensive experiments across multiple VLM backbones and vision-language benchmarks show that FSR consistently improves the accuracy-efficiency trade-off over existing state-of-the-art pruning methods.</p>
+<h2 id="_1">一句话总结</h2>
+<p>FSR 是一个受人类视觉感知启发的训练无关视觉 token 剪枝框架，通过 Focus-Scan-Refine 三阶段动态分配局部证据和全局上下文，在多个 VLM 骨干和视觉语言基准上一致优于现有 SOTA 剪枝方法。</p>
+<h2 id="_2">背景与问题</h2>
 <ul>
-<li>VLM 任务上对vision token进行pruning</li>
+<li><strong>VLM 视觉 token 瓶颈</strong>：</li>
+<li>现代 VLM 生成大量视觉 token（高分辨率编码、tiling 策略）</li>
+<li>注意力机制二次复杂度导致推理延迟和内存占用高</li>
+<li><strong>现有方法的局限</strong>：</li>
+<li><strong>注意力剪枝</strong>：偏向视觉显著但查询无关区域</li>
+<li><strong>相似性剪枝</strong>：偏向全局区域，忽略细粒度局部细节</li>
+<li><strong>联合注意力-相似性剪枝</strong>：仍难以在固定预算下同时保留查询关键局部证据和互补全局上下文</li>
+<li><strong>核心问题</strong>：如何在固定 token 预算下有效平衡局部证据和全局上下文？</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-focus-scan-refine">1. Focus-Scan-Refine 三阶段框架</h3>
+<p><strong>核心思想</strong>：受人类视觉感知启发，模拟人类回答视觉问题的过程：关注关键证据 → 全局扫描 → 细化上下文。</p>
+<p><strong>三阶段</strong>：</p>
+<p><strong>阶段 1：Focus（关注）</strong>
+- <strong>双路径评分机制</strong>：融合视觉显著性和指令相关性
+- <strong>避免偏差</strong>：避免偏向视觉显著但查询无关的区域
+- <strong>关键证据选择</strong>：保留 top token 直到累积信息密度阈值满足
+- <strong>动态分配</strong>：根据任务复杂度动态分配局部证据和全局上下文</p>
+<p><strong>阶段 2：Scan（扫描）</strong>
+- <strong>条件采样策略</strong>：基于关注集选择互补 token
+- <strong>多样性</strong>：选择与关注证据最不同的 token，且 token 间多样
+- <strong>无冗余</strong>：确保添加的 token 覆盖缺失上下文，无冗余</p>
+<p><strong>阶段 3：Refine（细化）</strong>
+- <strong>聚合模块</strong>：将附近信息 token 聚合到扫描锚点
+- <strong>相似性分配</strong>：基于相似性的分配
+- <strong>分数加权合并</strong>：分数加权聚合
+- <strong>不增加预算</strong>：保持 token 预算不变</p>
+<h3 id="2">2. 动态分配机制</h3>
+<ul>
+<li><strong>任务依赖</strong>：根据任务复杂度动态分配局部证据和全局上下文</li>
+<li><strong>简单查询</strong>：集中于小局部区域（Focus = 9, Scan = 23）</li>
+<li><strong>复杂推理</strong>：关注多个线索（Focus = 15, Scan = 17）</li>
+<li><strong>固定预算</strong>：在固定 token 预算下动态调整</li>
+</ul>
+<h2 id="_4">主要结果</h2>
+<h3 id="_5">性能提升</h3>
+<ul>
+<li><strong>准确率-效率权衡</strong>：一致优于现有 SOTA 剪枝方法</li>
+<li><strong>多 VLM 骨干</strong>：在多个 VLM 骨干上验证</li>
+<li><strong>多基准</strong>：在多个视觉语言基准上验证</li>
+<li><strong>动态分配</strong>：有效平衡局部证据和全局上下文</li>
+</ul>
+<h3 id="_6">关键发现</h3>
+<ol>
+<li><strong>FSR 有效</strong>：三阶段框架有效平衡局部证据和全局上下文</li>
+<li><strong>动态分配有效</strong>：任务依赖的动态分配优于静态方法</li>
+<li><strong>人类启发有效</strong>：受人类视觉感知启发的框架有效</li>
+<li><strong>无训练</strong>：训练无关，可无缝集成到现有 VLM 中</li>
+<li><strong>开源</strong>：代码开源，可复现</li>
+</ol>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>人类启发</strong>：受人类视觉感知启发的三阶段框架</li>
+<li><strong>动态分配</strong>：任务依赖的动态分配，平衡局部证据和全局上下文</li>
+<li><strong>无训练</strong>：训练无关，可无缝集成到现有 VLM 中</li>
+<li><strong>一致优于 SOTA</strong>：在多个 VLM 骨干和基准上一致优于现有方法</li>
+<li><strong>开源</strong>：代码开源，可复现</li>
+<li><strong>高效</strong>：在固定 token 预算下实现准确率-效率权衡</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>视觉 token 依赖</strong>：依赖于视觉 token 的重要性和相关性评分</li>
+<li><strong>预算依赖</strong>：性能依赖于 token 预算的设置</li>
+<li><strong>评估范围</strong>：主要在特定 VLM 骨干和基准上评估，其他场景需进一步测试</li>
+<li><strong>计算开销</strong>：三阶段框架可能引入额外计算开销</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>FSR 属于 <strong>Sparse Pruning</strong>（<code>sparse_pruning</code>）和 <strong>KV Cache Sparse</strong>（<code>kv_cache_sparse</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>人类启发的视觉 token 剪枝</strong>：Focus-Scan-Refine 三阶段框架</li>
+<li><strong>动态分配</strong>：任务依赖的局部证据和全局上下文分配</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>FastV</strong>（2024）：注意力剪枝
+- <strong>LLaVA-PruMerge</strong>（2024）：注意力剪枝+token 合并
+- <strong>SparseVLM</strong>（2024）：文本引导注意力评分
+- <strong>VisionZip</strong>（2025）：注意力-相似性联合剪枝
+- <strong>HoloV</strong>（2025）：分区分配+连通性感知选择</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li><strong>Focus 阶段</strong>：双路径评分（视觉显著性 + 指令相关性）</li>
+<li><strong>Scan 阶段</strong>：条件采样（与关注证据最不同，token 间多样）</li>
+<li><strong>Refine 阶段</strong>：相似性分配 + 分数加权聚合</li>
+<li><strong>动态分配</strong>：根据任务复杂度动态调整 Focus/Scan 比例</li>
+<li><strong>固定预算</strong>：在固定 token 预算下实现动态分配</li>
+<li><strong>开源</strong>：代码开源，可复现</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>FSR 的核心洞察是：<strong>人类视觉感知的三阶段（关注-扫描-细化）可以有效平衡局部证据和全局上下文</strong>。</li>
+<li>双路径评分机制是关键设计选择，它避免了偏向视觉显著但查询无关区域。</li>
+<li>动态分配是关键优化，它根据任务复杂度动态调整 Focus/Scan 比例。</li>
+<li>论文来自 Harbin Institute of Technology 和 Zhejiang University，且代码开源，说明这是一个实用的系统。</li>
+<li>值得关注的未来方向：(1) 在更多 VLM 骨干上的验证；(2) 与其他剪枝方法的结合；(3) 端到端的优化。</li>
 </ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->

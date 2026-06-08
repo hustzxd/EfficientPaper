@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,25 +161,317 @@
   
                 <h1 id="chunkattention-efficient-self-attention-with-prefix-aware-kv-cache-and-two-phase-partition">ChunkAttention: Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition</h1>
 <p><a class="glightbox" href="../chunkattn.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../chunkattn.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Self-attention is an essential component of large language models (LLM) but a
-significant source of inference latency for long sequences. In multi-tenant LLM
-serving scenarios, the compute and memory operation cost of self-attention can
-be optimized by using the probability that multiple LLM requests have shared
-system prompts in prefixes. In this paper, we introduce ChunkAttention, a
-prefix-aware self-attention module that can detect matching prompt prefixes
-across multiple requests and share their key/value tensors in memory at runtime
-to improve the memory utilization of KV cache. This is achieved by breaking
-monolithic key/value tensors into smaller chunks and structuring them into the
-auxiliary prefix tree. Consequently, on top of the prefix-tree based KV cache,
-we design an efficient self-attention kernel, where a two-phase partition
-algorithm is implemented to improve the data locality during self-attention
-computation in the presence of shared system prompts. Experiments show that
-ChunkAttention can speed up the self-attention kernel by 3.2-4.8<script type="math/tex">\times</script>
-compared to the state-of-the-art implementation, with the length of the system
-prompt ranging from 1024 to 4096.</p>
-<p><a class="glightbox" href="../res1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../res1.jpg" /></a></p>
-<p>从实验结果来看，主要适用于共享prompt的场景，且共享token越多，加速越明显。</p>
+<h2 id="_1">一句话总结</h2>
+<p>ChunkAttention 通过前缀感知的 KV 缓存（Prefix-Aware KV Cache）和两阶段分区算法（Two-Phase Partition），在多租户 LLM 推理场景中实现 3.2–4.8× 的 self-attention 加速和 70%–90% 的 KV 缓存内存节省，关键在于利用共享系统提示（system prompt）的前缀特性进行 KV 缓存复用。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>Self-attention 是大语言模型（LLM）的核心组件，但在长序列推理中是延迟的重要来源。在多租户 LLM 服务场景中，利用多个 LLM 请求共享系统提示（system prompt）前缀的概率，可以优化 self-attention 的计算和内存操作成本。本文介绍了 ChunkAttention，一种前缀感知的 self-attention 模块，能够检测多个请求之间匹配的提示前缀，并在运行时共享其 key/value 张量以提高 KV 缓存的内存利用率。具体做法是将整体的 key/value 张量切分为更小的块（chunk），并将其组织到辅助前缀树中。基于前缀树结构的 KV 缓存，作者设计了高效的 self-attention 内核，实现了两阶段分区算法以提升共享系统提示存在时 self-attention 计算的数据局部性。实验表明，当系统提示长度在 1024 到 4096 时，ChunkAttention 相比最先进的实现可将 self-attention 内核加速 3.2–4.8×。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="1-self-attention">1. Self-attention 的性能瓶颈</h3>
+<p>Self-attention 是 LLM 推理的关键模块，但在推理阶段性能极差。以 Llama2 7B 为例（FP16，A100 80G，2048 上下文长度），self-attention 的算术强度（Arithmetic Intensity = FLOPs/MOPs）仅为 0.99，属于严重的内存受限（memory-bound）操作。在 batch size=32 时，self-attention 的延迟为 687.74µs，远超 QKV 投影和 MLP 的延迟。随着上下文长度的增长（如 GPT-4 支持 32K），性能会进一步恶化。</p>
+<h3 id="2-kv">2. KV 缓存的内存压力</h3>
+<p>KV 缓存的内存占用与上下文长度线性增长，同时限制了批处理大小和系统吞吐量。以 GPT-3 (175B) 为例，使用 FP16 时每个 token 的 KV 缓存需要 4.5MB 内存，8×A100 (80G) 的推理服务器只能存放约 70000 个 token（约 35 个 2K 上下文的序列）。</p>
+<h3 id="3">3. 共享系统提示的冗余</h3>
+<p>在多租户 LLM 部署中，多个请求通常共享相同的系统提示（system prompt）。这些系统提示可以很长（&gt;1K tokens），如 ChatGPT 在激活 6 个插件时系统提示可达 1766 tokens。在线聊天机器人和离线实验中均存在这种共享特征。然而，现有的 KV 缓存管理方案（如 vLLM 的 PagedAttention）并未利用这一特性，导致大量内存冗余和计算浪费。</p>
+<h3 id="4">4. 现有方案的局限</h3>
+<p>vLLM 中的 PagedAttention 仅提出了预配置共享提示的方案，但未实现。该方案存在三大局限：(i) 预定义系统提示是静态的，不适合频繁更新的大规模部署；(ii) 长系统提示和低命中率场景下存在内存浪费；(iii) 未针对共享系统提示优化 self-attention 内核。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-kv-prefix-aware-kv-cache-pakv">1. 前缀感知 KV 缓存（Prefix-Aware KV Cache, PAKV）</h3>
+<p><strong>核心思想</strong>：将 KV 缓存组织为前缀树结构，而非传统的密集张量（dense tensor）。</p>
+<p><strong>传统 KV 缓存</strong>：存储为 b×h×n×d 的密集张量（b=batch size, h=heads, n=sequence length, d=head dimension）。</p>
+<p><strong>PAKV 的前缀树结构</strong>：
+- 将整体 key/value 张量沿序列长度维度切分为更小的 chunk（chunk size c=64）
+- 每个节点（chunk）存储三个要素：(i) 一段长度为 c 的共享上下文 token；(ii) 对应的 key 张量（b×h×c×d）；(iii) 对应的 value 张量
+- 前缀树中的每条路径定义一个序列，多个树（森林）可同时存在
+- 共享前缀 token 的 key/value 张量在内存中只有一份物理拷贝</p>
+<p><strong>内存管理</strong>：采用池化内存分配器（pool-based memory allocator），维护已用和空闲 chunk 列表。新 chunk 从空闲列表或操作系统获取，已完成后返回到空闲列表但不释放给操作系统。内存损失上限为 (c-1)/n。</p>
+<p><strong>三种推理场景的前缀树操作</strong>：
+- 新序列加入：搜索前缀树并插入新路径
+- 序列完成离开：删除路径
+- 解码迭代：将新 token 追加到叶 chunk 或生长新 chunk</p>
+<p><strong>共享比</strong>：r = ns/(np+nc)，可处理的序列数增加约 1/(1-r)。</p>
+<h3 id="2-two-phase-partition-tpp">2. 两阶段分区算法（Two-Phase Partition, TPP）</h3>
+<p>TPP 在前缀树 KV 缓存的基础上重新设计 self-attention 内核，分为 chunk-first 和 sequence-first 两个阶段。</p>
+<h4 id="chunk-first-chunks">Chunk-first 阶段（分区 chunks）</h4>
+<p><strong>目标</strong>：仅处理多个序列共享的 chunk，最大化批处理效率。</p>
+<p><strong>算法</strong>：遍历前缀树中被多个序列共享的 chunk C₁...Cₖ，对每个 chunk 执行 partial_attn：</p>
+<pre><code>partial_attn(Q_{i:j,:}, K(C), V(C)):
+    W(C) = Q_{i:j,:} K(C)          # (j-i)×c
+    m(C) = max(W(C))                # (j-i)
+    E(C) = exp(W(C) - m(C)·1ᵀ)     # (j-i)×c
+    n(C) = sum(E(C))                # (j-i)
+    O(C) = E(C) V(C)               # (j-i)×d
+</code></pre>
+<ul>
+<li>使用在线 softmax 算法（online softmax），避免分区间的同步需求</li>
+<li>查询 tensor Q 从向量变为矩阵，允许使用 tensor core 进行高效矩阵乘法</li>
+<li>共享 KV 缓存的数据局部性得到改善</li>
+<li>部分注意力结果 (O, m, n)(C) 保存到内存</li>
+</ul>
+<h4 id="sequence-first">Sequence-first 阶段（分区序列）</h4>
+<p><strong>目标</strong>：针对每个序列的独占 chunk 处理，合并部分注意力结果。</p>
+<p><strong>算法</strong>：对每个序列 qᵢ，先加载 chunk-first 阶段的部分结果，再处理独占 chunk：</p>
+<pre><code>for q ← q₁ to qᵢ:
+    加载 (O, m, n)(C₁)...(Cₖ)
+    for (O, m, n)(C) in shared chunks:
+        attn_reduce(o(C), m(C), n(C), o, m, n)
+    for C in exclusive chunks:
+        partial_attn(q, K(C), V(C), i, i+1)
+        attn_reduce(o(C), m(C), n(C), o, m, n)
+</code></pre>
+<p><strong>attn_reduce 合并公式</strong>：</p>
+<pre><code>x(C) = exp(m(C) - max(m(C), mᵢ))
+y(C) = exp(mᵢ - max(m(C), mᵢ))
+O_{i,:} = x(C) o(C) + y(C) O_{i,:}
+nᵢ = x(C) n(C) + y(C) nᵢ
+mᵢ = max(m(C), mᵢ)
+</code></pre>
+<p>最终注意力输出为 O/n 逐元素除法。</p>
+<p><strong>两阶段的平衡</strong>：
+- Chunk-first：适合并行化（多个序列批处理到共享 chunk）
+- Sequence-first：适合数据局部性（单序列独占 chunk）
+- 没有 chunk-first 阶段的结果，sequence-first 需要从 RAM 加载共享 chunk b 次，增加大量内存操作（MOPs）</p>
+<h3 id="3_1">3. 进一步优化</h3>
+<ul>
+<li><strong>延迟隐藏（Latency Hiding）</strong>：CPU 上的上下文生成与 GPU 上的其他内核重叠执行</li>
+<li><strong>懒上下文拷贝（Lazy Context Copy）</strong>：缓存 GPU 上下文，仅在树结构变化时触发内存拷贝。触发条件包括：chunk 满（每 c 次迭代）、新序列加入、序列完成</li>
+<li><strong>CPU 设备上的优化</strong>：在 CPU 上可以消除 chunk-first 阶段的临时内存，直接通过 attn_reduce 合并（使用 spin locks 序列化）</li>
+<li><strong>Prefilling 阶段优化</strong>：执行前缀查找以避免重复计算 KV 投影和位置编码，对不匹配的后缀 token 仍计算 KV，然后使用 FlashAttention 等优化内核</li>
+</ul>
+<h2 id="_5">实验结果</h2>
+<h3 id="1-self-attention-microkernel-evaluation">1. Self-attention 微内核评测（Microkernel Evaluation）</h3>
+<p><strong>实验环境</strong>：NVIDIA A100 (80G)，CUDA 11.8，head dimension=128，heads=32，chunk size=64，FP16</p>
+<p><strong>基线方法</strong>：
+- Naive PyTorch（softmax(QKᵀ/√d)V）
+- xformers（内存高效 self-attention）
+- FlashAttention（PyTorch 集成）
+- PagedAttention（vLLM）
+- PagedAttn*（模拟共享内存的 PagedAttention）</p>
+<p><strong>关键结果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>np</th>
+<th>ns</th>
+<th>Naive</th>
+<th>xformers</th>
+<th>FlashAttn</th>
+<th>PagedAttn</th>
+<th>ChunkAttn</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1024</td>
+<td>0</td>
+<td>363µs</td>
+<td>378µs</td>
+<td>1587µs</td>
+<td>356µs</td>
+<td>333µs</td>
+<td>1.1×</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>1024</td>
+<td>362µs</td>
+<td>379µs</td>
+<td>1587µs</td>
+<td>355µs</td>
+<td><strong>56µs</strong></td>
+<td><strong>6.6×</strong></td>
+</tr>
+<tr>
+<td>2048</td>
+<td>0</td>
+<td>686µs</td>
+<td>816µs</td>
+<td>3175µs</td>
+<td>703µs</td>
+<td>655µs</td>
+<td>1.1×</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>2048</td>
+<td>688µs</td>
+<td>824µs</td>
+<td>3152µs</td>
+<td>704µs</td>
+<td><strong>110µs</strong></td>
+<td><strong>6.4×</strong></td>
+</tr>
+<tr>
+<td>4096</td>
+<td>0</td>
+<td>1370µs</td>
+<td>1720µs</td>
+<td>6290µs</td>
+<td>1401µs</td>
+<td>1302µs</td>
+<td>1.1×</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>4096</td>
+<td>1370µs</td>
+<td>1713µs</td>
+<td>6301µs</td>
+<td>1400µs</td>
+<td><strong>206µs</strong></td>
+<td><strong>6.7×</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要发现</strong>：
+- <strong>无共享前缀时（ns=0）</strong>：ChunkAttn 与 PagedAttn<em> 性能相当，无性能回退
+- </em><em>共享前缀时</em><em>：ChunkAttn vs PagedAttn</em> 可加速 2.8–3.2×（TPP 的贡献），ChunkAttn vs PagedAttn 可加速 3.2–4.8×（PAKV + TPP 的贡献）
+- <strong>PagedAttn* vs PagedAttn</strong>：共享物理内存的 PagedAttn* 比 PagedAttn 快最多 52%（ns=4096），说明硬件缓存对共享 KV 的效果</p>
+<p><strong>吞吐量随解码长度变化</strong>：
+- ns=2048，nc=512 时 ChunkAttn 比 PagedAttn 快 3.6×（145K vs 39.8K toks/s）
+- nc=2048 时降为 2.3×（70K vs 30K toks/s），随序列分化加速效果递减但仍显著</p>
+<p><strong>吞吐量随 batch size 变化</strong>：
+- 对于非共享实现，batch size=16 时吞吐量达到峰值（受内存带宽限制）
+- ChunkAttn 在 ns=2048 时，batch size 从 16 到 96 持续增长（155K → 224K toks/s），得益于更好的数据局部性和算术强度提升</p>
+<h3 id="2-end-to-end-evaluation">2. 端到端评测（End-to-end Evaluation）</h3>
+<p><strong>模型</strong>：Open Llama2 7B（FP16）
+<strong>基线</strong>：vLLM 0.2.7，Huggingface Text Generation Inference (TGI) 1.3.4
+<strong>工作负载</strong>：Poisson 到达过程，动态批处理大小（最大 32）
+<strong>评测指标</strong>：归一化延迟（ms/tok）和峰值 KV 缓存内存</p>
+<p><strong>关键结果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>np</th>
+<th>ns</th>
+<th>nc</th>
+<th>RPS</th>
+<th>vLLM 延迟</th>
+<th>ChunkLlama 延迟</th>
+<th>vLLM 内存</th>
+<th>ChunkLlama 内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1024</td>
+<td>0</td>
+<td>512</td>
+<td>1.0</td>
+<td>19.92 ms/tok</td>
+<td>19.11 ms/tok</td>
+<td>14.73 GB</td>
+<td>11.90 GB</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>1024</td>
+<td>512</td>
+<td>1.0</td>
+<td>20.80 ms/tok</td>
+<td><strong>14.07 ms/tok</strong></td>
+<td>14.79 GB</td>
+<td><strong>3.28 GB</strong></td>
+</tr>
+<tr>
+<td>2048</td>
+<td>0</td>
+<td>512</td>
+<td>0.6</td>
+<td>21.90 ms/tok</td>
+<td>19.43 ms/tok</td>
+<td>21.70 GB</td>
+<td>22.41 GB</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>2048</td>
+<td>512</td>
+<td>0.6</td>
+<td>21.61 ms/tok</td>
+<td><strong>15.20 ms/tok</strong></td>
+<td>21.09 GB</td>
+<td><strong>3.40 GB</strong></td>
+</tr>
+<tr>
+<td>4096</td>
+<td>0</td>
+<td>512</td>
+<td>0.4</td>
+<td>26.23 ms/tok</td>
+<td>26.88 ms/tok</td>
+<td>34.59 GB</td>
+<td>35.13 GB</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>4096</td>
+<td>512</td>
+<td>0.4</td>
+<td>27.62 ms/tok</td>
+<td><strong>17.16 ms/tok</strong></td>
+<td>35.42 GB</td>
+<td><strong>4.00 GB</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要发现</strong>：
+- <strong>无共享前缀时</strong>：ChunkLlama 无性能回退
+- <strong>ns=1024</strong>：ChunkLlama 比 vLLM 吞吐量高 1.6×（2.9 vs 1.8 RPS），归一化延迟 &lt;40 ms/tok
+- <strong>ns=2048</strong>：ChunkLlama 比 vLLM 吞吐量高 2.3×（2.3 vs 1.0 RPS）
+- <strong>KV 缓存内存减少 70%–90%</strong>（如 4096 token 共享时，从 35.42 GB 降至 4.00 GB）
+- <strong>峰值 batch size 减少 20%–40%</strong>（因解码更快）</p>
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>显著的性能加速</strong>：在共享系统提示场景下，self-attention 内核加速 3.2–4.8×，端到端推理吞吐量提升 1.6–2.3×</li>
+<li><strong>大幅内存节省</strong>：KV 缓存内存减少 70%–90%，特别是在长系统提示场景下</li>
+<li><strong>无共享时无回退</strong>：当没有共享前缀时（ns=0），性能与现有高度优化实现相当，无性能损失</li>
+<li><strong>运行时自动检测</strong>：通过前缀树结构，无需人工干预即可动态检测和消除 KV 缓存冗余</li>
+<li><strong>零内存浪费</strong>：前缀树仅存储当前解码中的序列的 KV 缓存，不存在空闲内存浪费</li>
+<li><strong>开箱即用（Out-of-the-box）</strong>：基于前缀树的 KV 缓存设计具有可扩展性和鲁棒性</li>
+<li><strong>兼容性</strong>：与 FlashAttention 等现有优化互补，可在其上进一步优化</li>
+<li><strong>实用性强</strong>：针对真实多租户部署场景设计，适用于在线聊天机器人和离线实验</li>
+</ol>
+<h2 id="_7">局限</h2>
+<ol>
+<li>
+<p><strong>系统提示位置限制</strong>：为共享 KV 张量，系统提示必须出现在序列的开头。如果应用开发者不将系统提示放在开头（出于性能考虑或无意错误），PAKV 无法节省内存。虽然这是最常见的实践，但不是强制要求。Liu et al. (2023) 发现模型在使用长输入中间部分的信息时性能最低。</p>
+</li>
+<li>
+<p><strong>微调（Fine-tuning）的替代威胁</strong>：微调是将领域知识注入 LLM 的另一种方式，可能减少对长系统提示的需求，从而降低共享机会。虽然当前尚无成本效益更高的微调和托管方案，但随着硬件和软件的发展，微调可能变得更加实用和流行。</p>
+</li>
+<li>
+<p><strong>模型和硬件兼容性</strong>：TPP 内核使用低级 CUDA 编程实现，针对常见的 LLM 配置（如 128 head dimension）和硬件（A100、RTX 4090、Intel Xeon CPU）进行调优。对于其他配置和硬件，需要逐个验证和调优，开发成本高。作者认为需要社区努力来推广两阶段分区算法，使其兼容更多模型配置和硬件。</p>
+</li>
+<li>
+<p><strong>解码长度增长时加速效果递减</strong>：随着解码进行，序列开始分化，ChunkAttn 的加速效果逐渐下降。例如 ns=2048 时，从 nc=512 的 3.6× 降至 nc=2048 的 2.3×。</p>
+</li>
+<li>
+<p><strong>仅适用于解码阶段</strong>：Prefilling 阶段仍使用 FlashAttention 等现有内核，TPP 的优化仅在迭代解码时生效。</p>
+</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li>
+<p><strong>KV 缓存优化</strong>：ChunkAttention 是 KV 缓存管理的重要研究方向，与 PagedAttention（vLLM）形成互补，两者从不同角度（分页 vs 前缀树）优化 KV 缓存的内存管理。</p>
+</li>
+<li>
+<p><strong>多租户 LLM 推理</strong>：该工作直接针对多租户部署场景，通过共享系统提示的 KV 缓存减少内存冗余，提高系统吞吐量和并发能力。</p>
+</li>
+<li>
+<p><strong>Attention 内核优化</strong>：TPP 算法是对 self-attention 内核的创新设计，与 FlashAttention（训练优化）、PagedAttention（推理优化）等形成互补，适用于推理场景的高效实现。</p>
+</li>
+<li>
+<p><strong>LLM 推理效率</strong>：该工作属于 LLM 推理加速的核心研究方向，通过减少内存操作和提高数据局部性来提升推理效率，与模型压缩、量化等技术形成互补。</p>
+</li>
+<li>
+<p><strong>Prefix-aware 缓存设计</strong>：前缀树结构的 KV 缓存管理方案，可扩展到其他场景，如多轮对话、指令微调等，具有潜在的跨领域应用价值。</p>
+</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p><strong>本笔记由 AI Agent 自动生成，基于论文 ChunkAttention 的 PDF 文本提取和元数据信息。内容经过结构化整理和翻译，仅供参考。如需精确理解论文细节，请查阅原文。</strong></p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

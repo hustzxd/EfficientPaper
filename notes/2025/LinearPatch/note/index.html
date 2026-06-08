@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,23 +161,332 @@
   
                 <h1 id="a-simple-linear-patch-revives-layer-pruned-large-language-models">A Simple Linear Patch Revives Layer-Pruned Large Language Models</h1>
 <p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Layer pruning has become a popular technique for compressing large language
-models (LLMs) due to its simplicity. However, existing layer pruning methods
-often suffer from significant performance drops. We identify that this
-degradation stems from the mismatch of activation magnitudes across layers and
-tokens at the pruning interface. To address this, we propose LinearPatch, a
-simple plug-and-play technique to revive the layer-pruned LLMs. The proposed
-method adopts Hadamard transformation to suppress massive outliers in
-particular tokens, and channel-wise scaling to align the activation magnitudes.
-These operations can be fused into a single matrix, which functions as a patch
-to bridge the pruning interface with negligible inference overhead. LinearPatch
-retains up to 94.15% performance of the original model when pruning 5 layers of
-LLaMA-3-8B on the question answering benchmark, surpassing existing
-state-of-the-art methods by 4%. In addition, the patch matrix can be further
-optimized with memory efficient offline knowledge distillation. With only 5K
-samples, the retained performance of LinearPatch can be further boosted to
-95.16% within 30 minutes on a single computing card.</p>
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成</strong>，生成时间：2025年6月，基于论文全文阅读。所有内容仅供参考，如有错误请以原文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>LinearPatch 提出了一种简单的即插即用方法，通过 Hadamard 变换和通道缩放将层剪枝后的激活量级对齐，融合为一个对称矩阵插入剪枝接口，以几乎为零的推理开销显著恢复被剪枝 LLM 的性能。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>层剪枝因其实现简单已成为压缩大语言模型（LLM）的流行技术。然而，现有的层剪枝方法往往伴随着显著的性能下降。我们发现这种性能退化源于剪枝接口处跨层和跨 token 的激活量级不匹配。为解决此问题，我们提出了 LinearPatch，一种简单的即插即用技术，用于恢复层剪枝后的 LLM。该方法采用 Hadamard 变换来抑制特定 token（如 [BOS] 或分隔符 token）中的大量异常值，并通过通道缩放（channel-wise scaling）来对齐激活量级。这些操作可以融合到一个矩阵中，作为"补丁"来桥接剪枝接口，推理开销可忽略不计。LinearPatch 在对 LLaMA-3-8B 剪枝 5 层时，在问答基准测试上保留了原始模型 94.15% 的性能，超越现有最先进方法 4%。此外，补丁矩阵可以通过内存高效的离线知识蒸馏进一步优化。仅使用 5K 样本，LinearPatch 的保留性能可在单张计算卡上 30 分钟内提升至 95.16%。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 压缩需求</strong>：大型语言模型（LLM）的部署面临显著的计算和内存开销，模型压缩技术（如量化和剪枝）至关重要。</li>
+<li><strong>层剪枝的优势与挑战</strong>：层剪枝是一种受欢迎的压缩方法，因为它可以直接移除整个 Transformer 层，无需硬件或底层依赖（不同于非结构化剪枝或 N:M 稀疏性）。但层剪枝通常导致显著的性能下降。</li>
+<li><strong>关键发现</strong>：本文发现性能退化的核心原因是<strong>剪枝接口处激活量级的不匹配</strong>——剪枝后剩余层的激活尺度存在差异，尤其是特殊 token（如 [BOS]）中存在大量异常值，加剧了这种不匹配。</li>
+<li><strong>现有方法的不足</strong>：现有的层剪枝方法（如 ShortGPT、SLEB、LLM-Streamline 等）都忽略了剪枝后激活量级不匹配的问题，而 LinearPatch 正是针对这一问题提出的解决方案。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<p>LinearPatch 的核心思想是通过一个简单的线性变换矩阵来弥合层剪枝造成的激活量级差距，包含三个关键步骤：</p>
+<h3 id="1layer-pruning">步骤 1：层剪枝（Layer Pruning）</h3>
+<ul>
+<li>使用余弦相似度作为剪枝指标（也可与其他指标正交结合），移除连续的 n 个层。</li>
+<li>剪枝后，第 (ℓ<em>+n) 层的输入变为第 ℓ</em> 层的输入：X^(ℓ<em>+n) = X^(ℓ</em>) + f(X^(ℓ<em>), θ^(ℓ</em>+n))。</li>
+</ul>
+<h3 id="2channel-magnitude-alignment">步骤 2：通道量级对齐（Channel Magnitude Alignment）</h3>
+<ul>
+<li><strong>通道间量级不匹配问题</strong>：不同层和通道的隐藏状态激活量级差异显著。移除层后，剪枝接口处的通道量级不匹配严重影响模型性能。</li>
+<li><strong>通道缩放参数计算</strong>：对每个通道 k，计算剪枝后层输入与剪枝前层输入的平均激活量级比值：</li>
+<li>d_k(ℓ<em>, ℓ</em>+n) = ‖X^(ℓ<em>+n)_{:,k}‖₁ / ‖X^(ℓ</em>)_{:,k}‖₁</li>
+<li><strong>量化评估</strong>：通过扰动系数 α 的实验发现，使用缩放参数 d 匹配量级后，困惑度从 35.68 降至 20.68。</li>
+</ul>
+<h3 id="3token-token-magnitude-smoothing">步骤 3：Token 量级平滑（Token Magnitude Smoothing）</h3>
+<ul>
+<li><strong>Token 间量级不匹配问题</strong>：由于特殊 token（如 [BOS]）存在大量异常值（量级超过 1e³），通道缩放参数无法适用于所有 token。标准差 σ_d 可高达 2137.75。</li>
+<li><strong>Hadamard 变换</strong>：受相关研究启发，对激活应用 Walsh-Hadamard 矩阵进行旋转，可以有效抑制异常值。Hadamard 矩阵的正交性使得变换可逆：X^(ℓ<em>) = (X^(ℓ</em>)H)H^T。</li>
+<li><strong>效果</strong>：旋转后，通道缩放参数的共享性更好，标准差 σ_d 从 2137.75 降至 230.32。</li>
+</ul>
+<h3 id="4matrix-fusion">步骤 4：矩阵融合（Matrix Fusion）</h3>
+<ul>
+<li>将通道缩放参数 D = diag(d) 和 Hadamard 变换 H 融合为一个对称矩阵 P：</li>
+<li>X_new^(ℓ<em>) = X^(ℓ</em>)HDH^T = X^(ℓ*)P</li>
+<li>基于谱定理（Spectral Theorem），任何实对称矩阵可以分解为正交特征向量矩阵和对角特征值矩阵。</li>
+<li><strong>优势</strong>：将三个操作（Hadamard 变换、通道缩放、Hadamard 逆变换）融合为单次矩阵乘法，推理开销极小。</li>
+</ul>
+<h3 id="5">步骤 5：内存高效的离线知识蒸馏</h3>
+<ul>
+<li><strong>传统知识蒸馏的挑战</strong>：需要同时加载教师模型和学生模型到 GPU 内存中，对 LLM 而言内存开销巨大。</li>
+<li><strong>LinearPatch 的改进</strong>：</li>
+<li>仅需保存输入和输出，无需加载教师模型。</li>
+<li>使用 Top-K logits（K=100）的 KL 散度进行蒸馏，节省约 320 倍内存（词表大小 32K 时）。</li>
+<li>仅微调补丁矩阵 P，冻结所有其他参数。</li>
+<li>仅需 5K 样本，30 分钟可在单张 V100 GPU 上完成（LLaMA-2-7B）。</li>
+<li>损失函数：最小化 KL 散度 KL(o_t, o_s)，而非 MSE（MSE 容易导致过拟合）。</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA-2-7B/13B、LLaMA-3-8B、Baichuan-2-7B、DeepSeek-R1-Distill LLMs</li>
+<li><strong>基准方法</strong>：LLM-Pruner、SLEB、ShortGPT、LLM-Streamline、Shortened LLaMA</li>
+<li><strong>评估指标</strong>：</li>
+<li>PPL（困惑度）：WikiText2、C4、PTB</li>
+<li>MMLU（5-shot）</li>
+<li>QA（9 个常识问答任务，报告平均值和保留性能 RP）</li>
+<li><strong>校准</strong>：128 句，序列长度 2048，来自 WikiText-2 数据集</li>
+<li><strong>微调</strong>：AdamW 优化器，学习率 1e-4，5000 句，序列长度 2048，1 个 epoch</li>
+<li><strong>硬件</strong>：24GB NVIDIA V100 GPU</li>
+</ul>
+<h3 id="_7">主要结果</h3>
+<h4 id="training-freeqa">无训练（Training-free）QA 基准测试</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>剪枝层数/总层数</th>
+<th>方法</th>
+<th>保留性能 (RP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>7/32</td>
+<td>LLM-Streamline (None)</td>
+<td>86.06%</td>
+</tr>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>7/32</td>
+<td><strong>LinearPatch [S/L]</strong></td>
+<td><strong>88.88%</strong></td>
+</tr>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>9/32</td>
+<td>LLM-Streamline (None)</td>
+<td>80.29%</td>
+</tr>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>9/32</td>
+<td><strong>LinearPatch [S/L]</strong></td>
+<td><strong>84.08%</strong></td>
+</tr>
+<tr>
+<td>LLaMA-2-13B</td>
+<td>8/40</td>
+<td>LLM-Streamline (None)</td>
+<td>90.27%</td>
+</tr>
+<tr>
+<td>LLaMA-2-13B</td>
+<td>8/40</td>
+<td><strong>LinearPatch [S/L]</strong></td>
+<td><strong>93.45%</strong></td>
+</tr>
+<tr>
+<td>LLaMA-3-8B</td>
+<td>5/32</td>
+<td>LLM-Streamline (None)</td>
+<td>90.84%</td>
+</tr>
+<tr>
+<td>LLaMA-3-8B</td>
+<td>5/32</td>
+<td><strong>LinearPatch [L]</strong></td>
+<td><strong>94.15%</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="post-trainingqa">后训练（Post-training）QA 基准测试</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>剪枝层数/总层数</th>
+<th>方法</th>
+<th>保留性能 (RP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>7/32</td>
+<td>LLM-Streamline (FFN) + FT</td>
+<td>90.00%</td>
+</tr>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>7/32</td>
+<td><strong>LinearPatch [L] + FT</strong></td>
+<td><strong>92.83%</strong></td>
+</tr>
+<tr>
+<td>LLaMA-3-8B</td>
+<td>5/32</td>
+<td>LLM-Streamline (FFN) + FT</td>
+<td>74.34%</td>
+</tr>
+<tr>
+<td>LLaMA-3-8B</td>
+<td>5/32</td>
+<td><strong>LinearPatch [L] + FT</strong></td>
+<td><strong>95.16%</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ppl">PPL 基准测试</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>剪枝层数/总层数</th>
+<th>方法</th>
+<th>平均 PPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>7/32</td>
+<td>LLM-Streamline (FFN) + FT</td>
+<td>24.58</td>
+</tr>
+<tr>
+<td>LLaMA-2-7B</td>
+<td>7/32</td>
+<td><strong>LinearPatch [L] + FT</strong></td>
+<td><strong>17.27</strong></td>
+</tr>
+<tr>
+<td>LLaMA-3-8B</td>
+<td>5/32</td>
+<td>LLM-Streamline (FFN) + FT</td>
+<td>228.70</td>
+</tr>
+<tr>
+<td>LLaMA-3-8B</td>
+<td>5/32</td>
+<td><strong>LinearPatch [L] + FT</strong></td>
+<td><strong>12.23</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">消融实验</h3>
+<h4 id="llama-2-7b-932">组件消融（LLaMA-2-7B，剪枝 9/32 层）</h4>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>平均 PPL</th>
+<th>QA 平均</th>
+<th>QA RP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vanilla（无任何修复）</td>
+<td>56.10</td>
+<td>56.52%</td>
+<td>80.29%</td>
+</tr>
+<tr>
+<td>+d（通道缩放）</td>
+<td>33.70</td>
+<td>58.62%</td>
+<td>83.56%</td>
+</tr>
+<tr>
+<td>+P（LinearPatch 矩阵）</td>
+<td>30.29</td>
+<td>59.14%</td>
+<td>84.08%</td>
+</tr>
+<tr>
+<td>+FT（知识蒸馏微调）</td>
+<td><strong>19.58</strong></td>
+<td><strong>61.71%</strong></td>
+<td><strong>88.15%</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_9">损失函数对比</h4>
+<table>
+<thead>
+<tr>
+<th>蒸馏类型</th>
+<th>损失函数</th>
+<th>平均 PPL</th>
+<th>QA RP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特征蒸馏（LLM-Streamline）</td>
+<td>MSE</td>
+<td>36.40</td>
+<td>84.74%</td>
+</tr>
+<tr>
+<td>logits 蒸馏（LinearPatch）</td>
+<td><strong>KL</strong></td>
+<td><strong>29.26</strong></td>
+<td><strong>88.15%</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_10">计算资源消耗</h4>
+<ul>
+<li><strong>初始化</strong>：LLaMA-2-7B，约 30 秒</li>
+<li><strong>微调</strong>：约 30 分钟（单张 NVIDIA V100 GPU）</li>
+<li><strong>推理开销</strong>：与 LLM-Streamline (FFN) 相比，LinearPatch 矩阵约小 8 倍，速度快约 190 倍</li>
+<li><strong>离线存储</strong>：与 LLM-Streamline 相比，减少约 40 倍（隐藏维度 4096 时）</li>
+</ul>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>简单高效</strong>：方法仅需一个线性矩阵，将 Hadamard 变换和通道缩放融合为单次矩阵乘法，推理开销可忽略不计。</li>
+<li><strong>即插即用</strong>：可与各种剪枝指标（余弦相似度、梯度、困惑度等）正交结合，灵活性强。</li>
+<li><strong>显著性能提升</strong>：在无训练和后训练设置下均显著超越现有最先进方法，如 LLM-Streamline（提升约 4%）。</li>
+<li><strong>内存高效的训练</strong>：仅微调补丁矩阵，无需加载教师模型，使用 Top-K logits 蒸馏大幅减少内存消耗。</li>
+<li><strong>低成本训练</strong>：仅需 5K 样本，30 分钟单卡即可完成微调。</li>
+<li><strong>理论基础扎实</strong>：基于谱定理（Spectral Theorem）将 Hadamard 变换和通道缩放融合为对称矩阵，有明确的数学解释。</li>
+<li><strong>广泛适用性</strong>：在多种 LLM（LLaMA-2、LLaMA-3、Baichuan-2、DeepSeek-R1）和多种基准测试上验证了有效性。</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>任务间性能不均匀</strong>：层剪枝可能在不同任务间不均匀地降低性能。虽然某些问答任务可能保持稳健，但复杂推理或依赖上下文的任务可能受损。</li>
+<li><strong>评估框架不完善</strong>：需要更全面的评估框架来彻底评估层剪枝在不同任务和上下文中的效率增益与性能退化之间的权衡。</li>
+<li><strong>剪枝比例限制</strong>：论文中剪枝比例控制在 30% 以下，未充分探索更高剪枝比例的表现。</li>
+<li><strong>与非结构化剪枝的比较缺失</strong>：论文主要与层剪枝方法比较，未与非结构化剪枝或 N:M 稀疏性等方法进行直接对比。</li>
+<li><strong>开源代码缺失</strong>：论文未提供开源代码，复现可能存在困难。</li>
+<li><strong>仅适用于连续层剪枝</strong>：虽然可以扩展到非连续层剪枝，但主实验主要基于连续层剪枝。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>结构化剪枝（Structured Pruning）</strong>：LinearPatch 是层剪枝的改进方法，属于结构化剪枝的范畴。相关研究方向包括：</li>
+<li>宽度剪枝（如 SliceGPT、Sheared LLaMA）</li>
+<li>注意力头剪枝</li>
+<li>中间层维度剪枝</li>
+<li><strong>模型压缩（Model Compression）</strong>：LinearPatch 与其他压缩技术（量化、蒸馏）可以正交结合，形成多层次压缩方案。</li>
+<li><strong>激活量级对齐（Activation Magnitude Alignment）</strong>：本文发现的激活量级不匹配问题在其他剪枝场景中也可能存在，相关研究包括：</li>
+<li>SmoothQuant（量化中的量级平滑）</li>
+<li>QuaRot（旋转量化）</li>
+<li>FlatQuant（平坦化量化）</li>
+<li><strong>知识蒸馏（Knowledge Distillation）</strong>：LinearPatch 提出的内存高效离线蒸馏方法为大模型蒸馏提供了新思路，相关研究包括：</li>
+<li>传统知识蒸馏</li>
+<li>对齐蒸馏</li>
+<li>多教师蒸馏</li>
+<li><strong>Hadamard 变换在 LLM 中的应用</strong>：本文的 Hadamard 变换用于抑制激活异常值，与 QuaRot、SpinQuant 等工作相关，是量化与剪枝交叉的前沿方向。</li>
+<li><strong>高效推理（Efficient Inference）</strong>：LinearPatch 的低推理开销特性使其适合部署场景，与高效推理、边缘部署等方向紧密相关。</li>
+<li><strong>LLM 稀疏性（Sparse Pruning）</strong>：作为结构化稀疏性的代表，LinearPatch 为 LLM 的稀疏化提供了新方法。</li>
+</ol>
+<hr />
+<h2 id="_13">附录</h2>
+<ul>
+<li><strong>论文链接</strong>：http://arxiv.org/abs/2505.24680v1</li>
+<li><strong>关键词</strong>：sparse_pruning, structured_sparsity</li>
+<li><strong>代码框架</strong>：PyTorch</li>
+<li><strong>代码仓库</strong>：未提供</li>
+<li><strong>发表时间</strong>：2025 年 5 月 30 日</li>
+<li><strong>作者机构</strong>：清华大学深圳国际研究生院、华为诺亚方舟实验室</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

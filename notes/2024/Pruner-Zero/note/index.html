@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -158,12 +160,362 @@
               
   
                 <h1 id="pruner-zero-evolving-symbolic-pruning-metric-from-scratch-for-large-language-models">Pruner-Zero: Evolving Symbolic Pruning Metric from scratch for Large Language Models</h1>
+<p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
 <blockquote>
-<p>Peijie Dong, Lujun Li, Zhenheng Tang, Xiang Liu, Xinglin Pan, Qiang Wang, Xiaowen Chu</p>
+<p><strong>一句话总结</strong>：Pruner-Zero 利用遗传编程自动搜索最优的符号剪枝度量（Symbolic Pruning Metric），通过设计涵盖现有剪枝度量的统一搜索空间和对立操作简化策略（OOS），在无需重训练或权重更新的情况下，自动发现并生成优于 SparseGPT、Wanda 等 SOTA 方法的剪枝指标，实现了 LLM 的高效后训练剪枝。</p>
 </blockquote>
-<p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Despite the remarkable capabilities, Large Language Models (LLMs) face deployment challenges due to their extensive size. Pruning methods drop a subset of weights to accelerate, but many of them require retraining, which is prohibitively expensive and computationally demanding. Recently, post-training pruning approaches introduced novel metrics, enabling the pruning of LLMs without retraining. However, these metrics require the involvement of human experts and tedious trial and error. To efficiently identify superior pruning metrics, we develop an automatic framework for searching symbolic pruning metrics using genetic programming. In particular, we devise an elaborate search space encompassing the existing pruning metrics to discover the potential symbolic pruning metric. We propose an opposing operation simplification strategy to increase the diversity of the population. In this way, Pruner-Zero allows auto-generation of symbolic pruning metrics. Based on the searched results, we explore the correlation between pruning metrics and performance after pruning and summarize some principles. Extensive experiments on LLaMA and LLaMA-2 on language modeling and zero-shot tasks demonstrate that our Pruner-Zero obtains superior performance than SOTA post-training pruning methods. Code at: \url{https://github.com/pprp/Pruner-Zero}.</p>
+<hr />
+<h2 id="_1">摘要翻译</h2>
+<p>尽管大型语言模型（LLM）具有卓越的能力，但其庞大的规模给部署带来了巨大挑战。剪枝方法通过丢弃权重子集来加速模型，但许多方法需要重训练，这对 LLM 来说计算成本极高。最近，后训练剪枝方法引入了新的度量指标，使得无需重训练即可剪枝 LLM，但这些指标依赖于人类专家的参与和繁琐的试错过程。为了高效地识别更优的剪枝度量，我们开发了一个使用遗传编程自动搜索符号剪枝度量的框架。具体而言，我们设计了一个精心构建的搜索空间，涵盖现有剪枝度量，以发现潜在的符号剪枝度量。我们提出了对立操作简化策略（Opposing Operation Simplification），以增加种群的多样性。通过这种方式，Pruner-Zero 能够自动生成符号剪枝度量。基于搜索结果，我们探索了剪枝度量与剪枝后性能之间的相关性，并总结了一些原则。在 LLaMA 和 LLaMA-2 上进行的大量语言建模和零样本任务实验表明，我们的 Pruner-Zero 在后训练剪枝方面获得了优于 SOTA 方法的性能。代码地址：https://github.com/pprp/Pruner-Zero。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li>
+<p><strong>LLM 部署的计算瓶颈</strong>：大型语言模型（如 GPT-3 的 1750 亿参数）需要大量计算资源进行部署，迫切需要高效的模型压缩技术。模型稀疏化（sparsing）是一种极具前景的方法，通过识别并消除权重矩阵中的冗余元素来压缩模型。</p>
+</li>
+<li>
+<p><strong>传统剪枝方法的局限性</strong>：传统的剪枝方法（如从随机初始化训练、重训练或迭代剪枝）由于 LLM 的复杂性、计算和数据需求，变得不可行。后训练剪枝（post-training pruning）成为更实用的选择，但现有的后训练剪枝方法存在两个关键挑战：</p>
+</li>
+<li><strong>人类依赖性（Human-Dependence）</strong>：现有方法严重依赖领域知识，需要大量试错。</li>
+<li>
+<p><strong>格式敏感性（Format-Sensitivity）</strong>：剪枝度量对格式极为敏感，需要系统性的实验方法。</p>
+</li>
+<li>
+<p><strong>现有剪枝度量的不足</strong>：</p>
+</li>
+<li><strong>SparseGPT</strong>：需要权重更新和 Hessian 矩阵逆运算，计算复杂度高。</li>
+<li><strong>Wanda</strong>：虽然不需要权重更新，但度量设计依赖人工经验。</li>
+<li><strong>GBLM-Pruner</strong>：使用梯度信息，但同样依赖人工设计。</li>
+<li>
+<p>这些方法的度量都需要人工设计，且缺乏系统性搜索框架。</p>
+</li>
+<li>
+<p><strong>关键洞察</strong>：剪枝度量可以表示为一系列符号的组合（类似符号回归），因此可以通过自动化搜索来发现更优的度量，而非依赖人工设计。这催生了两个核心问题：</p>
+</li>
+<li>如何设计一个统一的搜索空间来涵盖现有剪枝度量？</li>
+<li>如何找到为 LLM 定制的最优剪枝度量？</li>
+</ol>
+<hr />
+<h2 id="_3">方法（技术细节）</h2>
+<h3 id="_4">核心思想</h3>
+<p>Pruner-Zero 将剪枝度量的发现形式化为一个<strong>符号回归（Symbolic Regression）</strong>问题，利用<strong>遗传编程（Genetic Programming）</strong>自动搜索最优的符号剪枝度量（Symbolic Pruning Metric, SPM）。</p>
+<h3 id="_5">搜索空间设计</h3>
+<p><strong>输入变量（LLM Statistics）</strong>：
+- <strong>权重（W）</strong>：模型权重矩阵
+- <strong>梯度（G）</strong>：使用 128 个校准样本预计算并本地存档
+- <strong>激活（X）</strong>：输入激活值
+- 排除了 Hessian 矩阵（因其随隐藏层维度二次方增长，<script type="math/tex">O(d_{hidden}^2)</script>，计算成本过高）</p>
+<p><strong>原始操作（Primitive Operations）</strong>：
+- 受 AutoML-Zero 和 EMQ 启发，包含一元操作（UOP）和二元操作（BOP）
+- 完整操作集合参考 Table 10（附录），涵盖绝对值、范数、幂运算、乘除等
+- 共 17 种原始操作</p>
+<p><strong>表达树（Expression Tree）</strong>：
+- 剪枝度量表示为一棵表达树，叶节点为 LLM 统计量（W、G、X），内部节点为数学操作
+- 一元操作有一个子节点，二元操作有两个子节点
+- 输出维度必须与权重维度对齐，表示每个权重的重要性</p>
+<h3 id="_6">遗传编程框架</h3>
+<p><strong>算法流程（Algorithm 1）</strong>：
+1. <strong>初始化</strong>：用不同深度（3-5）的符号树初始化种群 P
+2. <strong>迭代搜索</strong>（300 次迭代）：
+   - 随机选择 r×|P| 个子网进行评估
+   - 从 top-k 候选中选取两个父代
+   - 执行子树交叉（Crossover）和节点变异（Mutation，概率 p=0.5）
+   - 应用 OOS 策略简化后代
+   - 如果后代与父代等价，则重新随机生成
+   - 评估后代的困惑度（perplexity）作为适应度
+   - 移除困惑度最高的个体</p>
+<p><strong>进化设置</strong>：
+- 初始种群大小：50
+- 迭代次数：300
+- 符号树深度：3-5
+- 锦标赛选择 top-k=10
+- 变异概率：0.5
+- 适应度指标：WikiText2 上 LLaMA-2-7B 的困惑度
+- 评估时间：不到 5 分钟
+- 硬件：2 × NVIDIA 4090 GPU</p>
+<h3 id="oos">对立操作简化策略（OOS）</h3>
+<p><strong>问题</strong>：搜索空间中存在数学等价但形式不同的符号树，如 <code>exp</code> 和 <code>log</code>、<code>sub</code> 和 <code>neg</code> 等对立操作对，这些冗余增加了搜索复杂度，降低了可解释性。</p>
+<p><strong>解决方案</strong>：OOS 策略在每次变异后，遍历符号树的所有节点，检测并移除对立操作对（如 exp/log、sub/neg 等），从而：
+- 减少搜索空间的冗余
+- 提高基因编程的搜索效率
+- 增强种群多样性
+- 提升表达树的可解释性</p>
+<h3 id="_7">搜索到的符号剪枝度量</h3>
+<p>最终搜索到的最优符号剪枝度量为：</p>
+<p>
+<script type="math/tex; mode=display">\text{Pruner-Zero} = ||W| \times |W|| \times \sigma(|G|)</script>
+</p>
+<p>其中：
+- <script type="math/tex">\sigma</script> 为 min-max 归一化函数
+- <script type="math/tex">|W|</script> 为权重绝对值，<script type="math/tex">||W|</script> 为双重绝对值（即平方的平方根，类似于几何平均）
+- <script type="math/tex">|G|</script> 为梯度绝对值
+- min-max 缩放函数将权重和梯度归一化到相同尺度，避免扭曲值域差异
+- 平方操作与梯度乘积的几何平均形式有助于抑制极端值的影响</p>
+<p><strong>该度量的特点</strong>：
+- 不需要权重更新（与 Wanda 类似）
+- 不需要 Hessian 矩阵（计算复杂度低）
+- 同时考虑权重大小和梯度信息
+- 通过 min-max 缩放实现归一化</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">评估设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA (7B/13B/30B/65B)、LLaMA-2 (7B/13B/70B)、Tiny-LLaMA、OPT</li>
+<li><strong>数据集</strong>：WikiText2（语言建模）、EleutherAI LM Harness（7 个零样本任务）</li>
+<li><strong>稀疏类型</strong>：非结构化 50%、结构化 4:8、结构化 2:4</li>
+<li><strong>对比方法</strong>：Magnitude、SparseGPT（需权重更新）、Wanda（无需权重更新）</li>
+<li><strong>实现</strong>：基于 Wanda 框架</li>
+</ul>
+<h3 id="wikitext2-perplexity">语言建模结果（WikiText2 Perplexity）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>权重更新</th>
+<th>稀疏度</th>
+<th>LLaMA 7B</th>
+<th>13B</th>
+<th>30B</th>
+<th>65B</th>
+<th>LLaMA-2 7B</th>
+<th>13B</th>
+<th>70B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>-</td>
+<td>0%</td>
+<td>5.68</td>
+<td>5.09</td>
+<td>4.77</td>
+<td>3.56</td>
+<td>5.12</td>
+<td>4.57</td>
+<td>3.12</td>
+</tr>
+<tr>
+<td>Magnitude</td>
+<td>✗</td>
+<td>50%</td>
+<td>17.29</td>
+<td>20.21</td>
+<td>7.54</td>
+<td>5.90</td>
+<td>14.89</td>
+<td>6.37</td>
+<td>4.98</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>✓</td>
+<td>50%</td>
+<td>7.22</td>
+<td>6.21</td>
+<td>5.31</td>
+<td>4.57</td>
+<td>6.51</td>
+<td>5.63</td>
+<td>3.98</td>
+</tr>
+<tr>
+<td>Wanda</td>
+<td>✗</td>
+<td>50%</td>
+<td>7.26</td>
+<td>6.15</td>
+<td>5.24</td>
+<td>4.57</td>
+<td>6.42</td>
+<td>5.56</td>
+<td>3.98</td>
+</tr>
+<tr>
+<td><strong>Pruner-Zero</strong></td>
+<td><strong>✗</strong></td>
+<td><strong>50%</strong></td>
+<td><strong>6.95</strong></td>
+<td><strong>5.94</strong></td>
+<td><strong>5.01</strong></td>
+<td><strong>4.33</strong></td>
+<td><strong>6.26</strong></td>
+<td><strong>5.36</strong></td>
+<td><strong>3.82</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- Pruner-Zero 在非结构化 50% 稀疏度下，所有模型的困惑度均低于 SparseGPT 和 Wanda
+- LLaMA-7B：Pruner-Zero 6.95 vs SparseGPT 7.22 vs Wanda 7.26
+- LLaMA-2-7B：Pruner-Zero 6.26 vs SparseGPT 6.51 vs Wanda 6.42
+- 在结构化 4:8 和 2:4 稀疏度下同样保持优势
+- 不需要权重更新，实现了与 SparseGPT（需权重更新）相当甚至更优的性能</p>
+<h3 id="_10">零样本任务结果（平均准确率 %）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>权重更新</th>
+<th>稀疏度</th>
+<th>LLaMA 7B</th>
+<th>13B</th>
+<th>30B</th>
+<th>65B</th>
+<th>LLaMA-2 7B</th>
+<th>13B</th>
+<th>70B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>-</td>
+<td>0%</td>
+<td>59.99</td>
+<td>62.59</td>
+<td>65.38</td>
+<td>66.97</td>
+<td>59.71</td>
+<td>63.03</td>
+<td>67.08</td>
+</tr>
+<tr>
+<td>Magnitude</td>
+<td>✗</td>
+<td>50%</td>
+<td>46.94</td>
+<td>47.61</td>
+<td>53.83</td>
+<td>62.74</td>
+<td>51.14</td>
+<td>52.85</td>
+<td>60.93</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>✓</td>
+<td>50%</td>
+<td>54.94</td>
+<td>58.61</td>
+<td>63.09</td>
+<td>66.30</td>
+<td>56.24</td>
+<td>60.72</td>
+<td>67.28</td>
+</tr>
+<tr>
+<td>Wanda</td>
+<td>✗</td>
+<td>50%</td>
+<td>54.21</td>
+<td>59.33</td>
+<td>63.60</td>
+<td>66.67</td>
+<td>56.24</td>
+<td>60.83</td>
+<td>67.03</td>
+</tr>
+<tr>
+<td><strong>Pruner-Zero</strong></td>
+<td><strong>✗</strong></td>
+<td><strong>50%</strong></td>
+<td><strong>59.56</strong></td>
+<td><strong>62.67</strong></td>
+<td><strong>67.49</strong></td>
+<td><strong>69.81</strong></td>
+<td><strong>58.87</strong></td>
+<td><strong>64.83</strong></td>
+<td><strong>71.10</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- Pruner-Zero 在所有模型和稀疏类型上均显著优于其他方法
+- LLaMA-7B：Pruner-Zero 59.56% vs SparseGPT 54.94% vs Wanda 54.21%（提升约 5%）
+- LLaMA-2-7B：Pruner-Zero 58.87% vs SparseGPT 56.24% vs Wanda 56.24%（提升约 2.6%）
+- 在 LLaMA-65B 上达到 69.81%，接近稠密模型的 66.97%（实际上超过了稠密模型）
+- 不需要权重更新即可获得优异性能</p>
+<h3 id="_11">搜索效率</h3>
+<ul>
+<li><strong>搜索时间</strong>：单次评估不到 5 分钟（在 LLaMA-2-7B 上）</li>
+<li><strong>硬件需求</strong>：仅需 2 × NVIDIA 4090 GPU 进行搜索</li>
+<li><strong>进化搜索 vs 随机搜索</strong>：进化搜索在效率和稳定性上显著优于随机搜索（如 Figure 2 所示，个体困惑度更低）</li>
+</ul>
+<h3 id="_12">消融实验</h3>
+<ul>
+<li><strong>不同稀疏度</strong>：Pruner-Zero 在 50%、4:8、2:4 稀疏度下均表现优异</li>
+<li><strong>不同校准样本数</strong>：对校准样本数量有一定敏感性（如 Figure 3 所示）</li>
+<li><strong>操作类型分析</strong>：对 17 种原始操作进行了深入分析（Appendix C.4），揭示了哪些操作对剪枝性能最关键</li>
+</ul>
+<h3 id="_13">设计原则总结</h3>
+<p>基于搜索结果，作者总结了若干剪枝度量设计原则：
+1. <strong>梯度信息的重要性</strong>：梯度（G）在所有最优度量中都扮演关键角色
+2. <strong>归一化操作的必要性</strong>：min-max 缩放有助于平衡不同尺度的输入
+3. <strong>几何平均的优势</strong>：平方操作与梯度乘积的几何平均形式有助于抑制极端值
+4. <strong>权重和梯度的组合</strong>：同时考虑权重大小和梯度信息能获得更好的剪枝效果</p>
+<hr />
+<h2 id="_14">优势</h2>
+<ol>
+<li><strong>无需重训练或权重更新</strong>：Pruner-Zero 搜索到的度量不需要权重更新或重训练，剪枝后的 LLM 可直接使用</li>
+<li><strong>自动化搜索</strong>：通过遗传编程自动发现最优剪枝度量，消除了人工设计的试错过程</li>
+<li><strong>性能超越 SOTA</strong>：在 LLaMA 和 LLaMA-2 上，Pruner-Zero 在语言建模和零样本任务上均显著优于 SparseGPT 和 Wanda</li>
+<li><strong>统一搜索空间</strong>：设计了涵盖现有所有剪枝度量的统一搜索空间，确保了搜索的全面性</li>
+<li><strong>OOS 策略</strong>：对立操作简化策略有效减少了搜索空间的冗余，提高了搜索效率</li>
+<li><strong>搜索效率高</strong>：单次评估不到 5 分钟，总搜索时间短，计算资源需求低</li>
+<li><strong>可解释性</strong>：搜索到的符号度量具有明确的数学表达式，便于理解和分析</li>
+<li><strong>通用性强</strong>：适用于 LLaMA、LLaMA-2、Tiny-LLaMA、OPT 等多种 LLM 家族</li>
+<li><strong>无需 Hessian 矩阵</strong>：避免了 SparseGPT 中复杂的 Hessian 逆运算，降低了计算复杂度</li>
+<li><strong>设计原则启示</strong>：通过分析搜索结果，总结了剪枝度量设计的原则，为后续研究提供了指导</li>
+</ol>
+<hr />
+<h2 id="_15">局限</h2>
+<ol>
+<li><strong>搜索空间有限</strong>：虽然搜索空间涵盖现有度量，但仅包含 17 种原始操作和 3 种输入变量，可能遗漏更优的度量组合</li>
+<li><strong>搜索效率受种群大小限制</strong>：进化搜索需要 50 个种群和 300 次迭代，对计算资源有一定需求（尽管单次评估快速）</li>
+<li><strong>仅适用于非结构化剪枝</strong>：论文主要关注非结构化剪枝和 N:M 结构化剪枝，未涉及其他剪枝类型（如列剪枝、通道剪枝等）</li>
+<li><strong>仅适用于线性层</strong>：剪枝仅针对线性层，未考虑注意力层等其他组件</li>
+<li><strong>校准数据依赖</strong>：需要 128 个校准样本预计算梯度信息，虽然对数量不敏感，但仍需数据</li>
+<li><strong>性能差距在小模型上</strong>：虽然在所有模型上都优于基线，但在小模型（如 7B）上与稠密模型的差距仍然较大，需要微调恢复</li>
+<li><strong>搜索结果可能过拟合</strong>：搜索在 LLaMA-2-7B 上进行，虽然在其他模型上泛化良好，但可能对特定模型有偏好</li>
+<li><strong>仅评估语言建模和零样本任务</strong>：未在更复杂的下游任务（如问答、摘要等）上进行评估</li>
+<li><strong>未与其他自动化方法比较</strong>：未与自动剪枝或 NAS 等其他自动化方法进行对比</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li>
+<p><strong>模型稀疏化与权重剪枝（weight_sparsity / sparse_pruning）</strong>：Pruner-Zero 是 EfficientPaper 项目中稀疏剪枝方向的重要工作，与 SparseGPT、Wanda 等方法形成对比，展示了自动化搜索剪枝度量的新范式</p>
+</li>
+<li>
+<p><strong>无重训练剪枝（post-training pruning）</strong>：Pruner-Zero 与 SparseGPT、Wanda 一样，属于无需重训练的后训练剪枝方法，但通过自动化搜索获得了更优的剪枝度量</p>
+</li>
+<li>
+<p><strong>自动机器学习（AutoML）与符号回归</strong>：Pruner-Zero 将符号回归与遗传编程应用于剪枝度量搜索，展示了 AutoML 在模型压缩领域的潜力</p>
+</li>
+<li>
+<p><strong>LLM 压缩与高效推理</strong>：作为 LLM 压缩技术，Pruner-Zero 与量化（如 GPTQ、AWQ）等方法互补，为高效 LLM 部署提供新思路</p>
+</li>
+<li>
+<p><strong>硬件感知稀疏性</strong>：Pruner-Zero 支持结构化 N:M 稀疏性（如 2:4、4:8），可利用 NVIDIA 稀疏张量核加速推理</p>
+</li>
+<li>
+<p><strong>剪枝度量设计原则</strong>：论文总结了剪枝度量设计的原则，为后续研究提供了理论指导</p>
+</li>
+<li>
+<p><strong>与 SparseGPT/Wanda 的对比</strong>：Pruner-Zero 作为 SparseGPT 和 Wanda 的基线（baseline），为后续研究提供了参考</p>
+</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>本笔记由 AI Agent（Hermes Agent）自动生成，基于论文原文 PDF 提取和分析。笔记内容仅供参考，建议读者阅读原文获取完整信息。</p>
+</blockquote>
+<hr />
+<p><em>笔记生成时间：2026-06-05</em>
+<em>论文链接：<a href="http://arxiv.org/abs/2406.02924v1">arXiv:2406.02924</a></em>
+<em>代码仓库：<a href="https://github.com/pprp/Pruner-Zero">GitHub - pppr/Pruner-Zero</a></em>
+<em>发表会议：ICML 2024</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

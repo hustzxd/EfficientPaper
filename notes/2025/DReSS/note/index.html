@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,31 +164,291 @@
 <p>Mingkuan Feng, Jinyang Wu, Shuai Zhang, Pengpeng Shao, Ruihan Jin, Zhengqi Wen, Jianhua Tao, Feihu Che</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) have achieved significant progress across
-various domains, but their increasing scale results in high computational and
-memory costs. Recent studies have revealed that LLMs exhibit sparsity,
-providing the potential to reduce model size through pruning techniques.
-However, existing pruning methods typically follow a prune-then-finetune
-paradigm. Since the pruned components still contain valuable information, their
-direct removal often leads to irreversible performance degradation, imposing a
-substantial computational burden to recover performance during finetuning. In
-this paper, we propose a novel paradigm that first applies regularization, then
-prunes, and finally finetunes. Based on this paradigm, we introduce DReSS, a
-simple and effective Data-driven Regularized Structured Streamlining method for
-LLMs. By leveraging a small amount of data to regularize the components to be
-pruned, DReSS explicitly transfers the important information to the remaining
-parts of the model in advance. Compared to direct pruning, this can reduce the
-information loss caused by parameter removal, thereby enhancing its language
-modeling capabilities. Experimental results demonstrate that DReSS
-significantly outperforms existing pruning methods even under extreme pruning
-ratios, significantly reducing latency and increasing throughput.</p>
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成</strong>，基于 arXiv 论文 (2501.17905v3) 全文阅读和分析。生成时间：2025 年 6 月。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>DReSS 提出了一种"先正则化、再剪枝、再微调"的新型结构化剪枝范式，通过在剪枝前对即将被移除的通道施加正则化，将重要信息转移到模型剩余部分，从而显著降低信息损失，在 LLaMA2-7B 上以 25% 剪枝率将困惑度比次优方法 LLM Surgeon 降低约 20%。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLMs）在各领域取得了显著进展，但其规模不断增长导致了高昂的计算和内存成本。近期研究表明，LLMs 具有稀疏性，可通过剪枝技术来减小模型规模。然而，现有的剪枝方法通常遵循"先剪枝、再微调"的范式。由于被剪枝的部分仍包含有价值的信息，直接移除往往导致不可逆的性能下降，使得微调恢复性能的计算负担巨大。本文提出了一种新范式：先施加正则化，再剪枝，最后微调。基于此范式，我们提出了 DReSS，一种简单有效的数据驱动正则化结构化精简方法。通过利用少量数据对即将被剪枝的组件施加正则化，DReSS 将重要信息预先转移到模型的其余部分。与直接剪枝相比，这减少了参数移除造成的信息损失，从而增强了语言建模能力。实验结果表明，即使在极端剪枝率下，DReSS 也显著优于现有剪枝方法，大幅降低了延迟并提高了吞吐量。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">问题背景</h3>
+<p>大语言模型（LLMs）的参数规模不断扩大，带来了高昂的计算和内存开销，严重阻碍了实际部署。模型压缩技术（剪枝、量化、知识蒸馏、低秩分解）中，结构化剪枝因其无需专用硬件即可加速推理而备受关注。</p>
+<h3 id="_5">现有方法的局限</h3>
+<p>现有结构化剪枝方法（如 LLM Surgeon、SliceGPT、SLEB）均遵循"先根据指标选择通道/层进行剪枝，再进行恢复微调（RFT）"的范式。这种方法存在两个关键问题：</p>
+<ol>
+<li><strong>信息损失不可逆</strong>：被剪枝的部分虽然重要性较低，但仍包含有价值的信息。直接移除导致不可逆的性能下降，需要大量数据进行 RFT 才能恢复。</li>
+<li><strong>高剪枝率下性能崩溃</strong>：在高剪枝率（如 60%）下，现有方法（如 SLEB）会出现性能崩溃，限制了加速效果。</li>
+</ol>
+<h3 id="_6">核心洞察</h3>
+<p>论文的核心洞察是：<strong>正则化可以改变权重的分布模式</strong>。通过在剪枝前对将被移除的通道施加正则化（ℓ1 或 ℓ2 范数），可以将重要信息"转移"到模型的剩余部分，从而减少直接参数移除造成的信息损失。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="_8">整体流程</h3>
+<p>DReSS 包含四个主要步骤：</p>
+<ol>
+<li><strong>数据选择（Data Selection）</strong>：从 WikiText-2 训练集中随机选取约 1,000 个样本，用于预剪枝正则化和后剪枝 RFT（比例 3:1）。</li>
+<li><strong>正则化（Regularization）</strong>：对选定通道施加 ℓ1 或 ℓ2 范数正则化，将重要信息转移到未被剪枝的部分。</li>
+<li><strong>剪枝（Pruning）</strong>：移除正则化后的通道。</li>
+<li><strong>可选 RFT（Optional RFT）</strong>：使用 LoRA 对剪枝后的模型进行微调。</li>
+</ol>
+<h3 id="_9">正则化机制</h3>
+<h4 id="r">通道选择矩阵 R</h4>
+<p>使用对角矩阵 R ∈ R^{d×d} 选择要正则化/剪枝的通道。R 中包含 (1-p%)×d 个零和 p%×d 个一（p 为剪枝率），对应被选中的索引。R 在所有层中是相同的。</p>
+<h4 id="proposition-1">依赖关系（Proposition 1）</h4>
+<p>论文证明了 Attention 和 FFN 模块之间的依赖关系：如果对第 (i-1) 层 FFN 块的 W_down 的某些列施加正则化，则应对第 i 层 Attention 块的 W_Q、W_K、W_V 的对应行施加正则化。类似地，W_o 与 W_up 也存在依赖关系。</p>
+<h4 id="_10">正则化范围</h4>
+<p>正则化应用于 Transformer 层的以下组件：
+- <strong>Attention 块</strong>：W_Q、W_K、W_V 的行，W_o 的列
+- <strong>FFN 块</strong>：W_up 的行，W_down 的列
+- <strong>其余部分</strong>：W_emb、W_pos 的列，LayerNorm 的 α 和 β，以及最终的语言建模矩阵 W_lm</p>
+<h4 id="_11">损失函数</h4>
+<p>总损失函数包含语言建模损失和三部分正则化损失：</p>
+<p>
+<script type="math/tex; mode=display">L_{sum} = L(W, X) + \sum_{i=1}^{l} \tilde{L}_{att}^{i} + \sum_{i=1}^{l} \tilde{L}_{FFN}^{i} + \tilde{L}_{remain}</script>
+</p>
+<p>其中：
+- <script type="math/tex">\tilde{L}_{att}^{i} = \lambda(\|RW_Q^i\| + \|RW_K^i\| + \|RW_V^i\| + \|W_o^iR\|)</script>
+- <script type="math/tex">\tilde{L}_{FFN}^{i} = \lambda\|RW_{up}^i\| + \lambda\|W_{down}^iR\|</script>
+- <script type="math/tex">\tilde{L}_{remain} = \lambda(\|W_{emb}R\| + \|W_{pos}R\| + \sum_{i=1}^{l}\|R\alpha_i\| + \sum_{i=1}^{l}\|R\beta_i\| + \|RW_{lm}\|)</script>
+</p>
+<p>λ 为正则化系数（最优值为 10^{-3}）。</p>
+<h4 id="l1-proposition-2">ℓ1 范数的处理（Proposition 2）</h4>
+<p>ℓ1 范数优化问题可通过引入辅助变量 y 转化为等价的约束优化问题，使其可以通过反向传播算法求解。具体地：<script type="math/tex">\min \|x\|_1 \Leftrightarrow \min_{x,y} 1^T y \text{ s.t. } -y \leq x \leq y, y \geq 0</script>。</p>
+<h3 id="_12">剪枝过程</h3>
+<p>使用伪索引选择矩阵 S = I - R 进行通道裁剪：
+- Attention：<script type="math/tex">W_Q' = SW_Q</script>，<script type="math/tex">W_K' = SW_K</script>，<script type="math/tex">W_V' = SW_V</script>，<script type="math/tex">W_o' = W_oS</script>
+- FFN：<script type="math/tex">W_{up}' = SW_{up}</script>，<script type="math/tex">W_{down}' = W_{down}S</script>
+- 其余：<script type="math/tex">W_{emb}' = W_{emb}S</script>，<script type="math/tex">W_{pos}' = W_{pos}S</script>，<script type="math/tex">\alpha' = S\alpha</script>，<script type="math/tex">\beta' = S\beta</script>，<script type="math/tex">W_{lm}' = SW_{lm}</script>
+</p>
+<h3 id="rft">可选 RFT</h3>
+<p>使用 LoRA（rank=32, α=10）进行微调，batch size=64，学习率=2e-5，序列长度=2048。</p>
+<hr />
+<h2 id="_13">实验结果</h2>
+<h3 id="_14">实验设置</h3>
 <ul>
-<li>channel pruning mask直接初始化固定，通过正则化将mask的channel 信息传递到其他channel</li>
-<li>根据 mask pruning</li>
-<li>再次进行finetuning</li>
+<li><strong>模型</strong>：Phi-2、OPT-13B、LLaMA2-7B、LLaMA2-13B、LLaMA3-8B</li>
+<li><strong>评估数据集</strong>：WikiText-2（困惑度）、PIQA、WinoGrande、HellaSwag、ARC-e、ARC-c（零样本准确率）</li>
+<li><strong>基线方法</strong>：LLM Surgeon、SliceGPT、SLEB</li>
+<li><strong>硬件</strong>：单张 80GB NVIDIA A100 GPU</li>
 </ul>
-<p>step1的正则化会改变weight的分布，而且是按照人工设置的mask改变，是否会改变模型的基础能力呢？</p>
+<h3 id="table-125-rft">核心实验结果（Table 1，25% 剪枝率，含 RFT）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>PPL (↓)</th>
+<th>Avg Acc (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLaMA2-7B</strong></td>
+<td>Dense</td>
+<td>5.47</td>
+<td>69.00</td>
+</tr>
+<tr>
+<td></td>
+<td>LLM Surgeon</td>
+<td>7.38</td>
+<td>59.42</td>
+</tr>
+<tr>
+<td></td>
+<td>SliceGPT</td>
+<td>7.49</td>
+<td>55.73</td>
+</tr>
+<tr>
+<td></td>
+<td>SLEB</td>
+<td>10.24</td>
+<td>53.49</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>DReSS-ℓ2</strong></td>
+<td><strong>5.86</strong></td>
+<td><strong>61.54</strong></td>
+</tr>
+<tr>
+<td><strong>LLaMA3-8B</strong></td>
+<td>Dense</td>
+<td>5.76</td>
+<td>75.62</td>
+</tr>
+<tr>
+<td></td>
+<td>LLM Surgeon</td>
+<td>7.62</td>
+<td>67.37</td>
+</tr>
+<tr>
+<td></td>
+<td>SliceGPT</td>
+<td>8.14</td>
+<td>65.42</td>
+</tr>
+<tr>
+<td></td>
+<td>SLEB</td>
+<td>11.37</td>
+<td>61.78</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>DReSS-ℓ2</strong></td>
+<td><strong>6.09</strong></td>
+<td><strong>69.80</strong></td>
+</tr>
+<tr>
+<td><strong>OPT-13B</strong></td>
+<td>Dense</td>
+<td>10.12</td>
+<td>61.79</td>
+</tr>
+<tr>
+<td></td>
+<td>LLM Surgeon</td>
+<td>11.02</td>
+<td>59.96</td>
+</tr>
+<tr>
+<td></td>
+<td>SliceGPT</td>
+<td>10.90</td>
+<td>59.32</td>
+</tr>
+<tr>
+<td></td>
+<td>SLEB</td>
+<td>12.02</td>
+<td>58.50</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>DReSS-ℓ2</strong></td>
+<td><strong>10.38</strong></td>
+<td><strong>60.47</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 在 LLaMA2-7B 上，DReSS 的困惑度比次优方法 LLM Surgeon 低约 20%
+- 在 OPT-13B 上，25% 剪枝率下 DReSS 平均准确率仅比 Dense 模型下降约 1%
+- ℓ1 和 ℓ2 范数性能差异很小，后续以 ℓ2 为准</p>
+<h3 id="table-2">加速效果（Table 2）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>剪枝率</th>
+<th>PPL</th>
+<th>吞吐量提升</th>
+<th>延迟降低</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT-13B</td>
+<td>25%</td>
+<td>10.38</td>
+<td>1.16×</td>
+<td>1.21×</td>
+</tr>
+<tr>
+<td>OPT-13B</td>
+<td>50%</td>
+<td>13.85</td>
+<td>1.35×</td>
+<td>1.41×</td>
+</tr>
+<tr>
+<td>LLaMA2-13B</td>
+<td>25%</td>
+<td>5.12</td>
+<td>1.14×</td>
+<td>1.20×</td>
+</tr>
+<tr>
+<td>LLaMA2-13B</td>
+<td>50%</td>
+<td>7.59</td>
+<td>1.32×</td>
+<td>1.39×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">鲁棒性（不同剪枝率）</h3>
+<ul>
+<li>在 20%~60% 剪枝率范围内，DReSS 均显著优于其他方法</li>
+<li>在 60% 极端剪枝率下，SLEB 完全崩溃，而 DReSS 仍维持相对较低的困惑度</li>
+<li>大模型（如 LLaMA2-13B）在高剪枝率下表现更为稳健</li>
+</ul>
+<h3 id="_16">数据效率</h3>
+<ul>
+<li>仅需 1,000 个样本即可达到竞争性能，而其他方法需要 4,000 个样本</li>
+<li>正则化前的数据量对性能至关重要，RFT 步骤可选</li>
+</ul>
+<h3 id="table-45">消融实验（Table 4/5）</h3>
+<ul>
+<li><strong>无正则化（w/o R）</strong>：PPL 急剧上升至 22.38（LLaMA2-7B），说明正则化的关键作用</li>
+<li><strong>全参数正则化（w FPR）</strong>：性能也显著下降，说明精确选择剪枝通道的重要性</li>
+<li><strong>无 RFT（w/o RFT）</strong>：PPL 仅上升至 5.97，说明 RFT 可选</li>
+<li><strong>正则化前剪枝（R&amp;P&amp;N）</strong> 优于 <strong>剪枝后正则化（N&amp;P&amp;R）</strong>，验证了"先正则化、后剪枝"的范式优越性</li>
+<li><strong>最佳数据比例</strong>：正则化与 RFT 数据比例为 3:1 时效果最佳</li>
+</ul>
+<h3 id="table-3">通道选择的不敏感性（Table 3）</h3>
+<ul>
+<li>三种不同的通道选择方式（移除最后 25%、移除前 25%、均匀分散移除）性能差异极小</li>
+<li>说明 DReSS 对通道选择策略不敏感，具有很强的鲁棒性</li>
+</ul>
+<hr />
+<h2 id="_17">优势</h2>
+<ol>
+<li><strong>全新范式</strong>：首次提出"先正则化、再剪枝、再微调"的结构化剪枝范式，与传统"先剪枝、后微调"形成鲜明对比</li>
+<li><strong>显著性能提升</strong>：在多个模型和剪枝率下，DReSS 在困惑度和准确率上均优于 LLM Surgeon、SliceGPT、SLEB 等基线方法</li>
+<li><strong>极低开销</strong>：仅需 1,000 个样本进行正则化和 RFT，计算开销极小</li>
+<li><strong>RFT 可选</strong>：即使不进行 RFT，DReSS 仍能取得竞争性能</li>
+<li><strong>鲁棒性强</strong>：</li>
+<li>对剪枝通道选择不敏感</li>
+<li>在 60% 极端剪枝率下仍保持稳定性能</li>
+<li>对数据集的依赖性较低（跨 Alpaca、WikiText-2、PTB、C4 数据集均表现稳定）</li>
+<li><strong>可与其他压缩技术结合</strong>：结构化剪枝后模型可进一步进行量化等操作</li>
+</ol>
+<hr />
+<h2 id="_18">局限</h2>
+<ol>
+<li><strong>仅探索通道级剪枝</strong>：论文仅在参数矩阵的行/列层面进行结构化剪枝，未探索 Transformer 层级别的剪枝</li>
+<li><strong>正则化可能影响模型基础能力</strong>：正则化改变了权重分布（按人工设定的 mask 进行），虽然能转移信息，但可能对模型的基础能力产生潜在影响，论文中未详细讨论此问题</li>
+<li><strong>RFT 步骤效果有限</strong>：虽然 RFT 可选，但论文中未深入分析 RFT 对不同类型任务（如推理、代码生成等）的影响</li>
+<li><strong>未涉及非结构化剪枝对比</strong>：虽然提到了 Wanda、SparseGPT 等非结构化方法，但实验主要与结构化剪枝方法对比，缺乏与非结构化剪枝方法的系统比较</li>
+<li><strong>计算开销评估不足</strong>：论文未提供详细的正则化和 RFT 过程的计算时间对比（相比传统方法）</li>
+<li><strong>代码未公开</strong>：prototxt 中代码 URL 为空，缺乏可复现性</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_19">关键词</h3>
+<ul>
+<li><strong>sparse_pruning</strong>：稀疏剪枝，DReSS 通过正则化实现结构化稀疏</li>
+<li><strong>structured_sparsity</strong>：结构化稀疏性，DReSS 专注于通道级结构化剪枝</li>
+</ul>
+<h3 id="_20">相关研究方向</h3>
+<ol>
+<li><strong>结构化剪枝范式</strong>：DReSS 提出的"先正则化、后剪枝、再微调"范式可扩展到更多场景，包括层剪枝、注意力头剪枝等</li>
+<li><strong>数据高效压缩</strong>：仅需 1,000 个样本即可达到竞争性能，与数据高效的模型压缩方法密切相关</li>
+<li><strong>正则化与剪枝的结合</strong>：DReSS 展示了正则化在剪枝前的关键作用，可启发更多结合正则化与剪枝的研究</li>
+<li><strong>模型加速</strong>：DReSS 在吞吐量和延迟方面的改进与高效推理、边缘部署等研究方向相关</li>
+<li><strong>多模态模型压缩</strong>：DReSS 的范式可能扩展到视觉-语言模型等多模态场景</li>
+<li><strong>渐进式剪枝</strong>：DReSS 的"先转移信息、再移除参数"的思想与渐进式剪枝、课程学习等方法有相似之处</li>
+</ol>
+<hr />
+<p><em>本 note 基于 arXiv 论文 2501.17905v3 全文阅读和分析，由 AI Agent 自动生成。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

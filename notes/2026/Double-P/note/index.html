@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,156 @@
 <p>Wentao Ni, Kangqi Zhang, Zhongming Yu, Oren Nelson, Mingu Lee, Hong Cai, Fatih Porikli, Jongryool Kim, Zhijian Liu, Jishen Zhao</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>As long-context inference becomes central to large language models (LLMs), attention over growing key-value caches emerges as a dominant decoding bottleneck, motivating sparse attention for scalable inference. Fixed-budget top-k sparse attention cannot adapt to heterogeneous attention distributions across heads and layers, whereas top-p sparse attention directly preserves attention mass and provides stronger accuracy guarantees. Existing top-p methods, however, fail to jointly optimize top-p accuracy, selection overhead, and sparse attention cost, which limits their overall efficiency. We present Double-P, a hierarchical sparse attention framework that optimizes all three stages. Double-P first performs coarse-grained top-p estimation at the cluster level using size-weighted centroids, then adaptively refines computation through a second top-p stage that allocates token-level attention only when needed. Across long-context benchmarks, Double-P consistently achieves near-zero accuracy drop, reducing attention computation overhead by up to 1.8x and delivers up to 1.3x end-to-end decoding speedup over state-of-the-art fixed-budget sparse attention methods.</p>
+<p>As long-context inference becomes central to large language models (LLMs), attention over growing key-value caches emerges as a dominant decoding bottleneck, motivating sparse attention for scalable inference. Fixed-budget top-k sparse attention cannot adapt to heterogeneous attention distributions across heads and layers, whereas top-p sparse attention directly preserves attention mass and provides stronger accuracy guarantees. Existing top-p methods, however, fail to jointly optimize top-p accuracy, selection overhead, and sparse attention cost, which limits their overall efficiency. We present Double-P, a hierarchical sparse attention framework that optimizes all three stages. Double-P first performs coarse-grained top-p estimation at the cluster level using size-weighted centroids, then adaptively refines computation through a second top-p stage that allocates token-level attention only when needed. Across long-context benchmarks, Double-P consistently achieves near-zero accuracy drop, reducing attention computation overhead by up to 1.8× and delivers up to 1.3× end-to-end decoding speedup over state-of-the-art fixed-budget sparse attention methods.</p>
+<h2 id="_1">一句话总结</h2>
+<p>Double-P 是一个分层 top-p 稀疏注意力框架，通过集群级和 token 级两阶段 top-p 选择，在长上下文 LLM 解码中实现近零精度损失、注意力计算开销减少 1.8×、端到端解码加速 1.3×，解决了固定预算 top-k 方法无法适应异构注意力分布的问题。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>长上下文推理瓶颈</strong>：随着上下文长度增长，注意力计算成为解码的主要瓶颈</li>
+<li><strong>固定预算 top-k 的局限</strong>：</li>
+<li>无法适应注意力分布的异构性（不同 head、layer、step 的分布差异大）</li>
+<li>单一预算对某些 head 过于保守，对其他 head 又不足</li>
+<li>固定预算方法的精度损失不可控（Figure 2 显示 91.9% 的样本无法达到目标注意力质量）</li>
+<li><strong>现有 top-p 方法的局限</strong>：</li>
+<li>Token 级 top-p 估计开销高，随上下文长度线性增长</li>
+<li>集群级方法使用固定预算，无法提供 top-p 精度保证</li>
+<li>
+<p>无法联合优化估计精度、选择开销和稀疏注意力成本</p>
+</li>
+<li>
+<p><strong>核心问题</strong>：如何在长上下文 LLM 中实现高效、精确的稀疏注意力？</p>
+</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-top-p">1. 分层 Top-P 稀疏注意力框架</h3>
+<p><strong>核心思想</strong>：利用现代稀疏注意力系统的分层结构，先在集群级估计注意力质量，再通过第二阶段自适应细化 token 级计算。</p>
+<p><strong>两个阶段</strong>：
+1. <strong>Stage 1: 集群级注意力分数估计</strong>（粗粒度）
+2. <strong>Stage 2: 自适应 token 预算分配</strong>（细粒度）</p>
+<h3 id="2-stage-1">2. Stage 1: 集群级注意力分数估计</h3>
+<ul>
+<li><strong>KV 缓存聚类</strong>：在预填充阶段，使用 k-means 聚类将 KV 缓存分组</li>
+<li><strong>集群质心表示</strong>：每个集群 i 包含质心 Ci、大小 si、值聚合 VΣi</li>
+<li><strong>集群级注意力估计</strong>：</li>
+<li>计算集群质心的注意力分数：x̄i = qC⊤i / √d</li>
+<li>估计集群质量：Ẑi = si · exp(x̄i)</li>
+<li>归一化得到集群注意力分布：Â = softmax(qC⊤/√d + log s)</li>
+<li><strong>集群级 Top-P 选择</strong>：选择累积注意力质量超过目标阈值 p1 的最小集群集合</li>
+</ul>
+<h3 id="3-stage-2-token">3. Stage 2: 自适应 token 预算分配</h3>
+<ul>
+<li><strong>自适应细化</strong>：在第一阶段选择的集群内，进一步自适应分配 token 级注意力</li>
+<li><strong>混合精度注意力</strong>：对高影响力 token 使用精确注意力，对剩余 token 使用基于质心的近似</li>
+<li><strong>GPU 高效内核</strong>：最小化 top-p 选择开销，最大化稀疏注意力计算的数据局部性</li>
+</ul>
+<h3 id="4">4. 与现有方法的对比</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>预算</th>
+<th>精度保证</th>
+<th>效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Twilight</td>
+<td>Token 级 top-p</td>
+<td>固定 token 预算</td>
+<td>低（91.9% 失败率）</td>
+<td>中</td>
+</tr>
+<tr>
+<td>SparVAR</td>
+<td>集群级</td>
+<td>固定集群预算</td>
+<td>无 top-p 保证</td>
+<td>高</td>
+</tr>
+<tr>
+<td>Quest</td>
+<td>Token 级</td>
+<td>固定 token 预算</td>
+<td>无 top-p 保证</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>Double-P</strong></td>
+<td><strong>分层 top-p</strong></td>
+<td><strong>自适应</strong></td>
+<td><strong>高（近零损失）</strong></td>
+<td><strong>高</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">主要结果</h2>
+<h3 id="_5">性能提升</h3>
+<ul>
+<li><strong>注意力计算开销</strong>：减少最高 1.8×</li>
+<li><strong>端到端解码加速</strong>：最高 1.3×</li>
+<li><strong>自注意力加速</strong>：最高 2.27×</li>
+<li><strong>精度</strong>：近零精度损失（NIAH、LongBench 等长上下文基准）</li>
+</ul>
+<h3 id="_6">关键发现</h3>
+<ol>
+<li><strong>分层 top-p 有效</strong>：集群级粗粒度 + token 级细粒度的两阶段方法有效</li>
+<li><strong>自适应预算</strong>：避免固定预算的局限，自适应分配 token 预算</li>
+<li><strong>精度-效率 Pareto 前沿</strong>：Double-P 在准确率-效率曲线上形成优越的 Pareto 前沿（Figure 1）</li>
+<li><strong>GPU 内核优化</strong>：GPU 高效内核最小化 top-p 选择开销，最大化数据局部性</li>
+</ol>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>分层 top-p</strong>：集群级 + token 级两阶段方法，联合优化估计精度、选择开销和稀疏注意力成本</li>
+<li><strong>自适应预算</strong>：避免固定预算的局限，自适应分配 token 预算</li>
+<li><strong>近零精度损失</strong>：在长上下文基准上实现近零精度损失</li>
+<li><strong>GPU 高效内核</strong>：最小化 top-p 选择开销，最大化数据局部性</li>
+<li><strong>Pareto 前沿</strong>：在准确率-效率曲线上形成优越的 Pareto 前沿</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>集群依赖</strong>：依赖于 k-means 聚类质量，聚类效果差可能影响性能</li>
+<li><strong>预填充开销</strong>：预填充阶段需要额外的聚类计算</li>
+<li><strong>Top-p 参数敏感性</strong>：top-p 阈值的选择可能影响精度和效率的平衡</li>
+<li><strong>评估范围</strong>：主要在长上下文基准上评估，更复杂的工作负载需进一步测试</li>
+<li><strong>无代码开源</strong>：代码 URL 为空，可能尚未开源</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>Double-P 属于 <strong>KV Cache Sparse</strong>（<code>kv_cache_sparse</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>分层 top-p 稀疏注意力</strong>：集群级 + token 级两阶段方法</li>
+<li><strong>自适应预算分配</strong>：避免固定预算的局限</li>
+<li><strong>精度-效率 Pareto 前沿</strong>：优越的准确率-效率平衡</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>Quest</strong>（2024）：token 级稀疏注意力，固定预算
+- <strong>SparKV</strong>（2026）：KV 缓存稀疏注意力
+- <strong>SparVAR</strong>（2026）：集群级稀疏注意力
+- <strong>Twilight</strong>（2025）：token 级 top-p 稀疏注意力
+- <strong>FlashAttention-4</strong>（2026）：注意力内核优化</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li><strong>KV 缓存聚类</strong>：预填充阶段使用 k-means 聚类</li>
+<li><strong>集群质心计算</strong>：质心 Ci、大小 si、值聚合 VΣi</li>
+<li><strong>集群级 Top-P</strong>：估计集群注意力分数，选择累积质量超过阈值的集群</li>
+<li><strong>自适应 Token 预算</strong>：在选择的集群内自适应分配 token 级注意力</li>
+<li><strong>GPU 高效内核</strong>：最小化 top-p 选择开销，最大化数据局部性</li>
+<li><strong>混合精度注意力</strong>：精确注意力 + 基于质心的近似</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>Double-P 的核心洞察是：<strong>分层 top-p 比固定预算 top-k 更有效</strong>，因为它能适应注意力分布的异构性。</li>
+<li>集群级 + token 级的两阶段方法是一个重要的设计选择，它将粗粒度估计和细粒度计算结合在一起。</li>
+<li>自适应 token 预算是关键优化，它避免了固定预算的局限。</li>
+<li>论文来自 UC San Diego、Michigan、Qualcomm、NVIDIA，说明这是一个多机构合作的实用系统。</li>
+<li>值得关注的未来方向：(1) 在更复杂的工作负载上的验证；(2) 与其他稀疏注意力方法的结合；(3) 端到端的自动调优。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

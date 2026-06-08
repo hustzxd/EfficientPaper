@@ -1,0 +1,38 @@
+paper {
+  title: "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps"
+  abbr: "RTPurbo"
+  url: "http://arxiv.org/abs/2605.16928v1"
+  authors: "Yanke Zhou"
+  authors: "Yiduo Li"
+  authors: "Hanlin Tang"
+  authors: "Maohua Li"
+  authors: "Kan Liu"
+  authors: "Lan Tao"
+  authors: "Lin Qu"
+  authors: "Yuan Yao"
+  authors: "Xiaoxing Ma"
+  institutions: "Nanjing University"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/alibaba/rtp-llm"
+}
+keyword {
+  words: attention_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/RazorAttention"
+  methods: "2024/MInference"
+  methods: "2025/FlexPrefill"
+  methods: "2024/Quest"
+  methods: "2024/SnapKV"
+}
+update_time: 1780905257

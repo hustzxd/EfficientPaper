@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,14 +162,241 @@
                 <h1 id="freekv-boosting-kv-cache-retrieval-for-efficient-llm-inference">FreeKV: Boosting KV Cache Retrieval for Efficient LLM Inference</h1>
 <blockquote>
 <p>Guangda Liu, Chengwei Li, Zhenyu Ning, Jing Lin, Yiwu Yao, Danning Ke, Minyi Guo, Jieru Zhao</p>
+<p>Shanghai Jiao Tong University &amp; Huawei</p>
 </blockquote>
-<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) have been widely deployed with rapidly expanding context windows to support increasingly demanding applications. However, long contexts pose significant deployment challenges, primarily due to the KV cache whose size grows proportionally with context length. While KV cache compression methods are proposed to address this issue, KV dropping methods incur considerable accuracy loss, and KV retrieval methods suffer from significant efficiency bottlenecks. We propose FreeKV, an algorithm-system co-optimization framework to enhance KV retrieval efficiency while preserving accuracy. On the algorithm side, FreeKV introduces speculative retrieval to shift the KV selection and recall processes out of the critical path, combined with fine-grained correction to ensure accuracy. On the system side, FreeKV employs hybrid KV layouts across CPU and GPU memory to eliminate fragmented data transfers, and leverages double-buffered streamed recall to further improve efficiency. Experiments demonstrate that FreeKV achieves near-lossless accuracy across various scenarios and models, delivering up to 13<script type="math/tex">\times</script> speedup compared to SOTA KV retrieval methods.</p>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<blockquote>
+<p><strong>生成声明</strong>：本 note 由 AI Agent 自动生成，基于 arXiv 论文 (2505.13109) 全文阅读与分析。生成时间：2025 年。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>FreeKV 是一种免训练的算法-系统协同优化框架，通过推测性检索（speculative retrieval）将 KV 选择与召回移出推理关键路径，结合混合内存布局和双缓冲流式召回，实现近无损精度的同时，比 SOTA KV 检索方法最高加速 13 倍。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大型语言模型（LLM）已被广泛部署，上下文窗口快速扩展以支持日益复杂的应用。然而，长上下文带来了显著的部署挑战，主要原因是 KV 缓存大小与上下文长度成正比增长。虽然已提出 KV 缓存压缩方法来解决这一问题，但 KV 丢弃方法会造成显著精度损失，KV 检索方法则面临严重的效率瓶颈。我们提出 FreeKV，一个免训练的算法-系统协同优化框架，旨在提升 KV 检索效率同时保持精度。在算法层面，FreeKV 引入推测性检索，将 KV 选择和召回过程移出关键路径，并结合细粒度校正机制确保精度。在系统层面，FreeKV 采用跨 CPU 和 GPU 内存的混合 KV 布局以消除碎片化数据传输，并利用双缓冲流式召回进一步提升效率，实现与计算的有效重叠、完全延迟隐藏以及推测召回带来的实际加速。实验表明，FreeKV 在多种场景和模型上实现了近无损精度，相比 SOTA KV 检索方法最高可获得 13 倍加速。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">问题背景</h3>
+<ol>
+<li><strong>KV 缓存膨胀</strong>：LLM 推理时 KV 缓存大小与上下文长度成正比。例如 Llama-3-70B 在 128K 上下文下单请求 KV 缓存可达 40GB，远超 GPU 内存容量。</li>
+<li><strong>解码瓶颈</strong>：LLM 解码是内存密集型操作，访问大量 KV 缓存会显著降低解码速度。</li>
+</ol>
+<h3 id="_5">现有方法的不足</h3>
 <ul>
-<li>算法：（）</li>
-<li>系统：CPU-GPU 异步的KV cache的拷贝</li>
+<li><strong>KV 丢弃方法</strong>（如 RazorAttention、RaaS）：</li>
+<li>静态丢弃：按固定模式丢弃 KV，但忽视推理中的动态模式，导致精度显著下降。</li>
+<li>动态丢弃：基于在线注意力分数动态丢弃，但对长生成任务（尤其是推理模型 32K+ tokens）效果不佳。</li>
+<li>
+<p>在摘要和推理任务上精度损失严重（图 1 左侧）。</p>
+</li>
+<li>
+<p><strong>KV 检索方法</strong>（如 Quest、ArkVale、ShadowKV、InfiniGen）：</p>
+</li>
+<li>保留完整 KV 缓存，动态选择子集用于推理，精度优于丢弃方法。</li>
+<li><strong>效率瓶颈严重</strong>：<ul>
+<li>从 CPU 召回 KV 到 GPU 的延迟很高（CPU-GPU 带宽低）。</li>
+<li>KV 选择开销大（对整个上下文进行页面级选择）。</li>
+<li>ArkVale 的 recall + selection 占总延迟约 94%；ShadowKV 约 73%；InfiniGen 约 53%。</li>
 </ul>
+</li>
+<li>无法有效隐藏召回延迟，导致总延迟远高于全 KV 缓存推理。</li>
+</ul>
+<h3 id="_6">核心观察</h3>
+<p>相邻解码步骤的查询向量（query vector）具有高度相似性：
+- Llama-3.1-8B-Instruct 和 DeepSeek-R1-Qwen-14B 的平均余弦相似度均 &gt; 0.84，大多数 attention head &gt; 0.9。
+- 这种高相似性跨层、跨模型、跨任务一致存在（在 Table 8 中验证了跨任务、模型规模、架构、训练阶段的泛化性）。
+- 但存在一些 outlier 步骤（某些步骤相似度显著降低），且不同 attention head 的 outlier 步骤不同。</p>
+<p>这为推测性检索提供了理论基础。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<p>FreeKV 是一个<strong>免训练</strong>的算法-系统协同优化框架，分为算法侧和系统侧两部分。</p>
+<h3 id="_8">算法侧</h3>
+<h4 id="1-speculative-retrieval">1. 推测性检索（Speculative Retrieval）</h4>
+<p><strong>核心思想</strong>：利用相邻解码步骤间 query 向量的高相似性（Sel(qi, K) ≈ Sel(qi-1, K)），在步骤 i 直接复用步骤 i-1 召回的 KV 元组，将选择和召回移出关键路径。</p>
+<p><strong>具体流程</strong>：
+- 步骤 i 的注意力计算直接使用步骤 i-1 召回的 KV 元组，无需等待当前步骤的选择和召回。
+- 选择和召回操作与步骤 i 的注意力计算和 FFN 计算，以及步骤 i+1 的 QKV 投影重叠执行。
+- 迭代进行：步骤 i 召回的 KV 元组将在步骤 i+1 复用。</p>
+<p><strong>优势</strong>（与 InfiniGen 对比）：
+- 无需额外的重投影操作（InfiniGen 需要将隐层状态通过下一层的 skewed query 权重重投影）。
+- 完全隐藏选择和召回延迟，无额外开销。</p>
+<p><strong>Group-Consistent 选择</strong>：
+- 采用页面级选择（page-wise selection），使用 min-max 池化的 key 作为页面摘要。
+- 为实现 group 一致性，对组内所有 attention head 的 softmax(page attention weights) 进行均值池化（MeanS 策略效果最佳，见 Table 5）。
+- 选择一个页面后，组内所有 attention head 共享相同的 KV 页面索引。</p>
+<h4 id="2-fine-grained-correction">2. 细粒度校正（Fine-grained Correction）</h4>
+<p>虽然纯 KV 复用能最大化效率，但可能导致显著精度下降（尤其在 outlier 步骤）。FreeKV 引入校正机制来缓解这一问题。</p>
+<p><strong>Query-based 识别</strong>：
+- 计算当前步骤与前一步骤 query 向量的余弦相似度 Ci。
+- 当 Ci &lt; τ（阈值）时，触发校正。
+- 为实现 group 一致性，对组内所有 head 的 Ci 进行均值池化，与 τ 比较。</p>
+<p><strong>Head-wise 校正</strong>：
+- 对需要校正的 KV head，在当前步骤注意力计算前启动选择和召回。
+- 对无需校正的 KV head，将选择和召回推迟并与其他操作重叠（用于下一复用）。
+- 为避免额外开销，当需要校正时，对所有 KV head 执行选择操作（非校正 head 直接复用选择结果进行召回）。</p>
+<p><strong>阈值选择</strong>：
+- τ = 0.8 用于长输入场景（LongBench v2、MATH500）。
+- τ = 0.9 用于长生成/推理场景（LongGenBench、AIME24、GPQA），因为推理中误差累积更严重。</p>
+<h3 id="_9">系统侧</h3>
+<h4 id="1-kv-hybrid-layouts">1. 混合 KV 布局（Hybrid Layouts）</h4>
+<p><strong>问题</strong>：
+- NHD 布局（(L, nkv, d)）是自然布局，但同一 KV head 在页面内内存不连续，导致碎片化数据传输（最大传输单元仅 256 字节，d=128, Float16）。
+- HND 布局（(nkv, L, d)）可确保连续传输（传输单元 p×d=8KB, p=32），但需要额外的转置操作。</p>
+<p><strong>解决方案</strong>：
+- CPU 端使用 HND 布局（(npage, nkv, 2, p, d)），确保连续高效的数据传输。
+- GPU 端使用 NHD 布局，避免解码时的逐层转置。
+- NHD-HND 转置仅在卸载页面时执行一次（可与计算重叠）。</p>
+<h4 id="2-double-buffered-streamed-recall">2. 双缓冲流式召回（Double-Buffered Streamed Recall）</h4>
+<p><strong>问题</strong>：HND→NHD 布局转换可能阻塞数据传输和后续注意力计算。</p>
+<p><strong>解决方案</strong>：
+- 采用双缓冲机制实现流式召回。
+- 选中的 KV 页面传输到缓冲区 2 后，立即开始布局转换，同时启动下一个页面到缓冲区 1 的传输。
+- 两个缓冲区和转换过程均在 GPU 内存中，利用 GPU 高带宽。</p>
+<h4 id="_10">系统架构</h4>
+<ul>
+<li><strong>数据平面</strong>：GPU 保留 query 向量、页面摘要和选中 KV 页面缓存；CPU 维护完整的 KV 缓存池用于卸载。</li>
+<li><strong>控制平面</strong>：CPU 上的控制器管理校正、注意力、选择和召回的调度与同步，遵循推测性检索的时间线。</li>
+</ul>
+<hr />
+<h2 id="_11">实验结果</h2>
+<h3 id="_12">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.1-8B-Instruct、Qwen-2.5-7B/14B-Instruct（通用任务）；DeepSeek-R1-Llama-8B、DeepSeek-R1-Qwen-7B/14B（推理任务）。</li>
+<li><strong>数据集</strong>：LongBench v2（长输入）、LongGenBench（长生成）、MATH500、AIME24、GPQA（推理任务）。</li>
+<li><strong>基线方法</strong>：RazorAttention（静态丢弃）、RaaS（动态丢弃）、Quest、ArkVale、ShadowKV、InfiniGen（KV 检索）。</li>
+<li><strong>硬件</strong>：Nvidia A100 40GB GPU，AMD 7302 CPU，PCIe Gen4。</li>
+<li><strong>超参数</strong>：B = 2048，S = W = 512（长生成/推理）或 128（长输入），τ = 0.8（长输入）或 0.9（长生成/推理）。</li>
+</ul>
+<h3 id="_13">精度评估</h3>
+<h4 id="longbench-v2">LongBench v2（长输入）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Full</th>
+<th>FreeKV</th>
+<th>差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>29.22</td>
+<td>29.22</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Qwen-2.5-7B-Instruct</td>
+<td>27.44</td>
+<td>26.84</td>
+<td>-0.6</td>
+</tr>
+<tr>
+<td>Qwen-2.5-14B-Instruct</td>
+<td>33.40</td>
+<td>34.19</td>
+<td>+0.79</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FreeKV 整体精度偏差不超过 0.6，在大多数指标上达到最佳或次佳。</li>
+<li>KV 丢弃方法（RazorAttention、RaaS）在此基准上持续逊于 KV 检索方法。</li>
+</ul>
+<h4 id="longgenbench">LongGenBench（长生成）</h4>
+<ul>
+<li>FreeKV 在所有模型上保持与全 KV 缓存相当甚至更高的精度。</li>
+<li>CR（完成率）和整体精度达到最佳或次佳。</li>
+<li>RazorAttention 在长生成任务上精度损失严重；ShadowKV 在 Qwen 模型上出现重复输出和精度下降（重建 key 误差）。</li>
+</ul>
+<h4 id="math500aime24gpqa">推理任务（MATH500、AIME24、GPQA）</h4>
+<ul>
+<li>FreeKV 在大多数数据集上提供与全 KV 缓存相当的精度。</li>
+<li>KV 丢弃方法（RazorAttention、RaaS）在 AIME24 等复杂问题上精度显著下降。</li>
+<li>FreeKV 在大多数情况下优于其他 KV 检索方法，验证了页面摘要、softmax 基 group 一致选择和细粒度校正的有效性。</li>
+</ul>
+<h3 id="_14">效率评估</h3>
+<h4 id="_15">端到端延迟</h4>
+<ul>
+<li>FreeKV 比 ArkVale 最高加速 <strong>13.7 倍</strong>（Llama-3.1-8B, 长生成, batch size 4）。</li>
+<li>比 ShadowKV 最高加速 <strong>8.4 倍</strong>（Llama-3.1-8B, 长生成, batch size 4）。</li>
+<li>比 InfiniGen 在长输入和长生成场景下分别加速 3.2-5.4 倍（Qwen-2.5-7B）和 5.1-8.5 倍（Llama-3.1-8B）。</li>
+<li>FreeKV 的效率接近不涉及卸载或召回的丢弃方法（RaaS、RazorAttention）。</li>
+<li>改进在大 batch size 和长生成场景下更显著，且 Llama-3.1-8B（更多 KV head、更大 KV 缓存）的改进幅度大于 Qwen-2.5-7B。</li>
+</ul>
+<h4 id="_16">不同输入/输出长度</h4>
+<ul>
+<li>长输入场景：FreeKV 一致性地比 ArkVale 快 2.7-5.3 倍。</li>
+<li>长生成场景：FreeKV 保持稳定的 5.3 倍加速，受益于固定大小 KV 预算和高效召回重叠。</li>
+</ul>
+<h3 id="_17">消融实验</h3>
+<h4 id="_18">效率优化消融</h4>
+<ul>
+<li><strong>混合布局 (HL)</strong>：贡献最大，最高加速 10.5 倍（消除碎片化数据传输）。</li>
+<li><strong>双缓冲流式召回 (DB)</strong>：在 batch size 4 时额外加速 1.2 倍。</li>
+<li><strong>推测性检索 (SR)</strong>：额外加速 1.9 倍。</li>
+</ul>
+<p><strong>关键发现</strong>：HL 单独提供最大收益，但 SR 和系统级优化在算法-系统协同优化框架中同等关键。SR 使预选择和预获取成为可能，但系统优化将召回延迟降至与其他操作同量级，才能实现有效的重叠和完全延迟隐藏。</p>
+<h4 id="_19">准确性消融</h4>
+<ul>
+<li><strong>last layer vs. last step</strong>（Table 4）：使用上一解码步骤的 query 向量（推测性检索）优于使用上一层的 query 向量（InfiniGen 方式），尤其在 AIME24 和 GPQA 等复杂推理任务上。</li>
+<li><strong>Group 一致选择</strong>（Table 5）：均值池化 softmax 后的权重（MeanS）效果最佳。</li>
+<li><strong>校正阈值</strong>（Table 7）：τ=0.8 适合简单任务，τ=0.9 适合复杂推理任务。</li>
+</ul>
+<h4 id="ascend-npu">Ascend NPU 上的评估</h4>
+<ul>
+<li>在 Ascend 910B NPU 上实现，FreeKV 对比 ArkVale 最高加速 4.1 倍（32K 长输入）。</li>
+<li>加速幅度小于 A100，主要因为操作大多用 Torch 而非优化的 Ascend 内核实现，以及较低的 PCIe 带宽和 Ascend API 使用率有限。</li>
+</ul>
+<hr />
+<h2 id="_20">优势</h2>
+<ol>
+<li><strong>免训练</strong>：无需额外训练，可直接应用于现有模型。</li>
+<li><strong>近无损精度</strong>：在多种任务和模型上与全 KV 缓存精度相当或略有超出。</li>
+<li><strong>显著加速</strong>：最高 13 倍加速，且效率接近不涉及卸载的丢弃方法。</li>
+<li><strong>算法-系统协同</strong>：同时优化算法（推测性检索、细粒度校正）和系统（混合布局、双缓冲召回），三者协同发挥最大效果。</li>
+<li><strong>广泛的适用性</strong>：</li>
+<li>支持长输入和长生成场景。</li>
+<li>支持推理模型（DeepSeek-R1 等 32K+ tokens 生成）。</li>
+<li>跨模型规模（1.5B-14B）、架构（Qwen、Llama、Qwen-3）、训练阶段（Base、SFT、RLHF、Long-CoT RL）泛化。</li>
+<li><strong>固定 GPU 内存开销</strong>：O(B)，B=2048，不随上下文长度增长。</li>
+<li><strong>Group-consistent 选择</strong>：通过均值池化 softmax 权重实现，确保组内所有 head 选择一致，避免 G 倍内存访问开销。</li>
+<li><strong>可扩展性</strong>：在 Ascend NPU 上也有实现，显示跨平台潜力。</li>
+</ol>
+<hr />
+<h2 id="_21">局限</h2>
+<ol>
+<li><strong>页面级选择精度有限</strong>：页面级选择在小预算下不如 token 级选择有效（论文提及），但可通过自适应预算或动态 top-p 稀疏度正交优化。</li>
+<li><strong>依赖查询向量相似性</strong>：推测性检索依赖于相邻步骤 query 向量的高相似性。虽然论文验证了这种相似性跨任务/模型/架构的泛化性，但在极端情况下（如某些 outlier 步骤），可能触发校正，增加开销。</li>
+<li><strong>推理任务精度依赖校正阈值</strong>：复杂推理任务（如 AIME24、GPQA）需要更高的 τ（0.9），表明推测性检索在复杂推理场景中可能不够稳健。</li>
+<li><strong>ASCEND NPU 加速有限</strong>：在 Ascend NPU 上加速幅度（4.1x）远低于 A100（13.7x），受限于未优化的内核实现和较低的 PCIe 带宽。</li>
+<li><strong>KV 缓存内存开销</strong>：保留完整 KV 缓存用于召回，虽然固定 GPU 内存 O(B)，但 CPU 端仍需存储完整 KV 缓存池。</li>
+<li><strong>未处理前缀缓存（prefix caching）</strong>：论文未讨论与前缀缓存的集成。</li>
+<li><strong>单次 SVD 更新</strong>（针对 ShadowKV）：虽然这不是 FreeKV 的问题，但论文提到 ShadowKV 的 SVD 仅在 prefill 时执行一次，导致不支持长生成。FreeKV 避免了这一问题，但其推测性检索本身仍可能需要频繁的校正操作。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv-kv-cache-management">KV 缓存管理（KV Cache Management）</h3>
+<p>FreeKV 是 KV 缓存管理领域的重要进展，结合了 KV 检索（retrieval）和系统优化：
+- <strong>KV 丢弃 vs. KV 检索</strong>：FreeKV 进一步证明了 KV 检索在精度上的优势（尤其在长生成和推理任务上），同时通过算法-系统协同优化解决了其效率瓶颈。
+- <strong>关键基线方法</strong>：与 Quest（2024/ICML）、ShadowKV（2025/arXiv）、ArkVale（2024/NeurIPS）、InfiniGen（2024/OSDI）、RaaS（2025/arXiv）等形成直接对比。
+- <strong>算法-系统协同优化</strong>：FreeKV 展示了算法（推测性检索、细粒度校正）和系统（混合布局、双缓冲召回）协同优化的重要性，为后续研究提供了参考框架。</p>
+<h3 id="deployment">部署优化（Deployment）</h3>
+<ul>
+<li><strong>CPU-GPU 混合内存</strong>：FreeKV 的混合布局（CPU HND + GPU NHD）和双缓冲机制为高效 KV 缓存卸载提供了实践方案。</li>
+<li><strong>跨平台支持</strong>：在 A100 GPU 和 Ascend NPU 上均有实现，显示了方法的可扩展性。</li>
+<li><strong>推理模型支持</strong>：支持 DeepSeek-R1 等推理模型的长生成场景（32K+ tokens），这对实际部署至关重要。</li>
+</ul>
+<h3 id="_22">潜在研究方向</h3>
+<ol>
+<li><strong>自适应预算</strong>：结合 Ada-KV、Twilight 等方法的自适应预算分配，进一步优化精度-效率权衡。</li>
+<li><strong>学习型页面稀疏度</strong>：与 SeerAttention、MOBA 等可学习的块级稀疏度方法结合，实现原生和最优的页面级 KV 缓存压缩和检索。</li>
+<li><strong>预训练/后训练稀疏度</strong>：与 Native Sparse Attention（NSA）等原生稀疏注意力方法对比，探索预训练或后训练阶段的稀疏度优化。</li>
+<li><strong>动态预算与 top-p 稀疏度</strong>：结合 MagicPig、Twilight 等方法的动态预算和 top-p 稀疏度，实现更精细的 KV 缓存管理。</li>
+<li><strong>与其他 KV 压缩方法的集成</strong>：FreeKV 的推测性检索机制可与 KV 丢弃方法结合，进一步提升效率。</li>
+<li><strong>多模态和长上下文应用</strong>：将 FreeKV 扩展到多模态 LLM（如视觉语言模型）的长上下文推理中。</li>
+<li><strong>系统优化深化</strong>：在 Ascend NPU 等硬件上进行更深度的内核优化，缩小与 A100 的性能差距。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

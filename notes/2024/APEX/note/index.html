@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,31 +162,263 @@
                 <h1 id="apex-an-extensible-and-dynamism-aware-simulator-for-automated-parallel-execution-in-llm-serving">APEX: An Extensible and Dynamism-Aware Simulator for Automated Parallel Execution in LLM Serving</h1>
 <blockquote>
 <p>Yi-Chien Lin, Woosuk Kwon, Ronald Pineda, Fanny Nina Paravecino</p>
+<p>University of Southern California / University of California, Berkeley / Microsoft</p>
+<p>arXiv:2411.17651v2, 2024</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Efficiently serving Large Language Models (LLMs) requires selecting an
-optimal parallel execution plan, balancing computation, memory, and
-communication overhead. However, determining the best strategy is challenging
-due to varying parallelism techniques (data, pipeline, tensor) and workload
-characteristics (e.g., compute-intensive tasks with long prompts vs.
-memory-intensive tasks with long generation). We propose APEX, an LLM serving
-system simulator that efficiently identifies optimal parallel execution plans
-by considering key factors of LLM serving systems, such as memory usage,
-batching behavior, etc. APEX performs dynamism-aware simulation to model
-iteration-level batching, and leverages LLMs' repetitive structure to reduce
-design space, scaling efficiently to trillion-scale models. APEX abstracts the
-key components of LLM serving systems, including the model, batching module,
-quantization formats, and device clusters, enabling the simulator to be general
-and extensible. Simulating on a CPU, APEX evaluates execution plans for various
-device clusters, covering diverse LLMs and workloads. APEX finds plans up to
-3.37x faster than heuristics, and also plans that reduce energy consumption by
-up to 45% compared to latency-optimal plans. APEX performs comprehensive
-evaluations, reporting key system metrics like time per output token and time
-to first token, which can help service providers meet SLOs. APEX identifies an
-optimal plan within 15 minutes on a CPU, making it 71x faster and 1234x more
-cost-effective than cloud-based GPU deployment. APEX can be accessed at
-https://github.com/microsoft/apex_plus</p>
+<h2 id="_1">一句话总结</h2>
+<p>APEX 是一个面向大语言模型（LLM）服务的可扩展、动态感知模拟器，通过在 CPU 上模拟迭代级批处理（iteration-level batching）和混合并行策略，在 15 分钟内自动识别最优并行执行计划，相比启发式方案加速最高 3.37 倍，能耗降低最高 45%，模拟成本仅为云端 GPU 部署的 1/1234。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>高效服务大语言模型（LLMs）需要选择最优的并行执行计划，在计算、内存和通信开销之间取得平衡。然而，确定最佳策略极具挑战性，原因在于并行技术（数据并行、流水线并行、张量并行）的多样性以及工作负载特征的差异（例如，长上下文的计算密集型任务与长生成的内存密集型任务）。我们提出 APEX，一个 LLM 服务系统模拟器，通过考虑 LLM 服务系统的关键因素（如内存使用、批处理行为等）来高效识别最优并行执行计划。APEX 执行动态感知模拟，对迭代级批处理进行建模，并利用 LLM 的重复结构来减少设计空间，高效扩展到万亿参数规模的模型。APEX 抽象了 LLM 服务系统的关键组件，包括模型、批处理模块、量化格式和设备集群，使模拟器具备通用性和可扩展性。在 CPU 上进行模拟，APEX 评估各种设备集群的执行计划，覆盖不同的 LLM 和工作负载。APEX 找到的计划比启发式方案最高快 3.37 倍，还能找到比延迟最优计划能耗降低最高 45% 的计划。APEX 执行全面评估，报告关键系统指标（如每输出 token 时间和首 token 时间），帮助服务提供商满足服务等级目标（SLOs）。APEX 在 CPU 上 15 分钟内识别最优计划，比基于云的 GPU 部署快 71 倍，成本效益高 1234 倍。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>LLM 服务需要多设备集群来实现高性能，但并行执行策略的选择是一个非平凡问题：</p>
+<ol>
+<li>
+<p><strong>并行技术复杂多样</strong>：数据并行（DP）、流水线并行（PP）、张量并行（TP）、专家并行（EP）各有优劣。TP 内存效率高但通信开销大；PP 减少通信但存在负载不均衡问题。混合并行可以平衡这些权衡，但识别最优策略非常困难。</p>
+</li>
+<li>
+<p><strong>工作负载特征差异大</strong>：计算密集型任务（如长上下文摘要）和内存密集型任务（如长生成编码）适合不同的并行策略。启发式方案（如同节点内 TP、跨节点 PP）可能导致性能比最优配置慢 2 倍。</p>
+</li>
+<li>
+<p><strong>现有解决方案的局限</strong>：</p>
+</li>
+<li><strong>部署评估法</strong>：穷举部署所有执行计划在 GPU 上评估，成本极高（数千 GPU 小时）。</li>
+<li><strong>性能模型/模拟器</strong>：现有 DNN 或 LLM 训练模拟器无法处理 LLM 服务的独特挑战：<ul>
+<li><strong>动态性</strong>：迭代级批处理（iteration-level batching）导致批大小动态变化，批内请求可能处于 prefill 或 decode 阶段，建模困难。</li>
+<li><strong>指数增长的设计空间</strong>：随模型规模和设备数量呈指数增长。</li>
+<li><strong>持续演进</strong>：模型架构、硬件平台、量化技术不断变化，模拟器容易过时。</li>
+</ul>
+</li>
+</ol>
+<h2 id="_5">方法（技术细节）</h2>
+<h3 id="_6">系统总体架构</h3>
+<p>APEX 由以下核心模块组成：</p>
+<ol>
+<li><strong>并行执行计划生成器（Parallel Execution Plan Generator）</strong></li>
+<li><strong>批处理模块（Batching Module）</strong></li>
+<li><strong>LLM 服务模拟器（LLM Serving Simulator）</strong></li>
+<li><strong>离线性能分析器（Offline Profiler）</strong></li>
+</ol>
+<h3 id="1">1. 并行执行计划生成器</h3>
+<h4 id="transformer-ir">Transformer IR（中间表示）</h4>
+<ul>
+<li>将 LLM 转换为 <strong>Transformer IR</strong>，这是一种规范化的中间表示，抽象出 Transformer 模型的关键操作（如 MHA、MLP、SwiGLU 等）。</li>
+<li>利用 LLM 的重复结构，将模型表示为多个相同的 <strong>Block</strong>，每个 Block 包含若干 <strong>Cell</strong>（如 Attention Cell、Feedforward Cell），每个 Cell 包含多个 <strong>Task</strong>（如注意力头、专家）。</li>
+<li>这种抽象减少了搜索空间和模拟运行时间。</li>
+</ul>
+<h4 id="parallel-templates">并行模板（Parallel Templates）</h4>
+<ul>
+<li>基于 Transformer IR 开发的参数化模板，定义不同 Cell 类型的并行化方式（如 TP、DP）以及相邻 Cell 间的集合通信操作（AllReduce、All-to-All、AllGather 等）。</li>
+<li>模板完全参数化，支持任意数量的设备。</li>
+</ul>
+<h4 id="parallel-scheme-generation">并行方案生成（Parallel Scheme Generation）</h4>
+<ul>
+<li>采用<strong>自顶向下的层次化方法</strong>：</li>
+<li>首先选择模型级数据并行度（model-level DP），划分集群。</li>
+<li>确定流水线阶段数（PP）。</li>
+<li>为每个 Cell 分配数据并行度（cell-level DP）。</li>
+<li>应用并行模板生成任务映射。</li>
+<li>在相邻 Cell 间插入集合通信操作。</li>
+</ul>
+<h4 id="device-mapper">设备映射（Device Mapper）</h4>
+<ul>
+<li>将逻辑设备映射到物理设备，采用<strong>自底向上</strong>方法：</li>
+<li>优先将同一 Cell 的逻辑设备映射到同一物理节点（如 NVLink 高带宽连接）。</li>
+<li>其次映射同一流水线阶段的设备。</li>
+<li>最后映射同一模型副本的设备。</li>
+<li>支持树形网络拓扑（如两级结构：NVLink + InfiniBand）。</li>
+</ul>
+<h3 id="2-batching-module">2. 批处理模块（Batching Module）</h3>
+<ul>
+<li>模拟迭代级批处理（iteration-level batching），这是 LLM 服务系统（如 vLLM、SGLang）的核心技术。</li>
+<li>跟踪内存使用和请求到达时间，决定是否将新请求加入处理批次。</li>
+<li>维护活跃请求列表，追踪每个请求的已生成 token 数。</li>
+<li>当请求达到生成长度时移除，释放内存给新请求。</li>
+<li>采用贪婪策略，但在内存不足时会临时移除最近添加的请求。</li>
+</ul>
+<h3 id="3-llm-llm-serving-simulator">3. LLM 服务模拟器（LLM Serving Simulator）</h3>
+<ul>
+<li>基于活跃请求和离线性能分析结果估计每次迭代的执行时间和能耗。</li>
+<li><strong>Prefill 阶段</strong>：使用完整上下文长度查询性能分析数据。</li>
+<li><strong>Decode 阶段</strong>：仅处理当前 token，有效上下文长度为 1。如果有 n 个 decode 请求，则用上下文长度 n 估算。</li>
+<li><strong>能耗估计</strong>：类似方式查询每个操作的能耗数据。</li>
+<li><strong>利用重复结构</strong>：仅模拟一个 Transformer Block，然后外推到完整模型，显著减少模拟开销。</li>
+<li><strong>追踪关键指标</strong>：TTFT（首 token 时间）、TPOT（每输出 token 时间）、P95 延迟、Model FLOPs Utilization、Model Bandwidth Utilization 等。</li>
+<li><strong>支持多种优化目标</strong>：可优化延迟、能耗等不同目标。</li>
+</ul>
+<h3 id="4-offline-profiler">4. 离线性能分析器（Offline Profiler）</h3>
+<ul>
+<li>以操作级（operation-level）进行性能分析，测量关键 Transformer 操作（如多头注意力、矩阵乘法）在不同配置下的执行时间和能耗。</li>
+<li>覆盖不同的上下文长度、注意力头数、隐藏维度等。</li>
+<li>还测量集合通信开销（AllReduce、ReduceScatter 等）在不同数据传输大小、设备数和节点数下的表现。</li>
+<li><strong>一次性成本</strong>：当迁移到新集群时仅需一次分析，可在多次模拟间摊销。</li>
+<li>支持 GPU 集群和 ASIC 集群（如 TPU、Intel Gaudi）。</li>
+</ul>
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.1-70B-Instruct、Llama-3.1-405B-Instruct、Mistral-Large-Instruct (123B)、Mixtral 8x22B-Instruct（包含 MoE 模型）</li>
+<li><strong>数据集</strong>：Summarization（论文摘要，prefill 密集型）、Creation（新闻生成，生成密集型）、Chat（LMSYS-Chat-1M，轻量对话）</li>
+<li><strong>硬件平台</strong>：单节点 H100 集群（8×NVIDIA H100 SXM 80GB）、双节点 H100 集群（2×8 H100）、H200 集群（8×NVIDIA H200 SXM 141GB）</li>
+<li><strong>服务系统</strong>：vLLM v0.6.0、SGLang v0.4.5</li>
+</ul>
+<h3 id="_9">核心结果</h3>
+<h4 id="1-h100">1. 并行执行计划优化（单节点 H100）</h4>
+<p>APEX 识别的最优计划在所有模型和工作负载上均优于启发式基线：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>工作负载</th>
+<th>基线</th>
+<th>可行最优</th>
+<th>APEX 最优</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mixtral-8x22B</td>
+<td>Chat</td>
+<td>1×</td>
+<td>1.17×</td>
+<td><strong>3.37×</strong></td>
+</tr>
+<tr>
+<td>Llama-3.1-70B</td>
+<td>Creation</td>
+<td>1×</td>
+<td>1.75×</td>
+<td><strong>2.07×</strong></td>
+</tr>
+<tr>
+<td>Mixtral-8x22B</td>
+<td>Summarization</td>
+<td>1×</td>
+<td>1.14×</td>
+<td><strong>2.33×</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>可行最优计划（Feasible Optimal）加速最高 1.75 倍。</li>
+<li>APEX 最优计划（APEX Optimal）加速最高 3.37 倍。</li>
+<li>许多最优计划采用 2-way 数据并行（DP），这在现有系统中常被忽略（因为内存开销大），但 APEX 证明牺牲内存效率换取通信降低可以带来性能提升。</li>
+</ul>
+<h4 id="2-h100-llama-31-405b">2. 多节点 H100 集群（Llama-3.1-405B）</h4>
+<ul>
+<li>APEX 识别的计划加速 1.55× ~ 1.88×。</li>
+<li>证明 APEX 能有效扩展到多节点集群和超大模型。</li>
+</ul>
+<h4 id="3-h200">3. H200 集群</h4>
+<ul>
+<li>加速最高 2.76×（Mixtral-8x22B + Chat）。</li>
+<li>H200 的更大内存（141GB vs 80GB）允许更灵活的并行策略，APEX 能自动识别更优配置。</li>
+</ul>
+<h4 id="4">4. 能耗优化</h4>
+<ul>
+<li>能耗最优计划（Energy Optimal）比延迟最优计划节能最高 19%。</li>
+<li>在更宽松 SLO 下（GPU 频率降至 0.8 GHz），能耗降低最高 <strong>45%</strong>。</li>
+<li>但延迟指标（TTFT、TPOT）有所增加（TTFT 最高 1.9×，TPOT 最高 1.8×），可能仍满足 SLO。</li>
+</ul>
+<h4 id="5">5. 模拟保真度</h4>
+<ul>
+<li><strong>平均相对误差仅 10.7%</strong>。</li>
+<li>准确预测了从 2 GPU 到 8 GPU 的可扩展性趋势（TPOT）。</li>
+<li>主要误差来自 Mixtral-8x22B 的 EP vs TP 预测（EP 实际实现可能未充分优化）。</li>
+</ul>
+<h4 id="6">6. 模拟效率</h4>
+<ul>
+<li>全部评估在 CPU 上仅需 ~2.5 小时，而实际 GPU 部署需要 ~160 小时 → <strong>71× 加速</strong>。</li>
+<li>成本：CPU 模拟 <script type="math/tex">7.20 vs GPU 部署 </script>8,889 → <strong>1234.5× 成本降低</strong>。</li>
+<li><strong>可扩展性</strong>：从 32B 到万亿参数模型，模拟开销保持相似（得益于 Transformer IR 和重复结构）。</li>
+<li>性能分析一次性成本约 40 GPU 小时。</li>
+</ul>
+<h4 id="7">7. 可扩展性（扩展新特性）</h4>
+<table>
+<thead>
+<tr>
+<th>扩展类型</th>
+<th>代码行数</th>
+<th>实现时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新模型</td>
+<td>0</td>
+<td>~0</td>
+</tr>
+<tr>
+<td>新模型（含未知 Cell）</td>
+<td>50-150</td>
+<td>1-2 小时</td>
+</tr>
+<tr>
+<td>新设备集群</td>
+<td>~20</td>
+<td>6-8 小时</td>
+</tr>
+<tr>
+<td>新批处理机制</td>
+<td>~100</td>
+<td>1-2 小时</td>
+</tr>
+<tr>
+<td>新并行技术</td>
+<td>50-200</td>
+<td>1-2 小时</td>
+</tr>
+</tbody>
+</table>
+<h4 id="8">8. 超越最优计划识别</h4>
+<ul>
+<li>APEX 还可模拟不同最大批大小约束，帮助服务提供商调整批大小以满足 SLO（如 TPOT 要求）。</li>
+<li>例如，将最大批大小从 16 降至 8，Llama 的 TPOT 改善 18%，Mistral 改善 14%。</li>
+</ul>
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>高精度模拟</strong>：平均相对误差仅 10.7%，能准确预测并行执行计划的性能。</li>
+<li><strong>极高效率</strong>：在 CPU 上 15 分钟内完成最优计划识别，比 GPU 部署快 71 倍，成本低 1234 倍。</li>
+<li><strong>多目标优化</strong>：支持延迟最优和能耗最优两种优化方向，满足不同服务提供商需求。</li>
+<li><strong>广泛兼容性</strong>：支持多种 LLM（密集模型和 MoE 模型）、并行技术（DP、PP、TP、EP）、量化格式（FP16、FP8、W8A8）和设备集群（GPU、TPU、Intel Gaudi）。</li>
+<li><strong>可扩展性强</strong>：新增模型零代码，新特性扩展仅需少量代码和时间，适应 LLM 服务快速演进。</li>
+<li><strong>万亿规模扩展</strong>：利用 Transformer IR 和重复结构，从十亿到万亿参数模型的模拟开销保持相似。</li>
+<li><strong>全面评估指标</strong>：报告 TTFT、TPOT、P95 延迟、FLOPs 利用率等关键指标，帮助服务提供商满足 SLO。</li>
+<li><strong>动态感知</strong>：迭代级批处理模拟，捕捉真实 LLM 服务行为，而非静态批处理。</li>
+<li><strong>开源</strong>：代码托管在 https://github.com/microsoft/apex_plus</li>
+</ol>
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>EP vs TP 预测误差</strong>：对于 Mixtral-8x22B 的专家并行（EP），APEX 预测 EP 优于 TP，但实际部署中 TP 始终优于 EP，可能因 EP 实现未充分优化。</li>
+<li><strong>性能分析一次性成本</strong>：迁移到新集群需约 40 GPU 小时的离线分析，虽然可摊销，但对频繁更换硬件的场景不够便捷。</li>
+<li><strong>新设备集群扩展成本</strong>：扩展到新设备集群需 6-8 小时实现时间，主要是运行分析脚本。</li>
+<li><strong>仅支持文本 LLM</strong>：尚未支持多模态 LLM（如视觉、音频编码器），作者计划未来扩展。</li>
+<li><strong>未考虑推理优化技术</strong>：如投机推理（Speculative Inference）、KV 缓存压缩等高级优化未被显式建模。</li>
+<li><strong>部分新特性支持有限</strong>：如 FSDP（全分片数据并行）需要额外实现，新并行技术的扩展需 50-200 行代码。</li>
+<li><strong>模拟与实际的绝对值差异</strong>：APEX 的预测 TPOT 值低于实际值，因为忽略了部分操作的开销，但能准确捕捉相对性能差异。</li>
+<li><strong>未考虑多租户场景</strong>：模拟假设单一 LLM 服务实例，未考虑多租户资源竞争。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>APEX 属于 <strong>performance modeling（性能建模）</strong> 关键词领域，与 EfficientPaper 项目中以下研究方向密切相关：</p>
+<ol>
+<li><strong>LLM 服务系统优化</strong>：APEX 直接服务于 LLM 推理的并行执行计划选择，与 vLLM、SGLang、DistServe、Splitwise 等 LLM 服务系统密切相关。</li>
+<li><strong>并行策略自动搜索</strong>：APEX 的自动并行执行计划生成能力，与 LLM-Pilot、DynamoLLM、Calculon 等配置搜索工具属于同一研究类别。</li>
+<li><strong>LLM 训练/推理模拟器</strong>：与 vTrain、ASTRA-sim、Proteus 等训练模拟器，以及 LLMServingSim、Vidur 等服务模拟器构成方法对比关系。</li>
+<li><strong>混合并行策略</strong>：APEX 支持 DP、PP、TP、EP 的混合组合，对混合并行策略的探索有重要参考价值。</li>
+<li><strong>能耗优化</strong>：APEX 的能耗感知优化能力，与 DynamoLLM 等关注能效的工作形成互补。</li>
+<li><strong>服务级目标（SLO）管理</strong>：APEX 可帮助服务提供商满足 TPOT、TTFT 等 SLO，与实际部署需求紧密相关。</li>
+<li><strong>量化与硬件适配</strong>：APEX 支持多种量化格式（FP8、W8A8）和硬件集群（GPU、TPU、Gaudi），对硬件-软件协同设计有参考意义。</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>⚠️ 本笔记由 AI Agent（Hermes Agent）自动生成。内容基于论文原文提取和分析，仅供参考。请以论文原文为准，如有错误或遗漏，欢迎指正。</p>
+</blockquote>
+<hr />
+<p><em>笔记生成时间：2026-06-05</em>
+<em>工具：Hermes Agent + PyMuPDF (fitz) + Python</em>
+<em>论文原文：arXiv:2411.17651v2</em>
+<em>代码仓库：https://github.com/microsoft/apex_plus</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

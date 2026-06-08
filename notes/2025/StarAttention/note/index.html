@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,21 +161,266 @@
   
                 <h1 id="star-attention-efficient-llm-inference-over-long-sequences">Star Attention: Efficient LLM Inference over Long Sequences</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Inference with Transformer-based Large Language Models (LLMs) on long
-sequences is both costly and slow due to the quadratic complexity of the
-self-attention mechanism. We introduce Star Attention, a two-phase block-sparse
-approximation that improves computational efficiency by sharding attention
-across multiple hosts while minimizing communication overhead. In the first
-phase, the context is processed using blockwise-local attention across hosts,
-in parallel. In the second phase, query and response tokens attend to all prior
-cached tokens through sequence-global attention. Star Attention integrates
-seamlessly with most Transformer-based LLMs trained with global attention,
-reducing memory requirements and inference time by up to 11x while preserving
-97-100% of accuracy.</p>
-<p>RingAttention的改进，将长文档分布在多个node上，但是不进行通信，直接计算kv cache，在decode时，query需要global attention，此时通信量较少。</p>
-<p>精度会有下降，速度明显提升。</p>
-<p>和KVLink的思想有些类似，KVLink用于RAG领域，StarAttention用于分布式推理领域。</p>
+<blockquote>
+<p><strong>一句话总结</strong>：Star Attention 通过将长序列推理分为"本地块级上下文编码"和"全局查询编码与生成"两个阶段，在多主机分布式架构上实现了无需额外微调的高效长序列推理，推理速度最高提升 11 倍，同时保持 97-100% 的精度。</p>
+</blockquote>
+<hr />
+<h2 id="_1">摘要翻译</h2>
+<p>基于 Transformer 的大语言模型（LLM）在长序列上的推理既昂贵又缓慢，原因在于自注意力机制的二次复杂度。本文提出 Star Attention，一种两阶段块稀疏近似方法，通过将注意力分片到多个主机并最小化通信开销来提高计算效率。在第一阶段，上下文通过跨主机的块级局部注意力并行处理。在第二阶段，查询和响应令牌通过序列全局注意力关注所有先前缓存的令牌。Star Attention 可与大多数使用全局注意力训练的 Transformer LLM 无缝集成，在保持 97-100% 精度的同时，将内存需求和推理时间最多降低 11 倍。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li>
+<p><strong>长序列推理的计算瓶颈</strong>：随着 LLM 支持的上下文长度达到百万级（如 Gemini 1.5、Claude 3、Llama 3.1 等），自注意力机制的二次复杂度导致巨大的计算和内存开销。</p>
+</li>
+<li>
+<p><strong>现有方法的局限</strong>：</p>
+</li>
+<li><strong>分块处理方法</strong>（如 Flash Attention）：主要优化训练效率，但自回归解码仍需关注每个先前令牌。</li>
+<li><strong>分段编码方法</strong>（如 Longformer、StreamingLLM）：通常需要微调或引入额外组件，限制了即插即用能力。</li>
+<li>
+<p><strong>分布式方法</strong>（如 Ring Attention）：虽然可以扩展到多 GPU，但需要"环形"通信，通信开销大。</p>
+</li>
+<li>
+<p><strong>关键观察</strong>：在许多长上下文任务中，输入由长上下文后接短查询和短回答组成。回答查询所需的信息通常局限于上下文的局部区域，因此上下文令牌只需关注附近的令牌，而查询令牌需关注所有先前令牌。</p>
+</li>
+<li>
+<p><strong>目标</strong>：设计一种无需额外微调、可与现有 Transformer LLM 无缝集成、能显著减少推理时间和内存需求的方法。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">方法（技术细节）</h2>
+<p>Star Attention 采用两阶段架构，如图 1 所示：</p>
+<h3 id="1context-encoding">阶段 1：上下文编码（Context Encoding）</h3>
+<p><strong>核心思想</strong>：将长上下文分块并分配到多个主机，通过块级局部注意力并行处理，消除主机间通信。</p>
+<p><strong>详细流程</strong>：
+1. <strong>分块</strong>：将输入序列的上下文 <code>c</code> 分割为 <code>n</code> 个连续块：<code>c = [c1, c2, ..., cn]</code>，每个块包含 <code>b</code> 个令牌。
+2. <strong>锚块机制（Anchor Block）</strong>：除第一个块外，每个块都以前缀形式附加第一个块 <code>c1</code>（称为"锚块"），形成增强块 <code>c'</code>：
+   <code>c' = [c1, (c1 c2), (c1 c3), ..., (c1 cn)]</code>
+   每个增强块包含 <code>2b</code> 个令牌（<code>b</code> 个锚块令牌 + <code>b</code> 个当前块令牌）。
+3. <strong>位置编码保留</strong>：锚块 <code>c1</code> 的位置索引保持不变（<code>[0, 1, ..., b-1]</code>）。
+4. <strong>分布式处理</strong>：增强块分配到不同主机，每个主机在其分配的块上计算注意力并生成 KV 向量。
+5. <strong>KV 缓存管理</strong>：
+   - 锚块 <code>c1</code> 的 KV 向量被丢弃
+   - 当前块 <code>c_i</code> 的 KV 向量保留在缓存中</p>
+<p><strong>关键设计——锚块的作用</strong>：
+- <strong>问题</strong>：如果不使用锚块，块级局部注意力会导致每个块的开头出现多个注意力尖峰（attention sinks），模型无法有效聚焦于上下文的相关部分。
+- <strong>解决方案</strong>：通过前缀锚块，将注意力尖峰转移到锚块令牌上。丢弃锚块的 KV 向量后，中间注意力尖峰被移除，确保块级局部注意力的分布（图 3c）与全局注意力（图 3a）近似。
+- <strong>消融实验发现</strong>：锚块的内容比位置更重要。使用原始第一个块内容效果最佳，随机令牌或打乱的令牌会导致显著性能下降。</p>
+<p><strong>复杂度降低</strong>：注意力复杂度从二次降为线性（相对于上下文长度），且无主机间通信。</p>
+<h3 id="2query-encoding-token-generation">阶段 2：查询编码与令牌生成（Query Encoding &amp; Token Generation）</h3>
+<p><strong>核心思想</strong>：通过分布式 softmax 算法实现全局注意力，无需在主机间传输 KV 缓存。</p>
+<p><strong>详细流程</strong>：
+1. <strong>查询广播</strong>：查询令牌被广播到所有主机。
+2. <strong>本地注意力计算</strong>：每个主机 <code>h</code> 使用其本地 KV 缓存计算局部注意力输出 <code>A_h</code>：
+   <code>A_h = softmax(QK_h^T / √d) * V_h</code>
+3. <strong>局部 softmax 和</strong>：每个主机同时存储局部 softmax 的指数和 <code>s_h</code>（softmax 分母）：
+   <code>s_h = Σ exp(QK_h^T / √d)</code>
+4. <strong>全局聚合</strong>：
+   - 指定查询主机 <code>h_q</code> 收集所有主机的 <code>A_h</code> 和 <code>s_h</code>
+   - 计算全局 softmax 分母：<code>s_global = Σ s_h</code>
+   - 聚合全局注意力：<code>A_global = Σ (s_h / s_global) * A_h</code>
+5. <strong>数值稳定性</strong>：使用 Flash Attention 和在线 softmax（log-sum-exp 技巧）确保数值稳定。
+6. <strong>输出生成</strong>：查询主机生成下一个令牌，更新其 KV 缓存，重复此过程。</p>
+<p><strong>通信开销</strong>：每个令牌仅需传输一个标量（<code>s_h</code>）和一个向量（<code>A_h</code>），通信量极低。</p>
+<hr />
+<h2 id="_4">实验结果</h2>
+<h3 id="_5">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.1-8B（base 和 instruct）、Llama-3.1-70B-Instruct、gradientai-Llama-3-8B-Instruct-262K/1048K</li>
+<li><strong>硬件</strong>：NVIDIA A100 GPU，bfloat16 精度</li>
+<li><strong>基线</strong>：Ring Attention、StreamingLLM、MInference</li>
+<li><strong>基准测试</strong>：RULER（合成）、BABILong（推理）、InfiniteBench（真实世界）</li>
+</ul>
+<h3 id="_6">主要结果</h3>
+<p><strong>1. RULER 基准测试（表 1）</strong></p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>序列长度</th>
+<th>精度变化</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>16K</td>
+<td>-0.94%</td>
+<td>1.1x</td>
+</tr>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>32K</td>
+<td>+1.17%</td>
+<td>1.2x</td>
+</tr>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>64K</td>
+<td>-1.42%</td>
+<td>1.8x</td>
+</tr>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>128K</td>
+<td>-1.90%</td>
+<td>2.7x</td>
+</tr>
+<tr>
+<td>Llama-3.1-70B-Instruct</td>
+<td>16K</td>
+<td>-2.71%</td>
+<td>1.7x</td>
+</tr>
+<tr>
+<td>Llama-3.1-70B-Instruct</td>
+<td>32K</td>
+<td>-2.55%</td>
+<td>2.0x</td>
+</tr>
+<tr>
+<td>Llama-3.1-70B-Instruct</td>
+<td>64K</td>
+<td>-1.44%</td>
+<td>4.7x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. BABILong 基准测试（图 4）</strong>
+- Star Attention 在 16K-128K 序列长度上保持与全局注意力 97-100% 的精度
+- 8B base 模型在长序列上表现稍差，可能与格式特定的生成要求有关</p>
+<p><strong>3. 与其他稀疏注意力方法比较（表 2）</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>16K</th>
+<th>32K</th>
+<th>64K</th>
+<th>128K</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Attn.</td>
+<td>92.22</td>
+<td>87.53</td>
+<td>84.79</td>
+<td>76.31</td>
+<td>85.21</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>74.76</td>
+<td>48.56</td>
+<td>26.20</td>
+<td>30.77</td>
+<td>45.07</td>
+</tr>
+<tr>
+<td>MInference</td>
+<td>93.27</td>
+<td>86.54</td>
+<td>84.86</td>
+<td>58.17</td>
+<td>80.71</td>
+</tr>
+<tr>
+<td><strong>Star Attention</strong></td>
+<td><strong>91.27</strong></td>
+<td><strong>88.70</strong></td>
+<td><strong>83.37</strong></td>
+<td><strong>74.41</strong></td>
+<td><strong>84.44</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. InfiniteBench（表 3）</strong>
+- Star Attention 在 10 个多样化任务上取得最高平均精度（46.51% vs Full 48.06%）
+- 在检索类任务（PassKey、NumRetr、KVRetr）上表现尤为突出</p>
+<p><strong>5. 长序列性能（表 5）</strong>
+- 在 Llama3-8B-Instruct-1048K 上，序列长度从 128K 增加到 1M：
+  - 128K: 2.7x 加速，+0.96% 精度
+  - 256K: 10.8x 加速，-0.77% 精度
+  - 512K: 16.2x 加速，-6.73% 精度
+  - 1M: 16.9x 加速，-5.32% 精度</p>
+<p><strong>6. RULER 任务类别分析（图 7）</strong>
+- <strong>单 NIAH / 多 NIAH / QA</strong>：与全局注意力相当
+- <strong>多跳追踪</strong>：性能下降，因需要跨块通信
+- <strong>聚合任务</strong>：Star Attention 显著提升（+16.15%），块编码有助于局部聚合</p>
+<h3 id="-">精度-速度权衡</h3>
+<ul>
+<li>块大小 = 序列长度的 1/4 是最佳权衡点</li>
+<li>块大小越大，精度越高</li>
+<li>锚块大小应与上下文块大小相同</li>
+</ul>
+<hr />
+<h2 id="_7">优势</h2>
+<ol>
+<li><strong>无需微调</strong>：可与大多数使用全局注意力训练的 Transformer LLM 无缝集成，即插即用。</li>
+<li><strong>显著加速</strong>：推理速度最高提升 11 倍（长序列可达 16.9 倍）。</li>
+<li><strong>高精度保持</strong>：保持 97-100% 的基线精度。</li>
+<li><strong>通信开销低</strong>：阶段 1 无通信，阶段 2 仅需传输标量和向量。</li>
+<li><strong>线性扩展</strong>：上下文长度随主机数量线性扩展。</li>
+<li><strong>可与 Flash Attention 结合</strong>：进一步提升速度。</li>
+<li><strong>灵活的精度-速度权衡</strong>：可通过调整块大小灵活控制。</li>
+</ol>
+<hr />
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>多跳追踪任务性能下降</strong>：由于阶段 1 的块级局部注意力缺乏跨块通信，多跳追踪任务（需要跨多个块传播信息）性能下降。</li>
+<li><strong>块大小敏感</strong>：块大小影响精度-速度权衡，较小的块在长序列上精度下降明显。</li>
+<li><strong>锚块大小要求</strong>：锚块大小应与上下文块大小相同，较小的锚块导致显著性能下降，原因尚待研究。</li>
+<li><strong>分布式依赖</strong>：需要多主机/多 GPU 环境，单机场景下优势有限。</li>
+<li><strong>仅优化推理</strong>：本文主要关注推理阶段，训练阶段的优化未涉及。</li>
+<li><strong>base 模型兼容性</strong>：在 BABILong 上，base 模型（非指令微调）在长序列上表现不佳。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1-kv-kv-cache-management">1. KV 缓存管理（KV Cache Management）</h3>
+<ul>
+<li>Star Attention 通过分布式块级缓存管理显著降低了 KV 缓存的内存需求。</li>
+<li>可与 KV 缓存压缩方法（如 KIVI、Scope）结合，进一步减少内存占用。</li>
+<li>与 KVLink（RAG 领域）思想类似，但应用于分布式推理领域。</li>
+</ul>
+<h3 id="2">2. 分布式推理优化</h3>
+<ul>
+<li>Star Attention 是 Ring Attention 的改进，消除了"环形"通信，降低了通信开销。</li>
+<li>与 Tree Attention（拓扑感知解码）和 GPipe（流水线并行）等相关。</li>
+<li>可扩展到更大规模的分布式推理系统。</li>
+</ul>
+<h3 id="3">3. 稀疏注意力机制</h3>
+<ul>
+<li>Star Attention 的块稀疏模式与 Longformer 的滑动窗口注意力、StreamingLLM 的注意力汇聚相关。</li>
+<li>与 MInference（动态稀疏模式）和 Quest（查询感知稀疏）互补。</li>
+<li>可探索更复杂的稀疏模式（如学习到的稀疏性）。</li>
+</ul>
+<h3 id="4">4. 长序列处理</h3>
+<ul>
+<li>Star Attention 可用于支持仓库级代码分析、多文档摘要、大语料检索等应用。</li>
+<li>与 InfiniteBench、RULER、BABILong 等长序列基准测试相关。</li>
+<li>可探索与 Infini-Attention、Titans 等长序列方法的结合。</li>
+</ul>
+<h3 id="5-">5. 效率-精度权衡</h3>
+<ul>
+<li>Star Attention 提供了灵活的精度-速度权衡（通过调整块大小）。</li>
+<li>与 KV 缓存压缩、低秩近似、蒸馏等方法互补。</li>
+<li>可探索自适应块大小调整策略。</li>
+</ul>
+<h3 id="6">6. 其他相关方向</h3>
+<ul>
+<li><strong>混合注意力</strong>：将 Star Attention 与局部/全局混合注意力结合。</li>
+<li><strong>量化</strong>：将 Star Attention 与 KV 缓存量化（如 KIVI）结合。</li>
+<li><strong>动态调度</strong>：根据任务需求动态调整块大小和主机数量。</li>
+<li><strong>多模态</strong>：将 Star Attention 扩展到多模态长序列推理。</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>生成声明</strong>：本 note 由 AI Agent 自动生成，基于 arXiv 论文 2411.17116 的全文内容。生成时间：2026-06-04。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,27 +161,307 @@
   
                 <h1 id="beyond-size-how-gradients-shape-pruning-decisions-in-large-language-models">Beyond Size: How Gradients Shape Pruning Decisions in Large Language Models</h1>
 <p><a class="glightbox" href="../gblm-pruner.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../gblm-pruner.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) with billions of parameters are prime targets
-for network pruning, removing some model weights without hurting performance.
-Prior approaches such as magnitude pruning, SparseGPT, and Wanda, either
-concentrated solely on weights or integrated weights with activations for
-sparsity. However, they overlooked the informative gradients derived from
-pretrained LLMs. In this paper, we present a novel sparsity-centric pruning
-method for pretrained LLMs, termed Gradient-based Language Model Pruner
-(GBLM-Pruner). GBLM-Pruner leverages the first-order term of the Taylor
-expansion, operating in a training-free manner by harnessing properly
-normalized gradients from a few calibration samples to determine the pruning
-metric, and substantially outperforms competitive counterparts like SparseGPT
-and Wanda in multiple benchmarks. Intriguingly, by incorporating gradients,
-unstructured pruning with our method tends to reveal some structural patterns,
-which mirrors the geometric interdependence inherent in the LLMs' parameter
-structure. Additionally, GBLM-Pruner functions without any subsequent
-retraining or weight updates to maintain its simplicity as other counterparts.
-Extensive evaluations on LLaMA-1 and LLaMA-2 across various benchmarks show
-that GBLM-Pruner surpasses magnitude pruning, Wanda and SparseGPT by
-significant margins. We further extend our approach on Vision Transformer. Our
-code and models are available at https://github.com/VILA-Lab/GBLM-Pruner.</p>
+<h2 id="_1">一句话总结</h2>
+<p>GBLM-Pruner 是一种基于梯度信息的免训练（training-free）LLM 剪枝方法，通过利用预训练大语言模型的梯度一阶泰勒展开项，结合权重幅度与梯度范数来确定剪枝指标，在 LLaMA-1/2 系列模型上显著优于 SparseGPT、Wanda 等现有方法。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）拥有数十亿参数，是网络剪枝的理想目标——在不损害性能的前提下移除部分模型权重。先前的方法，如幅度剪枝（magnitude pruning）、SparseGPT 和 Wanda，要么仅关注权重本身，要么将权重与激活值结合以实现稀疏性。然而，它们忽略了从预训练 LLM 中获取的具有信息量的梯度。在本文中，我们提出了一种新型的基于稀疏性的预训练 LLM 剪枝方法，称为基于梯度的语言模型剪枝器（Gradient-based Language Model Pruner, GBLM-Pruner）。GBLM-Pruner 利用泰勒展开的一阶项，通过少量校准样本的适当归一化梯度来确定剪枝指标，以训练无关的方式运行，并在多个基准测试中显著优于 SparseGPT 和 Wanda 等竞争方法。有趣的是，通过引入梯度，我们的方法在非结构化剪枝中往往能揭示出一些结构模式，这反映了 LLM 参数结构中固有的几何相互依赖性。此外，GBLM-Pruner 无需任何后续的再训练或权重更新，保持了与其他方法相同的简洁性。在 LLaMA-1 和 LLaMA-2 上进行的广泛评估表明，GBLM-Pruner 在多个基准测试中以显著优势超越了幅度剪枝、Wanda 和 SparseGPT。我们进一步将该方法扩展到 Vision Transformer 上。我们的代码和模型可在 https://github.com/VILA-Lab/GBLM-Pruner 获取。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="llm">LLM 剪枝的必要性</h3>
+<p>大语言模型（如 GPT 系列、BERT、LLaMA 等）在自然语言处理和多模态学习领域取得了巨大突破，但在实际应用中面临诸多挑战：参数量庞大、内存消耗高、推理计算成本高昂。剪枝（pruning）作为一种模型压缩技术，通过移除不重要的权重或神经元/层来减少模型大小和计算需求，是解决这些问题的重要手段之一。</p>
+<h3 id="_4">现有方法的局限性</h3>
+<p>在免训练（training-free）条件下，现有的 LLM 剪枝方法主要采用以下两种策略：</p>
+<ol>
+<li><strong>权重幅度剪枝（Magnitude Pruning）</strong>：保留绝对值较大的权重，移除较小的权重。这种方法简单但缺乏理论依据，剪枝效果有限。</li>
+<li><strong>权重+激活值结合（如 SparseGPT、Wanda）</strong>：</li>
+<li><strong>SparseGPT</strong>：借鉴最优脑外科医生（OBS）框架，通过计算矩阵逆和更新权重来确定剪枝指标，方法较为复杂。</li>
+<li><strong>Wanda</strong>：将权重幅度与输入特征范数相乘来评估权重重要性，虽然简单，但缺乏深刻的理论依据。</li>
+</ol>
+<p>这些方法共同的不足在于：<strong>忽略了预训练 LLM 中具有信息量的梯度信息</strong>。梯度与权重重要性之间存在天然联系（如最优脑损伤 OBD 和最优脑外科医生 OBS 理论所揭示的），但这些方法在理论推导中假设全训练网络的梯度很小，因此忽略了梯度的贡献。</p>
+<h3 id="_5">核心研究问题</h3>
+<p>本文旨在解决上述复杂性和可解释性问题，探索如何利用梯度信息来改善 LLM 剪枝效果，同时保持方法的简洁性和免训练特性。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1-obs">1. 理论基础：最优脑外科医生（OBS）框架的扩展</h3>
+<p>GBLM-Pruner 的理论基础来自最优脑损伤（OBD）和最优脑外科医生（OBS）框架。作者重新审视并改进了 OBS 框架，将梯度（即泰勒展开的一阶项）纳入考量。</p>
+<p><strong>核心优化问题</strong>：网络剪枝中，移除权重 <script type="math/tex">w_m</script> 导致的误差增加量 <script type="math/tex">\delta E_m</script> 可表示为：</p>
+<p>
+<script type="math/tex; mode=display">\delta E_m = \frac{w_m^2}{2(H^{-1})_{mm}} - \frac{w_m (g^\top \cdot H^{-1} \cdot I_m)}{(H^{-1})_{mm}}</script>
+</p>
+<p>其中 <script type="math/tex">H</script> 是 Hessian 矩阵，<script type="math/tex">g</script> 是梯度，<script type="math/tex">I_m</script> 是对应被剪枝权重的单位向量。</p>
+<p>通过简化假设（仅考虑 Hessian 的对角元素），最终得到：</p>
+<p>
+<script type="math/tex; mode=display">\delta E_m = (w_m \|x_m\|_2)^2 + w_m (-g_m)</script>
+</p>
+<p>其中 <script type="math/tex">x_m</script> 是对应激活向量，<script type="math/tex">g_m</script> 是通过 L1 或 L2 范数跨样本归一化得到的梯度幅度。</p>
+<h3 id="2-pruning-metric">2. 剪枝指标（Pruning Metric）</h3>
+<p>GBLM-Pruner 的核心创新在于将梯度信息整合到剪枝指标中。给定权重矩阵 <script type="math/tex">W</script>（形状 <script type="math/tex">d_{out} \times d_{in}</script>）和梯度矩阵 <script type="math/tex">G</script>（形状 <script type="math/tex">N \times d_{out} \times d_{in}</script>），权重 <script type="math/tex">W[i,j]</script> 的重要性评分定义为：</p>
+<p>
+<script type="math/tex; mode=display">W_m[i,j] = \alpha \cdot |W[i,j]| \cdot \|G[:,i,j]\|_p + |W[i,j]| \cdot \|X[:,j]\|_2</script>
+</p>
+<p>其中：
+- <script type="math/tex">\|G[:,i,j]\|_p</script> 是跨样本的梯度 L1 或 L2 范数（<script type="math/tex">p=1</script> 或 <script type="math/tex">p=2</script>）
+- <script type="math/tex">\|X[:,j]\|_2</script> 是输入激活的 L2 范数
+- <script type="math/tex">\alpha</script> 是缩放因子（默认为 100），用于平衡梯度与激活值的贡献（因为梯度的量级通常较小）
+- 使用列比较（column-wise comparison）作为剪枝粒度</p>
+<h3 id="3-algorithm-1">3. 剪枝算法（Algorithm 1）</h3>
+<pre><code>输入：权重矩阵 W ∈ (d_out, d_in)
+      激活矩阵 X ∈ (N×L, d_in)
+      梯度矩阵 G ∈ (N, d_out, d_in)
+      稀疏率 p ∈ (0, 1)
+输出：剪枝后的权重矩阵
+
+1. 计算剪枝指标 Wm[i,j] = |W[i,j]|·∥G[:,i,j]∥p + |W[i,j]|·∥X[:,j]∥2
+2. 对每个输出维度 i，在 Wm[i,:] 中找到 p% 最小权重
+3. 将对应权重置零（W[M] = 0）
+</code></pre>
+<h3 id="4">4. 与之前梯度方法的区别</h3>
+<ul>
+<li><strong>之前的梯度方法</strong>（如 Molchanov et al., Sanh et al.）：用于迁移学习场景，需要在特定任务上进行微调以保持准确率</li>
+<li><strong>GBLM-Pruner</strong>：首次尝试将梯度信息用于数十亿参数语言模型的一次性剪枝，同时保持零样本泛化能力，无需任何权重更新</li>
+</ul>
+<h3 id="5">5. 比较粒度的选择</h3>
+<p>通过对比不同比较粒度（层内、全局、列级），作者发现<strong>列级比较</strong>（column-wise comparison）效果最佳，因为每列是输出激活的构成组件，这与 Wanda 的发现一致。</p>
+<h3 id="6">6. 实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA-1（7B, 13B, 30B）和 LLaMA-2（7B, 13B, 70B）</li>
+<li><strong>校准数据</strong>：从 C4 训练数据第一分片中随机采样 128 个 2048 token 的序列</li>
+<li><strong>梯度计算</strong>：以语言建模为目标函数</li>
+<li><strong>缩放因子 <script type="math/tex">\alpha</script></strong>：100（通过验证集选择）</li>
+<li><strong>硬件</strong>：NVIDIA A100 GPU（40/80GB 显存）</li>
+<li><strong>剪枝类型</strong>：非结构化剪枝和 N:M 半结构化剪枝（2:4 和 4:8）</li>
+<li><strong>评估指标</strong>：困惑度（Perplexity）和零样本评估（Zero-shot Harness）</li>
+<li><strong>基线方法</strong>：幅度剪枝（Magnitude Pruning）、SparseGPT、Wanda</li>
+</ul>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="1-wikitext">1. 困惑度评估（WikiText）</h3>
+<p><strong>非结构化剪枝（50% 稀疏度）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA-2-7B</th>
+<th>LLaMA-2-13B</th>
+<th>LLaMA-2-70B</th>
+<th>LLaMA-1-7B</th>
+<th>LLaMA-1-13B</th>
+<th>LLaMA-1-30B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>5.47</td>
+<td>4.88</td>
+<td>3.32</td>
+<td>5.68</td>
+<td>5.09</td>
+<td>4.10</td>
+</tr>
+<tr>
+<td>Magnitude</td>
+<td>16.03</td>
+<td>6.83</td>
+<td>5.36</td>
+<td>17.29</td>
+<td>20.21</td>
+<td>7.54</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>7.00</td>
+<td>6.03</td>
+<td>4.25</td>
+<td>7.22</td>
+<td>6.19</td>
+<td>5.32</td>
+</tr>
+<tr>
+<td>Wanda</td>
+<td>6.92</td>
+<td>5.97</td>
+<td>4.22</td>
+<td>7.26</td>
+<td>6.15</td>
+<td>5.24</td>
+</tr>
+<tr>
+<td><strong>GBLM-Pruner (L1)</strong></td>
+<td><strong>6.86</strong></td>
+<td><strong>5.88</strong></td>
+<td><strong>4.17</strong></td>
+<td><strong>7.15</strong></td>
+<td><strong>6.11</strong></td>
+<td><strong>5.18</strong></td>
+</tr>
+</tbody>
+</table>
+<p>关键发现：GBLM-Pruner 在所有模型上均显著优于幅度剪枝、Wanda 和 SparseGPT。</p>
+<p><strong>半结构化剪枝</strong>：
+- <strong>2:4 剪枝</strong>：SparseGPT 表现略优（由于 2:4 约束更严格）
+- <strong>4:8 剪枝</strong>：GBLM-Pruner 在大多数模型上优于其他方法，尤其是较大模型</p>
+<h3 id="2-50">2. 零样本评估（50% 非结构化稀疏度）</h3>
+<p>在 BoolQ、RTE、HellaSwag、WinoGrande、ARC-e、OBQA 六个零样本任务上：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>平均准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-1-7B</td>
+<td>Dense</td>
+<td>67.47</td>
+</tr>
+<tr>
+<td>LLaMA-1-7B</td>
+<td>SparseGPT</td>
+<td>61.77</td>
+</tr>
+<tr>
+<td>LLaMA-1-7B</td>
+<td>Wanda</td>
+<td>61.17</td>
+</tr>
+<tr>
+<td>LLaMA-1-7B</td>
+<td><strong>Ours</strong></td>
+<td><strong>63.07</strong></td>
+</tr>
+<tr>
+<td>LLaMA-1-13B</td>
+<td>Dense</td>
+<td>69.96</td>
+</tr>
+<tr>
+<td>LLaMA-1-13B</td>
+<td>SparseGPT</td>
+<td>66.27</td>
+</tr>
+<tr>
+<td>LLaMA-1-13B</td>
+<td>Wanda</td>
+<td>66.45</td>
+</tr>
+<tr>
+<td>LLaMA-1-13B</td>
+<td><strong>Ours</strong></td>
+<td><strong>66.65</strong></td>
+</tr>
+<tr>
+<td>LLaMA-1-30B</td>
+<td>Dense</td>
+<td>72.50</td>
+</tr>
+<tr>
+<td>LLaMA-1-30B</td>
+<td>SparseGPT</td>
+<td>69.33</td>
+</tr>
+<tr>
+<td>LLaMA-1-30B</td>
+<td>Wanda</td>
+<td>70.84</td>
+</tr>
+<tr>
+<td>LLaMA-1-30B</td>
+<td><strong>Ours</strong></td>
+<td><strong>71.17</strong></td>
+</tr>
+</tbody>
+</table>
+<p>关键发现：GBLM-Pruner 在大多数模型上的平均准确率优于 SparseGPT 和 Wanda。</p>
+<h3 id="3">3. 消融实验</h3>
+<p><strong>梯度重要性</strong>：
+- 仅使用梯度-权重项（|W|·∥G∥₁）已显著优于幅度剪枝
+- |W|·∥G∥₂ 在 LLaMA-2-13B 上甚至接近 Wanda 和 SparseGPT 的性能</p>
+<p><strong>剪枝指标分析</strong>：
+- 梯度累积（gradient accumulation）效果最差（困惑度 119.72）
+- L1 和 L2 范数归一化效果优异（困惑度 7.17 和 7.09）
+- 最终指标 |W|·∥X∥₂ + α·|W|·∥G∥₁ 取得最佳结果（困惑度 6.86）</p>
+<p><strong>缩放因子 α 的影响</strong>：
+- α=100 时取得最佳困惑度（6.858）
+- α 过小（0.001）或过大（100000）都会降低性能</p>
+<p><strong>稀疏度变化</strong>：
+- 在不同稀疏度（0.1-0.6）下，GBLM-Pruner 在 LLaMA-2-13B 和 LLaMA-1-30B 上始终优于其他方法</p>
+<p><strong>校准样本依赖性</strong>：
+- 对校准集的选择具有鲁棒性（5 次随机采样，困惑度在 6.86-6.89 之间）
+- 与 SparseGPT 相比，对校准样本数量的敏感度较低</p>
+<h3 id="4_1">4. 剪枝模式可视化</h3>
+<p>非结构化剪枝在引入梯度后展现出结构化模式，反映了 LLM 参数结构中固有的几何相互依赖性。L1 范数归一化产生的剪枝模式比梯度累积更加精细和清晰。</p>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>理论严谨</strong>：基于 OBS 框架的扩展，为剪枝指标提供了理论支撑，而非仅依赖经验</li>
+<li><strong>性能卓越</strong>：在非结构化剪枝中，困惑度和零样本准确率均显著优于 SparseGPT、Wanda 和幅度剪枝</li>
+<li><strong>简洁高效</strong>：无需任何后续的权重更新或再训练，保持了与其他方法相同的简洁性</li>
+<li><strong>训练无关（Training-free）</strong>：仅需少量校准样本即可计算梯度和激活值，无需额外训练</li>
+<li><strong>良好的可解释性</strong>：梯度的引入使剪枝决策更具可解释性，揭示了 LLM 参数的结构特征</li>
+<li><strong>鲁棒性</strong>：对校准样本选择和数量不敏感</li>
+<li><strong>通用性</strong>：已扩展到 Vision Transformer，展示出跨模态的适用性</li>
+<li><strong>支持半结构化剪枝</strong>：除非结构化剪枝外，还支持 2:4 和 4:8 半结构化剪枝</li>
+<li><strong>可扩展性</strong>：适用于大模型（如 LLaMA-2-70B），计算效率高</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>2:4 半结构化剪枝表现欠佳</strong>：在 2:4 半结构化剪枝中，SparseGPT 表现优于 GBLM-Pruner，说明在更严格的硬件约束下，GBLM-Pruner 的优势有所减弱</li>
+<li><strong>零样本评估的不一致性</strong>：虽然在平均准确率上优于其他方法，但在个别任务上表现并不一致</li>
+<li><strong>梯度计算开销</strong>：虽然无需再训练，但计算梯度仍需一定的计算资源，尤其是对于大模型</li>
+<li><strong>参数调优</strong>：缩放因子 α 需要通过验证集选择，增加了使用复杂度</li>
+<li><strong>依赖校准数据</strong>：需要从训练数据中获取校准样本，对于某些场景可能不太方便</li>
+<li><strong>仅针对非结构化/半结构化剪枝</strong>：不支持结构化剪枝（如删除整个注意力头或 FFN 层）</li>
+<li><strong>实验规模有限</strong>：虽然测试了 LLaMA-1/2 系列，但未在更多架构（如 GPT 系列、PaLM 等）上验证</li>
+<li><strong>理论简化</strong>：OBS 框架中对 Hessian 矩阵的对角近似可能不完全准确，限制了理论的精确性</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1">1. 模型压缩与加速</h3>
+<p>GBLM-Pruner 属于模型压缩领域的核心研究方向之一，与以下研究密切相关：
+- <strong>剪枝（Pruning）</strong>：本文的核心技术，属于非结构化和半结构化剪枝
+- <strong>量化（Quantization）</strong>：如 GPTQ、AWQ 等方法，与剪枝互补
+- <strong>知识蒸馏（Knowledge Distillation）</strong>：可与剪枝结合进一步压缩模型</p>
+<h3 id="2">2. 大语言模型效率优化</h3>
+<ul>
+<li><strong>高效推理</strong>：通过剪枝减少模型大小和计算需求</li>
+<li><strong>边缘部署</strong>：剪枝后的模型可部署到资源受限的设备上</li>
+<li><strong>低功耗 AI</strong>：减少模型参数可降低能耗</li>
+</ul>
+<h3 id="3_1">3. 稀疏训练与稀疏性研究</h3>
+<ul>
+<li><strong>彩票假设（Lottery Ticket Hypothesis）</strong>：寻找稀疏子网络</li>
+<li><strong>稀疏注意力机制</strong>：与注意力剪枝相关</li>
+<li><strong>N:M 半结构化稀疏</strong>：适合硬件加速的稀疏模式</li>
+</ul>
+<h3 id="4_2">4. 梯度信息在模型压缩中的应用</h3>
+<ul>
+<li>本文首次将梯度信息用于 LLM 的一次性剪枝，开辟了新的研究方向</li>
+<li>未来可探索梯度信息在量化、蒸馏等其他压缩技术中的应用</li>
+</ul>
+<h3 id="5-efficientpaper">5. 与 EfficientPaper 项目中其他论文的关联</h3>
+<ul>
+<li><strong>SparseGPT</strong>（Frantar &amp; Alistarh, 2023）：GBLM-Pruner 的主要对比方法</li>
+<li><strong>Wanda</strong>（Sun et al., 2023）：GBLM-Pruner 的主要对比方法</li>
+<li><strong>Llama-1/2 系列</strong>：GBLM-Pruner 的实验对象</li>
+<li><strong>稀疏剪枝（sparse_pruning）</strong>：关键词标签与项目其他剪枝相关论文关联</li>
+</ul>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent，Nous Research）自动生成。内容基于论文 PDF 文本提取（使用 PyMuPDF/fitz）和元数据解析，经过结构化整理和翻译。笔记中的信息准确性和完整性依赖于原始论文内容，仅供参考学习使用。</p>
+<ul>
+<li>生成工具：Hermes Agent (Nous Research)</li>
+<li>文本提取：PyMuPDF (fitz)</li>
+<li>生成日期：2025年6月5日</li>
+<li>论文来源：arXiv:2311.04902v2</li>
+<li>项目：EfficientPaper</li>
+</ul>
+<hr />
+<p><em>本文最后更新：2025-06-05</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,29 +164,190 @@
 <p>Kan Zhu, Yufei Gao, Yilong Zhao, Liangyu Zhao, Gefei Zuo, Yile Gu, Dedong Xie, Tian Tang, Qinyu Xu, Zihao Ye, Keisuke Kamahori, Chien-Yu Lin, Ziren Wang, Stephanie Wang, Arvind Krishnamurthy, Baris Kasikci</p>
 </blockquote>
 <p><a class="glightbox" href="../SystemDesign.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../SystemDesign.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) have resulted in a surging demand for
-planet-scale serving systems, where tens of thousands of GPUs continuously
-serve hundreds of millions of users. Consequently, throughput has emerged as a
-key metric that determines serving systems' performance. Due to large model
-sizes and memory-intensive self-attention, LLM serving has been commonly
-assumed to be memory-bound. Through a detailed analysis, we show that despite
-having memory-intensive components, end-to-end LLM serving is compute bound for
-most common workloads and LLMs. Alas, most existing serving engines fall short
-from optimal compute utilization, because the heterogeneous operations that
-comprise LLM serving--compute, memory, networking--are executed sequentially
-within a device.
-  We propose NanoFlow, a novel serving framework that exploits intra-device
-parallelism, which overlaps the usage of heterogeneous resources within a
-single device. NanoFlow splits inputs into smaller nano-batches and duplicates
-operations to operate on each portion independently, enabling overlapping.
-NanoFlow automatically identifies the number, size, ordering, and GPU resource
-allocation of nano-batches to minimize the execution time, while considering
-the interference of concurrent operations. We evaluate NanoFlow's end-to-end
-serving throughput on several popular models such as LLaMA-2-70B, Mixtral 8x7B,
-LLaMA-3-8B, etc. With practical workloads, NanoFlow provides 1.91x throughput
-boost compared to state-of-the-art serving systems achieving 50% to 72% of
-optimal throughput across popular models.</p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>注意：本 note 由 AI Agent 自动生成，仅供研究参考，内容可能存在偏差或遗漏。生成时间：2025 年。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>NanoFlow 通过<strong>设备内并行（intra-device parallelism）</strong>技术，将 LLM 推理中不同资源瓶颈的操作（计算、内存、网络）拆分为更细粒度的 <strong>nano-batch</strong>，使这些操作可以在单个 GPU 内同时执行，从而将 LLM 推理吞吐量提升至现有最优系统的 <strong>1.91 倍</strong>，达到理论最优吞吐量的 <strong>50%–72%</strong>。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大型语言模型（LLM）导致了对行星级服务系统的巨大需求，数万块 GPU 持续为数亿用户提供服务。因此，吞吐量已成为决定服务系统性能的关键指标。由于模型规模大、自注意力机制内存密集，LLM 服务通常被认为受限于内存带宽。然而，通过详细分析，本文发现尽管 LLM 中存在内存密集型组件，但在大多数常见工作负载和 LLM 下，端到端 LLM 服务实际上是<strong>计算受限（compute-bound）</strong>的。不幸的是，大多数现有服务引擎未能达到最优计算利用率，因为 LLM 服务中异构操作（计算、内存、网络）在设备内是<strong>顺序执行</strong>的。</p>
+<p>我们提出了 NanoFlow，一种新颖的服务框架，利用<strong>设备内并行性</strong>，在单个设备内重叠使用异构资源。NanoFlow 将输入拆分为更小的 nano-batch，并复制操作以独立处理每个部分，从而实现重叠。NanoFlow 自动识别 nano-batch 的数量、大小、顺序和 GPU 资源分配，以最小化执行时间，同时考虑并发操作的干扰。我们在多个流行模型（如 LLaMA-2-70B、Mixtral 8×7B、LLaMA-3-8B 等）上评估了 NanoFlow 的端到端服务吞吐量。在实际工作负载下，NanoFlow 相比最先进的服务系统提供了 <strong>1.91 倍的吞吐量提升</strong>，在流行模型上实现了最优吞吐量的 <strong>50%–72%</strong>。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>LLM 推理的资源矛盾</strong>：LLM 推理通常被认为受限于内存带宽（因为需要加载巨大的模型权重和 KV-cache），但本文通过详细分析发现，现代 LLM 推理实际上是<strong>计算受限</strong>的，尤其在使用 GQA（Grouped Query Attention）和大模型时，计算操作（GEMM）的耗时远超内存和网络操作。</p>
+</li>
+<li>
+<p><strong>现有系统的效率瓶颈</strong>：现有的 LLM 服务系统（如 vLLM、DeepSpeed-FastGen、TensorRT-LLM）在单个 GPU 上<strong>顺序执行</strong>计算、内存和网络操作，导致大量"流水线气泡"（pipeline bubbles）。每个操作单独看利用率约 80%，但端到端计算利用率仅约 40%。</p>
+</li>
+<li>
+<p><strong>理论最优与实际的差距</strong>：在 LLaMA-2-70B 上，理论最优吞吐量为 1857 tokens/s/GPU，但 vLLM、DeepSpeed-FastGen、TensorRT-LLM 分别只达到最优的 22.0%、22.9%、37.8%。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="intra-device-parallelism">核心思想：设备内并行（Intra-device Parallelism）</h3>
+<p>NanoFlow 的核心洞察是：<strong>既然现代 LLM 推理是计算受限的，那么可以通过将输入拆分为更小的 nano-batch，复制操作以独立处理每个 nano-batch，使不同资源瓶颈的操作（计算、内存、网络）在单个 GPU 内同时执行。</strong></p>
+<p>具体而言，NanoFlow 将原始的 batch（如 2048 个 token）拆分为多个 nano-batch（如 0–768 和 768–2048），每个 nano-batch 对应一个 nano-operation。不同 nano-batch 之间没有数据依赖，因此计算密集型操作和内存密集型操作可以<strong>并行执行</strong>，从而最大化计算利用率。</p>
+<h3 id="1-auto-search">1. 自动化流水线搜索（Auto-search）</h3>
+<p>NanoFlow 使用<strong>混合整数线性规划（MILP）</strong>自动构建设备内流水线，分为两个阶段：</p>
+<h4 id="pipeline-structure-search">阶段一：流水线结构搜索（Pipeline Structure Search）</h4>
+<ul>
+<li><strong>目标</strong>：消除计算操作中的流水线气泡，最小化执行时间</li>
+<li><strong>输入</strong>：dense batch size、操作依赖关系、无干扰内核性能</li>
+<li><strong>输出</strong>：每个 nano-operation 的数量、batch size 和执行顺序</li>
+<li><strong>约束</strong>：</li>
+<li>每个操作至少拆分为 2 个 nano-operation</li>
+<li>batch size 从 128 到 dense batch size，以 128 为步长</li>
+<li>不同资源瓶颈的操作才能重叠（计算操作与内存/网络操作重叠）</li>
+<li>支持网络操作的等价变换（如 AG ↔ AR）</li>
+<li>约 10 分钟即可找到可行解</li>
+</ul>
+<h4 id="refining-the-pipeline">阶段二：流水线精炼（Refining the Pipeline）</h4>
+<ul>
+<li>在阶段一的结构基础上，考虑<strong>内核干扰（kernel interference）</strong></li>
+<li>为每个 nano-operation 分配 GPU 资源利用率 R（0–1.0）</li>
+<li>使用干扰性能映射表（Table 3）将 R 映射到实际性能 P</li>
+<li>例如：将 GEMM 性能从 1.0 降到 0.8（R=0.8），可以换得 GEMV 性能 0.3（P=0.3）</li>
+<li>最终使并发内核的 R 之和不超过 1.0</li>
+</ul>
+<h3 id="2">2. 内核性能分析与干扰建模</h3>
+<ul>
+<li>对 GEMM（计算密集）、GEMV（内存密集）和网络内核进行性能分析</li>
+<li>通过配对干扰分析建立 R→P 映射表</li>
+<li>敏感性分析表明 R→P 映射在不同 GEMM shape 下保持一致（标准差 &lt; 5%）</li>
+</ul>
+<h3 id="3-runtime">3. 运行时系统（Runtime）</h3>
+<h4 id="request-scheduling">请求调度（Request Scheduling）</h4>
+<ul>
+<li>优先处理未完成的 decode 请求</li>
+<li>按 token 粒度 chunked prefill，精确填充到最佳 dense batch size</li>
+<li>使用常量 dense batch size 降低尾延迟（99th 百分位延迟仅为平均延迟的 1.07×）</li>
+<li><strong>异步调度</strong>：在当前迭代结束前就开始为下一迭代形成 batch，利用平均 decode 长度远大于 100 的特性，额外一个 decode token 的开销 &lt; 1%</li>
+</ul>
+<h4 id="kv-cache">KV-cache 管理</h4>
+<ul>
+<li><strong>同时卸载</strong>：在每层 Transformer 的 KQV 生成后，立即将 KV 向量卸载到 CPU 内存（设备主机拷贝在 FFN 的计算密集操作期间执行，几乎不消耗 GPU 资源）</li>
+<li>使用 LRU 策略管理 CPU 内存和 SSD 的分层缓存</li>
+<li>支持 PagedAttention，使用 scatter 技术实现 7–10× 更高的 host-to-device 带宽</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">硬件与基线</h3>
+<ul>
+<li><strong>硬件</strong>：8× NVIDIA A100 80GB SXM GPU（NVLink 互联）</li>
+<li><strong>模型</strong>：LLaMA-2-70B（主要评估）、LLaMA-3-70B、LLaMA-3-8B、Qwen2-72B、Deepseek-67B、Mixtral 8×7B</li>
+<li><strong>基线</strong>：vLLM、DeepSpeed-FastGen、TensorRT-LLM</li>
+<li><strong>数据集</strong>：Splitwise、LMSYS-Chat-1M、ShareGPT</li>
+</ul>
+<h3 id="_7">吞吐量</h3>
+<ul>
+<li><strong>LLaMA-2-70B</strong>：NanoFlow 达到最优吞吐量的 <strong>68.5%</strong></li>
+<li>恒定长度输入/输出：平均 <strong>2.62×</strong> vLLM、<strong>2.78×</strong> DeepSpeed-FastGen、<strong>1.73×</strong> TensorRT-LLM</li>
+<li>数据集输入/输出：平均 <strong>4.18×</strong> vLLM、<strong>3.45×</strong> DeepSpeed-FastGen、<strong>1.91×</strong> TensorRT-LLM</li>
+<li><strong>其他模型</strong>：达到最优吞吐量的 <strong>50%–78.5%</strong>，平均 <strong>2.66×</strong> vLLM</li>
+</ul>
+<h3 id="_8">延迟</h3>
+<ul>
+<li>在低请求率下，NanoFlow 延迟与最优基线 TensorRT-LLM 相当（略高，因为 NanoFlow 使用较大的 dense batch size）</li>
+<li>在高请求率下，NanoFlow 可支持比 TensorRT-LLM 高 <strong>1.64×</strong> 的请求率（在 200ms SLO 约束内）</li>
+<li>尾延迟良好：99th 百分位延迟仅为平均延迟的 <strong>1.07×</strong></li>
+</ul>
+<h3 id="_9">消融实验</h3>
+<ul>
+<li>仅使用 nano-batch（不重叠）会导致性能下降 <strong>13.2%</strong></li>
+<li>重叠网络操作带来 <strong>1.07×</strong> 加速，重叠内存操作带来 <strong>1.17×</strong> 加速</li>
+<li>KV-cache 卸载引入约 <strong>3%</strong> 的性能损失，但可减少多轮对话 <strong>3.02×</strong> 的计算</li>
+</ul>
+<h3 id="_10">资源利用率</h3>
+<ul>
+<li>NanoFlow 实现了 <strong>68.5%</strong> 的平均计算利用率</li>
+<li>相比非重叠基线，NanoFlow 可同时利用计算、内存和网络资源</li>
+</ul>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>系统性分析</strong>：首次严格证明现代 LLM 推理是计算受限而非内存受限的，为设备内并行提供了理论基础</li>
+<li><strong>自动化搜索</strong>：通过 MILP 自动搜索最优的 nano-batch 管线，无需手动调优，且搜索时间约 10 分钟</li>
+<li><strong>通用性</strong>：适用于不同架构（Dense、MoE）和不同规模（8B、70B）的模型，自动适应模型变化</li>
+<li><strong>显著提升</strong>：相比 SOTA 系统提升 <strong>1.91×</strong>（平均），理论最优的 50%–72%</li>
+<li><strong>低延迟开销</strong>：利用异步调度和常量 dense batch size 保持良好的延迟特性（尾延迟仅 1.07× 平均延迟）</li>
+<li><strong>与现有技术兼容</strong>：可轻松集成新的内核实现（如量化、PagedAttention 等），只需重新分析性能和干扰</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>需要 GPU 资源分析</strong>：auto-search 依赖于内核性能分析，当硬件或模型发生变化时需要重新搜索（虽然搜索时间较短）</li>
+<li><strong>计算利用率仍有提升空间</strong>：由于内核干扰，NanoFlow 仅达到 68.5% 的最优吞吐量，仍有 30%+ 的差距</li>
+<li><strong>单 GPU 内存带宽未充分利用</strong>：NanoFlow 的核心假设是计算受限，在内存带宽更受限的场景（如长 decode 短 prefill）下可能优势减小</li>
+<li><strong>内存和网络干扰建模简化</strong>：目前仅使用 pairwise（计算-内存、计算-网络）干扰分析，未考虑三者同时重叠的情况</li>
+<li><strong>依赖 NVIDIA GPU</strong>：实现基于 CUDA，不直接支持其他硬件平台</li>
+<li><strong>大规模部署复杂性</strong>：需要配合控制平面进行自动扩缩容和负载均衡，实际部署的复杂度较高</li>
+<li><strong>不支持非 NVIDIA GPU 或自定义加速器</strong>：虽提及对不同硬件的理论分析（Table 1），但实现仍局限于 NVIDIA GPU</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="overlapintra-device-parallelism">关键词：overlap（重叠）、intra-device parallelism（设备内并行）</h3>
+<ol>
+<li>
+<p><strong>LLM 推理系统优化</strong>：NanoFlow 属于 LLM 服务系统领域，与 vLLM、SGLang、DeepSpeed-FastGen、TensorRT-LLM 等同属一类，但其操作级并行的思路是独特的。</p>
+</li>
+<li>
+<p><strong>操作级并行（Operation-level Parallelism）</strong>：与 Rammer、Unity、ASPEN、Welder 等工作相关，但 NanoFlow 针对 LLM 推理的异构资源瓶颈（计算、内存、网络）进行了专门设计。</p>
+</li>
+<li>
+<p><strong>自动化调度与搜索</strong>：NanoFlow 的两阶段 MILP 搜索方法与其他自动并行化工作（如 Alpa）类似，但专注于设备内而非设备间的流水线。</p>
+</li>
+<li>
+<p><strong>推理吞吐量优化</strong>：与 PagedAttention（内存管理）、chunked prefill（Sarathi-Serve）、phase splitting（DistServe、Splitwise）等优化互补。</p>
+</li>
+<li>
+<p><strong>KV-cache 管理</strong>：NanoFlow 的 KV-cache 卸载与 Quest（query-aware sparsity）、FlexGen 等工作相关，提供了一种异步卸载策略。</p>
+</li>
+<li>
+<p><strong>推理效率（Efficient Inference）</strong>：属于 EfficientPaper 关注的高效推理方向，特别是通过系统层面（而非模型层面）的优化提升吞吐量。</p>
+</li>
+</ol>
+<h3 id="_13">与其他论文的关联</h3>
+<table>
+<thead>
+<tr>
+<th>相关论文</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023/PagedAttention</td>
+<td>NanoFlow 依赖 PagedAttention 进行 KV-cache 管理</td>
+</tr>
+<tr>
+<td>SGLang</td>
+<td>NanoFlow 在讨论中提及 SGLang，作为现有系统之一</td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td>主要基线，NanoFlow 实现了显著的吞吐量提升</td>
+</tr>
+<tr>
+<td>TensorRT-LLM</td>
+<td>主要基线，NanoFlow 在高负载下表现更优</td>
+</tr>
+<tr>
+<td>Splitwise</td>
+<td>数据集来源之一，NanoFlow 评估中使用</td>
+</tr>
+<tr>
+<td>Sarathi-Serve</td>
+<td>NanoFlow 使用了 chunked prefill 的思路</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <p><a class="glightbox" href="../pipeline.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../pipeline.jpg" /></a></p>
 <p><a class="glightbox" href="../fig6.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig6.jpg" /></a></p>
               

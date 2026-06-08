@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,21 +161,266 @@
   
                 <h1 id="pod-attention-unlocking-full-prefill-decode-overlap-for-faster-llm-inference">POD-Attention: Unlocking Full Prefill-Decode Overlap for Faster LLM Inference</h1>
 <p><a class="glightbox" href="../fig2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.png" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Each request in LLM inference goes through two phases: compute-bound prefill
-and memory-bandwidth-bound decode. To improve GPU utilization, recent systems
-use hybrid batching that combines the prefill and decode phases of different
-requests into the same batch. This approach optimizes linear operations but
-remains inefficient for attention computation because existing attention
-kernels specialize execution independently for the prefill and decode phases.
-  In this paper, we present POD-Attention - the first GPU kernel that
-efficiently computes attention for hybrid batches. POD-Attention aims to
-maximize the utilization of both compute and memory bandwidth by carefully
-allocating the GPU's resources such that prefill and decode operations happen
-concurrently on the same multiprocessor. POD-Attention speeds up attention
-computation by up to <script type="math/tex">59\%</script> (mean <script type="math/tex">28\%</script>), enabling higher throughput and lower
-latency LLM inference compared to the use of independently optimized prefill
-and decode attention kernels.</p>
+<blockquote>
+<p>本文由 AI Agent（Hermes Agent）自动生成，基于 arXiv 论文全文阅读。生成时间：2026-06-04。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>POD-Attention 是首个针对混合批处理（hybrid batching）场景的 GPU 注意力计算内核，通过 SM 感知的 CTA 调度策略将预填充（prefill）和解码（decode）注意力计算融合到同一内核中，同时利用 GPU 的计算和显存带宽资源，实现注意力计算最高 59%（平均 28%）的加速，端到端吞吐量提升最高 22%。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>每个 LLM 推理请求都经历两个阶段：计算密集型的预填充（prefill）和内存带宽密集型的解码（decode）。为了提高 GPU 利用率，最近的系统采用混合批处理（hybrid batching），将不同请求的预填充和解码阶段合并到同一批次中。这种方法优化了线性操作，但对注意力计算仍然效率低下，因为现有的注意力内核独立地为预填充和解码阶段优化执行。</p>
+<p>本文提出 POD-Attention——首个高效计算混合批处理中注意力的 GPU 内核。POD-Attention 旨在通过精心分配 GPU 资源，使预填充和解码操作在同一个多处理器上并发执行，从而最大化计算和内存带宽的利用率。POD-Attention 将注意力计算加速最高 59%（平均 28%），相比独立优化的预填充和解码注意力内核，实现了更高的吞吐量和更低的延迟 LLM 推理。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="llm">LLM 推理的资源利用挑战</h3>
+<p>LLM 推理过程中，每个请求经历两个截然不同的阶段：</p>
+<ol>
+<li><strong>预填充阶段（Prefill）</strong>：高度并行，计算密集型，处理用户输入的所有 token。</li>
+<li><strong>解码阶段（Decode）</strong>：内存带宽密集型，逐个自回归生成输出 token。</li>
+</ol>
+<p>理想系统需要同时最大化计算和内存带宽的利用，但由于预填充和解码在同一请求中交替出现，实现这一点非常困难。</p>
+<h3 id="hybrid-batching">混合批处理（Hybrid Batching）的兴起</h3>
+<p>Sarathi-Serve 等系统采用混合批处理策略，将长提示（prompt）分割为多个小块（chunk），每个迭代处理一个预填充块和多个解码 token。这种方法避免了生成停顿（generation stalls），但带来了一个关键问题：<strong>注意力计算在混合批处理中仍使用独立优化的内核</strong>。</p>
+<h3 id="_4">现有方法的不足</h3>
+<ul>
+<li>当上下文长度增加时，注意力计算占比超过 60%（16K 上下文时），成为性能瓶颈。</li>
+<li>独立优化的预填充和解码内核导致 GPU 资源利用不均衡：预填充内核的内存带宽利用率低于 5%，解码内核的计算利用率低于 10%。</li>
+<li>预填充和解码内核在混合批处理中紧密相邻执行，导致同一资源的需求交替剧烈波动。</li>
+</ul>
+<hr />
+<h2 id="_5">方法（技术细节）</h2>
+<h3 id="cta-">核心思想：CTA-级并行融合</h3>
+<p>POD-Attention 选择在 CTA（Cooperative Thread Array）级别进行并行融合，而非更细粒度的 warp 级或 intra-thread 级，原因在于：</p>
+<ol>
+<li><strong>独立性</strong>：不同 CTA 可以独立开始和完成，避免互相影响。</li>
+<li><strong>同步隔离</strong>：同步屏障仅影响其所在 CTA，不影响其他计算部分。</li>
+<li><strong>编程简单性</strong>：比 warp 级融合更容易实现。</li>
+</ol>
+<h3 id="sm-cta-sm-aware-cta-scheduling">SM 感知的 CTA 调度（SM-aware CTA Scheduling）</h3>
+<p>这是 POD-Attention 的核心创新。每个 CTA 在被调度到 SM（Streaming Multiprocessor）<strong>之后</strong>才决定执行预填充还是解码操作，通过运行时绑定（runtime operation binding）实现。</p>
+<p>具体机制：</p>
+<ol>
+<li><strong>SM ID 读取</strong>：CTA 的 leader 线程通过内联汇编读取硬件 SM ID 寄存器（<code>%smid</code>）。</li>
+<li><strong>票号分配</strong>：通过原子操作（<code>atomicAdd</code>）获取票号，根据预填充/解码的比例决定执行哪个操作。</li>
+<li><strong>CTA ID 分配</strong>：获取对应操作的 CTA ID，若超过该操作的最大 CTA 数则切换操作。</li>
+<li><strong>共享内存通信</strong>：将分配结果写入共享内存，所有线程通过同步屏障获取。</li>
+</ol>
+<p>两种调度策略：
+- <strong>50:50 策略</strong>：后续 CTA 交替执行预填充和解码。
+- <strong>按比例分配（Proportional）</strong>：根据预填充和解码 CTA 的总比例分配，通常性能更好（最高 14% 优势）。</p>
+<h3 id="_6">性能优化</h3>
+<h4 id="1-tile">1. Tile 尺寸优化</h4>
+<ul>
+<li><strong>解码使用最小 tile 尺寸</strong>（QSL 维度为 16），这是 CUTLASS 支持的 A100 tensor 操作最小尺寸。</li>
+<li>将解码的计算利用率降至约 10%，释放 tensor core 资源给预填充。</li>
+<li>预填充仍使用较大 tile 尺寸以充分利用 tensor core。</li>
+</ul>
+<h4 id="2-cta">2. 并发 CTA 数量</h4>
+<ul>
+<li>支持每 SM 2 个 CTA（预填充主导）和 4 个 CTA（其他情况）两种配置。</li>
+<li>更多 CTA = 更多调度机会，但每个 CTA 资源更少。</li>
+<li>POD-Attention 在运行时自动选择最优配置。</li>
+</ul>
+<h4 id="3-ctavirtual-decode-ctas">3. 虚拟解码 CTA（Virtual Decode CTAs）</h4>
+<ul>
+<li>将解码 CTA 拆分为虚拟 CTA，每个虚拟 CTA 仅包含一个 warp。</li>
+<li>这样解码的共享内存使用量与预填充相近，避免解码过度分配共享内存。</li>
+</ul>
+<h4 id="4">4. 限制预填充分割数</h4>
+<ul>
+<li>在融合内核中，过多的 KV 维度分割会导致预填充和解码 CTA 之间的内存带宽竞争。</li>
+<li>限制分割数最多填满两个完整 wave（实验确定），平衡并行度和带宽竞争。</li>
+</ul>
+<h3 id="_7">实现细节</h3>
+<ul>
+<li>基于 FlashAttention v2.6.1 构建。</li>
+<li>将预填充和解码内核转换为通用设备函数，移除对 CUDA 提供的 CTA ID（blockIdx）的引用。</li>
+<li>构建包装内核，根据计算的 CTA ID 调用对应函数。</li>
+<li>共享内存使用量在内核启动时固定，手动调优预填充和解码的共享内存使用。</li>
+<li>实现虚拟 CTA 时，将解码函数中的 CTA 级同步屏障替换为 warp 级同步屏障。</li>
+</ul>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">评估环境</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>GPU</th>
+<th>Q Heads</th>
+<th>KV Heads</th>
+<th>Layers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yi-6B</td>
+<td>1×A100</td>
+<td>32</td>
+<td>4</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Llama-2-7B</td>
+<td>2×A100</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Llama-3-8B</td>
+<td>2×A100</td>
+<td>32</td>
+<td>8</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">注意力计算加速</h3>
+<ul>
+<li><strong>最高加速 59%，平均 28%</strong>（相比 FA_Serial）。</li>
+<li>在 25% 的情况下，性能接近理论峰值（差距 &lt;10%），表明近乎完美的重叠。</li>
+<li>从不劣于串行执行（其他方法在某些情况下会变慢）。</li>
+<li>能耗降低最高 35%（平均 20.5%）。</li>
+</ul>
+<h3 id="_11">与基线对比</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>中位加速</th>
+<th>最大加速</th>
+<th>是否可能变慢</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FA_Streams</td>
+<td>有限</td>
+<td>~20%（有量化时）</td>
+<td>是（同步开销）</td>
+</tr>
+<tr>
+<td>FA_HFuse</td>
+<td>11%</td>
+<td>—</td>
+<td>是（最高 -13%）</td>
+</tr>
+<tr>
+<td>FI_Batched</td>
+<td>短上下文好</td>
+<td>—</td>
+<td>是（高上下文最高 -40%）</td>
+</tr>
+<tr>
+<td><strong>POD-Attention</strong></td>
+<td><strong>28%</strong></td>
+<td><strong>59%</strong></td>
+<td><strong>否</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">端到端推理性能</h3>
+<h4 id="_13">离线推理吞吐量</h4>
+<ul>
+<li>Sarathi+POD vs Sarathi：提升 19%~22%。</li>
+<li>Sarathi+POD vs vLLM：提升 12%~27%。</li>
+</ul>
+<h4 id="_14">在线推理延迟</h4>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>改善效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TTFT (P50)</td>
+<td>Sarathi+POD 降低最高 4.3× vs Sarathi</td>
+</tr>
+<tr>
+<td>TTFT (P99)</td>
+<td>最高降低 4.3×</td>
+</tr>
+<tr>
+<td>TBT (P99)</td>
+<td>降低 10%~20% vs Sarathi</td>
+</tr>
+<tr>
+<td>请求延迟 (P99)</td>
+<td>降低最高 42% vs vLLM</td>
+</tr>
+<tr>
+<td>停顿率</td>
+<td>200ms SLO 从 99.95% 降至 3.17%（vLLM → Sarathi+POD）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">消融实验</h3>
+<ul>
+<li><strong>CTA 数量</strong>：预填充主导时 2 CTA/SM 更好，解码主导时 4 CTA/SM 更好。</li>
+<li><strong>调度策略</strong>：按比例分配比 50:50 最高好 14%。</li>
+<li><strong>限制预填充分割</strong>：在长上下文场景中，限制分割数使 POD-Attention 相对 FA_Serial 的加速翻倍。</li>
+<li><strong>工作负载敏感性</strong>：P:D 比率在 12~18 之间时收益最大，因为混合批处理最多。</li>
+</ul>
+<hr />
+<h2 id="_16">优势</h2>
+<ol>
+<li><strong>首个混合批处理注意力内核</strong>：开创性地将预填充和解码注意力融合到单一内核。</li>
+<li><strong>不依赖专用硬件</strong>：基于现有 FlashAttention 内核构建，无需 Hopper 架构等新特性。</li>
+<li><strong>SM 感知调度</strong>：通过运行时 CTA 绑定，无需预知硬件调度器行为即可保证 SM 级共存。</li>
+<li><strong>通用性好</strong>：在所有测试模型和配置上都优于串行执行，从不产生性能退化。</li>
+<li><strong>降低能耗</strong>：注意力计算能耗降低最高 35%。</li>
+<li><strong>显著降低尾延迟</strong>：TTFT、TBT、请求延迟等关键指标均显著改善。</li>
+<li><strong>与 Sarathi-Serve 无缝集成</strong>：可直接嵌入现有推理系统。</li>
+</ol>
+<hr />
+<h2 id="_17">局限</h2>
+<ol>
+<li><strong>基于 FlashAttention v2.6.1</strong>：论文发表时 FA-3（基于 Hopper 架构）正在开发中，POD-Attention 未支持 Hopper 架构的异步 tensor core、TMA 等新特性。</li>
+<li><strong>仅限 NVIDIA GPU</strong>：依赖 NVIDIA GPU 的硬件寄存器（<code>%smid</code>）和 CTA 调度器，无法直接迁移到 AMD 或其他 GPU。</li>
+<li><strong>需要两个 GPU 的实验</strong>：某些实验（如 Llama-2-7B 和 Llama-3-8B 的离线推理）需要 2 个 A100 GPU，单 GPU 部分结果可能不完整。</li>
+<li><strong>对小上下文长度场景改善有限</strong>：当上下文长度较短时，注意力计算占比小，收益有限。</li>
+<li><strong>配置和调优复杂</strong>：需要根据工作负载特性（P:D 比率、上下文长度、批处理大小）选择最优的 CTA 配置、调度策略和 tile 尺寸。</li>
+<li><strong>与 NanoFlow 等方案互补而非替代</strong>：NanoFlow 适合小上下文场景（通过操作级拆分），POD-Attention 适合长上下文场景，两者针对不同场景。</li>
+<li><strong>对批处理大小和上下文长度的敏感性</strong>：在纯预填充或纯解码主导的工作负载中收益有限（P:D 比率 &lt;12 或 &gt;18）。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li>
+<p><strong>Attention 优化</strong>：与 FlashAttention、FlashInfer、FlashDecoding 等注意力优化内核属于同一研究方向，POD-Attention 的融合思路可扩展到更多注意力变体（如多头注意力、多查询注意力等）。</p>
+</li>
+<li>
+<p><strong>LLM 推理系统优化</strong>：与 Sarathi-Serve、vLLM、Orca、DeepSpeed-FastGen 等推理系统优化方向紧密相关，POD-Attention 可作为这些系统中的注意力后端。</p>
+</li>
+<li>
+<p><strong>GPU 内核融合</strong>：与 HFuse、ISPA、Elastic Kernels 等 GPU 内核融合技术相关，POD-Attention 的 SM 感知 CTA 调度策略是一种通用的 GPU 资源管理技术。</p>
+</li>
+<li>
+<p><strong>混合批处理调度</strong>：与 Sarathi-Serve 的 chunked-prefill 策略互补，POD-Attention 解决了混合批处理中注意力计算的效率问题。</p>
+</li>
+<li>
+<p><strong>硬件协同设计</strong>：POD-Attention 对 Hopper 架构（FA-3）的扩展是未来方向，与 NVIDIA 新架构的适配可进一步提升性能。</p>
+</li>
+<li>
+<p><strong>能耗优化</strong>：POD-Attention 在降低能耗方面也有显著效果（最高 35%），可与绿色 AI、节能推理等研究方向结合。</p>
+</li>
+<li>
+<p><strong>长上下文 LLM 服务</strong>：随着上下文长度不断增加（16K+），POD-Attention 的价值愈发显著，与长上下文优化研究（如分块注意力、稀疏注意力）密切相关。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_18">参考信息</h2>
+<ul>
+<li><strong>论文链接</strong>：http://arxiv.org/abs/2410.18038v2</li>
+<li><strong>代码仓库</strong>：https://github.com/microsoft/vattention/tree/main/pod_attn</li>
+<li><strong>发表会议</strong>：ASPLOS 2025</li>
+<li><strong>作者</strong>：Aditya K Kamath, Ramya Prabhu, Jayashree Mohan, Simon Peter, Ramachandran Ramjee, Ashish Panwar</li>
+<li><strong>机构</strong>：University of Washington, Microsoft Research</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

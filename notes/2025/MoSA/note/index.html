@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,25 +161,275 @@
   
                 <h1 id="mixture-of-sparse-attention-content-based-learnable-sparse-attention-via-expert-choice-routing">Mixture of Sparse Attention: Content-Based Learnable Sparse Attention via Expert-Choice Routing</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Recent advances in large language models highlighted the excessive quadratic
-cost of self-attention. Despite the significant research efforts, subquadratic
-attention methods still suffer from inferior performance in practice. We
-hypothesize that dynamic, learned content-based sparsity can lead to more
-efficient attention mechanisms. We present Mixture of Sparse Attention (MoSA),
-a novel approach inspired by Mixture of Experts (MoE) with expert choice
-routing. MoSA dynamically selects tokens for each attention head, allowing
-arbitrary sparse attention patterns. By selecting <script type="math/tex">k</script> tokens from a sequence of
-length <script type="math/tex">T</script>, MoSA reduces the computational complexity of each attention head
-from <script type="math/tex">O(T^2)</script> to <script type="math/tex">O(k^2 + T)</script>. This enables using more heads within the same
-computational budget, allowing higher specialization. We show that among the
-tested sparse attention variants, MoSA is the only one that can outperform the
-dense baseline, sometimes with up to 27% better perplexity for an identical
-compute budget. MoSA can also reduce the resource usage compared to dense
-self-attention. Despite using torch implementation without an optimized kernel,
-perplexity-matched MoSA models are simultaneously faster in wall-clock time,
-require less memory for training, and drastically reduce the size of the
-KV-cache compared to the dense transformer baselines.</p>
+<blockquote>
+<p><strong>本文由 AI Agent 自动生成，仅供参考。生成时间：2025年。</strong></p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>MoSA 提出了一种基于专家选择路由（Expert-Choice Routing）的可学习稀疏注意力机制，通过每个注意力头动态选择少量关键 token，将注意力复杂度从 O(T²) 降至 O(k²+T)，在等 FLOP 设定下相比密集注意力基线最高实现 27% 的困惑度提升。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>近年来大语言模型（LLM）的发展突显了自注意力机制的二次计算开销问题。尽管研究者已付出大量努力，次二次复杂度的注意力方法在实践中仍表现欠佳。我们假设，动态的、基于内容的可学习稀疏性能够带来更高效的注意力机制。本文提出<strong>混合稀疏注意力（Mixture of Sparse Attention, MoSA）</strong>，一种受混合专家（MoE）和专家选择路由（Expert-Choice Routing）启发的新方法。MoSA 为每个注意力头动态选择 token，允许任意稀疏注意力模式。通过从长度为 T 的序列中选择 k 个 token，MoSA 将每个注意力头的计算复杂度从 O(T²) 降低到 O(k²+T)。这使得在相同计算预算下可以使用更多的注意力头，从而实现更高的专业化程度。实验表明，在测试的稀疏注意力变体中，MoSA 是唯一能够超越密集基线的方法，有时在相同计算预算下可获得高达 27% 的困惑度改善。MoSA 还能减少资源使用：尽管仅使用 PyTorch 实现而未优化 CUDA 内核，困惑度匹配的 MoSA 模型在训练时同时具备更快的时钟速度、更低的内存占用，以及显著更小的 KV 缓存。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>自注意力的二次开销瓶颈</strong>：Transformer 的自注意力机制在序列长度 T 上具有 O(T²) 的计算和内存复杂度。随着模型规模和上下文窗口不断增长，训练和部署成本急剧上升，KV 缓存的内存占用成为推理瓶颈。</li>
+<li><strong>现有稀疏注意力方法的局限</strong>：</li>
+<li><strong>静态稀疏注意力</strong>（如 Sparse Transformer、Longformer、BigBird）：使用固定的手工定义模式（如块稀疏、步幅注意力），不依赖数据内容，强制将多个 token 压缩为单一表示，损失细粒度信息。</li>
+<li><strong>线性注意力</strong>：通过去除非线性性改变运算顺序来降低注意力成本，但实际性能远不及二次注意力。</li>
+<li><strong>状态空间模型（SSM）</strong>：将整个过去压缩为固定大小的表示，存在信息损失问题，性能仍不如全注意力。</li>
+<li><strong>内容动态稀疏注意力</strong>（如 Routing Transformer）：使用在线 K-means 聚类 token，但由于 K-means 收敛速度极慢，未能展示显著性能提升。</li>
+<li><strong>MoE 在注意力中的应用</strong>：现有将 MoE 应用于注意力的工作（如 MoA、SwitchHead）主要关注减少可物化密集注意力矩阵的数量，而非使注意力矩阵本身稀疏。MoSA 提出了不同的方案：通过为每个头选择少量 token 来实现注意力矩阵的稀疏化。</li>
+<li><strong>核心假设</strong>：动态的、基于内容的可学习稀疏性可以比静态稀疏注意力产生更高效的注意力机制，因为它可以独立地为每个头选择相关 token，避免信息压缩损失。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="21">2.1 核心思想</h3>
+<p>MoSA 受 MoE 的专家选择路由（Expert-Choice Routing）启发：将每个注意力头视为一个"专家"，让每个头自己选择要处理的 token 子集（而非传统 MoE 中 token 选择专家）。这确保了完美的负载均衡，无需复杂的正则化技术。</p>
+<h3 id="22-mosa">2.2 MoSA 的具体实现</h3>
+<p><strong>路由机制</strong>：每个 MoSA 头增加一个路由权重矩阵 <script type="math/tex">W_r \in \mathbb{R}^h</script>。给定输入序列 <script type="math/tex">X \in \mathbb{R}^{T \times h}</script>，路由器计算每个 token 的选择分数：</p>
+<p>
+<script type="math/tex; mode=display">r = \sigma(X W_r) \in \mathbb{R}^T</script>
+</p>
+<p>其中 <script type="math/tex">\sigma</script> 为非竞争性 sigmoid 函数（使用 <script type="math/tex">\sigma</script>-MoE 的设计）。</p>
+<p><strong>Top-K 选择</strong>：使用专家选择路由，从 T 个 token 中选出 k 个：</p>
+<p>
+<script type="math/tex; mode=display">r_{topk}, I = \text{TopK}(r, k)</script>
+</p>
+<p>其中 <script type="math/tex">I \in \{0, \ldots, T-1\}^k</script> 为所选 token 的索引。</p>
+<p><strong>稀疏注意力计算</strong>：仅对选出的 k 个 token 计算 query、key、value：</p>
+<p>
+<script type="math/tex; mode=display">X_s = (X_{I_1}, X_{I_2}, \ldots, X_{I_k}) \in \mathbb{R}^{k \times h}</script>
+</p>
+<p>
+<script type="math/tex; mode=display">Q = X_s W_Q, \quad K = X_s W_K, \quad V = X_s W_V</script>
+</p>
+<p>因果掩码也需要适应：<script type="math/tex">M_{i,j} = 0 \Leftrightarrow I_i \geq I_j</script>，否则为 <script type="math/tex">-\infty</script>。</p>
+<p>
+<script type="math/tex; mode=display">A = \text{Attention}(Q, K, V, M)</script>
+</p>
+<p><strong>输出与路由权重</strong>：注意力输出乘以路由权重 <script type="math/tex">r</script>，然后变换回原始序列位置：</p>
+<p>
+<script type="math/tex; mode=display">X_o = \text{diag}(r) A W_o \in \mathbb{R}^{k \times h}</script>
+</p>
+<p>
+<script type="math/tex; mode=display">Y_j = \begin{cases} X_{o_i} & \text{if } j = I_i \text{ for some } i \in \{1, \ldots, k\} \\ 0 & \text{otherwise} \end{cases}</script>
+</p>
+<p>路由权重的引入确保 token 的贡献与路由器输出成正比，且路由器可通过梯度下降学习。</p>
+<p><strong>复杂度降低</strong>：每个 MoSA 头将计算从 O(T²) 降至 O(k²+T)，其中 2hT 为路由评分开销，h'k 为输出缩放开销。当 k &lt;&lt; T 时，节省显著。</p>
+<h3 id="23-hybridization">2.3 混合架构（Hybridization）</h3>
+<p>MoSA 与 4 个密集注意力头组合使用（通过实验验证 4 个是最佳数量）：
+- 密集头保证训练稳定性（纯 MoSA 模型因路由与注意力同时学习的不稳定性而性能下降）
+- MoSA 头处理稀疏的全局依赖关系
+- 密集头处理局部上下文</p>
+<h3 id="24">2.4 位置编码</h3>
+<p>使用旋转位置编码（RoPE），但需要适配以反映 token 在原始序列中的位置（而非选出的子集中的位置）。</p>
+<h3 id="25-routing-transformer">2.5 与 Routing Transformer 的关键区别</h3>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>MoSA</th>
+<th>Routing Transformer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择机制</td>
+<td>通过可学习路由函数直接优化</td>
+<td>在线 K-means 聚类（收敛慢）</td>
+</tr>
+<tr>
+<td>Q/K 变换</td>
+<td>Q 和 K 独立投影</td>
+<td>需要 W_Q = W_K</td>
+</tr>
+<tr>
+<td>投影计算</td>
+<td>仅对选出的 token 计算 Q/K/V/O</td>
+<td>需要计算所有 token 的 Q/K/V/O</td>
+</tr>
+<tr>
+<td>头专业化</td>
+<td>每个头有独立的权重</td>
+<td>所有簇共享相同的变换</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td>专家选择路由天然保证完美均衡</td>
+<td>需要额外机制</td>
+</tr>
+</tbody>
+</table>
+<h3 id="26-moaswitchhead">2.6 与 MoA、SwitchHead 等的关系</h3>
+<ul>
+<li><strong>MoA（Mixture-of-Attention Heads）</strong>：为每个 token 选择 k 个查询变换，共享单一 K/V 投影（类似 MQA）。MoSA 选择 token（而非查询变换），且每个头有独立的 Q/K/V/O 投影。</li>
+<li><strong>SwitchHead</strong>：减少注意力头数量，通过 MoE 补偿。与 MoSA 正交，可结合使用。</li>
+<li><strong>MoD（Mixture-of-Depths）</strong>：选择输入是否通过整个 transformer 块。MoSA 为每个头选择 token，以分布式方式处理句子。</li>
+</ul>
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>数据集</strong>：C4，训练 100k 批次，批次大小 B=64，序列长度 T=1024（约 6.5B token）</li>
+<li><strong>分词器</strong>：SentencePiece，词汇量 8000</li>
+<li><strong>优化器</strong>：Adam，学习率 0.00025，梯度裁剪 0.25，4k 步线性预热</li>
+<li><strong>模型规模</strong>：Tiny（28M）、Small（113M）、Medium（210M）、Large（516M）</li>
+<li><strong>基准方法</strong>：Dense（密集注意力）、Fixed（固定稀疏注意力）、Routing（Routing Transformer）</li>
+</ul>
+<h3 id="32-isoflop">3.2 主要结果（IsoFLOP 设定）</h3>
+<table>
+<thead>
+<tr>
+<th>模型规模</th>
+<th>Dense PPL</th>
+<th>MoSA 最佳 PPL</th>
+<th>Fixed 最佳 PPL</th>
+<th>Routing 最佳 PPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiny (28M)</td>
+<td>22.46</td>
+<td>16.39 (<strong>-27.0%</strong>)</td>
+<td>23.28 (+3.7%)</td>
+<td>23.33 (+3.9%)</td>
+</tr>
+<tr>
+<td>Small (113M)</td>
+<td>16.01</td>
+<td>12.85 (<strong>-19.7%</strong>)</td>
+<td>16.51 (+3.1%)</td>
+<td>16.43 (+2.6%)</td>
+</tr>
+<tr>
+<td>Medium (210M)</td>
+<td>13.95</td>
+<td>11.06 (<strong>-20.7%</strong>)</td>
+<td>14.35 (+2.9%)</td>
+<td>14.21 (+1.9%)</td>
+</tr>
+<tr>
+<td>Large (516M)</td>
+<td>12.20</td>
+<td>10.58 (<strong>-13.3%</strong>)</td>
+<td>12.40 (+1.6%)</td>
+<td>12.24 (+0.3%)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>MoSA 是<strong>唯一</strong>能超越密集基线的稀疏注意力方法</li>
+<li>固定稀疏注意力和 Routing Attention 在所有稀疏度下均劣于密集基线</li>
+<li>MoSA 困惑度随稀疏度增加单调下降，在 ρ ≈ 64 附近达到最优，之后开始下降（"U"形曲线）</li>
+<li>MoSA 在某些配置下甚至在<strong>参数匹配</strong>设定下也更高效：Medium 模型 ρ=8（442M 参数，PPL 12.16）优于 Large 密集基线（516M 参数，PPL 12.20）</li>
+</ul>
+<h3 id="33">3.3 资源优化（困惑度匹配设定）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>Dense Heads</th>
+<th>MoSA Heads</th>
+<th>PPL</th>
+<th>时钟速度提升</th>
+<th>内存节省</th>
+<th>KV Cache 缩减</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiny</td>
+<td>9 → 4</td>
+<td>0 → 17</td>
+<td>22.46 → 22.40</td>
+<td>-7.3%</td>
+<td>-10.0%</td>
+<td><strong>-51.1%</strong></td>
+</tr>
+<tr>
+<td>Small</td>
+<td>9 → 4</td>
+<td>0 → 14</td>
+<td>16.02 → 16.01</td>
+<td>-2.1%</td>
+<td>-3.1%</td>
+<td><strong>-52.2%</strong></td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>9 → 4</td>
+<td>0 → 12</td>
+<td>13.94 → 13.76</td>
+<td>-4.4%</td>
+<td>-1.6%</td>
+<td><strong>-52.2%</strong></td>
+</tr>
+<tr>
+<td>Large</td>
+<td>16 → 4</td>
+<td>0 → 16</td>
+<td>12.20 → 12.16</td>
+<td>-12.9%</td>
+<td>-9.2%</td>
+<td><strong>-69.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>MoSA 在困惑度匹配的同时，同时实现了更快的时钟速度、更低的内存消耗</li>
+<li>KV 缓存大幅缩减（超过 50%），对 LLM 推理具有重要实用价值</li>
+<li>仅使用 PyTorch 实现，未优化 CUDA 内核，预计专用内核可带来更大收益</li>
+</ul>
+<h3 id="34">3.4 长序列实验</h3>
+<ul>
+<li>将序列长度从 1024 扩展到 8192，k 保持为 64（ρ 从 16 增至 128）</li>
+<li>与局部注意力（local attention）结合（长序列场景的标准做法）</li>
+<li>MoSA 在所有序列长度下均显著优于其他稀疏方法</li>
+<li>在 T=8192 时，60 个 MoSA 头的 FLOP 仅为 4 个 Routing Transformer 头的 22.99%，但性能更优</li>
+</ul>
+<h3 id="35">3.5 下游任务（零样本）</h3>
+<ul>
+<li>评测任务：LAMBADA、WinoGrande、BLiMP、HellaSwag、PIQA、AI2ARC</li>
+<li>MoSA 在 Tiny/Small/Medium 规模下通常优于其他模型</li>
+<li>BLiMP 例外：由于大多数样本极短（&lt;10 token），MoSA 头的选择与训练分布不匹配</li>
+<li>Large 规模下 Dense 基线表现更好（MoE 架构的专家过专业化问题）</li>
+</ul>
+<h2 id="_7">优势</h2>
+<ol>
+<li><strong>唯一能超越密集基线的稀疏注意力</strong>：在 IsoFLOP 设定下，MoSA 是唯一能持续优于密集注意力的方法</li>
+<li><strong>显著的性能提升</strong>：最高可达 27% 的困惑度改善（Tiny 模型）</li>
+<li><strong>多维度效率提升</strong>：在困惑度匹配设定下，同时降低时钟时间、内存和 KV 缓存</li>
+<li><strong>KV 缓存大幅缩减</strong>：超过 50% 的 KV 缓存缩减，对 LLM 推理部署至关重要</li>
+<li><strong>无 CUDA 优化的纯 PyTorch 实现</strong>：已经展示出效率增益，专用内核将带来更大提升</li>
+<li><strong>长序列优势</strong>：在长序列（最高 8192 token）场景下保持优于其他稀疏方法</li>
+<li><strong>可扩展性</strong>：在 28M 到 516M 的多种规模下均有效</li>
+<li><strong>天然负载均衡</strong>：专家选择路由保证完美负载均衡，无需额外正则化</li>
+<li><strong>灵活的头专业化</strong>：每个头可以学习独立的稀疏模式和权重，实现高度专业化</li>
+</ol>
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>非自回归特性</strong>：由于使用 top-k 选择，MoSA 本质上是非自回归的，需要适配才能直接应用于自回归场景（如推理时的逐 token 生成）。目前采用训练时的非自回归选择，推理时的自回归适配需要进一步研究。</li>
+<li><strong>困惑度提升不总是转化为下游任务提升</strong>：</li>
+<li>短序列场景下性能下降（如 BLiMP 数据集中大多数样本 &lt;10 token）</li>
+<li>MoE 架构的专家过专业化问题影响下游任务</li>
+<li><strong>依赖混合架构</strong>：纯 MoSA（无密集头）性能不如密集基线，混合架构（4 个密集头）是必要的，增加了设计复杂度</li>
+<li><strong>训练稳定性</strong>：路由与注意力权重需联合学习，早期训练阶段存在不稳定性，可能陷入恶性循环</li>
+<li><strong>超参数敏感性</strong>：稀疏度 ρ 的选择影响性能，过高稀疏度（如 ρ=256）会导致每个头仅选 4 个 token，不足以捕获复杂关系</li>
+<li><strong>实验规模有限</strong>：最大模型仅 516M，序列长度仅至 8192，未验证在大规模模型和超长序列上的效果</li>
+<li><strong>纯 PyTorch 实现</strong>：未优化的内核实现，预期专用 CUDA 内核可带来更大效率提升</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>结构设计（Structure Design）</strong>：MoSA 通过动态稀疏注意力和专家选择路由，在 Transformer 架构层面实现了计算效率的提升，属于高效模型结构设计的前沿方向</li>
+<li><strong>稀疏注意力机制</strong>：MoSA 与固定稀疏注意力、Routing Transformer、Native Sparse Attention 等工作共同构成稀疏注意力的研究方向，展示了内容动态稀疏的优势</li>
+<li><strong>混合专家（MoE）与注意力机制的结合</strong>：MoSA 将 MoE 的专家选择路由引入注意力层，开辟了 MoE 在注意力机制中的新应用方向</li>
+<li><strong>KV 缓存优化</strong>：MoSA 的 KV 缓存缩减与 ScissorHands、SnapKV、PyramidKV 等后训练稀疏注意力方法互补，可作为训练阶段的 KV 缓存优化方案</li>
+<li><strong>长序列建模</strong>：MoSA 在长序列场景下的优势与 Longformer、BigBird、StreamingLLM 等工作相关，为超长上下文窗口的高效注意力提供了新方案</li>
+<li><strong>等效计算预算下的模型质量提升</strong>：MoSA 的 IsoFLOP 研究方法论对理解稀疏注意力的效率-性能权衡具有重要参考价值</li>
+<li><strong>多模态扩展</strong>：论文提到将 MoSA 应用于视觉 Transformer（Vision Transformer）的潜力，可能在多模态高效架构中发挥作用</li>
+<li><strong>与 MQA/GQA/SwitchHead 的结合</strong>：MoSA 可与这些方法正交结合，进一步提升效率</li>
+</ol>
+<hr />
+<p><em>参考文献</em>：Piękos P, Csordás R, Schmidhuber J. Mixture of Sparse Attention: Content-Based Learnable Sparse Attention via Expert-Choice Routing. arXiv:2505.00315, 2025.
+<em>代码</em>：https://github.com/piotrpiekos/MoSA
+<em>关键词</em>：structure_design</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

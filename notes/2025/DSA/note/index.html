@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,12 +161,246 @@
   
                 <h1 id="dsa">DSA</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
+<blockquote>
+<p>⚠️ <strong>本文由 AI Agent 自动生成</strong>，基于论文原文提取与分析，仅供参考。</p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>DeepSeek Sparse Attention (DSA) 是一种细粒度稀疏注意力机制，通过轻量级索引器（Lightning Indexer）选择性地计算 token 间的注意力，在保持模型性能几乎不变的前提下，将长上下文场景的推理计算复杂度从 O(L²) 降低到 O(Lk)，显著提升了长序列推理效率。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>我们介绍了 DeepSeek-V3.2-Exp，一个实验性的稀疏注意力模型，它通过持续训练为 DeepSeek-V3.1-Terminus 赋予了 DeepSeek Sparse Attention (DSA) 能力。DSA 是一种由轻量级索引器驱动的细粒度稀疏注意力机制，使 DeepSeek-V3.2-Exp 在训练和推理中都实现了显著的效率提升，尤其在长上下文场景中表现突出。模型检查点已发布在 https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
 <ol>
-<li>基于MQA实现，同一个token对应的所有的query共享稀疏位置</li>
-<li>不同token的query可以选择topk的kv进行运算，选择粒度为token-wise，与NSA不同</li>
-<li>加速实现涉及到gather运算，从global memory gather到shared memory上</li>
+<li><strong>长上下文效率瓶颈</strong>：标准 Transformer 的全注意力机制具有 O(L²) 的计算复杂度，随着序列长度增加，计算和内存开销急剧增长，严重制约了长上下文模型的部署。</li>
+<li><strong>已有稀疏注意力的局限</strong>：此前的稀疏注意力方法（如 NSA 等）在粒度、可训练性或硬件对齐方面存在不足，难以在实际大规模模型中实现高效部署。</li>
+<li><strong>MLA 框架下的适配需求</strong>：DeepSeek-V3.1-Terminus 采用了 MLA（Multi-head Latent Attention）架构，需要在 MLA 框架下设计一种与之兼容的稀疏注意力机制，同时支持从已有模型的持续训练。</li>
+<li><strong>推理成本优化</strong>：在实际部署场景（如 H800 GPU 集群）中，长序列推理的 token 成本需要大幅降低，以实现更经济的服务部署。</li>
 </ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1">1. 整体架构</h3>
+<p>DSA 基于 MLA 架构，通过持续训练引入到 DeepSeek-V3.1-Terminus 中，形成 DeepSeek-V3.2-Exp。主要包含两个核心组件：</p>
+<ul>
+<li><strong>Lightning Indexer（轻量级索引器）</strong>：计算 query token 与每个历史 token 之间的索引分数，决定哪些 token 被选中参与注意力计算。</li>
+<li><strong>Fine-grained Token Selection（细粒度 token 选择机制）</strong>：根据索引分数选择 top-k 的 key-value 条目进行注意力计算。</li>
+</ul>
+<h3 id="2-lightning-indexer">2. Lightning Indexer 详细设计</h3>
+<p>索引分数的计算公式为：</p>
+<p>
+<script type="math/tex; mode=display">I_{t,s} = \sum_{j=1}^{H_I} w_{t,j}^I \cdot \text{ReLU}(q_{t,j}^I \cdot k_s^I)</script>
+</p>
+<p>其中：
+- <script type="math/tex">H_I</script>：索引器的头数（较少）
+- <script type="math/tex">q_{t,j}^I \in \mathbb{R}^{d_I}</script> 和 <script type="math/tex">w_{t,j}^I \in \mathbb{R}</script>：由 query token <script type="math/tex">h_t</script> 派生
+- <script type="math/tex">k_s^I \in \mathbb{R}^{d_I}</script>：由历史 token <script type="math/tex">h_s</script> 派生
+- 使用 ReLU 作为激活函数（出于吞吐量考虑）
+- 索引器头数少，可使用 FP8 实现，计算效率极高</p>
+<h3 id="3-token">3. 细粒度 Token 选择</h3>
+<p>给定索引分数 <script type="math/tex">\{I_{t,s}\}</script>，选择 top-k 索引分数对应的 key-value 条目 <script type="math/tex">\{c_s\}</script>，注意力输出为：</p>
+<p>
+<script type="math/tex; mode=display">u_t = \text{Attn}(h_t, \{c_s \mid I_{t,s} \in \text{Top-k}(I_{t,:})\})</script>
+</p>
+<h3 id="4-mla-dsa">4. MLA 下的 DSA 实现</h3>
+<ul>
+<li><strong>MQA 模式</strong>：为保证计算效率，每个 latent vector（MLA 的 key-value 条目）在所有 query head 之间共享，实现类似 MQA 的效果。</li>
+<li><strong>与 NSA 的区别</strong>：DSA 的 token 选择粒度为 token-wise，不同 token 的 query 可以选择不同的 top-k KV，而 NSA 采用不同的选择策略。</li>
+<li><strong>加速实现</strong>：涉及从 global memory gather 到 shared memory 的 gather 运算。</li>
+</ul>
+<h3 id="5">5. 训练策略</h3>
+<h4 id="dense-warm-up">阶段一：Dense Warm-up（密集预热）</h4>
+<ul>
+<li>保持密集注意力，冻结所有模型参数，仅训练 Lightning Indexer</li>
+<li>目标：使索引器输出与主注意力分布对齐</li>
+<li>损失函数：KL 散度 <script type="math/tex">L_I = \sum_t D_{KL}(p_{t,:} \| \text{Softmax}(I_{t,:}))</script>
+</li>
+<li>学习率：<script type="math/tex">10^{-3}</script>
+</li>
+<li>训练 1000 步，每步 16 条 128K 序列，共 2.1B tokens</li>
+</ul>
+<h4 id="sparse-training">阶段二：Sparse Training（稀疏训练）</h4>
+<ul>
+<li>引入细粒度 token 选择机制，优化所有模型参数</li>
+<li>索引器仅考虑被选中的 token 集合 <script type="math/tex">S_t = \{s \mid I_{t,s} \in \text{Top-k}(I_{t,:})\}</script>
+</li>
+<li>索引器输入从计算图中 detach，独立优化</li>
+<li>索引器训练信号仅来自 <script type="math/tex">L_I</script>，主模型仅来自语言建模损失</li>
+<li>每个 query token 选择 2048 个 key-value token</li>
+<li>学习率：<script type="math/tex">7.3 \times 10^{-6}</script>
+</li>
+<li>训练 15000 步，每步 480 条 128K 序列，共 943.7B tokens</li>
+</ul>
+<h4 id="post-training">后训练（Post-Training）</h4>
+<ul>
+<li>继续使用稀疏注意力</li>
+<li>保持与 DeepSeek-V3.1-Terminus 相同的后训练 pipeline、算法和数据</li>
+<li>包含 Specialist Distillation（专家蒸馏）和 Mixed RL Training（混合强化学习训练）</li>
+<li>使用 GRPO 作为 RL 算法</li>
+<li>将推理、agent 和人类对齐训练合并为一个 RL 阶段</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="1_1">1. 模型能力评估</h3>
+<p>与 DeepSeek-V3.1-Terminus 对比：</p>
+<table>
+<thead>
+<tr>
+<th>基准测试</th>
+<th>V3.1-Terminus</th>
+<th>V3.2-Exp (DSA)</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMLU-Pro (EM)</td>
+<td>85.0</td>
+<td>85.0</td>
+<td>持平</td>
+</tr>
+<tr>
+<td>GPQA-Diamond (Pass@1)</td>
+<td>80.7</td>
+<td>79.9</td>
+<td>略低</td>
+</tr>
+<tr>
+<td>HLE (Pass@1)</td>
+<td>21.7</td>
+<td>19.8</td>
+<td>略低</td>
+</tr>
+<tr>
+<td>BrowseComp (Acc.)</td>
+<td>38.5</td>
+<td>40.1</td>
+<td>提升</td>
+</tr>
+<tr>
+<td>BrowseComp_zh (Acc.)</td>
+<td>45.0</td>
+<td>47.9</td>
+<td>提升</td>
+</tr>
+<tr>
+<td>SimpleQA (Acc.)</td>
+<td>96.8</td>
+<td>97.1</td>
+<td>提升</td>
+</tr>
+<tr>
+<td>LiveCodeBench (Pass@1)</td>
+<td>74.9</td>
+<td>74.1</td>
+<td>略低</td>
+</tr>
+<tr>
+<td>Codeforces-Div1 (Rating)</td>
+<td>2046</td>
+<td>2121</td>
+<td>提升</td>
+</tr>
+<tr>
+<td>Aider-Polyglot (Acc.)</td>
+<td>76.1</td>
+<td>74.5</td>
+<td>略低</td>
+</tr>
+<tr>
+<td>SWE Verified (Agent)</td>
+<td>68.4</td>
+<td>67.8</td>
+<td>略低</td>
+</tr>
+<tr>
+<td>SWE-bench Multilingual</td>
+<td>57.8</td>
+<td>57.9</td>
+<td>持平</td>
+</tr>
+<tr>
+<td>Terminal-bench</td>
+<td>36.7</td>
+<td>37.7</td>
+<td>提升</td>
+</tr>
+<tr>
+<td>AIME 2025 (Pass@1)</td>
+<td>88.4</td>
+<td>89.3</td>
+<td>提升</td>
+</tr>
+<tr>
+<td>HMMT 2025 (Pass@1)</td>
+<td>86.1</td>
+<td>83.6</td>
+<td>略低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心结论</strong>：DeepSeek-V3.2-Exp 在引入 DSA 后，未出现显著性能退化。部分基准（GPQA、HLE、HMMT）略低是因为生成的推理 token 更少，使用同等 token 数量的中间检查点时差距可关闭。</p>
+<h3 id="2">2. 训练稳定性</h3>
+<ul>
+<li>在 BrowseComp 和 SWE Verified 上，两个模型的 RL 训练曲线高度对齐</li>
+<li>DSA 引入后训练过程保持稳定，未出现灾难性遗忘</li>
+</ul>
+<h3 id="3">3. 推理成本</h3>
+<ul>
+<li>DSA 将主注意力复杂度从 O(L²) 降低到 O(Lk)</li>
+<li>Lightning Indexer 仍有 O(L²) 复杂度，但远小于 MLA 的计算量</li>
+<li>在 H800 GPU 集群上（租金 2 美元/GPU/小时）：</li>
+<li><strong>Prefilling</strong>：长序列下成本显著降低</li>
+<li><strong>Decoding</strong>：长序列下成本显著降低</li>
+<li>短序列 prefilling 特殊实现 masked MHA 模式模拟 DSA，以提高短上下文效率</li>
+</ul>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>显著的效率提升</strong>：将长上下文推理计算复杂度从 O(L²) 降至 O(Lk)，推理成本大幅降低</li>
+<li><strong>性能几乎无损</strong>：与 Dense 模型（V3.1-Terminus）相比，多项基准测试性能持平或提升，少数基准略低但可解释</li>
+<li><strong>与 MLA 框架兼容</strong>：DSA 可在 MLA 架构下实现，通过 MQA 模式保证计算效率</li>
+<li><strong>训练稳定性</strong>：稀疏注意力的引入未造成训练不稳定，RL 训练曲线高度对齐</li>
+<li><strong>细粒度选择</strong>：token-wise 的粒度选择机制，不同 token 的 query 可选择不同的 KV 子集</li>
+<li><strong>Lightning Indexer 高效</strong>：索引器头数少，支持 FP8 计算，计算开销极低</li>
+<li><strong>可从已有模型持续训练</strong>：从 V3.1-Terminus 检查点出发，通过两阶段训练（Dense Warm-up + Sparse Training）引入 DSA</li>
+<li><strong>开源实现</strong>：提供了 PyTorch 实现代码，便于复现和研究</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>长上下文实际验证不足</strong>：论文提到正在积极进行大规模真实场景测试，当前结果主要基于内部评估，可能存在未发现的局限</li>
+<li><strong>索引器仍具 O(L²) 复杂度</strong>：虽然计算量远小于主注意力，但理论上 Lightning Indexer 仍需 O(L²) 复杂度，对于极长序列可能成为瓶颈</li>
+<li><strong>性能略低的基准</strong>：在 GPQA-Diamond、HLE、HMMT 2025 等基准上性能略低于 V3.1-Terminus，说明稀疏注意力可能对部分推理任务产生轻微影响</li>
+<li><strong>token 选择依赖 Top-k</strong>：top-k 选择策略可能遗漏重要 token，影响注意力质量</li>
+<li><strong>训练开销较大</strong>：Sparse Training 阶段需要 943.7B tokens，训练成本高昂</li>
+<li><strong>短序列效率优化有限</strong>：短序列 prefilling 需要特殊实现 masked MHA 模式，增加了实现复杂度</li>
+<li><strong>与 NSA 的对比不足</strong>：论文未直接与 NSA（Native Sparse Attention）进行详细对比，无法明确 DSA 的相对优势</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏注意力机制</strong>：DSA 与 NSA、Dynamic Sparse Attention 等方法同属稀疏注意力研究方向，可对比分析其效率与性能权衡</li>
+<li><strong>KV Cache 压缩</strong>：DSA 的 token 选择机制本质上是对 KV Cache 的稀疏化，与 KV Cache 压缩、蒸馏等方法相关</li>
+<li><strong>长上下文推理优化</strong>：DSA 为长上下文推理提供了高效解决方案，可与其他长上下文技术（如 Ring Attention、Flash Attention）结合</li>
+<li><strong>结构化剪枝</strong>：DSA 的 token 选择机制可视为一种结构化剪枝，可与模型剪枝、知识蒸馏等方法结合</li>
+<li><strong>Attention Sparsity</strong>：DSA 与 Sliding Window Attention、Dilated Attention 等稀疏注意力方法形成互补，可进行系统对比</li>
+<li><strong>硬件对齐优化</strong>：DSA 的 gather 运算和 FP8 索引器设计体现了硬件对齐的思想，可与 FlashAttention、Triton 等硬件优化方法结合</li>
+<li><strong>MQA/MHA 混合架构</strong>：DSA 在 MLA 框架下使用 MQA 模式，可与 GQA（Grouped Query Attention）等架构变体进行对比研究</li>
+<li><strong>持续训练策略</strong>：DSA 的两阶段训练（Dense Warm-up + Sparse Training）为稀疏注意力的引入提供了范例，可推广到其他稀疏注意力方法</li>
+</ol>
+<hr />
+<h2 id="_8">元数据</h2>
+<ul>
+<li><strong>论文标题</strong>: DeepSeek-V3.2-Exp: Boosting Long-Context Efficiency with DeepSeek Sparse Attention</li>
+<li><strong>作者/机构</strong>: DeepSeek-AI</li>
+<li><strong>发表渠道</strong>: GitHub</li>
+<li><strong>年份</strong>: 2025</li>
+<li><strong>代码</strong>: https://github.com/deepseek-ai/DeepSeek-V3.2-Exp (PyTorch)</li>
+<li><strong>关键词</strong>: sparse_pruning, attention_sparsity, kv_cache_sparse, structure_design</li>
+<li><strong>更新时间</strong>: 2025-06-04</li>
+</ul>
+<hr />
+<p><em>本文由 AI Agent 自动生成，基于论文 PDF 原文提取与分析，仅供参考。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

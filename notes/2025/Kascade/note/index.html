@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,11 +164,225 @@
 <p>Dhruv Deshmukh, Saurabh Goyal, Nipun Kwatra, Ramachandran Ramjee</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Attention is the dominant source of latency during long-context LLM inference, an increasingly popular workload with reasoning models and RAG. We propose Kascade, a training-free sparse attention method that leverages known observations such as 1) post-softmax attention is intrinsically sparse, and 2) the identity of high-weight keys is stable across nearby layers. Kascade computes exact Top-k indices in a small set of anchor layers, then reuses those indices in intermediate reuse layers. The anchor layers are selected algorithmically, via a dynamic-programming objective that maximizes cross-layer similarity over a development set, allowing easy deployment across models. The method incorporates efficient implementation constraints (e.g. tile-level operations), across both prefill and decode attention. The Top-k selection and reuse in Kascade is head-aware and we show in our experiments that this is critical for high accuracy. Kascade achieves up to 4.1x speedup in decode attention and 2.2x speedup in prefill attention over FlashAttention-3 baseline on H100 GPUs while closely matching dense attention accuracy on long-context benchmarks such as LongBench and AIME-24.</p>
+<h2 id="_1">一句话总结</h2>
+<p>Kascade 是一种<strong>免训练的动态稀疏注意力方法</strong>，通过在少数锚点层（anchor layers）计算精确 Top-k 索引并在中间复用层（reuse layers）复用这些索引，结合自动锚点层选择、头重映射和高效内核实现，在 H100 GPU 上实现最高 4.1× 解码加速和 2.2× 预填充加速，同时保持与密集注意力接近的任务精度。</p>
+<hr />
+<h2 id="_2">摘要</h2>
+<p>Attention is the dominant source of latency during long-context LLM inference, an increasingly popular workload with reasoning models and RAG. We propose Kascade, a training-free sparse attention method that leverages known observations such as 1) post-softmax attention is intrinsically sparse, and 2) the identity of high-weight keys is stable across nearby layers. Kascade computes exact Top-k indices in a small set of anchor layers, then reuses those indices in intermediate reuse layers. The anchor layers are selected algorithmically, via a dynamic-programming objective that maximizes cross-layer similarity over a development set, allowing easy deployment across models. The method incorporates efficient implementation constraints (e.g. tile-level operations), across both prefill and decode attention. The Top-k selection and reuse in Kascade is head-aware and we show in our experiments that this is critical for high accuracy. Kascade achieves up to 4.1× speedup in decode attention and 2.2× speedup in prefill attention over FlashAttention-3 baseline on H100 GPUs while closely matching dense attention accuracy on long-context benchmarks such as LongBench and AIME-24.</p>
+<p><strong>摘要翻译：</strong></p>
+<p>注意力机制是长上下文 LLM 推理中的主要延迟来源，这一工作负载因推理模型和 RAG（检索增强生成）而日益流行。我们提出了 Kascade，一种免训练的稀疏注意力方法，利用了以下已知观察：1）softmax 后的注意力分布本质上是稀疏的；2）高权重 key 的身份在相邻层之间是稳定的。Kascade 在一小部分锚点层中计算精确的 Top-k 索引，然后在中间复用层中复用这些索引。锚点层通过动态规划算法选择，该算法最大化开发集上的跨层相似度，便于在不同模型上部署。该方法结合了高效的实现约束（如 tile 级操作），适用于预填充和解码阶段的注意力计算。Kascade 的 Top-k 选择和复用是感知注意力头（head-aware）的，实验表明这对高精度至关重要。在 H100 GPU 上，Kascade 相比 FlashAttention-3 基线实现了最高 4.1× 的解码加速和 2.2× 的预填充加速，同时在 LongBench 和 AIME-24 等长上下文基准上保持了与密集注意力接近的精度。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>长上下文推理的计算瓶颈</strong>：随着推理模型和 RAG 的普及，长上下文推理成为主流工作负载。注意力操作在预填充阶段（O(n²)）和解码阶段（O(n)）都是计算瓶颈，且解码注意力是内存带宽受限的，难以通过批处理优化。</p>
+</li>
+<li>
+<p><strong>现有稀疏注意力方法的局限</strong>：</p>
+</li>
+<li><strong>固定模式稀疏</strong>（如 LongFormer、StreamingLLM）：需要预训练或后训练，且可能牺牲泛化性</li>
+<li><strong>工作负载感知稀疏</strong>（如 PromptCache、TurboRAG）：主要针对 RAG 场景，仅优化预填充阶段</li>
+<li>
+<p><strong>动态稀疏</strong>（如 Quest、H2O）：高效选择 Top-k 是开放问题，且现有方法缺乏自动化部署方案</p>
+</li>
+<li>
+<p><strong>核心洞察</strong>：</p>
+</li>
+<li>post-softmax 注意力分布本身是稀疏的（仅约 10% 的 token 贡献了 95% 的注意力权重）</li>
+<li>相邻层之间的 Top-k 索引高度稳定（层 16 的 Top-k 可以覆盖层 17 和 18 中 99% 的注意力）</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-oracle-top-k">1. Oracle Top-k 选择（可行性验证）</h3>
+<p>Kascade 首先验证了稀疏注意力的可行性：定义 Oracle Top-k，即仅对注意力权重最高的 k 个 token 计算注意力。实验表明，仅 2.5% 的 token 就能恢复密集注意力的完整精度（在 2WikiMultihopQA 上，Llama-3.1-8b-Instruct 模型）。Kascade 总是在第 0 层执行完整密集注意力，从第 1 层开始应用稀疏化。</p>
+<h3 id="2-cross-layer-similarity">2. 跨层相似性（Cross-Layer Similarity）</h3>
+<p>定义相似度度量：对于查询 token q，层 a 的 Top-k 索引集合 Iᵃ_q 在层 b 中能恢复多少注意力质量：</p>
+<pre><code>sim(a, b) = Σᵢ Pᵇ_q[Iᵃ_q[i]] / Σᵢ Pᵇ_q[Iᵇ_q[i]]
+</code></pre>
+<p>实验发现（Llama-3.1-8b-Instruct，MuSiQue 数据集，k=256）：
+- 大多数相邻层对的相似度 &gt; 0.98
+- 相似度随层间距离衰减，但在短距离内保持高位</p>
+<h3 id="3-anchor-layer-selection">3. 锚点层选择（Anchor Layer Selection）</h3>
+<p>使用<strong>动态规划算法</strong>选择最优锚点层集合：
+- 输入：跨层相似度矩阵 S（在开发集上计算，使用 k=64）
+- 目标：给定预算 M（锚点层数量），最大化锚点层与复用层之间的相似度
+- 关键设计：
+  - 使用<strong>最小值</strong>（而非均值）作为 token 级相似度，确保保守估计
+  - 引入<strong>层重要性权重</strong> wₗ = 1 - CosineSim(xₗ, yₗ)（深层注意力的重要性更低）
+  - 相似度矩阵加权：sim[i][j] = wⱼ · sim[i][j]</p>
+<p>实际选择结果：
+- Llama-3.1-8b-Instruct（32层）：5个锚点层 [0, 2, 8, 13, 14]
+- Qwen3-8b（36层）：5个锚点层 [0, 2, 7, 14, 23]</p>
+<h3 id="4-query-pooling">4. Query Pooling（查询池化）</h3>
+<p>为保持 tile 级操作效率（GQA 中多个 query head 共享 KV head），需要让同一 tile 内的所有 query token 共享相同的 Top-k 索引：</p>
 <ul>
-<li>相邻layer之间attention的分布具有相似性，使用anchor layer产生topk的位置，紧邻的后续layer直接复用</li>
+<li><strong>Pre-Softmax 池化</strong>：平均 query 向量，计算一次注意力</li>
+<li><strong>Post-Softmax 池化</strong>：独立计算每个 query 的注意力分布，然后池化</li>
 </ul>
+<p>实验表明 Post-Softmax 池化在大 tile 尺寸下更鲁棒（在不同 tile 尺寸下保持一致精度），因此 Kascade 采用 Post-Softmax 池化。</p>
+<p>实现细节：
+- <strong>解码阶段</strong>：在共享同一 key head 的 query head 之间池化（GQA 池化）
+- <strong>预填充阶段</strong>：在 128 个 query 的 tile 上池化（与 FlashAttention 标准 tile 尺寸一致）</p>
+<h3 id="5-head-remapping-and-reuse">5. 头重映射与复用（Head Remapping and Reuse）</h3>
+<p>Kascade 在每个锚点层为每个 key head 计算独立的 Top-k 索引集合。问题：锚点层的 head i 的 Top-k 索引应该映射到复用层的哪个 head？</p>
+<p>比较三种策略：
+- <strong>1:1 映射</strong>（无重映射）：性能最差
+- <strong>共享 Top-k</strong>（所有 head 共享一组索引）：无法捕捉 head 间差异
+- <strong>头重映射</strong>（通过相似度计算最优映射，允许多对一映射）：最鲁棒，尤其在低 Top-k 比例下</p>
+<p>实验结果（Llama-3.1-8b-Instruct，MuSiQue）：
+- 头重映射在所有 Top-k 比例下提供一致的分数
+- 共享 Top-k 在高 Top-k 比例下表现较好，但低 Top-k 时性能下降</p>
+<h3 id="6">6. 高效内核实现</h3>
+<p>Kascade 基于 FlashAttention 内核（使用 TileLang 编程语言）实现，同时支持预填充和解码。</p>
+<p><strong>复用层</strong>：传递 Top-k 索引和头映射，在注意力计算时按索引加载 key（key 非连续，但每个 key 约 256 字节，无额外开销）</p>
+<p><strong>锚点层</strong>（多 pass 方法，使用 Post-Softmax 池化）：
+- <strong>第一 pass</strong>：计算 QKT 权重矩阵和行和向量（解码时输出到 HBM，预填充时仅输出行和）
+- <strong>第二 pass</strong>：计算池化的 post-softmax 注意力权重（预填充需重新计算）
+- <strong>第三 pass</strong>：在池化权重上计算 Top-k 索引
+- <strong>第四 pass</strong>：计算 Top-k 注意力（类似复用层）</p>
+<p><strong>第 0 层</strong>（完全密集注意力）：在第一 pass 计算密集注意力，省略最后一 pass</p>
+<p>性能瓶颈：预填充中第二 pass 的重新计算是显著开销。</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">准确度评估</h3>
+<p><strong>LongBench</strong>（6 类 21 个长上下文任务，预填充密集型）：
+- Kascade 在所有方法中表现优异，与密集注意力接近
+- StreamingLLM 是唯一表现较差的方法
+- Kascade 在 Code 子任务上甚至超过了密集注意力基线</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Llama-3.1-8B 平均</th>
+<th>Qwen3-8B 平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense Baseline</td>
+<td>45.92</td>
+<td>46.35</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>33.42</td>
+<td>34.57</td>
+</tr>
+<tr>
+<td>LessIsMore</td>
+<td>45.52</td>
+<td>43.77</td>
+</tr>
+<tr>
+<td>OmniKV</td>
+<td>45.75</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Quest</td>
+<td>44.39</td>
+<td>43.95</td>
+</tr>
+<tr>
+<td><strong>Kascade</strong></td>
+<td><strong>45.02</strong></td>
+<td><strong>44.57</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>AIME-24</strong>（30 个数学问题，解码密集型）：
+- Kascade 在所有方法中准确度最高
+- StreamingLLM 完全失败（0.00）
+- Kascade (All Heads Pooled) 变体表现略差于默认头重映射版本</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>DeepSeek-R1-Distill-Llama-8B</th>
+<th>Qwen3-8B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense Baseline</td>
+<td>50.42</td>
+<td>73.75</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>LessIsMore</td>
+<td>36.25</td>
+<td>60.83</td>
+</tr>
+<tr>
+<td>Quest</td>
+<td>7.50</td>
+<td>25.33</td>
+</tr>
+<tr>
+<td><strong>Kascade</strong></td>
+<td><strong>47.92</strong></td>
+<td><strong>70.42</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Top-k 20% 时 Kascade 接近基线精度（仅差约 1.2%），且解码长度显著减少（仅比基线高约 13%）。</p>
+<h3 id="_7">效率评估</h3>
+<p>在 H100 GPU 上（Llama-3.1-8b-Instruct 配置）：
+- <strong>解码加速</strong>：最高 4.1×（Top-k 10%，128k-524k 上下文长度）
+- <strong>预填充加速</strong>：最高 2.2×（Top-k 10%）
+- 复用层耗时约为完整注意力的 10%
+- 锚点层耗时接近完整注意力
+- 预填充加速因锚点层第二 pass 的重新计算而受限</p>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>免训练</strong>：不需要模型重训练或后训练，直接部署</li>
+<li><strong>自动化部署</strong>：通过动态规划自动选择锚点层，便于跨模型部署</li>
+<li><strong>头感知（Head-Aware）</strong>：每个 head 独立计算 Top-k，通过头重映射提升精度</li>
+<li><strong>高效的内核实现</strong>：基于 TileLang 实现，同时优化预填充和解码</li>
+<li><strong>高精度</strong>：在 AIME-24 上达到最高准确度（Top-k 10% 下比 Quest 高 8-10%）</li>
+<li><strong>显著加速</strong>：解码 4.1×、预填充 2.2× 加速（vs FlashAttention-3）</li>
+<li><strong>Tile 级操作兼容</strong>：Post-Softmax 池化保持 GPU 效率</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>需要开发集</strong>：锚点层选择依赖开发集数据，可能存在对特定数据的偏差（但实验显示选择对不同数据集稳健）</li>
+<li><strong>不减少内存容量</strong>：Kascade 仅减少注意力延迟，不减少 KV 缓存的内存占用（长序列的 KV 缓存仍可能限制批处理大小）</li>
+<li><strong>对稀疏训练架构效果有限</strong>：已在预训练中加入稀疏性的架构（如 Gemma）从 Kascade 获益较少</li>
+<li><strong>预填充加速受限</strong>：锚点层的多 pass 方法（尤其是第二 pass 的重新计算）限制了预填充阶段的加速</li>
+<li><strong>与 FlashAttention-3 相比预填充加速有限</strong>：TileLang 基线比 FA3 慢约 20%，但 Kascade 的加速仍然有限</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>KV Cache 稀疏化</strong>（kw: kv_cache_sparse）：Kascade 是 KV Cache 稀疏化的重要方法，通过跨层复用 Top-k 索引减少 KV 缓存访问</li>
+<li><strong>相关方法对比</strong>：</li>
+<li><strong>Quest</strong>（2024）：Kascade 在 AIME-24 上比 Quest 高 40%+ 的绝对准确度</li>
+<li><strong>LessIsMore</strong>（2025）：基于 TidalDecode，手动选择锚点层，缺乏自动化部署</li>
+<li><strong>OmniKV</strong>（2025）：将 KV 缓存卸载到 CPU，Kascade 在性能上更优</li>
+<li><strong>StreamingLLM</strong>（2023）：固定窗口注意力，Kascade 在所有任务上都远优于 StreamingLLM</li>
+<li><strong>长上下文推理</strong>：Kascade 对推理模型（如 DeepSeek-R1-Distill）的解码阶段优化尤为显著</li>
+<li><strong>高效内核</strong>：基于 TileLang 的高效实现，与 FlashAttention-3 生态兼容</li>
+</ul>
+<hr />
+<h2 id="_10">参考信息</h2>
+<ul>
+<li><strong>arXiv</strong>: <a href="http://arxiv.org/abs/2512.16391v1">2512.16391v1</a></li>
+<li><strong>代码</strong>: <a href="https://github.com/microsoft/kascade">https://github.com/microsoft/kascade</a></li>
+<li><strong>机构</strong>: Microsoft Research India</li>
+<li><strong>关键词</strong>: kv_cache_sparse</li>
+<li><strong>基准方法</strong>: 2024/Quest</li>
+</ul>
+<hr />
+<blockquote>
+<p>⚠️ <strong>生成声明</strong>：本 note 由 AI Agent（Hermes Agent）自动生成，基于论文原文内容整理，不构成学术引用。所有内容仅供学习和参考，如有错误请以原始论文为准。生成时间：2026年6月。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

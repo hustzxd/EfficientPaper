@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,263 @@
 <p>Akide Liu, Zeyu Zhang, Zhexin Li, Xuehai Bai, Yizeng Han, Jiasheng Tang, Yuanjie Xing, Jichao Wu, Mingyang Yang, Weihua Chen, Jiahao He, Yuanyu He, Fan Wang, Gholamreza Haffari, Bohan Zhuang</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Diffusion generative models have become the standard for producing high-quality, coherent video content, yet their slow inference speeds and high computational demands hinder practical deployment. Although both quantization and sparsity can independently accelerate inference while maintaining generation quality, naively combining these techniques in existing training-free approaches leads to significant performance degradation due to the lack of joint optimization. We introduce FPSAttention, a novel training-aware co-design of FP8 quantization and sparsity for video generation, with a focus on the 3D bi-directional attention mechanism. Our approach features three key innovations: 1) A unified 3D tile-wise granularity that simultaneously supports both quantization and sparsity; 2) A denoising step-aware strategy that adapts to the noise schedule, addressing the strong correlation between quantization/sparsity errors and denoising steps; 3) A native, hardware-friendly kernel that leverages FlashAttention and is implemented with optimized Hopper architecture features for highly efficient execution. Trained on Wan2.1's 1.3B and 14B models and evaluated on the VBench benchmark, FPSAttention achieves a 7.09x kernel speedup for attention operations and a 4.96x end-to-end speedup for video generation compared to the BF16 baseline at 720p resolution-without sacrificing generation quality.</p>
+<blockquote>
+<p><strong>生成声明</strong>：本笔记由 AI Agent（Hermes）自动生成，基于论文原文全文阅读与分析。生成时间：2026-06-05。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>FPSAttention 是一种面向视频扩散模型的训练感知（training-aware）FP8 量化与结构化稀疏联合优化框架，通过统一的 3D tile-wise 粒度、去噪步自适应策略和硬件友好的融合内核，在不牺牲生成质量的前提下实现了 7.09× 内核加速和 4.96× 端到端加速（Wan2.1-14B, 720p, H20 GPU）。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>扩散生成模型已成为生成高质量、连贯视频内容的标准方法，但其缓慢的推理速度和高计算需求阻碍了实际部署。尽管量化和稀疏技术各自可以加速推理并保持生成质量，但在现有的免训练（training-free）方法中，简单地组合这些技术会导致显著的性能退化，因为它们缺乏联合优化。</p>
+<p>我们提出了 FPSAttention，一种新颖的训练感知 FP8 量化与稀疏联合设计框架，专注于 3D 双向注意力机制。我们的方法具有三个关键创新：</p>
+<ol>
+<li><strong>统一的 3D tile-wise 粒度</strong>：同时支持量化和稀疏；</li>
+<li><strong>去噪步感知策略</strong>：适应噪声调度，解决量化/稀疏误差与去噪步之间的强相关性；</li>
+<li><strong>原生硬件友好内核</strong>：利用 FlashAttention 并采用优化的 Hopper 架构特性，实现高效执行。</li>
+</ol>
+<p>在 Wan2.1 的 1.3B 和 14B 模型上训练，并在 VBench 基准上评估，FPSAttention 在 720p 分辨率下相比 BF16 基线实现了 7.09× 的注意力内核加速和 4.96× 的视频生成端到端加速，且不牺牲生成质量。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">视频扩散模型的计算瓶颈</h3>
+<p>视频扩散模型（Video DiTs）面临两大计算瓶颈：
+- <strong>迭代去噪过程</strong>：需要数百步迭代采样；
+- <strong>二次复杂度的时空注意力</strong>（O(N²)，N 为 token 数）：注意力计算占据推理时间的 &gt;70%。例如，Wan2.1-14B 在 NVIDIA H20 GPU 上生成一段 5 秒视频需要约 2.5 小时。</p>
+<h3 id="_5">现有方法的局限</h3>
+<ul>
+<li><strong>量化方法</strong>（如 SageAttention）：PTQ 方式将注意力模块量化为 INT8，提供适度加速但生成质量下降；FP8 虽有更宽动态范围，但免训练 FP8 量化引入显著误差。</li>
+<li><strong>稀疏方法</strong>（如 SparseVideoGen、STA）：通过选择性跳过计算加速，但仅在推理时有效，缺乏与训练过程的集成。</li>
+<li><strong>朴素组合</strong>：将量化和稀疏简单组合会导致显著性能退化，因为量化误差会在稀疏机制中被放大——稀疏优先保留高注意力分数的 token，而量化恰好在这些高值上引入更大误差。</li>
+</ul>
+<h3 id="-">训练-推理差距</h3>
+<p>现有方法忽略了量化与稀疏的训练感知联合优化，造成训练-推理间隙。作者的经验分析表明，扩散模型能够容忍并纠正硬件友好的 tile-wise 误差，特别是在模型通过量化感知训练（QAT）了解近似时，这一纠错能力尤为明显。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="31">3.1 背景技术</h3>
+<p><strong>FP8 量化</strong>：将激活张量的每个值近似为 8 位浮点表示（E4M3 或 E5M2 格式），保留浮点特性而非映射到整数网格。采用 per-tile 缩放因子，理论上将内存带宽需求减半（16 位→8 位）。</p>
+<p><strong>滑动块注意力（STA）</strong>：将 3D token 空间划分为 M 个非重叠块（tile），每个查询块仅关注局部邻域内的键块，将全注意力替换为 tile-wise 掩码注意力，从而将计算复杂度从 O(N²d) 降低到 O(M × |W(u)| × d)。STA 在视频生成任务中可加速注意力 2.8–17×（相比 FlashAttention-2）。</p>
+<h3 id="32-tile-wise-fp8">3.2 联合 Tile-wise FP8 稀疏注意力</h3>
+<p>这是 FPSAttention 的核心机制，同时优化量化和稀疏：</p>
+<p><strong>统一的 3D tile-wise 粒度</strong>：</p>
+<ul>
+<li>将 Q、K 沿序列维度 L 划分为非重叠的 3D 块 {Tu}，维度为 (Tt, Th, Tw)</li>
+<li>每个块 Tu 独立计算缩放因子 sQ_u 和 sK_u，将值最优映射到 FP8 可表示范围</li>
+<li>这种 per-tile 缩放策略最小化每个块的量化误差，同时保持与 GPU 内存层次的精确对齐</li>
+</ul>
+<p><strong>不同矩阵的量化策略</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>矩阵</th>
+<th>量化粒度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q, K</td>
+<td>Per-tile FP8</td>
+<td>每个 3D 块独立缩放，保留注意力动态</td>
+</tr>
+<tr>
+<td>V</td>
+<td>Per-channel FP8</td>
+<td>每通道独立缩放，保持精细通道信息</td>
+</tr>
+<tr>
+<td>P（注意力权重）</td>
+<td>Tensor-wise FP8</td>
+<td>固定标量 1/448 量化，参考 SageAttention2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意力计算流程</strong>：
+1. 将 Q、K 组织为连续 3D 块，对齐 GPU 缓存布局
+2. 对每个块进行 FP8 量化（独立缩放因子）
+3. 执行 tile-granularity 稀疏注意力（利用空间局部性和低比特算术）
+4. 将聚合的注意力输出反量化为高精度（BF16/FP16）</p>
+<p>这种设计产生了 M × |W(u)| 个密集、结构化的注意力块，避免了非结构化稀疏的低效性。</p>
+<h3 id="33">3.3 去噪步感知量化与稀疏策略</h3>
+<p><strong>关键发现</strong>：视频 DiTs 在不同去噪步表现出对数值精度和稀疏水平的差异敏感性：
+- <strong>早期/晚期去噪步</strong>：对更粗糙的量化和更高稀疏度有更大容忍度
+- <strong>中间去噪步</strong>：需要更精细的数值精度和更低稀疏度</p>
+<p>这意味着扩散模型能够内禀地纠正注意力的近似误差。</p>
+<p><strong>分段调度</strong>：对于 D 个去噪步，使用阈值 t1 = α1·D 和 t2 = α2·D 将过程分为三个阶段：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>量化粒度 g(t)</th>
+<th>稀疏窗口 W(t)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>早期去噪步 (t ≤ t1)</td>
+<td>gcoarse（粗糙）</td>
+<td>Wsparse（稀疏）</td>
+</tr>
+<tr>
+<td>中间去噪步 (t1 &lt; t ≤ t2)</td>
+<td>gfine（精细）</td>
+<td>Wdense（密集）</td>
+</tr>
+<tr>
+<td>晚期去噪步 (t &gt; t2)</td>
+<td>gintermediate（中间）</td>
+<td>Wmedium_density（中等密度）</td>
+</tr>
+</tbody>
+</table>
+<p>其中 gcoarse &gt; gintermediate &gt; gfine，Wdense &gt; Wmedium_density &gt; Wsparse。</p>
+<p>这些超参数在推理时选择以匹配模型在不同去噪阶段的可变容忍度，然后转移到训练中以避免高昂的计算开销。训练中，这种配置允许模型自适应补偿联合量化-稀疏误差。</p>
+<h3 id="34">3.4 硬件优化内核设计</h3>
+<p>内核实现的关键方面：
+- <strong>内存访问合并</strong>：通过结构化操作实现高效 GPU 内存加载/存储，支持分块
+- <strong>最大化并行度</strong>：tile-wise 操作并发处理独立块
+- <strong>专用加速单元</strong>：利用 NVIDIA Hopper/Ada 架构的 Tensor Core 进行混合精度和 FP8 计算
+- <strong>操作融合</strong>：将多个逻辑步骤（注意力、稀疏、反量化）合并为单个 Triton 内核，显著减少开销和内存流量</p>
+<p>实现基于 FlexAttention 的 score mod 和 mask mod 函数，并使用 Triton 编译融合内核。</p>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Wan2.1（1.3B 和 14B 变体）</li>
+<li><strong>训练</strong>：14B 模型在 64 节点（8× H20 GPU/节点）上训练 7 天</li>
+<li><strong>数据</strong>：480p×16fps×5s 高质量视频</li>
+<li><strong>评估</strong>：VBench 基准，16 维度评估</li>
+<li><strong>指标</strong>：PSNR、SSIM、LPIPS</li>
+</ul>
+<h3 id="table-2">主要结果（Table 2）</h3>
+<p><strong>Wan2.1-14B, 720p</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>PSNR↑</th>
+<th>SSIM↑</th>
+<th>LPIPS↓</th>
+<th>速度提升</th>
+<th>端到端加速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BF16 基线</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1.00×</td>
+<td>1.00×</td>
+</tr>
+<tr>
+<td>SageAttention</td>
+<td>24.34</td>
+<td>0.823</td>
+<td>0.156</td>
+<td>2.01×</td>
+<td>1.94×</td>
+</tr>
+<tr>
+<td>SpargeAtten</td>
+<td>21.38</td>
+<td>0.815</td>
+<td>0.217</td>
+<td>1.77×</td>
+<td>2.12×</td>
+</tr>
+<tr>
+<td>SparseVideoGen</td>
+<td>23.53</td>
+<td>0.801</td>
+<td>0.170</td>
+<td>2.12×</td>
+<td>3.13×</td>
+</tr>
+<tr>
+<td>STA</td>
+<td>22.66</td>
+<td>0.820</td>
+<td>0.193</td>
+<td>2.37×</td>
+<td>3.60×</td>
+</tr>
+<tr>
+<td><strong>FPSAttention</strong></td>
+<td><strong>25.74</strong></td>
+<td><strong>0.832</strong></td>
+<td><strong>0.076</strong></td>
+<td><strong>3.07×</strong></td>
+<td><strong>4.96×</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- FPSAttention 在所有质量指标上均优于所有基线方法
+- 平均 PSNR 25.74，显著超越所有基线
+- 在 VBench 评估中保持高 Video Quality（0.7103）和强时空一致性（0.9435）
+- 联合训练后，VBench 分数略有提升（潜在的局部性归纳偏置效应）</p>
+<p><strong>Wan2.1-1.3B, 480p</strong>：
+- 实现 2.45× 端到端加速，同时保持优异质量指标</p>
+<h3 id="_9">消融实验</h3>
+<p><strong>块大小效应</strong>（Table 3）：
+- 最大块配置 (24,32,32) 性能最优（PSNR 20.99712）
+- (6,8,8) 配置吞吐量最佳，因为它对齐 FlashAttention 块大小设计并针对 Hopper 架构优化
+- 不平衡块大小（如 (3,4,4））导致显著性能退化</p>
+<p><strong>稀疏窗口效应</strong>（Table 4）：
+- 配置 (6,6,1)（时间窗口 6、高度窗口 6、宽度窗口 1）提供最优平衡
+- 实现 5.16× 内核加速，同时保持高质量视觉</p>
+<p><strong>训练稳定性</strong>（Figure 7）：
+- 联合 FP8 量化和结构化稀疏初始训练损失比全精度基线高 15%
+- 通过自适应学习率调度和梯度累积缓解
+- 2000 步后，损失收敛轨迹几乎相同（&lt;2% 差异）</p>
+<p><strong>朴素组合的挑战</strong>（Table 5）：
+- 免训练朴素组合仅达到 0.6325 总分（基线 0.8019），性能下降 21.1%
+- 多个指标出现近零性能（Human Action 0.02、Multiple Objects 0.0、Spatial Relationship 0.0008）
+- FPSAttention 联合优化不仅避免退化，反而提升至 0.8160（+1.8%）</p>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>显著加速</strong>：实现 7.09× 内核加速和 4.96× 端到端加速，远超单独量化或稀疏方法</li>
+<li><strong>质量保持甚至提升</strong>：在不牺牲生成质量的前提下加速，VBench 总分甚至略有提升（+1.8%）</li>
+<li><strong>统一框架</strong>：首次实现 FP8 量化与结构化稀疏的训练感知联合优化</li>
+<li><strong>硬件友好设计</strong>：3D tile-wise 粒度与 GPU 计算模式对齐，利用 Tensor Core 和 FlashAttention</li>
+<li><strong>自适应调度</strong>：去噪步感知策略根据模型在不同阶段的敏感度动态调整压缩参数</li>
+<li><strong>可扩展性</strong>：在 1.3B 和 14B 两个规模的模型上均有效</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>硬件依赖</strong>：最佳效果需要支持 FP8 的现代 GPU（如 NVIDIA Hopper 架构），旧硬件上 FP8 加速效果有限</li>
+<li><strong>训练资源需求</strong>：需要量化感知训练（QAT），比 PTQ 增加训练时间；14B 模型需要 64 节点 × 7 天</li>
+<li><strong>超参数管理</strong>：去噪步感知调度包含多个超参数（过渡点 α1/α2、量化粒度、窗口大小），需针对不同模型架构和数据集优化</li>
+<li><strong>架构局限</strong>：目前仅在 Wan2.1 架构上验证，虽然作者计划扩展到 HunyuanVideo（基于 MMDiT）和 CogVideoX</li>
+<li><strong>与蒸馏方法的正交性</strong>：FPSAttention 与步蒸馏技术正交，可通过结合步蒸馏实现额外加速，但未在本文中验证</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>训练感知量化与稀疏联合优化</strong>：FPSAttention 展示了训练感知联合优化的重要性，避免了免训练方法的性能退化，是量化-稀疏协同设计的典范</li>
+<li><strong>3D Tile-wise 粒度设计</strong>：统一的 3D tile-wise 量化和稀疏粒度与 GPU 计算模式对齐，为其他视频/时空模型的高效推理提供了参考</li>
+<li><strong>去噪步自适应压缩策略</strong>：根据扩散过程不同阶段的误差敏感度动态调整压缩参数，这一思路可推广到其他生成模型</li>
+<li><strong>硬件感知内核设计</strong>：利用 FlashAttention、Triton 和 Hopper 架构特性实现高效内核，将理论加速转化为实际壁钟加速</li>
+<li><strong>FP8 量化在生成模型中的应用</strong>：FP8 比 INT8 具有更宽动态范围，更适合视频扩散模型的激活统计特性</li>
+<li><strong>稀疏注意力的结构化设计</strong>：通过将稀疏模式与硬件计算块对齐，避免非结构化稀疏的低效性</li>
+<li><strong>扩散模型对压缩的鲁棒性</strong>：研究发现扩散模型可以内禀地纠正近似误差，这一发现对理解生成模型的鲁棒性有重要意义</li>
+<li><strong>与现有方法的关系</strong>：</li>
+<li><strong>SageAttention</strong>（2024）：FPSAttention 的 PTQ 量化基线，FPSAttention 通过 QAT 实现更好质量</li>
+<li><strong>SparseVideoGen</strong>（2025）：稀疏方法基线，FPSAttention 通过联合优化实现更高速度和更好质量</li>
+<li><strong>STA</strong>（2025）：滑动块注意力基线，FPSAttention 在其基础上增加量化</li>
+</ol>
+<hr />
+<h2 id="_12">项目链接</h2>
+<ul>
+<li><strong>论文</strong>：http://arxiv.org/abs/2506.04648v2</li>
+<li><strong>项目主页</strong>：https://fps.ziplab.co</li>
+<li><strong>代码</strong>：PyTorch（暂无公开仓库）</li>
+<li><strong>发表</strong>：NeurIPS 2025</li>
+<li><strong>机构</strong>：Monash University, DAMO Academy (Alibaba), Zhejiang University</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

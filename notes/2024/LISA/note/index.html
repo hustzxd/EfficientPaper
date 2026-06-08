@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -158,7 +160,125 @@
               
   
                 <h1 id="lisa-layerwise-importance-sampling-for-memory-efficient-large-language-model-fine-tuning">LISA: Layerwise Importance Sampling for Memory-Efficient Large Language Model Fine-Tuning</h1>
+<blockquote>
+<p>本文由 AI Agent 自动生成，生成时间：2026-06-05。基于论文全文阅读与分析，内容仅供参考。</p>
+</blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
+<h2 id="_1">一句话总结</h2>
+<p>LISA（Layerwise Importance Sampled AdamW）通过在训练过程中随机冻结大部分中间层、仅按重要性采样更新少量关键层，以接近 LoRA 的内存开销实现了超越 LoRA 和全参数微调的性能，是大语言模型高效微调的有力替代方案。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>自大语言模型（LLM）出现以来，机器学习领域取得了令人瞩目的进展，但其巨大的内存消耗已成为大规模训练的主要障碍。参数高效微调（PEFT）技术如低秩适配（LoRA）已被提出以缓解这一问题，但在大多数大规模微调设置中，其性能仍无法与全参数训练相媲美。为弥补这一不足，我们研究了 LoRA 在微调任务上的逐层特性，并观察到不同层之间权重范数存在不常见的偏斜分布。利用这一关键发现，我们发现了一种极其简单的训练策略，在广泛的设置中以与 LoRA 相当的内存成本超越了 LoRA 和全参数训练。我们将其命名为"逐层重要性采样 AdamW"（LISA），这是 LoRA 的一个有前途的替代方案，它将重要性采样的思想应用于 LLM 的不同层，并在优化过程中随机冻结大多数中间层。实验结果表明，在相似或更少的 GPU 内存消耗下，LISA 在下游微调任务中超越了 LoRA 甚至全参数调优，在 MT-Bench 分数上一致地超越 LoRA 11%-37%。在大规模模型上，特别是在 LLaMA-2-70B 上，LISA 在 MT-Bench、GSM8K 和 PubMedQA 上达到了与 LoRA 相当或更好的性能，证明了其在不同领域的有效性。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>大语言模型（如 ChatGPT）在文档生成、代码编写、问答和类人对话等任务中表现出色。随着 LLM 在各个任务领域的广泛应用，领域特定的微调已成为增强其下游能力的关键策略。然而，这些方法成本极高，给大规模模型的开发带来了重大障碍。</p>
+<p><strong>参数高效微调（PEFT）</strong> 技术（如适配器、提示权重、LoRA）被提出以减少可训练参数数量。其中，LoRA 是最广泛采用的 PEFT 技术之一，因为其允许适配器合并回基础模型参数的特性。但 LoRA 的性能在全参数微调上仍存在不足，特别是在大规模数据集的持续预训练中表现不佳。</p>
+<p><strong>核心观察：</strong> 作者研究了 LoRA 的逐层训练统计，发现 LoRA 的逐层权重范数存在不常见的偏斜分布——底部层和/或顶部层在更新中占据大部分权重，而其他自注意力层仅占很小的比例。这表明不同层在更新中具有不同的重要性。这一关键发现启发了"按重要性采样不同层"的思想，这恰好与重要性采样的思想相匹配。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1">1. 核心思想</h3>
+<p>LISA 的核心思想是利用 LoRA 逐层权重范数偏斜分布的观察，通过按重要性采样不同层来冻结，模拟 LoRA 的更新模式，同时避免 LoRA 固有的低秩表示能力限制。</p>
+<h3 id="2">2. 算法设计</h3>
+<p>LISA 算法（Layerwise Importance Sampled AdamW）的流程如下：</p>
+<p><strong>输入参数：</strong>
+- 层数 <script type="math/tex">N_L</script>
+- 迭代次数 <script type="math/tex">T</script>
+- 采样周期 <script type="math/tex">K</script>
+- 采样概率 <script type="math/tex">\{p_\ell\}_{\ell=1}^{N_L}</script>
+- 初始学习率 <script type="math/tex">\eta_0</script>
+</p>
+<p><strong>算法流程：</strong>
+1. 对于每 <script type="math/tex">K</script> 步迭代：
+   - 对每一层 <script type="math/tex">\ell</script>，根据采样概率 <script type="math/tex">p_\ell</script> 决定是否冻结该层
+   - 使用 AdamW 运行 <script type="math/tex">K</script> 次迭代</p>
+<p><strong>关键设计：</strong>
+- <strong>采样概率设计：</strong> 由于 LoRA 中除底部层和顶部层外所有层的权重范数较小，实践中采用 <script type="math/tex">\{p_\ell\}_{\ell=1}^{N_L} = \{1.0, \gamma/N_L, \gamma/N_L, \ldots, \gamma/N_L, 1.0\}</script>，其中 <script type="math/tex">\gamma</script> 控制每次优化中期望的未冻结层数。
+- <strong>内存控制：</strong> 实际上，LISA 每次随机采样 <script type="math/tex">\gamma</script> 层，以控制训练中未冻结层的最大数量，从而控制内存消耗。
+- <strong>采样周期 <script type="math/tex">K</script>：</strong> 表示每个采样间隔内的更新步数，影响层切换的频率。
+- <strong>采样层数 <script type="math/tex">\gamma</script>：</strong> 控制每次训练中可训练的层数，更高的 <script type="math/tex">\gamma</script> 增加可训练参数，但内存成本也更高。</p>
+<h3 id="3">3. 理论保证</h3>
+<p>论文证明了 LISA 在凸损失函数下的收敛性。具体来说，对于凸光滑损失函数 <script type="math/tex">f</script>，在有界凸集和有界随机梯度的假设下，LISA 生成的序列 <script type="math/tex">\{w_t\}_{t=1}^T</script> 满足：</p>
+<p>
+<script type="math/tex; mode=display">\frac{1}{T} \sum_{t=1}^T f_{reg}(w_t) - f_{reg}^* \leq O\left(\frac{1}{\sqrt{T}}\right)</script>
+</p>
+<p>其中 <script type="math/tex">f_{reg}(w) \triangleq f(w) + \frac{1}{2} w^\top S w</script>，<script type="math/tex">S</script> 是有限正半定对角矩阵。该收敛性基于 RBC-Adam 的已有结果。</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="1_1">1. 内存效率</h3>
+<p><strong>实验设置：</strong> 使用 4× NVIDIA Ampere 架构 GPU（80GB 内存），单批次大小为 1，未使用梯度检查点、卸载或 Flash Attention 等其他内存节省技术。</p>
+<p><strong>关键结果：</strong>
+- <strong>LLaMA-2-70B：</strong> LISA E+H+2L 配置将峰值 GPU 内存从 LoRA Rank 128 的 79G 降低到 75G
+- <strong>LLaMA-2-7B：</strong> LISA 的内存降低使得在单个 RTX4090（24GB）GPU 上训练成为可能
+- <strong>速度提升：</strong> 相比全参数调优约 2.9× 加速，相比 LoRA 约 2× 加速
+- <strong>内存比较：</strong> LISA 在多个模型架构上系统性地减少了内存使用</p>
+<h3 id="2-mt-bench">2. 中等规模微调（MT-Bench）</h3>
+<p><strong>数据集：</strong> Alpaca GPT-4（52K 训练实例）用于微调，MT-Bench（80 个高质量多轮问题）用于评估</p>
+<p><strong>关键结果（MT-Bench 平均分）：</strong>
+- <strong>TinyLlama：</strong> LISA (2.78) &gt; FT (2.38) &gt; LoRA (2.03)
+- <strong>Mistral-7B：</strong> LISA (5.23) &gt; FT (4.94) &gt; LoRA (4.71)
+- <strong>LLaMA-2-7B：</strong> LISA (5.42) &gt; FT (5.10) &gt; LoRA (4.86)</p>
+<p><strong>关键发现：</strong>
+- LISA 在 Writing、STEM 和 Humanities 领域一致地超越 LoRA 和全参数调优
+- LISA 在需要记忆的任务中表现更好，而 LoRA 部分偏向推理任务
+- LISA 相比 LoRA 一致提升 11%-37%（MT-Bench 分数）</p>
+<h3 id="3-llama-2-70b">3. 大规模微调（LLaMA-2-70B）</h3>
+<p><strong>实验设置：</strong> 使用 Alpaca GPT-4 数据集进行指令微调，同时在 GSM8K（数学）和 PubMedQA（医学）数据集上评估</p>
+<p><strong>关键结果：</strong>
+- <strong>MT-Bench：</strong> LISA (7.05) &gt; FT (6.66) &gt; LoRA (6.52) &gt; Vanilla (5.69)
+- <strong>GSM8K：</strong> FT (67.1) &gt; LISA (61.1) &gt; LoRA (59.4) &gt; Vanilla (54.8)
+- <strong>PubMedQA：</strong> LISA (91.6) &gt; FT (90.8) = LoRA (90.8) &gt; Vanilla (83.0)</p>
+<p><strong>关键发现：</strong>
+- LISA 在所有任务上一致地产生更好或持平的性能
+- 在指令调优任务中，LISA 再次超越全参数训练
+- LISA 在 Writing、Roleplay 和 STEM 方面超越所有方法
+- LISA 在所有子任务上一致地高于 LoRA</p>
+<h3 id="4">4. 消融研究</h3>
+<p><strong>采样层数 <script type="math/tex">\gamma</script> 的影响：</strong>
+- 更高的 <script type="math/tex">\gamma</script> 值导致更好的性能（在测试范围内）
+- <script type="math/tex">\gamma = 8</script> 时 Loss 最低，MT-Bench 分数最高</p>
+<p><strong>采样周期 <script type="math/tex">K</script> 的影响：</strong>
+- 更频繁的层切换（更小的 <script type="math/tex">K</script>）改善性能
+- 存在最优 <script type="math/tex">K</script> 值，超过该值性能可能下降
+- 经验法则：更多采样层和更高采样周期带来更好性能</p>
+<p><strong>随机性敏感性：</strong>
+- LISA 对不同随机种子相当鲁棒，三次运行的性能差异在 0.13 以内</p>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>内存效率：</strong> LISA 的内存消耗与 LoRA 相当或更低，使得在单个 GPU（如 RTX4090）上训练大模型成为可能</li>
+<li><strong>性能优越：</strong> LISA 在多个任务上一致地超越 LoRA 和全参数微调，特别是在指令跟随任务中</li>
+<li><strong>简单有效：</strong> 算法设计极其简单，无需引入额外参数或复杂架构修改</li>
+<li><strong>理论保证：</strong> 具有收敛性理论保证，不改变损失目标</li>
+<li><strong>良好的兼容性：</strong> 与 DeepSpeed 等优化工具兼容，可用于训练 65B+ 参数的模型</li>
+<li><strong>跨域适用性：</strong> 在指令跟随、数学、医学问答等多个领域展示出有效性</li>
+<li><strong>可扩展性：</strong> 成功扩展到 LLaMA-2-70B，证明了在大规模模型上的有效性</li>
+<li><strong>低 "Alignment Tax"：</strong> 相比全参数微调，LISA 在各领域保持更好的性能，减少了"对齐税"</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>前向传播内存：</strong> LISA 与 LoRA 一样，在优化过程中前向传播仍需要模型在内存中，导致显著的内存消耗。这一限制可通过 QLoRA 等方法补偿。</li>
+<li><strong>随机性依赖：</strong> 虽然 LISA 对随机种子具有鲁棒性，但其性能仍依赖于采样策略。</li>
+<li><strong>超参数敏感性：</strong> 采样层数 <script type="math/tex">\gamma</script> 和采样周期 <script type="math/tex">K</script> 对性能有显著影响，需要适当的超参数搜索。</li>
+<li><strong>理论假设：</strong> 收敛性保证基于凸损失函数假设，实际 LLM 训练中的非凸性可能导致理论与实践之间存在差距。</li>
+<li><strong>非最优采样策略：</strong> 当前的均匀随机采样策略可能不是最优的，考虑数据源和模型架构的重要性采样策略可能进一步提高效率。</li>
+<li><strong>应用场景有限：</strong> 目前主要在微调任务上验证，未涉及预训练等更大规模场景。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>LISA 与 EfficientPaper 的研究方向高度相关，属于<strong>高效训练（efficient_training）</strong> 领域。具体相关方向包括：</p>
+<ol>
+<li><strong>参数高效微调（PEFT）：</strong> LISA 是对 LoRA 的改进，属于 PEFT 技术的范畴，与适配器、提示学习等方法有密切关联</li>
+<li><strong>内存优化：</strong> LISA 通过随机冻结层减少内存消耗，与梯度检查点、零冗余优化器（ZeRO）等内存优化技术互补</li>
+<li><strong>训练加速：</strong> LISA 的速度提升与 Flash Attention、量化训练等加速技术相关</li>
+<li><strong>层冻结策略：</strong> LISA 属于层冻结策略，与 AutoFreeze、FreezeOut、SmartFRZ 等方法有比较价值</li>
+<li><strong>大规模优化算法：</strong> LISA 与 LARS、LAMB、Sophia 等大规模优化算法有关联，特别是在大批次训练设置中</li>
+<li><strong>量化与微调：</strong> LISA 可与 QLoRA 等量化技术结合，进一步降低内存需求</li>
+<li><strong>领域适应：</strong> LISA 在不同领域（指令跟随、数学、医学）的微调能力使其在领域适应研究中具有重要价值</li>
+<li><strong>理论优化：</strong> LISA 的收敛性理论与随机优化、重要性采样等理论研究相关</li>
+</ol>
+<hr />
+<p><em>本文由 AI Agent 自动生成，内容基于论文全文阅读与分析，仅供参考。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

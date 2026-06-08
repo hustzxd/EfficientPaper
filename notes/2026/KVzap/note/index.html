@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,11 +161,331 @@
   
                 <h1 id="kvzap-fast-adaptive-and-faithful-kv-cache-pruning">KVzap: Fast, Adaptive, and Faithful KV Cache Pruning</h1>
 <blockquote>
-<p>Simon Jegou, Maximilian Jeblick</p>
+<p>Simon Jégou, Maximilian Jeblick</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>Growing context lengths in transformer-based language models have made the key-value (KV) cache a critical inference bottleneck. While many KV cache pruning methods have been proposed, they have not yet been adopted in major inference engines due to speed--accuracy trade-offs. We introduce KVzap, a fast, input-adaptive approximation of KVzip that works in both prefilling and decoding. On Qwen3-8B, Llama-3.1-8B-Instruct, and Qwen3-32B across long-context and reasoning tasks, KVzap achieves <script type="math/tex">2</script>--<script type="math/tex">4\times</script> KV cache compression with negligible accuracy loss and achieves state-of-the-art performance on the KVpress leaderboard. Code and models are available at https://github.com/NVIDIA/kvpress.</p>
+<p>Growing context lengths in transformer-based language models have made the key-value (KV) cache a critical inference bottleneck. While many KV cache pruning methods have been proposed, they have not yet been adopted in major inference engines due to speed–accuracy trade-offs. We introduce KVzap, a fast, input-adaptive approximation of KVzip that works in both prefilling and decoding. On Qwen3-8B, Llama-3.1-8B-Instruct, and Qwen3-32B across long-context and reasoning tasks, KVzap achieves 2–4× KV cache compression with negligible accuracy loss and achieves state-of-the-art performance on the KVpress leaderboard. Code and models are available at https://github.com/NVIDIA/kvpress.</p>
+<h2 id="_1">一句话总结</h2>
+<p>KVzap 是 NVIDIA 提出的 KV 缓存剪枝方法，通过轻量级代理模型预测 KV 对的重要性分数，在预填充和解码阶段均能工作，实现 2–4× 压缩且几乎无精度损失，在 KVpress 排行榜上达到 SOTA。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>KV 缓存瓶颈</strong>：随着上下文长度增长，KV 缓存成为 LLM 推理的关键瓶颈。例如，Llama1-65B 在 128k 上下文下需要 335GB KV 缓存。</li>
+<li><strong>现有方法的局限</strong>：KV 缓存剪枝方法虽多，但未被主流推理引擎（vLLM、SGLang、TRT-LLM）采用，原因在于速度-精度权衡不足。</li>
+<li><strong>现有方法未满足的四个标准</strong>：</li>
+<li><strong>快速轻量</strong>：剪枝开销可忽略</li>
+<li><strong>阶段无关</strong>：同时适用于预填充（长上下文）和解码（推理任务）</li>
+<li><strong>优化友好</strong>：兼容 FlashAttention2、PagedAttention 等内核</li>
+<li><strong>保真</strong>：最小精度退化</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-kvzip">1. KVzip（基础）</h3>
+<p>KVzip 是当前 KVpress 排行榜的 SOTA 方法，通过复制-粘贴（copy-and-paste）预设任务来评分重要的 KV 对：</p>
+<ul>
+<li><strong>评分方法</strong>：对每个 head，位置 i 的 KV 对得分为原始上下文中最大注意力权重（重复上下文）</li>
+<li><strong>剪枝</strong>：跨 head 和 layer 移除得分最低的 KV 对</li>
+<li><strong>局限</strong>：</li>
+<li>需要对扩展提示（两倍长度）进行两次预填充，速度慢</li>
+<li>无法在解码阶段使用，不适合推理任务</li>
+</ul>
+<h3 id="2-kvzip">2. KVzip+（改进）</h3>
+<p>在 KVzip 基础上加入归一化项（受 Expected Attention 启发）：</p>
+<ul>
+<li><strong>关键改进</strong>：考虑了 token i 对残差流的贡献</li>
+<li><strong>评分公式</strong>：s⁺ᵢ = max_{j∈<prompt>} aⱼᵢ · ‖Wₒvᵢ‖ / ‖hⱼ‖</li>
+<li><strong>效果</strong>：一致性匹配或超过 KVzip</li>
+</ul>
+<h3 id="3-kvzap">3. KVzap（核心贡献）</h3>
+<p><strong>核心思想</strong>：训练轻量级代理模型（linear 或 2-layer MLP）来预测 KVzip+ 分数，从而实现快速、自适应的 KV 缓存剪枝。</p>
+<p><strong>关键设计</strong>：</p>
+<ol>
+<li><strong>代理模型</strong>：</li>
+<li>输入：隐藏状态 h（D_h 维）</li>
+<li>输出：H 个分数（每个 KV head 一个）</li>
+<li>形式：KVzap-Linear（线性层）或 KVzap-MLP（2 层 MLP，hidden layer D_h/8，GELU 激活）</li>
+<li>
+<p>训练：使用 1.2M 对 (h, log(s⁺)) 训练数据</p>
+</li>
+<li>
+<p><strong>剪枝策略</strong>：</p>
+</li>
+<li><strong>阈值剪枝</strong>：丢弃得分低于阈值 τ 的 KV 对（而非固定 top-k）</li>
+<li><strong>自适应压缩</strong>：不同输入的信息密度不同，相同阈值产生不同压缩率</li>
+<li>
+<p><strong>滑动窗口</strong>：保留最近 w=128 个 token 的局部上下文（StreamingLLM）</p>
+</li>
+<li>
+<p><strong>优势</strong>：</p>
+</li>
+<li><strong>快速</strong>：仅需 1-2 次矩阵乘法，计算开销 &lt; 1.1%</li>
+<li><strong>自适应</strong>：根据输入复杂度动态调整压缩率</li>
+<li><strong>保真</strong>：在多个基准上几乎无精度损失</li>
+</ol>
+<h3 id="4">4. 与现有方法的对比</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>预填充</th>
+<th>解码</th>
+<th>自适应</th>
+<th>压缩率</th>
+<th>精度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KVzip</td>
+<td>✓（慢）</td>
+<td>✗</td>
+<td>✗</td>
+<td>4×</td>
+<td>好</td>
+</tr>
+<tr>
+<td>Expected Attention</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>2-3×</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>KVzap</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>2-4×</td>
+<td>SOTA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">技术细节</h2>
+<h3 id="_5">训练数据</h3>
+<ul>
+<li><strong>来源</strong>：Nemotron-Pretraining-Dataset-sample</li>
+<li><strong>规模</strong>：27k prompts（9 个子集：common crawl、multilingual、math、code 等）</li>
+<li><strong>过滤</strong>：750–1,250 tokens 的 prompts</li>
+<li><strong>采样</strong>：每个子集最多 500 个 prompts（训练）+ 5 个（验证），共约 2.4k prompts</li>
+<li><strong>训练对</strong>：每个 prompt 随机采样 500 个 token，得到 1.2M 对（每个 head）</li>
+</ul>
+<h3 id="_6">模型配置</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>线性模型参数</th>
+<th>MLP 参数</th>
+<th>阈值 τ</th>
+<th>压缩率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-8B</td>
+<td>1.1M</td>
+<td>76M</td>
+<td>-4</td>
+<td>3.5×</td>
+</tr>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>1.1M</td>
+<td>76M</td>
+<td>-7</td>
+<td>3.0×</td>
+</tr>
+<tr>
+<td>Qwen3-32B</td>
+<td>1.1M</td>
+<td>210M</td>
+<td>-4</td>
+<td>2.7×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">评估基准</h3>
+<ul>
+<li><strong>长上下文</strong>：RULER（4k, 16k, 32k, 128k）、LongBench（21 个子集）</li>
+<li><strong>推理</strong>：AIME25（30 个奥数级问题）</li>
+<li><strong>模型</strong>：Qwen3-8B、Llama-3.1-8B-Instruct、Qwen3-32B</li>
+</ul>
+<h2 id="_8">主要结果</h2>
+<h3 id="_9">代理模型质量</h3>
+<ul>
+<li>KVzap-MLP 和 KVzap-Linear 的平均 R² 在 0.60–0.80 范围</li>
+<li>KVzap-MLP 一致性优于 KVzap-Linear</li>
+<li>说明 KVzip+ 分数可以从隐藏状态中近似</li>
+</ul>
+<h3 id="_10">计算和内存开销</h3>
+<ul>
+<li><strong>计算开销</strong>：KVzap-MLP &lt; 1.1%，KVzap-Linear &lt; 0.02%</li>
+<li><strong>内存开销</strong>：类似计算开销</li>
+<li><strong>长上下文场景</strong>：二次注意力成本主导，KVzap 开销可忽略</li>
+<li><strong>解码场景</strong>：利用 GPU 空闲周期，有效利用带宽</li>
+</ul>
+<h3 id="_11">预填充和解码性能</h3>
+<h4 id="ruler-4k">RULER 4k（长上下文）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>全量 KV</th>
+<th>KVzap</th>
+<th>压缩率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-8B</td>
+<td>95.32</td>
+<td>95.09</td>
+<td>0.74 (3.5×)</td>
+</tr>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>95.69</td>
+<td>95.55</td>
+<td>0.68 (3.0×)</td>
+</tr>
+<tr>
+<td>Qwen3-32B</td>
+<td>95.65</td>
+<td>95.95</td>
+<td>0.68 (3.0×)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="longbench">LongBench</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>全量 KV</th>
+<th>KVzap</th>
+<th>压缩率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-8B</td>
+<td>46.74</td>
+<td>46.49</td>
+<td>0.66 (2.7×)</td>
+</tr>
+<tr>
+<td>Llama-3.1-8B-Instruct</td>
+<td>45.25</td>
+<td>44.65</td>
+<td>0.62 (3.0×)</td>
+</tr>
+<tr>
+<td>Qwen3-32B</td>
+<td>50.56</td>
+<td>50.40</td>
+<td>0.57 (2.7×)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="aime25">AIME25（推理）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>全量 KV</th>
+<th>KVzap</th>
+<th>压缩率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3-8B (pass@4)</td>
+<td>0.77</td>
+<td>0.77</td>
+<td>0.75 (3.5×)</td>
+</tr>
+<tr>
+<td>Qwen3-32B (pass@4)</td>
+<td>0.83</td>
+<td>0.87</td>
+<td>0.60 (2.7×)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">自适应压缩</h3>
+<ul>
+<li>最大无损压缩率因任务而异（RULER 高，LongBench 低）</li>
+<li>KVzap 的阈值机制自动捕获这一特性</li>
+<li>平均压缩率：2.7–3.5×</li>
+</ul>
+<h3 id="_13">消融实验</h3>
+<ol>
+<li><strong>阈值 vs 固定 top-k</strong>：</li>
+<li>阈值剪枝优于固定比例 top-k 选择（包括 per-head 和 per-layer）</li>
+<li>
+<p>阈值机制允许最多 20% 的压缩率变化</p>
+</li>
+<li>
+<p><strong>滑动窗口大小</strong>：</p>
+</li>
+<li>w=0（无窗口）：准确率降至 28.37%</li>
+<li>w=128：恢复到 62.51%</li>
+<li>w=512：无额外增益（62.37%）</li>
+</ol>
+<h2 id="_14">优点与局限</h2>
+<h3 id="_15">优点</h3>
+<ol>
+<li><strong>快速轻量</strong>：计算开销 &lt; 1.1%，内存开销类似，几乎可忽略</li>
+<li><strong>阶段无关</strong>：同时适用于预填充和解码，支持推理任务</li>
+<li><strong>自适应压缩</strong>：根据输入复杂度动态调整压缩率</li>
+<li><strong>保真</strong>：在多个基准上几乎无精度损失</li>
+<li><strong>易集成</strong>：仅需隐藏状态，可与现有内核兼容</li>
+<li><strong>开源</strong>：代码和模型在 GitHub 上公开</li>
+</ol>
+<h3 id="_16">局限</h3>
+<ol>
+<li><strong>模型规模验证不足</strong>：在 32B 模型上验证，更大模型（如 GLM 4.7、Qwen3-235B）需要进一步验证</li>
+<li><strong>稀疏注意力架构</strong>：未在 DeepSeek V3.2 等稀疏注意力架构上验证</li>
+<li><strong>非训练免费</strong>：KVzap 不是训练免费的，需要训练代理模型</li>
+<li><strong>后处理方法</strong>：KVzap 是后处理添加的，而非端到端训练</li>
+<li><strong>实现挑战</strong>：</li>
+<li>引入非统一缓存长度，需要支持可变长度块的 PagedAttention 内核</li>
+<li>将压缩转化为实际的时钟加速和 GPU 内存节省需要仔细工程</li>
+<li><strong>仅适用于长上下文</strong>：在短上下文场景中效果可能有限</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>KVzap 属于 <strong>KV Cache 稀疏/压缩</strong>（<code>kv_cache_sparse</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>KV 缓存剪枝</strong>：通过轻量级代理模型预测 KV 对重要性，实现快速、自适应的剪枝</li>
+<li><strong>阶段无关</strong>：同时适用于预填充和解码，支持推理任务</li>
+<li><strong>自适应压缩</strong>：根据输入复杂度动态调整压缩率</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>KVzip</strong>（2025）：KVzap 的基础，KVzip 的改进版
+- <strong>Expected Attention</strong>（2025）：KVzap 的对比方法
+- <strong>H2O</strong>（2023）：KV 缓存剪枝的先驱
+- <strong>StreamingLLM</strong>（2023）：滑动窗口策略的来源
+- <strong>Duo Attention</strong>（2024）：检索和流式 head 的对比方法</p>
+<h2 id="_17">可复现/实现要点</h2>
+<ol>
+<li><strong>代理模型</strong>：线性层或 2 层 MLP，输入 D_h，输出 H</li>
+<li><strong>训练数据</strong>：Nemotron-Pretraining-Dataset-sample，1.2M 对</li>
+<li><strong>阈值剪枝</strong>：丢弃得分低于 τ 的 KV 对</li>
+<li><strong>滑动窗口</strong>：保留最近 w=128 个 token</li>
+<li><strong>评估</strong>：RULER 4k/16k、LongBench、AIME25</li>
+<li><strong>开源</strong>：https://github.com/NVIDIA/kvpress</li>
+</ol>
+<h2 id="_18">个人备注</h2>
+<ul>
+<li>KVzap 的核心洞察是：<strong>轻量级代理模型可以高效预测 KV 对的重要性</strong>，这使得 KV 缓存剪枝可以在不牺牲精度的情况下实现快速、自适应的压缩。</li>
+<li>阈值剪枝（而非固定 top-k）是一个重要的设计选择，它允许根据输入复杂度动态调整压缩率。</li>
+<li>KVzap 的计算开销 &lt; 1.1%，使其成为实际部署的有力候选。</li>
+<li>论文来自 NVIDIA，且代码开源，说明这是一个工程友好的方法。</li>
+<li>值得关注的未来方向：(1) 在更大模型上的验证；(2) 在稀疏注意力架构上的应用；(3) 端到端训练的 KV 缓存剪枝。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

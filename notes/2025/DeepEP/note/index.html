@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,7 +161,248 @@
   
                 <h1 id="deepep">DeepEP</h1>
 <p><a class="glightbox" href="../low-latency.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../low-latency.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
+<blockquote>
+<p><strong>一句话总结</strong>：DeepEP 是 DeepSeek 开源的高性能专家并行通信库，通过统一的 ElasticBuffer 接口、JIT 编译和 NCCL Gin 后端，在 MoE（Mixture of Experts）场景下实现了接近硬件带宽上限的 all-to-all 通信，同时显著减少 SM 资源占用。</p>
+</blockquote>
+<hr />
+<h2 id="_1">基本信息</h2>
+<ul>
+<li><strong>论文/项目名称</strong>：DeepEP: an efficient expert-parallel communication library</li>
+<li><strong>作者</strong>：Chenggang Zhao, Shangyan Zhou, Liyue Zhang, Chengqi Deng, Zhean Xu, Yuxuan Liu, Kuai Yu, Jiashi Li, Liang Zhao</li>
+<li><strong>机构</strong>：DeepSeek</li>
+<li><strong>发布时间</strong>：2025 年（GitHub 开源）</li>
+<li><strong>GitHub</strong>：https://github.com/deepseek-ai/DeepEP</li>
+<li><strong>许可证</strong>：MIT License</li>
+<li><strong>Stars</strong>：~9700（截至 2025 年 6 月）</li>
+<li><strong>编程语言</strong>：CUDA</li>
+<li><strong>注意</strong>：本文为 GitHub 开源项目，无独立 arXiv 论文，本 note 基于官方 README 及技术文档撰写。</li>
+</ul>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>DeepEP（DeepEveryParallel）是一个面向现代机器学习训练和推理的高性能通信库。该库目前聚焦于<strong>专家并行（Expert Parallelism, EP）</strong>——提供高吞吐、低延迟的 all-to-all GPU 内核（MoE dispatch 和 combine），支持包括 FP8 在内的低精度计算。同时，DeepEP 还提供实验性的流水线并行（PP）、上下文并行（CP）和远程内存访问（Engram）原语，所有内核均设计为零或最小 SM 占用。所有内核在运行时通过轻量级 JIT（Just-In-Time）模块编译，安装时无需 CUDA 编译。</p>
+<p>尽管设计轻量，DeepEP 的性能在各种配置下均能达到或超过硬件带宽极限。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="1-moe">1. MoE 模型通信瓶颈</h3>
+<p>现代大规模语言模型（如 DeepSeek-V3）广泛采用 MoE 架构，通过稀疏激活的专家网络提升模型容量。然而，MoE 的 <strong>all-to-all 通信</strong>（dispatch 和 combine）成为训练和推理的主要性能瓶颈：</p>
+<ul>
+<li><strong>吞吐量需求</strong>：token 需要从所有 rank 路由到对应的专家，再将结果分发回去，通信量大。</li>
+<li><strong>延迟敏感</strong>：推理场景（尤其是 decoding）对延迟极度敏感，需要低延迟的通信原语。</li>
+<li><strong>SM 资源竞争</strong>：传统通信内核占用大量 SM（Streaming Multiprocessor），与计算内核竞争 GPU 资源。</li>
+</ul>
+<h3 id="2">2. 现有方案的局限</h3>
+<ul>
+<li><strong>NCCL</strong>：通用集合通信库，未针对 MoE 的 all-to-all 模式优化。</li>
+<li><strong>NVSHMEM</strong>：提供对称内存访问，但 API 复杂，SM 占用高，配置复杂。</li>
+<li><strong>自定义内核</strong>：虽然性能好，但缺乏通用性和易用性。</li>
+</ul>
+<h3 id="3-deepseek">3. DeepSeek 的需求</h3>
+<p>作为大规模 MoE 模型（如 DeepSeek-V3、DeepSeek-R1）的开发者，DeepSeek 需要一个：
+- 高性能、低延迟的 EP 通信库
+- 轻量级、易集成的解决方案
+- 支持 FP8 低精度通信
+- 最小化 SM 占用，为计算留出空间</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-elasticbuffer">1. ElasticBuffer 统一接口</h3>
+<p>V2 版本的核心创新是将高吞吐和低延迟的 EP 操作统一到 <strong><code>ElasticBuffer</code></strong> 接口中：</p>
+<ul>
+<li><strong>统一 API</strong>：dispatch 和 combine 操作共用同一缓冲区接口</li>
+<li><strong>自动参数计算</strong>：根据 MoE 设置（token 数、hidden 维度、top-k、专家数）自动计算最优 SM 和 QP 数量，无需手动调优</li>
+<li><strong>可扩展</strong>：支持 up to EP2048 的大规模配置</li>
+</ul>
+<pre><code class="language-python">buffer = ElasticBuffer(
+    group,
+    num_max_tokens_per_rank=num_max_tokens_per_rank,
+    hidden=hidden,
+    num_topk=num_topk,
+    use_fp8_dispatch=use_fp8_dispatch,
+)
+num_sms = buffer.get_theoretical_num_sms(num_experts, num_topk)
+</code></pre>
+<h3 id="2-nccl-gin">2. NCCL Gin 后端</h3>
+<p>V2 从 NVSHMEM 后端切换到 <strong>NCCL Gin 后端</strong>：</p>
+<ul>
+<li><strong>轻量级</strong>：Header-only 设计，依赖少</li>
+<li><strong>可复用</strong>：能复用现有 NCCL communicator，避免额外初始化开销</li>
+<li><strong>兼容性好</strong>：基于 NCCL 生态，易于集成</li>
+</ul>
+<h3 id="3-jit">3. JIT 编译</h3>
+<p>所有内核通过 <strong>Just-In-Time (JIT)</strong> 编译：</p>
+<ul>
+<li>运行时编译，无需预编译 CUDA 代码</li>
+<li>安装时无需 CUDA 编译环境</li>
+<li>编译结果缓存（<code>~/.deep_ep</code>），后续运行可复用</li>
+</ul>
+<h3 id="4-overlap">4. 通信-计算重叠（Overlap）</h3>
+<p>DeepEP 支持通信与计算的重叠：</p>
+<ul>
+<li><strong>异步操作</strong>：<code>async_with_compute_stream=True</code> 启用异步通信</li>
+<li><strong>EventOverlap 接口</strong>：管理通信流与计算流之间的依赖关系</li>
+<li><strong>推理场景</strong>：支持 handle 缓存，避免重复 CPU 同步</li>
+</ul>
+<pre><code class="language-python"># 通信进行中时执行计算
+recv_x, recv_topk_idx, recv_topk_weights, handle, event = dispatch_forward(...)
+# ... 独立计算 ...
+event.current_stream_wait()  # 等待通信完成
+</code></pre>
+<h3 id="5">5. 支持的并行模式</h3>
+<ul>
+<li><strong>专家并行（EP）</strong>：核心功能，支持高吞吐和低延迟两种模式</li>
+<li><strong>流水线并行（PP）</strong>：实验性功能，支持 RDMA，0 SM 占用</li>
+<li><strong>上下文并行（CP）</strong>：实验性功能，使用 Copy Engine，0 SM 占用</li>
+<li><strong>远程内存访问（Engram）</strong>：实验性功能，支持 RDMA，0 SM 占用</li>
+</ul>
+<h3 id="6">6. 低精度支持</h3>
+<ul>
+<li><strong>FP8 Dispatch</strong>：支持 FP8 低精度 dispatch，减少通信量</li>
+<li><strong>BF16 Combine</strong>：支持 BF16 combine 操作</li>
+<li><strong>NVFP4</strong>：Hybrid-EP 实验分支支持 NVFP4 数据类型</li>
+</ul>
+<h3 id="7-sm">7. SM 资源优化</h3>
+<p>V2 相比 V1 的关键改进：</p>
+<ul>
+<li><strong>SM 数量大幅减少</strong>：从 V1 的 24 SM 降至 4-6 SM</li>
+<li><strong>性能提升</strong>：峰值性能提升最高 1.3x</li>
+<li><strong>SM 节省</strong>：最多节省 4x SM 资源</li>
+<li><strong>解析式计算</strong>：无需自动调优，自动计算最优 SM 和 QP 数量</li>
+</ul>
+<h3 id="8">8. 网络配置</h3>
+<ul>
+<li><strong>InfiniBand 支持</strong>：完全测试，支持 RDMA</li>
+<li><strong>RoCE 兼容</strong>：理论上兼容</li>
+<li><strong>流量隔离</strong>：通过 Virtual Lane (VL) 支持</li>
+<li><strong>自适应路由</strong>：推荐在所有网络负载条件下启用</li>
+<li><strong>拥塞控制</strong>：默认禁用（影响最大带宽）</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">基准测试配置</h3>
+<ul>
+<li>8K tokens/batch</li>
+<li>7168 hidden 维度</li>
+<li>top 8 专家</li>
+<li>FP8 dispatch + BF16 combine</li>
+</ul>
+<h3 id="_7">性能数据</h3>
+<table>
+<thead>
+<tr>
+<th>架构</th>
+<th>NIC 类型</th>
+<th>拓扑</th>
+<th>Dispatch 带宽</th>
+<th>Combine 带宽</th>
+<th>SM 数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SM90</td>
+<td>CX7</td>
+<td>EP 8×2</td>
+<td>90 GB/s (RDMA)</td>
+<td>81 GB/s (RDMA)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>SM90</td>
+<td>CX7</td>
+<td>EP 8×4</td>
+<td>61 GB/s (RDMA)</td>
+<td>61 GB/s (RDMA)</td>
+<td>6</td>
+</tr>
+<tr>
+<td>SM100</td>
+<td>CX7</td>
+<td>EP 8×2</td>
+<td>90 GB/s (RDMA)</td>
+<td>91 GB/s (RDMA)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>SM100</td>
+<td>N/A</td>
+<td>EP 8</td>
+<td>726 GB/s (NVLink)</td>
+<td>740 GB/s (NVLink)</td>
+<td>64 (最大性能)</td>
+</tr>
+<tr>
+<td>SM100</td>
+<td>N/A</td>
+<td>EP 8</td>
+<td>643 GB/s (NVLink)</td>
+<td>675 GB/s (NVLink)</td>
+<td>24 (最小 SM)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键结论</strong>：
+- V2 相比 V1 峰值性能提升最高 1.3x
+- V2 相比 V1 最多节省 4x SM 资源
+- 在 SM90 架构上，RDMA 带宽可达 90 GB/s
+- 在 SM100 架构上，NVLink 带宽可达 740 GB/s
+- 性能达到或超过硬件带宽极限</p>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>极致性能</strong>：接近或超过硬件带宽上限，在各种配置下表现出色</li>
+<li><strong>SM 资源节约</strong>：V2 将 SM 使用从 24 降至 4-6，为计算留出更多空间</li>
+<li><strong>轻量级设计</strong>：JIT 编译，无需预编译，安装简单</li>
+<li><strong>统一接口</strong>：高吞吐和低延迟操作统一到 ElasticBuffer，API 简洁</li>
+<li><strong>自动调优</strong>：解析式计算 SM 和 QP 数量，无需手动调优</li>
+<li><strong>低精度支持</strong>：FP8 dispatch + BF16 combine，减少通信量</li>
+<li><strong>通信-计算重叠</strong>：支持异步操作，最大化 GPU 利用率</li>
+<li><strong>开源社区</strong>：MIT 许可，活跃的社区贡献（多个实验分支和社区 fork）</li>
+<li><strong>推理优化</strong>：支持 handle 缓存，避免重复 CPU 同步，适合 decoding 场景</li>
+<li><strong>可扩展</strong>：支持 EP2048 大规模配置，适用于超大规模 MoE 模型</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>仅支持 Hopper 架构</strong>：需要 SM90 或更高架构，不支持老 GPU</li>
+<li><strong>V2 缓冲区消耗更大</strong>：相比 V1，buffer size 消耗增加</li>
+<li><strong>部分功能为实验性</strong>：Engram、PP、CP 仍为实验性功能</li>
+<li><strong>0 SM RDMA 低延迟 EP 不再支持</strong>：V2 不再支持 RDMA 低延迟 EP 的 0 SM 模式</li>
+<li><strong>网络依赖</strong>：需要 InfiniBand 或 RDMA 网络支持，部署门槛较高</li>
+<li><strong>无独立论文</strong>：仅为 GitHub 开源项目，缺乏正式的学术论文和理论分析</li>
+<li><strong>CUDA 锁定</strong>：仅支持 NVIDIA GPU，不支持 AMD GPU（虽然有实验性 ROCm 支持）</li>
+<li><strong>版本兼容性</strong>：需要特定的 NCCL 版本（&gt;=2.30.4）和 PyTorch 版本（&gt;=2.10）</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1-overlap">1. 通信-计算重叠（Overlap）</h3>
+<p>DeepEP 的核心优化之一是通信与计算的重叠，这与 EfficientPaper 中 "overlap" 关键词直接相关。该技术通过异步操作和 EventOverlap 接口，最大化 GPU 利用率。</p>
+<h3 id="2-expert-parallelism">2. 专家并行（Expert Parallelism）</h3>
+<p>DeepEP 专注于 MoE 模型的专家并行通信，是 MoE 训练和推理的关键基础设施。随着 MoE 架构在大规模模型中的普及，EP 通信优化变得越来越重要。</p>
+<h3 id="3-fp8fp4">3. 低精度通信（FP8/FP4）</h3>
+<p>DeepEP 支持 FP8 dispatch 和 BF16 combine，与低精度计算趋势一致。低精度通信可以显著减少通信量，提高吞吐量。</p>
+<h3 id="4-gpu">4. GPU 内核优化</h3>
+<p>DeepEP 的 JIT 编译和 SM 资源优化展示了 GPU 内核级别的性能优化技术，对高效 AI 系统设计有重要参考价值。</p>
+<h3 id="5_1">5. 集合通信库</h3>
+<p>DeepEP 作为 NCCL 生态的扩展，展示了如何为特定场景（如 MoE）设计高效的通信库，与 NCCL、UCCL 等研究方向相关。</p>
+<h3 id="6_1">6. 分布式训练/推理系统</h3>
+<p>DeepEP 是分布式训练和推理系统的关键组件，与大规模 AI 系统的可扩展性和效率优化密切相关。</p>
+<h3 id="7-0-sm">7. 0 SM 通信</h3>
+<p>DeepEP 的 0 SM 设计（PP、CP、Engram）展示了如何将通信开销降至最低，为计算留出全部 GPU 资源，是高效系统设计的重要方向。</p>
+<hr />
+<h2 id="_10">相关论文与项目</h2>
+<ul>
+<li><strong>DeepSeek-V3</strong>：使用 DeepEP 的 MoE 模型</li>
+<li><strong>NCCL</strong>：DeepEP V2 的 NCCL Gin 后端</li>
+<li><strong>NVSHMEM</strong>：DeepEP V1 的通信后端</li>
+<li><strong>UCCL-EP</strong>：社区 fork，支持异构 GPU</li>
+<li><strong>MORI</strong>：AMD GPU 的通信库，支持 DeepEP</li>
+</ul>
+<hr />
+<h2 id="_11">总结</h2>
+<p>DeepEP 是一个针对 MoE 模型专家并行通信的高性能库，通过 ElasticBuffer 统一接口、NCCL Gin 后端、JIT 编译和通信-计算重叠等技术，实现了接近硬件带宽上限的通信性能，同时显著减少 SM 资源占用。尽管缺乏正式的学术论文，但其开源实现和性能数据展示了高效的 GPU 通信内核设计，对大规模 MoE 模型的训练和推理具有重要价值。</p>
+<hr />
+<blockquote>
+<p><strong>声明</strong>：本 note 由 AI Agent 自动生成，基于 DeepEP GitHub 仓库的官方 README 和技术文档。由于 DeepEP 为 GitHub 开源项目（无独立 arXiv 论文），本 note 内容主要来源于项目官方文档，未包含独立论文的实验分析。生成时间：2025 年 6 月。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,31 +161,381 @@
   
                 <h1 id="r-sparse-rank-aware-activation-sparsity-for-efficient-llm-inference">R-Sparse: Rank-Aware Activation Sparsity for Efficient LLM Inference</h1>
 <p><a class="glightbox" href="../fig4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig4.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs), while demonstrating remarkable capabilities
-across various applications, present significant challenges during inference
-due to their substantial model size, especially when deployed on edge devices.
-Activation sparsity offers a promising solution to reduce computation and
-memory movement, enabling more efficient inference, particularly for
-small-batch on-device applications. However, current approaches face
-limitations with non-ReLU activation function, which are foundational to most
-advanced LLMs, or require heavy continual training. Additionally, the
-difficulty in predicting active channels and limited achievable sparsity ratios
-constrain the effectiveness of activation sparsity-based methods. In this
-paper, we introduce R-Sparse, a training-free activation sparsity approach
-capable of achieving high sparsity levels in advanced LLMs. We conducted two
-preliminary investigations into how different components contribute to the
-output within a single linear layer and found two key observations: (i) the
-non-sparse components of the input function can be regarded as a few bias
-terms, and (ii) The full computation can be effectively approximated by an
-appropriate combination of input channels and weight singular values. Building
-on this, we replace the linear layers in LLMs with a rank-aware sparse
-inference method that leverages the sparsity of input channels and singular
-value components, eliminating the need for active channel prediction like the
-output sparsity based approaches. Experiments on Llama-2/3 and Mistral models
-across ten diverse tasks demonstrate that R-Sparse achieves comparable
-performance at 50% model-level sparsity, resulting in a significant 43%
-end-to-end efficient improvements with customized kernels.</p>
+<blockquote>
+<p><strong>⚠️ 生成声明：本 note 由 AI Agent 自动生成，基于 arXiv 论文全文阅读与分析。生成时间：2025年6月。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>R-Sparse 是一种免训练的激活稀疏化方法，通过联合利用输入通道的稀疏性和权重矩阵奇异值分量的低秩性，在 LLM 推理中实现 50% 模型级稀疏度，同时保持与完整模型相当的性能，并带来 43% 的端到端加速。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLMs）虽然在各种应用中展现了卓越的能力，但由于其庞大的模型规模，在推理过程中面临显著挑战，尤其是在边缘设备上部署时。激活稀疏性提供了一种有前景的解决方案，可以减少计算和内存访问，从而实现更高效的推理，特别适用于小批量的设备端应用。然而，当前方法在非 ReLU 激活函数（大多数先进 LLM 所采用）方面存在局限，或者需要大量持续训练。此外，预测活跃通道的困难和可实现的稀疏比有限，制约了基于激活稀疏的方法的有效性。本文介绍了 R-Sparse，一种免训练的激活稀疏方法，能够在高级 LLM 中实现高稀疏水平。我们对单个线性层内不同组件对输出的贡献进行了两项初步调查，发现了两个关键观察结果：（i）输入函数的非稀疏分量可以被视为少量偏差项；（ii）完整的计算可以通过输入通道和权重奇异值的适当组合来有效近似。基于此，我们用一种秩感知的稀疏推理方法替换 LLM 中的线性层，该方法利用输入通道和奇异值分量的稀疏性，消除了基于输出稀疏方法中活跃通道预测的需要。在 Llama-2/3 和 Mistral 模型上的十个多样化任务的实验表明，R-Sparse 在 50% 模型级稀疏度下实现了可比的性能，通过定制内核实现 43% 的端到端效率提升。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="llm">LLM 推理的效率瓶颈</h3>
+<p>LLM 的推理过程通常受内存带宽限制（memory-bound），特别是在解码阶段，需要频繁将权重参数从 HBM 加载到 SRAM，导致显著的延迟和内存开销。对于边缘设备部署，这一问题尤为严重。</p>
+<h3 id="_4">现有方法的三大局限</h3>
+<ol>
+<li>
+<p><strong>非 ReLU 激活函数的可行性问题</strong>：大多数先进 LLM 使用 SiLU 或 GELU 等非 ReLU 激活函数，直接应用 ReLU 稀疏化会损害模型功能。现有方法要么需要大量持续预训练（如 150B tokens，64 A100 GPU 上约一个月），要么只能实现有限的稀疏比。</p>
+</li>
+<li>
+<p><strong>活跃通道预测困难</strong>：基于输出稀疏的方法需要提前预测活跃通道，预测准确性直接影响效果，策略包括利用语义相似 token 的激活相似性、门控投影后的激活、或可学习的预测器。</p>
+</li>
+<li>
+<p><strong>稀疏比受限</strong>：不依赖大量重训练的方法（如 CATS、GRIFFIN）在 MLP 块中只能达到 50% 稀疏度，模型级稀疏度仅约 1/3，更高稀疏水平仍具挑战。</p>
+</li>
+</ol>
+<h3 id="_5">核心研究问题</h3>
+<p>非稀疏部分的激活是否真正必要？能否用轻量级策略在不进行大量预训练的情况下缓解非稀疏部分？R-Sparse 正是针对这些问题提出的解决方案。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="31">3.1 基本观察</h3>
+<h4 id="_7">观察一：非稀疏分量可视为偏差项</h4>
+<p>作者使用软多阶段 ReLU 函数 <script type="math/tex">\sigma_T(\cdot)</script> 来逼近非 ReLU 激活函数。关键发现是：<strong>仅将 l 从 1 增加到 2，性能就能显著恢复，即使在 90% 的稀疏比下也是如此</strong>。</p>
+<p>具体地，将非稀疏通道的激活按阈值分组后，每个分组对应一个数据依赖的偏差项 <script type="math/tex">B_j</script>，使得非稀疏分量可以用少量偏差项近似。这意味着非稀疏部分具有<strong>低秩结构</strong>。</p>
+<h4 id="_8">观察二：秩感知激活稀疏性</h4>
+<p>对权重矩阵 W 进行奇异值分解（SVD），得到 <script type="math/tex">W = U\Sigma V^T = \sum_{i=1}^{n} \sigma_i U[:,i]V^T[:,i]</script>。输出 Y 可表示为：
+<script type="math/tex; mode=display">Y = \sum_{i=1}^{n} \sum_{j=1}^{m} \sigma_i X_j V[j,i] U^T[:,i]</script>
+</p>
+<p>其中 <script type="math/tex">S_{i,j} := \sigma_i X_j V[j,i]</script> 衡量第 j 个输入通道和第 i 个 SVD 分量对输出的贡献。</p>
+<p><strong>关键发现</strong>：在 Llama-2-7B 的实验中，主要贡献集中在<strong>右下角</strong>（即大奇异值分量和特定输入通道的组合），且几乎所有层都表现出显著的稀疏性质。不同层的稀疏特征各异：
+- o.proj 层比 q.proj 和 k.proj 层更依赖小奇异值分量
+- 中间层表现出更高的稀疏度
+- 首层和末层更难以稀疏化</p>
+<h3 id="32-r-sparse">3.2 R-Sparse 推理框架</h3>
+<p>R-Sparse 将线性层 <script type="math/tex">Y = XW^T</script> 的计算分解为两个部分：
+<script type="math/tex; mode=display">Y = Y_s + Y_r</script>
+</p>
+<p>其中：
+- <strong>稀疏部分</strong>：<script type="math/tex">Y_s = \sigma_{t(s)}(X)W^T</script>，通过阈值 <script type="math/tex">t(s)</script> 确定稀疏分量
+- <strong>低秩部分</strong>：<script type="math/tex">Y_r = (X - \sigma_{t(s)}(X))(A_r B_r)^T</script>，使用权重的低秩近似</p>
+<h4 id="_9">输入激活稀疏化</h4>
+<p>给定预定义的稀疏预算 s，阈值 <script type="math/tex">t(s)</script> 估计为 X 的第 s 百分位数。稀疏化函数定义为：
+<script type="math/tex; mode=display">\sigma_{t(s)}(X)_j = \begin{cases} X_j & \text{if } |X_j| \geq t(s) \\ 0 & \text{if } |X_j| < t(s) \end{cases}</script>
+</p>
+<h4 id="_10">低秩近似</h4>
+<p>对预训练权重 W 进行 SVD 分解，选择最重要的 r 个分量：
+- <script type="math/tex">A_r = U_r \Sigma_r^{1/2}</script>
+- <script type="math/tex">B_r = \Sigma_r^{1/2} V_r^T</script>
+</p>
+<p>该低秩近似可通过离线 SVD 操作完成，不会影响推理时延。</p>
+<h4 id="_11">关键设计优势</h4>
+<ul>
+<li><strong>面向输入侧</strong>：与之前的输出激活稀疏方法不同，R-Sparse 利用输入通道的稀疏性，不需要预测活跃通道</li>
+<li><strong>适用于所有线性层</strong>：不仅限于 MLP 块，还包括 Attention 模块</li>
+<li><strong>内存 I/O 开销</strong>：由两个超参数 (r, s) 决定，相对于完整线性层的开销为 <script type="math/tex">r \cdot \frac{m+n}{mn} + s</script>
+</li>
+</ul>
+<h4 id="_12">列主序存储</h4>
+<p>权重以列主序格式存储，以提高内存带宽利用率（GPU 每次访问获取连续内存条目）。</p>
+<h3 id="33">3.3 进化搜索算法</h3>
+<p>不同层的稀疏-低秩特征各异，因此使用<strong>进化策略</strong>搜索每层的最优稀疏比例 <script type="math/tex">\rho_i</script>。</p>
+<ul>
+<li>定义 <script type="math/tex">\rho_i</script> 为第 i 层稀疏部分的相对比例</li>
+<li>稀疏预算 <script type="math/tex">s_i = \rho_i C_i</script>，秩 <script type="math/tex">r_i = (1-\rho_i)C_i \cdot \frac{mn}{m+n}</script>
+</li>
+<li>优化目标：<script type="math/tex">\rho^* = \arg\min_\rho L(f, \rho)</script>，其中 L 是 C4 训练集中 16 个随机样本的平均困惑度</li>
+<li>群体大小 32，变异率 <script type="math/tex">p_m = 0.5</script>，交叉率 <script type="math/tex">p_c = 0.5</script>，总代数 5</li>
+<li>采用分组策略（组大小 28），加速收敛</li>
+<li><strong>搜索开销极低</strong>：在单个 A6000 GPU 上约 1 小时（Llama-2-7B）</li>
+</ul>
+<hr />
+<h2 id="_13">实验结果</h2>
+<h3 id="_14">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-2-7B、Llama-3-8B、Mistral-7B</li>
+<li><strong>任务</strong>：8 个常识推理任务（WG、PIQA、SciQ、OBQA、HellaSwag、BoolQ、ARC-E、ARC-C）、文本摘要（XSUM）、语言建模（WikiText-2）</li>
+<li><strong>基线方法</strong>：</li>
+<li>ReLUfication：直接替换 ReLU，不重训练</li>
+<li>CATS：基于门控投影输出激活的大小进行稀疏化</li>
+<li>GRIFFIN：基于预填充阶段统计信息稀疏化所有 MLP 层</li>
+<li><strong>稀疏度</strong>：报告模型级稀疏度</li>
+<li><strong>精度</strong>：FP32，Hugging Face 库</li>
+<li><strong>硬件</strong>：单张 NVIDIA A6000 GPU</li>
+</ul>
+<h3 id="_15">主要结果</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>模型级稀疏度</th>
+<th>Llama-2-7B 平均准确率</th>
+<th>Llama-3-8B 平均准确率</th>
+<th>Mistral-7B 平均准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完整模型</td>
+<td>0%</td>
+<td>65.88</td>
+<td>69.44</td>
+<td>69.89</td>
+</tr>
+<tr>
+<td>CATS</td>
+<td>22%</td>
+<td>64.32</td>
+<td>66.42</td>
+<td>68.51</td>
+</tr>
+<tr>
+<td>CATS</td>
+<td>40%</td>
+<td>46.26</td>
+<td>35.91</td>
+<td>37.58</td>
+</tr>
+<tr>
+<td>GRIFFIN</td>
+<td>33%</td>
+<td>55.68</td>
+<td>56.04</td>
+<td>59.78</td>
+</tr>
+<tr>
+<td>GRIFFIN</td>
+<td>50%</td>
+<td>45.91</td>
+<td>45.11</td>
+<td>48.07</td>
+</tr>
+<tr>
+<td><strong>R-Sparse</strong></td>
+<td><strong>40%</strong></td>
+<td><strong>65.00</strong></td>
+<td><strong>68.37</strong></td>
+<td><strong>68.40</strong></td>
+</tr>
+<tr>
+<td><strong>R-Sparse</strong></td>
+<td><strong>50%</strong></td>
+<td><strong>64.06</strong></td>
+<td><strong>66.20</strong></td>
+<td><strong>68.39</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_16">关键发现</h4>
+<ol>
+<li>
+<p><strong>R-Sparse 在所有方法中表现最优</strong>：在相同模型级稀疏预算下，R-Sparse 比 CATS 平均提升 18.74%，比 GRIFFIN 提升 18.15%（Llama-2-7B）。</p>
+</li>
+<li>
+<p><strong>性能接近完整模型</strong>：在约 50% 模型级稀疏度下，R-Sparse 性能与完整模型相当，部分任务（如 SciQ）在 70% 稀疏度下仍能达到匹配性能。</p>
+</li>
+<li>
+<p><strong>部分任务在适度稀疏下性能略有提升</strong>：例如 30% 稀疏度下 OpenBookQA 提升 1.60%。</p>
+</li>
+</ol>
+<h3 id="_17">效率提升</h3>
+<ul>
+<li>使用定制 Triton 内核，R-Sparse 在 Llama-2-7B 上实现 <strong>42% 生成速度提升</strong></li>
+<li>在 Llama-3-8B 上实现 <strong>40% 生成速度提升</strong></li>
+<li>基于 FP32 精度，Hugging Face 库，单张 A6000 GPU</li>
+</ul>
+<h3 id="_18">与权重量化兼容</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>WG</th>
+<th>PIQA</th>
+<th>SciQ</th>
+<th>OBQA</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16 完整模型</td>
+<td>69.14</td>
+<td>78.07</td>
+<td>93.80</td>
+<td>31.40</td>
+<td>68.10</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td>68.19</td>
+<td>77.48</td>
+<td>93.80</td>
+<td>29.80</td>
+<td>67.32</td>
+</tr>
+<tr>
+<td>R-Sparse 40%</td>
+<td>68.03</td>
+<td>77.31</td>
+<td>93.90</td>
+<td>30.80</td>
+<td>67.51</td>
+</tr>
+<tr>
+<td>R-Sparse 50%</td>
+<td>67.40</td>
+<td>77.31</td>
+<td>93.90</td>
+<td>31.40</td>
+<td>67.50</td>
+</tr>
+<tr>
+<td>INT4 + R-Sparse 40%</td>
+<td>66.93</td>
+<td>76.71</td>
+<td>92.80</td>
+<td>29.20</td>
+<td>66.41</td>
+</tr>
+<tr>
+<td>INT4 + R-Sparse 50%</td>
+<td>66.38</td>
+<td>75.95</td>
+<td>92.10</td>
+<td>28.60</td>
+<td>65.76</td>
+</tr>
+</tbody>
+</table>
+<p>R-Sparse 与 INT4 量化结合后性能损失较小，表明两种技术可以叠加使用。</p>
+<h3 id="_19">消融实验</h3>
+<ol>
+<li>
+<p><strong>稀疏 vs 低秩基线</strong>：R-Sparse（结合稀疏和低秩）优于纯稀疏（平均提升 0.98%）和纯低秩方法（性能大幅下降）。</p>
+</li>
+<li>
+<p><strong>自适应稀疏方案 vs 统一方案</strong>：进化搜索的自适应方案在 40%-70% 稀疏比范围内平均提升约 1.13%-1.95%，在高稀疏比时优势更明显（70% 稀疏度下提升 2.60%）。</p>
+</li>
+</ol>
+<h3 id="_20">鲁棒性验证</h3>
+<ul>
+<li>跨不同数据集（C4、RedPajama 的 GitHub、ArXiv、StackExchange、Wikipedia）和不同样本数量（1 到 1024）的重要性模式保持一致</li>
+<li>证明了 R-Sparse 方法的泛化能力</li>
+</ul>
+<hr />
+<h2 id="_21">优势</h2>
+<ol>
+<li>
+<p><strong>免训练（Training-free）</strong>：无需额外的预训练或持续训练，直接应用于预训练模型，节省大量计算资源（对比 ReLUfication 需要 150B tokens）。</p>
+</li>
+<li>
+<p><strong>适用于非 ReLU 激活函数</strong>：可直接应用于使用 SiLU、GELU 等激活函数的现代 LLM，无需替换激活函数。</p>
+</li>
+<li>
+<p><strong>无需活跃通道预测</strong>：基于输入激活稀疏性而非输出，消除了预测活跃通道的困难。</p>
+</li>
+<li>
+<p><strong>覆盖所有线性层</strong>：不仅适用于 MLP 块，还可应用于 Attention 块（Q/K/V/O 投影），实现更高稀疏比。</p>
+</li>
+<li>
+<p><strong>高稀疏度下的优异性能</strong>：50% 模型级稀疏度下性能接近完整模型，部分任务甚至在 70% 稀疏度下仍表现良好。</p>
+</li>
+<li>
+<p><strong>与量化兼容</strong>：可与 INT4 权重量化叠加使用，进一步提升效率。</p>
+</li>
+<li>
+<p><strong>低搜索开销</strong>：进化搜索算法仅需约 1 小时（单张 A6000 GPU），即可找到最优的逐层稀疏-低秩配比。</p>
+</li>
+<li>
+<p><strong>显著的端到端加速</strong>：通过定制 Triton 内核实现 42-43% 的生成速度提升。</p>
+</li>
+<li>
+<p><strong>数据无关性</strong>：重要性模式在不同数据集和样本数下保持稳定，具有良好的泛化能力。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_22">局限</h2>
+<ol>
+<li>
+<p><strong>依赖 SVD 分解</strong>：需要对每个线性层的权重矩阵进行 SVD 分解以获得低秩近似，增加预处理开销（虽然可离线完成）。</p>
+</li>
+<li>
+<p><strong>内存开销计算复杂度</strong>：内存 I/O 开销由两个超参数 (r, s) 决定，<script type="math/tex">r \cdot \frac{m+n}{mn} + s</script>，需要针对不同模型和稀疏比进行调优。</p>
+</li>
+<li>
+<p><strong>自适应搜索仍需一定计算</strong>：虽然搜索开销较低（约 1 小时），但对于大规模模型或多层优化仍需一定计算资源。</p>
+</li>
+<li>
+<p><strong>仅在解码阶段应用</strong>：论文主要关注解码阶段的稀疏化，预填充阶段的优化未详细讨论。</p>
+</li>
+<li>
+<p><strong>定制内核依赖</strong>：为了实现显著的加速效果，需要定制的 Triton 内核，通用硬件支持可能受限。</p>
+</li>
+<li>
+<p><strong>仅验证了 7B 级模型</strong>：实验主要在 Llama-2-7B、Llama-3-8B 和 Mistral-7B 上进行，更大规模模型（如 70B）的效果尚未验证。</p>
+</li>
+<li>
+<p><strong>自适应方案的泛化性</strong>：虽然在不同数据集上表现稳定，但自适应方案的最优配比是否能迁移到其他模型架构还需进一步验证。</p>
+</li>
+<li>
+<p><strong>与 KV Cache 压缩的结合</strong>：论文提到 KV Cache 压缩与权重减少是正交的，可以结合使用，但未提供具体实验结果。</p>
+</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_23">相关技术方向</h3>
+<ol>
+<li><strong>激活稀疏性（Activation Sparsity）</strong>：</li>
+<li>CATS（Lee et al., 2024）：基于门控投影输出的上下文感知阈值稀疏化</li>
+<li>GRIFFIN（Dong et al., 2024）：基于预填充阶段统计信息的通道稀疏化</li>
+<li>Deja Vu（Liu et al., 2023）：上下文稀疏性用于高效 LLM 推理</li>
+<li>ProSparse（Song et al., 2024）：增强 LLM 内在激活稀疏性</li>
+<li>
+<p>TurboSparse（Song et al., 2024）：最少激活参数下的 SOTA 性能</p>
+</li>
+<li>
+<p><strong>低秩分解与压缩</strong>：</p>
+</li>
+<li>GaLore（Jaiswal et al., 2024）：低秩梯度中的非均匀低秩权重</li>
+<li>
+<p>低秩权重近似（q.proj 和 k.proj 层可更易通过低秩逼近压缩）</p>
+</li>
+<li>
+<p><strong>权重量化</strong>：</p>
+</li>
+<li>GPTQ（Frantar et al., 2022）：精确的训练后量化</li>
+<li>AWQ（Lin et al., 2024）：激活感知权重量化</li>
+<li>SmoothQuant（Xiao et al., 2023）：准确高效的训练后量化</li>
+<li>
+<p>KIVI（Liu et al., 2024）：免调优的 KV Cache 2-bit 量化</p>
+</li>
+<li>
+<p><strong>结构化剪枝</strong>：</p>
+</li>
+<li>LLM-Pruner（Ma et al., 2023）：LLM 的结构化剪枝</li>
+<li>
+<p>Owl（Yin et al., 2023）：异常值加权的逐层稀疏性</p>
+</li>
+<li>
+<p><strong>高效架构与系统优化</strong>：</p>
+</li>
+<li>FlashAttention（Dao et al., 2022）：快速内存高效精确注意力</li>
+<li>PagedAttention（Kwon et al., 2023）：高效的 KV Cache 管理</li>
+<li>Mamba（Gu &amp; Dao, 2023）：线性时间序列建模</li>
+<li>
+<p>LLM in a Flash（Alizadeh et al., 2023）：受限内存下的高效 LLM 推理</p>
+</li>
+<li>
+<p><strong>模型蒸馏</strong>：</p>
+</li>
+<li>MiniTron（Sreenivas et al., 2024）：LLM 剪枝与蒸馏的实践</li>
+<li>Transformers to SSMs（Bick et al., 2024）：从二次方知识蒸馏到亚二次方模型</li>
+</ol>
+<h3 id="efficientpaper_1">EfficientPaper 关键词关联</h3>
+<ul>
+<li><strong>sparse_pruning</strong>：R-Sparse 直接属于激活稀疏/剪枝范畴</li>
+<li><strong>activation_sparsity</strong>：核心贡献是输入激活稀疏性，而非输出激活稀疏性</li>
+</ul>
+<h3 id="_24">研究趋势</h3>
+<p>R-Sparse 代表了 LLM 推理优化中<strong>免训练激活稀疏化</strong>的重要进展，其将稀疏性和低秩分解相结合的思路为后续研究提供了新的范式。特别是：</p>
+<ol>
+<li><strong>输入侧 vs 输出侧稀疏性</strong>：R-Sparse 的输入侧方法避免了活跃通道预测的困难，是一个值得关注的新方向。</li>
+<li><strong>稀疏 + 低秩的混合压缩</strong>：不同层的最优策略不同，这种自适应混合方案是实现高效推理的关键。</li>
+<li><strong>与量化技术的协同</strong>：R-Sparse 与 INT4 量化兼容，表明稀疏性和量化可以叠加使用，未来有望实现更极致的压缩。</li>
+<li><strong>从 MLP 扩展到 Attention</strong>：R-Sparse 扩展到所有线性层，这为更全面的模型压缩奠定了基础。</li>
+<li><strong>边缘部署的前景</strong>：43% 的生成速度提升对于边缘设备部署具有重要意义，这与 LLM 推理的实时性和能效需求高度契合。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

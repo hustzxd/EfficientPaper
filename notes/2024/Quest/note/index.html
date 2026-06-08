@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,23 +161,249 @@
   
                 <h1 id="quest-query-aware-sparsity-for-efficient-long-context-llm-inference">Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference</h1>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>As the demand for long-context large language models (LLMs) increases, models
-with context windows of up to 128K or 1M tokens are becoming increasingly
-prevalent. However, long-context LLM inference is challenging since the
-inference speed decreases significantly as the sequence length grows. This
-slowdown is primarily caused by loading a large KV cache during self-attention.
-Previous works have shown that a small portion of critical tokens will dominate
-the attention outcomes. However, we observe the criticality of a token highly
-depends on the query. To this end, we propose Quest, a query-aware KV cache
-selection algorithm. Quest keeps track of the minimal and maximal Key values in
-KV cache pages and estimates the criticality of a given page using Query
-vectors. By only loading the Top-K critical KV cache pages for attention, Quest
-significantly speeds up self-attention without sacrificing accuracy. We show
-that Quest can achieve up to 2.23x self-attention speedup, which reduces
-inference latency by 7.03x while performing well on tasks with long
-dependencies with negligible accuracy loss. Code is available at
-http://github.com/mit-han-lab/Quest .</p>
+<h2 id="_1">一句话总结</h2>
+<p>Quest 提出了一种<strong>查询感知的 KV 缓存稀疏化方法</strong>，通过跟踪 KV 缓存页面的最小/最大 Key 值并结合当前 Query 向量估计页面关键性，仅加载 Top-K 关键 KV 缓存页面进行注意力计算，在几乎不损失精度的前提下将自注意力速度提升 7.03 倍，端到端推理延迟降低 2.23 倍，是长上下文 LLM 推理加速的重要突破。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>随着对长上下文大语言模型（LLM）需求的增长，支持 128K 甚至 1M token 上下文窗口的模型日益普遍。然而，长上下文 LLM 推理面临挑战：推理速度随序列长度增加而显著下降，这主要是由于自注意力计算中需要加载大量 KV 缓存。先前工作已表明，少量关键 token 会主导注意力结果。但我们观察到，token 的关键性高度依赖于查询（query）。为此，我们提出了 Quest，一种查询感知的 KV 缓存选择算法。Quest 跟踪 KV 缓存页面中每个维度的最小和最大 Key 值，并利用 Query 向量估计每个页面的关键性。通过仅加载 Top-K 关键 KV 缓存页面进行注意力计算，Quest 在不牺牲精度的情况下显著加速自注意力。我们展示了 Quest 能够实现最高 7.03 倍的自注意力加速，将推理延迟降低 2.23 倍，在长依赖任务上表现良好且精度损失可忽略。代码已开源：https://github.com/mit-han-lab/Quest</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">长上下文推理的核心瓶颈</h3>
+<ol>
+<li><strong>KV 缓存内存开销巨大</strong>：对于 Llama-7B 模型，32K 上下文长度的 KV 缓存可达 16GB，读取至少需要 11ms，占推理延迟的 50% 以上。</li>
+<li><strong>解码阶段主导推理时间</strong>：在 16K prompt + 512 response 场景中，超过 86% 的时间花在解码阶段，每次解码都需要加载整个 KV 缓存。</li>
+<li><strong>序列长度增长导致性能急剧下降</strong>：随着上下文窗口从 2K 扩展到 1M，内存带宽成为关键瓶颈。</li>
+</ol>
+<h3 id="_5">现有方法的不足</h3>
+<ul>
+<li><strong>H2O</strong>：基于历史注意力分数选择保留的 KV 缓存，但已丢弃的 token 可能对未来的查询很重要，导致信息丢失。</li>
+<li><strong>TOVA</strong>：基于当前查询永久丢弃 token，策略过于简化。</li>
+<li><strong>StreamingLLM</strong>：仅处理有限的最近窗口，无法处理长依赖。</li>
+<li><strong>SparQ</strong>：通过通道剪枝计算近似注意力分数，但在长依赖任务上未经充分验证。</li>
+<li>以上方法的共同问题是：<strong>token 关键性与查询密切相关</strong>，而静态/历史方法无法动态响应不同查询。</li>
+</ul>
+<h3 id="_6">关键洞察</h3>
+<p>作者观察到，<strong>token 的关键性高度依赖于当前的 query</strong>。例如，对于提示"A is B. C is D. A is"，token "B" 在查询"is"时至关重要（输出"B"），但在之前的查询中并不重要。这意味着需要一种<strong>查询感知</strong>的动态稀疏化方法。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="_8">整体框架</h3>
+<p>Quest 采用<strong>两阶段</strong>的稀疏自注意力计算：</p>
+<ol>
+<li><strong>阶段一：关键页面估计（Criticality Estimation）</strong></li>
+<li><strong>阶段二：稀疏注意力计算（Sparse Attention）</strong></li>
+</ol>
+<h3 id="31">3.1 页面级管理</h3>
+<p>Quest 在页面（Page）粒度管理 KV 缓存，采用 PagedAttention 机制。每个页面包含 S 个 KV 对（默认 16 个），以减少元数据开销。</p>
+<h3 id="32">3.2 关键页面估计算法</h3>
+<p><strong>核心思想</strong>：利用每个页面中 Key 向量的最小值（min）和最大值（max）作为元数据，近似估计页面的注意力上界。</p>
+<p><strong>具体步骤</strong>：</p>
+<ol>
+<li><strong>元数据维护</strong>：在插入新 token 时，对每个维度 i 更新页面的 min 和 max 值：</li>
+<li><code>Mi = max(Mi, ki)</code> — 当前最大 Key 值</li>
+<li>
+<p><code>mi = min(mi, ki)</code> — 当前最小 Key 值</p>
+</li>
+<li>
+<p><strong>关键性评分</strong>：对于当前 Query 向量 Q，计算页面的近似注意力上界：</p>
+</li>
+<li>对每个维度 i：<code>Ui = max(Qi * mi, Qi * Mi)</code></li>
+<li>
+<p>页面总分：<code>score = sum(Ui)</code></p>
+</li>
+<li>
+<p><strong>Top-K 选择</strong>：根据页面得分排序，选择 Top-K 个页面进行实际的自注意力计算。</p>
+</li>
+</ol>
+<p><strong>关键性质</strong>：<code>Ui</code> 始终大于等于任何 <code>Qi * Ki</code>（无论 Qi 的符号），因此总和是页面内所有 token 注意力权重的上界，不会遗漏关键 token。</p>
+<h3 id="33">3.3 稀疏注意力计算</h3>
+<p>仅对选中的 Top-K 个页面执行正常的自注意力计算，利用 PageAttention 的稀疏加载机制。</p>
+<h3 id="34">3.4 内存移动优化分析</h3>
+<p>假设每个 K/V 向量占 M 字节，KV 缓存含 L 个 token，每页 S 个 KV 对：</p>
+<ul>
+<li><strong>完整加载</strong>：2M * L 字节</li>
+<li><strong>Quest 加载</strong>：2M * L/S（元数据）+ 2M * K * S（选中页面）字节</li>
+<li><strong>总比率</strong>：<code>1/S + K*S/L</code></li>
+<li><strong>等效公式</strong>：<code>1/Page Size + K/Page Num</code></li>
+</ul>
+<p><strong>实际效果</strong>：使用 16 KV 对/页、64K 上下文、Top 4K 页面 → 内存加载减少 8 倍。</p>
+<h3 id="35">3.5 跳过前两层</h3>
+<p>分析发现，模型前两层的稀疏度低于 10%，因此 Quest 和所有基线算法仅从第 3 层开始应用，以更好地保持模型精度。</p>
+<h3 id="36">3.6 算法实现</h3>
+<p>基于 FlashInfer 的定制 CUDA kernel，包含三个核心操作：</p>
+<ol>
+<li><strong>关键性估计</strong>：每页计算 min/max 向量与 Query 的点积上界</li>
+<li><strong>Top-K 过滤</strong>：使用 RAFT 库的批量 Top-K CUDA 操作符，延迟仅 5-10 微秒</li>
+<li><strong>近似注意力</strong>：利用 PageAttention 的稀疏索引加载 Top-K 页面</li>
+</ol>
+<hr />
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LongChat-7b-v1.5-32k、Yarn-Llama-2-7b-128k</li>
+<li><strong>硬件</strong>：RTX 4090（kernel 评估）、NVIDIA Ada 6000 GPU（端到端评估）</li>
+<li><strong>基线</strong>：H2O、TOVA、StreamingLLM</li>
+<li><strong>评估数据集</strong>：</li>
+<li>语言建模：PG19（100 本平均 70K token 的书籍）</li>
+<li>Passkey 检索：10K/100K 长度测试</li>
+<li>长文本问答：LongBench（NarrativeQA, HotpotQA, Qasper, TriviaQA, GovReport, MultifieldQA）</li>
+</ul>
+<h3 id="41-pg19">4.1 语言建模（PG19）</h3>
+<ul>
+<li>使用 LongChat-7b-v1.5-32k，Token 预算 4096（约 1/8 总长度）</li>
+<li>Quest 的困惑度与完整 KV 缓存（Oracle）几乎一致</li>
+<li>H2O 和 TOVA 在相同预算下差距明显</li>
+</ul>
+<h3 id="42-passkey">4.2 Passkey 检索任务</h3>
+<table>
+<thead>
+<tr>
+<th>方法/预算</th>
+<th>32</th>
+<th>64</th>
+<th>128</th>
+<th>256</th>
+<th>512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2O</td>
+<td>0%</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>TOVA</td>
+<td>0%</td>
+<td>1%</td>
+<td>1%</td>
+<td>3%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+<td>3%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td><strong>Quest</strong></td>
+<td><strong>65%</strong></td>
+<td><strong>99%</strong></td>
+<td><strong>99%</strong></td>
+<td><strong>99%</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（10K 上下文，LongChat-7b-v1.5-32k）</p>
+<table>
+<thead>
+<tr>
+<th>方法/预算</th>
+<th>256</th>
+<th>512</th>
+<th>1024</th>
+<th>2048</th>
+<th>4096</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2O</td>
+<td>2%</td>
+<td>2%</td>
+<td>2%</td>
+<td>2%</td>
+<td>4%</td>
+</tr>
+<tr>
+<td>TOVA</td>
+<td>2%</td>
+<td>2%</td>
+<td>2%</td>
+<td>2%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>1%</td>
+<td>1%</td>
+<td>1%</td>
+<td>2%</td>
+<td>4%</td>
+</tr>
+<tr>
+<td><strong>Quest</strong></td>
+<td><strong>88%</strong></td>
+<td><strong>92%</strong></td>
+<td><strong>96%</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（100K 上下文，Yarn-Llama-2-7b-128k）</p>
+<p><strong>关键发现</strong>：Quest 在仅 1% 总 token 预算下即可实现近乎完美的 passkey 检索，而其他方法在大预算下仍表现不佳。</p>
+<h3 id="43-longbench">4.3 LongBench 六项任务</h3>
+<p>Quest 在所有六个数据集和所有 token 预算下均持续超越所有基线：
+- 在 Qasper、HotpotQA、GovReport、TriviaQA、NarrativeQA、MultifieldQA 上，Quest 分别以 1/6、1/6、1/5、1/10、1/5、1/6 的 KV 缓存稀疏率实现了无损精度
+- 1K token 预算即可达到完整 KV 缓存的性能
+- 其他基线即使在更大预算下仍有明显差距</p>
+<h3 id="44">4.4 效率评估</h3>
+<p><strong>Kernel 评估</strong>（Llama2-7B，RTX 4090，CUDA 12.2）：
+- <strong>关键性估计延迟</strong>：随序列长度增加趋近于 <code>1/Page Size</code> 的 FlashInfer 延迟
+- <strong>Top-K 过滤延迟</strong>：5-10 微秒（序列长度 &lt; 128K）
+- <strong>自注意力加速</strong>：在 32K 序列长度、2048 token 预算下，Quest 实现 <strong>7.03 倍</strong>自注意力加速</p>
+<p><strong>端到端评估</strong>（NVIDIA Ada 6000 GPU）：
+- FP16 权重：32K 序列长度、2048 token 预算下，<strong>1.74 倍</strong>加速
+- 4-bit 量化权重（AWQ）：<strong>2.23 倍</strong>加速</p>
+<p><strong>与基线的效率对比</strong>：
+- 相同精度目标下，Quest 需要的 token 预算远低于 TOVA
+- GovReport 上 Quest 相比 TOVA 提升 3.82 倍推理速度
+- TriviaQA 上 Quest 相比 TOVA 提升 4.54 倍推理速度</p>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>查询感知设计</strong>：不同于静态/历史方法，Quest 动态响应当前查询，避免因固定策略导致的信息丢失。</li>
+<li><strong>高精度</strong>：在所有评估任务上，Quest 在极低 token 预算下仍保持与完整 KV 缓存相当的精度，且无损精度要求的 token 预算远低于基线。</li>
+<li><strong>显著加速</strong>：7.03 倍自注意力加速、2.23 倍端到端推理加速，且随序列长度增长延迟增长缓慢。</li>
+<li><strong>低开销</strong>：关键性估计开销随序列长度增长趋近于 1/PageSize，Top-K 过滤仅需 5-10 微秒。</li>
+<li><strong>通用性强</strong>：内存加载减少比例对所有模型通用，兼容现有量化机制（如 AWQ 4-bit 量化）。</li>
+<li><strong>无损性</strong>：不丢弃任何 KV 缓存，仅选择性加载，避免了 H2O/TOVA 等方法的信息丢失问题。</li>
+<li><strong>实现完善</strong>：基于 FlashInfer 的定制 CUDA kernel，具有完整的工程实现。</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>前两层不适用</strong>：模型前两层的稀疏度低于 10%，Quest 在这些层不应用，需要保持完整 KV 缓存。</li>
+<li><strong>依赖页面粒度</strong>：关键性估计在页面级别进行，页面内 token 可能被不必要地包含或遗漏。</li>
+<li><strong>Top-K 超参数</strong>：Token 预算 K 是预设常数（如 128、256），无法自适应调整。</li>
+<li><strong>Kernel 实现限制</strong>：主要基于 FlashInfer 实现，在其他推理框架上可能需要额外适配。</li>
+<li><strong>评估模型规模有限</strong>：仅在 7B 模型上评估，未验证在更大规模模型上的表现。</li>
+<li><strong>单批次场景</strong>：端到端评估仅针对单批次场景，未充分评估在高吞吐量服务场景下的表现。</li>
+<li><strong>近似估计的误差</strong>：使用 min/max 上界进行关键性估计，可能在某些情况下产生过度估计，导致选择不必要的页面。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>Quest 与 EfficientPaper 项目关注的高效 AI 研究高度相关，涉及以下方向：</p>
+<ol>
+<li><strong>KV 缓存压缩与稀疏化</strong>：Quest 是该领域的重要工作，与其他 KV 缓存优化方法（H2O, TOVA, StreamingLLM, SparQ）形成对比，提供了查询感知的全新视角。</li>
+<li><strong>长上下文推理加速</strong>：随着 LLM 上下文窗口扩展到 128K-1M，Quest 提供了一种有效的加速方案。</li>
+<li><strong>稀疏注意力机制</strong>：Quest 展示了利用 token 关键性实现稀疏注意力的可行性。</li>
+<li><strong>内存带宽优化</strong>：Quest 通过减少内存移动来加速推理，与 FlashAttention、PageAttention 等工作密切相关。</li>
+<li><strong>模型推理效率</strong>：Quest 的端到端加速（2.23 倍）在实际推理场景中具有重要价值。</li>
+<li><strong>与量化技术的协同</strong>：Quest 兼容 4-bit 量化（AWQ），可与量化方法结合进一步提升效率。</li>
+<li><strong>计算图优化</strong>：Quest 的两阶段设计（关键性估计 + 稀疏注意力）是一种计算图优化模式。</li>
+<li><strong>PageAttention 机制</strong>：Quest 与 PagedAttention 紧密集成，展示了页面级 KV 缓存管理的优势。</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent 自动生成，基于论文 Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference（arXiv:2406.10774）的全文内容。笔记内容通过 PyMuPDF (fitz) 提取 PDF 文本后，由 AI 进行分析、翻译和总结。笔记中的中文翻译和分析可能包含 AI 生成的偏差或不准确之处，建议读者参考原始论文以获取最准确的信息。生成时间：2026年6月5日。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

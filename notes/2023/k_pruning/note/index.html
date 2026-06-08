@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,46 +161,160 @@
   
                 <h1 id="knowledge-preserving-pruning-for-pre-trained-language-models-without-retraining">Knowledge-preserving Pruning for Pre-trained Language Models without Retraining</h1>
 <blockquote>
-<p>This is a retraning-free structured pruning approach.</p>
+<p>This is a retraining-free structured pruning approach.</p>
 </blockquote>
 <p><a class="glightbox" href="../kp.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../kp.jpg" /></a></p>
-<h2 id="method">Method</h2>
+<h2 id="_1">一句话总结</h2>
+<p>K-Prune 提出了一种无需重训练的结构化剪枝算法，通过知识测量、知识保持掩码搜索和知识保持权重调优三个步骤，在保留预训练语言模型知识的同时实现高效压缩，在 SQuAD 基准上达到比现有方法高 58.02%p 的 F1 分数提升。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>给定一个预训练的编码器语言模型，如何在不重新训练的情况下准确地压缩它？无重训练的结构化剪枝算法在预训练语言模型压缩中至关重要，因为它们具有显著降低的剪枝成本和能够剪枝大型语言模型的能力。然而，现有的无重训练算法在高压缩率下会遇到严重的精度下降问题，因为它们无法处理剪枝误差。本文提出了 K-Prune（知识保持剪枝），一种用于预训练编码器语言模型的准确无重训练结构化剪枝算法。K-Prune 专注于保留预训练模型的有用知识，通过精心设计的迭代剪枝过程来最小化剪枝误差，该过程由知识测量、知识保持掩码搜索和知识保持权重调优组成。结果表明，在 SQuAD 基准上，在 80% 的高压缩率下，K-Prune 相比现有无重训练剪枝算法显示出高达 58.02%p 的 F1 分数提升，且无需任何重训练过程。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景与问题</h3>
 <ul>
-<li>Key idea</li>
-<li><strong>Selecting pruning targets</strong><ul>
-<li>Neurons and attention heads that minimally reduce the PLM’s knowledge</li>
+<li><strong>预训练语言模型的规模问题</strong>：Transformer 架构的预训练语言模型（如 BERT、DistilBERT）在自然语言处理领域表现出色，但其庞大的模型规模带来了部署成本和推理延迟的挑战。</li>
+<li><strong>重训练的高成本</strong>：现有的结构化剪枝方法主要分为重训练类和无重训练类。重训练类方法（如 DynaBERT、EBERT）需要完整的训练数据和大量的计算资源，在大规模语言模型上不可行。</li>
+<li><strong>无重训练方法的精度下降</strong>：无重训练方法（如 Kwon et al.、KCM）虽然成本低，但在高压缩率下会出现严重的精度下降问题，主要原因是无法处理累积的剪枝误差（即被剪枝中间层输出的变形导致的模型预测失真）。</li>
+<li><strong>关键洞察</strong>：作者将剪枝误差概念化为有用知识的损失，观察到先前无重训练剪枝算法中严重精度下降的主要原因是来自多层的不可恢复的知识损失。</li>
 </ul>
-</li>
-<li><strong>Iterative pruning</strong><ul>
-<li>Use knowledge reconstruction for each sub-layer to handle the distorted inputs by pruning.</li>
-</ul>
-</li>
-<li>K-pruning (Knowledge-preserving pruning)</li>
-<li>knowledge measurement</li>
-<li>knowledge-preserving mask search</li>
-<li>knowledge-preserving pruning</li>
-</ul>
-<p>Transformer Block consists of MHA and MLP.
-<a class="glightbox" href="../transformer.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../transformer.jpg" /></a></p>
-<p>The model-wise predictive knowledge loss is defined as the KL-divergence of logits between the pruned model and the dense model.
-<a class="glightbox" href="../eq4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq4.jpg" /></a></p>
-<p>The sub-layerwise representational knowledge loss is defined as the F-norm (MSE loss) of the outputs.
-<a class="glightbox" href="../eq5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../eq5.jpg" /></a></p>
-<p>The improtance scores are defined as:
-<a class="glightbox" href="../score.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../score.jpg" /></a></p>
-<p>where <script type="math/tex">\lambda = \\{0.00025, 1\\}</script> and <script type="math/tex">\mu = 64</script>.</p>
+<h2 id="_5">方法（技术细节）</h2>
+<p>K-Prune 由三个核心组件组成，通过自底向上的子层迭代剪枝过程实现：</p>
+<h3 id="1-knowledge-measurement">1. 知识测量（Knowledge Measurement）</h3>
+<p>K-Prune 使用两种知识指标来评估每个注意力头和神经元的重要性：</p>
 <ul>
-<li>不同层之间的score是可以互相比较的吗？</li>
-<li>对于MLP， <script type="math/tex">\lambda</script> 取值非常小，只看predictive loss，可以跨层比较</li>
-<li>但是对于MHA， <script type="math/tex">\lambda</script> 取值比较大，predictive/representational 都看，两者兼顾</li>
-<li>MHA 与 MLP 也可以互相比较？</li>
-<li>通过配比 <script type="math/tex">\mu</script> 来实现</li>
+<li><strong>预测知识（Predictive Knowledge）</strong>：定义为压缩模型与预训练模型之间 logits 的 KL 散度，表示模型标签预测的知识损失：</li>
 </ul>
-<p>总之，这些超参数的引入用来均衡，跨层与跨算子的比较。</p>
-<p><a class="glightbox" href="../alg.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../alg.jpg" /></a></p>
-<h2 id="results">Results</h2>
-<p><a class="glightbox" href="../exp.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../exp.jpg" /></a>
-<a class="glightbox" href="../exp2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../exp2.jpg" /></a></p>
+<p>
+<script type="math/tex; mode=display">K_{pred}(x; m, \gamma) = \gamma^2 D_{KL}(s_\gamma(\hat{z}_T(x; 1_{|m|})) \| s_\gamma(\hat{z}_S(x; m)))</script>
+</p>
+<p>其中 <script type="math/tex">\gamma</script> 为温度参数，<script type="math/tex">s_\gamma</script> 为带温度的 softmax 函数，<script type="math/tex">\hat{z}_T</script> 和 <script type="math/tex">\hat{z}_S</script> 分别为预训练模型和压缩模型的 logits。</p>
+<ul>
+<li><strong>表征知识（Representational Knowledge）</strong>：定义为预训练模型和压缩模型子层输出的 Frobenius 范数（MSE 损失）：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">K_{rep,l}(X_{T,l}, X_{S,l}; m_l) = \|X_{T,l} + Sub_{T,l}(X_{T,l}; 1_{|m_l|}) - X_{S,l} - Sub_{S,l}(X_{S,l}; m_l)\|_F^2</script>
+</p>
+<p>其中 <script type="math/tex">Sub_l</script> 为子层函数（MHA 或 FFN），<script type="math/tex">m_l</script> 为子层掩码变量。</p>
+<ul>
+<li><strong>重要性评分</strong>：结合预测知识和表征知识，通过 Taylor 展开和 Fisher 信息进行近似计算。对于 MHA 子层，每个注意力头的重要性得分定义为：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">Z_{head} = \mu (K_{head}^{pred} + \lambda K_{head}^{rep}) / F_h</script>
+</p>
+<p>对于 FFN 子层的神经元：</p>
+<p>
+<script type="math/tex; mode=display">Z_{neuron} = (K_{neuron}^{pred} + \lambda K_{neuron}^{rep}) / F_n</script>
+</p>
+<p>其中 <script type="math/tex">\lambda</script> 为平衡系数（<script type="math/tex">\{0.00025, 1\}</script>），<script type="math/tex">\mu = 64</script> 为注意力头与神经元之间的平衡系数，<script type="math/tex">F_h</script> 和 <script type="math/tex">F_n</script> 分别为注意力头和神经元的 FLOPs。<script type="math/tex">\lambda</script> 的引入使得 MLP 和 MHA 之间的重要性得分可以进行跨层比较。</p>
+<h3 id="2-kpms">2. 知识保持掩码搜索（KPMS）</h3>
+<p>KPMS 是一个自适应掩码搜索算法，旨在为每个子层找到精确的非均匀剪枝掩码：</p>
+<ul>
+<li><strong>全局重要性评估</strong>：不仅在目标子层，还在目标子层以上的所有子层中评估重要性，以考虑全局重要性。</li>
+<li><strong>剪枝阈值搜索</strong>：将注意力头和神经元的重要性得分拼接后按升序排序，逐步选择重要性最低的组件进行剪枝，直到满足 FLOPs 预算约束。</li>
+<li><strong>算法流程（Algorithm 1）</strong>：</li>
+<li>计算所有注意力头和神经元的预测知识和表征知识</li>
+<li>评估重要性得分（方程 9）</li>
+<li>拼接并排序</li>
+<li>迭代选择阈值，直到满足 FLOPs 约束</li>
+<li>确定被剪枝的注意力头和神经元集合</li>
+</ul>
+<h3 id="3-kpwt">3. 知识保持权重调优（KPWT）</h3>
+<p>KPWT 是一个高效的权重调优过程，在每次剪枝迭代后重建被扭曲的知识：</p>
+<ul>
+<li><strong>问题形式化</strong>：将知识重建问题形式化为最小化子层表征知识损失的线性最小二乘问题。</li>
+<li><strong>权重更新</strong>：</li>
+<li>对于 MHA 子层，求解关于输出投影 <script type="math/tex">\{W_{l,i}^{out}\}_{i=1}^H</script> 的线性最小二乘问题：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\arg\min_{\{W_{l,i}^{out}\}_{i=1}^H} \|X_{T,l} + M_{T,l}(X_{T,l}; 1_H) - X_{S,l} - \sum_{i=1}^H \zeta_{l,i}^* W_{l,i}^{out} f_{l,i}(X_{S,l}) - B_{l}^{out}\|_F^2</script>
+</p>
+<ul>
+<li>对于 FFN 子层，类似地求解关于 <script type="math/tex">\{v_{l,i}^{out}\}_{i=1}^N</script> 的问题。</li>
+<li><strong>效率</strong>：使用 PyTorch 的线性求解器（torch.linalg.lstsq），在典型桌面电脑上单次调用时间不到一秒，远小于传统的重训练过程。</li>
+<li><strong>预计算优化</strong>：在 K-Prune 的第一次迭代中收集预训练模型的子层输出，并在每次迭代中重复使用。</li>
+</ul>
+<h3 id="_6">迭代剪枝流程</h3>
+<p>K-Prune 从底层到顶层进行子层级别的迭代剪枝：
+1. 在每个子层中，通过知识测量评估重要性
+2. 通过 KPMS 选择要剪枝的组件
+3. 通过 KPWT 重建知识
+4. 减少 FLOPs 约束，移动到下一个子层</p>
+<p>关键优势：与传统的一次性剪枝不同，K-Prune 通过迭代剪枝将知识损失分散到多次迭代中，从而有效解决精度下降问题。</p>
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：BERT、DistilBERT</li>
+<li><strong>数据集</strong>：GLUE（MRPC、STS-B、MNLI、QNLI 等）、SQuAD v1.1、SQuAD v2</li>
+<li><strong>压缩率</strong>：75%、80% 等</li>
+<li><strong>硬件</strong>：NVIDIA 1080 Ti</li>
+<li><strong>超参数</strong>：100K tokens 作为样本数据集，5 次随机种子平均结果</li>
+</ul>
+<h3 id="q1">准确性（Q1）</h3>
+<ul>
+<li>在所有设置中，K-Prune 显著优于所有竞争者，最大优势达 <strong>58.02%p</strong> 的 F1 分数提升。</li>
+<li>在高压缩率（80%）下，精度差距更大，因为其他方法的一次性剪枝无法应对剪枝误差。</li>
+<li>KCM 表现最差，因为它无法剪枝注意力头。</li>
+</ul>
+<h3 id="q2">推理速度（Q2）</h3>
+<ul>
+<li>K-Prune 在所有任务上一致显示最高加速比，最高达 <strong>2.93×</strong> 的推理速度提升。</li>
+<li>对比：KCM 最高 1.23×，Kwon et al. 最高 2.10×，K-prune 平均 2.65×。</li>
+</ul>
+<h3 id="q3">与重训练方法的比较（Q3）</h3>
+<ul>
+<li>在 75% 压缩率下，K-Prune 在 MNLI 和 QNLI 上与 DynaBERT-w、DynaBERT-d、EBERT 等重训练方法精度相当或更高。</li>
+<li>K-Prune 的剪枝成本比重训练方法低最多 <strong>422×</strong>。</li>
+<li>K-Prune 展示了最佳的精度-成本权衡。</li>
+</ul>
+<h3 id="q4">消融实验（Q4）</h3>
+<ul>
+<li>在 80% 压缩率下对 MRPC 和 SQuAD1.1 进行消融研究：</li>
+<li>去除知识度量（-Kpred, Krep）：MRPC 84.07，SQuAD 72.55</li>
+<li>去除 KPMS（-KPMS）：MRPC 81.71，SQuAD 67.10</li>
+<li>去除 KPWT（-KPWT）：MRPC 68.38，SQuAD 16.50</li>
+<li><strong>KPWT 贡献最大</strong>，是 K-Prune 性能提升的核心组件。</li>
+<li>所有技术都对性能提升有贡献。</li>
+</ul>
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>无需重训练</strong>：K-Prune 完全不需要重训练过程，只需少量样本数据集（约 0.64% 的 MNLI 数据集），剪枝成本极低。</li>
+<li><strong>高精度</strong>：在 80% 压缩率下，相比现有无重训练方法 F1 分数提升高达 58.02%p。</li>
+<li><strong>快速推理</strong>：在商用硬件上实现最高 2.93× 的推理速度提升。</li>
+<li><strong>最佳精度-成本权衡</strong>：相比重训练方法，剪枝成本低最多 422×，同时保持或提高精度。</li>
+<li><strong>可扩展的迭代框架</strong>：通过迭代剪枝和知识重建，有效处理高压缩率下的剪枝误差。</li>
+<li><strong>高效权重调优</strong>：KPWT 使用线性最小二乘求解器，单次调用不到一秒，无需超参数调优。</li>
+<li><strong>全局重要性评估</strong>：KPMS 在目标子层和上方子层中评估重要性，实现更准确的剪枝决策。</li>
+</ol>
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>仅适用于编码器模型</strong>：K-Prune 目前仅适用于编码器架构的预训练语言模型（如 BERT、DistilBERT），尚未扩展到解码器模型（如 GPT 系列）。</li>
+<li><strong>依赖样本数据集</strong>：需要使用小样本数据集（约 100K tokens）来计算知识度量，样本的质量和代表性可能影响结果。</li>
+<li><strong>结构化剪枝的局限</strong>：与非结构化剪枝相比，结构化剪枝的压缩率上限可能受限，且无法实现完全稀疏化。</li>
+<li><strong>超参数敏感性</strong>：虽然只使用两组超参数（γ, λ, µ），但 λ 和 µ 的取值对性能有影响，特别是 λ 对 MLP 和 MHA 的影响。</li>
+<li><strong>仅支持 Transformer 架构</strong>：方法基于 Transformer 的 MHA 和 FFN 子层结构，对其他架构的适用性未验证。</li>
+<li><strong>迭代剪枝的计算开销</strong>：虽然是无重训练方法，但迭代过程仍需多次计算知识度量和权重调优，计算量比一次性剪枝高。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>模型压缩与剪枝</strong>：K-Prune 属于模型压缩领域，特别是结构化剪枝。可与量化（Quantization）、低秩近似（Low-rank Approximation）、知识蒸馏（Knowledge Distillation）等方法结合，实现更高的压缩率。</li>
+<li><strong>无重训练剪枝</strong>：K-Prune 推动了无重训练剪枝的研究，特别是针对高压缩率场景。后续研究可探索：</li>
+<li>扩展到解码器模型（如 GPT、LLaMA）</li>
+<li>与其他无重训练方法（如 SparseGPT、LLM-Pruner）的对比与融合</li>
+<li>更高效的权重调优策略</li>
+<li><strong>Transformer 压缩</strong>：K-Prune 是 Transformer 压缩领域的重要贡献，与其他压缩方法（如量化、参数共享）互补，共同推动高效的预训练语言模型部署。</li>
+<li><strong>知识保持</strong>：K-Prune 的核心思想是保留预训练模型的知识，这与知识蒸馏、模型迁移等研究方向密切相关。</li>
+<li><strong>高效推理</strong>：K-Prune 在商用硬件上的加速效果显著，对于实际部署场景（如移动端、边缘计算）具有重要价值。</li>
+</ul>
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）根据论文原文自动生成，内容基于论文的 PDF 提取和元数据信息。笔记中的翻译和分析可能存在不准确之处，建议读者参考原文进行验证。所有引用的公式和数据均来自原文，不保证完全准确。本笔记仅供参考学习使用，不构成学术评价。</p>
+<hr />
+<p><strong>论文信息</strong>：
+- <strong>标题</strong>：Knowledge-preserving Pruning for Pre-trained Language Models without Retraining
+- <strong>作者</strong>：Seungcheol Park, Hojun Choi, U Kang
+- <strong>机构</strong>：Seoul National University, KAIST
+- <strong>发表</strong>：arXiv 2023
+- <strong>关键词</strong>：sparse_pruning, structured_sparsity
+- <strong>代码</strong>：https://github.com/snudm-starlab/K-prune
+- <strong>PDF</strong>：https://arxiv.org/abs/2308.03449</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

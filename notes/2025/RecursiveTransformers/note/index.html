@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,27 +164,135 @@
 <p>Sangmin Bae, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Seungyeon Kim, Tal Schuster</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) are expensive to deploy. Parameter sharing
-offers a possible path towards reducing their size and cost, but its
-effectiveness in modern LLMs remains fairly limited. In this work, we revisit
-"layer tying" as form of parameter sharing in Transformers, and introduce novel
-methods for converting existing LLMs into smaller "Recursive Transformers" that
-share parameters across layers, with minimal loss of performance. Here, our
-Recursive Transformers are efficiently initialized from standard pretrained
-Transformers, but only use a single block of unique layers that is then
-repeated multiple times in a loop. We further improve performance by
-introducing Relaxed Recursive Transformers that add flexibility to the layer
-tying constraint via depth-wise low-rank adaptation (LoRA) modules, yet still
-preserve the compactness of the overall model. We show that our recursive
-models (e.g., recursive Gemma 1B) outperform both similar-sized vanilla
-pretrained models (such as TinyLlama 1.1B and Pythia 1B) and knowledge
-distillation baselines -- and can even recover most of the performance of the
-original "full-size" model (e.g., Gemma 2B with no shared parameters). Finally,
-we propose Continuous Depth-wise Batching, a promising new inference paradigm
-enabled by the Recursive Transformer when paired with early exiting. In a
-theoretical analysis, we show that this has the potential to lead to
-significant (2-3x) gains in inference throughput.</p>
+<h2 id="_1">一句话总结</h2>
+<p>本文提出 <strong>Relaxed Recursive Transformers</strong>，通过将现有 LLM 的多层 Transformer 压缩为参数共享的递归架构，并辅以层级 LoRA 模块松弛绑定约束，以极小的参数开销实现接近原始全尺寸模型的性能，并提出了 <strong>Continuous Depth-wise Batching</strong> 推理范式，理论上可实现 2-3× 的吞吐量提升。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）的部署成本高昂。参数共享提供了一条降低模型大小和成本的可行路径，但其在现代 LLM 中的效果仍然相当有限。在本工作中，我们重新审视了"层绑定"作为一种 Transformer 中的参数共享形式，并引入了新颖的方法，将现有 LLM 转换为更小的"递归 Transformer"，这些模型跨层共享参数，且性能损失极小。我们的递归 Transformer 从标准预训练 Transformer 高效初始化，但仅使用一组唯一的层块，然后在循环中多次重复。我们进一步通过引入 <strong>Relaxed Recursive Transformers</strong> 来提升性能，该方法通过深度方向的低秩适应（LoRA）模块为层绑定约束添加灵活性，同时仍保持整体模型的紧凑性。我们展示递归模型（如 recursive Gemma 1B）优于类似大小的普通预训练模型（如 TinyLlama 1.1B 和 Pythia 1B）和知识蒸馏基线——甚至可以恢复原始"全尺寸"模型（如 Gemma 2B）的大部分性能。最后，我们提出了 <strong>Continuous Depth-wise Batching</strong>，这是一种由递归 Transformer 与早期退出结合所启用的新型推理范式。理论分析表明，该方法有潜力带来显著的（2-3×）推理吞吐量提升。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>LLM 部署成本高昂</strong>：大型模型具有优越的性能，但其内存和计算需求昂贵，限制了在资源受限场景下的部署。</p>
+</li>
+<li>
+<p><strong>参数共享效果有限</strong>：虽然参数共享方法（如 ALBERT）在减少模型大小方面有前景，但在现代 LLM 中的应用效果有限，尚缺乏系统性的方法来将现有预训练模型转换为高效的共享参数架构。</p>
+</li>
+<li>
+<p><strong>层跳跃/剪枝的启发</strong>：现有研究表明，跳过少量层或进行结构化剪枝可以在大幅减少计算量的情况下保持较高性能，这为通过层重复+低秩适配实现压缩提供了动机。</p>
+</li>
+<li>
+<p><strong>推理吞吐量优化需求</strong>：现有的连续序列批处理方法（Continuous Sequence-wise Batching）虽能提升效率，但受限于 Transformer 的线性计算结构。递归结构可以在此基础上进一步优化深度维度的并行计算。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="21-recursive-transformer">2.1 Recursive Transformer：循环层绑定</h3>
+<p>递归 Transformer 采用 <strong>CYCLE 策略</strong>（Takase and Kiyono, 2023），将一个 N 层的 Transformer 转换为一个具有 K 个唯一层块的模型，该层块被重复 N/K 次：</p>
+<p>
+<script type="math/tex; mode=display">h_t^\ell = f(h_t^{\ell-1}; \Phi'_{((\ell-1) \bmod L/B)+1}), \quad \ell \in [1, L]</script>
+</p>
+<p>其中 B 是循环块数（例如，Gemma 2B 的 18 层可转换为 2 个循环块的 9 层模型）。</p>
+<p><strong>初始化技术</strong>（从预训练模型到递归模型的参数转换）：</p>
+<ul>
+<li><strong>Stepwise 方法</strong>：在等间隔位置选择中间层，保持首尾层固定。基于 LLM 可以跳过少数层而不影响性能的先验发现。</li>
+<li><strong>Average 方法</strong>：对共享权重取各层权重矩阵的平均值。</li>
+<li><strong>Lower 方法</strong>：直接使用未共享模型前 K 层的权重。</li>
+</ul>
+<p><strong>关键发现</strong>：Stepwise 方法在非松弛递归模型中表现最佳，Average 方法在松弛递归模型中表现最佳。</p>
+<h3 id="22-relaxed-recursive-transformer-lora">2.2 Relaxed Recursive Transformer：多 LoRA 层</h3>
+<p>为了缓解完全层绑定的局限性（可选模型大小有限、每层需服务多个深度角色），论文引入 <strong>层级 LoRA 模块</strong>：</p>
+<p>
+<script type="math/tex; mode=display">h_t^\ell = f(h_t^{\ell-1}; \Phi'_{((\ell-1) \bmod L/B)+1}, \Delta\Phi'_\ell), \quad \ell \in [1, L]</script>
+</p>
+<p>其中 <script type="math/tex">\Delta\Phi'</script> 是 LoRA 模块的参数。每个循环层配备多个 LoRA 模块（例如，2 个循环迭代的模型，每层有 2 个 LoRA 模块，分别用于第一次和第二次循环迭代）。</p>
+<p><strong>前向传播</strong>：对于基础变换 <script type="math/tex">h = W'x</script>，修改后的前向传播为 <script type="math/tex">h = W'x + BAx</script>，其中 <script type="math/tex">A \in \mathbb{R}^{r \times k}</script>，<script type="math/tex">B \in \mathbb{R}^{d \times r}</script> 是 LoRA 权重矩阵，<script type="math/tex">r</script> 是秩。</p>
+<h3 id="23-lora-svd">2.3 LoRA 初始化：截断 SVD</h3>
+<p>不同于标准 LoRA 微调（仅训练 LoRA 参数并零初始化），本文所有参数均训练。通过 <strong>截断奇异值分解（Truncated SVD）</strong> 初始化 LoRA 模块：</p>
+<p>
+<script type="math/tex; mode=display">U_r^\ell, \Sigma_r^\ell, V_r^\ell = \text{Truncated SVD}(W^\ell - W'_{((\ell-1) \bmod L/B)+1}; r)</script>
+</p>
+<p>其中保留前 <script type="math/tex">r</script> 个最大奇异值对应的列。LoRA 权重初始化为：<script type="math/tex">B = U_r \Sigma_r</script>，<script type="math/tex">A = V_r^T</script>。</p>
+<p><strong>关键意义</strong>：LoRA 的秩 <script type="math/tex">r</script> 作为关键超参数，使得 Relaxed Recursive Transformer 可以在 vanilla Transformer 和纯递归 Transformer 之间无缝过渡。<script type="math/tex">r</script> 足够大时逼近原始模型，<script type="math/tex">r=0</script> 时退化为纯递归模型。</p>
+<h3 id="24-continuous-depth-wise-batching-early-exiting">2.4 Continuous Depth-wise Batching 与 Early-Exiting</h3>
+<p>递归 Transformer 的重复结构允许在深度维度（循环迭代）上进行动态调度：</p>
+<ul>
+<li><strong>Depth-wise Batching</strong>：由于不同深度使用相同的层函数，可以在同一个前向传播中联合计算不同样本的不同循环迭代，最大化批处理利用率。</li>
+<li><strong>Early-Exiting</strong>：结合早退出机制，高置信度样本可在早期迭代直接退出，其空位被立即填补，进一步提升吞吐量。</li>
+<li><strong>理论优势</strong>：解决了早退出的同步问题——在 vanilla Transformer 中，早退出的 token 需等待同批中所有 token 完成全部层处理，而在递归 Transformer 中，不同深度的 token 可并行计算。</li>
+</ul>
+<p><strong>Early-Exit 训练策略</strong>：采用激进系数策略（aggressive coefficient），对中间输出使用 0.1 的损失系数，对最终输出保持 1.0，结合知识蒸馏（detached final outputs），有效保留最终性能的同时增强中间输出质量。</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Gemma 2B（18层）、TinyLlama 1.1B（22层）、Pythia 1B（16层）</li>
+<li><strong>循环块数</strong>：B=2（默认）</li>
+<li><strong>数据集</strong>：SlimPajama（uptraining）</li>
+<li><strong>评估</strong>：7 个 few-shot 任务（LAMBADA、HellaSwag、PIQA、WinoGrande、ARC-easy、ARC-challenge、OpenBookQA）</li>
+</ul>
+<h3 id="_7">主要结果</h3>
+<ol>
+<li><strong>递归 Gemma 1B 超越同尺寸模型</strong>：</li>
+<li>递归 Gemma 1B 在 few-shot 准确率上比 reduced-size 模型高出最多 <strong>13.5 个百分点</strong>（51.7% vs. 38.2%）</li>
+<li>递归 Gemma 1B 甚至超越了全尺寸的 TinyLlama 1.1B 和 Pythia 1B</li>
+<li>
+<p>递归 TinyLlama 在仅 15B token 的 uptraining 后，性能可与预训练 105B token 的原始模型媲美</p>
+</li>
+<li>
+<p><strong>Relaxed 模型实现性能与全尺寸模型的匹配</strong>：</p>
+</li>
+<li>Relaxed Gemma（rank=512）达到与原始 Gemma 2B（3T token 预训练）相当的性能（<strong>58.4% vs. 58.6%</strong>）</li>
+<li>
+<p>通过知识蒸馏 + 60B token 的 uptraining，松弛递归模型的 few-shot 准确率提升最多 <strong>4.1 个百分点</strong></p>
+</li>
+<li>
+<p><strong>吞吐量提升</strong>：</p>
+</li>
+<li>Recursive Transformer + Early-Exiting 理论上可实现 <strong>2.66×</strong> 吞吐量提升</li>
+<li>Recursive Gemma 相比 vanilla Pythia 可实现接近 <strong>4×</strong> 的吞吐量提升</li>
+<li>
+<p>Relaxed 模型在性能与吞吐量之间提供明确的 Pareto 前沿</p>
+</li>
+<li>
+<p><strong>SVD 初始化显著优于零初始化</strong>：在 LoRA rank=512 时，SVD 初始化带来最多 <strong>6.5 个百分点</strong> 的准确率提升。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>高效的参数压缩</strong>：通过参数共享将模型大小减半（B=2 时），同时保持接近全尺寸模型的性能。</li>
+<li><strong>灵活的松弛机制</strong>：LoRA 的秩 <script type="math/tex">r</script> 作为关键超参数，可在纯递归模型和原始模型之间平滑过渡，适应不同部署场景。</li>
+<li><strong>高效的初始化方法</strong>：三种初始化策略（Stepwise、Average、Lower）以及 SVD 初始化的 LoRA 模块，使模型能够从预训练权重高效迁移，减少 uptraining 需求。</li>
+<li><strong>创新的推理范式</strong>：Continuous Depth-wise Batching 利用递归结构的深度维度并行性，理论上实现 2-3× 的吞吐量提升，且与早退出机制天然兼容。</li>
+<li><strong>解决早退出的同步问题</strong>：递归结构使不同深度的 token 可并行计算，解决了 vanilla Transformer 中早退出 token 需等待全批完成的瓶颈。</li>
+<li><strong>与现有技术互补</strong>：该方法可与量化、剪枝等稀疏设计方法结合，形成递归稀疏架构。</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>主要在小模型上验证</strong>：实验仅在 ~1B 参数级别的模型上进行，未扩展到 7B 及以上的大模型。大规模模型的 uptraining 成本可能显著增加，且隐藏维度的增大可能限制批处理大小的提升。</li>
+<li><strong>理论吞吐量提升</strong>：使用 oracle-exiting 方法（假设中间预测与最终预测一致时可退出），而非基于置信度的实际早退出算法，实际部署需考虑解码瓶颈（如早退出 token 的 KV 缓存计算）。</li>
+<li><strong>数据分布偏移问题</strong>：在不同数据分布上 uptraining 时（如 SlimPajama 与 Gemma 原始预训练数据差异大），全尺寸模型性能也会下降，影响了对递归模型性能的准确评估。</li>
+<li><strong>Relaxed 模型的多 LoRA 推理效率</strong>：Relaxed 模型在批处理推理时需计算不同的 LoRA 模块，类似多任务学习的挑战，引入了冗余。虽可通过 LoRA 权重拼接优化，但仍有改进空间。</li>
+<li><strong>未探索的架构方向</strong>：尚未将 Mixture-of-Experts、激活跳跃、SSM 组件等技术与递归结构结合。</li>
+<li><strong>Early-Exit 训练策略的通用性</strong>：论文中针对非松弛模型的最优策略直接应用于松弛模型，可能不是最优的。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>结构设计（Structure Design）</strong>：本文的核心是通过层共享和 LoRA 模块优化 Transformer 架构，是 EfficientPaper 中 structure_design 类别的代表性工作。</li>
+<li><strong>参数共享与权重共享</strong>：与 ALBERT（2020）、Universal Transformer（2019）等经典工作一脉相承，但首次将方法应用到现代 LLM 并提出系统性的转换框架。</li>
+<li><strong>低秩适应（LoRA）</strong>：与 LoRA（2022）相关联，但创新性地将其应用于松弛递归结构中的层间差异建模。</li>
+<li><strong>知识蒸馏</strong>：结合 forward KL 散度的知识蒸馏进一步提升性能，与 MiniLM 等工作相关。</li>
+<li><strong>推理效率与批处理优化</strong>：Continuous Depth-wise Batching 为递归架构设计了新型推理范式，与 continuous sequence-wise batching（vLLM）形成互补。</li>
+<li><strong>早期退出（Early-Exiting）</strong>：递归结构天然支持早退出，解决了传统早退出的同步问题，与 Confident Adaptive Transformers、LayerSkip 等工作相关。</li>
+<li><strong>模型压缩的统一视角</strong>：本文与剪枝（Lottery Ticket）、量化、层跳跃（LayerSkip）、嵌套（MatFormer）等方法互补，为模型压缩提供了新的参数共享视角。</li>
+<li><strong>潜在推理（Latent Reasoning）</strong>：论文提出递归深度可用于潜在推理（如 contemplation tokens、连续空间表示），为推理任务的递归架构研究提供了方向。</li>
+</ol>
+<hr />
+<h2 id="_10">生成声明</h2>
+<p>本笔记由 AI Agent 自动生成，基于论文 <code>Relaxed Recursive Transformers: Effective Parameter Sharing with Layer-wise LoRA</code>（arXiv:2410.20672v3）的全文内容。生成日期：2026年6月4日。内容涵盖了一句话总结、摘要翻译、研究动机、方法（技术细节）、实验结果、优势、局限性以及与 EfficientPaper 相关的研究方向。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

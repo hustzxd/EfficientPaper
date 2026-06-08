@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,27 +161,132 @@
   
                 <h1 id="xgrammar-flexible-and-efficient-structured-generation-engine-for-large-language-models">XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The applications of LLM Agents are becoming increasingly complex and diverse,
-leading to a high demand for structured outputs that can be parsed into code,
-structured function calls, and embodied agent commands. These developments
-bring significant demands for structured generation in LLM inference.
-Context-free grammar is a flexible approach to enable structured generation via
-constrained decoding. However, executing context-free grammar requires going
-through several stack states over all tokens in vocabulary during runtime,
-bringing non-negligible overhead for structured generation. In this paper, we
-propose XGrammar, a flexible and efficient structure generation engine for
-large language models. XGrammar accelerates context-free grammar execution by
-dividing the vocabulary into context-independent tokens that can be prechecked
-and context-dependent tokens that need to be interpreted during runtime. We
-further build transformations to expand the grammar context and reduce the
-number of context-independent tokens. Additionally, we build an efficient
-persistent stack to accelerate the context-dependent token checks. Finally, we
-co-design the grammar engine with LLM inference engine to overlap grammar
-computation with GPU executions. Evaluation results show that XGrammar can
-achieve up to 100x speedup over existing solutions. Combined with an LLM
-inference engine, it can generate near-zero overhead structure generation in
-end-to-end low-LLM serving.</p>
+<h2 id="_1">一句话总结</h2>
+<p>XGrammar 是一种灵活高效的结构化生成引擎，通过将词汇表分为上下文无关 token 和上下文相关 token、构建自适应 token mask 缓存、持久化执行栈以及与 LLM 推理引擎协同设计，在结构化生成中实现高达 100 倍的加速和近零开销的端到端服务。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型 (LLM) 的应用日益复杂多样，对结构化输出（可解析为代码、结构化函数调用和具身智能体指令）的需求不断增长。这些发展对 LLM 推理中的结构化生成提出了重大需求。上下文无关文法 (CFG) 是一种通过约束解码实现结构化生成的灵活方法，但在运行时执行 CFG 需要在词汇表中的所有 token 上经过多个栈状态，为结构化生成带来不可忽略的开销。本文提出 XGrammar，一种灵活高效的 LLM 结构化生成引擎。XGrammar 通过将词汇表分为可预检查的上下文无关 token 和需要在运行时解释的上下文相关 token 来加速 CFG 执行。进一步构建变换以扩展文法上下文并减少上下文无关 token 的数量。此外，构建高效的持久栈以加速上下文相关 token 的检查。最后，将文法引擎与 LLM 推理引擎协同设计，实现文法计算与 GPU 执行的重叠。评估结果表明，XGrammar 相比现有方案可实现高达 100 倍的加速，与 LLM 推理引擎结合后，在端到端低延迟 LLM 服务中实现近零开销的结构化生成。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 应用对结构化输出的强烈需求</strong>：代码生成、调试、函数调用、机器人控制等应用都需要结构化输出（JSON、SQL、领域特定语言等），这对 LLM 推理系统提出了结构化生成的迫切需求。</li>
+<li><strong>约束解码的效率瓶颈</strong>：约束解码通过在每步解码时过滤无效 token 来保证输出结构，但需要遍历词汇表中的所有 token（如 Llama 3.1 的 128k 词汇表），带来显著开销。</li>
+<li><strong>CFG 执行的固有困难</strong>：上下文无关文法 (CFG) 虽然灵活（支持递归结构），但朴素地用于约束解码效率低下，因为每个解码步骤需要解释 CFG 的所有 token，且栈状态无法预计算所有组合。</li>
+<li><strong>Token 边界对齐问题</strong>：LLM 生成的 token 可能跨越文法元素边界，导致额外的递归或栈弹出操作，进一步增加运行时开销。</li>
+<li><strong>现有方案的局限</strong>：Outlines、llama.cpp 等现有结构化生成引擎在高效性方面仍有较大提升空间，特别是在复杂 CFG（如 JSON 语法）场景下。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<p>XGrammar 的核心设计思路是利用字节级下推自动机（Pushdown Automata）来表示 CFG，并通过多项关键优化技术加速 token mask 生成。</p>
+<h3 id="31-token-mask-adaptive-token-mask-cache">3.1 自适应 Token Mask 缓存（Adaptive Token Mask Cache）</h3>
+<p><strong>核心洞察</strong>：将词汇表中的 token 分为两类：
+- <strong>上下文无关 token</strong>（大多数）：仅依赖当前栈顶节点即可判断有效性，可预计算并缓存。
+- <strong>上下文相关 token</strong>（少数）：需要完整栈状态才能判断，需运行时处理。</p>
+<p>token 匹配过程分为三种情况：
+1. 匹配过程扩展到子规则（推入新元素到栈）
+2. 匹配过程在当前规则内前进（更新栈顶节点）
+3. 匹配过程到达当前规则末尾并返回父规则（弹出栈元素）</p>
+<p>前两种只依赖栈顶节点，属于上下文无关 token；第三种需要检查完整栈状态，属于上下文相关 token。</p>
+<p><strong>自适应存储格式</strong>：根据缓存内容动态选择最高效的存储方式：
+- <strong>接受多数（Accept-heavy）</strong>：存储被拒绝的上下文无关 token 和上下文相关 token 两个数组
+- <strong>拒绝多数（Reject-heavy）</strong>：存储被接受的上下文无关 token 和上下文相关 token 两个数组
+- <strong>均衡情况（罕见）</strong>：使用 bitset 压缩存储</p>
+<p>实验表明，对于 Llama-3.1 模型和 JSON 语法，上下文相关 token 仅占不到 1%（128k 中仅 1134 个），自适应存储方法可将总内存使用降至 0.2%（从 160 MB 降至 0.46 MB）。</p>
+<h3 id="32-context-expansion">3.2 上下文扩展（Context Expansion）</h3>
+<p>上下文扩展利用文法的上下文信息在预处理阶段拒绝更多上下文相关 token：
+- 当验证上下文相关 token 时，匹配过程会到达当前规则末尾并返回父规则
+- 每个规则的可能父规则集合是有限的，可匹配的后续字符串也是受限的
+- 预计算每个规则返回父规则时可能的后缀字符串（扩展后缀）
+- 如果上下文相关 token 无法匹配扩展后缀中的任何字符串，标记为无效</p>
+<p><strong>效果</strong>：对 Llama-3.1 模型和 JSON 语法，上下文相关 token 减少 90%（从 1134 降至 120），显著提升运行时 mask 生成效率。</p>
+<h3 id="33-persistent-execution-stack">3.3 持久化执行栈（Persistent Execution Stack）</h3>
+<p>持久化执行栈管理多栈（当前并行栈 + 历史栈）为单一树结构，每个栈表示为从根节点的路径：
+- <strong>减少内存冗余</strong>：相邻时间步的栈共享大部分深层元素，仅少量节点推入或弹出
+- <strong>快速状态分支</strong>：语法歧义导致的栈分裂只需分裂分支，而非复制整个栈
+- <strong>快速状态回滚</strong>：维护历史时间步的滑动窗口，回滚只需改变栈指针（常数时间）</p>
+<p>回滚操作特别适用于检查大量 token（如共享公共前缀的 token），通过按字典序排序 token 并利用回滚避免冗余检查，将需要检查的字符数减少到 30%。</p>
+<p>持久执行栈还支持：
+- <strong>跳转前向解码</strong>（Jump-forward Decoding）的重 token 化
+- <strong>树结构生成</strong>（Tree-of-thought、SGLang、SpecInfer 等）的分支管理</p>
+<h3 id="34">3.4 下推自动机结构优化</h3>
+<ul>
+<li><strong>规则内联（Rule Inlining）</strong>：将片段规则（仅有少量元素的规则）内联到父规则中，减少语法歧义并增强上下文扩展效果。</li>
+<li><strong>节点合并（Node Merging）</strong>：合并满足条件的后续节点（同标签边指向的节点、无其他边指向的节点），以及合并 epsilon 边（不消耗字符的边），减少栈分裂和计算量。</li>
+</ul>
+<h3 id="35-mask-llm">3.5 Mask 生成与 LLM 推理的重叠</h3>
+<p>将 mask 生成（CPU 计算）与 LLM 推理（GPU 计算）并行化：
+- <strong>mask 生成仅需 CPU</strong>，且仅依赖之前生成的 token
+- <strong>LLM 推理（除采样阶段）仅需 GPU</strong>，同样仅依赖之前生成的 token
+- 在采样前同步，GPU 从 CPU 获取 mask 进行 masked 采样
+- 预处理阶段可与 LLM prefilling 阶段重叠</p>
+<p>实际中 mask 生成时间小于 LLM 推理时间，不会成为瓶颈。</p>
+<h3 id="_5">系统实现</h3>
+<p>XGrammar 以 12,000 行核心 C++ 代码实现，提供 Python 绑定以方便与 LLM 推理框架集成。</p>
+<h2 id="_6">实验结果</h2>
+<h3 id="41">4.1 文法引擎效率</h3>
+<ul>
+<li><strong>评测环境</strong>：Llama-3.1-8B-Instruct，AMD Ryzen 9 7950X CPU + NVIDIA RTX 4090 GPU</li>
+<li><strong>评测数据集</strong>：JSON-mode-eval 数据集</li>
+<li><strong>基线方法</strong>：Outlines (v1.0)、llama.cpp (b3998)</li>
+<li><strong>JSON Schema 场景</strong>：XGrammar 相比现有方案实现高达 3 倍加速</li>
+<li><strong>JSON CFG 场景</strong>：XGrammar 实现超过 100 倍加速</li>
+<li><strong>mask 生成延迟</strong>：XGrammar 每 token mask 生成时间低于 40μs（JSON Schema: 35.73μs，JSON CFG: 36.42μs）</li>
+</ul>
+<h3 id="42-llm">4.2 端到端 LLM 引擎评估</h3>
+<ul>
+<li><strong>评测环境</strong>：AMD EPYC 7R13 CPU + NVIDIA H100 GPU</li>
+<li><strong>评测框架</strong>：SGLang (w/ XGrammar)、vLLM (w/ Outlines)、llama.cpp</li>
+<li><strong>核心指标</strong>：</li>
+<li><strong>TTFT（首 token 延迟）</strong>：XGrammar 最优</li>
+<li><strong>TPOT（每输出 token 延迟）</strong>：XGrammar 最优</li>
+<li><strong>端到端加速</strong>：XGrammar 相比现有方案实现高达 80 倍加速</li>
+<li><strong>开销分析</strong>：语法处理对 TPOT 的开销接近零（约束开启与关闭时 TPOT 几乎相同）</li>
+</ul>
+<h3 id="43">4.3 跨平台部署</h3>
+<ul>
+<li>通过 Emscripten 编译为 WebAssembly，提供 JavaScript 绑定</li>
+<li>在浏览器端 LLM 推理框架 WebLLM 中实现结构化生成</li>
+<li><strong>MacBook Pro M3 Max</strong>（Llama-3.1-8B，4-bit 量化）：结构化生成与非结构化生成性能接近</li>
+<li><strong>iPhone 14 Pro Max</strong>（Qwen-2.5-0.5B，4-bit 量化）：同样接近零开销</li>
+</ul>
+<h2 id="_7">优势</h2>
+<ol>
+<li><strong>极致性能</strong>：per-token mask 生成延迟低于 40μs，端到端加速高达 80-100 倍</li>
+<li><strong>近零开销</strong>：与 LLM 推理引擎协同设计，结构化生成对 TPOT 的开销接近零</li>
+<li><strong>自适应缓存</strong>：自适应存储格式将内存使用降至 0.2%（从 160 MB 到 0.46 MB）</li>
+<li><strong>上下文扩展</strong>：将上下文相关 token 减少 90%，大幅提升运行时效率</li>
+<li><strong>持久栈设计</strong>：支持快速回滚、状态分支和共享前缀优化，将字符检查量减少至 30%</li>
+<li><strong>跨平台支持</strong>：支持 WebAssembly/JavaScript 绑定，可在浏览器和移动设备上运行</li>
+<li><strong>灵活的 CFG 支持</strong>：支持递归结构，比正则表达式更具表现力</li>
+<li><strong>与主流框架集成</strong>：已集成到 SGLang、WebLLM 等框架，开源可用</li>
+<li><strong>结构优化</strong>：规则内联和节点合并减少语法歧义，提升效率</li>
+</ol>
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>CFG 表达能力的边界</strong>：CFG 只能描述上下文无关语言，无法表达上下文相关的约束（如某些复杂的数据验证逻辑）。</li>
+<li><strong>预处理开销</strong>：需要在推理前构建 token mask 缓存和上下文扩展，虽然可以与 prefilling 重叠，但对极长或极复杂的文法可能仍有开销。</li>
+<li><strong>词汇表依赖</strong>：token mask 缓存与特定模型的词汇表绑定，更换模型需要重新预处理。</li>
+<li><strong>大词汇表场景</strong>：虽然通过自适应存储优化了内存，但对于非常大的词汇表（如 128k），缓存初始化仍需一定时间。</li>
+<li><strong>复杂文法的适用性</strong>：对于特别复杂的递归文法，上下文相关 token 的比例可能增加，影响性能增益。</li>
+<li><strong>GPU 并行度的限制</strong>：mask 生成与 LLM 推理的重叠依赖于 GPU 采样阶段的同步，对于极端小的 batch size 或特殊的采样策略可能效果有限。</li>
+<li><strong>缺乏对上下文相关语法的支持</strong>：CFG 本身无法表达依赖上下文的约束，XGrammar 在此方面没有突破。</li>
+<li><strong>实际应用中的集成成本</strong>：虽然提供了 Python 绑定，但与不同 LLM 推理框架的深度集成仍需一定工程工作。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>LLM 推理优化</strong>：XGrammar 是 LLM 推理中结构化生成的关键优化组件，与 continuous batching、PagedKVCache 等推理优化技术正交，可进一步结合。</li>
+<li><strong>约束解码效率</strong>：XGrammar 解决了约束解码中的 token mask 生成效率问题，是结构化生成领域的重要进展。</li>
+<li><strong>跨平台部署</strong>：XGrammar 的 WebAssembly 编译和浏览器端运行能力，为端侧 LLM 应用（如移动端 Agent）提供了重要的基础设施。</li>
+<li><strong>LLM 服务框架集成</strong>：XGrammar 已集成到 SGLang、WebLLM 等主流框架，与 LLM serving 领域的研究（如 vLLM、TensorRT-LLM）密切相关。</li>
+<li><strong>Token 级优化</strong>：XGrammar 的 token mask 缓存和持久栈设计，可与 speculative decoding（如 SpecInfer）、tree-of-thought 等生成策略结合。</li>
+<li><strong>编译器优化与自动机理论</strong>：XGrammar 借鉴了编译器优化（规则内联、节点合并）和自动机理论，将传统理论应用于 LLM 推理优化，具有跨学科的研究价值。</li>
+<li><strong>端侧 AI 应用</strong>：XGrammar 在移动设备和浏览器上的近零开销性能，为端侧 LLM Agent 的结构化输出提供了关键支持，与 Edge AI 研究方向高度相关。</li>
+<li><strong>LLM 与具身智能</strong>：结构化输出是具身智能体指令生成的基础，XGrammar 的高效结构化生成能力可为具身 AI 系统提供重要的推理基础设施。</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent 自动生成，基于论文《XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models》的内容。笔记内容经 AI 分析和总结，可能存在不完全准确之处，建议结合原文进行核实。AI Agent 不对笔记内容的完整性和准确性作出保证，仅作为阅读和理解论文的辅助参考。</p>
+<blockquote>
+<p><strong>生成时间</strong>：2025-06-05
+<strong>生成模型</strong>：Hermes Agent (Nous Research)
+<strong>参考来源</strong>：arXiv:2411.15100v2, 原文 PDF 及元数据</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

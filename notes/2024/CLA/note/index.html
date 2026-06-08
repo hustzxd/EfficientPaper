@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,26 +161,255 @@
   
                 <h1 id="reducing-transformer-key-value-cache-size-with-cross-layer-attention">Reducing Transformer Key-Value Cache Size with Cross-Layer Attention</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Key-value (KV) caching plays an essential role in accelerating decoding for
-transformer-based autoregressive large language models (LLMs). However, the
-amount of memory required to store the KV cache can become prohibitive at long
-sequence lengths and large batch sizes. Since the invention of the transformer,
-two of the most effective interventions discovered for reducing the size of the
-KV cache have been Multi-Query Attention (MQA) and its generalization,
-Grouped-Query Attention (GQA). MQA and GQA both modify the design of the
-attention block so that multiple query heads can share a single key/value head,
-reducing the number of distinct key/value heads by a large factor while only
-minimally degrading accuracy. In this paper, we show that it is possible to
-take Multi-Query Attention a step further by also sharing key and value heads
-between adjacent layers, yielding a new attention design we call Cross-Layer
-Attention (CLA). With CLA, we find that it is possible to reduce the size of
-the KV cache by another 2x while maintaining nearly the same accuracy as
-unmodified MQA. In experiments training 1B- and 3B-parameter models from
-scratch, we demonstrate that CLA provides a Pareto improvement over the
-memory/accuracy tradeoffs which are possible with traditional MQA, enabling
-inference with longer sequence lengths and larger batch sizes than would
-otherwise be possible</p>
+<h2 id="_1">一句话总结</h2>
+<p>本文提出 Cross-Layer Attention（CLA），通过在相邻层之间共享 Key-Value 激活来减少 Transformer 模型的 KV Cache 内存占用，在 1B 和 3B 参数规模下实现 2× KV Cache 缩减，同时仅带来极小的困惑度（Perplexity）下降。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>Key-Value（KV）缓存在加速基于 Transformer 的自回归大语言模型（LLM）的解码过程中扮演着至关重要的角色。然而，在长序列长度和大批量大小下，存储 KV 缓存所需的内存可能变得非常昂贵。自 Transformer 发明以来，减少 KV 缓存大小的两种最有效方法分别是 Multi-Query Attention（MQA）及其泛化形式 Grouped-Query Attention（GQA）。MQA 和 GQA 都通过修改注意力块的设计，使得多个查询头可以共享一个单一的 Key/Value 头，从而大幅减少不同 Key/Value 头的数量，同时仅带来极小的精度损失。在本文中，我们展示了可以通过在相邻层之间也共享 Key 和 Value 头来进一步推进 Multi-Query Attention，从而产生一种新的注意力设计，我们称之为 Cross-Layer Attention（CLA）。通过 CLA，我们发现可以在保持与未修改的 MQA 几乎相同精度的同时，将 KV 缓存的大小再减少 2×。在从零训练 1B 和 3B 参数模型的实验中，我们证明 CLA 在传统的 MQA 所能达到的内存/精度权衡上实现了 Pareto 改进，使得推理可以支持更长的序列长度和更大的批量大小。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>在大语言模型（LLM）推理服务中，KV 缓存的内存占用是一个关键瓶颈。KV 缓存的大小随序列长度和批量大小成比例增长，这导致在处理长序列时内存开销极大，限制了可支持的批量大小，甚至需要采用代价高昂的卸载（offloading）技术。此外，随着 LLM 应用不断涌现出对更长序列长度的需求，KV 缓存的内存足迹成为高效 Transformer 语言模型设计中日益重要的考量因素。</p>
+<p>现有方法主要从以下几个维度降低 KV 缓存的内存占用：
+1. <strong>低精度存储</strong>：将 KV 激活以低精度格式存储（如 KVQuant、Coupled Quantization）
+2. <strong>重要性驱逐</strong>：在生成过程中仅保留重要的 KV 条目（如 H2O、Scissorhands、FastGen）
+3. <strong>注意力头共享</strong>：在注意力机制中跨查询头共享 Key/Value（如 MQA、GQA）</p>
+<p>本文提出了一个不同的维度：<strong>跨层共享</strong>，即在不同层之间共享 KV 激活，从而减少模型中唯一 KV 层的数量。这是一种全新的思路，与已有的方法正交，可以与 MQA/GQA 结合使用。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">基本原理</h3>
+<p>Cross-Layer Attention（CLA）的核心思想非常简洁：在 Transformer 的注意力机制中，不是每一层都独立计算自己的 Key 和 Value 激活，而是让某些层直接复用相邻层的 KV 激活。</p>
+<p>具体来说：
+- <strong>CLA2</strong>（共享因子为 2）：每对相邻层共享一个 KV 投影，即第 0 层和第 1 层共享 KV，第 2 层和第 3 层共享 KV，以此类推。
+- <strong>CLA3</strong>（共享因子为 3）：每三个相邻层共享一个 KV 投影。
+- 以此类推，CLA 可以定义任意共享因子。</p>
+<h3 id="mqagqa">与 MQA/GQA 的关系</h3>
+<p>CLA 与 MQA/GQA 是<strong>正交</strong>的，可以与任意一种结合使用：
+- MQA：所有查询头共享一个 KV 头（每个层一个 KV）
+- GQA：查询头分组，每组共享一个 KV 头
+- CLA：在 MQA/GQA 的基础上，相邻层之间再共享 KV</p>
+<p>这意味着 MQA + CLA2 的组合可以在 MQA 的基础上将 KV 缓存再减少 2×。</p>
+<h3 id="_6">体系结构实现</h3>
+<ul>
+<li>CLA 为有 KV 投影的层和无 KV 投影的层使用<strong>独立可学习的 LayerNorm 参数</strong></li>
+<li>没有 KV 投影的层直接复用前一层的 KV 激活</li>
+<li>所有层的 Query 投影和 Output 投影保持独立</li>
+</ul>
+<h3 id="_7">系统设计影响</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KV Cache 内存</td>
+<td>大幅减少，降低因子等于共享因子</td>
+</tr>
+<tr>
+<td>训练内存</td>
+<td>减少中间 KV 激活张量，但通常占比较小</td>
+</tr>
+<tr>
+<td>模型参数</td>
+<td>略微减少（减少 KV 投影块的数量）</td>
+</tr>
+<tr>
+<td>FLOPs</td>
+<td>略微减少</td>
+</tr>
+<tr>
+<td>解码延迟</td>
+<td>间接改善（支持更大的批量和更长的 KV 缓存持久化）</td>
+</tr>
+<tr>
+<td>核心注意力延迟</td>
+<td>无直接改善（共享的 KV 仍需从内存分别读取）</td>
+</tr>
+<tr>
+<td>模型并行</td>
+<td>完全兼容张量并行；流水线并行需将共享 KV 的层放在同一阶段</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>模型规模</strong>：1B 和 3B 参数</li>
+<li><strong>数据集</strong>：SlimPajama（使用 GPT-NeoX tokenizer，BPE 编码）</li>
+<li><strong>架构</strong>：Llama 风格，预归一化，SwiGLU 激活，旋转位置编码（RoPE）</li>
+<li><strong>优化器</strong>：AdamW（β₁=0.9, β₂=0.95, 权重衰减 0.1）</li>
+<li><strong>训练硬件</strong>：NVIDIA H100 GPU，BF16 混合精度</li>
+<li><strong>序列长度</strong>：2048 tokens，批量大小 2048</li>
+<li><strong>训练 token 数</strong>：1B 模型 30B tokens，3B 模型 100B tokens</li>
+</ul>
+<h3 id="1b">1B 参数规模结果</h3>
+<p><strong>设计空间探索</strong>（LR = 3×10⁻⁴）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>d_head</th>
+<th>KV 头数</th>
+<th>KV 层数</th>
+<th>KV 字节/token (16-bit)</th>
+<th>验证困惑度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H128-MHA</td>
+<td>128</td>
+<td>16</td>
+<td>20</td>
+<td>163,840</td>
+<td>13.15</td>
+</tr>
+<tr>
+<td>H128-GQA4</td>
+<td>128</td>
+<td>4</td>
+<td>20</td>
+<td>40,960</td>
+<td>13.36</td>
+</tr>
+<tr>
+<td>H128-MQA</td>
+<td>128</td>
+<td>1</td>
+<td>20</td>
+<td>10,240</td>
+<td>13.54</td>
+</tr>
+<tr>
+<td>H64-MQA</td>
+<td>64</td>
+<td>1</td>
+<td>20</td>
+<td>5,120</td>
+<td>13.81</td>
+</tr>
+<tr>
+<td>H32-MQA</td>
+<td>32</td>
+<td>1</td>
+<td>20</td>
+<td>2,560</td>
+<td>14.37</td>
+</tr>
+<tr>
+<td><strong>H128-MQA-CLA2</strong></td>
+<td>128</td>
+<td>1</td>
+<td><strong>10</strong></td>
+<td><strong>5,120</strong></td>
+<td><strong>13.60</strong></td>
+</tr>
+<tr>
+<td>H90-MQA-CLA2</td>
+<td>90</td>
+<td>1</td>
+<td>10</td>
+<td>3,600</td>
+<td>13.73</td>
+</tr>
+<tr>
+<td>H64-MQA-CLA2</td>
+<td>64</td>
+<td>1</td>
+<td>10</td>
+<td>2,560</td>
+<td>13.89</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- MQA-CLA2 模型（d_head=128）仅需 5,120 字节/token，而 H64-MQA 同样需要 5,120 字节/token，但 CLA2 的困惑度低 0.21 个点
+- MQA-CLA2（d_head=256, 512）可以匹配 H128-MQA/GQA2 的 KV 缓存大小，但困惑度更好
+- <strong>2× KV Cache 缩减，仅 0.06 个困惑度点的下降</strong></p>
+<p><strong>学习率调优实验</strong>（最优 LR）：
+| 模型 | 最优 LR | 验证困惑度 | Wikitext 困惑度 |
+|------|---------|-----------|----------------|
+| H128-MQA | 1.5×10⁻³ | 12.39 | 19.30 |
+| H128-MQA-CLA2 | 2.25×10⁻³ | 12.43 | 19.29 |
+| H64-MQA | 2.25×10⁻³ | 12.74 | 20.00 |</p>
+<p>CLA2 模型与 H128-MQA 基线相比仅差 0.04 个困惑度点（2× 更小的 KV 缓存），相比 H64-MQA 基线改善 0.31 个困惑度点（相同 KV 缓存大小）。</p>
+<h3 id="3b">3B 参数规模结果</h3>
+<p><strong>第一组实验</strong>（d_head=128）：
+| 模型 | KV 字节/token | 最优 LR | 验证困惑度 | Wikitext 困惑度 |
+|------|-------------|---------|-----------|----------------|
+| H128-MQA | 16,384 | 6.75×10⁻⁴ | 9.52 | 13.63 |
+| <strong>H128-MQA-CLA2</strong> | <strong>8,192</strong> | 2.25×10⁻³ | <strong>9.34</strong> | <strong>13.25</strong> |
+| H64-MQA | 8,192 | 1.0×10⁻³ | 9.48 | 13.49 |</p>
+<p><strong>惊喜发现</strong>：在 3B 规模下，CLA2 模型的困惑度不仅没有下降，反而<strong>优于</strong>两个基线模型！这是因为在 3B 规模下，更大的 head dimension + CLA2 的组合带来了更好的表达能力。</p>
+<p><strong>第二组实验</strong>（d_head=64）：
+| 模型 | KV 字节/token | 最优 LR | Wikitext 困惑度 |
+|------|-------------|---------|----------------|
+| H64-MQA | 8,192 | 1.0×10⁻³ | 12.94 |
+| <strong>H64-MQA-CLA2</strong> | <strong>4,096</strong> | 1.0×10⁻³ | <strong>12.99</strong> |
+| H32-MQA | 4,096 | 1.0×10⁻³ | 13.34 |</p>
+<p>CLA2 与 H64-MQA 相比仅 0.05 个困惑度点的下降（2× 更小的 KV 缓存），比 H32-MQA 改善 0.35 个困惑度点（相同的 KV 缓存大小）。</p>
+<h3 id="_10">下游任务评估</h3>
+<p>在 Hellaswag、PIQA、WinoGrande、SciQ、OpenBookQA、BoolQ、ARC-E 等基准测试中，三种模型（H128-MQA、H128-MQA-CLA2、H64-MQA）表现相近，差异在 1-5 个百分点以内，没有模型在所有任务上一致获胜或失败。</p>
+<h3 id="_11">消融实验关键结论</h3>
+<ol>
+<li><strong>CLA2 &gt; CLA3 &gt; CLA4</strong>：共享因子为 2 的效果最佳</li>
+<li><strong>均匀共享 &gt; 非均匀共享</strong>：均匀的 CLA2 优于非均匀的共享模式（如 KeepEnds、DenseFront、DenseBack）</li>
+<li><strong>MQA + CLA2</strong> 效果最佳：CLA2 与 MQA 的组合在所有配置中实现了最优的精度/内存权衡</li>
+<li><strong>CLA 模型受益于更高的学习率</strong>：CLA 模型的最优学习率通常比非 CLA 基线高 1.5×。</li>
+</ol>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>大幅减少 KV Cache 内存</strong>：通过跨层共享 KV 激活，实现 2× 的 KV 缓存缩减，可扩展到更长的序列和更大的批量</li>
+<li><strong>极小的精度损失</strong>：在 1B 规模下仅 0.04-0.06 个困惑度点的下降，在 3B 规模下甚至有所改善</li>
+<li><strong>方法简洁优雅</strong>：只需将相邻层的 KV 激活共享，实现简单，易于集成到现有模型架构中</li>
+<li><strong>正交于 MQA/GQA/MHA</strong>：可以与任何现有的注意力机制结合使用，不引入额外的依赖</li>
+<li><strong>减少参数量和计算量</strong>：由于减少了 KV 投影块的数量，模型参数量和 FLOPs 略有减少</li>
+<li><strong>兼容模型并行</strong>：完全兼容张量并行（Tensor Parallelism），对流水线并行有明确的指导</li>
+<li><strong>跨规模一致性</strong>：在 1B 和 3B 参数规模下均表现出色，效果一致</li>
+<li><strong>无需额外超参数</strong>：只需选择共享因子（推荐 CLA2），不引入复杂的训练超参数</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>缺乏端到端推理效率评估</strong>：论文未对长序列和大批量下的实际推理吞吐量和延迟进行评估，这是一个重要的实际部署考量</li>
+<li><strong>核心注意力延迟无改善</strong>：CLA 不改变注意力机制的内存带宽消耗，因为共享的 KV 缓存仍需在每个注意力层分别从主内存读取</li>
+<li><strong>仅在较小规模验证</strong>：实验仅在 1B 和 3B 参数规模进行，更大规模（如 7B、13B、70B）的效果尚不明确</li>
+<li><strong>共享因子 &gt; 2 效果较差</strong>：CLA3 和 CLA4 虽仍优于纯 MQA，但比 CLA2 效果差，说明过度共享会降低精度</li>
+<li><strong>非均匀共享效果不佳</strong>：非均匀的共享模式（如集中共享在前/后层）表现更差，限制了设计灵活性</li>
+<li><strong>未与 KV Cache 压缩方法组合</strong>：论文未探讨 CLA 与量化（如 KVQuant）或重要性驱逐（如 H2O）等方法的组合效果</li>
+<li><strong>学习率调优的额外成本</strong>：CLA 模型可能需要与非 CLA 模型不同的学习率调优策略</li>
+<li><strong>依赖于模型规模和架构</strong>：效果可能因具体的模型架构和训练配置而异</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 优化</strong>：CLA 是 KV Cache 优化的一个重要方向，与 MQA/GQA/MLA 等方法互补，可进一步研究组合策略</li>
+<li><strong>注意力机制设计</strong>：CLA 属于结构设计（structure_design）范畴，与 DeepSeek-V2 的 Multi-Latent Attention、You Only Cache Once 等方法处于同一研究领域</li>
+<li><strong>推理效率</strong>：CLA 可以作为高效推理系统的一个组件，与 Flash Attention、FlexGen 等方法结合使用</li>
+<li><strong>长序列建模</strong>：CLA 的内存缩减特性使其在长上下文 LLM（如 Landmark Attention、Infini-Attention）中具有潜在应用</li>
+<li><strong>模型压缩</strong>：CLA 可与 KV Cache 量化、剪枝等压缩技术结合，实现更进一步的内存优化</li>
+<li><strong>大规模预训练</strong>：研究 CLA 在更大规模（如 7B+）模型中的效果，以及与其他高效架构（如 MoE）的交互</li>
+<li><strong>持续学习与持久化 KV 缓存</strong>：CLA 减少 KV 缓存大小的特性有利于持久化 KV 缓存的实现，如 AttentionStore 等应用</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）基于论文 PDF 文本提取和元数据自动生成。笔记内容涵盖了论文的核心方法、实验结果和分析，但可能存在以下局限：
+- 未能完全捕捉论文中所有细微的实验设计细节
+- 对某些表格数据的解读可能需要人工校验
+- 图表内容未完全纳入笔记</p>
+<p>请以论文原文为权威来源。</p>
+<hr />
+<blockquote>
+<p>论文链接：<a href="http://arxiv.org/abs/2405.12981v1">arXiv:2405.12981v1</a>
+代码仓库：<a href="https://github.com/JerryYin777/Cross-Layer-Attention">Cross-Layer-Attention</a>
+关键词：structure_design
+作者：William Brandon, Mayank Mishra, Aniruddha Nrusimha, Rameswar Panda, Jonathan Ragan-Kelley
+机构：MIT CSAIL, MIT-IBM Watson AI Lab</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

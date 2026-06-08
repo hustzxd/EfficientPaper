@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Compact Language Models via Pruning and Knowledge Distillation - Efficient Paper</title>
+    <title>Minitron: Compact Language Models via Pruning and Knowledge Distillation - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Compact Language Models via Pruning and Knowledge Distillation";
+        var mkdocs_page_name = "Minitron: Compact Language Models via Pruning and Knowledge Distillation";
         var mkdocs_page_input_path = "notes/2024/Minitron/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Compact Language Models via Pruning and Knowledge Distillation</li>
+      <li class="breadcrumb-item active">Minitron: Compact Language Models via Pruning and Knowledge Distillation</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,31 +159,228 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="compact-language-models-via-pruning-and-knowledge-distillation">Compact Language Models via Pruning and Knowledge Distillation</h1>
+                <h1 id="minitron-compact-language-models-via-pruning-and-knowledge-distillation">Minitron: Compact Language Models via Pruning and Knowledge Distillation</h1>
 <p><a class="glightbox" href="../minitron.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../minitron.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) targeting different deployment scales and sizes
-are currently produced by training each variant from scratch; this is extremely
-compute-intensive. In this paper, we investigate if pruning an existing LLM and
-then re-training it with a fraction (&lt;3%) of the original training data can be
-a suitable alternative to repeated, full retraining. To this end, we develop a
-set of practical and effective compression best practices for LLMs that combine
-depth, width, attention and MLP pruning with knowledge distillation-based
-retraining; we arrive at these best practices through a detailed empirical
-exploration of pruning strategies for each axis, methods to combine axes,
-distillation strategies, and search techniques for arriving at optimal
-compressed architectures. We use this guide to compress the Nemotron-4 family
-of LLMs by a factor of 2-4x, and compare their performance to similarly-sized
-models on a variety of language modeling tasks. Deriving 8B and 4B models from
-an already pretrained 15B model using our approach requires up to 40x fewer
-training tokens per model compared to training from scratch; this results in
-compute cost savings of 1.8x for training the full model family (15B, 8B, and
-4B). Minitron models exhibit up to a 16% improvement in MMLU scores compared to
-training from scratch, perform comparably to other community models such as
-Mistral 7B, Gemma 7B and Llama-3 8B, and outperform state-of-the-art
-compression techniques from the literature. We have open-sourced Minitron model
-weights on Huggingface, with corresponding supplementary material including
-example code available on GitHub.</p>
+<blockquote>
+<p><strong>论文来源</strong>: NVIDIA | <strong>arXiv</strong>: <a href="https://arxiv.org/abs/2408.11796v2">2408.11796v2</a> | <strong>年份</strong>: 2024<br />
+<strong>关键词</strong>: <code>sparse_pruning</code>, <code>structured_sparsity</code><br />
+<strong>代码</strong>: <a href="https://github.com/NVlabs/Minitron">GitHub - NVlabs/Minitron</a></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Minitron 通过<strong>结构化剪枝（depth/width pruning）+ 知识蒸馏（KD）</strong>的方式，将已预训练的大模型（如 Llama 3.1 8B、Mistral NeMo 12B）压缩为 4B/8B 参数的小模型，仅需原始训练数据的 &lt;3% 即可恢复精度，训练成本相比从头训练降低 40 倍以上，且在多个基准上优于同类模型。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大型语言模型（LLM）通常需要为不同部署规模和尺寸分别从头训练，这极其消耗计算资源。本文研究了对已有 LLM 进行剪枝、然后用少量（&lt;3%）原始训练数据重新训练是否可以替代反复从头训练。为此，作者开发了一套实用且有效的 LLM 压缩最佳实践，结合了<strong>深度、宽度、注意力头和 MLP 剪枝</strong>与<strong>知识蒸馏重训练</strong>。通过详细的实证探索，找到了各轴剪枝策略、轴组合方法、蒸馏策略和架构搜索技术的最优组合。使用该方法，将 Nemotron-4 系列 LLM 压缩 2-4 倍，相比同等规模模型在多个语言建模任务上表现优异。从已预训练的 15B 模型派生出 8B 和 4B 模型，所需训练 token 数相比从头训练减少高达 40 倍，整个模型家族（15B、8B、4B）的训练计算成本节省 1.8 倍。Minitron 模型在 MMLU 上得分最高提升 16%，与 Mistral 7B、Gemma 7B、Llama-3 8B 等社区模型表现相当，并超越了现有最先进的压缩技术。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>训练成本高昂</strong>: LLM 提供者通常需要为不同部署规模（参数量）从头训练多个模型，这极其耗时、耗数据、耗资源。</li>
+<li><strong>重复训练浪费</strong>: 为 Llama 3.1 8B/70B/405B 等不同规格分别训练，资源浪费严重。</li>
+<li><strong>剪枝+蒸馏的潜力</strong>: 已有研究表明，结合权重剪枝和知识蒸馏可以显著降低训练成本，但系统性的压缩实践指南仍然缺乏。</li>
+<li><strong>关键问题</strong>: 如何在不访问原始训练数据的情况下，利用剪枝和蒸馏高效地从大模型派生小模型？如何选择最优的剪枝轴（深度 vs. 宽度）和蒸馏策略？</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">总体流程</h3>
+<p>Minitron 的压缩流程分为三步：
+1. <strong>教师校正（Teacher Correction）</strong>: 由于无法访问原始训练数据，先在目标数据集上对教师模型进行轻微微调（~127B tokens），以纠正数据分布不匹配。
+2. <strong>结构化剪枝（Structured Pruning）</strong>: 从教师模型出发，对深度、宽度、注意力头、MLP 等维度进行剪枝。
+3. <strong>知识蒸馏重训练（Distillation Retraining）</strong>: 使用未剪枝的教师模型作为监督信号，通过 KL 散度损失恢复被剪枝模型的精度。</p>
+<h3 id="_6">剪枝策略</h3>
+<h4 id="importance-estimation">重要性估计（Importance Estimation）</h4>
+<ul>
+<li>使用<strong>纯基于激活的重要性估计</strong>策略，仅需前向传播，不需要反向传播。</li>
+<li>使用小规模校准数据集（1024 个样本）同时计算深度、神经元、注意力头和嵌入通道的重要性。</li>
+<li>通过检查多头注意力（MHA）、多层感知机（MLP）和 LayerNorm 层的激活来评估。</li>
+</ul>
+<h4 id="depth-pruning">深度剪枝（Depth Pruning）</h4>
+<ul>
+<li>评估层重要性的三种指标：(1) 语言模型验证损失，(2) 块重要性（BI，基于输入输出余弦距离），(3) 下游任务准确率（Winogrande）。</li>
+<li><strong>发现</strong>: BI 和 LM loss 高度相关，但在下游任务上不一定最准确。因此使用 Winogrande 基准评估层重要性。</li>
+<li><strong>关键发现</strong>: 丢弃连续子群的层比基于重要性的非连续剪枝更有效。</li>
+<li>Llama-3.1-Minitron-4B-Depth: 32 层 → 16 层。</li>
+</ul>
+<h4 id="width-pruning">宽度剪枝（Width Pruning）</h4>
+<ul>
+<li>对嵌入维度和 MLP 隐藏维度进行压缩。</li>
+<li>使用 l2-norm 和 mean 作为聚合函数，执行单次剪枝（避免迭代方法）。</li>
+<li>Llama-3.1-Minitron-4B-Width: hidden 4096→3072, MLP 14336→9216。</li>
+<li>MN-Minitron-8B: hidden 5120→4096, MLP 14336→11520。</li>
+</ul>
+<h4 id="model-trimming">模型裁剪（Model Trimming）</h4>
+<ul>
+<li>根据重要性排名对权重矩阵直接进行裁剪（reshape）。</li>
+<li>跳过轻量级神经架构搜索（NAS），使用手动架构配置。</li>
+</ul>
+<h3 id="_7">知识蒸馏</h3>
+<ul>
+<li>使用前向 KL 散度损失（forward KL divergence），仅在教师和学生的 logits 上计算。</li>
+<li>学生模型模仿教师模型的输出分布。</li>
+<li><strong>关键发现</strong>: 若无原始训练数据访问，教师模型应在蒸馏数据集上进行轻微微调（教师校正），否则数据分布不匹配会导致蒸馏效果下降。</li>
+</ul>
+<h3 id="_8">数据集</h3>
+<ul>
+<li>使用 Nemotron-4 精选持续训练（CT）数据集进行所有剪枝和蒸馏实验。</li>
+<li>教师校正使用约 127B tokens。</li>
+<li>蒸馏使用 &lt;400B tokens（相比从头训练 15T tokens）。</li>
+</ul>
+<hr />
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">预训练基准结果</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>参数量</th>
+<th>训练 Tokens</th>
+<th>MMLU</th>
+<th>GSM8K</th>
+<th>HellaSwag</th>
+<th>Arc_challenge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MN-Minitron-8B</td>
+<td>8.4B</td>
+<td>380B</td>
+<td>69.5</td>
+<td>58.5</td>
+<td>83.0</td>
+<td>64.4</td>
+</tr>
+<tr>
+<td>Llama 3.1 8B</td>
+<td>8B</td>
+<td>15T</td>
+<td>65.3</td>
+<td>48.6</td>
+<td>81.8</td>
+<td>57.9</td>
+</tr>
+<tr>
+<td>Gemma 7B</td>
+<td>7.3B</td>
+<td>8T</td>
+<td>64.1</td>
+<td>37.0</td>
+<td>83.2</td>
+<td>60.3</td>
+</tr>
+<tr>
+<td>Mistral NeMo 12B</td>
+<td>12.2B</td>
+<td>-</td>
+<td>69.0</td>
+<td>56.4</td>
+<td>85.2</td>
+<td>65.1</td>
+</tr>
+<tr>
+<td>Llama-3.1-Minitron-4B-Width</td>
+<td>4.5B</td>
+<td>94B</td>
+<td>60.5</td>
+<td>41.2</td>
+<td>76.1</td>
+<td>55.6</td>
+</tr>
+<tr>
+<td>Llama-3.1-Minitron-4B-Depth</td>
+<td>4.5B</td>
+<td>94B</td>
+<td>58.7</td>
+<td>16.8</td>
+<td>73.2</td>
+<td>52.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">关键发现</h3>
+<ol>
+<li><strong>MN-Minitron-8B</strong> 是 SOTA 8B 模型，在常见语言建模基准上全面超越同规模模型。</li>
+<li><strong>宽度剪枝 vs. 深度剪枝</strong>: 宽度剪枝在准确率上更优（MMLU 60.5% vs. 58.7%），但深度剪枝在推理速度上更有优势（2.7x 加速 vs. 1.8x 加速）。</li>
+<li><strong>训练成本节省</strong>: 从 15B 模型派生 8B/4B 模型所需训练 token 数相比从头训练减少高达 40 倍。</li>
+<li><strong>MMLU 提升</strong>: Minitron 模型相比从头训练最多提升 16%。</li>
+<li><strong>推理加速</strong>: Llama-3.1-Minitron-4B-Depth 相比 Llama 3.1 8B 提供平均 2.7x 加速，Llama-3.1-Minitron-4B-Width 提供 1.8x 加速。</li>
+<li><strong>教师校正至关重要</strong>: 若不进行教师校正，蒸馏效果会因数据分布不匹配而显著下降。</li>
+</ol>
+<h3 id="llama-31-minitron-4b">对齐后基准（Llama-3.1-Minitron-4B 系列）</h3>
+<table>
+<thead>
+<tr>
+<th>基准</th>
+<th>Gemma 2B</th>
+<th>Phi-2 2.7B</th>
+<th>Llama-3.1-Minitron-4B-Width</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IFEval</td>
+<td>64.5</td>
+<td>44.0</td>
+<td>52.4</td>
+</tr>
+<tr>
+<td>MT-Bench</td>
+<td>7.7</td>
+<td>4.3</td>
+<td>6.3</td>
+</tr>
+<tr>
+<td>ChatRAG*</td>
+<td>37.5</td>
+<td>37.6</td>
+<td>44.0</td>
+</tr>
+<tr>
+<td>BFCL</td>
+<td>35.6</td>
+<td>23.1</td>
+<td>64.9</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>训练成本极低</strong>: 仅需 &lt;3% 原始训练数据，token 需求降低 40 倍，计算成本降低 1.8 倍。</li>
+<li><strong>开源友好</strong>: 权重在 Hugging Face 上开源，附带许可证和代码。</li>
+<li><strong>SOTA 性能</strong>: MN-Minitron-8B 在 8B 模型中达到最佳水平，超越 Llama 3.1 8B、Gemma 7B、Mistral 7B 等。</li>
+<li><strong>灵活性</strong>: 支持深度剪枝（更快推理）和宽度剪枝（更高精度），用户可根据需求选择。</li>
+<li><strong>实用性强</strong>: 不需要原始训练数据，只需教师模型微调即可，适用于真实部署场景。</li>
+<li><strong>系统化压缩指南</strong>: 提供了完整的剪枝和蒸馏最佳实践，可推广到其他模型。</li>
+<li><strong>推理加速</strong>: 深度剪枝模型提供 2.7x 加速，宽度剪枝模型提供 1.8x 加速。</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>依赖原始模型质量</strong>: 剪枝后的模型性能上限受限于原始教师模型。</li>
+<li><strong>教师校正增加额外开销</strong>: 教师校正需要额外的 ~127B tokens 训练，虽低于从头训练但仍有成本。</li>
+<li><strong>深度剪枝推理优势与精度的权衡</strong>: 深度剪枝虽然推理更快，但准确率（尤其是推理能力如 GSM8K）显著下降。</li>
+<li><strong>数据分布依赖</strong>: 蒸馏效果高度依赖目标数据集与原始训练数据的匹配度，教师校正虽有帮助但不完全等效。</li>
+<li><strong>对齐后模型性能</strong>: MN-Minitron-8B 的对齐版本尚未完全评估，缺乏指令调优后的完整基准结果。</li>
+<li><strong>单一数据源</strong>: 所有实验仅使用 Nemotron-4 CT 数据集，未验证其他数据集的泛化性。</li>
+<li><strong>NAS 被跳过</strong>: 本工作未执行神经架构搜索，可能未达到最优架构配置。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>Minitron 与 EfficientPaper 项目关注的高效 AI 研究方向密切相关，具体包括：</p>
+<ul>
+<li><strong>结构化稀疏化（Structured Sparsity）</strong>: 本论文的核心技术，通过剪枝实现模型压缩，与 EfficientPaper 中的稀疏化研究方向一致。</li>
+<li><strong>知识蒸馏（Knowledge Distillation）</strong>: 本论文结合剪枝与蒸馏，是 EfficientPaper 中关注的模型压缩技术之一。</li>
+<li><strong>模型压缩（Model Compression）</strong>: Minitron 属于模型压缩的前沿工作，与 EfficientPaper 中的模型压缩研究方向高度相关。</li>
+<li><strong>推理加速（Inference Acceleration）</strong>: 通过剪枝实现的推理速度提升，与 EfficientPaper 关注的推理效率方向一致。</li>
+<li><strong>训练效率（Training Efficiency）</strong>: 使用少量数据重新训练大模型，与 EfficientPaper 关注的训练效率研究方向一致。</li>
+<li><strong>大语言模型家族（LLM Families）</strong>: 本论文展示了如何高效构建 LLM 模型家族，与 EfficientPaper 关注的模型系列化研究方向一致。</li>
+</ul>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>本文档由 AI Agent（Hermes Agent）自动生成，基于论文 <a href="https://arxiv.org/abs/2408.11796v2">Minitron: Compact Language Models via Pruning and Knowledge Distillation</a> 的 PDF 文本提取和元数据整理。生成时间：2026 年 6 月 5 日。内容仅供参考，如有错误请以原文为准。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

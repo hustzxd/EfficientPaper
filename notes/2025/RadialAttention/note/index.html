@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,30 +162,296 @@
                 <h1 id="radial-attention-onlog-n-sparse-attention-with-energy-decay-for-long-video-generation">Radial Attention: <script type="math/tex">O(n\log n)</script> Sparse Attention with Energy Decay for Long Video Generation</h1>
 <blockquote>
 <p>Xingyang Li, Muyang Li, Tianle Cai, Haocheng Xi, Shuo Yang, Yujun Lin, Lvmin Zhang, Songlin Yang, Jinbo Hu, Kelly Peng, Maneesh Agrawala, Ion Stoica, Kurt Keutzer, Song Han</p>
+<p>🏫 MIT, NVIDIA, Princeton, UC Berkeley, Stanford, First Intelligence
+📅 2025
+🔗 <a href="http://arxiv.org/abs/2506.19852v1">arXiv:2506.19852</a>
+💻 <a href="https://github.com/mit-han-lab/radial-attention">GitHub</a>
+🏷️ <code>sparse_pruning</code>, <code>attention_sparsity</code></p>
 </blockquote>
 <p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Recent advances in diffusion models have enabled high-quality video
-generation, but the additional temporal dimension significantly increases
-computational costs, making training and inference on long videos prohibitively
-expensive. In this paper, we identify a phenomenon we term Spatiotemporal
-Energy Decay in video diffusion models: post-softmax attention scores diminish
-as spatial and temporal distance between tokens increase, akin to the physical
-decay of signal or waves over space and time in nature. Motivated by this, we
-propose Radial Attention, a scalable sparse attention mechanism with <script type="math/tex">O(n \log
-n)</script> complexity that translates energy decay into exponentially decaying compute
-density, which is significantly more efficient than standard <script type="math/tex">O(n^2)</script> dense
-attention and more expressive than linear attention. Specifically, Radial
-Attention employs a simple, static attention mask where each token attends to
-spatially nearby tokens, with the attention window size shrinking with temporal
-distance. Moreover, it allows pre-trained video diffusion models to extend
-their generation length with efficient LoRA-based fine-tuning. Extensive
-experiments show that Radial Attention maintains video quality across
-Wan2.1-14B, HunyuanVideo, and Mochi 1, achieving up to a 1.9<script type="math/tex">\times</script> speedup
-over the original dense attention. With minimal tuning, it enables video
-generation up to 4<script type="math/tex">\times</script> longer while reducing training costs by up to
-4.4<script type="math/tex">\times</script> compared to direct fine-tuning and accelerating inference by up to
-3.7<script type="math/tex">\times</script> compared to dense attention inference.</p>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Radial Attention 是一种基于时空能量衰减（Spatiotemporal Energy Decay）现象设计的 <script type="math/tex">O(n\log n)</script> 稀疏注意力机制，通过静态注意力掩码将注意力分数的指数衰减转化为计算密度的指数衰减，在视频扩散模型中实现显著加速（推理最高 3.7×，训练最高 4.4×），同时保持视频质量，支持 4 倍长度扩展。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>近年来，扩散模型在高质量视频生成方面取得了显著进展，但额外的时间维度显著增加了计算成本，使得长视频的训练和推理代价极为昂贵。本文发现了一个现象——<strong>时空能量衰减（Spatiotemporal Energy Decay）</strong>：在视频扩散模型中，后 softmax 注意力分数随 token 之间空间和时间距离的增加而衰减，类似于自然界中信号或波在空间和时间上的物理衰减。基于此，我们提出了 <strong>Radial Attention</strong>，一种具有 <script type="math/tex">O(n\log n)</script> 复杂度的可扩展稀疏注意力机制，将能量衰减转化为指数级递减的计算密度，比标准 <script type="math/tex">O(n^2)</script> 密集注意力更高效，比线性注意力更具表达力。具体而言，Radial Attention 采用简单的静态注意力掩码，每个 token 关注空间上邻近的 token，注意力窗口大小随时间距离缩小。此外，它允许预训练的视频扩散模型通过高效的 LoRA 微调扩展生成长度。大量实验表明，Radial Attention 在 Wan2.1-14B、HunyuanVideo 和 Mochi 1 上保持了视频质量，实现了最高 1.9× 的加速。通过最少的调优，它可以生成最长 4× 的视频，同时将训练成本降低高达 4.4×，推理加速高达 3.7×。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>视频生成的计算瓶颈</strong>：视频扩散模型需要处理额外的时间维度，导致 token 数量大幅增加。例如，HunyuanVideo 生成 5 秒 720p 视频需要约 115K token，自注意力的 <script type="math/tex">O(n^2)</script> 复杂度使其在长视频场景下难以承受。</p>
+</li>
+<li>
+<p><strong>现有方法的不足</strong>：</p>
+</li>
+<li><strong>Sparse VideoGen (SVG)</strong>：动态分类注意力头为空间或时间类型，但在训练中可能误分类，且无法处理长视频的未见分布。</li>
+<li><strong>线性注意力</strong>：需要大量架构修改，且难以捕捉局部细节，导致质量下降。</li>
+<li><strong>滑动窗口注意力 (STA)</strong>：固定感受野限制了长距离依赖。</li>
+<li><strong>PowerAttention (PA)</strong>：虽然实现了 <script type="math/tex">O(n\log n)</script> 复杂度，但忽略了视频数据的时空结构。</li>
+<li>
+<p><strong>RIFLEx</strong>：无训练扩展方法在 2× 以上长度时质量退化严重。</p>
+</li>
+<li>
+<p><strong>核心发现——时空能量衰减</strong>：作者观察到在 HunyuanVideo 等视频扩散模型中，后 softmax 注意力分数随空间和时间距离的增加呈指数衰减。这类似于物理中信号在空间和时间上传播时的能量衰减。回归分析表明，衰减符合指数分布（<script type="math/tex">R^2 > 0.985</script>）。</p>
+</li>
+<li>
+<p><strong>设计目标</strong>：利用这种衰减特性，设计一种静态稀疏注意力模式，同时实现 <script type="math/tex">O(n\log n)</script> 复杂度、支持训练和推理加速、允许 LoRA 微调扩展视频长度。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法</h2>
+<h3 id="41-spatiotemporal-energy-decay">4.1 时空能量衰减（Spatiotemporal Energy Decay）</h3>
+<p>对 HunyuanVideo 的注意力图分析发现，空间注意力（同一帧内或相邻帧的 token 间注意力）具有高时间衰减、低空间衰减；时间注意力（同一空间位置跨帧的注意力）则相反。</p>
+<p>形式化定义：对于位于第 <script type="math/tex">i_0</script> 帧第 <script type="math/tex">k_0</script> 个空间位置的 query token，其后 softmax 注意力分数 <script type="math/tex">p</script> 满足：</p>
+<p>
+<script type="math/tex; mode=display">p_{js+l} \leq C_{rel} e^{-\alpha|j-i_0| - \beta|l-k_0|} p_{i_0s+k_0}</script>
+</p>
+<p>其中 <script type="math/tex">\alpha</script> 控制时间衰减率，<script type="math/tex">\beta</script> 控制空间衰减率。</p>
+<h3 id="42-radial-attention">4.2 Radial Attention 设计</h3>
+<p><strong>核心思想</strong>：将能量衰减转化为计算密度衰减，通过静态注意力掩码实现。</p>
+<p><strong>时间维度的密度衰减</strong>：
+- 帧 <script type="math/tex">i</script> 和帧 <script type="math/tex">j</script> 之间的计算密度为 <script type="math/tex">(\frac{1}{2})^{\lfloor \log_2(\max(|i-j|, 1)) \rfloor}</script>
+- 注意力图被划分为 <script type="math/tex">2^{\lceil\log_2(\max(f, 2))\rceil - 1}</script> 条对角带
+- 中心带（band 0）保留 100% 计算密度
+- 每条向外的带的宽度翻倍，但计算密度减半
+- 形成"径向衰减"效果</p>
+<p><strong>空间维度的密度衰减</strong>：
+- 帧 <script type="math/tex">i</script> 到帧 <script type="math/tex">j</script> 的注意力对角线宽度为 <script type="math/tex">\lfloor \frac{s}{2^{\lfloor\log_2(\max(|i-j|, 1))\rfloor}} \rfloor</script>
+- 当对角线宽度低于 1 时，降低对角线频率（只保留满足 <script type="math/tex">|i-j| \mod \lceil 2^{\lfloor\log_2(\max(|i-j|, 1))\rfloor} / s \rceil = 0</script> 的帧）
+- 保持相同的摊销注意力密度衰减</p>
+<p><strong>形式化掩码定义</strong>：4D 掩码 <script type="math/tex">\tilde{M} \in \{-\infty, 0\}^{f \times f \times s \times s}</script>：</p>
+<p>
+<script type="math/tex; mode=display">\tilde{M}_{i,j,k,l} = \begin{cases} 0, & \text{if } 2^{\lfloor\log_2(\max(|i-j|, 1))\rfloor} \leq s \text{ and } |k-l|+1 \leq \frac{s}{2^{\lfloor\log_2(\max(|i-j|, 1))\rfloor}} \\ 0, & \text{if } |i-j| \mod \lceil 2^{\lfloor\log_2(\max(|i-j|, 1))\rfloor} / s \rceil = 0 \text{ and } k = l \\ -\infty, & \text{otherwise} \end{cases}</script>
+</p>
+<p><strong>注意力 Sink</strong>：确保每个 token 都关注第一帧的所有 token。</p>
+<p><strong>与 SVG 的关系</strong>：Radial Attention 用单个注意力掩码统一了 SVG 中的空间和时间注意力。中心带涵盖了 SVG 的空间注意力，外侧带则根据时间衰减优化了 SVG 的时间注意力。</p>
+<h3 id="43">4.3 复杂度分析</h3>
+<p>掩码中零元素的上界为：
+<script type="math/tex; mode=display">\#\text{zeros in } \tilde{M} \leq 4s^2f \cdot \lfloor\log_2 f\rfloor \leq 4sn(\log_2 n - \log_2 s)</script>
+</p>
+<p>对于长视频（大 <script type="math/tex">f</script>）且固定空间分辨率 <script type="math/tex">s</script>，复杂度为 <script type="math/tex">O(n\log n)</script>。</p>
+<h3 id="44">4.4 误差分析</h3>
+<p>
+<script type="math/tex; mode=display">\|\tilde{p} - p\|_1 \leq C_{rel} \left[ \frac{8e^{-\beta}(s/2+1)}{(1-e^{-\alpha})(1-e^{-\beta})} + \frac{4(1+e^{-\beta})}{1-e^{-\beta}} \frac{e^{-\alpha}(s+1)}{1-e^{-\alpha}} \right] = O(C_{rel} e^{-\min(\beta/2, \alpha)s})</script>
+</p>
+<p>误差随衰减率 <script type="math/tex">\alpha</script> 和 <script type="math/tex">\beta</script> 指数递减。</p>
+<h3 id="45-lora">4.5 低秩自适应（LoRA）扩展长视频</h3>
+<ul>
+<li>由于 Radial Attention 仅剪枝不重要的 token 关系，不修改 softmax 注意力机制，因此原始预训练权重可保持大部分不变。</li>
+<li>在注意力层的 query、key、value、output 投影中应用 LoRA，显著降低内存和计算成本。</li>
+<li>实验表明，LoRA 微调与 Radial Attention 结合不仅降低开销，还能通过聚焦关键权重改善视频质量。</li>
+<li>长度扩展 LoRA 与现有风格 LoRA 兼容。</li>
+</ul>
+<h3 id="_5">硬件实现</h3>
+<ul>
+<li>采用 128×128 的块大小进行块稀疏注意力计算</li>
+<li>训练使用 Block-Sparse Attention</li>
+<li>推理使用 FlashInfer 和 FlashAttention-2</li>
+</ul>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Mochi 1 (10B), HunyuanVideo (13B), Wan2.1-14B (14B)</li>
+<li><strong>评测指标</strong>：Vision Reward、PSNR、SSIM、LPIPS、VBench（Subject Consistency, Aesthetic Quality, Image Quality）</li>
+<li><strong>硬件</strong>：单张 NVIDIA H100 GPU</li>
+<li><strong>基线</strong>：SVG、STA (FA3)、PowerAttention (PA)、LongLoRA、SANA、RIFLEx</li>
+</ul>
+<h3 id="table-1">默认长度推理加速（Table 1）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>PSNR↑</th>
+<th>SSIM↑</th>
+<th>LPIPS↓</th>
+<th>Vision Reward↑</th>
+<th>TFLOPs</th>
+<th>延迟(s)</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HunyuanVideo (117帧)</td>
+<td>Original</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>0.141</td>
+<td>612</td>
+<td>1649</td>
+<td>–</td>
+</tr>
+<tr>
+<td></td>
+<td>STA (FA3)</td>
+<td>26.7</td>
+<td>0.866</td>
+<td>0.167</td>
+<td>0.132</td>
+<td>331</td>
+<td>719</td>
+<td>2.29×</td>
+</tr>
+<tr>
+<td></td>
+<td>SVG</td>
+<td>27.2</td>
+<td>0.895</td>
+<td>0.114</td>
+<td>0.144</td>
+<td>340</td>
+<td>867</td>
+<td>1.90×</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Ours</strong></td>
+<td><strong>27.3</strong></td>
+<td><strong>0.886</strong></td>
+<td><strong>0.114</strong></td>
+<td><strong>0.139</strong></td>
+<td><strong>339</strong></td>
+<td><strong>876</strong></td>
+<td><strong>1.88×</strong></td>
+</tr>
+<tr>
+<td>Wan2.1-14B (69帧)</td>
+<td>Original</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>0.136</td>
+<td>560</td>
+<td>1630</td>
+<td>–</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Ours</strong></td>
+<td><strong>23.9</strong></td>
+<td><strong>0.842</strong></td>
+<td><strong>0.163</strong></td>
+<td><strong>0.128</strong></td>
+<td><strong>323</strong></td>
+<td><strong>917</strong></td>
+<td><strong>1.77×</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-2">长视频生成（Table 2）</h3>
+<p><strong>HunyuanVideo 4× 延长（509帧）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Sparsity</th>
+<th>训练时间(h)</th>
+<th>训练加速</th>
+<th>推理时间(s)</th>
+<th>推理加速</th>
+<th>Vision Reward↑</th>
+<th>VBench S.C.</th>
+<th>A.Q.</th>
+<th>I.Q.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original</td>
+<td>0%</td>
+<td>–</td>
+<td>–</td>
+<td>2895</td>
+<td>1.00×</td>
+<td>0.054</td>
+<td>0.988</td>
+<td>0.545</td>
+<td>0.451</td>
+</tr>
+<tr>
+<td>RIFLEx</td>
+<td>0%</td>
+<td>–</td>
+<td>–</td>
+<td>2895</td>
+<td>1.00×</td>
+<td>0.037</td>
+<td>0.989</td>
+<td>0.539</td>
+<td>0.456</td>
+</tr>
+<tr>
+<td>Full FT</td>
+<td>0%</td>
+<td>93.6</td>
+<td>1.00×</td>
+<td>2895</td>
+<td>1.00×</td>
+<td>0.133</td>
+<td>0.977</td>
+<td>0.590</td>
+<td>0.635</td>
+</tr>
+<tr>
+<td><strong>Ours</strong></td>
+<td><strong>88.3%</strong></td>
+<td><strong>21.4</strong></td>
+<td><strong>4.37×</strong></td>
+<td><strong>781</strong></td>
+<td><strong>3.71×</strong></td>
+<td><strong>0.134</strong></td>
+<td><strong>0.973</strong></td>
+<td><strong>0.623</strong></td>
+<td><strong>0.672</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">其他关键结果</h3>
+<ul>
+<li><strong>509 帧 720p 视频</strong>：Radial Attention 减少 9× 注意力计算量，实现 3.7× 推理加速，节省 4.6× 训练成本</li>
+<li><strong>与 LoRA 兼容</strong>：可与现有风格 LoRA 无缝组合，在 4× 长度扩展时保持风格</li>
+<li><strong>注意力误差</strong>：Radial Attention 的 MSE 为 <script type="math/tex">3.9 \times 10^{-3}</script>，显著低于 SVG (<script type="math/tex">4.4 \times 10^{-3}</script>) 和 STA (<script type="math/tex">1.5 \times 10^{-2}</script>)</li>
+<li><strong>回归分析</strong>：注意力衰减曲线的 <script type="math/tex">R^2 > 0.985</script>，验证了指数衰减模型的合理性</li>
+<li><strong>LoRA 有效性</strong>：Radial Attention + LoRA 组合甚至优于 Full Fine-tuning，尤其在长视频生成场景</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>理论扎实</strong>：基于物理能量衰减的直觉，有严格的数学推导和误差界分析</li>
+<li><strong>高效且有效</strong>：<script type="math/tex">O(n\log n)</script> 复杂度，推理加速最高 3.7×，训练加速最高 4.4×，同时保持甚至提升视频质量</li>
+<li><strong>简单且通用</strong>：静态注意力掩码，硬件友好（128×128 块稀疏），适用于多种视频扩散模型（HunyuanVideo、Wan2.1、Mochi 1）</li>
+<li><strong>支持长视频扩展</strong>：通过 LoRA 微调可实现 4× 长度扩展，训练成本大幅降低</li>
+<li><strong>与现有 LoRA 兼容</strong>：可与风格 LoRA 无缝组合</li>
+<li><strong>统一空间和时间注意力</strong>：用单一掩码取代 SVG 的动态头选择，消除在线分析开销</li>
+<li><strong>优于基线</strong>：在相似计算预算下，优于 STA、PA、LongLoRA、SANA 等方法</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>指数衰减假设的简化</strong>：假设注意力分数按指数衰减（公式 3），简化了自然视频数据中复杂的时空依赖关系</li>
+<li><strong>空间分辨率仍为二次复杂度</strong>：对于高分辨率视频，方法在空间维度上仍为 <script type="math/tex">O(s^2)</script>，即整体复杂度为 <script type="math/tex">O(s^2 f \log f)</script>，对高分辨率视频的扩展性有限</li>
+<li><strong>仅用于微调</strong>：目前仅用于微调以扩展视频长度，未探索作为预训练方法（如 NSA、MoBA）</li>
+<li><strong>训练数据集偏小</strong>：长度扩展 LoRA 的训练数据集较小，可能导致轻微的风格偏差，尤其与风格 LoRA 合并时</li>
+<li><strong>FlashAttention-2 限制</strong>：当前实现使用 FA2，未升级到 FA3，速度进一步提升空间存在</li>
+<li><strong>无可训练代码公开</strong>：代码仓库仅有 GitHub 链接，尚未公开完整实现</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏注意力机制</strong>：Radial Attention 属于视频扩散模型中稀疏注意力的重要进展，与 SVG、STA、PowerAttention 等工作共同推动了视频生成的高效化</li>
+<li><strong>视频扩散模型加速</strong>：与 SageAttention、FlashAttention-3、分布式推理等技术互补，可用于构建更高效的视频生成流水线</li>
+<li><strong>长视频生成</strong>：与 RIFLEx、Framepack、SANA 等长视频生成方法形成互补，提供了一种高效的长视频扩展方案</li>
+<li><strong>低秩自适应 (LoRA)</strong>：展示了 LoRA 在视频扩散模型中的高效应用，特别是与稀疏注意力结合时的优势</li>
+<li><strong>块稀疏注意力实现</strong>：128×128 的块大小设计和硬件友好的实现为实际部署提供了参考</li>
+<li><strong>模型架构优化</strong>：将物理原理（能量衰减）融入注意力设计，为高效的注意力机制设计提供了新思路</li>
+</ol>
+<hr />
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成</strong>，基于论文全文阅读和理解，可能存在遗漏或偏差。生成时间：2025 年。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

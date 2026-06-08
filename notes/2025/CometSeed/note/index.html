@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,29 +162,153 @@
                 <h1 id="comet-fine-grained-computation-communication-overlapping-for-mixture-of-experts">Comet: Fine-grained Computation-communication Overlapping for Mixture-of-Experts</h1>
 <blockquote>
 <p>Shulai Zhang, Ningxin Zheng, Haibin Lin, Ziheng Jiang, Wenlei Bao, Chengquan Jiang, Qi Hou, Weihao Cui, Size Zheng, Li-Wen Chang, Quan Chen, Xin Liu</p>
+<p>ByteDance Seed / Shanghai Jiao Tong University</p>
 </blockquote>
 <p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Mixture-of-experts (MoE) has been extensively employed to scale large
-language models to trillion-plus parameters while maintaining a fixed
-computational cost. The development of large MoE models in the distributed
-scenario encounters the problem of large communication overhead. The
-inter-device communication of a MoE layer can occupy 47% time of the entire
-model execution with popular models and frameworks. Therefore, existing methods
-suggest the communication in a MoE layer to be pipelined with the computation
-for overlapping. However, these coarse grained overlapping schemes introduce a
-notable impairment of computational efficiency and the latency concealing is
-sub-optimal.
-  To this end, we present COMET, an optimized MoE system with fine-grained
-communication-computation overlapping. Leveraging data dependency analysis and
-task rescheduling, COMET achieves precise fine-grained overlapping of
-communication and computation. Through adaptive workload assignment, COMET
-effectively eliminates fine-grained communication bottlenecks and enhances its
-adaptability across various scenarios. Our evaluation shows that COMET
-accelerates the execution of a single MoE layer by <script type="math/tex">1.96\times</script> and for
-end-to-end execution, COMET delivers a <script type="math/tex">1.71\times</script> speedup on average. COMET
-has been adopted in the production environment of clusters with
-ten-thousand-scale of GPUs, achieving savings of millions of GPU hours.</p>
+<hr />
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent 自动生成，仅供参考。生成时间：2026-06-05。</strong>
+如有错误或遗漏，请以原论文为准并手动修正。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Comet 是一个面向 MoE 模型的细粒度通信-计算重叠系统，通过共享张量分解重调度和自适应工作负载分配，实现 MoE 层内 1.96× 加速和端到端 1.71× 加速，并已在万卡级 GPU 集群中大规模部署。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>混合专家模型（MoE）已被广泛用于将大语言模型扩展到万亿参数规模，同时保持固定的计算成本。然而，分布式场景中大 MoE 模型的开发面临严重的通信开销问题。在常用模型和框架中，MoE 层的设备间通信可占用整个模型执行时间的 47%。因此，现有方法建议将 MoE 层中的通信与计算进行流水线重叠。但这些粗粒度重叠方案会显著降低计算效率，且延迟隐藏效果不理想。</p>
+<p>为此，本文提出 Comet，一个具有细粒度通信-计算重叠能力的优化 MoE 系统。通过利用数据依赖分析和任务重调度，Comet 实现了通信与计算的精确细粒度重叠。通过自适应工作负载分配，Comet 有效消除了细粒度通信瓶颈，增强了在多种场景下的适应性。实验结果表明，Comet 将单个 MoE 层的执行加速了 1.96 倍，端到端执行平均加速 1.71 倍。Comet 已被部署在万卡级 GPU 集群的生产环境中，节省了数百万 GPU 小时。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="moe">MoE 通信开销问题</h3>
+<p>MoE 架构通过稀疏激活机制，在不增加计算成本的前提下扩展模型参数规模。但分布式部署时，不同专家分布在不同 GPU 上，需要频繁的跨设备数据交换。实验显示，MoE 层的通信开销可占总执行时间的 47%（在 Mixtral-8x7B、Qwen2-MoE 等模型上）。</p>
+<h3 id="_4">粗粒度重叠方案的不足</h3>
+<p>现有方法（如 FasterMoE、Tutel）采用粗粒度流水线方案，将计算和通信分成较大块进行重叠。但这种方法存在两个核心问题：</p>
+<ol>
+<li><strong>粒度不匹配</strong>：通信以 token 为单位，计算以 tile（如 128×128）为单位，粗粒度划分导致：</li>
+<li>GPU 计算资源利用率下降（分区后的专家计算时间 t1+t2 &gt; 原始时间 t）</li>
+<li>
+<p>在初始和末尾通信阶段存在不可避免的 GPU 空闲时间</p>
+</li>
+<li>
+<p><strong>动态负载不均衡</strong>：MoE 的动态路由导致不同专家的输入形状在运行时各不相同，对 GPU 施加不同的通信和计算压力。将通信和计算任务封装到不同 stream 的独立 kernel 中，限制了对硬件资源的控制，导致非确定性的 kernel 性能，难以实现精确的重叠。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_5">方法（技术细节）</h2>
+<p>Comet 的核心设计包含两个关键机制，如论文 Figure 3 所示：</p>
+<h3 id="1-shared-tensor-based-dependency-resolving">1. 共享张量依赖解析（Shared Tensor Based Dependency Resolving）</h3>
+<p>Comet 将 MoE 层建模为两个生产者-消费者流水线：
+- <strong>通信-计算流水线</strong>（Layer0）：All2all/AllGather（生产者）→ GEMM（消费者）
+- <strong>计算-通信流水线</strong>（Layer1）：GroupGEMM（生产者）→ TopK-reduce + All2all/ReduceScatter（消费者）</p>
+<p>两个流水线通过"共享张量"（Shared Tensor）连接，作为生产者的输出缓冲和消费者的输入缓冲。</p>
+<p><strong>共享张量分解策略</strong>：
+- 分析算子对共享张量的访问模式，在独立维度上进行分解
+- Layer0（通信-计算）：共享张量沿 M（token）维度分解（token 之间独立）
+- Layer1（计算-通信）：共享张量沿 N（嵌入）维度分解（N 维度元素独立，M 维度存在 reduce 依赖）</p>
+<p><strong>重调度策略</strong>（遵循两个原则）：
+- 分解后的子张量需与原始计算 tile 粒度对齐，保持计算效率
+- 调度策略优先处理生产者中可被消费者立即使用的部分</p>
+<p>具体实现：
+- <strong>Layer0</strong>：将 token 按源 rank 排序，GroupGEMM 从包含本地 token 的 tile 开始计算，同时传输远程 token
+- <strong>Layer1</strong>：将 GroupGEMM 改为按列（N 维度）执行，使 top-K reduce 和通信操作可在部分列计算完成后立即开始（而非等待所有专家完成）</p>
+<h3 id="2-adaptive-workload-assignment">2. 自适应工作负载分配（Adaptive Workload Assignment）</h3>
+<p><strong>线程块专业化</strong>（Thread Block Specialization）：
+- 将通信和计算任务分配到不同的 thread block 中（水平融合，而非垂直融合）
+- 每个 SM 只容纳一个 thread block，避免通信和计算互相干扰
+- 在 Hopper 架构上：
+  - 计算 thread block：producer warp 使用 TMA 异步加载数据到 shared memory，consumer warp 执行 tensor core MMA 操作
+  - 通信 thread block：读取 GEMM 结果，执行 top-K reduce 后写回本地或传输到远程
+- 这种 thread block 专业化编程模型可移植到 Ampere 和 Volta 架构</p>
+<p><strong>自适应线程块分配</strong>：
+- 关键参数：np（producer 线程块数）/ nc（consumer 线程块数）的比例
+- 最优分配点受输入形状、模型配置、硬件环境影响
+  - 例：TP=8 时，M 从 4096 变到 16384，最优 nc 从 18 变到 26
+  - 例：TP 从 8 调到 4，最优 nc 从 26 变到 46
+- Comet 库包含多个预编译 kernel，每个有不同分配点
+- 部署前通过 profiling 确定最优配置，运行时通过 metadata 选择最佳 kernel</p>
+<h3 id="_6">实现细节</h3>
+<ul>
+<li>代码规模：约 12k 行 C++/CUDA + 2k 行 Python</li>
+<li>GEMM 优化：基于 CUTLASS 模板生成高效 GroupGEMM kernel，缓存行索引到寄存器以减少全局内存访问</li>
+<li>通信库：使用 NVSHMEM（而非 NCCL）进行细粒度 GPU 发起的通信操作</li>
+<li>框架集成：已集成到 Megatron-LM 中</li>
+</ul>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验环境</h3>
+<ul>
+<li><strong>H800 集群</strong>：8× NVIDIA H800（80GB），NVLink 互连，CUDA 12.3，NVSHMEM 2.11，PyTorch 2.4.0</li>
+<li><strong>L20 集群</strong>：8× NVIDIA L20（46GB），PCIe 互连（带宽约 25GB/s）</li>
+</ul>
+<h3 id="_9">基线对比</h3>
+<ul>
+<li>Megatron-Cutlass（CUTLASS grouped GEMM）</li>
+<li>Megatron-TE（Transformer Engine）</li>
+<li>FasterMoE（定制化 All-to-All 通信重叠）</li>
+<li>Tutel（自适应 MoE 优化）</li>
+</ul>
+<h3 id="mixtral-8x7b-qwen2-moe-phi35-moe">端到端性能（Mixtral-8x7B, Qwen2-MoE, Phi3.5-MoE）</h3>
+<ul>
+<li><strong>端到端延迟降低</strong>：</li>
+<li>vs Megatron-Cutlass：34.1%</li>
+<li>vs Megatron-TE：42.6%</li>
+<li>vs FasterMoE：44.4%</li>
+<li>vs Tutel：31.8%</li>
+<li><strong>平均加速</strong>：1.71×（端到端）</li>
+</ul>
+<h3 id="moe_1">单 MoE 层性能</h3>
+<ul>
+<li>加速范围：1.28× ~ 2.37×（不同输入 token 长度）</li>
+<li>平均加速：1.96×</li>
+<li><strong>通信延迟隐藏</strong>：86.5%（平均），FasterMoE 仅 29.2%，Tutel 仅 68.6%</li>
+</ul>
+<h3 id="_10">不同并行策略</h3>
+<ul>
+<li>Comet 在 EP 和 TP 不同比例下均保持低延迟</li>
+<li>其他方法在 TP 增长时延迟增加（因 expert 被切分，产生更多碎片化小 GEMM）</li>
+<li>FasterMoE 不支持 TP</li>
+</ul>
+<h3 id="_11">不同配置适应性</h3>
+<ul>
+<li>不同 E（专家数）和 topk：加速 1.16× ~ 1.83×</li>
+<li>不平衡 token 分布（std=0.032 ~ 0.05）：Comet 仍优于其他系统</li>
+<li>L20 集群（带宽受限）：加速 1.19× ~ 1.46×</li>
+</ul>
+<h3 id="_12">开销分析</h3>
+<ul>
+<li>NVSHMEM 额外内存消耗：16~64MB（可忽略不计），通过全局缓冲在层和专家间共享</li>
+</ul>
+<hr />
+<h2 id="_13">优势</h2>
+<ol>
+<li><strong>细粒度重叠</strong>：突破粗粒度重叠的限制，在 token 级别实现通信-计算重叠，大幅提升延迟隐藏效率</li>
+<li><strong>计算效率保持</strong>：通过 thread block 专业化隔离通信对计算的影响，专家计算效率不受影响</li>
+<li><strong>自适应性</strong>：通过预编译多配置 kernel + 运行时选择，适应不同输入长度、并行策略、硬件环境</li>
+<li><strong>大规模生产验证</strong>：已在万卡级 GPU 集群中部署，节省数百万 GPU 小时</li>
+<li><strong>可移植性</strong>：thread block 专业化模型可扩展到 Ampere、Volta 等架构</li>
+<li><strong>低额外开销</strong>：NVSHMEM 缓冲内存消耗极小</li>
+<li><strong>易集成</strong>：提供 Python API，可无缝集成到 Megatron-LM 等框架</li>
+</ol>
+<hr />
+<h2 id="_14">局限</h2>
+<ol>
+<li><strong>NVIDIA GPU 依赖</strong>：使用 NVSHMEM 进行通信，限制在 NVIDIA GPU 平台上</li>
+<li><strong>需要预编译和 profiling</strong>：最优线程块分配需提前 profiling 存储为 metadata，增加了部署复杂度</li>
+<li><strong>仅支持 NVIDIA 互联</strong>：在 PCIe 带宽受限的环境中加速比下降（1.19× vs 1.71×）</li>
+<li><strong>适用范围有限</strong>：主要针对 MoE 架构，对 Dense 模型或其他稀疏结构的适用性未验证</li>
+<li><strong>代码未完全开源</strong>：代码将开源但当前可能未完全开放（截至论文发表时）</li>
+<li><strong>对不同硬件架构的适配</strong>：需要针对不同架构（如 Ampere、Volta）分别替换计算 thread block 实现</li>
+<li><strong>token 分布不平衡</strong>：虽然在不平衡分布下仍优于基线，但性能下降仍不可避免</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>通信优化</strong>：细粒度通信-计算重叠技术可推广到其他分布式训练场景（如 Dense 模型的 AllReduce、GEMM 重叠）</li>
+<li><strong>系统效率</strong>：与 EfficientPaper 中关注的系统级效率优化（kernel fusion、内存优化、通信库优化）高度相关</li>
+<li><strong>MoE 系统优化</strong>：Comet 属于 MoE 系统优化的重要工作，与 FasterMoE、Tutel、PipeMoE、ScheMoE 等形成互补</li>
+<li><strong>并行策略</strong>：支持多种并行策略（EP+TP），与 3D 并行、流水线并行等技术的结合值得探索</li>
+<li><strong>关键词关联</strong>：overlap（重叠）、MoE、通信优化、系统优化、GPU kernel fusion、NVSHMEM</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

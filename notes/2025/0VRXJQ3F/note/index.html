@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,36 +161,223 @@
   
                 <h1 id="rethinking-key-value-cache-compression-techniques-for-large-language-model-serving">Rethinking Key-Value Cache Compression Techniques for Large Language Model Serving</h1>
 <p><a class="glightbox" href="../tab1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Key-Value cache (\texttt{KV} \texttt{cache}) compression has emerged as a
-promising technique to optimize Large Language Model (LLM) serving. It
-primarily decreases the memory consumption of \texttt{KV} \texttt{cache} to
-reduce the computation cost. Despite the development of many compression
-algorithms, their applications in production environments are still not
-prevalent. In this paper, we revisit mainstream \texttt{KV} \texttt{cache}
-compression solutions from a practical perspective. Our contributions are
-three-fold. First, we comprehensively review existing algorithmic designs and
-benchmark studies for \texttt{KV} \texttt{cache} compression and identify
-missing pieces in their performance measurement, which could hinder their
-adoption in practice. Second, we empirically evaluate representative
-\texttt{KV} \texttt{cache} compression methods to uncover two key issues that
-affect the computational efficiency: (1) while compressing \texttt{KV}
-\texttt{cache} can reduce memory consumption, current implementations (e.g.,
-FlashAttention, PagedAttention) do not optimize for production-level LLM
-serving, resulting in suboptimal throughput performance; (2) compressing
-\texttt{KV} \texttt{cache} may lead to longer outputs, resulting in increased
-end-to-end latency. We further investigate the accuracy performance of
-individual samples rather than the overall performance, revealing the intrinsic
-limitations in \texttt{KV} \texttt{cache} compression when handling specific
-LLM tasks. Third, we provide tools to shed light on future \texttt{KV}
-\texttt{cache} compression studies and facilitate their practical deployment in
-production. They are open-sourced in
-\href{https://github.com/LLMkvsys/rethink-kv-compression}{https://github.com/LLMkvsys/rethink-kv-compression}.</p>
+<blockquote>
+<p><strong>AI Agent 生成声明</strong>：本 note 由 AI Agent（Hermes Agent）于 2026 年 6 月 5 日自动生成，基于论文全文阅读和分析。所有内容用中文撰写。生成工具：Nous Research Hermes Agent。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>本文从实用部署角度重新审视 LLM 推理中 KV 缓存压缩技术，通过全面综述和实证评估揭示了现有方法在吞吐量、输出长度分布和负样本三个关键维度上的不足，并提供了辅助工具以促进 KV 缓存压缩在生产环境中的部署。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>KV 缓存压缩已成为优化大语言模型（LLM）服务的一种有前景的技术。它主要通过降低 KV 缓存的内存消耗来减少计算成本。尽管已有许多压缩算法被提出，但它们在生产环境中的应用仍然不普遍。本文从实用视角重新审视主流 KV 缓存压缩方案，贡献有三方面：</p>
+<ol>
+<li><strong>全面综述</strong>：系统回顾现有 KV 缓存压缩算法的算法设计和基准研究，识别出性能评估中缺失的关键维度，这些缺失可能阻碍其在实际中的采用。</li>
+<li><strong>实证评估</strong>：对代表性 KV 缓存压缩方法进行实证评估，揭示两个影响计算效率的关键问题：（1）压缩 KV 缓存虽能减少内存消耗，但当前实现（如 FlashAttention、PagedAttention）未针对生产级 LLM 服务进行优化，导致吞吐量性能次优；（2）压缩 KV 缓存可能导致更长的输出，从而增加端到端延迟。此外，通过分析个体样本（而非整体性能）的准确度，揭示了 KV 缓存压缩在处理特定 LLM 任务时的内在局限。</li>
+<li><strong>工具集</strong>：提供工具以促进未来 KV 缓存压缩研究及其在生产环境中的实际部署。工具已开源至 https://github.com/LLMkvsys/rethink-kv-compression。</li>
+</ol>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>KV 缓存是 LLM 推理的主要性能瓶颈。以 LLaMA3-70B 为例，在 FP16 格式、批大小 512、提示长度 2048 的设置下，仅 KV 缓存就需要 512GB 存储空间。两大压缩策略：</p>
 <ul>
-<li>KV cache压缩后缺乏性能的评估</li>
-<li>PagedAttention FalshAttention没有对KV 压缩进行适配</li>
-<li>KV 压缩后可能导致output变长，从而增加end-to-end的latency</li>
+<li><strong>量化方法</strong>（Quantization）：将 KV 缓存转换为低精度表示（如 INT8），降低 GPU 内存使用，但可能影响准确度。</li>
+<li><strong>稀疏方法</strong>（Sparsity）：通过淘汰不重要的 KV 对来减少内存占用，关键在于如何准确评估每个 token 的重要性。</li>
 </ul>
+<p><strong>核心问题</strong>：尽管压缩算法在学术研究中表现出色，但在生产环境中的实际部署仍存在重大挑战。现有评估存在三个关键缺失：</p>
+<ol>
+<li><strong>吞吐量评估不足</strong>：多数研究仅在朴素的 Transformers 库（TRL）中测量吞吐量，未考虑 FlashAttention 和 PagedAttention 等生产级服务技术，也未评估多 GPU 张量并行场景。</li>
+<li><strong>响应长度分布被忽视</strong>：压缩方法可能产生更长的响应，从而增加端到端延迟，但现有研究通常使用固定响应长度进行吞吐量评估。</li>
+<li><strong>负样本分析缺失</strong>：压缩方法在整体准确度下降微小的表象下，可能对特定样本造成严重性能退化，但现有研究缺乏对个体样本的深入分析。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="31">3.1 综合综述</h3>
+<p>论文系统总结了现有 KV 缓存压缩算法（Table 1，约 40+ 种方法），分为量化和稀疏两大类：</p>
+<h4 id="_5">量化方法</h4>
+<ul>
+<li><strong>量化粒度</strong>：从通道级（per-channel）到 token 级（per-token），如 KVQuant、KIVI、ZipCache 等</li>
+<li><strong>量化误差修正</strong>：如 GEAR 使用低秩矩阵近似量化误差，QuaRot 使用 Hadamard 正交矩阵消除量化异常值</li>
+<li><strong>关键问题</strong>：更细的量化粒度虽能保持准确度，但引入不规则计算模式，限制 GPU 资源利用率</li>
+</ul>
+<h4 id="_6">稀疏方法</h4>
+<ul>
+<li><strong>压缩粒度</strong>：token 级（Scissorhands、StreamingLLM）、层级（SqueezeAttention、PyramidKV）、head 级（SnapKV、Ada-KV）、通道级（ThinK）</li>
+<li><strong>淘汰策略</strong>：重要性度量（注意力分数变体）、淘汰范围（局部窗口约束）、预算分配（动态层间/头间分配）</li>
+<li><strong>关键问题</strong>：与 FlashAttention 和 PagedAttention 的兼容性差——FlashAttention 不保存注意力分数，稀疏方法需要额外的数据加载和计算步骤</li>
+</ul>
+<h4 id="_7">评估设置的缺失</h4>
+<ul>
+<li><strong>缺失 1</strong>：忽略生产级服务框架（FlashAttention、PagedAttention）和多 GPU 张量并行</li>
+<li><strong>缺失 2</strong>：忽略压缩方法对响应长度分布的影响</li>
+<li><strong>缺失 3</strong>：缺乏对个体样本（特别是长上下文任务）的准确度分析</li>
+</ul>
+<h3 id="32">3.2 实证评估</h3>
+<p>论文对 4 种代表性压缩方法进行了全面评估：
+- <strong>KIVI</strong>（量化，4-bit，per-channel key + per-token value）
+- <strong>GEAR</strong>（量化误差修正，低秩矩阵 + 稀疏矩阵）
+- <strong>H2O</strong>（稀疏，动态淘汰，注意力分数累积）
+- <strong>StreamingLLM</strong>（稀疏，保留首尾 token）</p>
+<p>评估使用 LLaMA-7B/13B/70B 和 Mistral-7B，数据集包括 ShareGPT 和 LongBench，框架包括 TRL、FlashAttention 和 LMDeploy。</p>
+<h3 id="33">3.3 工具集</h3>
+<h4 id="throughput-predictor">吞吐量预测器（Throughput Predictor）</h4>
+<ul>
+<li>基于 Vidur 框架，离线 profile 注意力层在不同 batch size 和序列长度下的吞吐量</li>
+<li>预测准确度 &gt;85%（LLaMA-7B 各压缩方法均 85%+）</li>
+</ul>
+<h4 id="length-predictor">长度预测器（Length Predictor）</h4>
+<ul>
+<li>基于 BERT 分类器，预测压缩算法在给定请求下产生的响应长度</li>
+<li>预测准确度 &gt;85%（LLaMA-3.1-8B-instruct）</li>
+</ul>
+<h4 id="negative-sample-evaluator">负样本评估器（Negative Sample Evaluator）</h4>
+<ul>
+<li>使用 10% 阈值定义负样本（即压缩后准确度下降超过阈值的样本）</li>
+<li>构建了负样本基准数据集，用于评估现有和未来压缩方法</li>
+</ul>
+<h4 id="request-router">请求路由器（Request Router）</h4>
+<ul>
+<li>结合吞吐量预测器和长度预测器，动态路由请求到最优 GPU</li>
+<li>实现 1.45-1.80× 的端到端延迟加速</li>
+</ul>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="throughput-analysis">吞吐量分析（Throughput Analysis）</h3>
+<p><strong>Observation 1</strong>：TRL 上的吞吐量结果不可靠。在 batch size &gt;4 且序列长度达 1024 时，StreamingLLM 相对 PagedAttention + FlashAttention 的加速不显著。</p>
+<p><strong>Observation 2</strong>：KV 缓存压缩在特定 batch size、序列长度和张量并行度场景下呈现负的计算效率提升。</p>
+<ul>
+<li><strong>Prefill 阶段</strong>：KIVI 和 StreamingLLM 接近 FP16 基线；GEAR 和 H2O 持续降低预填充吞吐量</li>
+<li><strong>Decode 阶段</strong>：小 batch size 和短 KV 长度时差异不大；重负载下稀疏方法保持优势，量化方法优势减弱（KIVI 甚至出现 OOM）</li>
+<li><strong>张量并行度影响</strong>：更大的 TP 可削弱压缩带来的吞吐量优势</li>
+</ul>
+<h3 id="length-distribution-analysis">响应长度分布（Length Distribution Analysis）</h3>
+<p><strong>Observation 3</strong>：有损压缩导致响应长度分布大幅变化，压缩方法倾向于产生更长的响应。</p>
+<ul>
+<li>20%+ 的样本在压缩后响应长度增加 1.5× 以上</li>
+<li>高压缩比加剧此问题（分布更加平坦）</li>
+<li>压缩可能通过产生冗长输出来隐式补偿准确度损失</li>
+</ul>
+<p><strong>Observation 4</strong>：端到端延迟分析显示，压缩方法的实际收益有限。结合吞吐量和响应长度，性能提升不显著（GEAR 甚至导致更长的尾部延迟）。</p>
+<h3 id="negative-sample-analysis">负样本分析（Negative Sample Analysis）</h3>
+<p><strong>Observation 5</strong>：KV 缓存压缩算法天然存在负样本。即使整体准确度下降微小，也有大量样本受到严重性能影响。通过算法集成可减少负样本数量，但难以完全消除。</p>
+<p><strong>Observation 6</strong>：不同类型任务对 KV 缓存压缩的敏感度不同。<strong>摘要（Summarization）和问答（QA）任务</strong>受影响最大，因为它们高度依赖上下文信息。负样本分布：
+- KIVI：66.7% 摘要 + 11.5% QA
+- GEAR：73.0% 摘要 + 10.5% QA
+- H2O：54.6% 摘要 + 22.8% QA
+- StreamingLLM：43.0% 摘要 + 32.6% QA</p>
+<h3 id="_9">负样本基准测试</h3>
+<p>在 LongBench 上的负样本基准测试结果：</p>
+<table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>Baseline</th>
+<th>KIVI</th>
+<th>GEAR</th>
+<th>H2O</th>
+<th>Stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摘要</td>
+<td>31.6</td>
+<td>24.8</td>
+<td>23.7</td>
+<td>24.7</td>
+<td>24.3</td>
+</tr>
+<tr>
+<td>问答</td>
+<td>52.0</td>
+<td>28.8</td>
+<td>28.7</td>
+<td>33.8</td>
+<td>30.4</td>
+</tr>
+<tr>
+<td>代码</td>
+<td>97.0</td>
+<td>30.0</td>
+<td>30.0</td>
+<td>57.2</td>
+<td>61.3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">请求路由器效果</h3>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>FP16</th>
+<th>KIVI</th>
+<th>GEAR</th>
+<th>H2O</th>
+<th>Stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>11.4</td>
+<td>9.1</td>
+<td>13.4</td>
+<td>10.6</td>
+<td>10.3</td>
+</tr>
+<tr>
+<td>w/ Throughput</td>
+<td>-</td>
+<td>7.7</td>
+<td>9.1</td>
+<td>8.3</td>
+<td>8.2</td>
+</tr>
+<tr>
+<td>w/ Both</td>
+<td>-</td>
+<td>6.3</td>
+<td>7.4</td>
+<td>6.9</td>
+<td>6.6</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>全面系统</strong>：对 40+ 种 KV 缓存压缩算法进行了系统性综述，涵盖量化和稀疏两大类，提供了统一的评估框架。</li>
+<li><strong>实践导向</strong>：从生产部署角度出发，揭示了现有研究在吞吐量、响应长度和负样本三个关键维度的缺失。</li>
+<li><strong>深入实证</strong>：不局限于整体性能指标，深入分析了个体样本的准确度退化问题，发现负样本的存在。</li>
+<li><strong>工具实用</strong>：提供了吞吐量预测器、长度预测器和负样本评估器等工具，实用性强，且开源。</li>
+<li><strong>多维度评估</strong>：同时评估了端到端延迟、响应长度分布和负样本，比仅评估吞吐量更全面。</li>
+<li><strong>多模型/多框架验证</strong>：在 LLaMA-7B/13B/70B 和 Mistral-7B 上，在 TRL、FlashAttention 和 LMDeploy 上进行了验证。</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>评估模型有限</strong>：仅在 LLaMA 和 Mistral 家族上进行了评估，未覆盖其他 LLM 家族（如 OPT、ChatGLM、InternLM 等）。</li>
+<li><strong>压缩方法覆盖有限</strong>：实证评估仅选择了 4 种代表性方法（KIVI、GEAR、H2O、StreamingLLM），未覆盖 SnapKV、DoubleSparse 等较新方法。</li>
+<li><strong>硬件环境有限</strong>：主要在 A6000 GPU 上评估，仅部分实验使用 H800，未涵盖更多 GPU 类型。</li>
+<li><strong>负样本分析深度有限</strong>：虽然识别了负样本的存在，但未提供足够的解决方案来完全消除负样本。</li>
+<li><strong>压缩率与准确度的权衡</strong>：对不同压缩率下准确度退化的系统分析可以更深入。</li>
+<li><strong>实际生产验证不足</strong>：虽提到生产环境部署，但工具的实际生产验证（如在真实在线服务中的效果）尚未充分展示。</li>
+<li><strong>预测器准确度可提升</strong>：吞吐量预测器和长度预测器的准确度虽 &gt;85%，但仍有提升空间。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV 缓存管理</strong>：与 PagedAttention 等内存管理技术的集成优化，减少 KV 缓存内存碎片。</li>
+<li><strong>稀疏注意力机制</strong>：探索更高效的注意力稀疏化方法，如基于查询感知的稀疏策略（Quest）。</li>
+<li><strong>量化与稀疏结合</strong>：如 Q-Hitter 将量化与稀疏结合，可进一步探索统一框架。</li>
+<li><strong>端到端延迟优化</strong>：将响应长度分布纳入性能评估，避免仅关注吞吐量。</li>
+<li><strong>负样本缓解</strong>：开发任务特定的 KV 缓存压缩技术，或使用轻量模型预测任务类型以选择合适压缩策略。</li>
+<li><strong>预测器与路由器</strong>：利用吞吐量预测器和长度预测器构建智能请求路由系统，提升生产环境效率。</li>
+<li><strong>长上下文处理</strong>：针对长上下文任务的 KV 缓存压缩优化，因为这些任务对压缩最为敏感。</li>
+<li><strong>多 GPU 场景</strong>：张量并行下 KV 缓存压缩的性能优化，避免压缩优势被稀释。</li>
+</ol>
+<hr />
+<h2 id="_13">关键词</h2>
+<p>KV 缓存管理、稀疏剪枝、注意力稀疏、综述、LLM 推理优化、吞吐量预测、响应长度预测、负样本分析</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,9 +164,182 @@
 <p>Longze Chen, Renke Shan, Huiming Wang, Lu Wang, Ziqiang Liu, Run Luo, Jiawei Wang, Hamid Alinejad-Rokny, Min Yang</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Speculative decoding (SD) is a promising method for accelerating the decoding process of Large Language Models (LLMs). The efficiency of SD primarily hinges on the consistency between the draft model and the verify model. However, existing drafting approaches typically require additional modules to be trained, which can be challenging to implement and ensure compatibility across various LLMs. In this paper, we propose CLaSp, an in-context layer-skipping strategy for self-speculative decoding. Unlike prior methods, CLaSp does not require additional drafting modules or extra training. Instead, it employs a plug-and-play mechanism by skipping intermediate layers of the verify model to construct a compressed draft model. Specifically, we develop a dynamic programming algorithm that optimizes the layer-skipping process by leveraging the complete hidden states from the last verification stage as an objective. This enables CLaSp to dynamically adjust its layer-skipping strategy after each verification stage, without relying on pre-optimized sets of skipped layers. Experimental results across diverse downstream tasks demonstrate that CLaSp achieves a speedup of 1.3x ~ 1.7x on LLaMA3 series models without altering the original distribution of the generated text.</p>
-<p><strong>test</strong></p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成</strong>，基于论文全文阅读，生成时间：2025年6月。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>CLaSp 提出了一种无需额外训练的自推测解码（Self-Speculative Decoding）框架，通过基于上下文的动态层跳过策略（Dynamic Layer Skipping），利用动态规划算法在每次验证阶段后实时优化跳层集合，实现了 LLaMA3 系列模型上 1.3× ~ 1.7× 的无损加速，且无需任何额外模块或训练。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>推测解码（Speculative Decoding, SD）是加速大语言模型（LLM）解码过程的有前景方法。SD 的效率主要取决于草稿模型与验证模型之间的一致性。然而，现有的草稿方法通常需要训练额外模块，这在实现和确保跨多种 LLM 的兼容性方面存在挑战。本文提出 CLaSp，一种用于自推测解码的上下文内层跳过策略。与先前方法不同，CLaSp 不需要额外的草稿模块或额外训练，而是采用即插即用机制，通过跳过验证模型的中间层来构建压缩的草稿模型。具体而言，本文开发了一种动态规划算法，利用上一次验证阶段的完整隐藏状态作为目标函数来优化层跳过过程，使 CLaSp 能够在每次验证阶段后动态调整层跳过策略，而无需依赖预优化的跳层集合。在多种下游任务上的实验结果表明，CLaSp 在 LLaMA3 系列模型上实现了 1.3× ~ 1.7× 的加速，且不改变生成文本的原始分布。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 推理延迟问题</strong>：Transformer 架构的 LLM 在解码阶段由于自回归特性，每次生成 token 都需将模型参数加载到 GPU SRAM，导致计算核心利用率低下，推理延迟高。</li>
+<li><strong>推测解码的局限性</strong>：传统 SD 方法依赖草稿模型与验证模型的一致性，需要训练额外模块（如 Medusa、EAGLE 等），实现复杂且难以跨模型泛化；检索类方法（如 REST）则对检索质量高度敏感。</li>
+<li><strong>现有自推测解码（Self-SD）的不足</strong>：Self-SD 和 SWIFT 通过跳过验证模型的中间层来构建草稿模型，避免了额外训练，但其层跳过策略是静态的，依赖耗时的贝叶斯优化过程，在数据稀疏或未见任务上泛化能力差。</li>
+<li><strong>核心需求</strong>：需要一种无需训练、即插即用、且能动态适应上下文的自推测解码方法。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="pipeline">整体流程（Pipeline）</h3>
+<p>CLaSp 采用三阶段流程循环运行：</p>
+<ol>
+<li><strong>Drafting（草稿生成）</strong>：草稿模型从给定的提示序列自回归地生成 K 个候选 token（<script type="math/tex">x_{i+1}, ..., x_{i+K}</script>）。</li>
+<li><strong>Verification（验证）</strong>：验证模型通过单次前向传播验证草稿 token，对每个候选 token 预测概率分布并评估其与完整模型预测的一致性。若某个草稿 token <script type="math/tex">x_j</script> 被拒绝，则用原始 LLM 的预测覆盖 <script type="math/tex">x_j</script>，并在下一轮从 <script type="math/tex">x_{j+1}</script> 恢复草稿生成。</li>
+<li><strong>Layer Optimization（层优化）</strong>：利用上一轮验证阶段最后一个被接受 token 的隐藏状态作为优化目标，通过动态规划算法更新最优跳层集合 <script type="math/tex">S^*</script>，指导下一轮草稿生成。</li>
+</ol>
+<h3 id="_5">核心问题建模</h3>
+<p>设验证模型 <script type="math/tex">M_v</script> 和草稿模型 <script type="math/tex">M_d</script>（由跳过某些中间层的原始 LLM 构成），目标是找到最优跳层集合 <script type="math/tex">S</script>，最小化 <script type="math/tex">M_v</script> 与 <script type="math/tex">M_d</script> 输出隐藏状态之间的余弦相似度：</p>
+<p>
+<script type="math/tex; mode=display">S^* = \arg\min_S \cosine(F_{M_v}(X), F_{M_d}(X)), \quad s.t. S \in \{0, 1\}^L</script>
+</p>
+<p>其中 <script type="math/tex">L</script> 为验证模型的 Transformer 层数。</p>
+<h3 id="approximate-dynamic-programming">近似动态规划（Approximate Dynamic Programming）</h3>
+<p>关键观察：推测解码中每次验证步骤后，最后一个被接受 token 的隐藏状态未被充分利用。CLaSp 利用这些反馈信息预测下一阶段的草稿模型配置。</p>
+<p>设 Transformer 模型的 <script type="math/tex">L</script> 层，第 <script type="math/tex">l</script> 层的变换为 <script type="math/tex">h_{l+1} = f_l(h_l)</script>。定义 <script type="math/tex">D(i, j)</script> 为在前 <script type="math/tex">i</script> 层中跳过 <script type="math/tex">j</script> 层后，<script type="math/tex">h_i</script> 与最优隐藏状态 <script type="math/tex">g(i, j)</script> 的最大余弦相似度。动态规划转移方程为：</p>
+<p>
+<script type="math/tex; mode=display">D(i, j) = \max\{\cosine(h_i, g(i-1, j-1)), \cosine(h_i, f_{i-1}(g(i-1, j)))\}</script>
+</p>
+<p>算法通过双层循环（时间复杂度 <script type="math/tex">O(LM)</script>）计算最优跳层集合，并通过回溯（backtracking）得到最终的 <script type="math/tex">S</script>。</p>
+<h3 id="_6">近似马尔可夫性</h3>
+<p>动态规划要求"无后效性"（马尔可夫性），但 CLaSp 不严格满足此条件。然而，利用 Transformer 层间嵌入缓慢变化的性质（slowly changing embeddings），实验验证 CLaSp 的近似算法与暴力搜索的最优解高度一致（高余弦相似度），说明其有效近似了马尔可夫性。</p>
+<h3 id="_7">效率优化策略</h3>
+<ol>
+<li>
+<p><strong>序列并行（Sequence Parallel）</strong>：动态规划中，计算 <script type="math/tex">(i, j)</script> 时仅依赖 <script type="math/tex">(i-1, \cdot)</script> 状态，因此同一 <script type="math/tex">i</script> 的不同 <script type="math/tex">j</script> 值可独立计算，实现第二层循环的并行化。同时设计专用掩码矩阵，避免将状态拼接成 batch，复用同一 KV Cache，显著降低 GPU 显存占用。在 LLaMA3-70B 上，单次 DP 时间从约 2.5 秒降至 0.14 秒，与单次验证时间相当。</p>
+</li>
+<li>
+<p><strong>降低更新频率（Lower Optimization Frequency）</strong>：利用"稀疏持久性"（Sparse Persistence）现象——相邻 token 所需的跳层集合高度相似（Jaccard 相似度高）。因此，不必每次验证后都更新，可累积多次验证步后再更新，牺牲少量接受率换取大幅降低更新延迟。总体加速比显著提升。</p>
+</li>
+</ol>
+<h3 id="_8">关键超参数</h3>
+<ul>
+<li><strong>跳层数量（Number of Skipped Layers）</strong>：在 LLaMA3-70B（80层）上，跳过44层时达到最优加速1.64×。跳层过多导致草稿质量下降，反而降低加速。</li>
+<li><strong>层优化间隔（Layer Optimization Interval, LOI）</strong>：增加间隔可降低 DP 额外延迟，但超过128后接受率显著下降导致加速比下降。</li>
+<li><strong>草稿退出阈值（Draft-Exiting Threshold, DET）</strong>：约0.7时加速最高。即使提高 DET 值，仍保持高加速，说明该参数鲁棒性强。</li>
+</ul>
+<hr />
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA3-8B、LLaMA2-13B、LLaMA3-70B、LLaMA3.1-405B</li>
+<li><strong>硬件</strong>：NVIDIA A800 GPU（80GB），8B/13B 单卡，70B 双卡，405B 八卡，FP16（405B 用 INT8 量化）</li>
+<li><strong>数据集</strong>：Spec-Bench，包含6个子任务（多轮对话 MT-bench、翻译 WMT14、摘要 CNN/DM、问答 NQ、数学推理 GSM8K、检索增强生成 DPR），每个任务80个样本，最大序列长度1024</li>
+<li><strong>对比方法</strong>：自回归解码（baseline）、Self-SD、SWIFT（均为无训练的层级跳过方法）</li>
+</ul>
+<h3 id="_11">主要结果</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>设置</th>
+<th>CLaSp 加速比</th>
+<th>Self-SD 加速比</th>
+<th>SWIFT 加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA3-70B</td>
+<td>Greedy</td>
+<td><strong>1.67×</strong></td>
+<td>1.47×</td>
+<td>1.28×</td>
+</tr>
+<tr>
+<td>LLaMA3-70B-Chat</td>
+<td>Greedy</td>
+<td><strong>1.45×</strong></td>
+<td>1.31×</td>
+<td>1.25×</td>
+</tr>
+<tr>
+<td>LLaMA3-8B</td>
+<td>Greedy</td>
+<td><strong>1.24×</strong></td>
+<td>1.14×</td>
+<td>1.11×</td>
+</tr>
+<tr>
+<td>LLaMA3-70B</td>
+<td>Non-Greedy</td>
+<td><strong>1.50×</strong></td>
+<td>1.31×</td>
+<td>1.09×</td>
+</tr>
+<tr>
+<td>LLaMA3-70B-Chat</td>
+<td>Non-Greedy</td>
+<td><strong>1.37×</strong></td>
+<td>1.22×</td>
+<td>1.00×</td>
+</tr>
+<tr>
+<td>LLaMA3-8B</td>
+<td>Non-Greedy</td>
+<td><strong>1.08×</strong></td>
+<td>0.96×</td>
+<td>0.83×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">关键发现</h3>
+<ol>
+<li><strong>CLaSp 在所有模型和任务上一致优于 Self-SD 和 SWIFT</strong>，加速比 1.3× ~ 1.7×。</li>
+<li><strong>大模型优势更明显</strong>：CLaSp 在 LLaMA3-70B 上的加速比显著高于 LLaMA3-8B，说明更大模型有更多层冗余可利用。LLaMA3.1-405B 在部分任务上加速比可达 1.82×。</li>
+<li><strong>平均接受长度（τ）显著提升</strong>：在 Greedy 设置下，CLaSp 的 τ 值普遍高于 Self-SD 和 SWIFT，表明草稿质量更好。</li>
+<li><strong>Non-Greedy 设置下 Self-SD 和 SWIFT 性能下降明显</strong>，而 CLaSp 仍保持较高加速比，说明其动态调整策略在多样化场景下更鲁棒。</li>
+<li><strong>层优化开销极小</strong>：通过序列并行优化后，层优化仅增加约4.8%的延迟，几乎可忽略。</li>
+<li><strong>跳层比例</strong>：实验中跳过 50%~60% 的层可达到最优效果。</li>
+</ol>
+<hr />
+<h2 id="_13">优势</h2>
+<ol>
+<li><strong>无需额外训练或模块</strong>：CLaSp 是纯即插即用方法，不需要训练任何额外模块、不做任何微调，直接利用原始模型的层跳过构建草稿模型，适用于任何 Transformer 架构的 LLM。</li>
+<li><strong>动态适应上下文</strong>：不同于 Self-SD 和 SWIFT 的静态跳层策略，CLaSp 在每次验证后动态调整跳层集合，能更好地适应变化的任务和上下文，避免了昂贵的贝叶斯优化过程。</li>
+<li><strong>高效实现</strong>：通过序列并行和降低更新频率策略，将额外计算开销控制在极低水平（约4.8%延迟），几乎不影响整体推理速度。</li>
+<li><strong>无损加速</strong>：基于推测采样，保证生成结果与原始模型一致，不改变文本分布。</li>
+<li><strong>跨模型泛化好</strong>：在不同规模的 LLaMA 模型上均表现稳定，且在更大模型上加速效果更佳。</li>
+<li><strong>无额外硬件需求</strong>：不增加额外的显存或计算资源，复用同一 KV Cache。</li>
+</ol>
+<hr />
+<h2 id="_14">局限</h2>
+<ol>
+<li><strong>硬件和模型覆盖有限</strong>：实验仅在 NVIDIA A800 GPU（80GB）上进行，且仅测试了 LLaMA 系列模型，未探索更多硬件平台和其他模型架构（如 Mamba、混合专家模型等）。</li>
+<li><strong>未与其他推测解码创新集成</strong>：CLaSp 可以与树状注意力机制（如 SpecInfer、Sequoia）等方法结合，但论文未研究这种集成的效果。</li>
+<li><strong>跳层策略的理论保证不足</strong>：虽然近似马尔可夫性被实验验证，但理论上动态规划并不严格最优，可能存在边界情况下的性能退化。</li>
+<li><strong>非贪婪设置下加速比降低</strong>：在 Temperature=1 的设置下，CLaSp 的加速比（尤其在 8B 模型上）明显低于贪婪设置。</li>
+<li><strong>批处理性能未知</strong>：实验均在 batch size=1 下进行，未评估 CLaSp 在高吞吐量批处理场景下的表现。</li>
+<li><strong>代码未开源</strong>：论文未提供开源代码（code url 为空），限制了可复现性。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="structured-sparsity">结构化稀疏性（Structured Sparsity）</h3>
+<p>CLaSp 本质上利用了模型的层间冗余性（layer sparsity），属于结构化稀疏性的一种形式。这一方向与 EfficientPaper 中的结构化剪枝、LayerDrop、LayerSkip 等方法密切相关。未来可探索更细粒度的稀疏策略（如注意力头稀疏、FFN 稀疏）与自推测解码的结合。</p>
+<h3 id="speculative-decoding">推测解码（Speculative Decoding）</h3>
+<p>CLaSp 是无训练推测解码方法的重要进展。相关研究方向包括：
+- <strong>树状推测解码</strong>：将 CLaSp 与 SpecInfer、Sequoia 等树状推测解码方法结合，可进一步提升接受率和加速比。
+- <strong>跨模型适配</strong>：将 CLaSp 的动态层跳过策略推广到非 LLaMA 架构（如 Qwen、Mistral 等）。
+- <strong>长序列推理</strong>：结合 Triforce 等长序列推测解码方法，探索在长上下文场景下的应用。</p>
+<h3 id="_15">动态推理与早期退出</h3>
+<p>CLaSp 的层跳过策略与早期退出（Early Exit）和动态层选择（Dynamic Layer Selection）方法有相似之处。未来可探索结合 Deja Vu 的上下文稀疏性和 CLaSp 的动态跳层策略，实现更灵活的推理加速。</p>
+<h3 id="_16">推理优化系统</h3>
+<p>CLaSp 的序列并行和 KV Cache 复用策略为推理系统优化提供了新思路。可与 vLLM、TensorRT-LLM 等推理框架集成，实现端到端的推理加速。</p>
+<hr />
+<h2 id="_17">关键词</h2>
+<ul>
+<li>结构化稀疏性（structured sparsity）</li>
+<li>推测解码（speculative decoding）</li>
+<li>自推测解码（self-speculative decoding）</li>
+<li>层跳过（layer skipping）</li>
+<li>动态规划（dynamic programming）</li>
+<li>LLM 推理加速（LLM inference acceleration）</li>
+</ul>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，基于论文 arXiv:2505.24196v1 全文阅读。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

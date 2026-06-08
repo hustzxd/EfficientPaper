@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference - Efficient Paper</title>
+    <title>SpargeAttn: Accurate and Training-free Sparse Attention Accelerating Any Model Inference - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference";
+        var mkdocs_page_name = "SpargeAttn: Accurate and Training-free Sparse Attention Accelerating Any Model Inference";
         var mkdocs_page_input_path = "notes/2025/SpargeAttn/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference</li>
+      <li class="breadcrumb-item active">SpargeAttn: Accurate and Training-free Sparse Attention Accelerating Any Model Inference</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,26 +159,326 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="spargeattn-accurate-sparse-attention-accelerating-any-model-inference">SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference</h1>
+                <h1 id="spargeattn-accurate-and-training-free-sparse-attention-accelerating-any-model-inference">SpargeAttn: Accurate and Training-free Sparse Attention Accelerating Any Model Inference</h1>
 <p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig3.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>An efficient attention implementation is essential for large models due to
-its quadratic time complexity. Fortunately, attention commonly exhibits
-sparsity, i.e., many values in the attention map are near zero, allowing for
-the omission of corresponding computations. Many studies have utilized the
-sparse pattern to accelerate attention. However, most existing works focus on
-optimizing attention within specific models by exploiting certain sparse
-patterns of the attention map. A universal sparse attention that guarantees
-both the speedup and end-to-end performance of diverse models remains elusive.
-In this paper, we propose SpargeAttn, a universal sparse and quantized
-attention for any model. Our method uses a two-stage online filter: in the
-first stage, we rapidly and accurately predict the attention map, enabling the
-skip of some matrix multiplications in attention. In the second stage, we
-design an online softmax-aware filter that incurs no extra overhead and further
-skips some matrix multiplications. Experiments show that our method
-significantly accelerates diverse models, including language, image, and video
-generation, without sacrificing end-to-end metrics. The codes are available at
-https://github.com/thu-ml/SpargeAttn.</p>
+<blockquote>
+<p><strong>本文由 AI Agent 自动生成，生成时间：2025年6月4日。所有内容基于论文原文提炼，仅供学术参考。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>SpargeAttn 提出了一种<strong>免训练的通用稀疏注意力机制</strong>，通过两阶段在线过滤（选择性 token 压缩预测 + 稀疏 warp 在线 softmax）和 8-bit 量化集成，实现了对语言、图像和视频生成模型的统一加速，<strong>在几乎不损失端到端性能的前提下达到 2.5x–5x 的加速比</strong>。</p>
+<hr />
+<h2 id="_2">摘要（翻译）</h2>
+<p>高效的注意力实现对大模型至关重要，因为注意力的计算复杂度是二次的。幸运的是，注意力图通常表现出稀疏性——即注意力图中许多值接近零，可以跳过相应的计算。许多研究已经利用稀疏模式来加速注意力。然而，大多数现有工作集中在通过利用注意力图的特定稀疏模式来优化特定模型中的注意力。<strong>一种能同时保证多种模型的加速和端到端性能的通用稀疏注意力仍然难以实现</strong>。在本文中，我们提出了 SpargeAttn，一种适用于任意模型的通用稀疏量化注意力。我们的方法使用两阶段在线过滤器：在第一阶段，我们快速准确地预测注意力图，从而跳过注意力中的部分矩阵乘法；在第二阶段，我们设计了一个不产生额外开销的在线 softmax 感知过滤器，进一步跳过一些矩阵乘法。实验表明，我们的方法显著加速了包括语言、图像和视频生成在内的多种模型，且不牺牲端到端指标。代码已开源：https://github.com/thu-ml/SpargeAttn。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>注意力计算瓶颈</strong>：随着大模型序列长度不断增长（如视频生成中 45K–128K），注意力计算占据了推理延迟的显著部分。</li>
+<li><strong>注意力的内在稀疏性</strong>：softmax 操作使得注意力图中大量值接近零，理论上可以跳过这些计算。</li>
+<li><strong>现有方法的局限性</strong>：</li>
+<li><strong>通用性不足（Universality）</strong>：大多数方法依赖于特定的稀疏模式（如滑动窗口、注意力 sink），这些模式在不同任务间差异很大，难以泛化到所有模型。</li>
+<li><strong>可用性不足（Usability）</strong>：难以同时满足精度要求（精确预测稀疏区域）和效率要求（预测开销最小化）。例如 MInference 需要 100K 的序列长度才能获得明显加速。</li>
+<li><strong>研究目标</strong>：设计一种免训练的稀疏注意力算子，能在所有模型上加速推理且不损失性能指标。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="31-sparse-flashattention">3.1 整体框架：Sparse FlashAttention</h3>
+<p>SpargeAttn 采用 FlashAttention 的分块（tiling）策略，通过跳过被过滤掉的块来实现稀疏注意力。核心定义了两个二值掩码：</p>
+<ul>
+<li><strong><script type="math/tex">M_g</script>（Block Mask）</strong>：决定是否跳过 <script type="math/tex">Q_iK_j^\top</script> 和 <script type="math/tex">e^{P_{ij}}V_j</script> 的计算（第一阶段）。</li>
+<li><strong><script type="math/tex">M_{pv}</script>（PV Mask）</strong>：决定是否跳过 <script type="math/tex">e^{P_{ij}}V_j</script> 的计算（第二阶段）。</li>
+</ul>
+<h3 id="32-token">3.2 第一阶段：选择性 Token 压缩的稀疏预测</h3>
+<p><strong>核心观察</strong>：各种模型中，Q 和 K 中相邻 token 之间表现出高相似性（高余弦相似度）。对于包含高相似性 token 的块，可以将其压缩为单个代表 token。</p>
+<p><strong>算法流程（Step1 &amp; Step2）</strong>：
+1. <strong>计算块内余弦相似度</strong>：对 Q 和 K 的每个块计算平均余弦相似度 <script type="math/tex">sq_i = \text{CosSim}(Q_i)</script>，<script type="math/tex">sk_j = \text{CosSim}(K_j)</script>。
+2. <strong>选择性压缩</strong>：
+   - 对高自相似性块（<script type="math/tex">sq_i \geq \theta</script>）：将块内所有 token 取均值，压缩为单个 token。
+   - 对低自相似性块（<script type="math/tex">sq_i < \theta</script>）：保留为 "fix block"，始终参与计算。
+3. <strong>计算压缩注意力图</strong>：使用压缩后的 Q 和 K 计算 <script type="math/tex">\hat{S} = qk^\top</script>。
+4. <strong>应用相似度阈值</strong>：对于 <script type="math/tex">sk_j < \theta</script> 的块，将 <script type="math/tex">\hat{S}</script> 对应列设为 <script type="math/tex">-\infty</script>，防止干扰。
+5. <strong>TopCdf 选择</strong>：对每行 <script type="math/tex">\hat{P}[i] = \text{Softmax}(\hat{S}[i])</script>，选取累计和达到 <script type="math/tex">\tau \cdot \sum \hat{P}[i]</script> 的 top 位置设为 1（<script type="math/tex">M_g</script>），其余设为 0。
+6. <strong>保护 fix block</strong>：对于非自相似的 Q 块（<script type="math/tex">sq_i < \theta</script>），<script type="math/tex">M_g</script> 对应行全部设为 1；对于非自相似的 K 块（<script type="math/tex">sk_j < \theta</script>），<script type="math/tex">M_g</script> 对应列全部设为 1。</p>
+<p><strong>关键设计</strong>：只压缩高自相似性块，对低自相似性块保留完整计算，避免信息丢失。</p>
+<h3 id="33-warp-softmax">3.3 第二阶段：稀疏 Warp 在线 Softmax</h3>
+<p><strong>核心思想</strong>：在 FlashAttention 的在线 softmax 过程中，如果某个块的所有 <script type="math/tex">e^{P_{ij}}</script> 值都足够小，那么 <script type="math/tex">e^{P_{ij}}V_j</script> 可以被忽略。</p>
+<p><strong>数学推导</strong>：
+- 在 FlashAttention 内循环中，<script type="math/tex">O_{ij} = \text{diag}(e^{m_{i,j-1} - m_{ij}}) O_{i,j-1} + e^{P_{ij}}V_j</script>
+- 如果 <script type="math/tex">\text{rowmax}(S_{ij}) \ll m_{ij}</script>，则 <script type="math/tex">e^{P_{ij}} = \exp(S_{ij} - m_{ij})</script> 的所有值都接近 0，<script type="math/tex">e^{P_{ij}}V_j</script> 可忽略
+- 等价条件：<script type="math/tex">\max(m_{\text{local}} - m_{ij}) < \lambda</script>
+</p>
+<p><strong>实现方式</strong>：在 GPU warp 级别，将 <script type="math/tex">S_{ij}</script> 按 warp 分割为 <script type="math/tex">\{S_{ij}[I_w]\}</script>。如果 <script type="math/tex">\max(m_{\text{local}}[I_w] - m_{ij}[I_w]) < \lambda</script>，则跳过 <script type="math/tex">e^{P_{ij}}[I_w]V_j</script> 的计算。这一操作在 FlashAttention 的每个内循环迭代中执行，<strong>不产生额外开销</strong>。</p>
+<h3 id="34-sageattention-8-bit">3.4 与 SageAttention 集成（8-bit 量化）</h3>
+<p>SpargeAttn 与 SageAttention 的 8-bit 量化方法正交，可直接集成：
+- 在 SageAttention 内循环开头添加判断（是否跳过整个内循环）
+- 在更新 <script type="math/tex">O_{ij}</script> 前添加判断（是否跳过 <script type="math/tex">e^{P_{ij}}V_j</script> 的计算）
+- 预测阶段使用 CUDA 实现并采用内核融合技术，最小化开销
+- 最终实现基于 SageAttention2，进一步提供 30% 的额外加速</p>
+<h3 id="35-hilbertcurve">3.5 HilbertCurve 排列</h3>
+<p><strong>目的</strong>：提高图像/视频模型中块的自相似性，从而增加稀疏性。</p>
+<p><strong>方法</strong>：对 3D 视觉 token 张量 <script type="math/tex">Q, K, V \in \mathbb{R}^{T \times H \times W \times d}</script>，使用 Hilbert 曲线填充 3D 空间，沿曲线展平 token 为 <script type="math/tex">\mathbb{R}^{L \times d}</script>（<script type="math/tex">L = T \times H \times W</script>）。</p>
+<p><strong>优势</strong>：Hilbert 曲线有效保持局部性，不跨越行或列遍历，增加相邻 token 的相似性和注意力的稀疏性。实验证明 HilbertCurve 在块自相似性和稀疏性上均优于 Rowmajor、Timemajor 等方法。</p>
+<h3 id="36">3.6 超参数确定</h3>
+<p>三个超参数：<script type="math/tex">\tau \in (0,1)</script>（TopCdf 阈值）、<script type="math/tex">\theta \in (-1,1)</script>（自相似性阈值）、<script type="math/tex">\lambda < 0</script>（softmax 感知阈值）。</p>
+<p>确定流程：在 5 个不同输入上，通过网格搜索确定最大化稀疏性且满足 L1 误差限制的超参数。先搜索 <script type="math/tex">\tau</script> 和 <script type="math/tex">\theta</script>（限制 <script type="math/tex">L_1 < l_1</script>），再搜索 <script type="math/tex">\lambda</script>（限制 <script type="math/tex">L_1 < l_2</script>）。</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="41">4.1 实验设置</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>任务</th>
+<th>序列长度</th>
+<th>数据集</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama3.1 (8B)</td>
+<td>文本生成</td>
+<td>128K</td>
+<td>WikiText, LongBench, InfiniteBench, NIAH</td>
+</tr>
+<tr>
+<td>CogvideoX (2B)</td>
+<td>视频生成</td>
+<td>17K</td>
+<td>Open-Sora prompt set</td>
+</tr>
+<tr>
+<td>Mochi</td>
+<td>视频生成</td>
+<td>22K</td>
+<td>Open-Sora prompt set</td>
+</tr>
+<tr>
+<td>Open-Sora-Plan</td>
+<td>视频生成</td>
+<td>38K</td>
+<td>Open-Sora prompt set</td>
+</tr>
+<tr>
+<td>Flux (.1-dev)</td>
+<td>图像生成</td>
+<td>4.5K</td>
+<td>COCO</td>
+</tr>
+<tr>
+<td>Stable-Diffusion3.5</td>
+<td>图像生成</td>
+<td>4.5K</td>
+<td>COCO</td>
+</tr>
+</tbody>
+</table>
+<p>基线方法：MInference、FlexPrefill（不同稀疏度）。</p>
+<h3 id="42">4.2 核心结果</h3>
+<p><strong>语言模型（Llama3.1 128K）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>速度 (1/t)↑</th>
+<th>WikiText Ppl.↓</th>
+<th>LongBench↑</th>
+<th>NIAH↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full-Attention</td>
+<td>156.9</td>
+<td>6.013</td>
+<td>38.682</td>
+<td>0.907</td>
+</tr>
+<tr>
+<td>Minference (0.5)</td>
+<td>140.1</td>
+<td>10.631</td>
+<td>28.860</td>
+<td>0.832</td>
+</tr>
+<tr>
+<td>FlexPrefill (0.5)</td>
+<td>240.6</td>
+<td>6.476</td>
+<td>38.334</td>
+<td>0.858</td>
+</tr>
+<tr>
+<td><strong>SpargeAttn (0.54)</strong></td>
+<td><strong>708.1</strong></td>
+<td><strong>6.020</strong></td>
+<td><strong>39.058</strong></td>
+<td><strong>0.909</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>视频模型（CogvideoX 17K）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>速度 (1/t)↑</th>
+<th>CLIPSIM↑</th>
+<th>VQA-a↑</th>
+<th>VQA-t↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full-Attention</td>
+<td>166.0</td>
+<td>0.1819</td>
+<td>80.384</td>
+<td>75.946</td>
+</tr>
+<tr>
+<td>Minference (0.3)</td>
+<td>196.9</td>
+<td>0.1754</td>
+<td>77.326</td>
+<td>63.525</td>
+</tr>
+<tr>
+<td><strong>SpargeAttn (0.46)</strong></td>
+<td><strong>507.9</strong></td>
+<td><strong>0.1798</strong></td>
+<td><strong>78.276</strong></td>
+<td><strong>74.846</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>图像模型（Flux 4.5K）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>速度 (1/t)↑</th>
+<th>FID↓</th>
+<th>CLIP↑</th>
+<th>IR↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full-Attention</td>
+<td>158.2</td>
+<td>166.103</td>
+<td>31.217</td>
+<td>0.8701</td>
+</tr>
+<tr>
+<td>Minference (0.3)</td>
+<td>118.9</td>
+<td>170.221</td>
+<td>31.001</td>
+<td>0.7701</td>
+</tr>
+<tr>
+<td><strong>SpargeAttn (0.38)</strong></td>
+<td><strong>280.3</strong></td>
+<td><strong>163.982</strong></td>
+<td><strong>31.448</strong></td>
+<td><strong>0.9207</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="43">4.3 关键发现</h3>
+<ol>
+<li><strong>端到端加速</strong>：SpargeAttn 在 Mochi 上实现 <strong>1.83x</strong> 端到端加速（1897s → 1037s on L40）。</li>
+<li><strong>稀疏度随序列长度增长</strong>：Llama3.1 中，稀疏度从 8K 的 6.8% 增长到 128K 的 54%，序列越长加速越明显。</li>
+<li><strong>预测开销极低</strong>：8K 序列预测开销仅 3.78%，128K 仅 0.516%。</li>
+<li><strong>SpargeAttn 可增强 LLM 性能</strong>：在长上下文任务中，SpargeAttn 的端到端指标甚至优于 Full-Attention（可能因为稀疏注意力帮助 LLM 聚焦于更相关的信息）。</li>
+<li><strong>扩散模型稀疏度分析</strong>：CogvideoX 中，稀疏度随去噪时间步增加而增加，且不同层和头的稀疏度差异显著。</li>
+<li><strong>自相似性判断的消融实验</strong>：自相似性判断有效保证端到端精度（VQA-a 从 34.664 提升到 54.179）。</li>
+</ol>
+<h3 id="44">4.4 速度对比</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>GPU</th>
+<th>原始</th>
+<th>SageAttn</th>
+<th>SpargeAttn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CogvideoX</td>
+<td>RTX4090</td>
+<td>87s</td>
+<td>68s</td>
+<td>53s</td>
+</tr>
+<tr>
+<td>Mochi</td>
+<td>L40</td>
+<td>1897s</td>
+<td>1544s</td>
+<td>1037s</td>
+</tr>
+<tr>
+<td>Llama3.1 (24K)</td>
+<td>RTX4090</td>
+<td>4.01s</td>
+<td>3.53s</td>
+<td>2.6s</td>
+</tr>
+<tr>
+<td>Llama3.1 (128K)</td>
+<td>L40</td>
+<td>52s</td>
+<td>42s</td>
+<td>29.98s</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>通用性</strong>：首个能在语言、图像和视频模型上同时加速且不损失精度的稀疏注意力方法，不依赖特定模式。</li>
+<li><strong>免训练</strong>：无需修改模型结构或重新训练，即插即用。</li>
+<li><strong>高精度</strong>：通过选择性压缩和自相似性判断，几乎不损失端到端性能指标。</li>
+<li><strong>高效率</strong>：预测开销极低（&lt; 4%），集成 8-bit 量化后进一步加速。</li>
+<li><strong>良好可扩展性</strong>：稀疏度随序列长度增长，适合长序列场景。</li>
+<li><strong>实现简洁</strong>：与 FlashAttention 和 SageAttention 兼容，集成方便。</li>
+<li><strong>HilbertCurve 排列</strong>：有效利用视觉 token 的局部性先验，提高稀疏度。</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>超参数调优</strong>：需要为每个模型和每层搜索超参数（<script type="math/tex">\tau, \theta, \lambda</script>），虽然流程系统化但仍有调优成本。</li>
+<li><strong>稀疏度依赖输入</strong>：稀疏度随输入内容和序列长度变化，某些输入可能无法达到高稀疏度。</li>
+<li><strong>GPU 依赖</strong>：实现基于 CUDA，在 warp 级别操作，对 GPU 硬件有特定要求。</li>
+<li><strong>与训练无关</strong>：虽然免训练是优势，但也意味着无法通过训练学习更优的稀疏模式。</li>
+<li><strong>评估范围</strong>：虽然覆盖了语言、图像、视频，但未评估语音等其他模态。</li>
+<li><strong>与 FlashAttention 版本绑定</strong>：当前实现基于 SageAttention（基于 FlashAttention），可能受限于特定版本的 FlashAttention 接口。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>注意力加速</strong>：SpargeAttn 属于注意力加速领域，与 FlashAttention、SageAttention、MInference、FlexPrefill 等工作密切相关。</li>
+<li><strong>稀疏注意力</strong>：属于动态稀疏注意力的 token 压缩方法，可与 H2O、InfLLM、DUOAttention 等模式方法形成对比。</li>
+<li><strong>量化与稀疏的结合</strong>：展示了 8-bit 量化（SageAttention）与稀疏注意力的正交性，为联合加速提供了范例。</li>
+<li><strong>通用性与专用性</strong>：是首个在多模态模型间实现统一加速的稀疏注意力方法，推动了通用注意力优化的研究方向。</li>
+<li><strong>长序列推理</strong>：对长序列（128K+）的高效推理有重要价值，与长上下文模型（如 Llama3.1）的部署密切相关。</li>
+<li><strong>HilbertCurve 排列</strong>：为视觉 token 的高效处理提供了新的排列策略，可与视觉 Transformer 的优化结合。</li>
+<li><strong>稀疏模式分析</strong>：扩散模型中不同层/头/时间步的稀疏度差异分析，为未来自适应稀疏策略设计提供了参考。</li>
+</ol>
+<hr />
+<h2 id="_8">参考信息</h2>
+<ul>
+<li><strong>论文链接</strong>：https://arxiv.org/pdf/2502.18137</li>
+<li><strong>代码仓库</strong>：https://github.com/thu-ml/SpargeAttn</li>
+<li><strong>发表会议</strong>：ICML 2025</li>
+<li><strong>作者</strong>：Jintao Zhang, Chendong Xiang, Haofeng Huang, Jia Wei, Haocheng Xi, Jun Zhu, Jianfei Chen</li>
+<li><strong>机构</strong>：清华大学（Tsinghua University）、加州大学伯克利分校（UC Berkeley）</li>
+<li><strong>关键词</strong>：sparse_pruning, attention_sparsity</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

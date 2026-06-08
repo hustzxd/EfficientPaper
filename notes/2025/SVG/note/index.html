@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,201 @@
 <p>Haocheng Xi, Shuo Yang, Yilong Zhao, Chenfeng Xu, Muyang Li, Xiuyu Li, Yujun Lin, Han Cai, Jintao Zhang, Dacheng Li, Jianfei Chen, Ion Stoica, Kurt Keutzer, Song Han</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Diffusion Transformers (DiTs) dominate video generation but their high computational cost severely limits real-world applicability, usually requiring tens of minutes to generate a few seconds of video even on high-performance GPUs. This inefficiency primarily arises from the quadratic computational complexity of 3D Full Attention with respect to the context length. In this paper, we propose a training-free framework termed Sparse VideoGen (SVG) that leverages the inherent sparsity in 3D Full Attention to boost inference efficiency. We reveal that the attention heads can be dynamically classified into two groups depending on distinct sparse patterns: (1) Spatial Head, where only spatially-related tokens within each frame dominate the attention output, and (2) Temporal Head, where only temporally-related tokens across different frames dominate. Based on this insight, SVG proposes an online profiling strategy to capture the dynamic sparse patterns and predicts the type of attention head. Combined with a novel hardware-efficient tensor layout transformation and customized kernel implementations, SVG achieves up to 2.28x and 2.33x end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo, respectively, while preserving generation quality. Our code is open-sourced and is available at https://github.com/svg-project/Sparse-VideoGen</p>
+<h2 id="_1">一句话总结</h2>
+<p>SVG 是一个<strong>无需训练</strong>的框架，通过利用视频扩散 Transformer 中 3D 全注意力的<strong>时空稀疏性</strong>（将注意力头分为空间头和时间头），在保持生成质量（PSNR &gt; 29）的前提下，实现了最高 <strong>2.33×</strong> 的端到端推理加速。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>扩散 Transformer（DiTs）在视频生成领域占据主导地位，但其高计算成本严重限制了实际应用——即使在高性能 GPU 上，生成几秒钟的视频通常也需要数十分钟。这种低效主要源于 3D 全注意力相对于上下文长度的二次计算复杂度。本文提出了一个名为 <strong>Sparse VideoGen（SVG）</strong> 的免训练框架，利用 3D 全注意力中固有的稀疏性来提升推理效率。作者揭示了注意力头可以根据不同的稀疏模式被动态分为两组：(1) <strong>空间头（Spatial Head）</strong>——仅关注每帧内的空间相关 token；(2) <strong>时间头（Temporal Head）</strong>——仅关注跨不同帧的时间相关 token。基于这一发现，SVG 提出了在线分析策略来捕获动态稀疏模式并预测注意力头类型。结合新颖的硬件高效张量布局变换和定制化 kernel 实现，SVG 在 CogVideoX-v1.5 和 HunyuanVideo 上分别实现了最高 <strong>2.28×</strong> 和 <strong>2.33×</strong> 的端到端加速，同时保持生成质量。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>视频生成模型的推理瓶颈</strong>：以 HunyuanVideo 为例，在 NVIDIA A100 GPU 上生成一段 5 秒视频需要近 1 小时，其中 3D 全注意力占端到端运行时间的 <strong>80% 以上</strong>。随着分辨率和帧数增加，注意力的二次复杂度使其瓶颈更加严重（如图 2 所示：CogVideoX-v1.5 的 45k 上下文长度下注意力占 73%，HunyuanVideo 的 120k 上下文长度下注意力占超过 80%）。</p>
+</li>
+<li>
+<p><strong>现有方法的局限</strong>：</p>
+</li>
+<li><strong>去噪步数减少</strong>（如 DDIM、Consistency Models、蒸馏等）需要昂贵的重新训练/微调，对视频生成模型不切实际。</li>
+<li><strong>模型压缩/量化</strong>（如 Q-Diffusion、ViDiT-Q）可与 SVG 互补，但单独使用时质量损失较大。</li>
+<li><strong>系统级优化</strong>（如 PAB、DeepCache、FasterCache）虽提升吞吐量，但生成质量通常低于 PSNR 22。</li>
+<li>
+<p><strong>LLM 稀疏注意力方法</strong>（如 MInference、DuoAttention、H2O）关注 token 级稀疏性，未利用视频数据的固有冗余，直接应用于 DiT 时效果不佳（如 MInference 在 PSNR 上仅达到 22-23）。</p>
+</li>
+<li>
+<p><strong>关键洞察</strong>：3D 全注意力存在固有的稀疏模式——注意力头可被分为空间头和时间头，分别负责视频的空间结构和时间一致性。这一模式不同于文本数据的稀疏性，是视频数据特有的。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<p>SVG 是一个<strong>免训练（training-free）</strong>框架，核心包含三个组件：</p>
+<h3 id="1-online-profiling-strategy">1. 在线分析策略（Online Profiling Strategy）——稀疏模式识别</h3>
+<ul>
+<li><strong>问题</strong>：不同去噪步骤和输入 prompt 下，注意力头的稀疏模式是动态变化的（一个头在某个 prompt 下可能是空间头，在另一个 prompt 下可能是时间头）。</li>
+<li><strong>方案</strong>：SVG 仅采样 <strong>1%</strong> 的输入 token（如 32 个），对采样 token 同时计算全注意力、空间稀疏注意力和时间稀疏注意力，选择与全注意力 MSE 最小的稀疏模式。</li>
+<li><strong>开销</strong>：仅约 <strong>3%</strong> 的运行时间开销（如 Table 3 所示，1% profiling 可达到 31.118 PSNR，接近 100% oracle 的 31.324 PSNR）。</li>
+<li><strong>算法</strong>（Algorithm 1）：随机采样 t 个索引 → 提取 Q_i → 生成空间/时间 mask → 计算全注意力和两种稀疏注意力输出 → 比较 MSE → 选择最佳模式。</li>
+<li><strong>额外处理</strong>：文本 prompt 和第一帧 token 在空间头和时间头中均被保留，因为它们在注意力中具有显著分数。</li>
+</ul>
+<h3 id="2-hardware-efficient-layout-transformation">2. 硬件高效布局变换（Hardware-efficient Layout Transformation）</h3>
+<ul>
+<li><strong>问题</strong>：时间头的稀疏模式是<strong>非连续的</strong>（stride 为 L，即每帧 token 数），无法有效利用 GPU Tensor Core（要求至少 16 个连续元素）。</li>
+<li><strong>方案</strong>：将 token-major 张量转置为 frame-major 张量，使不同帧的同一空间位置 token 变为连续布局。数学上等价（注意力计算的结合律）。</li>
+<li><strong>效果</strong>：如图 8 所示，布局变换后比朴素稀疏注意力快 <strong>1.7×</strong>，接近理论加速（10% 稀疏率下达到 3.63×）。</li>
+</ul>
+<h3 id="3">3. 其他优化</h3>
+<ul>
+<li><strong>定制化 Kernel</strong>：</li>
+<li>使用 <strong>Triton</strong> 实现融合的在线分析策略和布局变换 kernel。</li>
+<li>使用 <strong>FlashInfer</strong> 实现 block sparse attention kernel。</li>
+<li><strong>QK-norm 和 RoPE 定制化</strong>：针对小 head 维度（如 CogVideoX-v1.5 的 64）使用 sub-warp reduction 实现，QK-norm 平均加速 <strong>7.4×</strong>，RoPE 平均加速 <strong>15.5×</strong>（如 Table 2 所示）。</li>
+<li><strong>FP8 量化</strong>：与稀疏注意力兼容，仅产生 0.1 PSNR 下降，额外带来 <strong>1.3×</strong> 吞吐量提升（HunyuanVideo 上）。支持 FP8 + block sparse 的自定义 attention kernel。</li>
+<li><strong>跳过前 25% 去噪步骤</strong>：遵循之前的工作，跳过初始 25% 的去噪步骤（对生成质量关键）。</li>
+<li><strong>超参数配置</strong>：</li>
+<li>CogVideoX-v1.5：cs=4 帧（空间头），ct=1224 token（时间头），~30% 稀疏率。</li>
+<li>HunyuanVideo：cs=10 帧（空间头），ct=1200 token（时间头），~30% 稀疏率。</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="table-1">主要结果（Table 1）</h3>
+<table>
+<thead>
+<tr>
+<th>模型/方法</th>
+<th>PSNR ↑</th>
+<th>SSIM ↑</th>
+<th>LPIPS ↓</th>
+<th>速度提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CogVideoX-v1.5-I2V</strong> (Dense)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1× (528s)</td>
+</tr>
+<tr>
+<td>DiTFastAttn (空间)</td>
+<td>24.59</td>
+<td>0.836</td>
+<td>0.167</td>
+<td>1.56×</td>
+</tr>
+<tr>
+<td>Temporal-only</td>
+<td>23.84</td>
+<td>0.844</td>
+<td>0.157</td>
+<td>1.61×</td>
+</tr>
+<tr>
+<td>MInference</td>
+<td>22.49</td>
+<td>0.743</td>
+<td>0.264</td>
+<td>1.48×</td>
+</tr>
+<tr>
+<td>PAB</td>
+<td>23.23</td>
+<td>0.842</td>
+<td>0.145</td>
+<td>1.41×</td>
+</tr>
+<tr>
+<td><strong>SVG</strong></td>
+<td><strong>28.17</strong></td>
+<td><strong>0.915</strong></td>
+<td><strong>0.104</strong></td>
+<td><strong>2.23×</strong> (237s)</td>
+</tr>
+<tr>
+<td><strong>CogVideoX-v1.5-T2V</strong> (Dense)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1× (528s)</td>
+</tr>
+<tr>
+<td><strong>SVG</strong></td>
+<td><strong>29.99</strong></td>
+<td><strong>0.910</strong></td>
+<td><strong>0.112</strong></td>
+<td><strong>2.28×</strong> (232s)</td>
+</tr>
+<tr>
+<td><strong>HunyuanVideo-T2V</strong> (Dense)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1× (2253s)</td>
+</tr>
+<tr>
+<td><strong>SVG</strong></td>
+<td><strong>29.55</strong></td>
+<td><strong>0.907</strong></td>
+<td><strong>0.127</strong></td>
+<td><strong>1.92×</strong> (1171s)</td>
+</tr>
+<tr>
+<td><strong>SVG + FP8</strong></td>
+<td><strong>29.45</strong></td>
+<td><strong>0.906</strong></td>
+<td><strong>0.128</strong></td>
+<td><strong>2.33×</strong> (968s)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">关键发现</h3>
+<ol>
+<li><strong>质量</strong>：SVG 在所有基线方法中保持最高生成质量，PSNR 超过 29，远超其他方法（MInference 仅 22-23）。</li>
+<li><strong>速度</strong>：端到端加速最高 2.33×（HunyuanVideo + FP8），其中稀疏注意力贡献最大（1.81×），高效 kernel 贡献 1.06×，FP8 贡献 1.21×（如图 7 所示）。</li>
+<li><strong>兼容性</strong>：SVG 与 FP8 量化兼容，仅 0.1 PSNR 损失，额外 1.3× 吞吐量。</li>
+<li><strong>鲁棒性</strong>：不同稀疏率下均保持不错的生成质量（如 Table 4，13% 稀疏率下 LPIPS 0.154，52% 稀疏率下 LPIPS 0.116）。</li>
+<li><strong>基线对比</strong>：</li>
+<li><strong>MInference</strong>（mean-pooling block sparse）无法有效捕捉时间稀疏模式，PSNR 大幅下降。</li>
+<li><strong>PAB</strong>（缓存机制）跳过 3D 全注意力复用前层结果，严重损害质量。</li>
+<li><strong>DiTFastAttn</strong>（空间-only）仅利用空间稀疏，无法处理时间依赖。</li>
+</ol>
+<hr />
+<h2 id="_7">优势</h2>
+<ol>
+<li><strong>无需训练</strong>：直接使用现有预训练模型，无需任何额外训练或微调，对视频生成模型特别友好。</li>
+<li><strong>高质量保持</strong>：PSNR 超过 29，远优于所有基线方法，生成质量与全注意力高度一致。</li>
+<li><strong>显著加速</strong>：最高 2.33× 端到端加速，且加速主要来自系统-算法协同设计（稀疏注意力 + 高效 kernel + FP8）。</li>
+<li><strong>理论基础扎实</strong>：基于对视频 DiT 注意力头的深入分析，揭示了空间头和时间头两种固有稀疏模式。</li>
+<li><strong>硬件友好</strong>：通过布局变换将非连续稀疏模式转为连续，有效利用 GPU Tensor Core。</li>
+<li><strong>可组合性</strong>：与 FP8 量化、线性注意力等技术正交，可进一步组合提升性能。</li>
+<li><strong>在线自适应</strong>：动态识别注意力头类型，适应不同去噪步骤和输入。</li>
+<li><strong>鲁棒的超参数</strong>：1% profiling 即可达到接近 oracle 的效果，超参数选择简单。</li>
+</ol>
+<hr />
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>依赖模型结构</strong>：需要模型具有 3D 全注意力结构，且对特定模型（如 CogVideoX-v1.5、HunyuanVideo）进行了特定配置。</li>
+<li><strong>头部维度限制</strong>：对于小 head 维度（如 64），FP8 量化的加速效果有限（无 GPU 加速）。</li>
+<li><strong>静态超参数</strong>：cs 和 ct 需要手动设置，未实现自适应稀疏率控制（论文提到"留作未来工作"）。</li>
+<li><strong>适用场景</strong>：主要针对视频生成的扩散 Transformer，未探索在其他视频任务（如视频理解）中的应用。</li>
+<li><strong>前 25% 去噪步骤</strong>：需要跳过前 25% 的去噪步骤，可能影响某些生成场景的质量。</li>
+<li><strong>未验证大规模部署</strong>：在 H100 上的评测，未覆盖更广泛的硬件配置或生产环境部署。</li>
+<li><strong>训练数据偏差</strong>：时间头模式假设训练数据以慢速运动视频为主（论文假设），可能不适用于快速运动场景。</li>
+<li><strong>未与其他稀疏方法对比</strong>：未与最新的 SpargeAttention、XAttention 等方法进行对比。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>视频扩散模型高效推理</strong>：SVG 是视频扩散 Transformer 推理加速的重要工作，与 EfficientPaper 中的视频生成效率研究直接相关。可通过关键词 <code>sparse_pruning</code> 和 <code>attention_sparsity</code> 检索。</li>
+<li><strong>稀疏注意力机制</strong>：SVG 揭示的时空稀疏模式可推广到其他视频生成模型，与 LLM 稀疏注意力研究（如 DuoAttention、MInference）形成对比。</li>
+<li><strong>免训练加速方法</strong>：SVG 的免训练特性使其在视频生成领域具有广泛适用性，可与其他免训练方法（如缓存、量化）组合使用。</li>
+<li><strong>系统-算法协同设计</strong>：SVG 结合了稀疏注意力算法与高效 kernel 实现（Triton、FlashInfer），体现了系统-算法协同设计的重要性。</li>
+<li><strong>FP8 量化与稀疏注意力的结合</strong>：SVG 展示了稀疏注意力与低比特量化的兼容性，为未来更高效的视频生成系统提供了参考。</li>
+<li><strong>动态稀疏模式识别</strong>：SVG 的在线分析策略为动态稀疏模式识别提供了新思路，可推广到其他需要动态稀疏性的任务。</li>
+</ol>
+<hr />
+<blockquote>
+<p><strong>注意</strong>：本 note 由 AI Agent（Hermes Agent）自动生成，基于 arXiv 论文（arXiv:2502.01776v2）全文内容，生成日期：2026-06-04。内容仅供参考，如有错误请以原文为准。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

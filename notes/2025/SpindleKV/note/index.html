@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,23 +164,256 @@
 <p>Zicong Tang, Shi Luohe, Zuchao Li, Baoyuan Qi, Guoming Liu, Lefei Zhang, Ping Wang</p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) have achieved impressive accomplishments in
-recent years. However, the increasing memory consumption of KV cache has
-possessed a significant challenge to the inference system. Eviction methods
-have revealed the inherent redundancy within the KV cache, demonstrating its
-potential for reduction, particularly in deeper layers. However, KV cache
-reduction for shallower layers has been found to be insufficient. Based on our
-observation that, the KV cache exhibits a high degree of similarity. Based on
-this observation, we proposed a novel KV cache reduction method, SpindleKV,
-which balances both shallow and deep layers. For deep layers, we employ an
-attention weight based eviction method, while for shallow layers, we apply a
-codebook based replacement approach which is learnt by similarity and merging
-policy. Moreover, SpindleKV addressed the Grouped-Query Attention (GQA) dilemma
-faced by other attention based eviction methods. Experiments on two common
-benchmarks with three different LLMs shown that SpindleKV obtained better KV
-cache reduction effect compared to baseline methods, while preserving similar
-or even better model performance.</p>
+<hr />
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent 自动生成（Hermes Agent），生成时间：2025-07-17。内容基于论文全文提取与分析，仅供参考。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>SpindleKV 通过在深层使用注意力权重驱逐（token eviction）、在浅层使用基于码本（CodeBook）的相似性替换（token replacement）来平衡 KV cache 压缩，同时解决了 GQA 模型下的兼容性问题，在多个基准上实现了优于现有方法的压缩效果和模型性能。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）近年来取得了令人瞩目的成就。然而，KV cache 不断增长的内存消耗给推理系统带来了严峻挑战。驱逐（eviction）方法揭示了 KV cache 中固有的冗余性，证明了其压缩潜力，特别是在更深的层中。然而，浅层的 KV cache 压缩效果一直被认为不足。基于我们观察到的 KV cache 具有高度相似性这一现象，我们提出了 SpindleKV——一种新颖的 KV cache 压缩方法，平衡了浅层和深层的压缩效果。对于深层，我们采用基于注意力权重的驱逐方法；对于浅层，我们采用基于码本（CodeBook）的替换方法，通过相似性和合并策略学习得到。此外，SpindleKV 解决了其他基于注意力的驱逐方法面临的分组查询注意力（GQA）难题。在三个不同 LLM 上的两个通用基准测试实验表明，SpindleKV 相比基线方法获得了更好的 KV cache 压缩效果，同时保持了相似甚至更好的模型性能。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>LLM 推理时的内存消耗主要由模型参数和 KV cache 两部分组成。随着上下文长度增加，KV cache 的内存占用比例显著增大，有时甚至超过模型参数本身，成为限制 LLM 部署和应用的瓶颈。</p>
+<h3 id="_5">现有方法的局限</h3>
+<ol>
+<li><strong>Token 驱逐</strong>（如 H2O、SnapKV、PyramidInfer、PyramidKV）：通过移除低贡献 token 来压缩 KV cache，但对浅层的压缩效果有限。</li>
+<li><strong>Token 合并</strong>（如 CaM、D2O、KVMerger）：基于相关性合并 token，但同样存在浅层压缩不足的问题。</li>
+<li><strong>量化</strong>（如 KIVI、ZipCache、AsymKV）：提供低精度近似但不移除信息，同样在浅层压缩中面临困难。</li>
+<li><strong>GQA 兼容性问题</strong>：基于注意力分数的驱逐方法难以与 GQA 集成，因为需要对同一组的所有 Q head 做统一决策，限制了细粒度控制。</li>
+</ol>
+<h3 id="_6">关键观察</h3>
+<ul>
+<li><strong>深层注意力稀疏性</strong>：随着层数加深，低注意力得分的 token 数量增加，注意力集中在少数特定 token 上，为 token 驱逐提供了可行性。</li>
+<li><strong>浅层 KV 高相似性</strong>：浅层 KV cache 中，token 的组成成分高度相似（高余弦相似性），即使许多 token 获得高注意力得分，它们的组成成分也非常相似。这提示可以用码本（CodeBook）方法处理这些冗余。</li>
+</ul>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<p>SpindleKV 的核心思想是"纺锤形"（spindle）分层策略：在深层通过注意力权重驱逐减少冗余，在浅层通过码本替换减少冗余，同时兼容 GQA。</p>
+<h3 id="31">3.1 问题定义与符号</h3>
+<ul>
+<li>模型隐藏维度 <script type="math/tex">d</script>，每个注意力头维度 <script type="math/tex">d_h</script>，总头数 <script type="math/tex">h</script>
+</li>
+<li>GQA 模型中 KV 头数 <script type="math/tex">h_g</script>，每个 KV 头对应 <script type="math/tex">h_n = h/h_g</script> 个 Q 头</li>
+<li>输入序列长度 <script type="math/tex">l</script>，输入 <script type="math/tex">X \in \mathbb{R}^{l \times d}</script>
+</li>
+<li>注意力分数 <script type="math/tex">A_i</script> 通过标准的 softmax 计算</li>
+<li>累积注意力得分 <script type="math/tex">ac_{i,a}</script>：表示在窗口 <script type="math/tex">l_w</script> 内，第 <script type="math/tex">a</script> 个 token 的 key 对所有 query 的平均注意力得分，作为 token 重要性的指标</li>
+<li>对于 GQA 模型，需要跨 <script type="math/tex">h_n</script> 个 Q 头取平均</li>
+</ul>
+<h3 id="32-token">3.2 深层：基于注意力权重的 Token 驱逐</h3>
+<p>遵循 PyramidKV 的线性插值策略进行逐层 KV cache 分配：</p>
+<ol>
+<li><strong>总保留比率</strong> <script type="math/tex">r</script> 控制 KV cache 的整体压缩率</li>
+<li><strong>观察窗口</strong> <script type="math/tex">l_w</script>：窗口内的所有 token 全部保留</li>
+<li><strong>上下文保留比率</strong> <script type="math/tex">r_c</script>：对上下文部分的保留比率</li>
+<li><strong>逐层分配</strong>：最浅层（layer 0）保留最多 token，最深层（layer <script type="math/tex">m-1</script>）保留最少 token，形成金字塔形分配</li>
+<li><strong>最小保留比率</strong> <script type="math/tex">\beta = 0.05</script>，最大保留比率 <script type="math/tex">\alpha = 0.525</script>
+</li>
+<li><strong>驱逐操作</strong>：基于累积注意力得分 <script type="math/tex">ac_i</script>，使用 Top-K 选择保留的 token 索引</li>
+</ol>
+<p>关键公式（逐层保留比率）：
+<script type="math/tex; mode=display">r_c(\lambda) = r_c(0) + \frac{r_c(m-1) - r_c(0)}{m-1} \cdot \lambda</script>
+</p>
+<h3 id="33-token">3.3 浅层：基于码本的 Token 替换</h3>
+<p>浅层 KV cache 的冗余主要源于 token 组成成分的高相似性（而非 token 间冗余），因此使用码本（CodeBook）方法进行压缩：</p>
+<ol>
+<li><strong>相似度计算</strong>：计算 KV cache 中 token 对之间的余弦相似度 <script type="math/tex">S_{\Gamma}</script>
+</li>
+<li><strong>构建邻接矩阵</strong>：<script type="math/tex">G_{\Gamma} = \text{where}(S_{\Gamma} > \theta_{\Gamma}, 1, 0)</script>，表示哪些 token 可以合并</li>
+<li><strong>码本构建算法</strong>（贪心策略）：</li>
+<li>计算每个节点的度 <script type="math/tex">s_{\Gamma,a} = \sum_{b=0}^{N-1} G_{\Gamma,a,b}</script>
+</li>
+<li>选择度最高的节点加入码本 <script type="math/tex">C_{\Gamma}</script>
+</li>
+<li>将与该节点相邻的节点全部标记为已合并</li>
+<li>重复直到 <script type="math/tex">G_{\Gamma} = 0</script>
+</li>
+<li><strong>幅度记录</strong>：记录每个 token 的幅度 <script type="math/tex">m_{\Gamma}</script> 以保留原始信息</li>
+<li><strong>重建</strong>：通过 <script type="math/tex">\Gamma_r = C_{\Gamma}[r_{\Gamma}] \otimes m_{\Gamma}</script> 高效重建 KV cache</li>
+<li><strong>增量更新</strong>：推理时生成的新 KV cache 条目，首先尝试合并到现有码本条目，否则重新构建码本</li>
+</ol>
+<p><strong>关键超参数</strong>：
+- Key 阈值 <script type="math/tex">\theta_K = 0.98</script>
+- Value 阈值 <script type="math/tex">\theta_V = 0.95</script>
+</p>
+<h3 id="34-gqa">3.4 GQA 兼容性</h3>
+<p>SpindleKV 解决了 GQA 难题：
+- <strong>方法</strong>：直接将 GQA 的 KV 向量重复 <script type="math/tex">h_n</script> 次，展开为完整的 MHA 格式后再进行驱逐决策
+- <strong>优势</strong>：避免了跨 head 的平均操作（如 PyramidInfer 的做法），实现更细粒度的控制
+- <strong>额外开销</strong>：展开操作增加了内存大小，但码本方法的压缩效率可以补偿这一开销</p>
+<h3 id="35">3.5 总压缩率计算</h3>
+<p>每层的压缩率由三部分组成：
+- <script type="math/tex">r_{\lambda,1}</script>：驱逐方法的保留比率
+- <script type="math/tex">r_{\lambda,2}</script>：替换方法的保留比率
+- <script type="math/tex">r_{\lambda,3}</script>：数据类型转换比率（存储 int 类型索引和 float 类型幅度）</p>
+<p>总压缩率：<script type="math/tex">r_{\lambda} = r_{\lambda,1} \times r_{\lambda,2} \times r_{\lambda,3}</script>
+</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA2-7b-chat（MHA）、LLaMA3-8b-instruct（GQA）、Mistral-7b-instruct-v0.2（GQA）</li>
+<li><strong>数据集</strong>：LongBench（16 个长上下文知识密集子集）、Needle-in-a-Haystack（长序列检索）</li>
+<li><strong>基线</strong>：PyramidInfer、PyramidKV、H2O、SnapKV、StreamingLLM</li>
+<li><strong>评估指标</strong>：保留比率（Reserve Ratio）、平均分（AVG Score）、检索准确率</li>
+</ul>
+<h3 id="longbench">LongBench 结果</h3>
+<p>SpindleKV 在所有三个模型和多个保留比率下均优于基线方法：</p>
+<table>
+<thead>
+<tr>
+<th>保留比率</th>
+<th>PyramidInfer AVG</th>
+<th>PyramidKV AVG</th>
+<th>SpindleKV AVG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~40%</td>
+<td>34.71</td>
+<td>41.16</td>
+<td><strong>42.14</strong></td>
+</tr>
+<tr>
+<td>~30%</td>
+<td>33.43</td>
+<td>40.60</td>
+<td><strong>41.93</strong></td>
+</tr>
+<tr>
+<td>~25%</td>
+<td>32.00</td>
+<td>40.25</td>
+<td><strong>41.64</strong></td>
+</tr>
+<tr>
+<td>~20%</td>
+<td>29.59</td>
+<td>39.73</td>
+<td><strong>41.34</strong></td>
+</tr>
+<tr>
+<td>~15%</td>
+<td>28.51</td>
+<td>39.34</td>
+<td><strong>40.76</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（以上为 Mistral-7b 的结果，详见 Table 1）</p>
+<p><strong>关键发现</strong>：
+- SpindleKV 在相同压缩率下持续优于基线方法
+- 在 GQA 模型上，SpindleKV 仅用一半的 KV cache 即可超越基线
+- 在 LLaMA3-8b 和 LLaMA2-7b 上也展现了类似的优势</p>
+<h3 id="needle-in-a-haystack">Needle-in-a-Haystack 结果</h3>
+<p>在 15% KV cache 保留下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA3-8b</th>
+<th>Mistral-7b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PyramidInfer</td>
+<td>0.615</td>
+<td>0.621</td>
+</tr>
+<tr>
+<td>PyramidKV</td>
+<td>0.938</td>
+<td>0.962</td>
+</tr>
+<tr>
+<td><strong>SpindleKV</strong></td>
+<td><strong>0.979</strong></td>
+<td><strong>0.975</strong></td>
+</tr>
+</tbody>
+</table>
+<p>SpindleKV 在长序列检索任务中显著优于基线方法。</p>
+<h3 id="_10">消融实验</h3>
+<ol>
+<li><strong>GQA 集成</strong>：直接展开 GQA 的方法（SpindleKV）显著优于使用平均注意力权重的方法（PyramidInfer 风格），验证了 SpindleKV 对 GQA 的更好兼容性</li>
+<li><strong>仅码本（无驱逐）</strong>：单独使用码本方法即可将 KV cache 压缩到 50% 而不影响准确率，30% 时仍保留大部分模型能力，证明了浅层组成冗余的显著存在</li>
+<li><strong>幅度重建</strong>：使用幅度重建可有效保留模型能力，仅增加少量内存开销</li>
+</ol>
+<h3 id="_11">推理速度</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>FullKV (token/s)</th>
+<th>SpindleKV 40% (token/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA3-8B-Instruct</td>
+<td>22.16</td>
+<td>18.39</td>
+</tr>
+<tr>
+<td>Mistral-7B</td>
+<td>22.48</td>
+<td>18.47</td>
+</tr>
+</tbody>
+</table>
+<p>推理延迟增加有限，与理论分析一致。</p>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>双层平衡策略</strong>：首次同时处理浅层（组成冗余）和深层（token 间冗余）的 KV cache 压缩，形成"纺锤形"分层压缩模式</li>
+<li><strong>GQA 兼容性</strong>：解决了其他基于注意力驱逐方法在 GQA 模型上的兼容性问题</li>
+<li><strong>码本压缩新颖性</strong>：利用浅层 KV 的高相似性，通过码本进行无损近似（记录幅度和索引），而非简单的驱逐</li>
+<li><strong>高压缩率下性能保持</strong>：在约 15-20% 保留率下仍保持较高模型性能，特别是在 Needle-in-a-Haystack 任务中表现优异</li>
+<li><strong>适中的推理开销</strong>：虽然增加了码本搜索和重建操作，但不引入显著的额外推理时间</li>
+<li><strong>广泛的适用性</strong>：在 MHA（LLaMA2-7b）和 GQA（LLaMA3-8b、Mistral-7b）模型上均有效</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>压缩率控制不够精确</strong>：当前方法无法精确控制 KV cache 的最终大小，需要在实验中记录实际压缩率（与基线对比时偏差控制在 2% 以内）</li>
+<li><strong>模型覆盖范围有限</strong>：仅在 LLaMA2-7b-chat、LLaMA3-8b-instruct、Mistral-7b-instruct-v0.2 上验证，未涉及更大模型（如 LLaMA2-13b、LLaMA3-70b）或其他架构（如 Qwen2.5-7b）</li>
+<li><strong>码本构建的时间复杂度</strong>：虽然作者声称时间开销不显著，但码本构建的贪心搜索过程在高相似度场景下可能带来额外的计算负担</li>
+<li><strong>RoPE 重建开销</strong>：由于在 pre-RoPE 的 K 上操作，重建后需重新应用 RoPE，增加了额外的矩阵乘法操作</li>
+<li><strong>缺少在线部署评估</strong>：论文中的推理速度测试仅在单 GPU 上进行，未涉及分布式或生产环境下的评估</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_14">直接相关</h3>
+<ul>
+<li><strong>KV Cache 压缩</strong>：属于 KV cache 稀疏化（<code>kv_cache_sparse</code> 关键词）研究方向，与 H2O、SnapKV、PyramidKV、PyramidInfer 等方法直接对比</li>
+<li><strong>长上下文推理</strong>：与 LLM 推理效率、上下文长度扩展直接相关</li>
+<li><strong>分层压缩策略</strong>：启发了"纺锤形"分层压缩的新范式</li>
+</ul>
+<h3 id="_15">间接相关</h3>
+<ul>
+<li><strong>GQA 优化</strong>：与 GQA 架构下的 KV cache 管理相关，对 GQA 模型的推理优化有参考价值</li>
+<li><strong>Token 合并与驱逐</strong>：与 CaM、D2O、KVMerger 等 token 合并方法存在方法论差异（基于码本 vs 基于合并）</li>
+<li><strong>量化压缩</strong>：与 KIVI、AsymKV 等量化方法互补，可考虑混合使用（驱逐 + 码本 + 量化）</li>
+<li><strong>注意力稀疏性</strong>：与 StreamingLLM 等注意力 sink 方法共享对注意力模式的观察</li>
+</ul>
+<h3 id="_16">未来研究方向</h3>
+<ul>
+<li><strong>混合压缩策略</strong>：将 SpindleKV 的驱逐+码本方法与量化技术结合，进一步提升压缩率</li>
+<li><strong>更精确的压缩控制</strong>：改进逐层保留比率的计算方法，实现更精确的 KV cache 大小控制</li>
+<li><strong>大规模模型验证</strong>：在 LLaMA3-70b、Qwen2.5-72b 等大规模模型上验证方法的有效性</li>
+<li><strong>动态阈值调整</strong>：根据输入内容自适应调整相似度阈值 <script type="math/tex">\theta</script>，而非固定值</li>
+<li><strong>与其他压缩技术集成</strong>：与 GQA、MQA 等架构优化、FlashAttention 等系统优化结合</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>本 note 由 Hermes Agent 自动生成，内容基于论文全文（arXiv:2507.06517v1）的分析与翻译，仅供学习参考。</strong></p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

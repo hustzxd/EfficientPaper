@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,171 @@
 <p>Cunchen Hu, Heyang Huang, Junhao Hu, Jiang Xu, Xusheng Chen, Tao Xie, Chenxi Wang, Sa Wang, Yungang Bao, Ninghui Sun, Yizhou Shan</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>Large language model (LLM) serving has transformed from stateless to stateful systems, utilizing techniques like context caching and disaggregated inference. These optimizations extend the lifespan and domain of the KV cache, necessitating a new architectural approach. We present MemServe, a unified system that integrates both inter-request and intra-request optimizations. MemServe introduces MemPool, an elastic memory pool managing distributed memory and KV caches across serving instances. Using MemPool APIs, MemServe combines context caching with disaggregated inference for the first time, supported by a global scheduler that enhances cache reuse through a global prompt tree-based locality-aware policy. Tests show that MemServe significantly improves job completion time and time-to-first-time.</p>
+<p>Large language model (LLM) serving has transformed from stateless to stateful systems, utilizing techniques like context caching and disaggregated inference. These optimizations extend the lifespan and domain of the KV cache, necessitating a new architectural approach. We present MemServe, a unified system that integrates both inter-request and intra-request optimizations. MemServe introduces MemPool, an elastic memory pool managing distributed memory and KV caches across serving instances. Using MemPool APIs, MemServe combines context caching with disaggregated inference for the first time, supported by a global scheduler that enhances cache reuse through a global prompt tree-based locality-aware policy. Tests show that MemServe significantly improves job completion time and time-to-first-token.</p>
+<h2 id="_1">一句话总结</h2>
+<p>MemServe 提出弹性内存池 MemPool，首次将上下文缓存（inter-request）与解耦推理（intra-request）统一在一个系统中，通过全局 prompt 树实现本地性感知调度，显著降低 JCT 和 TTFT。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）服务系统已从无状态演变为有状态系统，利用上下文缓存和解耦推理等技术。这些优化延长了 KV 缓存的生命周期和作用域，需要新的架构方法。本文提出 MemServe，一个统一的系统，集成请求间和请求内优化。MemServe 引入 MemPool——一个弹性内存池，管理跨服务实例的分布式内存和 KV 缓存。通过 MemPool API，MemServe 首次将上下文缓存与解耦推理结合，辅以全局调度器，通过全局 prompt 树的本地性感知策略增强缓存复用。测试表明 MemServe 显著改善了作业完成时间和首 token 时间。</p>
+<h2 id="_3">背景与问题</h2>
+<h3 id="_4">研究动机</h3>
+<p>LLM 推理服务已从无状态系统演变为有状态系统，利用请求间的依赖关系（如上下文缓存）和请求内的依赖关系（如解耦推理、序列并行）来提升效率。然而，这两个维度的优化目前无法共存，存在两个关键问题：</p>
+<ol>
+<li><strong>请求间与请求内优化无法同时应用</strong>：现有的上下文缓存（inter-request）方法未考虑请求内场景，导致解耦推理（intra-request）无法利用上下文缓存。同样，序列并行分散了 KV 缓存，缺乏保存和复用机制。</li>
+<li><strong>缺乏全局设计来有效利用请求间优化</strong>：当前 LLM 服务系统基于负载或会话 ID 调度请求，未能最大化跨会话的 KV 缓存复用。</li>
+</ol>
+<h3 id="_5">核心挑战</h3>
+<ul>
+<li>KV 缓存的生命周期已从单个请求扩展到分布式实例，需要统一的管理架构</li>
+<li>现有系统假设 KV 缓存是单个请求在单个实例上的中间数据，无法适应新的范式</li>
+<li>分布式环境下的 KV 缓存管理和传输机制缺失</li>
+</ul>
+<h2 id="_6">核心方法</h2>
+<h3 id="1-mempool">1. MemPool：弹性内存池</h3>
+<p>MemPool 是 MemServe 的核心组件，管理推理集群中的所有内存，包括 CPU DRAM 和 GPU HBM。它提供三类 API：</p>
+<p><strong>内存管理 API</strong>：
+- <code>alloc_mem(size, type, id)</code>：在指定实例上分配特定类型的内存，返回地址列表
+- <code>free_mem(addrList)</code>：释放内存</p>
+<p><strong>索引 API</strong>：
+- <code>insert(tokenList, addrList, flags)</code>：将 prompt token 和 KV 缓存地址映射插入本地索引
+- <code>match(tokenList)</code>：查找 prompt 的缓存数据，返回地址列表
+- <code>delete(tokenList)</code>：删除 prompt 的缓存数据</p>
+<p><strong>分布式传输 API</strong>：
+- <code>transfer(id, srcAddrList, dstAddrList, flags, private)</code>：将数据传输到指定实例
+- <code>transfer_with_insert(id, tokenList, srcAddrList, dstAddrList, flags, private)</code>：传输并插入，避免额外网络往返</p>
+<p>MemPool 采用基于 radix tree 的索引（扩展自 SGLang），关键扩展：
+- 支持引用系统中任意位置的数据（CPU DRAM 和 GPU HBM）
+- 每个树节点增加字段指示哪个推理实例持有数据</p>
+<h3 id="2">2. 上下文缓存与解耦推理的结合</h3>
+<p>MemServe 通过四个设计里程碑逐步构建完整的上下文缓存解耦推理：</p>
+<p><strong>(a) PD-Basic</strong>：基本的解耦推理架构（DistServe/Splitwise），prefill 实例通过 <code>transfer</code> API 将活跃 KV 缓存发送到 decode 实例。</p>
+<p><strong>(b) PD-Caching-1</strong>：在 prefill-only 实例上启用缓存（通过 <code>insert</code> API 保留历史 KV 缓存），但不支持 decode 阶段的缓存。</p>
+<p><strong>(c) PD-Caching-2</strong>：在 decode-only 实例上启用缓存（通过 <code>transfer_with_insert</code> 和 <code>insert</code> API），减少重复数据传输。但 prefill 实例仍缺少 decode 阶段的历史 KV 缓存。</p>
+<p><strong>(d) PD-Caching-3</strong>：完整的上下文缓存解耦推理。decode-only 实例通过 <code>transfer_with_insert</code> 将 decode 阶段的 KV 缓存发送回 prefill-only 实例，使缓存复用随多轮对话线性增长。</p>
+<h3 id="3">3. 内存与网络优化</h3>
+<p><strong>问题</strong>：现有 PagedAttention 使用离散内存布局（每层两个 block），NCCL send/recv API 每次只能传输单个 block，导致网络调用次数过多。</p>
+<p><strong>解决方案</strong>：Block Aggregation（大页机制）
+- 将每层的两个小 block 聚合成一个大 block，新 block 大小 = 2 × L × 原始 block
+- 有效减少网络 API 调用次数 2L 倍
+- 仅适用于 by-request 方式（by-layer 方式仍需至少 L 次网络调用）</p>
+<h3 id="4">4. 上下文缓存代价模型</h3>
+<p>代价模型 <code>exec(x, y)</code> 预测给定 prompt 长度 x 和缓存比率 y 的执行时间，用于：
+- 全局调度器的本地性感知和负载均衡调度
+- 决定是否传输 KV 缓存或重新计算</p>
+<p>采用<strong>算子级</strong>代价模型（而非架构级），原因：
+- 更好的可扩展性（TP 变化时无需重新校准）
+- 更可解释、更易拟合</p>
+<p>代价模型考虑三类算子：
+- <strong>计算密集型算子</strong>：基于线程块数和 FLOP 指令
+- <strong>内存密集型算子</strong>：通过拟合延迟与读写操作数的关系
+- <strong>常量算子</strong>：归一化、激活等，执行时间恒定</p>
+<h3 id="5">5. 局部性感知全局调度</h3>
+<p><strong>全局 Prompt 树</strong>：为三种推理实例（prefill-only、decode-only、PD-colocated）分别维护 radix 树，每个树节点指向存储 KV 缓存的实例。</p>
+<p><strong>调度流程</strong>：
+1. GS 将 prompt 字符串转换为 token ID
+2. 并发查询所有类型的全局 prompt 树（match 操作）
+3. 将查询结果和负载信息发送到策略模块
+4. 策略模块选择最长公共前缀的实例（最大历史 KV 缓存）
+5. 检查是否存在额外历史 KV 缓存的其他实例，触发数据传输
+6. 发送请求和元数据到选中实例</p>
+<p><strong>调度策略对比</strong>（Table 6）：
+| 策略 | 会话内缓存 | 跨会话缓存 |
+|------|-----------|-----------|
+| Least Load | ✗ | ✗ |
+| Session-ID-Based | ✓ | ✗ |
+| Prompt-Tree-Based | ✓ | ✓ |</p>
+<p>Prompt-tree-based 策略可最大化 KV 缓存复用，P99 TTFT 改善 59%。</p>
+<h2 id="_7">实验设置</h2>
+<ul>
+<li><strong>硬件</strong>：单台 NVIDIA DGX H800 服务器（8×H800-80GB GPU，NVLink 400GB/s，192核 Intel Xeon CPU，2TB DRAM）</li>
+<li><strong>模型</strong>：Llama2-13B，TP=2</li>
+<li><strong>Baseline</strong>：vLLM-0.4.0（PD-colocated）</li>
+<li><strong>工作负载</strong>：</li>
+<li>ShareGPT：用户共享的 ChatGPT 对话历史</li>
+<li>LooGLE：长文档 QA 评估基准</li>
+<li>ReAct：Agent 推理与行动框架（HotpotQA 数据集）</li>
+<li><strong>指标</strong>：TTFT、JCT、TPOT</li>
+</ul>
+<h2 id="_8">实验结果</h2>
+<h3 id="sharegpt">端到端性能（ShareGPT）</h3>
+<ul>
+<li><strong>解耦推理（1P2D vs PD）</strong>：平均 JCT 降低 30%，P99 JCT 降低 42%</li>
+<li><strong>解耦推理 + 上下文缓存（1P2D-CC vs 1P2D）</strong>：平均 JCT 再降低 17%，P99 JCT 再降低 29%；平均 TTFT 降低 58%，P99 TTFT 降低 45%</li>
+</ul>
+<h3 id="loogle">端到端性能（LooGLE）</h3>
+<ul>
+<li><strong>解耦推理</strong>：平均 JCT 降低 10.3%，P99 JCT 降低 10.8%</li>
+<li><strong>解耦推理 + 上下文缓存</strong>：平均 JCT 再降低 26.9%，P99 JCT 再降低 22.5%；平均 TTFT 降低 56.2%，P99 TTFT 降低 45.2%</li>
+</ul>
+<h3 id="react">端到端性能（ReAct）</h3>
+<ul>
+<li><strong>解耦推理</strong>：平均 JCT 降低 40.8%，P99 JCT 降低 53.1%</li>
+<li><strong>解耦推理 + 上下文缓存</strong>：平均 JCT 再降低 26.7%，P99 JCT 再降低 21.4%；平均 TTFT 降低 78.5%，P99 TTFT 降低 84.9%</li>
+</ul>
+<h3 id="_9">微基准测试</h3>
+<ul>
+<li><strong>MemPool API</strong>：内存 API 延迟随 block 数线性增加（~800ns/block），索引 API 延迟基本不随缓存比率变化（最多 0.7ms/4K token）</li>
+<li><strong>MemPool 缓存</strong>：与 vanilla vLLM 的 hash-based index 相比，radix-based index 开销极小</li>
+<li><strong>Block Aggregation</strong>：聚合内存布局相比原始离散内存布局性能大幅提升</li>
+<li><strong>By-Req-Agg</strong>：在高负载下优于 by-layer 和 by-req</li>
+<li><strong>上下文缓存</strong>：缓存比率越大、prompt 越长，收益越大；batch size 等效于 prompt 长度</li>
+<li><strong>代价模型</strong>：算子级模型在预测精度和可扩展性上优于架构级模型</li>
+<li><strong>全局调度器</strong>：prompt-tree-based 调度相比 session-based 调度 P99 TTFT 改善 59%</li>
+</ul>
+<h2 id="_10">优点</h2>
+<ol>
+<li><strong>统一架构</strong>：首次将请求间（上下文缓存）和请求内（解耦推理）优化统一在一个系统中</li>
+<li><strong>弹性内存池 MemPool</strong>：提供丰富的 API，支持多种优化组合（上下文缓存、解耦推理、序列并行、请求迁移）</li>
+<li><strong>局部性感知调度</strong>：基于全局 prompt 树的调度策略，可最大化跨会话的 KV 缓存复用</li>
+<li><strong>内存与网络优化</strong>：通过 block aggregation 减少网络调用次数，在高负载下性能显著提升</li>
+<li><strong>代价模型</strong>：算子级代价模型精度高、可扩展性好，支持 TP 变化</li>
+<li><strong>实现简洁</strong>：MemPool 约 5K SLOC Python + 1.6K SLOC C++，修改 vLLM 仅 200 SLOC Python + 400 SLOC CUDA C++</li>
+</ol>
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>实验规模有限</strong>：仅在单台服务器（8×H800）上测试，使用 Llama2-13B（TP=2），未验证更大规模和更大模型</li>
+<li><strong>网络实现受限</strong>：使用 NCCL send/recv 点对点 API，未实现 RDMA，限制了跨节点性能</li>
+<li><strong>缺少代码开源</strong>：论文未提供公开代码，难以复现</li>
+<li><strong>调度策略的 best-effort 特性</strong>：全局 prompt 树可能过时（因局部驱逐事件），需要 TTL 机制缓解</li>
+<li><strong>未与其他系统直接对比</strong>：未与 DistServe、Splitwise、TetriServe 等进行直接对比实验</li>
+<li><strong>单线程通信</strong>：NCCL send/recv 使用单线程保证顺序，限制了并行度</li>
+<li><strong>模型规模限制</strong>：13B 模型在 8 卡上只能创建 4 个实例，更大会限制实例数</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>MemServe 属于 <strong>LLM 推理服务系统</strong> 领域，核心贡献包括：</p>
+<ul>
+<li><strong>KV 缓存管理</strong>（<code>kv_cache_management</code>）：弹性内存池 MemPool、分布式 KV 缓存管理、上下文缓存、解耦推理</li>
+<li><strong>调度与系统</strong>：全局 prompt 树、本地性感知调度、代价模型</li>
+<li><strong>推理效率</strong>：通过统一请求间和请求内优化提升 JCT、TTFT、TPOT</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>vLLM/PagedAttention (2023)</strong>：MemServe 的基础，修改 vLLM 构建上下文缓存和解耦推理
+- <strong>SGLang (2024)</strong>：MemServe 的 radix tree 索引扩展自 SGLang 的 RadixAttention
+- <strong>Splitwise/DistServe (2024)</strong>：MemServe 的解耦推理架构与之类似，但增加了统一的 MemPool 和上下文缓存
+- <strong>Mooncake (2024)</strong>：同为 KV 缓存中心的解耦架构，但 MemServe 更强调统一的内存池和局部性感知调度
+- <strong>CachedAttention (2024)</strong>：同为上下文缓存相关工作，CachedAttention 侧重层级化 KV 缓存和异步加载</p>
+<p><strong>相关关键词</strong>：<code>kv_cache_management</code>、<code>disaggregated_inference</code>、<code>context_caching</code>、<code>scheduling</code>、<code>memory_pool</code></p>
+<h2 id="_12">可复现/实现要点</h2>
+<ol>
+<li><strong>MemPool API</strong>：三类 API（内存、索引、分布式传输），基于 radix tree 索引</li>
+<li><strong>Block Aggregation</strong>：将每层两个小 block 聚合成一个大 block，减少网络调用</li>
+<li><strong>代价模型</strong>：算子级模型，区分计算密集型、内存密集型和常量算子</li>
+<li><strong>全局调度器</strong>：基于全局 prompt 树的本地性感知调度，TTL 机制防止过期</li>
+<li><strong>实现规模</strong>：MemPool ~5K SLOC Python + 1.6K SLOC C++，vLLM 修改 ~200 SLOC Python + 400 SLOC CUDA C++，全局调度器 ~600 SLOC Python</li>
+<li><strong>依赖</strong>：NCCL send/recv 点对点 API（无 RDMA），socket API（DRAM 端）</li>
+<li><strong>实验配置</strong>：Llama2-13B，TP=2，8×H800-80GB GPU，vLLM-0.4.0</li>
+</ol>
+<h2 id="_13">个人备注</h2>
+<ul>
+<li>MemServe 的核心贡献是<strong>提出 MemPool 作为统一的内存管理组件</strong>，将请求间和请求内优化统一在同一个系统中，这是一个重要的架构创新。</li>
+<li><strong>Block Aggregation</strong>（大页机制）是一个实用的优化，通过减少网络调用次数在高负载下显著提升性能，这个思想值得在其他场景中借鉴。</li>
+<li><strong>代价模型</strong>的算子级设计在 TP 变化时保持精度，但论文未讨论更复杂的并行配置（如 PP+TP 混合）。</li>
+<li><strong>局限</strong>：实验规模有限（单机 8 卡），缺少 RDMA 支持，未与 DistServe/Splitwise 等直接对比。</li>
+<li><strong>未来方向</strong>：跨节点 MemPool（RDMA 支持）、与量化/KVCache 压缩结合、动态弹性伸缩。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

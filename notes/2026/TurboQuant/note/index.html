@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,11 +164,263 @@
 <p>Amir Zandieh, Majid Daliri, Majid Hadian, Vahab Mirrokni</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Vector quantization, a problem rooted in Shannon's source coding theory, aims to quantize high-dimensional Euclidean vectors while minimizing distortion in their geometric structure. We propose TurboQuant to address both mean-squared error (MSE) and inner product distortion, overcoming limitations of existing methods that fail to achieve optimal distortion rates. Our data-oblivious algorithms, suitable for online applications, achieve near-optimal distortion rates (within a small constant factor) across all bit-widths and dimensions. TurboQuant achieves this by randomly rotating input vectors, inducing a concentrated Beta distribution on coordinates, and leveraging the near-independence property of distinct coordinates in high dimensions to simply apply optimal scalar quantizers per each coordinate. Recognizing that MSE-optimal quantizers introduce bias in inner product estimation, we propose a two-stage approach: applying an MSE quantizer followed by a 1-bit Quantized JL (QJL) transform on the residual, resulting in an unbiased inner product quantizer. We also provide a formal proof of the information-theoretic lower bounds on best achievable distortion rate by any vector quantizer, demonstrating that TurboQuant closely matches these bounds, differing only by a small constant (<script type="math/tex">\approx 2.7</script>) factor. Experimental results validate our theoretical findings, showing that for KV cache quantization, we achieve absolute quality neutrality with 3.5 bits per channel and marginal quality degradation with 2.5 bits per channel. Furthermore, in nearest neighbor search tasks, our method outperforms existing product quantization techniques in recall while reducing indexing time to virtually zero.</p>
+<blockquote>
+<p><strong>生成声明</strong>：本 note 由 AI Agent 自动生成，基于 arXiv 论文 2504.19874v1 全文阅读与分析。</p>
+</blockquote>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文针对高维向量量化中现有方法难以达到最优失真率的问题，提出了TurboQuant方法。该方法通过随机旋转输入向量并利用高维坐标的近独立性，结合最优标量量化器实现数据无关的在线量化。TurboQuant在均方误差和内积失真上均达到接近理论最优的失真率（仅相差约2.7倍常数因子），并在KV缓存量化和最近邻搜索任务中展现出显著优势，如实现绝对质量中性量化并大幅减少索引时间。</p>
+<h2 id="_1">一句话总结</h2>
+<p>TurboQuant 通过随机旋转诱导 Beta 分布 + 最优标量量化器的两阶段设计，在数据无关（online）条件下实现了接近信息论下界的最优失真率（仅差约 2.7 倍常数因子），在 KV 缓存量化和近邻搜索任务中表现优异。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>向量量化（Vector Quantization）是 Shannon 源编码理论的奠基性问题，旨在量化高维欧几里得向量的同时最小化几何结构失真。我们提出 TurboQuant 来解决均方误差（MSE）和内积失真问题，克服了现有方法无法达到最优失真率的局限。我们的数据无关算法适用于在线应用，在所有位宽和维度下均实现接近最优的失真率（仅差一个小常数因子）。TurboQuant 通过随机旋转向量，使坐标服从集中的 Beta 分布，并利用高维中不同坐标的近独立性，简单地对每个坐标应用最优标量量化器。鉴于 MSE 最优量化器在内积估计中引入偏差，我们提出两阶段方法：先应用 MSE 量化器，再对残差应用 1-bit 量化 JL（QJL）变换，从而得到无偏内积量化器。我们还提供了信息论下界的正式证明，表明 TurboQuant 与这些下界仅相差约 2.7 倍常数因子。实验结果验证了理论发现：在 KV 缓存量化中，以 3.5 bits/ch 实现绝对质量中性，以 2.5 bits/ch 实现微小质量退化；在近邻搜索任务中，以接近零的索引时间超越现有乘积量化技术。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>向量量化（VQ）在高维欧氏空间中是压缩高维向量的基础技术，广泛应用于 LLM 推理加速（权重/激活量化）、KV 缓存压缩、以及向量数据库中的近邻搜索（Product Quantization）。核心目标是在将浮点坐标转换为低比特整数时，最小化 MSE 和内积失真。现有方法面临两个关键局限：</p>
+<ol>
+<li><strong>缺乏加速器兼容性</strong>：部分方法无法利用 GPU 向量化并行，计算速度慢，不适合实时 AI 应用（如 KV 缓存量化）。</li>
+<li><strong>失真率次优</strong>：现有方法在给定位宽下无法达到理论最优失真率，与信息论下界差距较大。</li>
+</ol>
+<h3 id="_5">现有方法的局限</h3>
+<ul>
+<li><strong>离线（data-dependent）方法</strong>（如 GPTQ、AWQ）：需要大量预处理和校准，不适用于动态数据场景。</li>
+<li><strong>在线（data-oblivious）方法</strong>：如 KIVI（scalar quantization，无理论最优保证）、QJL（仅 1-bit，内积无偏但 MSE 不够优化）。</li>
+<li><strong>网格投影方法</strong>（如 RabitQ）：理论界次优（分析可能过于宽松），且计算效率低（无向量化，无法利用 GPU 加速）。</li>
+<li><strong>乘积量化（PQ）</strong>：依赖 k-means 构建码本，需要大量预处理，不适合在线场景。</li>
+</ul>
+<h3 id="_6">关键洞察</h3>
+<p>作者发现通过随机旋转输入向量，每个坐标服从 Beta 分布，在高维下收敛于正态分布，且不同坐标近独立。这使得最优标量量化器（Lloyd-Max）可以独立应用于每个坐标，从而实现近最优的向量量化。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="1">1. 问题定义</h3>
+<p>设计量化映射 <script type="math/tex">Q: \mathbb{R}^d \to \{0,1\}^B</script>，其中 <script type="math/tex">B = b \cdot d</script>（<script type="math/tex">b</script> 为每坐标比特数）。目标是最小化 MSE 和内积失真，同时要求内积估计无偏。</p>
+<p>MSE 失真定义：
+<script type="math/tex; mode=display">D_{\text{mse}} = \mathbb{E}_Q\left[\|x - Q^{-1}(Q(x))\|_2^2\right]</script>
+</p>
+<p>内积失真定义：
+<script type="math/tex; mode=display">D_{\text{prod}} = \mathbb{E}_Q\left[|\langle y, x\rangle - \langle y, Q^{-1}(Q(x))\rangle|^2\right]</script>
+</p>
+<h3 id="2-mse-turboquantturboquant_mse">2. MSE 最优 TurboQuant（TurboQuant_mse）</h3>
+<h4 id="21-beta">2.1 随机旋转 + Beta 分布</h4>
+<p>对输入向量 <script type="math/tex">x \in S^{d-1}</script> 应用随机旋转矩阵 <script type="math/tex">\Pi</script>（由随机正交矩阵得到），旋转后向量 <script type="math/tex">\Pi \cdot x</script> 均匀分布在单位球上。关键性质：<strong>每个坐标 <script type="math/tex">y_j</script> 服从 Beta 分布</strong>，概率密度为：
+<script type="math/tex; mode=display">f_X(x) = \frac{\Gamma(d/2)}{\sqrt{\pi} \cdot \Gamma((d-1)/2)} (1-x^2)^{(d-3)/2}</script>
+</p>
+<p>在高维下，该分布收敛于正态分布 <script type="math/tex">N(0, 1/d)</script>。</p>
+<h4 id="22">2.2 近独立性</h4>
+<p>高维中，不同坐标近独立（超越仅不相关），允许对每个坐标独立应用最优标量量化器。</p>
+<h4 id="23-lloyd-max">2.3 Lloyd-Max 标量量化器</h4>
+<p>将 <script type="math/tex">[-1, 1]</script> 划分为 <script type="math/tex">2^b</script> 个区间（Voronoi 区域），通过求解连续 1-D k-means 问题（Eq. 4）获得最优质心 <script type="math/tex">c_1, \ldots, c_{2^b}</script>。对不同位宽预计算并存储最优码本（如 <script type="math/tex">b=1,2</script> 时质心分别为 <script type="math/tex">\pm\sqrt{2/(\pi d)}</script> 和 <script type="math/tex">\{\pm 0.453/\sqrt{d}, \pm 1.51/\sqrt{d}\}</script>）。</p>
+<h4 id="24-algorithm-1">2.4 算法流程（Algorithm 1）</h4>
+<p><strong>Quantmse(x)</strong>：<script type="math/tex">\Pi \cdot x</script> → 对每个坐标找到最近质心 → 输出索引（<script type="math/tex">b \cdot d</script> bits）</p>
+<p><strong>DeQuantmse(idx)</strong>：检索质心 → 乘以 <script type="math/tex">\Pi^T</script> 旋转回原坐标空间</p>
+<h4 id="25-theorem-1">2.5 理论保证（Theorem 1）</h4>
+<p>对于 <script type="math/tex">x \in S^{d-1}</script>，MSE 失真上界：
+<script type="math/tex; mode=display">D_{\text{mse}} \leq \frac{\sqrt{3}\pi}{2} \cdot \frac{1}{4^b}</script>
+</p>
+<p>具体值（<script type="math/tex">b=1,2,3,4</script>）：<script type="math/tex">D_{\text{mse}} \approx 0.36, 0.117, 0.03, 0.009</script>。</p>
+<h3 id="3-turboquantturboquant_prod">3. 内积最优 TurboQuant（TurboQuant_prod）</h3>
+<h4 id="31">3.1 问题</h4>
+<p>MSE 最优量化器对内积估计有偏。例如 <script type="math/tex">b=1</script> 时，MSE 量化器的内积估计有 <script type="math/tex">2/\pi</script> 的乘性偏差，随着 <script type="math/tex">b</script> 增加偏差逐渐减小。</p>
+<h4 id="32-algorithm-2">3.2 两阶段方法（Algorithm 2）</h4>
+<ol>
+<li><strong>第一阶段</strong>：对 <script type="math/tex">x</script> 应用 TurboQuant_mse（位宽 <script type="math/tex">b-1</script>），得到量化表示</li>
+<li><strong>残差计算</strong>：<script type="math/tex">r = x - Q^{-1}_{\text{mse}}(Q_{\text{mse}}(x))</script>（L2 范数很小）</li>
+<li><strong>第二阶段</strong>：对残差 <script type="math/tex">r</script> 应用 QJL（1-bit 量化 JL 变换）</li>
+</ol>
+<p>QJL 定义：<script type="math/tex">Q_{\text{qjl}}(x) = \text{sign}(S \cdot x)</script>，其中 <script type="math/tex">S</script> 为 i.i.d. 高斯矩阵</p>
+<p>反量化：<script type="math/tex">Q^{-1}_{\text{qjl}}(z) = \sqrt{\pi/2} \cdot S^T \cdot z / d</script>
+</p>
+<p>最终内积估计：<script type="math/tex">\langle y, Q^{-1}_{\text{mse}}(Q_{\text{mse}}(x))\rangle + \|r\|_2 \cdot \langle y, Q^{-1}_{\text{qjl}}(Q_{\text{qjl}}(r))\rangle</script>
+</p>
+<h4 id="33-theorem-2">3.3 理论保证（Theorem 2）</h4>
+<ul>
+<li><strong>无偏性</strong>：<script type="math/tex">\mathbb{E}[\langle y, \tilde{x}\rangle] = \langle y, x\rangle</script>
+</li>
+<li><strong>失真上界</strong>：<script type="math/tex">D_{\text{prod}} \leq \frac{\sqrt{3}\pi^2 \cdot \|y\|_2^2}{2d} \cdot \frac{1}{4^b}</script>
+</li>
+<li>具体值（<script type="math/tex">b=1,2,3,4</script>）：<script type="math/tex">D_{\text{prod}} \approx 1.57/d, 0.56/d, 0.18/d, 0.047/d</script>
+</li>
+</ul>
+<h3 id="4-theorem-3">4. 信息论下界（Theorem 3）</h3>
+<p>利用 <strong>Shannon 下界（SLB）</strong> + <strong>Yao 极小极大原理</strong>，证明：</p>
+<ul>
+<li>MSE 下界：<script type="math/tex">D_{\text{mse}} \geq 1/4^b</script>
+</li>
+<li>内积下界：<script type="math/tex">D_{\text{prod}} \geq \|y\|_2^2/(d \cdot 4^b)</script>
+</li>
+</ul>
+<p>TurboQuant 的 MSE 失真仅比信息论下界高约 <script type="math/tex">\sqrt{3}\pi^2/2 \approx 2.7</script> 倍。在低位宽（<script type="math/tex">b=1</script>）时差距仅约 1.45 倍。</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">评估基准与设置</h3>
+<ul>
+<li>硬件：单块 NVIDIA A100 GPU</li>
+<li>数据集：DBpedia（1536/3072 维 OpenAI3 嵌入）、GloVe 嵌入</li>
+</ul>
+<h3 id="1-section-41">1. 理论验证（Section 4.1）</h3>
+<ul>
+<li>在 DBpedia（1536 维）上验证 MSE 和内积失真与理论上下界的一致性</li>
+<li>TurboQuant_prod 在所有位宽下保持无偏；TurboQuant_mse 有偏但随位宽增加而消除</li>
+<li>实际失真与理论预测吻合</li>
+</ul>
+<h3 id="2-needle-in-a-haystacksection-42">2. Needle-In-A-Haystack（Section 4.2）</h3>
+<ul>
+<li>模型：Llama-3.1-8B-Instruct</li>
+<li>上下文长度：4K - 104K tokens</li>
+<li>内存压缩比：0.25（仅用 25% 完整 KV 缓存）</li>
+<li><strong>TurboQuant 以 4× 压缩实现与全精度模型相同的性能</strong>（Score: 0.997 vs 0.997）</li>
+<li>优于 PolarQuant（0.995）、KIVI（0.981）、SnapKV（0.858）、PyramidKV（0.895）</li>
+</ul>
+<h3 id="3-longbench-section-43">3. LongBench 端到端生成（Section 4.3）</h3>
+<ul>
+<li>模型：Llama-3.1-8B-Instruct、Ministral-7B-Instruct</li>
+<li>使用 2.5-bit 和 3.5-bit 量化（通过分离 outlier/non-outlier 通道实现非整数位宽）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>KV 大小</th>
+<th>平均分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Cache (16-bit)</td>
+<td>16</td>
+<td>50.06</td>
+</tr>
+<tr>
+<td>KIVI (3-bit)</td>
+<td>3</td>
+<td>48.50</td>
+</tr>
+<tr>
+<td>PolarQuant (3.9-bit)</td>
+<td>3.9</td>
+<td>49.78</td>
+</tr>
+<tr>
+<td><strong>TurboQuant (3.5-bit)</strong></td>
+<td><strong>3.5</strong></td>
+<td><strong>50.06</strong></td>
+</tr>
+<tr>
+<td>TurboQuant (2.5-bit)</td>
+<td>2.5</td>
+<td>49.44</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>3.5-bit TurboQuant 与全精度持平</strong>（50.06 vs 50.06），压缩超过 4.5×</li>
+<li>2.5-bit TurboQuant 仅有微小退化</li>
+<li>显著优于 KIVI 和 PolarQuant</li>
+</ul>
+<h3 id="4-section-44">4. 近邻搜索（Section 4.4）</h3>
+<ul>
+<li>数据集：DBpedia（1536/3072 维）、GloVe（200 维）</li>
+<li>对比基线：Product Quantization（PQ）、RabitQ</li>
+<li>指标：Recall@1@k</li>
+</ul>
+<p><strong>量化时间对比（4-bit）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>d=200</th>
+<th>d=1536</th>
+<th>d=3072</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PQ</td>
+<td>37.04s</td>
+<td>239.75s</td>
+<td>494.42s</td>
+</tr>
+<tr>
+<td>RabitQ</td>
+<td>597.25s</td>
+<td>2267.59s</td>
+<td>3957.19s</td>
+</tr>
+<tr>
+<td><strong>TurboQuant</strong></td>
+<td><strong>0.0007s</strong></td>
+<td><strong>0.0013s</strong></td>
+<td><strong>0.0021s</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>TurboQuant 在所有数据集和维度上均超越 PQ 和 RabitQ 的召回率</li>
+<li>索引时间近乎为零（毫秒级 vs 数百至数千秒）</li>
+</ul>
+<h3 id="_10">消融与额外发现</h3>
+<ul>
+<li>熵编码可进一步压缩码本指针（b=4 时可减少约 5%），但因增益有限未纳入 TurboQuant</li>
+<li>量化器为数据无关（data-oblivious），无需预处理或校准</li>
+</ul>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>理论最优性</strong>：MSE 失真仅比信息论下界高约 2.7 倍，内积失真同样接近最优，提供了严格的理论保证</li>
+<li><strong>数据无关（Online）</strong>：无需预处理或数据依赖的校准，适用于动态数据场景（如 KV 缓存在线量化）</li>
+<li><strong>加速器友好</strong>：基于标量量化和矩阵乘法，完全向量化，适合 GPU 并行处理</li>
+<li><strong>两阶段无偏内积估计</strong>：MSE 量化器 + QJL 残差修正，同时实现低 MSE 失真和无偏内积估计</li>
+<li><strong>广泛的适用性</strong>：适用于 KV 缓存量化、权重/激活量化、近邻搜索（Product Quantization）等多个场景</li>
+<li><strong>极快的量化速度</strong>：量化时间近乎为零（毫秒级），远优于 PQ（分钟级）和 RabitQ（小时级）</li>
+<li><strong>低压比特下的优异表现</strong>：b=1 时仅比下界高 1.45 倍，低位宽场景尤其适用</li>
+<li><strong>简单且高效</strong>：预计算码本 + 标量量化 + 可选 QJL，无复杂超参调优</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>随机旋转矩阵开销</strong>：需要生成并存储 <script type="math/tex">d \times d</script> 的随机正交矩阵 <script type="math/tex">\Pi</script>，当维度 <script type="math/tex">d</script> 很大时可能产生额外存储和计算开销（尽管可预计算一次）</li>
+<li><strong>对非单位范数向量的处理</strong>：论文假设输入向量范数为 1（<script type="math/tex">S^{d-1}</script>），对于非单位范数向量需额外存储和恢复 L2 范数</li>
+<li><strong>QJL 旋转矩阵的存储</strong>：TurboQuant_prod 的内积版本需要额外存储 <script type="math/tex">d \times d</script> 随机矩阵 <script type="math/tex">S</script>，增加内存开销</li>
+<li><strong>渐进最优常数因子</strong>：虽然在低位宽时差距很小（约 1.45），但在高位宽时渐近常数因子约为 2.7，仍有理论优化空间</li>
+<li><strong>实验规模有限</strong>：主要在 8B 规模模型上验证 KV 缓存量化，更大模型（70B+）和不同架构的效果有待进一步验证</li>
+<li><strong>非整数位宽处理</strong>：实际应用中使用 outlier/non-outlier 通道分离来实现非整数位宽（如 2.5-bit），增加了实现复杂度</li>
+<li><strong>与更激进压缩方法的对比</strong>：论文主要对比 KIVI、PolarQuant 等量化方法，未与更激进的 KV 缓存压缩方法（如 token 丢弃）进行直接对比</li>
+<li><strong>随机矩阵依赖</strong>：算法依赖随机矩阵的高维性质，对于低维数据（<script type="math/tex">d</script> 较小时）可能效果较差</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_13">直接相关</h3>
+<ul>
+<li><strong>KV 缓存量化</strong>：TurboQuant 是在线 KV 缓存量化的最新进展，通过理论最优的向量量化方法实现接近无损的 KV 缓存压缩，关键词 <code>kv_cache_quant</code></li>
+<li><strong>乘积量化（Product Quantization）</strong>：TurboQuant 在近邻搜索任务中超越传统 PQ，无需预处理或码本学习</li>
+<li><strong>向量量化（Vector Quantization）</strong>：基于 Shannon 源编码理论的现代向量量化方法，提供信息论最优的失真率保证</li>
+</ul>
+<h3 id="baseline">Baseline 关联</h3>
+<ul>
+<li><strong>KIVI（2024）</strong>：TurboQuant 的 baseline 方法，KIVI 是一种免调优的非对称 2-bit KV 缓存量化方法，但缺乏理论最优性保证</li>
+<li><strong>PolarQuant（2025）</strong>：另一种具有理论保证的 KV 缓存量化方法，TurboQuant 在 Needle-In-A-Haystack 任务中略优于它</li>
+<li><strong>QJL（2024）</strong>：TurboQuant 的核心组件之一，提供无偏内积估计的 1-bit 量化变换</li>
+<li><strong>SnapKV（2024）、PyramidKV（2024）</strong>：KV 缓存压缩的 token 级方法，TurboQuant 在 Needle-In-A-Haystack 任务中表现更优</li>
+</ul>
+<h3 id="_14">扩展方向</h3>
+<ul>
+<li><strong>LLM 推理优化</strong>：TurboQuant 可与其他推理优化技术（如 FlashAttention、投机解码）结合，进一步加速 LLM 推理</li>
+<li><strong>权重/激活量化</strong>：TurboQuant 的 MSE 最优量化器可扩展到模型权重和激活值的量化</li>
+<li><strong>向量数据库搜索</strong>：TurboQuant 在近邻搜索中以近乎零的索引时间超越传统 PQ，对向量数据库性能提升有重要意义</li>
+<li><strong>低比特量化理论</strong>：TurboQuant 提供了严格的信息论下界证明，对低比特量化的理论研究有重要参考价值</li>
+<li><strong>随机化量化方法</strong>：TurboQuant 的随机旋转 + 标量量化范式可推广到其他高维向量压缩场景</li>
+<li><strong>高效 GPU 计算</strong>：TurboQuant 的完全向量化设计对高效 GPU 计算有参考价值</li>
+</ul>
+<hr />
+<h2 id="_15">参考信息</h2>
+<ul>
+<li><strong>论文链接</strong>：<a href="http://arxiv.org/abs/2504.19874v1">arXiv:2504.19874v1</a></li>
+<li><strong>代码仓库</strong>：<a href="https://github.com/TheTom/turboquant_plus">GitHub</a>（PyTorch）</li>
+<li><strong>机构</strong>：Google Research、New York University、Google DeepMind</li>
+<li><strong>关键词</strong>：quantization、kv_cache_quant</li>
+<li><strong>Baseline</strong>：KIVI（2024）</li>
+<li><strong>发表</strong>：ICLR 2026</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

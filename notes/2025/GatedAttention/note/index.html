@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,29 +162,296 @@
                 <h1 id="gated-attention-for-large-language-models-non-linearity-sparsity-and-attention-sink-free">Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free</h1>
 <blockquote>
 <p>Zihan Qiu, Zekun Wang, Bo Zheng, Zeyu Huang, Kaiyue Wen, Songlin Yang, Rui Men, Le Yu, Fei Huang, Suozhi Huang, Dayiheng Liu, Jingren Zhou, Junyang Lin</p>
+<p><strong>发表</strong>: NeurIPS 2025 | <strong>机构</strong>: Qwen Team, Alibaba Group, University of Edinburgh, Stanford University, MIT, Tsinghua University</p>
+<p><strong>代码</strong>: https://github.com/qiuzh20/gated_attention</p>
+<p><strong>论文链接</strong>: http://arxiv.org/abs/2505.06708v1</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Gating mechanisms have been widely utilized, from early models like LSTMs and
-Highway Networks to recent state space models, linear attention, and also
-softmax attention. Yet, existing literature rarely examines the specific
-effects of gating. In this work, we conduct comprehensive experiments to
-systematically investigate gating-augmented softmax attention variants.
-Specifically, we perform a comprehensive comparison over 30 variants of 15B
-Mixture-of-Experts (MoE) models and 1.7B dense models trained on a 3.5 trillion
-token dataset. Our central finding is that a simple modification-applying a
-head-specific sigmoid gate after the Scaled Dot-Product Attention
-(SDPA)-consistently improves performance. This modification also enhances
-training stability, tolerates larger learning rates, and improves scaling
-properties. By comparing various gating positions and computational variants,
-we attribute this effectiveness to two key factors: (1) introducing
-non-linearity upon the low-rank mapping in the softmax attention, and (2)
-applying query-dependent sparse gating scores to modulate the SDPA output.
-Notably, we find this sparse gating mechanism mitigates 'attention sink' and
-enhances long-context extrapolation performance, and we also release related
-<script type="math/tex">\href{https://github.com/qiuzh20/gated_attention}{codes}</script> and
-<script type="math/tex">\href{https://huggingface.co/QwQZh/gated_attention}{models}</script> to facilitate
-future research.</p>
+<blockquote>
+<p>⚠️ <strong>注意</strong>：本 note 由 AI Agent 自动生成（基于论文全文阅读），仅供参考。生成时间：2025年6月。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>在标准 Softmax Attention 的 Scaled Dot-Product Attention (SDPA) 输出后添加逐头、逐元素的 sigmoid 门控（G1），可显著提升模型性能、训练稳定性和长上下文外推能力，其效果源于引入非线性、引入输入依赖稀疏性并消除 attention sink 现象。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>门控机制已被广泛应用于从 LSTM 和 Highway Networks 等早期模型到最近的状态空间模型、线性注意力以及 Softmax 注意力中。然而，现有文献很少具体考察门控的特定效果。本文通过全面实验系统地研究了门控增强的 Softmax 注意力变体。具体而言，我们在 3.5 万亿 token 数据集上对 15B 参数的混合专家（MoE）模型和 1.7B 参数的密集模型进行了 30 种变体的全面比较。我们的核心发现是：一个简单的修改——在 Scaled Dot-Product Attention (SDPA) 之后应用逐头 sigmoid 门控——能够一致地提升性能。该修改还增强了训练稳定性，容忍更大的学习率，并改善了缩放特性。通过比较不同的门控位置和计算变体，我们将这种有效性归因于两个关键因素：(1) 在 softmax 注意力的低秩映射上引入非线性；(2) 应用查询依赖的稀疏门控分数来调制 SDPA 输出。值得注意的是，我们发现这种稀疏门控机制缓解了"注意力汇聚（attention sink）"问题，并增强了长上下文外推性能，我们还发布了相关代码和模型以促进未来研究。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>门控机制在神经网络中已被广泛采用（从 LSTM、GRU 到 Mamba、线性注意力等），但在标准 Softmax Attention 中门控的具体作用仍缺乏深入研究。已有工作（如 Switch Heads、Native Sparse Attention）引入了门控，但未能将门控本身的效果与其他架构因素（如稀疏路由、注意力头选择）解耦。本文的核心动机包括：</p>
+<ol>
+<li>
+<p><strong>理解门控在注意力中的作用</strong>：现有工作将门控与路由机制混合，难以判断门控本身的价值。例如 Switch Heads 引入了 sigmoid 门控选择 top-K 注意力头专家，但作者发现即使退化到单个专家（仅对值输出进行调制），性能增益依然显著，说明门控本身就有独立价值。</p>
+</li>
+<li>
+<p><strong>解决 Attention Sink 问题</strong>：Xiao et al. (2023) 发现 LLM 中存在"注意力汇聚"现象，即初始 token 获得过高的注意力分数。现有工作虽提出了多种缓解方案，但缺乏系统性分析。</p>
+</li>
+<li>
+<p><strong>改善训练稳定性</strong>：增加网络深度、使用大学习率和大 batch size 可提升性能，但常导致训练不稳定（loss spike）。本文希望探索门控是否能缓解这一问题。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="sdpa-sigmoid">核心方法：SDPA 输出逐头 sigmoid 门控</h3>
+<p>本文提出的最有效方案为 <strong>G1 门控</strong>：在 Multi-Head Attention 的 SDPA 输出（Concat 之后、Wo 之前）应用逐头、逐元素的 sigmoid 门控：</p>
+<p>
+<script type="math/tex; mode=display">Y' = Y \odot \sigma(X W_\theta)</script>
+</p>
+<p>其中 <script type="math/tex">Y</script> 为 SDPA 输出，<script type="math/tex">X</script> 为预归一化后的隐藏状态，<script type="math/tex">\sigma</script> 为 sigmoid 激活函数，<script type="math/tex">W_\theta</script> 为可学习参数，<script type="math/tex">Y'</script> 为门控后的输出。</p>
+<h3 id="_5">系统性探索的五个维度</h3>
+<p>本文系统性地探索了门控机制的五个关键维度：</p>
+<ol>
+<li><strong>位置（Positions）</strong>：</li>
+<li>G1: SDPA 输出后（最有效）</li>
+<li>G2: Value 投影后（次有效）</li>
+<li>G3: Key 投影后</li>
+<li>G4: Query 投影后</li>
+<li>
+<p>G5: 最终密集输出层后（无效）</p>
+</li>
+<li>
+<p><strong>粒度（Granularity）</strong>：</p>
+</li>
+<li>Headwise（逐头标量门控）</li>
+<li>
+<p>Elementwise（逐元素向量门控）</p>
+</li>
+<li>
+<p><strong>头部特异性（Head Specific/Shared）</strong>：</p>
+</li>
+<li>Head-Specific（每个注意力头独立的门控分数）</li>
+<li>
+<p>Head-Shared（跨头共享门控分数）</p>
+</li>
+<li>
+<p><strong>乘法/加法（Multiplicative/Additive）</strong>：</p>
+</li>
+<li>乘法门控：<script type="math/tex">Y' = Y \cdot \sigma(XW_\theta)</script>（更优）</li>
+<li>
+<p>加法门控：<script type="math/tex">Y' = Y + \sigma(XW_\theta)</script>
+</p>
+</li>
+<li>
+<p><strong>激活函数（Activation Function）</strong>：</p>
+</li>
+<li>sigmoid（更优）</li>
+<li>SiLU</li>
+</ol>
+<h3 id="_6">两个关键机制</h3>
+<h4 id="_7">机制一：非线性增强低秩映射的表达能力</h4>
+<p>标准注意力中，Value 投影 <script type="math/tex">W_V</script> 和输出投影 <script type="math/tex">W_O</script> 是两个连续的线性变换，可合并为一个低秩线性映射（<script type="math/tex">W_V^k W_O^k</script>）。在 GQA 中，多个头共享 <script type="math/tex">W_V</script>，进一步降低了表达能力。</p>
+<p>通过在 G1 或 G2 位置引入门控（或 RMSNorm），可以在两个线性变换之间插入非线性，从而增强低秩映射的表达能力：</p>
+<ul>
+<li>G2 门控对应于在 <script type="math/tex">W_V</script> 之前添加非线性：<script type="math/tex">o_i^k = (\sum_j S_{ij}^k \cdot \text{NL}(X_j W_V^k)) W_O^k</script>
+</li>
+<li>G1 门控对应于在 <script type="math/tex">W_O</script> 之前添加非线性：<script type="math/tex">o_i^k = \text{NL}(\sum_j S_{ij}^k \cdot X_j W_V^k) W_O^k</script>
+</li>
+</ul>
+<p>这也解释了为什么在 G5（<script type="math/tex">W_O</script> 之后）添加门控无效——它没有解决 <script type="math/tex">W_V</script> 和 <script type="math/tex">W_O</script> 之间缺乏非线性的问题。</p>
+<h4 id="attention-sink">机制二：输入依赖稀疏性消除 Attention Sink</h4>
+<p>SDPA 输出门控（G1）产生的门控分数具有显著的稀疏性（平均值仅 0.116），分布高度集中于 0 附近。这种稀疏性带来两个效果：</p>
+<ol>
+<li>
+<p><strong>过滤与查询无关的上下文信息</strong>：门控分数基于当前查询的隐藏状态计算（查询依赖），而非基于历史 key/value，因此能动态过滤无关信息。</p>
+</li>
+<li>
+<p><strong>消除 Attention Sink</strong>：基准模型中，第一 token 平均获得 46.7% 的注意力分数；添加门控后降至 4.8%。这与 massive activation 的减少有关——门控引入的稀疏性降低了模型中的巨大激活值，从而减少了 BF16 训练中的数值误差，提升训练稳定性。</p>
+</li>
+</ol>
+<h3 id="_8">模型配置</h3>
+<ul>
+<li><strong>MoE 模型</strong>：15B 总参数（2.54B 激活），128 个专家，top-8 softmax 门控，GQA，3.5T token 训练</li>
+<li><strong>Dense 模型</strong>：1.7B 参数，28/48 层，400B-3.5T token 训练</li>
+<li>门控额外参数极少（MoE 模型不到 2M），wall-time 延迟增加不到 2%</li>
+<li>使用 AdamW 优化器，cosine 学习率衰减</li>
+</ul>
+<hr />
+<h2 id="_9">实验结果</h2>
+<h3 id="moe-15b-moe-400b-tokens">MoE 模型（15B MoE, 400B tokens）</h3>
+<table>
+<thead>
+<tr>
+<th>变体</th>
+<th>PPL</th>
+<th>Hellaswag</th>
+<th>MMLU</th>
+<th>GSM8k</th>
+<th>C-eval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>6.026</td>
+<td>73.07</td>
+<td>58.79</td>
+<td>52.92</td>
+<td>60.26</td>
+</tr>
+<tr>
+<td><strong>G1 SDPA Elementwise</strong></td>
+<td><strong>5.761</strong></td>
+<td><strong>74.64</strong></td>
+<td><strong>60.82</strong></td>
+<td><strong>55.27</strong></td>
+<td><strong>62.20</strong></td>
+</tr>
+<tr>
+<td>G2 v Elementwise</td>
+<td>5.820</td>
+<td>74.38</td>
+<td>59.17</td>
+<td>53.97</td>
+<td>61.00</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>G1 门控 PPL 降低超过 0.2，各 benchmark 均有提升</li>
+<li>G1 优于 G2（值投影门控），G3/G4/G5 效果不明显</li>
+<li>Headwise vs Elementwise 差异不大，关键是 Head-Specific</li>
+<li>Sigmoid 优于 SiLU，乘法门控优于加法门控</li>
+</ul>
+<h3 id="dense-17b">Dense 模型（1.7B, 多种配置）</h3>
+<ul>
+<li>在 400B token、1.7B、28 层配置中，G1 门控 PPL 降低约 0.1（7.499→7.404）</li>
+<li>在 3.5T token、3.5T 配置中，G1 门控 PPL 降低约 0.05（6.180→6.130）</li>
+<li><strong>训练稳定性</strong>：添加门控后几乎消除了 loss spike，允许使用更大学习率</li>
+<li><strong>48 层模型</strong>：学习率从 4e-3 增加到 8e-3 时，baseline 收敛失败（PPL 9.195），而 SDPA 门控模型仍能正常训练（PPL 7.325）</li>
+<li>在 1T token、8e-3 学习率设置下，baseline 发散，但 SDPA 门控模型正常训练（PPL 7.078）</li>
+</ul>
+<h3 id="ruler-benchmark">长上下文外推（RULER Benchmark）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>4k</th>
+<th>8k</th>
+<th>16k</th>
+<th>32k</th>
+<th>64k</th>
+<th>128k</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>88.89</td>
+<td>85.88</td>
+<td>83.15</td>
+<td>79.50</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>SDPA-Gate</td>
+<td>90.56</td>
+<td>87.11</td>
+<td>84.61</td>
+<td>79.77</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>YaRN Baseline</td>
+<td>82.90</td>
+<td>71.52</td>
+<td>61.23</td>
+<td>37.94</td>
+<td>37.51</td>
+<td>31.65</td>
+</tr>
+<tr>
+<td><strong>YaRN SDPA-Gate</strong></td>
+<td><strong>88.13</strong></td>
+<td><strong>80.01</strong></td>
+<td><strong>76.74</strong></td>
+<td><strong>72.88</strong></td>
+<td><strong>66.60</strong></td>
+<td><strong>58.82</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在 128k 上下文长度下，门控模型（58.82）远超 baseline（31.65），提升超过 27 个点</li>
+<li>门控模型在 YaRN 扩展后性能下降更少（4k: -2.4 vs -6.0，32k: -6.89 vs -41.56）</li>
+</ul>
+<h3 id="attention-sink_1">Attention Sink 消除效果</h3>
+<ul>
+<li>Baseline 模型：第一 token 平均获得 46.7% 的注意力分数</li>
+<li>SDPA 门控模型：第一 token 仅获得 4.8% 的注意力分数</li>
+<li>Layer 21 的 baseline 模型 83% 的注意力指向第一 token，门控后降至 4%</li>
+</ul>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li>
+<p><strong>极简高效</strong>：仅需在 SDPA 输出后添加一个 sigmoid 门控，额外参数不到 2M（MoE 模型），wall-time 延迟增加不到 2%。</p>
+</li>
+<li>
+<p><strong>性能全面提升</strong>：在 PPL、MMLU、Hellaswag、GSM8k、C-eval 等多个 benchmark 上均有一致提升（PPL 降低超过 0.2）。</p>
+</li>
+<li>
+<p><strong>训练稳定性显著增强</strong>：几乎消除 loss spike，容忍更大的学习率（如从 4e-3 到 8e-3），使 48 层 1.7B 模型在 baseline 发散的情况下仍能稳定训练。</p>
+</li>
+<li>
+<p><strong>消除 Attention Sink</strong>：将第一 token 的注意力分数从 46.7% 降至 4.8%，是首个在密集模型和 MoE 模型上（3.5T token 训练）均实现无 attention sink 的方法。</p>
+</li>
+<li>
+<p><strong>长上下文外推能力显著增强</strong>：在 RULER benchmark 上，使用 YaRN 扩展到 128k 时，门控模型比 baseline 提升超过 27 个点。</p>
+</li>
+<li>
+<p><strong>理论分析清晰</strong>：从非线性和稀疏性两个角度解释了门控的有效性，具有较好的可解释性。</p>
+</li>
+<li>
+<p><strong>通用性强</strong>：在 MoE 和 Dense 模型上均有效，适用于不同模型架构和训练设置。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li>
+<p><strong>理论分析不充分</strong>：虽然非线性分析有一定深度，但对注意力动力学和整体训练过程的更广泛影响仍待探索。论文自身承认，对于 Attention Sink 如何影响模型的长序列泛化能力，缺乏严格的理论解释。</p>
+</li>
+<li>
+<p><strong>长上下文分析有限</strong>：虽观察到门控消除 attention sink 后长上下文性能提升，但未提供 Attention Sink 与长序列泛化能力之间因果关系的理论证明。</p>
+</li>
+<li>
+<p><strong>训练稳定性根因未完全揭示</strong>：虽然门控减少了 massive activation，但论文指出 clipping 操作并不能完全解决训练不稳定问题，说明不稳定性可能还有其他来源（如任意层产生大输出）。</p>
+</li>
+<li>
+<p><strong>仅验证了 sigmoid 门控</strong>：系统性实验主要围绕 sigmoid 门控，对其他类型的门控（如 softmax 门控、tanh 门控）的探索有限。</p>
+</li>
+<li>
+<p><strong>模型规模限制</strong>：主要在 1.7B 和 15B 模型上验证，更大规模（如 70B、100B+）的验证缺失。</p>
+</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<p>本文与 EfficientPaper 中的 <strong>structure_design</strong> 关键词高度相关，涉及以下研究方向：</p>
+<ol>
+<li>
+<p><strong>注意力机制优化</strong>：本工作提出了一种极简的注意力增强方案，可与其他注意力优化技术（如线性注意力、稀疏注意力、分组查询注意力 GQA）结合使用，为构建更高效的注意力架构提供了新思路。</p>
+</li>
+<li>
+<p><strong>门控机制在 Transformer 中的应用</strong>：本文系统性地探索了门控在 Softmax Attention 中的位置、粒度、激活函数等维度，为后续门控机制的设计提供了全面的参考。</p>
+</li>
+<li>
+<p><strong>Attention Sink 缓解方案</strong>：本文提出了通过 SDPA 输出门控消除 attention sink 的方法，可与已有的 attention sink 缓解方案（如 StreamingLLM、SoftPick 等）进行对比和集成。</p>
+</li>
+<li>
+<p><strong>长上下文建模</strong>：门控机制使模型在长上下文外推中表现显著优于 baseline，对 RULER benchmark 的提升尤为显著，为长上下文 LLM 的训练和推理提供了重要参考。</p>
+</li>
+<li>
+<p><strong>训练稳定性与 Scaling</strong>：门控机制显著提升了训练稳定性，使更大更复杂的模型（如 48 层 1.7B 模型）能够使用更大的学习率稳定训练，这对 LLM 的 scaling law 研究具有重要意义。</p>
+</li>
+<li>
+<p><strong>MoE 模型优化</strong>：在 MoE 模型中，门控机制（仅增加不到 2M 参数）即可带来显著性能提升，为 MoE 架构的进一步优化提供了新思路。</p>
+</li>
+<li>
+<p><strong>与 Attention Sink-Free 相关的后续研究</strong>：本文发布了首个 attention sink-free 的模型，可作为后续研究的基准，推动 Attention Sink 缓解、长上下文建模、训练稳定性等方向的发展。</p>
+</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

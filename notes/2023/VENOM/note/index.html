@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,21 +161,225 @@
   
                 <h1 id="venom-a-vectorized-nm-format-for-unleashing-the-power-of-sparse-tensor-cores">VENOM: A Vectorized N:M Format for Unleashing the Power of Sparse Tensor Cores</h1>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The increasing success and scaling of Deep Learning models demands higher
-computational efficiency and power. Sparsification can lead to both smaller
-models as well as higher compute efficiency, and accelerated hardware is
-becoming available. However, exploiting it efficiently requires kernel
-implementations, pruning algorithms, and storage formats, to utilize hardware
-support of specialized sparse vector units. An example of those are the
-NVIDIA's Sparse Tensor Cores (SPTCs), which promise a 2x speedup. However,
-SPTCs only support the 2:4 format, limiting achievable sparsity ratios to 50%.
-We present the V:N:M format, which enables the execution of arbitrary N:M
-ratios on SPTCs. To efficiently exploit the resulting format, we propose
-Spatha, a high-performance sparse-library for DL routines. We show that Spatha
-achieves up to 37x speedup over cuBLAS. We also demonstrate a second-order
-pruning technique that enables sparsification to high sparsity ratios with
-V:N:M and little to no loss in accuracy in modern transformers.</p>
+<blockquote>
+<p><strong>本笔记由 AI Agent 自动生成（Hermes Agent, Nous Research），生成时间：2026-06-05。内容基于论文全文解读，仅供参考。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>VENOM 提出了一种向量化 N:M 稀疏格式（V:N:M），通过在 NVIDIA 稀疏张量核心（SPTCs）上支持任意 N:M 稀疏比率，配合高性能稀疏矩阵乘法库 Spatha 和二阶剪枝技术，在大型语言模型推理中实现了高达 37×（内核级）和 3.20×（端到端）的加速。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>深度学习模型的成功和规模扩展要求更高的计算效率和功耗。稀疏化可以带来更小的模型和更高的计算效率，且加速硬件正在逐步可用。然而，要高效利用稀疏化，需要内核实现、剪枝算法和存储格式来利用专用稀疏向量单元的硬件支持。NVIDIA 的稀疏张量核心（SPTCs）承诺提供 2× 的加速，但仅支持 2:4 格式，将可实现的稀疏比率限制在 50%。</p>
+<p>本文提出了 <strong>V:N:M 格式</strong>，能够在 SPTCs 上执行任意 N:M 比率。为了高效利用该格式，作者提出了 <strong>Spatha</strong>——一个面向深度学习例程的高性能稀疏库，实现了最高 37× 相对于 cuBLAS 的加速。此外，本文还展示了一种<strong>二阶剪枝技术</strong>，可实现高稀疏比率下的 V:N:M 压缩，且在现代 Transformer 中几乎无精度损失。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>大模型的计算瓶颈</strong>：随着 LLM 规模的急剧增长（如 GPT-3 拥有 175B 参数），训练和推理的计算需求达到前所未有的水平，成本可达数百万美元，并产生巨大的能耗和碳排放。</p>
+</li>
+<li>
+<p><strong>现有稀疏硬件支持的局限</strong>：NVIDIA SPTCs 仅支持 2:4 稀疏格式（即每 4 个元素中保留 2 个非零值），固定在 50% 稀疏率。然而，大模型可以被剪枝到更高稀疏率（如 75%~98%）且精度损失很小，但缺乏硬件支持。</p>
+</li>
+<li>
+<p><strong>现有稀疏库的不足</strong>：现有库（如 cuSparseLt）受限于 2:4 格式；其他库（如 Sputnik、CLASP）针对小模型优化，在大模型的中等规模矩阵上性能不佳，且不支持任意 N:M 比率。</p>
+</li>
+<li>
+<p><strong>稀疏矩阵格式的设计挑战</strong>：需要在稀疏性（计算量减少）、规则性（GPU 并行性）和精度保持之间取得平衡。块状剪枝（block-wise）过于激进，向量剪枝（vector-wise）灵活性不足。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1-vnm">1. V:N:M 稀疏格式</h3>
+<p>V:N:M 格式结合了块状存储、向量剪枝和 N:M 剪枝三种策略，实现了在 SPTCs 上执行任意 N:M 模式：</p>
+<p><strong>核心思想</strong>：
+- 将原始密集矩阵划分为 <strong>V×M</strong> 的块（block-wise）
+- 对每个块选择 4 个最重要的列（vector-wise 剪枝）
+- 在每行的 4 个元素中保留 2 个最重要的权重（2:4 剪枝）
+- 通过这种两层剪枝实现任意稀疏比率，同时保持对 SPTCs 的兼容性</p>
+<p><strong>示例</strong>：在 2:6 稀疏模式下，实际实现为 2:4——先对 6 列进行向量剪枝去掉 2 列，剩余 4 列进行 2:4 剪枝，映射到 SPTCs 的 2:4 格式。</p>
+<p><strong>压缩格式</strong>：V:N:M 需要三个数据结构：
+- <strong>非零值数组</strong>：形状为 R × K/M × 2
+- <strong>m-indices</strong>：每个非零值 2-bit 元数据索引，指向块内 4 列中的位置
+- <strong>column-loc</strong>：形状为 R/V × K/M × 4，记录每个块中选中的 4 列位置</p>
+<h3 id="2-spatha">2. Spatha 高性能稀疏库</h3>
+<p>Spatha 是一个基于模板的 SpMM（稀疏矩阵-矩阵乘法）库，针对 V:N:M 格式优化，主要设计包括：</p>
+<p><strong>三阶段数据流</strong>：
+- <strong>阶段1（数据加载）</strong>：从全局内存（GMEM）到共享内存（SMEM）再到寄存器文件（RF），使用异步拷贝和流水线化（batchSize 控制流水线深度），128-bit 宽指令优化内存访问
+- <strong>阶段2（计算）</strong>：将数据映射到 SPTCs 执行 mma.sp 指令，支持 m16n8k32 等指令形状
+- <strong>阶段3（结果存储）</strong>：使用 128-bit 宽 SMEM 存储，通过 padding 避免 bank conflict，实现无冲突的输出写回</p>
+<p><strong>模板化参数</strong>：BSr × BSk × BSc（线程块 tile 尺寸）、WSr × WSk × WSc（warp tile 尺寸）、MMAr × MMAk × MMAc（指令形状）、batchSize（流水线深度）。</p>
+<p><strong>特殊存储顺序</strong>：针对 V:N:M 格式设计的存储顺序，优化了数据遍历，支持 128-bit 内存事务，确保内存合并（memory coalescence），避免 ldmatrix 指令的 bank conflict。</p>
+<p><strong>column-loc 开销</strong>：消融实验表明，column-loc 结构的开销对整体执行时间的影响可忽略不计，仅在极高稀疏率（如 2:100）下有轻微影响。</p>
+<h3 id="3">3. 二阶剪枝技术</h3>
+<p>针对 V:N:M 格式定制的二阶剪枝方法，基于 Fisher 信息矩阵和二阶近似：</p>
+<p><strong>显著性评分函数</strong>：
+- 使用 Fisher 逆矩阵 F⁻¹(w<em>) 和 E_Q 矩阵（表示权重组的规范基向量）
+- 计算 ρ_Q = ½ (E_Q w</em>)ᵀ (E_Q F⁻¹(w<em>) E_Qᵀ)⁻¹ E_Q w</em></p>
+<p><strong>组合爆炸问题的解决</strong>：
+- 在 V:N:M 格式中，V×N 权重组合导致组合爆炸
+- 采用分组简化策略（忽略 V×M 块内行间相关性）
+- 对 1×M 组使用配对方法（pair-wise），仅评估 3 种组合而非 C(M,N) 种</p>
+<p><strong>渐进式剪枝（Gradual Pruning）</strong>：
+- 设计结构衰减调度器，分 β 步逐步增加稀疏率
+- 初始 N₀ &gt;&gt; N_β（低稀疏率），逐步降低 N（增加稀疏率）直至目标值
+- 缓解了高稀疏率下一次性剪枝对精度的严重损害</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">实验设置</h3>
+<ul>
+<li>GPU：NVIDIA RTX 3090（Ampere 架构，配备 SPTCs）</li>
+<li>对比：cuBLAS（密集）、cuSparseLt（2:4）、Sputnik（非结构化）、CLASP（半结构化向量稀疏）</li>
+<li>数据集：BERT-base（110M 参数）、BERT-large、GPT-2 large（774M）、GPT-3（175B）</li>
+</ul>
+<h3 id="_7">微基准测试</h3>
+<table>
+<thead>
+<tr>
+<th>稀疏率</th>
+<th>格式</th>
+<th>相对 cuBLAS 加速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50%</td>
+<td>2:4</td>
+<td>~2×</td>
+</tr>
+<tr>
+<td>80%</td>
+<td>2:10</td>
+<td>~4.5×</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>2:20</td>
+<td>~8.5×</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>2:40</td>
+<td>~17.5×</td>
+</tr>
+<tr>
+<td>98%</td>
+<td>2:100</td>
+<td>~37×</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Spatha 在 2:4 稀疏率下比 cuSparseLt 快最高 <strong>1.38×</strong></li>
+<li>其他稀疏库在大模型矩阵上表现不佳，仅在 90% 以上稀疏率才能超越 cuBLAS</li>
+</ul>
+<h3 id="squad-v11-f1">二阶剪枝精度（SQuAD v1.1 F1 分数）</h3>
+<table>
+<thead>
+<tr>
+<th>稀疏率</th>
+<th>1:N:M</th>
+<th>64:N:M</th>
+<th>128:N:M</th>
+<th>vw_8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>75% (2:8)</td>
+<td>88.61</td>
+<td>88.47</td>
+<td>87.94</td>
+<td>88.55</td>
+</tr>
+<tr>
+<td>87.5% (2:16)</td>
+<td>87.73</td>
+<td>86.50</td>
+<td>85.01</td>
+<td>86.90</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>密集模型 F1=88.43</li>
+<li>75% 稀疏率下各方法基本保持或略超原始精度</li>
+<li>87.5% 稀疏率下 V:N:M 格式能恢复 96%~99% 原始精度</li>
+</ul>
+<h3 id="_8">端到端推理加速</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>GEMM 加速</th>
+<th>端到端延迟降低</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BERT-large</td>
+<td>9.95×</td>
+<td>72%</td>
+</tr>
+<tr>
+<td>GPT-2 large</td>
+<td>10.84×</td>
+<td>~50%</td>
+</tr>
+<tr>
+<td>GPT-3</td>
+<td>11×</td>
+<td>3.20×</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GPT-3 推理中 GEMM 占总执行时间约 80%，Spatha 在 2:32 稀疏率下实现 11× 张量收缩加速和 3.20× 端到端加速</li>
+</ul>
+<h3 id="_9">能量评估</h3>
+<ul>
+<li>V:N:M 格式在能量保留（非零权重的总幅度）上介于非结构化剪枝（最优）和向量剪枝之间</li>
+<li>V:N:M 对向量长度 V 的变化鲁棒性极强，V=128 仍比 vw_8 和 vw_4 保留更多能量</li>
+<li>50% 稀疏率下非结构化剪枝已丢失 20% 原始能量，95% 稀疏率仅保留 20%</li>
+</ul>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>突破 2:4 格式限制</strong>：首次在 SPTCs 上实现任意 N:M 稀疏比率，使更高稀疏率（如 75%~98%）成为可能</li>
+<li><strong>显著加速</strong>：内核级加速高达 37×（相对 cuBLAS），端到端推理加速高达 3.20×（GPT-3）</li>
+<li><strong>高精度保持</strong>：二阶剪枝技术在 87.5% 稀疏率下仍能保持 96%+ 精度</li>
+<li><strong>开源实现</strong>：Spatha 作为 cuSparseLt 的开源替代品，通过 PyTorch/STen 集成实现易用性</li>
+<li><strong>模板化设计</strong>：可根据输入动态（GEMM 大小、V:N:M 配置）灵活调优</li>
+<li><strong>能量效率</strong>：通过减少计算量和内存访问，实现能效提升</li>
+<li><strong>可扩展性</strong>：支持 LLM 规模的模型（如 GPT-3 175B 参数）</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>仅支持半精度（FP16）</strong>：Spatha 内核专注于半精度，不支持 FP32 或其他精度</li>
+<li><strong>硬件依赖</strong>：需要 NVIDIA Ampere 架构或更新的 GPU（配备 SPTCs）</li>
+<li><strong>向量长度 V 的限制</strong>：V 值过大可能导致精度损失，需要在 V 和精度之间权衡</li>
+<li><strong>column-loc 开销</strong>：在极高稀疏率（如 2:100）下有轻微影响，虽不显著但存在</li>
+<li><strong>仅针对推理场景</strong>：论文主要评估推理性能，训练场景的评估有限</li>
+<li><strong>GPT-3 评估不完整</strong>：由于内存限制，GPT-3 仅测试单个编码器层的推理时间</li>
+<li><strong>二阶剪枝计算开销</strong>：二阶剪枝方法计算复杂度较高，需要 Fisher 逆矩阵估计</li>
+<li><strong>精度损失在极高稀疏率下</strong>：128:N:M 格式在 87.5% 稀疏率下损失约 3.5% F1 分数</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>结构化稀疏格式</strong>：V:N:M 格式为半结构化稀疏提供了新的设计思路，可用于与其他稀疏格式（如 CSR、COO）的比较研究</li>
+<li><strong>LLM 压缩与加速</strong>：作为高效的稀疏内核实现，可与量化（如 INT4/INT8）和知识蒸馏结合，实现更全面的模型压缩</li>
+<li><strong>分布式训练</strong>：Spatha 可作为分布式系统中稀疏算子的后端实现，加速数据并行和流水线并行</li>
+<li><strong>硬件-软件协同设计</strong>：V:N:M 格式展示了如何通过软件抽象层扩展硬件支持，可为下一代 GPU 的稀疏硬件设计提供参考</li>
+<li><strong>稀疏注意力机制</strong>：论文中的动态 N:M 稀疏注意力（DFSS）可与 FlashAttention 等方法对比，探索 Transformer 中的稀疏注意力优化</li>
+<li><strong>神经架构搜索（NAS）</strong>：V:N:M 格式允许任意稀疏率，可用于搜索最优的稀疏-精度权衡</li>
+<li><strong>能量效率研究</strong>：论文提出的能量评估指标和方法可扩展到其他稀疏格式的能效评估</li>
+<li><strong>跨领域应用</strong>：Spatha 作为通用 SpMM 库，可扩展到科学计算、图神经网络等非 DL 领域</li>
+</ol>
+<hr />
+<p><strong>论文链接</strong>：<a href="http://arxiv.org/abs/2310.02065v1">http://arxiv.org/abs/2310.02065v1</a><br />
+<strong>代码仓库</strong>：<a href="https://github.com/UDC-GAC/venom">https://github.com/UDC-GAC/venom</a><br />
+<strong>关键词</strong>：sparse_pruning, weight_sparsity</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

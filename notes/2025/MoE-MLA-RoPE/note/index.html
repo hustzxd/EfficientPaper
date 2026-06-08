@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,30 +164,373 @@
 <p>Sushant Mehta, Raj Dandekar, Rajat Dandekar, Sreedath Panat</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>We present MoE-MLA-RoPE, a novel architecture combination that combines
-Mixture of Experts (MoE) with Multi-head Latent Attention (MLA) and Rotary
-Position Embeddings (RoPE) for efficient language modeling. Our approach
-addresses the fundamental trade-off between model capacity and computational
-efficiency through three key innovations: (1) fine-grained expert routing with
-64 micro-experts and top-<script type="math/tex">k</script> selection, enabling flexible specialization
-through 3.6 * 10^7 possible expert combinations; (2) shared expert isolation
-that dedicates 2 always active experts for common patterns while routing to 6
-of 62 specialized experts; and (3) gradient-conflict-free load balancing that
-maintains expert utilization without interfering with primary loss
-optimization.
-  Extensive experiments on models ranging from 17M to 202M parameters
-demonstrate that MoE-MLA-RoPE with compression ratio r=d/2 achieves 68% KV
-cache memory reduction and 3.2x inference speedup while maintaining competitive
-perplexity (0.8% degradation). Compared to the parameters with 53.9M
-parameters, MoE-MLA-RoPE improves the validation loss by 6.9% over the vanilla
-transformers while using 42% fewer active parameters per forward pass.
-FLOP-matched experiments reveal even larger gains: 11.1% improvement with 3.2x
-inference acceleration. Automated evaluation using GPT-4 as a judge confirms
-quality improvements in generation, with higher scores on coherence (8.1/10),
-creativity (7.9/10) and grammatical correctness (8.2/10). Our results establish
-that architectural novelty, not parameter scaling, defines the efficiency
-frontier for resource-constrained language model deployment.</p>
+<blockquote>
+<p><strong>⚠️ 本文档由 AI Agent 自动生成，内容基于论文全文提取与分析，仅供参考。生成时间：2025年。</strong></p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>MoE-MLA-RoPE 是一种将混合专家（MoE）、多头潜在注意力（MLA）和旋转位置编码（RoPE）统一在一起的新型架构，通过三种正交效率机制的协同作用，在小型语言模型上实现了 68% KV 缓存内存减少、3.2× 推理加速和 13.5% 困惑度降低。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>本文提出了 MoE-MLA-RoPE，一种将混合专家（MoE）与多头潜在注意力（MLA）和旋转位置编码（RoPE）相结合的新型架构组合，用于高效的语言建模。该方法通过三项关键创新解决了模型容量与计算效率之间的基本权衡：(1) 具有 64 个微专家和 top-k 选择的细粒度专家路由，通过约 3.6×10⁷ 种可能的专家组合实现灵活特化；(2) 共享专家隔离，为常见模式分配 2 个始终活跃的专家，同时在 62 个专家中路由 6 个专业专家；(3) 无梯度冲突的负载均衡，保持专家利用率而不干扰主损失优化。</p>
+<p>在 17M 到 202M 参数范围的大量实验表明，MoE-MLA-RoPE 在压缩比 r=d/2 时实现了 68% KV 缓存内存减少和 3.2× 推理加速，同时保持有竞争力的困惑度（仅 0.8% 退化）。与具有 53.9M 参数的模型相比，MoE-MLA-RoPE 在前向传播中使用 42% 更少的活跃参数，将验证损失提高了 6.9%。FLOP 匹配实验揭示了更大的收益：11.1% 的改进和 3.2× 的推理加速。使用 GPT-4 作为评委的自动评估确认了生成质量的改善，在连贯性（8.1/10）、创造性（7.9/10）和语法正确性（8.2/10）方面获得更高分数。结果表明，架构创新而非参数扩展定义了资源受限语言模型部署的效率前沿。</p>
+<h2 id="_3">研究动机</h2>
+<p>在移动设备、嵌入式系统和边缘计算平台等资源受限环境中部署语言模型，需要超越简单参数缩减的根本性架构创新。大规模模型虽然展现出卓越能力，但其计算和内存需求阻止了在数十亿设备上的部署。已有研究表明，当架构经过精心设计以提高效率时，少于 100M 参数的模型也可以实现语言流畅性。</p>
+<p>本文的核心动机是：<strong>MoE 的专家特化可以补偿 MLA 压缩带来的信息损失，而 MLA 的内存节省使得在相同内存预算内可以部署更多专家</strong>。这形成一个正反馈循环：更多专家实现更好的特化，从而允许更激进的压缩而不会导致质量下降。</p>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">架构设计</h3>
+<p>MoE-MLA-RoPE 将 MoE 路由、潜在注意力压缩和旋转位置编码集成到统一框架中。每个 transformer 块通过以下方式处理输入：</p>
+<pre><code>h^(ℓ) = x^(ℓ) + MLA-RoPE(LayerNorm(x^(ℓ)))
+x^(ℓ+1) = h^(ℓ) + MoE(LayerNorm(h^(ℓ)))
+</code></pre>
+<h3 id="moe">细粒度 MoE 配置</h3>
+<p>采用层次化专家设计：
+- <strong>总专家数</strong>：N = 64 个细粒度专家
+- <strong>共享专家</strong>：Nₛ = 2 个始终活跃的专家，处理常见模式
+- <strong>路由专家</strong>：Nᵣ = 62 个专业专家
+- <strong>活跃选择</strong>：Top-k = 6，从专业专家中路由
+- <strong>专家容量</strong>：每个专家具有标准 FFN 容量的 1/4
+- <strong>有效容量</strong>：(Nₛ + k) × 1/4 = 2× 标准 FFN</p>
+<p>该配置提供 C(62,6) = 36,288,252 ≈ 3.6×10⁷ 种可能的专家组合，实现细粒度功能特化。</p>
+<h3 id="mla">多头潜在注意力（MLA）</h3>
+<p>MLA 通过低秩分解压缩键和值：</p>
+<pre><code>K_h = X W_K^c |{z}∈R^(d×r) · W_K^r |{z}∈R^(r×d_k)
+V_h = X W_V^c |{z}∈R^(d×r) · W_V^r |{z}∈R^(r×d_k)
+</code></pre>
+<p>推理时，仅缓存压缩表示 C_K = X W_K^c 和 C_V = X W_V^c，将内存从 O(nHd_k) 减少到 O(nHr)（当 r &lt; d_k 时）。本研究的 MLA 实现跨头共享压缩矩阵，同时保持头特定的重建。</p>
+<h3 id="rope">旋转位置编码（RoPE）</h3>
+<p>RoPE 通过旋转矩阵编码绝对位置，应用于查询-键对：</p>
+<pre><code>RoPE(x_m, m) = R_{Θ,m} x_m
+</code></pre>
+<p>RoPE 在头特定投影之后、注意力计算之前应用，在压缩空间中保留相对位置信息。</p>
+<h3 id="_6">无梯度冲突的负载均衡</h3>
+<p>实现无辅助损失的负载均衡，通过动态偏置调整：</p>
+<pre><code>Algorithm 1: Gradient-Free Load Balancing
+1: 初始化偏置 b_i = 0
+2: for 每个训练步 t do
+3:   计算路由 logits: l_i = (W_g x)_i + b_i
+4:   使用 TopK(softmax(l)) 路由 token
+5:   跟踪专家负载: f_i = tokens to expert i / total tokens
+6:   更新偏置: b_i ← b_i - γ(f_i - 1/Nᵣ)
+7: end for
+</code></pre>
+<p>该方法保持平衡利用率（变异系数 &lt; 0.1），无梯度干扰。</p>
+<h3 id="_7">理论分析</h3>
+<p>论文提供了全面的理论基础，包括：
+- <strong>计算复杂度分析</strong>：定理 3.3 表明 MoE-MLA-RoPE 每层计算复杂度为 O(n²dρ + nd²(1+ρ+k/N+Ns/N))，当 n→∞ 时实现 1/ρ 的渐近加速。
+- <strong>内存效率分析</strong>：定理 3.4 表明 KV 缓存内存需求为 MMoE-MLA = 2nLHr，实现 (1-ρ) 的内存减少因子。
+- <strong>关键洞察</strong>：MoE 和 MLA 针对正交瓶颈，产生乘法而非加法的效率增益；最优压缩比存在，使专家特化最大化地补偿信息损失。</p>
+<h3 id="_8">实现细节</h3>
+<ul>
+<li>优化器：AdamW（β₁=0.9，β₂=0.95，权重衰减 0.1）</li>
+<li>学习率：3×10⁻⁴，余弦衰减到 10⁻⁵</li>
+<li>预热：线性预热 5,000 步（训练的 10%）</li>
+<li>批大小：128 序列 × 512 token = 65,536 token</li>
+<li>训练时长：50,000 步（3.28B token）</li>
+<li>硬件：8× NVIDIA A100 40GB GPU</li>
+<li>框架：PyTorch 2.0，自定义 CUDA 内核用于 MoE 路由</li>
+</ul>
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">数据集与评估</h3>
+<p>在 TinyStories 数据集上训练，包含 2.1M 合成儿童故事（受限词汇量 10K 独特 token）。评估指标包括困惑度、推理效率、专家利用率和生成质量（GPT-4 自动评估）。</p>
+<h3 id="539m">参数匹配对比（53.9M 参数）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>压缩比 (r/d)</th>
+<th>验证困惑度 (↓)</th>
+<th>活跃参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MHA</td>
+<td>—</td>
+<td>8.542 ± 0.021</td>
+<td>53.9M</td>
+</tr>
+<tr>
+<td>MLA</td>
+<td>1/2</td>
+<td>8.971 ± 0.034</td>
+<td>53.9M</td>
+</tr>
+<tr>
+<td>MLA-RoPE</td>
+<td>1/2</td>
+<td>8.579 ± 0.025</td>
+<td>53.9M</td>
+</tr>
+<tr>
+<td>MoE-MHA</td>
+<td>—</td>
+<td>8.092 ± 0.019**</td>
+<td>31.4M</td>
+</tr>
+<tr>
+<td>MoE-MLA</td>
+<td>1/2</td>
+<td>7.741 ± 0.018**</td>
+<td>31.4M</td>
+</tr>
+<tr>
+<td><strong>MoE-MLA-RoPE</strong></td>
+<td><strong>1/2</strong></td>
+<td><strong>7.388 ± 0.015</strong></td>
+<td><strong>31.4M</strong></td>
+</tr>
+</tbody>
+</table>
+<p>MoE-MLA-RoPE 相比 MHA 基线实现 13.5% 困惑度降低，同时使用 42% 更少的活跃参数。</p>
+<h3 id="flop">FLOP 匹配对比</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>配置</th>
+<th>验证 PPL (↓)</th>
+<th>FLOPs</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MHA</td>
+<td>9L-512d</td>
+<td>8.542</td>
+<td>1.00×</td>
+<td>1.0×</td>
+</tr>
+<tr>
+<td>MLA-RoPE</td>
+<td>9L-512d</td>
+<td>8.579</td>
+<td>0.98×</td>
+<td>1.1×</td>
+</tr>
+<tr>
+<td>MoE-MHA</td>
+<td>9L-645d</td>
+<td>7.347**</td>
+<td>1.00×</td>
+<td>2.8×</td>
+</tr>
+<tr>
+<td><strong>MoE-MLA-RoPE</strong></td>
+<td><strong>9L-645d</strong></td>
+<td><strong>7.012</strong></td>
+<td><strong>0.99×</strong></td>
+<td><strong>3.2×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>FLOP 匹配下，MoE-MLA-RoPE 实现 17.9% 困惑度改进和 3.2× 推理加速。</p>
+<h3 id="_11">消融实验</h3>
+<p><strong>压缩比影响</strong>（9L-512d, 53.9M 参数）：</p>
+<table>
+<thead>
+<tr>
+<th>压缩比</th>
+<th>潜在维度 (r)</th>
+<th>验证困惑度 (↓)</th>
+<th>内存节省</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1:1</td>
+<td>512</td>
+<td>7.347 ± 0.016</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>2:1</strong></td>
+<td><strong>256</strong></td>
+<td><strong>7.388 ± 0.015</strong></td>
+<td><strong>50%</strong></td>
+</tr>
+<tr>
+<td>4:1</td>
+<td>128</td>
+<td>7.916 ± 0.024</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>8:1</td>
+<td>64</td>
+<td>8.893 ± 0.041</td>
+<td>87.5%</td>
+</tr>
+</tbody>
+</table>
+<p>最优 2:1 压缩比是专家特化有效补偿中等信息损失的最佳点。</p>
+<p><strong>专家粒度影响</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>设计</th>
+<th>总专家</th>
+<th>路由空间</th>
+<th>验证 PPL</th>
+<th>负载 CV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>粗粒度</td>
+<td>8</td>
+<td>—</td>
+<td>8.234</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>标准</td>
+<td>16</td>
+<td>C(14,6)</td>
+<td>7.812</td>
+<td>0.08</td>
+</tr>
+<tr>
+<td><strong>细粒度</strong></td>
+<td><strong>64</strong></td>
+<td><strong>C(62,6)</strong></td>
+<td><strong>7.388</strong></td>
+<td><strong>0.06</strong></td>
+</tr>
+</tbody>
+</table>
+<p>64 个专家提供最优粒度，平衡特化能力和路由效率。</p>
+<h3 id="_12">内存与延迟分析</h3>
+<p>12L-1024d 模型（batch size 16）的内存分解：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>MHA</th>
+<th>MLA-RoPE</th>
+<th>MoE-MHA</th>
+<th>MoE-MLA-RoPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数</td>
+<td>203 MB</td>
+<td>203 MB</td>
+<td>892 MB</td>
+<td>892 MB</td>
+</tr>
+<tr>
+<td>KV Cache</td>
+<td>384 MB</td>
+<td>192 MB</td>
+<td>384 MB</td>
+<td>192 MB</td>
+</tr>
+<tr>
+<td>激活值</td>
+<td>48 MB</td>
+<td>52 MB</td>
+<td>64 MB</td>
+<td>68 MB</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>635 MB</td>
+<td>447 MB</td>
+<td>1340 MB</td>
+<td>1152 MB</td>
+</tr>
+</tbody>
+</table>
+<p>尽管总参数更多，MoE-MLA-RoPE 的 KV 缓存节省使其在推理内存占主导的场景下可行。</p>
+<h3 id="_13">规模化分析</h3>
+<p>相对改进随模型规模单调递增（7.2% → 13.3%），与许多压缩技术的递减收益形成对比，表明 MoE-MLA 组合在更大规模上更有价值。</p>
+<h3 id="_14">生成质量评估</h3>
+<p>GPT-4 评估分数（1-10 分，12L-1024d 模型，100 个样本）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>语法 (↑)</th>
+<th>创造力 (↑)</th>
+<th>连贯性 (↑)</th>
+<th>总体 (↑)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MHA</td>
+<td>7.1 ± 0.8</td>
+<td>5.9 ± 1.2</td>
+<td>5.6 ± 1.1</td>
+<td>6.2 ± 0.9</td>
+</tr>
+<tr>
+<td>MLA-RoPE</td>
+<td>7.8 ± 0.7</td>
+<td>7.2 ± 1.0</td>
+<td>7.3 ± 0.9</td>
+<td>7.4 ± 0.8</td>
+</tr>
+<tr>
+<td>MoE-MHA</td>
+<td>7.5 ± 0.7</td>
+<td>6.8 ± 1.0</td>
+<td>6.9 ± 0.9</td>
+<td>7.1 ± 0.8</td>
+</tr>
+<tr>
+<td><strong>MoE-MLA-RoPE</strong></td>
+<td><strong>8.2 ± 0.6</strong></td>
+<td><strong>7.9 ± 0.8</strong></td>
+<td><strong>8.1 ± 0.7</strong></td>
+<td><strong>8.1 ± 0.7</strong></td>
+</tr>
+</tbody>
+</table>
+<p>MoE-MLA-RoPE 在所有维度上均有显著改善，尤其在叙事连贯性方面（比 MHA 提高 44%）。</p>
+<h2 id="_15">优势</h2>
+<ol>
+<li><strong>架构协同效应</strong>：MoE 与 MLA 产生乘法而非加法的效率增益（13.5% vs 单独 5.0%/5.3%），证明正交优化目标的协同作用</li>
+<li><strong>高效推理</strong>：68% KV 缓存内存减少 + 3.2× 推理加速，适合边缘部署</li>
+<li><strong>参数效率</strong>：使用 42% 更少的活跃参数实现更好的性能</li>
+<li><strong>规模化优势</strong>：改进随模型规模单调递增（7.2% → 13.3%），与许多压缩技术的递减收益形成对比</li>
+<li><strong>无梯度冲突训练</strong>：无辅助损失的负载均衡实现平衡的专家利用率（CV &lt; 0.1），避免了小规模模型训练中的不稳定性</li>
+<li><strong>生成质量提升</strong>：GPT-4 评估显示在语法、创造力、连贯性方面均有改善</li>
+<li><strong>理论支撑</strong>：提供形式化复杂度分析和近似保证，解释了经验结果</li>
+</ol>
+<h2 id="_16">局限</h2>
+<ol>
+<li><strong>训练时间开销</strong>：40% 的额外训练时间，可通过专用硬件或更高效的路由算法解决</li>
+<li><strong>评估范围有限</strong>：仅在 TinyStories 数据集（叙事生成）上验证，缺少多样化任务评估</li>
+<li><strong>动态专家选择</strong>：未实现基于输入复杂度的动态专家选择，可能进一步提高效率</li>
+<li><strong>LLM 评估验证</strong>：基于 GPT-4 的自动评估需人类评估验证</li>
+<li><strong>总参数量增加</strong>：尽管活跃参数减少，但总参数量因专家增加而增大（约 8×），可能导致部署复杂性</li>
+<li><strong>数据集规模限制</strong>：TinyStories 作为受限词汇数据集，可能无法充分代表真实世界部署场景</li>
+<li><strong>代码尚未完全开源</strong>：论文声明将发布所有代码和模型，但实际可用性待验证</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>高效 Transformer 架构</strong>：MoE-MLA-RoPE 属于高效 Transformer 领域，与注意力近似（如 Linformer、Reformer）、参数共享（如 ALBERT）、剪枝等方法正交且互补</li>
+<li><strong>小型语言模型</strong>：该工作属于 sub-100M 参数模型的高效设计，与 TinyStories、MobileLLM、Phi 系列等相关</li>
+<li><strong>稀疏模型</strong>：通过 MoE 实现的输入依赖稀疏性，与幅度剪枝、结构化稀疏、动态稀疏等技术相关</li>
+<li><strong>MLA 压缩</strong>：与 DeepSeek-V2 的 MLA 实现直接相关，扩展了潜在注意力在小模型上的应用</li>
+<li><strong>无辅助损失负载均衡</strong>：与 He et al. (2024) 的无辅助损失负载均衡策略相关，避免了传统辅助损失的梯度冲突</li>
+<li><strong>LLM 评估方法</strong>：与 AlpacaEval、MT-Bench 等使用 LLM 作为自动评估器的方法相关</li>
+<li><strong>边缘部署</strong>：面向移动设备、嵌入式系统的高效推理，与 EfficientPaper 的"efficiency"主题高度相关</li>
+<li><strong>架构创新 vs 参数扩展</strong>：论文强调架构创新（而非参数扩展）定义效率前沿，这与 EfficientPaper 对高效架构设计的关注一致</li>
+</ol>
+<h2 id="_17">关键引用</h2>
+<ul>
+<li>DeepSeekMoE: 细粒度专家设计的开创性工作</li>
+<li>DeepSeek-V2: 多头潜在注意力（MLA）的提出</li>
+<li>Switch Transformers: MoE 的大规模应用</li>
+<li>RoFormer (RoPE): 旋转位置编码的提出</li>
+<li>Auxiliary-Loss-Free Load Balancing: 无辅助损失的负载均衡策略</li>
+</ul>
+<blockquote>
+<p><strong>注：本 note 由 AI Agent 自动生成，基于 arXiv 论文 2508.01261v1 的全文提取与分析。</strong></p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

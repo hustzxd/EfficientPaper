@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,471 @@
 <p>Pengfei Zuo, Huimin Lin, Junbo Deng, Nan Zou, Xingkun Yang, Yingyu Diao, Weifeng Gao, Ke Xu, Zhangyu Chen, Shirui Lu, Zhao Qiu, Peiyang Li, Xianyu Chang, Zhengzhong Yu, Fangzheng Miao, Jia Zheng, Ying Li, Yuan Feng, Bei Wang, Zaijian Zong, Mosong Zhou, Wenli Zhou, Houjiang Chen, Xingyu Liao, Yipeng Li, Wenxiao Zhang, Ping Zhu, Yinggang Wang, Chuanjie Xiao, Depeng Liang, Dong Cao, Juncheng Liu, Yongqiang Yang, Xiaolong Bai, Yi Li, Huaguo Xie, Huatao Wu, Zhibin Yu, Lv Chen, Hu Liu, Yujun Ding, Haipei Zhu, Jing Xia, Yi Xiong, Zhou Yu, Heng Liao</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The rapid evolution of large language models (LLMs), driven by growing parameter scales, adoption of mixture-of-experts (MoE) architectures, and expanding context lengths, imposes unprecedented demands on AI infrastructure. Traditional AI clusters face limitations in compute intensity, memory bandwidth, inter-chip communication, and latency, compounded by variable workloads and strict service-level objectives. Addressing these issues requires fundamentally redesigned hardware-software integration. This paper introduces Huawei CloudMatrix, a next-generation AI datacenter architecture, realized in the production-grade CloudMatrix384 supernode. It integrates 384 Ascend 910 NPUs and 192 Kunpeng CPUs interconnected via an ultra-high-bandwidth Unified Bus (UB) network, enabling direct all-to-all communication and dynamic pooling of resources. These features optimize performance for communication-intensive operations, such as large-scale MoE expert parallelism and distributed key-value cache access. To fully leverage CloudMatrix384, we propose CloudMatrix-Infer, an advanced LLM serving solution incorporating three core innovations: a peer-to-peer serving architecture that independently scales prefill, decode, and caching; a large-scale expert parallelism strategy supporting EP320 via efficient UB-based token dispatch; and hardware-aware optimizations including specialized operators, microbatch-based pipelining, and INT8 quantization. Evaluation with the DeepSeek-R1 model shows CloudMatrix-Infer achieves state-of-the-art efficiency: prefill throughput of 6,688 tokens/s per NPU and decode throughput of 1,943 tokens/s per NPU (&lt;50 ms TPOT). It effectively balances throughput and latency, sustaining 538 tokens/s per NPU even under stringent 15 ms latency constraints, while INT8 quantization maintains model accuracy across benchmarks.</p>
+<blockquote>
+<p><strong>⚠️ 生成声明</strong>：本 note 由 AI Agent 自动生成，基于对论文全文的阅读和理解。生成时间：2025年6月。所有内容为中文总结与翻译，仅供参考，建议结合原文阅读。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>华为提出了 CloudMatrix384 超级节点架构及 CloudMatrix-Infer 推理方案，通过 384 个昇腾 910 NPU 全对等互联（UB 网络）+ PDC 分离式服务架构 + 大规模专家并行（EP320）+ 微批次流水线 + INT8 量化，在 DeepSeek-R1 上实现 prefill 6,688 tokens/s/NPU 和 decode 1,943 tokens/s/NPU 的 SOTA 效率，同时保持 16 个基准测试的精度不降。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）的快速发展——参数规模增长、MoE 架构采用、上下文长度扩展——对 AI 基础设施提出了前所未有的需求。传统 AI 集群在计算强度、内存带宽、芯片间通信和延迟方面面临瓶颈。本文介绍了华为 CloudMatrix，一种下一代 AI 数据中心架构，以生产级 CloudMatrix384 超级节点实现。它集成了 384 个昇腾 910 NPU 和 192 个鲲鹏 CPU，通过超高带宽统一总线（UB）网络互联，支持直接全对等通信和动态资源池化。为充分利用 CloudMatrix384，本文提出 CloudMatrix-Infer，包含三大核心创新：（1）将 prefill、decode 和缓存解耦为独立可扩展资源池的对等服务架构；（2）基于 UB 网络高效 token 调度的 EP320 大规模专家并行策略；（3）硬件感知优化，包括专用算子、微批次流水线和 INT8 量化。基于 DeepSeek-R1 的评估显示：prefill 吞吐量 6,688 tokens/s/NPU，decode 吞吐量 1,943 tokens/s/NPU（TPOT&lt;50ms），在 15ms 延迟约束下仍可维持 538 tokens/s/NPU，INT8 量化在 16 个基准上保持精度。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="llm">LLM 发展趋势带来的挑战</h3>
+<ol>
+<li><strong>参数规模持续膨胀</strong>：DeepSeek-R1 671B、Llama 4 Behemoth ~2T 等模型对算力和内存提出巨大需求。</li>
+<li><strong>MoE 架构广泛采用</strong>：如 DeepSeek-V3 256 个路由专家，每 token 仅激活 37B 参数。MoE 带来跨 NPU 的频繁通信需求（token dispatch 和 expert output combination）。</li>
+<li><strong>上下文窗口大幅扩展</strong>：从数万到百万 token，KV cache 存储和访问成为瓶颈。</li>
+<li><strong>生产环境的动态性和异构性</strong>：变长输入、突发请求、不均衡的专家激活，需要严格的 SLO 满足。</li>
+</ol>
+<h3 id="_4">传统架构的四大挑战</h3>
+<ol>
+<li><strong>通信密集型并行的扩展瓶颈</strong>：TP/EP 需要频繁细粒度低延迟通信，传统 RDMA 网络跨节点通信带宽不足。</li>
+<li><strong>异构负载下的资源利用率低</strong>：固定节点配置无法高效适应训练（计算密集）和推理（内存带宽受限）等不同工作负载。</li>
+<li><strong>AI 与数据密集型工作负载的融合执行</strong>：需要高吞吐低延迟通信和灵活资源编排。</li>
+<li><strong>存储的内存级性能需求</strong>：KV cache、RAG 模块等需要内存级带宽和延迟，传统存储成为瓶颈。</li>
+</ol>
+<hr />
+<h2 id="_5">方法（技术细节）</h2>
+<h3 id="1-cloudmatrix384">1. CloudMatrix384 硬件架构</h3>
+<p><strong>核心设计原则</strong>：全对等（peer-to-peer）高带宽互联 + 细粒度资源解耦。</p>
+<p><strong>硬件规格</strong>：
+- 384 个昇腾 910 NPU（每个节点 8 个 NPU，48 个节点）
+- 192 个鲲鹏 CPU（每个节点 4 个 CPU）
+- 通过统一总线（UB）网络互联，实现全对等、非阻塞、all-to-all 拓扑
+- 节点间带宽衰减 &lt;3%，延迟增加 &lt;1μs</p>
+<p><strong>三大网络平面</strong>：
+- <strong>UB 平面</strong>（主要 scale-up）：超高速、非阻塞全对等互联，支持 TP/EP 跨节点扩展、快速对等内存访问
+- <strong>RDMA 平面</strong>（scale-out）：跨超级节点通信，基于 RoCE
+- <strong>VPC 平面</strong>（数据中心网络）：管理控制、持久化存储访问</p>
+<p><strong>昇腾 910 芯片</strong>：
+- 双 die 封装，每个 die 24 个 AI Cube（AIC）核 + 48 个 AI Vector（AIV）核
+- 支持 FP16/BF16 和 INT8 计算
+- 8 个 on-package 内存栈
+- 每个 die 有 7 个高速收发器连接 UB 平面 + 1 个 RDMA 接口</p>
+<p><strong>UB Switch 系统</strong>：
+- 12 个计算机架 + 4 个通信机架
+- 两级交换（L1 机板级 + L2 机架级），7 个独立子平面
+- 非阻塞设计，L2 不过订阅</p>
+<h3 id="2-cloudmatrix-infer">2. CloudMatrix-Infer 服务架构</h3>
+<p><strong>核心创新：PDC（Prefill-Decode-Caching）分离式对等服务架构</strong></p>
+<p>将 LLM 推理分解为三个独立子系统：
+- <strong>Prefill 集群</strong>：处理输入 prompt，生成首个输出 token 和初始 KV cache。每个实例 16 NPU（32 dies），EP32 并行。
+- <strong>Decode 集群</strong>：自回归生成后续 token。每个实例 160 NPU（320 dies），EP320 并行。每个 NPU die 仅承载 1 个专家，降低 MoE 执行延迟。
+- <strong>Caching 集群</strong>：基于解耦内存池的 UB 连接缓存层，提供上下文缓存（KV cache 复用）和模型缓存（加速模型加载）。</p>
+<p><strong>与 KVCache-centric 架构（如 NVIDIA Dynamo、Mooncake）的对比</strong>：
+- KVCache-centric：请求调度与 KV cache 局域性紧密耦合，需要亲和性感知调度，复杂度高。
+- 对等架构（本方案）：所有 NPU 可均匀访问共享解耦内存池，调度与数据局域性解耦，实现轻量无状态调度，简化调度逻辑，提升缓存效率和资源利用率。</p>
+<h3 id="3-lep">3. 大规模专家并行（LEP）+ 融合通信算子</h3>
+<p><strong>关键设计</strong>：
+- <strong>EP320</strong>：decode 阶段支持 320 路专家并行，每个 NPU die 承载 1 个专家，包含 32 个共享专家 + 256 个路由专家 + 32 个冗余路由专家（用于 EPLB 负载均衡）。
+- <strong>FusedDispatch 和 FusedCombine</strong>：
+  - 用 send-receive 原语替代 all-to-all 通信
+  - <strong>AIV-Direct</strong>：AIV 核直接写入远端 NPU 内存，绕过 SDMA，消除启动开销
+  - <strong>早期量化</strong>：在 dispatch 阶段将 BF16 数据量化为 INT8（7.5KB/token），减少通信量
+  - <strong>静态预分配共享内存</strong>：避免动态内存分配和 CPU-NPU 同步开销，双缓冲避免竞争
+  - <strong>数据发送流水线</strong>：将 copy → 量化/计算偏移 → 远端写入 三阶段流水化</p>
+<h3 id="4-mla">4. MLA 优化</h3>
+<ul>
+<li><strong>MLAProlog</strong>：融合 RMSNorm、Q/K/V 投影、RoPE 等多个小算子为单一算子，支持 AIC-AIV 并行流水</li>
+<li><strong>Fused Attention（FA）</strong>：融合 FlashAttention 与相邻数据整形操作</li>
+<li><strong>NZ 格式 KV Cache</strong>：原生以 NZ 格式存储 KV cache，避免格式转换开销</li>
+<li><strong>MTP 感知分块（BSND 布局）</strong>：从 BNSD 切换到 BSND，动态沿 B 和 S 轴分块，恢复 MTP 下的负载均衡</li>
+</ul>
+<h3 id="5">5. 微批次流水线</h3>
+<p><strong>Decode 阶段</strong>：
+- 两个交错执行流（Stream 0: Attention 路径，16 AIC + 32 AIV；Stream 1: MoE 路径，8 AIC + 16 AIV）
+- 不对称资源分配使两流延迟平衡（~600μs），实现微批次完美重叠
+- 延迟增益 5.8%-9.4%（相比无微批次），因 UB 平面本身 MoE 通信开销低，增益上限受限</p>
+<p><strong>Prefill 阶段</strong>：
+- 微批次流水线将轻量计算任务卸载到 AIV，SDMA 引擎处理批量数据传输
+- 吞吐量提升 23%-31%，每层延迟降低约 24%</p>
+<h3 id="6-token-mtp">6. 多 Token 预测（MTP）支持</h3>
+<ul>
+<li>DeepSeek-R1 的推测解码技术，每步预测 k 个 token 并验证</li>
+<li>解决 MTP 导致的 pipeline break 问题（每个图调度引入 0.6-0.8ms 启动延迟）</li>
+<li>启用 MTP 后 decode 吞吐量提升 6%-49%（在 70% 接受率下，每步平均 1.7 token）</li>
+</ul>
+<h3 id="7-ub-ems">7. UB 驱动的分布式缓存（EMS）</h3>
+<ul>
+<li><strong>解耦内存池</strong>：所有计算节点的 CPU DRAM 通过 UB 网络形成统一内存池</li>
+<li><strong>上下文缓存</strong>：复用历史 KV cache 块，50% 复用率可使 prefill 吞吐量提升 1.42×，90% 提升 2.28×</li>
+<li><strong>模型缓存</strong>：加速模型块加载，减少冷启动延迟</li>
+<li>UB 平面相比 VPC 平面缓存访问性能提升 1.52×，TTFT 在 50% 复用率下降低 861ms（34%）</li>
+</ul>
+<h3 id="8-int8">8. INT8 量化</h3>
+<ul>
+<li>在昇腾 910 上实现 INT8 量化，通过 INT8 精度实现接近 FP8 的计算效率</li>
+<li>量化模型权重和激活值，减少内存占用、计算开销和内存带宽需求</li>
+</ul>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">实验环境</h3>
+<ul>
+<li>华为 CloudMatrix384 超级节点（ModelArts Lite 集群模式）</li>
+<li>256 个昇腾 910 NPU + 鲲鹏 CPU</li>
+<li>DeepSeek-R1 671B 模型，INT8 量化</li>
+</ul>
+<h3 id="_8">整体性能</h3>
+<h4 id="prefill">Prefill 吞吐量</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Batch</th>
+<th>Input Length</th>
+<th>Throughput (tokens/s)</th>
+<th>Throughput/TFLOPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeepSeek (H800 Blog)</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>4,026</td>
+<td>2.03</td>
+</tr>
+<tr>
+<td>SGLang (H100 Default)</td>
+<td>16,384</td>
+<td>4,096</td>
+<td>6,288</td>
+<td>3.18</td>
+</tr>
+<tr>
+<td><strong>CloudMatrix-Infer (Default)</strong></td>
+<td>16,384</td>
+<td>4,096</td>
+<td>5,655</td>
+<td><strong>3.76</strong></td>
+</tr>
+<tr>
+<td>DeepSeek (H800 Profile)</td>
+<td>16,384</td>
+<td>4,096</td>
+<td>7,839</td>
+<td>3.96</td>
+</tr>
+<tr>
+<td>SGLang (H100 Perfect EPLB)</td>
+<td>16,384</td>
+<td>4,096</td>
+<td>7,417</td>
+<td>3.75</td>
+</tr>
+<tr>
+<td><strong>CloudMatrix-Infer (Perfect EPLB)</strong></td>
+<td>16,384</td>
+<td>4,096</td>
+<td><strong>6,688</strong></td>
+<td><strong>4.45</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="decode-tpot-50ms">Decode 吞吐量（TPOT &lt;50ms）</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Batch</th>
+<th>KV Cache</th>
+<th>TPOT (ms)</th>
+<th>Throughput (tokens/s)</th>
+<th>Throughput/TFLOPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeepSeek (H800 Blog)</td>
+<td>N/A</td>
+<td>4,989</td>
+<td>~50.0</td>
+<td>1,850</td>
+<td>0.93</td>
+</tr>
+<tr>
+<td>DeepSeek (H800 Profile)</td>
+<td>128</td>
+<td>4,096</td>
+<td>~50.2</td>
+<td>2,325</td>
+<td>1.17</td>
+</tr>
+<tr>
+<td>SGLang (H100 Simu. MTP)</td>
+<td>128</td>
+<td>4,000</td>
+<td>~55.6</td>
+<td>2,172</td>
+<td>1.10</td>
+</tr>
+<tr>
+<td><strong>CloudMatrix-Infer</strong></td>
+<td>96</td>
+<td>4,096</td>
+<td>49.4</td>
+<td>1,943</td>
+<td><strong>1.29</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="tpot-slo-decode">不同 TPOT SLO 下的 Decode 吞吐</h4>
+<table>
+<thead>
+<tr>
+<th>TPOT SLO (ms)</th>
+<th>Prompt Length</th>
+<th>Output Length</th>
+<th>Batch</th>
+<th>TPOT (ms)</th>
+<th>Throughput (tokens/s/NPU)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>1,024</td>
+<td>1,024</td>
+<td>128</td>
+<td>46.8</td>
+<td>2,733</td>
+</tr>
+<tr>
+<td>50</td>
+<td>2,048</td>
+<td>256</td>
+<td>112</td>
+<td>47.4</td>
+<td>2,360</td>
+</tr>
+<tr>
+<td>50</td>
+<td>4,096</td>
+<td>256</td>
+<td>96</td>
+<td>49.4</td>
+<td>1,943</td>
+</tr>
+<tr>
+<td>30</td>
+<td>4,096</td>
+<td>256</td>
+<td>24</td>
+<td>24.6</td>
+<td>974</td>
+</tr>
+<tr>
+<td>15</td>
+<td>4,096</td>
+<td>256</td>
+<td>8</td>
+<td>14.9</td>
+<td>538</td>
+</tr>
+</tbody>
+</table>
+<h3 id="int8">精度评估（INT8 量化）</h3>
+<p>在 16 个基准测试上与 DeepSeek-R1 API 和官方报告对比，INT8 量化版本精度基本持平：</p>
+<table>
+<thead>
+<tr>
+<th>基准</th>
+<th>DeepSeek-R1 (INT8)</th>
+<th>DeepSeek-R1 API</th>
+<th>DeepSeek-R1 Report</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMLU (Pass@1)</td>
+<td>90.82</td>
+<td>91.05</td>
+<td>90.8</td>
+</tr>
+<tr>
+<td>MMLU-Pro (EM)</td>
+<td>83.91</td>
+<td>83.82</td>
+<td>84.0</td>
+</tr>
+<tr>
+<td>DROP (3-shot F1)</td>
+<td>90.42</td>
+<td>91.02</td>
+<td>92.2</td>
+</tr>
+<tr>
+<td>GPQA Diamond (Pass@1)</td>
+<td>71.66</td>
+<td>71.77</td>
+<td>71.5</td>
+</tr>
+<tr>
+<td>AIME 2024 (Pass@1)</td>
+<td>78.96</td>
+<td>78.12</td>
+<td>79.8</td>
+</tr>
+<tr>
+<td>MATH-500 (Pass@1)</td>
+<td>94.46</td>
+<td>94.62</td>
+<td>–</td>
+</tr>
+<tr>
+<td>LiveCodeBench (Pass@1-COT)</td>
+<td>63.80</td>
+<td>63.44</td>
+<td>65.9</td>
+</tr>
+<tr>
+<td>HumanEval (Pass@1-COT)</td>
+<td>91.83</td>
+<td>91.85</td>
+<td>–</td>
+</tr>
+<tr>
+<td>CLUEWSC (Test)</td>
+<td>94.67</td>
+<td>94.98</td>
+<td>–</td>
+</tr>
+<tr>
+<td>C-Eval (EM)</td>
+<td>82.05</td>
+<td>79.92</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">消融实验</h3>
+<h4 id="_10">微批次流水线</h4>
+<ul>
+<li>Decode：吞吐量提升 5.8%-9.4%，每层延迟降低约 10%</li>
+<li>Prefill：吞吐量提升 23%-31%，每层延迟降低约 24%</li>
+</ul>
+<h4 id="mtp">MTP</h4>
+<ul>
+<li>启用 MTP（1 个推测 token，70% 接受率）后 decode 吞吐量提升 6%-49%</li>
+<li>每层执行延迟增加约 44%，但净吞吐量仍然提升</li>
+</ul>
+<h4 id="_11">上下文缓存</h4>
+<ul>
+<li>EMS + UB 在 90% 复用率下 prefill 吞吐量提升 2.28×，TTFT 降低 59%</li>
+<li>UB 平面比 VPC 平面缓存访问性能提升 1.52×</li>
+</ul>
+<h3 id="vs-deepseek-deepep-on-h800">通信算子性能（vs DeepSeek DeepEP on H800）</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>EP=8</th>
+<th>CM384 延迟</th>
+<th>H800 延迟</th>
+<th>CM384 带宽</th>
+<th>H800 带宽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispatch</td>
+<td>8</td>
+<td>116μs</td>
+<td>163μs</td>
+<td>71 GB/s</td>
+<td>46 GB/s</td>
+</tr>
+<tr>
+<td>Dispatch</td>
+<td>256</td>
+<td>152μs</td>
+<td>194μs</td>
+<td>54 GB/s</td>
+<td>39 GB/s</td>
+</tr>
+<tr>
+<td>Combine</td>
+<td>8</td>
+<td>118μs</td>
+<td>318μs</td>
+<td>131 GB/s</td>
+<td>46 GB/s</td>
+</tr>
+<tr>
+<td>Combine</td>
+<td>256</td>
+<td>149μs</td>
+<td>360μs</td>
+<td>103 GB/s</td>
+<td>40 GB/s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mla">MLA 算子性能</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>CM384</th>
+<th>H800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算利用率（BF16）</td>
+<td>65.4%</td>
+<td>66.7%</td>
+</tr>
+<tr>
+<td>内存带宽利用率</td>
+<td>84.1%</td>
+<td>89.6%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="int8-gemm">INT8 GEMM 性能</h3>
+<ul>
+<li>计算利用率 77.4%-82.7%，内存带宽 195-327 GB/s</li>
+<li>主要为计算密集型操作，非内存带宽瓶颈</li>
+</ul>
+<hr />
+<h2 id="_12">优势</h2>
+<ol>
+<li><strong>全对等互联架构</strong>：UB 网络使 384 个 NPU 形成逻辑统一的紧耦合计算实体，消除传统层级架构的带宽不均匀问题。</li>
+<li><strong>PDC 分离式服务</strong>：将 prefill/decode/caching 解耦，各子系统独立可扩展，调度逻辑简化，资源利用率提升。</li>
+<li><strong>大规模专家并行（EP320）</strong>：每个 NPU die 仅承载 1 个专家，最小化串行执行，降低 MoE decode 延迟。</li>
+<li><strong>融合通信算子</strong>：AIV-Direct 通信 + 早期量化 + 静态预分配 + 数据发送流水线，显著降低 MoE 通信延迟。</li>
+<li><strong>硬件感知优化</strong>：针对昇腾 910 架构设计的 MLAProlog、FusedAttention、NZ 格式 KV Cache、MTP 感知分块等。</li>
+<li><strong>INT8 量化无损精度</strong>：在 16 个基准测试上与官方 API 精度相当。</li>
+<li><strong>高效的吞吐-延迟权衡</strong>：在严格 15ms TPOT 约束下仍可维持 538 tokens/s/NPU。</li>
+<li><strong>计算效率领先</strong>：prefill 4.45 tokens/s/TFLOPS 和 decode 1.29 tokens/s/TFLOPS 均超越 NVIDIA H100/H800 上的 SGLang 和 DeepSeek 方案。</li>
+</ol>
+<hr />
+<h2 id="_13">局限</h2>
+<ol>
+<li><strong>平台特定</strong>：方案深度绑定华为 CloudMatrix384 和昇腾 910 硬件，无法直接移植到其他平台。</li>
+<li><strong>大规模 EP 的扩展瓶颈</strong>：在大 EP 度数下，CANN EP 实现的有效带宽显著下降（大 EP 度数时的带宽退化）。</li>
+<li><strong>微批次增益受限</strong>：因 UB 平面本身 MoE 通信开销低，微批次流水线的延迟隐藏效果相比 NVIDIA 平台（35%）较为有限（5.8%-9.4%）。</li>
+<li><strong>评测范围有限</strong>：仅评测了 DeepSeek-R1 模型，未涵盖其他 MoE 模型或稠密模型。</li>
+<li><strong>默认 EPLB 不完美</strong>：默认配置下 prefill 吞吐量低于 Perfect EPLB，表明负载均衡算法仍有改进空间。</li>
+<li><strong>评测基准未完全覆盖</strong>：排除了 AlpacaEval 2.0（依赖 GPT-4）、Arena-Hard（依赖 GPT-4）和 CodeForces（缺少自动化评估脚本）。</li>
+<li><strong>代码未开源</strong>：无公开代码库，可复现性受限。</li>
+<li><strong>未来方向的挑战</strong>：VPC 和 RDMA 平面统一、更大规模超级节点、CPU 解耦等需要更多工程实践验证。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>LLM 推理部署优化（deployment）</strong>：本文是该方向的典型代表，涉及推理系统的架构设计、资源调度、性能优化。</li>
+<li><strong>MoE 模型的高效推理</strong>：大规模专家并行、通信优化、负载均衡等，与 DeepSeek-R1 等 MoE 模型的部署紧密相关。</li>
+<li><strong>Prefill-Decode 分离架构</strong>：与 DistServe（OSDI'24）、Mooncake（FAST'25）等分离式架构研究相关。</li>
+<li><strong>KV Cache 管理与上下文缓存</strong>：与 CachedAttention（ATC'24）等缓存优化研究相关。</li>
+<li><strong>低精度量化</strong>：INT8 量化与高效推理，与量化技术研究相关。</li>
+<li><strong>AI 基础设施/数据中心架构</strong>：与 UB-Mesh 等下一代数据中心网络研究相关。</li>
+<li><strong>推测解码（MTP）</strong>：与投机解码和加速生成相关。</li>
+<li><strong>硬件-软件协同设计</strong>：昇腾 910 的架构特点与软件优化的协同设计。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

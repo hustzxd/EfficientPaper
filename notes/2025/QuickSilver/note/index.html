@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization - Efficient Paper</title>
+    <title>QuickSilver —— 通过动态 Token 停止、KV 跳过、上下文 Token 融合和自适应 Matryoshka 量化加速 LLM 推理 - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization";
+        var mkdocs_page_name = "QuickSilver \u2014\u2014 \u901a\u8fc7\u52a8\u6001 Token \u505c\u6b62\u3001KV \u8df3\u8fc7\u3001\u4e0a\u4e0b\u6587 Token \u878d\u5408\u548c\u81ea\u9002\u5e94 Matryoshka \u91cf\u5316\u52a0\u901f LLM \u63a8\u7406";
         var mkdocs_page_input_path = "notes/2025/QuickSilver/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization</li>
+      <li class="breadcrumb-item active">QuickSilver —— 通过动态 Token 停止、KV 跳过、上下文 Token 融合和自适应 Matryoshka 量化加速 LLM 推理</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,30 +159,306 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="quicksilver-speeding-up-llm-inference-through-dynamic-token-halting-kv-skipping-contextual-token-fusion-and-adaptive-matryoshka-quantization">QuickSilver -- Speeding up LLM Inference through Dynamic Token Halting, KV Skipping, Contextual Token Fusion, and Adaptive Matryoshka Quantization</h1>
+                <h1 id="quicksilver-token-kv-token-matryoshka-llm">QuickSilver —— 通过动态 Token 停止、KV 跳过、上下文 Token 融合和自适应 Matryoshka 量化加速 LLM 推理</h1>
 <blockquote>
 <p>Danush Khanna, Aditya Kumar Guru, Srivarshinee Sridhar, Zidan Ahmed, Rubhav Bahirwani, Meetu Malhotra, Vinija Jain, Aman Chadha, Amitava Das, Kripabandhu Ghosh</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Inference accounts for the majority of latency and energy consumption in
-large language model (LLM) deployments, often exceeding 90% of total cost.
-While training-time efficiency has seen extensive progress, runtime
-optimization remains a key bottleneck, particularly under autoregressive
-decoding. Existing approaches -- such as pruning, quantization, early exits,
-and speculative decoding -- often require retraining, architectural changes, or
-disrupt decoding compatibility. We introduce QuickSilver, a modular,
-token-level framework that enables semantic adaptivity at inference time
-without altering model weights or structure. QuickSilver integrates four
-synergistic mechanisms:
-  (i) Dynamic Token Halting, which halts computation for tokens with converged
-representations; (ii) KV Cache Skipping, which selectively suppresses memory
-writes to reduce attention overhead; and (iii) Contextual Token Fusion, which
-collapses redundant tokens into shared paths to shrink sequence length.
-  Unlike speculative decoding or MoE routing, QuickSilver operates entirely on
-frozen, dense models and requires no auxiliary networks. Applied to GPT-2 and
-Llama-2 across WikiText-103 and C4, QuickSilver achieves up to 39.6% FLOP
-reduction with negligible perplexity degradation (&lt;=0.2).</p>
+<hr />
+<blockquote>
+<p><strong>⚠️ 本 Note 由 AI Agent 自动生成（Hermes Agent），基于论文全文阅读与分析。生成时间：2025-06-28。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>QuickSilver 是一种纯推理时、零样本、模型无关的 token 级推理加速框架，通过四种协同机制（动态 Token 停止、KV 缓存跳过、上下文 Token 融合和自适应 Matryoshka 量化），在不修改模型权重或架构的前提下，实现最高 39.6% 的 FLOP 降低，同时保持困惑度退化 ≤0.2。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>推理占据了大语言模型（LLM）部署中大部分的延迟和能耗，通常超过总成本的 90%。虽然训练时效率已取得显著进展，但运行时优化仍然是关键瓶颈，尤其是在自回归解码中。现有方法——如剪枝、量化、早退出和投机解码——通常需要重新训练、架构更改或会破坏解码兼容性。我们提出了 QuickSilver，一个模块化的 token 级框架，在推理时实现语义自适应性，且无需修改模型权重或结构。QuickSilver 集成了四种协同机制：(i) 动态 Token 停止，对表示已收敛的 token 终止计算；(ii) KV 缓存跳过，选择性地抑制内存写入以减少注意力开销；(iii) 上下文 Token 融合，将冗余 token 折叠到共享路径中以缩短序列长度。与投机解码或 MoE 路由不同，QuickSilver 完全在冻结的稠密模型上运行，不需要辅助网络。在 GPT-2 和 Llama-2 上，QuickSilver 在 WikiText-103 和 C4 数据集上实现了最高 39.6% 的 FLOP 降低，同时困惑度退化可忽略不计（≤0.2）。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">推理效率的紧迫性</h3>
+<p>LLM 在许多 NLP 任务中已超越人类水平，但推理（而非训练）已成为部署的主要瓶颈。现实世界使用模式使推理负责超过 90% 的总能耗和计算成本。在实时应用（如聊天机器人、翻译工具）中，LLM 要求亚秒级 token 延迟，即使轻微延迟也会降低用户体验。</p>
+<h3 id="_5">现有方法的局限</h3>
+<table>
+<thead>
+<tr>
+<th>方法类别</th>
+<th>代表工作</th>
+<th>主要局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>早退出</td>
+<td>PABEE、FastBERT</td>
+<td>需要训练时协调、需要退出分类器</td>
+</tr>
+<tr>
+<td>MoE 路由</td>
+<td>Switch Transformer</td>
+<td>需要重新训练和架构变更</td>
+</tr>
+<tr>
+<td>投机解码</td>
+<td>Speculative Decoding</td>
+<td>需要双模型同步、增加架构复杂度</td>
+</tr>
+<tr>
+<td>剪枝</td>
+<td>LayerDrop</td>
+<td>需要重新训练、需要模型修改</td>
+</tr>
+<tr>
+<td>量化</td>
+<td>SmoothQuant、AWQ</td>
+<td>需要训练时量化感知</td>
+</tr>
+<tr>
+<td>Token 合并</td>
+<td>Sparse Merger</td>
+<td>有时需要重新训练</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quicksilver">QuickSilver 的差异化定位</h3>
+<p>QuickSilver 的核心创新在于：
+- <strong>纯运行时</strong>：不需要重新训练或修改模型架构
+- <strong>模型无关</strong>：适用于任何冻结的 Transformer 模型
+- <strong>Token 级别</strong>：在 token 级别进行细粒度优化
+- <strong>可组合</strong>：四种机制可堆叠使用，效果叠加
+- <strong>与投机解码互补</strong>：投机解码减少生成步数，QuickSilver 减少每步计算量</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1-token-dynamic-token-halting-dth">1. 动态 Token 停止（Dynamic Token Halting, DTH）</h3>
+<p><strong>核心思想</strong>：标准 Transformer 推理中，每个 token 即使表示已稳定也必须经过所有层。DTH 通过检测语义收敛，在 token 表示稳定后提前终止其计算。</p>
+<p><strong>收敛信号</strong>：定义 token t 在层 ℓ 的 L2 更新范数：
+<script type="math/tex; mode=display">\Delta^{(\ell)}_t = \|h^{(\ell)}_t - h^{(\ell-1)}_t\|_2</script>
+</p>
+<p><strong>停止策略</strong>：给定阈值 τ &gt; 0，token t 在层 ℓ 停止当 <script type="math/tex">\Delta^{(\ell)}_t < \tau</script>：
+- <script type="math/tex">\Delta^{(\ell)}_t \geq \tau</script> → 继续（H=1）
+- <script type="math/tex">\Delta^{(\ell)}_t < \tau</script> → 停止（H=0）</p>
+<p><strong>覆盖逻辑</strong>：
+- <strong>强制停止</strong>：无论 Δ 值如何都停止（用于延迟关键场景）
+- <strong>完全处理</strong>：绕过停止（用于特殊 token 或领域敏感词）</p>
+<p><strong>实验参数</strong>：
+- <script type="math/tex">\tau_{drift} = 0.045</script>
+- <script type="math/tex">\tau_{halt} = 1.15</script> bits</p>
+<p><strong>计算影响</strong>：一旦停止，token 从第 ℓ+1 层到 L 层的计算和内存流中被移除，显著降低 FLOP。</p>
+<h3 id="2-kv-kv-cache-skipping">2. KV 缓存跳过（KV Cache Skipping）</h3>
+<p><strong>核心思想</strong>：Transformer 模型在每个注意力层维护 KV 缓存，无论语义效用如何都写入每个 token 的投影。KV 跳过利用 token 停止信号，跳过已收敛 token 的冗余 KV 更新。</p>
+<p><strong>KV 计算</strong>：在层 ℓ：
+<script type="math/tex; mode=display">K^{(\ell)} = [k^{(\ell)}_1, ..., k^{(\ell)}_T]^\top, \quad V^{(\ell)} = [v^{(\ell)}_1, ..., v^{(\ell)}_T]^\top</script>
+</p>
+<p><strong>跳过逻辑</strong>：定义 KV 跳过掩码：
+<script type="math/tex; mode=display">S^{(\ell)}_t = \begin{cases} 0 & \text{if } H^{(\ell)}_t = 0 \text{ (token 已停止)} \\ 1 & \text{otherwise} \end{cases}</script>
+</p>
+<p>当 <script type="math/tex">S^{(\ell)}_t = 0</script> 时，跳过 KV 更新：
+<script type="math/tex; mode=display">k^{(\ell)}_t \leftarrow S^{(\ell)}_t \cdot k^{(\ell)}_t, \quad v^{(\ell)}_t \leftarrow S^{(\ℓ)}_t \cdot v^{(\ell)}_t</script>
+</p>
+<p><strong>对注意力的影响</strong>：
+<script type="math/tex; mode=display">\text{Attention}(u, t, \ell) = \frac{(q^{(\ell)}_u)^\top (S^{(\ell)}_t \cdot k^{(\ell)}_t)}{\sqrt{d}}</script>
+</p>
+<p>如果 <script type="math/tex">S^{(\ell)}_t = 0</script>，则 <script type="math/tex">k^{(\ell)}_t = 0</script>，token t 实际上从注意力窗口中被移除。</p>
+<p><strong>与 DTH 的协同</strong>：使用 DTH 时，KV 跳过可贡献最高 40% FLOP 降低，同时困惑度退化可忽略。</p>
+<h3 id="3-token-contextual-token-fusion">3. 上下文 Token 融合（Contextual Token Fusion）</h3>
+<p><strong>核心思想</strong>：通过合并语义相似的 token（表示已收敛到几乎相同的表示）来减少深度 Transformer 层中的冗余。</p>
+<p><strong>融合触发</strong>：定义 token t 和 u 在层 ℓ 的隐藏状态 L2 距离：
+<script type="math/tex; mode=display">\|h^{(\ell)}_t - h^{(\ell)}_u\|_2 < \tau_{fuse}</script>
+</p>
+<p>其中 <script type="math/tex">\tau_{fuse}</script> 是可调的相似性阈值。融合仅限于相邻 token 或通过图/注意力推导的邻近 token，以保持语义保真度。</p>
+<p><strong>融合表示</strong>：将 token {t1, ..., tk} 替换为单一的超级 token <script type="math/tex">\tilde{e}_t</script>，其表示为：
+<script type="math/tex; mode=display">h^{(\ell)}_{\tilde{e}_t} = \frac{\sum_{i=1}^{k} \alpha_{t_i} h^{(\ell)}_{t_i}}{\sum_{i=1}^{k} \alpha_{t_i}}, \quad \alpha_{t_i} \propto \text{score}(t_i, \ell)</script>
+</p>
+<p>其中 α 可以反映注意力权重、token 概率或均匀平均。</p>
+<p><strong>下游传播</strong>：从层 ℓ+1 开始，只有 <script type="math/tex">\tilde{e}_t</script> 贡献 key/value：
+<script type="math/tex; mode=display">k^{(\ell+1)}_{\tilde{e}_t} = W^{(\ell+1)}_K h^{(\ell)}_{\tilde{e}_t}, \quad v^{(\ell+1)}_{\tilde{e}_t} = W^{(\ell+1)}_V h^{(\ell)}_{\tilde{e}_t}</script>
+</p>
+<p><strong>效率收益</strong>：融合减少序列长度并缩小深层的计算/内存成本。与 token 停止和 KV 跳过结合时，显著降低 FLOP 且质量损失极小。</p>
+<h3 id="4-matryoshka-adaptive-matryoshka-quantization-amq">4. 自适应 Matryoshka 量化（Adaptive Matryoshka Quantization, AMQ）</h3>
+<p><strong>核心思想</strong>：一种熵感知方法，动态调整 token 级位宽以实现高效压缩。与均匀量化不同，它更强烈地压缩可预测的 token，同时保留复杂 token 的精度。</p>
+<p><strong>熵估计</strong>：对每个 token t，计算其 softmax 归一化潜在分布的熵：
+<script type="math/tex; mode=display">H(t) = -\sum_i p_i \log p_i</script>
+</p>
+<p><strong>精度分配</strong>：AMQ 为 token t 分配位宽 <script type="math/tex">b_t</script>：
+<script type="math/tex; mode=display">b_t = \begin{cases} 8 & \text{if } H(t) > \tau_{high} \\ 4 & \text{if } \tau_{low} \leq H(t) \leq \tau_{high} \\ 2 & \text{if } H(t) < \tau_{low} \end{cases}</script>
+</p>
+<p><strong>决策层</strong>：选择中间网络层（如 30 层中的第 15 层）来计算 H(t) 和确定 <script type="math/tex">b_t</script>。早期层缺乏足够的语义上下文，而晚期层留下最小的节省空间。</p>
+<p><strong>效率收益</strong>：一旦分配位宽，后续矩阵乘法和内存存储在混合精度约束下运行，提供 FLOP 和激活内存的显著节省，同时困惑度影响可忽略。</p>
+<h3 id="5-halting-vs-merging">5. Halting vs. Merging 决策边界</h3>
+<p>QuickSilver 在运行时通过两种互补策略减少 token：
+- <strong>Halting</strong>：当 token 低熵且低表示漂移时（两者都满足时）
+- <strong>Merging</strong>：当 token 语义冗余时（与相邻 token 相似度高时）</p>
+<p><strong>决策优先级</strong>：Halting 优先，因为它完全避免计算，而合并仍会产生成熟的下游计算。</p>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：GPT-2 (774M)、Llama-2 (7B)</li>
+<li><strong>数据集</strong>：WikiText-103、C4</li>
+<li><strong>硬件</strong>：NVIDIA A100 (40GB)，PyTorch 2.1 + CUDA 11.8，FP16</li>
+<li><strong>评估维度</strong>：速度提升（FLOP 降低）和精度保持（困惑度退化）</li>
+</ul>
+<h3 id="_9">主要结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>最高 FLOP 降低</strong></td>
+<td>39.6%</td>
+<td>在 GPT-2 和 Llama-2 上</td>
+</tr>
+<tr>
+<td><strong>最高加速比</strong></td>
+<td>55%</td>
+<td>累积添加所有模块到 GPT-2</td>
+</tr>
+<tr>
+<td><strong>困惑度退化</strong></td>
+<td>≤0.2</td>
+<td>可忽略不计</td>
+</tr>
+<tr>
+<td><strong>推理速度</strong></td>
+<td>0.40× 基线</td>
+<td>相比量化基线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gluesuperglue-2">GLUE/SuperGLUE 任务精度（表 2）</h3>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>类型</th>
+<th>指标</th>
+<th>基线</th>
+<th>QuickSilver</th>
+<th>Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MNLI (Matched)</td>
+<td>NLI</td>
+<td>Accuracy</td>
+<td>84.5</td>
+<td>83.9</td>
+<td>-0.6</td>
+</tr>
+<tr>
+<td>QNLI</td>
+<td>QA</td>
+<td>Accuracy</td>
+<td>91.2</td>
+<td>90.7</td>
+<td>-0.5</td>
+</tr>
+<tr>
+<td>SST-2</td>
+<td>情感</td>
+<td>Accuracy</td>
+<td>94.8</td>
+<td>94.6</td>
+<td>-0.2</td>
+</tr>
+<tr>
+<td>CoLA</td>
+<td>语法</td>
+<td>Matthews Corr.</td>
+<td>60.1</td>
+<td>59.1</td>
+<td>-1.0</td>
+</tr>
+<tr>
+<td>BoolQ</td>
+<td>Boolean QA</td>
+<td>Accuracy</td>
+<td>78.4</td>
+<td>77.6</td>
+<td>-0.8</td>
+</tr>
+<tr>
+<td>RTE</td>
+<td>蕴含</td>
+<td>Accuracy</td>
+<td>74.0</td>
+<td>73.1</td>
+<td>-0.9</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">消融实验（各模块单独贡献）</h3>
+<ul>
+<li><strong>动态 Token 停止 (DTH)</strong>：贡献 18-24% 的延迟降低</li>
+<li><strong>KV 缓存跳过</strong>：单独效果较温和，但增强 DTH 的效果</li>
+<li><strong>上下文 Token 融合</strong>：贡献 18-24% 的延迟降低</li>
+<li><strong>自适应 Matryoshka 量化</strong>：主要改善内存和 I/O 效率，对精度影响最小</li>
+<li><strong>累积效果</strong>：添加所有模块后实现 55% 加速，仅增加 0.21 困惑度</li>
+</ul>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>纯推理时优化</strong>：无需重新训练或架构变更，直接应用于冻结模型</li>
+<li><strong>模型无关</strong>：适用于 encoder-only (BERT)、decoder-only (GPT)、encoder-decoder (T5) 等任何 Transformer 模型</li>
+<li><strong>可组合性</strong>：四种机制正交，可堆叠使用，效果叠加</li>
+<li><strong>与投机解码互补</strong>：投机解码减少生成步数，QuickSilver 减少每步计算量，两者可组合</li>
+<li><strong>黑盒模型适用</strong>：适用于闭源模型或 API 服务，无需微调</li>
+<li><strong>能源节约</strong>：推理能耗降低 30-45%，支持低碳 AI 部署</li>
+<li><strong>流式推理兼容</strong>：支持自回归生成场景，适合聊天机器人、翻译系统</li>
+<li><strong>理论保证</strong>：提供 Lipschitz 连续性下的误差边界分析</li>
+<li><strong>部署简单</strong>：通过 tensor mask 实现，无需分支控制流，GPU 利用率高</li>
+<li><strong>可与剪枝/蒸馏结合</strong>：与结构化剪枝或知识蒸馏互补，实现复合加速</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>缺乏训练时耦合</strong>（4/5 严重度）：不与模型参数联合训练，无法利用端到端自适应</li>
+<li><strong>阈值敏感性</strong>（3/5 严重度）：L2 漂移和熵阈值依赖手动定义，缺乏自动校准</li>
+<li><strong>粒度与并行度权衡</strong>（2/5 严重度）：Token 级自适应引入非均匀执行路径，但开销较小</li>
+<li><strong>量化范围</strong>（3/5 严重度）：当前量化策略较浅，静态从第 15 层开始，使用离散熵桶</li>
+<li><strong>边缘情况语义退化</strong>（3/5 严重度）：某些长程共指、稀有领域表达或诗歌/哲学结构可能受影响</li>
+<li><strong>实验规模有限</strong>：主要在 GPT-2 和 Llama-2 上验证，缺少更大规模模型的实验</li>
+<li><strong>缺少与竞品的直接对比</strong>：缺少与 FlashAttention、vLLM 等推理优化库的直接性能对比</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv">与 KV 缓存相关</h3>
+<p>QuickSilver 的 KV 缓存跳过机制直接关联 <strong>kv_cache_quant</strong> 和 <strong>kv_cache_sparse</strong> 关键词：
+- <strong>KV Cache 量化</strong>：AMQ 的熵感知位宽分配可用于 KV 缓存压缩
+- <strong>KV Cache 稀疏化</strong>：KV 跳过通过抑制冗余 KV 写入实现稀疏化</p>
+<h3 id="_13">与高效推理相关的方向</h3>
+<ol>
+<li><strong>动态计算分配</strong>：QuickSilver 的 token 级自适应计算分配可与 LayerDrop、Early Exit 等方法结合</li>
+<li><strong>推理时压缩</strong>：与 SmoothQuant、AWQ 等量化方法互补</li>
+<li><strong>投机解码集成</strong>：QuickSilver 与投机解码正交，可实现复合加速</li>
+<li><strong>长序列优化</strong>：Token 融合减少有效序列长度，适合长上下文场景</li>
+<li><strong>边缘部署</strong>：通过降低计算量和内存需求，使大模型更适合边缘设备</li>
+</ol>
+<h3 id="_14">潜在改进方向</h3>
+<ul>
+<li><strong>学习型阈值</strong>：使用强化学习或贝叶斯方法自适应调整阈值</li>
+<li><strong>与 FlashAttention 集成</strong>：结合 FlashAttention 的 IO 感知优化</li>
+<li><strong>多模态扩展</strong>：将 token 级自适应推广到视觉、语音等模态</li>
+<li><strong>推理时对抗过滤</strong>：论文提出的未来扩展方向</li>
+<li><strong>Agentic 投机解码</strong>：论文提出的未来扩展方向</li>
+</ul>
+<hr />
+<h2 id="_15">参考文献</h2>
+<ul>
+<li>arXiv: <a href="http://arxiv.org/abs/2506.22396v1">2506.22396v1</a></li>
+<li>代码：<a href="https://anonymous.4open.science/r/Quicksilver/codes/kvc.py">https://anonymous.4open.science/r/Quicksilver/codes/kvc.py</a></li>
+<li>关键词：kv_cache_quant, kv_cache_sparse</li>
+<li>发表时间：2025年6月27日</li>
+<li>机构：Manipal University Jaipur, Vellore Institute of Technology, NIT Silchar, Harrisburg University of Science and Technology, Meta AI, Amazon AI, IISER Kolkata, BITS Pilani</li>
+</ul>
+<hr />
+<p><em>本 Note 由 AI Agent 自动生成，基于 arXiv 论文 2506.22396v1 的全文阅读与分析。内容可能存在偏差，请以原文为准。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

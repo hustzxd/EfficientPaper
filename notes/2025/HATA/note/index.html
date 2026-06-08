@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,28 +164,265 @@
 <p>Ping Gong, Jiawei Yi, Shengnan Wang, Juncheng Zhang, Zewen Jin, Ouxiang Zhou, Ruibo Liu, Guanbin Xu, Youhui Bai, Bowen Ye, Kun Yuan, Tong Yang, Gong Zhang, Renhai Chen, Feng Wu, Cheng Li</p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) have emerged as a pivotal research area, yet the
-attention module remains a critical bottleneck in LLM inference, even with
-techniques like KVCache to mitigate redundant computations. While various
-top-<script type="math/tex">k</script> attention mechanisms have been proposed to accelerate LLM inference by
-exploiting the inherent sparsity of attention, they often struggled to strike a
-balance between efficiency and accuracy. In this paper, we introduce HATA
-(Hash-Aware Top-<script type="math/tex">k</script> Attention), a novel approach that systematically integrates
-low-overhead learning-to-hash techniques into the Top-<script type="math/tex">k</script> attention process.
-Different from the existing top-k attention methods which are devoted to
-seeking an absolute estimation of qk score, typically with a great cost, HATA
-maps queries and keys into binary hash codes, and acquires the relative qk
-score order with a quite low cost, which is sufficient for realizing top-k
-attention. Extensive experiments demonstrate that HATA achieves up to
-7.2<script type="math/tex">\times</script> speedup compared to vanilla full attention while maintaining model
-accuracy. In addition, HATA outperforms the state-of-the-art top-<script type="math/tex">k</script> attention
-methods in both accuracy and efficiency across multiple mainstream LLM models
-and diverse tasks. HATA is open source at https://github.com/gpzlx1/HATA.</p>
-<p>HATA用于decoding时的加速，之前kv压缩的方法，比如snapkv用历史的结果预测当前结果，quest按照block pool预测block的重要性，seerattention通过训练的方法来预测重要性；</p>
-<p>HATA提出将QK映射为Hash Code，并实用xor 操作高效的判断K cache的重要性。</p>
-<p>映射Hash Code的过程涉及到可学习权重，需要一部分数据集进行学习</p>
-<p>和 HashAttention: Semantic Sparsity for Faster Inference 思路很像</p>
+<hr />
+<blockquote>
+<p><strong>⚠️ AI 生成声明</strong>：本 note 由 AI Agent（Hermes Agent）于 2025 年自动撰写生成，基于论文全文内容进行整理和分析。生成时间与 <code>update_time</code> 字段对应。内容可能不完全覆盖论文的所有细节，仅供参考。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>HATA 通过将 Query 和 Key 映射为二进制哈希码，利用可学习的哈希函数实现硬件高效的 Top-k 注意力机制，在保持模型精度的同时实现最高 7.2 倍的推理加速，显著优于 Loki、Quest 等现有 Top-k 注意力方法。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）已成为关键研究领域，但注意力模块仍是 LLM 推理的关键瓶颈，即使有 KVCache 等技术来减少冗余计算。虽然各种 Top-k 注意力机制已被提出以利用注意力的内在稀疏性加速 LLM 推理，但它们往往难以在效率和精度之间取得平衡。本文介绍了 HATA（Hash-Aware Top-k Attention），一种系统地将低开销的学习哈希技术融入 Top-k 注意力过程的新方法。与现有致力于精确估计 QK 分数（通常开销巨大）的 Top-k 注意力方法不同，HATA 将 Query 和 Key 映射为二进制哈希码，以极低的成本获取 QK 分数的相对顺序，这对于实现 Top-k 注意力已经足够。大量实验表明，HATA 在保持模型精度的同时，相比原始全注意力实现了最高 7.2 倍的加速。此外，HATA 在多个主流 LLM 模型和多样任务上，在精度和效率方面均优于现有最优 Top-k 注意力方法。HATA 已在 https://github.com/gpzlx1/HATA 开源。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<ul>
+<li><strong>KVCache 是 LLM 推理的主流范式</strong>，通过缓存 K/V 向量避免重复计算。然而，在长上下文序列和大 batch size 场景下，KVCache 的内存加载成为瓶颈——例如，处理 32K token 序列时注意力模块可占总推理时间的 70% 以上。</li>
+<li><strong>注意力瓶颈不仅来自计算复杂度</strong>，还来自内存带宽限制：每个解码步骤都需要加载整个 KVCache，产生大量数据搬运开销。</li>
+</ul>
+<h3 id="top-k">Top-k 注意力的现有局限</h3>
+<ol>
+<li><strong>低秩方法</strong>（如 Loki、InfiniGen）：通过在投影维度子集上计算点积降低开销，但需要保留足够维度以保证估计精度，性能提升有限。</li>
+<li><strong>块级方法</strong>（如 Quest、InfLLM）：将 Key 分组为连续块并估计块级 QK 分数上界，但粗粒度估计可能导致关键 Token 被排除，且选择整个块会加载不相关的 Key，浪费内存带宽。</li>
+</ol>
+<h3 id="_5">核心洞察</h3>
+<blockquote>
+<p><strong>关键假设</strong>：现有的 Top-k 注意力方法都假设精确的 QK 分数数值估计对于复制全注意力的效果至关重要。</p>
+</blockquote>
+<p><strong>HATA 挑战了这一假设</strong>，证明只需要<strong>相对 QK 分数排序</strong>（而非绝对数值大小）即可识别最相关的 Key。这将问题重新定义为<strong>轻量级序数比较任务</strong>（判断 <script type="math/tex">s_{qk_i} > s_{qk_j}</script>），而非数值回归任务，从而消除了昂贵的高保真分数近似需求。</p>
+<h3 id="_6">学习哈希的启示</h3>
+<p>学习哈希（Learning-to-Hash）广泛用于相似性检索任务（如图像搜索），可将高维连续向量映射为紧凑的二进制哈希码，同时保持相对相似性关系（相似向量具有较小的汉明距离）。这为 HATA 提供了理论基础。</p>
+<h3 id="_7">挑战</h3>
+<ul>
+<li><strong>建模挑战</strong>：如何设计有效的哈希模型来学习 Query 和 Key 的哈希码？</li>
+<li><strong>实现挑战</strong>：需要高性能的 GPU 实现才能在实际推理中获得实际加速。</li>
+</ul>
+<hr />
+<h2 id="_8">方法（技术细节）</h2>
+<h3 id="31-learning-to-hash-for-top-k-attention">3.1 学习哈希建模（Learning-to-Hash for Top-k Attention）</h3>
+<h4 id="_9">哈希模型设计</h4>
+<p>给定 Query <script type="math/tex">q</script> 和多个 Key <script type="math/tex">K := \{k_i\}_{i=1}^{n}</script>，学习哈希码的目标函数为：</p>
+<p>
+<script type="math/tex; mode=display">\min \sum_i sim(q, k_i) \|h(q) - h(k_i)\|_2</script>
+</p>
+<p>约束条件：
+- <script type="math/tex">h(q), h(k_i) \in \{-1, 1\}^r</script>（二进制哈希码）
+- <script type="math/tex">\sum_i h(k_i) = 0</script>（比特平衡约束）
+- <script type="math/tex">\frac{1}{n} \sum_i h(k_i)h(k_i)^T = I_r</script>（比特不相关约束）</p>
+<h4 id="_10">哈希函数定义</h4>
+<p>
+<script type="math/tex; mode=display">h(x) = \text{sign}(x W_H)</script>
+</p>
+<p>其中 <script type="math/tex">W_H</script> 是可训练的哈希权重。</p>
+<p>由于 sign 函数不可微分，进行松弛：</p>
+<p>
+<script type="math/tex; mode=display">h(x) = 2 \cdot \text{Sigmoid}(\sigma \cdot x W_H) - 1</script>
+</p>
+<p>其中 <script type="math/tex">\sigma \in (0, 1)</script> 是防止梯度消失的超参数。</p>
+<h4 id="query">最终优化目标（多 Query 扩展）</h4>
+<p>
+<script type="math/tex; mode=display">\min_{\epsilon} \sum_j \sum_i s_{j,i} \|h(q_j) - h(k_{j,i})\|_2 + \eta \sum_j \|\sum_i h(k_{j,i})\|^2 + \lambda \|W_H^T W_H - I_r\|</script>
+</p>
+<p>其中 <script type="math/tex">s_{j,i} = sim(q_j, k_i)</script>。</p>
+<ul>
+<li>每个注意力头训练独立的哈希权重 <script type="math/tex">W_H</script>。</li>
+</ul>
+<h4 id="_11">训练数据构造</h4>
+<ol>
+<li>在 prefill 阶段，收集每个注意力头的 Q 和 K 向量</li>
+<li>对每个 head，采样 Query <script type="math/tex">q_j</script> 并计算与所有 Key 的 QK 分数</li>
+<li><strong>正样本</strong>：Top 10% 的 <script type="math/tex">(q_j, k_i)</script> 对，标签为线性衰减的 <script type="math/tex">s_{j,i} \in [1, 20]</script>
+</li>
+<li><strong>负样本</strong>：剩余 90%，标签固定为 <script type="math/tex">s_{j,i} = -1</script>
+</li>
+<li>训练数据组织为三元组 <script type="math/tex">(q_j, k_i, s_{j,i})</script>
+</li>
+<li>数据来源：Qasper（短序列）、LSHT 和 RepoBench-P（中等长度）、LongBench-v2（超长序列）</li>
+<li>每个模型的训练集包含 150K–300K 个 QK 对</li>
+</ol>
+<h4 id="_12">训练超参数</h4>
+<ul>
+<li>
+<script type="math/tex">\sigma = 0.1</script>, <script type="math/tex">\epsilon = 0.01</script>, <script type="math/tex">\lambda = 1.0</script>, <script type="math/tex">\eta = 2.0</script>
+</li>
+<li>SGD 优化器：学习率 0.1，权重衰减 <script type="math/tex">10^{-6}</script>，动量 0.9</li>
+<li>15 个 epoch，每个 epoch 20 次迭代</li>
+<li>哈希位数默认 <script type="math/tex">r_{bit} = 128</script>
+</li>
+</ul>
+<h3 id="32-hata-top-k">3.2 HATA Top-k 注意力算法</h3>
+<h4 id="prefill">Prefill 阶段</h4>
+<ol>
+<li>计算并缓存 Key 的哈希码：<script type="math/tex">K_H \leftarrow \text{HashEncode}(K)</script>
+</li>
+<li>填充哈希码缓存和 KVCache</li>
+<li>计算注意力输出</li>
+</ol>
+<h4 id="decode">Decode 阶段（核心创新）</h4>
+<ol>
+<li><strong>Encode &amp; Cache 更新</strong>：对新生成的 Query 和 Key 执行 HashEncode，生成 Query 哈希码 <script type="math/tex">Q_H</script> 和 Key 哈希码 <script type="math/tex">K_H</script>，并更新 Key 哈希码缓存</li>
+<li><strong>汉明距离计算</strong>：使用硬件高效操作 <code>bitwise_xor</code> + <code>bitcount</code> 计算 <script type="math/tex">Q_H</script> 与所有缓存 Key 哈希码之间的汉明距离</li>
+<li><strong>Top-k 选择与稀疏注意力</strong>：根据哈希分数选择最相关的 Key-Value 对，执行稀疏注意力计算</li>
+</ol>
+<blockquote>
+<p>对于 GQA（Grouped-Query Attention），多个 Query 共享同一 KVCache，需对共享 KVCache 的分数进行聚合。</p>
+</blockquote>
+<h4 id="_13">关键区别</h4>
+<p>与现有方法的<strong>绝对分数估计</strong>不同，HATA 仅需要<strong>相对排序</strong>即可，通过二进制哈希码的汉明距离以极低成本完成。</p>
+<h3 id="4">4. 硬件高效优化</h3>
+<p>HATA 的实现包含 1,470 行 C++/CUDA 代码（自定义 GPU kernel）和 940 行 Python 代码，基于 PyTorch 和 FlashInfer。</p>
+<h4 id="1kernel-fusion-for-hash-encoding">优化 1：Kernel Fusion for Hash Encoding</h4>
+<ul>
+<li>将线性投影、Sign 函数、BitPack 和缓存更新操作融合为单个 CUDA kernel</li>
+<li>减少 CPU-GPU 同步开销，降低端到端推理延迟</li>
+</ul>
+<h4 id="2">优化 2：高性能汉明分数算子</h4>
+<ul>
+<li>自定义 GPU 算子：将 Query 和 Key 加载为多个整数 → XOR 操作 → popc/popcll 指令计数 → 归约操作</li>
+<li>使用 coalesced memory access 优化内存带宽</li>
+<li><strong>该优化使注意力模块延迟降低 53.2%</strong></li>
+</ul>
+<h4 id="3-gather-flashattention">优化 3：融合 Gather 与 FlashAttention</h4>
+<ul>
+<li>将 Gather 操作与 FlashAttention kernel 集成</li>
+<li>减少 HBM 到 SRAM 的冗余数据传输</li>
+<li><strong>该优化使延迟降低 23.8%</strong></li>
+</ul>
+<h4 id="_14">优化效果</h4>
+<p>完整优化后的 HATA 相比简单 PyTorch 实现实现 <strong>6.53 倍加速</strong>：
+- Score 算子贡献 53.2%
+- FusedAttn 贡献 23.8%
+- Encode 融合贡献 7.6%</p>
+<hr />
+<h2 id="_15">实验结果</h2>
+<h3 id="_16">实验设置</h3>
+<ul>
+<li><strong>平台</strong>：48GB HBM GPU（149.7 TFLOPS FP16），Ubuntu 24.04，CUDA 12.1，PyTorch 2.4，FlashInfer</li>
+<li><strong>模型</strong>：Llama-2-7B-32K-Instruct（MHA），Llama-3.1-8B-Instruct（GQA），Qwen2.5-14B-Instruct-1M，Qwen2.5-32B-Instruct</li>
+<li><strong>基准方法</strong>：Loki（低秩）、Quest（块级）、MagicPIG（LSH）、StreamingLLM、H2O、SnapKV、Dense（全注意力）</li>
+<li><strong>配置</strong>：HATA 默认 <script type="math/tex">r_{bit}=128</script>，前两层使用 vanilla attention，token budget 通常为序列长度的 1.56%–3.13%</li>
+</ul>
+<h3 id="_17">准确性评估</h3>
+<h4 id="longbench-e">LongBench-e（多任务基准）</h4>
+<ul>
+<li><strong>Llama2</strong>：HATA 平均精度 34.60（Dense 34.47），优于 Loki（32.78）、Quest（32.64）</li>
+<li><strong>Llama3.1</strong>：HATA 平均精度 53.94（Dense 54.10），优于 Loki（53.23）、Quest（52.19）</li>
+<li><strong>结论</strong>：HATA 在大多数任务上达到与全注意力可比的精度，且优于所有基准方法</li>
+</ul>
+<h4 id="ruler">RULER（长上下文检索任务）</h4>
+<ul>
+<li><strong>Llama2（32K，token budget=1024/3.13%）</strong>：HATA 平均 63.91（Dense 65.04），远超 Loki（7.16）、Quest（56.37）</li>
+<li><strong>Llama3.1（128K，token budget=2048/1.56%）</strong>：HATA 平均 80.57（Dense 82.68），远超 Loki（77.80）、Quest（72.55）</li>
+<li><strong>结论</strong>：在长上下文场景下，HATA 显著优于其他方法，精度损失极小</li>
+</ul>
+<h4 id="infinitebench-214k">InfiniteBench（平均 214K 长度）</h4>
+<ul>
+<li>HATA 与 Dense 精度几乎无差异（44.77 vs 45.17）</li>
+</ul>
+<h4 id="longbench-v2">LongBench-v2</h4>
+<ul>
+<li>HATA 在多数场景下与精确 Top-k attention 可比，甚至在某些场景更优</li>
+</ul>
+<h4 id="needle-in-a-haystack">Needle-in-a-Haystack</h4>
+<ul>
+<li>HATA 在 Llama2（1K-32K）和 Llama3.1（32K-128K）上均达到与 Dense attention 相似的检索精度</li>
+</ul>
+<h4 id="qwen25-14b-qwen25-32b">Qwen2.5-14B 和 Qwen2.5-32B 扩展</h4>
+<ul>
+<li>在 LongBench-e 上保持近无损精度</li>
+<li>RULER-256K 上 Qwen2.5-14B 的 HATA 精度（88.05）与精确 Top-k（87.12）和 Dense（87.95）可比</li>
+</ul>
+<h3 id="_18">效率评估</h3>
+<h4 id="_19">端到端推理效率</h4>
+<ul>
+<li>HATA、Loki、Quest 均比 vanilla attention 有显著加速</li>
+<li><strong>HATA 解码效率最高</strong></li>
+<li>三者的预填充时间与 vanilla attention 相似，因此均能提升端到端效率</li>
+</ul>
+<h4 id="batch-size">解码效率（不同 batch size 和序列长度）</h4>
+<ul>
+<li><strong>Batch size=8，序列长度=32K</strong>：HATA 相比 Dense 实现 <strong>7.20 倍加速</strong>，相比 Loki <strong>1.99 倍加速</strong></li>
+<li><strong>Batch size=1，序列长度=256K</strong>：HATA 相比 Dense 实现 <strong>6.51 倍加速</strong>，相比 Loki <strong>2.21 倍加速</strong>，相比 Quest <strong>1.19 倍加速</strong></li>
+<li><strong>结论</strong>：序列越长、batch 越大，HATA 加速比越高</li>
+</ul>
+<h4 id="kvcache-offloading-hata-off">KVCache Offloading 性能（HATA-off）</h4>
+<ul>
+<li><strong>Llama2</strong>：相比 MagicPIG 实现 6.04 倍 prefill 加速、2.54 倍 decode 加速</li>
+<li><strong>Llama3.1</strong>：相比 MagicPIG 实现 1.32 倍 prefill 加速、2.63 倍 decode 加速</li>
+<li>优势来源：(1) 消除 MagicPIG 的高开销 LSH 哈希（1500 位哈希码用于 128 维向量）；(2) GPU 优化的注意力与轻量哈希</li>
+</ul>
+<h3 id="_20">消融实验</h3>
+<h4 id="token-budget">Token Budget 消融</h4>
+<ul>
+<li>HATA 在各种 budget 下持续优于 Quest 和 Loki</li>
+<li>在 0.4% token ratio 下仍保持可接受性能</li>
+</ul>
+<h4 id="hash-bit">Hash Bit 数消融</h4>
+<ul>
+<li>rbit 从 32 增加到 128 时精度持续提升</li>
+<li>rbit=128 时精度接近无损水平</li>
+<li>进一步增加 rbit 仅引起微小波动</li>
+</ul>
+<hr />
+<h2 id="_21">优势</h2>
+<ol>
+<li><strong>核心理论创新</strong>：将 Top-k 注意力重新定义为轻量级序数比较任务，挑战了"精确 QK 分数估计是必要的"这一假设</li>
+<li><strong>极致性能</strong>：最高 7.2 倍加速，同时保持与全注意力可比的精度</li>
+<li><strong>硬件高效</strong>：利用 XOR 和 bitcount 等原生位操作，通过三项 GPU 优化（Kernel Fusion、高性能汉明分数算子、融合 Gather 与 FlashAttention）实现 6.53 倍优化</li>
+<li><strong>可扩展性</strong>：在 7B 到 32B 模型上均有效，支持 MHA、GQA，可处理超长上下文（256K+）</li>
+<li><strong>即插即用</strong>：可无缝集成到现有推理框架中，仅需替换标准注意力</li>
+<li><strong>低开销预填充</strong>：HashEncode 的时间复杂度为 O(s × d × rbit)，远低于标准注意力的 O(s²d + s²)，预填充额外开销不足 1%</li>
+<li><strong>正交性</strong>：可与 KVCache 压缩、量化、offloading 等方法正交组合</li>
+<li><strong>开源实现</strong>：PyTorch + FlashInfer，包含 C++/CUDA kernel</li>
+</ol>
+<hr />
+<h2 id="_22">局限</h2>
+<ol>
+<li><strong>训练数据规模有限</strong>：当前训练数据来自有限数量的序列，扩展数据多样性和规模可进一步提升哈希权重质量</li>
+<li><strong>适用场景有限</strong>：HATA 主要针对长上下文或大 batch size 场景，在小 batch size 和短序列下无显著加速（注意力模块不是瓶颈）</li>
+<li><strong>未支持 MLA</strong>：Multi-Latent Head Attention（DeepSeek-V3）尚未测试，作为未来工作</li>
+<li><strong>需要训练</strong>：需要在少量数据上训练哈希权重（虽然训练成本低，但相比纯推理方法仍有额外步骤）</li>
+<li><strong>HashBit 数选择</strong>：rbit=128 是经验最优值，但可能需要针对不同模型和任务调整</li>
+<li><strong>前两层使用 vanilla attention</strong>：这是 top-k attention 方法的常见做法，但引入了额外复杂性</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_23">直接相关</h3>
+<ul>
+<li><strong>Top-k 注意力加速</strong>：HATA 是 top-k 注意力家族的新成员，与 SnapKV、Quest、Loki 等方法互补</li>
+<li><strong>KVCache 优化</strong>：HATA 通过稀疏化减少 KVCache 加载开销，可与 KVCache 压缩（如量化）和 offloading 正交结合</li>
+<li><strong>学习哈希在 LLM 推理中的应用</strong>：验证了学习哈希在 attention 计算中的有效性，与 HashAttention（并发工作）形成对比</li>
+<li><strong>Hardware-aware 推理优化</strong>：展示了如何通过 kernel fusion、自定义算子和内存优化来弥合理论与实际性能的差距</li>
+</ul>
+<h3 id="baseline">相关 Baseline 方法</h3>
+<ul>
+<li><strong>SeerAttention</strong>（2024）：通过训练方法预测重要性，与 HATA 的学习哈希思路有相似之处</li>
+<li><strong>SnapKV</strong>（2024）：利用历史信息预测当前重要性，属于 KVCache 压缩方法</li>
+<li><strong>Quest</strong>（2024）：基于块级重要性估计的 Top-k 注意力</li>
+<li><strong>MagicPIG</strong>（2024）：使用 LSH 进行 Top-k 注意力，但需要高比特哈希，效率和精度受限</li>
+</ul>
+<h3 id="_24">潜在研究方向</h3>
+<ol>
+<li><strong>与其他注意力优化方法结合</strong>：如线性注意力、FlashAttention 等</li>
+<li><strong>更大规模模型和更长上下文</strong>：HATA 已在 Qwen2.5-14B/32B 上验证，但更大模型（70B+）和更长上下文（1M+）的验证仍有空间</li>
+<li><strong>MLA 适配</strong>：DeepSeek-V3 的 MLA 机制与 HATA 的结合</li>
+<li><strong>训练数据改进</strong>：扩大训练数据的多样性和规模</li>
+<li><strong>自适应哈希位数</strong>：根据任务和序列长度动态调整 rbit</li>
+<li><strong>哈希权重的共享与迁移</strong>：探索在不同模型和任务间共享哈希权重的可能性</li>
+<li><strong>端到端推理系统集成</strong>：将 HATA 集成到 vLLM、SGLang 等主流推理框架中</li>
+</ol>
+<hr />
+<h2 id="_25">参考信息</h2>
+<ul>
+<li><strong>arXiv</strong>: http://arxiv.org/abs/2506.02572v1</li>
+<li><strong>代码</strong>: https://github.com/gpzlx1/HATA</li>
+<li><strong>类型</strong>: Pytorch</li>
+<li><strong>关键词</strong>: kv_cache_sparse</li>
+<li><strong>发表年份</strong>: 2025</li>
+<li><strong>机构</strong>: 中国科学技术大学、华为、北京大学</li>
+<li><strong>Baseline 方法</strong>: SeerAttention, SnapKV, Quest</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

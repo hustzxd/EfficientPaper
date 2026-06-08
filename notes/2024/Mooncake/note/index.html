@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,193 @@
 <p>Ruoyu Qin, Zheming Li, Weiran He, Mingxing Zhang, Yongwei Wu, Weimin Zheng, Xinran Xu</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
 <p>Mooncake is the serving platform for Kimi, a leading LLM service provided by Moonshot AI. It features a KVCache-centric disaggregated architecture that separates the prefill and decoding clusters. It also leverages the underutilized CPU, DRAM, and SSD resources of the GPU cluster to implement a disaggregated cache of KVCache. The core of Mooncake is its KVCache-centric scheduler, which balances maximizing overall effective throughput while meeting latency-related Service Level Objectives (SLOs). Unlike traditional studies that assume all requests will be processed, Mooncake faces challenges due to highly overloaded scenarios. To mitigate these, we developed a prediction-based early rejection policy. Experiments show that Mooncake excels in long-context scenarios. Compared to the baseline method, Mooncake can achieve up to a 525% increase in throughput in certain simulated scenarios while adhering to SLOs. Under real workloads, Mooncake's innovative architecture enables Kimi to handle 75% more requests.</p>
+<h2 id="_1">一句话总结</h2>
+<p>Mooncake 是 Moonshot AI 为 Kimi 打造的 LLM 推理平台，采用以 KVCache 为中心的解耦架构，将 prefill 和 decoding 分离到不同节点池，并利用 CPU/DRAM/SSD 构建分布式 KVCache 缓存，实现 KVCache 感知的全局调度，在长上下文和过载场景下显著提升吞吐量（模拟数据最高 525%），真实负载下处理请求量提升 75%。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>MaaS 服务的挑战</strong>：Kimi 作为 MaaS 服务提供商，面临请求到达率远超推理资源增长率的问题，尤其在高峰期，GPU 供应有限，无法弹性扩容。</li>
+<li><strong>Prefill vs Decoding 的差异</strong>：LLM 推理分为 prefill 和 decoding 两个阶段，计算特性截然不同——prefill 是计算密集型（注意力机制随输入长度二次增长），decoding 是内存带宽密集型（逐 token 自回归生成），混合调度会导致 TTFT 和 TBT SLO 的冲突。</li>
+<li><strong>SLO 约束</strong>：TTFT（首 token 延迟）和 TBT（token 间延迟）是关键指标，需要同时满足。在过载场景下，需要高效地拒绝请求以避免浪费预填充计算资源。</li>
+<li><strong>KVCache 复用的收益与代价</strong>：复用 KVCache 可减少计算，但远程访问会延长 TTFT；增大 batch 可提升 MFU，但会违反 TBT SLO。</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-disaggregated-architecture">1. 解耦架构（Disaggregated Architecture）</h3>
+<p>Mooncake 的核心设计是以 KVCache 为中心的解耦架构：</p>
+<ul>
+<li><strong>Prefill Pool + Decoding Pool</strong>：将 prefill 和 decoding 节点分离为独立的资源池，各自独立优化。</li>
+<li><strong>分布式 KVCache 池</strong>：利用 GPU 节点的 CPU/DRAM/SSD 资源，构建一个分布式的 KVCache 缓存层，通过 GPUDirect RDMA 实现跨节点的高效 KVCache 传输（称为 Messenger 服务）。</li>
+<li><strong>全局调度器（Conductor）</strong>：基于 KVCache 分布和工作负载，为每个请求选择 prefill 和 decoding 实例，并调度 KVCache 的复用、传输和管理。</li>
+</ul>
+<h3 id="2-kvcache">2. KVCache 缓存机制</h3>
+<ul>
+<li><strong>Paged KVCache</strong>：KVCache 以 paged block 形式存储在 CPU 内存中，block size 为 512 tokens。</li>
+<li><strong>Prefix Hash</strong>：每个 block 通过链式哈希（包含当前 block 和所有前缀 block 的哈希）生成唯一标识，用于检测前缀缓存命中。</li>
+<li><strong>缓存策略</strong>：支持 LRU、LFU、LengthAwareCache 等算法。在实际工作负载中，LRU 表现最佳（受请求时间局部性影响）。</li>
+<li><strong>Hot-spot Migration</strong>：启发式的热点迁移方案，自动复制热点 KVCache block 到多个节点，避免传输拥塞。</li>
+</ul>
+<h3 id="3-chunked-pipeline-parallelism-cpp">3. Chunked Pipeline Parallelism (CPP)</h3>
+<p>针对长上下文场景，Mooncake 采用分块流水线并行（CPP）：</p>
+<ul>
+<li>将输入 token 分成多个 chunk（每个不超过 prefill_chunk），分配到不同节点并行处理。</li>
+<li>与 Sequence Parallelism (SP) 相比，CPP 只需在 pipeline 边界进行跨节点通信，网络消耗更低，MFU 更高。</li>
+<li>自然适配短/长上下文，无需频繁调整节点分组。</li>
+</ul>
+<h3 id="4-layer-wise-prefill">4. Layer-wise Prefill</h3>
+<p>通过逐层预填充来减少 VRAM 占用：</p>
+<ul>
+<li>在每层 attention 计算之前异步加载该层的 KVCache，在计算完成后异步存储。</li>
+<li>KVCache 的传输与计算重叠，使得 prefill 实例的执行时间大致等于 KVCache 加载时间或标准 prefill 时间（取决于 prefix cache 比例）。</li>
+<li>结果：prefill 调度可以忽略 VRAM 大小限制，只要能容纳一个请求即可。</li>
+</ul>
+<h3 id="5-kvcache-centric-scheduling">5. KVCache-centric Scheduling</h3>
+<p>算法 1 描述了 cache-aware 的 prefill 全局调度：</p>
+<ol>
+<li>为每个请求的输入 token 计算 block hash key。</li>
+<li>对每个 prefill 实例，计算 prefix cache 命中长度。</li>
+<li>估计 prefill 执行时间和队列等待时间，计算 TTFT。</li>
+<li>选择 TTFT 最短的实例，同时考虑 cache 复用、负载均衡和 SLO。</li>
+<li>如果 best_prefix_len 与当前实例的 prefix_len 差距超过阈值，触发 KVCache 热点迁移。</li>
+</ol>
+<h3 id="6-overload-oriented-scheduling">6. 过载调度（Overload-oriented Scheduling）</h3>
+<ul>
+<li><strong>Early Rejection</strong>：在 prefill 之前评估 decoding 实例负载，如果 decoding 无法满足 TBT SLO，直接拒绝请求，避免 prefill 计算浪费。</li>
+<li><strong>Early Rejection Based on Prediction</strong>：通过预测未来 decoding 负载来缓解 Early Rejection 引发的负载波动（反相振荡问题）。采用系统级预测：假设每个请求的 decoding 阶段耗时为 td，估计未来 t 时刻的 decoding 负载。</li>
+</ul>
+<h2 id="_4">技术细节</h2>
+<h3 id="kvcache">KVCache 哈希机制</h3>
+<p>每个 block 的 hash 由其自身 token 和前缀 block 的 hash 组成，形成链式哈希（如 <code>F=Hash(E+f)</code>）。相同 hash ID 表示前缀完全匹配，可复用 KVCache。block size 为 512 tokens。</p>
+<h3 id="_5">并行策略对比</h3>
+<ul>
+<li><strong>TP (Tensor Parallelism)</strong>：跨节点需要两次 RDMA all-reduce（每层），MFU 下降显著。</li>
+<li><strong>SP (Sequence Parallelism)</strong>：需要至少一次跨节点通信（Ring/Striped Attention），MFU 优于 TP，但不如单节点 TP。</li>
+<li><strong>CPP (Chunked Pipeline Parallelism)</strong>：只在 pipeline 边界通信，可与计算重叠，MFU 最优，且无需频繁弹性伸缩。</li>
+</ul>
+<h3 id="_6">典型工作流</h3>
+<ol>
+<li><strong>KVCache Reuse</strong>：从远程 CPU 加载 prefix cache 到 GPU。</li>
+<li><strong>Incremental Prefill</strong>：使用 prefix cache 进行增量预填充，将新生成的 KVCache 存回 CPU。</li>
+<li><strong>KVCache Transfer</strong>：通过 Messenger 异步流式传输 KVCache 到 decoding 节点（与 prefill 计算重叠）。</li>
+<li><strong>Decoding</strong>：KVCache 到达后，请求加入 continuous batching 进行解码（double-check TBT SLO）。</li>
+</ol>
+<h2 id="_7">实验设置</h2>
+<ul>
+<li><strong>模型</strong>：使用 dummy LLaMA2-70B 架构（为保护商业机密，使用模拟模型）</li>
+<li><strong>硬件</strong>：NVIDIA A800-SXM4-80GB GPU，每节点 8 卡，800 Gbps RDMA 网络</li>
+<li><strong>Baseline</strong>：vLLM（continuous batching + PagedAttention）</li>
+<li><strong>数据集</strong>：</li>
+<li>ArXiv Summarization：平均输入 8088 tokens，输出 229 tokens，~0% 缓存命中</li>
+<li>L-Eval：平均输入 19019 tokens，输出 72 tokens，&gt;80% 缓存命中</li>
+<li>模拟数据：16k/32k/64k/128k 输入，512 输出，50% 缓存命中</li>
+<li>真实数据：23,000 条 Kimi 在线请求 trace，平均输入 7955 tokens，输出 194 tokens，~50% 缓存命中</li>
+<li><strong>指标</strong>：TTFT 和 TBT 的 P90，归一化到 SLO 阈值（TTFTP90 = 10×，TBTP90 = 5×）</li>
+<li><strong>集群配置</strong>：</li>
+<li>Mooncake-[3P+1D]：3 prefill + 1 decoding</li>
+<li>Mooncake-[2P+2D]：2 prefill + 2 decoding</li>
+<li>Mooncake-[10P+10D]：10 prefill + 10 decoding</li>
+<li>vLLM-[4M] / vLLM-[20M]：4/20 个统一线程实例</li>
+</ul>
+<h2 id="_8">主要结果</h2>
+<h3 id="arxiv-summarization-l-eval">公开数据集（ArXiv Summarization + L-Eval）</h3>
+<ul>
+<li>Mooncake-[3P+1D] 相比 vLLM-[4M] 吞吐量提升 <strong>20%（ArXiv）</strong> 和 <strong>40%（L-Eval）</strong></li>
+<li>L-Eval 上 prefix caching 贡献显著，进一步降低 TTFT</li>
+<li>Mooncake-[2P+2D] TTFT 指标不如 [3P+1D]（prefill/decoding 负载不平衡）</li>
+</ul>
+<h3 id="_9">模拟数据（长上下文）</h3>
+<ul>
+<li>Mooncake 在 16k/32k/64k/128k 输入长度下，吞吐量提升 <strong>50%~525%</strong></li>
+<li>有效避免了 prefill 阶段对 decoding 的干扰，TBT SLO 始终满足</li>
+</ul>
+<h3 id="_10">真实工作负载</h3>
+<ul>
+<li>Mooncake-[10P+10D] 和 vLLM-[20M] 的 TTFT 分布几乎一致（~100% 满足 TTFT SLO）</li>
+<li>Mooncake 的 TBT 满足率 ~100%，而 vLLM 仅 <strong>57%</strong> 满足 TBT SLO</li>
+<li>Mooncake 处理请求量多 <strong>75%</strong></li>
+</ul>
+<h3 id="_11">过载场景</h3>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>拒绝请求数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline</td>
+<td>4,183</td>
+</tr>
+<tr>
+<td>Early Rejection</td>
+<td>3,771</td>
+</tr>
+<tr>
+<td>Early Rejection + Prediction</td>
+<td>3,589</td>
+</tr>
+</tbody>
+</table>
+<p>Early Rejection + Prediction 比 baseline 减少约 <strong>14%</strong> 的请求拒绝。</p>
+<h3 id="kvcache-mooncake-8p8d">KVCache 调度实验（Mooncake 集群 8P+8D）</h3>
+<ul>
+<li>KVCache-centric 调度：平均 TTFT <strong>6.26s</strong></li>
+<li>Cache-aware 调度：14.36s</li>
+<li>Load-balancing 调度：60.41s</li>
+<li>Random 调度：92.07s</li>
+</ul>
+<p>KVCache-centric 调度相比 random 调度 TTFT 降低 <strong>93%</strong>。</p>
+<h2 id="_12">优点与局限</h2>
+<h3 id="_13">优点</h3>
+<ol>
+<li><strong>架构设计完整</strong>：以 KVCache 为中心的解耦架构，将 prefill/decoding 分离，利用异构资源（CPU/DRAM/SSD）构建分布式 KVCache 缓存。</li>
+<li><strong>调度策略先进</strong>：cache-aware 调度 + 热点迁移 + 过载调度（Early Rejection + Prediction），兼顾吞吐量和 SLO。</li>
+<li><strong>长上下文优化</strong>：CPP（Chunked Pipeline Parallelism）和 Layer-wise Prefill 有效降低长上下文的 TTFT 和 VRAM 占用。</li>
+<li><strong>真实生产验证</strong>：Mooncake 是 Kimi 的核心推理平台，经过实际大规模部署验证。</li>
+<li><strong>开源贡献</strong>：发布真实请求 trace 数据集（23,608 条），对社区有参考价值。</li>
+</ol>
+<h3 id="_14">局限</h3>
+<ol>
+<li><strong>实验使用 dummy model</strong>：为保护商业机密，使用 LLaMA2-70B 架构的模拟模型，未使用真实模型，可能影响结果的代表性。</li>
+<li><strong>Prefill/Decoding 比例固定</strong>：实际部署中 prefill 和 decoding 实例比例需预设，缺乏动态弹性伸缩机制。</li>
+<li><strong>Early Rejection 预测精度</strong>：系统级预测（假设统一 decoding 时间）可能不够精确，请求级预测尚待探索。</li>
+<li><strong>Cache 重用率有限</strong>：真实工作负载中 KVCache 可重用率仅约 50%（某些场景如 chat-to-paper 可达 90%），受应用场景影响大。</li>
+<li><strong>缺少与 DistServe/Splitwise 等的直接对比</strong>：虽然提到了相关工作，但未直接与这些系统进行端到端比较。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>Mooncake 属于 <strong>LLM 推理服务系统</strong> 领域，核心贡献包括：</p>
+<ul>
+<li><strong>KVCache 管理</strong>（<code>kv_cache_management</code>）：分布式 KVCache 缓存池、prefix caching、hot-spot migration。</li>
+<li><strong>调度与系统</strong>（<code>tool</code>）：cache-aware 调度、过载调度（Early Rejection + Prediction）。</li>
+<li><strong>推理效率</strong>：通过 prefill/decoding 解耦、CPP、Layer-wise Prefill 提升推理吞吐量。</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>vLLM/PagedAttention (2023)</strong>：Mooncake 的基础，继承 PagedAttention 和 continuous batching。
+- <strong>SGLang (2024)</strong>：基于 RadixAttention 的 prefix caching，与 Mooncake 的 cache-aware 调度有相似之处。
+- <strong>Splitwise (2024)</strong>：同为 prefill/decoding 解耦架构，Mooncake 在此基础上增加了分布式 KVCache 池和过载调度。
+- <strong>RTP-LLM (2026)</strong>：阿里巴巴的推理引擎，也有 prefill/decode 分离设计，但侧重量化和多硬件支持。</p>
+<h2 id="_15">可复现/实现要点</h2>
+<ol>
+<li><strong>KVCache Hash 机制</strong>：block size 为 512 tokens，链式哈希（前缀 + 当前 block）。</li>
+<li><strong>GPUDirect RDMA</strong>：Messenger 服务负责跨节点 KVCache 传输，可与 prefill 计算重叠。</li>
+<li><strong>CPP 并行</strong>：将输入分 chunk 分配到不同节点，跨节点通信仅在 pipeline 边界。</li>
+<li><strong>Layer-wise Prefill</strong>：每层异步加载/存储 KVCache，与计算重叠。</li>
+<li><strong>Cache-aware 调度</strong>：估计 prefill 时间 + 队列等待时间 + KVCache 传输时间，选择 TTFT 最短的实例。</li>
+<li><strong>Early Rejection + Prediction</strong>：系统级预测未来 decoding 负载，避免反相振荡。</li>
+<li><strong>实验可复现</strong>：trace 数据集已开源（https://github.com/kvcache-ai/Mooncake），但需 dummy model。</li>
+</ol>
+<h2 id="_16">个人备注</h2>
+<ul>
+<li>Mooncake 的核心洞察是 <strong>KVCache 是 LLM 服务调度的中心</strong>，围绕 KVCache 分布来决策调度，而非简单地做负载均衡。</li>
+<li>在过载场景下，Early Rejection + Prediction 的方案非常实用，但预测精度有待提升（请求级预测仍待探索）。</li>
+<li>与 DistServe/Splitwise/TetriInfer 等同期工作相比，Mooncake 的优势在于<strong>过载调度</strong>和<strong>分布式 KVCache 池</strong>，但缺少直接对比实验。</li>
+<li>论文提到的"真实工作负载"仅是 dummy model 的模拟，但 trace 数据集开源对社区有重要参考价值。</li>
+<li>未来方向值得关注：异构加速器（如 PIM、Hybrid Bonding）、注意力算子解耦（将 attention 从其他线性算子分离）、KVCache 压缩（与 EfficientPaper 中多篇论文相关）。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

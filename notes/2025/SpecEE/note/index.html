@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,40 +161,256 @@
   
                 <h1 id="specee-accelerating-large-language-model-inference-with-speculative-early-exiting">SpecEE: Accelerating Large Language Model Inference with Speculative Early Exiting</h1>
 <p><a class="glightbox" href="../fig9.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig9.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Early exiting has recently emerged as a promising technique for accelerating
-large language models (LLMs) by effectively reducing the hardware computation
-and memory access. In this paper, we present SpecEE, a fast LLM inference
-engine with speculative early exiting. (1) At the algorithm level, we propose
-the speculation-based lightweight predictor design by exploiting the
-probabilistic correlation between the speculative tokens and the correct
-results and high parallelism of GPUs. (2) At the system level, we point out
-that not all layers need a predictor and design the two-level heuristic
-predictor scheduling engine based on skewed distribution and contextual
-similarity. (3) At the mapping level, we point out that different decoding
-methods share the same essential characteristics, and propose the context-aware
-merged mapping for predictor with efficient GPU implementations to support
-speculative decoding, and form a framework for various existing orthogonal
-acceleration techniques (e.g., quantization and sparse activation) on cloud and
-personal computer (PC) scenarios, successfully pushing the Pareto frontier of
-accuracy and speedup. It is worth noting that SpecEE can be applied to any LLM
-by negligible training overhead in advance without affecting the model original
-parameters. Extensive experiments show that SpecEE achieves 2.25x and 2.43x
-speedup with Llama2-7B on cloud and PC scenarios respectively.</p>
+<h2 id="_1">一句话总结</h2>
+<p>SpecEE 提出了一种利用投机模型（speculative model）将早期退出（early exiting）的搜索空间从完整词汇表缩减到投机 token 子集的范式，并结合轻量级预测器、两级启发式调度和上下文感知合并映射三大技术，实现了 LLM 推理 2.25×（云端）和 2.43×（PC 端）的加速，精度损失可忽略不计。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>早期退出（Early exiting）作为一种通过有效减少硬件计算和内存访问来加速大语言模型（LLM）的技术，最近引起了广泛关注。在本文中，我们发现 LLM 词汇表作为早期退出预测器的运行时搜索空间，显著影响了预测器的工作负载（例如，在 Llama2 中，约 3×10⁴ 的词汇表大小导致约 20% 的推理延迟）。我们提出了一种利用投机模型来减少此搜索空间的新范式，同时解决了三个关键挑战：</p>
+<ol>
+<li><strong>耗时的预测器设计</strong>：当前的预测器设计利用高维输入的基本模型，忽略了固有的数据变化和 GPU 并行化机会，导致约 15% 的整体推理延迟。</li>
+<li><strong>层级预测器的利用不足</strong>：当前早期退出系统对每层的预测器一视同仁，没有考虑各层预测器的激活频率，导致约 20% 的推理开销。</li>
+<li><strong>投机解码中预测器的指数级映射复杂度</strong>：投机解码中的 token 树的每个 token 被视为独立的搜索空间，导致指数级映射复杂度，无法利用高吞吐量优势。</li>
+</ol>
+<p>为解决上述挑战，我们提出了 SpecEE——一个具有投机早期退出功能的快速 LLM 推理引擎：</p>
 <ul>
-<li>使用Eagle的draft model生成topk的token</li>
-<li>大模型的每一层都经过 topk 的小lm_head，</li>
-<li>特征1: 生成Speculative Token Logits</li>
-<li>特征2: 再生成Local Probabilities</li>
-<li>特征3: 与上一层的Local Probabilities进行对比，得到Probability variation</li>
-<li>根据三个特征，经过预测期预测是否要Early Exit<ul>
-<li>是: 确定Early Exit，计算大lm_head，判断是否与小lm_head的top1一致</li>
-<li>一致，推理提前退出</li>
-<li>不一致，继续算下一层</li>
-<li>否: 继续算下一层</li>
+<li><strong>算法层面</strong>：提出基于投机的轻量级预测器设计，利用投机 token 与正确结果之间的概率相关性和 GPU 的高并行性。</li>
+<li><strong>系统层面</strong>：指出并非所有层都需要预测器，基于偏斜分布和上下文相似性设计了两级启发式预测器调度引擎。</li>
+<li><strong>映射层面</strong>：指出不同解码方法具有相同的本质特征，提出了上下文感知的合并映射方案，支持投机解码，形成适用于各种现有正交加速技术（如量化和稀疏激活）的框架，成功推动了精度和加速比的帕累托前沿。</li>
 </ul>
-</li>
+<p>值得注意的是，SpecEE 可以通过可忽略的训练开销应用于任何 LLM，且不影响模型原始参数。大量实验表明，SpecEE 在云端和 PC 场景下分别实现了 Llama2-7B 的 2.25× 和 2.43× 加速。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>LLM 推理过程中，自回归解码逐个生成 token，具有较差的吞吐量。现有加速方法（如剪枝、量化、投机解码等）形成了精度和加速比的帕累托前沿，但由于缺乏对动态输入和静态模型之间关系的考虑，原始模型中的多级级联层占端到端推理的 70%～95%，成为推进帕累托前沿的主要瓶颈。</p>
+<h3 id="_5">早期退出的关键挑战</h3>
+<p>LLM 推理本质上是一个在线搜索问题，搜索空间是完整词汇表。现有早期退出方法面临三大挑战：</p>
+<table>
+<thead>
+<tr>
+<th>挑战</th>
+<th>现有方法的问题</th>
+<th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>预测器耗时</strong></td>
+<td>遍历完整词汇表获取特征，使用高维原始数据（&gt;4×10³维），采用 SVM 等复杂模型</td>
+<td>~30% 计算开销，~15% 推理延迟</td>
+</tr>
+<tr>
+<td><strong>层级预测器利用不足</strong></td>
+<td>对每层预测器一视同仁，未考虑退出概率的偏斜分布</td>
+<td>~20% 额外推理开销</td>
+</tr>
+<tr>
+<td><strong>投机解码映射复杂度</strong></td>
+<td>token 树中每个 token 作为独立搜索空间</td>
+<td>指数级映射复杂度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-insight">核心洞察（Key Insight）</h3>
+<p>受计算机系统设计中"投机"概念和投机解码的启发，作者提出：投机模型（DLM）的角色是为目标模型（TLM）生成投机 token。从 TLM 的角度，DLM 的输出提供了一种缩减 token 选择范围（即搜索空间）的潜在途径。如果 DLM 足够强，可以完全将 TLM 的结果限制在投机 token 的范围内。</p>
+<p>基于此，<strong>提出利用投机模型来减少早期退出预测器的搜索空间</strong>，将搜索空间从完整词汇表（~3×10⁴ tokens）缩减到投机 token 子集（~3 tokens），实现 <strong>10⁴× 的搜索空间缩减</strong>。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<p>SpecEE 的架构包含三个核心技术层面（三个 Technque，分别标记为 T1、T2、T3）：</p>
+<h3 id="t1">技术一（T1）：基于投机的轻量级预测器设计（算法层面）</h3>
+<p><strong>动机</strong>：现有预测器使用高维原始数据（~5×10³维）作为输入，没有进行特征分析或提取，导致预测器需要复杂架构（如 AdaInfer 中的 SVM）。</p>
+<p><strong>关键洞察——概率偏移（Probability Shift）</strong>：
+- 当最终结果 token 在缩减空间内时，该 token 的概率在某一层急剧上升，而其他 token 的概率保持稳定。
+- 反之，如果最终结果不在缩减空间内，所有 token 的概率保持稳定低值。</p>
+<p><strong>特征选择</strong>：基于上述洞察，选择三个特征：
+1. <strong>投机 token logits</strong>（l₁, l₂, l₃, l₄）：每层隐藏状态与投机 LM Head 矩阵乘法结果（1×hidden_dim × num_speculative），直接反映 LLM 对投机 token 的置信度。
+2. <strong>局部概率（Local Probabilities）</strong>（p₁, p₂, p₃, p₄）：对投机 token logits 施加 softmax，反映缩减搜索空间内投机 token 的可能性。
+3. <strong>概率变化（Probability Variation）</strong>（Δ₁, Δ₂, Δ₃, Δ₄）：当前层与上一层的局部概率之差，捕获跨层概率变化。</p>
+<blockquote>
+<p>注：三个特征缺一不可。仅用概率变化可能导致误判（如 Δ=0.12 可能来自 0.32−0.20 或 0.58−0.46，含义完全不同）；仅用局部概率可能忽略 logits 差异。</p>
+</blockquote>
+<p><strong>判断机制</strong>：使用 2 层 MLP（隐藏维度 512）作为预测器，而非 SVM。输入特征维度为 12（4 个投机 token × 3 个特征），输出通过 Sigmoid 函数，与阈值 0.5 比较决定是否退出。</p>
+<p><strong>验证算法</strong>：由于局部概率仅基于局部信息，需引入全局信息验证。计算完整 LM Head 的全局 token logits，检查全局最高 token 是否在投机 token 中。若是，退出并输出该 token；否则继续下一层。</p>
+<p><strong>设计空间探索</strong>：通过控制变量法探索 MLP 层数和隐藏维度的最优配置。最终配置为 <strong>2 层 MLP，隐藏维度 512</strong>。预测器参数量仅约 0.07M，相比基准约 6.7M 参数减少约 <strong>100×</strong>。</p>
+<h3 id="t2">技术二（T2）：两级启发式预测器调度引擎（系统层面）</h3>
+<p><strong>动机</strong>：单独使用 T1，端到端加速仅约 15%，理论加速比可达约 33%（32/(23+1)）。原因在于每层的预测器开销（T×L）过大。统计数据显示退出概率呈偏斜分布，约 50% 的层退出概率低于平均概率 3.2%。</p>
+<p><strong>关键洞察</strong>：
+1. <strong>偏斜分布（Skewed Distribution）</strong>：不同模型的退出概率分布呈偏斜分布，约 50% 的层退出概率不足平均概率的 3.2%，表明这些层的预测大多不必要。
+2. <strong>上下文相似性（Context Similarity）</strong>：当前 token 的退出层位置有约 80% 概率在前 5 个 token 退出层位置的 ±2 层范围内。理论上该概率仅约 31.8%，实际高达 80%。</p>
+<p><strong>离线调度</strong>：对 LLM 使用大量 prompt 进行推理，收集各预测器的激活频率，按频率排序。结果作为模型配置参数集成到模型中。此过程仅需为每个 LLM 执行一次。</p>
+<p><strong>在线调度</strong>：推理时维护长度为 N（如 5）的循环队列，记录最近 N 个 token 的退出层位置。使用长度等于总层数 L 的数组，追踪每层被命中的次数。最终通过离线调度的高频子集和在线调度结果的并集确定预测器数量和位置。</p>
+<p><strong>效果</strong>：约 68% 的预测器被移除，仅约 10.2 层需要预测器，实现约 <strong>1.21×</strong> 推理加速。</p>
+<h3 id="t3">技术三（T3）：上下文感知的合并映射（映射层面）</h3>
+<p><strong>动机</strong>：在投机解码中，token 树由多层 token 组成，每个 token 被视为独立搜索空间，导致指数级映射复杂度，无法利用投机解码的高吞吐量优势。</p>
+<p><strong>关键洞察</strong>：token 路径中的 token 共享上下文关系，退出位置相对集中，缓解了木桶效应（Cannikin Law）导致的性能损失（如路径 (I, am) 的退出位置由最晚的 am 层决定）。</p>
+<p><strong>方法</strong>：
+1. <strong>算法</strong>：将 token 树中一条路径上的 token 合并为单个"超 token（hyper-token）"，使投机解码的早期退出处理方式与自回归解码类似。将指数级映射复杂度转化为线性复杂度。
+2. <strong>实现</strong>：基于 cutlass 的 group GEMM 实现和 MegaBlocks 的 block-wise 矩阵乘法，设计自定义 GPU 算子计算超 token 的特征。</p>
+<p><strong>效果</strong>：实现 <strong>1.66×</strong> 推理加速（相比 HuggingFace 基线）。</p>
+<h3 id="_7">正交加速技术的集成</h3>
+<p>SpecEE 与以下技术正交，可叠加使用：
+- <strong>快速解码</strong>：集成 vllm 的 Paged Attention（云端场景）
+- <strong>量化</strong>：集成 AWQ（云端场景）
+- <strong>稀疏激活</strong>：集成 PowerInfer 的稀疏激活（PC 场景，GPU-CPU 混合推理）</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama2-7B/13B/70B（chat 版本）</li>
+<li><strong>云端硬件</strong>：NVIDIA Tesla A100-80GB GPU、NVIDIA RTX 4090 24GB GPU</li>
+<li><strong>PC 硬件</strong>：Lenovo Legion Y7000（i7-13650HX + RTX 4060 Laptop 8GB GPU）</li>
+<li><strong>数据集</strong>：MT-Bench、SUM、QA、Alpaca、GSM8K、HumanEval、MMLU、CommonsenseQA、SST2（9 个数据集）</li>
+<li><strong>评估指标</strong>：解码加速比、吞吐量、精度、能耗</li>
 </ul>
+<h3 id="speedup">速度提升（Speedup）</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>基线</th>
+<th>模型</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>云端（RTX 4090）</td>
+<td>HuggingFace</td>
+<td>Llama2-7B</td>
+<td><strong>1.43×</strong>（自回归解码）</td>
+</tr>
+<tr>
+<td>云端（A100）</td>
+<td>HuggingFace</td>
+<td>Llama2-7B</td>
+<td><strong>1.27×</strong>（自回归解码）</td>
+</tr>
+<tr>
+<td>云端（A100）</td>
+<td>HuggingFace</td>
+<td>Llama2-13B</td>
+<td><strong>1.43×</strong></td>
+</tr>
+<tr>
+<td>云端（A100）</td>
+<td>HuggingFace</td>
+<td>Llama2-70B</td>
+<td><strong>1.23×</strong></td>
+</tr>
+<tr>
+<td>云端（A100）</td>
+<td>EAGLE</td>
+<td>Llama2-7B</td>
+<td><strong>1.05×</strong>（投机解码）</td>
+</tr>
+<tr>
+<td>云端（A100）</td>
+<td>EAGLE</td>
+<td>Llama2-13B</td>
+<td><strong>1.06×</strong>（投机解码）</td>
+</tr>
+<tr>
+<td><strong>综合</strong></td>
+<td><strong>HuggingFace</strong></td>
+<td><strong>Llama2-7B</strong></td>
+<td><strong>2.25×</strong>（云端）</td>
+</tr>
+<tr>
+<td><strong>PC</strong></td>
+<td><strong>llama.cpp</strong></td>
+<td><strong>Llama2-7B</strong></td>
+<td><strong>2.43×</strong>（PC 端）</td>
+</tr>
+<tr>
+<td>PC</td>
+<td>PowerInfer</td>
+<td>Llama2-7B</td>
+<td>1.15×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">精度评估</h3>
+<p>SpecEE 在 Llama2-7B/13B/70B 上的精度损失均 &lt; 1%（与原始 Dense 模型相比），远优于 AdaInfer（如 AdaInfer 在 CSQA 上仅 53.00% vs SpecEE 61.26%）。在所有 7 个评估数据集上，SpecEE 的平均前向层数显著低于原始模型（如 Llama2-7B: 32 层 → 约 23 层）。</p>
+<h3 id="_11">吞吐量</h3>
+<p>SpecEE+HF 在云端实现约 56-60 tokens/s（Llama2-7B, RTX 4090），SpecEE+llama.cpp 在 PC 端实现约 8-13 tokens/s（Llama2-7B）。</p>
+<h3 id="_12">能效</h3>
+<p>SpecEE 在 NVIDIA A100 上将平均功耗从 201W 降至 182W，实现约 <strong>10% 功耗降低</strong>和约 <strong>1.57× 能效提升</strong>。原因是预测器是内存受限算子，其工作负载相对较低。</p>
+<h3 id="_13">内存使用</h3>
+<p>SpecEE 的额外内存开销约 0.9GB（Llama2-7B）和 1.4GB（Llama2-13B），主要来自 DLM（投机模型）。预测器本身的内存可忽略（约 416KB）。</p>
+<h3 id="_14">训练开销</h3>
+<ul>
+<li>投机模型（EAGLE DLM）：约 24 小时（RTX 3090）</li>
+<li>预测器训练：仅需约 2% 的训练数据即可达到良好性能，总共约 5 分钟（A100）</li>
+<li>预测器推理开销：约 0.0009s/token，占整体推理延迟约 5.6%</li>
+</ul>
+<h3 id="ablation-study">消融实验（Ablation Study）</h3>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仅 T1（轻量级预测器）</td>
+<td>~1.08×</td>
+</tr>
+<tr>
+<td>T1+T2（+调度引擎）</td>
+<td>~1.27×</td>
+</tr>
+<tr>
+<td>T1+T2+T3（完整 SpecEE）</td>
+<td>~1.66×（单技术）/ 2.25×（综合）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_15">优势</h2>
+<ol>
+<li><strong>可忽略的训练开销</strong>：SpecEE 仅需训练一个投机模型（如 EAGLE 的 DLM，24 小时）和轻量级预测器（约 5 分钟），且不影响原始 LLM 参数。</li>
+<li><strong>适用于任何 LLM</strong>：由于不修改原始模型参数，SpecEE 可以通用化应用于任何 LLM。</li>
+<li><strong>精度损失可忽略</strong>：所有评测数据集上精度损失 &lt; 1%。</li>
+<li><strong>显著的加速效果</strong>：云端 2.25× 和 PC 端 2.43× 加速（Llama2-7B）。</li>
+<li><strong>正交性</strong>：与量化（AWQ）、快速解码（vllm）、稀疏激活（PowerInfer）等技术正交，可叠加使用。</li>
+<li><strong>低预测器开销</strong>：预测器参数仅约 0.07M（约 416KB 内存），推理延迟仅占 5.6%。</li>
+<li><strong>两级调度</strong>：避免了在不必要的层部署预测器，减少约 68% 的预测器数量。</li>
+<li><strong>低内存占用</strong>：预测器内存可忽略，额外内存主要来自 DLM（约 0.9-1.4GB）。</li>
+<li><strong>能效提升</strong>：约 10% 功耗降低和 1.57× 能效提升。</li>
+<li><strong>自定义 GPU 算子</strong>：基于 cutlass 和 MegaBlocks 实现高效的超 token 计算。</li>
+</ol>
+<hr />
+<h2 id="_16">局限</h2>
+<ol>
+<li><strong>依赖投机模型质量</strong>：SpecEE 的核心依赖于投机模型（DLM）的质量。如果 DLM 生成的投机 token 不在最终结果中，早期退出将无法生效。DLM 的训练本身需要额外开销（如 EAGLE 需 24 小时）。</li>
+<li><strong>额外内存开销</strong>：投机模型（DLM）带来约 0.9-1.4GB 的额外内存消耗，对于资源受限的环境可能有影响。</li>
+<li><strong>仅在 Llama2 上验证</strong>：论文的实验仅基于 Llama2-7B/13B/70B，未在其他 LLM（如 Mistral、Qwen、GPT 等）上进行验证。</li>
+<li><strong>精度损失虽小但存在</strong>：虽然损失 &lt; 1%，但在某些数据集上（如 GSM8K 从 20.62 降至 20.00），损失仍可感知。</li>
+<li><strong>预测器的训练数据依赖</strong>：预测器的训练需要使用特定 prompt 数据集（如 MT-Bench），可能存在泛化性问题。</li>
+<li><strong>投机解码加速有限</strong>：与 EAGLE 相比，SpecEE 仅实现约 1.05-1.06× 的加速，提升有限。</li>
+<li><strong>硬件依赖</strong>：需要 NVIDIA GPU（CUDA 支持），在 CPU-only 环境中可能无法使用。</li>
+<li><strong>离线调度的一次性成本</strong>：离线调度需要为每个 LLM 收集统计信息，虽然仅需一次，但增加了部署复杂性。</li>
+<li><strong>未讨论与多模态 LLM 的兼容性</strong>：论文未涉及视觉-语言模型等多模态场景。</li>
+<li><strong>Cannikin 效应</strong>：虽然通过超 token 合并缓解了，但当 token 路径中有一个 token 的退出层很晚时，整个路径的加速仍然受限。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏剪枝（Sparse Pruning）</strong>：SpecEE 的早期退出与结构化稀疏性密切相关，可与 SparseGPT 等方法互补。</li>
+<li><strong>投机解码（Speculative Decoding）</strong>：SpecEE 的核心是利用投机模型减少搜索空间，与 EAGLE、Medusa、Lookahead 等方法密切相关。</li>
+<li><strong>结构化稀疏性（Structured Sparsity）</strong>：SpecEE 的超 token 合并和偏斜分布利用了结构化稀疏性的概念。</li>
+<li><strong>结构设计（Structure Design）</strong>：SpecEE 的两级调度和预测器设计体现了高效的结构设计思路。</li>
+<li><strong>量化（Quantization）</strong>：SpecEE 与 AWQ 等量化方法正交，可叠加使用，推动精度-加速帕累托前沿。</li>
+<li><strong>动态推理（Dynamic Inference）</strong>：SpecEE 的早期退出和调度机制属于动态推理范畴，与 MoD（Mixture-of-Depths）、D-LLM 等方法相关。</li>
+<li><strong>能效优化（Energy Efficiency）</strong>：SpecEE 实现了约 10% 功耗降低和 1.57× 能效提升，与硬件能效优化方向密切相关。</li>
+<li><strong>端云协同推理（Edge-Cloud Inference）</strong>：SpecEE 同时在云端和 PC 场景中验证，适用于端云协同推理场景。</li>
+<li><strong>预测器训练效率</strong>：仅需约 2% 训练数据和约 5 分钟训练时间，对高效推理系统设计具有参考价值。</li>
+<li><strong>GPU 优化与自定义算子</strong>：基于 cutlass 和 MegaBlocks 的自定义 GPU 实现，与高效算子设计方向相关。</li>
+</ol>
+<hr />
+<blockquote>
+<p><strong>生成声明</strong>：本 note 由 AI Agent（Hermes Agent）自动生成，基于对论文全文的分析和理解。内容仅供参考，可能存在细节偏差，请以原论文为准。生成时间：2025年6月。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

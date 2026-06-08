@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,33 +164,214 @@
 <p>Jiayi Yao, Hanchen Li, Yuhan Liu, Siddhant Ray, Yihua Cheng, Qizheng Zhang, Kuntai Du, Shan Lu, Junchen Jiang</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) often incorporate multiple text chunks in their
-inputs to provide the necessary contexts. To speed up the prefill of the long
-LLM inputs, one can pre-compute the KV cache of a text and re-use the KV cache
-when the context is reused as the prefix of another LLM input. However, the
-reused text chunks are not always the input prefix, which makes precomputed KV
-caches not directly usable since they ignore the text's cross-attention with
-the preceding texts. Thus, the benefits of reusing KV caches remain largely
-unrealized.
-  This paper tackles just one challenge: when an LLM input contains multiple
-text chunks, how to quickly combine their precomputed KV caches in order to
-achieve the same generation quality as the expensive full prefill (i.e.,
-without reusing KV cache)? This challenge naturally arises in
-retrieval-augmented generation (RAG) where the input is supplemented with
-multiple retrieved texts as the context. We present CacheBlend, a scheme that
-reuses the precomputed KV caches, regardless prefix or not, and selectively
-recomputes the KV values of a small subset of tokens to partially update each
-reused KV cache. In the meantime, the small extra delay for recomputing some
-tokens can be pipelined with the retrieval of KV caches within the same job,
-allowing CacheBlend to store KV caches in slower devices with more storage
-capacity while retrieving them without increasing the inference delay. By
-comparing CacheBlend with the state-of-the-art KV cache reusing schemes on
-three open-source LLMs of various sizes and four popular benchmark datasets of
-different tasks, we show that CacheBlend reduces time-to-first-token (TTFT) by
-2.2-3.3x and increases the inference throughput by 2.8-5x from full KV
-recompute without compromising generation quality. The code is available at
-https://github.com/LMCache/LMCache.</p>
+<blockquote>
+<p>⚠️ <strong>本文由 AI Agent 自动生成，内容基于论文全文阅读与分析。生成时间：2025年6月。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>CacheBlend 通过选择性重计算少量 token 的 KV cache（仅 10-15%），在保留跨块注意力（cross-attention）的前提下，实现了 RAG 场景下 KV cache 的高效融合，将 TTFT 降低 2.2-3.3 倍，吞吐量提升 2.8-5 倍，且几乎不影响生成质量。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLM）通常在其输入中包含多个文本块以提供必要的上下文。为了加速长 LLM 输入的预填充（prefill），可以预计算文本的 KV cache 并在该上下文被复用时重新使用。然而，复用的文本块并不总是输入的前缀，这使得预计算的 KV cache 无法直接使用，因为它们忽略了该文本与前面文本的交叉注意力（cross-attention）。因此，KV cache 复用的优势在很大程度上未被实现。</p>
+<p>本文解决了一个核心挑战：当 LLM 输入包含多个文本块时，如何快速组合它们的预计算 KV cache，以达到与昂贵的完整预填充相同的生成质量？这一挑战自然出现在检索增强生成（RAG）场景中——输入中补充了多个检索到的文本作为上下文。我们提出了 CacheBlend，一种复用预计算 KV cache（无论是否为前缀）并通过选择性重计算少量 token 的 KV 值来部分更新每个复用的 KV cache 的方案。同时，重计算少量 token 的额外延迟可以与同一任务内的 KV cache 检索进行流水线化（pipelining），使得 CacheBlend 能够将 KV cache 存储在速度较慢但容量更大的设备上，且不增加推理延迟。在三个不同规模的开源 LLM 和四个不同任务的流行基准数据集上，CacheBlend 相比完整的 KV 重计算，将 TTFT 降低了 2.2-3.3 倍，推理吞吐量提高了 2.8-5 倍，且不牺牲生成质量。代码开源：https://github.com/LMCache/LMCache。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<p>LLM 推理中的预填充（prefill）阶段需要计算所有输入 token 的 KV cache，这一步的延迟直接决定了用户等待第一个 token 的时间（TTFT）。在 RAG 场景中，输入通常包含多个检索到的文本块（chunk），导致预填充延迟随输入长度超线性增长，严重影响用户体验。</p>
+<h3 id="_5">现有方法的不足</h3>
+<p><strong>1. 前缀缓存（Prefix Caching）：</strong>
+- 仅缓存和复用输入前缀的 KV cache（如 vLLM、SGLang、RAGCache）
+- 优势：前缀的 KV cache 不受后续文本影响，生成质量与完整预填充相同
+- 劣势：在 RAG 中，除了第一个文本块外，其他块都不是前缀，其 KV cache 无法被复用。因此，当输入包含多个复用的文本块时，前缀缓存的速度优势几乎消失，接近完整的 KV 重计算</p>
+<p><strong>2. 完整 KV 复用（Full KV Reuse）：</strong>
+- 由 PromptCache 等系统提出，复用非前缀文本的 KV cache，通过调整位置编码保持位置正确
+- 优势：速度快
+- 劣势：忽略跨块注意力（cross-attention），即一个块的 token 与前面块的 token 之间的注意力。这在需要联合理解多个块信息的查询中会导致错误响应</p>
+<h3 id="_6">核心洞察</h3>
+<p>通过实验（Figure 2）发现：
+- 随着检索到的相关文本块数量增加，完整 KV 复用与完整 KV 重计算之间的质量差距越来越显著
+- 跨块注意力对于多跳问答（multi-hop QA）等需要综合多源信息的任务至关重要</p>
+<p>因此，本文的目标是：在保持完整 KV 重计算质量的前提下，实现接近完整 KV 复用的速度。</p>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="41-kv-selective-kv-recompute">4.1 选择性 KV 重计算（Selective KV Recompute）</h3>
+<p>CacheBlend 的核心思想是：在每一层只重计算少量 token 的 KV 值，而复用其他 token 的预计算 KV cache。</p>
+<p><strong>工作流程：</strong>
+1. 对每一层的输入应用掩码（mask），只保留选定的 token 子集
+2. 将减少后的输入转换为查询（Q）、键（K）和值（V）向量，仅限于选定的 token
+3. 通过复用未选定 token 的 KV cache 条目来扩展 K 和 V 向量
+4. 运行注意力模块，产生下一层的输入</p>
+<p><strong>关键特性：</strong>
+- 计算开销与重计算的 token 数量成正比
+- 若重计算 r% 的 token，总计算开销约为完整预填充的 r%
+- 通常只需重计算 10-15% 的 token 即可达到与完整预填充相同的质量</p>
+<h3 id="42-hkvd-token-high-kv-deviation">4.2 HKVD Token 选择（High KV Deviation）</h3>
+<p>如何选择需要重计算的 token 是关键问题。</p>
+<p><strong>Insight 1：</strong> 重计算 KV 偏差（KV deviation）最高的 token 可以最大程度地减少注意力偏差（attention deviation）。KV 偏差定义为预计算 KV 与完整重计算 KV 之间的绝对差异。</p>
+<p><strong>Insight 2：</strong> 不同层之间的 HKVD token 具有高度相关性。即一个 token 在某层的 KV 偏差较高，很可能在相邻层也较高。这是因为 transformer 中 token 的输入嵌入在层间变化缓慢。</p>
+<p><strong>选择方案——渐进式过滤（Gradual Filtering）：</strong>
+1. 在第一层进行完整预填充，选择 KV 偏差最高的 token（比例略高于最终目标比例 r%）
+2. 在第二层，仅对这些 token 的 KV 进行重计算，并选择其中 KV 偏差最高的 token（比例略低于上一层）
+3. 逐层递进，最终选出每层的 HKVD token</p>
+<p><strong>注意力稀疏性（Attention Sparsity）：</strong>
+- 实验表明，仅约 10-15% 的 token 具有显著高于其他 token 的 KV 偏差
+- 这与注意力稀疏性特性一致：在注意力矩阵中，高注意力通常只发生在少量 token 与其前驱 token 之间</p>
+<h3 id="43-system-design">4.3 系统设计（System Design）</h3>
+<p><strong>核心洞察：</strong> 如果选择性 KV 重计算的延迟小于将 KV 加载到 GPU 内存的延迟，则通过流水线化（pipelining）KV 加载和重计算，可以隐藏重计算的延迟。</p>
+<p><strong>流水线化机制：</strong>
+- 一层的选择性 KV 重计算可以在上一层的 KV cache 加载到 GPU 内存后立即开始
+- 因为下一层要重计算哪些 token 仅依赖于上一层的 KV 偏差
+- KV 加载延迟可以完全隐藏重计算延迟（当重计算延迟 ≤ 加载延迟时）</p>
+<p><strong>三个关键组件：</strong></p>
+<ol>
+<li><strong>加载控制器（Loading Controller）：</strong></li>
+<li>根据给定的存储设备，选择理想的重计算比例</li>
+<li>使用两个延迟估计器：重计算延迟估计器和加载延迟估计器</li>
+<li>计算最优重计算比例，使重计算延迟接近加载延迟</li>
+<li>
+<p>还可以智能选择存储设备（在满足延迟约束的前提下选择最便宜的设备）</p>
+</li>
+<li>
+<p><strong>KV Cache 存储（KV Cache Store）：</strong></p>
+</li>
+<li>将 LLM 输入拆分为多个文本块，每个块可复用或新建</li>
+<li>通过哈希查找对应的 KV cache（与 vLLM 的块哈希实现方式相同）</li>
+<li>新生成的 KV cache 添加到存储设备</li>
+<li>
+<p>使用 LRU 策略淘汰过期的 KV cache</p>
+</li>
+<li>
+<p><strong>融合器（Fusor）：</strong></p>
+</li>
+<li>通过选择性重计算合并预计算的 KV cache</li>
+<li>等待上一层重计算完成，加载当前层的 KV cache，使用加载控制器计算的重计算比例进行选择性重计算</li>
+<li>重复此过程直到所有层完成</li>
+</ol>
+<h3 id="44">4.4 实现</h3>
+<ul>
+<li>基于 vLLM，使用 PyTorch v2.0，约 3K 行 Python 代码</li>
+<li>三个核心接口：</li>
+<li><code>fetch_kv(text, layer_id)</code>：获取 KV cache</li>
+<li><code>prefill_layer(input_dict, KVCache)</code>：执行部分预填充</li>
+<li><code>synchronize()</code>：同步，确保当前层的 KV cache 已加载到 GPU</li>
+<li>使用两个线程流水线化计算（当前层的重计算）和加载（下一层的 KV cache）</li>
+<li>KV cache 在 CPU 和 SSD 之间的管理：通过 <code>torch.cpu()</code> 和 <code>torch.save()</code> 进行</li>
+</ul>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>模型：</strong> Mistral-7B、Yi-34B（8-bit 量化）、Llama-70B（8-bit 量化）</li>
+<li><strong>硬件：</strong> Runpod GPU（128GB RAM，2×Nvidia A40，1TB NVME SSD，吞吐量 4.8GB/s）</li>
+<li><strong>数据集：</strong></li>
+<li>2WikiMQA（200 测试用例）：多跳推理 QA</li>
+<li>Musique（150 测试用例）：多文档 QA</li>
+<li>SAMSum（200 测试用例）：对话摘要</li>
+<li>MultiNews（60 测试用例）：多新闻摘要</li>
+<li><strong>质量指标：</strong> F1-score（QA）和 Rouge-L（摘要）</li>
+<li><strong>基线：</strong></li>
+<li>Full KV recompute（完整 KV 重计算）</li>
+<li>Prefix caching（前缀缓存，假设无加载延迟）</li>
+<li>Full KV reuse（完整 KV 复用，基于 PromptCache）</li>
+<li>MapReduce、MapRerank（RAG 方法）</li>
+</ul>
+<h3 id="_10">核心结果</h3>
+<p><strong>1. TTFT 降低：</strong>
+- 相比完整 KV 重计算，TTFT 降低 <strong>2.2-3.3 倍</strong>
+- 跨所有模型和数据集</p>
+<p><strong>2. 质量保持：</strong>
+- 相比完整 KV 重计算和前缀缓存，质量损失在 <strong>0.02 以内</strong>
+- 相比完整 KV 复用（Full KV reuse），F1-score 提升 <strong>0.1-0.2</strong>，Rouge-L 提升 <strong>0.03-0.25</strong></p>
+<p><strong>3. 吞吐量提升：</strong>
+- 在相同 TTFT 下，吞吐量比完整 KV 重计算提升 <strong>2.8-5 倍</strong>
+- 比前缀缓存提升 <strong>3.3 倍</strong></p>
+<p><strong>4. 与 RAG 方法对比：</strong>
+- 相比 MapReduce，TTFT 低 <strong>2-5 倍</strong>，F1-score 更高
+- 相比 MapRerank，质量显著更高（MapRerank 忽略了块间依赖）</p>
+<p><strong>5. 重计算比例：</strong>
+- 5%-18% 的重计算比例即可保持与完整 KV 重计算可比的质量
+- 对应 <strong>4.1-6.6 倍</strong> TTFT 降低（vs 完整 KV 重计算）
+- 对应 <strong>3.4-6.1 倍</strong> TTFT 降低（vs 前缀缓存）</p>
+<p><strong>6. 存储设备影响：</strong>
+- 在 RAM 和较慢 SSD（4Gbps）上，CacheBlend 均保持较低 TTFT 和质量
+- 在较慢存储设备上，与 Full KV reuse 的延迟差距变小（因为延迟更多由加载主导）</p>
+<p><strong>7. 敏感性分析：</strong>
+- 不同 chunk 数量和长度下，性能下降比例相似
+- 更大 batch size 时，CacheBlend 的优势更显著（因为 prefill 延迟随 batch size 增长更快）</p>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>显著的 TTFT 降低：</strong> 2.2-3.3 倍加速，几乎不影响生成质量</li>
+<li><strong>高效的吞吐量提升：</strong> 2.8-5 倍，适合高并发 RAG 服务</li>
+<li><strong>跨块注意力保留：</strong> 通过选择性重计算，有效恢复被忽略的跨块注意力</li>
+<li><strong>智能流水线化：</strong> 将重计算延迟隐藏在 KV 加载延迟中，不增加额外延迟</li>
+<li><strong>灵活的存储管理：</strong> 支持存储在不同速度的设备上（RAM、SSD），智能选择最优存储方案</li>
+<li><strong>与现有系统兼容：</strong> 基于 vLLM 实现，可与其他 KV cache 压缩/优化技术互补</li>
+<li><strong>轻量实现：</strong> 仅约 3K 行 Python 代码，易于集成</li>
+<li><strong>注意力稀疏性利用：</strong> 基于 attention sparsity 的理论和实验基础，方法有充分的理论支撑</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>仅适用于 Transformer 架构：</strong> 当前方法基于 Transformer 的注意力机制，不适用于 Mamba、Griffin 等非 Transformer 架构</li>
+<li><strong>模型和数据集覆盖有限：</strong> 仅在 Mistral-7B、Yi-34B、Llama-70B 上测试，未涵盖更多模型和不同的量化设置</li>
+<li><strong>未与最新推理引擎集成：</strong> 仅在 vLLM 上实现，未测试与 Distserve、StableGen 等最新推理引擎的兼容性</li>
+<li><strong>不支持跨节点 KV cache 共享：</strong> 未研究如何将 CacheBlend 应用于跨计算节点共享 KV cache 的场景</li>
+<li><strong>单层存储：</strong> 当前仅支持单级存储（如 CPU RAM 或 SSD），不支持多级存储层次结构</li>
+<li><strong>RAG 方法选择受限：</strong> 仅支持 "stuff" 模式（将所有上下文前置在 LLM 输入中），不适用于 MapReduce 或 Rerank 等 RAG 方法</li>
+<li><strong>重计算比例的硬编码：</strong> 默认重计算比例为 15%，虽然可以调整，但最优比例可能因模型和场景而异</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 管理与优化：</strong></li>
+<li>CacheBlend 属于 KV cache 管理（kv_cache_management）领域，与 LMCache 项目直接相关</li>
+<li>与 KV cache 压缩（如 GEAR、KIVI、KVQuant）互补，可结合以进一步降低存储需求</li>
+<li>
+<p>与 KV cache 选择性丢弃（如 H2O、Scissorhands）可结合，进一步减少 KV cache 大小</p>
+</li>
+<li>
+<p><strong>RAG 推理优化：</strong></p>
+</li>
+<li>与 RAGCache 等工作形成互补，CacheBlend 可在 RAG 系统中显著降低 TTFT</li>
+<li>
+<p>与上下文压缩方法（如 LLMLingua、LongLLMLingua）可结合</p>
+</li>
+<li>
+<p><strong>LLM 服务系统：</strong></p>
+</li>
+<li>与 vLLM、SGLang、Distserve 等通用 LLM 服务系统互补</li>
+<li>
+<p>可应用于多轮对话、长上下文推理等场景</p>
+</li>
+<li>
+<p><strong>注意力机制研究：</strong></p>
+</li>
+<li>利用注意力稀疏性进行高效推理，与 Transformer 优化的研究方向一致</li>
+<li>
+<p>为未来非 Transformer 架构（如 Mamba）的 KV cache 管理提供启发</p>
+</li>
+<li>
+<p><strong>存储层次结构：</strong></p>
+</li>
+<li>支持将 KV cache 存储在不同速度的设备上，与异构存储系统的研究方向相关</li>
+<li>
+<p>智能存储设备选择机制为未来多级存储层次结构提供参考</p>
+</li>
+<li>
+<p><strong>论文基线：</strong></p>
+</li>
+<li>本论文的基线方法为 LMCache（2025），与 EfficientPaper 中的 LMCache 论文直接相关</li>
+</ol>
+<hr />
+<h2 id="_13">引用信息</h2>
+<ul>
+<li><strong>发表会议：</strong> EuroSys '25（2025年3月30日-4月3日，鹿特丹，荷兰）</li>
+<li><strong>作者：</strong> Jiayi Yao, Hanchen Li, Yuhan Liu, Siddhant Ray, Yihua Cheng, Qizheng Zhang, Kuntai Du, Shan Lu, Junchen Jiang</li>
+<li><strong>机构：</strong> University of Chicago, Stanford University, Microsoft Research</li>
+<li><strong>代码：</strong> https://github.com/LMCache/LMCache</li>
+<li><strong>关键词：</strong> Large Language Models, KV Cache, Retrieval-Augmented-Generation, kv_cache_management</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

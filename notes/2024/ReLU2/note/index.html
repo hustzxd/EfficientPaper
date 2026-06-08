@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,8 +161,195 @@
   
                 <h1 id="relu2-wins-discovering-efficient-activation-functions-for-sparse-llms">
 <script type="math/tex">ReLU^2</script> Wins: Discovering Efficient Activation Functions for Sparse LLMs</h1>
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent 自动生成（Hermes Agent），生成时间：2026-06-05。内容基于论文原文提取与中文整理，仅供参考。</strong></p>
+</blockquote>
 <p><a class="glightbox" href="../activation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../activation.png" /></a></p>
-<p>The paper indicates through experiments that models employing <script type="math/tex">ReLU^2</script> excel across all three evaluation aspects, highlighting its potential as an efficient activation function for sparse LLMs.</p>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>本文提出了一套系统性框架，从稀疏-性能权衡、可预测性和硬件亲和性三个维度评估不同激活函数在稀疏 LLM 推理中的表现，发现 <strong>ReLU²</strong> 在三个维度上均表现最优，是稀疏 LLM 最高效的激活函数。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>稀疏计算为低资源场景下大语言模型（LLM）的推理提供了一种有效的解决方案，通过动态跳过不活跃神经元的计算来提升效率。虽然传统方法主要关注基于 ReLU 的 LLM（利用激活值中的零），但本文将稀疏 LLM 的范围扩展到零激活值之外。我们引入了一种通用方法，通过神经元输出幅度和自定义的幅度阈值来定义神经元激活状态，证明非 ReLU 的 LLM 同样表现出稀疏激活的特性。为找到稀疏计算最高效的激活函数，我们提出了一个系统性框架，从三个方面考察 LLM 的稀疏性：稀疏与性能之间的权衡、稀疏的可预测性以及硬件亲和性。我们在使用不同激活函数（包括 ReLU、SwiGLU、ReGLU 和 ReLU²）的 LLM 上进行了全面实验。结果表明，使用 ReLU² 的模型在所有三个评估方面均表现最优，突显了其作为稀疏 LLM 高效激活函数的潜力。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="1-llm">1. LLM 推理的资源瓶颈</h3>
+<p>大语言模型在推理阶段需要大量的计算和存储资源，导致在低资源场景（如消费级 GPU）中难以部署。<strong>稀疏计算</strong>（sparse computation）是解决这一问题的重要方向——通过观察到 LLM 中存在稀疏激活现象（某些神经元对给定输入的贡献极弱），可以跳过这些不活跃神经元的计算来降低开销。</p>
+<h3 id="2">2. 已有研究的局限</h3>
+<ul>
+<li>传统稀疏激活研究<strong>仅聚焦于 ReLU 激活函数</strong>，利用激活值为零的特性进行稀疏化（如 LLM in a Flash、PowerInfer 等）。</li>
+<li>对于非 ReLU 激活函数（如 LLaMA 使用的 SwiGLU/SiLU、Falcon 使用的 GELU），由于激活值不严格为零，<strong>尚不清楚是否也存在稀疏激活现象</strong>。</li>
+<li>不同 ReLU 变体（ReLU、ReGLU、ReLU²）之间的稀疏特性差异也未被系统比较。</li>
+</ul>
+<h3 id="3">3. 核心问题</h3>
+<p>在多种激活函数中，<strong>哪种激活函数最适合构建稀疏 LLM？</strong> 作者认为，不仅需要考虑模型性能，还需要将<strong>稀疏计算的效率</strong>纳入考量，从而在保持性能的同时实现高效推理。</p>
+<hr />
+<h2 id="_4">方法</h2>
+<h3 id="1">1. 更通用的激活稀疏定义</h3>
+<p>传统方法仅关注激活值是否为零来定义"不活跃"神经元。本文提出基于<strong>神经元输出幅度（output magnitude）</strong>和<strong>幅度阈值</strong>的更通用定义：</p>
+<ul>
+<li>对于 FFN 中的第 i 个神经元，其输出表示为 <script type="math/tex">n_i(x)</script>，幅度用 L2 范数衡量：<script type="math/tex">||n_i(x)||_2</script>
+</li>
+<li>如果神经元的输出幅度小于阈值 <script type="math/tex">\epsilon</script>，则认为该神经元不活跃</li>
+<li>引入<strong>尾部截断累积误差（CETT）</strong>来量化长尾神经元对 FFN 计算的影响：
+  <script type="math/tex; mode=display">CETT(x) = \frac{||\sum_{i \in D} n_i(x)||_2}{||FFN(x)||_2}, \quad D = \{i \mid ||n_i(x)||_2 < \epsilon\}</script>
+</li>
+</ul>
+<p><strong>关键发现</strong>：非 ReLU 的 LLM（如 LLaMA-2 使用 SiLU）同样存在稀疏激活——虽然激活值不为零，但神经元输出幅度呈长尾分布，大量神经元的输出幅度极小，可以安全跳过。CEET 实验表明，截断约 70% 的尾部神经元（稀疏率 0.7）仅导致 0.2 的累积误差。</p>
+<h3 id="2_1">2. 评估框架：三个关键因素</h3>
+<h4 id="1-sparsity-performance-trade-off">(1) 稀疏-性能权衡（Sparsity-Performance Trade-off）</h4>
+<ul>
+<li>通过调整幅度阈值控制稀疏率</li>
+<li>在不同稀疏率下评估模型性能，找到最佳权衡</li>
+<li><strong>CETT 是一个良好的性能指标</strong>：不同激活函数的性能曲线在 CETT=0.2 处出现拐点，低于此阈值时性能相对稳定，高于此阈值时性能显著下降</li>
+</ul>
+<h4 id="2-predictivity">(2) 可预测性（Predictivity）</h4>
+<ul>
+<li>定义：在 FFN 计算之前，预测哪些神经元是活跃/不活跃的能力</li>
+<li>使用轻量级两层神经网络预测器（大小约为 FFN 的 6%）</li>
+<li>两个指标：</li>
+<li><strong>召回率（Recall）</strong>：正确预测的活跃神经元占总活跃神经元的比例</li>
+<li><strong>预测稀疏率（Prediction Sparsity）</strong>：预测的不活跃神经元占总神经元的比例</li>
+<li>两种预测策略：</li>
+<li><strong>Top-k 策略</strong>：预测得分最高的 20% 神经元为活跃（预测稀疏率固定为 0.2）</li>
+<li><strong>阈值策略</strong>：预测得分大于 0.5 的神经元为活跃（更灵活，适用于低资源场景）</li>
+</ul>
+<h4 id="3-hardware-affinity">(3) 硬件亲和性（Hardware Affinity）</h4>
+<p>从两个角度分析：
+- <strong>Token 间计算关系</strong>：相邻 token 激活神经元的重叠程度（复用率/Reuse Ratio），通过滑动窗口存储前一个 token 的活跃神经元参数实现缓存复用，减少 I/O 开销
+- <strong>神经元间计算关系</strong>：高度共激活神经元对的频率差异（Top-average Co-activation Gap），可将高度共激活的神经元对绑定到连续内存地址，加速内存访问</p>
+<h3 id="3_1">3. 实验设置</h3>
+<ul>
+<li><strong>1B 模型</strong>：从头训练的 1.3B 参数模型，使用 SwiGLU、ReLU、ReGLU、ReLU² 四种激活函数</li>
+<li>架构类似 LLaMA-2，隐藏大小 2048，24 层，32 头，词表 32000</li>
+<li>ReLU/ReLU² 中间隐藏维度 8192，ReGLU/SwiGLU 中间隐藏维度 5376（保证参数量相同）</li>
+<li>训练数据：SlimPajama + RefinedWeb 混合，共 1000 亿 token</li>
+<li>训练框架：llm-foundry，AdamW 优化器，学习率 3e-4，cosine 调度，64 张 A100-80G GPU</li>
+<li><strong>LLaMA-2 模型</strong>：7B、13B、70B 规模，额外预训练了使用 ReGLU 的 LLaMA 变体</li>
+<li><strong>评估数据集</strong>（1B 模型）：ARC（easy + challenging）、Winogrande、HellaSwag、TruthfulQA、LAMBADA、PIQA、OpenBookQA</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="1_1">1. 训练动态</h3>
+<ul>
+<li>ReLU 模型在训练过程中性能始终最差</li>
+<li>SwiGLU 和 ReGLU 的损失和性能轨迹高度相似（GLU 变体的内在一致性）</li>
+<li>ReLU² 在训练中期略落后于 GLU 模型，但在训练后期显著改善，最终性能与 SwiGLU/ReGLU 相当</li>
+</ul>
+<h3 id="2-">2. 稀疏-性能权衡</h3>
+<ul>
+<li><strong>ReLU² 在所有激活函数中实现最佳性能-稀疏权衡</strong>：在相同稀疏率下，ReLU² 的 CETT 最低；在相同 CETT 下，ReLU² 的稀疏率最高</li>
+<li>关键数据：<strong>ReLU² 在稀疏率接近 95% 时，CETT 仅为 0.2</strong>，是 ReLU 和 ReGLU 的约一半</li>
+<li><strong>CETT=0.2 是所有激活函数的通用性能拐点</strong>，可作为经验最优阈值</li>
+<li>稀疏率 0.95 时性能损失不超过 1%</li>
+<li>模型规模越大（LLaMA-2 7B→70B），ReGLU 的稀疏率越高（稀疏特性随模型规模提升）</li>
+</ul>
+<h3 id="3_2">3. 可预测性</h3>
+<ul>
+<li><strong>ReLU² 和 ReLU 具有最高的预测可预测性</strong></li>
+<li>Top-k 策略下：在相同稀疏率下，ReLU² 和 ReLU 的召回率高于 SwiGLU 和 ReGLU</li>
+<li>阈值策略下：ReLU² 在预测召回率和预测稀疏率上均领先</li>
+</ul>
+<h3 id="4">4. 硬件亲和性</h3>
+<ul>
+<li><strong>复用率</strong>：ReLU² 在高激活率区域的复用率高于其他激活函数；扩大滑动窗口（1→5）可将整体复用率提高约 2 倍</li>
+<li><strong>共激活差距</strong>：ReLU 变体的 top-average co-activation gap 约 0.2，高于 SwiGLU（约 0.1）；ReLU² 在第 8 层之后始终高于 ReLU 和 ReGLU</li>
+</ul>
+<h3 id="5-table-1">5. 综合对比（Table 1）</h3>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>高性能</th>
+<th>高稀疏</th>
+<th>高可预测性</th>
+<th>硬件友好</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SwiGLU</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ReGLU</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ReLU</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>ReLU²</strong></td>
+<td><strong>✓</strong></td>
+<td><strong>✓</strong></td>
+<td><strong>✓</strong></td>
+<td><strong>✓</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>只有 ReLU² 在全部四个维度上均为最优。</strong></p>
+<h3 id="6">6. 量化效率估算</h3>
+<ul>
+<li>1B ReLU² 模型基于预测稀疏率可减少 <strong>56% 的总 FLOPs</strong>，性能损失不到 1%</li>
+<li>FFN 的 I/O 开销可减少 <strong>92%</strong>（利用稀疏率和复用率）</li>
+</ul>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>通用的激活稀疏定义</strong>：基于神经元输出幅度（而非严格零值），将稀疏激活的概念扩展到非 ReLU 激活函数</li>
+<li><strong>系统性评估框架</strong>：从稀疏-性能权衡、可预测性、硬件亲和性三个维度进行全面评估，逻辑严密</li>
+<li><strong>CETT 作为通用指标</strong>：提供了一种模型无关的、可量化的稀疏性评估工具，CETT=0.2 可作为经验阈值</li>
+<li><strong>ReLU² 全面最优</strong>：在性能、稀疏率、可预测性和硬件亲和性四个维度上均表现最优</li>
+<li><strong>显著的效率提升</strong>：56% FLOPs 减少 + 92% I/O 开销降低，性能损失不足 1%</li>
+<li><strong>实验充分</strong>：覆盖 1B 从头训练模型和 LLaMA-2 7B/13B/70B 规模，验证了结论的鲁棒性</li>
+<li><strong>实用性强</strong>：提出的方法可直接应用于现有稀疏推理框架（如 Deja Vu、PowerInfer、LLM in a Flash）</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>模型规模限制</strong>：主要实验基于 1B 从头训练模型，7B/70B 规模仅验证了 ReGLU 的缩放行为，缺乏在大模型上对 ReLU² 的系统性缩放实验</li>
+<li><strong>ReGLU 的 70B 预训练不充分</strong>：70B ReGLU 模型性能比原始 SwiGLU LLaMA-2 低约 6%，作者承认是预训练数据不足导致的</li>
+<li><strong>预测器的开销未深入讨论</strong>：虽然提到预测器大小约为 FFN 的 6%，但对不同规模模型的预测器实际推理开销缺乏详细分析</li>
+<li><strong>未与 MoE 方法进行直接对比</strong>：虽然提到了 MoE 的关系，但未与 Mixture-of-Experts 方法进行直接的效率对比</li>
+<li><strong>激活函数选择范围有限</strong>：仅比较了 ReLU、SwiGLU、ReGLU、ReLU² 四种激活函数，未涵盖 GELU、SiLU 等当前 LLM 常用的激活函数</li>
+<li><strong>1B 模型缺少热激活神经元现象</strong>：1B 模型未观察到显著的热激活神经元，而 7B 模型中存在，原因不明</li>
+<li><strong>缺乏推理框架的完整实现</strong>：论文更多是分析框架和原理，未提供端到端的推理加速系统</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_8">直接相关</h3>
+<ul>
+<li><strong>稀疏激活与推理加速</strong>：本文是稀疏 LLM 推理的核心研究，直接关联 EfficientPaper 中的 <code>sparse_pruning</code> 和 <code>activation_sparsity</code> 关键词</li>
+<li><strong>激活函数设计</strong>：ReLU² 作为一种高效的激活函数，可用于 EfficientPaper 中的 LLM 架构优化方向</li>
+<li><strong>条件计算（Conditional Computation）</strong>：本文从神经元级别的条件计算角度，与 MoE（Mixture-of-Experts）方法形成互补</li>
+</ul>
+<h3 id="_9">相关论文/方向</h3>
+<ul>
+<li><strong>PowerInfer</strong>（Song et al., 2023）：利用 ReLU 稀疏激活在消费级 GPU 上实现高效 LLM 推理</li>
+<li><strong>Deja Vu</strong>（Liu et al., 2023）：利用上下文稀疏性加速 LLM 推理</li>
+<li><strong>LLM in a Flash</strong>（Alizadeh et al., 2023）：在有限内存中高效推理 LLM</li>
+<li><strong>ReLU Strikes Back</strong>（Mirzadeh et al., 2023）：利用 ReLU 稀疏激活实现高效部署</li>
+<li><strong>MoEfication</strong>（Zhang et al., 2022b）：将 Transformer FFN 转换为 MoE 结构</li>
+<li><strong>Primer</strong>（So et al., 2021）：ReLU² 的原始提出者（搜索高效 Transformer 架构）</li>
+</ul>
+<h3 id="_10">未来研究方向</h3>
+<ol>
+<li><strong>大模型规模验证</strong>：在 LLaMA-2 70B/70B+ 规模上系统验证 ReLU² 的稀疏性缩放行为</li>
+<li><strong>激活函数与硬件协同优化</strong>：结合 GPU/TPU 的特定硬件特性，设计更高效的稀疏计算内核</li>
+<li><strong>动态稀疏率调度</strong>：根据输入复杂度动态调整稀疏率，实现更精细的性能-效率权衡</li>
+<li><strong>与 MoE 融合</strong>：将 ReLU² 稀疏激活与 MoE 结合，实现更大规模的条件计算</li>
+<li><strong>端到端推理系统</strong>：基于 ReLU² 的特性设计完整的高效推理框架，结合模型卸载（offloading）和参数缓存策略</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

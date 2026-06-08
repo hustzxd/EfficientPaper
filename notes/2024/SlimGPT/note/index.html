@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,27 +161,206 @@
   
                 <h1 id="slimgpt-layer-wise-structured-pruning-for-large-language-models">SlimGPT: Layer-wise Structured Pruning for Large Language Models</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) have garnered significant attention for their
-remarkable capabilities across various domains, whose vast parameter scales
-present challenges for practical deployment. Structured pruning is an effective
-method to balance model performance with efficiency, but performance
-restoration under computational resource constraints is a principal challenge
-in pruning LLMs. Therefore, we present a low-cost and fast structured pruning
-method for LLMs named SlimGPT based on the Optimal Brain Surgeon framework. We
-propose Batched Greedy Pruning for rapid and near-optimal pruning, which
-enhances the accuracy of head-wise pruning error estimation through grouped
-Cholesky decomposition and improves the pruning efficiency of FFN via Dynamic
-Group Size, thereby achieving approximate local optimal pruning results within
-one hour. Besides, we explore the limitations of layer-wise pruning from the
-perspective of error accumulation and propose Incremental Pruning Ratio, a
-non-uniform pruning strategy to reduce performance degradation. Experimental
-results on the LLaMA benchmark show that SlimGPT outperforms other methods and
-achieves state-of-the-art results.</p>
-<p>Batched Greedy Pruning 这个算法[TODO]</p>
-<p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<p>对第一层进行剪枝，测量每层的误差，发现越到最后一层误差越大，因此第一层最重要，最后一层最不重要，所以按照log增加</p>
-<p><a class="glightbox" href="../tab6.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab6.jpg" /></a></p>
+<h2 id="_1">一句话总结</h2>
+<p>SlimGPT 是一种基于最优脑外科（OBS）框架的低成本、快速结构化剪枝方法，通过批量贪心剪枝和递增剪枝比例策略，在单块 GPU 上约一小时内完成对 LLM 的近似最优结构化剪枝，且在 LLaMA 系列模型上取得了 SOTA 结果。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大型语言模型（LLMs）因其在各领域的卓越能力而备受关注，但其庞大的参数规模给实际部署带来了挑战。结构化剪枝是一种平衡模型性能与效率的有效方法，但在计算资源约束下的性能恢复是剪枝 LLM 的主要挑战。因此，我们提出了一种基于最优脑外科（OBS）框架的低成本、快速结构化剪枝方法——SlimGPT。我们提出了<strong>批量贪心剪枝（Batched Greedy Pruning）</strong>方法，用于快速且近似最优的剪枝，通过分组 Cholesky 分解提高了逐头剪枝误差估计的准确性，并通过<strong>动态组大小（Dynamic Group Size）</strong>提高了 FFN 的剪枝效率，从而在一小时内实现近似局部最优剪枝结果。此外，我们从误差累积的角度探讨了逐层剪枝的局限性，并提出了<strong>递增剪枝比例（Incremental Pruning Ratio）</strong>——一种非均匀剪枝策略，以减少性能退化。在 LLaMA 基准上的实验结果表明，SlimGPT 优于其他方法并取得了最先进的结果。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 部署难题</strong>：大型语言模型参数量巨大，推理成本高、部署困难，需要高效的模型压缩方法。</li>
+<li><strong>结构化剪枝的独特价值</strong>：相比非结构化剪枝（需要特殊硬件/框架加速），结构化剪枝通过删除权重矩阵的列或行来减少参数量，能直接在常规硬件上提升推理速度。</li>
+<li><strong>OBS 框架的局限</strong>：OBS 框架最初为逐参数压缩设计，直接应用于结构化剪枝时存在两个关键问题：</li>
+<li>粒度不匹配：OBS 每次迭代压缩一个参数，而结构化剪枝的最小粒度是列或头，直接应用会产生较大的数值误差。</li>
+<li>缺乏全局信息：OBS 本质上是逐层压缩方法，无法利用全局信息（如全局梯度）合理分配各层的剪枝比例，这对 LLM 结构化剪枝至关重要。</li>
+<li><strong>逐层剪枝的误差累积</strong>：层剪枝的局部性导致误差在后续层中被放大，造成最终模型输出与原始模型的显著偏差。</li>
+<li><strong>低成本需求</strong>：现有方法依赖大量计算资源进行后训练，不适合当前 LLM 场景。需要一种仅需单块 GPU、少量校准数据和约一小时即可完成的压缩方案。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="41-obs">4.1 基于 OBS 框架的结构化剪枝</h3>
+<p>将 OBS 框架扩展为结构化列剪枝，即一次删除一列，并用剩余列补偿：</p>
+<p>
+<script type="math/tex; mode=display">W_{:,p} = \arg\min_{W_{:,p}} \frac{\sum W^2_{:,p}}{H^{-1}_{p,p}}, \quad \Delta = -\frac{W_{:,p}}{H^{-1}_{p,p}} \cdot H^{-1}_{p,:}</script>
+</p>
+<p>以注意力块和 FFN 为最小剪枝单位，分别剪枝注意力块的输出矩阵列和 FFN 的降维矩阵列。</p>
+<h3 id="42-batched-greedy-pruning">4.2 批量贪心剪枝（Batched Greedy Pruning）</h3>
+<p><strong>核心思想</strong>：通过分组 Cholesky 分解和动态组大小策略，实现快速、近似最优的结构化剪枝。</p>
+<p><strong>分组 Cholesky 分解（Grouped Cholesky Decomposition）</strong>：
+- 利用对称矩阵的逆矩阵在置换后可通过相同置换获得的性质，以及 Cholesky 分解的主子矩阵等价性，将 <script type="math/tex">H^{-1}</script> 沿主对角线拆分为 <script type="math/tex">n_{head}</script> 个子矩阵并行分解：
+<script type="math/tex; mode=display">\hat{H}^{-1} = \text{Cholesky}(\text{Stack}([H^{-1}_{0:d,0:d}, H^{-1}_{d:2d,d:2d}, ..., H^{-1}_{(n-1)d:nd,(n-1)d:nd}]))</script>
+- 利用 GPU 加速快速计算对角线元素，计算逐头误差。
+- 在误差计算过程中，仅更新 <script type="math/tex">H^{-1}</script> 的对角线元素，跳过 <script type="math/tex">W</script> 的更新。
+- 确定要剪枝的头后，重新排列 <script type="math/tex">W</script> 和 <script type="math/tex">H^{-1</script> 的对应行列到前面，再次使用全局 Cholesky 分解逐列剪枝。
+- 对于 FFN，由于没有类似注意力头的块约束，采用动态组大小策略：从较大组大小（如 1024）开始剪枝，逐渐减小到较小值（如 8），在提升剪枝效率的同时接近近似最优解。</p>
+<h3 id="43-incremental-pruning-ratio">4.3 递增剪枝比例（Incremental Pruning Ratio）</h3>
+<p><strong>问题</strong>：逐层剪枝中，误差在后续层中被放大，以超线性速率累积。实验证明，浅层剪枝比例越高，深层误差累积越严重。</p>
+<p><strong>策略</strong>：采用对数递增策略控制逐层剪枝比例：
+<script type="math/tex; mode=display">r_i = r_0 + (r_{n-1} - r_0) \frac{\log(i + 1)}{\log(n)}, \quad (0 \leq i < n)</script>
+</p>
+<ul>
+<li>
+<script type="math/tex">r_i</script> 为第 <script type="math/tex">i</script> 层的剪枝比例，<script type="math/tex">r_0</script> 和 <script type="math/tex">r_{n-1}</script> 分别为第一层和最后一层的剪枝比例。</li>
+<li>该策略确保从第一层到最后一层的剪枝比例平滑过渡为对数曲线。</li>
+<li>减轻浅层的剪枝误差累积，同时避免深层过度剪枝，进一步降低性能损失。</li>
+</ul>
+<h3 id="44">4.4 实施细节</h3>
+<ul>
+<li>校准集：从 C4 数据集中随机选择 256 个 2048-token 序列。</li>
+<li>后训练：使用 LoRA 微调，采用 Alpaca 数据集，训练一个 epoch，AdamW 优化器，初始学习率 1e-4，余弦退火调度，全局 batch size 64，序列长度截断为 256。</li>
+<li>剪枝在单块 A100 上执行，微调使用两块 A100。</li>
+<li>评估：WikiText2（语言建模）和 Commonsense Reasoning（七项零样本任务：BoolQ, PIQA, HellaSwag, WinoGrande, ARC-easy, ARC-challenge, OpenbookQA）。</li>
+</ul>
+<h2 id="_5">实验结果</h2>
+<h3 id="llama-7b">LLaMA-7B 结果</h3>
+<table>
+<thead>
+<tr>
+<th>剪枝比例</th>
+<th>方法</th>
+<th>参数量</th>
+<th>PPL↓</th>
+<th>零样本平均↑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20%</td>
+<td>LLM-Pruner</td>
+<td>5.4B</td>
+<td>18.01</td>
+<td>61.50</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>Compresso</td>
+<td>-</td>
+<td>-</td>
+<td>59.51</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>SlimGPT</td>
+<td>16.68</td>
+<td>65.07</td>
+<td>65.07</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>LLM-Pruner</td>
+<td>5.0B</td>
+<td>20.57</td>
+<td>58.67</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>SlimGPT</td>
+<td>18.45</td>
+<td>62.45</td>
+<td>62.45</td>
+</tr>
+<tr>
+<td>33%</td>
+<td>LLM-Pruner</td>
+<td>4.5B</td>
+<td>24.50</td>
+<td>55.39</td>
+</tr>
+<tr>
+<td>33%</td>
+<td>SlimGPT</td>
+<td>22.43</td>
+<td>61.41</td>
+<td>61.41</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>LLM-Pruner</td>
+<td>3.4B</td>
+<td>40.64</td>
+<td>48.35</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>SlimGPT</td>
+<td>31.07</td>
+<td>53.76</td>
+<td>53.76</td>
+</tr>
+</tbody>
+</table>
+<h3 id="llama-13b30b">LLaMA-13B/30B 结果</h3>
+<ul>
+<li><strong>LLaMA-13B</strong>：20% 剪枝后 PPL 14.73，零样本平均 68.06；50% 剪枝后 PPL 26.38，零样本平均 59.49。</li>
+<li><strong>LLaMA-30B</strong>：20% 剪枝后 PPL 11.69，零样本平均 72.56；50% 剪枝后 PPL 17.17，零样本平均 66.79。</li>
+<li>模型规模越大，剪枝导致的性能损失越小，说明大模型参数冗余度更高。</li>
+<li>LLaMA-13B 50% 剪枝的性能甚至不如 LLaMA-7B 20% 剪枝，说明低成本微调的局限性。</li>
+</ul>
+<h3 id="_6">效率分析</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>20% 剪枝耗时</th>
+<th>50% 剪枝耗时</th>
+<th>内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7B</td>
+<td>678s (≈11分钟)</td>
+<td>1074s (≈18分钟)</td>
+<td>7375M</td>
+</tr>
+<tr>
+<td>13B</td>
+<td>1417s (≈24分钟)</td>
+<td>2475s (≈41分钟)</td>
+<td>11601M</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>7B 模型 50% 剪枝后：推理内存减少至 51%（14297MB vs 27737MB），推理延迟降低至 69%（9.21ms vs 13.51ms）。</li>
+<li>逐层剪枝策略不需要一次加载整个模型，仅需加载当前层参数和输入特征，显著降低内存消耗。</li>
+</ul>
+<h3 id="_7">消融实验</h3>
+<ul>
+<li><strong>分组 Cholesky 分解</strong>：对注意力块的 PPL 影响显著（38.83 vs 54.94）。</li>
+<li><strong>动态组大小</strong>：对 FFN 的零样本性能有贡献（52.23 vs 51.63）。</li>
+<li><strong>剪枝比例策略</strong>：对数递增 &gt; 线性递增 &gt; 均匀 &gt; 对数递减 &gt; 线性递减。</li>
+<li><strong>校准样本数和序列长度</strong>：样本越多、序列越长，效果越好。样本数达 2048 时 PPL 仍未收敛。</li>
+</ul>
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>低成本高效压缩</strong>：仅需单块 GPU、256 个校准样本、约 18 分钟（7B/20%）即可完成剪枝，极大降低了压缩成本。</li>
+<li><strong>任务无关性</strong>：使用通用预训练语料的随机样本作为校准集即可获得压缩模型，无需特定任务数据。</li>
+<li><strong>通用性</strong>：理论上适用于所有基于标准 Transformer 架构的模型，已在 LLaMA、Vicuna、LLaMA2、Baichuan 上验证。</li>
+<li><strong>SOTA 性能</strong>：在 LLaMA-7B/13B/30B 上，PPL 和零样本性能均优于 LLM-Pruner、Compresso、LoRAPrune 等基线方法。</li>
+<li><strong>无需特殊硬件</strong>：结构化剪枝直接减少参数量，无需特殊推理框架或硬件支持。</li>
+<li><strong>与量化/非结构化剪枝兼容</strong>：可与其他压缩方法组合使用。</li>
+<li><strong>误差累积分析新颖</strong>：从误差累积角度深入分析逐层剪枝的局限性，提出对数递增策略，具有理论贡献。</li>
+</ol>
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>高剪枝比例下性能退化明显</strong>：50% 剪枝时性能损失显著，尤其在复杂任务（如 LongBench）上。</li>
+<li><strong>低成本微调的局限</strong>：使用 LoRA 微调时，50% 剪枝后的 13B 模型性能甚至不如 20% 剪枝的 7B 模型，说明资源受限条件下性能恢复有限。</li>
+<li><strong>对数递增策略非最优</strong>：虽然保证了通用性，但不是最优的非均匀策略，需要进一步探索更合适的方案。</li>
+<li><strong>校准数据影响</strong>：校准样本数和序列长度对结果有显著影响，数据不足时效果不佳。</li>
+<li><strong>伦理安全风险</strong>：剪枝后的模型可能带来伦理安全问题，需要谨慎处理。</li>
+<li><strong>未与多种基线方法全面对比</strong>：仅与 LLM-Pruner、Compresso、LoRAPrune 进行对比，缺少与 SparseGPT、Wanda 等方法的直接对比。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>结构化剪枝（Structured Pruning）</strong>：高效 AI 研究中的核心方向，SlimGPT 作为 OBS 框架在结构化剪枝中的首次应用，具有重要参考价值。</li>
+<li><strong>模型压缩（Model Compression）</strong>：与量化（Quantization）、知识蒸馏（Knowledge Distillation）等方法互补，可与 GPTQ、SparseGPT 等方法组合使用。</li>
+<li><strong>LLM 推理加速（LLM Inference Acceleration）</strong>：结构化剪枝直接减少参数量，提升推理速度，是高效推理的重要手段。</li>
+<li><strong>低成本压缩（Low-cost Compression）</strong>：SlimGPT 的低成本特性使其在资源受限场景下具有独特优势，与 Compresso、LoRAPrune 等方法形成对比。</li>
+<li><strong>稀疏性（Sparsity）</strong>：与稀疏训练、稀疏注意力等研究方向相关，是构建高效 LLM 的关键。</li>
+<li><strong>模型架构优化</strong>：结构化剪枝可视为模型架构搜索（NAS）的简化版本，两者在高效模型设计方面有交叉。</li>
+</ul>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）基于论文 PDF 全文自动生成。AI Agent 使用 PyMuPDF（fitz）提取论文文本，结合元数据文件（.prototxt）信息，生成了本中文笔记。笔记内容包括摘要翻译、研究动机、方法技术细节、实验结果、优势、局限、相关研究方向等。AI 生成内容可能存在偏差或遗漏，建议读者参考原文进行核实。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,28 +164,159 @@
 <p>Bohan Yu, Yekun Chai</p>
 </blockquote>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Existing key-value (KV) cache compression methods typically rely on
-heuristics, such as uniform cache allocation across layers or static eviction
-policies, however, they ignore the critical interplays among layer-specific
-feature patterns and task performance, which can lead to degraded
-generalization. In this paper, we propose EvolKV, an adaptive framework for
-layer-wise, task-driven KV cache compression that jointly optimizes the memory
-efficiency and task performance. By reformulating cache allocation as a
-multi-objective optimization problem, EvolKV leverages evolutionary search to
-dynamically configure layer budgets while directly maximizing downstream
-performance. Extensive experiments on 11 tasks demonstrate that our approach
-outperforms all baseline methods across a wide range of KV cache budgets on
-long-context tasks and surpasses heuristic baselines by up to 7 percentage
-points on GSM8K. Notably, EvolKV achieves superior performance over the full KV
-cache setting on code completion while utilizing only 1.5% of the original
-budget, suggesting the untapped potential in learned compression strategies for
-KV cache budget allocation.</p>
+<blockquote>
+<p><strong>注意：本 note 由 AI Agent（Hermes Agent）自动生成，基于论文全文阅读与分析。生成时间：2025 年 6 月。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>EvolKV 是首个将 KV Cache 预算分配建模为黑箱优化问题的框架，利用进化算法（CMA-ES）按层动态搜索最优分配方案，以任务下游性能为优化目标，在多个长上下文和推理任务上显著优于基于规则的启发式基线方法。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>现有 KV Cache 压缩方法通常依赖启发式策略，例如在各层之间均匀分配缓存预算或采用静态淘汰策略，但忽略了层间特征模式与任务性能之间的关键相互作用，这会导致泛化性能下降。本文提出 EvolKV，一种自适应的逐层、任务驱动的 KV Cache 压缩框架，联合优化内存效率和任务性能。通过将缓存分配重新表述为多目标优化问题，EvolKV 利用进化搜索动态配置各层预算，同时直接最大化下游任务性能。在 11 个任务上的大量实验表明，该方法在广泛的 KV Cache 预算下均优于所有基线方法，在 GSM8K 上最多超越启发式基线 7 个百分点。值得注意的是，EvolKV 仅使用原始预算的 1.5% 即在代码补全任务上超越了完整 KV Cache 的性能，揭示了学习型压缩策略在 KV Cache 预算分配中的巨大潜力。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>KV Cache 内存瓶颈</strong>：KV Cache 的内存占用随序列长度线性增长，自注意力的二次复杂度使长序列推理极为缓慢。</li>
+<li><strong>现有方法的局限</strong>：当前 KV Cache 压缩方法主要分为三类：</li>
+<li><strong>固定位置保留</strong>（如 StreamingLLM）：所有层保留相同位置的 KV Cache。</li>
+<li><strong>均匀预算分配 + 注意力加权淘汰</strong>（如 SnapKV、H2O）：各层分配相同预算但位置不同。</li>
+<li><strong>金字塔策略</strong>（如 PyramidKV）：预算从底层到高层逐层递减。</li>
+<li><strong>核心问题</strong>：这些启发式方法忽略了 Transformer 各层在信息处理中的不同功能角色，也忽略了缓存预算与任务性能之间的动态关系，导致次优的信息保留。</li>
+<li><strong>关键洞察</strong>：不同层对不同任务的贡献不同，简单的固定规则无法捕捉各层实际的缓存需求，因此需要一种任务感知的、逐层自适应的分配策略。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">框架概览</h3>
+<p>EvolKV 将 KV Cache 预算分配视为黑箱优化问题，利用进化算法（CMA-ES）逐层搜索最优配置。其核心思路是：<strong>以任务下游性能为优化目标，直接搜索每层的最优 KV Cache 预算</strong>。</p>
+<h3 id="_6">优化目标</h3>
+<p>给定一个有 <script type="math/tex">L</script> 层的模型，第 <script type="math/tex">i</script> 层的 KV Cache 预算为 <script type="math/tex">k_i \in \mathbb{N}</script>，目标函数为：</p>
+<p>
+<script type="math/tex; mode=display">S^* = \arg\max_{S \in \mathcal{S}} f(S) \cdot (1 + \lambda \cdot \text{CACHESCORE}(S, c))</script>
+</p>
+<p>其中：
+- <script type="math/tex">f(S)</script> 是压缩方案 <script type="math/tex">S</script> 在下游任务上的性能
+- <script type="math/tex">\lambda > 0</script> 是平衡原始性能与缓存效率的超参数（论文设置 <script type="math/tex">\lambda = 0.3</script>）
+- <script type="math/tex">\text{CACHESCORE}(S, c)</script> 是缓存效率项，范围 <script type="math/tex">[0, 1]</script>，当平均预算超过目标 <script type="math/tex">c</script> 时给予惩罚
+- 约束条件：<script type="math/tex">\frac{1}{L}\sum_{i=1}^{L} k_i \leq c</script>
+</p>
+<h3 id="_7">层分组策略</h3>
+<p>为提高优化效率，将 <script type="math/tex">L</script> 层分为 <script type="math/tex">J = \lceil L/n_g \rceil</script> 组（论文设置 <script type="math/tex">n_g = 8</script>），每组包含连续的层。这大幅减小了搜索空间并使进化搜索更加稳定。</p>
+<h3 id="algorithm-1">进化搜索过程（Algorithm 1）</h3>
+<ol>
+<li><strong>初始化</strong>：将所有层预算设为目标平均预算 <script type="math/tex">c</script>
+</li>
+<li><strong>逐组优化</strong>：从底层到顶层逐组进行进化优化</li>
+<li>对每个组 <script type="math/tex">j</script>，使用 CMA-ES 进化优化器生成候选方案</li>
+<li>评估每个候选方案的适应度（任务性能 × 缓存效率）</li>
+<li>更新最优组配置</li>
+<li><strong>预算补全</strong>：优化后若总预算偏离目标，按比例重新分配各层预算</li>
+</ol>
+<h3 id="_8">关键超参数</h3>
 <ul>
-<li>优化目标跟task绑定，选取30个samples</li>
-<li>使用进化算法分配kv budget</li>
-<li>任务不同，分配方式也不同</li>
+<li>进化优化器：CMA-ES（协方差矩阵自适应进化策略）</li>
+<li>缓存效率权重 <script type="math/tex">\lambda = 0.3</script>
+</li>
+<li>平滑因子 <script type="math/tex">\gamma = 0.2</script>
+</li>
+<li>CMA-ES 学习率 <script type="math/tex">\sigma = 0.3</script>
+</li>
+<li>组大小 <script type="math/tex">n_g = 8</script>
+</li>
+<li>种群大小：<script type="math/tex">4 + \lfloor 3 \cdot \ln(n_g) \rfloor</script>
+</li>
+<li>优化仅需 30 个随机采样的下游任务样本</li>
+<li>使用 SnapKV 作为基础方法，结合 EvolKV 优化的预算进行推理</li>
 </ul>
+<h3 id="_9">核心特点</h3>
+<ul>
+<li><strong>无需微调</strong>：在冻结的 LLM 上操作，不修改模型参数</li>
+<li><strong>支持任意评估指标</strong>：如准确率、F1 分数、ROUGE 等</li>
+<li><strong>无需架构修改</strong>：即插即用</li>
+<li><strong>发现非直觉的分配模式</strong>：中间层获得较高预算（计算瓶颈层），非单调递减</li>
+</ul>
+<hr />
+<h2 id="_10">实验结果</h2>
+<h3 id="_11">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Mistral-7B-Instruct（32K 上下文）、Llama-3-8B-Instruct（8K 上下文）</li>
+<li><strong>基线方法</strong>：StreamingLLM、SnapKV、PyramidKV</li>
+<li><strong>评估基准</strong>：LongBench（16 个子任务，6 大类）、GSM8K、NIAH、RULER（11 个子任务）</li>
+<li><strong>KV Cache 预算</strong>：128、256、512、1024、2048</li>
+</ul>
+<h3 id="_12">主要实验结果</h3>
+<h4 id="longbenchmistral-7b-instruct">LongBench（Mistral-7B-Instruct）</h4>
+<p>在所有 KV Cache 预算下，EvolKV 平均性能最高（表 1）：
+- KV=128：EvolKV 36.64 vs 最佳基线 PyramidKV 36.11
+- KV=256：EvolKV 39.10 vs SnapKV 38.95
+- KV=512：EvolKV 41.32 vs SnapKV 40.61
+- KV=1024：EvolKV 41.84 vs SnapKV 41.72
+- KV=2048：EvolKV 42.33 vs SnapKV 42.20</p>
+<p>部分子任务（TriviaQA、PassageRetrieval-en 等）甚至超过完整 KV Cache。</p>
+<h4 id="longbenchllama-3-8b-instruct">LongBench（Llama-3-8B-Instruct）</h4>
+<p>同样在所有预算下领先（表 2）：
+- KV=128：EvolKV 36.78 vs 最佳 PyramidKV 36.02
+- 在 TREC 子任务上，KV=128 时比最强基线高 7.69 个百分点</p>
+<h4 id="gsm8k">GSM8K</h4>
+<ul>
+<li>Llama-3-8B-Instruct，KV=128：EvolKV 47.99 vs PyramidKV 40.71（+7.28%）</li>
+<li>Llama-3-8B-Instruct，KV=512：EvolKV 64.90 vs PyramidKV 57.32（+7.58%）</li>
+<li><strong>EvolKV 在 KV=512 时保留了全模型 95.7% 的性能</strong>，而最强基线仅保留 84.5%</li>
+</ul>
+<h4 id="niahneedle-in-a-haystack">NIAH（Needle-in-a-Haystack）</h4>
+<ul>
+<li>Mistral-7B-Instruct：EvolKV 超出最强基线 13% 以上</li>
+<li>Llama-3-8B-Instruct：超出最强基线 4% 以上</li>
+</ul>
+<h4 id="ruler">RULER</h4>
+<ul>
+<li>Mistral-7B-Instruct：EvolKV 在 KV=128 和 KV=1024 下均获得最高平均分</li>
+<li>Llama-3-8B-Instruct：KV=128 下比最强基线高 3.6 分</li>
+</ul>
+<h4 id="qwen">跨模型验证（Qwen 系列）</h4>
+<ul>
+<li>Qwen2.5-1.5B-Instruct 和 Qwen2.5-3B-Instruct 上均优于所有基线</li>
+</ul>
+<h3 id="_13">分析实验</h3>
+<ul>
+<li><strong>优化过程中的性能提升</strong>：随迭代次数增加，模型性能稳步上升</li>
+<li><strong>分配模式分析</strong>：中间层获得较高预算（非单调递减金字塔），低预算时集中于少数层，高预算时更分散</li>
+<li><strong>组大小影响</strong>：<script type="math/tex">n_g = 8</script> 为最佳，太小易过拟合，太大分配困难</li>
+<li><strong>鲁棒性</strong>：三轮优化结果方差仅 0.078，稳定性好</li>
+<li><strong>泛化性</strong>：在 c=128 优化的预算可直接扩展到更大预算，且在跨数据集迁移时仍优于基线</li>
+<li><strong>推理效率</strong>：推理时间和峰值内存与其他压缩方法相当，远低于完整缓存</li>
+</ul>
+<hr />
+<h2 id="_14">优势</h2>
+<ol>
+<li><strong>首个将 KV Cache 分配建模为黑箱优化问题的框架</strong>，突破了启发式方法的局限。</li>
+<li><strong>任务驱动</strong>：直接以任务性能为优化目标，分配方案自然适配不同任务。</li>
+<li><strong>即插即用</strong>：无需微调或修改模型架构，在冻结模型上操作。</li>
+<li><strong>少量数据即可优化</strong>：仅需 30 个样本即可完成分配搜索。</li>
+<li><strong>广泛适用</strong>：支持任意评估指标（准确率、F1、ROUGE 等）。</li>
+<li><strong>出色的泛化能力</strong>：在低预算下优化的分配方案可平滑扩展到高预算，并跨数据集迁移。</li>
+<li><strong>发现非直觉的分配模式</strong>：揭示了中间层作为计算瓶颈的重要性。</li>
+<li><strong>极端压缩下仍表现优异</strong>：在仅使用 1.5% 预算时即可超越完整 KV Cache 的某些任务性能。</li>
+</ol>
+<hr />
+<h2 id="_15">局限</h2>
+<ol>
+<li><strong>仅逐层分配</strong>：尚未探索逐注意力头级别的预算分配，未来可进一步细粒度优化。</li>
+<li><strong>依赖下游任务性能反馈</strong>：需要标注数据来评估适应度，可能受限于标注成本。</li>
+<li><strong>搜索开销</strong>：进化搜索需要多次前向推理，可能增加优化阶段的计算成本。</li>
+<li><strong>模型规模限制</strong>：实验仅在 7-8B 模型上验证，更大规模模型（如 70B+）的适用性需进一步验证。</li>
+<li><strong>预训练模型固定</strong>：在推理时使用冻结模型，无法适应动态变化的输入分布。</li>
+<li><strong>任务特定性</strong>：优化的分配方案可能因任务而异，需要针对不同任务重新优化。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 压缩与稀疏化</strong>：EvolKV 属于 <code>kv_cache_sparse</code> 关键词范畴，与 EfficientPaper 中的 StreamingLLM、SnapKV、PyramidKV 等方法形成对比，代表了一种新的"学习型分配"范式。</li>
+<li><strong>自适应推理优化</strong>：将进化搜索应用于 LLM 推理加速，可与其他推理优化技术（如 FlashAttention、量化、蒸馏）结合。</li>
+<li><strong>注意力机制可解释性</strong>：EvolKV 揭示了各层对不同任务的不同贡献度，有助于理解 Transformer 的内部工作机制。</li>
+<li><strong>多目标优化</strong>：EvolKV 的框架可扩展到同时优化内存、延迟、吞吐量等多目标。</li>
+<li><strong>无微调的黑箱优化</strong>：EvolKV 的方法论可推广到其他需要层间资源分配的场景（如注意力头选择、混合专家路由等）。</li>
+<li><strong>推理时动态适应</strong>：可探索在推理过程中动态调整 KV Cache 分配，以适应不同输入的特性。</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

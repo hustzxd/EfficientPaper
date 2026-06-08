@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,29 +164,130 @@
 <p>Hao Kang, Qingru Zhang, Souvik Kundu, Geonhwa Jeong, Zaoxing Liu, Tushar Krishna, Tuo Zhao</p>
 </blockquote>
 <p><a class="glightbox" href="../overview.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../overview.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Key-value (KV) caching has become the de-facto to accelerate generation speed
-for large language models (LLMs) inference. However, the growing cache demand
-with increasing sequence length has transformed LLM inference to be a memory
-bound problem, significantly constraining the system throughput. Existing
-methods rely on dropping unimportant tokens or quantizing all entries
-uniformly. Such methods, however, often incur high approximation errors to
-represent the compressed matrices. The autoregressive decoding process further
-compounds the error of each step, resulting in critical deviation in model
-generation and deterioration of performance. To tackle this challenge, we
-propose GEAR, an efficient KV cache compression framework that achieves
-near-lossless high-ratio compression. GEAR first applies quantization to
-majority of entries of similar magnitudes to ultra-low precision. It then
-employs a low rank matrix to approximate the quantization error, and a sparse
-matrix to remedy individual errors from outlier entries. By adeptly integrating
-three techniques, GEAR is able to fully exploit their synergistic potentials.
-Our experiments demonstrate that compared to alternatives, GEAR achieves
-near-lossless 4-bit KV cache compression with up to 2.38x throughput
-improvement, while reducing peak-memory size up to 2.29x. Our code is publicly
-available at https://github.com/HaoKang-Timmy/GEAR.</p>
+<h2 id="_1">一句话总结</h2>
+<p>GEAR 提出了一种高效的 KV Cache 压缩框架，通过将量化、低秩分解和稀疏矩阵三者协同结合，在 4-bit 和 2-bit 压缩下实现近乎无损的生成式推理性能，相比 FP16 基线可提升吞吐量高达 5.07 倍，同时降低峰值内存高达 2.39 倍。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>键值（KV）缓存已成为加速大语言模型（LLM）推理生成速度的事实标准方法。然而，随着序列长度的增长，缓存需求不断膨胀，使得 LLM 推理转变为内存受限问题，严重制约了系统吞吐量。现有方法依赖于丢弃不重要的 token 或对所有条目进行统一量化，但这些方法往往导致压缩矩阵的高近似误差。自回归解码过程进一步加剧了每一步的误差，导致模型生成的严重偏差和性能恶化。为解决这一挑战，我们提出 GEAR，一种高效的 KV Cache 压缩框架，通过增强量化方案并结合两种轻量级误差缩减技术，实现近乎无损的高压缩比性能。GEAR 首先将绝大多数（约 98%）相似幅度的条目量化到超低精度，然后使用低秩矩阵近似量化误差，再使用稀疏矩阵修补离群条目的个别误差。通过巧妙整合这三种技术，GEAR 充分利用了它们的协同潜力。实验表明，与替代方案相比，GEAR 在 2-bit KV 缓存压缩下可实现平均 14.95% 的准确率提升，同时将峰值内存降低高达 2.39 倍，吞吐量提升 2.10 倍至 5.07 倍。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>在 LLM 推理中，KV 缓存（存储之前计算的 Key/Value 张量）的内存消耗随着模型大小和序列长度的增加而迅速增长。例如，对于一个 300 亿参数的 LLM，当输入长度为 1024、批大小为 128 时，KV 缓存可占用高达 180GB 内存。这严重限制了系统吞吐量。</p>
+<h3 id="_5">现有方法的不足</h3>
+<p>现有方法主要有两类：
+1. <strong>Token 丢弃方法</strong>（如 H2O）：利用注意力分数的稀疏性丢弃不重要的 token。但在复杂生成任务中（如数学推理、链式思维推理），每个 token 都可能包含重要信息，丢弃会导致性能显著下降。
+2. <strong>统一量化方法</strong>（如 FlexGen、KIVI）：将 KV 缓存量化到低精度（如 4-bit 或 2-bit）。然而，这些方法在高压缩比下会产生显著的近似误差，且自回归解码过程会累积误差，导致生成严重偏离。</p>
+<h3 id="_6">关键洞察</h3>
+<p>在简单任务（如文本分类）中，模型只需生成少量 token，少量近似误差不会显著影响结果。但在复杂生成任务中，模型需要生成更长的序列，每一步的近似误差都会被放大，最终导致性能急剧下降。因此，问题的核心在于高压缩比下的近似误差。</p>
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="_8">框架概览</h3>
+<p>GEAR（GEnerative Inference with Approximation Error Reduction）是一个高效的误差缩减框架，将 KV Cache 矩阵分解为三个组件：</p>
+<p>
+<script type="math/tex; mode=display">\min_{\hat{D}, L, S} \| X - \hat{D} - L - S \|_F</script>
+</p>
+<p>其中：
+- <script type="math/tex">\hat{D}</script>：量化矩阵（压缩骨架）
+- <script type="math/tex">L</script>：低秩矩阵（近似量化残差）
+- <script type="math/tex">S</script>：稀疏矩阵（修补离群条目误差）</p>
+<h3 id="1-outlier-aware-quantization">1. 异常感知量化（Outlier-aware Quantization）</h3>
+<p><strong>目标</strong>：高效压缩大部分相似幅度的条目到超低精度。</p>
+<p><strong>方法</strong>：
+- 对于 Key 缓存：按通道（channel）提取每个通道向量中最大和最小的 <script type="math/tex">\frac{s}{2}\%</script> 条目
+- 对于 Value 缓存：按 token 提取每个 token 向量中最大和最小的 <script type="math/tex">\frac{s}{2}\%</script> 条目
+- 将这些异常值存储到全精度的稀疏矩阵 <script type="math/tex">S</script> 中</p>
+<p><strong>量化骨架</strong>（KCVT）：
+- Key 缓存按通道量化（per-channel），所有 Key 通道形成一个大小为 <script type="math/tex">n</script> 的组
+- Value 缓存按 token 量化（per-token），所有 Value token 形成一个大小为 <script type="math/tex">d</script> 的组
+- 这种粗粒度分组显著减少了缩放因子和零点的存储开销</p>
+<h3 id="2-low-rank-approximation">2. 低秩近似（Low-rank Approximation）</h3>
+<p><strong>目标</strong>：高效近似量化残差中的相干分量。</p>
+<p><strong>关键观察</strong>：残差矩阵的频谱在开头快速下降，表明残差中存在相干成分。</p>
+<p><strong>方法</strong>：
+- 将残差 <script type="math/tex">R = X - (\hat{D} + S)</script> 沿通道维度重塑为 H 个多头子矩阵
+- 对每个头 <script type="math/tex">h</script>，执行 head-wise 低秩分解：<script type="math/tex">L_h = A_h B_h^T</script>
+- 使用高效幂迭代算法（Vogels et al., 2019）计算 <script type="math/tex">A_h, B_h</script>
+- 典型设置：当 <script type="math/tex">n = 1024, d_H = 128</script> 时，<script type="math/tex">r = 4</script> 就足够实现近乎无损的高压缩比</p>
+<p><strong>核心优势</strong>：低秩分解利用了向量间的相似性，将残差中的相干信息高效提取出来。</p>
+<h3 id="3-sparse-matrix">3. 稀疏矩阵（Sparse Matrix）</h3>
+<p><strong>目标</strong>：修补由异常值引起的个体误差。</p>
+<p><strong>方法</strong>：
+- 将异常值（最大/最小的 <script type="math/tex">\frac{s}{2}\%</script> 条目）存储到稀疏矩阵 <script type="math/tex">S</script> 中
+- 典型稀疏率 <script type="math/tex">s = 2\%</script>
+</p>
+<p><strong>互补性</strong>：低秩矩阵捕获残差中的相干基，稀疏矩阵修正异常值的不相干性，两者互补。</p>
+<h3 id="4-streaming-buffer">4. 流式缓冲策略（Streaming Buffer）</h3>
+<p><strong>目标</strong>：提升长序列生成时的推理效率。</p>
+<p><strong>方法</strong>：
+- 将新生成 token 的 KV 向量存储到小缓冲区（<script type="math/tex">n_b = 20</script>）
+- 每 <script type="math/tex">n_b</script> 步执行一次 KV 缓存压缩
+- 低秩近似仅对缓冲区中的新 token 执行（rank 为 2）
+- 显著减少低秩计算开销</p>
+<h3 id="5-gpu">5. GPU 友好实现</h3>
 <ul>
-<li>quant + 低秩分解</li>
+<li><strong>CUDA 内核融合</strong>：将反量化与矩阵乘法融合，改善解码延迟</li>
+<li><strong>低秩前向传播优化</strong>：先计算下投影 <script type="math/tex">q_h^T B_h</script>，再计算上投影 <script type="math/tex">(q_h^T B_h) A_h^T</script>
+</li>
+<li><strong>流式缓冲</strong>：同时对 Key 和 Value 缓存进行流式压缩</li>
 </ul>
+<h2 id="_9">实验结果</h2>
+<h3 id="_10">评估模型与任务</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA2-7B/13B、Mistral-7B、LLaMA3-8B</li>
+<li><strong>任务</strong>：</li>
+<li>数学推理：GSM8k（CoT）、AQuA（CoT）</li>
+<li>符号推理：BigBench Hard（BBH，CoT）</li>
+<li>长上下文理解：LongBench</li>
+<li><strong>对比基线</strong>：Per-token Q、KIVI、KCVT Quant、H2O</li>
+</ul>
+<h3 id="_11">主要结果</h3>
+<p><strong>CoT 推理任务（Table 1）</strong>：
+- 4-bit 压缩：GEAR 接近 FP16 精度（如 LLaMA3-8B 上平均 40.80% vs FP16 的 40.52%）
+- 2-bit 压缩：GEAR 在 LLaMA3-8B 上达到 47.83% 平均准确率（FP16 为 48.69%），显著优于最佳基线 KIVI（28.82%）
+- GEAR-L（轻量版，仅低秩）在 2-bit 下也显著优于基线（38.34% vs 25.25%）</p>
+<p><strong>简单任务（Table 2）</strong>：
+- GSM8k 5-shot：GEAR 在 LLaMA3-8B 上达到 49.96%（KIVI 为 42.54%）
+- LongBench：GEAR 在 21 个任务上达到 25.48 平均分，接近 FP16 基线</p>
+<h3 id="figure-3">推理效率（Figure 3）</h3>
+<ul>
+<li><strong>峰值内存</strong>：相比 FP16 基线降低高达 2.39 倍，最大批大小从 3 增加到 18</li>
+<li><strong>吞吐量</strong>：相比 FP16 基线提升 2.10 倍至 5.07 倍</li>
+<li><strong>时间开销</strong>：低秩和稀疏组件的额外开销可忽略不计（Figure 3a）</li>
+</ul>
+<h3 id="_12">消融实验</h3>
+<ul>
+<li><strong>稀疏率 s 和秩 r</strong>：s=2%, r=4 即可实现近乎无损的 2-bit 压缩，进一步增大收效甚微</li>
+<li><strong>低秩的作用</strong>：移除低秩分量会导致性能显著下降，凸显其在误差缩减中的关键作用</li>
+<li><strong>稀疏矩阵的作用</strong>：移除稀疏矩阵会降低性能，但不如移除低秩明显</li>
+</ul>
+<h2 id="_13">优势</h2>
+<ol>
+<li><strong>近乎无损的高压缩比性能</strong>：在 2-bit KV 缓存压缩下，GEAR 可实现近乎无损的生成式推理性能，平均准确率提升高达 24.42%（相比最佳基线）</li>
+<li><strong>即插即用的通用性</strong>：GEAR 可与任何现有量化方案（如 KIVI、KCVT）结合使用，无需额外校准</li>
+<li><strong>极低的额外开销</strong>：低秩和稀疏组件的计算和内存开销可忽略不计，主要复杂度仍来自模型前向传播</li>
+<li><strong>显著的效率提升</strong>：峰值内存降低高达 2.39 倍，吞吐量提升高达 5.07 倍</li>
+<li><strong>简单的超参数设置</strong>：仅需设置稀疏率 s=2% 和秩 r=4，无需复杂调优</li>
+<li><strong>支持流式缓冲</strong>：通过流式缓冲策略进一步提升长序列生成的推理效率</li>
+<li><strong>在复杂任务中表现优异</strong>：特别适合需要长序列生成和复杂推理的 CoT 任务</li>
+</ol>
+<h2 id="_14">局限</h2>
+<ol>
+<li><strong>固定秩的低秩近似</strong>：当前对所有 Key/Value 矩阵使用相同的秩 <script type="math/tex">r</script>，忽略了不同层和头之间重要性的差异。作者在论文中提到，自适应地分配低秩预算可能进一步提升性能，但留作未来探索</li>
+<li><strong>稀疏矩阵的开销</strong>：虽然稀疏率较低（<script type="math/tex">s=2\%</script>），但当需要提取大量异常值时，全精度存储的开销可能变得可观</li>
+<li><strong>仅适用于 KV Cache 压缩</strong>：GEAR 的框架专门针对 KV Cache，尚未探索其在权重量化或激活压缩中的应用</li>
+<li><strong>对超低精度的挑战</strong>：虽然 GEAR 在 2-bit 下表现优异，但当压缩比进一步提高时，性能仍可能下降</li>
+<li><strong>需要 GPU 支持</strong>：CUDA 内核实现需要特定的硬件支持</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 量化与压缩</strong>：GEAR 是 KV Cache 压缩领域的重要进展，与 KIVI、KVQuant 等工作密切相关，属于高效的 KV 缓存管理方向</li>
+<li><strong>低秩分解在推理优化中的应用</strong>：GEAR 中的低秩近似技术可推广到其他需要近似矩阵计算的场景</li>
+<li><strong>自回归生成中的误差传播</strong>：GEAR 揭示了自回归解码中近似误差累积的问题，为理解 LLM 推理中的误差传播提供了新视角</li>
+<li><strong>内存高效的 LLM 推理</strong>：GEAR 是实现高效 LLM 推理的重要一环，与模型压缩、量化、KV Cache 管理等方向形成完整的研究生态</li>
+<li><strong>即插即用的误差缩减框架</strong>：GEAR 的框架设计思想可推广到其他需要误差缩减的场景，如激活压缩、注意力计算等</li>
+<li><strong>长序列生成优化</strong>：GEAR 的流式缓冲策略为长序列生成提供了新的优化思路，与 FlashAttention 等注意力优化技术形成互补</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>本笔记由 AI Agent 自动生成，基于对论文 GEAR（arXiv:2403.05527）的 PDF 文本提取和分析。笔记内容力求准确反映论文的核心思想和实验结果，但可能存在细节偏差，请以原文为准。生成时间：2026年6月。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

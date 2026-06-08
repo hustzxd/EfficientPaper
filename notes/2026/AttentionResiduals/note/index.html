@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,14 +161,106 @@
   
                 <h1 id="attention-residuals">Attention Residuals</h1>
 <blockquote>
-<p>Kimi Team, Guangyu Chen, Yu Zhang, Jianlin Su, Weixin Xu, Siyuan Pan, Yaoyu Wang, Yucheng Wang, Guanduo Chen, Bohong Yin, Yutian Chen, Junjie Yan, Ming Wei, Y. Zhang, Fanqing Meng, Chao Hong, Xiaotong Xie, Shaowei Liu, Enzhe Lu, Yunpeng Tai, Yanru Chen, Xin Men, Haiqing Guo, Y. Charles, Haoyu Lu, Lin Sui, Jinguo Zhu, Zaida Zhou, Weiran He, Weixiao Huang, Xinran Xu, Yuzhi Wang, Guokun Lai, Yulun Du, Yuxin Wu, Zhilin Yang, Xinyu Zhou</p>
+<p>本 note 由 AI Agent 自动生成，基于论文原文提取。如有错误请以原文为准。</p>
 </blockquote>
-<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Residual connections with PreNorm are standard in modern LLMs, yet they accumulate all layer outputs with fixed unit weights. This uniform aggregation causes uncontrolled hidden-state growth with depth, progressively diluting each layer's contribution. We propose Attention Residuals (AttnRes), which replaces this fixed accumulation with softmax attention over preceding layer outputs, allowing each layer to selectively aggregate earlier representations with learned, input-dependent weights. To address the memory and communication overhead of attending over all preceding layer outputs for large-scale model training, we introduce Block AttnRes, which partitions layers into blocks and attends over block-level representations, reducing the memory footprint while preserving most of the gains of full AttnRes. Combined with cache-based pipeline communication and a two-phase computation strategy, Block AttnRes becomes a practical drop-in replacement for standard residual connections with minimal overhead.
-  Scaling law experiments confirm that the improvement is consistent across model sizes, and ablations validate the benefit of content-dependent depth-wise selection. We further integrate AttnRes into the Kimi Linear architecture (48B total / 3B activated parameters) and pre-train on 1.4T tokens, where AttnRes mitigates PreNorm dilution, yielding more uniform output magnitudes and gradient distribution across depth, and improves downstream performance across all evaluated tasks.</p>
-<p>AttnRes 想要填补的空白就是：我们想要一种既能跨越任意层级、又能基于当前输入进行动态权重分配的「检索」机制[1]</p>
-<p>[1] <a href="https://www.zhihu.com/question/2016993095078684011">Kimi 新发布的「注意力残差」有什么亮点？</a></p>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Attention Residuals（AttnRes）将标准残差连接的固定累加替换为基于 softmax attention 的深度维度选择性聚合，每个层通过学习的伪查询向量动态选择前序层输出，解决了 PreNorm 导致的隐藏状态 O(L) 增长和层贡献稀释问题。</p>
+<hr />
+<h2 id="abstract">摘要 (Abstract)</h2>
+<p>标准残差连接（PreNorm）以固定单位权重累加所有层输出，导致隐藏状态随深度无控增长，逐步稀释每层贡献。AttnRes 用 softmax attention 替换固定累加，允许每层选择性聚合前序层的、输入依赖的表示。Block AttnRes 将层分为块，仅在块级表示上进行 attention，将内存和通信从 O(Ld) 降至 O(Nd)。集成到 Kimi Linear 架构（48B total / 3B activated，1.4T tokens 预训练），AttnRes 缓解 PreNorm 稀释，产生更均匀的输出幅度和梯度分布，改善下游任务性能。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li><strong>PreNorm 稀释问题</strong>：标准残差连接 h_l = h_{l-1} + f_{l-1}(h_{l-1}) 累加所有层输出，隐藏状态幅度 O(L) 增长，每层贡献被稀释</li>
+<li><strong>固定累加的局限</strong>：</li>
+<li>无法选择性访问前序层输出（只能访问压缩后的单个状态）</li>
+<li>信息丢失不可逆（深层无法恢复早期信息）</li>
+<li>后续层需学习更大输出以获得影响力（不稳定）</li>
+<li><strong>与 RNN 的对偶性</strong>：RNN 在时间维度压缩信息，残差在深度维度压缩信息；Transformer 用 attention 替换 RNN，AttnRes 用 attention 替换残差</li>
+</ol>
+<hr />
+<h2 id="_3">方法</h2>
+<h3 id="1-full-attention-residuals">1. Full Attention Residuals</h3>
+<p>将 h_l = h_1 + Σ f_i(h_i) 替换为：</p>
+<pre><code>h_l = Σ α_{i→l} · v_i
+</code></pre>
+<p>其中 α_{i→l} 是 softmax attention 权重，v_i 是各层输出。</p>
+<p><strong>权重计算</strong>：
+- query: q_l = w_l（学习的伪查询向量）
+- key: k_i = v_i = f_i(h_i)
+- α_{i→l} = softmax(q_l^T RMSNorm(k_i))</p>
+<p><strong>关键设计</strong>：伪查询 w_l 与前向计算解耦，不依赖当前层输入，可并行计算。</p>
+<p><strong>复杂度</strong>：O(L²d) 算术，O(Ld) 内存（可复用反向传播保留的激活）。</p>
+<h3 id="2-block-attention-residuals">2. Block Attention Residuals</h3>
+<p>将 L 层分为 N 个块，块内用标准残差累加，块间用 attention：
+- 块内累加：b_n = Σ f_j(h_j)
+- 块间 attention：V = [b_0, b_1, ..., b_{n-1}]
+- 内存/通信从 O(Ld) 降至 O(Nd)</p>
+<p><strong>经验发现</strong>：N ≈ 8 恢复大部分收益。</p>
+<h3 id="3">3. 基础设施优化</h3>
+<p><strong>训练优化</strong>：
+- <strong>跨阶段缓存</strong>：物理阶段缓存已接收的块表示，避免重复传输，峰值通信从 O(C) 降至 O(P)
+- <strong>两阶段计算</strong>：Phase 1 并行计算块间 attention，Phase 2 顺序计算块内 partial sum + online softmax merge</p>
+<p><strong>推理优化</strong>：
+- 两阶段计算策略：批量 S 个伪查询，一次矩阵乘法完成块间 attention
+- 长上下文预填充：序列分片方案
+- 推理延迟开销 &lt; 2%</p>
+<hr />
+<h2 id="_4">实验结果</h2>
+<h3 id="1-scaling-law">1. Scaling Law 实验</h3>
+<ul>
+<li>AttnRes 在不同计算预算下一致优于 baseline</li>
+<li>Block AttnRes 匹配 baseline 用 1.25× 更多计算的 loss</li>
+</ul>
+<h3 id="2-48b-kimi-linear14t-tokens">2. 48B 模型预训练（Kimi Linear，1.4T tokens）</h3>
+<ul>
+<li><strong>训练动态</strong>：AttnRes 缓解 PreNorm 稀释</li>
+<li>输出幅度在深度上保持有界</li>
+<li>梯度分布更均匀</li>
+<li><strong>下游任务</strong>：所有评估任务上均有改善</li>
+</ul>
+<h3 id="3_1">3. 消融实验</h3>
+<ul>
+<li>块数 N ≈ 8 恢复大部分收益</li>
+<li>内容依赖的深度选择有显著优势</li>
+</ul>
+<hr />
+<h2 id="_5">优势</h2>
+<ol>
+<li><strong>理论统一</strong>：将标准残差视为深度维度的线性 attention，AttnRes 是深度维度的 softmax attention</li>
+<li><strong>即插即用</strong>：可直接替换标准残差连接，最小化开销</li>
+<li><strong>训练开销小</strong>：在非 pipeline 并行时开销可忽略，pipeline 并行下 &lt; 4%</li>
+<li><strong>推理开销低</strong>：延迟开销 &lt; 2%</li>
+<li><strong>缓解决定性稀释</strong>：输出幅度有界，梯度分布均匀</li>
+<li><strong>可扩展</strong>：Block AttnRes 将内存/通信从 O(Ld) 降至 O(Nd)，N=8 即可</li>
+</ol>
+<hr />
+<h2 id="_6">局限性</h2>
+<ol>
+<li><strong>仅针对残差连接</strong>：不直接解决注意力机制本身的计算效率</li>
+<li><strong>Block 设计选择</strong>：块数 N 的选择需权衡，过小可能丢失信息</li>
+<li><strong>推理时的 KV cache</strong>：块表示需缓存，增加推理内存</li>
+<li><strong>伪查询设计</strong>：learned vector 可能不够灵活（无法输入依赖）</li>
+<li><strong>未验证更长上下文</strong>：48B 模型仅在 1.4T tokens 上验证，更长上下文未探索</li>
+</ol>
+<hr />
+<h2 id="_7">关联工作</h2>
+<ul>
+<li><strong>残差连接</strong>：ResNet, Highway Networks, Scaled Residual Paths</li>
+<li><strong>深度选择</strong>：LayerDrop, Mixture-of-Depths, Multi-Stream Recurrences</li>
+<li><strong>注意力机制</strong>：Transformer, FlashAttention, KV Cache</li>
+<li><strong>稀疏化</strong>：MoE, Token Routing</li>
+</ul>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>结构设计</strong>：残差连接变体、深度维度选择性聚合</li>
+<li><strong>KV Cache 生命周期管理</strong>：块级表示缓存与通信</li>
+<li><strong>推理系统优化</strong>：两阶段计算、长上下文预填充</li>
+</ul>
+<hr />
+<p><em>Generated by AI Agent on 2026-06-04. Source: arXiv:2603.15031v1</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

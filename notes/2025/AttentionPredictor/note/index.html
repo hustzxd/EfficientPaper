@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,24 +161,311 @@
   
                 <h1 id="attentionpredictor-temporal-pattern-matters-for-efficient-llm-inference">AttentionPredictor: Temporal Pattern Matters for Efficient LLM Inference</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>With the development of large language models (LLMs), efficient inference
-through Key-Value (KV) cache compression has attracted considerable attention,
-especially for long-context generation. To compress the KV cache, recent
-methods identify critical KV tokens through heuristic ranking with attention
-scores. However, these methods often struggle to accurately determine critical
-tokens as they neglect the \textit{temporal patterns} in attention scores,
-resulting in a noticeable degradation in LLM performance. To address this
-challenge, we propose AttentionPredictor, which is the first learning-based
-critical token identification approach. Specifically, AttentionPredictor learns
-a lightweight convolution model to capture spatiotemporal patterns and predict
-the next-token attention score. An appealing feature of AttentionPredictor is
-that it accurately predicts the attention score while consuming negligible
-memory. Moreover, we propose a cross-token critical cache prefetching framework
-that hides the token estimation time overhead to accelerate the decoding stage.
-By retaining most of the attention information, AttentionPredictor achieves
-16<script type="math/tex">\times</script> KV cache compression with comparable LLM performance, significantly
-outperforming the state-of-the-art.</p>
+<blockquote>
+<p>⚠️ <strong>生成声明</strong>：本 note 由 AI Agent（Hermes Agent）于 2025 年自动生成，基于 arXiv 论文全文（2502.04077v1）的阅读理解与分析，内容仅供学术参考。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>AttentionPredictor 是首个基于学习的 KV cache 关键 token 识别方法，通过轻量级 CNN 捕捉注意力分数的时空模式来预测下一步注意力，实现 16× KV cache 压缩且性能接近完整缓存，并提出跨 token 预取框架实现 1.4× 解码加速。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>随着大语言模型（LLM）的发展，通过 Key-Value（KV）缓存压缩实现高效推理受到广泛关注，尤其在长上下文生成场景中。现有方法通常通过启发式排名（基于注意力分数）来识别关键 KV token，但这些方法往往忽略了注意力分数中的<strong>时间模式</strong>（temporal patterns），导致在关键 token 的识别上准确性不足，从而造成 LLM 性能的明显下降。</p>
+<p>为解决这一问题，我们提出了 <strong>AttentionPredictor</strong>，这是首个基于学习的关键 token 识别方法。具体而言，AttentionPredictor 学习一个轻量级卷积模型来捕获时空模式并预测下一步 token 的注意力分数。该方法在准确预测注意力分数的同时，内存消耗几乎可以忽略不计。此外，我们提出了一个<strong>跨 token 关键缓存预取框架</strong>，将 token 估计的时间开销隐藏在 LLM 推理过程中，以加速解码阶段。通过保留大部分注意力信息，AttentionPredictor 实现了 16× 的 KV cache 压缩，同时保持可比的 LLM 性能，显著优于现有最先进方法。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="kv-cache">KV Cache 的内存瓶颈</h3>
+<p>LLM 推理过程中，KV cache 是主要的内存消耗来源。例如，一个 7B 参数模型的参数仅占 14GB，但 128K 上下文长度的 KV cache 需要约 72GB。随着解码延迟和内存占用随 KV cache 成比例增长，压缩 KV cache 至关重要。</p>
+<h3 id="_4">现有方法的局限性</h3>
+<ol>
+<li><strong>Cache 驱逐方法</strong>（如 H2O、StreamingLLM、SnapKV）：使用启发式方法，基于历史注意力分数静态建模注意力模式，无法捕捉动态的时间变化。</li>
+<li><strong>Cache 检索方法</strong>（如 Quest）：通过近似计算注意力分数来识别关键 token，但对页大小敏感，压缩率增大时准确率显著下降。此外，这些方法依赖当前步的查询 token，无法利用异步计算来覆盖估计时间开销。</li>
+</ol>
+<h3 id="_5">核心观察</h3>
+<p>论文观察到注意力分数具有<strong>三种时间模式</strong>：
+- <strong>重访问（Re-access）</strong>：对特定 token 的重复注意力（纵向条纹）
+- <strong>顺序性（Sequential）</strong>：注意力向下一个 token 顺序推进（对角线）
+- <strong>周期性（Seasonal）</strong>：关键 token 的周期性出现（交替的高/均匀注意力分数区域）</p>
+<p>同时发现查询向量（query）具有高度的连续性——相邻步的余弦自相关高达 87%，这意味着相邻步的注意力分数相似（A_i ≈ A_{i+1}），使得基于预测的方法成为可能。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="41">4.1 问题形式化</h3>
+<ul>
+<li>定义：Qt 为查询张量，K 为键张量，At = Softmax(Q_t K^T / √d) 为注意力分数</li>
+<li>KV cache 压缩目标：在预算 B 下，选择关键位置 p，最大化注意力恢复率 R_rec = Σ A_t,pi / ||A_t||_1</li>
+<li>核心思路：预测下一步注意力分数 Â_{t+1} 作为评分函数</li>
+</ul>
+<h3 id="42-attentionpredictor">4.2 AttentionPredictor：时空预测器</h3>
+<p><strong>预测形式化</strong>：
+- 将注意力历史 AH ∈ R^{H×t} 建模为时空序列
+- 时间维度：沿解码步骤的时间序列
+- 空间维度：沿不同 key 位置的空间序列
+- 目标：Â_{t+1} = F(AH)，其中 F 为预测模型</p>
+<p><strong>模型设计</strong>：
+- 两层 2D 卷积 + 一层 1D 卷积的 CNN 架构
+- 2D 卷积捕获多尺度时空特征
+- 1D 卷积聚焦时间维度，提取跨时间步的时间模式
+- 1D 卷积替代全连接层，使模型适应不断增长的空间维度，无需数据分割或多模型训练
+- 与 LSTM 相比更轻量，预测速度更快（短于单 token 推理延迟）
+- 与 MLP 相比更善于捕获空间特征，预测准确率更高
+- <strong>参数量仅 4.9K</strong>（CNN），远小于 MLP（49K）和 LSTM-block（3.2M）</p>
+<p><strong>训练策略</strong>：
+- 仅使用约 3% 的注意力数据（每个任务约 5 个样本）训练
+- 仅使用解码阶段的注意力分数作为输出
+- 训练 30 个 epoch，选择注意力恢复率最优的模型
+- 损失函数：均方误差（MSE）
+- <strong>泛化能力强</strong>：在 LongBench 上训练的模型在 GSM8K 上表现良好</p>
+<p><strong>块级注意力压缩（Block-wise Attention Compression）</strong>：
+- 利用注意力的局部性，在块（block）级别预测和识别关键 token
+- 对注意力分数 A 应用最大池化，核大小等于块大小 b
+- A_comp_t = Maxpooling(A_t, b)，将预测计算量降低到约 1/b</p>
+<p><strong>分布误差校准（Distribution Error Calibration）</strong>：
+- 由于稀疏注意力计算，用于预测的注意力历史分布可能偏离密集注意力分布
+- 每 M 步计算并存储完整注意力分数，校正累积偏差
+- 平衡准确率与计算效率</p>
+<p><strong>整体流程</strong>（Algorithm 1）：
+1. 将 A_t 填充到 b 的最近倍数
+2. 块级压缩：A_comp_t = MaxPooling(A_t, b)
+3. 更新注意力历史：AH ← Update(AH, A_comp_t)
+4. 预测下一步注意力：Â_{t+1} = Prediction_model(AH)
+5. Top-K 选择：Positions = Top-K(Â_{t+1}, B/b)
+6. 扩展索引：p = Expand(Positions, b)
+7. 返回关键 token 位置 p</p>
+<h3 id="43-token-cross-token-prefetching">4.3 跨 token 预取框架（Cross-token Prefetching）</h3>
+<p><strong>动机</strong>：当前 LLM 系统将 KV cache 卸载到 CPU 以减少 GPU 内存使用，但 CPU-GPU 传输延迟成为瓶颈。预取通过异步加载关键缓存部分来隐藏传输时间。</p>
+<p><strong>与 InfiniGen（跨层预取）的区别</strong>：
+- 跨 token 方法可利用更长的传输时间
+- 适应更复杂、更准确的关键 token 识别方法
+- 每个 token 的传输数据组织更好，I/O 利用率更高</p>
+<p><strong>实现细节</strong>：
+- Prefill 阶段：完整卸载 KV cache 到 CPU，不压缩
+- AttentionPredictor 预测下一步的关键 token 索引 p
+- 异步预取 p 对应的 KV cache 到 GPU
+- GPU 同时处理其他层的推理（并行化）
+- 每 token 推理时间即为预测和缓存加载的最大可用时间
+- 利用 GPU 并行流和 CPU 多线程，跨层并行化 token 检索和缓存传输</p>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>数据集</strong>：</li>
+<li>LongBench（16 个数据集，覆盖 6 种任务：单/多文档 QA、摘要、少样本学习、合成任务、代码补全）</li>
+<li>GSM8K（数学推理，CoT 链式思维）</li>
+<li><strong>基线方法</strong>：StreamingLLM、H2O（H2O+变体）、SnapKV、Quest</li>
+<li><strong>模型</strong>：LongChat-v1.5-7b-32k（32K 上下文）、LLaMA-3.1-8B-Instruct（128K 上下文）</li>
+<li><strong>超参数</strong>：H=64，b=16，M=5</li>
+<li><strong>硬件</strong>：NVIDIA A800（80GB）GPU</li>
+</ul>
+<h3 id="attention-recovery-rate">注意力恢复率（Attention Recovery Rate）</h3>
+<table>
+<thead>
+<tr>
+<th>KV 预算</th>
+<th>方法</th>
+<th>QA</th>
+<th>Summary</th>
+<th>Math</th>
+<th>Average</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>512</td>
+<td>H2O</td>
+<td>79.97</td>
+<td>79.36</td>
+<td>88.23</td>
+<td>82.52</td>
+</tr>
+<tr>
+<td>512</td>
+<td>Quest</td>
+<td>80.85</td>
+<td>72.37</td>
+<td>78.14</td>
+<td>77.12</td>
+</tr>
+<tr>
+<td>512</td>
+<td><strong>AttentionPredictor</strong></td>
+<td><strong>84.79</strong></td>
+<td><strong>79.73</strong></td>
+<td><strong>87.77</strong></td>
+<td><strong>84.10</strong></td>
+</tr>
+<tr>
+<td>1024</td>
+<td>H2O</td>
+<td>91.58</td>
+<td>88.37</td>
+<td>94.79</td>
+<td>91.58</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>Quest</td>
+<td>93.40</td>
+<td>88.12</td>
+<td>92.04</td>
+<td>91.19</td>
+</tr>
+<tr>
+<td>1024</td>
+<td><strong>AttentionPredictor</strong></td>
+<td><strong>90.63</strong></td>
+<td><strong>85.16</strong></td>
+<td><strong>92.04</strong></td>
+<td><strong>89.28</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在 512 预算（20× 压缩）下，AttentionPredictor 比 Quest 高 7%</li>
+<li>数学推理任务中，Quest 恢复率下降明显，而 AttentionPredictor 更可靠</li>
+</ul>
+<h3 id="longbench">LongBench 最终准确率</h3>
+<ul>
+<li>所有 KV 预算（512~4096）和所有 LLM 上，AttentionPredictor 均超越所有 SOTA 基线</li>
+<li><strong>平均性能损失 &lt; 0.5%</strong>（相比完整缓存）</li>
+<li>在极端稀疏预算（512/13K，4%）下，性能下降仅 0.44%，相比 Quest 的 1.84% 下降，<strong>改进 76%</strong></li>
+</ul>
+<h3 id="cot-gsm8k">CoT 数学推理（GSM8K）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>预算</th>
+<th>4K</th>
+<th>8K</th>
+<th>16K</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full cache</td>
+<td>Full</td>
+<td>56.79</td>
+<td>55.27</td>
+<td>54.13</td>
+<td>55.40</td>
+</tr>
+<tr>
+<td>Quest</td>
+<td>1K</td>
+<td>48.52</td>
+<td>45.26</td>
+<td>37.22</td>
+<td>43.67</td>
+</tr>
+<tr>
+<td><strong>AttentionPredictor</strong></td>
+<td><strong>1K</strong></td>
+<td><strong>57.16</strong></td>
+<td><strong>53.75</strong></td>
+<td><strong>52.08</strong></td>
+<td><strong>54.33</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Quest 在 16K 序列长度下准确率下降 16.91%，而 AttentionPredictor 仅下降 2.05%</li>
+<li>在 25% 缓存预算下，甚至超过完整缓存准确率（无损性能）</li>
+</ul>
+<h3 id="_9">效率（解码延迟）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>每 token 延迟(s)</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>跨层预取（baseline）</td>
+<td>0.364</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>跨层预取 + AttentionPredictor</td>
+<td>0.295</td>
+<td>1.2×</td>
+</tr>
+<tr>
+<td><strong>跨 token 预取 + AttentionPredictor</strong></td>
+<td><strong>0.262</strong></td>
+<td><strong>1.4×</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">消融实验</h3>
+<ul>
+<li><strong>块大小 b</strong>：8~64 范围内，AttentionPredictor 均优于 Quest，性能下降更温和</li>
+<li><strong>校准步数 M</strong>：校准频率越高准确率越好，但增加计算成本（M=5 为折中）</li>
+<li><strong>历史步数 H</strong>：中等值（H=64）最大化性能</li>
+<li><strong>预测模型</strong>：CNN（4.9K 参数，93.65% 恢复率）&gt; MLP（49K）&gt; LSTM-block（3.2M）&gt; CNN-block（21K）</li>
+</ul>
+<hr />
+<h2 id="_11">优势</h2>
+<ol>
+<li><strong>首创基于学习的关键 token 识别</strong>：首次将注意力预测建模为时空序列预测问题，填补了 KV cache 压缩领域学习方法的空白</li>
+<li><strong>极低的模型开销</strong>：仅 4.9K 参数的轻量级 CNN，内存消耗可忽略不计，预测速度短于单 token 推理延迟</li>
+<li><strong>强泛化能力</strong>：仅使用约 3% 数据训练，单模型可跨数据集（LongBench → GSM8K）泛化</li>
+<li><strong>高压缩比 + 高性能</strong>：16× KV cache 压缩，平均性能损失 &lt; 0.5%，显著优于 SOTA</li>
+<li><strong>跨 token 预取加速</strong>：首次提出跨 token 预取框架，1.4× 解码加速</li>
+<li><strong>理论基础扎实</strong>：基于注意力的时间模式（重访问、顺序、周期性）和查询相似性的理论分析</li>
+<li><strong>可扩展性</strong>：块级压缩和分布误差校准机制确保了在不同场景下的适用性</li>
+</ol>
+<hr />
+<h2 id="_12">局限</h2>
+<ol>
+<li><strong>未开源</strong>：论文的 prototxt 中代码 URL 为空，目前没有公开的代码实现</li>
+<li><strong>训练依赖</strong>：需要收集全量注意力数据训练预测模型（虽然数据需求小，但仍需先验训练）</li>
+<li><strong>对模型的依赖</strong>：每个 LLM 需要单独训练 AttentionPredictor 模型（虽然跨数据集泛化好，但未跨模型泛化）</li>
+<li><strong>固定超参数</strong>：H=64、b=16、M=5 等超参数在不同场景下的最优性未经充分验证</li>
+<li><strong>仅在 7B/8B 级别模型验证</strong>：未在更大规模模型（如 13B、70B）上进行实验</li>
+<li><strong>缓存预算分配</strong>：固定分配 64 token 给前缀和本地 token，可能不是所有场景的最优策略</li>
+<li><strong>预取框架的实际部署</strong>：跨 token 预取框架的实现较为复杂，实际部署可能面临挑战</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv-cache_1">KV Cache 压缩与稀疏化</h3>
+<ul>
+<li><strong>关键词</strong>：<code>kv_cache_sparse</code></li>
+<li><strong>相关方法</strong>：H2O、StreamingLLM、SnapKV、Quest、PQCache、PyramidKV、Ada-KV、Q-Hitter</li>
+<li><strong>研究趋势</strong>：从启发式静态方法 → 学习型动态方法的转变，AttentionPredictor 代表了这一方向的先驱工作</li>
+</ul>
+<h3 id="_13">高效推理系统</h3>
+<ul>
+<li><strong>相关工作</strong>：InfiniGen（跨层预取）、FlexGen、FlashInfer、SGLang、LMDeploy</li>
+<li><strong>趋势</strong>：CPU-GPU 异构推理、KV cache 卸载与预取的协同优化</li>
+<li><strong>未来方向</strong>：跨 token 预取框架可与其他推理系统（如 PagedAttention）结合</li>
+</ul>
+<h3 id="_14">注意力机制优化</h3>
+<ul>
+<li><strong>趋势</strong>：从全局注意力 → 稀疏注意力 → 可预测的稀疏注意力</li>
+<li><strong>研究方向</strong>：</li>
+<li>跨模型的 AttentionPredictor 泛化</li>
+<li>与 KV cache 量化方法（KIVI、KVQuant）结合</li>
+<li>与投机解码（Speculative Decoding）方法结合</li>
+<li>扩展到更大规模模型和更长上下文</li>
+</ul>
+<h3 id="llm">时间序列预测在 LLM 中的应用</h3>
+<ul>
+<li><strong>创新点</strong>：首次将时间序列预测技术应用于 LLM 注意力预测</li>
+<li><strong>潜在扩展</strong>：类似方法可用于预测 FFN 激活模式、token 生成模式等</li>
+</ul>
+<hr />
+<h2 id="_15">参考信息</h2>
+<ul>
+<li><strong>论文链接</strong>：http://arxiv.org/abs/2502.04077v1</li>
+<li><strong>发表年份</strong>：2025</li>
+<li><strong>一作</strong>：Qingyue Yang</li>
+<li><strong>通讯作者</strong>：Jie Wang (jiewangx@ustc.edu.cn)</li>
+<li><strong>单位</strong>：中国科学技术大学、华为诺亚方舟实验室、天津大学</li>
+<li><strong>代码框架</strong>：Pytorch（代码未公开）</li>
+<li><strong>关键词</strong>：kv_cache_sparse</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

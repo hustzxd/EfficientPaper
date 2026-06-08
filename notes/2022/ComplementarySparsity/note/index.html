@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,38 +161,392 @@
   
                 <h1 id="two-sparsities-are-better-than-one-unlocking-the-performance-benefits-of-sparse-sparse-networks">Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks</h1>
 <blockquote>
-<p>Combine weight sparsity and activation sparsity</p>
+<p>将权重稀疏和激活稀疏结合起来，通过互补稀疏技术在现有硬件上实现高效推理</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../cover.jpg" /></a></p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#two-sparsities-are-better-than-one-unlocking-the-performance-benefits-of-sparse-sparse-networks">Two Sparsities Are Better Than One: Unlocking the Performance Benefits of Sparse-Sparse Networks</a><ul>
-<li><a href="#method">Method</a><ul>
-<li><a href="#sparse-weight-and-dense-activation">sparse weight and dense activation</a></li>
-<li><a href="#sparse-weight-and-sparse-activation">sparse weight and sparse activation</a>    </li>
+<li><a href="#一句话总结">一句话总结</a></li>
+<li><a href="#摘要翻译">摘要翻译</a></li>
+<li><a href="#研究动机">研究动机</a></li>
+<li><a href="#方法技术细节">方法（技术细节）</a></li>
+<li><a href="#实验结果">实验结果</a></li>
+<li><a href="#优势">优势</a></li>
+<li><a href="#局限">局限</a></li>
+<li><a href="#与-efficientpaper-相关的研究方向">与 EfficientPaper 相关的研究方向</a></li>
+<li><a href="#ai-生成声明">AI 生成声明</a></li>
 </ul>
 </li>
 </ul>
+<h2 id="_1">一句话总结</h2>
+<p>本文提出了一种名为"互补稀疏"（Complementary Sparsity）的结构化稀疏技术，通过将多个稀疏权重矩阵叠加为单一密集结构，使得在现有硬件（FPGA）上能够同时利用权重稀疏和激活稀疏，实现高达 110 倍的吞吐量提升和能效改善，为高效 AI 推理开辟了新的路径。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>在原则上，稀疏神经网络应该比传统的密集网络效率更高。大脑中的神经元表现出两种类型的稀疏性：连接稀疏（权重稀疏）和活动稀疏（激活稀疏）。当这两种稀疏性结合起来时，有可能将神经网络的计算成本降低两个数量级。然而，尽管具有这种潜力，当今的神经网络仅利用权重稀疏性就获得了适度的性能提升，因为传统计算硬件无法高效处理稀疏网络。在本文中，我们引入了"互补稀疏"（Complementary Sparsity）这一新技术，显著提高了双稀疏网络在现有硬件上的性能。我们证明可以实现高权重稀疏网络的高性能运行，并且通过引入激活稀疏性可以将这些加速倍数相乘。使用互补稀疏技术，我们在 FPGA 上进行推理时，吞吐量和能效可提高高达 100 倍。我们分析了商用卷积网络（如 ResNet-50 和 MobileNetV2）中典型内核的可扩展性和资源权衡。我们的结果表明，权重加激活稀疏性可以成为高效扩展未来 AI 模型的强大组合。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景挑战</h3>
+<ol>
+<li>
+<p><strong>模型规模膨胀</strong>：近年来，更大更复杂的深度神经网络（DNN）推动了 AI 的显著进步，但模型的指数级增长威胁着进一步发展。训练需要大量 GPU/TPU，耗时数天甚至数周，产生巨大的碳排放和不断攀升的云计算成本。</p>
 </li>
-</ul>
-<h2 id="method">Method</h2>
-<h3 id="sparse-weight-and-dense-activation">sparse weight and dense activation</h3>
+<li>
+<p><strong>稀疏性的理论优势未被充分释放</strong>：受神经科学启发，稀疏性被提出作为解决模型规模快速增长的方案。稀疏网络通过限制神经元的连接（权重稀疏）或活动（激活稀疏），显著减少模型的大小和计算复杂度。当权重稀疏和激活稀疏同时利用时，计算节省是乘法性的——例如，90% 权重稀疏和 90% 激活稀疏的组合理论上可实现 100 倍的计算节省。</p>
+</li>
+<li>
+<p><strong>硬件与稀疏的"阻抗不匹配"</strong>：现有硬件针对规则密集数据结构进行优化，稀疏网络引入的不规则模式难以高效利用。例如，在 CPU 上，即使权重稀疏率达到 95%，性能提升通常不到 4 倍。几乎没有技术能同时利用权重和激活稀疏。</p>
+</li>
+<li>
+<p><strong>传统结构化稀疏的局限</strong>：分区稀疏和块稀疏等结构化稀疏技术虽然改善了硬件效率，但施加的约束限制了可获得的稀疏性和准确性，导致性能提升远低于理论潜力。</p>
+</li>
+</ol>
+<h3 id="_5">核心思路</h3>
+<p>作者提出一种"反转"稀疏问题的思路：不是为非结构化稀疏网络创建专用硬件，而是将稀疏矩阵结构化为与目标硬件要求匹配的形式——具体方法是将多个稀疏矩阵叠加形成单个密集结构，使其几乎与密集矩阵无异。</p>
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1">1. 互补稀疏的基本原理</h3>
+<p>互补稀疏的核心思想是：将多个稀疏权重结构叠加，形成单个密集实体。只要两个稀疏矩阵不在完全相同的位置包含非零元素，就能实现最优打包。对于输入的激活，可以执行逐元素乘积（密集操作），然后为每个稀疏实体单独重新生成累加结果。</p>
+<p><strong>关键约束</strong>：叠加的稀疏矩阵的非零元素不应相互冲突（即不重叠）。</p>
+<p><strong>灵活性</strong>：该技术可应用于卷积核，通过叠加层的 3D 稀疏权重张量中的多个 2D 稀疏矩阵。可以分别在滤波器维度或通道维度叠加。实践中，使用互补稀疏约束训练的网络与非结构化稀疏相比，精度不妥协。</p>
+<p><strong>乘法性能</strong>：随着非零元素数量减少，互补稀疏提供了线性性能改进的路径。</p>
+<h3 id="2-sparse-dense-networks">2. 稀疏-密集网络（Sparse-Dense Networks）</h3>
+<p>对于稀疏权重 + 密集激活的网络，处理过程包含四个步骤：</p>
+<ol>
+<li><strong>Combine（组合）</strong>：多个稀疏权重结构叠加形成单个密集实体（离线预处理步骤）</li>
+<li><strong>Multiply（乘法）</strong>：激活的每个元素与密集实体中对应的权重元素相乘（Hadamard 乘积）</li>
+<li><strong>Route（路由）</strong>：逐元素乘积按输出分别路由</li>
+<li><strong>Sum（求和）</strong>：路由后的乘积分别聚合求和，形成每个稀疏实体的独立结果</li>
+</ol>
+<h3 id="3-sparse-sparse-networks">3. 稀疏-稀疏网络（Sparse-Sparse Networks）</h3>
+<p>将稀疏-密集方案扩展到同时具有稀疏激活和稀疏权重的网络。处理过程包含五个步骤：</p>
+<ol>
+<li><strong>Combine（组合）</strong>：多个稀疏权重结构叠加形成单个密集结构（离线预处理）</li>
+<li><strong>Select（选择）</strong>：使用 k-WTA（k-Winner-Take-All）组件确定 top-k 激活及其索引</li>
+<li><strong>Multiply（乘法）</strong>：每个非零激活与密集结构中对应的权重元素相乘</li>
+<li><strong>Route（路由）</strong>：逐元素乘积按输出分别路由</li>
+<li><strong>Sum（求和）</strong>：路由后的乘积聚合求和，形成每个稀疏矩阵的独立结果</li>
+</ol>
+<p><strong>核心优势</strong>：通过互补稀疏，稀疏-稀疏问题被简化为稀疏激活 + 密集权重的问题，消除了传统稀疏-稀疏矩阵计算中处理动态非零激活与权重匹配的开销。</p>
+<h3 id="4-fpga">4. FPGA 实现细节</h3>
+<h4 id="41-sparse-sparse-hadamard">4.1 Sparse-Sparse Hadamard 乘积计算</h4>
 <ul>
-<li>a) <strong>Combine</strong>: multiple sparse weight structures are overlaid to form a single dense entity. This is done offline as a preprocessing step.</li>
-<li>(b) <strong>Multiply</strong>: each element of the activation is multiplied by the corresponding weight elements in the dense entity (Hadamard product).</li>
-<li>(c) <strong>Route</strong>: the appropriate element-wise products are routed separately for each output.</li>
-<li>(d) <strong>Sum</strong>: routed products are aggregated and summed to form a separate result for each sparse entity.</li>
+<li>每个非零激活的相关权重从权重张量中提取，然后与激活值相乘（Hadamard 乘积）</li>
+<li>稀疏滤波器核被转换为密集核，存储在 FPGA 上的一系列内存中</li>
+<li>每个权重附带一个内核 ID（Kernel ID），用于后续路由</li>
+<li>使用 K 端口的权重张量内存，以并行处理 K 个非零激活值</li>
+<li>激活稀疏度越高，所需端口越少；权重稀疏度越高，每个端口越小</li>
 </ul>
-<p><a class="glightbox" href="../SSgif.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../SSgif.jpg" /></a></p>
-<h3 id="sparse-weight-and-sparse-activation">sparse weight and sparse activation</h3>
+<h4 id="42-sparse-sparse-hadamard">4.2 Sparse-Sparse Hadamard 乘积路由</h4>
 <ul>
-<li>a) <strong>Combine</strong>: multiple sparse weight structures are overlaid to form a single dense structure. This is done offline as a preprocessing step.</li>
-<li>(b) <strong>Select</strong>: a k-WTA component is used to determine the top-k activations and their indices.</li>
-<li>(c) <strong>Multiply</strong>: each non-zero activation is multiplied by the corresponding weight elements in the dense structure (Hadamard product).</li>
-<li>(d) <strong>Route</strong>: the appropriate element-wise products are routed separately for each output.</li>
-<li>(e) <strong>Sum</strong>: routed products are aggregated and summed to form a separate result for each sparse matrix.
-<a class="glightbox" href="../fig5a.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5a.jpg" /></a></li>
+<li>核心挑战：将子乘积高效路由到正确的累加器</li>
+<li><strong>串行路由</strong>：通过多路复用器网络将每个乘积按 Kernel ID 路由到累加器</li>
+<li><strong>并行路由</strong>：所有激活的乘积并行处理，路由到加法树进行求和</li>
+<li>使用仲裁模块（Arbitration Module）生成低位地址位，避免冲突</li>
+<li>仲裁模块使用前缀和（prefix sum）算法生成低位地址位</li>
 </ul>
+<h4 id="43-k-wta">4.3 激活稀疏性实现（k-WTA）</h4>
+<ul>
+<li><strong>全局 k-WTA</strong>：检查激活的所有元素以确定 K 个最大值（用于线性层）</li>
+<li><strong>局部 k-WTA</strong>：将激活划分为较小单元，仅比较同一分区内的元素（用于卷积层）</li>
+<li>基于直方图的实现（用于 8 位激活值）：构建 256 元素数组的直方图，按最大值读取确定阈值</li>
+<li>使用排序网络 + FIFO + 比较器树实现高效的局部 k-WTA</li>
+<li>实现中，64 元素向量被分为 8 个 8 元素子向量，排序网络由 19 个比较器组成，深度 6 层</li>
+</ul>
+<h3 id="5">5. 资源权衡分析</h3>
+<ul>
+<li>激活稀疏度增加时，所有 FPGA 资源（LUT、FF、URAM）的使用量显著减少</li>
+<li>URAM 消耗与激活稀疏度呈线性关系</li>
+<li>权重稀疏度增加时，资源减少是亚线性的（路由开销限制了减少幅度）</li>
+<li>k-WTA 的资源消耗相对于卷积操作而言较小</li>
+<li>内存带宽需求与权重和激活稀疏度成反比</li>
+</ul>
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">实验设置</h3>
+<ul>
+<li><strong>数据集</strong>：Google Speech Commands (GSC)，包含 65,000 条一秒长的语音关键词录音</li>
+<li><strong>网络</strong>：标准卷积网络，包含两个卷积层、一个线性隐藏层和一个输出层</li>
+<li><strong>平台</strong>：Xilinx Alveo U250（高端数据中心 FPGA）和 UltraScale ZU3EG（嵌入式 FPGA）</li>
+<li><strong>基线</strong>：Dense 实现使用 Vitis AI；Sparse-Dense 和 Sparse-Sparse 使用 Vivado HLS</li>
+</ul>
+<h3 id="_9">网络参数</h3>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>通道数</th>
+<th>卷积核大小</th>
+<th>步长</th>
+<th>输出形状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>32×32×1</td>
+</tr>
+<tr>
+<td>Conv-1</td>
+<td>64</td>
+<td>5×5×1</td>
+<td>1</td>
+<td>28×28×64</td>
+</tr>
+<tr>
+<td>MaxPool-1</td>
+<td>-</td>
+<td>2×2×1</td>
+<td>2</td>
+<td>14×14×64</td>
+</tr>
+<tr>
+<td>Conv-2</td>
+<td>64</td>
+<td>5×5×64</td>
+<td>1</td>
+<td>10×10×64</td>
+</tr>
+<tr>
+<td>MaxPool-2</td>
+<td>-</td>
+<td>2×2×1</td>
+<td>2</td>
+<td>5×5×64</td>
+</tr>
+<tr>
+<td>Flatten</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1600×1</td>
+</tr>
+<tr>
+<td>Linear-1</td>
+<td>1500</td>
+<td>1600×1</td>
+<td>-</td>
+<td>1500×1</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>12</td>
+<td>1500×1</td>
+<td>-</td>
+<td>12×1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Dense 模型参数：2,522,128 个参数</li>
+<li>Sparse 模型非零权重：127,696 个（约 95% 稀疏）</li>
+<li>激活稀疏度：88%–90%（仅 10%–12% 的神经元为"获胜者"）</li>
+<li>密集和稀疏模型在 GSC 数据集上达到相似精度（96.4%–96.9%）</li>
+<li>激活和权重均量化为 8 位</li>
+</ul>
+<h3 id="table-2">单网络性能（Table 2）</h3>
+<table>
+<thead>
+<tr>
+<th>FPGA 平台</th>
+<th>网络实现</th>
+<th>吞吐量（词/秒）</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U250</td>
+<td>Dense</td>
+<td>3,049</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>U250</td>
+<td>Sparse-Dense</td>
+<td>35,714</td>
+<td>11.71X</td>
+</tr>
+<tr>
+<td>U250</td>
+<td>Sparse-Sparse</td>
+<td>102,564</td>
+<td><strong>33.63X</strong></td>
+</tr>
+<tr>
+<td>ZU3EG</td>
+<td>Dense</td>
+<td>0（不适用）</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ZU3EG</td>
+<td>Sparse-Dense</td>
+<td>21,053</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>ZU3EG</td>
+<td>Sparse-Sparse</td>
+<td>45,455</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 在 U250 上，Sparse-Sparse 比 Dense 快 33.6 倍，比 Sparse-Dense 快 2.8 倍
+- 在 ZU3EG 上，Dense 无法运行（资源不足），但 Sparse-Dense 和 Sparse-Sparse 均可运行
+- Sparse-Dense 在 ZU3EG 上比 Dense 在 U250 上还快 6.9 倍，展示了稀疏网络在嵌入式场景中的潜力</p>
+<h3 id="table-3">全芯片性能（Table 3）</h3>
+<table>
+<thead>
+<tr>
+<th>FPGA 平台</th>
+<th>网络实现</th>
+<th>网络数</th>
+<th>吞吐量（词/秒）</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U250</td>
+<td>Dense</td>
+<td>4</td>
+<td>12,195</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>U250</td>
+<td>Sparse-Dense</td>
+<td>24</td>
+<td>689,655</td>
+<td>56.5X</td>
+</tr>
+<tr>
+<td>U250</td>
+<td>Sparse-Sparse</td>
+<td>20</td>
+<td>1,369,863</td>
+<td><strong>112.3X</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- Sparse-Sparse 在全芯片上比 Dense 快 112.3 倍
+- Sparse-Sparse 可在 U250 上部署 20 个网络实例（Dense 仅 4 个）
+- 虽然 Sparse-Sparse 实例数（20）少于 Sparse-Dense（24），但整体吞吐量仍接近翻倍</p>
+<h3 id="cpu">CPU 推理引擎比较</h3>
+<ul>
+<li>在 CPU（3.0GHz 24 核 Intel Xeon 8275CL）上测试了多个推理引擎</li>
+<li>ONNX Runtime 和 OpenVINO 无法利用稀疏性</li>
+<li>Neural Magic 的 Deepsparse 实现 2X 加速</li>
+<li>Apache TVM 实现 3X 加速</li>
+<li>所有 CPU 引擎的加速远低于 FPGA，且无法同时利用权重和激活稀疏</li>
+</ul>
+<h3 id="table-4">能效（Table 4）</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>实现</th>
+<th>网络数</th>
+<th>系统功耗 (W)</th>
+<th>词/秒/瓦</th>
+<th>相对效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U250</td>
+<td>Dense</td>
+<td>4</td>
+<td>225</td>
+<td>54</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>U250</td>
+<td>Sparse-Dense</td>
+<td>24</td>
+<td>225</td>
+<td>3065</td>
+<td>5675%</td>
+</tr>
+<tr>
+<td>U250</td>
+<td>Sparse-Sparse</td>
+<td>20</td>
+<td>225</td>
+<td>6088</td>
+<td><strong>11274%</strong></td>
+</tr>
+<tr>
+<td>ZU3EG</td>
+<td>Sparse-Dense</td>
+<td>1</td>
+<td>24</td>
+<td>877</td>
+<td>1624%</td>
+</tr>
+<tr>
+<td>ZU3EG</td>
+<td>Sparse-Sparse</td>
+<td>1</td>
+<td>24</td>
+<td>1893</td>
+<td>3505%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：Sparse-Sparse 在 U250 上的能效比 Dense 高出 112 倍，同时吞吐量和能效同步提升（而非以增加能耗为代价）。</p>
+<h3 id="resnet-50-mobilenetv2">ResNet-50 和 MobileNetV2 资源分析</h3>
+<ul>
+<li>对 1×1 和 3×3 卷积内核进行了详细的资源权衡分析</li>
+<li>通道数为 64（[64:64] 配置）</li>
+<li>随着激活稀疏度增加，LUT 使用量显著下降（例如 93.75% 权重稀疏时，激活稀疏从 16/64 增加到 4/64，LUT 减少 4.1 倍）</li>
+<li>URAM 消耗与激活稀疏度呈线性关系</li>
+<li>k-WTA 的资源消耗相对较小（与卷积操作相比）</li>
+<li>互补稀疏成功应用于 ResNet-50 的 7×7 "stem" 层（仅使用权重稀疏）</li>
+</ul>
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>显著的性能提升</strong>：单网络加速 33.6 倍，全芯片加速 112.3 倍，能效提升 112 倍</li>
+<li><strong>同时利用两种稀疏性</strong>：首次在 FPGA 上实现同时利用权重稀疏和激活稀疏，性能提升是乘法性的</li>
+<li><strong>硬件友好的结构化稀疏</strong>：将稀疏矩阵转化为几乎等价于密集矩阵的结构，避免了传统稀疏的开销</li>
+<li><strong>嵌入式部署能力</strong>：稀疏网络可在资源受限的嵌入式 FPGA（如 ZU3EG）上运行，而密集网络无法运行</li>
+<li><strong>精度不妥协</strong>：使用互补稀疏约束训练的网络与非结构化稀疏相比，精度不损失</li>
+<li><strong>可扩展的资源效益</strong>：增加稀疏度会线性或超线性减少硬件资源消耗</li>
+<li><strong>无需专用硬件</strong>：在现有 FPGA 上实现，无需定制 ASIC</li>
+<li><strong>模块化设计</strong>：k-WTA 资源消耗小，路由模块可定制化</li>
+<li><strong>适用于多种网络结构</strong>：针对 ResNet-50、MobileNetV2 等商用网络的核心组件进行了分析</li>
+<li><strong>节能同步提升</strong>：同时改善吞吐量和能效，而非以增加能耗为代价</li>
+</ol>
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>仅在 FPGA 上验证</strong>：目前仅在 FPGA 平台上实现和评估，未在 GPU 或 CPU 上展示同等性能</li>
+<li><strong>仅针对推理</strong>：本文主要关注推理阶段，未涉及训练加速</li>
+<li><strong>网络结构有限</strong>：仅在小型卷积网络（GSC）和卷积层组件上验证，未在大规模端到端网络（如 ImageNet 上的 ResNet-50）上完整实现</li>
+<li><strong>对非结构化稀疏的处理</strong>：仍需要非零元素的索引信息，在激活稀疏度较低时性能提升有限</li>
+<li><strong>训练中的稀疏约束</strong>：互补稀疏要求非零元素不重叠，这可能限制训练时的灵活性</li>
+<li><strong>路由开销</strong>：路由模块的资源消耗随稀疏度增加而降低，但在低稀疏度时仍可能成为瓶颈</li>
+<li><strong>嵌入式平台的资源限制</strong>：虽然 Sparse-Sparse 可在 ZU3EG 上运行，但受限于资源，仅能运行 1 个网络实例</li>
+<li><strong>未与 NVIDIA Ampere 等硬件加速器比较</strong>：未与 NVIDIA GPU 的原生稀疏支持进行端到端比较</li>
+<li><strong>缺乏复杂网络的完整验证</strong>：对于 ResNet-50 等复杂网络，需要考虑通道分区、流水线延迟平衡等额外问题</li>
+<li><strong>未开源代码</strong>：无公开代码，难以复现</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏网络加速</strong>：本文是 EfficientPaper 中"稀疏化"（sparse_pruning）关键词下的重要研究，与权重量化、知识蒸馏等高效推理技术互补</li>
+<li><strong>结构化稀疏</strong>：互补稀疏是一种新颖的结构化稀疏方法，可与块稀疏、分区稀疏等技术结合</li>
+<li><strong>FPGA 加速器设计</strong>：本文提供了 FPGA 上稀疏计算的详细实现指南，对 ASIC 设计也有参考价值</li>
+<li><strong>稀疏-稀疏网络训练</strong>：本文指出同时具有权重和激活稀疏的网络训练仍是开放问题，值得进一步研究</li>
+<li><strong>边缘部署</strong>：稀疏网络在嵌入式设备上的部署是 EfficientPaper 关注的重点之一</li>
+<li><strong>能效优化</strong>：本文的能效提升结果与 EfficientPaper 中的能效研究方向一致</li>
+<li><strong>神经启发的稀疏性</strong>：本文受大脑中神经元稀疏连接和活动的启发，与神经形态计算方向相关</li>
+<li><strong>Transformer 架构的稀疏化</strong>：作者指出将互补稀疏应用于 Transformer 和深度推荐系统是未来方向</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent 自动提取论文内容并生成，基于对论文 PDF 全文（通过 PyMuPDF/fitz 提取）的分析。笔记内容包括摘要翻译、方法描述、实验结果总结、优势与局限分析等。笔记内容应被视为论文内容的概括和解读，读者应以原始论文为准。本文 AI 生成声明旨在确保透明度，不构成对论文内容的替代或背书。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

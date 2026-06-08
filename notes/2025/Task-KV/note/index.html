@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -158,33 +160,197 @@
               
   
                 <h1 id="task-kv-task-aware-kv-cache-optimization-via-semantic-differentiation-of-attention-heads">Task-KV: Task-aware KV Cache Optimization via Semantic Differentiation of Attention Heads</h1>
+<blockquote>
+<p>Xingyang He, Jie Liu, Shaowei Chen</p>
+</blockquote>
 <p><a class="glightbox" href="../fig6.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig6.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>KV cache is a widely used acceleration technique for large language models
-(LLMs) inference. However, its memory requirement grows rapidly with input
-length. Previous studies have reduced the size of KV cache by either removing
-the same number of unimportant tokens for all attention heads or by allocating
-differentiated KV cache budgets for pre-identified attention heads. However,
-due to the importance of attention heads varies across different tasks, the
-pre-identified attention heads fail to adapt effectively to various downstream
-tasks. To address this issue, we propose Task-KV, a method that leverages the
-semantic differentiation of attention heads to allocate differentiated KV cache
-budgets across various tasks. We demonstrate that attention heads far from the
-semantic center (called heterogeneous heads) make an significant contribution
-to task outputs and semantic understanding. In contrast, other attention heads
-play the role of aggregating important information and focusing reasoning.
-Task-KV allocates full KV cache budget to heterogeneous heads to preserve
-comprehensive semantic information, while reserving a small number of recent
-tokens and attention sinks for non-heterogeneous heads. Furthermore, we
-innovatively introduce middle activations to preserve key contextual
-information aggregated from non-heterogeneous heads. To dynamically perceive
-semantic differences among attention heads, we design a semantic separator to
-distinguish heterogeneous heads from non-heterogeneous ones based on their
-distances from the semantic center. Experimental results on multiple benchmarks
-and different model architectures demonstrate that Task-KV significantly
-outperforms existing baseline methods.</p>
-<p>对head进行分类，heterogeneous heads不稀疏，Non-heterogeneous Heads稀疏</p>
-<p>看实验结果提升不是很大</p>
+<hr />
+<blockquote>
+<p><strong>⚠️ 本 note 由 AI Agent 自动生成（Hermes Agent），生成时间：2025-06-04。内容基于论文全文提取与分析，仅供参考。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Task-KV 通过语义分离器（semantic separator）动态区分注意力头中的异构头（heterogeneous heads）与非异构头（non-heterogeneous heads），并根据任务语义差异为不同类型的注意力头分配差异化的 KV cache 预算，在仅使用 40% 内存的情况下即可在摘要和合成任务上达到与完整 KV cache 相当的性能。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>KV cache 是大语言模型（LLM）推理中广泛使用的加速技术，但其内存需求随输入长度快速增长。先前的研究要么对所有注意力头去除相同数量的不重要 token，要么为预先识别的注意力头分配差异化的 KV cache 预算。然而，由于注意力头的重要性在不同任务间存在差异，预先识别的注意力头无法有效适应各种下游任务。为解决这一问题，我们提出 Task-KV，一种利用注意力头语义分化来为不同任务分配差异化 KV cache 预算的方法。我们证明，远离语义中心的注意力头（称为异构头）对任务输出和语义理解贡献显著，而其他注意力头则主要负责聚合重要信息和集中推理。Task-KV 为异构头分配完整的 KV cache 预算以保留全面的语义信息，同时仅为非异构头保留少量最近 token 和注意力汇聚（attention sinks）。此外，我们创新性地引入中间激活（middle activations）来保留从非异构头聚合的关键上下文信息。为动态感知注意力头之间的语义差异，我们设计了一个语义分离器，基于注意力头与语义中心的距离区分异构头和非异构头。在多个基准和不同模型架构上的实验结果表明，Task-KV 显著优于现有基线方法。值得注意的是，在需要完整上下文处理的场景（如摘要和合成任务）中，Task-KV 在仅使用 40% 内存的情况下达到了与完整 KV cache 相当的性能。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>LLM 推理中的 KV cache 内存需求随输入序列长度快速增长，成为长上下文场景（如上下文学习、多轮对话、检索增强）中部署的瓶颈。现有 KV cache 压缩方法主要从 token 级别和 head 级别两个维度进行优化，但均存在局限性。</p>
+<h3 id="_5">现有方法的局限</h3>
+<ol>
+<li><strong>Token 级别方法</strong>（如 StreamingLLM、SnapKV、PyramidKV、MiniCache）：</li>
+<li>对所有注意力头施加相同的 KV cache 预算（去除相同数量的 token）</li>
+<li>可能遗漏关键注意力头中的重要信息</li>
+<li>
+<p>StreamingLLM 仅保留 attention sinks 和最近 token，导致大量信息丢失</p>
+</li>
+<li>
+<p><strong>Head 级别方法</strong>（如 HeadKV、RazorAttention、DuoAttention）：</p>
+</li>
+<li>预先识别重要注意力头（如检索头），按重要性分配 KV cache 预算</li>
+<li>预先识别的注意力头可能无法适应不同任务的需求（不同任务激活的异构头分布显著不同）</li>
+<li>
+<p>基于注意力权重而非语义信息进行头的分类</p>
+</li>
+<li>
+<p><strong>共同问题</strong>：现有方法未能利用任务感知的语义差异来动态调整 KV cache 分配策略。</p>
+</li>
+</ol>
+<h3 id="_6">关键观察</h3>
+<ul>
+<li><strong>注意力头的语义异构性</strong>：在语义空间中，大部分注意力头紧密聚类，而一小部分距离语义中心较远（异构头），这些头从不同视角捕获任务的语义信息，对模型的全面理解和表达能力至关重要。</li>
+<li><strong>任务间异构头分布差异</strong>：不同任务（检索、摘要、代码补全）激活的异构头分布显著不同，由任务的语义表示需求决定。</li>
+<li><strong>异构头的贡献上界理论</strong>：从理论分析可知，远离语义中心的异构头对模型输出的贡献上界更大，因为偏移量 δj 是决定贡献的关键因素。</li>
+</ul>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<p>Task-KV 由两个核心组件组成：<strong>语义分离器（Semantic Separator）</strong> 和 <strong>KV cache 分配策略（KV Cache Allocation Strategy）</strong>。</p>
+<h3 id="41-semantic-separator">4.1 语义分离器（Semantic Separator）</h3>
+<h4 id="411">4.1.1 语义向量计算</h4>
+<p>对每个注意力头，通过以下步骤计算语义向量：
+1. 计算注意力权重矩阵：<script type="math/tex">A = \text{Softmax}(QK^T / \sqrt{d} + M)</script>
+2. 按列平均得到注意力分布：<script type="math/tex">A[i,:]</script> 列平均
+3. 对 V 加权求和得到语义向量：<script type="math/tex">v = \frac{\sum_{i=1}^{N} A[i,:]}{N} \cdot V</script>
+</p>
+<p>语义向量 <script type="math/tex">v \in \mathbb{R}^{1 \times d}</script> 高度概括了当前注意力头关注的语义信息。</p>
+<h4 id="412">4.1.2 两阶段优化</h4>
+<p>为了降低计算开销，采用两阶段优化：</p>
+<ol>
+<li>
+<p><strong>观察窗口（Observation Window）</strong>：仅使用输入序列末尾一小段（大小 <script type="math/tex">L</script>）作为观察窗口，计算局部注意力权重矩阵：
+   <script type="math/tex">A' = \text{Softmax}(Q[-L:,:] \cdot K^T / \sqrt{d} + M')</script>
+</p>
+</li>
+<li>
+<p><strong>Top-t Token 选择</strong>：从局部权重中选择注意力得分最高的 <script type="math/tex">t</script> 个 token 来计算语义向量，进一步降低计算成本：
+   <script type="math/tex">C = \frac{\sum_{i=1}^{L} A'[i,:]}{L}</script>
+<script type="math/tex">I = \text{Topk}(C, t)</script>
+<script type="math/tex">v' = C[I,:] \cdot V[I,:]</script>
+</p>
+</li>
+</ol>
+<p>实验表明 <script type="math/tex">t = 256</script> 时达到计算成本与精度的平衡点（注意力权重比例趋于收敛）。</p>
+<h4 id="413">4.1.3 异构头分类</h4>
+<ul>
+<li>计算所有注意力头的语义向量后，基于距离语义中心的距离进行排序</li>
+<li>从最远到最近选择一定数量的头作为异构头，其余为非异构头</li>
+<li><strong>补充策略</strong>：从非异构头中选择最接近语义中心的头加入异构头集合，确保覆盖所有类型的语义信息</li>
+<li><strong>层间自适应</strong>：异构头数量随层数增加而递减（深层异构头更少），通过线性插值确定每层的异构头数量：
+  <script type="math/tex">f(r) = n\beta - \frac{n\beta - m}{R - 1} \cdot r</script>
+  其中 <script type="math/tex">\beta</script> 为底层异构头比例，<script type="math/tex">m</script> 为顶层异构头数量，<script type="math/tex">R</script> 为 Transformer 层数。</li>
+</ul>
+<h3 id="42-kv-cache">4.2 KV Cache 分配策略</h3>
+<h4 id="heterogeneous-heads">异构头（Heterogeneous Heads）</h4>
+<ul>
+<li>分配<strong>完整的 KV cache 预算</strong>，确保多视角语义信息的完整性</li>
+</ul>
+<h4 id="non-heterogeneous-heads">非异构头（Non-heterogeneous Heads）</h4>
+<ul>
+<li><strong>最近 token（Recent Tokens）</strong>：保留少量最近 token，维持基本推理能力</li>
+<li><strong>注意力汇聚（Attention Sinks）</strong>：保留 16 个 sink token</li>
+<li><strong>中间激活（Middle Activations）</strong>：创新性地引入，从序列中间位置选择注意力得分最高的 <script type="math/tex">k</script> 个 token，保留关键上下文信息</li>
+<li>公式：<script type="math/tex">k = \frac{B - N \cdot f(r)}{n - f(r)} - s_1 - s_2</script>
+</li>
+<li>
+<script type="math/tex">B</script> 为当前层 KV cache 总预算，<script type="math/tex">N</script> 为序列长度，<script type="math/tex">s_1</script> 为 sink token 数，<script type="math/tex">s_2</script> 为最近 token 数</li>
+</ul>
+<h3 id="43">4.3 关键超参数</h3>
+<ul>
+<li>观察窗口大小 <script type="math/tex">L = 32</script>
+</li>
+<li>平均池化核大小 7</li>
+<li>Top-t tokens <script type="math/tex">t = 256</script>
+</li>
+<li>Llama-2-7B-Chat：<script type="math/tex">\beta = 0.25</script>，<script type="math/tex">m = 4</script>
+</li>
+<li>Mistral-7B-v0.2-Instruct：<script type="math/tex">\beta = 0.3</script>，<script type="math/tex">m = 1</script>
+</li>
+<li>Sink tokens <script type="math/tex">s_1 = 16</script>，最近 token <script type="math/tex">s_2 = 256</script>
+</li>
+</ul>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="_9">实验设置</h3>
+<ul>
+<li><strong>基线方法</strong>：StreamingLLM、SnapKV、PyramidKV、HeadKV-R2</li>
+<li><strong>评估基准</strong>：LongBench（含单文档 QA、多文档 QA、摘要、少样本学习、合成任务、代码补全）和 LooGLE（含计算、多信息检索、长依赖摘要）</li>
+<li><strong>模型</strong>：Llama-2-7B-Chat（MHA）、Mistral-7B-v0.2-Instruct（GQA）</li>
+<li><strong>KV cache 预算</strong>：40% 和 60%</li>
+</ul>
+<h3 id="_10">主要结果</h3>
+<h4 id="1-longbench-loogle">1. 长上下文理解任务（LongBench + LooGLE）</h4>
+<p>在 KV cache 预算 40% 和 60% 的条件下，Task-KV 在两个基准上的平均得分均优于所有基线方法：</p>
+<ul>
+<li><strong>Llama-2-7B-Chat（40%）</strong>：Task-KV 平均 7.94 vs HeadKV-R2 7.80 vs PyramidKV 7.76 vs SnapKV 7.60 vs StreamingLLM 6.67</li>
+<li><strong>Llama-2-7B-Chat（60%）</strong>：Task-KV 平均 8.13 vs HeadKV-R2 7.94 vs PyramidKV 7.89 vs SnapKV 8.05 vs StreamingLLM 6.71</li>
+<li><strong>Mistral-7B-v0.2-Instruct（40%）</strong>：Task-KV 平均 10.73 vs HeadKV-R2 10.63 vs PyramidKV 10.45 vs SnapKV 10.31 vs StreamingLLM 9.37</li>
+<li><strong>Mistral-7B-v0.2-Instruct（60%）</strong>：Task-KV 平均 11.02 vs HeadKV-R2 10.89 vs PyramidKV 10.77 vs SnapKV 10.63 vs StreamingLLM 9.62</li>
+</ul>
+<p><strong>摘要和合成任务表现突出</strong>：在需要完整上下文处理的任务中，Task-KV 在资源受限条件下显著优于现有基线，仅使用 40% 内存即可达到与完整 KV cache 相当的性能。</p>
+<h4 id="2-reasoning-in-a-haystackkv-cache-50">2. Reasoning-in-a-Haystack（KV cache 预算 50%）</h4>
+<p>在多针检索推理任务中，Task-KV 在两个模型上均达到最高平均分：
+- Llama-2-7B-Chat：Task-KV 37.15 vs HeadKV-R2 36.85 vs PyramidKV 36.65 vs SnapKV 36.65 vs StreamingLLM 33.20
+- Mistral-7B-v0.2-Instruct：Task-KV 40.94 vs HeadKV-R2 40.77 vs PyramidKV 40.71 vs SnapKV 40.83 vs StreamingLLM 37.43</p>
+<h4 id="3">3. 内存与延迟</h4>
+<ul>
+<li><strong>解码延迟</strong>：Task-KV 与其他 KV cache 压缩方法保持相同的解码延迟，预填充时间几乎可忽略</li>
+<li><strong>峰值内存</strong>：Task-KV 显著减少内存使用，与其他压缩方法相当</li>
+</ul>
+<h3 id="_11">消融实验</h3>
+<h4 id="_12">非异构头的作用</h4>
+<ul>
+<li>Passkey Retrieval（纯检索）：移除非异构头对检索性能影响不大</li>
+<li>Reasoning-in-a-Haystack（检索+推理）：移除非异构头后性能显著下降</li>
+<li>结论：非异构头在信息推理中起关键作用</li>
+</ul>
+<h4 id="_13">中间激活的重要性</h4>
+<ul>
+<li>No Cache（仅保留 sink + recent token）：信息损失严重</li>
+<li>Compressed Cache（压缩中间 token 为补偿 token）：引入噪声，模糊关键信息</li>
+<li><strong>Selective Cache（中间激活）</strong>：在小 cache size（如 16）下即获得高 F1 分数</li>
+<li>结论：非异构头聚合的关键信息存储在中间激活中，保留这些元素对充分利用推理能力至关重要</li>
+</ul>
+<hr />
+<h2 id="_14">优势</h2>
+<ol>
+<li><strong>任务感知的动态分配</strong>：根据任务语义差异动态区分异构头与非异构头，实现细粒度 KV cache 分配，优于预先固定头分类的方法</li>
+<li><strong>内存效率高</strong>：仅使用 40% 内存即可在摘要和合成任务上达到与完整 KV cache 相当的性能</li>
+<li><strong>理论基础扎实</strong>：通过理论分析和实验验证了异构头对模型输出的贡献上界，为方法提供了坚实的理论支撑</li>
+<li><strong>中间激活创新</strong>：引入中间激活（middle activations）保留非异构头聚合的关键信息，显著优于无缓存和压缩缓存方法</li>
+<li><strong>广泛的适用性</strong>：在 Llama-2-7B（MHA）和 Mistral-7B（GQA）两种不同架构上均表现良好</li>
+<li><strong>计算效率</strong>：通过观察窗口和 top-t token 选择等优化，语义分离器的计算开销可控</li>
+<li><strong>鲁棒性</strong>：超参数 β 和 m 在中间范围内对性能影响不大，具有较好的参数鲁棒性</li>
+</ol>
+<hr />
+<h2 id="_15">局限</h2>
+<ol>
+<li><strong>性能提升有限</strong>：从实验结果看，Task-KV 相比 HeadKV-R2 等基线方法的提升幅度不大（特别是在 Llama-2-7B 上），优势主要体现在摘要和合成任务中</li>
+<li><strong>语义分离器开销</strong>：虽然通过观察窗口和 top-t token 选择进行了优化，但语义分离器的计算开销仍然存在，且随输入长度增加而增大</li>
+<li><strong>依赖语义中心的计算</strong>：语义中心的计算依赖于当前层所有注意力头的语义向量，需要额外的内存和计算</li>
+<li><strong>层间异构头数量预设</strong>：层间异构头数量通过线性插值预设（参数 β 和 m），可能无法完全适应所有任务和模型</li>
+<li><strong>仅在 7B 模型上验证</strong>：实验仅在 Llama-2-7B-Chat 和 Mistral-7B-v0.2-Instruct 两个 7B 模型上进行，未在更大规模模型（如 13B、70B）上验证</li>
+<li><strong>未考虑量化结合</strong>：未与 KV cache 量化方法结合，可能在更极端的压缩场景下效果不佳</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="kv-cache-kv_cache_sparse">KV Cache 稀疏化（kv_cache_sparse）</h3>
+<p>Task-KV 属于 KV cache 稀疏化方向，通过差异化分配 KV cache 预算来实现压缩。相关研究方向包括：
+- <strong>Token 级别稀疏</strong>：StreamingLLM、SnapKV、PyramidKV 等，通过选择性保留 token 实现压缩
+- <strong>Head 级别稀疏</strong>：HeadKV、RazorAttention、DuoAttention 等，通过识别重要注意力头实现压缩
+- <strong>Task 感知稀疏</strong>：Task-KV 开创了任务感知的头级别稀疏方向，为后续研究提供了新的视角</p>
+<h3 id="_16">可能的后续研究方向</h3>
+<ol>
+<li><strong>与量化结合</strong>：将 Task-KV 的头级别稀疏与 KV cache 量化结合，进一步压缩内存</li>
+<li><strong>更大规模模型验证</strong>：在 13B、70B 等更大规模模型上验证方法的可扩展性</li>
+<li><strong>在线学习</strong>：探索在线学习语义分离器，实现更动态的头分类</li>
+<li><strong>多任务联合优化</strong>：同时优化多个任务的 KV cache 分配策略</li>
+<li><strong>推理时动态调整</strong>：根据当前生成的上下文内容动态调整 KV cache 分配</li>
+<li><strong>与 SSM/MLA 等新架构结合</strong>：探索在 State Space Model 或 Multi-head Latent Attention 等新架构上的适用性</li>
+</ol>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，基于论文 arXiv:2501.15113v1 全文分析。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

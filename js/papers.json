@@ -1,6 +1,116 @@
 {
   "papers": [
     {
+      "id": "RTPurbo",
+      "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
+      "abbr": "RTPurbo",
+      "url": "http://arxiv.org/abs/2605.16928v1",
+      "authors": [
+        "Yanke Zhou",
+        "Yiduo Li",
+        "Hanlin Tang",
+        "Maohua Li",
+        "Kan Liu",
+        "Lan Tao",
+        "Lin Qu",
+        "Yuan Yao",
+        "Xiaoxing Ma"
+      ],
+      "institutions": [
+        "Nanjing University",
+        "Alibaba Group"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/RTPurbo/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/alibaba/rtp-llm",
+      "note_url": "notes/2026/RTPurbo/note/",
+      "prototxt_path": "meta/2026/RTPurbo.prototxt",
+      "update_time": 1780905257,
+      "rating": 0
+    },
+    {
+      "id": "Vortex",
+      "title": "Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents",
+      "abbr": "Vortex",
+      "url": "https://arxiv.org/abs/2606.06453v1",
+      "authors": [
+        "Zhuoming Chen",
+        "Xinrui Zhong",
+        "Qilong Feng",
+        "Ranajoy Sadhukhan",
+        "Yang Zhou",
+        "Michael Qizhe Shieh",
+        "Zhihao Jia",
+        "Beidi Chen"
+      ],
+      "institutions": [
+        "Carnegie Mellon University",
+        "Rice University",
+        "National University of Singapore"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Vortex/cover.jpg",
+      "keywords": [
+        "46-Tool"
+      ],
+      "code_url": "https://github.com/Infini-AI-Lab/vortex_torch",
+      "note_url": "notes/2026/Vortex/note/",
+      "prototxt_path": "meta/2026/Vortex.prototxt",
+      "update_time": 1780652549,
+      "rating": 0
+    },
+    {
+      "id": "BLASST",
+      "title": "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding",
+      "abbr": "BLASST",
+      "url": "http://arxiv.org/abs/2512.12087v1",
+      "authors": [
+        "Jiayi Yuan",
+        "Cameron Shinn",
+        "Kai Xu",
+        "Jingze Cui",
+        "George Klimiashvili",
+        "Guangxuan Xiao",
+        "Perkz Zheng",
+        "Bo Li",
+        "Yuxin Zhou",
+        "Zhouhai Ye",
+        "Weijie You",
+        "Tian Zheng",
+        "Dominic Brown",
+        "Pengbo Wang",
+        "Richard Cai",
+        "Julien Demouth",
+        "John D. Owens",
+        "Xia Hu",
+        "Song Han",
+        "Timmy Liu",
+        "Huizi Mao"
+      ],
+      "institutions": [
+        "NVIDIA",
+        "Rice University",
+        "University of California"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/BLASST/cover.jpg",
+      "keywords": [
+        "01-Sparse/Pruning",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/BLASST/note/",
+      "prototxt_path": "meta/2025/BLASST.prototxt",
+      "update_time": 1780554983,
+      "rating": 0
+    },
+    {
       "id": "RTP-LLM",
       "title": "RTP-LLM: High-Performance Alibaba LLM Inference Engine",
       "abbr": "RTP-LLM",
@@ -50,7 +160,7 @@
         "30-Speculative Decoding",
         "40-LLM Deployment"
       ],
-      "code_url": null,
+      "code_url": "https://github.com/alibaba/rtp-llm",
       "note_url": "notes/2026/RTP-LLM/note/",
       "prototxt_path": "meta/2026/RTP-LLM.prototxt",
       "update_time": 1780308899,
@@ -8189,53 +8299,6 @@
       "rating": 0
     },
     {
-      "id": "BLASST",
-      "title": "BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding",
-      "abbr": "BLASST",
-      "url": "http://arxiv.org/abs/2512.12087v1",
-      "authors": [
-        "Jiayi Yuan",
-        "Cameron Shinn",
-        "Kai Xu",
-        "Jingze Cui",
-        "George Klimiashvili",
-        "Guangxuan Xiao",
-        "Perkz Zheng",
-        "Bo Li",
-        "Yuxin Zhou",
-        "Zhouhai Ye",
-        "Weijie You",
-        "Tian Zheng",
-        "Dominic Brown",
-        "Pengbo Wang",
-        "Richard Cai",
-        "Julien Demouth",
-        "John D. Owens",
-        "Xia Hu",
-        "Song Han",
-        "Timmy Liu",
-        "Huizi Mao"
-      ],
-      "institutions": [
-        "NVIDIA",
-        "Rice University",
-        "University of California"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/BLASST/cover.jpg",
-      "keywords": [
-        "02-Sparsity (Attention)",
-        "01-Sparse/Pruning",
-        "40-LLM Deployment"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/BLASST/note/",
-      "prototxt_path": "meta/2025/BLASST.prototxt",
-      "update_time": 0,
-      "rating": 0
-    },
-    {
       "id": "BlockFFN",
       "title": "BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity",
       "abbr": "BlockFFN",
@@ -10075,6 +10138,40 @@
       "rating": 0
     },
     {
+      "id": "FastTree",
+      "title": "FastTree: Optimizing Attention Kernel and Runtime for Tree-Structured LLM Inference",
+      "abbr": "FastTree",
+      "url": "https://openreview.net/pdf?id=BwvHcHZ3kJ",
+      "authors": [
+        "Zaifeng Pan",
+        "Yitong Ding",
+        "Yue Guan",
+        "Zheng Wang",
+        "Zhongkai Yu",
+        "Xulong Tang",
+        "Yida Wang",
+        "Yufei Ding"
+      ],
+      "institutions": [
+        "University of California, San Diego",
+        "University of Pittsburgh",
+        "AWS"
+      ],
+      "year": 2025,
+      "venue": "MLSys",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management",
+        "49-Kernel Generation",
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": "https://github.com/PanZaifeng/FastTree-Artifact",
+      "note_url": "notes/2025/FastTree/note/",
+      "prototxt_path": "meta/2025/FastTree.prototxt",
+      "update_time": 0,
+      "rating": 0
+    },
+    {
       "id": "MeZO",
       "title": "Fine-Tuning Language Models with Just Forward Passes",
       "abbr": "MeZO",
@@ -10744,7 +10841,7 @@
       "note_url": "notes/2025/HelixParallelism/note/",
       "prototxt_path": "meta/2025/HelixParallelism.prototxt",
       "update_time": 0,
-      "rating": 0
+      "rating": 1
     },
     {
       "id": "DHC",
@@ -15642,5 +15739,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 473
+  "total": 476
 }

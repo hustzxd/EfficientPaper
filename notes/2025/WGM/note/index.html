@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Binary Quantization For LLMs Through Dynamic Grouping - Efficient Paper</title>
+    <title>Binary Quantization For LLMs Through Dynamic Grouping (WGM) - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Binary Quantization For LLMs Through Dynamic Grouping";
+        var mkdocs_page_name = "Binary Quantization For LLMs Through Dynamic Grouping (WGM)";
         var mkdocs_page_input_path = "notes/2025/WGM/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Binary Quantization For LLMs Through Dynamic Grouping</li>
+      <li class="breadcrumb-item active">Binary Quantization For LLMs Through Dynamic Grouping (WGM)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,33 +159,265 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="binary-quantization-for-llms-through-dynamic-grouping">Binary Quantization For LLMs Through Dynamic Grouping</h1>
+                <h1 id="binary-quantization-for-llms-through-dynamic-grouping-wgm">Binary Quantization For LLMs Through Dynamic Grouping (WGM)</h1>
 <blockquote>
 <p>Xinzhe Zheng, Zhen-Qun Yang, Haoran Xie, S. Joe Qin, Arlene Chen, Fangzhen Lin</p>
 </blockquote>
-<p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) have demonstrated remarkable performance across
-a wide range of Natural Language Processing (NLP) tasks, but require
-substantial memory and computational resources. Binary quantization, which
-compresses model weights from 16-bit Brain Float to 1-bit representations in
-{-1, 1}, offers significant reductions in storage and inference costs. However,
-such aggressive quantization often leads to notable performance degradation
-compared to more conservative 4-bit quantization methods. In this research, we
-propose a novel optimization objective tailored for binary quantization, along
-with three algorithms designed to realize it effectively. Our method enhances
-blocked quantization by dynamically identifying optimal unstructured
-sub-matrices through adaptive grouping strategies. Experimental results
-demonstrate that our approach achieves an average bit length of just 1.007
-bits, while maintaining high model quality. Specifically, our quantized LLaMA
-3.2 3B model attains a perplexity of 8.23, remarkably close to the original
-7.81, and surpasses previous SOTA BiLLM with a perplexity of only 123.90.
-Furthermore, our method is competitive with SOTA 4-bit approaches such as GPTQ
-in both performance and efficiency. The compression process is highly
-efficient, requiring only 14 seconds to quantize the full LLaMA 3.2 3B weights
-on a single CPU core, with the entire process completing in under 100 minutes
-and exhibiting embarrassingly parallel properties.
-  Code - https://github.com/johnnyzheng0636/WGM_bi_quan</p>
+<p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="fig1" src="../fig1.jpg" /></a></p>
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成（2025-06-04），基于 arXiv:2509.03054v1 全文阅读。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>WGM（Windowed Greedy Merging）通过动态分组策略将 LLM 权重进行二值量化（1-bit），在仅约 1.007 bit 的平均比特长度下，实现了接近全精度模型的性能，显著优于 BiLLM 等现有 1-bit 方法，且与 4-bit GPTQ 性能相当，同时量化速度极快（单 CPU 核 14 秒完成 LLaMA 3.2 3B）。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大型语言模型（LLM）在各类自然语言处理任务中表现出色，但需要大量内存和计算资源。二值量化将模型权重从 16-bit Brain Float 压缩到 {-1, 1} 的 1-bit 表示，可显著降低存储和推理成本。然而，如此激进的量化往往导致性能显著下降，相比更保守的 4-bit 量化方法效果较差。本文提出了一种针对二值量化的新型优化目标，以及三种有效实现该目标的算法。我们的方法通过自适应分组策略动态识别最优非结构化子矩阵，增强了分块量化。实验结果表明，该方法在保持高模型质量的同时，实现了仅 1.007 bit 的平均比特长度。具体而言，量化后的 LLaMA 3.2 3B 模型达到了 8.23 的困惑度（perplexity），接近原始的 7.81，远优于之前 SOTA 方法 BiLLM 的 123.90。此外，我们的方法在性能和效率上与 SOTA 4-bit 方法（如 GPTQ）具有竞争力。压缩过程非常高效，仅需 14 秒即可在单个 CPU 核上量化完整的 LLaMA 3.2 3B 权重，整个过程在 100 分钟内完成，且具有天然的并行特性。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>LLM 部署成本问题</strong>：大型语言模型（如 DeepSeek R1 有 6710 亿参数，需 720GB 内存）的部署成本极高，限制了在移动设备、笔记本等受限设备上的部署。</li>
+<li><strong>二值量化的性能瓶颈</strong>：虽然 4-bit 量化（如 GPTQ）已取得成功，但极端的 1-bit 量化（二值量化）仍面临性能严重下降的问题。例如，BiLLM 在 LLaMA 7B 上的困惑度高达 35.04（原始 5.68）。</li>
+<li><strong>现有方法的局限性</strong>：现有二值 PTQ 方法（如 BiLLM、PB-LLM）主要依赖 Hessian 矩阵来识别重要权重，计算成本高；且使用均匀分块和固定分组策略，忽略了自适应分组的潜力。此外，所有方法均为模拟实现，缺乏专门的硬件和内核支持。</li>
+<li><strong>核心问题</strong>：如何在不依赖 Hessian 的情况下，找到最优的非结构化子矩阵分组，以最小化二值量化损失？</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1">1. 新型优化目标</h3>
+<p>WGM 提出了一个新的优化目标，通过识别最优的非结构化子矩阵分组来最小化量化损失。核心思想是：</p>
+<ul>
+<li>对于矩阵 <script type="math/tex">A \in \mathbb{R}^{m \times n}</script>，将其划分为 <script type="math/tex">g</script> 个不重叠的非结构化子矩阵 <script type="math/tex">\{A_1, A_2, \ldots, A_g\}</script>
+</li>
+<li>每个子矩阵 <script type="math/tex">A_i</script> 用一个标量 <script type="math/tex">\alpha_i</script> 和一个二值矩阵 <script type="math/tex">B_i</script> 来近似</li>
+<li>优化目标为：</li>
+</ul>
+<p>
+<script type="math/tex; mode=display">\min_{g, \{A_i\}} \sum_{i=1}^{g} \left( \|A_i - \alpha_i B_i\|_2^2 + \frac{\lambda}{|A_i|} \right)</script>
+</p>
+<p>其中：
+- 第一项 <script type="math/tex">\|A_i - \alpha_i B_i\|_2^2</script> 是量化损失
+- 第二项 <script type="math/tex">\frac{\lambda}{|A_i|}</script> 是正则化项，惩罚过小的分组（分组越小，存储开销越大）
+- 通过数学推导，量化损失可转化为 <script type="math/tex">|A_i| \cdot \text{Var}(\tilde{A}_i)</script>，其中 <script type="math/tex">\tilde{A}_i</script> 是 <script type="math/tex">A_i</script> 的绝对值</p>
+<p>最终优化目标简化为：</p>
+<p>
+<script type="math/tex; mode=display">\min_{g, \{A_i\}} \sum_{i=1}^{g} \left( |A_i| \cdot \text{Var}(\tilde{A}_i) + \frac{\lambda}{|A_i|} \right)</script>
+</p>
+<h3 id="2">2. 三种算法</h3>
+<h4 id="1dynamic-grouping">算法 1：动态分组（Dynamic Grouping）</h4>
+<ul>
+<li>基于经典动态规划，系统探索所有可能的分组</li>
+<li>首先对所有元素的绝对值进行排序（排序后连续子序列保证最小方差）</li>
+<li>使用动态规划表 <script type="math/tex">dp[k][n]</script> 存储将 <script type="math/tex">n</script> 个元素分为 <script type="math/tex">k</script> 组的最小代价</li>
+<li>时间复杂度：<script type="math/tex">O((mn)^3)</script>，不适用于实际大模型</li>
+</ul>
+<h4 id="2greedy-grouping">算法 2：贪心分组（Greedy Grouping）</h4>
+<ul>
+<li>使用最小堆存储每对相邻分组的合并代价</li>
+<li>迭代弹出最小代价的合并操作，直到剩余分组数达到目标</li>
+<li>时间复杂度：<script type="math/tex">O(mn \log(mn))</script>
+</li>
+<li>速度快但可能牺牲一定精度</li>
+</ul>
+<h4 id="3windowed-greedy-merging-wgm">算法 3：窗口化贪心合并（Windowed Greedy Merging, WGM）</h4>
+<ul>
+<li><strong>核心算法</strong>，也是论文主要使用的算法</li>
+<li>不从 <script type="math/tex">mn</script> 个大小为 1 的分组开始，而是从 <script type="math/tex">mn/k</script> 个大小为 <script type="math/tex">k</script> 的分组开始（<script type="math/tex">k</script> 为窗口大小）</li>
+<li>在窗口内进行贪心合并，进一步提高效率</li>
+<li>时间复杂度：<script type="math/tex">O(\frac{mn}{k} \log(\frac{mn}{k}))</script>
+</li>
+<li>在速度和质量之间实现最佳平衡</li>
+</ul>
+<h3 id="3">3. 超参数</h3>
+<ul>
+<li><strong>窗口大小 <script type="math/tex">w</script></strong>：控制初始分组的大小。实验表明 <script type="math/tex">w=64</script> 是最优平衡点（超过 64 后困惑度显著下降）</li>
+<li><strong>最大分组数 <script type="math/tex">g</script></strong>：控制最大分组数。<script type="math/tex">g=32</script> 可实现良好的性能和短比特长度</li>
+<li><strong>正则化参数 <script type="math/tex">\lambda</script></strong>：控制分组数量。实验显示 <script type="math/tex">\lambda</script> 对量化性能影响很小（<script type="math/tex">\lambda=0.75</script>）</li>
+<li><strong><script type="math/tex">\tilde{\lambda}</script></strong>：通过 <script type="math/tex">\tilde{\lambda} \in [0, 1]</script> 间接控制 <script type="math/tex">\lambda</script> 在 <script type="math/tex">[\lambda_{\min}, \lambda_{\max}]</script> 之间</li>
+</ul>
+<h3 id="4">4. 关键技术特点</h3>
+<ul>
+<li><strong>无需 Hessian 计算</strong>：避免了 BiLLM 等方法中昂贵的 Hessian 矩阵计算</li>
+<li><strong>非结构化子矩阵</strong>：允许任意行和列的元素组成分组，而非固定的结构化分块</li>
+<li><strong>多标量方案</strong>：每个分组有一个独立的缩放标量 <script type="math/tex">\alpha_i</script>，相比全局单一标量更灵活</li>
+<li><strong>GPU 无关</strong>：整个量化过程仅需 CPU，可在任意硬件上运行</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">主要实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA 3.2 1B/3B、Falcon3-1B-Instruct/3B-Instruct、Gemma-3-1b-it/4b-it</li>
+<li><strong>评估任务</strong>：7 个零样本 QA 任务（ARC-C、ARC-E、BoolQ、HellaSwag、OPQA、PIQA、WinoGrande）</li>
+<li><strong>困惑度数据集</strong>：Wikitext-2、PTB、C4</li>
+<li><strong>基线方法</strong>：GPTQ (4-bit)、BiLLM (1.08 bit)、PB-LLM (1.7 bit)</li>
+</ul>
+<h3 id="qa">QA 任务性能（主要结果）</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>比特长度</th>
+<th>平均性能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>FP</td>
+<td>16</td>
+<td>0.648</td>
+</tr>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>GPTQ</td>
+<td>4</td>
+<td>0.633</td>
+</tr>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>BiLLM</td>
+<td>1.08</td>
+<td>0.400</td>
+</tr>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>PB-LLM</td>
+<td>1.7</td>
+<td>0.394</td>
+</tr>
+<tr>
+<td><strong>LLaMA 3.2 3B</strong></td>
+<td><strong>WGM</strong></td>
+<td><strong>1.007</strong></td>
+<td><strong>0.627</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>WGM 在 6 个模型中有 4 个超过了 GPTQ (4-bit)</strong></li>
+<li><strong>WGM 平均性能比 BiLLM 提升 40%+</strong></li>
+<li><strong>1.007 bit vs. BiLLM 的 1.08 bit</strong>，更短的比特长度</li>
+</ul>
+<h3 id="ppl">困惑度（PPL）性能</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>比特长度</th>
+<th>Wikitext-2</th>
+<th>PTB</th>
+<th>C4</th>
+<th>平均</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>FP</td>
+<td>16</td>
+<td>7.81</td>
+<td>13.53</td>
+<td>11.33</td>
+<td>10.89</td>
+</tr>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>GPTQ</td>
+<td>4</td>
+<td>12.23</td>
+<td>23.60</td>
+<td>15.43</td>
+<td>17.09</td>
+</tr>
+<tr>
+<td>LLaMA 3.2 3B</td>
+<td>BiLLM</td>
+<td>1.08</td>
+<td>123.09</td>
+<td>168.06</td>
+<td>100.68</td>
+<td>130.61</td>
+</tr>
+<tr>
+<td><strong>LLaMA 3.2 3B</strong></td>
+<td><strong>WGM</strong></td>
+<td><strong>1.007</strong></td>
+<td><strong>8.53</strong></td>
+<td><strong>15.24</strong></td>
+<td><strong>12.97</strong></td>
+<td><strong>12.25</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>WGM 困惑度 8.23（LLaMA 3.2 3B）非常接近原始 7.81</strong></li>
+<li><strong>WGM 困惑度远低于 BiLLM（123.90 → 8.23）</strong></li>
+<li><strong>WGM 困惑度优于 4-bit GPTQ（17.09 → 12.25）</strong></li>
+</ul>
+<h3 id="_7">量化速度</h3>
+<ul>
+<li>LLaMA 3.2 3B 在单 CPU 核上仅需 14 秒</li>
+<li>整个过程在 100 分钟内完成</li>
+<li>并行化后理论可达约 14 秒</li>
+<li>对比 GPU 上的 GPTQ（372-1000 秒），WGM 在 CPU 上更快</li>
+</ul>
+<h3 id="_8">超参数敏感性</h3>
+<ul>
+<li><strong>窗口大小 <script type="math/tex">w</script></strong>：<script type="math/tex">w=64</script> 时困惑度最低（14.00），<script type="math/tex">w=512</script> 时上升至 19.52</li>
+<li><strong>最大分组数 <script type="math/tex">g</script></strong>：<script type="math/tex">g=32</script> 时性能平缓，继续增加效果不明显</li>
+<li><strong>正则化参数 <script type="math/tex">\lambda</script></strong>：对量化性能影响很小（差异可忽略）</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>极低比特长度</strong>：仅 1.007 bit，接近理论极限</li>
+<li><strong>接近全精度性能</strong>：困惑度仅比原始模型高约 0.5-1.0，远优于其他 1-bit 方法</li>
+<li><strong>超越 4-bit 方法</strong>：在多个模型上性能超过 GPTQ (4-bit)</li>
+<li><strong>无需 Hessian</strong>：避免了昂贵的二阶导数计算，降低了量化成本</li>
+<li><strong>极快量化速度</strong>：单 CPU 核 14 秒完成 LLaMA 3.2 3B，可并行化</li>
+<li><strong>CPU 友好</strong>：无需 GPU 即可完成量化</li>
+<li><strong>三个算法层次</strong>：提供最优（动态规划）、快速近似（贪心）、高效近似（窗口贪心）三种选择</li>
+<li><strong>灵活性</strong>：可适应不同硬件和精度需求</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>仅限模拟</strong>：当前缺乏专门的 1-bit 硬件和内核，所有结果基于模拟</li>
+<li><strong>索引存储开销</strong>：非结构化分组需要额外存储索引信息，可能增加实际比特长度</li>
+<li><strong>推理速度受限</strong>：缺乏针对任意分组的优化内核，实际推理速度可能不理想</li>
+<li><strong>Python 实现</strong>：当前使用 Python 实现，C++ 可能进一步加速</li>
+<li><strong>分组索引开销</strong>：传统方法用单一缩放标量实现平均比特长度，而 WGM 需要多个缩放标量和索引</li>
+<li><strong>超参数调优</strong>：需要手动选择最大分组数 <script type="math/tex">g</script> 和窗口大小 <script type="math/tex">w</script>
+</li>
+<li><strong>仅限模拟评估</strong>：实际性能取决于未来硬件支持</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>极低比特量化（Extreme Low-bit Quantization）</strong>：WGM 展示了 1-bit 量化的可行性，未来可探索更低的比特长度（如 sub-1-bit）</li>
+<li><strong>无 Hessian 量化方法</strong>：WGM 证明了无需 Hessian 也能实现高质量量化，可启发更多无 Hessian 方法的研究</li>
+<li><strong>自适应分组策略</strong>：动态分组的思想可推广到其他量化场景（如 2-bit、3-bit 量化）</li>
+<li><strong>硬件-软件协同设计</strong>：WGM 的分组策略需要专门的硬件和内核支持，未来硬件设计可考虑分组灵活性</li>
+<li><strong>多标量方案</strong>：WGM 的每个分组一个缩放标量的思路，可启发更高效的量化方案</li>
+<li><strong>量化-压缩联合优化</strong>：结合量化和其他压缩方法（如剪枝、蒸馏）进一步提升效率</li>
+<li><strong>边缘设备部署</strong>：WGM 的 CPU 友好特性使其适合在边缘设备上部署</li>
+<li><strong>与其他 PTQ 方法对比</strong>：WGM 可与 GPTQ、BiLLM、PB-LLM 等方法进行更深入的对比研究</li>
+<li><strong>量化-推理一体化</strong>：探索量化方法与推理引擎的深度集成</li>
+</ol>
+<hr />
+<h2 id="_11">关键信息</h2>
+<ul>
+<li><strong>论文标题</strong>：Binary Quantization For LLMs Through Dynamic Grouping</li>
+<li><strong>作者</strong>：Xinzhe Zheng, Zhen-Qun Yang, Haoran Xie, S. Joe Qin, Arlene Chen, Fangzhen Lin</li>
+<li><strong>机构</strong>：香港科技大学、香港理工大学、岭南大学</li>
+<li><strong>发表时间</strong>：2025 年 9 月</li>
+<li><strong>arXiv ID</strong>：2509.03054v1</li>
+<li><strong>代码</strong>：https://github.com/johnnyzheng0636/WGM_bi_quan</li>
+<li><strong>关键词</strong>：quantization（量化）、binary quantization、dynamic grouping、windowed greedy merging</li>
+</ul>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，基于 arXiv:2509.03054v1 全文阅读。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

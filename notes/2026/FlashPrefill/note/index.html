@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,113 @@
 <p>Qihang Fan, Huaibo Huang, Zhiying Wu, Juqiu Wang, Bingning Wang, Ran He</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>Long-context modeling is a pivotal capability for Large Language Models, yet the quadratic complexity of attention remains a critical bottleneck, particularly during the compute-intensive prefilling phase. While various sparse attention mechanisms have been explored, they typically suffer from either significant search latency or insufficient sparsity. In this paper, we propose FlashPrefill, a framework enabling ultra-fast prefilling via instantaneous pattern discovery and thresholding. FlashPrefill leverages a fast block-searching technique to simultaneously locate dynamic vertical, slash, and block-sparse attention patterns. Crucially, it introduces a dynamic thresholding mechanism that bypasses the prohibitive overhead of sorting or accumulating attention scores while effectively eliminating the long-tail distribution to enhance sparsity. Extensive evaluations demonstrate that FlashPrefill achieves a substantial leap in efficiency, delivering an unprecedented 27.78x speedup on 256K sequences. Notably, unlike existing methods that incur efficiency degradation on shorter contexts, FlashPrefill maintains a 1.71x speedup even at a 4K context length, demonstrating its robustness and practical utility across varying sequence scales.</p>
+<p>Long-context modeling is a pivotal capability for Large Language Models, yet the quadratic complexity of attention remains a critical bottleneck, particularly during the compute-intensive prefilling phase. While various sparse attention mechanisms have been explored, they typically suffer from either significant search latency or insufficient sparsity. In this paper, we propose FlashPrefill, a framework enabling ultra-fast prefilling via instantaneous pattern discovery and thresholding. FlashPrefill leverages a fast block-searching technique to simultaneously locate dynamic vertical, slash, and block-sparse attention patterns. Crucially, it introduces a dynamic thresholding mechanism that bypasses the prohibitive overhead of sorting or accumulating attention scores while effectively eliminating the long-tail distribution to enhance sparsity. Extensive evaluations demonstrate that FlashPrefill achieves a substantial leap in efficiency, delivering an unprecedented 27.78× speedup on 256K sequences. Notably, unlike existing methods that incur efficiency degradation on shorter contexts, FlashPrefill maintains a 1.71× speedup even at a 4K context length, demonstrating its robustness and practical utility across varying sequence scales.</p>
+<h2 id="_1">一句话总结</h2>
+<p>FlashPrefill 是一个超快长上下文预填充框架，通过瞬时模式发现和动态阈值机制，在 256K 序列上实现 27.78× 加速，同时在 4K 上保持 1.71× 加速，解决了现有稀疏注意力方法的搜索延迟高和稀疏性不足问题。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>长上下文建模挑战</strong>：</li>
+<li>自注意力的二次复杂度是关键瓶颈</li>
+<li>预填充阶段计算密集</li>
+<li><strong>现有方法的局限</strong>：</li>
+<li><strong>搜索延迟高</strong>：粗粒度估计引入不可忽略的计算延迟</li>
+<li><strong>排序开销高</strong>：Top-k/Top-p 需要显式排序，GPU 架构上开销大</li>
+<li><strong>Top-p 累加开销</strong>：累积求和是固有串行过程，难以并行化</li>
+<li><strong>稀疏性不足</strong>：Top-k/Top-p 无法有效剪枝长尾分布</li>
+<li><strong>核心问题</strong>：如何在长上下文预填充中实现超快加速？</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-instantaneous-pattern-discovery">1. 瞬时模式发现（Instantaneous Pattern Discovery）</h3>
+<p><strong>核心思想</strong>：使用快速块搜索技术同时定位动态垂直、斜线和块稀疏注意力模式。</p>
+<p><strong>三种稀疏模式</strong>：
+- <strong>垂直模式（列不变性）</strong>：特定"锚点"token 无论查询位置如何都吸引大量注意力
+- <strong>斜线模式（平移对称性）</strong>：局部语法依赖和相对位置偏差产生的对角线模式
+- <strong>块稀疏模式（空间连续性）</strong>：局部能量簇，具有空间连续性</p>
+<p><strong>发现策略</strong>：
+- <strong>骨架查询集</strong>：均匀分布的查询集足以同时解决三种模式
+- <strong>平均池化键</strong>：使用平均池化键 k̄ = 1/n Σk 来减少计算
+- <strong>块近似策略</strong>：优化计算内核，减少内存访问开销</p>
+<h3 id="2-max-max-based-dynamic-thresholding">2. 基于 Max 的动态阈值（Max-based Dynamic Thresholding）</h3>
+<p><strong>核心思想</strong>：绕过 Top-k/Top-p 的排序或累积开销，使用基于 Max 的动态阈值机制。</p>
+<p><strong>方法</strong>：
+- <strong>动态阈值</strong>：根据注意力分数的最大值动态调整阈值
+- <strong>避免排序</strong>：绕过 Top-k/Top-p 的排序开销
+- <strong>消除长尾</strong>：有效消除注意力分数的长尾分布
+- <strong>稀疏性增强</strong>：提高稀疏性，减少计算冗余</p>
+<h3 id="3-flashprefill">3. FlashPrefill 框架</h3>
+<p><strong>组件</strong>：
+1. <strong>瞬时模式发现</strong>：快速块搜索，识别垂直、斜线和块稀疏模式
+2. <strong>基于 Max 的动态阈值</strong>：绕过排序开销，消除长尾分布
+3. <strong>稀疏注意力计算</strong>：在选定的块上计算注意力</p>
+<p><strong>优势</strong>：
+- <strong>超快加速</strong>：256K 序列上 27.78× 加速
+- <strong>鲁棒性</strong>：4K 上保持 1.71× 加速
+- <strong>无搜索延迟</strong>：瞬时模式发现
+- <strong>无排序开销</strong>：基于 Max 的动态阈值</p>
+<h2 id="_4">主要结果</h2>
+<h3 id="_5">性能提升</h3>
+<ul>
+<li><strong>操作加速</strong>：256K 序列上 27.78×（相比 Flash Attention）</li>
+<li><strong>端到端 TTFT 加速</strong>：最大 7.22×（在 vLLM 框架中）</li>
+<li><strong>短序列加速</strong>：4K 上 1.71×（保持鲁棒性）</li>
+<li><strong>模型性能</strong>：Needle In A Haystack 测试中保持近似相同的性能</li>
+</ul>
+<h3 id="_6">关键发现</h3>
+<ol>
+<li><strong>瞬时模式发现有效</strong>：均匀分布的查询集足以同时解决三种模式</li>
+<li><strong>动态阈值有效</strong>：基于 Max 的动态阈值绕过排序开销，消除长尾分布</li>
+<li><strong>鲁棒性</strong>：在短序列和长序列上均保持高性能</li>
+<li><strong>集成 vLLM</strong>：集成到 vLLM 推理框架，测量端到端 TTFT</li>
+</ol>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>超快加速</strong>：256K 序列上 27.78× 加速，端到端 TTFT 最大 7.22× 加速</li>
+<li><strong>瞬时模式发现</strong>：快速块搜索，无搜索延迟</li>
+<li><strong>动态阈值</strong>：绕过排序开销，消除长尾分布</li>
+<li><strong>鲁棒性</strong>：短序列和长序列上均保持高性能</li>
+<li><strong>无训练</strong>：训练无关，可无缝集成到现有 LLM 中</li>
+<li><strong>集成 vLLM</strong>：集成到 vLLM 推理框架</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>模式依赖</strong>：依赖于垂直、斜线和块稀疏模式，可能不适用于所有模型</li>
+<li><strong>块近似</strong>：块近似策略可能引入近似误差</li>
+<li><strong>评估范围</strong>：主要在 Qwen3-30B-A3B-Instruct-2507 上评估，其他模型需进一步测试</li>
+<li><strong>长尾分布</strong>：动态阈值可能无法完全消除长尾分布</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>FlashPrefill 属于 <strong>Sparse Pruning</strong>（<code>sparse_pruning</code>）和 <strong>Attention Sparsity</strong>（<code>attention_sparsity</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>瞬时模式发现</strong>：快速块搜索，识别垂直、斜线和块稀疏模式</li>
+<li><strong>基于 Max 的动态阈值</strong>：绕过排序开销，消除长尾分布</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>FlexPrefill</strong>（2025）：预填充加速，基于搜索策略
+- <strong>XAttention</strong>（2025）：注意力稀疏性
+- <strong>FlashMoBA</strong>（2026）：混合注意力
+- <strong>MInference</strong>（2024）：注意力稀疏性
+- <strong>FlashAttention</strong>（2022）：注意力内核优化</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li><strong>瞬时模式发现</strong>：均匀分布查询集 + 平均池化键 + 块近似策略</li>
+<li><strong>动态阈值</strong>：基于 Max 的动态阈值，绕过排序开销</li>
+<li><strong>稀疏注意力计算</strong>：在选定的块上计算注意力</li>
+<li><strong>集成 vLLM</strong>：集成到 vLLM 推理框架</li>
+<li><strong>评估</strong>：Qwen3-30B-A3B-Instruct-2507，Needle In A Haystack，4K-256K 序列</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>FlashPrefill 的核心洞察是：<strong>瞬时模式发现和动态阈值可以实现超快预填充</strong>。</li>
+<li>块近似策略是关键设计选择，它优化了计算内核，减少了内存访问开销。</li>
+<li>基于 Max 的动态阈值是关键优化，它绕过了排序开销，消除了长尾分布。</li>
+<li>论文来自 CASIA、UCAS、WeChat/Tencent，说明这是一个工业界和学术界合作的实用系统。</li>
+<li>值得关注的未来方向：(1) 更多模型的验证；(2) 与其他稀疏注意力方法的结合；(3) 端到端的优化。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

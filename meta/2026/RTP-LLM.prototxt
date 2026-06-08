@@ -41,7 +41,7 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: ""
+  url: "https://github.com/alibaba/rtp-llm"
 }
 keyword {
   words: kv_cache_quant

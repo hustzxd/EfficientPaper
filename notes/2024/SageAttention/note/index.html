@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,26 +161,196 @@
   
                 <h1 id="sageattention-accurate-8-bit-attention-for-plug-and-play-inference-acceleration">SageAttention: Accurate 8-Bit Attention for Plug-and-play Inference Acceleration</h1>
 <blockquote>
-<p>Jintao Zhang, Jia Wei, Haofeng Huang, Pengle Zhang, Jun Zhu, Jianfei Chen</p>
+<p>Jintao Zhang, Jia Wei, Haofeng Huang, Pengle Zhang, Jun Zhu, Jianfei Chen
+Tsinghua University | arXiv:2410.02367 | ICLR 2025
+Code: https://github.com/thu-ml/SageAttention</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>The transformer architecture predominates across various models. As the heart
-of the transformer, attention has a computational complexity of <script type="math/tex">O(N^2)</script>,
-compared to <script type="math/tex">O(N)</script> for linear transformations. When handling large sequence
-lengths, attention becomes the primary time-consuming component. Although
-quantization has proven to be an effective method for accelerating model
-inference, existing quantization methods primarily focus on optimizing the
-linear layer. In response, we first analyze the feasibility of quantization in
-attention detailedly. Following that, we propose SageAttention, a highly
-efficient and accurate quantization method for attention. The OPS (operations
-per second) of our approach outperforms FlashAttention2 and xformers by about
-2.1 times and 2.7 times, respectively. SageAttention also achieves superior
-accuracy performance over FlashAttention3. Comprehensive experiments confirm
-that our approach incurs almost no end-to-end metrics loss across diverse
-models, including those for large language processing, image generation, and
-video generation. The codes are available at
-https://github.com/thu-ml/SageAttention.</p>
+<h2 id="_1">一句话总结</h2>
+<p>SageAttention 提出了一种高效的 8 位量化注意力加速方法，通过对 K 矩阵进行平滑处理和使用 FP16 累加器，在保持近乎无损精度的前提下，实现了对 FlashAttention2 约 2.1 倍、xformers 约 2.7 倍的速度提升，且以即插即用的方式适用于语言、图像和视频生成等多种模型。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>Transformer 架构在各类模型中占据主导地位。作为 Transformer 的核心组件，注意力机制的计算复杂度为 O(N²)，而线性变换仅为 O(N)。在处理长序列时，注意力成为主要的时间消耗部分。虽然量化已被证明是加速模型推理的有效方法，但现有量化方法主要聚焦于优化线性层。为此，我们首先详细分析了注意力机制中量化的可行性。随后，我们提出了 SageAttention，一种高效且精确的注意力量化方法。该方法的 OPS（每秒操作数）分别超过 FlashAttention2 和 xformers 约 2.1 倍和 2.7 倍。SageAttention 在精度方面也优于 FlashAttention3。综合实验表明，该方法在多种模型（包括大语言处理、图像生成和视频生成模型）上几乎不造成端到端指标损失。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>注意力机制是性能瓶颈</strong>：在长序列场景下（如视频生成和语言模型预填充，序列长度可达 8K~128K），由于注意力的 O(N²) 复杂度，其延迟远超线性变换等操作，成为主要性能瓶颈。</li>
+<li><strong>现有量化方法忽视了注意力</strong>：已有量化工作主要集中在优化线性层（权重和激活的低精度计算），而注意力机制仍以 FP16 精度运行，未被有效加速。</li>
+<li><strong>FlashAttention3 的局限性</strong>：虽然 FlashAttention3 提供了 FP8 版本，但它只能在 Nvidia Hopper 架构上使用，且直接使用 FP8 量化会导致显著的精度下降。</li>
+<li><strong>注意力量化面临独特挑战</strong>：与线性层不同，注意力包含 softmax 和矩阵乘法 QK⊤ 及 PV，直接对 Q、K、P、V 进行 8 位量化会导致严重的精度损失。例如，Unidiffuser 在 INT8 和 FlashAttention3 FP8 实现下会生成完全模糊的图像。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<p>SageAttention 是一种基于后训练量化（post-training quantization）的方法，以即插即用的方式在推理时替换原始高精度实现。核心思路包括以下几个关键技术：</p>
+<h3 id="1-int8-fp8">1. 量化格式选择：INT8 而非 FP8</h3>
+<ul>
+<li>选择 INT8 而非 FP8 进行量化，因为 INT8 Matmul 在常用 GPU（如 RTX4090 和 3090）上比 FP16 快 4 倍，比 FP8 快 2 倍。</li>
+<li>表 2 实验表明，对 Q、K 进行 INT8 量化的精度高于 FP8（E4M3 和 E5M2）。</li>
+</ul>
+<h3 id="2-k-smooth-matrix-k">2. K 矩阵平滑（Smooth Matrix K）</h3>
+<ul>
+<li><strong>挑战 (C1)</strong>：K 矩阵存在显著的通道级离群值（channel-wise outliers），直接量化会导致严重精度下降。</li>
+<li><strong>解决方案</strong>：对 K 进行平滑变换 γ(K) = K - mean(K)，即减去所有 token 的平均 K。</li>
+<li><strong>数学保证</strong>：该变换不改变注意力分数 P，因为 σ(q(K - mean(K))ᵀ) = σ(qKᵀ - q·mean(K)) = σ(qKᵀ)。</li>
+<li><strong>速度开销</strong>：小于 0.2%，几乎可以忽略。</li>
+</ul>
+<h3 id="3">3. 量化粒度设计</h3>
+<ul>
+<li><strong>P̃（softmax 输出）</strong>：使用 per-block 量化（每个块的 P̃ 最大值为 1，可使用静态缩放因子 s=1/127）。</li>
+<li><strong>V</strong>：使用 per-channel 量化，以解决 V 的通道级离群值问题。</li>
+<li><strong>Q、K</strong>：采用动态量化，结合 K 的平滑处理。</li>
+</ul>
+<h3 id="4-fp16">4. FP16 累加器方案</h3>
+<ul>
+<li><strong>挑战 (C2)</strong>：仅使用 INT8 量化 P̃ 和 V 在某些模型层精度极差（见表 3）。</li>
+<li><strong>解决方案</strong>：使用 FP16 数据类型和 FP16 累加器进行 PV 矩阵乘法。</li>
+<li><strong>优势</strong>：</li>
+<li>在 RTX4090 和 3090 上，FP16 Matmul 比 FP32 快 2 倍。</li>
+<li>使用 FP16 累加器比 FP32 节省更多寄存器资源。</li>
+<li>精度远优于 INT8（见表 3，FP16 的最差精度远高于 INT8）。</li>
+</ul>
+<h3 id="5-flashattention2">5. 与 FlashAttention2 集成</h3>
+<ul>
+<li>SageAttention 基于 FlashAttention-2 的分块（tiling）机制构建。</li>
+<li>量化、反量化操作与 FlashAttention 的分块策略对齐。</li>
+<li>在 FlashAttention2 基础上增加了 Q、K、P、V 的量化器和反量化器。</li>
+<li>保持 softmax 的全精度计算（FP32）。</li>
+<li>Q 块大小 128，K/V 块大小 64。</li>
+<li>使用 OpenAI Triton 实现 CUDA 内核。</li>
+</ul>
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">速度提升</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>QKV 形状</th>
+<th>原始注意力</th>
+<th>SageAttention</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CogvideoX</td>
+<td>(2,30,17776,64)</td>
+<td>163.37 (FlashAttn2)</td>
+<td>327.57</td>
+<td>2.01x</td>
+</tr>
+<tr>
+<td>Llama2</td>
+<td>(4,32,1536,128)</td>
+<td>130.99 (FlashAttn2)</td>
+<td>231.74</td>
+<td>1.77x</td>
+</tr>
+<tr>
+<td>UltraPixel</td>
+<td>(2,32,7285,64)</td>
+<td>152.03 (FlashAttn2)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>平均真实加速比：约 2.83 倍（相对原始注意力）。</li>
+<li>OPS 比 FlashAttention2 快约 2.1 倍，比 xformers 快约 2.7 倍。</li>
+</ul>
+<h3 id="_7">精度保持</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>指标</th>
+<th>全精度</th>
+<th>SageAttention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama2</td>
+<td>WikiText (Ppl.)</td>
+<td>5.823</td>
+<td>5.824</td>
+</tr>
+<tr>
+<td>Llama2</td>
+<td>MMLU (Acc.)</td>
+<td>0.46</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>CogvideoX</td>
+<td>FScore</td>
+<td>3.768</td>
+<td>3.8339</td>
+</tr>
+<tr>
+<td>Unidiffuser</td>
+<td>FID</td>
+<td>163.33</td>
+<td>166.49</td>
+</tr>
+<tr>
+<td>UltraPixel</td>
+<td>FID</td>
+<td>179.78</td>
+<td>179.79</td>
+</tr>
+<tr>
+<td>TIMM</td>
+<td>ImageNet (Acc.)</td>
+<td>84.79%</td>
+<td>84.74%</td>
+</tr>
+<tr>
+<td>Llava1.6</td>
+<td>TextVQA (Acc.)</td>
+<td>60.25%</td>
+<td>60.09%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在所有模型上，SageAttention 的端到端指标损失几乎可以忽略不计。</li>
+<li>与 FlashAttention3 的量化版本相比，SageAttention 精度显著更高（表 1）。</li>
+</ul>
+<h3 id="_8">对比其他方法</h3>
+<ul>
+<li><strong>与 AWQ（W4A16）对比</strong>：SageAttention 可与 AWQ 叠加使用，共同加速。</li>
+<li><strong>与 Q-diffusion（W8A8）对比</strong>：SageAttention 在 Unidiffuser 上的 FID（166.49）远优于 Q-diffusion（395.99）。</li>
+<li><strong>与 ViDiT-Q（W8A8）对比</strong>：SageAttention 在 CogvideoX 上的端到端加速（34.3%）优于 ViDiT-Q 理论最大值（22%），且质量更高。</li>
+</ul>
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>即插即用</strong>：作为后训练量化方法，无需重新训练，可直接替换原始注意力实现。</li>
+<li><strong>广泛适用性</strong>：已在语言模型（Llama2）、图像生成（Unidiffuser、UltraPixel）、视频生成（CogvideoX）、图像分类（TIMM）和视觉问答（Llava1.6）上验证。</li>
+<li><strong>高性能</strong>：比 FlashAttention2 快约 2.1 倍，比原始注意力快约 2.83 倍。</li>
+<li><strong>高精度</strong>：端到端指标损失几乎可忽略，优于 FlashAttention3 的量化版本。</li>
+<li><strong>跨平台</strong>：支持 RTX4090、RTX3090 等多种 GPU，不依赖特定架构（如 Hopper）。</li>
+<li><strong>与其他量化方法正交</strong>：可与 AWQ 等线性层量化方法叠加使用，进一步加速。</li>
+<li><strong>K 矩阵平滑开销极低</strong>：仅增加不到 0.2% 的时间开销，但显著提升精度。</li>
+</ol>
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>仅针对注意力层</strong>：SageAttention 主要加速注意力计算，对线性层（如 Q/K/V 投影、FFN）的量化需要其他方法（如 AWQ）。</li>
+<li><strong>GPU 架构依赖</strong>：INT8 加速依赖于支持高效 INT8 Matmul 的 GPU（如 RTX4090/3090），在其他 GPU 上加速效果可能不同。</li>
+<li><strong>量化精度上限</strong>：虽然 INT8 量化在 Q/K 上表现良好，但对 P/V 的 INT8 量化在某些层可能出现精度下降（通过 FP16 累加器部分缓解）。</li>
+<li><strong>需要 FlashAttention2 基础</strong>：SageAttention 基于 FlashAttention-2 构建，依赖其分块策略。</li>
+<li><strong>无训练时量化支持</strong>：当前仅支持后训练量化（post-training quantization），不支持量化感知训练。</li>
+<li><strong>对特殊场景的适用性</strong>：对于 Q/K 分布极其不均匀的模型，平滑 K 的效果可能有限，需要进一步研究。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 量化</strong>：SageAttention 的 KV 矩阵量化技术可直接应用于 KV Cache 压缩，减少内存占用。</li>
+<li><strong>线性层量化</strong>：SageAttention 与 AWQ、Q-diffusion、ViDiT-Q 等方法正交，可结合使用实现全模型量化加速。</li>
+<li><strong>稀疏注意力</strong>：SageAttention 与稀疏注意力方法（如 Minference、LongLora）正交，可结合使用实现更高效的注意力计算。</li>
+<li><strong>MoE 系统</strong>：作者在后续工作中（SageAttention2、SageAttention3）探索了与 MoE 系统和训练优化的结合。</li>
+<li><strong>扩散模型加速</strong>：SageAttention 在 Unidiffuser、UltraPixel、CogvideoX 等扩散模型上表现优异，是扩散模型推理加速的重要方向。</li>
+<li><strong>异构 GPU 系统</strong>：SageAttention 的跨平台特性（支持 RTX4090/3090）使其适用于异构 GPU 环境。</li>
+<li><strong>RAG 系统</strong>：作者在 Sage 框架中将注意力量化技术应用于 RAG 系统的检索优化。</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）基于论文 PDF 文本提取和元数据自动生成。内容经过整理和翻译，力求准确反映论文核心思想，但可能存在对原始表述的简化或误读。请以原始论文为准。</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

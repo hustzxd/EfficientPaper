@@ -1,12 +1,12 @@
 {
   "title": "Baseline Methods Graph Interactive",
-  "component_count": 17,
+  "component_count": 18,
   "components": [
     {
       "title": "Quest",
       "anchor": "quest-family",
-      "node_count": 131,
-      "edge_count": 153,
+      "node_count": 132,
+      "edge_count": 157,
       "width": 1644,
       "height": 4854,
       "nodes": [
@@ -556,7 +556,7 @@
           "display_name": "RazorAttention",
           "year_label": "2024",
           "search_name": "RazorAttention",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
           "row": 5,
           "x": 408.0,
@@ -1484,7 +1484,7 @@
           "level": 4,
           "row": 0,
           "x": 1236.0,
-          "y": 2267.0
+          "y": 2227.0
         },
         {
           "id": "2025/SlimInfer",
@@ -1496,7 +1496,7 @@
           "level": 4,
           "row": 1,
           "x": 1236.0,
-          "y": 2347.0
+          "y": 2307.0
         },
         {
           "id": "2025/XAttention",
@@ -1508,7 +1508,7 @@
           "level": 4,
           "row": 2,
           "x": 1236.0,
-          "y": 2427.0
+          "y": 2387.0
         },
         {
           "id": "2026/FlashPrefill",
@@ -1520,7 +1520,7 @@
           "level": 4,
           "row": 3,
           "x": 1236.0,
-          "y": 2507.0
+          "y": 2467.0
         },
         {
           "id": "2026/Prism",
@@ -1532,7 +1532,19 @@
           "level": 4,
           "row": 4,
           "x": 1236.0,
-          "y": 2587.0
+          "y": 2547.0
+        },
+        {
+          "id": "2026/RTPurbo",
+          "label": "RTPurbo[2026]",
+          "display_name": "RTPurbo",
+          "year_label": "2026",
+          "search_name": "RTPurbo",
+          "type": "leaf",
+          "level": 4,
+          "row": 5,
+          "x": 1236.0,
+          "y": 2627.0
         },
         {
           "id": "2025/BLASST",
@@ -1918,11 +1930,19 @@
         },
         {
           "source": "2024/Quest",
+          "target": "2026/RTPurbo"
+        },
+        {
+          "source": "2024/Quest",
           "target": "2026/Tactic"
         },
         {
           "source": "2024/Quest",
           "target": "2026/ThriftAttention"
+        },
+        {
+          "source": "2024/RazorAttention",
+          "target": "2026/RTPurbo"
         },
         {
           "source": "2024/SGLang",
@@ -1979,6 +1999,10 @@
         {
           "source": "2024/SnapKV",
           "target": "2025/UNComp"
+        },
+        {
+          "source": "2024/SnapKV",
+          "target": "2026/RTPurbo"
         },
         {
           "source": "2024/TOVA",
@@ -2067,6 +2091,10 @@
         {
           "source": "2025/FlexPrefill",
           "target": "2026/Prism"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2026/RTPurbo"
         },
         {
           "source": "2025/KVzip",
@@ -2751,6 +2779,110 @@
       ]
     },
     {
+      "title": "DeFT",
+      "anchor": "deft-family",
+      "node_count": 6,
+      "edge_count": 5,
+      "width": 540,
+      "height": 454,
+      "nodes": [
+        {
+          "id": "CascadeAttn",
+          "label": "CascadeAttn",
+          "display_name": "CascadeAttn",
+          "year_label": "",
+          "search_name": "CascadeAttn",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 67.0
+        },
+        {
+          "id": "DeFT",
+          "label": "DeFT",
+          "display_name": "DeFT",
+          "year_label": "",
+          "search_name": "DeFT",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 147.0
+        },
+        {
+          "id": "FlashAttention",
+          "label": "FlashAttention",
+          "display_name": "FlashAttention",
+          "year_label": "",
+          "search_name": "FlashAttention",
+          "type": "root",
+          "level": 0,
+          "row": 2,
+          "x": 132.0,
+          "y": 227.0
+        },
+        {
+          "id": "FlashInfer",
+          "label": "FlashInfer",
+          "display_name": "FlashInfer",
+          "year_label": "",
+          "search_name": "FlashInfer",
+          "type": "root",
+          "level": 0,
+          "row": 3,
+          "x": 132.0,
+          "y": 307.0
+        },
+        {
+          "id": "SGLang Triton",
+          "label": "SGLang Triton",
+          "display_name": "SGLang Triton",
+          "year_label": "",
+          "search_name": "SGLang Triton",
+          "type": "root",
+          "level": 0,
+          "row": 4,
+          "x": 132.0,
+          "y": 387.0
+        },
+        {
+          "id": "2025/FastTree",
+          "label": "FastTree[2025]",
+          "display_name": "FastTree",
+          "year_label": "2025",
+          "search_name": "FastTree",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 227.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "CascadeAttn",
+          "target": "2025/FastTree"
+        },
+        {
+          "source": "DeFT",
+          "target": "2025/FastTree"
+        },
+        {
+          "source": "FlashAttention",
+          "target": "2025/FastTree"
+        },
+        {
+          "source": "FlashInfer",
+          "target": "2025/FastTree"
+        },
+        {
+          "source": "SGLang Triton",
+          "target": "2025/FastTree"
+        }
+      ]
+    },
+    {
       "title": "DFlash",
       "anchor": "dflash-family",
       "node_count": 4,
@@ -2823,8 +2955,8 @@
       ]
     },
     {
-      "title": "COMET",
-      "anchor": "comet-family",
+      "title": "CometSeed",
+      "anchor": "cometseed-family",
       "node_count": 4,
       "edge_count": 3,
       "width": 816,
@@ -3007,8 +3139,8 @@
       ]
     },
     {
-      "title": "DHC",
-      "anchor": "dhc-family",
+      "title": "mHC",
+      "anchor": "mhc-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 816,

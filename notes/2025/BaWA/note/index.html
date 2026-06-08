@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>BaWA - Efficient Paper</title>
+    <title>BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "BaWA";
+        var mkdocs_page_name = "BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation";
         var mkdocs_page_input_path = "notes/2025/BaWA/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">BaWA</li>
+      <li class="breadcrumb-item active">BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,8 +159,337 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="bawa">BaWA</h1>
+                <h1 id="bawa-automatic-optimizing-pruning-metric-for-large-language-models-with-balanced-weight-and-activation">BaWA: Automatic Optimizing Pruning Metric for Large Language Models with Balanced Weight and Activation</h1>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
+<blockquote>
+<p><strong>⚠️ 生成声明：本文档由 AI Agent（Hermes Agent）自动生成，基于 arXiv 论文全文提取与分析，仅供参考。生成时间：2025年6月。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>BaWA 通过平衡权重和激活的分布（幅度归一化 + 离群值正则化）并自动搜索最优超参数，实现了 LLM 一次性后训练剪枝的 SOTA 性能，无需权重重建即可显著降低困惑度并提升下游任务准确率。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>一次性后训练剪枝促进了百亿级大语言模型（LLM）的部署，而剪枝度量在决定移除哪些权重方面起着关键作用。然而，现有度量由于依赖权重和激活的简单符号组合而表现不佳，忽略了不平衡的权重幅度和激活离群值的不成比例影响。为了克服这些局限性，我们提出了 <strong>BaWA</strong>，一种新颖的剪枝度量，系统地平衡权重和激活分布以实现更有效的剪枝。BaWA 引入了两个关键创新：<strong>幅度归一化</strong>（magnitude normalization），减轻跨通道的权重不平衡以实现更公平的剪枝决策；以及<strong>离群值正则化</strong>（outlier regularization），减少激活离群值的影响，确保更合适的通道优先级排序。为了进一步增强其有效性，BaWA 集成了一个高效且自动化的框架来优化归一化和正则化超参数。大量实验验证 BaWA 为 SOTA 剪枝度量。例如，将 BaWA 应用于 Mistral-7B 诱导 2:4 稀疏性，语言理解困惑度降低了 2.49，平均下游任务准确率提高了 3.08%，超越了先前的 SOTA 方法 Wanda。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">问题背景</h3>
+<p>随着 LLM 参数规模增长至数百亿甚至上千亿，模型压缩技术（如量化和剪枝）成为实际部署的关键。一次性后训练剪枝（one-shot post-training pruning）因其无需梯度反向传播或微调而备受关注。然而，现有方法受限于<strong>次优的剪枝度量</strong>。</p>
+<h3 id="_5">两个关键现象</h3>
+<ol>
+<li><strong>权重幅度分布不平衡（Imbalanced Weight Magnitude Distribution）</strong></li>
+<li>LLM 的权重幅度分布是不平衡的，某些输入或输出通道表现出异常大或小的幅度</li>
+<li>这种不平衡导致通道内的权重被整体保留或整体剪枝，无论其对模型性能的实际重要性如何</li>
+<li>
+<p>通过 LLaMA-7B 的可视化分析验证了这一现象</p>
+</li>
+<li>
+<p><strong>激活离群值的不成比例影响（Disproportionate Influence of Outliers）</strong></p>
+</li>
+<li>少量激活离群值可以不成比例地膨胀通道的范数值</li>
+<li>不到 1% 的离群值可以将通道范数值放大 5 倍以上</li>
+<li>这导致含离群值的通道被错误地优先保留，而其他通道被低估</li>
+</ol>
+<h3 id="_6">现有方法的不足</h3>
+<ul>
+<li><strong>Wanda</strong>：使用 |W| · ||X||₂ 作为度量，未考虑权重幅度的不平衡</li>
+<li><strong>GBLM-Pruner</strong>：使用梯度信息，但改进有限</li>
+<li><strong>Pruner-Zero</strong>：使用遗传编程搜索符号剪枝度量，计算开销大</li>
+<li>这些方法都依赖于权重、激活和梯度的简单符号组合，忽略了 LLM 中权重和激活的异构分布</li>
+</ul>
+<hr />
+<h2 id="_7">方法（技术细节）</h2>
+<h3 id="1-magnitude-normalization">1. 幅度归一化（Magnitude Normalization）</h3>
+<p><strong>核心思想</strong>：不仅考虑激活的逐通道范数值，还要考虑权重本身的幅度。</p>
+<p><strong>输入通道归一化（Input Channel Normalization）</strong>：
+<script type="math/tex; mode=display">S_{ij}^{(ICN)} = |W_{ij}| \cdot \frac{1}{\|W_j\|_2} \cdot \|X_j\|_2</script>
+</p>
+<ul>
+<li>对输入通道的权重幅度进行归一化，避免过度关注激活值</li>
+</ul>
+<p><strong>输出通道归一化（Output Channel Normalization）</strong>：
+<script type="math/tex; mode=display">S_{ij}^{(OCN)} = \frac{1}{\|W_i\|_2} \cdot |W_{ij}| \cdot \|X_j\|_2</script>
+</p>
+<ul>
+<li>对输出通道的权重幅度进行归一化，减轻激活离群值的不当影响</li>
+</ul>
+<p><strong>联合归一化</strong>：<script type="math/tex">S_{ij}^{(MN)} = S_{ij}^{(ICN)} + S_{ij}^{(OCN)}</script>，使不同通道的剪枝掩码分布更加平衡</p>
+<h3 id="2-outlier-regularization">2. 离群值正则化（Outlier Regularization）</h3>
+<p><strong>核心思想</strong>：引入可学习的幂次因子 θ，控制离群值对剪枝度量的影响。</p>
+<p>
+<script type="math/tex; mode=display">S_{ij}^{(OR)} = |W_{ij}| \cdot \|X_j\|_θ</script>
+</p>
+<ul>
+<li>通过调节 θ 的值来抑制离群值的影响</li>
+<li>对权重范数和激活范数都应用离群值正则化</li>
+</ul>
+<h3 id="3-bawa">3. BaWA 最终度量</h3>
+<p>
+<script type="math/tex; mode=display">S_{ij} = \left( |W_{ij}| \cdot \frac{1}{\|W_j\|_2^{θ_1}} + \frac{1}{\|W_i\|_2^{θ_2}} \cdot |W_{ij}| \right) \cdot \|X_j\|_2^{θ_3}</script>
+</p>
+<p>其中：
+- θ₁：输入通道归一化的幂次因子
+- θ₂：输出通道归一化的幂次因子
+- θ₃：激活范数的幂次因子</p>
+<h3 id="4-efficient-power-factor-search">4. 高效幂次因子搜索（Efficient Power Factor Search）</h3>
+<p><strong>搜索目标</strong>：以 Transformer block 为单位，最小化剪枝前后的输出差异</p>
+<p>
+<script type="math/tex; mode=display">L(Θ; X) = \|\text{RMSNorm}(F(W; X)) - \text{RMSNorm}(F(W \odot M; X))\|_2^2</script>
+</p>
+<p><strong>参数优化算法</strong>：使用零阶优化器（Zeroth-Order Optimizer）估算梯度</p>
+<p>
+<script type="math/tex; mode=display">\hat{\nabla}L(Θ; X) = \frac{L(Θ + ϵz; X) - L(Θ - ϵz; X)}{2ϵ}</script>
+</p>
+<ul>
+<li>z ~ N(0, Iₙ)，ε = 0.01</li>
+<li>使用 SGD 优化器，学习率 0.2，2 个 epoch</li>
+<li>校准数据集：128 个随机 2048-token 段（来自 C4）</li>
+<li>整个搜索过程约 16 分钟完成（LLaMA2-70B，单 GPU）</li>
+</ul>
+<p><strong>关键特性</strong>：
+- 搜索空间从指数级降低到多项式级（按 Transformer block 优化）
+- 使用 RMSNorm 平衡不同 block 的误差差异
+- 即使不进行自动搜索，BaWA 也能轻松超越 Wanda</p>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="wikitext-2-perplexity">语言建模（WikiText-2 Perplexity）</h3>
+<p><strong>不同稀疏率下的表现</strong>：
+- LLaMA-7B（70% 稀疏）：BaWA (57.84) vs Wanda (74.79)，降低 16.95
+- LLaMA2-70B（80% 稀疏）：BaWA (125.71) vs Wanda (149.76)，降低 24.05
+- Qwen2-72B（80% 稀疏）：BaWA (31.89) vs Wanda (40.50)，降低 8.61</p>
+<p><strong>N:M 稀疏模式</strong>：
+- 2:4 稀疏（Mistral-7B）：BaWA (9.88) vs Wanda (12.37)，降低 2.49
+- BaWA + ADMM 组合在所有模型上达到最佳性能
+- BaWA + ADMM（2:4，Mistral-7B）：9.53（最佳）</p>
+<h3 id="zero-shot-tasks">零样本任务（Zero-Shot Tasks）</h3>
+<ul>
+<li>在 7 个零样本任务上，BaWA 一致超越 Wanda</li>
+<li>LLaMA2-70B（50% 稀疏）：BaWA (67.81%) vs Wanda (67.03%)</li>
+<li>Mistral-7B（50% 稀疏）：BaWA (60.17%) vs Wanda (58.93%)</li>
+<li>Qwen2-72B（50% 稀疏）：BaWA (69.11%) vs Wanda (66.41%)</li>
+</ul>
+<h3 id="ablation-study">消融实验（Ablation Study）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA2-13B (4:8)</th>
+<th>LLaMA2-70B (4:8)</th>
+<th>Qwen2-72B (4:8)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wanda</td>
+<td>6.55</td>
+<td>4.47</td>
+<td>5.86</td>
+</tr>
+<tr>
+<td>输入通道归一化</td>
+<td>6.38</td>
+<td>4.42</td>
+<td>5.84</td>
+</tr>
+<tr>
+<td>幅度归一化</td>
+<td>6.27</td>
+<td>4.41</td>
+<td>5.81</td>
+</tr>
+<tr>
+<td>离群值正则化 (0.5)</td>
+<td>6.20</td>
+<td>4.39</td>
+<td>5.77</td>
+</tr>
+<tr>
+<td>BaWA w/o 自动搜索</td>
+<td>6.27</td>
+<td>4.41</td>
+<td>5.80</td>
+</tr>
+<tr>
+<td>BaWA w/ 自动搜索</td>
+<td>6.16</td>
+<td>4.32</td>
+<td>5.74</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>幅度归一化在非结构化剪枝中效果更大</li>
+<li>离群值正则化在 N:M 稀疏条件下效果更显著</li>
+<li>自动搜索进一步降低困惑度</li>
+</ul>
+<h3 id="_9">幂次因子分析</h3>
+<table>
+<thead>
+<tr>
+<th>缩放策略</th>
+<th>θ₁</th>
+<th>θ₂</th>
+<th>θ₃</th>
+<th>PPL</th>
+<th>Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固定 θ=0.1</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>8.92</td>
+<td>+24.1%</td>
+</tr>
+<tr>
+<td>固定 θ=0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>7.18</td>
+<td>baseline</td>
+</tr>
+<tr>
+<td>固定 θ=1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>7.53</td>
+<td>+4.9%</td>
+</tr>
+<tr>
+<td>BaWA 优化</td>
+<td>0.42</td>
+<td>0.51</td>
+<td>0.38</td>
+<td>6.30</td>
+<td><strong>-12.3%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>不同幂次因子设置对性能影响显著（±24.1% PPL 方差）</li>
+<li>优化后的幂次因子相比最佳固定设置（θ=0.5）降低 12.3% 困惑度</li>
+</ul>
+<h3 id="_10">鲁棒性分析</h3>
+<ul>
+<li>BaWA 对校准样本数量几乎不敏感，即使只有 1 个样本也能获得满意结果</li>
+<li>这主要归功于离群值正则化策略，有效抑制了采样异常对剪枝结果的影响</li>
+</ul>
+<h3 id="_11">计算开销</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>7B</th>
+<th>13B</th>
+<th>70B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wanda</td>
+<td>0.4s</td>
+<td>0.8s</td>
+<td>2.2s</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>3.1min</td>
+<td>5.2min</td>
+<td>22.3min</td>
+</tr>
+<tr>
+<td>BaWA w/o 搜索</td>
+<td>0.5s</td>
+<td>0.8s</td>
+<td>2.4s</td>
+</tr>
+<tr>
+<td>BaWA w/ 搜索</td>
+<td>1.9min</td>
+<td>3.7min</td>
+<td>16.2min</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>BaWA 不进行搜索时与 Wanda 计算开销相当</li>
+<li>进行搜索时比 SparseGPT 更快（LLaMA2-70B：16.2min vs 22.3min）</li>
+</ul>
+<h3 id="_12">硬件加速</h3>
+<ul>
+<li>2:4 稀疏在 NVIDIA A100 上实现 1.58× 加速（token 生成阶段）</li>
+<li>Q/K/V 层加速 1.66×，Up/Gate 层加速 1.71×，Down 层加速 1.40×</li>
+<li>也支持 CPU 加速（如 AMD Ryzen 7 PRO 5850U）</li>
+</ul>
+<hr />
+<h2 id="_13">优势</h2>
+<ol>
+<li><strong>无需权重重建</strong>：作为度量方法，BaWA 无需梯度反向传播或微调，即可显著提升剪枝性能</li>
+<li><strong>与权重重建方法正交</strong>：BaWA 的度量可以与现有的权重重建技术（如 ADMM、DSnoT）无缝结合</li>
+<li><strong>高效搜索</strong>：零阶优化使得搜索过程仅需 16 分钟（LLaMA2-70B，单 GPU），比 SparseGPT 更快</li>
+<li><strong>鲁棒性强</strong>：对校准样本数量和随机种子不敏感，即使只有 1 个样本也能获得满意结果</li>
+<li><strong>通用性强</strong>：在多种 LLM（LLaMA、LLaMA2、Mistral、Qwen2）和多种稀疏模式（50%、2:4、4:8）上均有效</li>
+<li><strong>易于实现</strong>：基于 PyTorch，实现简单，不依赖特殊的硬件支持</li>
+<li><strong>显著性能提升</strong>：在各种基准测试上一致超越 Wanda、SparseGPT 等 SOTA 方法</li>
+</ol>
+<hr />
+<h2 id="_14">局限</h2>
+<ol>
+<li><strong>仅适用于非结构化剪枝</strong>：本文聚焦于非结构化剪枝和 N:M 稀疏模式，未涉及结构化剪枝</li>
+<li><strong>依赖校准数据集</strong>：需要 128 个校准样本（C4 数据集），虽然鲁棒性强，但仍需要一定数据</li>
+<li><strong>搜索成本</strong>：虽然比 SparseGPT 快，但仍有 16 分钟的搜索开销（LLaMA2-70B）</li>
+<li><strong>幂次因子敏感性</strong>：不同层对幂次因子的敏感性不同，可能需要进一步优化</li>
+<li><strong>层间敏感性分析不完整</strong>：论文提到前几层和后几层对剪枝策略的敏感性不同，但未提供完整的层间优化方案</li>
+<li><strong>缺乏对结构化剪枝的探索</strong>：未讨论与结构化剪枝方法的结合</li>
+<li><strong>未讨论与其他度量方法的对比</strong>：仅与 Wanda、SparseGPT、Magnitude 等方法对比</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏剪枝度量优化</strong></li>
+<li>BaWA 属于稀疏剪枝度量优化的范畴，是 EfficientPaper 中"稀疏剪枝"方向的重要工作</li>
+<li>
+<p>与 SparseGPT、Wanda 等方法共同构成 LLM 稀疏剪枝的完整方法谱</p>
+</li>
+<li>
+<p><strong>零阶优化在 LLM 压缩中的应用</strong></p>
+</li>
+<li>BaWA 使用零阶优化器来搜索最优超参数，这一思路可以扩展到其他 LLM 压缩任务（如量化）</li>
+<li>
+<p>为非可微分优化问题提供了一种高效的解决方案</p>
+</li>
+<li>
+<p><strong>权重-激活分布不平衡的缓解</strong></p>
+</li>
+<li>BaWA 指出权重幅度分布不平衡和激活离群值是影响剪枝效果的关键因素</li>
+<li>
+<p>这一洞察可以推广到其他模型压缩任务（如量化中的离群值处理）</p>
+</li>
+<li>
+<p><strong>与权重重建方法的结合</strong></p>
+</li>
+<li>BaWA 的度量方法与权重重建方法（如 ADMM、DSnoT）正交，可以进一步提升性能</li>
+<li>
+<p>未来可以探索更多组合策略</p>
+</li>
+<li>
+<p><strong>N:M 稀疏的硬件加速</strong></p>
+</li>
+<li>BaWA 在 2:4 稀疏下实现了 1.58× 加速，这与 EfficientPaper 中的硬件加速研究密切相关</li>
+<li>
+<p>未来可以探索更高效的 N:M 稀疏实现方案</p>
+</li>
+<li>
+<p><strong>自动化模型压缩框架</strong></p>
+</li>
+<li>BaWA 的自动搜索框架可以作为更广泛的自动化模型压缩框架的一部分</li>
+<li>与 AutoML、神经架构搜索等方向有交叉</li>
+</ol>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，基于论文全文分析。如有疑问请参考原文。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

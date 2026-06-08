@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>Transformers are Multi-State RNNs - Efficient Paper</title>
+    <title>Transformers are Multi-State RNNs (TOVA) - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Transformers are Multi-State RNNs";
+        var mkdocs_page_name = "Transformers are Multi-State RNNs (TOVA)";
         var mkdocs_page_input_path = "notes/2024/TOVA/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Transformers are Multi-State RNNs</li>
+      <li class="breadcrumb-item active">Transformers are Multi-State RNNs (TOVA)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,25 +159,194 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="transformers-are-multi-state-rnns">Transformers are Multi-State RNNs</h1>
+                <h1 id="transformers-are-multi-state-rnns-tova">Transformers are Multi-State RNNs (TOVA)</h1>
 <p><a class="glightbox" href="../tova.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tova.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Transformers are considered conceptually different from the previous
-generation of state-of-the-art NLP models - recurrent neural networks (RNNs).
-In this work, we demonstrate that decoder-only transformers can in fact be
-conceptualized as unbounded multi-state RNNs - an RNN variant with unlimited
-hidden state size. We further show that transformers can be converted into
-<script type="math/tex">\textit{bounded}</script> multi-state RNNs by fixing the size of their hidden state,
-effectively compressing their key-value cache. We introduce a novel,
-training-free compression policy - <script type="math/tex">\textbf{T}</script>oken <script type="math/tex">\textbf{O}</script>mission
-<script type="math/tex">\textbf{V}</script>ia <script type="math/tex">\textbf{A}</script>ttention (TOVA). Our experiments with four long
-range tasks and several LLMs show that TOVA outperforms several baseline
-compression policies. Particularly, our results are nearly on par with the full
-model, using in some cases only <script type="math/tex">\frac{1}{8}</script> of the original cache size, which
-translates to 4.8X higher throughput. Our results shed light on the connection
-between transformers and RNNs, and help mitigate one of LLMs' most painful
-computational bottlenecks - the size of their key-value cache. We publicly
-release our code at https://github.com/schwartz-lab-NLP/TOVA</p>
+<h2 id="_1">一句话总结</h2>
+<p>TOVA 从理论角度将 decoder-only Transformer 重新建模为无界多状态 RNN（MSRNN），并提出一种无需训练的 KV Cache 压缩策略——Token Omission Via Attention，仅用 1/8 的缓存即可达到接近完整模型的性能，实现最高 4.8 倍吞吐量提升。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>Transformer 被认为与前一代最先进的 NLP 模型——循环神经网络（RNN）有本质不同。在本文中，我们证明了 decoder-only Transformer 实际上可以被概念化为无界多状态 RNN（MSRNN）——一种具有无限隐藏状态大小的 RNN 变体。我们进一步表明，通过固定其隐藏状态的大小，Transformer 可以被转换为有界多状态 RNN，从而有效地压缩其键值缓存（KV Cache）。我们提出了一种新颖的、无需训练的压缩策略——<strong>Token Omission Via Attention (TOVA)</strong>。我们在四个长距离任务和多个大语言模型上的实验表明，TOVA 优于多种基线压缩策略。特别是，我们的结果与完整模型几乎持平，在某些情况下仅使用原始缓存大小的 1/8，这转化为 4.8 倍的吞吐量提升。我们的研究揭示了 Transformer 与 RNN 之间的联系，并有助于缓解大语言模型最痛苦的计算瓶颈之一——键值缓存的大小问题。代码已公开发布。</p>
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>Transformer 与 RNN 的理论鸿沟</strong>：长久以来，Transformer 被认为与 RNN 在概念上截然不同。RNN 通过循环状态保持历史信息，而 Transformer 通过自注意力直接访问每个 token 的表示。本文旨在从理论层面弥合这一鸿沟。</li>
+<li><strong>KV Cache 是 LLM 推理的瓶颈</strong>：大语言模型在自回归生成时需要缓存所有先前 token 的 Key 和 Value 向量。随着序列长度增加，KV Cache 的内存消耗急剧增长，严重限制了推理效率（吞吐量和批处理大小）。</li>
+<li><strong>现有压缩方法存在归纳偏差</strong>：现有的 KV Cache 压缩策略（如 Window、H2O）引入了强归纳偏差——固定保留最近的 token 或偏好序列开头的 token。这种硬编码的假设可能不是最优的。</li>
+<li><strong>LLM 实际上表现得像有界 MSRNN</strong>：尽管 LLM 理论上可以处理任意长度的序列（无界），但实验表明它们在实际中经常表现得像有界 MSRNN，只有效地使用有限的上下文窗口。这一发现启发了一种高效的缓存压缩方法。</li>
+</ol>
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="31-rnnmsrnn">3.1 多状态 RNN（MSRNN）定义</h3>
+<p>本文提出了 <strong>Multi-State RNN (MSRNN)</strong> 的形式化定义：</p>
+<ul>
+<li>标准 RNN 在每一层使用向量作为隐藏状态：<script type="math/tex">h_t^l \in \mathbb{R}^d</script>
+</li>
+<li>MSRNN 使用<strong>状态矩阵</strong>代替向量：<script type="math/tex">H_t^l \in \mathbb{R}^{g(t) \times d}</script>
+</li>
+<li>状态矩阵的每一行可以解释为一个单独的状态，<script type="math/tex">H_t^l</script> 可视为多状态矩阵</li>
+<li>状态大小由函数 <script type="math/tex">g(t)</script> 参数化：</li>
+<li>
+<script type="math/tex">g(t) = 1</script>：退化为标准（单状态）RNN</li>
+<li>
+<script type="math/tex">g(t) \leq k</script>（常数）：有界记忆容量</li>
+<li>
+<script type="math/tex">g(t) = t</script>：无界容量</li>
+</ul>
+<h3 id="32-transformer-msrnn">3.2 Transformer 是无界 MSRNN</h3>
+<p>当 <script type="math/tex">g(t) = t</script>（状态数等于当前时间步的输入 token 数）时，Transformer 可以被视为无界 MSRNN：</p>
+<ul>
+<li>状态：<script type="math/tex">H_t^l = (K_t^l, V_t^l)</script>，即 Key 和 Value 矩阵</li>
+<li>层计算：<script type="math/tex">(K_t^l, V_t^l) = (K_{t-1}^l \oplus k_t^l, V_{t-1}^l \oplus v_t^l)</script>
+</li>
+<li>输出：<script type="math/tex">x_t^{l+1} = FF_l(Attn_l(q_t^l, K_t^l, V_t^l))</script>
+</li>
+<li>MSRNN 方程：<script type="math/tex">x_t^{l+1}, (K_t^l, V_t^l) = f_t^{TRANS}(x_t^l, (K_{t-1}^l, V_{t-1}^l))</script>
+</li>
+</ul>
+<h3 id="33-transformer-msrnn">3.3 将 Transformer 转换为有界 MSRNN</h3>
+<p>通过设置 <script type="math/tex">g(t) = \min(t, k)</script>，Transformer 可以被转换为有界 MSRNN。当 <script type="math/tex">t > k</script> 时，需要应用压缩策略将多状态适配到有限的内存中。</p>
+<h3 id="34-tova">3.4 TOVA 压缩策略</h3>
+<p><strong>TOVA (Token Omission Via Attention)</strong> 是本文提出的核心压缩策略：</p>
+<ol>
+<li><strong>基本思想</strong>：当多状态达到容量上限时，TOVA 在每个解码步骤丢弃注意力分数最低的 token</li>
+<li><strong>形式化定义</strong>：当 <script type="math/tex">t > k</script> 且 <script type="math/tex">j</script> 是注意力分数最低的状态时：</li>
+<li>
+<script type="math/tex">(K_t^l, V_t^l) = (K_{0:j-1}^l, K_{j+1:k}^l, V_{0:j-1}^l, V_{j+1:k}^l)</script>
+</li>
+<li><strong>多头处理</strong>：TOVA 分别计算每个头的注意力分数，因此不同头可以保留不同的 token</li>
+<li><strong>层内平均</strong>：实验表明，在给定层中跨所有头平均注意力分数优于单独处理每个头（见附录 A）</li>
+<li><strong>无需训练</strong>：TOVA 是一种 training-free 的方法，可以直接应用于预训练的 LLM，无需任何额外训练</li>
+</ol>
+<h3 id="35">3.5 基线压缩策略</h3>
+<p>本文对比了以下基线方法：</p>
+<ul>
+<li><strong>Window</strong>：FIFO 策略，丢弃最早的 token，仅保留最近的 token</li>
+<li><strong>Window+i</strong>：保留固定窗口 + 最早的 i 个 token（实验中使用 Window+4）</li>
+<li><strong>H2O</strong>：保留固定窗口的最近 token + 通过累积注意力分数动态选择的早期 token</li>
+<li><strong>Full model (topline)</strong>：完整（无界）模型，作为上界参考</li>
+</ul>
+<h3 id="36">3.6 位置编码外推</h3>
+<p>TOVA 支持处理超过训练序列长度的文本。方法是压缩相邻 token 表示之间的间隔 <script type="math/tex">g</script> 为 <script type="math/tex">\ln(\ln(g))</script>，当 <script type="math/tex">g \leq 10</script> 时保持 <script type="math/tex">g</script> 不变以保留局部敏感性。</p>
+<h2 id="_5">实验结果</h2>
+<h3 id="61-pg-19">6.1 语言建模（PG-19）</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA-2-7B, Mistral-7B, Yi-7B</li>
+<li><strong>数据集</strong>：PG-19 测试集（100 本完整书籍，平均长度 70K tokens）</li>
+<li><strong>结果</strong>：</li>
+<li>TOVA 在所有多状态大小下均优于所有基线方法</li>
+<li>使用仅 1/8 的上下文长度（512 tokens），TOVA 达到与完整模型（4096 tokens）相比仅 0.4 个困惑度的差距</li>
+<li>基线方法需要至少一半的上下文长度才能达到完整模型的性能</li>
+</ul>
+<h3 id="62">6.2 长距离理解</h3>
+<ul>
+<li><strong>任务</strong>：SQuALITY（问题聚焦的摘要）和 QASPER（基于长文本的 QA）</li>
+<li><strong>模型</strong>：LLaMA-2-chat, Mistral-Instruct, neural-chat</li>
+<li><strong>SQuALITY 结果</strong>：</li>
+<li>TOVA 在所有设置下均优于所有基线</li>
+<li>使用 1/8 到 1/4 的上下文大小即可达到与上界相差 1 个 ROUGE 点的性能</li>
+<li><strong>QASPER 结果</strong>：</li>
+<li>TOVA 与基线之间的差距较大，在某些情况下超过 5 个 F1 点</li>
+<li>需要一半的上下文大小才能达到与上界相差 1 个 F1 点的性能</li>
+</ul>
+<h3 id="63">6.3 文本生成</h3>
+<ul>
+<li><strong>模型</strong>：MythoLogic（LLaMA-2-13B 微调版）</li>
+<li><strong>评估方法</strong>：GPT-4 作为评估器，对比 TOVA 和完整模型生成的故事</li>
+<li><strong>结果</strong>：</li>
+<li>使用 256 tokens 时，TOVA 在 47% 的情况下与完整模型持平或胜出</li>
+<li>使用 512 tokens 时，仅 19% 的情况下失败</li>
+<li>使用 1024 tokens 时，仅 6% 的情况下失败</li>
+<li>在所有多状态大小下，TOVA 在 5-10% 的情况下优于完整模型</li>
+</ul>
+<h3 id="71-llama-2-7b">7.1 内存和吞吐量效率（LLaMA-2-7B）</h3>
+<table>
+<thead>
+<tr>
+<th>多状态大小</th>
+<th>内存 (Gig.)</th>
+<th>最大批处理</th>
+<th>相对吞吐量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>256</td>
+<td>0.15</td>
+<td>139</td>
+<td>8.5X</td>
+</tr>
+<tr>
+<td>512</td>
+<td>0.28</td>
+<td>70</td>
+<td>4.8X</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>0.56</td>
+<td>35</td>
+<td>3.1X</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>1.11</td>
+<td>17</td>
+<td>1.7X</td>
+</tr>
+<tr>
+<td>4096 (full)</td>
+<td>2.18</td>
+<td>8</td>
+<td>1X</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72">7.2 外推能力</h3>
+<ul>
+<li>TOVA 成功外推至 70K tokens，困惑度差异小于 0.5 个点</li>
+<li>显著优于 Window+4 基线方法</li>
+</ul>
+<h3 id="73-token">7.3 哪些 token 重要？</h3>
+<ul>
+<li><strong>最近性并非唯一因素</strong>：仅 73-76% 被保留的 token 是最近的，表明旧 token 也经常被保留</li>
+<li><strong>第一个 token 非常重要</strong>：第一个 token 在所有多状态大小下都保持到序列结束</li>
+<li><strong>不同 token 的保留时间不同</strong>：通过词性标注分析，标点符号和特殊符号倾向于被保留，但所有格后缀（POS）和专有名词（NNPS）也倾向于长期保留</li>
+<li><strong>TOVA 自动识别窗口</strong>：与需要手动指定窗口的方法不同，TOVA 自动识别最近窗口</li>
+</ul>
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>无需训练</strong>：TOVA 是一种 training-free 方法，可直接应用于任何预训练的 decoder-only Transformer LLM</li>
+<li><strong>显著的效率提升</strong>：仅使用 1/8 的缓存即可达到接近完整模型的性能，吞吐量提升最高 4.8 倍</li>
+<li><strong>强大的理论基础</strong>：首次从 MSRNN 角度将 Transformer 与 RNN 联系起来，提供了新的理论视角</li>
+<li><strong>自动化的 token 选择</strong>：无需手动设计压缩策略，TOVA 自动根据注意力分数选择要保留的 token</li>
+<li><strong>灵活的外推能力</strong>：支持处理超过训练长度的文本，可外推至 70K tokens</li>
+<li><strong>多任务验证</strong>：在语言建模、长距离理解和文本生成等多个任务上均有验证</li>
+<li><strong>减少归纳偏差</strong>：与 Window 和 H2O 等方法不同，TOVA 不固定最近窗口，也不偏好早期 token</li>
+</ol>
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>检索型 QA 需要更多上下文</strong>：在 QASPER 等需要检索特定细节的任务上，TOVA 需要约一半的上下文大小才能达到与完整模型相当的性能</li>
+<li><strong>文本生成长度受限</strong>：限制多状态大小会缩短生成的文本长度（从 1,566 tokens 降至 1,361 tokens）</li>
+<li><strong>注意力分数的计算开销</strong>：虽然不需要训练，但每次解码步骤都需要重新计算注意力分数来决定丢弃哪个 token</li>
+<li><strong>仅适用于 decoder-only 模型</strong>：本文的理论框架和实验仅针对 decoder-only Transformer，未验证 encoder 或 encoder-decoder 架构</li>
+<li><strong>多头策略的权衡</strong>：虽然跨头平均注意力分数效果更好，但这可能丢失了不同头捕获的多样化信息</li>
+<li><strong>特定 token 的保留机制未充分探索</strong>：虽然发现了一些有趣的 token（如所有格后缀、专有名词）被长期保留，但其背后的原因尚未深入研究</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 优化</strong>：本文的 TOVA 方法直接针对 KV Cache 压缩，是 LLM 推理效率优化的重要方向</li>
+<li><strong>LLM 推理加速</strong>：通过压缩 KV Cache 提高吞吐量，是 LLM 服务部署的关键技术</li>
+<li><strong>长上下文处理</strong>：TOVA 支持外推至更长上下文（70K tokens），是长上下文 LLM 研究的重要进展</li>
+<li><strong>RNN 与 Transformer 的统一</strong>：从 MSRNN 角度统一 RNN 和 Transformer，为混合架构设计提供理论基础</li>
+<li><strong>注意力机制的深入分析</strong>：通过对注意力分数的分析，揭示了哪些 token 在长上下文中更重要</li>
+<li><strong>高效的 LLM 服务</strong>：TOVA 的高效压缩策略可以显著降低 LLM 服务的计算成本</li>
+<li><strong>KV Cache 压缩的后续工作</strong>：包括 token 剪枝、token 合并、跨层 KV 共享等方向</li>
+<li><strong>RNN 回归的理论基础</strong>：TOVA 将 Transformer 转化为有界 MSRNN，与近期的 RNN 回归工作（如 Mamba、RWKV）形成互补</li>
+</ol>
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>⚠️ <strong>注意</strong>：本文档由 AI Agent (Hermes Agent) 基于论文元数据和论文原文自动生成，仅供研究参考。内容可能存在理解偏差或遗漏，请以原文为准。</p>
+<p>生成工具：Hermes Agent (Nous Research)
+生成时间：2026-06-05
+论文来源：arXiv:2401.06104v2 (2024)</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

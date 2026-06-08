@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Note - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Note";
+        var mkdocs_page_input_path = "notes/2026/Vortex/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Note</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<h1 id="vortex-efficient-and-programmable-sparse-attention-serving-for-ai-agents">Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents</h1>
+<blockquote>
+<p><strong>本笔记由 AI Agent 自动生成，基于论文全文阅读与分析。生成时间：2026-06-05。</strong></p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>Vortex 提出了一种可编程的稀疏注意力服务系统，通过 Python 嵌入式前端语言 vFlow 和页面中心张量抽象 vTensor，实现了稀疏注意力算法的快速原型设计和高效部署，AI 代理可自动生成优化的稀疏注意力算法，最高达到 3.46× 的吞吐量提升。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>稀疏注意力对于服务大语言模型（LLM）变得越来越重要，因为生成长度不断增长。然而，大规模部署和评估新的稀疏注意力算法仍然高度工程密集，阻碍了人类研究者和 AI 代理探索稀疏注意力设计。为了解决这一挑战，我们提出了 Vortex，一个结合 Python 嵌入式前端语言和页面中心张量抽象的系统，用于表达广泛的稀疏注意力算法，并与现代 LLM 服务栈紧密集成。Vortex 实现了稀疏注意力算法的快速原型设计、部署和评估，有效地将其理论效率增益转化为实际吞吐量提升。因此，Vortex 显著加速了稀疏注意力算法的设计和迭代。首先，AI 代理使用 Vortex 自动生成和优化多种算法，最好的算法在保持准确性的同时达到 3.46× 的吞吐量提升。其次，Vortex 将稀疏注意力扩展到新兴架构和非常大的模型，在 NVIDIA B200 GPU 上，基于 MLA 的 GLM-4.7-Flash 达到 4.7× 的吞吐量提升，229B 参数的 MiniMax-M2.7 达到 1.37× 的提升。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="llm">LLM 推理挑战</h3>
+<p>随着 LLM 生成长度在推理、代理系统和强化学习等应用中不断增长，KV 缓存移动已成为主要系统瓶颈。稀疏注意力正在成为降低推理成本的基础技术。</p>
+<h3 id="_4">现有方法的局限</h3>
+<ol>
+<li><strong>难以泛化到动态稀疏性</strong>：现有系统如 FlashInfer 和 FlexAttention 虽然优化了静态稀疏注意力，但无法自然扩展到更准确的动态稀疏注意力。</li>
+<li><strong>缺乏可编程性</strong>：现有 LLM 服务系统对新算法的集成支持有限，添加新变体可能需要大量工程工作（例如，在 SGLang 中实现 Double Sparse 需要约 2000 行代码）。</li>
+<li><strong>与演化服务系统不兼容</strong>：许多稀疏注意力方法依赖自定义内核，与现代 LLM 服务栈的关键组件（如分页注意力、前缀缓存）不兼容，导致理论加速无法转化为实际端到端增益。</li>
+</ol>
+<h3 id="_5">核心洞察</h3>
+<ul>
+<li>需要一个框架，让 AI 代理能够通过指定稀疏模式和注意力计算方式来表达稀疏注意力机制，同时抽象低级张量布局和内存管理细节。</li>
+<li>自然方法是将每种稀疏注意力变体实现为专用自定义操作符，但这缺乏组合性，难以扩展。</li>
+<li>受稀疏张量线性代数的抽象启发，提出页面中心张量系统 vTensor，使稀疏注意力算法能够以灵活和可组合的方式表达。</li>
+</ul>
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="1-vflow">1. vFlow 编程模型</h3>
+<h4 id="_7">核心设计原则</h4>
+<p>vFlow 采用单一请求心理模型，将张量视为批量大小为 1，同时暴露灵活和可组合的原语来构建稀疏注意力机制。</p>
+<h4 id="_8">两阶段分解</h4>
+<ol>
+<li><strong>查询无关预处理（forward_cache）</strong>：计算块级键摘要，这些摘要仅依赖于键缓存，可在缓存构建时预计算并在解码步骤间重用。</li>
+<li><strong>查询相关执行（forward_indexer）</strong>：为每个传入查询执行动态计算，包括计算块相关性分数、选择 top-k 块、对相应 token 执行注意力。</li>
+</ol>
+<h4 id="block-top-k-attention">示例：Block Top-k Attention</h4>
+<pre><code class="language-python">class BlockTopK(vFlow):
+    def forward_cache(c):
+        c[&quot;centroids&quot;] = Mean(c[&quot;k&quot;], dim=1)
+    def forward_indexer(q, c):
+        s = GeMM(c[&quot;centroids&quot;], q.T)
+        i = topK(Mean(s, dim=2), dim=1)
+        return attn(q, c[&quot;k&quot;], c[&quot;v&quot;], i)
+</code></pre>
+<h4 id="_9">可表达性</h4>
+<p>vFlow 可以自然表达多种动态稀疏注意力算法：
+- <strong>DoubleSparse</strong>：通过 Gather 和 GeMM 实现
+- <strong>BlockTopK_NSA</strong>：使用 Softmax、Conv 和 TopK
+- <strong>Quest</strong>：使用 Max、Min 和 TopK
+- <strong>H2O</strong>：使用 Softmax、GeMM 和跨步累积</p>
+<h4 id="_10">缓存中间结果</h4>
+<p>vFlow 允许通过在 forward_cache 中显式声明缓存来存储操作符输出，例如 H2O 中的 c["acc"] 累积注意力分数。</p>
+<h4 id="_11">扩展到静态稀疏注意力</h4>
+<p>静态稀疏注意力可以通过构造仅依赖序列位置而非输入内容的索引集来表达。</p>
+<h3 id="2-vtensor">2. vTensor 抽象</h3>
+<h4 id="_12">张量定义</h4>
+<p>vTensor 扩展了 PyTorch 张量，带有显式布局信息：</p>
+<pre><code>xv = (x, C)
+</code></pre>
+<p>其中 x 是底层 PyTorch 张量，C 捕获布局元数据，定义为 C = (b, p, I)，b 是批量大小，p 是索引指针数组，I 是索引结构。</p>
+<h4 id="_13">操作符定义</h4>
+<p>vTensor 的操作符通过独立应用于批量中的每个序列来定义。关键特性：
+- <strong>组合性</strong>：复杂算法应通过组合少量原始张量操作符构建，而不是依赖高度专门化的整体内核
+- <strong>自包含性</strong>：张量操作符的输出应保持直接可被后续操作符消费的格式</p>
+<h4 id="_14">与现有系统的兼容性</h4>
+<p>vTensor 兼容现代 LLM 服务系统的关键组件：
+- 分页注意力（Paged Attention）
+- 前缀缓存（Prefix Caching）
+- 可变序列长度和批处理大小</p>
+<h3 id="3">3. 执行后端与优化</h3>
+<h4 id="_15">程序编译</h4>
+<p>vFlow 程序被翻译为可执行的 vTensor 操作符，然后在现代服务系统中执行。</p>
+<h4 id="_16">关键优化</h4>
+<ol>
+<li><strong>工作负载规划器</strong>：平衡 GPU 线程块调度</li>
+<li><strong>内核融合</strong>：减少中间内存流量</li>
+<li><strong>随机优化</strong>：用于 radix top-k，这是稀疏注意力中的关键操作符</li>
+</ol>
+<h4 id="_17">与优化的注意力后端兼容</h4>
+<p>Vortex 兼容现有的优化注意力后端，包括：
+- GQA（Grouped Query Attention）
+- MLA（Multi-head Latent Attention）</p>
+<h2 id="_18">实验结果</h2>
+<h3 id="1-ai">1. AI 代理生成的稀疏注意力</h3>
+<ul>
+<li><strong>一次性设置</strong>：Claude Code 和 Codex 生成多种稀疏注意力算法，最好的算法在保持准确性的同时达到 3.46× 的吞吐量提升</li>
+<li><strong>18 小时自主优化循环</strong>：自动优化算法，提高吞吐量</li>
+</ul>
+<h3 id="2">2. 服务效率</h3>
+<h4 id="sglang">相对于 SGLang 的改进</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>吞吐量提升</th>
+<th>P95 延迟降低</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block Top-k</td>
+<td>3.60×</td>
+<td>11.7×</td>
+</tr>
+<tr>
+<td>Quest</td>
+<td>2.98×</td>
+<td>12.8×</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_19">端到端性能</h4>
+<ul>
+<li>在 NVIDIA H200 SXM 上评估</li>
+<li>在 32k 上下文长度和 BS=16 时：</li>
+<li>Block Top-k: 3.78–4.81× 端到端加速（跨 Qwen3 模型大小）</li>
+<li>Quest: 3.46–4.33× 端到端加速</li>
+<li>在 16k 上下文长度时：2.08–2.96× 加速</li>
+<li>在 8k 上下文长度时：1.27–1.74× 加速</li>
+<li>在小批量（BS=4, 32k）时：1.28–1.81× 加速</li>
+</ul>
+<h4 id="_20">内核级性能</h4>
+<ul>
+<li>在 Qwen3-8B 上，BS=16，32k 上下文长度：</li>
+<li>稀疏注意力内核：0.025 ms</li>
+<li>密集注意力内核：0.760 ms</li>
+<li>加速：&gt;30× 内核级</li>
+</ul>
+<h3 id="3_1">3. 扩展到新兴架构</h3>
+<h4 id="glm-47-flash-mla-based">GLM-4.7-Flash (MLA-based)</h4>
+<ul>
+<li>在 NVIDIA B200 上，使用 rope-aware 稀疏注意力</li>
+<li>达到 4.7× 的吞吐量提升</li>
+</ul>
+<h4 id="minimax-m27-229b">MiniMax-M2.7 (229B 参数)</h4>
+<ul>
+<li>在四块 NVIDIA B200 GPU 上服务</li>
+<li>Block Top-k 达到 1.37× 吞吐量提升</li>
+<li>甚至超过密集注意力准确性</li>
+</ul>
+<h3 id="4-radix-top-k">4. Radix Top-k 内核优化</h3>
+<ul>
+<li><strong>近似 radix top-k + remap</strong>：在 recall@k &gt; 0.97 时，持续优于 radix top-k 基线</li>
+<li><strong>加速范围</strong>：1.30–1.62×，平均改进 1.49×</li>
+<li><strong>稳定性</strong>：在不同 k 值、预填充长度和分数分布（双峰、正态、对数正态、均匀）下保持稳定</li>
+</ul>
+<h2 id="_21">优势</h2>
+<ol>
+<li><strong>可编程性</strong>：通过 vFlow 和 vTensor 抽象，用户可以轻松表达和修改稀疏注意力算法</li>
+<li><strong>高效执行</strong>：紧密集成到现代 LLM 服务栈，实现高效执行</li>
+<li><strong>快速原型设计</strong>：显著加速稀疏注意力算法的设计和迭代</li>
+<li><strong>AI 代理集成</strong>：支持 AI 代理自动生成和优化稀疏注意力算法</li>
+<li><strong>广泛适用性</strong>：适用于多种稀疏注意力算法，包括动态和静态稀疏性</li>
+<li><strong>高性能</strong>：在多种模型和硬件上实现显著的吞吐量提升和延迟降低</li>
+<li><strong>可扩展性</strong>：能够扩展到新兴架构和非常大的模型</li>
+<li><strong>组合性</strong>：通过组合少量原始操作符构建复杂算法，提高模块性和可扩展性</li>
+</ol>
+<h2 id="_22">局限</h2>
+<ol>
+<li><strong>仅关注解码阶段</strong>：当前 Vortex 专注于解码阶段，将预填充阶段留作未来工作</li>
+<li><strong>预填充阶段未优化</strong>：虽然在解码阶段表现出色，但预填充阶段的优化未被讨论</li>
+<li><strong>硬件依赖</strong>：在 NVIDIA H200 SXM 和 B200 上评估，其他硬件平台的性能未验证</li>
+<li><strong>模型大小依赖</strong>：在非常大的模型（如 229B 参数）上，加速比相对较小（1.37×）</li>
+<li><strong>动态稀疏性开销</strong>：动态稀疏注意力的计算开销可能超过注意力操作符本身</li>
+<li><strong>内存消耗</strong>：虽然减少了计算，但稀疏注意力的内存使用可能增加</li>
+<li><strong>与自定义内核的兼容性</strong>：虽然兼容现有后端，但与完全自定义内核的集成可能需要额外工作</li>
+<li><strong>评估范围有限</strong>：主要在 Qwen3 模型上评估，其他模型的性能未验证</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>稀疏注意力与 KV 缓存优化</strong>：Vortex 的核心目标是优化 KV 缓存移动，与 EfficientPaper 中的 KV 缓存优化方向高度相关</li>
+<li><strong>LLM 服务系统</strong>：Vortex 是一个服务系统，与 EfficientPaper 中的 LLM 服务系统研究方向一致</li>
+<li><strong>动态稀疏注意力</strong>：Vortex 支持动态稀疏注意力，这是 EfficientPaper 中一个重要研究方向</li>
+<li><strong>可编程性与自动化</strong>：Vortex 通过 vFlow 和 vTensor 提供可编程性，与 EfficientPaper 中的自动化研究方向相关</li>
+<li><strong>硬件优化</strong>：Vortex 在现代 GPU（H200、B200）上优化，与 EfficientPaper 中的硬件优化研究方向一致</li>
+<li><strong>AI 代理辅助研究</strong>：Vortex 支持 AI 代理自动生成和优化算法，与 EfficientPaper 中的自动化研究方向相关</li>
+</ol>
+<h2 id="_23">关键技术要点</h2>
+<ol>
+<li><strong>vFlow 编程模型</strong>：通过 Python 嵌入式前端语言，实现稀疏注意力算法的快速原型设计</li>
+<li><strong>vTensor 张量抽象</strong>：页面中心张量系统，支持分页布局和动态稀疏性</li>
+<li><strong>两阶段分解</strong>：查询无关预处理和查询相关执行，提高效率</li>
+<li><strong>组合性</strong>：通过组合少量原始操作符构建复杂算法</li>
+<li><strong>随机优化</strong>：用于 radix top-k，提高 top-k 操作的效率</li>
+<li><strong>内核融合</strong>：减少中间内存流量</li>
+<li><strong>与现有服务栈集成</strong>：兼容分页注意力、前缀缓存等现代 LLM 服务组件</li>
+</ol>
+<h2 id="_24">参考文献</h2>
+<ul>
+<li>FlashInfer (Ye et al., 2024a)</li>
+<li>FlexAttention (Dong et al., 2024)</li>
+<li>SGLang (Zheng et al., 2023)</li>
+<li>vLLM (Kwon et al., 2023)</li>
+<li>Quest (Tang et al., 2024)</li>
+<li>H2O (Zhang et al., 2023)</li>
+<li>DoubleSparse (Yang et al., 2024b)</li>
+<li>DeepSeek (Liu et al., 2025; Yuan et al., 2025; DeepSeek-AI, 2026)</li>
+<li>GLM-4.7-Flash (Zeng et al., 2025)</li>
+<li>MiniMax-M2.7 (MiniMax, 2026)</li>
+<li>Block Top-k Attention (Xiao et al., 2023)</li>
+<li>NSA (Yuan et al., 2025)</li>
+<li>Radix Top-k (Gao et al., 2024)</li>
+</ul>
+<h2 id="_25">代码</h2>
+<ul>
+<li>GitHub: https://github.com/Infini-AI-Lab/vortex_torch</li>
+<li>Website: https://infini-ai-lab.github.io/vortex_torch/</li>
+<li>Docs: https://infini-ai-lab.github.io/vortex_torch/docs</li>
+</ul>
+<h2 id="_26">评估细节</h2>
+<h3 id="_27">评估设置</h3>
+<ul>
+<li><strong>硬件</strong>：NVIDIA H200 SXM，NVIDIA B200</li>
+<li><strong>模型</strong>：Qwen3-8B, Qwen3-14B, Qwen3-32B, GLM-4.7-Flash, MiniMax-M2.7</li>
+<li><strong>上下文长度</strong>：8k, 16k, 32k</li>
+<li><strong>批量大小</strong>：4, 16</li>
+<li><strong>基准测试</strong>：AMC23</li>
+</ul>
+<h3 id="_28">性能指标</h3>
+<ul>
+<li><strong>吞吐量</strong>：tokens/sec</li>
+<li><strong>延迟</strong>：P95 延迟（ms）</li>
+<li><strong>准确性</strong>：mean@16 (%)</li>
+</ul>
+<h3 id="ai">AI 代理生成的算法</h3>
+<ul>
+<li><strong>一次性设置</strong>：每个模型生成 20 种稀疏注意力流</li>
+<li><strong>优化循环</strong>：18 小时自主优化</li>
+<li><strong>算法多样性</strong>：包括 Claude Opus 4.7, Claude Sonnet 4.6, GPT-5 生成的算法</li>
+</ul>
+<h3 id="_29">算法分类</h3>
+<ol>
+<li><strong>质心对齐</strong>：使用键质心计算相关性分数</li>
+<li><strong>Quest 包络</strong>：使用键包络（max/min）计算相关性</li>
+<li><strong>值能量门控</strong>：使用值范数加权相关性</li>
+<li><strong>多分辨率子块</strong>：使用子质心进行多分辨率分析</li>
+<li><strong>时间累积</strong>：使用跨步状态（EMA、Running mean 等）</li>
+</ol>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

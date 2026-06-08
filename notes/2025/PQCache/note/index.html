@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -158,31 +160,279 @@
               
   
                 <h1 id="pqcache-product-quantization-based-kvcache-for-long-context-llm-inference">PQCache: Product Quantization-based KVCache for Long Context LLM Inference</h1>
-<blockquote>
-<p>Hailin Zhang, Xiaodong Ji, Yilin Chen, Fangcheng Fu, Xupeng Miao, Xiaonan Nie, Weipeng Chen, Bin Cui</p>
-</blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>As the field of Large Language Models (LLMs) continues to evolve, the context
-length in inference is steadily growing. Key-Value Cache (KVCache), the
-intermediate representations of tokens within LLM inference, has now become the
-primary memory bottleneck due to limited GPU memory. Current methods
-selectively determine suitable keys and values for self-attention computation
-in LLMs to address the issue. However, they either fall short in maintaining
-model quality or result in high serving latency. Drawing inspiration from
-advanced embedding retrieval techniques prevalent in the data management
-community, we consider the storage and retrieval of KVCache as a typical
-embedding retrieval problem. We propose PQCache, which employs Product
-Quantization (PQ) to manage KVCache, maintaining model quality while ensuring
-low serving latency. During the prefilling phase, we apply PQ to tokens' keys
-for each LLM layer and head. During the autoregressive decoding phase, we use
-PQ codes and centroids to approximately identify important preceding tokens,
-then fetch the corresponding key-value pairs for self-attention computation.
-Through meticulous design of overlapping and caching, we minimize any
-additional computation and communication overhead during both phases. Extensive
-experiments demonstrate that PQCache achieves both effectiveness and
-efficiency, with 4.60% score improvement over existing methods on InfiniteBench
-and low system latency in both prefilling and decoding.</p>
+<blockquote>
+<p>⚠️ <strong>注意：本 note 由 AI Agent 自动生成，仅供参考，内容可能存在不准确之处。</strong>
+生成时间：2025年6月</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>PQCache 是一种将信息检索中的乘积量化（Product Quantization, PQ）技术引入 LLM 推理中 KVCache 管理的方法，通过在预填充阶段构建 PQ 索引、在解码阶段高效检索相关 key-value 对，在 InfiniteBench 上实现 4.60% 的性能提升，同时保持低系统延迟。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>随着大语言模型（LLM）领域的不断发展，推理中的上下文长度持续增长。KVCache（Key-Value Cache）作为 LLM 推理中 token 的中间表示，由于 GPU 内存有限，已成为主要的内存瓶颈。现有方法通过选择性地确定适合自注意力计算的 key-value 对来解决这一问题，但它们要么无法保持模型质量，要么导致高服务延迟。借鉴数据管理领域中先进的嵌入向量检索技术，我们考虑将 KVCache 的存储和检索视为典型的嵌入检索问题。我们提出 PQCache，采用乘积量化（PQ）来管理 KVCache，在保持模型质量的同时确保低服务延迟。在预填充阶段，我们对每个 LLM 层和头的 token key 应用 PQ；在自回归解码阶段，我们使用 PQ 码和质心近似识别重要的前序 token，然后获取相应的 key-value 对进行自注意力计算。通过精心设计的重叠和缓存机制，我们在两个阶段中最小化了额外的计算和通信开销。大量实验表明，PQCache 在 InfiniteBench 上比现有方法提升 4.60%，并在预填充和解码阶段均实现低系统延迟。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="kvcache">KVCache 内存瓶颈</h3>
+<p>随着 LLM 推理输入长度从 2K-4K 增长到 128K 甚至数百万 token，KVCache 的内存消耗急剧增加。例如，使用 7B 模型在 128K 长度序列上推理，128 个样本的批次需要 1TB 的 KVCache 内存，超过 8 卡 A100 配置的 640GB GPU 内存。在这种情况下，KVCache 必须存储在较低层级的内存层次结构中，导致耗时的传输延迟和复杂的调度，阻碍了正常的生成过程。</p>
+<h3 id="_4">现有方法的局限</h3>
+<p><strong>KVCache Dropping 方法（如 H2O、SnapKV、PyramidKV）</strong>：
+- 假设初始时权重较低的 token 在后续步骤中也不重要，但这一假设在实际任务中常常失败
+- token 的重要性可能随生成过程变化，初始低权重的 token 可能在后续步骤中变得重要
+- 依赖特定假设（如问题位于输入末尾），在非标准场景下性能下降</p>
+<p><strong>KVCache Offloading 方法（如 SPARQ、InfLLM）</strong>：
+- SPARQ 通过查询张量中选择最大幅度维度来确定最相关 token，但产生无法与计算重叠的通信开销
+- InfLLM 通过块级空间连续性假设提高效率，但与实际中相关 token 离散分布的场景不匹配，导致模型质量显著下降</p>
+<h3 id="_5">核心洞察</h3>
+<p>作者观察到选择性注意力本质上是一个信息检索过程——需要基于 query-key 乘积找到 top-k 相关 token 的 key-value 对。这一发现使得经典的信息检索技术（如乘积量化 PQ）可以被应用于 KVCache 管理。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="_7">整体框架</h3>
+<p>PQCache 采用系统-算法协同设计，将所有 KVCache 保存在 CPU 上，选择性地在解码阶段获取相关的 key-value 对用于自注意力计算。</p>
+<h3 id="_8">六步工作流程</h3>
+<p><strong>Step ❶：预填充阶段</strong>——在每个 LLM 层计算所有输入 token 的 key 和 value（形状 <script type="math/tex">(n, h_{kv}, s, d_h)</script>），异步卸载到 CPU（与后续计算重叠）。</p>
+<p><strong>Step ❷：PQ 构建（CPU）</strong>——对每个头的 key 向量（形状 <script type="math/tex">(s, d_h)</script>）：
+- 将维度 <script type="math/tex">d_h</script> 划分为 <script type="math/tex">m</script> 个子空间，每个子空间维度 <script type="math/tex">d_m = d_h / m</script>
+- 对每个子空间进行 K-Means 聚类，产生 <script type="math/tex">2^b</script> 个质心（centroids）
+- 生成 PQ 码（PQ codes），每个码仅需 <script type="math/tex">b</script> 位存储
+- 生成的结构：质心 <script type="math/tex">(m, 2^b, d_m)</script>，PQ 码 <script type="math/tex">(s, m)</script>
+</p>
+<p><strong>Step ❸：预取（解码阶段）</strong>——在计算前一层 transformer 时，预取下一层的 PQ 重心和码。PQ 重心体积小，可始终保留在 GPU 上。</p>
+<p><strong>Step ❹：PQ 搜索（GPU）</strong>——query 与 PQ 质心进行矩阵乘法，通过 PQ 码聚合得到所有 token 的近似注意力分数，识别 top-k 相关 token。</p>
+<p><strong>Step ❺：获取 key-value 对</strong>——使用 PQ 分数从 CPU（或 GPU 缓存）获取 top-k token 的 key-value 对。</p>
+<p><strong>Step ❻：选择性自注意力计算</strong>——使用检索到的 token 继续注意力计算。</p>
+<h3 id="kvcache_1">KVCache 三段分区</h3>
+<p>将整个 KVCache 分为三个部分：
+1. <strong>初始 token（InitKV）</strong>：直接参与注意力计算，存储在 GPU
+2. <strong>中间 token（MidKV）</strong>：存储在 CPU，通过 PQ 检索
+3. <strong>局部 token（LocalKV）</strong>：最近生成的 token，存储在 GPU，使用滑动窗口</p>
+<h3 id="k-means">适应性 K-Means 聚类</h3>
+<p>为确保 K-Means 聚类不阻塞 GPU 计算，PQCache 提出自适应 K-Means 策略：
+- 聚类时间模型：<script type="math/tex">Time_{clus} = \alpha_1 + \beta_1 \cdot sT</script>
+- GPU 计算时间模型：<script type="math/tex">Time_{comp} = \alpha_2 + \beta_2 \cdot s + \gamma_2 \cdot s^2</script>
+- 最大迭代次数：<script type="math/tex">T_{max} = \frac{\gamma_2 \cdot s^2 + \beta_2 \cdot s + \alpha_2 - \alpha_1}{\beta_1 \cdot s}</script>
+</p>
+<p>通过简单回归拟合系数，根据序列长度自动确定最大迭代次数，使聚类时间与 GPU 计算时间匹配。</p>
+<h3 id="gpu">GPU 缓存优化</h3>
+<p>为最小化 CPU-GPU 通信，PQCache 引入块级 GPU 缓存：
+- 采用 LFU 或 LRU 驱逐策略
+- 以块（128 token）而非单个 token 为粒度管理缓存
+- 命中缓存的 token 直接从 GPU 读取，未命中的从 CPU 获取
+- 4K 和 8K 缓存大小分别减少 TPOT 26.3% 和 32.8%</p>
+<h3 id="-">系统-算法协同设计</h3>
+<ul>
+<li><strong>预填充阶段</strong>：GPU 计算、GPU→CPU 卸载通信、PQ 构建三者并发执行</li>
+<li><strong>解码阶段</strong>：PQ 代码预取与 LLM 计算重叠；仅 top-k token 检索无法重叠</li>
+<li><strong>通信优化</strong>：PQ 码远小于原始 key（如 1/128 或 1/64），可与计算重叠</li>
+</ul>
+<h3 id="_9">复杂度分析</h3>
+<p><strong>预填充阶段</strong>：
+- PQ 构建：<script type="math/tex">O(s h_{kv} m d_m 2^b T)</script>，线性于序列长度
+- K-Means 在空闲 CPU 上运行，与 GPU 计算重叠</p>
+<p><strong>解码阶段</strong>：
+- PQ 搜索：<script type="math/tex">O(2^b d^2 / (hm) + h_{kv} m s)</script>
+- 选择性注意力：<script type="math/tex">O(kd + d^2)</script>
+- 总时间：<script type="math/tex">O(2^b d^2 / (hm) + h_{kv} m s + kd + d^2)</script>
+- 由于 <script type="math/tex">h_{kv} m \ll d</script>，PQCache 实现更高效的解码</p>
+<hr />
+<h2 id="_10">实验结果</h2>
+<h3 id="_11">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama-3.1-8B（128K）、Mistral-7B-Instruct-v0.2（32K）、Llama-3.1-70B</li>
+<li><strong>基准测试</strong>：LongBench（~10K 长度）、InfiniteBench（~100K 长度）、Needle-in-a-Haystack、GSM8k CoT</li>
+<li><strong>基线方法</strong>：H2O、SnapKV、PyramidKV（KVCache dropping）；SPARQ、InfLLM（KVCache offloading）；Oracle</li>
+<li><strong>硬件</strong>：NVIDIA RTX 4090 24GB、Intel Xeon Gold 6330 CPU、PCI-e 1.0 (x16)</li>
+<li><strong>PQ 配置</strong>：LongBench <script type="math/tex">m=2, b=6</script>；InfiniteBench <script type="math/tex">m=4, b=8</script>
+</li>
+</ul>
+<h3 id="_12">模型性能</h3>
+<h4 id="longbenchllama-31-8b128k">LongBench（Llama-3.1-8B，128K）</h4>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>PQCache</th>
+<th>最佳基线</th>
+<th>提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/5 tokens + 1/128 通信</td>
+<td>47.29</td>
+<td>46.48 (PyramidKV)</td>
+<td>+1.74%</td>
+</tr>
+<tr>
+<td>1/10 tokens + 1/128 通信</td>
+<td>47.19</td>
+<td>45.42 (SnapKV)</td>
+<td>+3.90%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>PQCache 与 Oracle 差距 &lt; 0.70%，是其他基线差距的 6.36 倍小</li>
+<li>在问题位置变化（问题置于输入开头）时，PQCache 比 SnapKV/PyramidKV 提升 +7.10%</li>
+</ul>
+<h4 id="infinitebenchllama-31-8b128k">InfiniteBench（Llama-3.1-8B，128K）</h4>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>PQCache</th>
+<th>最佳基线</th>
+<th>提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/5 tokens + 1/64 通信</td>
+<td>47.31</td>
+<td>46.61 (PyramidKV)</td>
+<td>+1.50%</td>
+</tr>
+<tr>
+<td>1/10 tokens + 1/64 通信</td>
+<td>46.80</td>
+<td>44.74 (PyramidKV)</td>
+<td><strong>+4.60%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>PQCache 与 Oracle 差距 &lt; 1.71%，是其他基线差距的 3.58 倍小</li>
+<li>在大多数数据集上表现最佳</li>
+</ul>
+<h4 id="needle-in-a-haystack131k">Needle-in-a-Haystack（131K 上下文）</h4>
+<ul>
+<li>PQCache 在大规模场景下表现优异，与 Full/Oracle 相当</li>
+<li>SnapKV(C) 和 PyramidKV(C) 依赖问题在输入末尾的假设，PQCache 不依赖此假设</li>
+</ul>
+<h4 id="llama-31-70blongbench">大模型（Llama-3.1-70B，LongBench）</h4>
+<ul>
+<li>PQCache 与非压缩基线差距可忽略（Full: 52.89, PQCache Same: 52.86）</li>
+<li>即使 CPU 资源减半，PQCache 已达到与非压缩基线可比的性能</li>
+</ul>
+<h4 id="gsm8k-cot">GSM8k CoT 推理</h4>
+<ul>
+<li>PQCache 在不同 token 数量下均优于 H2O、SnapKV、PyramidKV、SPARQ、InfLLM</li>
+</ul>
+<h3 id="_13">效率分析</h3>
+<h4 id="_14">端到端延迟</h4>
+<ul>
+<li><strong>TT2T（Time To 2nd Token）</strong>：PQCache 几乎实现最低延迟</li>
+<li><strong>TPOT（Time Per Output Token）</strong>：PQCache 维持可接受的延迟，且不随序列长度增加</li>
+</ul>
+<h4 id="gpu_1">GPU 缓存效果</h4>
+<ul>
+<li>4K 缓存：TPOT 减少 26.3%</li>
+<li>8K 缓存：TPOT 减少 32.8%</li>
+<li>缓存命中率约 0.6（LRU/LFU 相似）</li>
+</ul>
+<h4 id="k-means_1">K-Means 迭代与性能</h4>
+<ul>
+<li>更多迭代通常提升准确度但增加延迟</li>
+<li>自适应策略提供最小 TT2T，且表现良好</li>
+<li>提供灵活性接口让用户平衡模型质量与延迟</li>
+</ul>
+<h3 id="pq">PQ 配置影响</h3>
+<ul>
+<li>PQCache 对多种配置鲁棒，2×6（<script type="math/tex">m=2, b=6</script>）配置表现最佳</li>
+<li>
+<script type="math/tex">m \times b</script> 总量决定向量空间大小，需平衡表示能力与聚类开销</li>
+</ul>
+<h3 id="minference">与 MInference 结合</h3>
+<ul>
+<li>PQCache 可与预填充加速方法 MInference 结合</li>
+<li>虽然稀疏注意力影响后续解码，PQCache 仅显示轻微性能下降</li>
+<li>展示了与先进预填充加速方法的强兼容性</li>
+</ul>
+<hr />
+<h2 id="_15">优势</h2>
+<ol>
+<li>
+<p><strong>首个将信息检索技术引入 LLM 推理的工作</strong>：开创性地将 PQ 应用于 KVCache 管理，为高效 LLM 推理开辟新方向。</p>
+</li>
+<li>
+<p><strong>系统-算法协同设计</strong>：精心设计的重叠和缓存机制将计算和通信开销降至最低，实现接近零额外延迟。</p>
+</li>
+<li>
+<p><strong>优异的模型质量</strong>：在 InfiniteBench 上比现有方法提升 4.60%，与 Oracle 差距极小，且不依赖特定假设（如问题位置）。</p>
+</li>
+<li>
+<p><strong>不依赖特定假设</strong>：与 SnapKV/PyramidKV 不同，PQCache 不假设问题位于输入末尾，在非标准场景下表现更稳健。</p>
+</li>
+<li>
+<p><strong>可扩展性好</strong>：在更大模型（70B）上表现接近非压缩基线，且随模型增大，PQCache 的性能优势更明显（CPU 计算不变，GPU 计算增强）。</p>
+</li>
+<li>
+<p><strong>低系统延迟</strong>：通过自适应 K-Means、PQ 码预取、GPU 缓存等系统优化，实现可接受的延迟且不随序列长度增加。</p>
+</li>
+<li>
+<p><strong>与现有系统兼容</strong>：可与 MInference、vLLM、DistServe 等系统结合使用。</p>
+</li>
+<li>
+<p><strong>灵活性与可调性</strong>：提供接口让用户根据需求平衡模型质量与延迟（如设置 K-Means 迭代次数）。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_16">局限</h2>
+<ol>
+<li>
+<p><strong>超参数调优复杂</strong>：<script type="math/tex">m</script>（PQ 分区数）、<script type="math/tex">b</script>（PQ 码位数）、top-k 选择数、GPU 缓存大小等超参数需要针对不同场景调优，论文提供了一些指导原则但缺乏全面的自动调优机制。</p>
+</li>
+<li>
+<p><strong>CPU 计算能力依赖</strong>：PQCache 的性能在一定程度上受 CPU 计算能力限制，因为需要限制 K-Means 迭代次数以避免阻塞 GPU 计算。在 CPU 计算能力有限的环境中可能影响模型质量。</p>
+</li>
+<li>
+<p><strong>代码开源缺失</strong>：论文未提供开源代码（代码 URL 为空），可复现性受限。</p>
+</li>
+<li>
+<p><strong>仅覆盖解码阶段</strong>：PQCache 主要优化解码阶段，虽然可与 MInference 等预填充加速方法结合，但本身不直接优化预填充。</p>
+</li>
+<li>
+<p><strong>长输出序列和多轮对话限制</strong>：当前 PQCache 基于输入构建 PQ 结构，对于长输出或多轮对话，输入的 PQ 结构可能无法捕获输出 token 的新信息，需要周期性重建 PQ。</p>
+</li>
+<li>
+<p><strong>硬件依赖性</strong>：实验基于特定硬件配置（RTX 4090、PCI-e 1.0），在不同硬件环境下的性能可能不同。</p>
+</li>
+<li>
+<p><strong>PQ 精度损失</strong>：作为近似方法，PQ 搜索可能遗漏某些重要 token，虽然实验表明精度损失较小，但在极端场景下可能影响性能。</p>
+</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_17">相关关键词</h3>
+<ul>
+<li><code>quantization</code>：PQCache 的核心量化技术</li>
+<li><code>kv_cache_quant</code>：KVCache 量化与管理</li>
+<li><code>information_retrieval</code>：将信息检索技术引入 LLM 推理</li>
+<li><code>selective_attention</code>：选择性注意力机制</li>
+</ul>
+<h3 id="_18">研究方向</h3>
+<ol>
+<li>
+<p><strong>信息检索与 LLM 推理的交叉融合</strong>：PQCache 开创了将信息检索技术（PQ）应用于 LLM 推理的先河，未来可探索更多检索技术（如 IVF、HNSW、图索引）在 KVCache 管理中的应用。</p>
+</li>
+<li>
+<p><strong>KVCache 管理的系统-算法协同设计</strong>：PQCache 展示了系统优化（重叠、缓存、预取）与算法设计（PQ）的协同价值，这与 EfficientPaper 中关注的高效实现方向高度一致。</p>
+</li>
+<li>
+<p><strong>自适应 KVCache 压缩策略</strong>：PQCache 的自适应 K-Means 策略为根据硬件条件和任务需求动态调整压缩参数提供了参考，未来可探索更灵活的自适应压缩机制。</p>
+</li>
+<li>
+<p><strong>长上下文推理效率</strong>：PQCache 在 128K 上下文上的成功表明，信息检索技术可以有效解决长上下文推理的效率问题，这与 EfficientPaper 中"长上下文效率"的研究方向相关。</p>
+</li>
+<li>
+<p><strong>KVCache 量化与压缩的正交性</strong>：PQCache 与 KVCache 量化（如 KIVI、KVQuant）是正交的，未来可探索将 PQ 与量化技术结合，进一步提升压缩效率。</p>
+</li>
+<li>
+<p><strong>GPU-CPU 内存层次的调度优化</strong>：PQCache 的 GPU-CPU 通信调度策略（重叠、预取、缓存）为其他 LLM 推理系统提供了参考，可探索更智能的内存层次调度机制。</p>
+</li>
+</ol>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，内容基于论文原文，仅供参考。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,69 +161,170 @@
   
                 <h1 id="cacheflow-efficient-llm-serving-with-3d-parallel-kv-cache-restoration">CacheFlow: Efficient LLM Serving with 3D-Parallel KV Cache Restoration</h1>
 <blockquote>
-<p>Sean Nian, Jiahao Fang, Qilong Feng, Zhiyu Wu, Fan Lai</p>
+<p>本 note 由 AI Agent 自动生成，基于论文原文提取。如有错误请以原文为准。</p>
 </blockquote>
-<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>KV cache restoration has emerged as a dominant bottleneck in serving long-context LLM workloads, including multi-turn conversations, retrieval-augmented generation, and agentic pipelines. Existing approaches treat restoration as a per-request tradeoff between recomputation and I/O transfer, recomputing KV states from scratch or offloading them from external storage (e.g., CPU memory or remote machines). However, existing advances fail to exploit parallelism across tokens, layers, and distributed deployments, and critically ignore resource contention under batched serving. We present CacheFlow, a KV cache restoration framework that rethinks cache restoration as a multi-dimensional parallel execution problem. CacheFlow introduces a unified 3D parallelism abstraction across tokens, layers, and GPUs, enabling fine-grained overlap of recomputation and I/O along the structural dependencies of transformer inference. At the core of CacheFlow is a batch-aware two-pointer scheduler that jointly optimizes compute and I/O allocation across requests by prioritizing operations with the highest marginal reduction in recomputation cost. Our evaluations show that CacheFlow reduces Time-To-First-Token (TTFT) by 10%-62% over existing advances across diverse models, workloads, and hardware.</p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文旨在解决长上下文大语言模型服务中KV缓存恢复的瓶颈问题。作者提出了CacheFlow框架，通过引入跨令牌、层和GPU的统一3D并行抽象，将缓存恢复重构为多维并行执行问题，并采用批处理感知的双指针调度器优化计算与I/O分配。实验表明，CacheFlow在不同模型、工作负载和硬件上，将首令牌生成时间（TTFT）降低了10%至62%。</p>
+<h2 id="_1">一句话总结</h2>
+<p>CacheFlow 将 KV cache 恢复重新定义为多维并行执行问题，通过 3D 并行（token/layer/GPU）和 batch-aware 双指针调度器，在不同模型、工作负载和硬件上将 TTFT 降低 10%–62%。</p>
 <hr />
-<h2 id="_1">论文详细总结</h2>
-<h3 id="1">1. 研究背景与动机</h3>
-<p>KV 缓存恢复已成为长上下文 LLM 服务中的主要瓶颈，出现在多轮对话、RAG 和智能体流水线等场景。现有方法将恢复视为每个请求的"重计算与 I/O 传输之间的权衡"，未能利用 token、层和分布式部署之间的并行性，且忽略了批处理服务下的资源竞争问题。</p>
-<h3 id="2-cacheflow">2. CacheFlow 核心思想</h3>
-<p>将缓存恢复重新定义为<strong>多维并行执行问题</strong>，而非简单的逐请求权衡。核心架构围绕<strong>统一的 3D 并行抽象</strong>展开，涵盖 token、层和 GPU 三个维度。</p>
-<h3 id="3">3. 关键技术</h3>
-<table>
-<thead>
-<tr>
-<th>技术</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>3D 并行性</strong></td>
-<td>在 token、layer、GPU 三个维度同时引入并行</td>
-</tr>
-<tr>
-<td><strong>批量感知双指针调度器</strong></td>
-<td>batch-aware two-pointer scheduler，优先处理边际重计算成本降低最高的操作</td>
-</tr>
-<tr>
-<td><strong>结构性依赖感知重叠</strong></td>
-<td>根据 transformer 推理的结构依赖关系实现精细时间重叠</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4">4. 实验结果</h3>
-<table>
-<thead>
-<tr>
-<th>指标</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TTFT 降低</td>
-<td><strong>10% 至 62%</strong></td>
-</tr>
-<tr>
-<td>适用范围</td>
-<td>多种模型、工作负载和硬件配置</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5">5. 核心贡献</h3>
+<h2 id="abstract">摘要 (Abstract)</h2>
+<p>KV cache 恢复已成为长上下文 LLM 服务（多轮对话、RAG、agentic pipelines）的主要瓶颈。现有方法将恢复视为每个请求的重计算与 I/O 传输之间的权衡，未能利用 token、层和分布式部署之间的并行性，且忽略批处理服务下的资源竞争。CacheFlow 引入统一的 3D 并行抽象，跨 token、layer 和 GPU，实现沿 transformer 推理结构依赖的精细重计算与 I/O 重叠。核心是 batch-aware 双指针调度器，通过优先处理边际重计算成本降低最高的操作来联合优化计算和 I/O 分配。评测显示 CacheFlow 将 TTFT 降低 10%–62%。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
 <ol>
-<li>首个将 KV 缓存恢复建模为<strong>多维并行问题</strong>的框架</li>
-<li>设计统一的 <strong>3D 并行抽象</strong>，打通 token、层、GPU 三个并行维度</li>
-<li>开发<strong>批量感知双指针调度算法</strong>，优化资源分配</li>
-<li>实现显著的 TTFT 降低（10%-62%），验证框架有效性和通用性</li>
+<li><strong>KV cache 恢复是关键延迟瓶颈</strong>：长上下文请求的 KV cache 恢复直接决定 TTFT</li>
+<li><strong>现有方法的局限</strong>：</li>
+<li><strong>重计算</strong>：注意力的二次复杂度导致后续 token 成本不成比例增长，2000 token 重计算延迟与 500 token 相当</li>
+<li><strong>I/O 传输</strong>：受带宽限制，10 Gbps 下延迟可能超过重计算</li>
+<li><strong>混合方法</strong>：仍为 per-request 优化，未考虑 batch 级资源竞争</li>
+<li><strong>未利用的结构性并行</strong>：</li>
+<li>Token 级：因果依赖允许早期 token 重计算与后期 token I/O 重叠</li>
+<li>Layer 级：低层重计算可与高层 KV cache 传输并行</li>
+<li>GPU 级：分布式部署可并行恢复</li>
 </ol>
+<hr />
+<h2 id="_3">方法</h2>
+<h3 id="1-3d">1. 3D 并行抽象</h3>
+<p><strong>统一的两指针 meet-in-the-middle 策略</strong>：从依赖图两端执行重计算和 I/O 加载。</p>
+<h4 id="token-wise">Token-wise 并行性</h4>
+<ul>
+<li>将前缀分为 ⌈Nc/C⌉ 个块（C 对齐 FlashAttention 块大小，通常 512）</li>
+<li>计算指针从块 0 向前重计算，I/O 指针从末尾向后加载</li>
+<li>在中间块汇合，无冗余工作</li>
+<li><strong>对长序列特别有效</strong>：优先为后期 token 执行 I/O，避免不成比例的重计算成本</li>
+</ul>
+<h4 id="layer-wise">Layer-wise 并行性</h4>
+<ul>
+<li>前向指针 ℓ_fwd 从层 0 向上重计算，I/O 指针 ℓ_io 从层 L-1 向下加载</li>
+<li>当 ℓ_fwd 到达已加载的层时确定切换层 ℓ</li>
+<li><strong>对短序列更有效</strong>：重计算成本主要由固定开销主导</li>
+</ul>
+<h4 id="_4">自适应并行策略</h4>
+<ul>
+<li>离线 profiling 确定阈值 LΔ：当 Ttoken(N) ≤ Tlayer(N) 时切换到 token-wise</li>
+<li>LΔ 主要取决于硬件特性，与内容无关</li>
+</ul>
+<h3 id="2-multi-gpu-3d">2. Multi-GPU 并行（3D 扩展）</h3>
+<p><strong>关键洞察</strong>：KV cache 恢复可通过轻量级边界激活（boundary activations）解耦和并行化。</p>
+<ul>
+<li>每个 GPU 仅存储下一层的输入状态（比所有层的 KV cache 小得多）</li>
+<li>每个 GPU 独立恢复其本地分片的 KV cache</li>
+<li><strong>理论加速</strong>：S 个 pipeline stage 可实现理想线性加速 T*/S</li>
+</ul>
+<h3 id="3-batch-level">3. Batch-level 调度</h3>
+<p><strong>Batch-aware 两指针调度</strong>：
+- 每个请求维护自己的计算和 I/O 指针
+- I/O 调度优先处理剩余重计算成本最大的请求（长前缀）
+- <strong>原因</strong>：注意力的二次成本使得长请求的 KV 传输边际收益更高
+- 渐进式 chunk 级调度，动态适应资源可用性和请求进度</p>
+<p><strong>理论最优性</strong>：最优恢复时间 = Tcomp 和 Tio 的调和平均，T* ≤ min(Tcomp, Tio)</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="1">1. 端到端性能</h3>
+<table>
+<thead>
+<tr>
+<th>Baseline</th>
+<th>CacheFlow 加速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vLLM</td>
+<td>1.1×–1.7×</td>
+</tr>
+<tr>
+<td>SGLang</td>
+<td>1.1×–1.7×</td>
+</tr>
+<tr>
+<td>Cake</td>
+<td>1.1×–1.7×</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在 LMSys-Chat 和 SWE-Bench（长上下文）上增益最大</li>
+<li><strong>尾部延迟（P90–P99）改善更显著</strong>：batch-aware 调度缓解 straggler 效应</li>
+</ul>
+<h3 id="2">2. 资源利用率</h3>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>GPU 利用率</th>
+<th>I/O 利用率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vLLM</td>
+<td>91%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>LMCache</td>
+<td>10%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>CacheFlow</td>
+<td>88%</td>
+<td>78%</td>
+</tr>
+</tbody>
+</table>
+<p>CacheFlow 有效重叠计算和 I/O，同时保持高利用率。</p>
+<h3 id="3">3. 消融实验</h3>
+<ul>
+<li><strong>3D 并行性</strong>：禁用 multi-GPU 后延迟从 0.21s 升至 0.29s（38% 增加），但即使仅 2D 并行也优于 vLLM 24%</li>
+<li><strong>I/O 带宽</strong>：40 Gbps 和 80 Gbps 下分别实现 1.7× 和 1.5× 加速</li>
+<li><strong>GPU 硬件</strong>：L40S 和 A100 上分别实现 1.6× 和 1.5× 加速</li>
+<li><strong>Batch Size</strong>：在 batch=2,4,8 下实现 1.6×–2.6× 加速，batch 越大增益越明显</li>
+</ul>
+<h3 id="4">4. 模型与工作负载</h3>
+<ul>
+<li><strong>模型</strong>：Qwen3-8B, Qwen3-30B-A3B（MoE）, Llama-3.1-8B</li>
+<li><strong>工作负载</strong>：LMSYS-Chat, WildChat, SWE-Bench</li>
+<li><strong>硬件</strong>：NVIDIA L40S (46GB), A100 (40GB), H100 (80GB)</li>
+<li><strong>带宽</strong>：80/40/10 Gbps</li>
+</ul>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>显著降低 TTFT</strong>：10%–62%，在长上下文和尾部延迟上效果更明显</li>
+<li><strong>理论最优性</strong>：两指针策略达到 Tcomp 和 Tio 的调和平均最优</li>
+<li><strong>多维并行</strong>：3D 并行充分利用 token/layer/GPU 结构依赖</li>
+<li><strong>资源利用率高</strong>：同时保持高 GPU 和 I/O 利用率</li>
+<li><strong>通用性强</strong>：适用于多种模型、工作负载和硬件</li>
+<li><strong>即插即用</strong>：基于 vLLM/LMCache 实现，无需修改模型或应用</li>
+</ol>
+<hr />
+<h2 id="_7">局限性</h2>
+<ol>
+<li><strong>依赖外部存储</strong>：KV cache 需要从 CPU/SSD/远端加载，对带宽敏感</li>
+<li><strong>固定阈值 LΔ</strong>：切换策略基于离线 profiling，可能不适用于所有场景</li>
+<li><strong>未考虑 KV cache 压缩</strong>：与量化/剪枝等方法正交</li>
+<li><strong>仅优化 TTFT</strong>：未直接优化 decode 阶段</li>
+<li><strong>理论加速</strong>：S 阶段的线性加速可能因负载不均衡而打折</li>
+</ol>
+<hr />
+<h2 id="_8">关联工作</h2>
+<ul>
+<li><strong>KV cache 压缩</strong>：DiffKV, BTP, R-KV, BumbleBee</li>
+<li><strong>KV cache 卸载/恢复</strong>：LMCache, KVcached, HCache, Continumm, KVFlow, Mooncake</li>
+<li><strong>LLM 服务系统</strong>：vLLM, SGLang, Cake</li>
+<li><strong>重叠优化</strong>：FlashAttention, PagedAttention</li>
+</ul>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>KV Cache 生命周期管理</strong>：KV cache 恢复、卸载、多维并行</li>
+<li><strong>推理系统优化</strong>：多维调度、资源利用、batch 感知</li>
+<li><strong>重叠优化</strong>：计算与 I/O 的精细重叠</li>
+</ul>
+<hr />
+<p><em>Generated by AI Agent on 2026-06-04. Source: arXiv:2604.25080v1</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

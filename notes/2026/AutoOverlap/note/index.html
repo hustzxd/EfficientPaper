@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,200 @@
 <p>Xinwei Qiang, Yue Guan, Zhengding Hu, Yufei Ding, Adnan Aziz</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>Communication has become a first-order bottleneck in large-cale GPU workloads, and existing distributed compilers address it mainly by overlapping whole compute and communication kernels at the stream level. This coarse granularity incurs extra kernel launches, forces device-wide synchronizations at kernel boundaries, and leaves substantial slack when the slowest tile or kernel stretches the communication tail. We present AutoOverlap, a compiler and runtime that enables automatic fine-grained overlap inside a single fused kernel. AutoOverlap introduces a communication chunk abstraction that decouples communication granularity from kernel structure and backend mechanisms, allowing chunk-level plans to be ported from existing distributed compilers, written directly by users, or instantiated from reusable templates. Given a local Triton kernel and a chunk schedule, AutoOverlap performs transformations to align computation with chunk availability. Implemented as a source-to-source compiler on Triton, AutoOverlap delivers an average end-to-end speedup of 1.3<script type="math/tex">\times</script> and up to 4.7<script type="math/tex">\times</script> on multi-GPU workloads.</p>
+<p>Communication has become a first-order bottleneck in large-scale GPU workloads, and existing distributed compilers address it mainly by overlapping whole compute and communication kernels at the stream level. This coarse granularity incurs extra kernel launches, forces device-wide synchronizations at kernel boundaries, and leaves substantial slack when the slowest tile or kernel stretches the communication tail. We present AutoOverlap, a compiler and runtime that enables automatic fine-grained overlap inside a single fused kernel. AutoOverlap introduces a communication chunk abstraction that decouples communication granularity from kernel structure and backend mechanisms, allowing chunk-level plans to be ported from existing distributed compilers, written directly by users, or instantiated from reusable templates. Given a local Triton kernel and a chunk schedule, AutoOverlap performs transformations to align computation with chunk availability. Implemented as a source-to-source compiler on Triton, AutoOverlap delivers an average end-to-end speedup of 1.3× and up to 4.7× on multi-GPU workloads.</p>
+<h2 id="_1">一句话总结</h2>
+<p>AutoOverlap 是一个基于 Triton 的编译器和运行时，通过通信块（chunk）抽象实现内核级别的细粒度计算-通信重叠，平均加速 1.3×，最高 4.7×，解决了传统内核级重叠的同步开销和通信尾部延迟问题。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>通信瓶颈</strong>：在多 GPU 系统中，通信操作（AllGather、ReduceScatter、All-to-All）频繁主导端到端延迟，即使使用 NVLink/NVSwitch 高带宽互连。</li>
+<li><strong>现有方法的局限</strong>（内核级重叠）：</li>
+<li><strong>额外内核启动</strong>：每个通信阶段需要额外的内核启动</li>
+<li><strong>设备级同步</strong>：内核边界强制设备级同步</li>
+<li><strong>SM 空闲</strong>：最慢的 tile 延伸通信尾部，导致 SM 空闲</li>
+<li>
+<p><strong>通信尾部</strong>：粗粒度重叠在时间线末尾留下长段通信，几乎无重叠</p>
+</li>
+<li>
+<p><strong>核心问题</strong>：如何在<strong>单个融合内核</strong>内实现<strong>细粒度</strong>计算-通信重叠？</p>
+</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-communication-chunk">1. 通信块抽象（Communication Chunk）</h3>
+<p><strong>核心思想</strong>：将通信粒度从内核结构和后端机制中解耦，允许灵活匹配 tile 生成数据的方式和通信后端消费数据的方式。</p>
+<p><strong>关键特性</strong>：
+- <strong>逻辑数据块</strong>：表示与特定通信操作关联的逻辑数据块，以及产生或消费它的 tile
+- <strong>灵活粒度</strong>：不假设 tile 级或全内核粒度总是合适的
+- <strong>设计空间</strong>：暴露少量原则性旋钮（chunk size、backend 选择、tile 顺序）</p>
+<h3 id="2-adaptive-communication-backend">2. 自适应通信后端（❶ Adaptive Communication Backend）</h3>
+<ul>
+<li>从融合内核内部直接启动通信，而非委托给外部通信库</li>
+<li>编译器显式控制每个传输使用的硬件后端：</li>
+<li><strong>Copy Engine</strong>：DMA 传输</li>
+<li><strong>Tensor Memory Accelerator</strong>：张量内存加速器</li>
+<li><strong>Load/Store on CUDA Cores</strong>：CUDA 核心上的加载/存储</li>
+</ul>
+<h3 id="3-tile-adaptive-intra-chunk-tile-schedule">3. 自适应 Tile 调度（❷ Adaptive Intra-Chunk Tile Schedule）</h3>
+<ul>
+<li>重新组织内核的 tile 执行以跟踪通信进度</li>
+<li>保留寄存器、共享内存和缓存层次的局部性</li>
+<li>减少 SM 空闲时间</li>
+</ul>
+<h3 id="4-adaptive-chunk-size">4. 自适应块大小（❸ Adaptive Chunk Size）</h3>
+<ul>
+<li>调整块大小以平衡链路吞吐量和同步成本</li>
+<li>减少通信尾部延迟</li>
+</ul>
+<h3 id="5">5. 编译器流水线</h3>
+<ul>
+<li><strong>输入</strong>：标准 Triton 内核 + 高层通信计划</li>
+<li><strong>输出</strong>：融合分布式内核（支持细粒度重叠）</li>
+<li><strong>自优化</strong>：chunk 间和 chunk 内自动调优（块大小、后端选择、SM 分配、tile 顺序）</li>
+<li><strong>运行时</strong>：轻量级运行时，与 PyTorch Distributed 无缝集成</li>
+</ul>
+<h2 id="_4">技术细节</h2>
+<h3 id="_5">编译器实现</h3>
+<ul>
+<li><strong>源到源编译器</strong>：基于 Triton，将标准内核转换为融合分布式内核</li>
+<li><strong>变换</strong>：重组 tile 执行以对齐 chunk 可用性</li>
+<li><strong>后端选择</strong>：自动选择适当的通信后端</li>
+<li><strong>自动调优</strong>：chunk 间和 chunk 内调优</li>
+</ul>
+<h3 id="_6">与现有方法的对比</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>粒度</th>
+<th>计算</th>
+<th>通信</th>
+<th>调度</th>
+<th>性能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alpa</td>
+<td>内核</td>
+<td>自动</td>
+<td>自动</td>
+<td>模板</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Mercury</td>
+<td>内核</td>
+<td>自动</td>
+<td>自动</td>
+<td>自动</td>
+<td>✔✔</td>
+</tr>
+<tr>
+<td>Flux</td>
+<td>Tile</td>
+<td>手动</td>
+<td>手动</td>
+<td>手动</td>
+<td>✔✔</td>
+</tr>
+<tr>
+<td>AsyncTP</td>
+<td>Tile</td>
+<td>手动</td>
+<td>手动</td>
+<td>手动</td>
+<td>✔✔</td>
+</tr>
+<tr>
+<td>Syncopate</td>
+<td>Tile</td>
+<td>自动</td>
+<td>手动</td>
+<td>手动</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>AutoOverlap</strong></td>
+<td><strong>Chunk</strong></td>
+<td><strong>自动</strong></td>
+<td><strong>自动</strong></td>
+<td><strong>自动</strong></td>
+<td><strong>✔✔✔</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">评估配置</h3>
+<ul>
+<li><strong>工作负载</strong>：多 GPU 分布式工作负载</li>
+<li><strong>操作</strong>：常见算子（GEMM、AllGather、ReduceScatter 等）</li>
+<li><strong>硬件</strong>：多 GPU 系统（NVLink/NVSwitch）</li>
+</ul>
+<h2 id="_8">主要结果</h2>
+<h3 id="_9">性能提升</h3>
+<ul>
+<li><strong>平均加速</strong>：1.3×（常见算子）</li>
+<li><strong>最高加速</strong>：4.7×（最佳情况）</li>
+</ul>
+<h3 id="_10">关键发现</h3>
+<ol>
+<li><strong>细粒度重叠</strong>：单个融合内核内的细粒度重叠显著优于内核级重叠</li>
+<li><strong>减少同步</strong>：避免额外内核启动和设备级同步</li>
+<li><strong>减少 SM 空闲</strong>：通过自适应 tile 调度减少 SM 空闲时间</li>
+<li><strong>减少通信尾部</strong>：通过自适应块大小减少通信尾部延迟</li>
+<li><strong>通用性</strong>：在多样化的分布式工作负载中保持高性能</li>
+</ol>
+<h2 id="_11">优点与局限</h2>
+<h3 id="_12">优点</h3>
+<ol>
+<li><strong>细粒度重叠</strong>：单个融合内核内实现细粒度计算-通信重叠</li>
+<li><strong>通信块抽象</strong>：灵活的 chunk 抽象，解耦通信粒度和内核结构</li>
+<li><strong>自适应</strong>：自适应通信后端、tile 调度和块大小</li>
+<li><strong>通用性</strong>：在多样化工作负载中保持高性能</li>
+<li><strong>易集成</strong>：与 PyTorch Distributed 无缝集成</li>
+<li><strong>自动调优</strong>：chunk 间和 chunk 内自动调优</li>
+</ol>
+<h3 id="_13">局限</h3>
+<ol>
+<li><strong>Triton 依赖</strong>：基于 Triton 编译器，可能不适用于其他编译器</li>
+<li><strong>硬件特定</strong>：在 NVLink/NVSwitch 上优化，其他互连可能需要调整</li>
+<li><strong>实现复杂性</strong>：融合内核的编译和运行时实现复杂</li>
+<li><strong>评估范围</strong>：主要在常见算子上评估，更复杂的工作负载需进一步测试</li>
+<li><strong>无代码开源</strong>：代码 URL 为空，可能尚未开源</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>AutoOverlap 属于 <strong>Overlap</strong>（<code>overlap</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>细粒度重叠</strong>：单个融合内核内的细粒度计算-通信重叠</li>
+<li><strong>通信块抽象</strong>：灵活的 chunk 抽象，解耦通信粒度和内核结构</li>
+<li><strong>自适应</strong>：自适应通信后端、tile 调度和块大小</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>FlashOverlap</strong>（2026）：FlashAttention 的重叠优化
+- <strong>FlashPrefill</strong>（2026）：预填充阶段的重叠优化
+- <strong>Flux</strong>（2024）：手动 tile 级重叠
+- <strong>AsyncTP</strong>（2024）：手动 tile 级重叠
+- <strong>Alpa</strong>（2022）：内核级分布式编译
+- <strong>Mercury</strong>（2025）：内核级分布式编译</p>
+<h2 id="_14">可复现/实现要点</h2>
+<ol>
+<li><strong>通信块抽象</strong>：逻辑数据块 + tile 关系</li>
+<li><strong>Triton 编译器</strong>：源到源编译，生成融合分布式内核</li>
+<li><strong>自适应通信后端</strong>：Copy Engine、Tensor Memory Accelerator、CUDA Cores</li>
+<li><strong>自适应 Tile 调度</strong>：跟踪通信进度，保留局部性</li>
+<li><strong>自适应块大小</strong>：平衡链路吞吐量和同步成本</li>
+<li><strong>运行时</strong>：轻量级运行时，与 PyTorch Distributed 集成</li>
+</ol>
+<h2 id="_15">个人备注</h2>
+<ul>
+<li>AutoOverlap 的核心洞察是：<strong>细粒度重叠（内核级别）比粗粒度重叠（内核级别）更有效</strong>，因为它减少了同步开销和 SM 空闲时间。</li>
+<li>通信块抽象是一个重要的设计选择，它将通信粒度从内核结构中解耦，允许灵活的重叠策略。</li>
+<li>自适应通信后端、tile 调度和块大小是关键优化，它们使 AutoOverlap 在多样化工作负载中保持高性能。</li>
+<li>论文来自 Meta 和 UC San Diego，且基于 Triton 编译器，说明这是一个实用的系统。</li>
+<li>值得关注的未来方向：(1) 在更复杂的工作负载上的验证；(2) 在其他编译器上的应用；(3) 端到端的自动调优。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

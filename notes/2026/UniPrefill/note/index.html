@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -164,71 +166,288 @@
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
 <h2 id="abstract">Abstract</h2>
 <p>As large language models (LLMs) continue to advance rapidly, they are becoming increasingly capable while simultaneously demanding ever-longer context lengths. To improve the inference efficiency of long-context processing, several novel low-complexity hybrid architectures have recently been proposed, effectively alleviating the computational burden of long-context inference. However, existing research on long-context prefill acceleration remains predominantly focused on sparse attention mechanisms, which achieve their maximum speedup only on full-attention models. When transferred to emerging architectures--such as linear/full attention hybrids or sliding window/full attention hybrids--these prefill acceleration approaches suffer significant performance degradation. Furthermore, such methods are generally incompatible with continuous batching, making them difficult to integrate into modern inference engines such as vLLM. To this end, we propose UniPrefill, a prefill acceleration framework applicable to virtually any model architecture, which directly accelerates the model's computation at the token level. We further implement UniPrefill as a continuous batching operator and extend vLLM's scheduling strategy to natively support prefill-decode co-processing and tensor parallel for UniPrefill, enabling its seamless integration into vLLM. UniPrefill achieves up to 2.1x speedup in Time-To-First-Token (TTFT), with the acceleration becoming increasingly pronounced as the number of concurrent requests grows.</p>
-<p>用last n query预测重要性，后续层都沿用这个重要性，属于sparse prefill attention</p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文针对长上下文大语言模型推理效率低的问题，提出了一种通用的预填充加速框架UniPrefill。该方法通过块级动态稀疏化技术，在令牌级别直接加速模型计算，适用于多种模型架构（如线性/全注意力混合架构）。UniPrefill被实现为连续批处理算子，并扩展了vLLM的调度策略以支持预填充-解码协同处理和张量并行，实现了与现代推理引擎的无缝集成。实验表明，UniPrefill在首令牌时间（TTFT）上实现了最高2.1倍的加速，且随着并发请求数量的增加，加速效果更加显著。</p>
+<h2 id="_1">一句话总结</h2>
+<p>UniPrefill 提出了一种<strong>通用的、与模型架构无关的预填充加速框架</strong>，通过块级动态稀疏化（block-wise dynamic sparsification）在全注意力层估算 token 重要性并将稀疏性传播至所有后续层（包括线性注意力、滑动窗口注意力和 FFN 层），同时降低注意力和 GEMM 计算量，实现高达 2.1 倍的首令牌时间（TTFT）加速，并与 vLLM 连续批处理调度器无缝集成。</p>
 <hr />
-<h2 id="_1">论文详细总结</h2>
-<h3 id="1">1. 研究背景与动机</h3>
-<p>随着 LLM 对上下文长度需求增长，现有预填充加速方法主要依赖稀疏注意力机制，但存在以下问题：
-- 仅在全注意力模型上达到最佳加速效果
-- 迁移至混合架构（线性/全注意力、滑动窗口/全注意力）时性能显著下降
-- 与连续批处理不兼容，难以集成到 vLLM 等现代推理引擎</p>
-<h3 id="2-uniprefill">2. UniPrefill 核心思想</h3>
-<p><strong>通用预填充加速框架</strong>，适用于几乎所有模型架构，以 token 级计算为核心，实现为连续批处理算子。</p>
-<h3 id="3">3. 关键技术</h3>
+<h2 id="_2">摘要翻译</h2>
+<p>随着大语言模型（LLM）的快速发展，它们的能力不断提升，同时对上下文长度的需求也在不断增长。为了提高长上下文处理的推理效率，近期提出了若干新型低复杂度混合架构，有效缓解了长上下文推理的计算负担。然而，现有长上下文预填充加速研究主要集中在稀疏注意力机制上，这些方法仅在全注意力模型上达到最大加速效果。当迁移到新兴架构（如线性/全注意力混合架构或滑动窗口/全注意力混合架构）时，这些预填充加速方法的性能会显著下降。此外，这些方法通常与连续批处理不兼容，难以集成到 vLLM 等现代推理引擎中。为此，我们提出 UniPrefill，一个适用于几乎所有模型架构的预填充加速框架，它在 token 级别直接加速模型计算。我们进一步将 UniPrefill 实现为连续批处理算子，并扩展 vLLM 的调度策略以原生支持预填充-解码协同处理和张量并行，使其能够无缝集成到 vLLM 中。UniPrefill 在首令牌时间（TTFT）上实现了最高 2.1 倍的加速，且随着并发请求数量的增加，加速效果更加显著。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="1-llm">1. LLM 长上下文推理的效率瓶颈</h3>
+<p>随着 LLM 在文档理解、代码生成、多轮对话等应用中的广泛部署，上下文长度需求从数千 token 增长到数十万甚至百万 token。标准的 Softmax 自注意力机制（Self-Attention）随序列长度呈二次方复杂度增长，导致长上下文推理的计算成本极高。</p>
+<h3 id="2">2. 混合架构的兴起与现有加速方法的局限</h3>
+<p>为应对二次方复杂度瓶颈，新一代混合架构应运而生，主要包括两类：
+- <strong>线性/全注意力混合架构</strong>（如 Qwen3-Next-80B-A3B）：将部分注意力层替换为线性递归机制，每层复杂度从 O(N²) 降至 O(N)
+- <strong>滑动窗口/全注意力混合架构</strong>（如 Gemma-3-12B）：将大部分注意力层限制在固定局部上下文窗口，仅保留少量全局全注意力层</p>
+<p>然而，现有预填充加速方法（如 MInference、FlexPrefill）主要依赖<strong>稀疏注意力机制</strong>，仅在全注意力模型上有效。在混合架构中，全注意力层只占一小部分（如 3:1 或 5:1 的比例），加速全注意力层的收益有限，剩余的计算开销完全未被优化。</p>
+<h3 id="3">3. 与连续批处理不兼容</h3>
+<p>现有稀疏注意力方法（如 FlexPrefill）以单个请求为单位操作，假设静态批处理组合，与 vLLM 等推理引擎的连续批处理调度范式不兼容，难以在生产环境中部署。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">核心思想</h3>
+<p>UniPrefill 的核心洞察是：<strong>token 的重要性可以在全注意力层估算，并传播到所有后续层</strong>。通过在全注意力层进行块级动态稀疏化，丢弃计算冗余的 token，不仅减少注意力 FLOPs，还减少所有后续层（包括 FFN）的 GEMM FLOPs。</p>
+<h3 id="1-token-token-importance-estimation">1. Token 重要性估算（Token Importance Estimation）</h3>
+<p>对于输入序列 x = [x₁, ..., x_N]，模型由 B 个 block 组成，每个 block b 包含一个全注意力层和 M_b 个子层（线性注意力、滑动窗口注意力、FFN 等）。</p>
+<ul>
+<li><strong>注意力权重计算</strong>：token i 对最终隐藏状态的贡献由注意力权重 A^(b)_{N,i} = softmax_i(q^(b)_N K^(b)^T / √d_k) 决定</li>
+<li><strong>聚合 last n 个 query</strong>：为降低估算方差，聚合最后 n 个 query 位置的注意力权重：</li>
+<li>s^(b)<em j="N-n+1">i = (1/n) Σ</em>}^{N} A^(b)_{j,i</li>
+<li>计算成本为 O(nNd_k)，当 n ≪ N 时可忽略</li>
+<li><strong>块级评分</strong>：将输入序列划分为大小为 G 的不重叠块，计算每个块的平均重要性得分：</li>
+<li>s̄^(b)<em i_B_g="i∈B_g">g = (1/G) Σ</em>} (1/n) Σ_{j=N-n+1}^{N} A^(b)_{j,i</li>
+<li>在完整 key 序列上进行 softmax 归一化后再进行块级聚合，确保得分反映真实的注意力分布</li>
+</ul>
+<h3 id="2-top-p-token-top-p-token-selection">2. Top-p Token 选择（Top-p Token Selection）</h3>
+<p>采用 top-p 策略（而非 top-k）选择保留的 token 块：
+- 按块级得分降序排列
+- 保留最小的块集合 S^(b)，使得累积重要性分数达到阈值 p
+- 始终保留前 A 个 token（注意力汇聚/attention sinks）和最后 n 个 token（query 窗口），确保因果一致性和数值稳定性
+- <strong>误差界</strong>：|Δh^(b,1)_j| ≤ (1-p) · V^(b)_max，设置 p=0.99 保证最多丢弃 1% 的总注意力质量</p>
+<p><strong>Top-p vs. Top-k</strong>：top-k 固定保留数量，对注意力分布不敏感；top-p 自适应调整保留数量，注意力集中时保留少，分散时保留多，提供与序列长度和内容无关的一致误差界。</p>
+<h3 id="3-sparsity-propagation-across-all-layers">3. 跨所有层的稀疏性传播（Sparsity Propagation Across All Layers）</h3>
+<p>这是 UniPrefill 的关键创新：
+- 在 block b 的全注意力层选定 token 后，被丢弃的 token 被排除在所有后续子层（全注意力、线性注意力、滑动窗口注意力、FFN）之外
+- 仅保留的 token 集合 S^(b) 参与后续计算
+- 在下一个 block b+1，丢弃的 token 状态保持不变（不更新），重新计算重要性得分
+- <strong>FLOPs 分析</strong>：单次丢弃节省的 FLOPs 为 (1-ρ) · (L-ℓ₁) · O(Nd²)，与剩余层数线性相关
+- <strong>与稀疏注意力方法对比</strong>：稀疏注意力仅节省注意力层的 FLOPs，UniPrefill 同时节省注意力和 GEMM FLOPs，在长上下文场景下优势更加明显</p>
+<h3 id="4-vllm-fused-kernel-and-vllm-integration">4. 融合内核与 vLLM 集成（Fused Kernel and vLLM Integration）</h3>
+<ul>
+<li><strong>内核设计</strong>：实现为 4 个融合的 Triton 内核，直接操作可变长度打包 token 表示（cu_seqlens 索引），无需创建 per-request 张量或填充</li>
+<li>部分 GEMM：S = Q[N-n:N]K^T</li>
+<li>在线 softmax：聚合 softmax(S) 得到 per-token 重要性得分</li>
+<li>块级聚合：在块内收缩得到块级得分向量</li>
+<li>Top-p 选择：在 GPU 上完成排序和阈值化，无需 CPU 回传</li>
+<li><strong>张量并行</strong>：在 TP 度为 T 时，每个 rank 观察 1/T 的注意力头，通过同步块级得分实现一致的丢弃决策</li>
+<li><strong>vLLM 调度器集成</strong>：</li>
+<li>在丢弃事件时更新下游层的 query_start_loc、seq_lens、num_actual_tokens</li>
+<li>重新计算物理 KV cache slot 映射</li>
+<li>维护 per-request 丢弃历史，确保 decode 时每层的 KV 序列长度一致</li>
+<li>不修改模型权重或 PagedAttention 内存分配器</li>
+</ul>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="1-ruler">1. RULER 基准测试（准确率与效率对比）</h3>
 <table>
 <thead>
 <tr>
-<th>技术</th>
-<th>说明</th>
+<th>方法</th>
+<th>LLaMA-3.1-8B（全注意力）</th>
+<th>Qwen3-Next-80B-A3B（线性/全注意力混合）</th>
+<th>Gemma-3-12B（滑动窗口/全注意力混合）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Block-wise Dynamic Sparsification</strong></td>
-<td>块级动态稀疏化，核心加速策略</td>
+<td>Baseline（RULER Avg）</td>
+<td>90.36</td>
+<td>94.76</td>
+<td>79.99</td>
 </tr>
 <tr>
-<td><strong>调度策略扩展</strong></td>
-<td>扩展 vLLM 调度策略，支持预填充-解码协同处理</td>
+<td>LazyLLM</td>
+<td>68.50</td>
+<td>69.98</td>
+<td>67.93</td>
 </tr>
 <tr>
-<td><strong>张量并行支持</strong></td>
-<td>为 UniPrefill 扩展 tensor parallel 功能</td>
+<td>SlimInfer</td>
+<td>68.87</td>
+<td>68.55</td>
+<td>68.83</td>
+</tr>
+<tr>
+<td>MInference</td>
+<td>90.68</td>
+<td>94.31</td>
+<td>79.25</td>
+</tr>
+<tr>
+<td>FlexPrefill</td>
+<td>89.62</td>
+<td>93.97</td>
+<td>78.64</td>
+</tr>
+<tr>
+<td>XAttention</td>
+<td>89.34</td>
+<td>93.53</td>
+<td>78.26</td>
+</tr>
+<tr>
+<td>ProxyAttn</td>
+<td>90.14</td>
+<td>93.88</td>
+<td>78.79</td>
+</tr>
+<tr>
+<td><strong>UniPrefill</strong></td>
+<td><strong>90.45</strong></td>
+<td><strong>93.94</strong></td>
+<td><strong>78.87</strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="4">4. 实验结果</h3>
 <table>
 <thead>
 <tr>
-<th>指标</th>
-<th>结果</th>
+<th>方法</th>
+<th>LLaMA-3.1-8B（128K TTFT）</th>
+<th>Qwen3-Next-80B-A3B（128K TTFT）</th>
+<th>Gemma-3-12B（128K TTFT）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>TTFT 加速</td>
-<td>最高 <strong>2.1 倍</strong></td>
+<td>MInference</td>
+<td>1.34×</td>
+<td>1.05×</td>
+<td>1.03×</td>
 </tr>
 <tr>
-<td>并发效果</td>
-<td>随并发请求数增加，加速更显著</td>
+<td>FlexPrefill</td>
+<td>1.46×</td>
+<td>1.08×</td>
+<td>1.04×</td>
+</tr>
+<tr>
+<td>XAttention</td>
+<td>1.38×</td>
+<td>1.05×</td>
+<td>1.02×</td>
+</tr>
+<tr>
+<td>ProxyAttn</td>
+<td>1.79×</td>
+<td>1.11×</td>
+<td>1.06×</td>
+</tr>
+<tr>
+<td><strong>UniPrefill</strong></td>
+<td><strong>2.26×</strong></td>
+<td><strong>1.68×</strong></td>
+<td><strong>1.49×</strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="5">5. 核心贡献</h3>
+<p><strong>关键发现</strong>：
+- UniPrefill 在所有架构上均实现了最佳的准确率-效率权衡
+- LazyLLM 和 SlimInfer 在所有架构上准确率显著下降
+- 稀疏注意力方法在混合架构上加速效果有限，128K 下通常低于 1.1×
+- UniPrefill 在 128K 上下文长度下实现了 2.26×、1.68×、1.49× 的 TTFT 加速</p>
+<h3 id="2-vllm-prefill-throughput">2. vLLM 吞吐量（Prefill Throughput）</h3>
+<table>
+<thead>
+<tr>
+<th>模型架构</th>
+<th>批大小</th>
+<th>最大吞吐量提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA-3.1-8B（全注意力）</td>
+<td>BS=64</td>
+<td>+109%（128K）</td>
+</tr>
+<tr>
+<td>Qwen3-Next-80B-A3B（线性/全注意力混合）</td>
+<td>BS=64</td>
+<td>+68%（128K）</td>
+</tr>
+<tr>
+<td>Gemma-3-12B（滑动窗口/全注意力混合）</td>
+<td>BS=16</td>
+<td>+42%（128K）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 随着上下文长度和批大小增加，加速效果更加显著
+- 在高并发、长上下文的生产服务场景中尤为有效</p>
+<h3 id="3_1">3. 消融实验</h3>
+<ul>
+<li><strong>块大小（Block Size）</strong>：G=64 为默认值，在选择开销和丢弃率之间取得平衡</li>
+<li>G=32 在长上下文下提升更大（128K 时 LLaMA-3.1-8B 达 +121%）</li>
+<li>G=128 在短上下文下提升更大</li>
+<li><strong>Last n</strong>：n=128 为默认值，n=32 准确率明显下降，n=512 准确率恢复但开销更高</li>
+<li><strong>随机种子</strong>：不同种子下结果一致，表明 UniPrefill 对随机初始化具有鲁棒性</li>
+</ul>
+<hr />
+<h2 id="_7">优势</h2>
 <ol>
-<li>提出适用于<strong>几乎所有模型架构</strong>的通用预填充加速框架</li>
-<li>以 token 级计算为核心，克服对特定架构的依赖</li>
-<li>实现为连续批处理算子，解决与现代推理引擎的兼容性问题</li>
-<li>扩展 vLLM 调度策略，支持预填充-解码协同处理和张量并行</li>
+<li><strong>架构通用性</strong>：适用于几乎所有模型架构（全注意力、线性/全注意力混合、滑动窗口/全注意力混合），首次实现跨架构的统一预填充加速</li>
+<li><strong>同时降低注意力和 GEMM FLOPs</strong>：不同于稀疏注意力方法仅加速注意力层，UniPrefill 通过 token 丢弃传播，同时减少注意力和 FFN 层的计算</li>
+<li><strong>与 vLLM 无缝集成</strong>：实现为连续批处理算子，支持预填充-解码协同处理和张量并行，可直接用于生产环境</li>
+<li><strong>无需修改模型权重</strong>：作为透明加速层集成到推理引擎中，不改变模型权重或服务基础设施</li>
+<li><strong>高并发下的加速效果更显著</strong>：加速效果随并发请求数增加而增强，特别适合高并发生产场景</li>
+<li><strong>理论保障</strong>：提供误差界，设置 p=0.99 保证最多丢弃 1% 的注意力质量，有严格的信息论界</li>
+<li><strong>实现简洁高效</strong>：融合 Triton 内核，直接操作可变长度打包 token 表示，无需填充或 CPU 回传</li>
 </ol>
-<blockquote>
-<p>代码：https://github.com/qhfan/UniPrefill.git</p>
-</blockquote>
+<hr />
+<h2 id="_8">局限</h2>
+<ol>
+<li><strong>仅加速预填充阶段</strong>：不涉及解码阶段或训练阶段的优化</li>
+<li><strong>依赖全注意力层进行重要性估算</strong>：在纯线性注意力或纯滑动窗口注意力模型（无全注意力层）上无法应用</li>
+<li><strong>需要调参</strong>：top-p 阈值、块大小 G、last n 等参数需要针对不同模型和任务进行调整</li>
+<li><strong>精确度与加速的权衡</strong>：在短上下文长度下（如 4K），加速效果有限（甚至可能轻微下降），主要在长上下文下发挥作用</li>
+<li><strong>与 MInference 等稀疏注意力方法相比</strong>，在全注意力模型上的加速倍率略低（MInference 可达 10×）</li>
+<li><strong>实验模型规模有限</strong>：主要验证了 8B-80B 规模的模型，未在更大规模模型（如 100B+）上进行验证</li>
+<li><strong>生产部署复杂性</strong>：需要集成 vLLM 调度器并实现融合内核，对工程实现有一定要求</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1">1. 长上下文推理加速</h3>
+<ul>
+<li><strong>相关论文</strong>：MInference（2024）、FlexPrefill（2025）、XAttention（2025）、ProxyAttn（2025）、LazyLLM（2024）、SlimInfer（2025）</li>
+<li><strong>关系</strong>：UniPrefill 是长上下文预填充加速领域的最新进展，与上述方法形成对比</li>
+<li><strong>方向</strong>：稀疏注意力、动态稀疏化、token 丢弃</li>
+</ul>
+<h3 id="2_1">2. 混合架构设计</h3>
+<ul>
+<li><strong>相关论文</strong>：Qwen3-Next-80B-A3B（2025）、Gemma-3-12B（2025）、Jamba（2025）</li>
+<li><strong>关系</strong>：UniPrefill 专门针对混合架构设计，解决现有加速方法在混合架构上的局限性</li>
+<li><strong>方向</strong>：线性注意力、滑动窗口注意力、混合架构</li>
+</ul>
+<h3 id="3_2">3. 推理引擎优化</h3>
+<ul>
+<li><strong>相关论文</strong>：vLLM（2023）、SGLang（2024）</li>
+<li><strong>关系</strong>：UniPrefill 与 vLLM 深度集成，扩展了 vLLM 的调度策略</li>
+<li><strong>方向</strong>：连续批处理、张量并行、推理引擎</li>
+</ul>
+<h3 id="4-kv-cache">4. KV Cache 优化</h3>
+<ul>
+<li><strong>相关论文</strong>：SnapKV（2024）</li>
+<li><strong>关系</strong>：UniPrefill 与 SnapKV 在 token 重要性估算上相似，但目标和范围不同（SnapKV 压缩 KV cache，UniPrefill 在预填充阶段减少 FLOPs）</li>
+<li><strong>方向</strong>：KV cache 压缩、token 选择</li>
+</ul>
+<h3 id="5">5. 稀疏注意力机制</h3>
+<ul>
+<li><strong>相关论文</strong>：MInference（2024）、Moba（2025）、Native Sparse Attention（2025）、VSPrefill（2026）、FlashPrefill（2026）</li>
+<li><strong>关系</strong>：UniPrefill 是稀疏注意力方法的扩展，从仅加速注意力层扩展到加速所有层</li>
+<li><strong>方向</strong>：动态稀疏模式、块稀疏注意力</li>
+</ul>
+<h3 id="6">6. 模型压缩与高效推理</h3>
+<ul>
+<li><strong>相关论文</strong>：MInference（2024）、LazyLLM（2024）</li>
+<li><strong>关系</strong>：UniPrefill 通过 token 丢弃减少计算量，与模型压缩方向互补</li>
+<li><strong>方向</strong>：动态 token 丢弃、推理效率</li>
+</ul>
+<hr />
+<h2 id="_9">元数据</h2>
+<ul>
+<li><strong>论文标题</strong>：UniPrefill: Universal Long-Context Prefill Acceleration via Block-wise Dynamic Sparsification</li>
+<li><strong>作者</strong>：Qihang Fan, Huaibo Huang, Zhiying Wu, Bingning Wang, Ran He</li>
+<li><strong>机构</strong>：WeChat, Tencent; UCAS</li>
+<li><strong>发布</strong>：arXiv, 2026</li>
+<li><strong>代码</strong>：https://github.com/qhfan/UniPrefill</li>
+<li><strong>关键词</strong>：sparse_pruning, attention_sparsity</li>
+<li><strong>基线方法</strong>：XAttention（2025）、FlexPrefill（2025）、MInference（2024）</li>
+<li><strong>PDF URL</strong>：http://arxiv.org/abs/2605.06221v1</li>
+</ul>
+<hr />
+<p><em>以下总结由 AI Agent 自动生成，基于论文全文阅读和分析。生成日期：2026年6月4日。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,9 +164,401 @@
 <p>Xiang Liu, Hong Chen, Xuming Hu, Xiaowen Chu</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models (LLMs) are increasingly deployed in multi-turn conversational applications, where the management of the Key-Value (KV) Cache presents a significant bottleneck. The linear growth of the KV Cache with dialogue history imposes substantial computational costs, and existing eviction strategies often degrade performance by repeatedly compressing early conversational context, leading to information loss and context forgetting. This paper introduces FlowKV, a novel \textbf{multi-turn isolation mechanism} for KV Cache management, which can be applied to any KV Cache compression method without training. FlowKV's core innovation is a multi-turn isolation mechanism that preserves the accumulated compressed KV cache from past turns. Compression is then strategically applied only to the newly generated KV pairs of the latest completed turn, effectively preventing the re-compression of older context and thereby mitigating catastrophic forgetting. Our results demonstrate that FlowKV consistently and significantly outperforms baseline strategies in maintaining instruction-following accuracy and user preference retention from 10.90\% to 75.40\%, particularly in later conversational turns.</p>
-<p>多论对话kv cache压缩，第一轮会压缩kv 50%，第二轮把所有的历史kv 再压缩50%，那么会导致第一轮的压缩比例超过50%，导致信息丢失严重；flowkv 则对每轮对话都按照50%压缩，对于历史的已压缩号的kv，保持不变，从而能够提高多轮对话的生成质量。</p>
+<blockquote>
+<p><strong>生成声明</strong>：本 note 由 AI Agent（Hermes Agent）自动生成，基于 arXiv 论文全文（2505.15347v1）内容，仅供参考。</p>
+</blockquote>
+<h2 id="_1">一句话总结</h2>
+<p>FlowKV 是一种无需训练的多轮对话 KV Cache 隔离机制，通过避免对历史轮次的重复压缩来缓解信息退化和灾难性遗忘，在多轮指令遵循和用户偏好保持任务上显著优于现有 KV Cache 压缩方法（性能提升 10.90%–75.40%）。</p>
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLMs）越来越多地部署在多轮对话应用中，其中键值（KV）缓存的管理是一个重要的瓶颈。KV 缓存随对话历史的线性增长带来了显著的计算成本，而现有的驱逐策略通常通过反复压缩早期对话上下文来降低性能，导致信息丢失和上下文遗忘。本文提出了 FlowKV，一种新型的多轮隔离机制用于 KV 缓存管理，可应用于任何 KV 缓存压缩方法且无需训练。FlowKV 的核心创新在于多轮隔离机制，能够保留过去轮次已累积压缩的 KV 缓存。压缩仅策略性地应用于最新完成轮次新生成的 KV 对，有效防止对旧上下文的重复压缩，从而缓解灾难性遗忘。结果表明，FlowKV 在保持指令遵循准确性和用户偏好保持方面持续显著优于基线策略，提升幅度为 10.90% 至 75.40%，尤其在后期对话轮次中效果显著。</p>
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">问题背景</h3>
+<p>在多轮对话场景中，LLM 的 KV Cache 随对话历史线性增长，导致计算和存储开销巨大。现有 KV Cache 驱逐/压缩策略在多轮场景下存在严重问题：</p>
+<ol>
+<li><strong>重复压缩问题</strong>：传统方法在每轮对话前对整个历史 KV Cache 进行压缩。例如，50% 压缩率下，第 1 轮对系统提示（Psys）压缩一次，第 2 轮将整个历史（包括已被压缩的 Psys）再次压缩，导致 Psys 被压缩两次，信息严重退化。</li>
+<li><strong>灾难性遗忘</strong>：经过 T 轮对话后，初始系统提示会被嵌套压缩 T 次，Q1/R1 会被压缩 T-1 次，信息损失随对话长度急剧增加。</li>
+<li><strong>注意力模式的跨轮依赖</strong>：论文通过注意力热图分析发现，多轮对话中存在显著的跨轮依赖关系——后续回复不仅关注当前查询，还关注先前的查询和系统提示，这使得历史信息的保留至关重要。</li>
+</ol>
+<h3 id="_5">现有方法的不足</h3>
+<ul>
+<li><strong>SnapKV</strong>：通过选择关键注意力头特征来压缩 KV Cache，但在多轮场景下仍存在反复压缩问题。</li>
+<li><strong>StreamingLLM</strong>：丢弃中间部分的 KV Cache，在多轮对话中导致中间信息丢失。</li>
+<li><strong>ExpectedAttention</strong>：基于预期注意力分数进行驱逐，但同样受重复压缩影响。</li>
+<li><strong>ChunkKV</strong>：通过语义分组压缩，但在多轮场景下性能下降严重。</li>
+</ul>
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="flowkv">FlowKV 核心机制</h3>
+<p>FlowKV 是一种<strong>多轮隔离机制</strong>（Multi-Turn Isolation Mechanism），核心思想是：</p>
+<p><strong>保留已压缩的历史 KV Cache，仅对最新轮次的未压缩部分进行压缩。</strong></p>
+<h4 id="_7">形式化描述</h4>
+<p>设 <script type="math/tex">C_t</script> 为第 <script type="math/tex">t</script> 轮的 KV Cache 池，<script type="math/tex">F(\cdot)</script> 为有损 KV Cache 压缩函数。</p>
+<p><strong>第 1 轮</strong>（与传统方法相同）：
+<script type="math/tex; mode=display">C_1 = F(KV(P_{sys})) \oplus KV(Q_1)</script>
+</p>
+<p>生成响应 <script type="math/tex">R_1</script> 后：
+<script type="math/tex; mode=display">C'_1 = F(KV(P_{sys})) \oplus KV(Q_1 \oplus R_1)</script>
+</p>
+<p><strong>第 2 轮</strong>（FlowKV 关键创新）：
+<script type="math/tex; mode=display">C_2 = F(C'_1) \oplus KV(Q_2)</script>
+</p>
+<p>其中 <script type="math/tex">F(C'_1)</script> 使用 FlowKV 隔离机制——<script type="math/tex">F(KV(P_{sys}))</script> 被<strong>保留</strong>（不重复压缩），只有 <script type="math/tex">KV(Q_1 \oplus R_1)</script> 被压缩。</p>
+<p><strong>对比传统方法</strong>：
+- 传统方法：Psys 被压缩 2 次，Q1/R1 各被压缩 1 次
+- FlowKV：Psys 被压缩 1 次，Q1/R1 各被压缩 1 次</p>
+<h4 id="_8">关键特性</h4>
+<ol>
+<li><strong>训练无关</strong>（Training-Free）：无需额外训练，可直接应用于任何现有 KV Cache 压缩方法。</li>
+<li><strong>通用兼容性</strong>：与 SnapKV、StreamingLLM、ExpectedAttention、ChunkKV 等方法均兼容。</li>
+<li><strong>零额外开销</strong>：实验显示 FlowKV 不会显著增加预填充时间或总生成时间（TTFT 和 TPOT 与无 FlowKV 时相当）。</li>
+<li><strong>逐步隔离</strong>：每轮对话只压缩当前轮次新产生的 KV 对，历史累积的已压缩 KV Cache 保持不变。</li>
+</ol>
+<h4 id="_9">与传统方法的对比（以两轮对话为例）</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>第1轮KV Cache</th>
+<th>第2轮KV Cache</th>
+<th>准确率</th>
+<th>KV Cache大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full KV Cache</td>
+<td>完整保留</td>
+<td>完整保留</td>
+<td>60.72%</td>
+<td>OOM风险</td>
+</tr>
+<tr>
+<td>KV Cache Eviction</td>
+<td>压缩50%</td>
+<td>再压缩50%</td>
+<td>17.33%</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>FlowKV (Ours)</td>
+<td>压缩50%</td>
+<td>仅压缩新轮次50%</td>
+<td>56.72%</td>
+<td>50%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_10">实验结果</h2>
+<h3 id="_11">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA-3.1-8B-Instruct、Qwen-2.5-7B-Instruct</li>
+<li><strong>数据集</strong>：Multi-IF（多轮指令遵循）、PrefEval（用户偏好保持）</li>
+<li><strong>KV Cache 压缩方法</strong>：SnapKV、StreamingLLM、ExpectedAttention、ChunkKV</li>
+<li><strong>评估指标</strong>：IFR（指令遵循率）、User Preference Following Rate（用户偏好遵循率）</li>
+<li><strong>评估环境</strong>：NVIDIA A40 GPU，使用 kvpress 库</li>
+<li><strong>压缩比率</strong>：0.1 到 0.9（0.5 为默认值）</li>
+<li><strong>实验次数</strong>：3 次取平均</li>
+</ul>
+<h3 id="multi-if-05">Multi-IF 数据集结果（压缩比率 0.5）</h3>
+<p><strong>LLaMA-3.1-8B-Instruct：</strong></p>
+<table>
+<thead>
+<tr>
+<th>KV方法</th>
+<th>策略</th>
+<th>Turn 1</th>
+<th>Turn 2</th>
+<th>Turn 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SnapKV</td>
+<td>Baseline</td>
+<td>76.15%</td>
+<td>37.08%</td>
+<td>29.39%</td>
+</tr>
+<tr>
+<td>SnapKV</td>
+<td>FlowKV</td>
+<td>76.15%</td>
+<td><strong>61.93%</strong> (+24.85)</td>
+<td><strong>54.95%</strong> (+25.56)</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>Baseline</td>
+<td>72.78%</td>
+<td>33.94%</td>
+<td>28.94%</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>FlowKV</td>
+<td>72.78%</td>
+<td><strong>39.06%</strong> (+5.12)</td>
+<td><strong>41.58%</strong> (+12.64)</td>
+</tr>
+<tr>
+<td>ExpectedAttention</td>
+<td>Baseline</td>
+<td>76.05%</td>
+<td>36.28%</td>
+<td>30.48%</td>
+</tr>
+<tr>
+<td>ExpectedAttention</td>
+<td>FlowKV</td>
+<td>76.05%</td>
+<td><strong>64.89%</strong> (+28.61)</td>
+<td><strong>55.36%</strong> (+24.88)</td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>Baseline</td>
+<td>70.47%</td>
+<td>12.56%</td>
+<td>16.49%</td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>FlowKV</td>
+<td>70.47%</td>
+<td><strong>52.83%</strong> (+40.27)</td>
+<td><strong>50.15%</strong> (+33.66)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Qwen-2.5-7B-Instruct：</strong></p>
+<table>
+<thead>
+<tr>
+<th>KV方法</th>
+<th>策略</th>
+<th>Turn 1</th>
+<th>Turn 2</th>
+<th>Turn 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SnapKV</td>
+<td>Baseline</td>
+<td>76.49%</td>
+<td>17.33%</td>
+<td>21.96%</td>
+</tr>
+<tr>
+<td>SnapKV</td>
+<td>FlowKV</td>
+<td>76.49%</td>
+<td><strong>56.72%</strong> (+39.39)</td>
+<td><strong>49.67%</strong> (+27.71)</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>Baseline</td>
+<td>76.47%</td>
+<td>17.31%</td>
+<td>21.08%</td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>FlowKV</td>
+<td>76.47%</td>
+<td><strong>36.82%</strong> (+19.51)</td>
+<td><strong>35.29%</strong> (+14.21)</td>
+</tr>
+<tr>
+<td>ExpectedAttention</td>
+<td>Baseline</td>
+<td>75.52%</td>
+<td>17.62%</td>
+<td>22.00%</td>
+</tr>
+<tr>
+<td>ExpectedAttention</td>
+<td>FlowKV</td>
+<td>75.52%</td>
+<td><strong>50.62%</strong> (+33.00)</td>
+<td><strong>39.25%</strong> (+17.25)</td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>Baseline</td>
+<td>73.19%</td>
+<td>18.47%</td>
+<td>21.51%</td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>FlowKV</td>
+<td>73.19%</td>
+<td><strong>47.27%</strong> (+28.80)</td>
+<td><strong>43.55%</strong> (+22.04)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- FlowKV 在第 2 轮和第 3 轮持续显著优于基线方法。
+- 平均 IFR 提升超过 20%。
+- 与 Full KV Cache 的性能差距在使用 FlowKV 后大幅缩小。
+- StreamingLLM 效果提升较小，因为该方法丢弃中间部分 KV Cache，本质导致中间信息丢失。</p>
+<h3 id="prefeval-05">PrefEval 数据集结果（压缩比率 0.5）</h3>
+<p><strong>LLaMA-3.1-8B-Instruct（Full KV: 77.00%）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>KV方法</th>
+<th>Baseline</th>
+<th>FlowKV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SnapKV</td>
+<td>10.60%</td>
+<td><strong>58.70%</strong></td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>9.80%</td>
+<td><strong>24.40%</strong></td>
+</tr>
+<tr>
+<td>ExpectedAttention</td>
+<td>10.90%</td>
+<td><strong>75.40%</strong></td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>6.70%</td>
+<td><strong>38.80%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Qwen-2.5-7B-Instruct（Full KV: 55.90%）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>KV方法</th>
+<th>Baseline</th>
+<th>FlowKV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SnapKV</td>
+<td>11.80%</td>
+<td><strong>33.80%</strong></td>
+</tr>
+<tr>
+<td>StreamingLLM</td>
+<td>11.60%</td>
+<td><strong>16.80%</strong></td>
+</tr>
+<tr>
+<td>ExpectedAttention</td>
+<td>10.60%</td>
+<td><strong>29.80%</strong></td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>10.30%</td>
+<td><strong>26.40%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- 基线方法在 PrefEval 上表现极低（6.70%–11.80%），说明传统 KV Cache 压缩在多轮对话中严重损害用户偏好保持能力。
+- FlowKV 将 ExpectedAttention 方法从 10.90% 提升到 75.40%（提升 64.5 个百分点），几乎接近 Full KV Cache 的 77.00%。
+- FlowKV 在不同压缩比率下（0.1–0.9）均显著优于基线。</p>
+<h3 id="_12">效率分析</h3>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>压缩比率</th>
+<th>预填充时间(s)</th>
+<th>缓存大小(GB)</th>
+<th>TTFT(s)</th>
+<th>TPOT(ms)</th>
+<th>总生成时间(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FullKV</td>
+<td>-</td>
+<td>1.5621</td>
+<td>1.0000</td>
+<td>1.6013</td>
+<td>45.94</td>
+<td>184.29</td>
+</tr>
+<tr>
+<td>ChunkKV</td>
+<td>0.9</td>
+<td>1.3653</td>
+<td>0.1000</td>
+<td>1.3914</td>
+<td>39.87</td>
+<td>164.66</td>
+</tr>
+<tr>
+<td>ChunkKV+FlowKV</td>
+<td>0.9</td>
+<td>1.3632</td>
+<td>0.1000</td>
+<td>1.4002</td>
+<td>39.88</td>
+<td>165.21</td>
+</tr>
+</tbody>
+</table>
+<p>FlowKV 几乎不引入额外计算开销，TTFT 和 TPOT 与无 FlowKV 时相当。</p>
+<h3 id="_13">案例分析</h3>
+<p>论文提供了 Multi-IF 和 PrefEval 数据集的案例分析：</p>
+<ul>
+<li>
+<p><strong>Multi-IF 案例</strong>：Full KV Cache 成功遵循所有轮次的指令（格式控制、风格限制、指定文本等）。Baseline（SnapKV 50%）在第 2 轮出现内容重复，第 3 轮未能执行 "p.p.s" 和双引号指令，暴露严重的上下文遗忘。FlowKV 虽然未完全维持第 1 轮的全小写格式要求，但成功执行了第 2、3 轮新增的指令。</p>
+</li>
+<li>
+<p><strong>PrefEval 案例</strong>：用户偏好（喜欢小组学习）隐藏在历史对话中。Full KV 和 FlowKV 能够推断并提供基于小组的学习资源。Baseline 完全未能推断隐藏的用户偏好，倾向于回答对话历史中的第一个问题。</p>
+</li>
+</ul>
+<h2 id="_14">优势</h2>
+<ol>
+<li><strong>训练无关且通用</strong>：无需额外训练，可与任何现有 KV Cache 压缩方法（SnapKV、StreamingLLM、ExpectedAttention、ChunkKV 等）结合使用。</li>
+<li><strong>显著性能提升</strong>：在多轮对话场景下，指令遵循率平均提升超过 20%，用户偏好保持率从 10.90% 提升至 75.40%。</li>
+<li><strong>零额外开销</strong>：不增加预填充时间或总生成时间，TTFT 和 TPOT 与无 FlowKV 时几乎相同。</li>
+<li><strong>抗高压缩率</strong>：在压缩比率 0.1–0.9 范围内均显著优于基线，尤其在低压缩率（0.1–0.4）下效果更佳，可恢复至接近 Full KV Cache 的性能水平。</li>
+<li><strong>解决根本问题</strong>：直接针对传统方法的重复压缩问题，通过逐轮隔离机制避免灾难性遗忘。</li>
+<li><strong>易集成</strong>：可无缝集成到现有 KV Cache 压缩框架中，实现简单。</li>
+</ol>
+<h2 id="_15">局限</h2>
+<ol>
+<li><strong>依赖基础压缩算法</strong>：FlowKV 的性能受限于基础 KV Cache 压缩算法对当前轮次数据的处理效果。如果基础算法本身质量差，FlowKV 的提升空间有限。</li>
+<li><strong>评估任务有限</strong>：目前仅在指令遵循（Multi-IF）和用户偏好保持（PrefEval）数据集上进行评估，尚未在多轮编码、数学、推理等更复杂的任务上进行验证。</li>
+<li><strong>测试轮次较少</strong>：实验主要在 2–3 轮对话上进行，更长轮次（如 10 轮以上）的性能衰减情况未充分评估。</li>
+<li><strong>模型规模有限</strong>：仅在 7B–8B 规模的模型上进行实验，更大模型（如 70B、405B）上的效果未验证。</li>
+<li><strong>StreamingLLM 兼容性有限</strong>：由于 StreamingLLM 丢弃中间 KV Cache 的机制与 FlowKV 的保留策略存在冲突，FlowKV 在 StreamingLLM 上的提升相对有限。</li>
+<li><strong>PrefEval 上的性能差距</strong>：虽然 FlowKV 显著优于基线，但在 Qwen-2.5-7B-Instruct 上与 Full KV Cache 仍存在较大差距（如 SnapKV+FlowKV 仅 33.80% vs Full KV 55.90%）。</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV Cache 压缩与稀疏化</strong>：FlowKV 属于 KV Cache 稀疏化（kv_cache_sparse）方向，可与 EfficientPaper 中其他 KV Cache 优化方法（如 SnapKV、StreamingLLM、ChunkKV、H2O 等）形成互补或组合使用。</li>
+<li><strong>多轮对话效率优化</strong>：FlowKV 直接解决多轮对话场景下的 KV Cache 管理问题，是 LLM 效率优化的重要分支，与 EfficientPaper 关注的推理效率提升高度相关。</li>
+<li><strong>长上下文处理</strong>：FlowKV 的逐轮隔离机制为长上下文处理提供了新思路，可与其他长上下文方法（如 FlashAttention、RingAttention 等）结合。</li>
+<li><strong>无训练方法</strong>：FlowKV 作为训练无关的方法，具有很强的工程实践价值，易于部署到生产环境。</li>
+<li><strong>方法兼容性</strong>：FlowKV 可与多种 KV Cache 压缩方法组合，为 EfficientPaper 中的方法组合研究提供了新的可能。</li>
+<li><strong>多轮对话 benchmark</strong>：FlowKV 使用 Multi-IF 和 PrefEval 作为评估基准，为多轮对话效率评估提供了参考框架。</li>
+<li><strong>未来研究方向</strong>：</li>
+<li>将 FlowKV 扩展到更多任务类型（编码、数学、推理）</li>
+<li>探索 FlowKV 与量化、低秩近似等其他 KV Cache 优化方法的组合</li>
+<li>在更大模型和更长对话上验证 FlowKV 的效果</li>
+<li>研究自适应压缩比率策略（根据对话轮次动态调整压缩率）</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

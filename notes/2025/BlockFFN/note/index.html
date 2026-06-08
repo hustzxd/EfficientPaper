@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,32 +162,272 @@
                 <h1 id="blockffn-towards-end-side-acceleration-friendly-mixture-of-experts-with-chunk-level-activation-sparsity">BlockFFN: Towards End-Side Acceleration-Friendly Mixture-of-Experts with Chunk-Level Activation Sparsity</h1>
 <blockquote>
 <p>Chenyang Song, Weilin Zhao, Xu Han, Chaojun Xiao, Yingfa Chen, Yuxuan Li, Zhiyuan Liu, Maosong Sun</p>
+<p>Tsinghua University | COLM 2025</p>
+<p>🔗 <a href="http://arxiv.org/abs/2507.08771v1">arXiv</a> | <a href="https://github.com/thunlp/BlockFFN">Code</a></p>
+<p>🏷️ <code>activation_sparsity</code> <code>structure_design</code></p>
 </blockquote>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>To alleviate the computational burden of large language models (LLMs),
-architectures with activation sparsity, represented by mixture-of-experts
-(MoE), have attracted increasing attention. However, the non-differentiable and
-inflexible routing of vanilla MoE hurts model performance. Moreover, while each
-token activates only a few parameters, these sparsely-activated architectures
-exhibit low chunk-level sparsity, indicating that the union of multiple
-consecutive tokens activates a large ratio of parameters. Such a sparsity
-pattern is unfriendly for acceleration under low-resource conditions (e.g.,
-end-side devices) and incompatible with mainstream acceleration techniques
-(e.g., speculative decoding). To address these challenges, we introduce a novel
-MoE architecture, BlockFFN, as well as its efficient training and deployment
-techniques. Specifically, we use a router integrating ReLU activation and
-RMSNorm for differentiable and flexible routing. Next, to promote both
-token-level sparsity (TLS) and chunk-level sparsity (CLS), CLS-aware training
-objectives are designed, making BlockFFN more acceleration-friendly. Finally,
-we implement efficient acceleration kernels, combining activation sparsity and
-speculative decoding for the first time. The experimental results demonstrate
-the superior performance of BlockFFN over other MoE baselines, achieving over
-80% TLS and 70% 8-token CLS. Our kernels achieve up to 3.67<script type="math/tex">\times</script> speedup on
-real end-side devices than dense models. All codes and checkpoints are
-available publicly (https://github.com/thunlp/BlockFFN).</p>
-<p><a class="glightbox" href="../tab2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../tab2.jpg" /></a></p>
-<p>这里取连续的8个token判断是否需要同时激活，从而能够在硬件上高效实现，与我们的想法基本一致。</p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>生成声明</strong>：本 note 由 AI Agent（Hermes Agent）基于论文全文自动生成，仅供学习参考。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>BlockFFN 提出了一种面向端侧设备加速的新型 MoE 架构，通过 ReLU+RMSNorm 路由器实现可微分且灵活的专家选择，并首次将激活稀疏性与推测解码相结合，实现在 NVIDIA Jetson Orin NX 上高达 3.67 倍的加速比。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>为了缓解大语言模型（LLM）的计算负担，以混合专家（MoE）为代表的具有激活稀疏性的架构受到越来越多的关注。然而，传统 MoE 中不可微且不灵活的路由机制损害了模型性能。此外，虽然每个 token 只激活少量参数，但这些稀疏激活架构在 chunk 级别上表现出低稀疏性，即多个连续 token 的联合激活了大量参数。这种稀疏模式在低资源条件（如端侧设备）下对加速不友好，并且与主流加速技术（如推测解码）不兼容。为了解决这些挑战，本文引入了一种新的 MoE 架构 BlockFFN，以及其高效的训练和部署技术。具体来说，我们使用集成 ReLU 激活和 RMSNorm 的路由器，实现可微分且灵活的路由。接下来，为了同时提升 token 级别稀疏性（TLS）和 chunk 级别稀疏性（CLS），设计了 CLS 感知的训练目标，使 BlockFFN 对加速更加友好。最后，我们实现了高效的加速内核，首次将激活稀疏性与推测解码相结合。实验结果表明，BlockFFN 在其他 MoE 基线上表现出优越的性能，实现了超过 80% 的 TLS 和 70% 的 8-token CLS。我们的内核在真实端侧设备上实现了比密集模型高达 3.67 倍的加速。所有代码和检查点已公开。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">问题一：路由机制的缺陷</h3>
+<p>传统 MoE 模型（如 TopK 路由）存在两大路由缺陷：
+1. <strong>不可微分性</strong>：TopK 路由是离散的，导致只有被激活的参数拥有完整梯度，损害了 MoE 模型的收敛效率。
+2. <strong>不灵活性</strong>：TopK 强制每个 token 激活相同数量的专家，这种僵化的激活模式可能削弱模型性能。</p>
+<h3 id="chunk-cls">问题二：低 chunk 级别稀疏性（CLS）</h3>
+<p>仅提高 token 级别稀疏性（TLS）不足以实现实际加速。关键在于 chunk 级别稀疏性（CLS）——多个连续 token 的联合激活模式。低 CLS 意味着：
+- 与推测解码（需要同时处理多个连续 token）不兼容
+- 对 offloading 等资源节省技术不友好（频繁的 GPU-CPU 通信开销）
+- 使得激活稀疏性在实际加速中失去价值</p>
+<p>现有工作主要关注 TLS 的提升，但大多数稀疏架构中 CLS 仍然很低。</p>
+<hr />
+<h2 id="_5">方法（技术细节）</h2>
+<h3 id="1-blockffn">1. BlockFFN 架构</h3>
+<h4 id="expert-modules">专家模块（Expert Modules）</h4>
+<p>每个 BlockFFN 专家是一个带激活函数的 MLP：</p>
+<p>
+<script type="math/tex; mode=display">E_i(x) = W_{down}^{(i)T} \cdot \text{Swish}(W_{up}^{(i)T} x)</script>
+</p>
+<ul>
+<li>
+<script type="math/tex">W_{up}^{(i)} \in \mathbb{R}^{d_h \times d_e}</script>, <script type="math/tex">W_{down}^{(i)} \in \mathbb{R}^{d_e \times d_h}</script> 为可学习权重</li>
+<li>采用细粒度专家分割（<script type="math/tex">d_e \ll d_h</script>），增加灵活性</li>
+<li>使用 <strong>Swish 激活</strong>增加非线性</li>
+<li><strong>关键设计</strong>：使用非门控 MLP（而非更流行的门控变体），因为门控 MLP 会破坏路由稀疏性</li>
+</ul>
+<h4 id="router-module">路由器模块（Router Module）</h4>
+<p>BlockFFN 采用带 ReLU 激活的线性路由器：</p>
+<p>
+<script type="math/tex; mode=display">A_0(x) = W_{router}^T x</script>
+<script type="math/tex; mode=display">A_1(x) = \text{ReLU}(A_0(x))</script>
+<script type="math/tex; mode=display">A(x) = \text{RMSNorm}(A_1(x))</script>
+</p>
+<p><strong>与 ReMoE 的关键区别</strong>：在 ReLU 后添加 RMSNorm 层。</p>
+<ul>
+<li><strong>ReLU 优势</strong>：完全可微分、比 Swish 等激活生成更稀疏的模式、允许每个 token 自适应激活不同数量的专家</li>
+<li><strong>RMSNorm 优势</strong>：</li>
+<li>使激活值的幅度通过 RMSNorm 自适应学习，比 vanilla softmax 更灵活</li>
+<li><strong>分离激活模式与幅度</strong>：正则化仅作用于 ReLU 激活模式（<script type="math/tex">A_1(x)</script>），不直接作用于最终激活值（<script type="math/tex">A(x)</script>），缓解了正则化（如 L1）对激活幅度的干扰</li>
+</ul>
+<h3 id="2-cls">2. CLS 感知训练目标</h3>
+<h4 id="activation-locality-loss">激活局部性损失（Activation Locality Loss）</h4>
+<p>目标：增加相邻 token 之间激活模式的相似性，缩小 TLS 与 CLS 的差距。</p>
+<p>
+<script type="math/tex; mode=display">A_0^s(x) = \text{LeftShift}(A_0(x))</script>
+<script type="math/tex; mode=display">\mathcal{L}_{al} = \text{BCE}[\sigma(\alpha \cdot A_0(x)), \sigma(\alpha \cdot A_0^s(x))]</script>
+</p>
+<ul>
+<li>
+<script type="math/tex">\sigma</script> 为 sigmoid 函数，<script type="math/tex">\alpha</script> 为锐度超参数</li>
+<li>通过左移操作（LeftShift）对齐相邻 token 的激活模式</li>
+<li>使用二元交叉熵（BCE）最小化相邻 token 的软激活模式差异</li>
+</ul>
+<h4 id="chunk-chunk-sparsification-loss">Chunk 稀疏化损失（Chunk Sparsification Loss）</h4>
+<p>目标：直接最小化 chunk 级别的稀疏性。</p>
+<p>
+<script type="math/tex; mode=display">[p_i^k]_{i=1}^{N_e} = \text{Norm}(A_1(x))</script>
+<script type="math/tex; mode=display">P_i^{act} = 1 - \exp\left(\sum_{k=1}^{L} \ln(1 - p_i^k)\right)</script>
+<script type="math/tex; mode=display">\mathcal{L}_{cs} = \frac{1}{N_e} \sum_{i=1}^{N_e} P_i^{act}</script>
+</p>
+<ul>
+<li>
+<script type="math/tex">p_i^k</script> 为第 <script type="math/tex">k</script> 个 token 激活第 <script type="math/tex">i</script> 个专家的概率</li>
+<li>
+<script type="math/tex">P_i^{act}</script> 为第 <script type="math/tex">i</script> 个专家被 chunk 中至少一个 token 激活的概率</li>
+<li>
+<script type="math/tex">\mathcal{L}_{cs}</script> 直接最小化 chunk 级别的激活概率，而非独立作用于每个 token</li>
+</ul>
+<h4 id="_6">总训练目标</h4>
+<p>
+<script type="math/tex; mode=display">\mathcal{L}_{total} = \mathcal{L}_{lm} + \lambda_{al} \mathcal{L}_{al} + \lambda_{cs} \mathcal{L}_{cs}</script>
+</p>
+<ul>
+<li>采用自适应因子调度器（Adaptive Factor Scheduler）根据 <script type="math/tex">\mathcal{L}_{cs}</script> 的动态变化调整 <script type="math/tex">\lambda_{cs}</script>
+</li>
+</ul>
+<h3 id="3-acceleration-kernels">3. 加速内核（Acceleration Kernels）</h3>
+<p><strong>首次结合激活稀疏性和推测解码</strong>：</p>
+<ul>
+<li>在推测采样过程中，draft 模型提出 <script type="math/tex">n</script> 个 draft token</li>
+<li>BlockFFN 验证这些 token 时，路由激活值为 <script type="math/tex">A(x) \in \mathbb{R}^{n \times N_e}</script>
+</li>
+<li>由于高 CLS，<script type="math/tex">Union(x)</script>（激活专家的索引并集）只占总专家数的很小比例</li>
+<li><strong>仅对 <script type="math/tex">Union(x)</script> 中的专家进行计算</strong>，减少内存访问量</li>
+</ul>
+<p><strong>关键实现细节</strong>：
+- 利用 CLS 和 TLS 值相近的特点，每个 Union(x) 中的专家被绝大多数 token 激活
+- 对所有 <script type="math/tex">n</script> 个 token 预计算每个激活专家，然后通过 mask 去除无关激活
+- 基于 CUTLASS GEMM 修改矩阵乘法内核
+- 使用 CUDA Tensor Core 加速，<script type="math/tex">n=32</script>
+</p>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="_8">主要实验设置</h3>
+<ul>
+<li>四种参数规模：Small (0.1B), Medium (0.5B), Large (0.8B), XLarge (1.2B)</li>
+<li>对比基线：Vanilla TopK MoE, DeepSeekMoE (DSMoE), GRIN, ReMoE</li>
+<li>所有设置保持相近的参数数量、训练 token 数量和 token 级别稀疏性</li>
+</ul>
+<h3 id="_9">性能对比</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>BlockFFN</th>
+<th>TopK</th>
+<th>DSMoE</th>
+<th>GRIN</th>
+<th>ReMoE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XLarge PPL</td>
+<td><strong>8.69</strong></td>
+<td>8.87</td>
+<td>8.86</td>
+<td>9.03</td>
+<td>8.78</td>
+</tr>
+<tr>
+<td>XLarge CLS8</td>
+<td><strong>72.78%</strong></td>
+<td>61.05%</td>
+<td>60.28%</td>
+<td>60.89%</td>
+<td>51.01%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>性能</strong>：在相近 TLS 下，BlockFFN 在验证 PPL、训练损失和下游任务得分上均优于其他 MoE 基线</li>
+<li><strong>稀疏性</strong>：BlockFFN 始终具有显著更高的 CLS 值（高出约 10-20 个百分点）</li>
+<li>下游任务（常识推理 + 阅读理解）平均得分：BlockFFN 在多个规模上达到最优或接近最优</li>
+</ul>
+<h3 id="_10">推理加速</h3>
+<p>在 NVIDIA Jetson Orin NX 16GB 上的实验结果：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>平均加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Huggingface (密集)</td>
+<td>0.57×</td>
+</tr>
+<tr>
+<td>Baseline AR</td>
+<td>1.00×</td>
+</tr>
+<tr>
+<td>EAGLE-2</td>
+<td>1.74×</td>
+</tr>
+<tr>
+<td>Ours (1-Tok)</td>
+<td>3.14×</td>
+</tr>
+<tr>
+<td><strong>Ours (32-Tok)</strong></td>
+<td><strong>3.67×</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>结合推测解码与激活稀疏性（32-Tok）达到最高解码速度</li>
+<li>同时快于纯稀疏设置（1-Tok）和纯推测解码（EAGLE-2）</li>
+<li>达到稀疏性诱导的 FFN 加速理论上界</li>
+</ul>
+<h3 id="_11">专家选择稳定性</h3>
+<ul>
+<li>重复使用率（Reuse Ratio）在所有规模上超过 85%，最高达 90.28%</li>
+<li>确保良好的内存效率和对 offloading 的适应性</li>
+</ul>
+<h3 id="_12">消融实验</h3>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>TLS</th>
+<th>CLS8</th>
+<th>PPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AL+CS（完整）</td>
+<td>80.54</td>
+<td>71.38</td>
+<td>14.88</td>
+</tr>
+<tr>
+<td>CS（无AL）</td>
+<td>81.67</td>
+<td>67.56</td>
+<td>15.66</td>
+</tr>
+<tr>
+<td>AL（无CS）</td>
+<td>63.55</td>
+<td>52.59</td>
+<td>14.89</td>
+</tr>
+<tr>
+<td>Null（无额外目标）</td>
+<td>48.56</td>
+<td>14.89</td>
+<td>14.85</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AL 负责提升 CLS（减少性能损失），CS 负责全局稀疏化</li>
+<li>替换 CS 为 L1 或 Ent 会导致显著性能下降</li>
+<li>RMSNorm 移除后 PPL 从 14.88 上升到 15.04，验证了其有效性</li>
+</ul>
+<hr />
+<h2 id="_13">优势</h2>
+<ol>
+<li><strong>架构创新</strong>：ReLU+RMSNorm 路由器首次实现激活模式与幅度的分离，解决了正则化干扰激活幅度的问题</li>
+<li><strong>CLS 感知训练</strong>：首次系统性地关注 chunk 级别稀疏性，设计了两个互补的训练目标</li>
+<li><strong>首次结合</strong>：首次将激活稀疏性与推测解码结合，实现端侧高效加速</li>
+<li><strong>端侧部署</strong>：在 NVIDIA Jetson Orin NX 上实现 3.67× 加速，达到理论加速上界</li>
+<li><strong>专家分配灵活性</strong>：ReLU 激活实现了双峰分布的专家分配，不同含义的 token 自适应获得不同数量的专家</li>
+<li><strong>无负载均衡需求</strong>：端侧设备无需分布式部署，简化了设计</li>
+<li><strong>高专家选择稳定性</strong>：重复使用率 &gt;85%，对 offloading 友好</li>
+</ol>
+<hr />
+<h2 id="_14">局限</h2>
+<ol>
+<li><strong>模型规模限制</strong>：主要实验在 0.1B-1.2B 规模进行，速度实验仅 2.8B，未验证更大规模</li>
+<li><strong>端侧聚焦</strong>：主要针对端侧部署场景，对云侧大规模部署的适用性未充分讨论</li>
+<li><strong>无负载均衡</strong>：虽然端侧无需负载均衡，但这限制了云侧部署的通用性</li>
+<li><strong>硬件依赖</strong>：加速内核基于 CUTLASS 和 CUDA Tensor Core，依赖特定硬件</li>
+<li><strong>细粒度专家分割</strong>：虽然增加灵活性，但边际收益在 &gt;40 专家后迅速减少</li>
+<li><strong>仅 FFN 层</strong>：稀疏性主要在 FFN 层实现，注意力层的稀疏性未被考虑</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>激活稀疏性架构设计</strong>：BlockFFN 是 block 级别激活稀疏性的代表性工作，与 ReMoE、GRIN、DeepSeekMoE 等工作共同推动了稀疏 MoE 架构的发展</li>
+<li><strong>端侧 LLM 推理加速</strong>：与 PowerInfer、PowerInfer-2、Deja Vu 等端侧推理加速工作密切相关，但 BlockFFN 通过架构设计而非预测器实现加速</li>
+<li><strong>推测解码</strong>：与 EAGLE、EAGLE-2、Medusa 等推测解码工作互补，首次将推测解码与激活稀疏性结合</li>
+<li><strong>MoE 训练效率</strong>：与 FastMoE、MegaBlocks 等 MoE 训练效率工作相关，但聚焦于端侧推理场景</li>
+<li><strong>稀疏 LLM 理论</strong>：与 Sparsing Law、ReLU2 wins 等稀疏 LLM 理论工作相关，提供了关于 chunk 级别稀疏性的新见解</li>
+<li><strong>CLS-aware 训练目标</strong>：激活局部性损失和 chunk 稀疏化损失为稀疏性训练提供了新的正则化方法</li>
+</ol>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

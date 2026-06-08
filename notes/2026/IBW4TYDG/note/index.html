@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,114 @@
 <p>Keyu Lv, Manyi Zhang, Xiaobo Xia, Jingchen Ni, Shannan Yan, Xianzhi Yu, Lu Hou, Chun Yuan, Haoli Bai</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
 <p>Reasoning models excel at complex tasks such as coding and mathematics, yet their inference is often slow and token-inefficient. To improve the inference efficiency, post-training quantization (PTQ) usually comes with the cost of large accuracy drops, especially for reasoning tasks under low-bit settings. In this study, we present a systematic empirical study of quantization-aware training (QAT) for reasoning models. Our key findings include: (1) Knowledge distillation is a robust objective for reasoning models trained via either supervised fine-tuning or reinforcement learning; (2) PTQ provides a strong initialization for QAT, improving accuracy while reducing training cost; (3) Reinforcement learning remains feasible for quantized models given a viable cold start and yields additional gains; and (4) Aligning the PTQ calibration domain with the QAT training domain accelerates convergence and often improves the final accuracy. Finally, we consolidate these findings into an optimized workflow (Reasoning-QAT), and show that it consistently outperforms state-of-the-art PTQ methods across multiple LLM backbones and reasoning datasets. For instance, on Qwen3-0.6B, it surpasses GPTQ by 44.53% on MATH-500 and consistently recovers performance in the 2-bit regime.</p>
+<h2 id="_1">一句话总结</h2>
+<p>本文对推理 LLM 的低比特量化感知训练（QAT）进行了系统研究，发现知识蒸馏是最优训练目标、PTQ 可作为强初始化、强化学习在量化模型上可行且可进一步提升性能、对齐 PTQ 校准域与 QAT 训练域可加速收敛，并据此提出了 Reasoning-QAT 优化工作流，在 MATH-500 上超越 GPTQ 44.53%。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>推理模型瓶颈</strong>：</li>
+<li>推理模型（如 DeepSeek-R1、Qwen3）在编程和数学等复杂任务上表现出色</li>
+<li>但推理速度慢、token 效率低，导致推理开销大</li>
+<li><strong>PTQ 的局限</strong>：</li>
+<li>后训练量化（PTQ）在低比特设置（3-bit、2-bit）下推理任务精度下降显著</li>
+<li>非推理任务下降较小（如 Winogrande 1.03%↓，Hellaswag 3.13%↓）</li>
+<li>推理任务下降更大（如 AIME-120 11.67%↓，MATH-500 12.80%↓）</li>
+<li><strong>QAT 的挑战</strong>：</li>
+<li>量化感知训练（QAT）在推理模型上是否有效？</li>
+<li>训练目标、PTQ 初始化、RL 集成、数据策略等关键因素如何影响 QAT？</li>
+<li><strong>核心问题</strong>：什么使低比特 QAT 在推理 LLM 上有效？</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1">1. 系统研究的四个关键发现</h3>
+<p><strong>发现 1：训练目标（RQ1）</strong>
+- <strong>知识蒸馏（KD）</strong>：是最优的训练目标
+- 有效提升 SFT 或 RL 训练的推理模型
+- 比标准交叉熵目标更鲁棒</p>
+<p><strong>发现 2：PTQ 初始化（RQ2）</strong>
+- <strong>PTQ 提供强初始化</strong>：有效节省训练成本，稳定 QAT 训练
+- 特别在早期阶段，PTQ 初始化显著改善精度并减少训练开销</p>
+<p><strong>发现 3：QAT 与 RL（RQ3）</strong>
+- <strong>RL 在量化模型上可行</strong>：以 KD 训练为冷启动，QAT 与 RL 可进一步提升性能
+- 但需要可行的冷启动，否则无法探索有效推理轨迹</p>
+<p><strong>发现 4：QAT 数据策略（RQ4）</strong>
+- <strong>对齐 PTQ 校准域与 QAT 训练域</strong>：加速收敛，改善最终精度
+- QAT 训练数据的领域、质量、与校准数据的对齐影响显著</p>
+<h3 id="2-reasoning-qat">2. Reasoning-QAT 优化工作流</h3>
+<p><strong>工作流结构</strong>：
+1. <strong>PTQ 初始化</strong>：基于 PTQ 的初始化
+2. <strong>KD 恢复</strong>：基于知识蒸馏的恢复
+3. <strong>冷启动 RL</strong>：基于冷启动的强化学习</p>
+<p><strong>关键特性</strong>：
+- <strong>系统化</strong>：基于四个关键发现的系统化工作流
+- <strong>优化</strong>：针对推理模型优化的 QAT 工作流
+- <strong>鲁棒</strong>：在多个 LLM 骨干和推理数据集上一致超越 SOTA PTQ 方法</p>
+<h2 id="_4">主要结果</h2>
+<h3 id="_5">性能提升</h3>
+<ul>
+<li><strong>MATH-500</strong>：在 Qwen3-0.6B 上超越 GPTQ 44.53%（3-bit）</li>
+<li><strong>DeepSeek-R1-Distill-Qwen-1.5B</strong>：超越 QAT 基线平均 4.75%</li>
+<li><strong>2-bit 量化</strong>：一致恢复性能</li>
+<li><strong>多个骨干</strong>：Qwen3-0.6B、Qwen3-4B、DeepSeek-R1-Distill-Qwen-1.5B</li>
+<li><strong>多个推理基准</strong>：AIME-120、MATH-500、GSM8K、GPQA-Diamond、LiveCodeBench</li>
+</ul>
+<h3 id="_6">关键发现</h3>
+<ol>
+<li><strong>知识蒸馏有效</strong>：KD 是最优训练目标，有效提升 SFT 或 RL 训练的推理模型</li>
+<li><strong>PTQ 初始化有效</strong>：PTQ 提供强初始化，节省训练成本，稳定训练</li>
+<li><strong>RL 在量化模型上可行</strong>：以 KD 训练为冷启动，QAT 与 RL 可进一步提升性能</li>
+<li><strong>对齐校准域有效</strong>：对齐 PTQ 校准域与 QAT 训练域加速收敛，改善精度</li>
+</ol>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>系统研究</strong>：对推理 LLM 的低比特 QAT 进行系统研究</li>
+<li><strong>四个关键发现</strong>：知识蒸馏、PTQ 初始化、RL 集成、数据策略</li>
+<li><strong>Reasoning-QAT</strong>：基于发现的优化工作流，一致超越 SOTA PTQ 方法</li>
+<li><strong>显著提升</strong>：MATH-500 上超越 GPTQ 44.53%，2-bit 量化恢复性能</li>
+<li><strong>多骨干</strong>：在多个 LLM 骨干和推理数据集上验证</li>
+<li><strong>实用</strong>：提供有价值的指导，帮助量化推理模型</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>量化范围</strong>：主要关注 3-bit 和 2-bit 权重量化，其他量化设置需进一步测试</li>
+<li><strong>评估范围</strong>：主要在特定推理基准上评估，其他任务需进一步测试</li>
+<li><strong>训练成本</strong>：QAT 仍需额外训练成本</li>
+<li><strong>无代码开源</strong>：代码 URL 为空，可能尚未开源</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>IBW4TYDG 属于 <strong>Quantization</strong>（<code>quantization</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>系统研究</strong>：推理 LLM 的低比特 QAT</li>
+<li><strong>四个关键发现</strong>：知识蒸馏、PTQ 初始化、RL 集成、数据策略</li>
+<li><strong>Reasoning-QAT</strong>：优化工作流</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>GPTQ</strong>（2023）：PTQ 方法
+- <strong>TurboQuant</strong>（2026）：量化方法
+- <strong>VQKV</strong>（2026）：向量量化 KV 缓存
+- <strong>X3NUE78O</strong>（2026）：INT8 量化
+- <strong>SDFP</strong>（2026）：推测解码</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li><strong>量化设置</strong>：3-bit 和 2-bit 权重量化，group size 128</li>
+<li><strong>训练目标</strong>：知识蒸馏（KD）作为最优目标</li>
+<li><strong>PTQ 初始化</strong>：基于 PTQ 的初始化</li>
+<li><strong>RL 集成</strong>：以 KD 训练为冷启动，QAT 与 RL 结合</li>
+<li><strong>数据策略</strong>：对齐 PTQ 校准域与 QAT 训练域</li>
+<li><strong>模型骨干</strong>：Qwen3-0.6B、Qwen3-4B、DeepSeek-R1-Distill-Qwen-1.5B</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>IBW4TYDG 的核心洞察是：<strong>推理 LLM 的低比特 QAT 需要系统化的方法</strong>，包括训练目标、PTQ 初始化、RL 集成和数据策略。</li>
+<li>知识蒸馏是最优训练目标，这可能是因为 KD 能更好地保留推理能力。</li>
+<li>PTQ 初始化是关键优化，它节省了训练成本并稳定了训练。</li>
+<li>论文来自 Tsinghua University、Huawei、NUS，说明这是一个学术界和工业界合作的实用系统。</li>
+<li>值得关注的未来方向：(1) 更多量化设置的验证；(2) 与其他 QAT 方法的结合；(3) 端到端的优化。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

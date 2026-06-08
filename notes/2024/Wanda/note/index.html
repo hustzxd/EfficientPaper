@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>A Simple and Effective Pruning Approach for Large Language Models - Efficient Paper</title>
+    <title>A Simple and Effective Pruning Approach for Large Language Models (Wanda) - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "A Simple and Effective Pruning Approach for Large Language Models";
+        var mkdocs_page_name = "A Simple and Effective Pruning Approach for Large Language Models (Wanda)";
         var mkdocs_page_input_path = "notes/2024/Wanda/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">A Simple and Effective Pruning Approach for Large Language Models</li>
+      <li class="breadcrumb-item active">A Simple and Effective Pruning Approach for Large Language Models (Wanda)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,26 +159,301 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="a-simple-and-effective-pruning-approach-for-large-language-models">A Simple and Effective Pruning Approach for Large Language Models</h1>
+                <h1 id="a-simple-and-effective-pruning-approach-for-large-language-models-wanda">A Simple and Effective Pruning Approach for Large Language Models (Wanda)</h1>
 <p><a class="glightbox" href="../wanda.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../wanda.png" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>As their size increases, Large Languages Models (LLMs) are natural candidates
-for network pruning methods: approaches that drop a subset of network weights
-while striving to preserve performance. Existing methods, however, require
-either retraining, which is rarely affordable for billion-scale LLMs, or
-solving a weight reconstruction problem reliant on second-order information,
-which may also be computationally expensive. In this paper, we introduce a
-novel, straightforward yet effective pruning method, termed Wanda (Pruning by
-Weights and activations), designed to induce sparsity in pretrained LLMs.
-Motivated by the recent observation of emergent large magnitude features in
-LLMs, our approach prunes weights with the smallest magnitudes multiplied by
-the corresponding input activations, on a per-output basis. Notably, Wanda
-requires no retraining or weight update, and the pruned LLM can be used as is.
-We conduct a thorough evaluation of our method Wanda on LLaMA and LLaMA-2
-across various language benchmarks. Wanda significantly outperforms the
-established baseline of magnitude pruning and performs competitively against
-recent method involving intensive weight update. Code is available at
-https://github.com/locuslab/wanda.</p>
+<blockquote>
+<p><strong>一句话总结</strong>：Wanda 提出了一种无需重训练或权重更新的 LLM 剪枝方法，通过将权重大小与对应输入激活范数相乘来评估权重重要性，并按输出神经元逐行比较，在保持计算简单高效的同时，实现了与需要复杂权重更新的 SparseGPT 相当的剪枝效果。</p>
+</blockquote>
+<hr />
+<h2 id="_1">摘要翻译</h2>
+<p>随着大型语言模型（LLM）规模的增长，网络剪枝方法成为降低计算成本的天然候选方案——这类方法在努力保持性能的同时，丢弃网络权重的子集。然而，现有方法要么需要重训练（这对数十亿参数的 LLM 来说很少可承受），要么依赖于二阶信息的权重重建问题，计算代价也很高。本文介绍了一种新颖、简洁而有效的剪枝方法，称为 Wanda（Pruning by Weights and activations，通过权重和激活剪枝），旨在为预训练 LLM 诱导稀疏性。受到 LLM 中新兴的大特征幅度的观察启发，我们的方法在每个输出基础上，剪除幅度与对应输入激活相乘最小的权重。值得注意的是，Wanda 不需要重训练或权重更新，剪枝后的 LLM 可以直接使用。我们在 LLaMA 和 LLaMA-2 上对 Wanda 方法进行了全面评估。Wanda 显著超越了幅度剪枝这一既定基准，并与涉及密集权重更新的最新方法具有竞争力的性能。代码可在 https://github.com/locuslab/wanda 获取。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li>
+<p><strong>LLM 的高昂计算成本</strong>：大型语言模型通常包含数十亿参数，需要大量计算资源。模型压缩（如量化和剪枝）是降低这一成本的关键手段，但剪枝在 LLM 领域的研究相对较少。</p>
+</li>
+<li>
+<p><strong>现有剪枝方法的局限性</strong>：传统剪枝方法（如权重重要性评分、迭代剪枝、从头训练等）通常需要重训练，这对 LLM 来说几乎不可承受。近期的 SparseGPT 虽然不需要传统重训练，但需要复杂的权重更新过程，计算代价很高。</p>
+</li>
+<li>
+<p><strong>幅度剪枝在 LLM 上失效</strong>：研究表明，传统的幅度剪枝（magnitude pruning）在 LLM 上表现极差，即使在相对较低的稀疏度下也会导致显著的性能下降。这与 LLM 中存在"新兴的大特征幅度"（emergent large magnitude features）有关——少数隐藏状态特征的幅度远大于其他特征（约100倍），这使得传统的全局幅度排序不再有效。</p>
+</li>
+<li>
+<p><strong>关键洞察</strong>：LLM 中存在稀疏但重要的特征，这些特征对于模型的预测能力至关重要。因此，评估权重重要性时需要同时考虑权重大小和输入激活的幅度。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">方法（技术细节）</h2>
+<h3 id="_4">核心思想</h3>
+<p>Wanda 的核心思想是：权重的重要性不应仅由其幅度决定，还应考虑对应的输入激活的幅度。这通过一个简单的乘积来实现：</p>
+<p><strong>剪枝度量（Pruning Metric）</strong>：对于线性层的权重 <script type="math/tex">W_{ij}</script>，其重要性得分定义为：</p>
+<p>
+<script type="math/tex; mode=display">S_{ij} = |W_{ij}| \cdot \|X_j\|_2</script>
+</p>
+<p>其中：
+- <script type="math/tex">|W_{ij}|</script> 是权重的绝对值
+- <script type="math/tex">\|X_j\|_2</script> 是第 j 个输入特征的 <script type="math/tex">\ell_2</script> 范数，跨 N×L 个 token 聚合
+- 使用 <script type="math/tex">\ell_2</script> 范数（而非 <script type="math/tex">\ell_1</script> 或 <script type="math/tex">\ell_\infty</script>），因为 <script type="math/tex">\ell_2</script> 范数更平滑，在测量激活幅度时效果更好</p>
+<h3 id="comparison-group">比较组（Comparison Group）</h3>
+<p>与传统的逐层（layer-wise）或全局（global）比较不同，Wanda 采用<strong>按输出神经元（per-output）</strong>进行比较：</p>
+<p>
+<script type="math/tex; mode=display">G_{ij} = \{W_{uv} | u = i\}</script>
+</p>
+<p>即连接到同一输出神经元 i 的所有权重构成一个比较组，在该组内按重要性得分排序，剪除最低优先级的权重。</p>
+<p><strong>关键发现</strong>：这种按输出比较的方式比逐层比较更有效，尤其是对于 LLM。作者发现这可能是 LLM 特有的性质，在图像分类器上未观察到类似趋势。</p>
+<h3 id="_5">实现流程</h3>
+<p>Wanda 可以在<strong>单次前向传播</strong>中完成：</p>
+<ol>
+<li>使用校准数据（128 条序列，来自 C4 数据集）计算每个线性层的输入特征范数 <script type="math/tex">\|X_j\|_2</script>
+</li>
+<li>计算权重重要性得分 <script type="math/tex">S_{ij} = |W_{ij}| \cdot \|X_j\|_2</script>
+</li>
+<li>在每个输出组内按得分排序，剪除最低 s% 的权重</li>
+<li>剪枝后的层输出作为下一层的输入，继续剪枝</li>
+</ol>
+<p><strong>PyTorch 实现</strong>（简洁的 6 行代码）：</p>
+<pre><code class="language-python">def prune(W, X, s):
+    metric = W.abs() * X.norm(p=2, dim=0)
+    _, sorted_idx = torch.sort(metric, dim=1)
+    pruned_idx = sorted_idx[:, :int(C_in * s)]
+    W.scatter_(dim=1, index=pruned_idx, src=0)
+    return W
+</code></pre>
+<h3 id="nm">结构化 N:M 稀疏性</h3>
+<p>Wanda 可自然扩展到结构化 N:M 稀疏性（如 2:4、4:8），在每 M 个连续权重中保留最多 N 个非零值，从而利用 NVIDIA 的稀疏张量核加速矩阵乘法。</p>
+<h3 id="sparsegpt">与 SparseGPT 的理论联系</h3>
+<p>Wanda 的度量可以看作 SparseGPT 度量的简化版：
+- SparseGPT 的度量涉及 Hessian 矩阵的逆（<script type="math/tex">S_{ij} = |W|^2 / \text{diag}((X^T X + \lambda I)^{-1})_{ij}</script>）
+- 当 <script type="math/tex">\lambda=0</script> 且只保留对角元素时，简化为 <script type="math/tex">|W_{ij}| \cdot \|X_j\|_2</script>（Wanda 的度量的平方）
+- 这种简化消除了矩阵逆运算，大幅降低了计算复杂度</p>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="_7">评估模型与数据集</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA (7B/13B/30B/65B) 和 LLaMA-2 (7B/13B/70B)</li>
+<li><strong>评估</strong>：零样本任务（7个 EleutherAI LM Harness 任务）和语言建模（WikiText 验证集困惑度）</li>
+<li><strong>校准数据</strong>：128 条 C4 训练集序列（与 SparseGPT 相同）</li>
+<li><strong>稀疏类型</strong>：非结构化 50%、结构化 4:8、结构化 2:4</li>
+</ul>
+<h3 id="table-2">零样本任务结果（Table 2）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>权重更新</th>
+<th>稀疏度</th>
+<th>LLaMA 7B</th>
+<th>13B</th>
+<th>30B</th>
+<th>65B</th>
+<th>LLaMA-2 7B</th>
+<th>13B</th>
+<th>70B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>-</td>
+<td>0%</td>
+<td>59.99</td>
+<td>62.59</td>
+<td>65.38</td>
+<td>66.97</td>
+<td>59.71</td>
+<td>63.03</td>
+<td>67.08</td>
+</tr>
+<tr>
+<td>Magnitude</td>
+<td>✗</td>
+<td>50%</td>
+<td>46.94</td>
+<td>47.61</td>
+<td>53.83</td>
+<td>62.74</td>
+<td>51.14</td>
+<td>52.85</td>
+<td>60.93</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>✓</td>
+<td>50%</td>
+<td>54.94</td>
+<td>58.61</td>
+<td>63.09</td>
+<td>66.30</td>
+<td>56.24</td>
+<td>60.72</td>
+<td>67.28</td>
+</tr>
+<tr>
+<td><strong>Wanda</strong></td>
+<td><strong>✗</strong></td>
+<td><strong>50%</strong></td>
+<td><strong>54.21</strong></td>
+<td><strong>59.33</strong></td>
+<td><strong>63.60</strong></td>
+<td><strong>66.67</strong></td>
+<td><strong>56.24</strong></td>
+<td><strong>60.83</strong></td>
+<td><strong>67.03</strong></td>
+</tr>
+</tbody>
+</table>
+<p>关键发现：
+- Wanda 在非结构化 50% 稀疏度下与 SparseGPT 性能相当，甚至在 LLaMA-13B/30B/65B 上略优
+- 大模型的稀疏子网络性能接近稠密模型：LLaMA-65B 非结构化 50% 稀疏 (66.67%) 接近稠密 LLaMA-65B (66.97%)
+- 显著超越幅度剪枝（magnitude pruning）基准</p>
+<h3 id="table-3">语言建模结果（Table 3）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>稀疏度</th>
+<th>LLaMA 7B</th>
+<th>13B</th>
+<th>30B</th>
+<th>65B</th>
+<th>LLaMA-2 7B</th>
+<th>13B</th>
+<th>70B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>0%</td>
+<td>5.68</td>
+<td>5.09</td>
+<td>4.77</td>
+<td>3.56</td>
+<td>5.12</td>
+<td>4.57</td>
+<td>3.12</td>
+</tr>
+<tr>
+<td>Magnitude</td>
+<td>50%</td>
+<td>17.29</td>
+<td>20.21</td>
+<td>7.54</td>
+<td>5.90</td>
+<td>14.89</td>
+<td>6.37</td>
+<td>4.98</td>
+</tr>
+<tr>
+<td>SparseGPT</td>
+<td>50%</td>
+<td>7.22</td>
+<td>6.21</td>
+<td>5.31</td>
+<td>4.57</td>
+<td>6.51</td>
+<td>5.63</td>
+<td>3.98</td>
+</tr>
+<tr>
+<td><strong>Wanda</strong></td>
+<td><strong>50%</strong></td>
+<td><strong>7.26</strong></td>
+<td><strong>6.15</strong></td>
+<td><strong>5.24</strong></td>
+<td><strong>4.57</strong></td>
+<td><strong>6.42</strong></td>
+<td><strong>5.56</strong></td>
+<td><strong>3.98</strong></td>
+</tr>
+</tbody>
+</table>
+<p>关键发现：
+- Wanda 在 LLaMA-7B 上非结构化 50% 稀疏度的困惑度为 7.26，显著优于幅度剪枝的 17.29
+- 与 SparseGPT 基本持平
+- 结构化稀疏度下，Wanda 在大模型上更有优势（如 LLaMA-30B 的 2:4 和 4:8 稀疏度）</p>
+<h3 id="table-4">剪枝速度对比（Table 4）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA 7B</th>
+<th>13B</th>
+<th>30B</th>
+<th>65B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SparseGPT</td>
+<td>203.1s</td>
+<td>339.0s</td>
+<td>810.3s</td>
+<td>1353.4s</td>
+</tr>
+<tr>
+<td>Wanda</td>
+<td>0.54s</td>
+<td>0.91s</td>
+<td>2.9s</td>
+<td>5.6s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Wanda 比 SparseGPT 快约 300 倍</strong>，且计算复杂度从 <script type="math/tex">O(d_{hidden}^3)</script> 降至 <script type="math/tex">O(d_{hidden}^2)</script>。</p>
+<h3 id="table-5">推理加速（Table 5）</h3>
+<p>结构化 2:4 稀疏性在 LLaMA-65B 上带来约 1.6× 的矩阵乘法加速，端到端延迟 LLaMA-7B 从 312ms 降至 251ms（1.24× 加速）。</p>
+<h3 id="_8">消融实验</h3>
+<ul>
+<li><strong>比较组选择</strong>：按输出（per-output）显著优于按层（per-layer），这一发现对幅度剪枝同样有效</li>
+<li><strong>校准样本数量</strong>：Wanda 对校准样本数量非常鲁棒，即使只有 1 个样本也能获得困惑度 7.66</li>
+<li><strong>微调效果</strong>：LoRA 微调和全参数微调都能恢复剪枝 LLM 的性能，全参数微调将 LLaMA-7B 的零样本准确率从 54.21% 恢复到 58.15%</li>
+<li><strong>权重更新效果</strong>：Wanda 不需要权重更新（无需迭代过程），权重更新对其性能几乎没有提升</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>计算高效</strong>：Wanda 可在单次前向传播中完成，剪枝速度比 SparseGPT 快约 300 倍（0.54s vs 203.1s，LLaMA-7B）</li>
+<li><strong>无需重训练或权重更新</strong>：剪枝后的 LLM 可直接使用，无需任何额外的训练或权重更新步骤</li>
+<li><strong>与 SparseGPT 性能相当</strong>：在非结构化 50% 稀疏度下，Wanda 的零样本准确率和困惑度与需要复杂权重更新的 SparseGPT 基本持平</li>
+<li><strong>计算复杂度低</strong>：从 SparseGPT 的 <script type="math/tex">O(d_{hidden}^3)</script> 降至 <script type="math/tex">O(d_{hidden}^2)</script>，消除了矩阵逆运算</li>
+<li><strong>鲁棒性强</strong>：对校准样本数量不敏感，即使只有 1 个样本也能获得良好的剪枝效果</li>
+<li><strong>易于实现</strong>：代码简洁（6 行 PyTorch 代码），易于集成到现有流程</li>
+<li><strong>可扩展到结构化稀疏性</strong>：自然支持 N:M 结构化稀疏性（如 2:4、4:8），可利用硬件加速</li>
+<li><strong>大模型性能接近稠密</strong>：50% 稀疏的大模型（如 LLaMA-65B）性能几乎与稠密模型持平</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>不适用于图像分类器</strong>：按输出比较的优势在图像分类模型上不成立，表明该方法可能对 LLM 有特殊性</li>
+<li><strong>稀疏子网络需预训练权重</strong>：Wanda 依赖于预训练 LLM 中的"新兴大特征幅度"特性，可能不适用于较小的模型或非 Transformer 架构</li>
+<li><strong>结构化稀疏性在小模型上性能有限</strong>：在结构化 2:4 稀疏度下，小模型（如 7B）的性能不如 SparseGPT</li>
+<li><strong>剪枝后性能与稠密模型仍有差距</strong>：无微调情况下，剪枝后的 LLM 与原始稠密模型存在明显的性能差距（尤其是小模型），需要微调来恢复</li>
+<li><strong>仅适用于线性层</strong>：剪枝只针对线性层（约占 LLM 参数的 99%），跳过嵌入层和分类头</li>
+<li><strong>校准数据依赖</strong>：虽然对校准样本数量鲁棒，但仍需校准数据来估计输入特征范数</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>模型压缩与稀疏性</strong>：Wanda 是 EfficientPaper 项目中稀疏剪枝（sparse pruning）方向的重要工作，与 SparseGPT 等方法形成对比，展示了无需权重更新的高效剪枝策略</li>
+<li><strong>权重稀疏性（weight_sparsity）</strong>：作为关键词之一，Wanda 探索了 LLM 权重稀疏化的有效方法，为后续研究提供了基准</li>
+<li><strong>无重训练剪枝</strong>：Wanda 的核心优势——无需重训练或权重更新——对大规模 LLM 的压缩具有重要意义</li>
+<li><strong>LLM 剪枝基准</strong>：Wanda 的作者明确希望将其作为未来 LLM 剪枝研究的基线（baseline），其简洁高效的特点使其成为该领域的标杆</li>
+<li><strong>与量化技术的互补</strong>：剪枝和量化是模型压缩的两大手段，Wanda 可与量化技术（如 GPTQ、AWQ）结合使用，进一步降低 LLM 的计算成本</li>
+<li><strong>硬件感知稀疏性</strong>：Wanda 支持结构化 N:M 稀疏性，可利用 NVIDIA 稀疏张量核加速推理，与硬件高效的 LLM 部署相关</li>
+<li><strong>LLM 稀疏子网络发现</strong>：Wanda 证明了 LLM 中存在精确的稀疏子网络（不需要权重调整），这对理解 LLM 的冗余性和可压缩性有重要启示</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<blockquote>
+<p>本笔记由 AI Agent（Hermes Agent）自动生成，基于论文原文 PDF 提取和分析。笔记内容仅供参考，建议读者阅读原文获取完整信息。</p>
+</blockquote>
+<hr />
+<p><em>笔记生成时间：2026-06-05</em>
+<em>论文链接：<a href="http://arxiv.org/abs/2306.11695">arXiv:2306.11695</a></em>
+<em>代码仓库：<a href="https://github.com/locuslab/wanda">GitHub - locuslab/wanda</a></em>
+<em>发表会议：ICLR 2024</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

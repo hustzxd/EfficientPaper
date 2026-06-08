@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,26 +161,184 @@
   
                 <h1 id="ada-kv-optimizing-kv-cache-eviction-by-adaptive-budget-allocation-for-efficient-llm-inference">Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference</h1>
 <p><a class="glightbox" href="../fig2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig2.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large Language Models have excelled in various fields but encounter
-challenges in memory and time efficiency due to the expanding Key-Value (KV)
-cache required for long-sequence inference. Recent efforts try to reduce KV
-cache size to a given memory budget by evicting vast non-critical cache
-elements during runtime, while preserving generation quality. Our revisiting of
-current eviction methods reveals that they fundamentally minimize an upper
-bound of the <script type="math/tex">L_1</script> eviction loss between the pre- and post-eviction outputs of
-multi-head self-attention mechanisms. Moreover, our analysis indicates that the
-common practices of uniformly assigning budgets across attention heads harm
-their post-eviction generation quality. In light of these findings, we propose
-a simple yet effective adaptive budget allocation algorithm. This algorithm not
-only optimizes the theoretical loss upper bound but also reduces the <script type="math/tex">L_1</script>
-eviction loss in practice by aligning with the varied characteristics across
-different heads. By integrating this algorithm into two state-of-the-art
-methods, we demonstrate the effectiveness of using adaptive budget allocation
-to optimize KV cache eviction. Extensive evaluations on 16 datasets and the
-Needle-in-a-Haystack test confirm significant performance improvements across
-various tasks.</p>
-<p>每个head分配不同的 Budget，区别看待不同的 attention head.</p>
+<h2 id="_1">一句话总结</h2>
+<p>AdaKV 提出了一种自适应预算分配算法，通过根据不同注意力头的注意力集中程度动态分配 KV 缓存预算（而非均匀分配），从而优化缓存驱逐策略，显著提升大语言模型长序列推理的效率和生成质量。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大语言模型（LLMs）在各个领域表现出色，但由于长序列推理所需的 Key-Value（KV）缓存不断膨胀，面临内存和时间效率方面的挑战。最近的研究尝试在运行时通过驱逐大量非关键缓存元素，将 KV 缓存大小缩减到给定的内存预算范围内，同时保持生成质量。我们对当前驱逐方法的重新审视揭示：这些方法本质上是在最小化多头自注意力机制中驱逐前后输出之间 <script type="math/tex">L_1</script> 驱逐损失的上界。此外，我们的分析表明，在不同注意力头之间统一分配预算的常见做法会损害驱逐后的生成质量。基于这些发现，我们提出了一种简单而有效的自适应预算分配算法。该算法不仅优化了理论上界，还通过适应不同头部的特征差异在实践中降低了 <script type="math/tex">L_1</script> 驱逐损失。通过将该算法集成到两种最先进（SOTA）的方法中，我们验证了自适应预算分配在优化 KV 缓存驱逐方面的有效性。在 16 个数据集和 Needle-in-a-Haystack 测试上的广泛评估证实了其在各种任务中的显著性能提升。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="1-kv">1. KV 缓存导致的内存与效率瓶颈</h3>
+<ul>
+<li>现代 LLM（如 GPT-4、Claude3、Gemini-Pro-1.5）支持越来越长的上下文（128K~1M tokens），KV 缓存大小随序列长度增长，甚至远超模型参数大小。</li>
+<li>在预填充（prefilling）和解码（decoding）阶段，KV 缓存带来巨大的内存负担和 I/O 延迟，成为解码瓶颈。</li>
+</ul>
+<h3 id="2">2. 现有驱逐方法的不足</h3>
+<ul>
+<li>当前主流的 Top-k 驱逐方法（如 SnapKV、PyramidKV）通过注意力权重选择保留关键缓存元素，但普遍采用<strong>统一预算分配</strong>（uniform budget allocation）策略。</li>
+<li>不同注意力头的注意力集中程度（attention concentration）差异显著：有些头高度集中（仅需少量缓存即可达到近最优效果），有些头则高度分散（需要更多缓存）。</li>
+<li>统一预算分配会导致在稀疏头浪费预算，在分散头预算不足，严重损害驱逐后的生成质量。</li>
+</ul>
+<h3 id="3">3. 理论动机</h3>
+<ul>
+<li>从理论角度重新审视现有驱逐方法，发现它们本质上是在最小化 <script type="math/tex">L_1</script> 驱逐损失的上界。</li>
+<li>自适应预算分配能够从理论上降低该上界，从而提供更优的理论保证。</li>
+</ul>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="1">1. 多头自注意力形式化描述</h3>
+<p>对于每个注意力头 <script type="math/tex">i \in [1, h]</script>，定义变换矩阵 <script type="math/tex">W_Q^i, W_K^i, W_V^i \in \mathbb{R}^{d \times d_h}</script>，将 token 嵌入映射为 Query、Key、Value。在每个时间步，KV 缓存不断更新，输出 <script type="math/tex">y</script> 通过注意力权重计算：</p>
+<p>
+<script type="math/tex; mode=display">y = \sum_{i \in [1,h]} A_i V_i W_O^i, \quad A_i = \text{softmax}(q_i K_i^T)</script>
+</p>
+<h3 id="2-l_1">2. <script type="math/tex">L_1</script> 驱逐损失定义与理论分析</h3>
+<p>引入指示变量 <script type="math/tex">I_i \in \mathbb{R}^{1 \times n}</script> 表示驱逐决策，驱逐后的输出为 <script type="math/tex">\hat{y}</script>。定义驱逐损失为驱逐前后输出的 <script type="math/tex">L_1</script> 距离：</p>
+<p>
+<script type="math/tex; mode=display">L_1 \text{ Eviction Loss} = \|y - \hat{y}\|_1</script>
+</p>
+<p><strong>定理 2</strong> 证明了 <script type="math/tex">L_1</script> 驱逐损失的上界 <script type="math/tex">\epsilon</script>：</p>
+<p>
+<script type="math/tex; mode=display">\epsilon = 2hC - 2C \sum_{i \in [1,h]} \sum_{j \in [1,n]} I_j^i A_j^i</script>
+</p>
+<p>其中 <script type="math/tex">C = \max \|V_i W_O^i\|_\infty</script> 是一个常数。</p>
+<p><strong>定理 3</strong> 证明了 Top-k 驱逐方法本质上是在最小化该上界 <script type="math/tex">\epsilon</script>。</p>
+<h3 id="3_1">3. 自适应预算分配算法（核心贡献）</h3>
+<p><strong>算法 2</strong>（Adaptive Budget Allocation）：</p>
+<ol>
+<li><strong>拼接</strong>：将所有头部的观测注意力权重拼接为一个序列 <script type="math/tex">A = \text{Cat}(\{A_i\}, \text{dim}=1)</script>
+</li>
+<li><strong>创建头部指示符</strong>：创建 <script type="math/tex">I = [1...1 : ... : h...h]</script>，每个头部索引重复 <script type="math/tex">n</script> 次</li>
+<li><strong>Top-k 选择</strong>：从拼接序列中选取全局 Top-k 权重的索引 <script type="math/tex">T = \text{Top-k}(A, B)</script>
+</li>
+<li><strong>频率统计</strong>：统计每个头部在全局 Top-k 中的出现频率，即为该头部的分配预算 <script type="math/tex">B_i^*</script>
+</li>
+<li><strong>返回</strong>：输出自适应预算分配结果 <script type="math/tex">\{B_i^*\}</script>
+</li>
+</ol>
+<p><strong>定理 4</strong> 证明了自适应分配的上界 <script type="math/tex">\epsilon^*</script> 始终不高于统一分配的上界 <script type="math/tex">\epsilon'</script>：</p>
+<p>
+<script type="math/tex; mode=display">\epsilon^* \leq \epsilon'</script>
+</p>
+<h3 id="4-sota">4. 与 SOTA 方法的集成</h3>
+<p><strong>算法 3</strong>（Ada-SnapKV/Ada-Pyramid in One Layer）：</p>
+<ol>
+<li>计算观测窗口内的注意力权重 <script type="math/tex">\bar{A}_i = \text{softmax}(Q_{win}^i K_i^T)</script>
+</li>
+<li>通过 max-pooling 和 mean 操作处理权重</li>
+<li>调用算法 2 获取自适应预算分配 <script type="math/tex">\{B_i^*\}</script>
+</li>
+<li>引入安全超参数 <script type="math/tex">\alpha</script>（默认 0.5），防止稀疏头分配过小预算：<script type="math/tex">\{B_i^*\} = \alpha \times \{B_i^*\} + (1-\alpha) \times (B/h - \text{winsize})</script>
+</li>
+<li>执行 Top-k 选择保留关键缓存，与观测窗口内的缓存拼接</li>
+<li>使用自定义 CUDA kernel 实现扁平化存储，结合 Flash Attention 技术确保计算效率</li>
+</ol>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">评估设置</h3>
+<ul>
+<li><strong>数据集</strong>：LongBench 中的 16 个数据集，涵盖单文档 QA、多文档 QA、摘要、少样本学习、合成任务和代码生成等任务</li>
+<li><strong>基准方法</strong>：H2O、StreamingLLM、SnapKV、PyramidKV</li>
+<li><strong>预算设置</strong>：B = 128h、256h、512h、1024h（h 为头数）</li>
+<li><strong>模型</strong>：Mistral-7B-instruct-v0.2</li>
+</ul>
+<h3 id="_7">主要结果</h3>
+<table>
+<thead>
+<tr>
+<th>预算</th>
+<th>方法</th>
+<th>平均分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Cache</td>
+<td>Full Cache</td>
+<td>42.51</td>
+</tr>
+<tr>
+<td>B=128h</td>
+<td>Ada-SnapKV</td>
+<td>36.71</td>
+</tr>
+<tr>
+<td>B=128h</td>
+<td>Ada-Pyramid</td>
+<td>36.81</td>
+</tr>
+<tr>
+<td>B=256h</td>
+<td>Ada-SnapKV</td>
+<td>39.72</td>
+</tr>
+<tr>
+<td>B=256h</td>
+<td>Ada-Pyramid</td>
+<td>39.28</td>
+</tr>
+<tr>
+<td>B=512h</td>
+<td>Ada-SnapKV</td>
+<td>40.57</td>
+</tr>
+<tr>
+<td>B=512h</td>
+<td>Ada-Pyramid</td>
+<td>40.45</td>
+</tr>
+<tr>
+<td>B=1024h</td>
+<td>Ada-SnapKV</td>
+<td>41.54</td>
+</tr>
+<tr>
+<td>B=1024h</td>
+<td>Ada-Pyramid</td>
+<td>~41.0+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Ada-SnapKV 和 Ada-Pyramid 在所有预算设置下均优于对应的原始版本</strong></li>
+<li>在 B=128h（最小预算）下，Ada-Pyramid 的平均分数（36.81）比原始 Pyramid（35.58）提升约 1.2 分</li>
+<li>在 B=1024h 下，Ada-SnapKV（41.54）接近全缓存性能（42.51）</li>
+<li>在 Needle-in-a-Haystack 测试中，自适应分配显著提升了模型的长上下文检索能力</li>
+<li>驱逐损失分析：自适应分配在所有样本上均产生更低的相对驱逐损失</li>
+</ul>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>理论与实践双重优化</strong>：不仅从理论上降低了 <script type="math/tex">L_1</script> 驱逐损失的上界（定理 4），而且在实践中验证了更低的实际驱逐损失。</li>
+<li><strong>即插即用</strong>：作为自适应预算分配算法，可无缝集成到任何 Top-k 驱逐方法中（如 SnapKV、PyramidKV），无需额外训练或微调。</li>
+<li><strong>计算高效</strong>：通过自定义 CUDA kernel 和 Flash Attention 技术，保持与原方法一致的计算效率。</li>
+<li><strong>安全机制</strong>：引入超参数 <script type="math/tex">\alpha</script> 防止稀疏头分配过小预算，增强容错性。</li>
+<li><strong>广泛适用性</strong>：在 16 个数据集和 Needle-in-a-Haystack 测试中均表现优异，适用于多种任务类型。</li>
+<li><strong>概念简洁</strong>：算法设计简单直观，易于理解和实现。</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>仅适用于 Top-k 驱逐方法</strong>：自适应预算分配针对 Top-k 驱逐策略设计，可能不直接适用于滑动窗口驱逐等其他方法。</li>
+<li><strong>依赖观测窗口</strong>：预算分配基于观测窗口内的注意力权重，窗口大小（默认 32）和超参数 <script type="math/tex">\alpha</script>（默认 0.5）的选择可能需要针对不同模型和任务进行调优。</li>
+<li><strong>仅在单一模型上验证</strong>：实验主要使用 Mistral-7B-instruct-v0.2，对更大规模模型（如 70B+）或不同架构的适用性有待进一步验证。</li>
+<li><strong>缓存稳定性假设</strong>：算法假设关键缓存元素在未来生成过程中保持稳定（top-k 假设），这一假设在极长序列或高动态场景下可能不成立。</li>
+<li><strong>开销分析不充分</strong>：虽然提到 CUDA kernel 实现，但对内存和计算开销的具体分析不够详尽。</li>
+<li><strong>未考虑动态预算调整</strong>：预算分配在预填充阶段一次性确定，未考虑解码过程中的动态调整。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV 缓存压缩与优化</strong>：AdaKV 属于 KV 缓存驱逐方法的改进方向，与 EfficientPaper 中的 KV 缓存稀疏化研究（kv_cache_sparse）直接相关。</li>
+<li><strong>注意力机制效率提升</strong>：与注意力头剪枝（attention head pruning）、稀疏注意力（sparse attention）等方向互补。</li>
+<li><strong>长上下文推理优化</strong>：在长序列 LLM 推理中，如何在有限内存预算下最大化推理质量是核心问题，AdaKV 提供了预算分配层面的解决方案。</li>
+<li><strong>动态资源分配</strong>：启发了在其他推理场景（如推理时计算、模型并行）中采用自适应资源分配策略。</li>
+<li><strong>与 Flash Attention 的协同</strong>：AdaKV 的 CUDA kernel 实现与 Flash Attention 技术结合，展示了底层优化与高层算法设计的协同。</li>
+<li><strong>无训练推理加速</strong>：作为一种即插即用方法，无需额外训练即可提升推理效率，与 EfficientPaper 中其他无训练方法（如 quantization、pruning）具有相同的设计理念。</li>
+</ol>
+<hr />
+<h2 id="ai">AI 生成声明</h2>
+<p>本笔记由 AI Agent（Hermes Agent）自动生成，基于论文 Ada-KV: Optimizing KV Cache Eviction by Adaptive Budget Allocation for Efficient LLM Inference 的 PDF 文本提取和元数据信息。笔记内容经过结构化整理，包含一句话总结、摘要翻译、研究动机、方法（技术细节）、实验结果、优势、局限和相关研究方向等部分。AI 生成内容可能存在对原文理解的偏差，请以原始论文为准。</p>
+<p>生成时间：2025年6月</p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

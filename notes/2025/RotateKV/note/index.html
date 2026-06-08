@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,31 +164,260 @@
 <p>Zunhai Su, Zhe Chen, Wang Shen, Hanyu Wei, Linge Li, Huangqi Yu, Kehong Yuan</p>
 </blockquote>
 <p><a class="glightbox" href="../fig3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig3.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Key-Value (KV) cache facilitates efficient large language models (LLMs)
-inference by avoiding recomputation of past KVs. As the batch size and context
-length increase, the oversized KV caches become a significant memory
-bottleneck, highlighting the need for efficient compression. Existing KV
-quantization rely on fine-grained quantization or the retention of a
-significant portion of high bit-widths caches, both of which compromise
-compression ratio and often fail to maintain robustness at extremely low
-average bit-widths. In this work, we explore the potential of rotation
-technique for 2-bit KV quantization and propose RotateKV, which achieves
-accurate and robust performance through the following innovations: (i)
-Outlier-Aware Rotation, which utilizes channel-reordering to adapt the
-rotations to varying channel-wise outlier distributions without sacrificing the
-computational efficiency of the fast Walsh-Hadamard transform (FWHT); (ii)
-Pre-RoPE Grouped-Head Rotation, which mitigates the impact of rotary position
-embedding (RoPE) on proposed outlier-aware rotation and further smooths
-outliers across heads; (iii) Attention-Sink-Aware Quantization, which leverages
-the massive activations to precisely identify and protect attention sinks.
-RotateKV achieves less than 0.3 perplexity (PPL) degradation with 2-bit
-quantization on WikiText-2 using LLaMA-2-13B, maintains strong CoT reasoning
-and long-context capabilities, with less than 1.7\% degradation on GSM8K,
-outperforming existing methods even at lower average bit-widths. RotateKV also
-showcases a 3.97x reduction in peak memory usage, supports 5.75x larger batch
-sizes, and achieves a 2.32x speedup in decoding stage.</p>
-<p>对 kv进行Hadamard变换</p>
+<blockquote>
+<p>⚠️ <strong>本 note 由 AI Agent 自动生成（Hermes Agent, Nous Research），基于论文全文阅读撰写，仅供参考。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p><strong>RotateKV 是一种面向 LLM 的 2-bit KV Cache 量化方法，通过提出 Outlier-Aware 旋转、Pre-RoPE 分组头旋转和 Attention-Sink 感知量化三项创新，在极低比特下实现高精度、高鲁棒性的 KV 缓存压缩，同时大幅降低显存占用、提升吞吐量。</strong></p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>KV 缓存通过避免对过去 Key-Value 的重复计算来提升大语言模型（LLM）推理效率。随着批大小和上下文长度的增加，过大的 KV 缓存成为显著的内存瓶颈，亟需高效压缩。现有的 KV 量化方法依赖细粒度量化或保留大量高比特缓存，这既损害压缩比，又难以在极低平均比特宽度下保持鲁棒性。</p>
+<p>本文探索旋转技术在 2-bit KV 量化中的潜力，提出 RotateKV，通过以下三项创新实现准确且鲁棒的性能：（i）<strong>Outlier-Aware 旋转</strong>：利用通道重排序使旋转适应不同通道的离群值分布，同时保持快速 Walsh-Hadamard 变换（FWHT）的计算效率；（ii）<strong>Pre-RoPE 分组头旋转</strong>：缓解旋转位置编码（RoPE）对 Outlier-Aware 旋转的影响，并在多个注意力头之间进一步平滑离群值；（iii）<strong>Attention-Sink 感知量化</strong>：利用大量激活值（massive activations）精确识别和保护注意力汇聚点（attention sinks）。</p>
+<p>RotateKV 在 LLaMA-2-13B 上以 2-bit 量化实现 WikiText-2 上低于 0.3 的困惑度（PPL）退化，保持强大的 CoT 推理和长上下文能力，在 GSM8K 上仅低于 FP16 基线 1.7%，在更低平均比特宽度下仍优于现有方法。此外，RotateKV 实现了 <strong>3.97× 峰值显存缩减</strong>，支持 <strong>5.75× 更大批大小</strong>，并达到 <strong>2.32× 解码加速</strong>。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">背景问题</h3>
+<ul>
+<li>KV 缓存是 LLM 推理的核心机制，但随上下文长度和批大小增长，显存消耗急剧上升，成为推理瓶颈。</li>
+<li>现有 KV 缓存量化方法主要分为两类：</li>
+<li><strong>按通道（per-channel）量化</strong>（如 KIVI、GEAR、KVQuant）：因 Key 中存在显著通道离群值，需细粒度量化或保留部分高比特缓存，压缩效率受限。</li>
+<li><strong>按 token（per-token）量化</strong>（如 ZipCache、MiKV、SKVQ）：关注 token 间显著性差异，分配高比特给重要 token，同样牺牲压缩比。</li>
+<li>两种方法在极低比特（如 2-bit）下难以维持鲁棒性。</li>
+</ul>
+<h3 id="_5">核心洞察</h3>
+<ul>
+<li><strong>旋转技术</strong>（Hadamard 变换）在 4-bit LLM 量化中已展现消除离群值的潜力，但其在极低比特 KV 量化中的潜力尚未被充分挖掘。</li>
+<li>现有旋转方法（如 QuaRot、SpinQuant）存在三个关键局限：</li>
+<li>对所有注意力头应用<strong>相同旋转矩阵</strong>，无法适应不同头的通道离群值分布。</li>
+<li>旋转在 <strong>RoPE 之后</strong>进行，RoPE 破坏了通道幅度一致性。</li>
+<li>对注意力汇聚点的处理仅保留序列开头的 sink token，忽略了其他位置的 sink。</li>
+</ul>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<p>RotateKV 的整体流程如图3所示，包含三大核心组件：</p>
+<h3 id="1-outlier-aware">1. Outlier-Aware 旋转</h3>
+<p><strong>问题</strong>：现有基于 FWHT 的旋转对所有头使用相同的 Hadamard 矩阵，无法适应不同注意力头中各异的通道离群值分布。</p>
+<p><strong>方案</strong>：提出 <strong>通道重排序（channel reordering）</strong>，在不破坏 FWHT 效率的前提下提升旋转对离群值的适应性。</p>
+<ul>
+<li><strong>重排序策略</strong>：对每个 token 的 Key 通道按旋转后的值进行排序，通过重新排列通道来减少每个量化组内的离群值。</li>
+<li><strong>校准过程</strong>（Algorithm 1）：</li>
+<li>对旋转后的 Key 状态 K 进行 reshape</li>
+<li>计算每个通道的总和</li>
+<li>按通道总和排序得到重排序索引</li>
+<li><strong>关键特性</strong>：重排序索引通过快速校准获得，在所有 token 推理过程中保持一致，无需存储多个矩阵。</li>
+<li><strong>实验验证</strong>（Table 1）：在 LLaMA-2-7B 上测试多种 outlier-aware 策略（smoothing、reordering、rotate 等组合），发现旋转+重排序的组合在 2-bit 下表现最佳（PPL=6.33），而 smooth 在 2-bit 下完全失败（PPL=16.97）。</li>
+</ul>
+<h3 id="2-pre-rope">2. Pre-RoPE 分组头旋转</h3>
+<p><strong>问题</strong>：现有方法在 RoPE 之后对每个头单独进行旋转，存在两个局限：
+1. RoPE 破坏了 Key 的通道幅度一致性（Figure 6），使得旋转的离群值抑制效果大打折扣。
+2. 旋转局限于单个头内部，无法跨头平滑离群值。
+- 实验表明（Table 2），RoPE 导致量化误差增加 145%。</p>
+<p><strong>方案</strong>：
+- <strong>Pre-RoPE 管线</strong>：将 outlier-aware 旋转移到 RoPE 之前，消除 RoPE 对旋转的负面影响，同时允许将旋转和重排序操作融合到权重中，推理时仅需执行逆操作。
+- <strong>分组头旋转（Grouped-Head Rotation）</strong>：将多个注意力头分组进行联合旋转，实现跨头的离群值平滑。
+- <strong>分组大小选择</strong>（Table 3）：平衡计算开销与性能收益，4 个头一组是合理选择（PPL=6.99，FLOPs 增加有限）。</p>
+<h3 id="3-attention-sink">3. Attention-Sink 感知量化</h3>
+<p><strong>问题</strong>：现有方法仅保留序列开头的 sink token，忽略了其他位置的注意力汇聚点。原因在于高效的注意力计算（如 FlashAttention）不暴露中间注意力分数，无法动态识别额外的 sink token。</p>
+<p><strong>方案</strong>：利用 <strong>massive activations</strong>（Transformer 块输出残差求和中显著大于其他值的激活）来间接识别注意力汇聚点。</p>
+<ul>
+<li><strong>原理</strong>：研究表明，当 massive activations 出现时，对应 token 会吸引集中注意力，形成 attention sink。</li>
+<li><strong>实现</strong>：</li>
+<li>利用前一个 decoder 块输出的 massive activation 的 token 索引</li>
+<li>在当前注意力层中识别额外的 sink token</li>
+<li>在量化过程中将这些 token 保持在 FP16 精度</li>
+<li><strong>实例</strong>（Figure 5）：在 LLaMA-2-7B 中，Block 10 的输出在 token 0 和 110 的通道 1415 和 2533 出现 massive activations，后续注意力层的注意力集中在 token 0 和 110 上。</li>
+</ul>
+<h3 id="summary">整体流程（Summary）</h3>
+<ol>
+<li>快速校准获取重排序索引</li>
+<li>将分组头旋转和通道重排序融合到 Key 权重中</li>
+<li>对 Key 执行 outlier-aware 旋转，使其更适合量化</li>
+<li>更新 KV 缓存时，执行在线逆重排序和逆旋转</li>
+<li>对 Value 采用简单的离线旋转（因 Value 无显著离群值）</li>
+<li>量化采用 per-token 非对称整数量化，group size 为 128，scale 用 FP8 存储，zero-point 用 INT8 存储</li>
+</ol>
+<hr />
+<h2 id="_7">实验结果</h2>
+<h3 id="1-perplexity-wikitext-2">1. Perplexity 评估（WikiText-2）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA-2-7B</th>
+<th>LLaMA-2-13B</th>
+<th>LLaMA-3-8B</th>
+<th>Mistral-7B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>5.12</td>
+<td>4.57</td>
+<td>5.75</td>
+<td>4.91</td>
+</tr>
+<tr>
+<td>QuaRot-2bit</td>
+<td>8.94</td>
+<td>6.96</td>
+<td>21.43</td>
+<td>6.62</td>
+</tr>
+<tr>
+<td>KVQuant-2bit</td>
+<td>5.59</td>
+<td>4.95</td>
+<td>6.75</td>
+<td>5.34</td>
+</tr>
+<tr>
+<td><strong>RotateKV-2bit</strong></td>
+<td><strong>5.50</strong></td>
+<td><strong>4.84</strong></td>
+<td><strong>6.69</strong></td>
+<td><strong>5.24</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在 LLaMA-2-13B 上 2-bit PPL 仅退化 0.27（4.57→4.84）</li>
+<li>相比 QuaRot 在 2-bit 下 PPL 大幅降低</li>
+<li>相比 KVQuant 在所有模型上 2-bit PPL 均有约 0.1 的改善</li>
+<li>使用更简单的整数量化（而非 KVQuant 的非均匀量化）</li>
+</ul>
+<h3 id="2-gsm8k-cot-8-shot">2. GSM8K 推理能力（CoT 8-shot）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>LLaMA-2-7B</th>
+<th>LLaMA-2-13B</th>
+<th>LLaMA-3-8B</th>
+<th>Mistral-7B</th>
+<th>平均比特</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td>14.18</td>
+<td>25.40</td>
+<td>51.33</td>
+<td>42.68</td>
+<td>16</td>
+</tr>
+<tr>
+<td>KIVI</td>
+<td>13.19</td>
+<td>24.64</td>
+<td>43.44</td>
+<td>39.12</td>
+<td>2.50</td>
+</tr>
+<tr>
+<td><strong>RotateKV</strong></td>
+<td><strong>13.95</strong></td>
+<td><strong>25.09</strong></td>
+<td><strong>50.49</strong></td>
+<td><strong>42.99</strong></td>
+<td><strong>2.25</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>RotateKV 平均比特宽度最低（2.25），但 CoT 推理性能最优</li>
+<li>相比 FP16 退化不到 1.7%</li>
+<li>在更低比特下超越所有基线方法</li>
+</ul>
+<h3 id="3-longbench-milebench">3. 长上下文和多模态任务（LongBench &amp; MileBench）</h3>
+<ul>
+<li>在 8 个任务上，KIVI（group size=128）在 LLaMA-2-7B 上平均性能退化 46.5%</li>
+<li>RotateKV 在相同 group size 下仅有不到 1.4% 的性能损失</li>
+<li>在 Mistral-7B 和 LLaVA-v1.6-Mistral-7B 上表现尤其突出</li>
+</ul>
+<h3 id="4-needle-in-a-haystack40k">4. Needle-in-a-Haystack（40K 上下文）</h3>
+<ul>
+<li>RotateKV 在 40K 上下文长度下保持与 FP16 几乎相同的检索能力</li>
+<li>FP16 准确率 86.44%，RotateKV 准确率 86.40%，差异可忽略</li>
+</ul>
+<h3 id="5">5. 效率分析</h3>
+<ul>
+<li><strong>峰值显存缩减</strong>：3.97×</li>
+<li><strong>支持更大批大小</strong>：5.75×</li>
+<li><strong>解码加速</strong>：2.32×</li>
+<li>使用 Triton 实现量化/反量化内核，CUDA 实现 FWHT</li>
+</ul>
+<h3 id="6">6. 消融实验</h3>
+<ul>
+<li><strong>Table 7</strong>（LLaMA-2-13B 2-bit PPL）：</li>
+<li>Original Rotations: 6.96（退化 2.39）</li>
+<li>
+<ul>
+<li>Pre-RoPE 分组头旋转: 5.67（降低 1.29）</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Attention-Sink 感知量化: 5.52（降低 0.15）</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Outlier-Aware 旋转: 4.84（降低 0.68）</li>
+</ul>
+</li>
+<li>每项创新都有显著贡献，尤其 Pre-RoPE 分组头旋转和 Outlier-Aware 旋转</li>
+<li><strong>Table 8</strong>（量化粒度）：group size=32 时 LLaMA-2-13B 2-bit PPL=4.75，进一步改善</li>
+</ul>
+<hr />
+<h2 id="_8">优势</h2>
+<ol>
+<li><strong>极低比特高精度</strong>：在 2-bit 量化下 PPL 退化极小（&lt;0.3），优于所有现有方法</li>
+<li><strong>无需调优（tuning-free）</strong>：校准过程高效（&lt;5 分钟在单张 4090 上），无需搜索超参数</li>
+<li><strong>多任务鲁棒性</strong>：在 CoT 推理、长上下文、多模态任务中均表现优秀</li>
+<li><strong>显著效率提升</strong>：3.97× 显存缩减，5.75× 更大批大小，2.32× 解码加速</li>
+<li><strong>计算效率保持</strong>：使用 FWHT 保持 O(n log n) 复杂度，重排序索引通过快速校准获得</li>
+<li><strong>简单量化方案</strong>：使用 per-token 非对称整数量化，无需复杂的非均匀量化</li>
+<li><strong>通用性</strong>：校准在 WikiText-2 上进行，可有效泛化到其他数据集</li>
+<li><strong>首篇工作</strong>：据作者所知，是首个全面探索旋转技术在极低比特 KV 量化中潜力的方法</li>
+</ol>
+<hr />
+<h2 id="_9">局限</h2>
+<ol>
+<li><strong>在线计算开销</strong>：预 RoPE 分组头旋转需要在线逆操作，可能增加推理延迟</li>
+<li><strong>校准依赖</strong>：需要对校准数据进行离线处理，虽然高效但仍是额外步骤</li>
+<li><strong>分组大小权衡</strong>：分组头旋转的头数增加可改善 PPL，但同时增加计算成本</li>
+<li><strong>注意力 sink 识别的间接性</strong>：依赖 massive activations 间接识别注意力汇聚点，可能不完全精确</li>
+<li><strong>硬件优化空间</strong>：当前实现可通过内核融合进一步优化，当前实现仍有改进空间</li>
+<li><strong>校准泛化性</strong>：虽然实验表明 WikiText-2 校准可泛化到其他数据集，但对极端分布的泛化能力仍需验证</li>
+<li><strong>仅探索了 KV 缓存旋转</strong>：虽然 Value 采用简单离线旋转，但未深入探索 Value 旋转的潜力</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_10">基线方法</h3>
+<p>RotateKV 的 baseline 包括：
+- <strong>2024/KIVI</strong>：per-channel 2-bit KV 量化，使用 per-channel 量化和残差保留
+- <strong>2024/KVQuant</strong>：非均匀量化 + per-vector dense-and-sparse 量化，保留 0.5% FP16 离群值
+- <strong>2024/MiKV</strong>：重要性感知混合精度量化
+- <strong>2024/ZipCache</strong>：准确高效的 KV 缓存量化，基于显著 token 识别
+- <strong>2024/GEAR</strong>：近无损生成推理的 KV 缓存压缩方案</p>
+<h3 id="_11">相关研究方向</h3>
+<ol>
+<li><strong>KV 缓存量化</strong>：本论文的核心方向，属于 KV 缓存压缩的量化方法，与 KIVI、KVQuant、ZipCache、GEAR、SKVQ 等方法直接竞争</li>
+<li><strong>LLM 量化</strong>：本方法属于后训练量化（post-training quantization），与 GPTQ、AWQ、QuaRot、SpinQuant 等方法相关</li>
+<li><strong>旋转技术（Rotation-based Quantization）</strong>：Hadamard 变换在 LLM 量化中的应用，与 QuaRot、SpinQuant、ResQ 等方法相关</li>
+<li><strong>注意力汇聚点（Attention Sinks）</strong>：利用 attention sink 优化量化，与 IntactKV、SKVQ 等方法相关</li>
+<li><strong>长上下文推理</strong>：支持极长上下文（40K+）的 KV 缓存压缩，与 KVQuant 的 "10M context length" 目标相关</li>
+<li><strong>多模态 LLM 推理</strong>：在 VLM（LLaVA 等）上的实验验证了方法的通用性</li>
+<li><strong>高效推理系统</strong>：通过 KV 缓存压缩提升 LLM 推理效率，与 FlashAttention、QServe 等系统级优化方法互补</li>
+</ol>
+<h3 id="_12">代码</h3>
+<ul>
+<li>GitHub: https://github.com/ZunhaiSu/RotateKV</li>
+<li>框架: Pytorch</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

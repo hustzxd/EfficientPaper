@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,24 +161,312 @@
   
                 <h1 id="pruning-general-large-language-models-into-customized-expert-models">Pruning General Large Language Models into Customized Expert Models</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) have revolutionized natural language processing,
-yet their substantial model sizes often require substantial computational
-resources. To preserve computing resources and accelerate inference speed, it
-is crucial to prune redundant parameters, especially for experienced users who
-often need compact expert models tailored to specific downstream scenarios.
-However, most existing pruning methods focus on preserving the model's general
-capabilities, often requiring extensive post-training or suffering from
-degraded performance due to coarse-grained pruning. In this work, we design a
-<script type="math/tex">\underline{Cus}</script>tom <script type="math/tex">\underline{Prun}</script>ing method (<script type="math/tex">\texttt{Cus-Prun}</script>) to
-prune a large general model into a smaller lightweight expert model, which is
-positioned along the "language", "domain" and "task" dimensions. By identifying
-and pruning irrelevant neurons of each dimension, <script type="math/tex">\texttt{Cus-Prun}</script> creates
-expert models without any post-training. Our experiments demonstrate that
-<script type="math/tex">\texttt{Cus-Prun}</script> consistently outperforms other methods, achieving minimal
-loss in both expert and general capabilities across various models from
-different model families and sizes.</p>
-<p>language domain task 三个维度对模型进行结构化稀疏，然后按照实际的任务，将三个维度的mask进行融合，得到最终的mask。</p>
+<blockquote>
+<p><strong>本文由 AI Agent 自动生成，生成时间：2025-06-05。</strong>
+<strong>元数据来源：</strong> <code>/Users/xiandong/projects/EfficientPaper/meta/2025/Cus-Prun.prototxt</code>
+<strong>论文来源：</strong> <a href="http://arxiv.org/abs/2506.02561v1">arXiv:2506.02561v1</a>
+<strong>代码仓库：</strong> <a href="https://github.com/zhaoyiran924/Custom-Prune">https://github.com/zhaoyiran924/Custom-Prune</a></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>Cus-Prun 是一种基于<strong>语言、领域、任务</strong>三维定制的细粒度神经元级剪枝方法，能够在<strong>无需后训练</strong>的情况下，将通用大语言模型裁剪为面向特定场景的轻量专家模型，同时保留大部分通用能力和专业能力。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>大型语言模型（LLM）已彻底改变了自然语言处理，但其庞大的模型规模通常需要大量的计算资源。为了节省计算资源并加速推理速度，剪枝冗余参数至关重要，尤其是对于需要针对特定下游场景定制紧凑专家模型的用户。然而，大多数现有剪枝方法侧重于保留模型的通用能力，通常需要大量的后训练，或者因粗粒度剪枝而导致性能下降。本文设计了一种定制剪枝方法（Cus-Prun），将大型通用模型剪枝为更小的轻量专家模型，该模型沿"语言"、"领域"和"任务"三个维度定位。通过识别和剪枝每个维度的无关神经元，Cus-Prun 能够在无需后训练的情况下创建专家模型。实验表明，Cus-Prun 在不同模型系列和大小上持续优于其他方法，在专家能力和通用能力方面均实现了最小损失。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>LLM 压缩需求</strong>：大型语言模型参数量达到数十亿甚至数百亿，推理计算成本高昂，需要高效的参数剪枝方法。</p>
+</li>
+<li>
+<p><strong>现有方法的不足</strong>：</p>
+</li>
+<li>大多数剪枝方法（如 LLM-Pruner、SliceGPT、ShortGPT）侧重于<strong>保留模型的通用能力</strong>（如 MMLU 等通用基准），而非针对特定使用场景。</li>
+<li>粗粒度剪枝（移除整层或整个模块）可能移除对特定下游场景至关重要的参数，导致需要大量后训练来恢复。</li>
+<li>
+<p>用户实际需求往往是<strong>特定语言、领域、任务</strong>的组合（如德语教育领域的问答模型），现有方法无法很好地满足这种定制化需求。</p>
+</li>
+<li>
+<p><strong>核心洞察</strong>：模型中存在对特定语言、领域或任务<strong>冗余的神经元</strong>，可以被选择性地移除，从而创建更小且与特定需求对齐的专家模型。</p>
+</li>
+<li>
+<p><strong>关键区别</strong>：现有方法是"保留通用能力"，而 Cus-Prun 是"移除与目标场景无关的参数"，后者更符合实际部署需求。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="41">4.1 专家模型的三维定义</h3>
+<p>Cus-Prun 将专家模型定义为三个维度的组合：
+- <strong>语言维度（L）</strong>：如英语、中文、德语、泰语等
+- <strong>领域维度（D）</strong>：如金融、医疗、法律、电商等
+- <strong>任务维度（T）</strong>：如问答、摘要、情感分析等</p>
+<p>专家模型表示为：<code>LLMExp := (L, D, T) ∈ L × D × T</code></p>
+<h3 id="42-foundational-custom-pruning">4.2 基础定制剪枝（Foundational Custom Pruning）</h3>
+<p><strong>核心假设</strong>：受 LLM 解释性研究启发，模型中的许多参数对处理特定"语言"是冗余的，该现象可扩展到"领域"和"任务"维度。</p>
+<p><strong>技术流程</strong>：</p>
+<ol>
+<li><strong>构建维度专属语料库</strong>：</li>
+<li>对于每个维度，构建包含该维度信息的语料库（同时消除其他维度的干扰）。</li>
+<li>
+<p>例如，为语言 LExp 构建语料库 <code>CLExp = {(LExp, D, T) | D ∈ D, T ∈ T}</code>，包含该语言的各种领域和任务的文档。</p>
+</li>
+<li>
+<p><strong>识别无关神经元</strong>：</p>
+</li>
+<li>对于每个神经元 N(l)_i（第 l 层第 i 个神经元），通过<strong>消融实验</strong>衡量其相关性：<ul>
+<li>计算 <code>||h\N(l)_i(c) - h_i(c)||_2</code>，其中 <code>h_i(c)</code> 是正常输出，<code>h\N(l)_i(c)</code> 是移除该神经元后的输出。</li>
+</ul>
+</li>
+<li>对于每篇文档，影响力最低的 σ% 的神经元被视为无关（σ 为预定义的剪枝比例）。</li>
+<li>
+<p>在整个语料库中<strong>一致无关</strong>的神经元被标记为该维度的无关神经元集合 ˜N。</p>
+</li>
+<li>
+<p><strong>融合剪枝</strong>：</p>
+</li>
+<li>
+<p>最终专家模型通过取<strong>所有维度无关神经元的交集</strong>来确定剪枝目标：</p>
+<ul>
+<li><code>LLMExp = LLM ⊖ (˜NLExp ∩ ˜NDExp ∩ ˜NTE xp)</code></li>
+<li>即移除所有维度都认为无关的神经元。</li>
+</ul>
+</li>
+<li>
+<p><strong>细粒度剪枝</strong>：</p>
+</li>
+<li>不同于移除整层或整个模块，Cus-Prun 在<strong>神经元级别</strong>（参数矩阵中的行或列）进行剪枝，覆盖所有组件（如注意力层和前馈层）。</li>
+</ol>
+<h3 id="43-adaptive-custom-pruning">4.3 自适应定制剪枝（Adaptive Custom Pruning）</h3>
+<p>Cus-Prun 支持灵活的定制粒度：</p>
+<ol>
+<li><strong>三维专家模型</strong>：同时约束语言、领域、任务三个维度。</li>
+<li><strong>二维专家模型</strong>：例如语言-领域专家模型（如中文医疗模型），使用两个维度的无关神经元交集。</li>
+<li><strong>一维专家模型</strong>：例如语言特定模型，仅使用一个维度的无关神经元集合。</li>
+</ol>
+<h3 id="44">4.4 并行神经元检测</h3>
+<p>为提高效率，Cus-Prun 实现了并行神经元检测方法（Zhao et al., 2024b），加速了序列化的神经元影响评估过程。</p>
+<h3 id="45">4.5 算法伪代码</h3>
+<pre><code>输入: 原始语言模型 LLM，专家模型请求 (LExp, DExp, TExp)，剪枝比例 σ
+1: 构建选定维度的语料库
+2: 对每个维度识别无关神经元
+3: 取所有维度无关神经元的交集
+4: 移除这些神经元得到专家模型
+输出: LLMExp
+</code></pre>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="51">5.1 实验设置</h3>
+<ul>
+<li><strong>模型</strong>：Llama3-8B、Mistral-Nemo-12B、Llama2-13B、Llama3-70B</li>
+<li><strong>剪枝比例</strong>：25%（默认），以及更激进的 35% 和 45%</li>
+<li><strong>基线方法</strong>：</li>
+<li>Dense（原始模型）</li>
+<li>LLM-Pruner（结构化剪枝）</li>
+<li>SliceGPT（矩阵近似）</li>
+<li>ShortGPT（层移除）</li>
+<li><strong>评估指标</strong>：ARC-Challenge、GSM8K、MMLU（通用能力）；MGSM、M3Exam、XQuAD、XLSum（多语言）；MedMCQ、FinTQA、TSA、AMSA（多领域）；MedSum、ASum、AMCF（多任务）</li>
+</ul>
+<h3 id="52">5.2 预实验（三维专家模型）</h3>
+<p>在三个具体场景中（韩语-法律-摘要、英语-医疗-选择题、中文-电商-情感分析）：
+- Cus-Prun 分别保留了原始模型性能的 <strong>92%、83%、94%</strong>
+- SliceGPT（不考虑特定使用场景）表现远低于 Cus-Prun</p>
+<h3 id="53">5.3 主要实验结果</h3>
+<h4 id="25">多语言设置（25% 剪枝率）</h4>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>通用能力</th>
+<th>多语言专家</th>
+<th>多领域专家</th>
+<th>多任务专家</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama3-8B</td>
+<td>Dense</td>
+<td>64.1</td>
+<td>46.7</td>
+<td>59.8</td>
+<td>57.0</td>
+</tr>
+<tr>
+<td>Llama3-8B</td>
+<td>Cus-Prun</td>
+<td>51.4</td>
+<td><strong>38.9</strong></td>
+<td><strong>68.4</strong></td>
+<td><strong>52.2</strong></td>
+</tr>
+<tr>
+<td>Llama3-8B</td>
+<td>SliceGPT</td>
+<td>21.9</td>
+<td>10.0</td>
+<td>20.5</td>
+<td>20.5</td>
+</tr>
+<tr>
+<td>Llama3-8B</td>
+<td>ShortGPT</td>
+<td>22.3</td>
+<td>7.4</td>
+<td>17.6</td>
+<td>17.6</td>
+</tr>
+<tr>
+<td>Llama3-70B</td>
+<td>Dense</td>
+<td>81.9</td>
+<td>61.6</td>
+<td>76.8</td>
+<td>61.1</td>
+</tr>
+<tr>
+<td>Llama3-70B</td>
+<td>Cus-Prun</td>
+<td>62.7</td>
+<td><strong>48.7</strong></td>
+<td><strong>80.4</strong></td>
+<td><strong>57.9</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：
+- Cus-Prun 在所有模型和所有设置中持续优于其他剪枝方法。
+- 在生成任务（如 MGSM）中，其他方法几乎丧失了生成连贯推理输出的能力（接近 0 准确率），而 Cus-Prun 仍能保持较好的性能。
+- 在低资源语言（如泰语）中表现稳健。</p>
+<h4 id="-">二维专家模型（中文-医疗）</h4>
+<ul>
+<li>Cus-Prun 在 CMExam 上达到 <strong>48.7%</strong>（Dense 为 50.6%），通用能力为 52.4%（Dense 为 59.3%）。</li>
+<li>其他方法几乎同时丧失通用和专业能力。</li>
+</ul>
+<h4 id="_6">一维专家模型（语言特定）</h4>
+<ul>
+<li>剪枝 25% 神经元后，Cus-Prun 在德国、中文、泰语模型上均保持了通用性能和语言特定能力。</li>
+<li>例如，德国特定模型在通用能力上得 54.7，XQuAD 上得 48.3，XNLI 上得 56.8（Dense 分别为 64.1、52.9、62.0）。</li>
+<li>ShortGPT 在生成任务（XQuAD、XLSum）上表现尤其差。</li>
+</ul>
+<h4 id="llama3-8b">激进剪枝比例（Llama3-8B）</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>比例</th>
+<th>加速比</th>
+<th>MMLU</th>
+<th>专家能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dense</td>
+<td>0%</td>
+<td>1×</td>
+<td>63.1</td>
+<td>59.7</td>
+</tr>
+<tr>
+<td>ShortGPT</td>
+<td>43.8%</td>
+<td>1.8×</td>
+<td>7.9</td>
+<td>10.2</td>
+</tr>
+<tr>
+<td>Cus-Prun</td>
+<td>45%</td>
+<td>1.8×</td>
+<td><strong>48.4</strong></td>
+<td><strong>50.6</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键发现</strong>：即使在 45% 的激进剪枝率下，Cus-Prun 仍能保持有意义的性能，而 ShortGPT 在 43.8% 时几乎完全丧失能力。</p>
+<hr />
+<h2 id="_7">优势</h2>
+<ol>
+<li>
+<p><strong>无需后训练</strong>：Cus-Prun 直接通过剪枝创建专家模型，无需任何微调或后训练，大幅降低部署成本。</p>
+</li>
+<li>
+<p><strong>细粒度剪枝</strong>：在神经元级别进行剪枝（而非整层或整模块移除），能更精确地保留与目标场景相关的参数。</p>
+</li>
+<li>
+<p><strong>三维定制化</strong>：支持语言、领域、任务三个维度的灵活组合，以及一维、二维、三维的自适应剪枝。</p>
+</li>
+<li>
+<p><strong>广泛的适用性</strong>：</p>
+</li>
+<li>在多种模型家族（Llama、Mistral）和规模（8B-70B）上表现一致。</li>
+<li>
+<p>在多语言（德语、中文、泰语）、多领域（医疗、金融、电商）、多任务（摘要、问答、情感分析）设置下均优于基线。</p>
+</li>
+<li>
+<p><strong>鲁棒性强</strong>：即使在激进剪枝比例（高达 45%）下仍保持良好性能。</p>
+</li>
+<li>
+<p><strong>通用能力保留</strong>：由于采用神经元级剪枝，大部分骨干神经元得以保留，从而保持了较强的通用能力。</p>
+</li>
+<li>
+<p><strong>高效实现</strong>：支持并行神经元检测，提高了剪枝效率。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_8">局限</h2>
+<ol>
+<li>
+<p><strong>维度覆盖有限</strong>：虽然 Cus-Prun 使用了三个维度（语言、领域、任务），但某些关键限制（如查询格式、输入结构的变化）无法完全在该框架内捕获。</p>
+</li>
+<li>
+<p><strong>剪枝后微调的不确定性</strong>：剪枝后的模型能否有效进行后训练（微调）仍是一个开放问题，这可能限制模型在剪枝后适应新场景的能力。</p>
+</li>
+<li>
+<p><strong>语料库构建</strong>：需要为每个维度构建相应的语料库，虽然可以通过自动检索完成，但语料库质量可能影响剪枝效果。</p>
+</li>
+<li>
+<p><strong>维度组合复杂性</strong>：当需要精确控制多个维度时，语料库和神经元识别的计算开销可能增大。</p>
+</li>
+<li>
+<p><strong>特定任务的适用性</strong>：论文主要在 NLP 任务上验证，对于更广泛的任务类型（如代码生成、多模态等）的适用性尚未探索。</p>
+</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li>
+<p><strong>结构化稀疏剪枝</strong>：Cus-Prun 是一种结构化剪枝方法，与 EfficientPaper 关注的 <code>sparse_pruning</code> 和 <code>structured_sparsity</code> 关键词高度相关。该方法为实现高效的模型压缩提供了新思路。</p>
+</li>
+<li>
+<p><strong>模型压缩与部署</strong>：Cus-Prun 通过无后训练的剪枝方法降低了大模型的部署成本，与 EfficientPaper 中关于模型压缩（如量化、蒸馏、剪枝）的研究方向一致。</p>
+</li>
+<li>
+<p><strong>多语言/多领域模型优化</strong>：Cus-Prun 在多语言（德语、中文、泰语）和多领域（医疗、金融、电商）场景下的优异表现，为 EfficientPaper 中跨语言和跨领域的模型效率优化提供了重要参考。</p>
+</li>
+<li>
+<p><strong>神经元级细粒度剪枝</strong>：Cus-Prun 采用的神经元级剪枝策略，与 EfficientPaper 中关于细粒度模型优化的研究方向相呼应，展示了更精确的参数控制能力。</p>
+</li>
+<li>
+<p><strong>免训练模型定制</strong>：Cus-Prun 无需后训练即可创建专家模型，这种免训练的定制方法可能与 EfficientPaper 中关于高效模型定制的研究方向产生交叉。</p>
+</li>
+<li>
+<p><strong>多维度剪枝框架</strong>：Cus-Prun 的三维（语言-领域-任务）剪枝框架为模型效率研究提供了新的分析视角，可启发后续研究探索更多维度的剪枝策略。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_9">参考信息</h2>
+<ul>
+<li><strong>论文标题</strong>：Pruning General Large Language Models into Customized Expert Models</li>
+<li><strong>作者</strong>：Yiran Zhao, Guizhen Chen, Kenji Kawaguchi, Lidong Bing, Wenxuan Zhang</li>
+<li><strong>机构</strong>：National University of Singapore, Nanyang Technological University, Alibaba Group, Singapore University of Technology and Design</li>
+<li><strong>发布平台</strong>：arXiv（2025年6月3日）</li>
+<li><strong>关键词</strong>：sparse_pruning, structured_sparsity</li>
+<li><strong>代码</strong>：https://github.com/zhaoyiran924/Custom-Prune</li>
+<li><strong>基础模型</strong>：Llama3-8B, Mistral-Nemo-12B, Llama2-13B, Llama3-70B</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

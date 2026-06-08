@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,26 +161,184 @@
   
                 <h1 id="flashinfer-efficient-and-customizable-attention-engine-for-llm-inference-serving">FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving</h1>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../blank.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Transformers, driven by attention mechanisms, form the foundation of large
-language models (LLMs). As these models scale up, efficient GPU attention
-kernels become essential for high-throughput and low-latency inference. Diverse
-LLM applications demand flexible and high-performance attention solutions. We
-present FlashInfer: a customizable and efficient attention engine for LLM
-serving. FlashInfer tackles KV-cache storage heterogeneity using block-sparse
-format and composable formats to optimize memory access and reduce redundancy.
-It also offers a customizable attention template, enabling adaptation to
-various settings through Just-In-Time (JIT) compilation. Additionally,
-FlashInfer's load-balanced scheduling algorithm adjusts to dynamism of user
-requests while maintaining compatibility with CUDAGraph which requires static
-configuration. FlashInfer have been integrated into leading LLM serving
-frameworks like SGLang, vLLM and MLC-Engine. Comprehensive kernel-level and
-end-to-end evaluations demonstrate FlashInfer's ability to significantly boost
-kernel performance across diverse inference scenarios: compared to
-state-of-the-art LLM serving solutions, FlashInfer achieve 29-69%
-inter-token-latency reduction compared to compiler backends for LLM serving
-benchmark, 28-30% latency reduction for long-context inference, and 13-17%
-speedup for LLM serving with parallel generation.</p>
+<blockquote>
+<p><strong>⚠️ 生成声明</strong>：本 note 由 AI Agent 自动生成，基于论文全文的文本提取与分析。生成时间：2026-06-05。内容可能存在偏差，请以原论文为准。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>FlashInfer 是一个高效且可定制的注意力计算引擎，通过统一的块稀疏格式、JIT 编译的可定制注意力模板和动态负载均衡调度算法，显著提升 LLM 推理服务的性能，已集成到 SGLang、vLLM 和 MLC-Engine 等主流框架中。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>Transformer 架构以注意力机制为核心，构成了大语言模型（LLM）的基础。随着模型规模扩大，高效的 GPU 注意力内核对高吞吐量和低延迟推理至关重要。多样化的 LLM 应用需要灵活且高性能的注意力解决方案。本文提出 <strong>FlashInfer</strong>：一个可定制的高效注意力引擎，用于 LLM 推理服务。FlashInfer 采用块稀疏格式和可组合格式来优化内存访问并减少冗余，解决 KV-Cache 存储异构性问题。同时提供可定制的注意力模板，通过即时编译（JIT）适配各种配置。此外，FlashInfer 的负载均衡调度算法能够适应用户请求的动态变化，同时兼容需要静态配置的 CUDAGraph。FlashInfer 已集成到 SGLang、vLLM 和 MLC-Engine 等主流 LLM 服务框架中。全面的内核级和端到端评估表明，FlashInfer 能够显著提升各种推理场景的内核性能：与最先进的 LLM 服务方案相比，在 LLM 服务基准测试中实现了 29-69% 的 token 间延迟降低，长上下文推理延迟降低 28-30%，并行生成加速 13-17%。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<p>LLM 推理服务面临两个核心挑战：</p>
+<ol>
+<li>
+<p><strong>工作负载多样性与输入动态性</strong>：LLM 服务涉及多种注意力计算模式（prefill、decode、树解码等），请求的查询长度和 KV-Cache 大小在批次内和时间上不断变化。朴素实现可能导致负载不平衡，需要动态调度以优化性能。</p>
+</li>
+<li>
+<p><strong>硬件定制化需求</strong>：</p>
+</li>
+<li><strong>内存侧</strong>：高效的存储格式（如 PagedAttention、RadixAttention）对于管理不断增长的 KV-Cache 和多样化存储模式至关重要。</li>
+<li><strong>计算侧</strong>：需要针对特定硬件（如 NVIDIA Turing 到 Hopper 架构）定制流水线和模板，以充分发挥 GPU 性能潜力。</li>
+<li><strong>注意力变体</strong>：现代 LLM 使用各种注意力变体（GQA、MQA、特殊掩码、自定义注意力分数计算等），需要灵活的实现策略。</li>
+</ol>
+<p>当前各系统针对这些特性的子集实现专门的注意力方案，导致维护开销高且潜在效率低下。FlashInfer 旨在提供一个统一的、可定制的解决方案。</p>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<p>FlashInfer 的核心设计包含三大组件：统一的 KV-Cache 存储格式、可定制的注意力计算模板、动态感知的运行时调度器。</p>
+<h3 id="1-block-sparse-format">1. 统一的块稀疏格式（Block-Sparse Format）</h3>
+<p><strong>核心思想</strong>：将所有 KV-Cache 存储模式（PageTable、RadixTree、稀疏掩码等）统一为块压缩稀疏行（Block-Sparse Row, BSR）格式。</p>
+<ul>
+<li><strong>块稀疏矩阵表示</strong>：KV-Cache 存储为 BSR 格式的稀疏矩阵，块大小由应用需求决定。Br 对应查询块大小，Bc 由 KV-Cache 管理算法指定。</li>
+<li><strong>查询/输出表示</strong>：使用 ragged tensor（锯齿数组）高效存储，避免填充（padding），便于将不同请求的查询和输出紧凑打包。</li>
+<li><strong>任意块大小支持</strong>：FlashInfer 的内核实现支持任意 (Br, Bc) 值。</li>
+</ul>
+<h3 id="2-composable-formats">2. 可组合格式（Composable Formats）</h3>
+<p>受 SparseTIR 启发，FlashInfer 利用多个块稀疏格式存储稀疏矩阵，提供更大的灵活性和内存效率：</p>
+<ul>
+<li><strong>共享前缀分解</strong>：对于共享前缀的请求，KV-Cache 对应的行和列形成稠密子矩阵，使用较大 Br 的块稀疏矩阵存储。不同请求的唯一 KV-Cache 使用较小块大小的矩阵。</li>
+<li><strong>无需数据移动</strong>：仅需计算稀疏子矩阵的索引和索引指针数组，无需移动 KV-Cache 数据。</li>
+<li><strong>内存效率提升</strong>：较大块大小的注意力计算可通过快速共享内存和寄存器访问共享 KV-Cache 条目，显著提升内存效率。</li>
+</ul>
+<h3 id="3-customizable-attention-template">3. 可定制的注意力模板（Customizable Attention Template）</h3>
+<p><strong>JIT 编译框架</strong>：受 FlexAttention 启发，FlashInfer 设计了可定制的 CUDA 模板和 JIT 编译器，将注意力变体规范作为输入，生成优化的内核代码。</p>
+<p><strong>变体规范包含以下函数对象（functors）</strong>：
+- <code>QueryTransform</code>、<code>KeyTransform</code>、<code>ValueTransform</code>：在注意力计算前对 query/key/value 张量进行变换
+- <code>OutputTransform</code>：对注意力输出张量进行变换
+- <code>LogitsTransform</code>、<code>LogitsMask</code>：在 softmax 计算前对 logits 进行变换和掩码</p>
+<p><strong>支持的特性</strong>：
+- 可选的 softmax/sigmoid 等激活函数（如 FlashSigmoid）
+- 融合 RoPE、归一化、投影（如 DeepSeek-V2 的 MLA）
+- 自定义掩码、logits soft-cap、滑动窗口注意力
+- 使用 PTX 指令或用户自定义库</p>
+<p><strong>Tile 大小选择</strong>：
+- 为不同架构提供多种 tile 大小：<code>(1, 16, 32, 64, 128) × (32, 64, 128)</code>
+- 基于硬件资源和工作负载强度的启发式选择
+- 为 Ada 架构适配有限的共享内存</p>
+<p><strong>硬件支持</strong>：Turing 到 Hopper（sm75 到 sm90a），使用 FlashAttention2 和 FlashAttention3 算法。</p>
+<h3 id="4-load-balanced-scheduling">4. 动态负载均衡调度（Load-balanced Scheduling）</h3>
+<p><strong>调度算法</strong>（Algorithm 1）：
+1. 计算每个 tile 的成本：<code>cost(lq, lkv) = α·lq + β·lkv</code>
+2. 将每个查询块的 KV 分割为最大大小 Lkv 的块
+3. 使用优先队列进行负载均衡分配，确保各 CTA（Cooperative Thread Array）工作量均衡</p>
+<p><strong>运行时设计</strong>：
+- <strong>Plan-Run 分离</strong>：plan 函数在 CPU 上生成调度计划，run 函数在 GPU 上执行注意力计算，灵感来自 Inspector-Executor 模型
+- <strong>CUDAGraph 兼容</strong>：attention 和 contraction 阶段使用持久化内核（persistent kernel），grid 大小固定，满足 CUDAGraph 静态配置要求
+- <strong>workspace buffer</strong>：用户提供的 workspace buffer 用于存储部分输出和计划信息，固定偏移量确保指针一致
+- <strong>跨层复用</strong>：计划信息可跨层复用，因为同一生成步骤中所有层使用相同的序列长度信息</p>
+<h3 id="5">5. 编程接口</h3>
+<p>FlashInfer 提供 PyTorch 编程接口，支持与 SGLang、vLLM、MLC-Engine 等框架集成：
+- <code>AttentionWrapper</code>：初始化时 JIT 编译内核并缓存复用
+- 支持可组合格式（多个注意力包装器，不同块大小）
+- <code>plan()</code> 函数激活动态调度器，生成负载均衡计划
+- <code>run()</code> 函数执行注意力计算，输出结果
+- CUDAGraph 捕获 <code>run()</code> 调用，编译为单个图</p>
+<hr />
+<h2 id="_5">实验结果</h2>
+<p><strong>实验环境</strong>：NVIDIA A100 40GB SXM 和 H100 80GB SXM GPU，CUDA 12.4，PyTorch 2.4.0，f16 精度。</p>
+<h3 id="1-llm">1. 端到端 LLM 服务性能</h3>
+<p>使用 SGLang v0.3.4 评估，与 SGLang + Triton v3.0 对比：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>Llama 3.1 8B (1xH100)</th>
+<th>Llama 3.1 70B (4xH100)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITL（ShareGPT）</strong></td>
+<td>21.7ms vs 29.6ms</td>
+<td>48.3ms vs 30.7ms</td>
+</tr>
+<tr>
+<td><strong>ITL（Variable）</strong></td>
+<td>13.5ms vs 9.1ms</td>
+<td>24.0ms vs 21.8ms</td>
+</tr>
+<tr>
+<td><strong>TTFT（ShareGPT）</strong></td>
+<td>49.2ms vs 61.8ms</td>
+<td>141.2ms vs 165.2ms</td>
+</tr>
+<tr>
+<td><strong>TTFT（Variable）</strong></td>
+<td>38.8ms vs 53.2ms</td>
+<td>115.6ms vs 157.8ms</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>ITL 降低 29-69%</strong>（与 Triton 后端相比）</li>
+<li><strong>TTFT 显著降低</strong>（在所有设置中均有提升）</li>
+</ul>
+<h3 id="2">2. 输入动态性下的内核性能</h3>
+<p>与 FlashAttention 在不同序列长度分布下的对比（batch size=16）：
+- <strong>解码（Decode）带宽利用率</strong>：在 uniform 和 skewed 分布下，FlashInfer 显著优于 FlashAttention
+  - H100：FlashInfer (GQA-4) 在 skewed 下达 44%，FlashAttention 仅 33%
+  - A100：FlashInfer (GQA-4) 在 skewed 下达 46%，FlashAttention 仅 34%
+- <strong>预填充（Prefill）FLOPs 利用率</strong>：FlashInfer 在 skewed 下显著领先（H100: 59% vs 44%）</p>
+<p><strong>原因</strong>：
+- 动态负载均衡调度器（uniform/skewed 分布下优势明显）
+- 多样化 tile 大小选择（解码场景下 FlashAttention 使用次优 tile 大小）</p>
+<h3 id="3-streaming-llm">3. 长上下文推理（Streaming-LLM）</h3>
+<p>使用 Vicuna-13B 在 MT-Bench 上评估 Streaming-LLM：
+- <strong>融合 RoPE 的内核</strong>：仅需 20 行额外代码即可实现
+- <strong>ITL 降低 28-30%</strong>（不同最近窗口大小下）
+- <strong>带宽利用率提升 1.6-3.7×</strong>（融合 RoPE vs 不融合）
+- 证明了注意力内核定制化的重要性</p>
+<h3 id="4">4. 并行生成性能</h3>
+<p>在 MLC-Engine 中使用可组合格式，Llama 3.1 8B/70B，ShareGPT 数据集：
+- <strong>中等并行度（4≤n≤32）</strong>：可组合格式持续提升
+- <strong>ITL 峰值提升</strong>：n=4 时，8B 模型降低 13.73%，70B 模型降低 17.42%
+- <strong>TTFT 峰值提升</strong>：n=4 时，8B 模型降低 16.41%，70B 模型降低 22.86%
+- <strong>较小/较大 n 无显著提升</strong>：较小 n 块大小不足，较大 n 计算不再由注意力主导</p>
+<hr />
+<h2 id="_6">优势</h2>
+<ol>
+<li><strong>统一的块稀疏格式</strong>：将 PageTable、RadixTree、稀疏掩码等统一为 BSR 格式，简化 KV-Cache 管理，减少冗余。</li>
+<li><strong>可组合格式</strong>：利用多个块稀疏格式实现共享前缀分解，无需数据移动即可提升内存效率。</li>
+<li><strong>JIT 编译的可定制模板</strong>：支持灵活的注意力变体（GQA、自定义掩码、融合 RoPE 等），仅需少量代码即可适配新变体。</li>
+<li><strong>动态负载均衡调度</strong>：在序列长度变化时自动调整工作负载分配，兼容 CUDAGraph。</li>
+<li><strong>广泛的架构支持</strong>：Turing 到 Hopper（sm75 到 sm90a），支持 FlashAttention2 和 FlashAttention3。</li>
+<li><strong>与主流框架集成</strong>：已集成到 SGLang、vLLM、MLC-Engine 等生产级系统。</li>
+<li><strong>显著性能提升</strong>：ITL 降低 29-69%，长上下文延迟降低 28-30%，并行生成加速 13-17%。</li>
+</ol>
+<hr />
+<h2 id="_7">局限</h2>
+<ol>
+<li><strong>仅支持前向传播</strong>：当前 FlashInfer 仅支持注意力计算的前向传播，不支持反向传播（训练）。扩展到训练需要开发可定制的反向注意力内核模板。</li>
+<li><strong>JIT 编译开销</strong>：JIT 编译可能在首次运行时引入额外开销（尽管内核会被缓存复用）。</li>
+<li><strong>硬件依赖</strong>：主要针对 NVIDIA GPU 优化，对其他硬件（如 AMD GPU）的支持有限。</li>
+<li><strong>Triton vs CUDA</strong>：FlashInfer 生成 CUDA 代码而非 Triton 代码，因为 Triton 在许多场景下仍落后于 CUDA 和 CUTLASS，但这限制了 GPU 无关性。</li>
+<li><strong>未包含所有最新优化</strong>：例如 FlashDecoding++ 的异步全局注意力状态更新、Stream-K 的原子聚合等，留作未来工作。</li>
+<li><strong>并行生成的局限</strong>：在极小或极大并行度下（n=1 或 n=64），可组合格式的优势不明显。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ul>
+<li><strong>sparse_pruning（稀疏剪枝）</strong>：FlashInfer 的块稀疏格式与稀疏剪枝技术相关，可用于 KV-Cache 的动态稀疏化。</li>
+<li><strong>attention_sparsity（注意力稀疏性）</strong>：FlashInfer 的块稀疏注意力直接利用注意力的稀疏性模式，与注意力稀疏性研究方向紧密相关。</li>
+<li><strong>kv_cache_management（KV-Cache 管理）</strong>：FlashInfer 的统一块稀疏格式和可组合格式为 KV-Cache 管理提供了新的抽象，与 PagedAttention、RadixAttention 等技术互补。</li>
+<li><strong>tool（工具）</strong>：FlashInfer 作为一个可定制的注意力引擎，可作为 LLM 推理服务的基础组件（工具），支持各种注意力变体和硬件架构。</li>
+<li><strong>推理加速</strong>：与 EfficientPaper 关注的推理效率提升方向高度一致，可作为 baseline 或参考方法。</li>
+<li><strong>长上下文推理</strong>：FlashInfer 对长上下文推理的优化（如 Streaming-LLM 的融合 RoPE）与长上下文高效推理的研究方向相关。</li>
+<li><strong>并行生成</strong>：可组合格式对并行生成的优化与 LLM Agent、多轮对话等应用场景相关。</li>
+</ul>
+<hr />
+<h2 id="_8">参考信息</h2>
+<ul>
+<li><strong>论文</strong>：FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving</li>
+<li><strong>arXiv</strong>：http://arxiv.org/abs/2501.01005v2</li>
+<li><strong>会议</strong>：MLSys 2025</li>
+<li><strong>代码</strong>：https://github.com/flashinfer-ai/flashinfer</li>
+<li><strong>项目主页</strong>：http://flashinfer.ai</li>
+<li><strong>作者</strong>：Zihao Ye, Lequn Chen, Ruihang Lai, Wuwei Lin, Yineng Zhang, Stephanie Wang, Tianqi Chen, Baris Kasikci, Vinod Grover, Arvind Krishnamurthy, Luis Ceze</li>
+<li><strong>机构</strong>：NVIDIA, University of Washington, Perplexity AI, Carnegie Mellon University</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

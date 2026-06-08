@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>L^3: Large Lookup Layers - Efficient Paper</title>
+    <title>L³: Large Lookup Layers - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "L^3: Large Lookup Layers";
+        var mkdocs_page_name = "L\u00b3: Large Lookup Layers";
         var mkdocs_page_input_path = "notes/2026/L3/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">L^3: Large Lookup Layers</li>
+      <li class="breadcrumb-item active">L³: Large Lookup Layers</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,13 +159,114 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="l3-large-lookup-layers">L<script type="math/tex">^3</script>: Large Lookup Layers</h1>
+                <h1 id="l3-large-lookup-layers">L³: Large Lookup Layers</h1>
 <blockquote>
 <p>Albert Tseng, Christopher De Sa</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>Modern sparse language models typically achieve sparsity through Mixture-of-Experts (MoE) layers, which dynamically route tokens to dense MLP "experts." However, dynamic hard routing has a number of drawbacks, such as potentially poor hardware efficiency and needing auxiliary losses for stable training. In contrast, the tokenizer embedding table, which is natively sparse, largely avoids these issues by selecting a single embedding per token at the cost of not having contextual information. In this work, we introduce the Large Lookup Layer (L<script type="math/tex">^3</script>), which unlocks a new axis of sparsity by generalizing embedding tables to model decoder layers. L<script type="math/tex">^3</script> layers use static token-based routing to aggregate a set of learned embeddings per token in a context-dependent way, allowing the model to efficiently balance memory and compute by caching information in embeddings. L<script type="math/tex">^3</script> has two main components: (1) a systems-friendly architecture that allows for fast training and CPU-offloaded inference with no overhead, and (2) an information-theoretic embedding allocation algorithm that effectively balances speed and quality. We empirically test L<script type="math/tex">^3</script> by training transformers with up to 2.6B active parameters and find that L<script type="math/tex">^3</script> strongly outperforms both dense models and iso-sparse MoEs in both language modeling and downstream tasks.</p>
+<p>Modern sparse language models typically achieve sparsity through Mixture-of-Experts (MoE) layers, which dynamically route tokens to dense MLP "experts." However, dynamic hard routing has a number of drawbacks, such as potentially poor hardware efficiency and needing auxiliary losses for stable training. In contrast, the tokenizer embedding table, which is natively sparse, largely avoids these issues by selecting a single embedding per token at the cost of not having contextual information. In this work, we introduce the Large Lookup Layer (L³), which unlocks a new axis of sparsity by generalizing embedding tables to model decoder layers. L³ layers use static token-based routing to aggregate a set of learned embeddings per token in a context-dependent way, allowing the model to efficiently balance memory and compute by caching information in embeddings. L³ has two main components: (1) a systems-friendly architecture that allows for fast training and CPU-offloaded inference with no overhead, and (2) an information-theoretic embedding allocation algorithm that effectively balances speed and quality. We empirically test L³ by training transformers with up to 2.6B active parameters and find that L³ strongly outperforms both dense models and iso-sparse MoEs in both language modeling and downstream tasks.</p>
+<h2 id="_1">一句话总结</h2>
+<p>L³ 是一种大型查找层架构，通过将嵌入表泛化到解码器层，使用静态 token 路由聚合每个 token 的一组学习嵌入，在保持硬件友好的同时，显著超越稠密模型和等稀疏度 MoE，实现了新的稀疏性轴。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>MoE 的局限</strong>：</li>
+<li>动态硬路由的硬件效率低</li>
+<li>需要辅助损失来稳定训练</li>
+<li>专家无法在不知道路由的情况下进行卸载</li>
+<li><strong>嵌入表的启示</strong>：</li>
+<li>嵌入表是原生稀疏的，硬件友好</li>
+<li>但缺乏上下文信息</li>
+<li><strong>核心问题</strong>：能否将嵌入表的稀疏性和硬件友好性推广到解码器层？</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-l3">1. L³ 层架构</h3>
+<p><strong>核心思想</strong>：将嵌入表泛化到解码器层，使用静态 token 路由聚合每个 token 的一组学习嵌入。</p>
+<p><strong>架构</strong>：
+- <strong>输入</strong>：隐藏状态 x ∈ R^{din} 和 token ID t
+- <strong>嵌入矩阵</strong>：K = {K₁, ..., K_{|τ|}} 和 V = {V₁, ..., V_{|τ|}}
+- <strong>混合矩阵</strong>：W_{mix} ∈ R^{dout × (din + dup)}
+- <strong>上投影矩阵</strong>：W_{up} ∈ R^{dup × demb}
+- <strong>注意力聚合</strong>：token 隐藏状态关注嵌入，上下文依赖地聚合</p>
+<p><strong>关键特性</strong>：
+- <strong>静态路由</strong>：基于 token ID，无需上下文依赖路由
+- <strong>硬件友好</strong>：知道确切的参数，可以卸载到 CPU
+- <strong>上下文依赖</strong>：嵌入通过注意力机制聚合，保持上下文信息</p>
+<h3 id="2">2. 信息论嵌入分配算法</h3>
+<p><strong>核心思想</strong>：使用无损压缩算法（如 LZW）确定嵌入分配，基于词频。</p>
+<p><strong>方法</strong>：
+- <strong>静态路由</strong>：将静态 token 路由视为上下文依赖路由的替代
+- <strong>LZW 算法</strong>：基于词频分配嵌入
+- <strong>效果</strong>：有效将 L³ 相对于稠密模型的困惑度差距翻倍</p>
+<h3 id="3">3. 系统友好架构</h3>
+<p><strong>训练</strong>：
+- 快速训练：静态路由允许高效的参数加载
+- 无额外开销：无需辅助损失</p>
+<p><strong>推理</strong>：
+- CPU 卸载：知道确切的参数，可以卸载到 CPU
+- 重叠计算：将获取与 L³ 前计算重叠</p>
+<h2 id="_4">主要结果</h2>
+<h3 id="_5">性能提升</h3>
+<ul>
+<li><strong>语言建模</strong>：L³ 显著优于稠密模型和等稀疏度 MoE</li>
+<li><strong>下游任务</strong>：L³ 在下游任务上也表现优异</li>
+<li><strong>规模</strong>：训练了高达 2.6B 活动参数的模型</li>
+</ul>
+<h3 id="_6">关键发现</h3>
+<ol>
+<li><strong>新的稀疏性轴</strong>：L³ 代表了一种新的稀疏性轴，与 MoE 正交</li>
+<li><strong>硬件友好</strong>：静态路由允许快速训练和 CPU 卸载推理</li>
+<li><strong>信息论分配</strong>：LZW 算法有效平衡速度和质量</li>
+<li><strong>与 Engram 相似</strong>：L³ 与 Engram 在嵌入表的大规模使用上相似</li>
+</ol>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>新的稀疏性轴</strong>：L³ 与 MoE 正交，可以进一步扩展稀疏性</li>
+<li><strong>硬件友好</strong>：静态路由允许快速训练和 CPU 卸载推理</li>
+<li><strong>上下文依赖</strong>：嵌入通过注意力机制聚合，保持上下文信息</li>
+<li><strong>信息论分配</strong>：LZW 算法有效平衡速度和质量</li>
+<li><strong>显著性能</strong>：显著优于稠密模型和等稀疏度 MoE</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>嵌入分配依赖</strong>：性能依赖于嵌入分配算法，需要仔细调优</li>
+<li><strong>评估范围</strong>：主要在语言建模和下游任务上评估，更复杂任务需进一步测试</li>
+<li><strong>与 Engram 的比较</strong>：与 Engram 的完整比较留待未来工作</li>
+<li><strong>无代码开源</strong>：代码 URL 为空，可能尚未开源</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>L³ 属于 <strong>Structure Design</strong>（<code>structure_design</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>大型查找层</strong>：将嵌入表泛化到解码器层</li>
+<li><strong>静态 token 路由</strong>：硬件友好的稀疏性</li>
+<li><strong>信息论嵌入分配</strong>：LZW 算法</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>Engram</strong>（2026）：类似的嵌入表方法
+- <strong>SCONE</strong>（2025）：局部上下文嵌入表
+- <strong>MoE</strong>（2017-2025）：传统稀疏架构
+- <strong>SPEED</strong>（2026）：稀疏编码器解码器
+- <strong>VQKV</strong>（2026）：向量量化 KV 缓存</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li><strong>L³ 层架构</strong>：混合矩阵、上投影矩阵、注意力聚合</li>
+<li><strong>嵌入分配</strong>：LZW 算法，基于词频</li>
+<li><strong>训练</strong>：快速训练，无额外开销</li>
+<li><strong>推理</strong>：CPU 卸载，重叠计算</li>
+<li><strong>模型规模</strong>：高达 2.6B 活动参数</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>L³ 的核心洞察是：<strong>嵌入表的稀疏性可以泛化到解码器层</strong>，实现新的稀疏性轴。</li>
+<li>静态 token 路由是关键设计选择，它使 L³ 硬件友好，可以卸载到 CPU。</li>
+<li>信息论嵌入分配算法是关键优化，它有效平衡速度和质量。</li>
+<li>论文来自 Cornell University，说明这是一个学术界的探索性工作。</li>
+<li>值得关注的未来方向：(1) 与 MoE 的结合；(2) 更大规模的模型；(3) 与 Engram 的完整比较。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

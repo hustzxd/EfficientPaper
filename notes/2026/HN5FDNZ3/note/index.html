@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -162,8 +164,167 @@
 <p>Yifan Zhu, Yekai Pan, Chen Ding</p>
 </blockquote>
 <p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
 <h2 id="abstract">Abstract</h2>
-<p>High-performance attention kernels are essential for Large Language Models. This paper presents analysis of CuTile-based Flash Attention memory behavior and a technique to improve its cache performance. In particular, our analysis on the NVIDIA GB10 (Grace Blackwell) identifies the main cause of L2 cache miss. Leveraging this insight, we introduce a new programming technique called Sawtooth Wavefront Reordering that reduces L2 misses. We validate it in both CUDA and CuTile, observing 50\% or greater reduction in L2 misses and up to 60\% increase in throughput on GB10.</p>
+<p>High-performance attention kernels are essential for Large Language Models. This paper presents analysis of CuTile-based Flash Attention memory behavior and a technique to improve its cache performance. In particular, our analysis on the NVIDIA GB10 (Grace Blackwell) identifies the main cause of L2 cache miss. Leveraging this insight, we introduce a new programming technique called Sawtooth Wavefront Reordering that reduces L2 misses. We validate it in both CUDA and CuTile, observing 50% or greater reduction in L2 misses and up to 60% increase in throughput on GB10.</p>
+<h2 id="_1">一句话总结</h2>
+<p>本文分析了 NVIDIA GB10 上 CuTile FlashAttention 的缓存行为，发现 L2 缓存未命中主要由同步波前（wavefront）中的数据重用引起，提出锯齿波前重排序（Sawtooth Wavefront Reordering）技术，通过交替扫描方向减少 L2 未命中，实现 50% 以上的 L2 缓存未命中减少和高达 60% 的吞吐量提升。</p>
+<h2 id="_2">背景与问题</h2>
+<ul>
+<li><strong>FlashAttention 优化</strong>：FlashAttention 通过 IO-aware 分块（tiling）最大化片上 SRAM 数据重用，将注意力计算的内存复杂度从 O(N²) 降低到线性。</li>
+<li><strong>抽象层问题</strong>：CuTile 等编程模型抽象了硬件细节，但可能掩盖线程调度与特定缓存层次之间的微妙交互。</li>
+<li><strong>核心问题</strong>：在 NVIDIA GB10（Grace Blackwell）上，CuTile FlashAttention 的 L2 缓存未命中率较高，需要分析原因并优化。</li>
+</ul>
+<h2 id="_3">核心方法</h2>
+<h3 id="1-l1">1. L1 缓存行为分析</h3>
+<p><strong>关键发现</strong>：L1 缓存对流式注意力模式几乎无用。</p>
+<ul>
+<li>L1 命中率极低（65,440 vs. 107,729,467 个扇区），证明流式数据有效绕过 L1 缓存</li>
+<li>L1 到 L2 的流量（L1Tex）是 L2 流量的主要来源</li>
+<li>这种行为在小（32K）和大（128K）序列长度下均一致</li>
+<li>因此可以简化 L2 建模：将 L2 访问计数视为全局内存请求的直接函数</li>
+</ul>
+<h3 id="2-l2">2. L2 扇区访问建模</h3>
+<p><strong>公式推导</strong>（单 batch 单 head）：</p>
+<ul>
+<li><strong>非因果掩码</strong>：M ≈ 8S(1 + S/T)</li>
+<li><strong>因果掩码</strong>：M ≈ 8S(S/(2T) + 1/2)</li>
+<li>其中 S=序列长度，T=分块大小，D=头维度，E=元素大小，C=扇区大小</li>
+</ul>
+<p><strong>模型验证</strong>：MAPE &lt; 1%（非因果）和 &lt; 2.5%（因果），模型精度极高。</p>
+<h3 id="3-l2">3. L2 非强制未命中阈值</h3>
+<ul>
+<li>L2 缓存大小为 24MiB，KV 矩阵是主要的访问量</li>
+<li>当 KV 大小接近 L2 缓存大小时，L2 未命中开始偏离冷启动未命中</li>
+<li>实验表明分歧点出现在序列长度约 80K（KV 大小约 20MiB）</li>
+</ul>
+<h3 id="4-l2">4. L2 非强制未命中的原因</h3>
+<p><strong>关键发现</strong>：L2 命中率与活跃 SM 数量呈 1 - 1/N_SM 的关系。</p>
+<ul>
+<li>当活跃 SM 增加时，L2 命中率提升</li>
+<li>这表明 CTAs（Cooperative Thread Arrays）之间存在波前式的数据重用</li>
+<li>CTAs 大致同步推进，后续 CTAs 可以重用前面 CTAs 填充的 L2 缓存行</li>
+<li>在 GB10 上（48 SMs），最终命中率趋近 1 - 1/48 ≈ 98%</li>
+</ul>
+<h3 id="5-sawtooth-wavefront-reordering">5. 锯齿波前重排序（Sawtooth Wavefront Reordering）</h3>
+<p><strong>核心思想</strong>：通过交替扫描方向，减少数据重用距离（reuse distance），从而降低 L2 非强制未命中。</p>
+<ul>
+<li><strong>标准循环访问</strong>：所有重用距离等于数据大小</li>
+<li><strong>锯齿访问</strong>：交替扫描方向（偶数迭代从 0→N，奇数迭代从 N→0）</li>
+<li><strong>效果</strong>：大部分数据访问的重用距离小于数据大小</li>
+</ul>
+<p><strong>算法</strong>（Algorithm 4）：
+1. 对每个 SM 分配的 Q tile 序列
+2. 根据本地迭代奇偶性确定扫描方向（偶数前向，奇数后向）
+3. 加载 KV tile 并计算注意力</p>
+<h2 id="_4">技术细节</h2>
+<h3 id="_5">实验平台</h3>
+<ul>
+<li><strong>硬件</strong>：NVIDIA GB10（Grace Blackwell），48 SMs，24MiB L2 缓存</li>
+<li><strong>内存</strong>：256b LPDDR5X 128GB 统一内存，~301GB/s 原始带宽，~600GB/s 聚合带宽</li>
+<li><strong>工具</strong>：Nsight Compute CLI（ncu），测量 L2 扇区命中率</li>
+<li><strong>配置</strong>：head dim=64，tile size=80x80（CUDA）或 64x64（CuTile）</li>
+</ul>
+<h3 id="cuda">CUDA 实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>原始（循环）</th>
+<th>锯齿重排序</th>
+<th>改进</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L2 未命中</td>
+<td>~50% 减少</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td>1.3 TFLOPS</td>
+<td>2.4 TFLOPS</td>
+<td>~85% 提升</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cutile">CuTile 实验结果</h3>
+<table>
+<thead>
+<tr>
+<th>实现</th>
+<th>未命中减少</th>
+<th>吞吐量提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非因果（Static）</td>
+<td>~67%</td>
+<td>61→69 TFLOPS（~13%）</td>
+</tr>
+<tr>
+<td>因果（Static）</td>
+<td>~67%</td>
+<td>41→66 TFLOPS（~60%）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">局限性</h3>
+<ul>
+<li><strong>分块大小限制</strong>：当分块大小超过共享内存容量时，CuTile 编译器可能拆分大分块，改变访问模式</li>
+<li><strong>硬件特定</strong>：在 NVIDIA GB10 上验证，其他架构（如 AMD GPU）可能不同</li>
+<li><strong>实现复杂度</strong>：需要修改内核的访问模式，可能增加代码复杂度</li>
+</ul>
+<h2 id="_7">优点与局限</h2>
+<h3 id="_8">优点</h3>
+<ol>
+<li><strong>深入的缓存分析</strong>：首次系统分析 CuTile FlashAttention 在 GB10 上的 L1/L2 缓存行为</li>
+<li><strong>理论模型</strong>：建立了 L2 扇区访问的精确理论模型，MAPE &lt; 2.5%</li>
+<li><strong>简单有效</strong>：锯齿波前重排序仅需修改内循环的扫描方向，实现简单</li>
+<li><strong>显著效果</strong>：L2 未命中减少 50-67%，吞吐量提升 13-60%</li>
+<li><strong>跨编程模型验证</strong>：在 CUDA 和 CuTile 两种编程模型下均验证有效</li>
+</ol>
+<h3 id="_9">局限</h3>
+<ol>
+<li><strong>硬件特定</strong>：在 NVIDIA GB10 上验证，其他架构（如 AMD GPU）可能不同</li>
+<li><strong>分块大小限制</strong>：大分块可能导致编译器拆分，改变访问模式</li>
+<li><strong>仅考虑单 batch 单 head</strong>：多 batch 多 head 的情况需要进一步研究</li>
+<li><strong>未考虑 causal masking 的完整效果</strong>：因果掩码下的 K/V 访问模式变化未完全分析</li>
+<li><strong>实现复杂度</strong>：需要修改内核的访问模式，可能增加代码维护成本</li>
+</ol>
+<h2 id="efficientpaper">与 EfficientPaper 主题的关系</h2>
+<p>HN5FDNZ3 属于 <strong>性能建模</strong>（<code>performance_modeling</code>）和 <strong>内核生成</strong>（<code>kernel_generation</code>）领域，核心贡献包括：</p>
+<ul>
+<li><strong>缓存行为分析</strong>：系统分析了 CuTile FlashAttention 在 GB10 上的 L1/L2 缓存行为</li>
+<li><strong>L2 未命中建模</strong>：建立了 L2 扇区访问的精确理论模型</li>
+<li><strong>锯齿波前重排序</strong>：通过交替扫描方向减少 L2 未命中，提升吞吐量</li>
+</ul>
+<p>与 EfficientPaper 中已有论文的关系：
+- <strong>FlashAttention</strong>（2022）：本文优化的基础，FlashAttention 的 CuTile 实现
+- <strong>FlashAttention-2</strong>（2023）：FlashAttention 的改进版，本文可能参考
+- <strong>FlashAttention-4</strong>（2026）：更新的 FlashAttention 版本，可能使用类似技术
+- <strong>其他内核优化</strong>：本文与 FlashOverlap、FlashPrefill 等论文有相似的内核优化目标</p>
+<h2 id="_10">可复现/实现要点</h2>
+<ol>
+<li><strong>硬件</strong>：NVIDIA GB10（Grace Blackwell），48 SMs，24MiB L2 缓存</li>
+<li><strong>工具</strong>：Nsight Compute CLI（ncu），测量 L2 扇区命中率</li>
+<li><strong>配置</strong>：head dim=64，tile size=80x80（CUDA）或 64x64（CuTile）</li>
+<li><strong>锯齿重排序</strong>：交替扫描方向（偶数前向，奇数后向）</li>
+<li><strong>验证</strong>：CUDA 和 CuTile 两种实现</li>
+</ol>
+<h2 id="_11">个人备注</h2>
+<ul>
+<li>本文的核心洞察是：<strong>L1 缓存对流式注意力模式几乎无用，L2 缓存行为可以通过波前式数据重用来优化</strong>。</li>
+<li>锯齿波前重排序是一种简单但有效的优化，通过交替扫描方向减少数据重用距离。</li>
+<li>本文的分析方法（硬件计数器 + 理论模型）值得学习，可以用于其他 GPU 内核的优化。</li>
+<li>论文来自 University of Rochester，且使用 NVIDIA GB10 进行实验，说明这是一个硬件特定的优化。</li>
+<li>值得关注的未来方向：(1) 在更大模型和更长序列上的验证；(2) 在其他 GPU 架构上的应用；(3) 自适应分块大小选择。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -160,10 +162,314 @@
                 <h1 id="vorta-efficient-video-diffusion-via-routing-sparse-attention">VORTA: Efficient Video Diffusion via Routing Sparse Attention</h1>
 <blockquote>
 <p>Wenhao Sun, Rong-Cheng Tu, Yifu Ding, Zhao Jin, Jingyi Liao, Shunyu Liu, Dacheng Tao</p>
+<p>NeurIPS 2025 | <a href="http://arxiv.org/abs/2505.18809v2">arXiv:2505.18809v2</a> | <a href="https://github.com/wenhao728/VORTA">代码</a></p>
 </blockquote>
 <p><a class="glightbox" href="../fig6.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../fig6.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Video diffusion transformers have achieved remarkable progress in high-quality video generation, but remain computationally expensive due to the quadratic complexity of attention over high-dimensional video sequences. Recent acceleration methods enhance the efficiency by exploiting the local sparsity of attention scores; yet they often struggle with accelerating the long-range computation. To address this problem, we propose VORTA, an acceleration framework with two novel components: 1) a sparse attention mechanism that efficiently captures long-range dependencies, and 2) a routing strategy that adaptively replaces full 3D attention with specialized sparse attention variants. VORTA achieves an end-to-end speedup <script type="math/tex">1.76\times</script> without loss of quality on VBench. Furthermore, it can seamlessly integrate with various other acceleration methods, such as model caching and step distillation, reaching up to speedup <script type="math/tex">14.41\times</script> with negligible performance degradation. VORTA demonstrates its efficiency and enhances the practicality of video diffusion transformers in real-world settings. Codes and weights are available at https://github.com/wenhao728/VORTA.</p>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>VORTA 通过将注意力机制区分为局部/长程/关键三类，并基于扩散时间步的信噪比动态路由到对应的稀疏注意力变体（滑动窗口 / 核心集选择），在不损失视频生成质量的前提下实现了 <strong>1.76×</strong> 的端到端加速，并可与特征缓存（PAB）和步数蒸馏（PCD）等方法叠加，最高达到 <strong>14.41×</strong> 加速。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>视频扩散变换器（Video Diffusion Transformers, VDiTs）在高质量视频生成方面取得了显著进展，但由于注意力操作在高维视频序列上具有二次复杂度，计算成本仍然很高。近期的加速方法利用注意力分数的局部稀疏性来提升效率，但在加速长程计算方面往往力不从心。为此，我们提出 VORTA 加速框架，包含两个新颖组件：（1）一种稀疏注意力机制，能够高效捕获长程依赖关系；（2）一种路由策略，能够自适应地用专用的稀疏注意力变体替代完整的 3D 注意力。VORTA 在 VBench 上实现了 1.76× 的端到端加速且不损失质量。此外，它能够与各种其他加速方法（如模型缓存和步数蒸馏）无缝集成，在性能可忽略不计的退化下达到 14.41× 的加速。VORTA 展示了其效率，并增强了视频扩散变换器在实际场景中的实用性。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li><strong>VDiT 的计算瓶颈</strong>：以 HunyuanVideo 为例，生成一段 5 秒 720p 视频在 H100 上需要约 1000 秒（500 PFLOPS），其中注意力操作占计算成本的 75% 以上，主要因为序列长度 L 可达 100K 级别。</li>
+<li><strong>现有稀疏注意力方法的局限</strong>：</li>
+<li><strong>局部稀疏方法</strong>（如滑动窗口注意力）仅关注短程交互，无法捕获长程依赖，在 VDiT 的早期采样步骤中效果较差。</li>
+<li><strong>长程注意力</strong>在某些注意力头中存在（如图 2 所示），最近 4% 的键贡献超过 80% 的注意力分数，但剩余 96% 的远距离键仍占据计算成本。</li>
+<li><strong>非结构化/半结构化剪枝</strong>（如 ARnR）需要 O(L²) 的在线分析，引入额外开销。</li>
+<li><strong>预定义模式</strong>（如 STA）依赖固定模式，在不同配置下需要重新调优，缺乏灵活性。</li>
+<li><strong>关键洞察</strong>：VDiT 中的注意力行为与扩散过程中的信噪比（SNR）密切相关——早期采样步骤更偏向长程依赖（语义构建），后期步骤更偏向局部交互（细节精炼）。需要一种能够自适应路由的机制。</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="31-taxonomy-of-vdit-attentions">3.1 注意力分类法（Taxonomy of VDiT Attentions）</h3>
+<p>VORTA 将 VDiT 中的注意力分为三类：
+- <strong>局部注意力（Local Attentions）</strong>：关注短程交互，不涉及远距离 token，负责生成精细细节。
+- <strong>长程注意力（Long-range Attentions）</strong>：在整个序列范围内分布注意力分数，捕获高层语义信息（如粗略布局和运动）。对 token 的微小扰动不敏感。
+- <strong>关键注意力（Pivotal Attentions）</strong>：同时维持全局感知场和精炼局部细节，对扰动敏感，需保持完整计算。</p>
+<p>三类注意力在采样过程中共存且不互斥，随扩散过程演变可相互转换。</p>
+<h3 id="32">3.2 稀疏注意力变体</h3>
+<h4 id="sliding-window-attention">滑动窗口注意力（Sliding Window Attention）——用于局部注意力</h4>
+<ul>
+<li>限制每个 query token 仅在其邻域 <code>(i-w, i+w]</code> 内寻找 attention。</li>
+<li>采用 <strong>滑动瓦片注意力（Sliding Tile Attention）</strong>，将滑动窗口对齐到瓦片中心，避免 zigzag 形状注意力掩码带来的计算气泡问题。</li>
+<li>3D 版本中，瓦片大小为 <code>(tF, tH, tW)</code>，窗口大小为 <code>(wF, wH, wW)</code>。</li>
+<li>实现上使用 FlexAttention 内核，提供块级密集注意力掩码，硬件效率更高。</li>
+<li>窗口大小设置为 <code>(18, 27, 24)</code>。</li>
+</ul>
+<h4 id="core-set-selection-attention">核心集选择注意力（Core-set Selection Attention）——用于长程注意力</h4>
+<p><strong>核心思想</strong>：在采样早期，token 间高度冗余（相似性高），仅需少量代表性 token 即可捕获必要信息。</p>
+<p><strong>Bucketed Core-set Selection (BCS)</strong> 算法：
+1. 将 token 划分为桶（buckets），桶大小为 <code>(2, 3, 2)</code>，核心集比例 <code>rcore = 0.5</code>。
+2. 在每个桶内，仅计算中心 token 与其邻居 token 的相似度（而非桶间比较）。
+3. 移除相似度最高的 top-k 个 token（信息合并到中心 token）。
+4. 在核心集 token 上执行注意力计算。
+5. 将中心 token 信息回传（scattering）到被剪枝的 token。</p>
+<p><strong>复杂度分析</strong>：BCS 为 <strong>O(L)</strong> 线性复杂度，相比 O(L²) 的全局相似度方法（如 Token Merging [4]、ARnR [40]）显著更高效。注意力计算成本可降低 75%（核心集大小为原始序列的 50%）。</p>
+<h3 id="33-signal-aware-attention-routing">3.3 信号感知注意力路由（Signal-aware Attention Routing）</h3>
+<h4 id="_5">路由器设计</h4>
+<ul>
+<li>路由器是一个轻量级线性层，输入为扩散时间步嵌入 <code>T ∈ R^d</code>，输出为三路门控值 <code>α(n) = softmax(T·W_R^(n))</code>，分别对应：</li>
+<li><code>α1</code>：完整注意力（full attention）</li>
+<li><code>α2</code>：滑动窗口注意力（sliding attention）</li>
+<li><code>α3</code>：核心集注意力（core-set attention）</li>
+<li>仅增加 <strong>0.1%</strong> 的模型参数。</li>
+<li>基于信噪比（SNR）动态选择，无需直接操作完整的扩散 token。</li>
+</ul>
+<h4 id="_6">推理时路由策略</h4>
+<p>采用硬选择（hard selection）：选择门控值最高的注意力分支。</p>
+<ul>
+<li>当 <code>α2 &gt; α1</code> 且 <code>α2 &gt; α3</code> 时 → 滑动窗口注意力</li>
+<li>当 <code>α3 &gt; α1</code> 且 <code>α3 &gt; α2</code> 时 → 核心集注意力</li>
+<li>否则 → 完整注意力</li>
+</ul>
+<p>完整注意力分支在不到 <strong>0.2%</strong> 的情况下被激活，但对保持模型性能至关重要（消融实验表明移除后 VBench 分数下降 4 分）。</p>
+<h4 id="_7">路由器优化</h4>
+<p>采用自监督优化策略，损失函数结合三项：</p>
+<pre><code>L = L_CFM + λ_distill · L_distill + λ_reg · L_reg
+</code></pre>
+<ul>
+<li><code>L_CFM</code>：条件流匹配损失（来自 VDiT 预训练）</li>
+<li><code>L_distill</code>：蒸馏损失，MSE 在路由输出与原始输出之间，确保路由输出接近原始模型输出</li>
+<li><code>L_reg</code>：L2 正则化，促进路由决策的稀疏性</li>
+<li>超参数：<code>λ_distill = 20</code>，<code>λ_reg = 0.02</code></li>
+<li><strong>原始 VDiT 参数始终冻结，仅更新路由器。</strong></li>
+</ul>
+<h4 id="figure-9">路由模式分析（Figure 9）</h4>
+<ul>
+<li><strong>早期采样步骤</strong>（如 step 5）：更多使用核心集注意力（长程语义构建）</li>
+<li><strong>后期采样步骤</strong>（如 step 45）：更多使用滑动窗口注意力（局部细节精炼）</li>
+<li>仅约 <strong>0.2%</strong> 的注意力头使用完整注意力分支</li>
+<li>与自回归/判别模型不同，VDiT 的层间特化较弱，同一层内的注意力头在各分支间分布较均匀</li>
+</ul>
+<hr />
+<h2 id="_8">实验结果</h2>
+<h3 id="hunyuanvideo720p5s50">主要实验（HunyuanVideo，720p，5s，50步）</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>VBench↑</th>
+<th>Quality↑</th>
+<th>Semantic↑</th>
+<th>LPIPS↓</th>
+<th>延迟(s)</th>
+<th>加速比</th>
+<th>显存(GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HunyuanVideo (原始)</td>
+<td>-</td>
+<td>82.26</td>
+<td>83.68</td>
+<td>76.60</td>
+<td>-</td>
+<td>1043.85</td>
+<td>1.00×</td>
+<td>47.64</td>
+</tr>
+<tr>
+<td>+ ARnR</td>
+<td>S</td>
+<td>82.39</td>
+<td>83.85</td>
+<td>76.56</td>
+<td>0.211</td>
+<td>790.55</td>
+<td>1.32×</td>
+<td>78.15</td>
+</tr>
+<tr>
+<td>+ STA</td>
+<td>S</td>
+<td>82.33</td>
+<td>83.56</td>
+<td>77.39</td>
+<td>0.201</td>
+<td>676.39</td>
+<td>1.54×</td>
+<td>51.79</td>
+</tr>
+<tr>
+<td>+ PAB</td>
+<td>C</td>
+<td>82.40</td>
+<td>83.80</td>
+<td>76.81</td>
+<td>0.186</td>
+<td>815.51</td>
+<td>1.28×</td>
+<td>&gt;80</td>
+</tr>
+<tr>
+<td><strong>+ VORTA</strong></td>
+<td><strong>S</strong></td>
+<td><strong>82.59</strong></td>
+<td><strong>83.74</strong></td>
+<td><strong>77.95</strong></td>
+<td><strong>0.185</strong></td>
+<td><strong>594.23</strong></td>
+<td><strong>1.76×</strong></td>
+<td><strong>51.15</strong></td>
+</tr>
+<tr>
+<td>+ VORTA &amp; PAB</td>
+<td>S &amp; C</td>
+<td>82.56</td>
+<td>83.60</td>
+<td>78.38</td>
+<td>0.195</td>
+<td>444.19</td>
+<td>2.35×</td>
+<td>&gt;80</td>
+</tr>
+<tr>
+<td>+ PCD</td>
+<td>D</td>
+<td>81.17</td>
+<td>82.56</td>
+<td>75.35</td>
+<td>0.564</td>
+<td>125.98</td>
+<td>8.29×</td>
+<td>47.64</td>
+</tr>
+<tr>
+<td><strong>+ VORTA &amp; PCD</strong></td>
+<td><strong>S &amp; D</strong></td>
+<td><strong>81.49</strong></td>
+<td><strong>82.78</strong></td>
+<td><strong>76.31</strong></td>
+<td><strong>0.575</strong></td>
+<td><strong>72.46</strong></td>
+<td><strong>14.41×</strong></td>
+<td><strong>51.15</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wan-21-14b">Wan 2.1 (14B) 结果</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>VBench↑</th>
+<th>延迟(s)</th>
+<th>加速比</th>
+<th>显存(GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wan 2.1 (原始)</td>
+<td>82.36</td>
+<td>1304.82</td>
+<td>1.00×</td>
+<td>41.77</td>
+</tr>
+<tr>
+<td>+ VORTA</td>
+<td>82.85</td>
+<td>856.50</td>
+<td>1.52×</td>
+<td>43.97</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">关键发现</h3>
+<ol>
+<li><strong>VORTA 在稀疏注意力方法中效率最高</strong>（1.76×），且 VBench 分数排名第一。</li>
+<li><strong>兼容性好</strong>：与 PAB（特征缓存）和 PCD（步数蒸馏）均可叠加，分别实现 2.35× 和 14.41× 加速。</li>
+<li><strong>跨架构泛化</strong>：在基于 MMDiT 的 HunyuanVideo 和基于 DiT 的 Wan 2.1 上均表现良好。</li>
+<li><strong>跨调度器泛化</strong>：在 UniPC（50步）和 DPM++（30步）调度器下均保持无损性能，无需重新调优。</li>
+<li><strong>加速方法有时反而提升质量</strong>：VORTA 的 VBench 分数略高于原始模型，可能源于过参数化模型中的冗余被消除。</li>
+</ol>
+<h3 id="wan-21-13b">消融实验（Wan 2.1 1.3B）</h3>
+<table>
+<thead>
+<tr>
+<th>消融项</th>
+<th>VBench↑</th>
+<th>延迟(s)</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完整 VORTA</td>
+<td>81.06</td>
+<td>58.42</td>
+<td>1.25×</td>
+</tr>
+<tr>
+<td>去除滑动窗口</td>
+<td>80.25</td>
+<td>65.14</td>
+<td>1.12×</td>
+</tr>
+<tr>
+<td>去除核心集</td>
+<td>79.89</td>
+<td>66.10</td>
+<td>1.11×</td>
+</tr>
+<tr>
+<td>去除完整注意力</td>
+<td>77.14</td>
+<td>59.34</td>
+<td>1.23×</td>
+</tr>
+<tr>
+<td>去除时间步条件</td>
+<td>81.03</td>
+<td>65.00</td>
+<td>1.13×</td>
+</tr>
+</tbody>
+</table>
+<p>关键消融发现：
+- 移除完整注意力分支导致 VBench 下降 4 分但无额外加速，证明关键注意力的重要性。
+- 移除时间步条件导致路由器在所有步骤上选择相同注意力分支，倾向于选择完整注意力。
+- BCS 相比平均池化显著提升性能（平均池化在相邻 token 差异大时导致信息丢失，产生像素化或模糊伪影）。</p>
+<hr />
+<h2 id="_10">优势</h2>
+<ol>
+<li><strong>无损加速</strong>：在 VBench 上实现 1.76× 端到端加速，且不牺牲生成质量，甚至略有提升。</li>
+<li><strong>高度兼容</strong>：与特征缓存（PAB）和步数蒸馏（PCD）正交，可叠加使用，最高 14.41× 加速。</li>
+<li><strong>跨架构泛化</strong>：支持 MMDiT（HunyuanVideo）和 DiT（Wan 2.1）等不同视频扩散架构。</li>
+<li><strong>跨调度器泛化</strong>：无需重新调优即可适配不同采样调度器（UniPC、DPM++ 等）和步数配置。</li>
+<li><strong>轻量级路由器</strong>：仅增加 0.1% 参数，训练快速（约 1 天，2×H100）。</li>
+<li><strong>BCS 线性复杂度</strong>：相比 O(L²) 的全局方法，BCS 实现 O(L) 的核心集选择，计算开销极低。</li>
+<li><strong>可解释性</strong>：路由模式清晰——早期步骤用核心集注意力（语义构建），后期用滑动窗口（细节精炼），符合直觉。</li>
+</ol>
+<hr />
+<h2 id="_11">局限</h2>
+<ol>
+<li><strong>短序列场景受限</strong>：VORTA 针对注意力机制（占高分辨率视频生成 75%+ 计算），但在图像或低分辨率视频生成等短序列场景中，注意力开销占比低，加速潜力有限。</li>
+<li><strong>仅支持双向生成</strong>：当前仅适用于双向生成范式，对自回归生成范式不直接支持，可能需要大量适配。</li>
+<li><strong>H100 显存要求</strong>：虽然 VORTA 本身显存开销不大（51.15 GB），但在高分辨率下与其他方法（如 PAB）组合时仍需要 &gt;80 GB 显存。</li>
+<li><strong>路由训练需数据集</strong>：路由器优化需要在 Mixkit 等数据集上进行微调，引入额外的训练步骤。</li>
+<li><strong>注意力类型分类依赖</strong>：方法的有效性依赖于对注意力行为（局部/长程/关键）的准确识别和分类，对新型架构可能需要重新验证。</li>
+<li><strong>冗余性分析</strong>：论文指出加速方法有时反而提升质量（因消除过参数化模型中的冗余），但这并非有意设计，可能在不同场景下表现不一致。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>视频生成加速</strong>：VORTA 直接解决了视频扩散变换器的效率问题，是 EfficientPaper 中"视频生成"类别的核心工作。</li>
+<li><strong>稀疏注意力与注意力稀疏化（sparse_pruning / attention_sparsity）</strong>：VORTA 的 BCS 机制和路由策略为稀疏注意力设计提供了新范式，可与 EfficientPaper 中其他稀疏注意力方法（如 ARnR、STA、SVG）进行对比。</li>
+<li><strong>条件计算（Conditional Computation）</strong>：VORTA 的路由机制属于条件计算的范畴，通过动态选择计算路径实现效率提升，与 EfficientPaper 中 MoE、BlockDrop 等方法相关。</li>
+<li><strong>扩散模型加速</strong>：VORTA 与 PAB（特征缓存）、PCD（步数蒸馏）等方法互补，展示了多维度加速的组合潜力。</li>
+<li><strong>轻量化训练策略</strong>：路由器仅增加 0.1% 参数且训练快速，为大模型的轻量化适配提供了参考。</li>
+<li><strong>跨架构泛化</strong>：VORTA 在 MMDiT 和 DiT 上的通用性表明其方法论可扩展到更多视频扩散架构。</li>
+</ol>
+<hr />
+<blockquote>
+<p><strong>生成声明</strong>：本 note 由 AI Agent（Hermes Agent）于 2026 年 6 月自动生成，基于论文原文的全文分析和结构化总结。内容可能存在翻译或理解上的偏差，请以原论文为准。</p>
+</blockquote>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

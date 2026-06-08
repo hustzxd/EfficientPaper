@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,27 +161,264 @@
   
                 <h1 id="lserve-efficient-long-sequence-llm-serving-with-unified-sparse-attention">LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention</h1>
 <p><a class="glightbox" href="../fig5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig5.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Large language models (LLMs) have shown remarkable potential in processing
-long sequences, yet efficiently serving these long-context models remains
-challenging due to the quadratic computational complexity of attention in the
-prefilling stage and the large memory footprint of the KV cache in the decoding
-stage. To address these issues, we introduce LServe, an efficient system that
-accelerates long-sequence LLM serving via hybrid sparse attention. This method
-unifies different hardware-friendly, structured sparsity patterns for both
-prefilling and decoding attention into a single framework, where computations
-on less important tokens are skipped block-wise. LServe demonstrates the
-compatibility of static and dynamic sparsity in long-context LLM attention.
-This design enables multiplicative speedups by combining these optimizations.
-Specifically, we convert half of the attention heads to nearly free streaming
-heads in both the prefilling and decoding stages. Additionally, we find that
-only a constant number of KV pages is required to preserve long-context
-capabilities, irrespective of context length. We then design a hierarchical KV
-page selection policy that dynamically prunes KV pages based on query-centric
-similarity. On average, LServe accelerates LLM prefilling by up to 2.9x and
-decoding by 1.3-2.1x over vLLM, maintaining long-context accuracy. Code is
-released at https://github.com/mit-han-lab/omniserve.</p>
-<p>An efficient serving system for long sequence LLMs that leverages hybrid sparse attention.</p>
+<blockquote>
+<p><strong>一句话总结</strong>：LServe 通过统一的块稀疏注意力机制，将静态稀疏（streaming heads）与动态稀疏（query-aware KV page pruning）以及 KV cache 量化融合到一个 GPU kernel 中，实现了长序列 LLM 推理中 prefilling 加速 2.9×、decoding 加速 1.3-2.1×，同时保持长上下文精度。</p>
+</blockquote>
+<hr />
+<h2 id="_1">摘要翻译</h2>
+<p>大语言模型（LLM）在处理长序列方面展现出显著潜力，但由于 prefilling 阶段注意力的二次计算复杂度和 decoding 阶段 KV cache 的巨大内存占用，高效服务这些长上下文模型仍然具有挑战性。为解决这些问题，我们提出了 LServe，一个通过混合稀疏注意力加速长序列 LLM 服务的高效系统。该方法将不同的硬件友好结构化稀疏模式统一到一个框架中，在 prefilling 和 decoding 阶段都跳过不太重要 token 的块级计算。LServe 证明了静态稀疏和动态稀疏在长上下文 LLM 注意力中的兼容性，这种设计通过组合优化实现了乘法级加速。具体而言，我们在 prefilling 和 decoding 阶段将一半的注意力头转换为几乎免费的 streaming heads。此外，我们发现仅需恒定数量的 KV 页面即可保持长上下文能力，与上下文长度无关。我们设计了一个层次化 KV 页面选择策略，基于 query-centric 相似性动态剪枝 KV 页面。在平均情况下，LServe 在保持长上下文精度的同时，将 LLM prefilling 加速最高 2.9×，decoding 加速 1.3-2.1×（相比 vLLM）。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<h3 id="1-llm">1. 长序列 LLM 服务的核心瓶颈</h3>
+<p>随着 LLM 上下文窗口扩展到数十万 token（如 OpenAI o1 的 20K token 推理链），长序列推理面临两个关键挑战：
+- <strong>Prefilling 阶段</strong>：注意力计算具有二次复杂度 O(N²)，随着序列长度增长急剧增加
+- <strong>Decoding 阶段</strong>：KV cache 的内存占用和 I/O 开销成为瓶颈，且实际推理中 decoding 时间可能远超 prefilling（如 Llama-3-8B 在 256K 输入+20K 输出下，decoding 耗时 540 秒，是 prefilling 116 秒的近 5 倍）</p>
+<h3 id="2">2. 现有方法的不足</h3>
+<ul>
+<li><strong>KV cache 量化</strong>（QServe、KIVI、KVQuant）：降低内存但不减少注意力计算量，序列长度增加时加速有限</li>
+<li><strong>静态稀疏</strong>（StreamingLLM、H2O、TOVA）：牺牲长上下文精度，且缺乏统一框架</li>
+<li><strong>动态稀疏</strong>（MInference、Quest）：仅优化 prefilling 或 decoding 单一阶段，不减少 KV cache 内存</li>
+<li><strong>DuoAttention</strong>：虽引入检索头概念，但缺乏系统级优化</li>
+</ul>
+<h3 id="3">3. 关键洞察</h3>
+<p>在 GPU 上，注意力 kernel 沿 KV token 维度是顺序执行的。跳过 KV block 的计算（而非 block 内部）是最有效的加速方式，这构成了统一块稀疏注意力的基础。</p>
+<hr />
+<h2 id="_3">方法（技术细节）</h2>
+<h3 id="1-unified-block-sparse-attention">1. 统一块稀疏注意力（Unified Block Sparse Attention）</h3>
+<p>LServe 将多种稀疏模式统一到块稀疏注意力框架中：
+- <strong>块级处理</strong>：每个线程块计算 <script type="math/tex">T_Q \times T_K</script> 的 tile（prefilling 时 <script type="math/tex">T_Q > 1</script>，decoding 时 <script type="math/tex">T_Q = 1</script>）
+- <strong>二元决策</strong>：每个 tile 要么完全跳过（空块），要么完整计算（稠密块）
+- <strong>理论加速</strong>：若块稀疏率为 <script type="math/tex">r</script>，则理论加速比为 <script type="math/tex">1/(1-r)</script>
+</p>
+<h3 id="2-streaming-heads">2. 静态稀疏：Streaming Heads</h3>
+<p>借鉴 DuoAttention 的方法，将 50% 的注意力头转换为 streaming heads：
+- <strong>Λ 形 mask</strong>：每个 token 只关注相邻 token 和初始 token（attention sinks）
+- <strong>几乎免费</strong>：在极长上下文中，每个 token 的计算量恒定（仅 2 个 local block + 1 个 sink block）
+- <strong>离线确定</strong>：通过优化方法（gating value α）分类 heads，α 接近 1 为 retrieval head，接近 0 为 streaming head
+- <strong>GPU kernel 融合</strong>：将 streaming heads 和 standard heads 的计算融合到统一的 GPU kernel 中，实测加速最高 1.7×</p>
+<h3 id="3-query-aware-kv-page-pruning">3. 动态稀疏：Query-aware KV Page Pruning</h3>
+<p><strong>核心发现</strong>：仅需恒定数量的 KV token（如 4096）即可保持长上下文能力，与上下文长度无关。</p>
+<h4 id="31-page-size-dilemma">3.1 页面大小困境（Page Size Dilemma）</h4>
+<ul>
+<li>KV cache 量化需要更大的页面大小以保持 GPU 带宽利用率</li>
+<li>但更大的页面使 query-aware 选择算法（如 Quest）失效</li>
+<li>解决方案：层次化分页系统</li>
+</ul>
+<h4 id="32-hierarchical-paging">3.2 层次化分页（Hierarchical Paging）</h4>
+<ul>
+<li><strong>虚拟逻辑页面</strong>：将 <script type="math/tex">N_L</script> 个 token 分为一个逻辑页面，<script type="math/tex">N_P</script> 个 token 分为一个物理页面（<script type="math/tex">N_P = g \cdot N_L</script>）</li>
+<li><strong>重要性估计</strong>：使用 channel-wise min/max 值作为代表性向量，计算 query 与逻辑页面的重要性分数</li>
+<li><strong>物理页面选择</strong>：取逻辑页面重要性的 max-reduction，选择 top-K 物理页面</li>
+<li><strong>效果</strong>：在不增加 token budget 的情况下，保持与小页面大小相同的精度</li>
+</ul>
+<h4 id="33-reusable-page-selector">3.3 可复用页面选择器（Reusable Page Selector）</h4>
+<ul>
+<li><strong>问题</strong>：页面选择器的复杂度随序列长度线性增长，在 128K 序列长度下成为瓶颈</li>
+<li><strong>解决方案</strong>：利用注意力的时间局部性，相邻 query token 倾向于关注相同的 KV 页面</li>
+<li><strong>实现</strong>：在预定义 chunk 的开头激活选择器，后续 token 复用选择结果</li>
+<li><strong>效果</strong>：选择器开销降低 4 倍（复用间隔为 4），精度几乎无损</li>
+</ul>
+<h3 id="4">4. 系统架构</h3>
+<p>基于 QServe 构建，LServe 在以下方面进行扩展：
+- <strong>双 KV cache</strong>：分别存储 dense heads 和 streaming heads 的 KV cache
+- <strong>Prefilling 数据流</strong>：使用统一的块稀疏注意力 kernel 处理两种 heads，写回量化 KV 特征
+- <strong>Decoding 数据流</strong>：动态页面选择 + 短页面表的稠密注意力 kernel
+- <strong>量化支持</strong>：支持权重、激活和 KV 量化，进一步提升吞吐</p>
+<hr />
+<h2 id="_4">实验结果</h2>
+<h3 id="_5">评估设置</h3>
+<ul>
+<li><strong>硬件</strong>：NVIDIA A100 80GB GPU（主要），L40S 48GB GPU（额外）</li>
+<li><strong>模型</strong>：Llama-3-8B（GQA）、Llama-2-7B（MHA）、Minitron-4B</li>
+<li><strong>基线</strong>：vLLM、QServe、MInference、DuoAttention、Quest</li>
+<li><strong>指标</strong>：prefilling TTFT、decoding per-token latency</li>
+</ul>
+<h3 id="_6">精度评估</h3>
+<table>
+<thead>
+<tr>
+<th>基准</th>
+<th>Dense</th>
+<th>LServe</th>
+<th>差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LongBench（Llama-3-8B）</strong></td>
+<td>38.9</td>
+<td>38.6</td>
+<td>-0.3</td>
+</tr>
+<tr>
+<td><strong>LongBench（Llama-2-7B）</strong></td>
+<td>39.5</td>
+<td>39.4</td>
+<td>-0.1</td>
+</tr>
+<tr>
+<td><strong>RULER（64K, LServe-4096）</strong></td>
+<td>86.8</td>
+<td>85.6</td>
+<td>-1.2</td>
+</tr>
+<tr>
+<td><strong>NIAH（Needle-in-a-Haystack）</strong></td>
+<td>≈1.0</td>
+<td>≈1.0</td>
+<td>无显著差异</td>
+</tr>
+</tbody>
+</table>
+<p>LServe 在所有精度评估中与稠密基线保持接近，证明混合稀疏注意力几乎不损失精度。</p>
+<h3 id="_7">性能评估</h3>
+<h4 id="prefilling">Prefilling 加速</h4>
+<ul>
+<li><strong>Llama-3-8B（A100）</strong>：相比 vLLM 加速最高 2.9×（序列长度 256K-512K 时）</li>
+<li><strong>Llama-2-7B（A100）</strong>：平均 1.8× 加速（相比 vLLM）</li>
+<li><strong>MInference kernel 对比</strong>：相同稀疏级别下，LServe kernel 加速 1.3×</li>
+</ul>
+<h4 id="decoding">Decoding 加速</h4>
+<ul>
+<li><strong>Llama-3-8B</strong>：相比 vLLM 平均 1.5× 加速</li>
+<li><strong>Llama-2-7B</strong>：平均 2.0× 加速</li>
+<li><strong>L40S GPU</strong>：最高 1.7× 加速</li>
+<li><strong>vs Quest</strong>：prefilling 1.6-2.1×，decoding 1.3-1.5×</li>
+</ul>
+<h4 id="_8">端到端效果</h4>
+<ul>
+<li>静态稀疏（50% streaming heads）：最高 1.7× 加速（短序列更有效）</li>
+<li>动态稀疏（4K token budget）：256K 序列长度下 7.7× 加速</li>
+<li>组合效果：LServe 通过离线配置稀疏模式，避免短序列时动态稀疏的开销</li>
+</ul>
+<h4 id="ruler-llama-3-8b">RULER 精度（Llama-3-8B）</h4>
+<table>
+<thead>
+<tr>
+<th>序列长度</th>
+<th>Dense</th>
+<th>LServe-4096</th>
+<th>LServe-8192</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32K</td>
+<td>90.5</td>
+<td>91.0</td>
+<td>91.8</td>
+</tr>
+<tr>
+<td>64K</td>
+<td>86.8</td>
+<td>85.6</td>
+<td>86.1</td>
+</tr>
+<tr>
+<td>128K</td>
+<td>83.8</td>
+<td>81.0</td>
+<td>81.7</td>
+</tr>
+<tr>
+<td>256K</td>
+<td>79.4</td>
+<td>75.7</td>
+<td>79.1</td>
+</tr>
+</tbody>
+</table>
+<p>增加 token budget 到 8192 可在长序列下保持更好精度，且端到端延迟仅慢约 6%。</p>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>统一框架</strong>：将静态稀疏（streaming heads）和动态稀疏（query-aware page pruning）统一到一个块稀疏注意力框架中，实现乘法级加速</li>
+<li><strong>系统-算法协同设计</strong>：将稀疏模式与 KV cache 量化、层次化分页等系统优化紧密结合，充分利用硬件特性</li>
+<li><strong>精度保持</strong>：在 LongBench、NIAH、RULER 等基准上几乎不损失精度，仅需恒定数量的 KV token（4096-8192）即可保持长上下文能力</li>
+<li><strong>硬件友好</strong>：块级稀疏避免了 warp 内的条件分支，通过迭代器抽象实现高效跳过</li>
+<li><strong>可扩展性</strong>：支持多种 GPU 架构（A100、L40S）和模型架构（MHA、GQA）</li>
+<li><strong>实用性</strong>：基于 QServe 和 TensorRT-LLM 构建，与现有系统兼容，支持量化</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>依赖离线 profiling</strong>：静态稀疏模式（streaming heads 的选择）需要离线确定，可能无法适应所有输入分布</li>
+<li><strong>页面选择器开销</strong>：尽管通过可复用页面选择器降低了开销，但在极长序列下仍可能成为瓶颈</li>
+<li><strong>精度损失</strong>：在超长序列（如 256K）的 RULER 基准上，LServe-4096 精度下降约 3.7%（相比 Dense），虽然 LServe-8192 可缓解</li>
+<li><strong>硬件依赖</strong>：实现基于 CUDA 和 PTX 汇编，对特定硬件（NVIDIA GPU）有较强依赖</li>
+<li><strong>仅支持单 GPU 推理</strong>：论文主要在单 GPU 上评估，未讨论多 GPU 分布式场景下的性能</li>
+<li><strong>页面大小与稀疏度的权衡</strong>：更大的页面大小有利于硬件效率但降低稀疏精度，需要仔细调优</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_11">关键词关联</h3>
+<ul>
+<li><strong>sparse_pruning</strong>：LServe 的核心思想是通过稀疏注意力减少计算量</li>
+<li><strong>attention_sparsity</strong>：统一的块稀疏注意力机制</li>
+<li><strong>kv_cache_sparse</strong>：动态 KV cache 剪枝策略</li>
+</ul>
+<h3 id="_12">相关研究方向</h3>
+<ol>
+<li><strong>KV Cache 压缩与量化</strong>：</li>
+<li>QServe（W4A8KV4 量化）、KIVI（2bit 量化）、KVQuant</li>
+<li>
+<p>与 LServe 的量化优化互补，可进一步降低内存</p>
+</li>
+<li>
+<p><strong>稀疏注意力模式</strong>：</p>
+</li>
+<li>DuoAttention（静态稀疏，检索头 vs streaming 头）</li>
+<li>MInference（prefilling 动态稀疏）</li>
+<li>Quest（decoding 动态稀疏）</li>
+<li>BigBird、StreamingLLM、H2O、TOVA 等</li>
+<li>
+<p>LServe 将这些模式统一到一个框架中</p>
+</li>
+<li>
+<p><strong>LLM 推理系统</strong>：</p>
+</li>
+<li>vLLM（PagedAttention）、TensorRT-LLM、SGLang</li>
+<li>LightLLM、LMDeploy、Nanoflow</li>
+<li>
+<p>LServe 建立在 QServe 之上，是系统-算法协同设计的典型范例</p>
+</li>
+<li>
+<p><strong>长上下文能力</strong>：</p>
+</li>
+<li>RULER、LongBench、NIAH 等评测基准</li>
+<li>长上下文模型（Gemini 1.5、o1）的推理需求</li>
+<li>
+<p>从模型架构层面（如 RoPE 扩展）和推理系统层面（如 LServe）优化长上下文效率</p>
+</li>
+<li>
+<p><strong>硬件高效注意力</strong>：</p>
+</li>
+<li>FlashAttention（CUDA kernel 优化）</li>
+<li>稀疏注意力的 GPU kernel 优化（如 LServe 的迭代器抽象）</li>
+<li>
+<p>量化与稀疏的协同优化</p>
+</li>
+<li>
+<p><strong>推理时效率优化</strong>：</p>
+</li>
+<li>PowerInfer（边缘设备 LLM 推理）</li>
+<li>Contextual Sparsity（Deja Vu）</li>
+<li>与 LServe 的动态稀疏思想相关</li>
+</ol>
+<hr />
+<h2 id="_13">生成声明</h2>
+<p>本 note 由 AI Agent（Hermes Agent）自动生成，基于对论文全文的阅读和分析。生成时间：2025 年 6 月。所有内容为中文翻译和总结，可能存在翻译偏差或理解不准确之处，请以原文为准。</p>
+<hr />
+<h2 id="_14">参考信息</h2>
+<ul>
+<li><strong>论文标题</strong>：LServe: Efficient Long-sequence LLM Serving with Unified Sparse Attention</li>
+<li><strong>作者</strong>：Shang Yang, Junxian Guo, Haotian Tang, Qinghao Hu, Guangxuan Xiao, Jiaming Tang, Yujun Lin, Zhijian Liu, Yao Lu, Song Han</li>
+<li><strong>机构</strong>：NVIDIA, MIT, 上海交通大学</li>
+<li><strong>发表</strong>：MLSys 2025</li>
+<li><strong>代码</strong>：https://github.com/mit-han-lab/omniserve</li>
+<li><strong>arXiv</strong>：http://arxiv.org/abs/2502.14866v1</li>
+<li><strong>关键词</strong>：sparse_pruning, attention_sparsity, kv_cache_sparse</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

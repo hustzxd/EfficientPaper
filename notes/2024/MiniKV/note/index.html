@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache - Efficient Paper</title>
+    <title>MiniKV: Pushing the Limits of 2-Bit KV Cache via Compression and System Co-Design for Efficient Long Context Inference - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache";
+        var mkdocs_page_name = "MiniKV: Pushing the Limits of 2-Bit KV Cache via Compression and System Co-Design for Efficient Long Context Inference";
         var mkdocs_page_input_path = "notes/2024/MiniKV/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache</li>
+      <li class="breadcrumb-item active">MiniKV: Pushing the Limits of 2-Bit KV Cache via Compression and System Co-Design for Efficient Long Context Inference</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,23 +159,220 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="minikv-pushing-the-limits-of-llm-inference-via-2-bit-layer-discriminative-kv-cache">MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache</h1>
+                <h1 id="minikv-pushing-the-limits-of-2-bit-kv-cache-via-compression-and-system-co-design-for-efficient-long-context-inference">MiniKV: Pushing the Limits of 2-Bit KV Cache via Compression and System Co-Design for Efficient Long Context Inference</h1>
 <p><a class="glightbox" href="../minikv.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../minikv.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>How to efficiently serve LLMs in practice has become exceptionally
-challenging due to their prohibitive memory and computation requirements. In
-this study, we investigate optimizing the KV cache, whose memory footprint
-poses a critical bottleneck in LLM inference, especially when dealing with long
-context tasks. To tackle the challenge, we introduce MiniKV, a KV cache
-optimization method that simultaneously preserves long context task accuracy
-while significantly reducing KV cache size via a novel 2-bit
-layer-discriminative KV cache. More importantly, we develop specialized CUDA
-kernels to make MiniKV compatible with FlashAttention. Experiments on a wide
-range of long context tasks show that MiniKV effectively achieves 86% KV cache
-compression ratio while recovering over 98.5% of accuracy, outperforming
-state-of-the-art methods while achieving excellent measured system performance
-improvements.</p>
-<p>KIVI重点在于量化，miniKV在此基础上结合了kv sparse，(eviction)</p>
+<blockquote>
+<p><strong>一句话总结：</strong> MiniKV 通过将 2-bit KV cache 量化与自适应 KV 策略（token 驱逐）相结合，并开发硬件友好的 Triton kernel，实现了 &gt;80% 的 KV cache 压缩率，同时在长上下文任务中保持高精度和卓越的系统性能。</p>
+<p><strong>注意：本 note 由 AI Agent 自动生成，内容基于论文全文阅读，仅供参考。生成时间：2025-06。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">摘要翻译</h2>
+<p>当前最先进的 2-bit KV cache 量化技术在加速 LLM 推理的同时，能够在长上下文任务上保持良好的精度。然而，进一步提高压缩率会导致性能下降。在本工作中，我们重新审视了这些方法，额外考虑了自适应 KV 方法，即只保留 KV 状态的一个子集以保持 LLM 精度。基于此，我们提出了一种结合 2-bit KV cache 量化与自适应 KV 策略的方法。此外，我们采用算法与系统协同设计的方式，开发了硬件友好的内核来加速 LLM 推理，同时使 MiniKV 与现有的内存高效注意力技术（如 FlashAttention）兼容，有效地将算法改进转化为系统性能提升。在广泛的长上下文任务上的实验表明，MiniKV 有效实现了 &gt;80% 的 KV cache 压缩，同时保持了精度，超越了最先进的方法，并在长上下文推理中实现了卓越的延迟、吞吐量和内存消耗改进。</p>
+<hr />
+<h2 id="_2">研究动机</h2>
+<ol>
+<li><strong>KV cache 是 LLM 推理的主要瓶颈</strong>：LLM 推理的瓶颈之一是 KV cache 的内存消耗，尤其在长上下文任务中更为突出。</li>
+<li><strong>现有方法的局限性</strong>：</li>
+<li><strong>KV cache 量化</strong>：FP8/INT8/INT4 量化可有效保留精度，但进一步推至 2-bit 以下会导致严重精度损失。KIVI 等方法虽然实现了 2-bit 量化，但未与自适应 KV 策略结合研究。</li>
+<li><strong>自适应 KV</strong>：包括 heavy hitters 和 recent window 选择，但大多数方法在长上下文推理中难以超过 50% 的压缩率，且引入的不规则操作与 FlashAttention 不兼容。</li>
+<li><strong>两类方法的脱节</strong>：量化 KV 和自适应 KV 是 KV cache 优化的两个极端，但鲜有工作探索如何将两者结合以最大化内存节省。现有尝试将 4-bit 量化与自适应 KV 结合的研究表明，两者的组合会产生非平凡的交互，需要仔细设计。</li>
+<li><strong>核心问题</strong>：如何将 2-bit KV cache 量化技术与自适应 KV 策略结合，在保留高精度的同时最大化推理速度？</li>
+</ol>
+<hr />
+<h2 id="_3">方法（技术细节）</h2>
+<p>MiniKV 采用压缩与系统协同设计（compression and system co-design）方法，主要包含以下组件：</p>
+<h3 id="31-2-bit-kv-kv">3.1 算法层面：重新审视 2-bit 量化 KV 与自适应 KV 策略</h3>
+<h4 id="311-key">3.1.1 子通道 Key 量化与持久上下文选择</h4>
+<ul>
+<li><strong>问题</strong>：现有 KV cache 量化方法通常采用 per-token 量化，但 Key cache 的通道维度存在异常值（outliers），需要 channel-wise 量化。进一步地，数据分布随生成步骤变化，导致不精确量化。</li>
+<li><strong>方案</strong>：使用子通道（sub-channel）Key 量化，对每个子通道组（如 16/32 个元素）进行量化。</li>
+<li><strong>挑战</strong>：自适应 KV 中，子通道组内的元素可能在解码步骤后因 token 驱逐而变化。</li>
+<li><strong>解决方案——持久上下文选择（Persistent Context Selection）</strong>：基于关键观察——在足够大的缓存预算下，重要 token 可以在生成前被识别并持续保持。MiniKV 在 prefill 阶段结束时选择一组持久的 heavy hitters，在整个生成过程中不再更新，从而避免重新编码子通道组，同时保持低量化误差。</li>
+</ul>
+<h4 id="312-heavy-hitters-vs-recent-window">3.1.2 长上下文中的选择性：Heavy Hitters vs. Recent Window</h4>
+<ul>
+<li><strong>关键发现</strong>：使用高度受限的内存预算（如 20%），现有方法（H2O、SnapKV）在长上下文任务中性能显著下降。</li>
+<li><strong>实验分析</strong>：</li>
+<li>固定总缓存预算为 50%，在 RW（Recent Window）和 HH（Heavy Hitters）之间分配。</li>
+<li>仅使用 RW 或 HH 会导致某些任务（如 Lcc、TriviaQA）灾难性精度下降。</li>
+<li>保持至少 5-10% 的 HH/RW 比例可避免显著精度下降。</li>
+<li>与先前研究不同，随着序列长度增加，在相同 KV cache 大小预算下保持精度变得困难；但中等水平的驱逐（如 50%）仍可实现。</li>
+<li><strong>核心洞察</strong>：高水平的 KV cache 驱逐会显著降低 LLM 在长上下文任务上的性能，但中等水平的驱逐仍可保持可比的精度，且需要同时保持一定比例的 HH 和 RW token。</li>
+</ul>
+<h4 id="313-uniformvariance-pyramid">3.1.3 层特定选择性：Uniform、Variance 或 Pyramid？</h4>
+<p>MiniKV 探索了三种层特定 KV cache 选择策略：
+- <strong>Uniform 分配</strong>：所有层具有相同的 KV cache 预算（先前工作的常见做法）。
+- <strong>Variance-based 分配</strong>：使用累积注意力图的方差决定逐层 KV cache 预算。
+- <strong>Pyramid 分配</strong>：在低层分配更多缓存，高层分配更少，中间层通过线性插值确定。</p>
+<p><strong>实验结果</strong>：Pyramid 策略在中等水平驱逐时实现显著更好的精度。</p>
+<h3 id="32">3.2 系统层面：内存高效融合选择性注意力内核</h3>
+<ul>
+<li><strong>挑战</strong>：基于注意力分数的自适应 KV 方法依赖于访问注意力矩阵 A，其大小随序列长度二次增长。FlashAttention 通过避免物化注意力矩阵来降低内存使用，因此现有自适应 KV 方法无法与 FlashAttention 兼容。</li>
+<li><strong>解决方案</strong>：开发基于 Triton 的两阶段（two-pass）选择性 FlashAttention 内核，同时返回两个输出：</li>
+<li>值张量的加权和 XO（与 FlashAttention 相同）</li>
+<li>沿每列的累积注意力分数 Acumul</li>
+<li><strong>内核设计</strong>：</li>
+<li><strong>第一阶段</strong>：遵循 FlashAttention 的行分块（row-wise tiling），计算值张量的加权和，同时保存中间 LSE（Log Sum Exponential）值。</li>
+<li><strong>第二阶段</strong>：并行处理不同列，计算每个 token 位置的注意力权重顺序累积和，重新计算 QKT 值并使用 LSE 值归一化。</li>
+<li><strong>内存复杂度</strong>：所有内存缓冲区随序列长度线性扩展（LSE: O(lquery)，Acumul: O(lkey)）。</li>
+</ul>
+<h3 id="33-minikv">3.3 MiniKV 算法流程</h3>
+<p><strong>Prefill 阶段：</strong>
+1. 使用融合选择性 FlashAttention 内核获取聚合注意力分数 Acumul。
+2. 根据注意力分数选择高注意力得分的 KV 状态子集（Heavy Hitters）。
+3. 对选中的 token 进行 2-bit INT2 量化（Key 使用子通道量化，Value 使用 token 级量化）。
+4. 将 16 个 INT2 标量值打包为 INT32 张量。</p>
+<p><strong>Decoding 阶段：</strong>
+1. 新生成的 Key/Value 先存储在 FP16（streaming buffer）。
+2. 每 nr 步进行一次量化压缩。
+3. 使用融合解量化和乘法内核计算注意力：
+   - 反量化量化的 KV cache
+   - 计算新 Query token 与量化的 Key 之间的注意力映射
+   - 计算注意力映射与量化 Value 的乘积
+4. 有效减少内核启动开销和全局内存访问，降低延迟。</p>
+<h3 id="_4">超参数</h3>
+<ul>
+<li>缓存预算：50%（25% Heavy Hitter + 25% Recent Window）</li>
+<li>量化组大小：16（token/channel-wise）</li>
+<li>残余长度：nr = 128</li>
+<li>最大提示长度：4096（前 2048 + 后 2048 token）</li>
+<li>最大生成长度：数据集特定，不超过 512 token</li>
+</ul>
+<hr />
+<h2 id="_5">实验结果</h2>
+<h3 id="_6">评估设置</h3>
+<ul>
+<li><strong>模型</strong>：LLaMA2-7B-chat、LLaMA2-13B-chat、Mistral-7B-Instruct-v0.2、Llama3 系列</li>
+<li><strong>数据集</strong>：LongBench、InfiniteBench、GSM8K</li>
+<li><strong>基线方法</strong>：H2O (15%)、SnapKV (15%)、Q-Hitter (59%)、KIVI、Full Model</li>
+<li><strong>硬件</strong>：NVIDIA 4×A100-40GB、4×A40-46GB、4×GH200-120GB</li>
+</ul>
+<h3 id="_7">准确性结果</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>方法</th>
+<th>LongBench 平均分</th>
+<th>压缩率</th>
+<th>精度保留率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLaMA2-7B-chat</td>
+<td>Full Model</td>
+<td>35.19</td>
+<td>0%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>LLaMA2-7B-chat</td>
+<td>KIVI</td>
+<td>34.97</td>
+<td>~0%</td>
+<td>99.4%</td>
+</tr>
+<tr>
+<td>LLaMA2-7B-chat</td>
+<td>H2O (15%)</td>
+<td>33.49</td>
+<td>~85%</td>
+<td>95.2%</td>
+</tr>
+<tr>
+<td>LLaMA2-7B-chat</td>
+<td>SnapKV (15%)</td>
+<td>33.60</td>
+<td>~85%</td>
+<td>95.5%</td>
+</tr>
+<tr>
+<td>LLaMA2-7B-chat</td>
+<td>Q-Hitter (59%)</td>
+<td>33.01</td>
+<td>~59%</td>
+<td>93.8%</td>
+</tr>
+<tr>
+<td><strong>LLaMA2-7B-chat</strong></td>
+<td><strong>MiniKV Pyramid</strong></td>
+<td><strong>34.65</strong></td>
+<td><strong>86%</strong></td>
+<td><strong>98.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>MiniKV-Pyramid 在 LLaMA2-7B-chat 上实现 86% 压缩率，保留 98.5% 的全模型精度。</li>
+<li>MiniKV 在 LLaMA2-13B-chat 和 Mistral-7B 上也保持了良好精度，表明方法的泛化能力。</li>
+<li>在相同 KV cache 大小下，MiniKV 优于 H2O、SnapKV、Q-Hitter 等方法。</li>
+<li>达到所有 6 个 LongBench 任务类别的 Pareto 最优。</li>
+</ul>
+<h3 id="infinitebench">InfiniteBench 结果</h3>
+<ul>
+<li>Llama3-8B-instruct：MiniKV 平均得分 13.44，接近全模型 13.52 和 KIVI 13.59，但 KV cache 显著更小。</li>
+<li>在 Llama3-3B-instruct 和 Llama3-1B-instruct 上也有类似表现。</li>
+</ul>
+<h3 id="gsm8k">GSM8K 结果</h3>
+<ul>
+<li>GSM8K 是推理密集型任务（短上下文 ~256 token），MiniKV 需要约 90% 的自适应 KV 缓存预算才能匹配全模型性能。</li>
+</ul>
+<h3 id="_8">系统性能结果</h3>
+<ul>
+<li><strong>端到端延迟</strong>：MiniKV 延迟低于所有基线，尤其在长序列（&gt;10k）中表现更优。</li>
+<li><strong>吞吐量</strong>：MiniKV 吞吐量最高，得益于更低延迟和更大的 batch size/序列长度支持。在单个 A100 上，最大吞吐量比最强基线高 48%。</li>
+<li><strong>峰值内存使用</strong>：MiniKV 峰值内存消耗最低。H2O 在 batch size=16 时 OOM，KIVI 因维护完整 KV cache 内存消耗更高。</li>
+<li><strong>最大可处理提示长度</strong>：MiniKV 可处理比最强基线 KIVI 长 10% 的提示，支持 44K token。</li>
+<li><strong>Kernel 微基准</strong>：MiniKV 内核在内存使用和延迟方面显著优于标准注意力实现（如 H2O 使用的标准注意力）。</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>高压缩率与高精度兼顾</strong>：通过 2-bit 量化与自适应 KV 的协同设计，实现 &gt;80% 压缩率，同时保持 &gt;98.5% 精度。</li>
+<li><strong>硬件友好的算法设计</strong>：避免引入不规则操作，使用 PyTorch 和 Triton 实现，与现有系统优化（如 FlashAttention）兼容。</li>
+<li><strong>系统协同设计</strong>：开发了专用的 Triton 内核，解决了基于分数的自适应 KV 方法与 FlashAttention 的不兼容问题。</li>
+<li><strong>卓越的系统性能</strong>：在延迟、吞吐量和内存消耗方面均优于基线方法。</li>
+<li><strong>Pareto 最优</strong>：在所有 LongBench 任务类别上实现 Pareto 最优压缩策略。</li>
+<li><strong>支持超长上下文</strong>：支持 44K token 提示长度，比最强基线长 10%。</li>
+<li><strong>可扩展性</strong>：方法设计可与其他 KV 优化技术（如 StreamingLLM、KVQuant）兼容。</li>
+<li><strong>实用性</strong>：已在 PyTorch 框架下实现，提供开源代码。</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>与模型优化的结合</strong>：目前主要关注 KV cache 优化，未与模型压缩（如 GPTQ）等技术结合。结合这些技术可能进一步提升计算和内存效率。</li>
+<li><strong>SnapKV 兼容性</strong>：MiniKV 结合 H2O 和 KIVI 工作良好，但尝试结合 SnapKV 和 KIVI 时性能严重下降（LongBench 分数从 35 降至 32）。原因：SnapKV 保留的 token 对 2-bit 量化更敏感，表明需要更鲁棒的驱逐-量化组合方法。</li>
+<li><strong>推理密集型任务的局限</strong>：在 GSM8K 等推理密集型短上下文任务上，需要约 90% 的 KV 缓存预算才能匹配全模型性能，压缩空间有限。</li>
+<li><strong>持久上下文选择的假设</strong>：依赖于"重要 token 可以在生成前识别并持久保持"的假设，在某些场景下可能不成立。</li>
+<li><strong>内核开销</strong>：MiniKV 内核在 prefill 阶段比 FlashAttention 慢（0.622 ms vs. 0.118 ms），虽然显著降低了内存使用（0.25 GB vs. 1.25 GB）。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<ol>
+<li><strong>KV cache 量化（kv_cache_quant）</strong>：MiniKV 是 2-bit KV cache 量化的重要工作，与 KIVI、KVQuant 等方法密切相关。可进一步探索更低位宽（如 1-bit）或混合精度量化。</li>
+<li><strong>KV cache 稀疏化/自适应（kv_cache_sparse）</strong>：MiniKV 的自适应 KV 策略（heavy hitters + recent window）属于此方向。可进一步研究更高效的 token 选择策略。</li>
+<li><strong>算法-系统协同设计</strong>：MiniKV 展示了将算法改进转化为系统性能的协同设计方法，这是高效 AI 研究的重要趋势。</li>
+<li><strong>长上下文推理优化</strong>：MiniKV 专注于长上下文任务的 KV cache 压缩，与高效长上下文推理研究方向高度相关。</li>
+<li><strong>注意力机制优化</strong>：MiniKV 开发的选择性 FlashAttention 内核属于注意力机制优化范畴，与 FlashAttention、FlashAttention-2 等工作相关。</li>
+<li><strong>模型部署与推理加速</strong>：MiniKV 的方法可直接应用于 LLM 的实际部署，降低推理成本，与 vLLM、NVIDIA TensorRT-LLM 等系统优化方向相关。</li>
+<li><strong>混合压缩策略</strong>：结合量化与自适应 KV 的方法，与模型压缩（如 GPTQ）、权重量化等技术的结合，是未来研究的重要方向。</li>
+<li><strong>Pyramid KV</strong>：MiniKV 的层特定分配策略（Pyramid）与 PyramidKV 等工作相关，可进一步探索更优的层间资源分配策略。</li>
+</ol>
+<hr />
+<h2 id="_11">参考信息</h2>
+<ul>
+<li><strong>论文标题</strong>：MiniKV: Pushing the Limits of 2-Bit KV Cache via Compression and System Co-Design for Efficient Long Context Inference</li>
+<li><strong>作者</strong>：Akshat Sharma, Hangliang Ding, Jianping Li, Neel Dani, Minjia Zhang</li>
+<li><strong>机构</strong>：SSAIL Lab, University of Illinois at Urbana-Champaign</li>
+<li><strong>发布</strong>：arXiv (2024)</li>
+<li><strong>arXiv</strong>：<a href="http://arxiv.org/abs/2411.18077">http://arxiv.org/abs/2411.18077</a></li>
+<li><strong>代码</strong>：<a href="https://github.com/akshatsh49/MiniKV-Dev">https://github.com/akshatsh49/MiniKV-Dev</a></li>
+<li><strong>关键词</strong>：kv_cache_quant, kv_cache_sparse</li>
+<li><strong>硬件</strong>：NVIDIA A100-40GB, A40-46GB, GH200-120GB</li>
+</ul>
+<hr />
+<p><em>本 note 由 AI Agent 自动生成，基于论文全文阅读和元数据分析。内容仅供参考，如有错误请以原始论文为准。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

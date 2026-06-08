@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -159,14 +161,164 @@
   
                 <h1 id="indexcache-accelerating-sparse-attention-via-cross-layer-index-reuse">IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse</h1>
 <blockquote>
-<p>Yushi Bai, Qian Dong, Ting Jiang, Xin Lv, Zhengxiao Du, Aohan Zeng, Jie Tang, Juanzi Li</p>
+<p>Yushi Bai, Qian Dong, Ting Jiang, Xin Lv, Zhengxiao Du, Aohan Zeng, Jie Tang, Juanzi Li
+Tsinghua University, Zhipu AI
+arXiv:2603.12201v1, 2026年3月</p>
 </blockquote>
 <p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="111" src="../cover.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Long-context agentic workflows have emerged as a defining use case for large language models, making attention efficiency critical for both inference speed and serving cost. Sparse attention addresses this challenge effectively, and DeepSeek Sparse Attention (DSA) is a representative production-grade solution: a lightweight lightning indexer selects the top-k most relevant tokens per query, reducing core attention from <script type="math/tex">O(L^2)</script> to <script type="math/tex">O(Lk)</script>. However, the indexer itself retains <script type="math/tex">O(L^2)</script> complexity and must run independently at every layer, despite the fact that the resulting top-k selections are highly similar across consecutive layers. We present IndexCache, which exploits this cross-layer redundancy by partitioning layers into a small set of Full layers that run their own indexers and a majority of Shared layers that simply reuse the nearest Full layer's top-k indices. We propose two complementary approaches to determine and optimize this configuration. Training-free IndexCache applies a greedy search algorithm that selects which layers to retain indexers by directly minimizing language modeling loss on a calibration set, requiring no weight updates. Training-aware IndexCache introduces a multi-layer distillation loss that trains each retained indexer against the averaged attention distributions of all layers it serves, enabling even simple interleaved patterns to match full-indexer accuracy. Experimental results on a 30B DSA model show that IndexCache can remove 75% of indexer computations with negligible quality degradation, achieving up to 1.82<script type="math/tex">\times</script> prefill speedup and 1.48<script type="math/tex">\times</script> decode speedup compared to standard DSA. These positive results are further confirmed by our preliminary experiments on the production-scale GLM-5 model (Figure 1).</p>
 <hr />
-<p><em>以下总结由 MiMo 生成：</em></p>
-<p>这篇论文旨在解决稀疏注意力机制中索引器计算开销过大的问题，尽管其能降低核心注意力复杂度，但索引器本身仍保持O(L²)复杂度且每层独立运行。为此，作者提出了IndexCache方法，通过将层划分为少量运行索引器的Full层和大量复用索引结果的Shared层，利用跨层索引冗余来减少计算。该方法包含两种配置优化策略：训练-free的贪心搜索算法和训练-aware的多层蒸馏损失。实验表明，IndexCache能在30B模型上移除75%的索引器计算，几乎不损失质量，并实现预填充速度提升1.82倍、解码速度提升1.48倍。</p>
+<h2 id="_1">一句话总结</h2>
+<p><strong>IndexCache 利用 DSA 稀疏注意力中相邻层 top-k 索引的高度相似性，将 75% 的索引器计算分配给复用层，以几乎不损失质量的方式实现高达 1.82× 的预填充加速和 1.48× 的解码加速。</strong></p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>长上下文智能体工作流已成为大语言模型的标志性应用场景，使得注意力效率对推理速度和服务成本至关重要。稀疏注意力有效地解决了这一挑战，DeepSeek Sparse Attention (DSA) 是一个代表性的生产级解决方案：轻量级闪电索引器为每个查询选择 top-k 最相关 token，将核心注意力从 O(L²) 降至 O(Lk)。然而，索引器本身仍保持 O(L²) 复杂度，且必须在每一层独立运行，尽管相邻层产生的 top-k 选择高度相似。我们提出 IndexCache，通过将层划分为少量运行索引器的 Full 层和大量复用最近 Full 层 top-k 索引的 Shared 层，利用这种跨层冗余。我们提出了两种互补方法来确定和优化这一配置。训练无关的 IndexCache 采用贪心搜索算法，通过直接最小化校准集上的语言模型损失来选择保留索引器的层，无需权重更新。训练感知的 IndexCache 引入多层蒸馏损失，训练每个保留的索引器以匹配其服务的所有层的平均注意力分布，使即使简单的交错模式也能达到全索引器精度。在 30B DSA 模型上的实验结果表明，IndexCache 可以移除 75% 的索引器计算而几乎不损失质量，与标准 DSA 相比，实现高达 1.82× 的预填充加速和 1.48× 的解码加速。这些积极结果在 GLM-5 生产规模模型的初步实验中得到进一步确认。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<h3 id="_4">核心问题</h3>
+<p>自注意力机制是现代大语言模型的基石，但其关于序列长度的二次复杂度构成了长上下文推理的根本瓶颈。随着 LLM 被部署到需要扩展上下文的场景（如长链推理、多步智能体工作流、网页规模检索增强生成），降低注意力成本而不牺牲模型质量成为关键研究问题。</p>
+<h3 id="dsa">DSA 的局限</h3>
+<p>DSA (DeepSeek Sparse Attention) 通过轻量级闪电索引器将核心注意力从 O(L²) 降至 O(Lk)，但索引器本身仍在每一层以 O(L²) 运行。随着 N 层模型，总索引器成本为 O(NL²)，在长上下文长度下成为总注意力预算的显著部分。对 30B DSA 模型的分析显示：索引器在总延迟中的占比随上下文长度急剧上升，尤其在预填充阶段。</p>
+<h3 id="_5">关键洞察</h3>
+<p>相邻层的 top-k 选择高度相关（相邻层共享 70-100% 的选定 token），且层间存在明显的重叠簇结构。这意味着大多数索引器计算是冗余的，为利用跨层索引复用提供了机会。</p>
+<hr />
+<h2 id="_6">方法（技术细节）</h2>
+<h3 id="_7">整体框架</h3>
+<p>IndexCache 将 N 层划分为两种角色，编码为二进制模式字符串 c = c₁c₂...cₙ（cₗ ∈ {F, S}）：
+- <strong>F (Full) 层</strong>：保留索引器，独立计算 top-k 索引集，执行标准 DSA 推理
+- <strong>S (Shared) 层</strong>：无索引器，继承最近的 F 层的 top-k 索引（Tₗ ← T_f(ℓ)，其中 f(ℓ) = max{j &lt; ℓ: cⱼ = F}）</p>
+<p>第一层始终为 F 以初始化索引。在推理时，S 层只需跳过索引器前向传播并复用缓存的索引张量。唯一的变化是一个条件分支：要么运行索引器，要么复制缓存索引。</p>
+<h3 id="indexcache-training-free">训练无关 IndexCache (Training-Free)</h3>
+<h4 id="_8">为什么均匀交错不可取</h4>
+<p>简单的均匀交错策略（如每 r 层保留一个索引器）忽略了索引器重要性在层间的显著差异。某些层（特别是早期和过渡区域）对索引器移除更敏感。均匀交错可能移除关键索引器而保留冗余的，导致明显质量下降。</p>
+<h4 id="_9">贪心层选择算法</h4>
+<ol>
+<li><strong>初始化</strong>：所有层为 F（全索引器）</li>
+<li><strong>迭代</strong>：进行 K 步（K = 目标 S 层数），每步在当前 F 层中找到将该层转为 S 后 LM 损失最低的层</li>
+<li><strong>校准集</strong>：使用 B 个 mini-batch，所有候选模式在同一批次上评估，确保损失差异仅反映模式变化</li>
+</ol>
+<p>贪心解的三个良好性质：
+1. 搜索模式在相同保留率下优于均匀交错
+2. 每步 LM 验证损失曲线显示"容易"层（前 20 步）和"关键"层（35 步后）的清晰分离
+3. 结果在不同校准集上稳定</p>
+<h3 id="indexcache-training-aware">训练感知 IndexCache (Training-Aware)</h3>
+<h4 id="_10">多层蒸馏损失</h4>
+<p>将标准 DSA 的单层蒸馏扩展为多层目标。对于保留的 F 层 ℓ，其服务的后续 S 层为 ℓ+1, ..., ℓ+m：
+<script type="math/tex; mode=display">L_I^{multi} = \sum_{j=0}^{m} \frac{1}{m+1} \sum_t D_{KL}(p_t^{(\ell+j)} \| q_t^{(\ell)})</script>
+</p>
+<h4 id="_11">梯度等价性</h4>
+<p>多层蒸馏损失等价于针对平均目标分布的蒸馏（Proposition 1）：
+<script type="math/tex; mode=display">\nabla_\theta L_I^{multi} = \nabtheta L_I^{avg}</script>
+</p>
+<p>这意味着索引器学习预测一个共识 top-k，共同覆盖所有服务层的重要 token。</p>
+<h4 id="_12">训练流程</h4>
+<p>遵循标准 DSA 训练的两阶段流程：
+1. <strong>预热阶段</strong>：使用多层蒸馏损失训练 F 层的索引器，其他参数冻结
+2. <strong>稀疏训练阶段</strong>：继续使用多层蒸馏损失训练索引器，同时用 LM 损失训练其他参数</p>
+<hr />
+<h2 id="_13">实验结果</h2>
+<h3 id="_14">实验设置</h3>
+<ul>
+<li><strong>模型</strong>：30B DSA 模型（基于 GLM-4.7-Flash，30B-A3B MoE，47层，MLA）</li>
+<li><strong>评估</strong>：9个基准测试（5个长上下文 + 4个通用/推理）</li>
+<li><strong>推理环境</strong>：NVIDIA H100 节点，SGLang，dp attention (dp=8)</li>
+</ul>
+<h3 id="_15">端到端推理加速</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>DSA</th>
+<th>IndexCache (1/2)</th>
+<th>IndexCache (1/4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>预填充延迟 (200K)</strong></td>
+<td>19.5s</td>
+<td>13.7s</td>
+<td><strong>10.7s</strong></td>
+</tr>
+<tr>
+<td><strong>预填充加速 (200K)</strong></td>
+<td>1.00×</td>
+<td>1.42×</td>
+<td><strong>1.82×</strong></td>
+</tr>
+<tr>
+<td><strong>解码吞吐 (200K, 单请求)</strong></td>
+<td>58 tok/s</td>
+<td>73 tok/s</td>
+<td><strong>86 tok/s</strong></td>
+</tr>
+<tr>
+<td><strong>解码加速 (200K)</strong></td>
+<td>1.00×</td>
+<td>1.26×</td>
+<td><strong>1.48×</strong></td>
+</tr>
+<tr>
+<td><strong>解码吞吐 (200K, 全缓存)</strong></td>
+<td>197 tok/s</td>
+<td>253 tok/s</td>
+<td><strong>297 tok/s</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="indexcache">训练无关 IndexCache 结果</h3>
+<ul>
+<li><strong>1/4 搜索模式</strong>：Long Avg 49.9（vs 原始 DSA 50.2），几乎无损</li>
+<li><strong>1/8 搜索模式</strong>：Long Avg 46.1（vs 原始 DSA 50.2），有一定下降</li>
+<li><strong>通用/推理能力</strong>：保持稳定，1/4 搜索模式在 AIME 2025 (92.6 vs 91.0) 和 GPQA-Diamond (78.6 vs 77.6) 上甚至超越 DSA</li>
+</ul>
+<h3 id="indexcache_1">训练感知 IndexCache 结果</h3>
+<ul>
+<li><strong>1/2 均匀交错</strong>：Long Avg 51.6（vs DSA 51.0），超越基线</li>
+<li><strong>1/4 均匀交错</strong>：Long Avg 50.6，G&amp;R Avg 74.1，均在基线 0.4% 以内</li>
+<li><strong>跨层蒸馏</strong>：移除跨层损失导致 Long Avg 从 51.6 降至 49.8，证明了多层蒸馏的实际价值</li>
+<li><strong>模式敏感性消失</strong>：训练后均匀交错与搜索模式表现相当，说明模型学会了适应共享模式</li>
+</ul>
+<h3 id="glm-5-744b">GLM-5 (744B) 扩展实验</h3>
+<ul>
+<li><strong>1/4 搜索模式</strong>：Long Avg 78.0（vs DSA 78.4），仅差 0.4 分</li>
+<li>IndexCache (1/4) 实现至少 1.3× 预填充和解码加速</li>
+<li>在 Artificial Analysis Index 全面评估中，性能与原始 GLM-5 几乎一致</li>
+</ul>
+<hr />
+<h2 id="_16">优势</h2>
+<ol>
+<li><strong>显著推理加速</strong>：在 200K 上下文下，1/4 保留率实现 1.82× 预填充加速和 1.48× 解码加速</li>
+<li><strong>几乎无损质量</strong>：1/4 搜索模式在 9 个基准测试上仅损失不到 0.5 分（Long Avg）</li>
+<li><strong>两种互补方法</strong>：训练无关方法无需权重更新，训练感知方法可进一步提升</li>
+<li><strong>实现简单</strong>：仅需一个条件分支，无需额外 GPU 内存（Tcache 仅是临时缓冲区）</li>
+<li><strong>可扩展性</strong>：在 GLM-5 (744B) 上验证了扩展性</li>
+<li><strong>保留推理能力</strong>：通用和推理任务性能稳定，某些任务甚至超越原始 DSA</li>
+<li><strong>原理通用</strong>：核心跨层复用原则可扩展到其他稀疏注意力方法（如 MoBA、NSA）</li>
+</ol>
+<hr />
+<h2 id="_17">局限</h2>
+<ol>
+<li><strong>极端保留率下的性能下降</strong>：1/8 保留率下，即使使用搜索模式，Long Avg 仍从 50.2 降至 46.1</li>
+<li><strong>贪心搜索的非全局最优性</strong>：贪心算法不保证全局最优，但在实践中表现良好</li>
+<li><strong>依赖校准集</strong>：训练无关方法需要校准集进行搜索，且校准集质量可能影响结果</li>
+<li><strong>需要训练（训练感知方法）</strong>：训练感知方法需要额外的训练流程和计算资源</li>
+<li><strong>未在更多模型上验证</strong>：主要在 30B 和 GLM-5 上验证，其他架构上的表现未测试</li>
+<li><strong>生产部署的复杂性</strong>：需要集成到推理系统中，可能增加部署复杂度</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="_18">相关研究方向</h3>
+<ol>
+<li><strong>稀疏注意力机制</strong>：DSA、MoBA、NSA 等动态稀疏注意力方法，通过选择性计算降低推理成本</li>
+<li><strong>跨层共享与 KV 缓存优化</strong>：TidalDecode、LessIsMore、OmniKV、DELTA、Kascade 等方法利用跨层稳定性减少计算冗余</li>
+<li><strong>混合注意力架构</strong>：GPT-OSS、Gemma 3 等通过滑动窗口、线性注意力或状态空间层与全注意力层交错</li>
+<li><strong>KV 缓存压缩</strong>：MiniCache、SwiftKV、MLKV 等通过跨层共享减少内存开销</li>
+<li><strong>长上下文推理优化</strong>：HySparse 等方法统一跨层索引共享和 KV 缓存复用</li>
+</ol>
+<h3 id="_19">研究意义</h3>
+<p>IndexCache 展示了跨层共享原则从全注意力到稀疏注意力的自然扩展。随着 DSA 成为前沿 LLM 的默认选择（DeepSeek-V3.2、GLM-5），跨层索引复用有望成为高效推理管道的标准组件。</p>
+<hr />
+<p><em>本 note 由 Hermes Agent (MiMo) 自动生成，基于 arXiv 论文 2603.12201v1 的全文提取和分析。生成时间：2026年6月。所有内容为中文翻译和总结，仅供学术参考。</em></p>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>

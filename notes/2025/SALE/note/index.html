@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling - Efficient Paper</title>
+    <title>SALE: Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling - Efficient Paper</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,7 +15,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling";
+        var mkdocs_page_name = "SALE: Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling";
         var mkdocs_page_input_path = "notes/2025/SALE/note.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,15 +54,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-01/">2026-05-01</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-08/">2026-05-08</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-15/">2026-05-15</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-25/">2026-05-25</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-05-29/">2026-05-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-06-08/">2026-06-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -122,6 +120,10 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
     </ul>
                   </li>
               </ul>
@@ -147,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling</li>
+      <li class="breadcrumb-item active">SALE: Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -157,31 +159,272 @@
             <div class="section" itemprop="articleBody">
               
   
-                <h1 id="sale-low-bit-estimation-for-efficient-sparse-attention-in-long-context-llm-prefilling">SALE : Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling</h1>
+                <h1 id="sale-low-bit-estimation-for-efficient-sparse-attention-in-long-context-llm-prefilling">SALE: Low-bit Estimation for Efficient Sparse Attention in Long-context LLM Prefilling</h1>
 <p><a class="glightbox" href="../fig1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../fig1.jpg" /></a></p>
-<h2 id="abstract">Abstract</h2>
-<p>Many advanced Large Language Model (LLM) applications require long-context
-processing, but the self-attention module becomes a bottleneck during the
-prefilling stage of inference due to its quadratic time complexity with respect
-to sequence length. Existing sparse attention methods accelerate attention
-computation by skipping less significant regions of the attention map. However,
-these approaches typically perform coarse-grained inspection of the attention
-map, rendering considerable loss in model accuracy. In this paper, we propose
-SALE, a fine-grained sparse attention method that accelerates the long-context
-prefilling stage of LLM with negligible loss in model accuracy. SALE achieves
-fast and accurate fine-grained attention weight estimation through 4-bit
-quantized query-key products, followed by block-sparse attention to accelerate
-prefilling computations. For importance evaluation for query-key pairs, we
-adopt our Relative Attention Score metric, which offers significantly higher
-efficiency within our framework. We implement a custom CUDA kernel optimized
-for our approach for hardware efficiency, reducing the additional overhead to
-approximately 11% of the full attention latency. Notably, SALE requires no
-parameter training and can be seamlessly integrated into existing systems with
-trivial code modifications. Experiments on long-context benchmarks demonstrate
-that our method outperforms existing approaches in accuracy-efficiency
-trade-offs, achieving at least 3.36x speedups on Llama-3.1-8B for sequences
-longer than 64K while maintaining model quality.</p>
-<p>使用4-bit计算近似score，而不是用pooling方式计算block sparsity。</p>
+<blockquote>
+<p><strong>注意：本 note 由 AI Agent 自动生成，内容基于论文全文阅读，仅供参考。生成时间：2025-06-04。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_1">一句话总结</h2>
+<p>SALE 通过 4-bit 低精度量化近似注意力权重，并结合自定义相对注意力分数（Relative Attention Score）指标，在块级稀疏注意力框架下实现了细粒度的注意力图估计，以约 11% 的额外开销换取长序列预填充阶段至少 3.36 倍加速，同时保持模型精度几乎无损。</p>
+<hr />
+<h2 id="_2">摘要翻译</h2>
+<p>许多先进的大型语言模型（LLM）应用需要长上下文处理，但在推理的预填充阶段，自注意力模块因与序列长度的二次时间复杂度而成为瓶颈。现有的稀疏注意力方法通过跳过注意力图中不太重要的区域来加速注意力计算，但这些方法通常对注意力图进行粗粒度检查，导致模型精度显著下降。本文提出 SALE，一种细粒度稀疏注意力方法，能够以可忽略的精度损失加速 LLM 的长上下文预填充阶段。SALE 通过 4-bit 量化的查询-键乘积实现快速准确的细粒度注意力权重估计，随后通过块稀疏注意力加速预填充计算。对于查询-键对的重要性评估，我们采用相对注意力分数（Relative Attention Score）指标，在我们的框架内提供显著更高的效率。我们实现了针对该方法优化的自定义 CUDA kernel 以提高硬件效率，将额外开销降低到全注意力延迟的大约 11%。值得注意的是，SALE 无需参数训练，且可通过极小的代码修改无缝集成到现有系统中。在长上下文基准测试上的实验表明，我们的方法在精度-效率权衡方面优于现有方法，在处理超过 64K 的序列时，在 Llama-3.1-8B 上实现了至少 3.36 倍的加速，同时保持模型质量。</p>
+<hr />
+<h2 id="_3">研究动机</h2>
+<ol>
+<li>
+<p><strong>长上下文推理瓶颈</strong>：LLM 在预填充阶段的自注意力计算具有 O(N²) 时间复杂度，当序列长度增长时（如 64K、128K tokens），计算成本急剧上升，成为推理性能的主要瓶颈。</p>
+</li>
+<li>
+<p><strong>现有稀疏注意力方法的不足</strong>：</p>
+</li>
+<li><strong>静态稀疏模式</strong>（如 stride、window、streaming pattern）：由于注意力稀疏分布高度动态，导致严重性能退化。</li>
+<li><strong>动态稀疏方法</strong>（如 MInference、SampleAttention）：依赖对注意力图的粗粒度近似（如 Vertical-Slash 分解），无法进行细粒度检查，精度损失较大。</li>
+<li>
+<p><strong>块级代理方法</strong>（如 FlexPrefill、SpargeAttn、HiP Attention）：使用压缩 token 的注意力图作为真实注意力图的代理，同样存在粗粒度近似的问题。</p>
+</li>
+<li>
+<p><strong>核心洞察</strong>：注意力图中并非所有位置都同等重要，可以跳过大量不重要的注意力计算，但需要更细粒度的估计方法来实现更好的精度-效率权衡。</p>
+</li>
+</ol>
+<hr />
+<h2 id="_4">方法（技术细节）</h2>
+<h3 id="_5">整体架构</h3>
+<p>SALE 的流程分为三个顺序阶段：<strong>量化（Quantization）</strong> → <strong>选择阶段（Selection-Pass）</strong> → <strong>计算阶段（Computation-Pass）</strong>。</p>
+<p>在 Selection-Pass 中，以块粒度选择重要的注意力区域并记录块坐标；在 Computation-Pass 中，仅对选中的块执行注意力计算。</p>
+<h3 id="1-4-bit-4-bit-attention-weight-approximation">1. 4-bit 注意力权重近似（4-bit Attention Weight Approximation）</h3>
+<ul>
+<li>使用 4-bit 量化的查询（Q）和键（K）矩阵 <script type="math/tex">\tilde{Q}</script>、<script type="math/tex">\tilde{K}</script> 来近似注意力权重 <script type="math/tex">\tilde{S} = \tilde{Q}\tilde{K}^T / \sqrt{d}</script>。</li>
+<li>量化解码（dequantization）的开销可忽略不计。</li>
+<li>4-bit 量化使得利用高吞吐量低比特 Tensor Core 指令和减少 GPU 全局内存访问成为可能。</li>
+<li>使用 SageAttention-2 提出的量化算法实现。</li>
+<li>与全精度 16-bit 相比，4-bit 量化显著减少了额外开销（实验表明，不使用 QK 量化时计算开销大幅增加）。</li>
+</ul>
+<h3 id="2-relative-attention-score">2. 相对注意力分数（Relative Attention Score）</h3>
+<ul>
+<li><strong>关键观察</strong>：注意力图中每一行的 "sink-local" 区域（序列开头和末尾）的注意力分数通常持续较高，且在不同输入序列间保持一致。</li>
+<li>设计了一个新的重要性评估指标 <script type="math/tex">\tilde{P}[i, j]</script>：</li>
+<li>先计算 sink-local 区域的全精度注意力权重，得到中间值 <script type="math/tex">\tilde{m}_i</script>（最大值）和 <script type="math/tex">\tilde{l}_i</script>（指数和）。</li>
+<li>相对注意力分数公式：<script type="math/tex">\tilde{P}[i, j] = \exp(\tilde{S}[i,j] - \tilde{m}_i) / \tilde{l}_i</script>
+</li>
+<li>如果块内所有 <script type="math/tex">\tilde{P}[i, j]</script> 值都小于阈值 <script type="math/tex">\tau</script>（如 0.004），该块被标记为非关键块，在后续计算中跳过。</li>
+<li><strong>优势</strong>：与传统的注意力分数（需要 Softmax）相比，计算开销极小，并且可以根据输入自适应调整稀疏度。</li>
+</ul>
+<h3 id="3-per-head-threshold-calibration">3. 逐头阈值校准（Per-head Threshold Calibration）</h3>
+<ul>
+<li>不同注意力头的注意力分数分布差异大，统一阈值会导致次优性能。</li>
+<li><strong>离线校准流程</strong>：</li>
+<li>初始阈值 <script type="math/tex">\tau_0</script>（如 0.008），逐步减半 <script type="math/tex">\tau</script> 直到误差 <script type="math/tex">Err(\tau) = \|O - \tilde{O}\|_1 / N</script> 落在预定义误差界 <script type="math/tex">\theta</script> 以下。</li>
+<li>通过调节 <script type="math/tex">\theta</script> 可以控制稀疏度（Llama-3.1 默认 <script type="math/tex">\theta=0.4</script>，Qwen-2.5 默认 <script type="math/tex">\theta=2.0</script>）。</li>
+<li>校准耗时约 5 分钟（RTX4090，Llama-3.1）。</li>
+</ul>
+<h3 id="4-kernel-optimization">4. 内核优化（Kernel Optimization）</h3>
+<ol>
+<li><strong>减少反量化操作</strong>：利用 per-thread 量化策略，使同一线程内的所有元素共享相同的量化缩放因子，只需对最大近似注意力权重进行反量化。</li>
+<li><strong>相对注意力分数比较优化</strong>：通过数学变换 <script type="math/tex">\tilde{S}[i, j] \geq \ln(\tau \cdot \tilde{l}_i + \tilde{m}_i)</script> 将复杂的除法和指数运算替换为单次浮点比较指令。</li>
+<li><strong>与 SageAttention 集成</strong>：Computation-Pass 阶段使用 SageAttention 的 QKV 量化策略进一步加速。</li>
+</ol>
+<h3 id="5">5. 实现细节</h3>
+<ul>
+<li><strong>块大小</strong>：<script type="math/tex">b_q = 64</script>，<script type="math/tex">b_k = 32</script>。</li>
+<li><strong>Sink 区域</strong>：32 tokens；Local 区域：不超过 256 tokens。</li>
+<li><strong>CUDA 实现</strong>：Selection-Pass 用 C++ CUDA 编写，量化用 Triton 编译器加速。</li>
+<li><strong>硬件</strong>：8× RTX 4090（无 tensor-parallel/context-parallel）。</li>
+<li><strong>模型</strong>：Llama-3.1-8B-Instruct、Qwen-2.5-32B-Instruct。</li>
+</ul>
+<hr />
+<h2 id="_6">实验结果</h2>
+<h3 id="longbench">LongBench 评测</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>FA2</th>
+<th>MInference</th>
+<th>FlexPrefill</th>
+<th>SpargeAttn</th>
+<th><strong>SALE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-3.1 平均分</td>
+<td>48.77</td>
+<td>47.03</td>
+<td>46.18</td>
+<td>47.48</td>
+<td><strong>48.39</strong></td>
+</tr>
+<tr>
+<td>Qwen-2.5 平均分</td>
+<td>50.85</td>
+<td>51.29</td>
+<td>49.88</td>
+<td>50.57</td>
+<td><strong>51.30</strong></td>
+</tr>
+<tr>
+<td>Llama-3.1 加速比(64K)</td>
+<td>1.00×</td>
+<td>1.07×</td>
+<td>2.21×</td>
+<td>3.11×</td>
+<td><strong>3.36×</strong></td>
+</tr>
+<tr>
+<td>Qwen-2.5 加速比(64K)</td>
+<td>1.00×</td>
+<td>1.25×</td>
+<td>1.39×</td>
+<td>2.55×</td>
+<td><strong>3.28×</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SALE 在两个模型上均实现了最佳的精度-效率权衡。</li>
+<li>Llama-3.1 上仅有轻微精度退化，Qwen-2.5 上甚至有所提升（可能因过滤噪声信息）。</li>
+</ul>
+<h3 id="infinitebench">InfiniteBench 评测</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>FA2</th>
+<th>MInference</th>
+<th>FlexPrefill</th>
+<th>SpargeAttn</th>
+<th><strong>SALE</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-3.1 平均分</td>
+<td>37.75</td>
+<td>27.47</td>
+<td>33.55</td>
+<td>35.83</td>
+<td><strong>37.11</strong></td>
+</tr>
+<tr>
+<td>Qwen-2.5 平均分</td>
+<td>28.66</td>
+<td>30.70</td>
+<td>29.50</td>
+<td>28.02</td>
+<td><strong>30.92</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>在超长上下文（&gt;100K）评测中同样实现最佳精度-效率权衡。</li>
+</ul>
+<h3 id="needle-in-a-haystack">Needle-In-A-Haystack 评测</h3>
+<ul>
+<li>SALE 在 128K 长度上达到 96.0% 平均得分（仅比 FA2 的 96.1% 低 0.1%），同时实现 3.81× 端到端加速。</li>
+</ul>
+<h3 id="_7">延迟分解</h3>
+<table>
+<thead>
+<tr>
+<th>上下文长度</th>
+<th>8K</th>
+<th>16K</th>
+<th>32K</th>
+<th>64K</th>
+<th>128K</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>量化+选择开销占比</td>
+<td>23.9%</td>
+<td>16.7%</td>
+<td>13.3%</td>
+<td>11.5%</td>
+<td><strong>11.1%</strong></td>
+</tr>
+<tr>
+<td>Computation-Pass 加速比</td>
+<td>2.08×</td>
+<td>3.04×</td>
+<td>4.23×</td>
+<td>5.57×</td>
+<td><strong>6.87×</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>随序列长度增加，开销占比持续下降，加速效果持续提升。</li>
+<li>注意力图检查的自定义 CUDA 实现仅占全注意力计算时间的约 11%。</li>
+</ul>
+<h3 id="_8">消融实验</h3>
+<ul>
+<li><strong>逐头阈值校准</strong>：显著提升性能（Figure 3b）。</li>
+<li><strong>QK 量化</strong>：使用 4-bit 量化显著减少开销；不使用量化时开销大幅增加，但可实现更高稀疏度和略低精度（Figure 5）。</li>
+</ul>
+<hr />
+<h2 id="_9">优势</h2>
+<ol>
+<li><strong>无需训练</strong>：SALE 是纯推理时方法，无需任何参数训练或微调，可无缝集成到现有系统。</li>
+<li><strong>细粒度估计</strong>：与现有的块级代理方法不同，SALE 通过 4-bit 量化实现逐元素的注意力权重估计，实现更高精度的稀疏掩码。</li>
+<li><strong>自适应稀疏度</strong>：通过相对注意力分数和逐头校准，SALE 可根据输入内容自适应调整稀疏度。</li>
+<li><strong>高效实现</strong>：自定义 CUDA kernel 优化（减少反量化、数学变换比较），额外开销仅约 11%。</li>
+<li><strong>最佳精度-效率权衡</strong>：在 LongBench、InfiniteBench、NIAH 三个基准测试中均优于所有基线方法。</li>
+<li><strong>可扩展性</strong>：序列越长加速效果越好，适应超长上下文需求。</li>
+<li><strong>与量化正交</strong>：Computation-Pass 集成 SageAttention 量化，进一步加速计算。</li>
+</ol>
+<hr />
+<h2 id="_10">局限</h2>
+<ol>
+<li><strong>硬件依赖</strong>：依赖高吞吐量 4-bit Tensor Core 指令（如 RTX 4090），在不支持高效 4-bit 矩阵乘法的硬件上可能失去性能优势。</li>
+<li><strong>量化类型限制</strong>：当前实现仅支持 Int4 量化，对于支持 FP4 GEMM 或 LUT-based 低比特 GEMM 的硬件需要额外适配（作者留作未来工作）。</li>
+<li><strong>校准开销</strong>：逐头阈值校准需要约 5 分钟（RTX 4090），且需要使用校准样本。</li>
+<li><strong>预填充阶段限制</strong>：SALE 主要针对预填充阶段，对解码阶段的注意力加速需要其他方法。</li>
+<li><strong>精度损失</strong>：在某些任务上（如 InfiniteBench 的 Math.Find、2WikiMQA），SALE 存在一定精度下降。</li>
+<li><strong>块粒度限制</strong>：稀疏掩码以块为粒度（b_q=64, b_k=32），可能无法完全适应所有注意力模式。</li>
+</ol>
+<hr />
+<h2 id="efficientpaper">与 EfficientPaper 相关的研究方向</h2>
+<h3 id="1-sparse-attention-for-long-context">1. 稀疏注意力加速（Sparse Attention for Long-context）</h3>
+<ul>
+<li><strong>MInference</strong>（NeurIPS 2024）：动态稀疏注意力，使用 Vertical-Slash 模式。</li>
+<li><strong>FlexPrefill</strong>（ICLR 2025）：上下文感知的块稀疏注意力。</li>
+<li><strong>SpargeAttn</strong>（2025）：精确稀疏注意力加速。</li>
+<li><strong>HiP Attention</strong>（ICLR 2025）：层级剪枝注意力。</li>
+<li><strong>SampleAttention</strong>（2024）：自适应结构化稀疏注意力。</li>
+<li>SALE 通过细粒度 4-bit 估计在这些方法中实现了最佳精度-效率权衡。</li>
+</ul>
+<h3 id="2-attention-quantization">2. 注意力量化（Attention Quantization）</h3>
+<ul>
+<li><strong>SageAttention</strong>（ICLR 2025）：8-bit 注意力量化。</li>
+<li><strong>SageAttention-2</strong>（2024）：4-bit 注意力量化。</li>
+<li>SALE 将 4-bit 量化应用于注意力权重估计，而非最终计算，形成创新性结合。</li>
+</ul>
+<h3 id="3-kv-kv-cache-compression">3. KV 缓存压缩（KV Cache Compression）</h3>
+<ul>
+<li><strong>H2O</strong>（NeurIPS 2023）：Heavy-hitter oracle。</li>
+<li><strong>SnapKV</strong>（NeurIPS 2024）：LLM 知道你在找什么。</li>
+<li><strong>Scissorhands</strong>（NeurIPS 2023）：基于重要性持久性假设的 KV 缓存压缩。</li>
+<li>SALE 的方法与这些 KV 缓存压缩技术正交，可以结合使用进一步提升端到端推理效率。</li>
+</ul>
+<h3 id="4-sink">4. 注意力 Sink 现象</h3>
+<ul>
+<li><strong>StreamingLLM</strong>（ICLR 2024）：注意力 sink 现象的发现。</li>
+<li>SALE 利用 sink-local 区域的注意力分数持续较高的观察来设计 Relative Attention Score 指标。</li>
+</ul>
+<h3 id="5_1">5. 训练时/推理时注意力加速对比</h3>
+<ul>
+<li>SALE 是训练时免费的（training-free），属于推理时加速方法。</li>
+<li><strong>Native Sparse Attention</strong>（2025）、<strong>MOBA</strong>（2025）等需要训练，与 SALE 形成对比。</li>
+<li><strong>Linear Attention</strong>（RWKV、GLA）、<strong>State Space Models</strong>（Mamba）等替代方案需要全模型重训练，采用成本高。</li>
+</ul>
+<h3 id="6-cuda-kernel">6. CUDA Kernel 优化</h3>
+<ul>
+<li><strong>FlashAttention</strong>（NeurIPS 2022）、<strong>FlashAttention-2</strong>（2023）、<strong>FlashAttention-3</strong>（NeurIPS 2024）。</li>
+<li>SALE 在 Selection-Pass 中借鉴了 FlashAttention2 的块级遍历策略，并进行了定制优化。</li>
+</ul>
               
   <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
 <script>
