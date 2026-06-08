@@ -1,9 +1,158 @@
-# Pluggable Pruning with Contiguous Layer Distillation for Diffusion Transformers
+# PPCL: Pluggable Pruning with Contiguous Layer Distillation for Diffusion Transformers
 
-> Jian Ma, Qirong Peng, Xujie Zhu, Peixing Xie, Chen Chen, Haonan Lu
+> **一句话总结：** PPCL 是一种面向多模态扩散 Transformer（MMDiT）的可插拔结构化剪枝框架，通过线性探测 + CKA 一阶差分趋势分析定位冗余连续层区间，结合非序列层间蒸馏实现深度剪枝，再用轻量线性投影器替换冗余文本流和 FFN 进行宽度剪枝，最终在参数量减少 50% 的情况下仅损失不到 3% 的关键指标性能。
 
-![111](fig3.jpg)
+---
 
-## Abstract
+## 摘要翻译
 
-Diffusion Transformers (DiTs) have shown exceptional performance in image generation, yet their large parameter counts incur high computational costs, impeding deployment in resource-constrained settings. To address this, we propose Pluggable Pruning with Contiguous Layer Distillation (PPCL), a flexible structured pruning framework specifically designed for DiT architectures. First, we identify redundant layer intervals through a linear probing mechanism combined with the first-order differential trend analysis of similarity metrics. Subsequently, we propose a plug-and-play teacher-student alternating distillation scheme tailored to integrate depth-wise and width-wise pruning within a single training phase. This distillation framework enables flexible knowledge transfer across diverse pruning ratios, eliminating the need for per-configuration retraining. Extensive experiments on multiple Multi-Modal Diffusion Transformer architecture models demonstrate that PPCL achieves a 50\% reduction in parameter count compared to the full model, with less than 3\% degradation in key objective metrics. Notably, our method maintains high-quality image generation capabilities while achieving higher compression ratios, rendering it well-suited for resource-constrained environments. The open-source code, checkpoints for PPCL can be found at the following link: https://github.com/OPPO-Mente-Lab/Qwen-Image-Pruning.
+扩散 Transformer（DiTs）在图像生成方面表现出色，但其庞大的参数量带来了高计算成本，阻碍了在资源受限环境中的部署。为此，本文提出了**可插拔剪枝与连续层蒸馏（PPCL）**，这是一种专门为 DiT 架构设计的灵活结构化剪枝框架。首先，通过**线性探测机制**结合**相似性指标的一阶差分趋势分析**识别冗余层区间。随后，提出一种**即插即用的教师-学生交替蒸馏方案**，将深度剪枝和宽度剪枝集成到单个训练阶段中。该蒸馏框架支持跨多种剪枝比例的灵活知识迁移，无需针对每个配置重新训练。在多个多模态扩散 Transformer 模型上的大量实验表明，PPCL 与完整模型相比实现了 **50% 的参数量减少**，关键目标指标的退化不到 **3%**。值得注意的是，该方法在保持高质量图像生成能力的同时实现了更高的压缩比，非常适合资源受限的环境。
+
+---
+
+## 研究动机
+
+1. **DiT 模型规模过大**：当前最先进的 DiT 模型（如 SD3.5、FLUX.1、Qwen-Image）通常包含 80-200 亿参数，训练和推理的计算成本极高，严重限制了在资源受限场景（如移动端、边缘设备）的部署。
+
+2. **现有结构化剪枝方法的三大局限**：
+   - 大多数方法无法泛化到多种主流多模态扩散 Transformer（MMDiT）架构
+   - 在层剪枝方面灵活性有限，不支持即插即用配置
+   - 对深度扩散模型中层间依赖关系的理解不够充分
+
+3. **关键发现**：作者对 Qwen-Image（60 层、200 亿参数的 MMDiT）进行实验，发现：
+   - 随机删除层对生成质量影响极小 → 说明存在大量层冗余
+   - **连续删除**始终优于非连续删除 → 冗余具有强深度连续性
+
+4. **核心洞察**：教师模型中各层的表示演化不是均匀的，而是分阶段推进的。在每个阶段内，层激活值表现出平滑过渡，可以在不显著损失性能的情况下进行压缩。
+
+---
+
+## 方法（技术细节）
+
+PPCL 框架包含两个主要阶段：**深度剪枝（Stage 1）**和**宽度剪枝（Stage 2）**，以及最终的**简短微调**。
+
+### Stage 1.1：线性探测训练（冗余区间检测）
+
+- 对教师模型的每一层训练一个**线性探测器**（linear probe），用于近似该层的输入-输出映射
+- 每个探测器配备**残差连接**以保持归纳偏置兼容性
+- 通过最小化对齐损失 $L_{fit}(i) = \|l_i(T^D_{i-1}) + T^D_{i-1} - T_i(T^D_{i-1})\|^2_2$ 来训练
+- 初始化使用最小二乘法的闭式解，确保每层的建模独立且不受其他层影响
+
+### Stage 1.2：模拟过程（冗余区间识别）
+
+- 利用**中心核对齐（CKA）**计算层间表示相似度
+- 定义一阶差分 $\Delta(u, k) = -(CKA(u,k) - CKA(u, k-1))$
+- **关键策略**：通过分析 $\Delta(u, k)$ 的下降-上升趋势（局部最小值）确定冗余区间的终点 $v$
+  - 当 $\Delta(u, k) > \Delta(u, k-1)$ 时，说明表示相似度的下降速率开始逆转，标记为区间终点
+- 迭代应用此过程，得到多个冗余层区间集合 $I = \{[u_i, v_i]\}$
+- Qwen-Image 识别出的冗余区间：$I_Q = \{[3,4], [5,7], [8,10], [11,12], [15,24], [25,27], [29,30], [42,43], [45,47], [48,49], [52,53], [54,55], [56,57]\}$
+
+### Stage 1.3：深度剪枝（非序列层间蒸馏）
+
+- **核心创新：非序列蒸馏**（non-sequential inter-layer distillation）
+  - 学生层直接以教师模型**紧邻深度**的输出作为输入，而非按顺序传递
+  - 打破错误传播链，实现各剪枝模块的独立优化
+- 蒸馏损失：$L^{[u,v]}_{depth} = \|Norm(S^u_{init}(T^D_{u-1})) - Norm(T^D_v)\|^2_2$
+  - 使用 L2 归一化强调方向对齐并稳定训练
+- 总损失：$L_{depth} = \sum_{i=1}^{n} L^{[u_i, v_i]}_{depth}$
+- **即插即用（Plug-and-Play）特性**：推理时可动态激活或绕过特定层，无需重新训练
+
+### Stage 2：宽度剪枝
+
+- **流级别冗余（Stream-level redundancy）**：
+  - 文本流的跨层相似性高、层间变异性低 → 可以重度压缩
+  - 将文本流替换为轻量线性投影器 $l^z_p$ 和 $l^h_p$
+- **FFN 冗余（FFN redundancy）**：
+  - FFN 在文本流和图像流中都严重过参数化
+  - 线性投影器可以有效近似其功能
+- 宽度剪枝总损失：$L_{width} = \sum_{j \in R_{txt} \cup R_{ffn}} (L^j_{width} + L^j_{linear})$
+  - 包含特征蒸馏损失和线性对齐损失
+
+### 训练策略
+
+- **三阶段训练**：
+  1. 基于冗余区间的深度剪枝：6k 步（8×H20 GPU，micro-batch=2）
+  2. 宽度剪枝：2k 步（相同设置）
+  3. 全参数微调：1k 步（micro-batch=4）
+- 使用 AdamW 优化器（β1=0.9, β2=0.95, weight decay=0.02）
+- BF16 混合精度 + 梯度检查点
+- 训练集：从 LAION-2B-en 采样 100,000 张图像，使用 Qwen2.5-VL 生成描述
+- 校准集：LongTextBench 中文子集（160 样本）
+
+---
+
+## 实验结果
+
+### 主要结果（Tab.1）
+
+**FLUX.1-dev（12B→8B）**：
+| 方法 | 参数 | GPU 内存 | 推理延迟 | DPG | GenEval | 平均性能下降 |
+|------|------|----------|----------|-----|---------|------------|
+| 基线模型 | 12B | 100% | 715ms | 83.8 | 0.665 | 0% |
+| TinyFusion | 8B | 74.4% | 534ms | 77.2 | 0.511 | 13.80% |
+| HierarchicalPrune | 8B | 74.4% | 543ms | 75.7 | 0.503 | 13.38% |
+| **PPCL(8B)** | **8B** | **74.4%** | **535ms** | **80.0** | **0.605** | **4.03%** |
+
+**FLUX.1 Lite（8B→6.5B）**：
+- PPCL(6.5B) 性能下降仅 **0.07%**，说明可有效压缩已剪枝模型
+
+**Qwen-Image（20B→10B）**：
+| 方法 | 参数 | GPU 内存 | 推理延迟 | DPG | GenEval | LongText | 平均性能下降 |
+|------|------|----------|----------|-----|---------|----------|------------|
+| 基线模型 | 20B | 100% | 2625ms | 88.9 | 0.870 | 0.943 | 0% |
+| TinyFusion | 14B | 79.4% | 1789ms | 80.7 | 0.739 | 0.859 | 8.75% |
+| HierarchicalPrune | 14B | 79.4% | 1786ms | 83.3 | 0.766 | 0.884 | 6.49% |
+| **PPCL(14B)** | **14B** | **79.4%** | **1792ms** | **87.9** | **0.847** | **0.929** | **0.42%** |
+| **PPCL(10B)** | **10B** | **66.9%** | **1462ms** | **81.7** | **0.784** | **0.871** | **6.88%** |
+| **PPCL(10B Finetune)** | **10B** | **66.9%** | **1462ms** | **86.7** | **0.828** | **0.902** | **3.29%** |
+
+### 消融实验（Tab.2）
+
+- **线性探测（LP）** 的有效性：相比基线（仅基于重要性指标的 CKA 剪枝），LP 将平均性能退化从 18.2% 降至 14.5%
+- **非序列蒸馏（DP）** 的效果：平均分数从 0.761 提升至 0.848（提升近 9 个百分点）
+- **宽度剪枝（WP）**：文本流替换后分数提升至 0.860，FFN 替换后为 0.850
+- **全参数微调**：最终 10B 模型平均分数 0.87，仅低于原始模型 2.61%
+
+### 关键指标总结
+
+- **参数量减少 50%**（20B→10B），性能退化仅 3.29%
+- **推理加速 1.3-1.8×**
+- **GPU 内存减少 >30%**
+- **支持即插即用**：可从 10B 模型直接生成 12B 和 14B 变体，无需额外训练
+
+---
+
+## 优势
+
+1. **即插即用（Plug-and-Play）**：推理时可灵活调整剪枝比例，无需重新训练
+2. **非序列蒸馏**：避免了传统顺序蒸馏中的错误传播问题
+3. **双轴压缩**：深度剪枝 + 宽度剪枝，实现更紧凑的模型
+4. **高压缩比 + 低性能损失**：50% 参数缩减仅 3% 性能下降
+5. **泛化能力强**：在 FLUX.1、Qwen-Image 等多个 MMDiT 模型上均有效
+6. **工程实用**：支持 BF16 混合精度和梯度检查点，训练效率高
+7. **对已剪枝模型的二次压缩**：可在已有剪枝模型上进一步压缩（如 FLUX.1 Lite 8B→6.5B）
+
+---
+
+## 局限
+
+1. **理论基础不够严谨**：通过 CKA 一阶差分确定拐点的方法缺乏严格理论支撑，主要是一种成功的工程启发式方法
+2. **INT4 量化效果不佳**：剪枝降低了网络冗余度，缩窄了量化容错空间，导致 INT4 量化结果不理想
+3. **训练成本**：需要多阶段训练（深度剪枝 + 宽度剪枝 + 微调），虽然相比完整预训练成本低，但仍需要大量 GPU 资源（8×H20 GPU）
+4. **线性探测开销**：虽然不需要穷举搜索，但需要对每一层训练线性探测器并进行 CKA 分析
+5. **扩展性验证不足**：虽然在 FLUX.1 和 Qwen-Image 上验证，但对更广泛的 DiT 变体（如 SD3.5 等）的泛化性尚需进一步验证
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **结构化剪枝（Structured Pruning）**：PPCL 是典型的结构化剪枝方法，通过删除整个层和宽度组件实现硬件友好的压缩
+2. **知识蒸馏（Knowledge Distillation）**：非序列层间蒸馏是一种新颖的蒸馏策略，可用于其他深度模型的压缩
+3. **Diffusion Model 压缩**：PPCL 专注于 DiT/MMDiT 架构，与 TinyFusion、HierarchicalPrune、Dense2MoE 等方法形成对比
+4. **模型部署优化**：PPCL 的即插即用特性使其适合动态部署场景，可根据设备能力调整模型大小
+5. **多模态模型高效化**：MMDiT 的双流架构提供了宽度剪枝的机会（文本流和 FFN 冗余），这种方法可以推广到其他多模态模型
+6. **量化-剪枝联合优化**：PPCL 指出 INT4 量化的局限性，未来可探索剪枝与量化的协同方法
+
+---
+
+> **生成声明：** 本文档由 AI Agent（Hermes Agent）自动生成，基于论文全文（arXiv:2511.16156v1）的文本内容进行理解和总结。所有内容以中文撰写，仅供参考。生成时间：2026 年 6 月 4 日。

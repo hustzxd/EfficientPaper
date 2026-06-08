@@ -2,53 +2,216 @@
 
 > Jungsuk Oh, Hyeseo Jeon, Hyunjune Ji, Kyongmin Kong, Jay-Yoon Lee
 
-![111](cover.jpg)
-
-## Abstract
-
-Long-context inference in decoder-only language models is costly because long prompts are processed during Prefill, cached at every layer, and repeatedly attended to during autoregressive Decode. We introduce \emph{Shallow Prefill, dEEp Decode} (SPEED), a phase-asymmetric KV-visibility policy that materializes non-anchor prompt-token KV states only in lower layers while keeping Decode-phase tokens full-depth. Unlike previous approaches that make upper-layer prompt KV states cheaper to store or construct, SPEED removes prefill tokens from the upper-layer Decode visibility set altogether. With a minimal BoS anchor, this simple change preserves broad benchmark quality while reducing long-context cost. In a controlled Llama-3.1-8B instruction-tuning study, SPEED using only 75\% of layers for prefill tokens reaches 51.2 average score on OLMES-style benchmarks, compared with 51.4 for the full-depth baseline, while improving TTFT by 33\%, TPOT by 22\%, and reducing active KV memory by 25.0\% at 128K context. Layer-wise diagnostics suggest that this cutoff retains the main prompt-selection and representation-stabilization regions of the full-depth model. These results show that long-context prompt tokens need not always persist as full-depth KV-cache objects when Decode-phase tokens remain full-depth.
-
-浅层用所有的kv cache，深层用一部分kv cache，本质上还是sparse attention，只不过每层的稀疏度不同？
+![cover](cover.jpg)
 
 ---
 
-*以下总结由 MiMo 生成：*
+## 一句话总结
 
-这篇论文旨在解决长上下文推理中预填充阶段成本高昂的问题，即长提示词在每一层都被缓存并在解码阶段反复被关注。
-作者提出了”浅预填充，深解码”（SPEED）方法，通过一种非对称的KV可见性策略，仅在较低层缓存非锚点提示词的KV状态，而解码阶段的词保持全层深度。
-实验表明，在Llama-3.1-8B模型上，SPEED仅使用75%的层处理预填充词，就能在保持接近全层基线性能的同时，将首次响应时间提升33%、每次生成时间提升22%，并减少25%的活跃KV内存占用。
+SPEED 提出了一种**阶段不对称的 KV 可见性策略**：预填充 token 仅在较低层保留 KV 缓存，而解码 token 保持全深度，配合最小化的 BoS 锚点，在 Llama-3.1-8B 上以 128K 上下文实现了 33% TTFT 加速、22% TPOT 加速、25% 活跃 KV 内存减少，同时几乎不损失模型质量（OLMES 基准仅下降 0.2 分）。
 
 ---
 
-## 论文详细总结
+## 摘要翻译
 
-### 1. 研究背景与动机
+在仅解码器语言模型中，长上下文推理成本高昂，因为长提示在预填充阶段被处理，在每一层缓存，并在自回归解码阶段被反复注意。我们提出了 **Shallow Prefill, dEEp Decode**（SPEED），一种阶段不对称的 KV 可见性策略，仅在较低层实现非锚点提示 token 的 KV 状态，同时保持解码阶段 token 的全深度。与以往使上层提示 KV 状态更便宜存储或构建的方法不同，SPEED 彻底从上层解码可见集中移除预填充 token。通过最小化的 BoS 锚点，这一简单变化在保持广泛基准质量的同时降低了长上下文成本。在受控的 Llama-3.1-8B 指令微调研究中，SPEED 仅使用 75% 的层处理预填充 token，在 OLMES 风格基准上达到 51.2 的平均得分，而全深度基线为 51.4，同时将 TTFT 提高 33%、TPOT 提高 22%，并在 128K 上下文中将活跃 KV 内存减少 25.0%。逐层诊断表明，这一截断保留了全深度模型的主要提示选择和表示稳定化区域。这些结果表明，当解码阶段 token 保持全深度时，长上下文提示 token 不必始终作为全深度 KV 缓存对象存在。
 
-长上下文推理中，预填充阶段的 KV 缓存在每一层都被存储并在解码时反复使用，导致高昂的计算和内存开销。现有方法尝试让上层 prompt KV “更便宜地存储或构造”，但本文提出更激进的思路：直接将预填充 token 从上层解码可见集中移除。
+---
 
-### 2. SPEED 核心思想
+## 研究动机
 
-**阶段不对称的 KV 可见性策略**：预填充 token 的 KV 状态仅在较低层保留，解码 token 在所有层（全深度）保留。上层解码时只能看到自己生成的 token。
+在标准自回归推理中，模型首先对输入序列运行预填充阶段，为每个 token 生成各层的 KV 状态，然后进入解码阶段，逐个生成新 token 并关注缓存的 KV 状态。在长上下文设置中，预填充 token 数量远超解码 token，暴露出三个耦合成本：
 
-### 3. 关键技术
+1. **预填充主导首次 token 延迟（TTFT）**：长提示的预填充计算量巨大
+2. **解码阶段受内存带宽限制**：每个新 token 需要读取缓存的 KV 状态，导致 TPOT 随上下文长度增长
+3. **活跃 KV 内存随上下文长度和模型深度线性扩展**：存储和读取开销均随上下文长度和模型深度增长
 
-| 技术 | 说明 |
-|------|------|
-| **Layer-Asymmetric KV Visibility** | 层不对称 KV 可见性，打破”所有层对所有 token 可见”的假设 |
-| **75% 层截断** | 仅使用 75% 的层缓存预填充 token KV |
-| **BOS 锚点** | 使用最小化的 BOS 锚点维持全局信息 |
+现有方法尝试通过以下方式减少长上下文成本：
+- **token 选择/驱逐**：保留最近的、重要的或与查询相关的 KV 状态
+- **KV 量化**：降低每个缓存 key/value 的内存占用
+- **压缩/合并**：在上层共享或合并 KV 状态
 
-### 4. 实验结果（Llama-3.1-8B, 128K 上下文）
+但这些方法都保留了上层预填充 token 的 KV 状态（即使以某种压缩形式）。本文的核心洞察是：**如果下层已经捕获了大部分有用的预填充 token 信息，上层解码时是否还需要保持上层预填充 token 的 KV 状态在内存中？**
+
+---
+
+## 方法（技术细节）
+
+### 核心思想
+
+SPEED 是一种**阶段不对称的 KV 可见性策略**（Layer-Asymmetric KV Visibility Policy）。在 L 层解码器 Transformer 中：
+- **预填充 token** 仅通过前 K 层处理和缓存（K < L）
+- **解码阶段 token** 仍然遍历所有 L 层，产生全深度的 KV 状态
+
+### Token 可见性规则
+
+定义：
+- `s`：BoS token（起始序列标记）
+- `X`：除 BoS 外的其余非锚点预填充 token
+- `D<t`：先前生成的解码 token
+- `dt`：当前解码 token
+
+| 策略 | 低层（l ≤ K） | 高层（l > K） |
+|------|------|------|
+| Full-Attn（全注意力） | X ∪ {s} ∪ D<t ∪ {dt} | X ∪ {s} ∪ D<t ∪ {dt} |
+| Anchor-free SPEED（无锚点） | X ∪ {s} ∪ D<t ∪ {dt} | D<t ∪ {dt} |
+| SPEED+BoS（BoS 锚点） | X ∪ {s} ∪ D<t ∪ {dt} | {s} ∪ D<t ∪ {dt} |
+
+关键区别：**解码阶段 token 在所有 SPEED 变体中保持全深度**。只有非锚点预填充 token 的 KV 物化被截断。
+
+### 成本模型
+
+对于非锚点预填充 token 集合 P（|P| = N）和锚点集 A（|A| = a）：
+
+- **Full-Attn**：`M_Full ≈ BKV * L * (N + a + T)`，其中 T 为解码 token 数
+- **SPEED**：`M_SPEED ≈ BKV * (K*N + L*a + L*T)`
+
+对于长提示（N ≫ a, T），主导的预填充侧 KV 内存从 O(LN) 降至 O(KN)。同一层 token 减少也适用于预填充计算和解码时间预填充 token 部分的注意力：`L(N+a) → KN + La`。
+
+### BoS 锚点机制
+
+BoS 锚点不是学习的摘要、压缩的提示表示或额外的内存 token；它是原始序列中保留的最小稳定参考。BoS 锚点的关键作用：
+1. **稳定生成**：防止无锚点 SPEED 的后缀重复循环
+2. **保持全局信息**：在上层提供一个预填充侧参考点
+3. **极小开销**：仅增加一个全深度预填充侧 KV 状态
+
+### 训练实现
+
+- **SPEED 感知训练**：在训练时控制 KV 缓存物化和层间注意力可见性
+- **位置索引不变**：不重新编号位置索引，仅改变哪些 KV 状态可见
+- **损失函数不变**：语言建模目标不变，损失仅在助手目标 token 上计算
+- **对比 PostHoc-SPEED**：仅在推理时应用可见性策略（有训练-测试不匹配），而 SPEED 感知训练使上层学会从低层提示基础生成
+
+### 层次截断诊断
+
+为指导截断选择 K，作者对全深度模型运行逐层诊断：
+- **解码 token 对预填充 token 的注意力质量**：衡量生成 token 关注哪些预填充 token
+- **条件提示熵**：衡量预填充访问的选择性（熵越低，选择性越强）
+- **隐藏轨迹直线化**：衡量表示稳定化信号（轨迹更直意味着更稳定）
+
+关键发现：
+- 原始提示注意力质量（prompt attention mass）本身不是可靠的截断信号
+- 选择性提示访问（低熵）通常在中间层出现（L13-L15）
+- 表示稳定化峰值在更深层（L17-L19）
+- **K=24** 覆盖了选择到稳定化的区间，并留有缓冲
+- 编码任务例外：其提示选择发生在极早期（L3），因此对激进截断更鲁棒
+
+---
+
+## 实验结果
+
+### 实验设置
+
+- **模型**：Llama-3.1-8B（32 层）
+- **截断值 K**：{16, 20, 24, 28}，K=32 为全深度基线
+- **训练**：从 Llama-3.1-8B Base 受控指令微调，178,502 示例，2 epochs
+- **评估**：TULU-3-DEV 上的 OLMES 风格协议，11 个基准，5 个类别
+- **长上下文效率**：1K-128K token 提示长度，固定 128 token 续写，重复 5 次
+- **硬件**：训练用 4× NVIDIA H100 GPU，评估用 1× NVIDIA RTX PRO 6000 Blackwell
+
+### 核心结果（IT-SPEED-24+BoS，最佳工作点）
 
 | 指标 | 结果 |
 |------|------|
-| TTFT（首 token 延迟） | **改善 33%** |
-| TPOT（每 token 延迟） | **改善 22%** |
-| 活跃 KV 内存 | **减少 25%** |
-| OLMES 基准精度 | 仅下降 0.2 分（51.2 vs 51.4）|
+| **OLMES 平均分** | 51.2（Full-IT 为 51.4，仅下降 0.2 分） |
+| **TTFT 加速** | +33%（128K 上下文） |
+| **TPOT 加速** | +22%（128K 上下文） |
+| **活跃 KV 内存减少** | 25.0%（128K 上下文） |
+| **TTFT 原始值** | 17199.90ms vs 22898.60ms |
+| **TPOT 原始值** | 38.64ms vs 46.96ms |
+| **活跃 KV 内存** | 12.016 GiB vs 16.016 GiB |
 
-### 5. 核心贡献
+### 截断值扫描（K=16/20/24/28）
 
-1. 证明长上下文 prompt token **不必始终以全深度 KV 缓存**形式存在
-2. 无需复杂压缩或重构机制，仅通过调整 KV 可见性即可实现显著加速
-3. 以极小质量损失换取显著效率提升
+| 方法 | 平均分 | TTFT 加速 | TPOT 加速 | KV 减少 |
+|------|------|------|------|------|
+| IT-SPEED-28+BoS | 51.3 | +14% | +10% | 12.5% |
+| IT-SPEED-24+BoS | **51.2** | **+33%** | **+22%** | **25.0%** |
+| IT-SPEED-20+BoS | 49.9 | +60% | +36% | 37.5% |
+| IT-SPEED-16+BoS | 45.4 | +101% | +55% | 50.0% |
+
+### BoS 锚点的重要性
+
+在 K=24 时，无锚点 SPEED 平均分仅 49.1，而 BoS 锚点将其恢复到 51.2，表明 BoS 锚点对维持质量至关重要。
+
+### 任务依赖性
+
+- **代码任务**：对浅层预填充可见性相对鲁棒，即使 K=16 也接近全深度
+- **数学和指令任务**：对截断更敏感
+- **知识和推理任务**：显著受益于 BoS 锚点
+
+### 与现有方法的对比（K=24）
+
+| 方法 | TTFT 加速 | TPOT 加速 | KV 减少 |
+|------|------|------|------|
+| SwiftKV-24 | +35% | 0%（无改善） | 12.5% |
+| POP-24 | +34% | 0%（无改善） | 0% |
+| SPEED-24 | **+33%** | **+22%** | **25.0%** |
+
+SPEED 的独特优势在于：不仅加速预填充，还改变了**解码时间的可见集**，从而同时改善 TPOT。
+
+### Off-the-shelf 兼容性（LoRA 适配）
+
+从 Llama-3.1-8B-Instruct 出发，使用 LoRA 适配：
+- OffShelf-FT-SPEED+BoS-24 在 HotpotQA 达到 59.5/73.7（全深度 LoRA 为 60.8/75.3）
+- 在 TriviaQA 和 S-NIAH 上也保持竞争力，表明 SPEED 可以通过轻量级适配应用
+
+### 任务自适应微调
+
+在文档 QA、摘要、数学和代码任务中，中等截断（K=24/28）的 SPEED+BoS 仍与全深度任务适配基线竞争力相当。
+
+### 训练效率
+
+SPEED 也可加速 LoRA 训练：
+- SPEED-24+BoS：1.29× 加速（6h26m vs 8h19m）
+- 有效 token 吞吐量：2863.1 vs 2213.8 tokens/s/GPU
+- 峰值内存变化不大（61.6 GiB vs 63.4 GiB）
+
+### SelfOnly 消融
+
+上层解码 token 之间的注意力**不是冗余的**：
+- SelfOnly-24+BoS 平均分仅 47.2（IT-SPEED-24+BoS 为 51.2）
+- 说明 SPEED 保留了上层解码 token 之间的注意力，仅移除预填充 token 的上层 KV 状态
+
+---
+
+## 优势
+
+1. **简洁优雅**：仅通过调整 KV 可见性实现显著加速，无需复杂压缩或重构机制
+2. **全深度解码保持**：解码 token 仍遍历所有层，保留了生成质量
+3. **BoS 锚点极简**：仅使用一个 BoS token 即可稳定浅层预填充，无需学习摘要
+4. **显著效率提升**：TTFT +33%、TPOT +22%、KV 内存 -25%（K=24，128K 上下文）
+5. **极小质量损失**：OLMES 基准仅下降 0.2 分
+6. **适配性好**：支持从 base 模型全量微调和从指令模型 LoRA 适配两种路径
+7. **训练效率提升**：LoRA 训练可加速 1.29×（K=24）
+8. **与现有系统互补**：不与 token 选择、量化等方法冲突，可结合使用
+
+---
+
+## 局限
+
+1. **需要模型重新训练或适配**：不能直接用于已有模型的推理（PostHoc-SPEED 在 K=24 严重退化）
+2. **固定截断策略**：K 值在所有 token 上固定，未探索自适应截断
+3. **任务依赖性**：不同任务的最佳 K 值不同（代码可更激进截断，数学和指令需更保守）
+4. **模型规模限制**：仅在 Llama-3.1-8B 上验证，更大模型（如 70B、405B）或不同架构可能有不同效果
+5. **上层注意力仍是必要的**：SelfOnly 消融表明上层解码 token 之间的注意力不可移除
+6. **效率增益依赖于具体部署**：实际 TTFT/TPOT 受内核、缓存布局、批处理、CUDA 图、内存带宽等影响
+7. **无统计等价检验**：质量差异仅为受控评估中的证据，非无损证明
+8. **仅在特定上下文长度验证**：未覆盖所有长上下文长度场景
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **KV 缓存稀疏/管理（kv_cache_sparse, kv_cache_management）**：SPEED 直接属于这一领域，通过层间不对称可见性实现 KV 缓存的稀疏化
+2. **层间 KV 优化**：与 SwiftKV、POP、MiniCache、DepthKV 等方法互补，可探索联合优化
+3. **注意力稀疏化**：SPEED 的层不对称可见性与动态稀疏注意力（如 Minference、DuoAttention）有交集
+4. **推理效率优化**：可与投机解码（Speculative Decoding）、连续批处理（Continuous Batching）等技术结合
+5. **训练-推理协同**：SPEED 需要训练时感知，提示了未来可探索免训练（post-hoc）的方法
+6. **自适应层截断**：SPEED 使用固定截断，可探索基于输入或 token 的自适应截断策略
+7. **模型架构设计**：层间功能差异的发现可启发新的 Transformer 架构设计
+8. **KV 缓存量化与压缩**：SPEED 可与 KV 量化（如 KIVI）和压缩方法结合，进一步提升效率
+
+---
+
+*本笔记由 AI Agent 自动生成，基于论文全文阅读和分析。生成时间：2026 年 6 月 4 日。*

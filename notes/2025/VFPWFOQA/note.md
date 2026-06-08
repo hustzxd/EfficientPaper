@@ -4,6 +4,178 @@
 
 ![111](../../blank.jpg)
 
-## Abstract
+> ⚠️ **本 note 由 AI Agent 自动生成**，基于论文全文阅读与分析。生成时间：2026年6月。
 
-Mixed-precision training is a crucial technique for scaling deep learning models, but successful mixedprecision training requires identifying and applying the right combination of training methods. This paper presents our preliminary study on Mixture-of-Representations (MoR), a novel, per-tensor and sub-tensor level quantization framework that dynamically analyzes a tensor's numerical properties to select between a variety of different representations. Based on the framework, we have proposed and experimented concrete algorithms that choose dynamically between FP8 and BF16 representations for both per-tensor and sub-tensor level granularities. Our universal approach is designed to preserve model quality across various quantization partition strategies and datasets. Our initial findings show that this approach can achieve state-of-the-art results with 98.38% of tensors quantized to the FP8 format. This work highlights the potential of dynamic, property-aware quantization while preserving model quality. We believe this approach can generally improve the robustness of low precision training, as demonstrated by achieving FP8 accuracies that are on par with existing approaches without the need for fine-grain partitioning, or can be used in combination with other training methods to improve the leverage of even lower precision number formats such as NVFP4.
+---
+
+## 一句话总结
+
+提出 MoR（Mixture-of-Representations）动态量化框架，通过实时分析张量数值属性选择 FP8/BF16 表示，结合 GAM 缩放算法实现 98.38% 张量量化为 FP8 而不损失模型质量。
+
+---
+
+## 摘要翻译
+
+混合精度训练是扩展深度学习模型的关键技术，但成功的混合精度训练需要识别并应用正确的训练方法组合。本文初步研究了 MoR（Mixture-of-Representations），一种新颖的逐张量和子张量级量化框架，能动态分析张量的数值属性以选择不同的表示方式。基于该框架，我们提出并实验了在逐张量和子张量级粒度上动态选择 FP8 和 BF16 表示的具体算法。我们的通用方法旨在在不同量化分区策略和数据集上保持模型质量。初步结果显示，该方法在 98.38% 的张量被量化为 FP8 格式时可达到最先进的结果。本文强调了动态、属性感知量化在保持模型质量方面的潜力。我们相信该方法可以普遍提高低精度训练的鲁棒性，如在无需细粒度分区的情况下实现与现有方法相当的 FP8 准确率，或与其他训练方法结合以更好地利用更低精度的数字格式（如 NVFP4）。
+
+---
+
+## 研究动机
+
+1. **训练成本高昂**：大语言模型训练需要数千到数万 GPU 运行数月（如 Llama 3.1 405B 在 24,576 个 H100 GPU 上训练数月，DeepSeek-V3 671B 用了 2.788M GPU 小时），导致计算资源消耗巨大。
+
+2. **低精度训练的必要性**：低精度表示可从计算（如 H100 的 FP8 GEMM 比 BF16 快 2x）和带宽（FP8 加载只需一半内存带宽）两方面加速训练，且训练时的低精度格式可直接用于推理，避免额外的后训练量化。
+
+3. **现有方法的局限**：现有工作（如 DeepSeek-V3 的 128×128 分块、MXFP8 的 1×32 子通道）主要通过精细分区来控制量化误差，但缺乏对"为什么某个配方能保持模型质量"的深入理解。
+
+4. **核心问题**：如何在不依赖精细分区的情况下，通过动态属性感知的量化策略保持模型质量？MoR 框架试图通过张量分析捕捉不变性（invariance），并发现相对误差可作为 FP8 训练的合理不变性指标。
+
+---
+
+## 方法（技术细节）
+
+### 1. GAM（Group Amax Mantissa）缩放算法
+
+**核心思想**：将缩放因子的尾数（mantissa）和指数（exponent）解耦，同时获得宽动态范围和高精度。
+
+**算法流程**（Algorithm 1）：
+- 将张量 X 划分为组 G，每组包含多个块 B
+- 对每个组 g：计算组级 amax → 生成理想 FP32 缩放因子 sg → 仅存储其尾数 mg
+- 对每个块 b：计算块级 amax → 生成理想 FP32 缩放因子 sb → 仅存储其指数部分
+- 关键调整：若 mg > mb（块的尾数小于组的尾数），则将块指数减 1，防止饱和
+- 重建缩放因子：运行时将共享的 23 位组尾数与每个块的 8 位指数组合
+
+**优势**：
+- 开销极小：每个块仅需 8 位指数，整个张量额外仅需 23 位尾数
+- 最大精度：使用整个张量的 amax 派生尾数，保持 FP32 精度
+- 一致的尾数操作：缩放/去缩放时尾数对所有值相同，与块大小无关
+
+**实验配置**：默认使用单个组（整个张量作为一组），对 FP8 格式已足够。
+
+### 2. MoR 框架（Mixture-of-Representations）
+
+**核心思想**：动态选择量化策略的系统化方法，基于张量的数值属性实时决策。
+
+**框架流程**（Algorithm 2）：
+- 输入：张量 X、分区 B、表示类型列表 T1~Tk（按激进程度排序）、指标列表 M1~Mk-1
+- 对每个块 b：按顺序检查指标，若满足则选择对应类型，否则回退到下一类型
+- 示例：[E4M3, E5M2, BF16] → 先试 E4M3，失败则试 E5M2，再失败则用 BF16
+
+### 3. Tensor-level MoR（张量级 MoR）
+
+- 对整个张量做出统一决策（E4M3 或 BF16）
+- 使用平均相对量化误差作为判据：
+  - 计算所有非零元素的相对误差均值
+  - 若误差 < 阈值 thE4M3（默认 4.5%），则选择 E4M3
+  - 否则回退到 BF16
+- 支持不同的内部量化分区策略（per-block、per-tensor、per-channel），最终决策是全局的
+
+**关键洞察**：只要相对误差有界，就能保证模型质量与 BF16 基线相当，因此可以自由探索不同分区策略以提高表示效率。
+
+### 4. Sub-tensor-level MoR（子张量级 MoR）
+
+**两种算法**：
+- **三路选择（E4M3/E5M2/BF16）**：
+  1. 检查 E4M3：块的相对误差是否低于 E5M2
+  2. 检查 E5M2：块的动态范围是否在 E5M2 可表示范围内
+  3. 回退 BF16
+- **二路选择（E4M3/BF16）**：
+  - 使用相同指标检查 E4M3，但不选择 E5M2 作为最终格式
+  - E5M2 仅作为高质量基准来判断 E4M3 是否合适
+
+**注意**：子张量级需要处理不同精度块的 GEMM 运算，可能需要上转换（upcast）。
+
+---
+
+## 实验结果
+
+### 实验设置
+- **模型**：Nemotron-3 8B（32 个 Transformer 块的稠密 Transformer）
+- **量化目标**：仅针对 Transformer 块中的线性层（QKV 投影、输出投影、FC1/FC2）
+- **框架**：Megatron-LM
+- **两种训练配置**：
+  - 配置 1：Nemotron-4 数据，1 万亿 token，LR 3×10⁻⁴ → 3×10⁻⁵，batch size 1024
+  - 配置 2：Nemotron-H 数据，1 万亿 token，LR 1.2×10⁻³ → 3×10⁻⁶，batch size 1536
+- **假量化**：BF16 输入 → 量化到目标格式 → 反量化回 BF16（模拟精度损失）
+- **阈值**：thE4M3 = 4.5%，约 95% 张量可量化为 E4M3
+
+### Tensor-level MoR 结果
+
+| 指标 | BF16 | Per-Block | Per-Tensor | Per-Channel |
+|------|------|-----------|------------|-------------|
+| 训练损失（配置1） | 1.8033 | 1.8067 | 1.8058 | 1.8071 |
+| 验证损失（配置1） | 1.8023 | 1.8046 | 1.8028 | 1.8044 |
+| MMLU（配置2） | 62.56 | 62.38 | 62.51 | 63.30 |
+| WinoGrande（配置2） | 69.85 | 72.38 | 71.67 | 70.64 |
+
+**关键发现**：
+- 所有 MoR 变体的最终训练/验证损失均在 BF16 基线的 0.5% 以内
+- 下游任务评估结果普遍与基线相当（差异约 1%）
+- per-channel 策略量化效率最高（配置1仅 1.62% 张量回退 BF16，配置2仅 4.07%）
+- **98.38% 的张量可量化为 E4M3**（per-channel 配置1）
+- 训练动态曲线（损失、参数范数）紧密跟踪 BF16 基线
+
+### 消融实验
+
+- **块大小**：128×128 vs 64×64 → 更细粒度可略微提升精度
+- **阈值**：4.5% vs 5.0% → 更高阈值允许更多张量量化，但可能影响模型质量
+- **缩放算法**：GAM vs E8M0 vs FP32 amax → E8M0 缩放和 GAM 缩放均优于标准 FP32 amax（后者 MMLU 低 1.63%）
+
+### 张量统计分析
+
+- 相对误差分布热力图显示：大多数张量相对误差远低于 2.5%
+- FC2 激活张量在训练早期相对误差较高，随训练推进逐渐降低
+- 第一层的梯度张量具有较高相对误差，但随 Transformer 块编号增加而降低
+- 训练过程中张量动态范围随训练步数增长，MoR 框架能自适应地回退到 BF16
+
+### Sub-tensor MoR 结果
+
+| 指标 | BF16 | 二路选择 | 三路选择 |
+|------|------|---------|---------|
+| MMLU | 44.72 | **46.56** | 42.84 |
+| 训练损失 | 1.8033 | 1.7984 | **1.7811** |
+
+**关键发现**：
+- 二路选择算法与 BF16 基线相当，甚至在某些任务上更优
+- 三路选择算法虽然验证损失更低，但下游任务显著退化（MMLU 从 44.72 降到 42.84）
+- 三路选择引入 E5M2 后可能导致过拟合，损害模型泛化能力
+
+---
+
+## 优势
+
+1. **动态自适应**：基于运行时张量数值属性实时决策，无需预设固定方案
+2. **高量化效率**：98.38% 张量可量化为 E4M3（per-channel），仅极少数需保留 BF16
+3. **鲁棒性强**：在不同分区策略（per-block、per-tensor、per-channel）和训练配置下均保持模型质量
+4. **开销小**：GAM 缩放算法仅需每个块 8 位指数 + 每张量 23 位尾数
+5. **模块化设计**：MoR 框架可灵活选择不同的量化类型组合和指标
+6. **理论洞察**：揭示了相对误差作为不变性指标的有效性，为理解"为什么特定配方有效"提供了理论基础
+7. **兼容性好**：可与其他训练方法结合（如与 NVFP4 等更低精度格式配合）
+
+---
+
+## 局限
+
+1. **子张量级过拟合问题**：三路选择（E4M3/E5M2/BF16）在下游任务上表现不佳，E5M2 的灵活性可能导致过拟合
+2. **实验规模有限**：仅在 Nemotron-3 8B 模型上验证，未在更大模型上测试
+3. **假量化框架**：实验使用假量化（fake quantization），未在真实硬件上验证实际加速效果
+4. **阈值选择**：thE4M3 = 4.5% 是经验选择，不同模型/任务可能需要不同的阈值
+5. **GEMM 复杂性**：子张量级 MoR 需要处理不同精度块的运算，可能需要上转换，增加计算开销
+6. **仅针对线性层**：量化仅应用于线性层，未扩展到其他层类型
+7. **缺乏硬件优化**：未与特定硬件架构（如 H100/GB200）的优化深度集成
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **低精度训练优化**：MoR 框架为混合精度训练提供了新范式，通过动态属性感知量化实现高效训练，与 EfficientPaper 中的高效训练方向直接相关。
+
+2. **量化策略研究**：GAM 缩放算法和 MoR 框架为量化策略的动态选择提供了理论基础，可扩展到更激进的量化格式（如 NVFP4、FP4）。
+
+3. **张量属性分析**：论文揭示了张量相对误差在训练过程中的动态变化规律，为理解量化误差与模型质量的关系提供了新视角。
+
+4. **可扩展性研究**：MoR 框架的模块化设计使其易于扩展到更大模型、更多层类型和更激进的量化策略，值得进一步探索。
+
+5. **硬件-算法协同**：结合 NVIDIA GPU 的硬件特性（如 H100 的 FP8 加速、GB200 的 FP4 加速），MoR 框架有望实现更高的效率提升。
+
+6. **与相关工作的关系**：与 DeepSeek-V3、MXFP8、FGMP、CoAT、FP4 All the Way 等工作密切相关，MoR 在这些工作的基础上提出了动态属性感知量化的新思路。

@@ -2,25 +2,175 @@
 
 ![](../../blank.jpg)
 
-## Abstract
+## 一句话总结
 
-In the evolving landscape of natural language processing (NLP), fine-tuning
-pre-trained Large Language Models (LLMs) with first-order (FO) optimizers like
-SGD and Adam has become standard. Yet, as LLMs grow {in size}, the substantial
-memory overhead from back-propagation (BP) for FO gradient computation presents
-a significant challenge. Addressing this issue is crucial, especially for
-applications like on-device training where memory efficiency is paramount. This
-paper proposes a shift towards BP-free, zeroth-order (ZO) optimization as a
-solution for reducing memory costs during LLM fine-tuning, building on the
-initial concept introduced by MeZO. Unlike traditional ZO-SGD methods, our work
-expands the exploration to a wider array of ZO optimization techniques, through
-a comprehensive, first-of-its-kind benchmarking study across five LLM families
-(Roberta, OPT, LLaMA, Vicuna, Mistral), three task complexities, and five
-fine-tuning schemes. Our study unveils previously overlooked optimization
-principles, highlighting the importance of task alignment, the role of the
-forward gradient method, and the balance between algorithm complexity and
-fine-tuning performance. We further introduce novel enhancements to ZO
-optimization, including block-wise descent, hybrid training, and gradient
-sparsity. Our study offers a promising direction for achieving further
-memory-efficient LLM fine-tuning. Codes to reproduce all our experiments are at
-https://github.com/ZO-Bench/ZO-LLM .
+本文首次构建了零阶优化（ZO）用于大语言模型（LLM）微调的综合基准测试，涵盖6种无反向传播优化方法、5个LLM家族、3种任务复杂度和5种微调方案，揭示了任务对齐、前向梯度、算法复杂度与微调性能之间的平衡等被忽视的优化原则，并提出分块下降、混合ZO-FO训练和梯度稀疏三种增强策略，在保持内存效率的同时提升微调精度。
+
+---
+
+## 摘要翻译
+
+在自然语言处理（NLP）领域，使用一阶（FO）优化器（如SGD和Adam）对预训练大语言模型（LLM）进行微调已成为标准做法。然而，随着LLM规模的不断增长，反向传播（BP）进行FO梯度计算所带来的巨大内存开销构成了重大挑战。解决这一问题至关重要，尤其是在设备端训练等对内存效率要求极高的应用场景中。本文提出了一种基于无BP、零阶（ZO）优化的解决方案，用于降低LLM微调过程中的内存成本，这一思想最初由MeZO提出。与传统的ZO-SGD方法不同，本工作将探索扩展到更广泛的ZO优化技术，通过一项全面的、前所未有的基准测试研究，覆盖5个LLM家族（Roberta、OPT、LLaMA、Vicuna、Mistral）、3种任务复杂度和5种微调方案。研究揭示了此前被忽视的优化原则，强调了任务对齐的重要性、前向梯度方法的作用，以及算法复杂度与微调性能之间的平衡。此外，本文还引入了ZO优化的新型增强方法，包括分块下降（block-wise descent）、混合训练（hybrid training）和梯度稀疏（gradient sparsity）。本研究为实现更高效内存的LLM微调提供了有前景的方向。
+
+---
+
+## 研究动机
+
+### 背景与问题
+1. **LLM微调的内存瓶颈**：随着LLM规模不断扩大，使用FO优化器（如SGD、Adam）进行微调时，反向传播（BP）所需的内存开销巨大。例如，计算OPT-13B的梯度所需的内存成本是模型推理的12倍。
+2. **设备端训练需求**：在边缘设备（on-device training）上进行LLM微调对内存效率有极高要求，传统的BP方法难以满足。
+3. **ZO优化的潜力与局限**：MeZO（Malladi et al., 2023）首次将ZO优化引入LLM微调，但仅使用了基础的ZO-SGD方法，未能充分探索ZO优化的完整图景。
+4. **核心研究问题**：能否为LLM微调中的ZO优化建立基准，探索被忽视的优化原则，并推进当前最先进水平？
+
+### 研究空白
+- 除ZO-SGD外，许多其他ZO优化方法尚未在LLM微调中被探索
+- 不同ZO方法在准确性和效率方面的权衡关系不明
+- 前向梯度（Forward-Grad）作为BP-free方法的基线被严重忽视
+- 缺乏系统性的基准测试来评估ZO优化在LLM微调中的效果
+
+---
+
+## 方法（技术细节）
+
+### 1. ZO优化方法谱
+
+本文涵盖了6种ZO/BP-free优化方法，统一框架为：
+$$x_{t+1} = x_t - \eta_t h(\hat{\nabla}f(x_t))$$
+
+其中 $h(\cdot)$ 是下降方向后处理操作，$\hat{\nabla}f(x)$ 是ZO梯度估计。
+
+**随机梯度估计器（RGE）**：
+$$\hat{\nabla}f(x) = \frac{1}{q} \sum_{i=1}^{q} \left[\frac{f(x + \mu u_i) - f(x - \mu u_i)}{2\mu} u_i\right]$$
+
+其中 $u_i$ 是随机方向向量（从标准高斯分布 $\mathcal{N}(0, I)$ 采样），$q$ 是函数查询次数，$\mu > 0$ 是小扰动步长（平滑参数）。
+
+**6种ZO优化方法**：
+- **ZO-SGD**（即MeZO）：$h(\hat{\nabla}f(x)) = \hat{\nabla}f(x)$
+- **ZO-SGD-Sign**：$h(\hat{\nabla}f(x)) = \text{sign}(\hat{\nabla}f(x))$，使用1-bit梯度量化
+- **ZO-SGD-MMT**：基于动量的ZO-SGD，利用历史梯度信息
+- **ZO-SGD-Cons**：保守梯度更新，$h(\hat{\nabla}f(x)) = \arg\min_{g \in \{0, -\hat{\nabla}f(x), \hat{\nabla}f(x)\}} f(x_t + \eta_t g)$
+- **ZO-Adam**：ZO版Adam优化器，包含移动平均和自适应学习率
+- **Forward-Grad**：基于前向自动微分的梯度估计，$\nabla f(x) \approx f'(x, u)u$
+
+### 2. 任务对齐（Task Alignment）
+
+ZO优化对任务对齐高度敏感。通过将下游任务格式与预训练任务（如token预测）对齐，使用精心设计的输入提示（prompts），可以显著提升ZO微调性能。实验表明，无任务对齐时ZO方法性能下降约8-10%，而FO方法受影响较小。
+
+### 3. 基准测试设置
+
+- **任务**：SST2（二分类）、COPA（问答）、WinoGrande（常识推理）、MultiRC（多句阅读理解）
+- **模型**：Roberta-Large、OPT-1.3B、OPT-13B、LLaMA2-7B、Vicuna-7B、Mistral-7B
+- **微调方案**：FT（全参数微调）、LoRA（低秩适配）、Prefix（前缀微调）、Prompt（提示微调）
+- **训练轮次**：ZO方法20000轮，FO方法625轮
+- **精度**：FO使用混合精度（FP32+FP16），ZO使用半精度（FP16）
+
+### 4. 三种增强策略
+
+#### (1) 分块ZO优化（Block-wise ZO）
+将LLM参数分割为多个块（如OPT-13B的26个参数块），对每个块独立进行ZO梯度估计。通过分块处理，梯度估计方差降低，从而提升微调性能。ZO-SGD-Block在SST2任务上相比MeZO提升了约2.86%（90.83% → 93.69%）。
+
+#### (2) 混合ZO-FO训练（Hybrid ZO-FO）
+将模型分为浅层和深层：浅层使用ZO优化（无BP），深层使用FO优化（有BP）。通过调节ZO优化的层数比例，在性能和内存之间实现权衡。实验表明，仅对前1/3层使用ZO优化即可达到接近全FO优化的性能，同时减少约10%的内存使用。
+
+#### (3) 梯度稀疏（Sparsity-induced ZO）
+利用基于幅度的剪枝获取层稀疏率，生成随机剪枝掩码并应用于RGE中的权重扰动。适度的稀疏率（如20%）可以改善ZO-SGD的性能。在SST2任务中，90%稀疏率下准确率达到92.66%，优于基线的90.83%。
+
+---
+
+## 实验结果
+
+### 1. SST2基准实验
+
+| 方法 | Roberta-Large (FT) | Roberta-Large (LoRA) | OPT-1.3B (FT) | OPT-1.3B (LoRA) |
+|------|-------------------|---------------------|---------------|-----------------|
+| FO-SGD | 91.4 | 91.2 | 91.1 | 93.6 |
+| Forward-Grad | 90.1 | 89.7 | 90.3 | 90.3 |
+| ZO-SGD | 89.4 | 90.8 | 90.8 | 90.1 |
+| ZO-Adam | 89.8 | 89.5 | 84.4 | 92.3 |
+
+**关键发现**：
+- ZO-Adam在4/8个设置中表现最佳，但内存消耗更高
+- Forward-Grad在FT设置中表现有竞争力
+- ZO方法表现出高方差，相对排名在不同设置间波动
+
+### 2. 多模型多任务实验（OPT-13B）
+
+在COPA任务上，某些BP-free方法（Forward-Grad、ZO-Adam）可达到甚至超越FO方法。但在更困难的WinoGrande任务上，FO与ZO方法之间仍有5-6%的性能差距。
+
+### 3. 内存效率对比（OPT-13B + MultiRC）
+
+| 优化器 | 内存（GB） | GPU数量 | 迭代时间 |
+|--------|-----------|---------|---------|
+| ZO-SGD | 29 | 1×A100 | 1.8s |
+| ZO-SGD-Cons | 29 | 1×A100 | 4.2s |
+| ZO-SGD-MMT | 53 | 1×A100 | 1.8s |
+| ZO-Adam | 80 | 2×A100 | 1.9s |
+| Forward-Grad | 138 | 2×A100 | 19.8s |
+| FO-SGD | 161 | 3×A100 | 2.7s |
+| FO-Adam | 257 | 4×A100 | 2.8s |
+
+**关键发现**：
+- ZO方法（除ZO-Adam外）仅需单卡A100即可完成LLM微调
+- ZO-SGD相比FO-SGD减少约33.3%的迭代时间
+- ZO-SGD将内存从161GB降至29GB（减少约82%）
+- Forward-Grad失去内存效率优势（138GB vs 29GB）
+- 随序列长度增加，FO-SGD内存消耗急剧增长，而ZO-SGD保持稳定
+
+### 4. 分块ZO优化效果
+
+| 方法 | 前向传播次数 | SST2 | WinoGrande |
+|------|------------|------|------------|
+| MeZO | 1 | 90.83 | 55.5 |
+| ZO-SGD (q=26) | 26 | 91.28 | 55.7 |
+| ZO-SGD-Block | 26 | **93.69** | **57.2** |
+
+### 5. 梯度稀疏效果（OPT-1.3B）
+
+在SST2任务中，适度稀疏率（20%）可将准确率从90.83%提升至92.20%，90%稀疏率下达到92.66%。
+
+---
+
+## 优势
+
+1. **显著的内存节省**：ZO方法将LLM微调内存从161GB降至29GB（单卡A100），减少约82%，对设备端训练极具价值
+2. **系统性基准测试**：首次在LLM微调场景下对6种ZO方法进行全面基准测试，涵盖5个模型家族、3种任务、5种微调方案
+3. **被忽视的优化原则**：揭示了任务对齐对ZO优化的关键作用、Forward-Grad作为BP-free基线的重要性、算法复杂度与性能的权衡
+4. **三种增强策略**：分块下降、混合训练、梯度稀疏，提供在保持内存效率的同时提升精度的实用方案
+5. **全面的代码复现**：所有实验代码开源，便于社区验证和扩展
+6. **理论支撑**：基于RGE的梯度估计理论分析，提供了对ZO优化收敛性的深入理解
+
+---
+
+## 局限
+
+1. **任务复杂度限制**：在复杂任务（如WinoGrande）上，ZO方法与FO方法之间仍有5-6%的性能差距，表明ZO优化在高复杂度任务上的可扩展性有限
+2. **高方差问题**：ZO方法表现出高方差，不同实验设置下相对排名波动较大，这主要源于RGE的方差（与模型维度成正比）
+3. **Forward-Grad的实用性限制**：Forward-Grad虽然理论上是无偏估计，但需要前向自动微分，不兼容混合精度训练（MP）和半精度训练（FP16），导致内存消耗和运行时间大幅增加
+4. **查询复杂度**：ZO方法需要多次前向传播来估计梯度，增加了计算成本，尽管内存效率提升，但运行时间可能增加
+5. **超参数敏感性**：ZO方法对超参数（如平滑参数、学习率）高度敏感，需要大量的网格搜索
+6. **评估范围有限**：主要在分类和推理任务上验证，未涵盖生成任务、多模态任务等更多场景
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+### 1. 内存高效训练（Memory-Efficient Training）
+本文直接针对LLM微调的内存效率问题，与EfficientPaper关注的高效AI研究方向高度契合。ZO优化提供了一种替代BP的内存高效方案。
+
+### 2. 无反向传播训练（BP-Free Training）
+作为BP-free训练方法的系统性研究，本文与Forward-Forward算法、合成梯度、进化算法等相关工作形成互补，推动了无BP训练的研究进展。
+
+### 3. 参数高效微调（PEFT）
+本文将ZO优化与多种PEFT方案（LoRA、Prefix、Prompt）结合，探索了在参数高效微调场景下的内存优化潜力。
+
+### 4. 大模型优化
+与EfficientPaper中关于大模型训练优化的研究方向一致，本文提供了在内存受限环境下进行大模型微调的解决方案。
+
+### 5. 优化算法创新
+本文提出的分块下降、混合训练和梯度稀疏等策略，为优化算法创新提供了新思路，可扩展到其他机器学习任务。
+
+---
+
+## AI 生成声明
+
+本笔记由 AI Agent（Hermes Agent）基于论文原文自动生成，仅供参考。笔记内容基于论文元数据、摘要和全文提取文本，可能遗漏部分细节或存在理解偏差。建议读者阅读原文以获取完整准确的信息。笔记生成时间：2026年6月5日。

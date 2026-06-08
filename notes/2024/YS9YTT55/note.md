@@ -4,14 +4,135 @@
 
 ![](../../blank.jpg)
 
-## Abstract
+## 一句话总结
 
-This survey offers a comprehensive overview of recent advancements in Large
-Language Model (LLM) serving systems, focusing on research since the year 2023.
-We specifically examine system-level enhancements that improve performance and
-efficiency without altering the core LLM decoding mechanisms. By selecting and
-reviewing high-quality papers from prestigious ML and system venues, we
-highlight key innovations and practical considerations for deploying and
-scaling LLMs in real-world production environments. This survey serves as a
-valuable resource for LLM practitioners seeking to stay abreast of the latest
-developments in this rapidly evolving field.
+本文是 2023–2024 年间 LLM 推理服务系统研究的综合综述，系统性地梳理了不改变 LLM 解码机制的前提下，从系统层面提升 LLM 推理性能和效率的四大方向：KV 缓存与内存管理、计算任务调度、云部署优化及新兴研究领域（RAG、MoE 等）。
+
+## 摘要翻译
+
+本综述提供了大语言模型（LLM）服务系统近期进展的全面概览，重点关注 2023 年以来的研究成果。我们特别考察了在不改变核心 LLM 解码机制的前提下，通过系统层面的增强来提升性能和效率的方法。通过精心筛选来自知名 ML 和系统会议的高质量论文，我们强调了在真实生产环境中部署和扩展 LLM 的关键创新和实际考量。本综述旨在为 LLM 从业者提供有价值的资源，帮助他们了解这一快速发展领域的最新动态。
+
+## 研究动机
+
+随着 ChatGPT 的发布，大语言模型（LLM）迅速获得了极大的关注。然而，将这些强大的 AI 模型部署和扩展到生产环境中带来了巨大挑战。LLM 的大量计算和内存需求通常需要高性能 GPU 服务器，但即使这些资源也会因为模型的巨大规模和所处理的长文本序列而捉襟见肘。对 LLM 驱动应用的日益增长的需求催生了大量关于 LLM 服务系统的研究。现有的几篇 LLM 推理系统综述要么涵盖范围过广，要么包含了会修改 LLM 解码算法的研究（可能影响模型精度），且缺少 2023 年之后的大量新成果。因此，本文旨在提供一个聚焦于系统级解决方案、不改变核心 LLM 解码机制的最新、最全面的综述。
+
+## 方法（技术细节）
+
+本文将 LLM 服务系统的研究组织为四大类别：
+
+### 1. KV 缓存与内存管理（Section III）
+
+**KV 缓存高效管理：**
+- **PagedAttention**（vLLM）：将 KV 缓存作为非连续内存块管理，显著减少预分配和碎片化导致的内存浪费，已成为行业标准（TGI、vLLM、TensorRT-LLM）。
+- **vAttention**：保留 KV 缓存于连续虚拟内存中，利用操作系统的需求分页机制减少软件复杂性，重叠内存分配与计算。
+- **Prompt Cache**：为用户提供预定义的提示方案，使得系统提示等模块的注意力状态可跨多个提示复用。
+- **AttentionStore**：针对多轮对话场景，利用较慢的存储介质（CPU 内存、磁盘）保存 KV 缓存，设计智能预取和驱逐策略。
+
+**长上下文支持：**
+- **Ring Attention**：利用分块注意力计算，跨多设备高效重叠 KV 缓存通信与计算，将上下文长度扩展为设备数倍。
+- **Infinite-LLM**：将 KV 缓存分解为更小的管理单元（rBlocks），跨 GPU/CPU 高效管理。
+- **MemServe**：引入 MemPool 分布式内存池统一管理跨集群的 KV 缓存，配合全局调度器最大化 KV 缓存复用。
+- **InfiniGen**：通过在前一层预演注意力计算来推测重要 KV 缓存条目，仅预取关键条目到 GPU。
+- **LoongServe**：引入弹性序列并行（ESP），动态适应请求间和阶段间的资源变化。
+
+**KV 缓存压缩：**
+- **FlexGen**：使用细粒度分组量化将权重和 KV 缓存压缩到 4 位。
+- **KIVI**：分析 KV 缓存元素分布，对 Key 按通道、Value 按 token 进行非对称量化。
+- **GEAR**：通过量化相似幅度条目并使用低秩矩阵近似量化误差，实现近乎无损的高压缩比。
+- **MiniCache**：利用 LLM 中后层间 KV 缓存状态的高相似性，将相邻层合并为共享表示以减少冗余。
+
+### 2. 计算任务调度（Section IV）
+
+**请求批处理：**
+- **Orca**：提出 token 级别的连续批处理（continuous batching），当当前批次中有请求完成时立即调度新请求，已成为行业标准。
+- **DeepSpeed-FastGen**：提出动态 SplitFuse 机制，将长提示分解为较小块跨多次迭代调度，短提示合并以维持高吞吐。
+- **Sarathi-Serve**：将预填充请求拆分为较小块与正在进行的解码请求一起调度，无停顿批处理（stall-free batching）。
+- **响应长度预测**：通过预测响应长度来批处理相似长度的查询，减少计算浪费（如 S3 使用微调的 DistillBERT 模型）。
+
+**分解推理（Disaggregated Inference）：**
+- **TetriInfer**：分离预填充和解码实例，使用两级调度算法避免调度热点。
+- **Splitwise**：在不同 GPU 世代上分别运行预填充和解码阶段，允许为每个阶段使用专用硬件。
+- **DistServe**：设计放置算法调度预填充和解码阶段，根据集群网络状况优化并行配置。
+
+**模型并行：**
+- **HeteGen**：利用 CPU 和 GPU 的异构并行计算框架，通过异步重叠缓解 I/O 瓶颈。
+- **ExeGPT**：找到批大小和张量并行度的最优调度控制变量，最大化推理吞吐量。
+- **Helix**：将模型分区问题形式化为有向加权图的最大流问题，处理 GPU 和网络异构性。
+
+### 3. 云 LLM 部署（Section V）
+
+**云部署成本：**
+- **SpotServe**：解决使用抢占式实例进行 LLM 服务的挑战，引入 token 级别的有状态推理恢复机制。
+- **ServerlessLLM**：利用 GPU 服务器上的未充分利用存储和内存资源，引入新的检查点格式和加载系统加速模型加载，通过本地感知的服务器分配策略最小化冷启动延迟。
+- **Mélange**：自动导航 GPU 选项空间，确定给定 LLM 服务的最具成本效益的异构 GPU 分配。
+- **Llumnix**：动态调度系统，通过跨多个模型实例的实时迁移和统一调度策略优化资源利用。
+
+**云效率：**
+- **POLCA**：表征 LLM 在云中的功耗模式，通过 GPU 频率锁定和功耗限制等技术动态管理推理集群的功耗。
+- **PerLLM**：边云协同场景，使用约束满足 UCB 算法优化服务调度和资源分配。
+- **FlexLLM**：在同一迭代中高效服务 LLM 推理和参数高效微调（PEFT）请求。
+- **Andes**：定义用户体验指标（QoE），通过基于优先级的抢占式调度器在 token 级别优化 GPU 资源分配。
+
+### 4. 新兴研究领域（Section VI）
+
+**检索增强生成（RAG）：**
+- **Sparse RAG**：并行编码检索文档以消除长距离注意力延迟，使用特殊控制 token 选择性解码。
+- **RAGCache**：使用知识树组织和存储外部知识的中间状态，跨查询共享缓存知识。
+- **CacheBlend**：基于输入前文选择性重新计算小部分 KV 缓存。
+
+**混合专家（MoE）推理：**
+- **MoE 通信优化**：Lina 动态调度资源平衡 all-to-all 通信；ExFlow 利用层间专家亲和性减少跨 GPU 路由延迟。
+- **专家卸载**：SiDA-MoE 利用稀疏性动态加载激活专家到 GPU，卸载非激活专家到主存；MoE-Infinity 在序列级别追踪专家激活。
+- **MoE 效率**：Fiddler 策略性分布模型组件；Huang et al. 提出动态门控、专家缓冲和负载均衡三种优化技术。
+
+**其他方向：**
+- **FlashDecoding++**：解决 softmax 同步、GPU 内核和数据流问题，使用双缓冲加速平坦 GEMM。
+- **Parrot**：对涉及多个 LLM 请求的复杂工作流进行数据流分析和优化。
+- **FlashAttention-3**：引入 warp 专业化和异步分块操作优化 GPU 利用率。
+- **FrugalGPT**：通过提示缓存和 LLM 级联降低推理成本。
+- **SpecInfer**：使用小型推测模型进行推测解码，树结构组织预测并行验证。
+- **RouteLLM**：动态选择强/弱 LLM 以优化成本与质量平衡。
+- **公平性与环境可持续性**：VTC（虚拟 Token 计数器）确保公平性；Sprout 通过"生成指令"降低碳足迹。
+
+## 实验结果
+
+本文为综述论文，不包含独立的实验结果。但文中的各小节对每篇被引论文的关键实验发现进行了总结。关键的定量观察包括：
+- PagedAttention 已成为行业标准，被 TGI、vLLM、TensorRT-LLM 采用。
+- 连续批处理（Orca）和 SplitFuse（DeepSpeed-FastGen）成为 LLM 推理服务的工业级标准。
+- 分解推理（Splitwise、DistServe）可以显著提升资源利用率。
+- KV 缓存压缩技术（KIVI、GEAR、MiniCache）能够以较低的精度损失大幅减少内存占用。
+- 投机解码（SpecInfer）和 LLM 级联（FrugalGPT）可有效降低推理成本。
+- FlashAttention-3 在 Hopper GPU 上实现显著加速。
+
+## 优势
+
+1. **系统性全面**：覆盖了 2023–2024 年 LLM 服务系统研究的全貌，涉及内存管理、计算调度、云部署和新兴领域四大方向。
+2. **聚焦系统层**：明确排除了解码算法修改，专注于系统级增强，确保不影响模型精度。
+3. **时效性强**：涵盖大量 2023 年后发表的高质量论文，填补了早期综述的空白。
+4. **实用导向**：强调了从研究到生产的实际考量，适合 LLM 从业者参考。
+5. **分类清晰**：将研究按四大类别组织，每类下有明确的子主题，便于快速定位。
+6. **论文筛选严格**：优先选择 ASPLOS、MLSys、OSDI 等顶级会议和知名机构的论文，保证质量。
+
+## 局限
+
+1. **缺乏定量对比**：作为综述，未对不同方法进行统一基准测试或定量对比。
+2. **时间范围有限**：主要覆盖 2023–2024 年的研究，2024 年下半年之后的工作未涵盖。
+3. **深度有限**：由于涵盖大量论文，单篇论文的技术细节介绍相对简略。
+4. **缺少实际部署案例**：未提供系统在实际大规模部署中的具体效果数据。
+5. **未覆盖部分方向**：如多模态 LLM 服务、端侧 LLM 推理等方向的讨论较少。
+6. **论文选择偏差**：主要聚焦英文顶会和 arXiv，可能遗漏了部分高质量的中文或区域会议论文。
+
+## 与 EfficientPaper 相关的研究方向
+
+本综述与 EfficientPaper 项目高度相关，涉及以下关键研究方向：
+
+1. **KV 缓存优化**：PagedAttention、vAttention、KIVI、GEAR、MiniCache 等技术直接关联 LLM 推理的内存效率，是 EfficientPaper 中值得关注的核心技术。
+2. **推理系统架构**：连续批处理（Orca）、分解推理（Splitwise、DistServe）、模型并行（Helix）等系统设计对理解 LLM 服务的效率优化至关重要。
+3. **云部署与成本优化**：SpotServe、ServerlessLLM、Mélange 等技术与 EfficientPaper 中关于部署效率的研究方向一致。
+4. **新兴推理范式**：RAG 和 MoE 的服务优化是未来 LLM 效率研究的重要方向，尤其是 RAGCache、CacheBlend、SiDA-MoE 等工作。
+5. **推测解码与级联推理**：SpecInfer 和 FrugalGPT 代表了降低推理成本的高效方法。
+6. **注意力机制优化**：FlashAttention-3、FlashDecoding++ 等工作直接优化了 LLM 推理的核心计算瓶颈。
+
+---
+
+> **注意**：本 note 由 AI Agent 自动生成，基于论文全文内容整理。生成时间：2026 年 6 月。

@@ -124,8 +124,14 @@ def generate_keywords(title, abstract):
         return None
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Generate Paper INFO")
-    parser.add_argument("-f", "--file", default=None, help="The file name")
+    parser = argparse.ArgumentParser(description="Generate paper metadata from an arXiv ID")
+    parser.add_argument(
+        "--arxiv_id",
+        "-f",
+        dest="arxiv_id",
+        default=None,
+        help="arXiv ID, for example 2512.01278v1",
+    )
     args = parser.parse_args()
     return args
 
@@ -192,10 +198,10 @@ def extract_institutions(authors):
 def main():
     args = parse_args()
 
-    if args.file is not None:
-        arxiv_id = args.file.split("/")[-1].replace(".pdf", "")
+    if args.arxiv_id is not None:
+        arxiv_id = args.arxiv_id.strip()
     else:
-        arxiv_id = input("Please input the abs of arXiv (Default: None) \n arxiv_id: ")
+        arxiv_id = input("Please input the arXiv ID (Default: None) \n arxiv_id: ")
     if len(arxiv_id) != 0:
         paper = next(arxiv.Client().results(arxiv.Search(id_list=[arxiv_id])))
     else:
@@ -204,13 +210,6 @@ def main():
     if paper is not None:
         print("Paper title from arxiv:")
         print(f"\033[96m<<< {paper.title} >>>\033[0m")
-        if args.file is not None and os.path.exists(args.file):
-            root_dir = os.path.dirname(args.file)
-            new_name = paper.title.replace(" ", "_") + ".pdf"
-            new_name = new_name.replace(":", "_")
-            new_name_path = os.path.join(root_dir, new_name) if root_dir else new_name
-            os.rename(args.file, new_name_path)
-            print(f"{args.file} => {new_name_path}")
 
     name = input("Please add short name for a paper (Default: random code) \n abbr name: ")
     if len(name) == 0:

@@ -4,13 +4,92 @@
 
 ![111](../../blank.jpg)
 
-## Abstract
+## 一句话总结
 
-Recent advancements in Large Language Model (LLM) agents have enabled complex multi-turn agentic tasks requiring extensive tool calling, where conversations can span dozens of API calls with increasingly large context windows. However, although major LLM providers offer prompt caching to reduce cost and latency, its benefits for agentic workloads remain underexplored in the research literature. To our knowledge, no prior work quantifies these cost savings or compares caching strategies for multi-turn agentic tasks. We present a comprehensive evaluation of prompt caching across three major LLM providers (OpenAI, Anthropic, and Google) and compare three caching strategies, including full context caching, system prompt only caching, and caching that excludes dynamic tool results. We evaluate on DeepResearch Bench, a multi-turn agentic benchmark where agents autonomously execute real-world web search tool calls to answer complex research questions, measuring both API cost and time to first token (TTFT) across over 500 agent sessions with 10,000-token system prompts. Our results demonstrate that prompt caching reduces API costs by 41-80% and improves time to first token by 13-31% across providers. We find that strategic prompt cache block control, such as placing dynamic content at the end of the system prompt, avoiding dynamic traditional function calling, and excluding dynamic tool results, provides more consistent benefits than naive full-context caching, which can paradoxically increase latency. An ablation study across prompt sizes (500-50,000 tokens) and tool call counts (3-50) demonstrates universal linear cost and TTFT benefits, after the provider caching token minimum, and reveal provider-specific strategy discrepancies across variants. We provide nuanced discussion and guidance for implementing prompt caching in production agentic systems.
+本文首次系统评估了三家主流 LLM 提供商（OpenAI、Anthropic、Google）的提示缓存策略在长时程多轮代理任务中的效果，发现提示缓存可降低 41-80% 的 API 成本并提升 13-31% 的首词延迟，且通过智能控制缓存边界（如仅缓存系统提示）可获得比全上下文缓存更稳定、更优的收益。
 
+## Abstract（摘要翻译）
+
+近年来，大语言模型（LLM）代理的进步使得复杂的多轮代理任务成为可能，这些任务需要大量工具调用，对话可跨越数十次 API 调用，上下文窗口不断增大。然而，尽管主流 LLM 提供商提供了提示缓存功能以降低成本和延迟，但其在代理工作负载中的收益在研究文献中仍被严重低估。据我们所知，尚无先前工作量化这些成本节省或比较多轮代理任务的缓存策略。我们提出了对三大 LLM 提供商（OpenAI、Anthropic 和 Google）的提示缓存的全面评估，比较了三种缓存策略，包括全上下文缓存、仅系统提示缓存和排除动态工具结果的缓存。我们在 DeepResearch Bench 上进行评估，这是一个多轮代理基准，代理自主执行真实的网络搜索工具调用来回答复杂的研究问题，测量了超过 500 个代理会话（每个会话有 10,000 个 token 的系统提示）的 API 成本和首词时间（TTFT）。结果表明，提示缓存可将 API 成本降低 41-80%，并将首词时间改善 13-31%。我们发现，智能的提示缓存边界控制（如将动态内容置于系统提示末尾、避免动态传统函数调用以及排除动态工具结果）比天真全上下文缓存提供更一致的收益，而后者可能会反直觉地增加延迟。消融研究跨越不同的提示大小（500-50,000 个 token）和工具调用次数（3-50 次），证明了在提供商缓存 token 最低阈值之上具有普遍的线性成本和 TTFT 收益，并揭示了不同变体之间提供商特有的策略差异。我们为在生产代理系统中实施提示缓存提供了细致的讨论和指导。
+
+## 研究动机
+
+1. **代理工作负载的快速增长**：现代 LLM 代理（如深度研究助手、Claude Code、Cursor 等）可在单个会话中执行 30-50 次以上的工具调用，导致上下文窗口快速增长，带来显著的成本和延迟开销。
+2. **现有研究空白**：虽然各大 LLM 提供商都提供了提示缓存功能，但目前没有先前工作量化提示缓存对代理工作负载的成本节省效果或比较不同缓存策略。
+3. **KV 缓存优化研究与提示缓存的差异**：已有研究主要关注推理级别的内存管理和压缩（如 PagedAttention、KV 缓存压缩），而非通过提供商 API 提供的企业级提示缓存功能。
+4. **实践需求**：随着深度研究、编码辅助和自主任务完成等长时程代理应用的激增，提示缓存可以显著降低运营成本并改善用户体验。
+
+## 方法（技术细节）
+
+### 实验设置
+
+- **提供商与模型**：OpenAI GPT-5.2 和 GPT-4o、Anthropic Claude Sonnet 4.5、Google Gemini 2.5 Pro
+- **基准**：DeepResearch Bench（多轮代理基准，包含 100 个博士级别的研究任务，覆盖 22 个领域）
+- **代理实现**：基于 Deep Agents（LangChain）
+- **会话规模**：每个模型每个缓存条件 40 个独立会话，使用 10,000 token 的系统提示
+- **统计分析**：独立样本 t 检验，α = 0.05
+
+### 四种缓存条件
+
+1. **无缓存（基线）**：在系统提示开头添加 UUID，强制重新计算所有 token
+2. **全上下文缓存**：不添加 UUID，让提供商自动缓存整个提示前缀（天真策略）
+3. **仅系统提示缓存**：在系统提示末尾添加 UUID，仅缓存静态系统提示，动态对话历史、工具调用和结果每次重新计算
+4. **排除工具结果缓存**：在系统提示和每个工具结果后添加 UUID，确保动态工具结果不被缓存
+
+### 评估指标
+
+- **成本**：根据 API 响应中的 token 计数，区分标准输入 token、缓存输入 token（缓存读取）和缓存创建 token（缓存写入），乘以提供商定价计算总成本
+- **首词时间（TTFT）**：使用流式响应，记录从请求发起到收到第一个响应块的时间
+
+### 消融研究
+
+- **提示大小**：500、2,000、5,000、10,000、20,000、50,000 token
+- **工具调用次数**：3、5、10、20、50 次
+
+## 实验结果
+
+### 核心发现
+
+1. **成本降低显著**：所有四个模型均显示统计显著的成本降低，范围 41-80%。具体：GPT-5.2 79-81%，Claude Sonnet 4.5 78-79%，GPT-4o 46-48%，Gemini 2.5 Pro 28-41%
+2. **TTFT 改善因提供商而异**：TTFT 改善范围 13-31%（最佳情况），但全上下文缓存可能反直觉地增加延迟（如 GPT-4o 全上下文缓存 TTFT 退化 8.8%）
+3. **最佳缓存策略**：
+   - GPT-5.2：排除工具结果（成本 79.6%，TTFT 13.0%）
+   - Claude Sonnet 4.5：仅系统提示（成本 78.5%，TTFT 22.9%）
+   - Gemini 2.5 Pro：仅系统提示（成本 41.4%，TTFT 6.1%）
+   - GPT-4o：仅系统提示（成本 45.9%，TTFT 30.9%）
+
+### 消融研究结论
+
+- **成本节约普遍正向**：在所有模型、提示大小和工具调用次数下，提示缓存均一致降低成本
+- **提示大小驱动缓存效益**：成本节约随提示大小线性增长（500 token 时 10-45% → 50,000 token 时 54-89%）
+- **工具调用次数影响较小**：成本节约在不同工具调用次数下保持稳定（通常在 10 个百分点内波动）
+- **TTFT 改善需要达到最低阈值**：500 token 时（低于最低缓存阈值），TTFT 可能退化 10-18%
+
+## 优势
+
+1. **首次全面评估**：这是首个系统性比较三大 LLM 提供商提示缓存策略在代理任务中效果的研究
+2. **实用的指导建议**：提供了具体的缓存边界控制策略（如将动态内容置于系统提示末尾、避免动态函数调用）
+3. **大规模实验**：超过 500 个代理会话，覆盖多个提供商和模型
+4. **全面的消融研究**：跨越提示大小和工具调用次数两个维度，揭示了缓存效益的缩放规律
+5. **生产环境适用**：基于真实代理工作负载（DeepResearch Bench），结果具有实际应用价值
+
+## 局限
+
+1. **提供商实现差异**：不同提供商的缓存实现（最小 token 阈值、TTL 持续时间、定价结构）可能变化，结果可能随时间失效
+2. **实验环境特定**：TTFT 测量受服务器负载、网络条件和提供商基础设施等因素影响，存在自然方差
+3. **单一分领域**：仅评估了 web 搜索工具调用场景，未涵盖其他类型的代理工具调用
+4. **安全性考虑未深入**：提到提示缓存可能引入时序侧信道攻击（timing side-channels），但未进行深入分析
+5. **缺乏代码实现**：未提供开源代码实现，可复现性受限
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **KV 缓存优化**：本文聚焦于提供商级别的提示缓存，而 KV 缓存优化（如 PagedAttention、压缩技术）是另一个重要方向，两者可结合研究
+2. **上下文工程**：如何设计提示结构以最大化缓存效率是上下文工程的核心问题，本文提供了具体的实践指导
+3. **代理系统成本优化**：随着代理应用的普及，如何通过缓存策略降低运营成本是生产系统的关键挑战
+4. **多提供商比较研究**：不同提供商的缓存实现差异显著，需要持续跟踪和比较
+5. **缓存安全性**：提示缓存可能引入的时序侧信道攻击是一个重要的安全研究方向
+6. **长上下文推理**：消融研究表明提示大小是缓存效益的关键驱动因素，与长上下文推理优化密切相关
 
 ---
 
-*以下总结由 MiMo 生成：*
-
-这篇论文针对大型语言模型（LLM）代理在长时程多轮任务中因频繁工具调用导致成本和延迟增加的问题，评估了提示缓存的效果。研究者对三大LLM提供商（OpenAI、Anthropic、Google）的三种缓存策略进行了全面测试，并在DeepResearch Bench基准上测量了API成本和首词延迟。结果表明，提示缓存可降低41-80%的API成本并提升13-31%的首词速度，而通过智能控制缓存块（如将动态内容置于提示末尾）能获得更稳定收益，优于全上下文缓存。
+> **生成声明**：本 note 由 AI Agent（Hermes Agent）自动生成，基于对论文全文的阅读和分析。所有内容用中文撰写。生成时间：2026年6月4日。

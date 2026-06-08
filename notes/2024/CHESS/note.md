@@ -2,25 +2,128 @@
 
 ![](../../blank.jpg)
 
-## Abstract
+## 一句话总结
 
-Deploying large language models (LLMs) on edge devices presents significant
-challenges due to the substantial computational overhead and memory
-requirements. Activation sparsification can mitigate these challenges by
-reducing the number of activated neurons during inference. Existing methods
-typically employ thresholding-based sparsification based on the statistics of
-activation tensors. However, these methods do not explicitly model the impact
-of activation sparsification on performance, leading to suboptimal performance
-degradation. To address this issue, this paper reformulates the activation
-sparsification problem by introducing a new objective that optimizes the
-sparsification decisions. Building on this reformulation, we propose CHESS, a
-general activation sparsification approach via CHannel-wise thrEsholding and
-Selective Sparsification. First, channel-wise thresholding assigns a unique
-threshold to each activation channel in the feed-forward network (FFN) layers.
-Then, selective sparsification involves applying thresholding-based activation
-sparsification to specific layers within the attention modules. Finally, we
-detail the implementation of sparse kernels to accelerate LLM inference.
-Experimental results demonstrate that the proposed CHESS achieves lower
-performance degradation over 8 downstream tasks while activating fewer
-parameters compared to existing methods, thus speeding up the LLM inference by
-up to 1.27x.
+CHESS 提出了一种通用的激活稀疏化方法，通过通道级阈值化（Channel-Wise Thresholding）和选择性稀疏化（Selective Sparsification）来优化 LLM 推理，在保持较低性能退化的同时实现最高 1.27 倍的推理加速。
+
+## 摘要翻译
+
+在边缘设备上部署大语言模型（LLM）面临重大挑战，主要原因是计算开销和内存需求巨大。激活稀疏化可以通过减少推理过程中激活的神经元数量来缓解这些挑战。现有方法通常基于激活张量的统计信息采用基于阈值的稀疏化策略。然而，这些方法没有显式建模激活稀疏化对性能的影响，导致性能退化不理想。
+
+为解决此问题，本文重新形式化了激活稀疏化问题，引入了一个优化稀疏化决策的新目标函数。基于此重新形式化，我们提出了 CHESS，一种通过通道级阈值化和选择性稀疏化实现的通用激活稀疏化方法。首先，通道级阈值化为前馈网络（FFN）层中的每个激活通道分配唯一的阈值。然后，选择性稀疏化涉及将基于阈值的激活稀疏化应用于注意力模块中的特定层。最后，本文详细介绍了稀疏内核的实现以加速 LLM 推理。实验结果表明，所提出的 CHESS 在 8 个下游任务上实现了更低的性能退化，同时激活了比现有方法更少的参数，从而将 LLM 推理速度提高了最高 1.27 倍。
+
+## 研究动机
+
+大语言模型（LLM）在代码生成、办公助手、语音助手等众多领域广泛应用，但其庞大的计算开销和内存需求使得在边缘设备上的部署面临巨大挑战。激活稀疏化是一种有效的加速手段，已有研究表明，OPT 模型中高达 95% 的中间 FFN 激活为零值。然而，现有的激活稀疏化方法（如 CATS）存在以下关键问题：
+
+1. **缺乏理论指导**：现有方法仅基于激活张量的统计信息进行阈值化，没有显式建模稀疏化对模型性能的影响，导致性能退化不理想。
+2. **统一阈值的局限性**：采用张量级（tensor-wise）的统一阈值，忽略了不同通道间激活分布的显著差异。
+3. **注意力模块的稀疏化策略不明**：在注意力模块中应用稀疏化时，如何选择目标投影层（Query/Key/Value/Output）是一个具有巨大搜索空间的难题。
+
+## 方法（技术细节）
+
+### 3.1 重新形式化激活稀疏化问题
+
+本文从理论上建立了激活稀疏化与模型性能之间的联系。给定激活向量 $a_{gate}$ 和后续层的权重 $W$，稀疏化问题可形式化为：
+
+$$\arg\min_P \sum_{i \in P} (a^{up}_i \cdot a_{gate,i})^2$$
+
+其中 $P$ 是被剪枝的索引集合，需满足稀疏度约束 $|P| \geq k \cdot |U|$，$U = \{1, ..., d\}$ 为特征维度。该公式建立了激活稀疏化与模型性能之间的理论关系，而之前的CATS等方法忽略了这一关系。
+
+### 3.2 通道级阈值化（Channel-Wise Thresholding, CWT）
+
+核心观察：在 LLM 中，单个通道内的绝对激活值在不同输入间保持相对一致，但不同通道间存在显著差异（见 Figure 1）。
+
+基于此，CHESS 为 FFN 层中的每个激活通道分配唯一的阈值，而非使用统一的张量级阈值。通过引入重要性评分公式：
+
+$$score_i = ||a^{up}_i \cdot a_{gate,i}||$$
+
+利用激活的稀疏性减少计算开销，仅基于 $a_{gate}$ 计算评分，避免了计算 $a^{up}$ 的额外矩阵乘法。CWT 采用分布采样策略来确定各通道的阈值。
+
+### 3.3 选择性稀疏化（Selective Sparsification）
+
+在注意力模块中应用稀疏化时，搜索空间巨大（如 Llama-7B 有 32 层 × 4 个注意力投影 = 超级巨大的搜索空间）。本文比较了两种策略：
+
+- **全稀疏化（Full Sparsification, FS）**：对注意力机制的 4 个投影层均应用 CATS。
+- **选择性稀疏化（Selective Sparsification, SS）**：仅对 Query 和 Output 投影层应用 CATS，不改变 Key 和 Value 投影层。
+
+选择性稀疏化在 GQA（Grouped Query Attention）模块上取得了显著更低的性能退化，同时实现了可比的开销减少。由于 GQA 在现代 LLM 中被广泛采用，选择性稀疏化成为注意力模块的主要方法。
+
+### 3.4 高效稀疏内核实现
+
+为实现实际的墙钟加速，本文开发了两个自定义 CPU 内核：
+
+1. **spvmm（Sparse Vector-Matrix Multiplication）**：针对输入激活张量稀疏的情况，用于注意力模块和 FFN 下投影（down projection）。
+2. **vmmsp（Vector-Matrix Multiplication with Output Sparsity）**：针对输出激活张量稀疏的情况，用于 FFN 上投影（up projection）。
+
+这些内核通过循环分块（loop tiling）和重排序策略实现优化，可与 PyTorch 密集内核结合使用。
+
+## 实验结果
+
+### 主要实验（Table 1）
+
+在 Llama-2-7B/13B/70B、Llama-3-8B、Mistral-7B 上测试了 8 个下游任务（Arc-C、Arc-E、BoolQ、HellaSwag、OpenBookQA、PIQA、SciQ、Winogrande）：
+
+- **CHESS w/o（仅通道级阈值化）** 在 5 个基座模型和 8 个下游任务上平均性能退化仅 1.07，而 CATS 为 1.70。
+- **CHESS w/（通道级阈值化 + 选择性稀疏化）** 在激活更少参数（约 65-70%）的情况下，保持与 CHESS w/o 相当的性能。
+- 对于 Llama-2-13B/70B 和 Mistral-7B，CHESS w/ 甚至在某些任务上表现出略优于 CHESS w/o 的性能。
+
+### 注意力模块消融实验（Table 2）
+
+在 Llama-3-8B 上：
+- 选择性稀疏化（SS，92.84% 激活参数）平均性能 69.07
+- 全稀疏化（FS，90.94% 激活参数）平均性能 67.67
+- 选择性稀疏化在更高激活参数比例下取得了更好的性能。
+
+### 与其他方法的扩展比较（Table 3）
+
+在 Llama-3-8B 上与训练无关的剪枝方法比较（sparsity 0.7）：
+- Relufication：激活 67.10%，平均性能 28.94（严重退化）
+- Wanda：激活 53.49%，平均性能 56.41
+- CHESS：激活 54.92%，平均性能 60.21（最优）
+
+### 推理加速
+
+- 端到端推理加速最高 1.27 倍
+- 在稀疏度 0.5 时，自定义稀疏内核在注意力投影、FFN 上投影、FFN 下投影上的延迟分别降低 30%、28%、51%
+
+## 优势
+
+1. **理论严谨**：通过重新形式化激活稀疏化问题，建立了稀疏化与模型性能之间的理论联系，提供了优化目标函数。
+2. **通道级自适应**：通道级阈值化利用了不同通道间激活分布的差异性，为每个通道分配独立阈值，比统一阈值的 CATS 更优。
+3. **选择性稀疏化**：通过仅对 Query 和 Output 投影进行稀疏化，在注意力模块中实现了更好的性能-效率平衡。
+4. **自定义高效内核**：spvmm 和 vmmsp 内核针对稀疏激活进行了优化，实现了实际的墙钟加速。
+5. **通用性**：可广泛应用于多种 LLM 架构（Llama-2/3、Mistral 等）。
+6. **训练无关**：无需额外训练或微调，直接应用于预训练模型。
+7. **显著的性能优势**：在 8 个下游任务上平均性能退化仅 1.07（相比 CATS 的 1.70），加速最高 1.27 倍。
+
+## 局限
+
+1. **高稀疏度下的性能退化**：虽然 CHESS 在低稀疏度（0.3、0.5）下表现优异，但在高稀疏度（0.7、0.9）下仍存在明显的准确率损失。未来可通过微调技术缓解这一问题。
+2. **批处理大小限制**：CHESS 在批处理大小为 1 时表现最优（适合边缘设备的单用户场景）。在更大批处理大小下，激活张量的结构化稀疏性退化为非结构化稀疏性，限制了端到端加速潜力。
+3. **CPU 内核局限**：本文仅实现了 CPU 稀疏内核，未涉及 GPU 加速，这限制了在 GPU 上的应用场景。
+4. **下游任务覆盖有限**：仅在 8 个 benchmark 上进行了评估，未涉及长文本生成、代码生成等任务。
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **激活稀疏化与剪枝**：CHESS 属于激活稀疏化（activation sparsification）方法，与权重剪枝（weight pruning）、结构化剪枝等方法互补，可作为 EfficientPaper 系统中稀疏化方向的参考。
+2. **LLM 推理加速**：该研究直接贡献于 LLM 推理优化，属于 EfficientPaper 中"高效推理"研究方向的核心主题。
+3. **边缘设备部署**：CHESS 的设计目标是在边缘设备上部署 LLM，与 EfficientPaper 中的模型压缩、量化、蒸馏等研究方向密切相关。
+4. **与 CATS 的对比**：CATS 是当前最先进（SOTA）的激活稀疏化方法，CHESS 在此基础上实现了显著改进，可作为 EfficientPaper 中相关论文的对照研究。
+5. **与量化方法的互补**：激活稀疏化可与 AWQ（激活感知权重量化）等方法结合使用，进一步提升推理效率。
+
+## AI 生成声明
+
+本笔记由 AI Agent（Hermes Agent）基于论文 PDF 文本提取和元数据信息自动生成，仅用于辅助学术研究和论文管理。笔记内容可能包含不准确之处，请读者以原始论文为准。
+
+---
+
+**论文信息**
+- 标题：Optimizing LLM Inference via Channel-Wise Thresholding and Selective Sparsification
+- 简称：CHESS
+- 作者：Junhui He, Shangyu Wu, Weidong Wen, Chun Jason Xue, Qingan Li
+- 机构：武汉大学, MBZUAI, 香港城市大学
+- 年份：2024
+- 来源：arXiv (2409.01366v1)
+- 关键词：sparse_pruning
+- 代码：https://anonymous.4open.science/r/CHESS-BA40/README.md

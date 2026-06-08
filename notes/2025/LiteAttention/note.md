@@ -1,9 +1,190 @@
 # LiteAttention: A Temporal Sparse Attention for Diffusion Transformers
 
-> Dor Shmilovich, Tony Wu, Aviad Dahan, Yuval Domb
+> Dor Shmilovich, Tony Wu, Aviad Dahan, Yuval Domb (MoonMath.ai)
 
 ![111](../../blank.jpg)
 
-## Abstract
+> **⚠ 本 note 由 AI Agent 自动生成，仅供参考，可能存在理解偏差。生成日期：2025-06-04**
 
-Diffusion Transformers, particularly for video generation, achieve remarkable quality but suffer from quadratic attention complexity, leading to prohibitive latency. Existing acceleration methods face a fundamental trade-off: dynamically estimating sparse attention patterns at each denoising step incurs high computational overhead and estimation errors, while static sparsity patterns remain fixed and often suboptimal throughout denoising. We identify a key structural property of diffusion attention, namely, its sparsity patterns exhibit strong temporal coherence across denoising steps. Tiles deemed non-essential at step $t$ typically remain so at step $t+δ$. Leveraging this observation, we introduce LiteAttention, a method that exploits temporal coherence to enable evolutionary computation skips across the denoising sequence. By marking non-essential tiles early and propagating skip decisions forward, LiteAttention eliminates redundant attention computations without repeated profiling overheads, combining the adaptivity of dynamic methods with the efficiency of static ones. We implement a highly optimized LiteAttention kernel on top of FlashAttention and demonstrate substantial speedups on production video diffusion models, with no degradation in quality. The code and implementation details will be publicly released.
+---
+
+## 一句话总结
+
+LiteAttention 利用扩散 Transformer 注意力稀疏模式在去噪步骤间的**时间一致性**，通过一次确定可跳过 tile 并向前传播跳过决策，实现进化式计算跳过，在不牺牲视频质量的前提下显著降低推理延迟。
+
+---
+
+## 摘要翻译
+
+扩散 Transformer（DiT）在视频生成方面已取得卓越质量，但其注意力机制的二次复杂度导致推理延迟过高。现有加速方法面临根本性权衡：动态稀疏注意力在每个去噪步骤中重新估计稀疏模式，带来高计算开销和估计误差；而静态稀疏模式在整个去噪过程中保持固定，往往次优。本文发现扩散注意力的一个关键结构性质：稀疏模式在去噪步骤间表现出强**时间一致性**（temporal coherence）——在步骤 t 被判定为非必要的 tile 在步骤 t+δ 通常仍为非必要。基于此观察，引入 LiteAttention，利用时间一致性实现跨去噪序列的进化式计算跳过。通过早期标记非必要 tile 并向前传播跳过决策，LiteAttention 消除冗余注意力计算而无需重复采样开销，兼具动态方法的适应性和静态方法的高效性。基于 FlashAttention 实现了高度优化的内核，在生产级视频扩散模型上展示了显著加速，且无质量退化。
+
+---
+
+## 研究动机
+
+1. **计算瓶颈**：视频扩散模型生成单个 5 秒视频在最先进 GPU 上可能耗时 30 分钟，注意力机制占推理延迟高达 80%。
+2. **现有方法的权衡**：
+   - **动态方法**（如 SVG、SpargeAttention）：每个去噪步骤独立重新计算稀疏模式，带来采样开销和估计噪声。
+   - **静态/缓存方法**（如 RadialAttention、DeepCache）：利用跨步骤冗余但无法适应变化，模式固定可能导致次优。
+3. **关键洞察**：扩散注意力的稀疏模式在时间维度上表现出强一致性，现有方法均未利用这一特性。LiteAttention 提出了第三条路径——利用时间一致性实现"一次确定、全程复用"的稀疏跳过策略。
+
+---
+
+## 方法（技术细节）
+
+### 4.1 核心观察：时间一致性
+
+- 在视频扩散模型中，注意力稀疏模式在相邻去噪步骤间具有强一致性。
+- 被标记为可跳过的 tile 在后续步骤中通常仍可跳过。
+- 这一特性在同层 transformer 块内、不同注意力头间均成立，甚至在不同条件批次间也表现出相关性。
+
+### 4.2 QK-Skip 算法
+
+LiteAttention 的核心算法维护一个持久化的 **Skip-Mask**，在每个去噪步骤更新：
+
+1. **跳过条件**（基于 SpargeAttention）：当 tile (i,j) 的局部最大值 `m_local` 远小于累积最大值 `m_ij` 时（即 `max(m_local - m_ij) ≤ -ε`），该 tile 的贡献可忽略。
+2. **Skip-Mask 传播**：一旦某个 tile 被标记为可跳过，其跳过决策在后续步骤中持续生效。
+3. **进化式增长**：随着去噪过程推进，被标记为跳过的 tile 数量逐渐增加。
+4. **全迭代消除**：与部分跳过不同，LiteAttention 对标记 tile 完全消除整个注意力迭代（包括 QK 乘积、softmax 和 PV 乘积），而非仅跳过部分计算。
+
+**算法流程（Algorithm 2）**：
+```
+对每个 query tile Qi，遍历 key-value tile 对 (Kj, Vj)：
+  if SkipMask(i, j) == True:
+    continue  # 完全跳过
+  计算 S_ij = Qi Kj^T / √d
+  计算 m_local = rowmax(S_ij)
+  更新 m_ij = rowmax(m_ij-1, m_local)
+  if max(m_local - m_ij) ≤ -ε:
+    SkipMask(i, j) = True  # 标记为跳过
+    continue
+  计算 P_ij 和 O_ij（正常计算）
+```
+
+### 4.3 累积误差校准（Accumulated-Error Calibration）
+
+- 不同去噪步骤的注意力误差对最终输出的影响不同：**越早的步骤影响越大**（如表1所示）。
+- 将 50 个去噪步骤均匀分为三段，分别设置误差界限 ξ-τ、ξ、ξ+τ。
+- 对每一步进行 PV-threshold 网格搜索，以在给定误差约束下最大化稀疏度。
+- 误差定义为相对 L1 误差：`η_t = |O_s_t - O_t| / |O_t|`。
+
+### 4.4 从缓存到跳过的理论联系
+
+- 基于 Transformer 输出的缓慢演化（slow evolution），建立跳过条件与 Transformer 过渡矩阵 P 之间的定性联系。
+- 关键不等式：`||Δy|| ≤ ||Δp|| ||V_t|| + ||ΔV||`，说明过渡矩阵的小变化导致输出的小变化。
+- 与缓存方法相比，跳过方法的中间内存需求显著降低。
+
+### 4.5 GPU 实现（H100 优化）
+
+- **基础架构**：基于 FlashAttention3（FA3）扩展，不重写内核。
+- **硬件目标**：NVIDIA H100（Hopper），CUDA 12.8。
+- **Tile 配置**：BF16，每个 tile 128×176 元素/头，head dim=128。
+- **流水线架构**：1 个 producer warpgroup + 2 个 consumer warpgroup，异步流水线。
+- **Skip-Mask 机制**：
+  - Producer warpgroup 查阅 Skip-List，仅加载未跳过 tile 的 Kj 和 Vj。
+  - Consumer warpgroups 在在线 softmax 计算中同时评估跳过条件。
+  - Warp 级别的内聚性通过 warp 同步原语高效实现；跨 warp 约束推迟到内核尾声。
+- **Skip-List 优化**：采用基于行程编码（RLE）的压缩表示（(start, end) 对），在高稀疏度下提升内存效率和内核吞吐。
+- **亚二次复杂度**：实验表明 LiteAttention 的有效复杂度低于二次（稀疏度随序列长度增加而增加）。
+
+---
+
+## 实验结果
+
+### 实验设置
+- **模型**：Wan2.1-14B、Wan2.2-14B
+- **数据集**：OpenSora1.0 的 12 条 prompt
+- **基线**：FlashAttention3 (FA3)、SparseVideoGen (SVG)、RadialAttention (Radial)
+- **评估指标**：VBench（AQ、BC、DD、IQ、SC、TF、TS）
+- **硬件**：NVIDIA H200 GPU
+
+### 主要结果（表2）
+
+| 方法 | AQ↑ | BC↑ | DD↑ | IQ↑ | SC↑ | TF↑ | TS↑ | Sps[%]↑ | Run[sec]↓ |
+|------|-----|-----|-----|-----|-----|-----|-----|---------|-----------|
+| **Wan2.1-14B** | | | | | | | | | |
+| FA3 | 0.676 | 0.977 | 0.417 | 68.74 | 0.965 | 0.962 | 0.137 | 0 | 1707 |
+| SVG | 0.665 | 0.971 | 0.500 | 68.58 | 0.962 | 0.959 | 0.066 | 66 | 1019 |
+| Radial | 0.660 | 0.970 | 0.417 | 64.73 | 0.964 | 0.972 | 0.061 | 74 | 1192 |
+| **Lite** | **0.677** | **0.975** | **0.500** | 66.76 | **0.963** | **0.962** | **0.142** | 42 | **902** |
+| **Wan2.2-14B** | | | | | | | | | |
+| FA3 | 0.693 | 0.977 | 0.583 | 72.73 | 0.970 | 0.953 | 0.133 | 0 | 1473 |
+| SVG | 0.689 | 0.962 | 0.417 | 72.24 | 0.961 | 0.952 | 0.061 | 66 | 1022 |
+| Radial | 0.682 | 0.974 | 0.500 | 72.73 | 0.967 | 0.947 | 0.061 | 66 | 1207 |
+| **Lite** | **0.698** | **0.977** | 0.500 | 71.44 | **0.969** | **0.953** | 0.135 | 32 | **893** |
+
+### 消融实验（表3）
+
+在 Wan2.1 上的不同稀疏度水平：
+
+| Sps[%] | SR[sec] | dSR[%] | AQ↑ | BC↑ |
+|--------|---------|--------|-----|-----|
+| 0 | 695 | 0 | 0.702 | 0.978 |
+| 21 | 573 | 18 | 0.692 | 0.977 |
+| 42 | 418 | 40 | 0.690 | 0.964 |
+| 57 | 308 | 56 | 0.672 | 0.962 |
+| 77 | 163 | 77 | 0.630 | 0.964 |
+
+- 运行时间减少与跳过计算量近乎线性对应。
+- **70% 稀疏度以上**，视频质量明显退化。
+- 经过校准的配置在相同稀疏度下质量显著优于未校准版本。
+
+### 关键发现
+
+1. **质量保持**：LiteAttention 在 32-42% 稀疏度下，视频质量（VBench 各指标）与 FA3 全注意力相当或略优，而 SVG 和 Radial 有明显退化。
+2. **效率优势**：尽管 SVG 和 Radial 报告的名义稀疏度更高，LiteAttention 的运行时间改进至少多 10%。
+3. **效率-质量权衡**：LiteAttention 实现了更优的效率-质量平衡。
+4. **可扩展性**：运行时间减少与跳过计算量近乎线性关系，预示着通过优化 j-loop 排序，可在无质量损失下达到约 70% 稀疏度。
+
+---
+
+## 优势
+
+1. **时间一致性利用**：首次利用注意力稀疏模式在去噪步骤间的时间一致性，实现"一次采样、全程复用"。
+2. **全迭代消除**：完全消除标记 tile 的整个注意力迭代（QK 乘积、softmax、PV 乘积），而非部分跳过。
+3. **零模型重训练**：直接集成到 FlashAttention3，无需修改模型架构或重新训练。
+4. **低内存开销**：相比缓存方法，仅需存储 Skip-Mask 元数据，内存需求更低。
+5. **生产级实现**：高度优化的 CUDA 内核，兼容 H100 GPU，可直接用于生产环境。
+6. **动态适应性**：跳过模式基于实际注意力统计推导，保持内容适应性，同时避免每步重新评估的开销。
+7. **亚二次复杂度**：实验表明有效复杂度低于二次（稀疏度随序列长度增加而增加）。
+
+---
+
+## 局限
+
+1. **稀疏度上限**：70% 以上稀疏度会导致明显的视频质量退化（尤其是 TS 指标）。
+2. **硬件依赖**：当前实现针对 NVIDIA H100（Hopper），需要 CUDA 12.8 和 FA3，对其他硬件的支持需要额外工作。
+3. **仅加速自注意力**：实验中仅应用于自注意力，未扩展到交叉注意力。
+4. **j-loop 排序未优化**：实验中使用标准线性排序，若采用径向中心排序可额外提升性能。
+5. **局部条件保守性**：跳过条件基于局部 tile 贡献评估，可能比全局条件更保守。
+6. **时间一致性假设**：依赖于稀疏模式的时间一致性，在某些场景下（如剧烈变化的内容）可能不成立。
+7. **仅测试视频生成**：未在图像生成或其他扩散模型任务上验证。
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+### 直接相关方法
+- **RadialAttention**：O(n log n) 静态稀疏注意力，利用时空能量衰减，与 LiteAttention 互补（静态 vs 动态+缓存）。
+- **SVG（SparseVideoGen）**：动态稀疏注意力，每步独立确定模式，与 LiteAttention 有类似的稀疏思路但缺乏时间一致性利用。
+- **SpargeAttention**：LiteAttention 的直接基础，提供 PV-Skip 条件，但缺乏跨步骤传播机制。
+- **DeepCache / L2C / OmniCache**：缓存方法，利用跨步骤特征冗余，与 LiteAttention 的时间一致性利用有交叉但目标不同（缓存特征 vs 跳过注意力）。
+- **SparseD**：在扩散语言模型中观察到类似的时间稀疏稳定性，LiteAttention 在视频领域进行了验证。
+
+### 研究方向
+1. **跨步骤稀疏一致性**：LiteAttention 的核心发现（稀疏模式的时间一致性）可扩展到其他扩散任务（图像生成、3D 生成）和注意力机制（交叉注意力、长序列注意力）。
+2. **动态与静态稀疏的融合**：LiteAttention 结合了动态适应性和静态效率，可进一步研究更精细的混合策略。
+3. **硬件高效实现**：基于 FA3 的优化实现展示了 Hopper 架构上的高效稀疏计算，可探索对其他架构（如 AMD、Apple Silicon）的适配。
+4. **稀疏度自适应**：通过校准机制动态调整稀疏度，可进一步研究自适应稀疏度调度策略。
+5. **与缓存方法的组合**：LiteAttention 与缓存方法（如 DeepCache、L2C）互补，可探索组合策略以实现更大加速。
+6. **跨模态扩展**：时间一致性在文本到图像、文本到视频、音频生成等任务中的适用性值得探索。
+
+---
+
+## 参考信息
+
+- **论文链接**：http://arxiv.org/abs/2511.11062v1
+- **代码仓库**：https://github.com/moonmath-ai/LiteAttention
+- **发表平台**：arXiv 2025，NeurIPS 2025
+- **关键词**：sparse_pruning, attention_sparsity, temporal_coherence, diffusion_transformers, video_generation
+- **相关基线方法**：2025/RadialAttention, 2025/SVG

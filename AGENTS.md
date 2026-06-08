@@ -2,15 +2,24 @@
 
 This repository is a MkDocs-based paper collection site for efficient AI research. The primary user-facing page is `docs/index.md`, which acts as the main application surface rather than a simple Markdown landing page.
 
-## Primary Page
+## Primary Surface
 
 - Main page: `docs/index.md`
 - Site navigation is defined in `mkdocs.yml`
-- The Home entry points to `index.md`, so any description of the current UI should treat this file as the canonical main page
+- The `Home` nav entry points to `index.md`
+- Any description of the current product UI should treat `docs/index.md` as the canonical main page
+
+## Current Product Shape
+
+The site currently presents EfficientPaper as a local-first paper workspace rather than a static list page.
+
+- Current frontend dataset count: `docs/js/papers.json` reports `473` papers
+- The README now documents the UI through screenshots in `docs/images/`
+- If future agents update README or UI descriptions, keep `README.md`, `AGENTS.md`, and the actual UI behavior aligned
 
 ## Current UI and Features
 
-### 1. Search Header
+### 1. Home search workspace
 
 The top area of `docs/index.md` is a search-and-filter workspace for browsing papers.
 
@@ -34,7 +43,12 @@ The top area of `docs/index.md` is a search-and-filter workspace for browsing pa
   - current result count
   - select-all checkbox for the current filtered set
 
-### 2. Paper List
+Representative screenshot:
+
+- `docs/images/efficient_paper.png`
+  - shows the Home page search bar, filters, result cards, and top-level actions
+
+### 2. Paper list and card actions
 
 Search results render as paginated paper cards, 10 items per page.
 
@@ -60,10 +74,10 @@ Card actions currently include:
 - `Note`: open the paper note page
 - `PDF`: open or locate a local PDF, with download fallback through the local server
 - `Edit`: open `docs/edit.html` for metadata editing
-- `Graph`: jump to the related component in `docs/baseline_methods_graph.md`
+- `Graph`: jump to the related component in `docs/baseline_methods_graph_interactive.md`
 - `Delete`: a low-visibility card control that removes the paper's `.prototxt` and note folder after explicit confirmation
 
-### 3. Detail Panel
+### 3. Detail drawer
 
 Clicking a non-interactive area of a paper card opens a right-side detail drawer.
 
@@ -78,7 +92,7 @@ The detail drawer shows:
 
 On mobile, the drawer supports swipe-to-close behavior.
 
-### 4. Statistics Panel
+### 4. Statistics panel
 
 The `Statistics` button opens an in-page panel with aggregate views over the current dataset.
 
@@ -91,9 +105,9 @@ Current sections include:
 - top authors
 - top institutions
 
-### 5. Modal Workflows
+### 5. Modal workflows on Home
 
-The home page contains several modal-based workflows:
+The Home page contains several modal-based workflows:
 
 - Add from arXiv
   - accepts arXiv ID
@@ -119,7 +133,53 @@ The home page contains several modal-based workflows:
   - exports selected items as Markdown, plain text, BibTeX, or JSON
   - supports copy-to-clipboard and file download
 
-### 6. Local-Server-Aware Behavior
+Representative screenshots:
+
+- `docs/images/add_from_arxiv.png`
+  - Add from arXiv modal
+- `docs/images/upload_to_github.png`
+  - Upload to GitHub modal
+
+### 6. Interactive graph page
+
+The graph page is `docs/baseline_methods_graph_interactive.md`.
+
+- This is the current graph page linked from navigation
+- It is not the older Mermaid-based `docs/baseline_methods_graph.md`
+- It renders a custom interactive relationship graph
+- Nodes can highlight related methods
+- Node interactions can jump back to the Home page search/card
+
+Representative screenshot:
+
+- `docs/images/graph.png`
+  - shows the interactive graph UI used by the current site
+
+### 7. Local metadata editor
+
+`docs/edit.html` is a standalone metadata editor for `.prototxt` entries and is intended for local use with the editor server.
+
+Current editor capabilities include:
+
+- title, abbreviation, URL, authors, and institutions editing
+- venue and year editing
+- keyword selection
+- code URL editing
+- rating editing
+- cover filename editing
+- cover image upload with preview
+- baseline method linking
+- save changes
+- delete paper with confirmation flow
+
+Representative screenshots:
+
+- `docs/images/edit1.png`
+  - top half of metadata editor
+- `docs/images/edit2.png`
+  - cover upload, preview, baseline methods, save, and delete controls
+
+## Local-Server-Aware Behavior
 
 Several controls depend on the local editor server at `http://localhost:8001`.
 
@@ -137,15 +197,15 @@ This graceful degradation is part of the current UX and should be preserved.
 
 ## Other User-Facing Pages
 
-- `docs/baseline_methods_graph.md`
+- `docs/baseline_methods_graph_interactive.md`
   - relationship graph page
-  - renders method families with Mermaid
+  - renders the current custom interactive graph view
   - nodes link back to the Home page search
 - `docs/weekly_paper/`
   - weekly paper digests
   - long-form curated summaries
 - `docs/about.md`
-  - repository overview / README-style page
+  - repository overview / README-style page inside MkDocs
 - `docs/contributors.md`
   - contributor listing
 - `docs/edit.html`
@@ -163,17 +223,59 @@ The injected note editor:
 - uses EasyMDE
 - saves back to the repository through the local API
 
-## Data and Backend Files
+## Data, Scripts, and Assets
 
 Important files tied to the current interface:
 
-- `docs/index.md`: main page HTML, CSS, and JavaScript
-- `docs/js/papers.json`: frontend search dataset
-- `docs/js/paper_graph_map.json`: mapping from paper IDs to graph anchors
-- `meta/<year>/*.prototxt`: structured paper metadata source
-- `notes/<year>/<paper>/note.md`: note content
-- `notes/<year>/<paper>/cover.*`: cover assets
-- `scripts/paper_editor_server.py`: local API server for edit/save/search/upload/pull/delete/PDF actions
+- `docs/index.md`
+  - main page HTML, CSS, and JavaScript
+- `docs/baseline_methods_graph_interactive.md`
+  - current interactive graph page
+- `docs/edit.html`
+  - local metadata editor
+- `docs/js/papers.json`
+  - frontend search dataset
+- `docs/js/paper_graph_map.json`
+  - mapping from paper IDs to graph anchors
+- `docs/js/baseline_methods_graph_data.json`
+  - graph data backing the interactive graph page
+- `meta/<year>/*.prototxt`
+  - structured paper metadata source
+- `notes/<year>/<paper>/note.md`
+  - note content
+- `notes/<year>/<paper>/cover.*`
+  - cover assets
+- `scripts/paper_editor_server.py`
+  - local API server for edit/save/search/upload/pull/delete/PDF/rating actions
+- `scripts/generate_search_data.py`
+  - search dataset generator
+- `add_paper_info.sh`
+  - convenience wrapper for adding a paper by arXiv ID
+- `scripts/add_paper.py`
+  - CLI that creates metadata from an arXiv ID
+- `start_editor.sh`
+  - starts MkDocs, the editor server, and the auto-refresh watcher
+- `refresh_and_upload.sh`
+  - regenerates derived assets and optionally commits/pushes/deploys
+
+## Screenshot Assets
+
+The screenshot files in `docs/images/` are now part of the repository documentation surface.
+
+- `efficient_paper.png`
+  - Home page overview
+- `graph.png`
+  - interactive graph page overview
+- `edit1.png`
+  - metadata editor top section
+- `edit2.png`
+  - metadata editor lower section
+- `add_from_arxiv.png`
+  - arXiv import modal
+- `upload_to_github.png`
+  - GitHub upload modal
+
+If a UI change makes these screenshots stale, update the screenshot assets and the related README or AGENTS descriptions together.
 
 ## Change Guidance for Future Agents
 
@@ -181,3 +283,6 @@ Important files tied to the current interface:
 - Keep local-server-dependent actions optional and visibly disabled when unavailable
 - Preserve existing routes between Home, Graph, Note, and Edit views
 - Prefer updating generated data through existing scripts instead of hand-editing large generated JSON files unless the task explicitly requires it
+- Keep `README.md` and `AGENTS.md` synchronized when changing user-visible workflows or screenshot-backed descriptions
+- Do not reintroduce references to `docs/baseline_methods_graph.md` unless that file is intentionally restored to the product
+- Document `./add_paper_info.sh` as taking an arXiv ID, not a local PDF path

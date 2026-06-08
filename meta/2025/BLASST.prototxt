@@ -36,9 +36,8 @@ code {
   url: ""
 }
 keyword {
-  words: attention_sparsity
   words: sparse_pruning
-  words: deployment
+  words: attention_sparsity
 }
 cover {
   url: "cover.jpg"
@@ -48,3 +47,4 @@ baseline {
   methods: "2025/FlexPrefill"
   methods: "2025/XAttention"
 }
+update_time: 1780554983

@@ -1,25 +1,168 @@
 # SlimLLM: Accurate Structured Pruning for Large Language Models
 
 > Jialong Guo, Xinghao Chen, Yehui Tang, Yunhe Wang
+> **Huawei Noah's Ark Lab**
+> ICML 2025 | arXiv: 2505.22689v1
 
 ![](../../blank.jpg)
 
-## Abstract
+> **⚠️ AI 生成声明：** 本 note 由 AI Agent 自动生成，内容基于论文原文提取与分析，仅供参考。生成时间：2025年。
 
-Large language models(LLMs) have garnered significant attention and
-demonstrated impressive capabilities in a wide range of applications. However,
-due to their enormous computational costs, the deployment and application of
-LLMs are often severely limited. To address this issue, structured pruning is
-an effective solution to compress the parameters of LLMs. Determining the
-importance of each sub-module in LLMs and minimizing performance loss are
-critical issues that need to be carefully addressed in structured pruning. In
-this paper, we propose an effective and fast structured pruning method named
-SlimLLM for large language models. For channel and attention head pruning, we
-evaluate the importance based on the entire channel or head, rather than merely
-aggregating the importance of individual elements within a sub-module. This
-approach enables a more holistic consideration of the interdependence among
-elements within the sub-module. In addition, we design a simple linear
-regression strategy for the output matrix to quickly recover performance. We
-also propose layer-based importance ratio to determine the pruning ratio for
-each layer. Based on the LLaMA benchmark results, our SlimLLM outperforms other
-methods and achieves state-of-the-art performance.
+---
+
+## 一句话总结
+
+SlimLLM 提出了一种面向大语言模型的高效结构化剪枝方法，通过整体性重要度评估（注意力头的 Pearson 相似度 + FFN 通道的特征空间重要度）、线性回归快速性能恢复、以及基于层间余弦相似度的非均匀剪枝比例策略，在 LLaMA 系列模型上实现了 SOTA 性能。
+
+---
+
+## 摘要翻译
+
+大型语言模型（LLMs）因其在广泛任务中的出色表现而备受关注。然而，巨大的计算成本严重限制了 LLM 的部署与应用。结构化剪枝是一种有效的参数压缩方案。确定 LLM 中每个子模块的重要性并最小化性能损失是结构化剪枝中需要仔细处理的关键问题。本文提出了一种名为 **SlimLLM** 的高效快速结构化剪枝方法。对于通道和注意力头剪枝，我们基于整个通道或头来评估重要性，而非仅聚合子模块内各个元素的重要性。这种方法能够更全面地考虑子模块内元素之间的相互依赖关系。此外，我们设计了一种简单的线性回归策略来快速恢复输出矩阵的性能。我们还提出了基于层的重要性比例来确定每一层的剪枝比例。基于 LLaMA 基准测试结果，SlimLLM 超越了其他方法，达到了最先进的性能。
+
+---
+
+## 研究动机
+
+1. **LLM 部署瓶颈**：大语言模型虽然能力强大，但庞大的参数量和计算成本严重限制了其在资源受限环境中的部署。
+2. **现有方法的不足**：
+   - 非结构化剪枝（如 SparseGPT、Wanda）虽然能减少参数量，但不规则稀疏模式不利于硬件加速。
+   - 现有结构化剪枝方法（如 LLM-Pruner、LoRAPrune）依赖梯度信息，需要大量存储和计算资源。
+   - LoRAP 等方法在评估通道重要性时，仅考虑权重向量的幅值，忽略了向量方向的影响。
+   - 大多数方法对所有层使用统一的剪枝比例，未能充分利用不同层的冗余度差异。
+3. **核心问题**：如何准确评估子模块（注意力头、FFN 通道）的重要性，同时最小化剪枝后的性能损失。
+
+---
+
+## 方法（技术细节）
+
+### 4.1 注意力头剪枝：相似度重要性（Similarity Importance）
+
+- **核心思想**：将每个注意力头视为一个整体，评估其对最终输出的贡献，而非仅看单个权重元素。
+- **重要性评分**：使用 **Pearson 相关系数** 衡量原始输出与去掉第 i 个头的输出之间的线性相关性：
+  - `Score_i = -Pearson(XW_O, XW_O - X_i W_i_O)`
+  - 相似度越高，说明该头的贡献越小，越可以被剪枝。
+- **贪心搜索算法**（Algorithm 1）：
+  - 考虑到不同头的输出之间存在相互依赖关系，设计了贪心搜索来寻找最优的头组合。
+  - 对于每个被剪枝的头，遍历未被剪枝的头进行替换，选择能最大化 Pearson 相似度的组合。
+  - 通过这种方式，不仅考虑了单个头的重要性，还考虑了头之间的交互效应。
+
+### 4.2 FFN 通道剪枝：特征空间重要性（Feature Space Importance）
+
+- **核心思想**：受 PCA 启发，构建输出激活的特征空间，同时考虑权重向量的**方向和幅值**来评估通道重要性。
+- **具体步骤**：
+  1. 对 FFN 最终线性投影的输出 Y 进行 PCA，得到特征向量矩阵 Q 和特征值向量 M。
+  2. 将 FFN 的下投影矩阵 W_down 映射到特征空间：`W' = W_down^T Q`
+  3. 使用 sigmoid 函数平滑特征值，计算每个特征方向的重要性：`C_i = sigmoid(M_i / M̄)`
+  4. 计算第 j 个通道的特征空间重要度：`I_d_j = ||W'_j1 C_1, W'_j2 C_2, ..., W'_jD C_D||_2`
+  5. 结合输入激活的 L2 范数和门控/上投影矩阵的依赖关系，计算最终通道组重要性：
+     `I_j = ||X_j||_2 · I_d_j + ||X_L2 W_gate^j||_2 + ||X_L2 W_up^j||_2`
+- **优势**：相比仅考虑权重幅值的方法，该方法能更准确地评估通道在特征空间中的贡献。
+
+### 4.3 线性回归性能恢复（Linear Regression）
+
+- **核心思想**：对剪枝后的输出矩阵进行简单的一阶线性拟合，快速恢复性能。
+- **具体方法**：
+  - 对每个输出维度，拟合线性函数：`O_i = A_i · O_pruned_i + B_i`
+  - 通过最小二乘法计算系数 A 和 B。
+  - 最终输出公式：`O = X_in (A · W_O)^T + B`
+- **发现**：即使在 50% 的高剪枝比例下，系数 A 的平均值仍接近 1.0，说明剪枝后输出幅值与原始输出保持接近。
+- **特点**：仅使用小规模校准集（默认 32 个样本），计算成本极低。
+
+### 4.4 非均匀层剪枝比例（Non-uniform Layer Pruning Ratio）
+
+- **核心思想**：不同层的冗余度不同，应使用不同的剪枝比例。
+- **方法**：
+  - 使用层的输入和输出之间的**余弦相似度**来衡量层的重要性。
+  - 层 i 的剪枝比例公式：`r_layer_i = r_0 · softmax(α · E[cos_sim(X_i, X_{i+1})])`
+  - 余弦相似度高（输入输出变化小）的层冗余度高，可分配更大剪枝比例。
+- **策略**：
+  - 跳过第一层和最后一层（它们通常更重要）。
+  - 在 LLaMA-7B 上，浅层的余弦相似度较低，深层较高，因此采用浅层剪枝比例低、深层剪枝比例高的分层策略。
+  - 参数 α 控制各层剪枝比例的波动范围：小剪枝比例用大 α，大剪枝比例用小 α。
+
+---
+
+## 实验结果
+
+### 数据集与评估
+
+- **常识推理**：BoolQ, PIQA, HellaSwag, WinoGrande, ARC-e, ARC-c, OpenbookQA
+- **困惑度**：WikiText2, PTB
+- **模型**：LLaMA-1 (7B), LLaMA-2 (7B), Vicuna-7B, LLaMA-13B
+
+### LLaMA-7B 主要结果
+
+| 剪枝比例 | 方法 | WikiText2 | PTB | 平均得分 |
+|---------|------|-----------|-----|---------|
+| 20% w/o tune | LoRAP | 15.69 | 25.86 | 60.53 |
+| 20% w/o tune | **SlimLLM** | **15.95** | **26.09** | **61.22** |
+| 20% w/ tune | LoRAP | 16.35 | 27.06 | 61.70 |
+| 20% w/ tune | **SlimLLM** | **15.55** | **26.66** | **62.41** |
+| 50% w/o tune | LoRAP | 56.96 | 87.71 | 47.25 |
+| 50% w/o tune | **SlimLLM** | **37.89** | **67.68** | **50.10** |
+| 50% w/ tune | LoRAP | 30.90 | 48.84 | 52.17 |
+| 50% w/ tune | **SlimLLM** | **26.71** | **42.19** | **53.16** |
+
+**关键发现**：
+- 在 20% 剪枝比例下，未微调的模型保留了原始性能的约 98.7%（平均得分 61.22 vs 原始 63.25）。
+- 在 50% 剪枝比例下，SlimLLM 在 PPL 和平均得分上均显著优于 LoRAP。
+- 微调后性能进一步提升，LLaMA-7B 50% 剪枝 + 微调：WikiText2 PPL 降至 26.71。
+
+### 推理延迟
+
+| 剪枝比例 | 参数量 | Prefill (s) | Decoding (s) |
+|---------|--------|-------------|--------------|
+| 0% | 6.7B | 0.3008 | 13.12 |
+| 20% | 5.4B | 0.1429 | 11.48 |
+| 50% | 3.4B | 0.1034 | 9.38 |
+
+- 50% 剪枝：Prefill 延迟降低 65.6%，Decoding 延迟降低 28.5%。
+
+### 消融实验
+
+各策略的消融结果（50% 剪枝比例，未微调）：
+
+| 方法 | WikiText2 | PTB | 平均得分 |
+|------|-----------|-----|---------|
+| SlimLLM（完整） | 37.89 | 67.68 | 50.10 |
+| 无贪心搜索 | 40.89 | 82.60 | 48.35 |
+| 无特征空间重要性 | 38.26 | 71.21 | 49.74 |
+| 无非均匀剪枝比例 | 66.37 | 123.52 | 42.16 |
+
+**结论**：非均匀剪枝比例的影响最大（提升约 8 个百分点），贪心搜索和特征空间重要性也有显著贡献。
+
+---
+
+## 优势
+
+1. **整体性重要度评估**：不仅考虑单个元素的重要性，还考虑子模块内元素的相互依赖关系。
+2. **无需梯度计算**：基于 Pearson 相似度和 PCA 的方法不需要计算梯度，降低了存储和计算需求。
+3. **线性回归快速恢复**：使用简单的一阶线性拟合，仅需小规模校准集即可快速恢复性能，计算成本极低。
+4. **非均匀剪枝比例**：根据层的输入输出余弦相似度动态分配剪枝比例，充分利用不同层的冗余度差异。
+5. **SOTA 性能**：在 LLaMA 系列模型上，20% 剪枝比例下保留约 98.7% 原始性能，50% 剪枝比例下显著优于 LoRAP 等基线方法。
+6. **推理加速显著**：50% 剪枝下 Prefill 延迟降低 65.6%，Decoding 延迟降低 28.5%。
+7. **跨模型泛化**：在 LLaMA-1、LLaMA-2、Vicuna-7B、LLaMA-13B 上均表现优异。
+
+---
+
+## 局限
+
+1. **线性回归的局限性**：目前仅适用于输出维度相同的 MHA 和 FFN 最终输出矩阵，对其他参数矩阵的快速拟合仍需进一步探索。
+2. **贪心搜索的计算开销**：对于 FFN 通道剪枝，由于中间层通道数量远大于注意力头数，贪心搜索的计算开销较大，因此未在通道剪枝中使用。
+3. **仅适用于 LLaMA 系列**：论文的实验仅在 LLaMA 系列模型上进行，未验证在其他架构（如 GPT、Mistral 等）上的有效性。
+4. **微调策略未统一**：在 LLaMA-2-7B 50% 剪枝比例下，微调后 LoRAP 的平均得分略高于 SlimLLM，作者认为是因为微调策略未能对齐。
+5. **高剪枝比例下的性能下降**：50% 剪枝比例下，即使使用微调，平均得分（53.16）仍远低于原始模型（63.25），存在约 10% 的性能损失。
+6. **仅关注结构化剪枝**：未与量化、知识蒸馏等其他压缩技术结合，可能有进一步优化空间。
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+- **结构化剪枝**：SlimLLM 是结构化剪枝的重要进展，直接贡献于模型压缩和高效部署。
+- **稀疏性（sparse_pruning）**：通过移除整个通道和注意力头，实现结构化稀疏。
+- **结构化稀疏（structured_sparsity）**：使用基于 PCA 的特征空间方法评估通道重要性，是结构化稀疏评估的新范式。
+- **模型压缩**：与量化（Quantization）、知识蒸馏（Knowledge Distillation）等方法互补，可组合使用。
+- **高效推理**：剪枝后的模型在 Prefill 和 Decoding 阶段均有显著延迟降低，直接提升推理效率。
+- **非均匀层剪枝**：基于层间余弦相似度的非均匀剪枝策略为层级冗余分析提供了新思路。
+- **低秩近似**：与 LoRAP 等方法可结合，进一步压缩模型参数。

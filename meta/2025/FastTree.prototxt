@@ -1,0 +1,39 @@
+paper {
+  title: "FastTree: Optimizing Attention Kernel and Runtime for Tree-Structured LLM Inference"
+  abbr: "FastTree"
+  url: "https://openreview.net/pdf?id=BwvHcHZ3kJ"
+  authors: "Zaifeng Pan"
+  authors: "Yitong Ding"
+  authors: "Yue Guan"
+  authors: "Zheng Wang"
+  authors: "Zhongkai Yu"
+  authors: "Xulong Tang"
+  authors: "Yida Wang"
+  authors: "Yufei Ding"
+  institutions: "University of California, San Diego"
+  institutions: "University of Pittsburgh"
+  institutions: "AWS"
+}
+pub {
+  where: "MLSys"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/PanZaifeng/FastTree-Artifact"
+}
+keyword {
+  words: kv_cache_management
+  words: kernel_generation
+  words: attention_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "FlashAttention"
+  methods: "FlashInfer"
+  methods: "DeFT"
+  methods: "SGLang Triton"
+  methods: "CascadeAttn"
+}

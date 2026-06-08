@@ -4,14 +4,190 @@
 
 ![111](cover.jpg)
 
-## Abstract
+## 一句话总结
 
-Prefill-decode (PD) disaggregation has become the standard architecture for large-scale LLM serving, but in practice its deployment boundary is still determined by KVCache transfer. In conventional dense-attention models, prefill generates huge KVCache traffics that keep prefill and decode tightly coupled within a single high-bandwidth network domain, limiting heterogeneous deployment and resource elasticity. Recent hybrid-attention architectures substantially reduce KVCache size, making cross-cluster KVCache transport increasingly plausible. However, smaller KVCache alone does not make heterogeneous cross-datacenter PD serving practical: real workloads remain bursty, request lengths are highly skewed, prefix caches are unevenly distributed, and inter-cluster bandwidth fluctuates. A naive design that fully externalizes prefill can therefore still suffer from congestion, unstable queueing, and poor utilization.
-  We present Prefill-as-a-Service (PrfaaS), a cross-datacenter serving architecture that selectively offloads long-context prefill to standalone, compute-dense prefill clusters and transfers the resulting KVCache over commodity Ethernet to local PD clusters for decode. Rather than treating reduced KVCache as sufficient, PrfaaS combines model-side KV efficiency with system-side selective offloading, bandwidth-aware scheduling, and cache-aware request placement. This design removes the requirement that heterogeneous accelerators share the same low-latency RDMA fabric, enabling independent scaling of prefill and decode capacity across loosely coupled clusters. In a case study using an internal 1T-parameter hybrid model, a PrfaaS-augmented heterogeneous deployment achieves 54% higher serving throughput and 64% lower P90 TTFT than a homogeneous PD baseline, with approximately 15% throughput gain at equal cost, while consuming only modest cross-datacenter bandwidth.
-
+针对混合注意力架构模型的 KVCache 大幅缩减特性，提出跨数据中心的 Prefill-as-a-Service（PrfaaS）架构，通过选择性长上下文预填充卸载、带宽感知调度和缓存感知请求放置，实现异构跨集群 LLM 服务，吞吐量提升 54%、P90 TTFT 降低 64%。
 
 ---
 
-*以下总结由 MiMo 生成：*
+## 摘要翻译
 
-这篇论文针对大规模LLM服务中预填充与解码分离架构的部署边界受限问题，提出了一种跨数据中心的Prefill-as-a-Service（PrfaaS）架构。该方法通过选择性地将长上下文预填充卸载到独立的计算密集型集群，并利用带宽感知调度和缓存感知请求放置，实现了KVCache的跨数据中心传输。实验表明，在1T参数混合模型案例中，PrfaaS在异构部署下相比同构基线提升了54%的服务吞吐量并降低了64%的P90首次令牌时间，同时以约15%的吞吐增益实现成本效益，且仅需适度的跨数据中心带宽。
+预填充-解码（PD）分离已成为大规模 LLM 服务的标准架构，但实际部署边界仍受 KVCache 传输限制。在传统密集注意力模型中，预填充产生巨大的 KVCache 流量，将预填充和解码紧密耦合在单个高带宽网络域中，限制了异构部署和资源弹性。近期混合注意力架构大幅减少了 KVCache 大小，使跨集群 KVCache 传输日益可行。然而，仅靠更小的 KVCache 并不能使异构跨数据中心 PD 服务变得实用：真实工作负载仍具突发性，请求长度高度偏斜，前缀缓存分布不均，且集群间带宽波动。因此，完全外部化预填充的朴素设计仍可能遭受拥塞、不稳定排队和利用率低下。
+
+本文提出 Prefill-as-a-Service（PrfaaS），一种跨数据中心服务架构，选择性地将长上下文预填充卸载到独立的计算密集型预填充集群，并通过商用以太网将生成的 KVCache 传输到本地 PD 集群进行解码。PrfaaS 将模型侧的 KV 效率与系统侧的选择性卸载、带宽感知调度和缓存感知请求放置相结合。该设计消除了异构加速器共享同一低延迟 RDMA 网络的要求，使得预填充和解码容量可以在松耦合集群之间独立扩展。在使用内部 1T 参数混合模型的案例研究中，PrfaaS 增强的异构部署实现了比同构 PD 基线高 54% 的服务吞吐量和低 64% 的 P90 TTFT，在相同成本下吞吐量提升约 15%，且仅消耗适度的跨数据中心带宽。
+
+---
+
+## 研究动机
+
+### 1. PD 分离部署的带宽瓶颈
+
+当前 PD 分离架构虽然分离了计算密集型预填充和内存带宽密集型解码，但 KVCache 传输将预填充和解码紧密耦合在同一高带宽 RDMA 网络域内。密集注意力模型（如 MiniMax-M2.5、Qwen3-235B）的 KV 吞吐量极高（32K 长度下达 60 Gbps），远超跨数据中心以太网容量，导致 PD 分离无法扩展到单个数据中心之外。
+
+### 2. 异构部署的现实困难
+
+专用硬件已在各阶段出现（NVIDIA Rubin CPX 针对预填充、LPU 针对解码），但高性能互联与机器形态和部署环境紧密耦合，异构硬件难以在同一带宽域内协同工作。将异构硬件强制部署在单个紧耦合集群中会导致固定的预填充/解码硬件比例，无法随流量变化灵活调整，造成严重的负载不平衡。
+
+### 3. 混合注意力架构带来的机遇
+
+混合注意力架构（如 Kimi Linear、MiMo-V2-Flash、Qwen3.5-397B、Ring-2.5-1T）通过交错少量全注意力层与大量线性复杂度层，将 KV 吞吐量降低了一个数量级。例如，MiMo-V2-Flash 在 32K 下的 KV 吞吐量仅为 4.66 Gbps，比 MiniMax-M2.5 的 59.93 Gbps 低 13 倍。这为跨数据中心 KVCache 传输打开了窗口，但仅靠模型侧的 KV 压缩不足以解决所有问题。
+
+---
+
+## 方法（技术细节）
+
+### 1. PrfaaS-PD 架构
+
+核心思想：**选择性**地将长上下文预填充卸载到独立的 PrfaaS 集群，通过商用以太网传输 KVCache 到本地 PD 集群进行解码。
+
+架构包含三个子系统：
+
+- **计算子系统**：多个集群，每个集群包含同构硬件。分为两类：
+  - **PrfaaS 集群**：专用长上下文预填充集群，使用高吞吐量加速器（如 H200），对 L > t 的请求进行预填充
+  - **本地 PD 集群**：传统 PD 分离服务，可端到端完成推理，负责短请求（L ≤ t）和解码
+
+- **网络子系统**：两层网络
+  - 集群内使用 RDMA 用于延迟敏感的集合通信和 PD KVCache 传输
+  - 集群间使用 VPC 对等连接或专线用于跨数据中心 KVCache 传输
+
+- **存储子系统**：每个集群内构建分布式混合前缀缓存池
+
+### 2. 混合前缀缓存池（Hybrid Prefix Cache Pool）
+
+基于 vLLM 的混合 KVCache 管理器构建，针对跨集群 KVCache 传输优化：
+
+- 线性注意力的循环状态（request-level）和全注意力的 KVCache（block-level）由独立的 KVCache 组管理，支持对齐的块大小
+- 所有组从共享 KVCache 池中分配和释放块
+- 缓存块分为两类：
+  - **前缀缓存块（prefix-cache blocks）**：必须完全填充后才能跨请求复用，仅集群内使用
+  - **传输缓存块（transfer-cache blocks）**：保存预填充请求尾部的 KVCache 用于 PD 分离传输，传输完成后丢弃
+
+### 3. 选择性预填充卸载（Selective Offloading）
+
+采用**基于长度的路由策略**：
+
+- 设定路由阈值 t，当请求的增量预填充长度 l > t 时路由到 PrfaaS 集群，l ≤ t 时由本地 PD 集群处理
+- 仅长上下文未缓存预填充被卸载，短请求保留在本地 PD 路径
+- 对于具有前缀缓存命中的请求，仅传输增量部分
+
+### 4. 双时间尺度调度（Dual-Timescale Scheduling）
+
+**短期调度：带宽与缓存感知路由**
+
+- 持续监控 PrfaaS 出口利用率和请求队列深度
+- 当利用率接近阈值或队列堆积时，触发短期路由调整
+- 基于增量预填充长度分布搜索最优阈值 t
+- 缓存感知路由：
+  - 带宽稀缺时：独立评估各集群前缀缓存，按增量长度决定路由
+  - 带宽充裕时：跨集群缓存转移可减少冗余计算，选择最佳缓存位置
+
+**长期调度：流量驱动的资源重分配**
+
+- 监控各阶段的队列深度和利用率，识别瓶颈
+- 周期性重新评估负载平衡，在 PD 集群内转换预填充/解码节点角色
+- 调整预填充/解码实例比例 Np/Nd 以恢复最优条件
+
+### 5. 吞吐量模型
+
+系统吞吐量由三个角色的最慢阶段决定：
+
+```
+Λmax = min(Θprfaas/p, Θpd-p/(1-p), Θpd-d)
+```
+
+- **PrfaaS 吞吐量**：Θprfaas = min(Nprfaas/Tprefill(llong), Bout/Skv(llong))，受计算和出口传输的较慢者限制
+- **PD-P 吞吐量**：Θpd-p = Np/Tprefill(lshort)，受计算容量限制
+- **PD-D 吞吐量**：Θpd-d = Nd·BSmax/(Tdecode·Lout)
+
+通过二维网格搜索优化路由阈值 t 和预填充/解码比例 Np/Nd。
+
+---
+
+## 实验结果
+
+### 实验设置
+
+- **模型**：内部 1T 参数混合架构模型，遵循 Kimi Linear 架构，采用 KDA:MLA 3:1 交错结构
+- **硬件**：
+  - PrfaaS 集群：32 H200 GPU
+  - 本地 PD 集群：64 H20 GPU（800 Gbps RDMA）
+  - 基线：96 H20 GPU 同构 PD 集群
+- **网络**：VPC 连接，聚合跨集群带宽约 100 Gbps
+- **工作负载**：输入长度服从截断对数正态分布（μ=9.90, σ=1.00, 截断至 [128, 128K]），均值约 27K tokens；输出长度固定 1024 tokens；SLO 为 40 tokens/s
+
+### 核心结果
+
+| 指标 | PrfaaS-PD | 同构 PD | 朴素异构 PD |
+|------|-----------|---------|-------------|
+| 路由阈值 t | 19.4K | — | — |
+| Nprfaas / Np / Nd | 4 / 3 / 5 | — / 9 / 3 | 4 / — / 8 |
+| Mean TTFT (s) | 2.22 | 4.44 | 1.74 |
+| P90 TTFT (s) | 3.51 | 9.73 | 3.51 |
+| 系统吞吐量 Λmax (req/s) | 3.24 | 2.11 | 2.45 |
+| 吞吐量比 | 1.54× | 1.00× | 1.16× |
+
+### 关键发现
+
+1. **跨数据中心带宽利用率**：约 49.6% 的请求路由到 PrfaaS，平均出口负载仅 13 Gbps（占 100 Gbps 以太网链路的 13%），证明混合架构模型的 KVCache 可以通过商用以太网传输
+2. **vs 同构 PD**：吞吐量提升 54%，P90 TTFT 降低 64%（均值 TTFT 降低 50%）
+3. **vs 朴素异构 PD**：吞吐量高 32%（朴素异构 PD 仅 1.16×），证明调度策略的重要性
+4. **等成本吞吐增益**：约 15%
+5. **最优路由阈值**：t = 19.4K tokens，约 50% 请求卸载到 PrfaaS
+
+---
+
+## 优势
+
+1. **架构创新**：首次提出跨数据中心 KVCache 概念，将 PD 分离从单集群扩展到异构跨集群部署
+2. **选择性卸载**：不是完全外部化预填充，而是仅对长上下文请求进行选择性卸载，避免短请求的带宽浪费
+3. **双时间尺度调度**：短期带宽感知路由 + 长期流量驱动资源重分配，兼顾动态和稳态优化
+4. **混合前缀缓存池**：统一管理线性注意力状态和全注意力 KVCache，支持跨集群传输优化
+5. **低带宽需求**：混合架构模型仅需 13% 的以太网带宽，远低于密集注意力模型
+6. **独立扩展**：预填充和解码容量可在松耦合集群间独立扩展，无需共享 RDMA 网络
+7. **与硬件趋势契合**：天然适配预填充专用芯片（如 Rubin CPX）和解码专用芯片（如 LPU）
+
+---
+
+## 局限
+
+1. **仅基于内部模型和数据**：实验使用内部 1T 参数模型和内部工作负载，缺乏开源模型的验证
+2. **单一案例研究**：仅在一种混合架构配置（KDA:MLA 3:1）下验证，未覆盖其他混合架构（如 SWA、GDN）
+3. **静态工作负载假设**：虽然调度策略考虑了流量变化，但实验中使用固定的输入长度分布和输出长度
+4. **未考虑实际网络波动**：实验假设稳定的 100 Gbps VPC 连接，未评估真实网络抖动和跨数据中心延迟
+5. **无代码开源**：代码未公开，复现性受限
+6. **吞吐量模型简化**：近似所有 PrfaaS 请求为统一长度，可能忽略请求长度分布的影响
+7. **仅验证单一异构硬件组合**：仅使用 H200（预填充）和 H20（解码），未探索更广泛的硬件组合
+8. **未考虑多租户和安全**：跨数据中心 KVCache 传输的安全性和多租户隔离问题未讨论
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+### 1. KVCache 管理与优化
+- **KVCache 压缩与量化**：如 H2O、KIVI、KVQuant 等，与 PrfaaS 互补，可进一步降低传输量
+- **KVCache 复用**：如 CacheBlend、FusionRAG，可在 PrfaaS 架构中进一步提升前缀缓存命中率
+- **混合 KVCache 管理**：针对混合注意力架构的统一缓存管理，是 PrfaaS 的核心支撑
+
+### 2. LLM 服务部署与调度
+- **PD 分离架构**：PrfaaS 是 PD 分离的扩展，与 Mooncake、DistServe、Splitwise 等工作直接相关
+- **异构 GPU 调度**：Helix、Hetis、LLM-PQ 等异构 GPU 调度研究，PrfaaS 提供了跨数据中心视角
+- **LLM 推理能效优化**：DynamoLLM、FREESH 等关注能效和成本，PrfaaS 在等成本下提供更高吞吐
+
+### 3. 模型架构与系统协同设计
+- **混合注意力架构**：Kimi Linear、MiMo-V2-Flash、Qwen3.5 等混合架构是 PrfaaS 的前提条件
+- **KVCache 友好型架构**：未来模型架构可能将 KVCache 传输量作为设计目标之一
+- **阶段专用推理硬件**：Rubin CPX（预填充）、LPU（解码）等硬件趋势与 PrfaaS 天然契合
+
+### 4. 跨数据中心/跨区域部署
+- **联邦学习与分布式推理**：跨数据中心推理的基础设施研究
+- **弹性资源调度**：跨区域资源池化和弹性扩缩容
+- **网络传输优化**：商用以太网上的高效 KVCache 传输，降低对 RDMA 的依赖
+
+### 5. KVCache 传输与通信
+- **层间预填充流水线**：KVCache 生成与传输的重叠优化
+- **多连接 TCP 传输**：充分利用可用带宽
+- **拥塞控制**：基于调度器的拥塞检测和预防
+
+---
+
+> **生成声明**：本 note 由 AI Agent 自动生成，基于论文全文（arXiv:2604.15039v2）的阅读和分析。生成时间：2026 年 6 月。

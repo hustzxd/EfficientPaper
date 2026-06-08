@@ -2,8 +2,143 @@
 
 > Shuo Yang, Haocheng Xi, Yilong Zhao, Muyang Li, Jintao Zhang, Han Cai, Yujun Lin, Xiuyu Li, Chenfeng Xu, Kelly Peng, Jianfei Chen, Song Han, Kurt Keutzer, Ion Stoica
 
+> **生成声明**：本 note 由 AI Agent（Hermes Agent）自动生成，基于 arXiv 论文 2505.18875v3 全文阅读，生成时间：2026-06-04。
+
 ![111](../../blank.jpg)
 
-## Abstract
+---
 
-Diffusion Transformers (DiTs) are essential for video generation but suffer from significant latency due to the quadratic complexity of attention. By computing only critical tokens, sparse attention reduces computational costs and offers a promising acceleration approach. However, we identify that existing methods fail to approach optimal generation quality under the same computation budget for two reasons: (1) Inaccurate critical token identification: current methods cluster tokens based on position rather than semantics, leading to imprecise aggregated representations. (2) Excessive computation waste: critical tokens are scattered among non-critical ones, leading to wasted computation on GPUs, which are optimized for processing contiguous tokens. In this paper, we propose SVG2, a training-free framework that maximizes identification accuracy and minimizes computation waste, achieving a Pareto frontier trade-off between generation quality and efficiency. The core of SVG2 is semantic-aware permutation, which clusters and reorders tokens based on semantic similarity using k-means. This approach ensures both a precise cluster representation, improving identification accuracy, and a densified layout of critical tokens, enabling efficient computation without padding. Additionally, SVG2 integrates top-p dynamic budget control and customized kernel implementations, achieving up to 2.30x and 1.89x speedup while maintaining a PSNR of up to 30 and 26 on HunyuanVideo and Wan 2.1, respectively. Our code is open-sourced at \href{https://github.com/svg-project/Sparse-VideoGen}{https://github.com/svg-project/Sparse-VideoGen}.
+## 一句话总结
+
+SVG2 是一种无需训练的稀疏注意力框架，通过语义感知的 token 排列（semantic-aware permutation）实现关键 token 的精确识别和计算浪费最小化，在 HunyuanVideo 和 Wan 2.1 上分别实现高达 2.30× 和 1.89× 的端到端加速，同时维持 PSNR 高达 30 和 26。
+
+---
+
+## 摘要翻译
+
+扩散 Transformer（DiT）是视频生成的核心模型，但由于注意力机制的二次方复杂度，存在显著的延迟问题。通过仅计算关键 token，稀疏注意力可以降低计算成本，是一种有前景的加速方法。然而，我们发现现有方法在相同计算预算下无法接近最优的生成质量，原因有二：（1）关键 token 识别不准确：现有方法基于位置而非语义聚类 token，导致聚合表示不精确。（2）计算浪费严重：关键 token 分散在非关键 token 之间，导致 GPU（针对连续 token 优化）上的计算浪费。本文提出 SVG2，一种无需训练的框架，最大化识别准确性并最小化计算浪费，在生成质量和效率之间实现帕累托最优权衡。SVG2 的核心是语义感知排列，通过 k-means 聚类和重排序基于语义相似性的 token。该方法确保了精确的簇表示以提高识别精度，以及关键 token 的密集布局以实现无填充的高效计算。此外，SVG2 集成了 top-p 动态预算控制和定制化内核实现，在 HunyuanVideo 和 Wan 2.1 上实现高达 2.30× 和 1.89× 的加速，同时保持 PSNR 高达 30 和 26。
+
+---
+
+## 研究动机
+
+1. **DiT 视频生成的计算瓶颈**：扩散 Transformer 在视频生成任务中表现出色，但 3D 时空注意力的二次方复杂度使其成为性能瓶颈。例如，在 NVIDIA A100 GPU 上使用 HunyuanVideo 生成 5 秒视频需要近 1 小时，其中 3D 注意力占端到端运行时间的 80% 以上。
+
+2. **注意力的天然稀疏性**：研究表明自注意力机制天然稀疏，仅一小部分计算显著影响最终输出。仅计算关键 token 即可实现高达 8× 的成本降低，且对生成质量影响可忽略。
+
+3. **现有稀疏注意力方法的两大缺陷**：
+   - **识别不准确**：现有方法（如 SpargeAttention）基于位置聚类 token（如每 128 个连续 token 分为一组），使用均值/最大池化得到块级表示来近似注意力分数。但位置相近的 token 可能语义差异极大（如苹果和蛋糕），导致聚合表示不精确。
+   - **计算浪费严重**：即使关键 token 被完美识别，由于它们分散在非关键 token 之间，而 GPU tensor core 要求最小矩阵乘法形状（如 16×16×8），导致必须对整个块（含非关键 token）进行计算。实验证明高达 80% 的计算可能浪费在非关键 token 上。
+
+4. **目标**：弥合现有稀疏注意力方法与理想 Oracle 策略之间的差距，在相同计算预算下实现更高的生成质量和更低的计算浪费。
+
+---
+
+## 方法（技术细节）
+
+SVG2 是一个无需训练的稀疏注意力框架，包含三个核心技术：
+
+### 1. 语义感知排列（Semantic-Aware Permutation）
+
+- **基于 k-means 的语义聚类**：对每个注意力头和 Transformer 层，独立地对 Query（Q ∈ R^{Nq×d}）和 Key（K ∈ R^{Nk×d}）token 执行 k-means 聚类，形成 Cq 个 Query 簇和 Ck 个 Key 簇。由于每个簇内的 token 语义相似，簇质心能够精确表示簇级语义，从而提升关键 token 的识别精度。
+- **排列操作**：将语义相似的 token 排列成连续布局（使用排列矩阵 πq 和 πk），使关键 token 在物理内存中紧凑排列。数学上证明排列不改变注意力输出（O' = O）。
+- **双重好处**：
+  - 提高识别准确性（语义一致的簇 → 更精确的聚合表示）
+  - 减少计算浪费（关键 token 密集排列 → 无需填充非关键 token）
+
+### 2. 基于质心的 Top-p 选择（Centroid-Based Top-p Selection）
+
+- **关键性估计**：使用簇质心近似注意力分数，计算公式：
+  - 预 softmax 分数：Sij = centroid(Qi) · centroid(Kj)^T / √dk
+  - 近似注意力分数：P'ij = |Kj|·exp(Sij) / Σ|Kk|·exp(Sik)
+  - 由于簇内 token 语义相似，质心表示高度准确，且簇数（Cq, Ck < 1024）远小于总 token 数，计算开销不到 1%。
+- **动态预算分配**：将所有簇按近似注意力分数 P' 降序排序，依次选择簇直到累积分数达到预设目标值 p，无需手动调整计算预算。
+
+### 3. 高效系统-算法协同设计
+
+- **快速 k-means（质心缓存）**：利用连续去噪步骤之间 DiT 激活的相似性，缓存上一步的 k-means 质心作为下一步的初始化，将 k-means 运行时间减少高达 76×。
+- **定制化动态块稀疏注意力内核**：
+  - 支持 FlashAttention-2（A100）和 FlashAttention-3（H100）
+  - 支持动态块大小（簇的大小自然不等），避免静态块大小导致的填充浪费
+  - 使用 wgmma（m64n64k16）进行密集计算，Q token 从连续内存加载，K/V token 使用 per-token 地址偏移进行稀疏加载并存入共享内存
+  - 实现超过理论最大性能的 85%
+
+### 关键配置
+
+- 默认聚类数量：Cq = 100，Ck = 500
+- 前 30% 去噪步骤跳过稀疏注意力（warmup）
+- 在 H100 GPU 上使用 CUDA 12.8 进行原型实现
+
+---
+
+## 实验结果
+
+### 评估设置
+
+- **模型**：Wan2.1-I2V/T2V-14B，HunyuanVideo-T2V-13B，720p 分辨率
+- **指标**：PSNR（↑）、SSIM（↑）、LPIPS（↓）、VBench（↑）、密度（↓）、FLOPs、端到端加速比
+- **基线**：Sparse VideoGen（SVG）、SpargeAttention、XAttention
+
+### 主要结果（Table 1，warmup 30%）
+
+| 模型 | 配置 | PSNR | SSIM | LPIPS | VBench | 密度 | 加速比 |
+|------|------|------|------|-------|--------|------|--------|
+| Wan 2.1 I2V | Dense | - | - | - | 0.841 | 100% | 1× |
+| Wan 2.1 I2V | SVG2 | **26.562** | **0.861** | **0.138** | **0.838** | 31.28% | **1.58×** |
+| Wan 2.1 I2V | SVG2-Turbo | 24.510 | 0.812 | 0.179 | 0.836 | **14.13%** | **1.84×** |
+| Wan 2.1 T2V | Dense | - | - | - | 0.846 | 100% | 1× |
+| Wan 2.1 T2V | SVG2 | **25.808** | **0.854** | **0.138** | **0.842** | 29.51% | **1.60×** |
+| Wan 2.1 T2V | SVG2-Turbo | 23.682 | 0.789 | 0.196 | 0.838 | **12.87%** | **1.89×** |
+| Hunyuan T2V | Dense | - | - | - | 0.850 | 100% | 1× |
+| Hunyuan T2V | SVG2 | **30.452** | **0.910** | **0.117** | **0.852** | 25.45% | **2.30×** |
+| Hunyuan T2V | SVG2+FP8 | 30.389 | 0.908 | 0.118 | 0.851 | 25.45% | **2.55×** |
+
+### 关键发现
+
+1. **Pareto 前沿**：SVG2 在任意密度下均优于所有基线方法，在相同 PSNR 下密度减少高达 2.3×。
+2. **显著加速**：端到端加速高达 2.30×（HunyuanVideo）和 1.89×（Wan 2.1）。
+3. **高效内核**：定制化内核平均实现 1.48× 计算减少，在实际配置（Cq=100, Ck=500）下实现 1.88× 计算减少。
+4. **快速 k-means**：质心缓存使 k-means 运行时间减少 76×。
+5. **消融实验**：
+   - 启用语义感知排列时注意力召回率一致高于禁用时
+   - 启用排列时计算开销平均减少 36%
+   - Q 和 K 独立聚类（而非共享聚类）对保持注意力表达能力是必要的
+
+---
+
+## 优势
+
+1. **无需训练**：整个框架免训练，可直接应用于现有的 DiT 模型。
+2. **Pareto 最优权衡**：在任何计算预算下均优于现有方法。
+3. **双重改进**：同时解决识别不准确和计算浪费两大问题。
+4. **系统-算法协同设计**：质心缓存、定制化内核等工程优化显著减少运行时开销。
+5. **广泛的兼容性**：支持 HunyuanVideo 和 Wan 2.1 等主流视频生成模型，支持 FA2（A100）和 FA3（H100）。
+6. **开源代码**：https://github.com/svg-project/Sparse-VideoGen
+7. **可与其他加速技术正交集成**：如缓存方法、FP8 量化、线性注意力等。
+
+---
+
+## 局限
+
+1. **仅适用于 DiT 注意力机制**：论文未讨论或评估所提方法是否可以扩展到 DiT 之外的其他注意力机制（如 SSM、线性注意力等）。
+2. **聚类数量的超参数选择**：Cq 和 Ck 的选择需要针对不同模型和硬件进行调优，存在一定的工程复杂度。
+3. **Warmup 依赖**：前 30% 去噪步骤跳过稀疏注意力，增加了实现复杂度。
+4. **模型特定的数值敏感性**：Wan 2.1 对数值变化高度敏感（不同后端 PSNR 差异大），导致在 Wan 2.1 上的 PSNR 低于 HunyuanVideo。
+5. **加速比差异**：Wan 2.1 的加速比（1.89×）低于 HunyuanVideo（2.30×），主要由于 Wan 2.1 含额外的交叉注意力模块，注意力在总计算中占比相对较小。
+6. **聚类开销**：尽管有质心缓存优化，k-means 聚类仍引入额外计算（虽不到 1%），且在 Cq > 200 时性能显著下降。
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **稀疏注意力（Sparse Attention）**：SVG2 是 SVG（Sparse VideoGen）的改进版，属于动态稀疏注意力方向。与 SpargeAttention、XAttention 等方法形成直接比较，关键词包括 `sparse_pruning` 和 `attention_sparsity`。
+
+2. **视频生成加速**：与缓存方法（FasterCache、DiCache、OmniCache）、线性注意力（SANA、LinGen）、自回归加速（CausVid、LongLive）等正交方向互补，可集成实现更高加速比。
+
+3. **注意力优化**：与 MMInference（模态感知排列）、Tactic（自适应稀疏注意力）等方法相关，语义感知排列是一种通用的 token 重排序技术。
+
+4. **长视频生成**：SVG2 的稀疏注意力机制可与长上下文视频生成技术（如 RadialAttention、VMOBA、Mixture-of-Context）结合，进一步提升长视频生成效率。
+
+5. **硬件-算法协同设计**：SVG2 的定制化内核和质心缓存展示了系统-算法协同设计的重要性，与 FlashInfer、FlashAttention 等注意力引擎的优化方向一致。
+
+6. **量化加速**：SVG2 与 FP8 量化结合可进一步提升加速比（2.55×），提示了稀疏注意力与低精度计算协同优化的潜力。

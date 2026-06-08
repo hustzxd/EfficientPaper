@@ -1,27 +1,211 @@
-# Fine-Tuning Language Models with Just Forward Passes
+# Fine-Tuning Language Models with Just Forward Passes (MeZO)
 
 ![](../../blank.jpg)
 
-## Abstract
+## 一句话总结
 
-Fine-tuning language models (LMs) has yielded success on diverse downstream
-tasks, but as LMs grow in size, backpropagation requires a prohibitively large
-amount of memory. Zeroth-order (ZO) methods can in principle estimate gradients
-using only two forward passes but are theorized to be catastrophically slow for
-optimizing large models. In this work, we propose a memory-efficient
-zerothorder optimizer (MeZO), adapting the classical ZO-SGD method to operate
-in-place, thereby fine-tuning LMs with the same memory footprint as inference.
-For example, with a single A100 80GB GPU, MeZO can train a 30-billion parameter
-model, whereas fine-tuning with backpropagation can train only a 2.7B LM with
-the same budget. We conduct comprehensive experiments across model types
-(masked and autoregressive LMs), model scales (up to 66B), and downstream tasks
-(classification, multiple-choice, and generation). Our results demonstrate that
-(1) MeZO significantly outperforms in-context learning and linear probing; (2)
-MeZO achieves comparable performance to fine-tuning with backpropagation across
-multiple tasks, with up to 12x memory reduction and up to 2x GPU-hour reduction
-in our implementation; (3) MeZO is compatible with both full-parameter and
-parameter-efficient tuning techniques such as LoRA and prefix tuning; (4) MeZO
-can effectively optimize non-differentiable objectives (e.g., maximizing
-accuracy or F1). We support our empirical findings with theoretical insights,
-highlighting how adequate pre-training and task prompts enable MeZO to
-fine-tune huge models, despite classical ZO analyses suggesting otherwise.
+MeZO 是一种基于零阶优化（Zeroth-order Optimization）的内存高效微调方法，通过仅使用前向传播（无需反向传播）来微调大规模语言模型，实现与反向传播相当的性能，同时将内存消耗降低最多 12 倍，使单张 A100 GPU 即可微调 30B 参数的模型。
+
+---
+
+## 摘要翻译
+
+微调语言模型（LM）在各种下游任务上取得了成功，但随着模型规模的增大，反向传播需要消耗极大的内存。零阶（ZO）方法在原理上仅需两次前向传播即可估计梯度，但理论上被认为在优化大型模型时效率极差。本文提出了一种内存高效的零阶优化器（MeZO），将经典的 ZO-SGD 方法改造为原地（in-place）操作，从而使微调语言模型的内存占用与推理相同。例如，在单张 A100 80GB GPU 上，MeZO 可以训练 300 亿参数的模型，而使用反向传播微调只能训练 2.7B 参数的模型。我们在不同模型类型（掩码 LM 和自回归 LM）、模型规模（最大 66B）和下游任务（分类、多项选择和生成）上进行了全面实验。结果表明：（1）MeZO 显著优于上下文学习（ICL）和线性探针（LP）；（2）MeZO 在多个任务上实现了与反向传播微调相当的性能，同时内存减少最多 12 倍，GPU 时间减少最多 2 倍；（3）MeZO 兼容全参数微调和参数高效微调技术（如 LoRA 和 prefix tuning）；（4）MeZO 可以有效优化不可微目标（如最大化准确率或 F1 分数）。我们还从理论上支持了这些实验发现，揭示了充分的预训练和任务提示如何使 MeZO 能够微调超大模型，尽管经典 ZO 分析表明这应该是困难的。
+
+---
+
+## 研究动机
+
+### 内存瓶颈问题
+随着语言模型规模的增长（从数百亿到数千亿参数），使用反向传播进行微调面临严峻的内存挑战。具体来说：
+- 反向传播需要缓存前向传播的激活值、梯度，以及使用 Adam 优化器时的梯度历史信息
+- 在实验中，反向传播的内存消耗高达推理内存的 **12 倍**
+- 在单张 A100 80GB GPU 上，反向传播微调只能处理 2.7B 模型，而推理可以运行 30B 模型
+
+### 现有方法的局限
+- **参数高效微调（PEFT）**：虽然只更新部分参数，但由于参数分散在模型各处，仍需缓存大量激活值，内存减少有限（约 6 倍）
+- **上下文学习（ICL）**：无需微调但受上下文长度限制，性能敏感于提示格式和示例选择
+- **零阶方法的困境**：经典 ZO-SGD 方法需要存储额外的随机噪声向量，内存开销翻倍，且理论分析表明收敛速度随参数数量线性减慢
+
+### 核心问题
+如何在不使用反向传播的情况下，以与推理相同的内存开销高效微调超大语言模型？
+
+---
+
+## 方法（技术细节）
+
+### 1. 基础：零阶梯度估计（SPSA）
+
+MeZO 基于同时扰动随机近似（Simultaneous Perturbation Stochastic Approximation, SPSA）方法估计梯度。给定参数 θ 和损失函数 L，SPSA 梯度估计为：
+
+$$\hat{\nabla} L(\theta; B) = \frac{L(\theta + \epsilon z; B) - L(\theta - \epsilon z; B)}{2\epsilon}$$
+
+其中 z ~ N(0, I_d) 是随机噪声向量，ε 是扰动尺度。该估计仅需 **两次前向传播** 即可得到梯度，无需反向传播。
+
+### 2. MeZO 核心创新：原地（In-place）操作
+
+传统 ZO-SGD 的关键问题在于需要存储随机噪声向量 z，导致内存消耗翻倍。MeZO 的核心创新是通过**随机数生成器种子（seed）**实现原地操作：
+
+**Algorithm 1 (MeZO)：**
+```
+for t = 1, ..., T do
+    采样 batch B 和随机种子 s
+    θ ← PerturbParameters(θ, ε, s)    // 扰动参数 +εz
+    ℓ+ ← L(θ; B)                        // 前向传播 1
+    θ ← PerturbParameters(θ, -2ε, s)   // 扰动参数 -2εz（回到 -εz）
+    ℓ- ← L(θ; B)                        // 前向传播 2
+    θ ← PerturbParameters(θ, ε, s)     // 重置参数
+    projected_grad ← (ℓ+ - ℓ-) / (2ε)
+    // 使用相同种子重采样 z 并更新参数
+    for θi ∈ θ do
+        z ~ N(0, 1)
+        θi ← θi - ηt * projected_grad * z
+    end
+end
+```
+
+**关键机制：**
+- 使用随机种子 s 在每次需要 z 时重新采样，无需存储 z 向量
+- 参数在每次前向传播后被重置，实现原地操作
+- 内存消耗与推理完全相同（仅需模型参数）
+
+### 3. 参数高效变体
+
+MeZO 兼容多种参数高效微调方法：
+- **LoRA**：低秩适配，进一步减少可训练参数
+- **Prefix Tuning**：在输入前添加可学习前缀
+- **Full Parameter**：全参数微调
+
+### 4. 可扩展的优化器变体
+
+- **MeZO-Adam**：结合 Adam 优化器的动量机制，通过重放损失和种子重新计算梯度移动平均
+- **MeZO-Momentum**：类似地实现 SGD 动量
+- **n-SPSA**：通过多个 z 向量降低方差（但实验表明 n=1 效果最佳）
+
+### 5. 存储效率
+
+MeZO 的存储开销极低：
+- 仅需保存一个随机种子 + 每步的 projected_grad（2 字节/步）
+- 66B 模型微调 20K 步，总存储不足 0.1MB
+- 对比：LoRA 需 38MB，Prefix Tuning 需 12MB
+
+### 6. 理论分析
+
+**核心理论贡献：** 在假设模型损失函数具有低有效秩（local r-effective rank）的情况下，MeZO 的收敛速率与参数数量无关，仅取决于 Hessian 的有效秩 r。
+
+- **Assumption 1（局部 r 有效秩）**：损失函数的 Hessian 在当前迭代点附近具有有效秩至多 r
+- **Theorem 1（无维度速率）**：ZO-SGD 的每步损失下降速率独立于参数维度 d
+- **Corollary 1**：与 SGD 相比，慢化因子仅与有效秩 r 成正比，而非参数数量 d
+
+这一理论解释了为什么 MeZO 能有效微调数十亿参数的模型：充分的预训练使模型的损失景观具有低有效秩结构。
+
+---
+
+## 实验结果
+
+### 1. 中等规模掩码语言模型（RoBERTa-large, 350M）
+
+- **任务**：SST-2、SST-5、SNLI、MNLI、RTE、TREC
+- **设置**：k=16 和 k=512（每类样本数）
+- **关键发现**：
+  - MeZO 在所有 6 个任务上显著优于 zero-shot、linear probing 和其他内存等价方法
+  - 在 k=512 时，MeZO 接近 FT 性能（差距 < 5%）
+  - MeZO + LoRA 和 MeZO + prefix tuning 表现与全参数微调相当
+
+### 2. 大规模自回归语言模型（OPT-13B/30B/66B）
+
+**OPT-13B 结果（Table 1, 1000 样本）：**
+
+| 任务 | Zero-shot | ICL | MeZO | FT (12x memory) |
+|------|-----------|-----|------|-----------------|
+| SST-2 | 58.8 | 87.0 | **91.4** | 92.0 |
+| RTE | 59.6 | 62.1 | 66.1 | 70.8 |
+| CB | 46.4 | 57.1 | 67.9 | 83.9 |
+| BoolQ | 59.0 | 66.9 | 67.6 | 77.1 |
+| WSC | 38.5 | 39.4 | 63.5 | 63.5 |
+| WIC | 55.0 | 50.5 | 61.1 | 70.1 |
+| MultiRC | 46.9 | 53.1 | 60.1 | 71.1 |
+| COPA | 80.0 | 87.0 | 88.0 | 79.0 |
+| ReCoRD | 81.2 | 82.5 | 81.7 | 74.1 |
+| SQuAD | 46.2 | 75.9 | 84.7 | 84.9 |
+| DROP | 14.6 | 29.6 | 30.9 | 31.3 |
+
+**关键发现：**
+- MeZO 在 7/11 个任务上达到与 FT 相当（差距 < 1%）或更好的性能
+- 在 COPA 和 ReCoRD 上，MeZO 甚至优于 FT
+- MeZO 显著优于 zero-shot、ICL 和 LP
+
+**OPT-30B 和 OPT-66B（Table 2）：**
+- MeZO 在 30B 和 66B 模型上有效工作
+- 在大多数任务上优于 zero-shot 和 ICL
+- 证明了 MeZO 的可扩展性
+
+### 3. 不可微目标优化（Table 3）
+
+- **任务**：准确率（分类）和 F1（SQuAD）
+- **结果**：
+  - MeZO + Accuracy 在 SST-2 上达到 92.7%（零样本 79.0%）
+  - MeZO + F1 在 SQuAD 上达到 78.5%（零样本 46.2%）
+  - 虽然不如交叉熵损失，但证明了 MeZO 优化不可微目标的潜力
+
+### 4. 内存和计算分析
+
+**内存消耗（Figure 3）：**
+- MeZO 与 zero-shot 内存消耗相同
+- 相比 FT 减少最多 **12 倍**
+- 相比 FT (prefix) 减少最多 **6 倍**
+
+**硬件限制下的最大可训练模型（Figure 4）：**
+- 单张 A100 (80GB)：FT 只能处理 2.7B，MeZO 可处理 **30B**（11 倍）
+- 双张 A100 (160GB)：FT 只能处理 6.7B，MeZO 可处理 **66B**
+
+**计算效率（Appendix F.6）：**
+- MeZO 每步速度提升 **7.74 倍**
+- 使用更少的 GPU（30B 模型只需 8 倍少的 GPU）
+- 但需要更多步数才能收敛
+
+---
+
+## 优势
+
+1. **极低内存消耗**：与推理相同的内存占用，使单 GPU 可微调超大模型
+2. **兼容多种微调方法**：支持全参数、LoRA、Prefix Tuning 等
+3. **可优化不可微目标**：如准确率、F1 分数，无需可微代理损失
+4. **存储效率极高**：仅需存储种子和少量标量，远低于 PEFT 方法
+5. **理论支持**：基于低有效秩假设，收敛速率与参数数量无关
+6. **实现简单**：仅需修改前向传播，无需反向传播框架
+7. **跨模型规模适用**：从 350M 到 66B 参数模型均有效
+8. **可与 ZO-Adam 等高级优化器结合**：提供额外性能提升的可能性
+
+---
+
+## 局限
+
+1. **需要提示（Prompt）**：MeZO 仅在使用提示时有效，无提示时性能大幅下降
+2. **训练步数多**：需要大量训练步数才能达到良好性能，虽然每步更快
+3. **不完全等同于反向传播**：在某些任务上仍有差距（如 CB、BoolQ 等）
+4. **梯度估计为近似值**：SPSA 仅提供梯度的秩-1 近似，精度有限
+5. **仅适用于微调**：不适用于从头训练（预训练），因为需要充分的预训练作为基础
+6. **理论假设较强**：需要损失函数具有低有效秩结构，虽然实践中常见
+7. **未与其他内存高效方法结合**：如 FlashAttention、量化等，留作未来工作
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **高效训练（Efficient Training）**：MeZO 是一种革命性的内存高效训练方法，与 LoRA、Prefix Tuning、Gradient Checkpointing 等方法形成互补
+2. **零阶优化（Zeroth-order Optimization）**：为大规模语言模型的零阶优化提供了实际可行的方案，推动了 ZO 方法在深度学习中的应用
+3. **参数高效微调（Parameter-Efficient Fine-Tuning）**：MeZO 与 PEFT 方法（如 LoRA、Prefix Tuning）兼容，可进一步降低内存开销
+4. **不可微目标优化**：MeZO 可优化准确率、F1 等不可微目标，与 RLHF 等人类偏好对齐方法相关
+5. **大模型微调的可扩展性**：为在资源受限环境下微调超大模型提供了新的可能性
+6. **内存-计算权衡（Memory-Compute Tradeoff）**：MeZO 在内存-计算权衡曲线上提供了新的点，与 Gradient Checkpointing 等方法互补
+
+---
+
+## AI 生成声明
+
+本笔记由 AI Agent（Hermes Agent, Nous Research）自动生成，基于论文原文 PDF 文本提取和元数据信息。笔记内容经过整理和翻译，旨在帮助读者快速理解论文核心贡献。如有错误或遗漏，请以原文为准。
+
+- 生成时间：2026年6月
+- 使用模型：/softhome/mozhu/models/MiMo-V2.5
+- 信息来源：arXiv:2305.17333v3 PDF 文本 + 元数据

@@ -35,3 +35,4 @@ cover {
 baseline {
   methods: "2025/DeepSeek-R1"
 }
+rating: 1

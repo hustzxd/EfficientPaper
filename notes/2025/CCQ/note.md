@@ -4,23 +4,186 @@
 
 ![](../../blank.jpg)
 
-## Abstract
+---
 
-The rapid scaling of Large Language Models (LLMs) elevates inference costs
-and compounds substantial deployment barriers. While quantization to 8 or 4
-bits mitigates this, sub-3-bit methods face severe accuracy, scalability, and
-efficiency degradation. We propose Convolutional Code Quantization (CCQ), an
-inference-optimized quantization approach compressing LLMs to 2.0-2.75 bits
-with minimal accuracy loss. Departing from error-prone scalar quantization or
-slow vector quantization, CCQ integrates a hardware-aware bit-shift encoding
-and decoding solution with Convolutional Code, Hybrid Encoding, and Code
-Cluster, jointly overcoming accuracy-speed bottlenecks. We construct a
-lookup-free encoding space, enabling a linear mapping between the codebook and
-weight vectors, thereby optimizing inference performance. Meanwhile, by drawing
-on the concept of data mapping from vector quantization, we minimize the
-performance degradation of the model under extremely low-bit conditions.
-Experiments demonstrate that CCQ achieves outstanding performance on LLMs
-across various benchmarks. We compress DeepSeek-V3 (671B total parameters) to
-184GB and ERNIE-4.5-300B-A47B to 89GB, enabling single-GPU deployment of ERNIE
-4.5 and eliminating inter-card communication. The 2-bit ERNIE-4.5-300B-A47B
-model and inference engine have been open-sourced.
+## 一句话总结
+
+CCQ 提出了一种基于卷积码的极低比特权重量化方法，通过卷积编码、混合编码和码聚类三大技术，将 LLM 权重压缩至 2.0–2.75 bits，同时实现近乎无损的模型精度和接近标量量化的推理速度，成功将 ERNIE-4.5-300B-A47B 压缩至 89GB 并实现单卡部署。
+
+---
+
+## 摘要翻译
+
+大语言模型（LLM）的快速扩展提升了推理成本并带来了重大的部署障碍。虽然 8 位或 4 位量化可以缓解这一问题，但低于 3 位的方法面临严重的精度、可扩展性和效率退化问题。我们提出卷积码量化（CCQ），一种推理优化的量化方法，将 LLM 压缩至 2.0–2.75 位，同时保持极小的精度损失。不同于容易出错的标量量化或缓慢的向量量化，CCQ 集成了硬件感知的位移编解码方案，结合卷积码、混合编码和码聚类，共同克服精度-速度瓶颈。我们构建了一个免查找的编码空间，实现了码本与权重向量之间的线性映射，从而优化了推理性能。同时，借鉴向量量化的数据映射概念，我们最小化了模型在极低比特条件下的性能退化。实验表明，CCQ 在各种基准测试上取得了出色的性能。我们将 DeepSeek-V3（总参数 671B）压缩至 184GB，将 ERNIE-4.5-300B-A47B 压缩至 89GB，实现了 ERNIE 4.5 的单卡部署，消除了卡间通信开销。2 位 ERNIE-4.5-300B-A47B 模型和推理引擎已开源。
+
+---
+
+## 研究动机
+
+1. **LLM 规模持续增长带来的部署瓶颈**：当前旗舰模型如 Qwen2.5、Llama 3 系列参数量达到千亿级别，MoE 架构（如 DeepSeek-V3 671B、ERNIE 4.5 300B）进一步放大了模型规模，导致推理延迟和分布式部署中的跨设备通信开销显著增加。
+
+2. **现有量化方法的局限性**：
+   - **标量量化**（如 GPTQ、AWQ）在 4 位时有效，但在 2 位以下由于数值范围受限导致精度严重退化。
+   - **向量量化**（如 VQ、AQLM、VPTQ）虽然压缩率高，但反量化过程需要大规模非连续的码本查找，违背数据局部性，无法高效利用硬件，且引入与码本大小成正比的延迟。
+   - **QAT 方法**（如 BitNet、OneBit、LittleBit）虽然能达到极低比特，但需要从预训练开始的长时间训练，部署成本高，且可扩展性受限。
+
+3. **核心需求**：需要一种既能实现极低比特（2 位级）压缩，又能保持推理效率（接近标量量化速度）和模型精度的后训练量化方案。
+
+---
+
+## 方法（技术细节）
+
+CCQ 的核心思想是将卷积码与标量量化相结合，构建免查找的编码空间，实现码本与权重向量之间的线性映射，从而兼顾压缩率、精度和推理效率。
+
+### 3.1 卷积码量化（Convolutional Code Quantization）
+
+- **编码配置定义**：使用三元组 (L, N, S) 定义卷积编码配置，其中 L 为每个状态所需比特数，N 为单次编码操作涉及的状态数，S 为相邻状态间的转移比特数。
+- **码本构建**：将有向图的连接关系转化为有限向量集合（码本）。以 (L=2, N=3, S=1) 为例，三个状态 (00→01→10) 的编码为 0010，存入码本索引 2。总比特数 T = L + (N-1)×S。
+- **压缩效果**：以 4 位量化为例，使用 (L=4, N=3, S=2) 配置，3 个量化值仅需 8 位存储，等效于 2.66 bpw，相比 4 位权重量化提升 33% 压缩率。
+- **位移解码（Bitshift Decoding）**：利用卷积码相邻状态的重复性，通过位移操作快速解码。反量化过程仅涉及位移操作和标量量化反量化计算，避免了向量量化中的索引查找。
+- **分组量化（Group-wise Quantization）**：引入分组量化缓解异常值影响，每组有独立的量化参数。当组大小不是 N 的倍数时，补零处理。
+- **搜索策略**：将码本值转换到浮点域后，计算每个权重与码本向量的 MSE 损失，选择最小 MSE 对应的码本索引。仅需存储索引，不需要存储码本。
+
+### 3.2 混合编码（Hybrid Encoding）
+
+- **问题**：卷积编码的存储比特数必须是 8 的倍数才能利用 INT8/INT16 数据类型，但高压缩率需要增加编码状态数，而过多状态会加剧精度损失。
+- **解决方案**：在同一组内混合使用多种不同的编码配置，以满足存储要求。
+- **具体设计**：交替使用 (L=3, N=3, S=2) 和 (L=3, N=4, S=2) 配置，将 7 个数值编码为 16 位，实现等效 2.28 bpw 的压缩率。
+
+### 3.3 码聚类（Code Cluster）
+
+- **动机**：通过混合编码可以缓解存储数据类型的限制，但实现真正的 2 位量化仍然困难。
+- **核心思想**：每个通道上实际使用的编码值非常有限，可以仅保留频繁使用的编码值，消除冗余，通过减少编码空间来提升压缩率。
+- **技术方案**：
+  - 观察卷积编码值的分布近似正态分布，适合均匀量化。
+  - 使用均匀量化将任意编码空间映射到 8 位数值范围（0-255），所有数据重建操作通过计算完成，无需索引查找。
+  - 具体流程：先使用 (L=6, N=4, S=3) 参数对每组权重进行卷积码量化，然后沿输出通道维度对码值进行聚类，映射到 8 位数值范围。
+  - 效果：4 个参数仅需 UINT8 存储，等效 2 bpw。
+  - 虽然码聚类限制了编码空间，但权重的真实量化精度为 6 位，结合分组量化可以有效确保关键权重的数值精度，对模型性能影响可忽略。
+
+### 3.4 尺度优化与压缩（Scale Optimization and Compression）
+
+- **尺度优化**：确定编码值后，通过反量化计算量化损失。将尺度 S 视为唯一变量，对尺度求导并令其为零，得到最优尺度。
+- **尺度压缩**：
+  - 通过通道级超级尺度（super scale）对尺度因子进行量化，以低比特格式存储。
+  - 利用每组末尾的冗余位存储量化后的尺度因子（如 2.75 bpw 方案利用 4 个冗余位）。
+  - 码聚类方案（(L=6, N=4, S=3)）无法利用冗余位，需额外考虑尺度存储开销，等效 bpw 为 2.06。
+
+### 3.5 反量化实现（Dequantization）
+
+- **无码聚类反量化（Algo. 2）**：适用于标准配置和混合编码。使用位移向量 Wshift 和掩码 wmask 提取量化权重值，结合超级尺度和零点进行反量化。
+- **码聚类反量化（Algo. 3）**：需要两次不同的反量化操作。第一次将 UINT8 扩展到 UINT16，第二次应用位移操作。由于码聚类消除了冗余位，需要显式加载每个计算块的分组量化尺度。
+
+---
+
+## 实验结果
+
+### 评估设置
+
+- **模型**：DeepSeek-V3-0324、ERNIE-4.5-300B-A47B
+- **配置**：2 bpw、2.5 bpw、2.75 bpw
+- **基准测试**：GSM8K、CMath、MUSR、BBH、DROP、C-Eval、MMLU
+- **基线**：8 位、4 位标量量化（GPTQ、AWQ、WINT8、WINT4）
+
+### DeepSeek-V3-0324 结果
+
+| 模型 | bpw | 内存 | GSM8K | C-Eval | MMLU | 平均 |
+|------|-----|------|-------|--------|------|------|
+| Baseline | 8 | 642GB | 96.21 | 87.31 | 86.50 | 90.01 |
+| GPTQ | 4 | 346GB | 94.77 | 87.66 | 86.60 | 90.04 |
+| AWQ | 4 | 328GB | 96.13 | 87.22 | 86.38 | 89.43 |
+| CCQ | 2.75 | 230GB | 95.68 | 85.08 | 85.24 | 88.67 |
+| CCQ | 2.5 | 212GB | 95.60 | 84.11 | 85.07 | 88.26 |
+| CCQ | 2.06 | 184GB | 94.92 | 84.07 | 84.29 | 87.76 |
+
+- 2.06 bpw 的 CCQ 将内存从 8 位基线的 642GB 减少至 184GB（节省 71.3%），仅伴随微小的精度退化。
+- 2 位 RTN 量化导致灾难性精度崩溃，而 CCQ 保持了与 4 位可比的性能。
+
+### ERNIE 4.5 结果
+
+| 模型 | bpw | 内存 | GSM8K | CMath | MUSR | BBH | DROP | C-Eval | MMLU | 平均 |
+|------|-----|------|-------|-------|------|-----|------|--------|------|------|
+| WINT8 | 8 | 281GB | 96.6 | 96.7 | 69.9 | 94.3 | 91.1 | 90.6 | 86.5 | 89.39 |
+| WINT4 | 4 | 149GB | 96.21 | 96.5 | 69.67 | 94.43 | 91.17 | 89.84 | 86.16 | 89.14 |
+| WINT2 | 2 | 89GB | 95.98 | 96.0 | 69.57 | 92.02 | 89.97 | 85.39 | 82.58 | 87.36 |
+
+- 2 bpw 量化模型将 GPU 内存消耗降低 68.33%，精度退化约 2%。
+- 成功实现 ERNIE-4.5-300B-A47B 在单张 NVIDIA H20 GPU 上的部署，消除卡间通信开销。
+
+### 推理性能
+
+- **GEMV 性能**：CCQ 在 GEMV 场景中相比 VPTQ 实现高达 2× 加速，接近标准 WINT2 性能。证明位移解码设计有效消除了向量量化的内存访问瓶颈。
+- **Grouped-GEMM 性能**：在 MoE 推理中，CCQ（W2A16-CCQ）不仅优于 W8A16 和 W4A16，而且在批量大小和矩阵维度增大时保持延迟优势。
+- 实现基于 Triton 的高效内核，推理延迟接近标量量化。
+
+---
+
+## 优势
+
+1. **极低比特压缩**：实现 2.0–2.75 bpw 的压缩，同时保持近乎无损的模型精度，远优于传统 RTN 2 位量化的灾难性退化。
+
+2. **高效推理**：通过位移解码替代码本查找，实现接近标量量化的推理速度，避免了向量量化中非连续内存访问带来的性能瓶颈。
+
+3. **免查找编码空间**：码本与权重向量之间存在线性映射关系，无需存储大型码本，索引直接代表卷积码值，反量化通过位移操作完成。
+
+4. **灵活的混合编码**：通过混合多种编码配置，突破存储数据类型的限制，实现更灵活的压缩率调整。
+
+5. **码聚类创新**：利用卷积码值的正态分布特性，通过均匀量化将编码空间映射到 8 位范围，无需索引查找即可完成数据重建。
+
+6. **实际部署价值**：成功将 ERNIE-4.5-300B-A47B 压缩至 89GB 并实现单卡部署，DeepSeek-V3 压缩至 184GB，具有显著的实用价值。
+
+7. **开源贡献**：2 位量化 ERNIE 4.5 模型和推理引擎已开源，推理代码可通过 FastDeploy 获取。
+
+---
+
+## 局限
+
+1. **精度损失主要集中在特定任务**：在 5-shot C-Eval 和 MMLU 任务上，精度退化主要源于指令遵循失败（instruction-following failures），未来工作需关注提升模型对指令的遵从能力。
+
+2. **实验范围有限**：当前实验主要在 MoE 架构（DeepSeek-V3、ERNIE 4.5）上验证，对 Dense 模型的验证还需进一步探索（如与 QTIP、VPTQ 等在 Dense 模型上的对比）。
+
+3. **码聚类的额外开销**：码聚类方案虽然实现了 2 bpw，但消除了冗余位，需要额外的尺度存储开销（等效 bpw 为 2.06 而非严格 2 bpw）。
+
+4. **硬件依赖**：推理性能优化基于 NVIDIA H20 GPU 和 Triton 内核，在其他硬件平台上的表现有待验证。
+
+5. **缺乏与 QAT 方法的对比**：论文主要对比后训练量化方法，与 BitNet、OneBit 等 QAT 方法的系统对比未在实验中体现。
+
+6. **推理内核优化空间**：论文提到推理内核优化仍有改进空间，通过量化和运行时执行阶段的排列策略联合设计可进一步降低延迟。
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+1. **极低比特 LLM 量化**：CCQ 是极低比特（2 位级）权重量化的重要工作，属于 LLM 压缩与高效推理的核心研究方向。
+
+2. **硬件友好量化**：CCQ 的位移解码设计是硬件感知量化的典型案例，与 SmoothQuant、GPTQ 等工作共同构成硬件友好量化的研究脉络。
+
+3. **向量量化与编码理论交叉**：CCQ 将信息论中的卷积码引入 LLM 量化，代表了编码理论与机器学习压缩的交叉研究方向。
+
+4. **MoE 模型部署**：CCQ 在 MoE 架构（DeepSeek-V3、ERNIE 4.5）上的成功应用，为超大规模 MoE 模型的高效部署提供了实用方案。
+
+5. **动态比特分配**：论文提出基于损失的动态比特分配作为未来方向，与混合精度量化、自适应量化等研究方向相关。
+
+6. **推理内核优化**：CCQ 的 Triton 内核实现和推理加速与 vLLM、TGI 等推理引擎的底层优化研究密切相关。
+
+7. **后训练量化（PTQ）前沿**：CCQ 代表了 PTQ 在极低比特场景的最新进展，与 GPTQ、AWQ、QTIP、VPTQ 等构成 PTQ 研究的重要参考。
+
+---
+
+## 元数据
+
+- **论文标题**：CCQ: Convolutional Code for Extreme Low-bit Quantization in LLMs
+- **作者**：Zhaojing Zhou, Xunchao Li, Minghao Li, Handi Zhang, Haoshuang Wang, Wenbin Chang, Yiqun Liu, Qingqing Dang, Dianhai Yu, Yanjun Ma, Haifeng Wang
+- **机构**：Baidu Inc.
+- **发表**：arXiv, 2025
+- **arXiv ID**：2507.07145v1
+- **代码框架**：PyTorch
+- **代码仓库**：https://github.com/PaddlePaddle/FastDeploy/tree/develop
+- **关键词**：quantization
+- **模型规模**：DeepSeek-V3 (671B), ERNIE-4.5-300B-A47B
+- **压缩率**：2.0–2.75 bpw，内存节省 68–71%
+
+---
+
+> ⚠️ 本 note 由 AI Agent 自动生成，仅供学习参考，内容可能存在偏差，请以原文为准。
+> 生成时间：2025-07-10

@@ -1,14 +1,130 @@
 # Attention Residuals
 
-> Kimi Team, Guangyu Chen, Yu Zhang, Jianlin Su, Weixin Xu, Siyuan Pan, Yaoyu Wang, Yucheng Wang, Guanduo Chen, Bohong Yin, Yutian Chen, Junjie Yan, Ming Wei, Y. Zhang, Fanqing Meng, Chao Hong, Xiaotong Xie, Shaowei Liu, Enzhe Lu, Yunpeng Tai, Yanru Chen, Xin Men, Haiqing Guo, Y. Charles, Haoyu Lu, Lin Sui, Jinguo Zhu, Zaida Zhou, Weiran He, Weixiao Huang, Xinran Xu, Yuzhi Wang, Guokun Lai, Yulun Du, Yuxin Wu, Zhilin Yang, Xinyu Zhou
+> 本 note 由 AI Agent 自动生成，基于论文原文提取。如有错误请以原文为准。
 
-![111](cover.jpg)
+---
 
-## Abstract
+## 一句话总结
 
-Residual connections with PreNorm are standard in modern LLMs, yet they accumulate all layer outputs with fixed unit weights. This uniform aggregation causes uncontrolled hidden-state growth with depth, progressively diluting each layer's contribution. We propose Attention Residuals (AttnRes), which replaces this fixed accumulation with softmax attention over preceding layer outputs, allowing each layer to selectively aggregate earlier representations with learned, input-dependent weights. To address the memory and communication overhead of attending over all preceding layer outputs for large-scale model training, we introduce Block AttnRes, which partitions layers into blocks and attends over block-level representations, reducing the memory footprint while preserving most of the gains of full AttnRes. Combined with cache-based pipeline communication and a two-phase computation strategy, Block AttnRes becomes a practical drop-in replacement for standard residual connections with minimal overhead.
-  Scaling law experiments confirm that the improvement is consistent across model sizes, and ablations validate the benefit of content-dependent depth-wise selection. We further integrate AttnRes into the Kimi Linear architecture (48B total / 3B activated parameters) and pre-train on 1.4T tokens, where AttnRes mitigates PreNorm dilution, yielding more uniform output magnitudes and gradient distribution across depth, and improves downstream performance across all evaluated tasks.
-	
-AttnRes 想要填补的空白就是：我们想要一种既能跨越任意层级、又能基于当前输入进行动态权重分配的「检索」机制[1]
+Attention Residuals（AttnRes）将标准残差连接的固定累加替换为基于 softmax attention 的深度维度选择性聚合，每个层通过学习的伪查询向量动态选择前序层输出，解决了 PreNorm 导致的隐藏状态 O(L) 增长和层贡献稀释问题。
 
-[1] [Kimi 新发布的「注意力残差」有什么亮点？](https://www.zhihu.com/question/2016993095078684011)
+---
+
+## 摘要 (Abstract)
+
+标准残差连接（PreNorm）以固定单位权重累加所有层输出，导致隐藏状态随深度无控增长，逐步稀释每层贡献。AttnRes 用 softmax attention 替换固定累加，允许每层选择性聚合前序层的、输入依赖的表示。Block AttnRes 将层分为块，仅在块级表示上进行 attention，将内存和通信从 O(Ld) 降至 O(Nd)。集成到 Kimi Linear 架构（48B total / 3B activated，1.4T tokens 预训练），AttnRes 缓解 PreNorm 稀释，产生更均匀的输出幅度和梯度分布，改善下游任务性能。
+
+---
+
+## 研究动机
+
+1. **PreNorm 稀释问题**：标准残差连接 h_l = h_{l-1} + f_{l-1}(h_{l-1}) 累加所有层输出，隐藏状态幅度 O(L) 增长，每层贡献被稀释
+2. **固定累加的局限**：
+   - 无法选择性访问前序层输出（只能访问压缩后的单个状态）
+   - 信息丢失不可逆（深层无法恢复早期信息）
+   - 后续层需学习更大输出以获得影响力（不稳定）
+3. **与 RNN 的对偶性**：RNN 在时间维度压缩信息，残差在深度维度压缩信息；Transformer 用 attention 替换 RNN，AttnRes 用 attention 替换残差
+
+---
+
+## 方法
+
+### 1. Full Attention Residuals
+
+将 h_l = h_1 + Σ f_i(h_i) 替换为：
+```
+h_l = Σ α_{i→l} · v_i
+```
+其中 α_{i→l} 是 softmax attention 权重，v_i 是各层输出。
+
+**权重计算**：
+- query: q_l = w_l（学习的伪查询向量）
+- key: k_i = v_i = f_i(h_i)
+- α_{i→l} = softmax(q_l^T RMSNorm(k_i))
+
+**关键设计**：伪查询 w_l 与前向计算解耦，不依赖当前层输入，可并行计算。
+
+**复杂度**：O(L²d) 算术，O(Ld) 内存（可复用反向传播保留的激活）。
+
+### 2. Block Attention Residuals
+
+将 L 层分为 N 个块，块内用标准残差累加，块间用 attention：
+- 块内累加：b_n = Σ f_j(h_j)
+- 块间 attention：V = [b_0, b_1, ..., b_{n-1}]
+- 内存/通信从 O(Ld) 降至 O(Nd)
+
+**经验发现**：N ≈ 8 恢复大部分收益。
+
+### 3. 基础设施优化
+
+**训练优化**：
+- **跨阶段缓存**：物理阶段缓存已接收的块表示，避免重复传输，峰值通信从 O(C) 降至 O(P)
+- **两阶段计算**：Phase 1 并行计算块间 attention，Phase 2 顺序计算块内 partial sum + online softmax merge
+
+**推理优化**：
+- 两阶段计算策略：批量 S 个伪查询，一次矩阵乘法完成块间 attention
+- 长上下文预填充：序列分片方案
+- 推理延迟开销 < 2%
+
+---
+
+## 实验结果
+
+### 1. Scaling Law 实验
+
+- AttnRes 在不同计算预算下一致优于 baseline
+- Block AttnRes 匹配 baseline 用 1.25× 更多计算的 loss
+
+### 2. 48B 模型预训练（Kimi Linear，1.4T tokens）
+
+- **训练动态**：AttnRes 缓解 PreNorm 稀释
+  - 输出幅度在深度上保持有界
+  - 梯度分布更均匀
+- **下游任务**：所有评估任务上均有改善
+
+### 3. 消融实验
+
+- 块数 N ≈ 8 恢复大部分收益
+- 内容依赖的深度选择有显著优势
+
+---
+
+## 优势
+
+1. **理论统一**：将标准残差视为深度维度的线性 attention，AttnRes 是深度维度的 softmax attention
+2. **即插即用**：可直接替换标准残差连接，最小化开销
+3. **训练开销小**：在非 pipeline 并行时开销可忽略，pipeline 并行下 < 4%
+4. **推理开销低**：延迟开销 < 2%
+5. **缓解决定性稀释**：输出幅度有界，梯度分布均匀
+6. **可扩展**：Block AttnRes 将内存/通信从 O(Ld) 降至 O(Nd)，N=8 即可
+
+---
+
+## 局限性
+
+1. **仅针对残差连接**：不直接解决注意力机制本身的计算效率
+2. **Block 设计选择**：块数 N 的选择需权衡，过小可能丢失信息
+3. **推理时的 KV cache**：块表示需缓存，增加推理内存
+4. **伪查询设计**：learned vector 可能不够灵活（无法输入依赖）
+5. **未验证更长上下文**：48B 模型仅在 1.4T tokens 上验证，更长上下文未探索
+
+---
+
+## 关联工作
+
+- **残差连接**：ResNet, Highway Networks, Scaled Residual Paths
+- **深度选择**：LayerDrop, Mixture-of-Depths, Multi-Stream Recurrences
+- **注意力机制**：Transformer, FlashAttention, KV Cache
+- **稀疏化**：MoE, Token Routing
+
+---
+
+## 与 EfficientPaper 相关的研究方向
+
+- **结构设计**：残差连接变体、深度维度选择性聚合
+- **KV Cache 生命周期管理**：块级表示缓存与通信
+- **推理系统优化**：两阶段计算、长上下文预填充
+
+---
+
+*Generated by AI Agent on 2026-06-04. Source: arXiv:2603.15031v1*

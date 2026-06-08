@@ -2,91 +2,183 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/hustzxd/EfficientPaper?style=social)](https://github.com/hustzxd/EfficientPaper)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/hustzxd/EfficientPaper)](https://github.com/hustzxd/EfficientPaper)
-[![Papers](https://img.shields.io/badge/papers-450+-blue)](https://github.com/hustzxd/EfficientPaper)
+[![Papers](https://img.shields.io/badge/papers-473-blue)](https://github.com/hustzxd/EfficientPaper)
 
-A curated collection of **450+** research papers on **Pruning**, **Quantization**, and **Efficient Inference/Training** for large language models and deep neural networks.
+EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **473** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
+
+The main experience is the Home page at `docs/index.md`: a searchable paper workspace with local editing, graph navigation, arXiv import, PDF lookup, and GitHub sync.
 
 <p align="center">
-<img src="/images/efficient_paper.png" width="800" title="EfficientPaper">
+  <img src="/images/efficient_paper.png" width="1000" title="EfficientPaper Home">
 </p>
 
-## Getting Started
+## What the UI Supports
+
+### 1. Searchable paper workspace
+
+The Home page combines search, filters, stats, and paper actions in one place.
+
+- Keyword search supports plain terms, quoted phrases, `AND`, and negative terms like `-kv`.
+- Filters include year, venue, keyword, rating, and sort order.
+- Result cards support selection, copy/share, note jumping, graph jumping, local PDF lookup, and quick rating.
+- A right-side detail drawer shows cover, authors, institutions, tags, note preview, and paper links.
+
+### 2. Interactive method graph
+
+The graph page links baseline methods and derived work, and can jump back to the corresponding paper on Home.
+
+<p align="center">
+  <img src="/images/graph.png" width="1000" title="Interactive Graph">
+</p>
+
+### 3. Local paper metadata editor
+
+`docs/edit.html` provides a standalone editor for `.prototxt` metadata, including title, abbreviation, venue, authors, institutions, keywords, code URL, rating, and update time.
+
+<p align="center">
+  <img src="/images/edit1.png" width="1000" title="Edit Paper Metadata">
+</p>
+
+The same editor also supports cover upload, preview, baseline method linking, save, and guarded deletion.
+
+<p align="center">
+  <img src="/images/edit2.png" width="1000" title="Edit Cover and Baselines">
+</p>
+
+### 4. Add papers from arXiv
+
+When the local editor server is running, the Home page can search arXiv by ID, inspect the detected paper, and create a new paper entry with an optional custom abbreviation.
+
+<p align="center">
+  <img src="/images/add_from_arxiv.png" width="700" title="Add Paper from arXiv">
+</p>
+
+### 5. Upload local changes to GitHub
+
+The site can trigger the local refresh and upload flow from the browser. This is intended for local use and depends on the editor server.
+
+<p align="center">
+  <img src="/images/upload_to_github.png" width="700" title="Upload to GitHub">
+</p>
+
+## Quick Start
+
+### 1. Clone and install dependencies
 
 ```bash
 git clone https://github.com/hustzxd/EfficientPaper
-pip install protobuf==5.27.2 pandas arxiv
+cd EfficientPaper
+pip install protobuf==5.27.2 pandas arxiv openai mkdocs mkdocs-glightbox mkdocs-literate-nav mkdocs-macros-plugin watchdog
 ```
 
-### MiMo API Key (Optional)
+If `protoc` is not installed on your machine, install Protocol Buffers first.
 
-Adding papers can call Xiaomi MiMo LLM (`mimo-v2-flash`) to auto-generate Chinese summaries and keyword classification:
+### 2. Optional MiMo API key
+
+Adding papers can call Xiaomi MiMo LLM (`mimo-v2-flash`) to auto-generate Chinese summaries and keyword suggestions:
 
 ```bash
-export MIMO_API_KEY="your-mimo-api-key"  # https://api.xiaomimimo.com/v1
+export MIMO_API_KEY="your-mimo-api-key"
 ```
 
-> If not configured, auto-summarization is skipped — other features work normally.
+If this variable is not set, paper creation still works, but auto summarization and keyword suggestion are skipped.
 
-### Quick Workflow
-
-**1. Add paper from PDF:**
-
-```bash
-./add_paper_info.sh ~/Downloads/2512.01278v1.pdf
-```
-
-Extracts metadata, generates summary via MiMo, creates `.prototxt` and note files.
-
-**2. Edit in browser:**
+### 3. Start the local site and editor server
 
 ```bash
 ./start_editor.sh
 ```
 
-Opens MkDocs (port 8000) + Editor API (port 8001). Visit `http://localhost:8000` to find, edit, and save papers.
+This script will:
 
-**3. Deploy:**
+- regenerate derived data with `refresh_and_upload.sh`
+- start MkDocs at `http://localhost:8000`
+- start the editor API at `http://localhost:8001`
+- watch `meta/` and `notes/` for changes and auto-refresh generated data
+
+## Typical Workflow
+
+### Add from arXiv ID or UI
 
 ```bash
-./refresh_and_upload.sh 'update_paper_info'
+./add_paper_info.sh 2512.01278v1
 ```
 
-Regenerates search data, commits, pushes, and deploys to GitHub Pages.
+This wraps `scripts/add_paper.py`, looks up the paper by arXiv ID, and creates a new `.prototxt` paper entry plus a note directory under `notes/<year>/<paper_id>/`.
 
-## Editor Features
+You can also open the Home page and use `Add from arXiv` when the local server is available.
 
-| Category | Description |
-|:---------|:------------|
-| **Paper Info** | Title, abbreviation, URL, authors, institutions |
-| **Publication** | Venue (arXiv, ICML, NeurIPS, ICLR, CVPR, ACL, ...) + year |
-| **Code** | Repository URL with auto GitHub stars badge |
-| **Keywords** | Multi-select: Quantization, Pruning, KV Cache, Sparsity, ... |
-| **Cover** | Upload image, auto-saved and auto-referenced in `note.md` |
-| **Baselines** | Format `year/abbr` with smart auto-complete |
+### Edit metadata and notes in browser
 
-## File Structure
+- Visit `http://localhost:8000`
+- Use the paper card `Edit` action to open `docs/edit.html`
+- Open the paper note page to edit `notes/<year>/<paper>/note.md` in browser
 
+### Refresh generated assets
+
+```bash
+./refresh_and_upload.sh
 ```
-meta/{year}/{paper_id}.prototxt   # Paper metadata
-notes/{year}/{paper_id}/          # note.md + cover image
-docs/js/papers.json               # Search index
-scripts/paper_editor_server.py    # Editor backend
-scripts/generate_search_data.py   # Search data generator
+
+This regenerates protobuf templates, split metadata, graph data, and the search dataset.
+
+### Commit, push, and deploy
+
+```bash
+./refresh_and_upload.sh "update_paper_info"
 ```
+
+With a commit message, the script additionally runs:
+
+- `git add .`
+- `git commit -m ...`
+- `git push`
+- `mkdocs build`
+- `./build_and_deploy.sh`
+
+## Repository Layout
+
+```text
+docs/index.md                        # Main searchable home page
+docs/baseline_methods_graph_interactive.md
+docs/edit.html                       # Local metadata editor
+docs/js/papers.json                  # Frontend search dataset
+docs/js/paper_graph_map.json         # Home <-> graph mapping
+meta/<year>/*.prototxt               # Structured paper metadata
+notes/<year>/<paper>/note.md         # Paper notes
+notes/<year>/<paper>/cover.*         # Paper cover assets
+scripts/paper_editor_server.py       # Local editor / upload / pull / PDF API
+scripts/generate_search_data.py      # Search dataset generator
+```
+
+## Local-server-aware Features
+
+Several UI actions depend on `http://localhost:8001` and are intentionally disabled when the server is unavailable:
+
+- `Add from arXiv`
+- `Upload to GitHub`
+- `Pull from GitHub`
+- `Set PDF Path`
+- card-level `PDF`
+- card-level `Edit`
+- card-level delete
+
+This graceful degradation is part of the intended local workflow.
 
 ## Contributing
 
-Contributions are welcome! To add a paper:
+To add or update a paper:
 
-1. Fork this repo
-2. Run `./add_paper_info.sh <paper.pdf>` to generate metadata
-3. Run `./start_editor.sh` and edit paper details in the web UI
-4. Submit a Pull Request
+1. Run `./add_paper_info.sh <arxiv_id>` or use `Add from arXiv`.
+2. Start the local tools with `./start_editor.sh`.
+3. Edit metadata, note content, cover image, keywords, and baseline links in the browser.
+4. Run `./refresh_and_upload.sh` to regenerate derived data.
+5. Submit a Pull Request, or use the local GitHub upload flow if you are maintaining your own deployment.
 
 ## Conference Timeline
 
 <p align="center">
-<img src="/notes/conference_timeline.png" width="800" title="Conference Timeline">
+  <img src="/notes/conference_timeline.png" width="1000" title="Conference Timeline">
 </p>
 
 ## 招聘
