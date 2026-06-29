@@ -1,15 +1,27 @@
 {
   "title": "Baseline Methods Graph Interactive",
-  "component_count": 18,
+  "component_count": 16,
   "components": [
     {
       "title": "Quest",
       "anchor": "quest-family",
-      "node_count": 132,
-      "edge_count": 157,
+      "node_count": 152,
+      "edge_count": 188,
       "width": 1644,
-      "height": 4854,
+      "height": 5494,
       "nodes": [
+        {
+          "id": "2022/44KWQAWO",
+          "label": "44KWQAWO[2022]",
+          "display_name": "44KWQAWO",
+          "year_label": "2022",
+          "search_name": "44KWQAWO",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 907.0
+        },
         {
           "id": "2022/flashattention",
           "label": "flashattention[2022]",
@@ -18,9 +30,9 @@
           "search_name": "flashattention",
           "type": "root",
           "level": 0,
-          "row": 0,
+          "row": 1,
           "x": 132.0,
-          "y": 867.0
+          "y": 987.0
         },
         {
           "id": "2023/CacheGen",
@@ -30,9 +42,9 @@
           "search_name": "CacheGen",
           "type": "root",
           "level": 0,
-          "row": 1,
+          "row": 2,
           "x": 132.0,
-          "y": 947.0
+          "y": 1067.0
         },
         {
           "id": "2023/FlexGen",
@@ -42,9 +54,9 @@
           "search_name": "FlexGen",
           "type": "root",
           "level": 0,
-          "row": 2,
+          "row": 3,
           "x": 132.0,
-          "y": 1027.0
+          "y": 1147.0
         },
         {
           "id": "2023/gptq",
@@ -54,9 +66,9 @@
           "search_name": "gptq",
           "type": "root",
           "level": 0,
-          "row": 3,
+          "row": 4,
           "x": 132.0,
-          "y": 1107.0
+          "y": 1227.0
         },
         {
           "id": "2023/H2O",
@@ -66,9 +78,9 @@
           "search_name": "H2O",
           "type": "root",
           "level": 0,
-          "row": 4,
+          "row": 5,
           "x": 132.0,
-          "y": 1187.0
+          "y": 1307.0
         },
         {
           "id": "2023/omniquant",
@@ -78,9 +90,9 @@
           "search_name": "omniquant",
           "type": "root",
           "level": 0,
-          "row": 5,
+          "row": 6,
           "x": 132.0,
-          "y": 1267.0
+          "y": 1387.0
         },
         {
           "id": "2023/PagedAttention",
@@ -90,9 +102,9 @@
           "search_name": "PagedAttention",
           "type": "root",
           "level": 0,
-          "row": 6,
+          "row": 7,
           "x": 132.0,
-          "y": 1347.0
+          "y": 1467.0
         },
         {
           "id": "2023/QuIP",
@@ -102,9 +114,9 @@
           "search_name": "QuIP",
           "type": "root",
           "level": 0,
-          "row": 7,
+          "row": 8,
           "x": 132.0,
-          "y": 1427.0
+          "y": 1547.0
         },
         {
           "id": "2024/AdaKV",
@@ -114,9 +126,9 @@
           "search_name": "AdaKV",
           "type": "root",
           "level": 0,
-          "row": 8,
+          "row": 9,
           "x": 132.0,
-          "y": 1507.0
+          "y": 1627.0
         },
         {
           "id": "2024/Async-TP",
@@ -126,9 +138,9 @@
           "search_name": "Async-TP",
           "type": "root",
           "level": 0,
-          "row": 9,
+          "row": 10,
           "x": 132.0,
-          "y": 1587.0
+          "y": 1707.0
         },
         {
           "id": "2024/awq",
@@ -138,9 +150,9 @@
           "search_name": "awq",
           "type": "root",
           "level": 0,
-          "row": 10,
+          "row": 11,
           "x": 132.0,
-          "y": 1667.0
+          "y": 1787.0
         },
         {
           "id": "2024/CachedAttention",
@@ -150,9 +162,9 @@
           "search_name": "CachedAttention",
           "type": "root",
           "level": 0,
-          "row": 11,
+          "row": 12,
           "x": 132.0,
-          "y": 1747.0
+          "y": 1867.0
         },
         {
           "id": "2024/Cake",
@@ -162,9 +174,9 @@
           "search_name": "Cake",
           "type": "root",
           "level": 0,
-          "row": 12,
+          "row": 13,
           "x": 132.0,
-          "y": 1827.0
+          "y": 1947.0
         },
         {
           "id": "2024/DoubleSparsity",
@@ -174,9 +186,9 @@
           "search_name": "DoubleSparsity",
           "type": "root",
           "level": 0,
-          "row": 13,
+          "row": 14,
           "x": 132.0,
-          "y": 1907.0
+          "y": 2027.0
         },
         {
           "id": "2024/DuoAttention",
@@ -186,9 +198,9 @@
           "search_name": "DuoAttention",
           "type": "root",
           "level": 0,
-          "row": 14,
+          "row": 15,
           "x": 132.0,
-          "y": 1987.0
+          "y": 2107.0
         },
         {
           "id": "2024/FLUX",
@@ -198,9 +210,9 @@
           "search_name": "FLUX",
           "type": "root",
           "level": 0,
-          "row": 15,
+          "row": 16,
           "x": 132.0,
-          "y": 2067.0
+          "y": 2187.0
         },
         {
           "id": "2024/GEAR",
@@ -210,9 +222,9 @@
           "search_name": "GEAR",
           "type": "root",
           "level": 0,
-          "row": 16,
+          "row": 17,
           "x": 132.0,
-          "y": 2147.0
+          "y": 2267.0
         },
         {
           "id": "2024/KIVI",
@@ -222,9 +234,9 @@
           "search_name": "KIVI",
           "type": "root",
           "level": 0,
-          "row": 17,
+          "row": 18,
           "x": 132.0,
-          "y": 2227.0
+          "y": 2347.0
         },
         {
           "id": "2024/KVQuant",
@@ -234,9 +246,9 @@
           "search_name": "KVQuant",
           "type": "root",
           "level": 0,
-          "row": 18,
+          "row": 19,
           "x": 132.0,
-          "y": 2307.0
+          "y": 2427.0
         },
         {
           "id": "2024/LazyLLM",
@@ -246,9 +258,9 @@
           "search_name": "LazyLLM",
           "type": "root",
           "level": 0,
-          "row": 19,
+          "row": 20,
           "x": 132.0,
-          "y": 2387.0
+          "y": 2507.0
         },
         {
           "id": "2024/MiKV",
@@ -258,9 +270,9 @@
           "search_name": "MiKV",
           "type": "root",
           "level": 0,
-          "row": 20,
+          "row": 21,
           "x": 132.0,
-          "y": 2467.0
+          "y": 2587.0
         },
         {
           "id": "2024/Mooncake",
@@ -270,9 +282,9 @@
           "search_name": "Mooncake",
           "type": "root",
           "level": 0,
-          "row": 21,
+          "row": 22,
           "x": 132.0,
-          "y": 2547.0
+          "y": 2667.0
         },
         {
           "id": "2024/Quest",
@@ -282,9 +294,21 @@
           "search_name": "Quest",
           "type": "root",
           "level": 0,
-          "row": 22,
+          "row": 23,
           "x": 132.0,
-          "y": 2627.0
+          "y": 2747.0
+        },
+        {
+          "id": "2024/SageAttention",
+          "label": "SageAttention[2024]",
+          "display_name": "SageAttention",
+          "year_label": "2024",
+          "search_name": "SageAttention",
+          "type": "root",
+          "level": 0,
+          "row": 24,
+          "x": 132.0,
+          "y": 2827.0
         },
         {
           "id": "2024/SeerAttention",
@@ -294,9 +318,9 @@
           "search_name": "SeerAttention",
           "type": "root",
           "level": 0,
-          "row": 23,
+          "row": 25,
           "x": 132.0,
-          "y": 2707.0
+          "y": 2907.0
         },
         {
           "id": "2024/SGLang",
@@ -306,9 +330,9 @@
           "search_name": "SGLang",
           "type": "root",
           "level": 0,
-          "row": 24,
+          "row": 26,
           "x": 132.0,
-          "y": 2787.0
+          "y": 2987.0
         },
         {
           "id": "2024/SliceGPT",
@@ -318,9 +342,9 @@
           "search_name": "SliceGPT",
           "type": "root",
           "level": 0,
-          "row": 25,
+          "row": 27,
           "x": 132.0,
-          "y": 2867.0
+          "y": 3067.0
         },
         {
           "id": "2024/SnapKV",
@@ -330,9 +354,9 @@
           "search_name": "SnapKV",
           "type": "root",
           "level": 0,
-          "row": 26,
+          "row": 28,
           "x": 132.0,
-          "y": 2947.0
+          "y": 3147.0
         },
         {
           "id": "2024/streaming-llm",
@@ -342,9 +366,9 @@
           "search_name": "streaming-llm",
           "type": "root",
           "level": 0,
-          "row": 27,
+          "row": 29,
           "x": 132.0,
-          "y": 3027.0
+          "y": 3227.0
         },
         {
           "id": "2024/TOVA",
@@ -354,9 +378,9 @@
           "search_name": "TOVA",
           "type": "root",
           "level": 0,
-          "row": 28,
+          "row": 30,
           "x": 132.0,
-          "y": 3107.0
+          "y": 3307.0
         },
         {
           "id": "2024/ZipCache",
@@ -366,9 +390,9 @@
           "search_name": "ZipCache",
           "type": "root",
           "level": 0,
-          "row": 29,
+          "row": 31,
           "x": 132.0,
-          "y": 3187.0
+          "y": 3387.0
         },
         {
           "id": "2025/AttentionSinks",
@@ -378,9 +402,9 @@
           "search_name": "AttentionSinks",
           "type": "root",
           "level": 0,
-          "row": 30,
+          "row": 32,
           "x": 132.0,
-          "y": 3267.0
+          "y": 3467.0
         },
         {
           "id": "2025/DSA",
@@ -390,9 +414,9 @@
           "search_name": "DSA",
           "type": "root",
           "level": 0,
-          "row": 31,
+          "row": 33,
           "x": 132.0,
-          "y": 3347.0
+          "y": 3547.0
         },
         {
           "id": "2025/FlashInfer",
@@ -402,9 +426,9 @@
           "search_name": "FlashInfer",
           "type": "root",
           "level": 0,
-          "row": 32,
+          "row": 34,
           "x": 132.0,
-          "y": 3427.0
+          "y": 3627.0
         },
         {
           "id": "2025/LMCache",
@@ -414,9 +438,9 @@
           "search_name": "LMCache",
           "type": "root",
           "level": 0,
-          "row": 33,
+          "row": 35,
           "x": 132.0,
-          "y": 3507.0
+          "y": 3707.0
         },
         {
           "id": "2025/Marconi",
@@ -426,9 +450,33 @@
           "search_name": "Marconi",
           "type": "root",
           "level": 0,
-          "row": 34,
+          "row": 36,
           "x": 132.0,
-          "y": 3587.0
+          "y": 3787.0
+        },
+        {
+          "id": "2025/MoBA",
+          "label": "MoBA[2025]",
+          "display_name": "MoBA",
+          "year_label": "2025",
+          "search_name": "MoBA",
+          "type": "root",
+          "level": 0,
+          "row": 37,
+          "x": 132.0,
+          "y": 3867.0
+        },
+        {
+          "id": "2025/NSA",
+          "label": "NSA[2025]",
+          "display_name": "NSA",
+          "year_label": "2025",
+          "search_name": "NSA",
+          "type": "root",
+          "level": 0,
+          "row": 38,
+          "x": 132.0,
+          "y": 3947.0
         },
         {
           "id": "2025/PQCache",
@@ -438,9 +486,9 @@
           "search_name": "PQCache",
           "type": "root",
           "level": 0,
-          "row": 35,
+          "row": 39,
           "x": 132.0,
-          "y": 3667.0
+          "y": 4027.0
         },
         {
           "id": "2025/R-KV",
@@ -450,9 +498,33 @@
           "search_name": "R-KV",
           "type": "root",
           "level": 0,
-          "row": 36,
+          "row": 40,
           "x": 132.0,
-          "y": 3747.0
+          "y": 4107.0
+        },
+        {
+          "id": "2025/RadialAttention",
+          "label": "RadialAttention[2025]",
+          "display_name": "RadialAttention",
+          "year_label": "2025",
+          "search_name": "RadialAttention",
+          "type": "root",
+          "level": 0,
+          "row": 41,
+          "x": 132.0,
+          "y": 4187.0
+        },
+        {
+          "id": "2025/RetrievalAttention",
+          "label": "RetrievalAttention[2025]",
+          "display_name": "RetrievalAttention",
+          "year_label": "2025",
+          "search_name": "RetrievalAttention",
+          "type": "root",
+          "level": 0,
+          "row": 42,
+          "x": 132.0,
+          "y": 4267.0
         },
         {
           "id": "2025/SageAttention3",
@@ -462,9 +534,9 @@
           "search_name": "SageAttention3",
           "type": "root",
           "level": 0,
-          "row": 37,
+          "row": 43,
           "x": 132.0,
-          "y": 3827.0
+          "y": 4347.0
         },
         {
           "id": "2025/ShadowKV",
@@ -474,9 +546,21 @@
           "search_name": "ShadowKV",
           "type": "root",
           "level": 0,
-          "row": 38,
+          "row": 44,
           "x": 132.0,
-          "y": 3907.0
+          "y": 4427.0
+        },
+        {
+          "id": "2025/SVG",
+          "label": "SVG[2025]",
+          "display_name": "SVG",
+          "year_label": "2025",
+          "search_name": "SVG",
+          "type": "root",
+          "level": 0,
+          "row": 45,
+          "x": 132.0,
+          "y": 4507.0
         },
         {
           "id": "2026/SPEED",
@@ -486,9 +570,9 @@
           "search_name": "SPEED",
           "type": "root",
           "level": 0,
-          "row": 39,
+          "row": 46,
           "x": 132.0,
-          "y": 3987.0
+          "y": 4587.0
         },
         {
           "id": "2023/FlashDecoding",
@@ -496,7 +580,7 @@
           "display_name": "FlashDecoding",
           "year_label": "2023",
           "search_name": "FlashDecoding",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
           "row": 0,
           "x": 408.0,
@@ -623,6 +707,18 @@
           "y": 867.0
         },
         {
+          "id": "2025/FLOW",
+          "label": "FLOW[2025]",
+          "display_name": "FLOW",
+          "year_label": "2025",
+          "search_name": "FLOW",
+          "type": "default",
+          "level": 1,
+          "row": 11,
+          "x": 408.0,
+          "y": 947.0
+        },
+        {
           "id": "2025/FoX",
           "label": "FoX[2025]",
           "display_name": "FoX",
@@ -630,9 +726,33 @@
           "search_name": "FoX",
           "type": "leaf",
           "level": 1,
-          "row": 11,
+          "row": 12,
           "x": 408.0,
-          "y": 947.0
+          "y": 1027.0
+        },
+        {
+          "id": "2025/FPSAttention",
+          "label": "FPSAttention[2025]",
+          "display_name": "FPSAttention",
+          "year_label": "2025",
+          "search_name": "FPSAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 13,
+          "x": 408.0,
+          "y": 1107.0
+        },
+        {
+          "id": "2025/FSA",
+          "label": "FSA[2025]",
+          "display_name": "FSA",
+          "year_label": "2025",
+          "search_name": "FSA",
+          "type": "leaf",
+          "level": 1,
+          "row": 14,
+          "x": 408.0,
+          "y": 1187.0
         },
         {
           "id": "2025/H1B-KV",
@@ -642,9 +762,9 @@
           "search_name": "H1B-KV",
           "type": "leaf",
           "level": 1,
-          "row": 12,
+          "row": 15,
           "x": 408.0,
-          "y": 1027.0
+          "y": 1267.0
         },
         {
           "id": "2025/HashAttention",
@@ -654,9 +774,9 @@
           "search_name": "HashAttention",
           "type": "leaf",
           "level": 1,
-          "row": 13,
+          "row": 16,
           "x": 408.0,
-          "y": 1107.0
+          "y": 1347.0
         },
         {
           "id": "2025/HATA",
@@ -666,9 +786,21 @@
           "search_name": "HATA",
           "type": "leaf",
           "level": 1,
-          "row": 14,
+          "row": 17,
           "x": 408.0,
-          "y": 1187.0
+          "y": 1427.0
+        },
+        {
+          "id": "2025/InfLLM-V2",
+          "label": "InfLLM-V2[2025]",
+          "display_name": "InfLLM-V2",
+          "year_label": "2025",
+          "search_name": "InfLLM-V2",
+          "type": "default",
+          "level": 1,
+          "row": 18,
+          "x": 408.0,
+          "y": 1507.0
         },
         {
           "id": "2025/Kascade",
@@ -678,9 +810,9 @@
           "search_name": "Kascade",
           "type": "leaf",
           "level": 1,
-          "row": 15,
+          "row": 19,
           "x": 408.0,
-          "y": 1267.0
+          "y": 1587.0
         },
         {
           "id": "2025/KVmix",
@@ -690,9 +822,9 @@
           "search_name": "KVmix",
           "type": "leaf",
           "level": 1,
-          "row": 16,
+          "row": 20,
           "x": 408.0,
-          "y": 1347.0
+          "y": 1667.0
         },
         {
           "id": "2025/KVSink",
@@ -702,9 +834,9 @@
           "search_name": "KVSink",
           "type": "leaf",
           "level": 1,
-          "row": 17,
+          "row": 21,
           "x": 408.0,
-          "y": 1427.0
+          "y": 1747.0
         },
         {
           "id": "2025/KVzip",
@@ -714,9 +846,9 @@
           "search_name": "KVzip",
           "type": "default",
           "level": 1,
-          "row": 18,
+          "row": 22,
           "x": 408.0,
-          "y": 1507.0
+          "y": 1827.0
         },
         {
           "id": "2025/LAVa",
@@ -726,9 +858,21 @@
           "search_name": "LAVa",
           "type": "leaf",
           "level": 1,
-          "row": 19,
+          "row": 23,
           "x": 408.0,
-          "y": 1587.0
+          "y": 1907.0
+        },
+        {
+          "id": "2025/LiteAttention",
+          "label": "LiteAttention[2025]",
+          "display_name": "LiteAttention",
+          "year_label": "2025",
+          "search_name": "LiteAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 24,
+          "x": 408.0,
+          "y": 1987.0
         },
         {
           "id": "2025/MILLION",
@@ -738,9 +882,9 @@
           "search_name": "MILLION",
           "type": "default",
           "level": 1,
-          "row": 20,
+          "row": 25,
           "x": 408.0,
-          "y": 1667.0
+          "y": 2067.0
         },
         {
           "id": "2025/NanoFlow",
@@ -750,9 +894,9 @@
           "search_name": "NanoFlow",
           "type": "default",
           "level": 1,
-          "row": 21,
+          "row": 26,
           "x": 408.0,
-          "y": 1747.0
+          "y": 2147.0
         },
         {
           "id": "2025/PagedEviction",
@@ -762,9 +906,21 @@
           "search_name": "PagedEviction",
           "type": "leaf",
           "level": 1,
-          "row": 22,
+          "row": 27,
           "x": 408.0,
-          "y": 1827.0
+          "y": 2227.0
+        },
+        {
+          "id": "2025/PAROAttention",
+          "label": "PAROAttention[2025]",
+          "display_name": "PAROAttention",
+          "year_label": "2025",
+          "search_name": "PAROAttention",
+          "type": "leaf",
+          "level": 1,
+          "row": 28,
+          "x": 408.0,
+          "y": 2307.0
         },
         {
           "id": "2025/PruLong",
@@ -774,9 +930,9 @@
           "search_name": "PruLong",
           "type": "leaf",
           "level": 1,
-          "row": 23,
+          "row": 29,
           "x": 408.0,
-          "y": 1907.0
+          "y": 2387.0
         },
         {
           "id": "2025/PureKV",
@@ -786,9 +942,9 @@
           "search_name": "PureKV",
           "type": "leaf",
           "level": 1,
-          "row": 24,
+          "row": 30,
           "x": 408.0,
-          "y": 1987.0
+          "y": 2467.0
         },
         {
           "id": "2025/QJL",
@@ -798,9 +954,9 @@
           "search_name": "QJL",
           "type": "leaf",
           "level": 1,
-          "row": 25,
+          "row": 31,
           "x": 408.0,
-          "y": 2067.0
+          "y": 2547.0
         },
         {
           "id": "2025/RaaS",
@@ -810,9 +966,9 @@
           "search_name": "RaaS",
           "type": "default",
           "level": 1,
-          "row": 26,
+          "row": 32,
           "x": 408.0,
-          "y": 2147.0
+          "y": 2627.0
         },
         {
           "id": "2025/RetroAttention",
@@ -822,9 +978,9 @@
           "search_name": "RetroAttention",
           "type": "leaf",
           "level": 1,
-          "row": 27,
+          "row": 33,
           "x": 408.0,
-          "y": 2227.0
+          "y": 2707.0
         },
         {
           "id": "2025/RotateKV",
@@ -834,9 +990,9 @@
           "search_name": "RotateKV",
           "type": "default",
           "level": 1,
-          "row": 28,
+          "row": 34,
           "x": 408.0,
-          "y": 2307.0
+          "y": 2787.0
         },
         {
           "id": "2025/SignRoundV2",
@@ -846,9 +1002,9 @@
           "search_name": "SignRoundV2",
           "type": "leaf",
           "level": 1,
-          "row": 29,
+          "row": 35,
           "x": 408.0,
-          "y": 2387.0
+          "y": 2867.0
         },
         {
           "id": "2025/SparseServe",
@@ -856,11 +1012,11 @@
           "display_name": "SparseServe",
           "year_label": "2025",
           "search_name": "SparseServe",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
-          "row": 30,
+          "row": 36,
           "x": 408.0,
-          "y": 2467.0
+          "y": 2947.0
         },
         {
           "id": "2025/SQ-format",
@@ -870,9 +1026,9 @@
           "search_name": "SQ-format",
           "type": "leaf",
           "level": 1,
-          "row": 31,
+          "row": 37,
           "x": 408.0,
-          "y": 2547.0
+          "y": 3027.0
         },
         {
           "id": "2025/Strata",
@@ -882,9 +1038,21 @@
           "search_name": "Strata",
           "type": "default",
           "level": 1,
-          "row": 32,
+          "row": 38,
           "x": 408.0,
-          "y": 2627.0
+          "y": 3107.0
+        },
+        {
+          "id": "2025/SVG2",
+          "label": "SVG2[2025]",
+          "display_name": "SVG2",
+          "year_label": "2025",
+          "search_name": "SVG2",
+          "type": "leaf",
+          "level": 1,
+          "row": 39,
+          "x": 408.0,
+          "y": 3187.0
         },
         {
           "id": "2025/TileLink",
@@ -894,9 +1062,9 @@
           "search_name": "TileLink",
           "type": "default",
           "level": 1,
-          "row": 33,
+          "row": 40,
           "x": 408.0,
-          "y": 2707.0
+          "y": 3267.0
         },
         {
           "id": "2025/Twilight",
@@ -906,9 +1074,9 @@
           "search_name": "Twilight",
           "type": "leaf",
           "level": 1,
-          "row": 34,
+          "row": 41,
           "x": 408.0,
-          "y": 2787.0
+          "y": 3347.0
         },
         {
           "id": "2025/UNComp",
@@ -918,9 +1086,9 @@
           "search_name": "UNComp",
           "type": "leaf",
           "level": 1,
-          "row": 35,
+          "row": 42,
           "x": 408.0,
-          "y": 2867.0
+          "y": 3427.0
         },
         {
           "id": "2025/vAttention",
@@ -930,9 +1098,9 @@
           "search_name": "vAttention",
           "type": "leaf",
           "level": 1,
-          "row": 36,
+          "row": 43,
           "x": 408.0,
-          "y": 2947.0
+          "y": 3507.0
         },
         {
           "id": "2025/WGM",
@@ -942,9 +1110,9 @@
           "search_name": "WGM",
           "type": "leaf",
           "level": 1,
-          "row": 37,
+          "row": 44,
           "x": 408.0,
-          "y": 3027.0
+          "y": 3587.0
         },
         {
           "id": "2026/Bidaw",
@@ -954,9 +1122,9 @@
           "search_name": "Bidaw",
           "type": "leaf",
           "level": 1,
-          "row": 38,
+          "row": 45,
           "x": 408.0,
-          "y": 3107.0
+          "y": 3667.0
         },
         {
           "id": "2026/CacheFlow",
@@ -966,9 +1134,9 @@
           "search_name": "CacheFlow",
           "type": "default",
           "level": 1,
-          "row": 39,
+          "row": 46,
           "x": 408.0,
-          "y": 3187.0
+          "y": 3747.0
         },
         {
           "id": "2026/ContiguousKV",
@@ -978,9 +1146,9 @@
           "search_name": "ContiguousKV",
           "type": "leaf",
           "level": 1,
-          "row": 40,
+          "row": 47,
           "x": 408.0,
-          "y": 3267.0
+          "y": 3827.0
         },
         {
           "id": "2026/Double-P",
@@ -990,9 +1158,21 @@
           "search_name": "Double-P",
           "type": "leaf",
           "level": 1,
-          "row": 41,
+          "row": 48,
           "x": 408.0,
-          "y": 3347.0
+          "y": 3907.0
+        },
+        {
+          "id": "2026/EventTensor",
+          "label": "EventTensor[2026]",
+          "display_name": "EventTensor",
+          "year_label": "2026",
+          "search_name": "EventTensor",
+          "type": "leaf",
+          "level": 1,
+          "row": 49,
+          "x": 408.0,
+          "y": 3987.0
         },
         {
           "id": "2026/FlashCache",
@@ -1002,9 +1182,9 @@
           "search_name": "FlashCache",
           "type": "leaf",
           "level": 1,
-          "row": 42,
+          "row": 50,
           "x": 408.0,
-          "y": 3427.0
+          "y": 4067.0
         },
         {
           "id": "2026/FlashOverlap",
@@ -1014,9 +1194,9 @@
           "search_name": "FlashOverlap",
           "type": "leaf",
           "level": 1,
-          "row": 43,
+          "row": 51,
           "x": 408.0,
-          "y": 3507.0
+          "y": 4147.0
         },
         {
           "id": "2026/GLM-5",
@@ -1026,9 +1206,9 @@
           "search_name": "GLM-5",
           "type": "default",
           "level": 1,
-          "row": 44,
+          "row": 52,
           "x": 408.0,
-          "y": 3587.0
+          "y": 4227.0
         },
         {
           "id": "2026/HISA",
@@ -1036,11 +1216,11 @@
           "display_name": "HISA",
           "year_label": "2026",
           "search_name": "HISA",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
-          "row": 45,
+          "row": 53,
           "x": 408.0,
-          "y": 3667.0
+          "y": 4307.0
         },
         {
           "id": "2026/IBW4TYDG",
@@ -1050,9 +1230,9 @@
           "search_name": "IBW4TYDG",
           "type": "leaf",
           "level": 1,
-          "row": 46,
+          "row": 54,
           "x": 408.0,
-          "y": 3747.0
+          "y": 4387.0
         },
         {
           "id": "2026/K-Search",
@@ -1062,9 +1242,9 @@
           "search_name": "K-Search",
           "type": "leaf",
           "level": 1,
-          "row": 47,
+          "row": 55,
           "x": 408.0,
-          "y": 3827.0
+          "y": 4467.0
         },
         {
           "id": "2026/KunServe",
@@ -1074,9 +1254,9 @@
           "search_name": "KunServe",
           "type": "leaf",
           "level": 1,
-          "row": 48,
+          "row": 56,
           "x": 408.0,
-          "y": 3907.0
+          "y": 4547.0
         },
         {
           "id": "2026/KVBuffer",
@@ -1086,9 +1266,9 @@
           "search_name": "KVBuffer",
           "type": "leaf",
           "level": 1,
-          "row": 49,
+          "row": 57,
           "x": 408.0,
-          "y": 3987.0
+          "y": 4627.0
         },
         {
           "id": "2026/KVDrive",
@@ -1098,9 +1278,9 @@
           "search_name": "KVDrive",
           "type": "leaf",
           "level": 1,
-          "row": 50,
+          "row": 58,
           "x": 408.0,
-          "y": 4067.0
+          "y": 4707.0
         },
         {
           "id": "2026/KVServe",
@@ -1110,9 +1290,9 @@
           "search_name": "KVServe",
           "type": "leaf",
           "level": 1,
-          "row": 51,
+          "row": 59,
           "x": 408.0,
-          "y": 4147.0
+          "y": 4787.0
         },
         {
           "id": "2026/KVTC",
@@ -1122,9 +1302,9 @@
           "search_name": "KVTC",
           "type": "leaf",
           "level": 1,
-          "row": 52,
+          "row": 60,
           "x": 408.0,
-          "y": 4227.0
+          "y": 4867.0
         },
         {
           "id": "2026/L3",
@@ -1134,9 +1314,9 @@
           "search_name": "L3",
           "type": "leaf",
           "level": 1,
-          "row": 53,
+          "row": 61,
           "x": 408.0,
-          "y": 4307.0
+          "y": 4947.0
         },
         {
           "id": "2026/RTP-LLM",
@@ -1146,9 +1326,9 @@
           "search_name": "RTP-LLM",
           "type": "leaf",
           "level": 1,
-          "row": 54,
+          "row": 62,
           "x": 408.0,
-          "y": 4387.0
+          "y": 5027.0
         },
         {
           "id": "2026/SparVAR",
@@ -1158,9 +1338,9 @@
           "search_name": "SparVAR",
           "type": "leaf",
           "level": 1,
-          "row": 55,
+          "row": 63,
           "x": 408.0,
-          "y": 4467.0
+          "y": 5107.0
         },
         {
           "id": "2026/Tactic",
@@ -1170,9 +1350,9 @@
           "search_name": "Tactic",
           "type": "leaf",
           "level": 1,
-          "row": 56,
+          "row": 64,
           "x": 408.0,
-          "y": 4547.0
+          "y": 5187.0
         },
         {
           "id": "2026/ThriftAttention",
@@ -1182,9 +1362,9 @@
           "search_name": "ThriftAttention",
           "type": "leaf",
           "level": 1,
-          "row": 57,
+          "row": 65,
           "x": 408.0,
-          "y": 4627.0
+          "y": 5267.0
         },
         {
           "id": "2026/TurboQuant",
@@ -1194,9 +1374,9 @@
           "search_name": "TurboQuant",
           "type": "default",
           "level": 1,
-          "row": 58,
+          "row": 66,
           "x": 408.0,
-          "y": 4707.0
+          "y": 5347.0
         },
         {
           "id": "2026/VQKV",
@@ -1206,9 +1386,9 @@
           "search_name": "VQKV",
           "type": "leaf",
           "level": 1,
-          "row": 59,
+          "row": 67,
           "x": 408.0,
-          "y": 4787.0
+          "y": 5427.0
         },
         {
           "id": "2024/FlashAttention-3",
@@ -1220,7 +1400,7 @@
           "level": 2,
           "row": 0,
           "x": 684.0,
-          "y": 1747.0
+          "y": 1947.0
         },
         {
           "id": "2024/MInference",
@@ -1232,7 +1412,7 @@
           "level": 2,
           "row": 1,
           "x": 684.0,
-          "y": 1827.0
+          "y": 2027.0
         },
         {
           "id": "2025/AdaSplash",
@@ -1244,7 +1424,7 @@
           "level": 2,
           "row": 2,
           "x": 684.0,
-          "y": 1907.0
+          "y": 2107.0
         },
         {
           "id": "2025/EvolKV",
@@ -1256,7 +1436,7 @@
           "level": 2,
           "row": 3,
           "x": 684.0,
-          "y": 1987.0
+          "y": 2187.0
         },
         {
           "id": "2025/FreeKV",
@@ -1268,7 +1448,7 @@
           "level": 2,
           "row": 4,
           "x": 684.0,
-          "y": 2067.0
+          "y": 2267.0
         },
         {
           "id": "2025/HCAttention",
@@ -1280,7 +1460,7 @@
           "level": 2,
           "row": 5,
           "x": 684.0,
-          "y": 2147.0
+          "y": 2347.0
         },
         {
           "id": "2025/MixKVQ",
@@ -1292,7 +1472,31 @@
           "level": 2,
           "row": 6,
           "x": 684.0,
-          "y": 2227.0
+          "y": 2427.0
+        },
+        {
+          "id": "2025/NOSA",
+          "label": "NOSA[2025]",
+          "display_name": "NOSA",
+          "year_label": "2025",
+          "search_name": "NOSA",
+          "type": "default",
+          "level": 2,
+          "row": 7,
+          "x": 684.0,
+          "y": 2507.0
+        },
+        {
+          "id": "2025/SSA",
+          "label": "SSA[2025]",
+          "display_name": "SSA",
+          "year_label": "2025",
+          "search_name": "SSA",
+          "type": "leaf",
+          "level": 2,
+          "row": 8,
+          "x": 684.0,
+          "y": 2587.0
         },
         {
           "id": "2025/TokenWeave",
@@ -1302,9 +1506,9 @@
           "search_name": "TokenWeave",
           "type": "leaf",
           "level": 2,
-          "row": 7,
+          "row": 9,
           "x": 684.0,
-          "y": 2307.0
+          "y": 2667.0
         },
         {
           "id": "2025/VecInfer",
@@ -1314,9 +1518,9 @@
           "search_name": "VecInfer",
           "type": "leaf",
           "level": 2,
-          "row": 8,
+          "row": 10,
           "x": 684.0,
-          "y": 2387.0
+          "y": 2747.0
         },
         {
           "id": "2026/FastKVzip",
@@ -1326,9 +1530,9 @@
           "search_name": "FastKVzip",
           "type": "leaf",
           "level": 2,
-          "row": 9,
+          "row": 11,
           "x": 684.0,
-          "y": 2467.0
+          "y": 2827.0
         },
         {
           "id": "2026/HARP",
@@ -1338,9 +1542,9 @@
           "search_name": "HARP",
           "type": "leaf",
           "level": 2,
-          "row": 10,
+          "row": 12,
           "x": 684.0,
-          "y": 2547.0
+          "y": 2907.0
         },
         {
           "id": "2026/IndexCache",
@@ -1348,11 +1552,11 @@
           "display_name": "IndexCache",
           "year_label": "2026",
           "search_name": "IndexCache",
-          "type": "leaf",
+          "type": "default",
           "level": 2,
-          "row": 11,
+          "row": 13,
           "x": 684.0,
-          "y": 2627.0
+          "y": 2987.0
         },
         {
           "id": "2026/KVzap",
@@ -1362,9 +1566,9 @@
           "search_name": "KVzap",
           "type": "leaf",
           "level": 2,
-          "row": 12,
+          "row": 14,
           "x": 684.0,
-          "y": 2707.0
+          "y": 3067.0
         },
         {
           "id": "2026/Moment-KV",
@@ -1374,9 +1578,9 @@
           "search_name": "Moment-KV",
           "type": "leaf",
           "level": 2,
-          "row": 13,
+          "row": 15,
           "x": 684.0,
-          "y": 2787.0
+          "y": 3147.0
         },
         {
           "id": "2026/OScaR",
@@ -1386,9 +1590,21 @@
           "search_name": "OScaR",
           "type": "leaf",
           "level": 2,
-          "row": 14,
+          "row": 16,
           "x": 684.0,
-          "y": 2867.0
+          "y": 3227.0
+        },
+        {
+          "id": "2026/ReasonAlloc",
+          "label": "ReasonAlloc[2026]",
+          "display_name": "ReasonAlloc",
+          "year_label": "2026",
+          "search_name": "ReasonAlloc",
+          "type": "leaf",
+          "level": 2,
+          "row": 17,
+          "x": 684.0,
+          "y": 3307.0
         },
         {
           "id": "2026/TriAttention",
@@ -1398,9 +1614,9 @@
           "search_name": "TriAttention",
           "type": "leaf",
           "level": 2,
-          "row": 15,
+          "row": 18,
           "x": 684.0,
-          "y": 2947.0
+          "y": 3387.0
         },
         {
           "id": "2026/Tutti",
@@ -1410,9 +1626,9 @@
           "search_name": "Tutti",
           "type": "default",
           "level": 2,
-          "row": 16,
+          "row": 19,
           "x": 684.0,
-          "y": 3027.0
+          "y": 3467.0
         },
         {
           "id": "2026/VECTOR",
@@ -1422,9 +1638,9 @@
           "search_name": "VECTOR",
           "type": "leaf",
           "level": 2,
-          "row": 17,
+          "row": 20,
           "x": 684.0,
-          "y": 3107.0
+          "y": 3547.0
         },
         {
           "id": "2025/FlexPrefill",
@@ -1436,7 +1652,7 @@
           "level": 3,
           "row": 0,
           "x": 960.0,
-          "y": 2307.0
+          "y": 2587.0
         },
         {
           "id": "2026/AdaSplash-2",
@@ -1448,7 +1664,7 @@
           "level": 3,
           "row": 1,
           "x": 960.0,
-          "y": 2387.0
+          "y": 2667.0
         },
         {
           "id": "2026/FlashAttention-4",
@@ -1460,7 +1676,19 @@
           "level": 3,
           "row": 2,
           "x": 960.0,
-          "y": 2467.0
+          "y": 2747.0
+        },
+        {
+          "id": "2026/MiniMaxSparseAttention",
+          "label": "MiniMaxSparseAttention[2026]",
+          "display_name": "MiniMaxSparseAttention",
+          "year_label": "2026",
+          "search_name": "MiniMaxSparseAttention",
+          "type": "leaf",
+          "level": 3,
+          "row": 3,
+          "x": 960.0,
+          "y": 2827.0
         },
         {
           "id": "2026/PredictKV",
@@ -1470,9 +1698,9 @@
           "search_name": "PredictKV",
           "type": "leaf",
           "level": 3,
-          "row": 3,
+          "row": 4,
           "x": 960.0,
-          "y": 2547.0
+          "y": 2907.0
         },
         {
           "id": "2025/SharePrefill",
@@ -1484,7 +1712,7 @@
           "level": 4,
           "row": 0,
           "x": 1236.0,
-          "y": 2227.0
+          "y": 2507.0
         },
         {
           "id": "2025/SlimInfer",
@@ -1496,7 +1724,7 @@
           "level": 4,
           "row": 1,
           "x": 1236.0,
-          "y": 2307.0
+          "y": 2587.0
         },
         {
           "id": "2025/XAttention",
@@ -1508,7 +1736,7 @@
           "level": 4,
           "row": 2,
           "x": 1236.0,
-          "y": 2387.0
+          "y": 2667.0
         },
         {
           "id": "2026/FlashPrefill",
@@ -1520,7 +1748,7 @@
           "level": 4,
           "row": 3,
           "x": 1236.0,
-          "y": 2467.0
+          "y": 2747.0
         },
         {
           "id": "2026/Prism",
@@ -1532,7 +1760,7 @@
           "level": 4,
           "row": 4,
           "x": 1236.0,
-          "y": 2547.0
+          "y": 2827.0
         },
         {
           "id": "2026/RTPurbo",
@@ -1544,7 +1772,19 @@
           "level": 4,
           "row": 5,
           "x": 1236.0,
-          "y": 2627.0
+          "y": 2907.0
+        },
+        {
+          "id": "2026/SparDA",
+          "label": "SparDA[2026]",
+          "display_name": "SparDA",
+          "year_label": "2026",
+          "search_name": "SparDA",
+          "type": "leaf",
+          "level": 4,
+          "row": 6,
+          "x": 1236.0,
+          "y": 2987.0
         },
         {
           "id": "2025/BLASST",
@@ -1556,7 +1796,7 @@
           "level": 5,
           "row": 0,
           "x": 1512.0,
-          "y": 2307.0
+          "y": 2627.0
         },
         {
           "id": "2025/TCA-Attention",
@@ -1568,7 +1808,7 @@
           "level": 5,
           "row": 1,
           "x": 1512.0,
-          "y": 2387.0
+          "y": 2707.0
         },
         {
           "id": "2026/CompactAttention",
@@ -1580,7 +1820,7 @@
           "level": 5,
           "row": 2,
           "x": 1512.0,
-          "y": 2467.0
+          "y": 2787.0
         },
         {
           "id": "2026/UniPrefill",
@@ -1592,10 +1832,18 @@
           "level": 5,
           "row": 3,
           "x": 1512.0,
-          "y": 2547.0
+          "y": 2867.0
         }
       ],
       "edges": [
+        {
+          "source": "2022/44KWQAWO",
+          "target": "2025/FLOW"
+        },
+        {
+          "source": "2022/44KWQAWO",
+          "target": "2025/FPSAttention"
+        },
         {
           "source": "2022/flashattention",
           "target": "2023/FlashDecoding"
@@ -1619,6 +1867,10 @@
         {
           "source": "2023/CacheGen",
           "target": "2026/KVServe"
+        },
+        {
+          "source": "2023/FlashDecoding",
+          "target": "2026/MiniMaxSparseAttention"
         },
         {
           "source": "2023/FlexGen",
@@ -1683,6 +1935,10 @@
         {
           "source": "2023/PagedAttention",
           "target": "2026/Bidaw"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2026/EventTensor"
         },
         {
           "source": "2023/PagedAttention",
@@ -1777,6 +2033,10 @@
           "target": "2025/AdaSplash"
         },
         {
+          "source": "2024/FlashAttention-2",
+          "target": "2026/MiniMaxSparseAttention"
+        },
+        {
           "source": "2024/FlashAttention-3",
           "target": "2026/FlashAttention-4"
         },
@@ -1857,6 +2117,10 @@
           "target": "2025/FlexPrefill"
         },
         {
+          "source": "2024/MInference",
+          "target": "2026/MiniMaxSparseAttention"
+        },
+        {
           "source": "2024/MiKV",
           "target": "2025/RotateKV"
         },
@@ -1871,6 +2135,10 @@
         {
           "source": "2024/PyramidKV",
           "target": "2026/Moment-KV"
+        },
+        {
+          "source": "2024/PyramidKV",
+          "target": "2026/ReasonAlloc"
         },
         {
           "source": "2024/PyramidKV",
@@ -1930,6 +2198,10 @@
         },
         {
           "source": "2024/Quest",
+          "target": "2026/MiniMaxSparseAttention"
+        },
+        {
+          "source": "2024/Quest",
           "target": "2026/RTPurbo"
         },
         {
@@ -1950,11 +2222,19 @@
         },
         {
           "source": "2024/SGLang",
+          "target": "2026/EventTensor"
+        },
+        {
+          "source": "2024/SGLang",
           "target": "2026/KVBuffer"
         },
         {
           "source": "2024/SGLang",
           "target": "2026/RTP-LLM"
+        },
+        {
+          "source": "2024/SageAttention",
+          "target": "2025/FPSAttention"
         },
         {
           "source": "2024/SeerAttention",
@@ -1963,6 +2243,10 @@
         {
           "source": "2024/SeerAttention",
           "target": "2026/CompactAttention"
+        },
+        {
+          "source": "2024/SeerAttention",
+          "target": "2026/MiniMaxSparseAttention"
         },
         {
           "source": "2024/SliceGPT",
@@ -2065,8 +2349,16 @@
           "target": "2026/HISA"
         },
         {
+          "source": "2025/FLOW",
+          "target": "2025/SSA"
+        },
+        {
           "source": "2025/FlashInfer",
           "target": "2025/vAttention"
+        },
+        {
+          "source": "2025/FlashInfer",
+          "target": "2026/EventTensor"
         },
         {
           "source": "2025/FlashInfer",
@@ -2095,6 +2387,14 @@
         {
           "source": "2025/FlexPrefill",
           "target": "2026/RTPurbo"
+        },
+        {
+          "source": "2025/FlexPrefill",
+          "target": "2026/SparDA"
+        },
+        {
+          "source": "2025/InfLLM-V2",
+          "target": "2025/NOSA"
         },
         {
           "source": "2025/KVzip",
@@ -2133,12 +2433,40 @@
           "target": "2026/KVBuffer"
         },
         {
+          "source": "2025/MoBA",
+          "target": "2025/SSA"
+        },
+        {
+          "source": "2025/NOSA",
+          "target": "2026/SparDA"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2025/FSA"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2025/InfLLM-V2"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2025/SSA"
+        },
+        {
+          "source": "2025/NSA",
+          "target": "2026/MiniMaxSparseAttention"
+        },
+        {
           "source": "2025/NanoFlow",
           "target": "2025/TokenWeave"
         },
         {
           "source": "2025/PQCache",
           "target": "2026/KVDrive"
+        },
+        {
+          "source": "2025/R-KV",
+          "target": "2026/ReasonAlloc"
         },
         {
           "source": "2025/R-KV",
@@ -2149,12 +2477,36 @@
           "target": "2025/FreeKV"
         },
         {
+          "source": "2025/RadialAttention",
+          "target": "2025/LiteAttention"
+        },
+        {
+          "source": "2025/RetrievalAttention",
+          "target": "2026/MiniMaxSparseAttention"
+        },
+        {
           "source": "2025/RotateKV",
           "target": "2025/MixKVQ"
         },
         {
           "source": "2025/RotateKV",
           "target": "2026/OScaR"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/FPSAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/LiteAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/PAROAttention"
+        },
+        {
+          "source": "2025/SVG",
+          "target": "2025/SVG2"
         },
         {
           "source": "2025/SageAttention3",
@@ -2167,6 +2519,10 @@
         {
           "source": "2025/ShadowKV",
           "target": "2026/KVDrive"
+        },
+        {
+          "source": "2025/SparseServe",
+          "target": "2026/SparDA"
         },
         {
           "source": "2025/Strata",
@@ -2205,6 +2561,14 @@
           "target": "2026/IndexCache"
         },
         {
+          "source": "2026/HISA",
+          "target": "2026/SparDA"
+        },
+        {
+          "source": "2026/IndexCache",
+          "target": "2026/SparDA"
+        },
+        {
           "source": "2026/SPEED",
           "target": "2026/IndexCache"
         },
@@ -2227,260 +2591,12 @@
       ]
     },
     {
-      "title": "SVG",
-      "anchor": "svg-family",
-      "node_count": 15,
-      "edge_count": 14,
-      "width": 816,
-      "height": 614,
-      "nodes": [
-        {
-          "id": "2022/44KWQAWO",
-          "label": "44KWQAWO[2022]",
-          "display_name": "44KWQAWO",
-          "year_label": "2022",
-          "search_name": "44KWQAWO",
-          "type": "root",
-          "level": 0,
-          "row": 0,
-          "x": 132.0,
-          "y": 107.0
-        },
-        {
-          "id": "2024/SageAttention",
-          "label": "SageAttention[2024]",
-          "display_name": "SageAttention",
-          "year_label": "2024",
-          "search_name": "SageAttention",
-          "type": "root",
-          "level": 0,
-          "row": 1,
-          "x": 132.0,
-          "y": 187.0
-        },
-        {
-          "id": "2025/MoBA",
-          "label": "MoBA[2025]",
-          "display_name": "MoBA",
-          "year_label": "2025",
-          "search_name": "MoBA",
-          "type": "root",
-          "level": 0,
-          "row": 2,
-          "x": 132.0,
-          "y": 267.0
-        },
-        {
-          "id": "2025/NSA",
-          "label": "NSA[2025]",
-          "display_name": "NSA",
-          "year_label": "2025",
-          "search_name": "NSA",
-          "type": "root",
-          "level": 0,
-          "row": 3,
-          "x": 132.0,
-          "y": 347.0
-        },
-        {
-          "id": "2025/RadialAttention",
-          "label": "RadialAttention[2025]",
-          "display_name": "RadialAttention",
-          "year_label": "2025",
-          "search_name": "RadialAttention",
-          "type": "root",
-          "level": 0,
-          "row": 4,
-          "x": 132.0,
-          "y": 427.0
-        },
-        {
-          "id": "2025/SVG",
-          "label": "SVG[2025]",
-          "display_name": "SVG",
-          "year_label": "2025",
-          "search_name": "SVG",
-          "type": "root",
-          "level": 0,
-          "row": 5,
-          "x": 132.0,
-          "y": 507.0
-        },
-        {
-          "id": "2025/FLOW",
-          "label": "FLOW[2025]",
-          "display_name": "FLOW",
-          "year_label": "2025",
-          "search_name": "FLOW",
-          "type": "default",
-          "level": 1,
-          "row": 0,
-          "x": 408.0,
-          "y": 67.0
-        },
-        {
-          "id": "2025/FPSAttention",
-          "label": "FPSAttention[2025]",
-          "display_name": "FPSAttention",
-          "year_label": "2025",
-          "search_name": "FPSAttention",
-          "type": "leaf",
-          "level": 1,
-          "row": 1,
-          "x": 408.0,
-          "y": 147.0
-        },
-        {
-          "id": "2025/FSA",
-          "label": "FSA[2025]",
-          "display_name": "FSA",
-          "year_label": "2025",
-          "search_name": "FSA",
-          "type": "leaf",
-          "level": 1,
-          "row": 2,
-          "x": 408.0,
-          "y": 227.0
-        },
-        {
-          "id": "2025/InfLLM-V2",
-          "label": "InfLLM-V2[2025]",
-          "display_name": "InfLLM-V2",
-          "year_label": "2025",
-          "search_name": "InfLLM-V2",
-          "type": "default",
-          "level": 1,
-          "row": 3,
-          "x": 408.0,
-          "y": 307.0
-        },
-        {
-          "id": "2025/LiteAttention",
-          "label": "LiteAttention[2025]",
-          "display_name": "LiteAttention",
-          "year_label": "2025",
-          "search_name": "LiteAttention",
-          "type": "leaf",
-          "level": 1,
-          "row": 4,
-          "x": 408.0,
-          "y": 387.0
-        },
-        {
-          "id": "2025/PAROAttention",
-          "label": "PAROAttention[2025]",
-          "display_name": "PAROAttention",
-          "year_label": "2025",
-          "search_name": "PAROAttention",
-          "type": "leaf",
-          "level": 1,
-          "row": 5,
-          "x": 408.0,
-          "y": 467.0
-        },
-        {
-          "id": "2025/SVG2",
-          "label": "SVG2[2025]",
-          "display_name": "SVG2",
-          "year_label": "2025",
-          "search_name": "SVG2",
-          "type": "leaf",
-          "level": 1,
-          "row": 6,
-          "x": 408.0,
-          "y": 547.0
-        },
-        {
-          "id": "2025/NOSA",
-          "label": "NOSA[2025]",
-          "display_name": "NOSA",
-          "year_label": "2025",
-          "search_name": "NOSA",
-          "type": "leaf",
-          "level": 2,
-          "row": 0,
-          "x": 684.0,
-          "y": 267.0
-        },
-        {
-          "id": "2025/SSA",
-          "label": "SSA[2025]",
-          "display_name": "SSA",
-          "year_label": "2025",
-          "search_name": "SSA",
-          "type": "leaf",
-          "level": 2,
-          "row": 1,
-          "x": 684.0,
-          "y": 347.0
-        }
-      ],
-      "edges": [
-        {
-          "source": "2022/44KWQAWO",
-          "target": "2025/FLOW"
-        },
-        {
-          "source": "2022/44KWQAWO",
-          "target": "2025/FPSAttention"
-        },
-        {
-          "source": "2024/SageAttention",
-          "target": "2025/FPSAttention"
-        },
-        {
-          "source": "2025/FLOW",
-          "target": "2025/SSA"
-        },
-        {
-          "source": "2025/InfLLM-V2",
-          "target": "2025/NOSA"
-        },
-        {
-          "source": "2025/MoBA",
-          "target": "2025/SSA"
-        },
-        {
-          "source": "2025/NSA",
-          "target": "2025/FSA"
-        },
-        {
-          "source": "2025/NSA",
-          "target": "2025/InfLLM-V2"
-        },
-        {
-          "source": "2025/NSA",
-          "target": "2025/SSA"
-        },
-        {
-          "source": "2025/RadialAttention",
-          "target": "2025/LiteAttention"
-        },
-        {
-          "source": "2025/SVG",
-          "target": "2025/FPSAttention"
-        },
-        {
-          "source": "2025/SVG",
-          "target": "2025/LiteAttention"
-        },
-        {
-          "source": "2025/SVG",
-          "target": "2025/PAROAttention"
-        },
-        {
-          "source": "2025/SVG",
-          "target": "2025/SVG2"
-        }
-      ]
-    },
-    {
       "title": "DeepSeek-R1",
       "anchor": "deepseek-r1-family",
-      "node_count": 10,
-      "edge_count": 9,
-      "width": 540,
-      "height": 534,
+      "node_count": 16,
+      "edge_count": 15,
+      "width": 1092,
+      "height": 614,
       "nodes": [
         {
           "id": "2024/DeepSeek-V3",
@@ -2495,6 +2611,18 @@
           "y": 147.0
         },
         {
+          "id": "2024/Eagle",
+          "label": "Eagle[2024]",
+          "display_name": "Eagle",
+          "year_label": "2024",
+          "search_name": "Eagle",
+          "type": "root",
+          "level": 0,
+          "row": 1,
+          "x": 132.0,
+          "y": 227.0
+        },
+        {
           "id": "2025/DeepSeek-R1",
           "label": "DeepSeek-R1[2025]",
           "display_name": "DeepSeek-R1",
@@ -2502,9 +2630,9 @@
           "search_name": "DeepSeek-R1",
           "type": "root",
           "level": 0,
-          "row": 1,
+          "row": 2,
           "x": 132.0,
-          "y": 227.0
+          "y": 307.0
         },
         {
           "id": "2025/Qwen3",
@@ -2514,9 +2642,9 @@
           "search_name": "Qwen3",
           "type": "root",
           "level": 0,
-          "row": 2,
+          "row": 3,
           "x": 132.0,
-          "y": 307.0
+          "y": 387.0
         },
         {
           "id": "2025/SLA",
@@ -2526,9 +2654,9 @@
           "search_name": "SLA",
           "type": "root",
           "level": 0,
-          "row": 3,
+          "row": 4,
           "x": 132.0,
-          "y": 387.0
+          "y": 467.0
         },
         {
           "id": "2025/CloudMatrix384",
@@ -2584,11 +2712,23 @@
           "display_name": "DeepSeek-V4",
           "year_label": "2026",
           "search_name": "DeepSeek-V4",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
           "row": 4,
           "x": 408.0,
           "y": 387.0
+        },
+        {
+          "id": "2026/DFlash",
+          "label": "DFlash[2026]",
+          "display_name": "DFlash",
+          "year_label": "2026",
+          "search_name": "DFlash",
+          "type": "default",
+          "level": 1,
+          "row": 5,
+          "x": 408.0,
+          "y": 467.0
         },
         {
           "id": "2026/MixServe",
@@ -2598,9 +2738,57 @@
           "search_name": "MixServe",
           "type": "leaf",
           "level": 1,
-          "row": 5,
+          "row": 6,
           "x": 408.0,
-          "y": 467.0
+          "y": 547.0
+        },
+        {
+          "id": "2026/DDTree",
+          "label": "DDTree[2026]",
+          "display_name": "DDTree",
+          "year_label": "2026",
+          "search_name": "DDTree",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 227.0
+        },
+        {
+          "id": "2026/Domino",
+          "label": "Domino[2026]",
+          "display_name": "Domino",
+          "year_label": "2026",
+          "search_name": "Domino",
+          "type": "default",
+          "level": 2,
+          "row": 1,
+          "x": 684.0,
+          "y": 307.0
+        },
+        {
+          "id": "2026/FlashMemory",
+          "label": "FlashMemory[2026]",
+          "display_name": "FlashMemory",
+          "year_label": "2026",
+          "search_name": "FlashMemory",
+          "type": "leaf",
+          "level": 2,
+          "row": 2,
+          "x": 684.0,
+          "y": 387.0
+        },
+        {
+          "id": "2026/DSpark",
+          "label": "DSpark[2026]",
+          "display_name": "DSpark",
+          "year_label": "2026",
+          "search_name": "DSpark",
+          "type": "leaf",
+          "level": 3,
+          "row": 0,
+          "x": 960.0,
+          "y": 307.0
         }
       ],
       "edges": [
@@ -2611,6 +2799,10 @@
         {
           "source": "2024/DeepSeek-V3",
           "target": "2026/DeepSeek-V4"
+        },
+        {
+          "source": "2024/Eagle",
+          "target": "2026/DFlash"
         },
         {
           "source": "2025/DeepSeek-R1",
@@ -2639,6 +2831,26 @@
         {
           "source": "2025/SLA",
           "target": "2025/Step-3"
+        },
+        {
+          "source": "2026/DFlash",
+          "target": "2026/DDTree"
+        },
+        {
+          "source": "2026/DFlash",
+          "target": "2026/Domino"
+        },
+        {
+          "source": "2026/DeepSeek-V4",
+          "target": "2026/DSpark"
+        },
+        {
+          "source": "2026/DeepSeek-V4",
+          "target": "2026/FlashMemory"
+        },
+        {
+          "source": "2026/Domino",
+          "target": "2026/DSpark"
         }
       ]
     },
@@ -2779,8 +2991,8 @@
       ]
     },
     {
-      "title": "DeFT",
-      "anchor": "deft-family",
+      "title": "FlashAttention",
+      "anchor": "flashattention-family",
       "node_count": 6,
       "edge_count": 5,
       "width": 540,
@@ -2883,80 +3095,8 @@
       ]
     },
     {
-      "title": "DFlash",
-      "anchor": "dflash-family",
-      "node_count": 4,
-      "edge_count": 3,
-      "width": 816,
-      "height": 260,
-      "nodes": [
-        {
-          "id": "2024/Eagle",
-          "label": "Eagle[2024]",
-          "display_name": "Eagle",
-          "year_label": "2024",
-          "search_name": "Eagle",
-          "type": "root",
-          "level": 0,
-          "row": 0,
-          "x": 132.0,
-          "y": 130.0
-        },
-        {
-          "id": "2026/DFlash",
-          "label": "DFlash[2026]",
-          "display_name": "DFlash",
-          "year_label": "2026",
-          "search_name": "DFlash",
-          "type": "default",
-          "level": 1,
-          "row": 0,
-          "x": 408.0,
-          "y": 130.0
-        },
-        {
-          "id": "2026/DDTree",
-          "label": "DDTree[2026]",
-          "display_name": "DDTree",
-          "year_label": "2026",
-          "search_name": "DDTree",
-          "type": "leaf",
-          "level": 2,
-          "row": 0,
-          "x": 684.0,
-          "y": 90.0
-        },
-        {
-          "id": "2026/Domino",
-          "label": "Domino[2026]",
-          "display_name": "Domino",
-          "year_label": "2026",
-          "search_name": "Domino",
-          "type": "leaf",
-          "level": 2,
-          "row": 1,
-          "x": 684.0,
-          "y": 170.0
-        }
-      ],
-      "edges": [
-        {
-          "source": "2024/Eagle",
-          "target": "2026/DFlash"
-        },
-        {
-          "source": "2026/DFlash",
-          "target": "2026/DDTree"
-        },
-        {
-          "source": "2026/DFlash",
-          "target": "2026/Domino"
-        }
-      ]
-    },
-    {
-      "title": "CometSeed",
-      "anchor": "cometseed-family",
+      "title": "DeepEP",
+      "anchor": "deepep-family",
       "node_count": 4,
       "edge_count": 3,
       "width": 816,
@@ -3027,8 +3167,8 @@
       ]
     },
     {
-      "title": "MPK-Mirage",
-      "anchor": "mpk-mirage-family",
+      "title": "sms",
+      "anchor": "sms-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 540,

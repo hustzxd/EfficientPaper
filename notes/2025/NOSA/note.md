@@ -3,7 +3,7 @@
 > Yuxiang Huang, Chaojun Xiao, Xu Han, Zhiyuan Liu
 > Tsinghua University
 
-![111](../../blank.jpg)
+![cover](cover.jpg)
 
 > ⚠️ **注意：本 note 由 AI Agent 自动生成（Hermes Agent），仅供学术参考，内容可能存在偏差。生成时间：2025年10月。**
 

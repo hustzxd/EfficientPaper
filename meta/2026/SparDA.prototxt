@@ -1,0 +1,40 @@
+paper {
+  title: "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference"
+  abbr: "SparDA"
+  url: "http://arxiv.org/abs/2606.04511v1"
+  authors: "Yaosheng Fu"
+  authors: "Guangxuan Xiao"
+  authors: "Xin Dong"
+  authors: "Song Han"
+  authors: "Oreste Villa"
+  institutions: "NVIDIA"
+  institutions: "Thinking Machines Lab"
+  institutions: "ByteDance Seed"
+  institutions: "MIT"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/NVlabs/SparDA"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/InfLLM-V2"
+  methods: "2025/NOSA"
+  methods: "2026/IndexCache"
+  methods: "2026/HISA"
+  methods: "2025/SparseServe"
+  methods: "2024/MInference"
+  methods: "2025/FlexPrefill"
+}
+update_time: 1781692321

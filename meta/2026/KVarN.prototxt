@@ -1,0 +1,33 @@
+paper {
+  title: "KVarN: Variance-Normalized KV-Cache Quantization Mitigates Error Accumulation in Reasoning Tasks"
+  abbr: "KVarN"
+  url: "http://arxiv.org/abs/2606.03458v1"
+  authors: "Lorenz K. Muller"
+  authors: "Philippe Bich"
+  authors: "Chiara Boretti"
+  authors: "Hyun-Min Chang"
+  authors: "Jiawei Zhuang"
+  authors: "Lukas Cavigelli"
+  institutions: "Huawei"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/huawei-csl/KVarN"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_quant
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "None"
+}
+update_time: 1781084975

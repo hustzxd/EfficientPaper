@@ -1,0 +1,66 @@
+paper {
+  title: "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation"
+  abbr: "DSpark"
+  url: "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf"
+  authors: "Xin Cheng"
+  authors: "Xingkai Yu"
+  authors: "Chenze Shao"
+  authors: "Jiashi Li"
+  authors: "Yunfan Xiong"
+  authors: "Yi Qian"
+  authors: "Jiaqi Zhu"
+  authors: "Shirong Ma"
+  authors: "Xiaokang Zhang"
+  authors: "Jiasheng Ye"
+  authors: "Qinyu Chen"
+  authors: "Chengqi Deng"
+  authors: "Jiping Yu"
+  authors: "Damai Dai"
+  authors: "Zhengyan Zhang"
+  authors: "Yixuan Wei"
+  authors: "Yixuan Tan"
+  authors: "Wenkai Yang"
+  authors: "Runxin Xu"
+  authors: "Yu Wu"
+  authors: "Zhean Xu"
+  authors: "Xuanyu Wang"
+  authors: "Muyang Chen"
+  authors: "Rui Tian"
+  authors: "Xiao Bi"
+  authors: "Zhewen Hao"
+  authors: "Shaoyuan Chen"
+  authors: "Huanqi Cao"
+  authors: "Wentao Zhang"
+  authors: "Anyi Xu"
+  authors: "Huishuai Zhang"
+  authors: "Dongyan Zhao"
+  authors: "Wenfeng Liang"
+  institutions: "Peking University"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "Technical Report"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/deepseek-ai/DeepSpec"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: speculative_decoding
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2026/DeepSeek-V4"
+  methods: "2026/DFlash"
+  methods: "2026/Domino"
+  methods: "2024/Eagle"
+}
+update_time: 1782613841
+rating: 5

@@ -1,0 +1,42 @@
+paper {
+  title: "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention"
+  abbr: "FlashMemory"
+  url: "http://arxiv.org/abs/2606.09079v2"
+  authors: "Yan Wang"
+  authors: "Qifan Zhang"
+  authors: "Jiachen Yu"
+  authors: "Tian Liang"
+  authors: "Dongyang Ma"
+  authors: "Xiang Hu"
+  authors: "Zibo Lin"
+  authors: "Chunyang Li"
+  authors: "Zhichao Wang"
+  authors: "Miao Peng"
+  authors: "Nuo Chen"
+  authors: "Jia Li"
+  authors: "Yujiu Yang"
+  authors: "Haitao Mi"
+  authors: "Dong Yu"
+  institutions: "Independent Researchers"
+  institutions: "Tencent"
+  institutions: "The Hong Kong University of Science and Technology (Guangzhou)"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/DeepSeek-V4"
+}
+update_time: 1781144040

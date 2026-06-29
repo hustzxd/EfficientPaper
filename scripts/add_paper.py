@@ -79,7 +79,7 @@ def generate_note_summary(title, abstract):
     try:
         client = _get_llm_client()
         resp = client.chat.completions.create(
-            model="mimo-v2-flash",
+            model="mimo-v2.5",
             messages=[
                 {"role": "system", "content": NOTE_SUMMARY_PROMPT},
                 {"role": "user", "content": f"Title: {title}\n\nAbstract: {abstract}"},
@@ -100,7 +100,7 @@ def generate_keywords(title, abstract):
     try:
         client = _get_llm_client()
         resp = client.chat.completions.create(
-            model="mimo-v2-flash",
+            model="mimo-v2.5",
             messages=[
                 {"role": "system", "content": KEYWORD_PROMPT},
                 {"role": "user", "content": f"Title: {title}\n\nAbstract: {abstract}"},

@@ -31,7 +31,6 @@ code {
 }
 keyword {
   words: kv_cache_sparse
-  words: kv_cache_management
 }
 cover {
   url: "cover.jpg"
@@ -41,4 +40,4 @@ baseline {
   methods: "2023/H2O"
   methods: "2024/SnapKV"
 }
-update_time: 1774495880
+update_time: 1782181873

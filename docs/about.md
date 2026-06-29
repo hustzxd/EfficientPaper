@@ -75,7 +75,7 @@ If `protoc` is not installed on your machine, install Protocol Buffers first.
 
 ### 2. Optional MiMo API key
 
-Adding papers can call Xiaomi MiMo LLM (`mimo-v2-flash`) to auto-generate Chinese summaries and keyword suggestions:
+Adding papers can call Xiaomi MiMo LLM (`mimo-v2.5`) to auto-generate Chinese summaries and keyword suggestions:
 
 ```bash
 export MIMO_API_KEY="your-mimo-api-key"
