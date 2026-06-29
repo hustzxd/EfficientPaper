@@ -18,10 +18,12 @@ code {
 }
 keyword {
   words: attention_sparsity
+  words: kv_cache_management
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2025/InfLLM-V2"
 }
+update_time: 1781692461

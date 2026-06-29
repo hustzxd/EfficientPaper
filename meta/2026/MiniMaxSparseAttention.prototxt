@@ -1,0 +1,47 @@
+paper {
+  title: "MiniMax Sparse Attention"
+  abbr: "MiniMaxSparseAttention"
+  url: "http://arxiv.org/abs/2606.13392v1"
+  authors: "Xunhao Lai"
+  authors: "Weiqi Xu"
+  authors: "Yufeng Yang"
+  authors: "Qiaorui Chen"
+  authors: "Yang Xu"
+  authors: "Lunbin Zeng"
+  authors: "Xiaolong Li"
+  authors: "Haohai Sun"
+  authors: "Haichao Zhu"
+  authors: "Vito Zhang"
+  authors: "Pengyu Zhao"
+  institutions: "MiniMax"
+  institutions: "Peking University"
+  institutions: "NVIDIA"
+  institutions: "Zhejiang University"
+  institutions: "Huazhong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "CUDA"
+  url: "https://github.com/MiniMax-AI/MSA"
+}
+keyword {
+  words: attention_sparsity
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/MInference"
+  methods: "2024/Quest"
+  methods: "2025/RetrievalAttention"
+  methods: "2024/SeerAttention"
+  methods: "2025/NSA"
+  methods: "2022/flashattention"
+  methods: "2024/FlashAttention-2"
+  methods: "2023/FlashDecoding"
+}
+update_time: 1781590244

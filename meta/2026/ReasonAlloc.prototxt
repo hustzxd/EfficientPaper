@@ -1,0 +1,43 @@
+paper {
+  title: "ReasonAlloc: Hierarchical Decoding-Time KV Cache Budget Allocation for Reasoning Models"
+  abbr: "ReasonAlloc"
+  url: "http://arxiv.org/abs/2606.11164v1"
+  authors: "Wenhao Liu"
+  authors: "Hao Shi"
+  authors: "Yunhe Li"
+  authors: "Weizhi Fei"
+  authors: "Xiangyuan Wang"
+  authors: "Mengzhe Ruan"
+  authors: "Hanxu Hou"
+  authors: "Peisong Wang"
+  authors: "Linqi Song"
+  authors: "Shuang Qiu"
+  institutions: "Tsinghua University"
+  institutions: "City University of Hong Kong"
+  institutions: "Peking University"
+  institutions: "Shenzhen University of Advanced Technology"
+  institutions: "Institute of Automation, Chinese Academy of Sciences"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/SnapKV"
+  methods: "2025/R-KV"
+  methods: "2024/PyramidKV"
+}
+update_time: 1782370133

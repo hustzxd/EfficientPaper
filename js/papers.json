@@ -1,6 +1,348 @@
 {
   "papers": [
     {
+      "id": "DSpark",
+      "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+      "abbr": "DSpark",
+      "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
+      "authors": [
+        "Xin Cheng",
+        "Xingkai Yu",
+        "Chenze Shao",
+        "Jiashi Li",
+        "Yunfan Xiong",
+        "Yi Qian",
+        "Jiaqi Zhu",
+        "Shirong Ma",
+        "Xiaokang Zhang",
+        "Jiasheng Ye",
+        "Qinyu Chen",
+        "Chengqi Deng",
+        "Jiping Yu",
+        "Damai Dai",
+        "Zhengyan Zhang",
+        "Yixuan Wei",
+        "Yixuan Tan",
+        "Wenkai Yang",
+        "Runxin Xu",
+        "Yu Wu",
+        "Zhean Xu",
+        "Xuanyu Wang",
+        "Muyang Chen",
+        "Rui Tian",
+        "Xiao Bi",
+        "Zhewen Hao",
+        "Shaoyuan Chen",
+        "Huanqi Cao",
+        "Wentao Zhang",
+        "Anyi Xu",
+        "Huishuai Zhang",
+        "Dongyan Zhao",
+        "Wenfeng Liang"
+      ],
+      "institutions": [
+        "Peking University",
+        "DeepSeek-AI"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": null,
+      "keywords": [
+        "30-Speculative Decoding",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/deepseek-ai/DeepSpec",
+      "note_url": "notes/2026/DSpark/note/",
+      "prototxt_path": "meta/2026/DSpark.prototxt",
+      "update_time": 1782613841,
+      "rating": 5
+    },
+    {
+      "id": "ReasonAlloc",
+      "title": "ReasonAlloc: Hierarchical Decoding-Time KV Cache Budget Allocation for Reasoning Models",
+      "abbr": "ReasonAlloc",
+      "url": "http://arxiv.org/abs/2606.11164v1",
+      "authors": [
+        "Wenhao Liu",
+        "Hao Shi",
+        "Yunhe Li",
+        "Weizhi Fei",
+        "Xiangyuan Wang",
+        "Mengzhe Ruan",
+        "Hanxu Hou",
+        "Peisong Wang",
+        "Linqi Song",
+        "Shuang Qiu"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "City University of Hong Kong",
+        "Peking University",
+        "Shenzhen University of Advanced Technology",
+        "Institute of Automation, Chinese Academy of Sciences"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/ReasonAlloc/note/",
+      "prototxt_path": "meta/2026/ReasonAlloc.prototxt",
+      "update_time": 1782370133,
+      "rating": 0
+    },
+    {
+      "id": "PyramidKV",
+      "title": "PyramidKV: Dynamic KV Cache Compression based on Pyramidal Information Funneling",
+      "abbr": "PyramidKV",
+      "url": "http://arxiv.org/abs/2406.02069v4",
+      "authors": [
+        "Zefan Cai",
+        "Yichi Zhang",
+        "Bofei Gao",
+        "Yuliang Liu",
+        "Yucheng Li",
+        "Tianyu Liu",
+        "Keming Lu",
+        "Wayne Xiong",
+        "Yue Dong",
+        "Junjie Hu",
+        "Wen Xiao"
+      ],
+      "institutions": [
+        "University of Wisconsin-Madison",
+        "Peking University",
+        "Nanjing University",
+        "University of Surrey",
+        "Qwen",
+        "University of California, Riverside",
+        "Microsoft"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/PyramidKV/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/Zefan-Cai/PyramidKV",
+      "note_url": "notes/2024/PyramidKV/note/",
+      "prototxt_path": "meta/2024/PyramidKV.prototxt",
+      "update_time": 1782181873,
+      "rating": 0
+    },
+    {
+      "id": "EventTensor",
+      "title": "Event Tensor: A Unified Abstraction for Compiling Dynamic Megakernel",
+      "abbr": "EventTensor",
+      "url": "http://arxiv.org/abs/2604.13327v2",
+      "authors": [
+        "Hongyi Jin",
+        "Bohan Hou",
+        "Guanjie Wang",
+        "Ruihang Lai",
+        "Jinqi Chen",
+        "Zihao Ye",
+        "Yaxing Cai",
+        "Yixin Dong",
+        "Xinhao Cheng",
+        "Zhihao Zhang",
+        "Yilong Zhao",
+        "Yingyi Huang",
+        "Lijie Yang",
+        "Jinchen Jiang",
+        "Gabriele Oliaro",
+        "Jianan Ji",
+        "Xupeng Miao",
+        "Vinod Grover",
+        "Todd C. Mowry",
+        "Zhihao Jia",
+        "Tianqi Chen"
+      ],
+      "institutions": [
+        "Carnegie Mellon University",
+        "NVIDIA",
+        "UC Berkeley"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/EventTensor/cover.jpg",
+      "keywords": [
+        "49-Kernel Generation"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/EventTensor/note/",
+      "prototxt_path": "meta/2026/EventTensor.prototxt",
+      "update_time": 1781770027,
+      "rating": 0
+    },
+    {
+      "id": "NOSA",
+      "title": "NOSA: Native and Offloadable Sparse Attention",
+      "abbr": "NOSA",
+      "url": "http://arxiv.org/abs/2510.13602v1",
+      "authors": [
+        "Yuxiang Huang",
+        "Chaojun Xiao",
+        "Xu Han",
+        "Zhiyuan Liu"
+      ],
+      "institutions": [
+        "Tsinghua University"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/NOSA/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/NOSA/note/",
+      "prototxt_path": "meta/2025/NOSA.prototxt",
+      "update_time": 1781692461,
+      "rating": 0
+    },
+    {
+      "id": "SparDA",
+      "title": "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference",
+      "abbr": "SparDA",
+      "url": "http://arxiv.org/abs/2606.04511v1",
+      "authors": [
+        "Yaosheng Fu",
+        "Guangxuan Xiao",
+        "Xin Dong",
+        "Song Han",
+        "Oreste Villa"
+      ],
+      "institutions": [
+        "NVIDIA",
+        "Thinking Machines Lab",
+        "ByteDance Seed",
+        "MIT"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SparDA/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/NVlabs/SparDA",
+      "note_url": "notes/2026/SparDA/note/",
+      "prototxt_path": "meta/2026/SparDA.prototxt",
+      "update_time": 1781692321,
+      "rating": 0
+    },
+    {
+      "id": "MiniMaxSparseAttention",
+      "title": "MiniMax Sparse Attention",
+      "abbr": "MiniMaxSparseAttention",
+      "url": "http://arxiv.org/abs/2606.13392v1",
+      "authors": [
+        "Xunhao Lai",
+        "Weiqi Xu",
+        "Yufeng Yang",
+        "Qiaorui Chen",
+        "Yang Xu",
+        "Lunbin Zeng",
+        "Xiaolong Li",
+        "Haohai Sun",
+        "Haichao Zhu",
+        "Vito Zhang",
+        "Pengyu Zhao"
+      ],
+      "institutions": [
+        "MiniMax",
+        "Peking University",
+        "NVIDIA",
+        "Zhejiang University",
+        "Huazhong University of Science and Technology"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/MiniMaxSparseAttention/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/MiniMax-AI/MSA",
+      "note_url": "notes/2026/MiniMaxSparseAttention/note/",
+      "prototxt_path": "meta/2026/MiniMaxSparseAttention.prototxt",
+      "update_time": 1781590244,
+      "rating": 0
+    },
+    {
+      "id": "FlashMemory",
+      "title": "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention",
+      "abbr": "FlashMemory",
+      "url": "http://arxiv.org/abs/2606.09079v2",
+      "authors": [
+        "Yan Wang",
+        "Qifan Zhang",
+        "Jiachen Yu",
+        "Tian Liang",
+        "Dongyang Ma",
+        "Xiang Hu",
+        "Zibo Lin",
+        "Chunyang Li",
+        "Zhichao Wang",
+        "Miao Peng",
+        "Nuo Chen",
+        "Jia Li",
+        "Yujiu Yang",
+        "Haitao Mi",
+        "Dong Yu"
+      ],
+      "institutions": [
+        "Independent Researchers",
+        "Tencent",
+        "The Hong Kong University of Science and Technology (Guangzhou)",
+        "Tsinghua University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/FlashMemory/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/FlashMemory/note/",
+      "prototxt_path": "meta/2026/FlashMemory.prototxt",
+      "update_time": 1781144040,
+      "rating": 0
+    },
+    {
+      "id": "KVarN",
+      "title": "KVarN: Variance-Normalized KV-Cache Quantization Mitigates Error Accumulation in Reasoning Tasks",
+      "abbr": "KVarN",
+      "url": "http://arxiv.org/abs/2606.03458v1",
+      "authors": [
+        "Lorenz K. Muller",
+        "Philippe Bich",
+        "Chiara Boretti",
+        "Hyun-Min Chang",
+        "Jiawei Zhuang",
+        "Lukas Cavigelli"
+      ],
+      "institutions": [
+        "Huawei"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "19-Quantization (KV Cache)"
+      ],
+      "code_url": "https://github.com/huawei-csl/KVarN",
+      "note_url": "notes/2026/KVarN/note/",
+      "prototxt_path": "meta/2026/KVarN.prototxt",
+      "update_time": 1781084975,
+      "rating": 0
+    },
+    {
       "id": "RTPurbo",
       "title": "Full Attention Strikes Back: Transferring Full Attention into Sparse within Hundred Training Steps",
       "abbr": "RTPurbo",
@@ -1623,46 +1965,6 @@
       "note_url": "notes/2025/EvolKV/note/",
       "prototxt_path": "meta/2025/EvolKV.prototxt",
       "update_time": 1774495917,
-      "rating": 0
-    },
-    {
-      "id": "PyramidKV",
-      "title": "PyramidKV: Dynamic KV Cache Compression based on Pyramidal Information Funneling",
-      "abbr": "PyramidKV",
-      "url": "http://arxiv.org/abs/2406.02069v4",
-      "authors": [
-        "Zefan Cai",
-        "Yichi Zhang",
-        "Bofei Gao",
-        "Yuliang Liu",
-        "Yucheng Li",
-        "Tianyu Liu",
-        "Keming Lu",
-        "Wayne Xiong",
-        "Yue Dong",
-        "Junjie Hu",
-        "Wen Xiao"
-      ],
-      "institutions": [
-        "University of Wisconsin-Madison",
-        "Peking University",
-        "Nanjing University",
-        "University of Surrey",
-        "Qwen",
-        "University of California, Riverside",
-        "Microsoft"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/PyramidKV/cover.jpg",
-      "keywords": [
-        "20-Sparse/Eviction (KV Cache)",
-        "21-KV Cache Management"
-      ],
-      "code_url": "https://github.com/Zefan-Cai/PyramidKV",
-      "note_url": "notes/2024/PyramidKV/note/",
-      "prototxt_path": "meta/2024/PyramidKV.prototxt",
-      "update_time": 1774495880,
       "rating": 0
     },
     {
@@ -12138,32 +12440,6 @@
       "rating": 0
     },
     {
-      "id": "NOSA",
-      "title": "NOSA: Native and Offloadable Sparse Attention",
-      "abbr": "NOSA",
-      "url": "http://arxiv.org/abs/2510.13602v1",
-      "authors": [
-        "Yuxiang Huang",
-        "Chaojun Xiao",
-        "Xu Han",
-        "Zhiyuan Liu"
-      ],
-      "institutions": [
-        "Tsinghua University"
-      ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/NOSA/note/",
-      "prototxt_path": "meta/2025/NOSA.prototxt",
-      "update_time": 0,
-      "rating": 0
-    },
-    {
       "id": "omniquant",
       "title": "OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models",
       "abbr": "OmniQuant",
@@ -15707,6 +15983,7 @@
       "TACL",
       "TC",
       "TMLR",
+      "Technical Report",
       "UAI",
       "VLDB",
       "VLSI",
@@ -15739,5 +16016,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 476
+  "total": 483
 }

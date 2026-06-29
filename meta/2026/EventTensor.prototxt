@@ -1,0 +1,49 @@
+paper {
+  title: "Event Tensor: A Unified Abstraction for Compiling Dynamic Megakernel"
+  abbr: "EventTensor"
+  url: "http://arxiv.org/abs/2604.13327v2"
+  authors: "Hongyi Jin"
+  authors: "Bohan Hou"
+  authors: "Guanjie Wang"
+  authors: "Ruihang Lai"
+  authors: "Jinqi Chen"
+  authors: "Zihao Ye"
+  authors: "Yaxing Cai"
+  authors: "Yixin Dong"
+  authors: "Xinhao Cheng"
+  authors: "Zhihao Zhang"
+  authors: "Yilong Zhao"
+  authors: "Yingyi Huang"
+  authors: "Lijie Yang"
+  authors: "Jinchen Jiang"
+  authors: "Gabriele Oliaro"
+  authors: "Jianan Ji"
+  authors: "Xupeng Miao"
+  authors: "Vinod Grover"
+  authors: "Todd C. Mowry"
+  authors: "Zhihao Jia"
+  authors: "Tianqi Chen"
+  institutions: "Carnegie Mellon University"
+  institutions: "NVIDIA"
+  institutions: "UC Berkeley"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kernel_generation
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/PagedAttention"
+  methods: "2024/SGLang"
+  methods: "2025/FlashInfer"
+}
+update_time: 1781770027
