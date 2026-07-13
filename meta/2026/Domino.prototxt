@@ -22,17 +22,14 @@ code {
   type: "Pytorch"
   url: "https://github.com/jianuo-huang/Domino"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: speculative_decoding
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2024/Eagle"
   methods: "2026/DFlash"
 }
-update_time: 1780281248
+update_time: 1783498484

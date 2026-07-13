@@ -9,6 +9,7 @@ python scripts/ddl.py
 python scripts/split_by_year.py
 python scripts/generate_baseline_methods_graph.py
 python scripts/generate_search_data.py
+python scripts/generate_readme_pages.py
 
 if [ -z "$1" ]; then
     echo "Refresh done"

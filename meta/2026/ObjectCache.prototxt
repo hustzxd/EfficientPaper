@@ -1,0 +1,32 @@
+paper {
+  title: "ObjectCache: Layerwise Object-Storage Retrieval for KV Cache Reuse"
+  abbr: "ObjectCache"
+  url: "http://arxiv.org/abs/2605.22850v1"
+  authors: "Yu Zhu"
+  authors: "Aditya Dhakal"
+  authors: "Yunming Xiao"
+  authors: "Dejan Milojicic"
+  authors: "Gustavo Alonso"
+  institutions: "ETH Zurich"
+  institutions: "HPE Labs"
+  institutions: "The Chinese University of Hong Kong, Shenzhen"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/LMCache"
+}
+update_time: 1783406707

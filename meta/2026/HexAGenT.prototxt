@@ -1,0 +1,38 @@
+paper {
+  title: "HexAGenT: Efficient Agentic LLM Serving via Workflow- and Heterogeneity-Aware Scheduling"
+  abbr: "HexAGenT"
+  url: "http://arxiv.org/abs/2605.16637v1"
+  authors: "You Peng"
+  authors: "Youhe Jiang"
+  authors: "Wenshuang Li"
+  authors: "Xu Xu"
+  authors: "Ke Zhou"
+  authors: "Jiawei Jiang"
+  authors: "Chen Wang"
+  authors: "Binhang Yuan"
+  institutions: "HKUST"
+  institutions: "Webank"
+  institutions: "Wuhan University"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+  methods: "2024/Splitwise"
+  methods: "2026/HERMES"
+  methods: "2023/PagedAttention"
+}
+update_time: 1783417516

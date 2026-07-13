@@ -1,10 +1,12 @@
+<!-- This file is generated from readme_raw.md. Edit readme_raw.md and run `python scripts/generate_readme_pages.py`. -->
+
 # EfficientPaper
 
 [![GitHub Stars](https://img.shields.io/github/stars/hustzxd/EfficientPaper?style=social)](https://github.com/hustzxd/EfficientPaper)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/hustzxd/EfficientPaper)](https://github.com/hustzxd/EfficientPaper)
-[![Papers](https://img.shields.io/badge/papers-473-blue)](https://github.com/hustzxd/EfficientPaper)
+[![Papers](https://img.shields.io/badge/papers-496-blue)](https://github.com/hustzxd/EfficientPaper)
 
-EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **473** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
+EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **496** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
 
 The main experience is the Home page at `docs/index.md`: a searchable paper workspace with local editing, graph navigation, arXiv import, PDF lookup, and GitHub sync.
 
@@ -120,7 +122,7 @@ You can also open the Home page and use `Add from arXiv` when the local server i
 ./refresh_and_upload.sh
 ```
 
-This regenerates protobuf templates, split metadata, graph data, and the search dataset.
+This regenerates README/about pages, protobuf templates, split metadata, graph data, and the search dataset.
 
 ### Commit, push, and deploy
 
@@ -139,6 +141,7 @@ With a commit message, the script additionally runs:
 ## Repository Layout
 
 ```text
+readme_raw.md                       # Source for README.md and docs/about.md
 docs/index.md                        # Main searchable home page
 docs/baseline_methods_graph_interactive.md
 docs/edit.html                       # Local metadata editor
@@ -148,6 +151,7 @@ meta/<year>/*.prototxt               # Structured paper metadata
 notes/<year>/<paper>/note.md         # Paper notes
 notes/<year>/<paper>/cover.*         # Paper cover assets
 scripts/paper_editor_server.py       # Local editor / upload / pull / PDF API
+scripts/generate_readme_pages.py     # README/about generator
 scripts/generate_search_data.py      # Search dataset generator
 ```
 
@@ -204,3 +208,4 @@ To add or update a paper:
 15. [Awesome-Deep-Neural-Network-Compression](https://github.com/csyhhu/Awesome-Deep-Neural-Network-Compression) [![Stars](https://img.shields.io/github/stars/csyhhu/Awesome-Deep-Neural-Network-Compression?style=social)](https://github.com/csyhhu/Awesome-Deep-Neural-Network-Compression)
 16. [Efficient-Deep-Learning](https://github.com/AojunZhou/Efficient-Deep-Learning) [![Stars](https://img.shields.io/github/stars/AojunZhou/Efficient-Deep-Learning?style=social)](https://github.com/AojunZhou/Efficient-Deep-Learning)
 17. [Model-Compression-Papers](https://github.com/chester256/Model-Compression-Papers) [![Stars](https://img.shields.io/github/stars/chester256/Model-Compression-Papers?style=social)](https://github.com/chester256/Model-Compression-Papers)
+18. [Awesome-KV-Cache-Optimization](https://github.com/jjiantong/Awesome-KV-Cache-Optimization) [![Stars](https://img.shields.io/github/stars/jjiantong/Awesome-KV-Cache-Optimization?style=social)](https://github.com/jjiantong/Awesome-KV-Cache-Optimization)

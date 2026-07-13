@@ -2,7 +2,9 @@
 
 > Wenhao Liu, Hao Shi, Yunhe Li, Weizhi Fei, Xiangyuan Wang, Mengzhe Ruan, Hanxu Hou, Peisong Wang, Linqi Song, Shuang Qiu
 
-![cover](../../blank.jpg)
+![cover](cover.jpg)
+
+**在decoding中动态的分配不同head的kv cache稀疏度，对比offline calibration方式**
 
 > 注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。
 

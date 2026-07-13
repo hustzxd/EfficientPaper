@@ -1,0 +1,35 @@
+paper {
+  title: "HyperDFlash: Hyper-Connection-Aligned Block Speculative Decoding with Gated Residual Reduction"
+  abbr: "HyperDFlash"
+  url: "http://arxiv.org/abs/2606.26744v2"
+  authors: "Luxi Lin"
+  authors: "Shuang Peng"
+  authors: "Rui Ma"
+  authors: "Junhao Hua"
+  authors: "Shuwei Fan"
+  authors: "Zhengda Qin"
+  authors: "Qiang Wang"
+  authors: "Hongjian Sun"
+  authors: "Fangmin Chen"
+  authors: "Songwei Liu"
+  institutions: "ByteDance"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: speculative_decoding
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/DFlash"
+  methods: "2024/Eagle"
+}
+update_time: 1783491441

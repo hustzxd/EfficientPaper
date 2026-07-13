@@ -13,9 +13,10 @@ This repository is a MkDocs-based paper collection site for efficient AI researc
 
 The site currently presents EfficientPaper as a local-first paper workspace rather than a static list page.
 
-- Current frontend dataset count: `docs/js/papers.json` reports `473` papers
-- The README now documents the UI through screenshots in `docs/images/`
-- If future agents update README or UI descriptions, keep `README.md`, `AGENTS.md`, and the actual UI behavior aligned
+- Public paper counts are generated from `docs/js/papers.json`; use `<paper_number>` in `readme_raw.md` instead of hard-coding the count
+- `README.md` and `docs/about.md` document the UI through screenshots in `docs/images/`
+- `README.md` and `docs/about.md` are generated from `readme_raw.md` by `scripts/generate_readme_pages.py`; edit `readme_raw.md` first, use `<root>` in image paths, and regenerate the outputs
+- If future agents update README/about or UI descriptions, keep `readme_raw.md`, generated docs, `AGENTS.md`, and the actual UI behavior aligned
 
 ## Current UI and Features
 
@@ -205,7 +206,8 @@ This graceful degradation is part of the current UX and should be preserved.
   - weekly paper digests
   - long-form curated summaries
 - `docs/about.md`
-  - repository overview / README-style page inside MkDocs
+  - generated repository overview / README-style page inside MkDocs
+  - mirrors `README.md` content except for generated path differences such as `docs/images/...` in `README.md` versus `/images/...` in MkDocs
 - `docs/contributors.md`
   - contributor listing
 - `docs/edit.html`
@@ -227,6 +229,8 @@ The injected note editor:
 
 Important files tied to the current interface:
 
+- `readme_raw.md`
+  - canonical source for `README.md` and `docs/about.md`; image paths use `<root>` and paper counts use `<paper_number>`
 - `docs/index.md`
   - main page HTML, CSS, and JavaScript
 - `docs/baseline_methods_graph_interactive.md`
@@ -247,6 +251,8 @@ Important files tied to the current interface:
   - cover assets
 - `scripts/paper_editor_server.py`
   - local API server for edit/save/search/upload/pull/delete/PDF/rating actions
+- `scripts/generate_readme_pages.py`
+  - generates `README.md` and `docs/about.md` from `readme_raw.md`, replacing `<root>` and `<paper_number>` placeholders
 - `scripts/generate_search_data.py`
   - search dataset generator
 - `add_paper_info.sh`
@@ -256,7 +262,7 @@ Important files tied to the current interface:
 - `start_editor.sh`
   - starts MkDocs, the editor server, and the auto-refresh watcher
 - `refresh_and_upload.sh`
-  - regenerates derived assets and optionally commits/pushes/deploys
+  - regenerates derived assets, including README/about pages, and optionally commits/pushes/deploys
 
 ## Screenshot Assets
 
@@ -275,7 +281,7 @@ The screenshot files in `docs/images/` are now part of the repository documentat
 - `upload_to_github.png`
   - GitHub upload modal
 
-If a UI change makes these screenshots stale, update the screenshot assets and the related README or AGENTS descriptions together.
+If a UI change makes these screenshots stale, update the screenshot assets and the related `readme_raw.md` or AGENTS descriptions together, then regenerate README/about.
 
 ## Change Guidance for Future Agents
 
@@ -283,6 +289,7 @@ If a UI change makes these screenshots stale, update the screenshot assets and t
 - Keep local-server-dependent actions optional and visibly disabled when unavailable
 - Preserve existing routes between Home, Graph, Note, and Edit views
 - Prefer updating generated data through existing scripts instead of hand-editing large generated JSON files unless the task explicitly requires it
-- Keep `README.md` and `AGENTS.md` synchronized when changing user-visible workflows or screenshot-backed descriptions
+- Do not hand-edit `README.md` or `docs/about.md` for durable documentation changes; edit `readme_raw.md` and run `python scripts/generate_readme_pages.py`
+- Keep `readme_raw.md`, generated README/about pages, and `AGENTS.md` synchronized when changing user-visible workflows or screenshot-backed descriptions
 - Do not reintroduce references to `docs/baseline_methods_graph.md` unless that file is intentionally restored to the product
 - Document `./add_paper_info.sh` as taking an arXiv ID, not a local PDF path

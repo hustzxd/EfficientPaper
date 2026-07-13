@@ -1,0 +1,26 @@
+paper {
+  title: "D-Cut: Adaptive Verification Depth Pruning for Speculative Decoding"
+  abbr: "D-Cut"
+  url: "https://angelslim.readthedocs.io/zh-cn/latest/features/speculative_decoding/dcut.html"
+  authors: "AngelSlim Team"
+  institutions: "Tencent"
+}
+pub {
+  where: "Blog"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: speculative_decoding
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+  methods: "2026/DFlash"
+  methods: "2024/Eagle"
+}
+update_time: 1783907278

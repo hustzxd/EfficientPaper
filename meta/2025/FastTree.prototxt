@@ -31,9 +31,7 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "FlashAttention"
-  methods: "FlashInfer"
-  methods: "DeFT"
-  methods: "SGLang Triton"
-  methods: "CascadeAttn"
+  methods: "2022/flashattention"
+  methods: "2025/FlashInfer"
+  methods: "2024/SGLang"
 }

@@ -12,8 +12,31 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Use
 
 cd "$REPO_ROOT"
 
-# Cron does not load interactive shell config. Pull only the API key we need.
-if [[ -z "${MIMO_API_KEY:-}" && -f "$HOME/.zshrc" ]]; then
+# Keep the arXiv API footprint small; set env vars before running to override.
+: "${WEEKLY_PAPER_USE_LLM:=1}"
+: "${WEEKLY_PAPER_MAX_RESULTS:=100}"
+: "${WEEKLY_PAPER_ARXIV_DELAY_SECONDS:=15}"
+: "${WEEKLY_PAPER_ARXIV_PAGE_SIZE:=100}"
+: "${WEEKLY_PAPER_ARXIV_RETRIES:=2}"
+: "${WEEKLY_PAPER_ARXIV_RETRY_BASE_DELAY:=300}"
+export WEEKLY_PAPER_USE_LLM
+export WEEKLY_PAPER_MAX_RESULTS
+export WEEKLY_PAPER_ARXIV_DELAY_SECONDS
+export WEEKLY_PAPER_ARXIV_PAGE_SIZE
+export WEEKLY_PAPER_ARXIV_RETRIES
+export WEEKLY_PAPER_ARXIV_RETRY_BASE_DELAY
+
+case "$WEEKLY_PAPER_USE_LLM" in
+  0|false|False|FALSE|no|No|NO|off|Off|OFF)
+    load_mimo_key=0
+    ;;
+  *)
+    load_mimo_key=1
+    ;;
+esac
+
+# Cron does not load interactive shell config. Pull the API key only when LLM is enabled.
+if [[ "$load_mimo_key" -eq 1 && -z "${MIMO_API_KEY:-}" && -f "$HOME/.zshrc" ]]; then
   key_line="$(grep -m1 '^export MIMO_API_KEY=' "$HOME/.zshrc" || true)"
   if [[ -n "$key_line" ]]; then
     MIMO_API_KEY="${key_line#export MIMO_API_KEY=}"

@@ -2,7 +2,7 @@
 
 > Jianuo Huang, Yaojie Zhang, Qituan Zhang, Hao Lin, Hanlin Xu, Linfeng Zhang
 
-![cover](../../blank.jpg)
+![cover](cover.jpg)
 
 > 注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。
 

@@ -26,18 +26,15 @@ code {
   type: "Pytorch"
   url: ""
 }
-note {
-  url: "note.md"
-}
 keyword {
-  words: kv_cache_management
+  words: kv_cache_sparse
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2024/SnapKV"
   methods: "2025/R-KV"
   methods: "2024/PyramidKV"
 }
-update_time: 1782370133
+update_time: 1782809067

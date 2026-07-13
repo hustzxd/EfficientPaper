@@ -5,10 +5,10 @@
     {
       "title": "Quest",
       "anchor": "quest-family",
-      "node_count": 152,
-      "edge_count": 188,
+      "node_count": 165,
+      "edge_count": 208,
       "width": 1644,
-      "height": 5494,
+      "height": 6134,
       "nodes": [
         {
           "id": "2022/44KWQAWO",
@@ -20,7 +20,7 @@
           "level": 0,
           "row": 0,
           "x": 132.0,
-          "y": 907.0
+          "y": 1067.0
         },
         {
           "id": "2022/flashattention",
@@ -32,7 +32,7 @@
           "level": 0,
           "row": 1,
           "x": 132.0,
-          "y": 987.0
+          "y": 1147.0
         },
         {
           "id": "2023/CacheGen",
@@ -44,7 +44,7 @@
           "level": 0,
           "row": 2,
           "x": 132.0,
-          "y": 1067.0
+          "y": 1227.0
         },
         {
           "id": "2023/FlexGen",
@@ -56,7 +56,7 @@
           "level": 0,
           "row": 3,
           "x": 132.0,
-          "y": 1147.0
+          "y": 1307.0
         },
         {
           "id": "2023/gptq",
@@ -68,7 +68,7 @@
           "level": 0,
           "row": 4,
           "x": 132.0,
-          "y": 1227.0
+          "y": 1387.0
         },
         {
           "id": "2023/H2O",
@@ -80,7 +80,7 @@
           "level": 0,
           "row": 5,
           "x": 132.0,
-          "y": 1307.0
+          "y": 1467.0
         },
         {
           "id": "2023/omniquant",
@@ -92,7 +92,7 @@
           "level": 0,
           "row": 6,
           "x": 132.0,
-          "y": 1387.0
+          "y": 1547.0
         },
         {
           "id": "2023/PagedAttention",
@@ -104,7 +104,7 @@
           "level": 0,
           "row": 7,
           "x": 132.0,
-          "y": 1467.0
+          "y": 1627.0
         },
         {
           "id": "2023/QuIP",
@@ -116,7 +116,7 @@
           "level": 0,
           "row": 8,
           "x": 132.0,
-          "y": 1547.0
+          "y": 1707.0
         },
         {
           "id": "2024/AdaKV",
@@ -128,7 +128,7 @@
           "level": 0,
           "row": 9,
           "x": 132.0,
-          "y": 1627.0
+          "y": 1787.0
         },
         {
           "id": "2024/Async-TP",
@@ -140,7 +140,7 @@
           "level": 0,
           "row": 10,
           "x": 132.0,
-          "y": 1707.0
+          "y": 1867.0
         },
         {
           "id": "2024/awq",
@@ -152,7 +152,7 @@
           "level": 0,
           "row": 11,
           "x": 132.0,
-          "y": 1787.0
+          "y": 1947.0
         },
         {
           "id": "2024/CachedAttention",
@@ -164,7 +164,7 @@
           "level": 0,
           "row": 12,
           "x": 132.0,
-          "y": 1867.0
+          "y": 2027.0
         },
         {
           "id": "2024/Cake",
@@ -176,7 +176,19 @@
           "level": 0,
           "row": 13,
           "x": 132.0,
-          "y": 1947.0
+          "y": 2107.0
+        },
+        {
+          "id": "2024/ChunkAttention",
+          "label": "ChunkAttention[2024]",
+          "display_name": "ChunkAttention",
+          "year_label": "2024",
+          "search_name": "ChunkAttention",
+          "type": "root",
+          "level": 0,
+          "row": 14,
+          "x": 132.0,
+          "y": 2187.0
         },
         {
           "id": "2024/DoubleSparsity",
@@ -186,9 +198,9 @@
           "search_name": "DoubleSparsity",
           "type": "root",
           "level": 0,
-          "row": 14,
+          "row": 15,
           "x": 132.0,
-          "y": 2027.0
+          "y": 2267.0
         },
         {
           "id": "2024/DuoAttention",
@@ -198,9 +210,9 @@
           "search_name": "DuoAttention",
           "type": "root",
           "level": 0,
-          "row": 15,
+          "row": 16,
           "x": 132.0,
-          "y": 2107.0
+          "y": 2347.0
         },
         {
           "id": "2024/FLUX",
@@ -210,9 +222,9 @@
           "search_name": "FLUX",
           "type": "root",
           "level": 0,
-          "row": 16,
+          "row": 17,
           "x": 132.0,
-          "y": 2187.0
+          "y": 2427.0
         },
         {
           "id": "2024/GEAR",
@@ -222,9 +234,9 @@
           "search_name": "GEAR",
           "type": "root",
           "level": 0,
-          "row": 17,
+          "row": 18,
           "x": 132.0,
-          "y": 2267.0
+          "y": 2507.0
         },
         {
           "id": "2024/KIVI",
@@ -234,9 +246,9 @@
           "search_name": "KIVI",
           "type": "root",
           "level": 0,
-          "row": 18,
+          "row": 19,
           "x": 132.0,
-          "y": 2347.0
+          "y": 2587.0
         },
         {
           "id": "2024/KVQuant",
@@ -246,9 +258,9 @@
           "search_name": "KVQuant",
           "type": "root",
           "level": 0,
-          "row": 19,
+          "row": 20,
           "x": 132.0,
-          "y": 2427.0
+          "y": 2667.0
         },
         {
           "id": "2024/LazyLLM",
@@ -258,9 +270,9 @@
           "search_name": "LazyLLM",
           "type": "root",
           "level": 0,
-          "row": 20,
+          "row": 21,
           "x": 132.0,
-          "y": 2507.0
+          "y": 2747.0
         },
         {
           "id": "2024/MiKV",
@@ -270,9 +282,9 @@
           "search_name": "MiKV",
           "type": "root",
           "level": 0,
-          "row": 21,
+          "row": 22,
           "x": 132.0,
-          "y": 2587.0
+          "y": 2827.0
         },
         {
           "id": "2024/Mooncake",
@@ -282,9 +294,9 @@
           "search_name": "Mooncake",
           "type": "root",
           "level": 0,
-          "row": 22,
+          "row": 23,
           "x": 132.0,
-          "y": 2667.0
+          "y": 2907.0
         },
         {
           "id": "2024/Quest",
@@ -294,9 +306,9 @@
           "search_name": "Quest",
           "type": "root",
           "level": 0,
-          "row": 23,
+          "row": 24,
           "x": 132.0,
-          "y": 2747.0
+          "y": 2987.0
         },
         {
           "id": "2024/SageAttention",
@@ -306,9 +318,9 @@
           "search_name": "SageAttention",
           "type": "root",
           "level": 0,
-          "row": 24,
+          "row": 25,
           "x": 132.0,
-          "y": 2827.0
+          "y": 3067.0
         },
         {
           "id": "2024/SeerAttention",
@@ -318,9 +330,9 @@
           "search_name": "SeerAttention",
           "type": "root",
           "level": 0,
-          "row": 25,
+          "row": 26,
           "x": 132.0,
-          "y": 2907.0
+          "y": 3147.0
         },
         {
           "id": "2024/SGLang",
@@ -330,9 +342,9 @@
           "search_name": "SGLang",
           "type": "root",
           "level": 0,
-          "row": 26,
+          "row": 27,
           "x": 132.0,
-          "y": 2987.0
+          "y": 3227.0
         },
         {
           "id": "2024/SliceGPT",
@@ -342,9 +354,9 @@
           "search_name": "SliceGPT",
           "type": "root",
           "level": 0,
-          "row": 27,
+          "row": 28,
           "x": 132.0,
-          "y": 3067.0
+          "y": 3307.0
         },
         {
           "id": "2024/SnapKV",
@@ -354,9 +366,21 @@
           "search_name": "SnapKV",
           "type": "root",
           "level": 0,
-          "row": 28,
+          "row": 29,
           "x": 132.0,
-          "y": 3147.0
+          "y": 3387.0
+        },
+        {
+          "id": "2024/Splitwise",
+          "label": "Splitwise[2024]",
+          "display_name": "Splitwise",
+          "year_label": "2024",
+          "search_name": "Splitwise",
+          "type": "root",
+          "level": 0,
+          "row": 30,
+          "x": 132.0,
+          "y": 3467.0
         },
         {
           "id": "2024/streaming-llm",
@@ -366,9 +390,21 @@
           "search_name": "streaming-llm",
           "type": "root",
           "level": 0,
-          "row": 29,
+          "row": 31,
           "x": 132.0,
-          "y": 3227.0
+          "y": 3547.0
+        },
+        {
+          "id": "2024/Teola",
+          "label": "Teola[2024]",
+          "display_name": "Teola",
+          "year_label": "2024",
+          "search_name": "Teola",
+          "type": "root",
+          "level": 0,
+          "row": 32,
+          "x": 132.0,
+          "y": 3627.0
         },
         {
           "id": "2024/TOVA",
@@ -378,9 +414,9 @@
           "search_name": "TOVA",
           "type": "root",
           "level": 0,
-          "row": 30,
+          "row": 33,
           "x": 132.0,
-          "y": 3307.0
+          "y": 3707.0
         },
         {
           "id": "2024/ZipCache",
@@ -390,9 +426,9 @@
           "search_name": "ZipCache",
           "type": "root",
           "level": 0,
-          "row": 31,
+          "row": 34,
           "x": 132.0,
-          "y": 3387.0
+          "y": 3787.0
         },
         {
           "id": "2025/AttentionSinks",
@@ -402,9 +438,9 @@
           "search_name": "AttentionSinks",
           "type": "root",
           "level": 0,
-          "row": 32,
+          "row": 35,
           "x": 132.0,
-          "y": 3467.0
+          "y": 3867.0
         },
         {
           "id": "2025/DSA",
@@ -414,9 +450,9 @@
           "search_name": "DSA",
           "type": "root",
           "level": 0,
-          "row": 33,
+          "row": 36,
           "x": 132.0,
-          "y": 3547.0
+          "y": 3947.0
         },
         {
           "id": "2025/FlashInfer",
@@ -426,9 +462,9 @@
           "search_name": "FlashInfer",
           "type": "root",
           "level": 0,
-          "row": 34,
+          "row": 37,
           "x": 132.0,
-          "y": 3627.0
+          "y": 4027.0
         },
         {
           "id": "2025/LMCache",
@@ -438,9 +474,9 @@
           "search_name": "LMCache",
           "type": "root",
           "level": 0,
-          "row": 35,
+          "row": 38,
           "x": 132.0,
-          "y": 3707.0
+          "y": 4107.0
         },
         {
           "id": "2025/Marconi",
@@ -450,9 +486,9 @@
           "search_name": "Marconi",
           "type": "root",
           "level": 0,
-          "row": 36,
+          "row": 39,
           "x": 132.0,
-          "y": 3787.0
+          "y": 4187.0
         },
         {
           "id": "2025/MoBA",
@@ -462,9 +498,9 @@
           "search_name": "MoBA",
           "type": "root",
           "level": 0,
-          "row": 37,
+          "row": 40,
           "x": 132.0,
-          "y": 3867.0
+          "y": 4267.0
         },
         {
           "id": "2025/NSA",
@@ -474,9 +510,9 @@
           "search_name": "NSA",
           "type": "root",
           "level": 0,
-          "row": 38,
+          "row": 41,
           "x": 132.0,
-          "y": 3947.0
+          "y": 4347.0
         },
         {
           "id": "2025/PQCache",
@@ -486,9 +522,9 @@
           "search_name": "PQCache",
           "type": "root",
           "level": 0,
-          "row": 39,
+          "row": 42,
           "x": 132.0,
-          "y": 4027.0
+          "y": 4427.0
         },
         {
           "id": "2025/R-KV",
@@ -498,9 +534,9 @@
           "search_name": "R-KV",
           "type": "root",
           "level": 0,
-          "row": 40,
+          "row": 43,
           "x": 132.0,
-          "y": 4107.0
+          "y": 4507.0
         },
         {
           "id": "2025/RadialAttention",
@@ -510,9 +546,9 @@
           "search_name": "RadialAttention",
           "type": "root",
           "level": 0,
-          "row": 41,
+          "row": 44,
           "x": 132.0,
-          "y": 4187.0
+          "y": 4587.0
         },
         {
           "id": "2025/RetrievalAttention",
@@ -522,9 +558,9 @@
           "search_name": "RetrievalAttention",
           "type": "root",
           "level": 0,
-          "row": 42,
+          "row": 45,
           "x": 132.0,
-          "y": 4267.0
+          "y": 4667.0
         },
         {
           "id": "2025/SageAttention3",
@@ -534,9 +570,9 @@
           "search_name": "SageAttention3",
           "type": "root",
           "level": 0,
-          "row": 43,
+          "row": 46,
           "x": 132.0,
-          "y": 4347.0
+          "y": 4747.0
         },
         {
           "id": "2025/ShadowKV",
@@ -546,9 +582,9 @@
           "search_name": "ShadowKV",
           "type": "root",
           "level": 0,
-          "row": 44,
+          "row": 47,
           "x": 132.0,
-          "y": 4427.0
+          "y": 4827.0
         },
         {
           "id": "2025/SVG",
@@ -558,9 +594,21 @@
           "search_name": "SVG",
           "type": "root",
           "level": 0,
-          "row": 45,
+          "row": 48,
           "x": 132.0,
-          "y": 4507.0
+          "y": 4907.0
+        },
+        {
+          "id": "2026/HERMES",
+          "label": "HERMES[2026]",
+          "display_name": "HERMES",
+          "year_label": "2026",
+          "search_name": "HERMES",
+          "type": "root",
+          "level": 0,
+          "row": 49,
+          "x": 132.0,
+          "y": 4987.0
         },
         {
           "id": "2026/SPEED",
@@ -570,9 +618,9 @@
           "search_name": "SPEED",
           "type": "root",
           "level": 0,
-          "row": 46,
+          "row": 50,
           "x": 132.0,
-          "y": 4587.0
+          "y": 5067.0
         },
         {
           "id": "2023/FlashDecoding",
@@ -611,6 +659,18 @@
           "y": 227.0
         },
         {
+          "id": "2024/Parrot",
+          "label": "Parrot[2024]",
+          "display_name": "Parrot",
+          "year_label": "2024",
+          "search_name": "Parrot",
+          "type": "leaf",
+          "level": 1,
+          "row": 3,
+          "x": 408.0,
+          "y": 307.0
+        },
+        {
           "id": "2024/PyramidKV",
           "label": "PyramidKV[2024]",
           "display_name": "PyramidKV",
@@ -618,9 +678,9 @@
           "search_name": "PyramidKV",
           "type": "default",
           "level": 1,
-          "row": 3,
+          "row": 4,
           "x": 408.0,
-          "y": 307.0
+          "y": 387.0
         },
         {
           "id": "2024/QuaRot",
@@ -630,9 +690,9 @@
           "search_name": "QuaRot",
           "type": "default",
           "level": 1,
-          "row": 4,
+          "row": 5,
           "x": 408.0,
-          "y": 387.0
+          "y": 467.0
         },
         {
           "id": "2024/RazorAttention",
@@ -642,9 +702,9 @@
           "search_name": "RazorAttention",
           "type": "default",
           "level": 1,
-          "row": 5,
+          "row": 6,
           "x": 408.0,
-          "y": 467.0
+          "y": 547.0
         },
         {
           "id": "2025/0VRXJQ3F",
@@ -654,9 +714,9 @@
           "search_name": "0VRXJQ3F",
           "type": "leaf",
           "level": 1,
-          "row": 6,
+          "row": 7,
           "x": 408.0,
-          "y": 547.0
+          "y": 627.0
         },
         {
           "id": "2025/CacheBlend",
@@ -664,11 +724,11 @@
           "display_name": "CacheBlend",
           "year_label": "2025",
           "search_name": "CacheBlend",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
-          "row": 7,
+          "row": 8,
           "x": 408.0,
-          "y": 627.0
+          "y": 707.0
         },
         {
           "id": "2025/CTkvr",
@@ -678,9 +738,9 @@
           "search_name": "CTkvr",
           "type": "leaf",
           "level": 1,
-          "row": 8,
+          "row": 9,
           "x": 408.0,
-          "y": 707.0
+          "y": 787.0
         },
         {
           "id": "2025/DefensiveKV",
@@ -690,9 +750,9 @@
           "search_name": "DefensiveKV",
           "type": "leaf",
           "level": 1,
-          "row": 9,
+          "row": 10,
           "x": 408.0,
-          "y": 787.0
+          "y": 867.0
         },
         {
           "id": "2025/FastKV",
@@ -702,9 +762,21 @@
           "search_name": "FastKV",
           "type": "leaf",
           "level": 1,
-          "row": 10,
+          "row": 11,
           "x": 408.0,
-          "y": 867.0
+          "y": 947.0
+        },
+        {
+          "id": "2025/FastTree",
+          "label": "FastTree[2025]",
+          "display_name": "FastTree",
+          "year_label": "2025",
+          "search_name": "FastTree",
+          "type": "leaf",
+          "level": 1,
+          "row": 12,
+          "x": 408.0,
+          "y": 1027.0
         },
         {
           "id": "2025/FLOW",
@@ -714,9 +786,9 @@
           "search_name": "FLOW",
           "type": "default",
           "level": 1,
-          "row": 11,
+          "row": 13,
           "x": 408.0,
-          "y": 947.0
+          "y": 1107.0
         },
         {
           "id": "2025/FoX",
@@ -726,9 +798,9 @@
           "search_name": "FoX",
           "type": "leaf",
           "level": 1,
-          "row": 12,
+          "row": 14,
           "x": 408.0,
-          "y": 1027.0
+          "y": 1187.0
         },
         {
           "id": "2025/FPSAttention",
@@ -738,9 +810,9 @@
           "search_name": "FPSAttention",
           "type": "leaf",
           "level": 1,
-          "row": 13,
+          "row": 15,
           "x": 408.0,
-          "y": 1107.0
+          "y": 1267.0
         },
         {
           "id": "2025/FSA",
@@ -750,9 +822,9 @@
           "search_name": "FSA",
           "type": "leaf",
           "level": 1,
-          "row": 14,
+          "row": 16,
           "x": 408.0,
-          "y": 1187.0
+          "y": 1347.0
         },
         {
           "id": "2025/H1B-KV",
@@ -762,9 +834,9 @@
           "search_name": "H1B-KV",
           "type": "leaf",
           "level": 1,
-          "row": 15,
+          "row": 17,
           "x": 408.0,
-          "y": 1267.0
+          "y": 1427.0
         },
         {
           "id": "2025/HashAttention",
@@ -774,9 +846,9 @@
           "search_name": "HashAttention",
           "type": "leaf",
           "level": 1,
-          "row": 16,
+          "row": 18,
           "x": 408.0,
-          "y": 1347.0
+          "y": 1507.0
         },
         {
           "id": "2025/HATA",
@@ -786,9 +858,9 @@
           "search_name": "HATA",
           "type": "leaf",
           "level": 1,
-          "row": 17,
+          "row": 19,
           "x": 408.0,
-          "y": 1427.0
+          "y": 1587.0
         },
         {
           "id": "2025/InfLLM-V2",
@@ -798,9 +870,9 @@
           "search_name": "InfLLM-V2",
           "type": "default",
           "level": 1,
-          "row": 18,
+          "row": 20,
           "x": 408.0,
-          "y": 1507.0
+          "y": 1667.0
         },
         {
           "id": "2025/Kascade",
@@ -810,9 +882,9 @@
           "search_name": "Kascade",
           "type": "leaf",
           "level": 1,
-          "row": 19,
+          "row": 21,
           "x": 408.0,
-          "y": 1587.0
+          "y": 1747.0
         },
         {
           "id": "2025/KVmix",
@@ -822,9 +894,9 @@
           "search_name": "KVmix",
           "type": "leaf",
           "level": 1,
-          "row": 20,
+          "row": 22,
           "x": 408.0,
-          "y": 1667.0
+          "y": 1827.0
         },
         {
           "id": "2025/KVSink",
@@ -834,9 +906,9 @@
           "search_name": "KVSink",
           "type": "leaf",
           "level": 1,
-          "row": 21,
+          "row": 23,
           "x": 408.0,
-          "y": 1747.0
+          "y": 1907.0
         },
         {
           "id": "2025/KVzip",
@@ -846,9 +918,9 @@
           "search_name": "KVzip",
           "type": "default",
           "level": 1,
-          "row": 22,
+          "row": 24,
           "x": 408.0,
-          "y": 1827.0
+          "y": 1987.0
         },
         {
           "id": "2025/LAVa",
@@ -858,9 +930,9 @@
           "search_name": "LAVa",
           "type": "leaf",
           "level": 1,
-          "row": 23,
+          "row": 25,
           "x": 408.0,
-          "y": 1907.0
+          "y": 2067.0
         },
         {
           "id": "2025/LiteAttention",
@@ -870,9 +942,9 @@
           "search_name": "LiteAttention",
           "type": "leaf",
           "level": 1,
-          "row": 24,
+          "row": 26,
           "x": 408.0,
-          "y": 1987.0
+          "y": 2147.0
         },
         {
           "id": "2025/MILLION",
@@ -882,9 +954,9 @@
           "search_name": "MILLION",
           "type": "default",
           "level": 1,
-          "row": 25,
+          "row": 27,
           "x": 408.0,
-          "y": 2067.0
+          "y": 2227.0
         },
         {
           "id": "2025/NanoFlow",
@@ -894,9 +966,9 @@
           "search_name": "NanoFlow",
           "type": "default",
           "level": 1,
-          "row": 26,
+          "row": 28,
           "x": 408.0,
-          "y": 2147.0
+          "y": 2307.0
         },
         {
           "id": "2025/PagedEviction",
@@ -906,9 +978,9 @@
           "search_name": "PagedEviction",
           "type": "leaf",
           "level": 1,
-          "row": 27,
+          "row": 29,
           "x": 408.0,
-          "y": 2227.0
+          "y": 2387.0
         },
         {
           "id": "2025/PAROAttention",
@@ -918,9 +990,9 @@
           "search_name": "PAROAttention",
           "type": "leaf",
           "level": 1,
-          "row": 28,
+          "row": 30,
           "x": 408.0,
-          "y": 2307.0
+          "y": 2467.0
         },
         {
           "id": "2025/PruLong",
@@ -930,9 +1002,9 @@
           "search_name": "PruLong",
           "type": "leaf",
           "level": 1,
-          "row": 29,
+          "row": 31,
           "x": 408.0,
-          "y": 2387.0
+          "y": 2547.0
         },
         {
           "id": "2025/PureKV",
@@ -942,9 +1014,9 @@
           "search_name": "PureKV",
           "type": "leaf",
           "level": 1,
-          "row": 30,
+          "row": 32,
           "x": 408.0,
-          "y": 2467.0
+          "y": 2627.0
         },
         {
           "id": "2025/QJL",
@@ -954,9 +1026,9 @@
           "search_name": "QJL",
           "type": "leaf",
           "level": 1,
-          "row": 31,
+          "row": 33,
           "x": 408.0,
-          "y": 2547.0
+          "y": 2707.0
         },
         {
           "id": "2025/RaaS",
@@ -966,9 +1038,9 @@
           "search_name": "RaaS",
           "type": "default",
           "level": 1,
-          "row": 32,
+          "row": 34,
           "x": 408.0,
-          "y": 2627.0
+          "y": 2787.0
         },
         {
           "id": "2025/RetroAttention",
@@ -978,9 +1050,9 @@
           "search_name": "RetroAttention",
           "type": "leaf",
           "level": 1,
-          "row": 33,
+          "row": 35,
           "x": 408.0,
-          "y": 2707.0
+          "y": 2867.0
         },
         {
           "id": "2025/RotateKV",
@@ -990,9 +1062,9 @@
           "search_name": "RotateKV",
           "type": "default",
           "level": 1,
-          "row": 34,
+          "row": 36,
           "x": 408.0,
-          "y": 2787.0
+          "y": 2947.0
         },
         {
           "id": "2025/SignRoundV2",
@@ -1002,9 +1074,9 @@
           "search_name": "SignRoundV2",
           "type": "leaf",
           "level": 1,
-          "row": 35,
+          "row": 37,
           "x": 408.0,
-          "y": 2867.0
+          "y": 3027.0
         },
         {
           "id": "2025/SparseServe",
@@ -1014,9 +1086,9 @@
           "search_name": "SparseServe",
           "type": "default",
           "level": 1,
-          "row": 36,
+          "row": 38,
           "x": 408.0,
-          "y": 2947.0
+          "y": 3107.0
         },
         {
           "id": "2025/SQ-format",
@@ -1026,9 +1098,9 @@
           "search_name": "SQ-format",
           "type": "leaf",
           "level": 1,
-          "row": 37,
+          "row": 39,
           "x": 408.0,
-          "y": 3027.0
+          "y": 3187.0
         },
         {
           "id": "2025/Strata",
@@ -1038,9 +1110,9 @@
           "search_name": "Strata",
           "type": "default",
           "level": 1,
-          "row": 38,
+          "row": 40,
           "x": 408.0,
-          "y": 3107.0
+          "y": 3267.0
         },
         {
           "id": "2025/SVG2",
@@ -1050,9 +1122,9 @@
           "search_name": "SVG2",
           "type": "leaf",
           "level": 1,
-          "row": 39,
+          "row": 41,
           "x": 408.0,
-          "y": 3187.0
+          "y": 3347.0
         },
         {
           "id": "2025/TileLink",
@@ -1062,9 +1134,21 @@
           "search_name": "TileLink",
           "type": "default",
           "level": 1,
-          "row": 40,
+          "row": 42,
           "x": 408.0,
-          "y": 3267.0
+          "y": 3427.0
+        },
+        {
+          "id": "2025/TokenCake",
+          "label": "TokenCake[2025]",
+          "display_name": "TokenCake",
+          "year_label": "2025",
+          "search_name": "TokenCake",
+          "type": "leaf",
+          "level": 1,
+          "row": 43,
+          "x": 408.0,
+          "y": 3507.0
         },
         {
           "id": "2025/Twilight",
@@ -1074,9 +1158,9 @@
           "search_name": "Twilight",
           "type": "leaf",
           "level": 1,
-          "row": 41,
+          "row": 44,
           "x": 408.0,
-          "y": 3347.0
+          "y": 3587.0
         },
         {
           "id": "2025/UNComp",
@@ -1086,9 +1170,9 @@
           "search_name": "UNComp",
           "type": "leaf",
           "level": 1,
-          "row": 42,
+          "row": 45,
           "x": 408.0,
-          "y": 3427.0
+          "y": 3667.0
         },
         {
           "id": "2025/vAttention",
@@ -1098,9 +1182,9 @@
           "search_name": "vAttention",
           "type": "leaf",
           "level": 1,
-          "row": 43,
+          "row": 46,
           "x": 408.0,
-          "y": 3507.0
+          "y": 3747.0
         },
         {
           "id": "2025/WGM",
@@ -1110,9 +1194,9 @@
           "search_name": "WGM",
           "type": "leaf",
           "level": 1,
-          "row": 44,
+          "row": 47,
           "x": 408.0,
-          "y": 3587.0
+          "y": 3827.0
         },
         {
           "id": "2026/Bidaw",
@@ -1122,9 +1206,9 @@
           "search_name": "Bidaw",
           "type": "leaf",
           "level": 1,
-          "row": 45,
+          "row": 48,
           "x": 408.0,
-          "y": 3667.0
+          "y": 3907.0
         },
         {
           "id": "2026/CacheFlow",
@@ -1134,9 +1218,9 @@
           "search_name": "CacheFlow",
           "type": "default",
           "level": 1,
-          "row": 46,
+          "row": 49,
           "x": 408.0,
-          "y": 3747.0
+          "y": 3987.0
         },
         {
           "id": "2026/ContiguousKV",
@@ -1146,9 +1230,9 @@
           "search_name": "ContiguousKV",
           "type": "leaf",
           "level": 1,
-          "row": 47,
+          "row": 50,
           "x": 408.0,
-          "y": 3827.0
+          "y": 4067.0
         },
         {
           "id": "2026/Double-P",
@@ -1158,9 +1242,9 @@
           "search_name": "Double-P",
           "type": "leaf",
           "level": 1,
-          "row": 48,
+          "row": 51,
           "x": 408.0,
-          "y": 3907.0
+          "y": 4147.0
         },
         {
           "id": "2026/EventTensor",
@@ -1170,9 +1254,9 @@
           "search_name": "EventTensor",
           "type": "leaf",
           "level": 1,
-          "row": 49,
+          "row": 52,
           "x": 408.0,
-          "y": 3987.0
+          "y": 4227.0
         },
         {
           "id": "2026/FlashCache",
@@ -1182,9 +1266,9 @@
           "search_name": "FlashCache",
           "type": "leaf",
           "level": 1,
-          "row": 50,
+          "row": 53,
           "x": 408.0,
-          "y": 4067.0
+          "y": 4307.0
         },
         {
           "id": "2026/FlashOverlap",
@@ -1194,9 +1278,9 @@
           "search_name": "FlashOverlap",
           "type": "leaf",
           "level": 1,
-          "row": 51,
+          "row": 54,
           "x": 408.0,
-          "y": 4147.0
+          "y": 4387.0
         },
         {
           "id": "2026/GLM-5",
@@ -1206,9 +1290,21 @@
           "search_name": "GLM-5",
           "type": "default",
           "level": 1,
-          "row": 52,
+          "row": 55,
           "x": 408.0,
-          "y": 4227.0
+          "y": 4467.0
+        },
+        {
+          "id": "2026/HexAGenT",
+          "label": "HexAGenT[2026]",
+          "display_name": "HexAGenT",
+          "year_label": "2026",
+          "search_name": "HexAGenT",
+          "type": "leaf",
+          "level": 1,
+          "row": 56,
+          "x": 408.0,
+          "y": 4547.0
         },
         {
           "id": "2026/HISA",
@@ -1218,9 +1314,9 @@
           "search_name": "HISA",
           "type": "default",
           "level": 1,
-          "row": 53,
+          "row": 57,
           "x": 408.0,
-          "y": 4307.0
+          "y": 4627.0
         },
         {
           "id": "2026/IBW4TYDG",
@@ -1230,9 +1326,9 @@
           "search_name": "IBW4TYDG",
           "type": "leaf",
           "level": 1,
-          "row": 54,
+          "row": 58,
           "x": 408.0,
-          "y": 4387.0
+          "y": 4707.0
         },
         {
           "id": "2026/K-Search",
@@ -1242,9 +1338,9 @@
           "search_name": "K-Search",
           "type": "leaf",
           "level": 1,
-          "row": 55,
+          "row": 59,
           "x": 408.0,
-          "y": 4467.0
+          "y": 4787.0
         },
         {
           "id": "2026/KunServe",
@@ -1254,9 +1350,9 @@
           "search_name": "KunServe",
           "type": "leaf",
           "level": 1,
-          "row": 56,
+          "row": 60,
           "x": 408.0,
-          "y": 4547.0
+          "y": 4867.0
         },
         {
           "id": "2026/KVBuffer",
@@ -1266,9 +1362,9 @@
           "search_name": "KVBuffer",
           "type": "leaf",
           "level": 1,
-          "row": 57,
+          "row": 61,
           "x": 408.0,
-          "y": 4627.0
+          "y": 4947.0
         },
         {
           "id": "2026/KVDrive",
@@ -1278,9 +1374,21 @@
           "search_name": "KVDrive",
           "type": "leaf",
           "level": 1,
-          "row": 58,
+          "row": 62,
           "x": 408.0,
-          "y": 4707.0
+          "y": 5027.0
+        },
+        {
+          "id": "2026/KVpop",
+          "label": "KVpop[2026]",
+          "display_name": "KVpop",
+          "year_label": "2026",
+          "search_name": "KVpop",
+          "type": "leaf",
+          "level": 1,
+          "row": 63,
+          "x": 408.0,
+          "y": 5107.0
         },
         {
           "id": "2026/KVServe",
@@ -1288,11 +1396,11 @@
           "display_name": "KVServe",
           "year_label": "2026",
           "search_name": "KVServe",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
-          "row": 59,
+          "row": 64,
           "x": 408.0,
-          "y": 4787.0
+          "y": 5187.0
         },
         {
           "id": "2026/KVTC",
@@ -1302,9 +1410,9 @@
           "search_name": "KVTC",
           "type": "leaf",
           "level": 1,
-          "row": 60,
+          "row": 65,
           "x": 408.0,
-          "y": 4867.0
+          "y": 5267.0
         },
         {
           "id": "2026/L3",
@@ -1314,9 +1422,33 @@
           "search_name": "L3",
           "type": "leaf",
           "level": 1,
-          "row": 61,
+          "row": 66,
           "x": 408.0,
-          "y": 4947.0
+          "y": 5347.0
+        },
+        {
+          "id": "2026/ObjectCache",
+          "label": "ObjectCache[2026]",
+          "display_name": "ObjectCache",
+          "year_label": "2026",
+          "search_name": "ObjectCache",
+          "type": "leaf",
+          "level": 1,
+          "row": 67,
+          "x": 408.0,
+          "y": 5427.0
+        },
+        {
+          "id": "2026/Prism",
+          "label": "Prism[2026]",
+          "display_name": "Prism",
+          "year_label": "2026",
+          "search_name": "Prism",
+          "type": "leaf",
+          "level": 1,
+          "row": 68,
+          "x": 408.0,
+          "y": 5507.0
         },
         {
           "id": "2026/RTP-LLM",
@@ -1326,9 +1458,9 @@
           "search_name": "RTP-LLM",
           "type": "leaf",
           "level": 1,
-          "row": 62,
+          "row": 69,
           "x": 408.0,
-          "y": 5027.0
+          "y": 5587.0
         },
         {
           "id": "2026/SparVAR",
@@ -1338,9 +1470,21 @@
           "search_name": "SparVAR",
           "type": "leaf",
           "level": 1,
-          "row": 63,
+          "row": 70,
           "x": 408.0,
-          "y": 5107.0
+          "y": 5667.0
+        },
+        {
+          "id": "2026/SwiftCache",
+          "label": "SwiftCache[2026]",
+          "display_name": "SwiftCache",
+          "year_label": "2026",
+          "search_name": "SwiftCache",
+          "type": "leaf",
+          "level": 1,
+          "row": 71,
+          "x": 408.0,
+          "y": 5747.0
         },
         {
           "id": "2026/Tactic",
@@ -1350,9 +1494,9 @@
           "search_name": "Tactic",
           "type": "leaf",
           "level": 1,
-          "row": 64,
+          "row": 72,
           "x": 408.0,
-          "y": 5187.0
+          "y": 5827.0
         },
         {
           "id": "2026/ThriftAttention",
@@ -1362,9 +1506,9 @@
           "search_name": "ThriftAttention",
           "type": "leaf",
           "level": 1,
-          "row": 65,
+          "row": 73,
           "x": 408.0,
-          "y": 5267.0
+          "y": 5907.0
         },
         {
           "id": "2026/TurboQuant",
@@ -1374,9 +1518,9 @@
           "search_name": "TurboQuant",
           "type": "default",
           "level": 1,
-          "row": 66,
+          "row": 74,
           "x": 408.0,
-          "y": 5347.0
+          "y": 5987.0
         },
         {
           "id": "2026/VQKV",
@@ -1386,9 +1530,9 @@
           "search_name": "VQKV",
           "type": "leaf",
           "level": 1,
-          "row": 67,
+          "row": 75,
           "x": 408.0,
-          "y": 5427.0
+          "y": 6067.0
         },
         {
           "id": "2024/FlashAttention-3",
@@ -1400,7 +1544,7 @@
           "level": 2,
           "row": 0,
           "x": 684.0,
-          "y": 1947.0
+          "y": 2187.0
         },
         {
           "id": "2024/MInference",
@@ -1412,7 +1556,7 @@
           "level": 2,
           "row": 1,
           "x": 684.0,
-          "y": 2027.0
+          "y": 2267.0
         },
         {
           "id": "2025/AdaSplash",
@@ -1424,7 +1568,7 @@
           "level": 2,
           "row": 2,
           "x": 684.0,
-          "y": 2107.0
+          "y": 2347.0
         },
         {
           "id": "2025/EvolKV",
@@ -1436,7 +1580,7 @@
           "level": 2,
           "row": 3,
           "x": 684.0,
-          "y": 2187.0
+          "y": 2427.0
         },
         {
           "id": "2025/FreeKV",
@@ -1448,7 +1592,7 @@
           "level": 2,
           "row": 4,
           "x": 684.0,
-          "y": 2267.0
+          "y": 2507.0
         },
         {
           "id": "2025/HCAttention",
@@ -1460,7 +1604,7 @@
           "level": 2,
           "row": 5,
           "x": 684.0,
-          "y": 2347.0
+          "y": 2587.0
         },
         {
           "id": "2025/MixKVQ",
@@ -1472,7 +1616,7 @@
           "level": 2,
           "row": 6,
           "x": 684.0,
-          "y": 2427.0
+          "y": 2667.0
         },
         {
           "id": "2025/NOSA",
@@ -1484,7 +1628,7 @@
           "level": 2,
           "row": 7,
           "x": 684.0,
-          "y": 2507.0
+          "y": 2747.0
         },
         {
           "id": "2025/SSA",
@@ -1496,7 +1640,7 @@
           "level": 2,
           "row": 8,
           "x": 684.0,
-          "y": 2587.0
+          "y": 2827.0
         },
         {
           "id": "2025/TokenWeave",
@@ -1508,7 +1652,7 @@
           "level": 2,
           "row": 9,
           "x": 684.0,
-          "y": 2667.0
+          "y": 2907.0
         },
         {
           "id": "2025/VecInfer",
@@ -1520,7 +1664,19 @@
           "level": 2,
           "row": 10,
           "x": 684.0,
-          "y": 2747.0
+          "y": 2987.0
+        },
+        {
+          "id": "2026/AdaptiveKVReuse",
+          "label": "AdaptiveKVReuse[2026]",
+          "display_name": "AdaptiveKVReuse",
+          "year_label": "2026",
+          "search_name": "AdaptiveKVReuse",
+          "type": "leaf",
+          "level": 2,
+          "row": 11,
+          "x": 684.0,
+          "y": 3067.0
         },
         {
           "id": "2026/FastKVzip",
@@ -1530,9 +1686,9 @@
           "search_name": "FastKVzip",
           "type": "leaf",
           "level": 2,
-          "row": 11,
+          "row": 12,
           "x": 684.0,
-          "y": 2827.0
+          "y": 3147.0
         },
         {
           "id": "2026/HARP",
@@ -1542,9 +1698,9 @@
           "search_name": "HARP",
           "type": "leaf",
           "level": 2,
-          "row": 12,
+          "row": 13,
           "x": 684.0,
-          "y": 2907.0
+          "y": 3227.0
         },
         {
           "id": "2026/IndexCache",
@@ -1554,9 +1710,9 @@
           "search_name": "IndexCache",
           "type": "default",
           "level": 2,
-          "row": 13,
+          "row": 14,
           "x": 684.0,
-          "y": 2987.0
+          "y": 3307.0
         },
         {
           "id": "2026/KVzap",
@@ -1566,9 +1722,9 @@
           "search_name": "KVzap",
           "type": "leaf",
           "level": 2,
-          "row": 14,
+          "row": 15,
           "x": 684.0,
-          "y": 3067.0
+          "y": 3387.0
         },
         {
           "id": "2026/Moment-KV",
@@ -1578,9 +1734,9 @@
           "search_name": "Moment-KV",
           "type": "leaf",
           "level": 2,
-          "row": 15,
+          "row": 16,
           "x": 684.0,
-          "y": 3147.0
+          "y": 3467.0
         },
         {
           "id": "2026/OScaR",
@@ -1590,9 +1746,9 @@
           "search_name": "OScaR",
           "type": "leaf",
           "level": 2,
-          "row": 16,
+          "row": 17,
           "x": 684.0,
-          "y": 3227.0
+          "y": 3547.0
         },
         {
           "id": "2026/ReasonAlloc",
@@ -1602,9 +1758,21 @@
           "search_name": "ReasonAlloc",
           "type": "leaf",
           "level": 2,
-          "row": 17,
+          "row": 18,
           "x": 684.0,
-          "y": 3307.0
+          "y": 3627.0
+        },
+        {
+          "id": "2026/SplitZip",
+          "label": "SplitZip[2026]",
+          "display_name": "SplitZip",
+          "year_label": "2026",
+          "search_name": "SplitZip",
+          "type": "leaf",
+          "level": 2,
+          "row": 19,
+          "x": 684.0,
+          "y": 3707.0
         },
         {
           "id": "2026/TriAttention",
@@ -1614,9 +1782,9 @@
           "search_name": "TriAttention",
           "type": "leaf",
           "level": 2,
-          "row": 18,
+          "row": 20,
           "x": 684.0,
-          "y": 3387.0
+          "y": 3787.0
         },
         {
           "id": "2026/Tutti",
@@ -1626,9 +1794,9 @@
           "search_name": "Tutti",
           "type": "default",
           "level": 2,
-          "row": 19,
+          "row": 21,
           "x": 684.0,
-          "y": 3467.0
+          "y": 3867.0
         },
         {
           "id": "2026/VECTOR",
@@ -1638,9 +1806,9 @@
           "search_name": "VECTOR",
           "type": "leaf",
           "level": 2,
-          "row": 20,
+          "row": 22,
           "x": 684.0,
-          "y": 3547.0
+          "y": 3947.0
         },
         {
           "id": "2025/FlexPrefill",
@@ -1652,7 +1820,7 @@
           "level": 3,
           "row": 0,
           "x": 960.0,
-          "y": 2587.0
+          "y": 2907.0
         },
         {
           "id": "2026/AdaSplash-2",
@@ -1664,7 +1832,7 @@
           "level": 3,
           "row": 1,
           "x": 960.0,
-          "y": 2667.0
+          "y": 2987.0
         },
         {
           "id": "2026/FlashAttention-4",
@@ -1676,7 +1844,7 @@
           "level": 3,
           "row": 2,
           "x": 960.0,
-          "y": 2747.0
+          "y": 3067.0
         },
         {
           "id": "2026/MiniMaxSparseAttention",
@@ -1688,7 +1856,7 @@
           "level": 3,
           "row": 3,
           "x": 960.0,
-          "y": 2827.0
+          "y": 3147.0
         },
         {
           "id": "2026/PredictKV",
@@ -1700,7 +1868,7 @@
           "level": 3,
           "row": 4,
           "x": 960.0,
-          "y": 2907.0
+          "y": 3227.0
         },
         {
           "id": "2025/SharePrefill",
@@ -1712,7 +1880,7 @@
           "level": 4,
           "row": 0,
           "x": 1236.0,
-          "y": 2507.0
+          "y": 2867.0
         },
         {
           "id": "2025/SlimInfer",
@@ -1724,7 +1892,7 @@
           "level": 4,
           "row": 1,
           "x": 1236.0,
-          "y": 2587.0
+          "y": 2947.0
         },
         {
           "id": "2025/XAttention",
@@ -1736,7 +1904,7 @@
           "level": 4,
           "row": 2,
           "x": 1236.0,
-          "y": 2667.0
+          "y": 3027.0
         },
         {
           "id": "2026/FlashPrefill",
@@ -1748,19 +1916,7 @@
           "level": 4,
           "row": 3,
           "x": 1236.0,
-          "y": 2747.0
-        },
-        {
-          "id": "2026/Prism",
-          "label": "Prism[2026]",
-          "display_name": "Prism",
-          "year_label": "2026",
-          "search_name": "Prism",
-          "type": "leaf",
-          "level": 4,
-          "row": 4,
-          "x": 1236.0,
-          "y": 2827.0
+          "y": 3107.0
         },
         {
           "id": "2026/RTPurbo",
@@ -1770,9 +1926,9 @@
           "search_name": "RTPurbo",
           "type": "leaf",
           "level": 4,
-          "row": 5,
+          "row": 4,
           "x": 1236.0,
-          "y": 2907.0
+          "y": 3187.0
         },
         {
           "id": "2026/SparDA",
@@ -1782,9 +1938,9 @@
           "search_name": "SparDA",
           "type": "leaf",
           "level": 4,
-          "row": 6,
+          "row": 5,
           "x": 1236.0,
-          "y": 2987.0
+          "y": 3267.0
         },
         {
           "id": "2025/BLASST",
@@ -1796,7 +1952,7 @@
           "level": 5,
           "row": 0,
           "x": 1512.0,
-          "y": 2627.0
+          "y": 2947.0
         },
         {
           "id": "2025/TCA-Attention",
@@ -1808,7 +1964,7 @@
           "level": 5,
           "row": 1,
           "x": 1512.0,
-          "y": 2707.0
+          "y": 3027.0
         },
         {
           "id": "2026/CompactAttention",
@@ -1820,7 +1976,7 @@
           "level": 5,
           "row": 2,
           "x": 1512.0,
-          "y": 2787.0
+          "y": 3107.0
         },
         {
           "id": "2026/UniPrefill",
@@ -1832,7 +1988,7 @@
           "level": 5,
           "row": 3,
           "x": 1512.0,
-          "y": 2867.0
+          "y": 3187.0
         }
       ],
       "edges": [
@@ -1851,6 +2007,10 @@
         {
           "source": "2022/flashattention",
           "target": "2024/FlashAttention-2"
+        },
+        {
+          "source": "2022/flashattention",
+          "target": "2025/FastTree"
         },
         {
           "source": "2022/flashattention",
@@ -1913,6 +2073,10 @@
           "target": "2026/KVTC"
         },
         {
+          "source": "2023/H2O",
+          "target": "2026/KVpop"
+        },
+        {
           "source": "2023/PagedAttention",
           "target": "2025/0VRXJQ3F"
         },
@@ -1930,6 +2094,10 @@
         },
         {
           "source": "2023/PagedAttention",
+          "target": "2025/TokenCake"
+        },
+        {
+          "source": "2023/PagedAttention",
           "target": "2025/vAttention"
         },
         {
@@ -1942,7 +2110,19 @@
         },
         {
           "source": "2023/PagedAttention",
+          "target": "2026/HexAGenT"
+        },
+        {
+          "source": "2023/PagedAttention",
           "target": "2026/KunServe"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2026/Prism"
+        },
+        {
+          "source": "2023/PagedAttention",
+          "target": "2026/SwiftCache"
         },
         {
           "source": "2023/QuIP",
@@ -1999,6 +2179,10 @@
         {
           "source": "2024/Cake",
           "target": "2026/CacheFlow"
+        },
+        {
+          "source": "2024/ChunkAttention",
+          "target": "2026/AdaptiveKVReuse"
         },
         {
           "source": "2024/DoubleSparsity",
@@ -2218,6 +2402,10 @@
         },
         {
           "source": "2024/SGLang",
+          "target": "2025/FastTree"
+        },
+        {
+          "source": "2024/SGLang",
           "target": "2025/Strata"
         },
         {
@@ -2226,7 +2414,15 @@
         },
         {
           "source": "2024/SGLang",
+          "target": "2026/HexAGenT"
+        },
+        {
+          "source": "2024/SGLang",
           "target": "2026/KVBuffer"
+        },
+        {
+          "source": "2024/SGLang",
+          "target": "2026/Prism"
         },
         {
           "source": "2024/SGLang",
@@ -2286,11 +2482,31 @@
         },
         {
           "source": "2024/SnapKV",
+          "target": "2026/KVpop"
+        },
+        {
+          "source": "2024/SnapKV",
           "target": "2026/RTPurbo"
+        },
+        {
+          "source": "2024/Splitwise",
+          "target": "2026/HexAGenT"
         },
         {
           "source": "2024/TOVA",
           "target": "2026/KVTC"
+        },
+        {
+          "source": "2024/TOVA",
+          "target": "2026/KVpop"
+        },
+        {
+          "source": "2024/Teola",
+          "target": "2024/Parrot"
+        },
+        {
+          "source": "2024/Teola",
+          "target": "2025/TokenCake"
         },
         {
           "source": "2024/ZipCache",
@@ -2329,6 +2545,10 @@
           "target": "2025/UNComp"
         },
         {
+          "source": "2024/streaming-llm",
+          "target": "2026/KVpop"
+        },
+        {
           "source": "2025/AdaSplash",
           "target": "2026/AdaSplash-2"
         },
@@ -2341,6 +2561,10 @@
           "target": "2026/SparVAR"
         },
         {
+          "source": "2025/CacheBlend",
+          "target": "2026/AdaptiveKVReuse"
+        },
+        {
           "source": "2025/DSA",
           "target": "2026/GLM-5"
         },
@@ -2351,6 +2575,10 @@
         {
           "source": "2025/FLOW",
           "target": "2025/SSA"
+        },
+        {
+          "source": "2025/FlashInfer",
+          "target": "2025/FastTree"
         },
         {
           "source": "2025/FlashInfer",
@@ -2379,10 +2607,6 @@
         {
           "source": "2025/FlexPrefill",
           "target": "2026/FlashPrefill"
-        },
-        {
-          "source": "2025/FlexPrefill",
-          "target": "2026/Prism"
         },
         {
           "source": "2025/FlexPrefill",
@@ -2419,6 +2643,10 @@
         {
           "source": "2025/LMCache",
           "target": "2026/KVServe"
+        },
+        {
+          "source": "2025/LMCache",
+          "target": "2026/ObjectCache"
         },
         {
           "source": "2025/MILLION",
@@ -2561,12 +2789,20 @@
           "target": "2026/IndexCache"
         },
         {
+          "source": "2026/HERMES",
+          "target": "2026/HexAGenT"
+        },
+        {
           "source": "2026/HISA",
           "target": "2026/SparDA"
         },
         {
           "source": "2026/IndexCache",
           "target": "2026/SparDA"
+        },
+        {
+          "source": "2026/KVServe",
+          "target": "2026/SplitZip"
         },
         {
           "source": "2026/SPEED",
@@ -2593,8 +2829,8 @@
     {
       "title": "DeepSeek-R1",
       "anchor": "deepseek-r1-family",
-      "node_count": 16,
-      "edge_count": 15,
+      "node_count": 18,
+      "edge_count": 17,
       "width": 1092,
       "height": 614,
       "nodes": [
@@ -2743,6 +2979,18 @@
           "y": 547.0
         },
         {
+          "id": "2026/DCut",
+          "label": "DCut[2026]",
+          "display_name": "DCut",
+          "year_label": "2026",
+          "search_name": "DCut",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 147.0
+        },
+        {
           "id": "2026/DDTree",
           "label": "DDTree[2026]",
           "display_name": "DDTree",
@@ -2750,7 +2998,7 @@
           "search_name": "DDTree",
           "type": "leaf",
           "level": 2,
-          "row": 0,
+          "row": 1,
           "x": 684.0,
           "y": 227.0
         },
@@ -2762,7 +3010,7 @@
           "search_name": "Domino",
           "type": "default",
           "level": 2,
-          "row": 1,
+          "row": 2,
           "x": 684.0,
           "y": 307.0
         },
@@ -2774,9 +3022,21 @@
           "search_name": "FlashMemory",
           "type": "leaf",
           "level": 2,
-          "row": 2,
+          "row": 3,
           "x": 684.0,
           "y": 387.0
+        },
+        {
+          "id": "2026/HyperDFlash",
+          "label": "HyperDFlash[2026]",
+          "display_name": "HyperDFlash",
+          "year_label": "2026",
+          "search_name": "HyperDFlash",
+          "type": "leaf",
+          "level": 2,
+          "row": 4,
+          "x": 684.0,
+          "y": 467.0
         },
         {
           "id": "2026/DSpark",
@@ -2834,11 +3094,19 @@
         },
         {
           "source": "2026/DFlash",
+          "target": "2026/DCut"
+        },
+        {
+          "source": "2026/DFlash",
           "target": "2026/DDTree"
         },
         {
           "source": "2026/DFlash",
           "target": "2026/Domino"
+        },
+        {
+          "source": "2026/DFlash",
+          "target": "2026/HyperDFlash"
         },
         {
           "source": "2026/DeepSeek-V4",
@@ -2987,110 +3255,6 @@
         {
           "source": "2024/flap",
           "target": "2025/SEAP"
-        }
-      ]
-    },
-    {
-      "title": "FlashAttention",
-      "anchor": "flashattention-family",
-      "node_count": 6,
-      "edge_count": 5,
-      "width": 540,
-      "height": 454,
-      "nodes": [
-        {
-          "id": "CascadeAttn",
-          "label": "CascadeAttn",
-          "display_name": "CascadeAttn",
-          "year_label": "",
-          "search_name": "CascadeAttn",
-          "type": "root",
-          "level": 0,
-          "row": 0,
-          "x": 132.0,
-          "y": 67.0
-        },
-        {
-          "id": "DeFT",
-          "label": "DeFT",
-          "display_name": "DeFT",
-          "year_label": "",
-          "search_name": "DeFT",
-          "type": "root",
-          "level": 0,
-          "row": 1,
-          "x": 132.0,
-          "y": 147.0
-        },
-        {
-          "id": "FlashAttention",
-          "label": "FlashAttention",
-          "display_name": "FlashAttention",
-          "year_label": "",
-          "search_name": "FlashAttention",
-          "type": "root",
-          "level": 0,
-          "row": 2,
-          "x": 132.0,
-          "y": 227.0
-        },
-        {
-          "id": "FlashInfer",
-          "label": "FlashInfer",
-          "display_name": "FlashInfer",
-          "year_label": "",
-          "search_name": "FlashInfer",
-          "type": "root",
-          "level": 0,
-          "row": 3,
-          "x": 132.0,
-          "y": 307.0
-        },
-        {
-          "id": "SGLang Triton",
-          "label": "SGLang Triton",
-          "display_name": "SGLang Triton",
-          "year_label": "",
-          "search_name": "SGLang Triton",
-          "type": "root",
-          "level": 0,
-          "row": 4,
-          "x": 132.0,
-          "y": 387.0
-        },
-        {
-          "id": "2025/FastTree",
-          "label": "FastTree[2025]",
-          "display_name": "FastTree",
-          "year_label": "2025",
-          "search_name": "FastTree",
-          "type": "leaf",
-          "level": 1,
-          "row": 0,
-          "x": 408.0,
-          "y": 227.0
-        }
-      ],
-      "edges": [
-        {
-          "source": "CascadeAttn",
-          "target": "2025/FastTree"
-        },
-        {
-          "source": "DeFT",
-          "target": "2025/FastTree"
-        },
-        {
-          "source": "FlashAttention",
-          "target": "2025/FastTree"
-        },
-        {
-          "source": "FlashInfer",
-          "target": "2025/FastTree"
-        },
-        {
-          "source": "SGLang Triton",
-          "target": "2025/FastTree"
         }
       ]
     },
@@ -3279,8 +3443,8 @@
       ]
     },
     {
-      "title": "mHC",
-      "anchor": "mhc-family",
+      "title": "DHC",
+      "anchor": "dhc-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 816,
@@ -3547,6 +3711,46 @@
         {
           "source": "2025/Chelsea",
           "target": "2026/DeltaKV"
+        }
+      ]
+    },
+    {
+      "title": "KVServe",
+      "anchor": "kvserve-family",
+      "node_count": 2,
+      "edge_count": 1,
+      "width": 540,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/KVServe",
+          "label": "KVServe[2025]",
+          "display_name": "KVServe",
+          "year_label": "2025",
+          "search_name": "KVServe",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/SAC",
+          "label": "SAC[2026]",
+          "display_name": "SAC",
+          "year_label": "2026",
+          "search_name": "SAC",
+          "type": "leaf",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/KVServe",
+          "target": "2026/SAC"
         }
       ]
     },
