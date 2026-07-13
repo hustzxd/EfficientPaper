@@ -1,0 +1,32 @@
+paper {
+  title: "Parrot: Efficient Serving of LLM-based Applications with Semantic Variable"
+  abbr: "Parrot"
+  url: "https://arxiv.org/abs/2405.19888"
+  authors: "Chaofan Lin"
+  authors: "Zhenhua Han"
+  authors: "Chengruidong Zhang"
+  authors: "Yuqing Yang"
+  authors: "Fan Yang"
+  authors: "Chen Chen"
+  authors: "Lili Qiu"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Microsoft Research"
+}
+pub {
+  where: "OSDI"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/Teola"
+}
+update_time: 1783409386

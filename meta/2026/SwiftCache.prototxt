@@ -1,0 +1,36 @@
+paper {
+  title: "SwiftCache: Efficient LLM Serving for Multi-turn Conversations with Heterogeneous KV Cache Sharing"
+  abbr: "SwiftCache"
+  url: "http://arxiv.org/abs/2606.16135v1"
+  authors: "Jianmin Hu"
+  authors: "Minxian Xu"
+  authors: "Sa Wang"
+  authors: "Chong Ma"
+  authors: "Min Shen"
+  authors: "Kejiang Ye"
+  authors: "Lin Qu"
+  authors: "Chengzhong Xu"
+  institutions: "Southern University of Science and Technology"
+  institutions: "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences"
+  institutions: "Institute of Computing Technology, Chinese Academy of Sciences"
+  institutions: "Alibaba Group"
+  institutions: "University of Macau"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/PagedAttention"
+}
+update_time: 1783395564

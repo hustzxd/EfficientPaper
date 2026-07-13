@@ -1,0 +1,43 @@
+paper {
+  title: "TokenPilot: Cache-Efficient Context Management for LLM Agents"
+  abbr: "TokenPilot"
+  url: "https://arxiv.org/abs/2606.17016"
+  authors: "Buqiang Xu"
+  authors: "Zirui Xue"
+  authors: "Dianmou Chen"
+  authors: "Chenyang Fu"
+  authors: "Chiyu Wu"
+  authors: "Caiying Huang"
+  authors: "Chen Jiang"
+  authors: "Jizhan Fang"
+  authors: "Xinle Deng"
+  authors: "Yijun Chen"
+  authors: "Yunzhi Yao"
+  authors: "Xuehai Wang"
+  authors: "Jin Shang"
+  authors: "Gong Yu"
+  authors: "Ningyu Zhang"
+  institutions: "Zhejiang University"
+  institutions: "University of Electronic Science and Technology of China"
+  institutions: "Xi\'an University of Electronic Science and Technology"
+  institutions: "HomologyAI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/zjunlp/LightMem2"
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1783416117

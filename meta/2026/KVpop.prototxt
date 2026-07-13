@@ -1,0 +1,39 @@
+paper {
+  title: "KVpop -- Key-Value Cache Compression with Predictive Online Pruning"
+  abbr: "KVpop"
+  url: "http://arxiv.org/abs/2607.05061v1"
+  authors: "Lukas Hauzenberger"
+  authors: "Niklas Schmidinger"
+  authors: "Anamaria-Roberta Hartl"
+  authors: "David Stap"
+  authors: "Thomas Schmied"
+  authors: "Sebastian Böck"
+  authors: "Günter Klambauer"
+  authors: "Sepp Hochreiter"
+  institutions: "NXAI"
+  institutions: "Johannes Kepler University Linz"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://huggingface.co/sirluk/Qwen3-8B-KVpop-4x"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/streaming-llm"
+  methods: "2023/H2O"
+  methods: "2024/SnapKV"
+  methods: "2024/TOVA"
+}
+update_time: 1783481216

@@ -1,0 +1,27 @@
+paper {
+  title: "SplitZip: Ultra Fast Lossless KV Compression for Disaggregated LLM Serving"
+  abbr: "SplitZip"
+  url: "http://arxiv.org/abs/2605.01708v3"
+  authors: "Yipin Guo"
+  authors: "Siddharth Joshi"
+  institutions: "University of Notre Dame"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Intelligent-Microsystems-Lab/SplitZip"
+}
+keyword {
+  words: kv_cache_quant
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/KVServe"
+}
+update_time: 1783395993

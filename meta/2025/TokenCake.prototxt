@@ -1,0 +1,32 @@
+paper {
+  title: "TokenCake: A KV-Cache-centric Serving Framework for LLM-based Multi-Agent Applications"
+  abbr: "TokenCake"
+  url: "http://arxiv.org/abs/2510.18586v3"
+  authors: "Zhuohang Bian"
+  authors: "Feiyang Wu"
+  authors: "Zhuoran Li"
+  authors: "Teng Ma"
+  authors: "Youwei Zhuo"
+  institutions: "Peking University"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/PagedAttention"
+  methods: "2024/Teola"
+}
+update_time: 1783392610

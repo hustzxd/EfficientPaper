@@ -1,0 +1,30 @@
+paper {
+  title: "Towards Efficient Large Language Model Serving: A Survey on System-Aware KV Cache Optimization"
+  abbr: "sKis"
+  url: "http://arxiv.org/abs/2607.08057"
+  authors: "Jiantong Jiang"
+  authors: "Peiyu Yang"
+  authors: "Rui Zhang"
+  authors: "Feng Liu"
+  institutions: "University of Melbourne"
+  institutions: "Huazhong University of Science and Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/jjiantong/Awesome-KV-Cache-Optimization"
+}
+keyword {
+  words: kv_cache_management
+  words: survey
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1783907077

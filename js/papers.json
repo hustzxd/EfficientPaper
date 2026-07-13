@@ -1,6 +1,476 @@
 {
   "papers": [
     {
+      "id": "DCut",
+      "title": "D-Cut: Adaptive Verification Depth Pruning for Speculative Decoding",
+      "abbr": "D-Cut",
+      "url": "https://angelslim.readthedocs.io/zh-cn/latest/features/speculative_decoding/dcut.html",
+      "authors": [
+        "AngelSlim Team"
+      ],
+      "institutions": [
+        "Tencent"
+      ],
+      "year": 2026,
+      "venue": "Blog",
+      "cover": "notes/2026/DCut/cover.png",
+      "keywords": [
+        "30-Speculative Decoding"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/DCut/note/",
+      "prototxt_path": "meta/2026/DCut.prototxt",
+      "update_time": 1783907278,
+      "rating": 0
+    },
+    {
+      "id": "sKis",
+      "title": "Towards Efficient Large Language Model Serving: A Survey on System-Aware KV Cache Optimization",
+      "abbr": "sKis",
+      "url": "http://arxiv.org/abs/2607.08057",
+      "authors": [
+        "Jiantong Jiang",
+        "Peiyu Yang",
+        "Rui Zhang",
+        "Feng Liu"
+      ],
+      "institutions": [
+        "University of Melbourne",
+        "Huazhong University of Science and Technology"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/sKis/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "41-Survey"
+      ],
+      "code_url": "https://github.com/jjiantong/Awesome-KV-Cache-Optimization",
+      "note_url": "notes/2026/sKis/note/",
+      "prototxt_path": "meta/2026/sKis.prototxt",
+      "update_time": 1783907077,
+      "rating": 0
+    },
+    {
+      "id": "Domino",
+      "title": "Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding",
+      "abbr": "Domino",
+      "url": "https://arxiv.org/abs/2605.29707",
+      "authors": [
+        "Jianuo Huang",
+        "Yaojie Zhang",
+        "Qituan Zhang",
+        "Hao Lin",
+        "Hanlin Xu",
+        "Linfeng Zhang"
+      ],
+      "institutions": [
+        "EPIC Lab, Shanghai Jiao Tong University",
+        "School of Software Engineering, Huazhong University of Science and Technology",
+        "University of Electronic Science and Technology of China",
+        "Fudan University",
+        "Huawei"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Domino/cover.jpg",
+      "keywords": [
+        "30-Speculative Decoding"
+      ],
+      "code_url": "https://github.com/jianuo-huang/Domino",
+      "note_url": "notes/2026/Domino/note/",
+      "prototxt_path": "meta/2026/Domino.prototxt",
+      "update_time": 1783498484,
+      "rating": 0
+    },
+    {
+      "id": "HyperDFlash",
+      "title": "HyperDFlash: Hyper-Connection-Aligned Block Speculative Decoding with Gated Residual Reduction",
+      "abbr": "HyperDFlash",
+      "url": "http://arxiv.org/abs/2606.26744v2",
+      "authors": [
+        "Luxi Lin",
+        "Shuang Peng",
+        "Rui Ma",
+        "Junhao Hua",
+        "Shuwei Fan",
+        "Zhengda Qin",
+        "Qiang Wang",
+        "Hongjian Sun",
+        "Fangmin Chen",
+        "Songwei Liu"
+      ],
+      "institutions": [
+        "ByteDance"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/HyperDFlash/cover.jpg",
+      "keywords": [
+        "30-Speculative Decoding"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/HyperDFlash/note/",
+      "prototxt_path": "meta/2026/HyperDFlash.prototxt",
+      "update_time": 1783491441,
+      "rating": 0
+    },
+    {
+      "id": "KVpop",
+      "title": "KVpop -- Key-Value Cache Compression with Predictive Online Pruning",
+      "abbr": "KVpop",
+      "url": "http://arxiv.org/abs/2607.05061v1",
+      "authors": [
+        "Lukas Hauzenberger",
+        "Niklas Schmidinger",
+        "Anamaria-Roberta Hartl",
+        "David Stap",
+        "Thomas Schmied",
+        "Sebastian Böck",
+        "Günter Klambauer",
+        "Sepp Hochreiter"
+      ],
+      "institutions": [
+        "NXAI",
+        "Johannes Kepler University Linz"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://huggingface.co/sirluk/Qwen3-8B-KVpop-4x",
+      "note_url": "notes/2026/KVpop/note/",
+      "prototxt_path": "meta/2026/KVpop.prototxt",
+      "update_time": 1783481216,
+      "rating": 0
+    },
+    {
+      "id": "HexAGenT",
+      "title": "HexAGenT: Efficient Agentic LLM Serving via Workflow- and Heterogeneity-Aware Scheduling",
+      "abbr": "HexAGenT",
+      "url": "http://arxiv.org/abs/2605.16637v1",
+      "authors": [
+        "You Peng",
+        "Youhe Jiang",
+        "Wenshuang Li",
+        "Xu Xu",
+        "Ke Zhou",
+        "Jiawei Jiang",
+        "Chen Wang",
+        "Binhang Yuan"
+      ],
+      "institutions": [
+        "HKUST",
+        "Webank",
+        "Wuhan University",
+        "Tsinghua University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/HexAGenT/cover.jpg",
+      "keywords": [
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/HexAGenT/note/",
+      "prototxt_path": "meta/2026/HexAGenT.prototxt",
+      "update_time": 1783417516,
+      "rating": 0
+    },
+    {
+      "id": "TokenPilot",
+      "title": "TokenPilot: Cache-Efficient Context Management for LLM Agents",
+      "abbr": "TokenPilot",
+      "url": "https://arxiv.org/abs/2606.17016",
+      "authors": [
+        "Buqiang Xu",
+        "Zirui Xue",
+        "Dianmou Chen",
+        "Chenyang Fu",
+        "Chiyu Wu",
+        "Caiying Huang",
+        "Chen Jiang",
+        "Jizhan Fang",
+        "Xinle Deng",
+        "Yijun Chen",
+        "Yunzhi Yao",
+        "Xuehai Wang",
+        "Jin Shang",
+        "Gong Yu",
+        "Ningyu Zhang"
+      ],
+      "institutions": [
+        "Zhejiang University",
+        "University of Electronic Science and Technology of China",
+        "Xi'an University of Electronic Science and Technology",
+        "HomologyAI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/TokenPilot/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/zjunlp/LightMem2",
+      "note_url": "notes/2026/TokenPilot/note/",
+      "prototxt_path": "meta/2026/TokenPilot.prototxt",
+      "update_time": 1783416117,
+      "rating": 0
+    },
+    {
+      "id": "SAC",
+      "title": "SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL",
+      "abbr": "SAC",
+      "url": "https://arxiv.org/abs/2606.19746",
+      "authors": [
+        "Ruiyang Ma",
+        "Teng Ma",
+        "Junru Li",
+        "Hantian Zha",
+        "Xuchun Shang",
+        "Qingda Hu",
+        "Zheng Liu",
+        "Xinjun Yang",
+        "Tao Ma",
+        "Guojie Luo"
+      ],
+      "institutions": [
+        "Peking University",
+        "Alibaba Cloud",
+        "Renmin University of China"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SAC/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SAC/note/",
+      "prototxt_path": "meta/2026/SAC.prototxt",
+      "update_time": 1783410598,
+      "rating": 0
+    },
+    {
+      "id": "Parrot",
+      "title": "Parrot: Efficient Serving of LLM-based Applications with Semantic Variable",
+      "abbr": "Parrot",
+      "url": "https://arxiv.org/abs/2405.19888",
+      "authors": [
+        "Chaofan Lin",
+        "Zhenhua Han",
+        "Chengruidong Zhang",
+        "Yuqing Yang",
+        "Fan Yang",
+        "Chen Chen",
+        "Lili Qiu"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Microsoft Research"
+      ],
+      "year": 2024,
+      "venue": "OSDI",
+      "cover": "notes/2024/Parrot/cover.jpg",
+      "keywords": [
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/Parrot/note/",
+      "prototxt_path": "meta/2024/Parrot.prototxt",
+      "update_time": 1783409386,
+      "rating": 0
+    },
+    {
+      "id": "AdaptiveKVReuse",
+      "title": "Adaptive KV Cache Reuse for Fast Long-Context LLM Serving",
+      "abbr": "AdaptiveKVReuse",
+      "url": "http://arxiv.org/abs/2605.24022v1",
+      "authors": [
+        "Fei Li",
+        "Song Liu",
+        "Yan Liu",
+        "Jinhua Cui",
+        "Shiqiang Nie",
+        "Jinyu Wang",
+        "Weiguo Wu"
+      ],
+      "institutions": [
+        "Xi'an Jiaotong University",
+        "Huazhong University of Science and Technology"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/AdaptiveKVReuse/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/AdaptiveKVReuse/note/",
+      "prototxt_path": "meta/2026/AdaptiveKVReuse.prototxt",
+      "update_time": 1783408543,
+      "rating": 0
+    },
+    {
+      "id": "ObjectCache",
+      "title": "ObjectCache: Layerwise Object-Storage Retrieval for KV Cache Reuse",
+      "abbr": "ObjectCache",
+      "url": "http://arxiv.org/abs/2605.22850v1",
+      "authors": [
+        "Yu Zhu",
+        "Aditya Dhakal",
+        "Yunming Xiao",
+        "Dejan Milojicic",
+        "Gustavo Alonso"
+      ],
+      "institutions": [
+        "ETH Zurich",
+        "HPE Labs",
+        "The Chinese University of Hong Kong, Shenzhen"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/ObjectCache/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/ObjectCache/note/",
+      "prototxt_path": "meta/2026/ObjectCache.prototxt",
+      "update_time": 1783406707,
+      "rating": 0
+    },
+    {
+      "id": "SplitZip",
+      "title": "SplitZip: Ultra Fast Lossless KV Compression for Disaggregated LLM Serving",
+      "abbr": "SplitZip",
+      "url": "http://arxiv.org/abs/2605.01708v3",
+      "authors": [
+        "Yipin Guo",
+        "Siddharth Joshi"
+      ],
+      "institutions": [
+        "University of Notre Dame"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SplitZip/cover.jpg",
+      "keywords": [
+        "19-Quantization (KV Cache)",
+        "21-KV Cache Management"
+      ],
+      "code_url": "https://github.com/Intelligent-Microsystems-Lab/SplitZip",
+      "note_url": "notes/2026/SplitZip/note/",
+      "prototxt_path": "meta/2026/SplitZip.prototxt",
+      "update_time": 1783395993,
+      "rating": 0
+    },
+    {
+      "id": "SwiftCache",
+      "title": "SwiftCache: Efficient LLM Serving for Multi-turn Conversations with Heterogeneous KV Cache Sharing",
+      "abbr": "SwiftCache",
+      "url": "http://arxiv.org/abs/2606.16135v1",
+      "authors": [
+        "Jianmin Hu",
+        "Minxian Xu",
+        "Sa Wang",
+        "Chong Ma",
+        "Min Shen",
+        "Kejiang Ye",
+        "Lin Qu",
+        "Chengzhong Xu"
+      ],
+      "institutions": [
+        "Southern University of Science and Technology",
+        "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences",
+        "Institute of Computing Technology, Chinese Academy of Sciences",
+        "Alibaba Group",
+        "University of Macau"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SwiftCache/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SwiftCache/note/",
+      "prototxt_path": "meta/2026/SwiftCache.prototxt",
+      "update_time": 1783395564,
+      "rating": 0
+    },
+    {
+      "id": "TokenCake",
+      "title": "TokenCake: A KV-Cache-centric Serving Framework for LLM-based Multi-Agent Applications",
+      "abbr": "TokenCake",
+      "url": "http://arxiv.org/abs/2510.18586v3",
+      "authors": [
+        "Zhuohang Bian",
+        "Feiyang Wu",
+        "Zhuoran Li",
+        "Teng Ma",
+        "Youwei Zhuo"
+      ],
+      "institutions": [
+        "Peking University",
+        "Alibaba Group"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": "notes/2025/TokenCake/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/TokenCake/note/",
+      "prototxt_path": "meta/2025/TokenCake.prototxt",
+      "update_time": 1783392610,
+      "rating": 0
+    },
+    {
+      "id": "ReasonAlloc",
+      "title": "ReasonAlloc: Hierarchical Decoding-Time KV Cache Budget Allocation for Reasoning Models",
+      "abbr": "ReasonAlloc",
+      "url": "http://arxiv.org/abs/2606.11164v1",
+      "authors": [
+        "Wenhao Liu",
+        "Hao Shi",
+        "Yunhe Li",
+        "Weizhi Fei",
+        "Xiangyuan Wang",
+        "Mengzhe Ruan",
+        "Hanxu Hou",
+        "Peisong Wang",
+        "Linqi Song",
+        "Shuang Qiu"
+      ],
+      "institutions": [
+        "Tsinghua University",
+        "City University of Hong Kong",
+        "Peking University",
+        "Shenzhen University of Advanced Technology",
+        "Institute of Automation, Chinese Academy of Sciences"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/ReasonAlloc/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/ReasonAlloc/note/",
+      "prototxt_path": "meta/2026/ReasonAlloc.prototxt",
+      "update_time": 1782809067,
+      "rating": 0
+    },
+    {
       "id": "DSpark",
       "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
       "abbr": "DSpark",
@@ -46,7 +516,7 @@
       ],
       "year": 2026,
       "venue": "Technical Report",
-      "cover": null,
+      "cover": "notes/2026/DSpark/cover.jpg",
       "keywords": [
         "30-Speculative Decoding",
         "40-LLM Deployment"
@@ -54,43 +524,37 @@
       "code_url": "https://github.com/deepseek-ai/DeepSpec",
       "note_url": "notes/2026/DSpark/note/",
       "prototxt_path": "meta/2026/DSpark.prototxt",
-      "update_time": 1782613841,
-      "rating": 5
+      "update_time": 1782799786,
+      "rating": 0
     },
     {
-      "id": "ReasonAlloc",
-      "title": "ReasonAlloc: Hierarchical Decoding-Time KV Cache Budget Allocation for Reasoning Models",
-      "abbr": "ReasonAlloc",
-      "url": "http://arxiv.org/abs/2606.11164v1",
+      "id": "Prism",
+      "title": "PRISM: Fast Online LLM Serving via Scheduling-Memory Co-design",
+      "abbr": "PRISM",
+      "url": "https://arxiv.org/abs/2605.08581v1",
       "authors": [
-        "Wenhao Liu",
-        "Hao Shi",
-        "Yunhe Li",
-        "Weizhi Fei",
-        "Xiangyuan Wang",
-        "Mengzhe Ruan",
-        "Hanxu Hou",
-        "Peisong Wang",
-        "Linqi Song",
-        "Shuang Qiu"
+        "Xingyu Qu",
+        "Tianhao Lin",
+        "Yiqi Li",
+        "Zhiyu Chen",
+        "Sheng Wang"
       ],
       "institutions": [
-        "Tsinghua University",
-        "City University of Hong Kong",
-        "Peking University",
-        "Shenzhen University of Advanced Technology",
-        "Institute of Automation, Chinese Academy of Sciences"
+        "Wuhan University",
+        "Amazon"
       ],
       "year": 2026,
       "venue": "arXiv",
       "cover": null,
       "keywords": [
-        "21-KV Cache Management"
+        "21-KV Cache Management",
+        "40-LLM Deployment",
+        "39-Performance Modeling"
       ],
       "code_url": null,
-      "note_url": "notes/2026/ReasonAlloc/note/",
-      "prototxt_path": "meta/2026/ReasonAlloc.prototxt",
-      "update_time": 1782370133,
+      "note_url": "notes/2026/Prism/note/",
+      "prototxt_path": "meta/2026/Prism.prototxt",
+      "update_time": 1782720364,
       "rating": 0
     },
     {
@@ -753,38 +1217,6 @@
       "note_url": "notes/2026/DDTree/note/",
       "prototxt_path": "meta/2026/DDTree.prototxt",
       "update_time": 1780284267,
-      "rating": 0
-    },
-    {
-      "id": "Domino",
-      "title": "Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding",
-      "abbr": "Domino",
-      "url": "https://arxiv.org/abs/2605.29707",
-      "authors": [
-        "Jianuo Huang",
-        "Yaojie Zhang",
-        "Qituan Zhang",
-        "Hao Lin",
-        "Hanlin Xu",
-        "Linfeng Zhang"
-      ],
-      "institutions": [
-        "EPIC Lab, Shanghai Jiao Tong University",
-        "School of Software Engineering, Huazhong University of Science and Technology",
-        "University of Electronic Science and Technology of China",
-        "Fudan University",
-        "Huawei"
-      ],
-      "year": 2026,
-      "venue": "arXiv",
-      "cover": null,
-      "keywords": [
-        "30-Speculative Decoding"
-      ],
-      "code_url": "https://github.com/jianuo-huang/Domino",
-      "note_url": "notes/2026/Domino/note/",
-      "prototxt_path": "meta/2026/Domino.prototxt",
-      "update_time": 1780281248,
       "rating": 0
     },
     {
@@ -2738,38 +3170,6 @@
       "note_url": "notes/2026/AutoOverlap/note/",
       "prototxt_path": "meta/2026/AutoOverlap.prototxt",
       "update_time": 1772000127,
-      "rating": 0
-    },
-    {
-      "id": "Prism",
-      "title": "Prism: Spectral-Aware Block-Sparse Attention",
-      "abbr": "Prism",
-      "url": "http://arxiv.org/abs/2602.08426v1",
-      "authors": [
-        "Xinghao Wang",
-        "Pengyu Wang",
-        "Xiaoran Liu",
-        "Fangxu Liu",
-        "Jason Chu",
-        "Kai Song",
-        "Xipeng Qiu"
-      ],
-      "institutions": [
-        "Fudan University",
-        "Shanghai Innovation Institute",
-        "ByteDance",
-        "OpenMOSS"
-      ],
-      "year": 2026,
-      "venue": "arXiv",
-      "cover": "notes/2026/Prism/cover.jpg",
-      "keywords": [
-        "02-Sparsity (Attention)"
-      ],
-      "code_url": "https://github.com/xinghaow99/prism",
-      "note_url": "notes/2026/Prism/note/",
-      "prototxt_path": "meta/2026/Prism.prototxt",
-      "update_time": 1770710228,
       "rating": 0
     },
     {
@@ -16016,5 +16416,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 483
+  "total": 496
 }

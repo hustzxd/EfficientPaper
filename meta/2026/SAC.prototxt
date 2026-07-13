@@ -1,0 +1,37 @@
+paper {
+  title: "SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL"
+  abbr: "SAC"
+  url: "https://arxiv.org/abs/2606.19746"
+  authors: "Ruiyang Ma"
+  authors: "Teng Ma"
+  authors: "Junru Li"
+  authors: "Hantian Zha"
+  authors: "Xuchun Shang"
+  authors: "Qingda Hu"
+  authors: "Zheng Liu"
+  authors: "Xinjun Yang"
+  authors: "Tao Ma"
+  authors: "Guojie Luo"
+  institutions: "Peking University"
+  institutions: "Alibaba Cloud"
+  institutions: "Renmin University of China"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/KVServe"
+}
+update_time: 1783410598

@@ -1,18 +1,14 @@
 paper {
-  title: "Prism: Spectral-Aware Block-Sparse Attention"
-  abbr: "Prism"
-  url: "http://arxiv.org/abs/2602.08426v1"
-  authors: "Xinghao Wang"
-  authors: "Pengyu Wang"
-  authors: "Xiaoran Liu"
-  authors: "Fangxu Liu"
-  authors: "Jason Chu"
-  authors: "Kai Song"
-  authors: "Xipeng Qiu"
-  institutions: "Fudan University"
-  institutions: "Shanghai Innovation Institute"
-  institutions: "ByteDance"
-  institutions: "OpenMOSS"
+  title: "PRISM: Fast Online LLM Serving via Scheduling-Memory Co-design"
+  abbr: "PRISM"
+  url: "https://arxiv.org/abs/2605.08581v1"
+  authors: "Xingyu Qu"
+  authors: "Tianhao Lin"
+  authors: "Yiqi Li"
+  authors: "Zhiyu Chen"
+  authors: "Sheng Wang"
+  institutions: "Wuhan University"
+  institutions: "Amazon"
 }
 pub {
   where: "arXiv"
@@ -20,15 +16,21 @@ pub {
 }
 code {
   type: "Pytorch"
-  url: "https://github.com/xinghaow99/prism"
+  url: ""
+}
+note {
+  url: "note.md"
 }
 keyword {
-  words: attention_sparsity
+  words: kv_cache_management
+  words: deployment
+  words: performance_modeling
 }
 cover {
-  url: "cover.jpg"
+  url: ""
 }
 baseline {
-  methods: "2025/FlexPrefill"
+  methods: "2024/SGLang"
+  methods: "2023/PagedAttention"
 }
-update_time: 1770710228
+update_time: 1782720364

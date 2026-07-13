@@ -46,15 +46,12 @@ code {
   type: "Pytorch"
   url: "https://github.com/deepseek-ai/DeepSpec"
 }
-note {
-  url: "note.md"
-}
 keyword {
   words: speculative_decoding
   words: deployment
 }
 cover {
-  url: ""
+  url: "cover.jpg"
 }
 baseline {
   methods: "2026/DeepSeek-V4"
@@ -62,5 +59,4 @@ baseline {
   methods: "2026/Domino"
   methods: "2024/Eagle"
 }
-update_time: 1782613841
-rating: 5
+update_time: 1782799786
