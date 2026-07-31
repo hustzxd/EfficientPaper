@@ -1,8 +1,10 @@
-from scripts.generate_paper_list import readMeta
 import json
-import networkx as nx
 import os
 import re
+
+import networkx as nx
+
+from scripts.generate_paper_list import eppb, readMeta
 
 
 NODE_WIDTH = 168
@@ -16,6 +18,7 @@ MIN_GRAPH_HEIGHT = 260
 
 def main():
     pinfos = readMeta()
+    paper_index = build_paper_index(pinfos)
     G = nx.DiGraph()
     for pinfo, f in pinfos:
         if len(pinfo.baseline.methods) >= 1:
@@ -33,13 +36,21 @@ def main():
                 #     G.add_edge(bl_method, cur_node)
                 if "/" not in bl_method:
                     print(f"{f} Baseline Method: {bl_method} missed year.")
-                    G.add_node(bl_method, name=f"{bl_method}")
-                    G.add_edge(bl_method, cur_node)
-                else:
-                    match = re.match(r"^(\d{4})/([a-z0-9_-]+)$", bl_method, flags=re.IGNORECASE)
-                    year, name = match.groups()
-                    G.add_node(bl_method, name=f"{name}[{year}]")
-                    G.add_edge(bl_method, cur_node)
+                    continue
+
+                match = re.match(r"^(\d{4})/([a-z0-9_-]+)$", bl_method, flags=re.IGNORECASE)
+                if not match:
+                    print(f"{f} Baseline Method: {bl_method} has invalid format.")
+                    continue
+
+                year, name = match.groups()
+                target_id = f"{year}/{name}"
+                target_pinfo = paper_index.get(target_id.lower())
+                if target_pinfo is None or not has_shared_keyword(pinfo, target_pinfo):
+                    continue
+
+                G.add_node(bl_method, name=f"{name}[{year}]")
+                G.add_edge(bl_method, cur_node)
 
     # Transitive reduction: remove edges that are implied by longer paths
     # e.g., if A→B→C exists, remove A→C
@@ -96,6 +107,24 @@ def main():
     with open(interactive_data_path, "w", encoding="utf-8") as f:
         json.dump(interactive_payload, f, ensure_ascii=False, indent=2)
     print(f"Written interactive graph data to {interactive_data_path} ({len(interactive_components)} components)")
+
+
+def build_paper_index(pinfos):
+    """Index all metadata by the year/name format used in baseline references."""
+    index = {}
+    for pinfo, filename in pinfos:
+        name = filename.replace(".prototxt", "")
+        paper_id = f"{pinfo.pub.year}/{name}"
+        index[paper_id.lower()] = pinfo
+    return index
+
+
+def has_shared_keyword(source_pinfo, target_pinfo):
+    """Return whether two papers share an explicit, non-default keyword."""
+    excluded_keywords = {eppb.Keyword.Word.none}
+    source_keywords = set(source_pinfo.keyword.words) - excluded_keywords
+    target_keywords = set(target_pinfo.keyword.words) - excluded_keywords
+    return bool(source_keywords & target_keywords)
 
 
 def describe_component(subgraph: nx.DiGraph, full_graph: nx.DiGraph):

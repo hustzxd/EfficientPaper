@@ -1,0 +1,64 @@
+paper {
+  title: "Prism: Cost-Efficient Multi-LLM Serving via GPU Memory Ballooning"
+  abbr: "PrismBalloon"
+  url: "https://arxiv.org/abs/2505.04021"
+  authors: "Shan Yu"
+  authors: "Yifan Qiao"
+  authors: "Mingyuan Ma"
+  authors: "Yangmin Li"
+  authors: "Shuo Yang"
+  authors: "Xinyuan Tong"
+  authors: "Yang Wang"
+  authors: "Zhiqiang Xie"
+  authors: "Yuwei An"
+  authors: "Shiyi Cao"
+  authors: "Ke Bao"
+  authors: "Deepak Vij"
+  authors: "Xiaoning Ding"
+  authors: "Yichen Wang"
+  authors: "Qingda Lu"
+  authors: "Zhong Wang"
+  authors: "Gao Gao"
+  authors: "Harry Xu"
+  authors: "Junyi Shu"
+  authors: "Jiarong Xing"
+  authors: "Ying Sheng"
+  institutions: "University of California, Los Angeles"
+  institutions: "University of California, Berkeley"
+  institutions: "Harvard University"
+  institutions: "Carnegie Mellon University"
+  institutions: "University of Edinburgh"
+  institutions: "Intel"
+  institutions: "Stanford University"
+  institutions: "LMSYS"
+  institutions: "ByteDance"
+  institutions: "Alibaba Cloud"
+  institutions: "Tsinghua University"
+  institutions: "Novita AI"
+  institutions: "Rice University"
+}
+pub {
+  where: "OSDI"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/ovg-project/kvcached"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/SGLang"
+  methods: "2023/PagedAttention"
+  methods: "2024/vTensor"
+  methods: "2025/vAttention"
+}
+update_time: 1784181453

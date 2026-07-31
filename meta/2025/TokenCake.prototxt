@@ -27,6 +27,5 @@ cover {
 }
 baseline {
   methods: "2023/PagedAttention"
-  methods: "2024/Teola"
 }
 update_time: 1783392610

@@ -1,0 +1,30 @@
+paper {
+  title: "Back from the Future: Key-Value Cache Management by Counter-Causal Surprise"
+  abbr: "CounterCausal"
+  url: "http://arxiv.org/abs/2607.27600v1"
+  authors: "Stephen Gould"
+  authors: "Anton van den Hengel"
+  institutions: "Metacognition AI"
+  institutions: "Australian National University"
+  institutions: "Adelaide University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/metacognitionai/counter_causal"
+}
+keyword {
+  words: kv_cache_sparse
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2023/H2O"
+  methods: "2024/TOVA"
+  methods: "2025/KVzip"
+}
+update_time: 1785468644

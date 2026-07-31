@@ -1,0 +1,44 @@
+paper {
+  title: "PDD: Unleashing Economical and Flexible Heterogeneous LLM Inference via Cross-Datacenter Prefill-Decode Disaggregation"
+  abbr: "PDD"
+  url: "https://github.com/infinigence/pdd"
+  authors: "Yida Wang"
+  authors: "Xiuhong Li"
+  authors: "Jianping Ma"
+  authors: "Gan Sun"
+  authors: "Yunshen Xu"
+  authors: "Buhe Han"
+  authors: "Jingxu Ng"
+  authors: "Yuhao Luo"
+  authors: "Ke Hong"
+  authors: "Guohao Dai"
+  authors: "Boxun Li"
+  authors: "Yu Wang"
+  institutions: "Infinigence-AI"
+  institutions: "Tsinghua University"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Peking University"
+}
+pub {
+  where: "Technical Report"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/infinigence/pdd"
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+  words: performance_modeling
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/PrfaaS"
+  methods: "2024/SGLang"
+  methods: "2024/Mooncake"
+}
+update_time: 1784601562

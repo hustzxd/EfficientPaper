@@ -1,0 +1,34 @@
+paper {
+  title: "HYPIC: Accelerating Hybrid-Attention LLM Serving with Position-Independent Caching"
+  abbr: "Hypic"
+  url: "http://arxiv.org/abs/2607.01299v2"
+  authors: "Yifei Liu"
+  authors: "Juntong Wu"
+  authors: "Yang Liu"
+  authors: "Junhao Hu"
+  authors: "Minghao Li"
+  authors: "Xiaoxu Chen"
+  authors: "Weihang Chen"
+  institutions: "Xiaohongshu Inc."
+  institutions: "Peking University"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/CacheBlend"
+}
+update_time: 1785407057

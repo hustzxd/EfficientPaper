@@ -74,7 +74,7 @@ Card actions currently include:
 - `Code`: external repository link with async GitHub star count
 - `Note`: open the paper note page
 - `PDF`: open or locate a local PDF, with download fallback through the local server
-- `Edit`: open `docs/edit.html` for metadata editing
+- `Edit`: open an in-page metadata editor modal backed by `docs/edit.html`
 - `Graph`: jump to the related component in `docs/baseline_methods_graph_interactive.md`
 - `Delete`: a low-visibility card control that removes the paper's `.prototxt` and note folder after explicit confirmation
 

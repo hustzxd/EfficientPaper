@@ -1,0 +1,25 @@
+paper {
+  title: "Kimi K3: Open Frontier Intelligence"
+  abbr: "KimiK3"
+  url: "https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf"
+  authors: "Kimi Team"
+  institutions: "Moonshot AI"
+}
+pub {
+  where: "Technical Report"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/MoonshotAI/Kimi-K3"
+}
+keyword {
+  words: structure_design
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1785403710

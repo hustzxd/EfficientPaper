@@ -1,0 +1,34 @@
+paper {
+  title: "Online Scheduling for LLM Inference with KV Cache Constraints"
+  abbr: "MC-SF"
+  url: "http://arxiv.org/abs/2502.07115v5"
+  authors: "Patrick Jaillet"
+  authors: "Jiashuo Jiang"
+  authors: "Konstantina Mellou"
+  authors: "Marco Molinaro"
+  authors: "Chara Podimata"
+  authors: "Zijie Zhou"
+  institutions: "Massachusetts Institute of Technology"
+  institutions: "Hong Kong University of Science and Technology"
+  institutions: "Microsoft Research"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: performance_modeling
+  words: deployment
+  words: kv_cache_management
+}
+cover {
+  url: ""
+}
+update_time: 1784101998

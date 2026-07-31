@@ -12,7 +12,7 @@ pub {
 }
 code {
   type: "Triton"
-  url: ""
+  url: "https://github.com/sgl-project/sglang/pull/29737"
 }
 keyword {
   words: kv_cache_management
@@ -23,7 +23,6 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2024/SGLang"
   methods: "2025/Marconi"
 }
-update_time: 1780278938
+update_time: 1785404534

@@ -26,7 +26,4 @@ keyword {
 cover {
   url: "cover.jpg"
 }
-baseline {
-  methods: "2024/Teola"
-}
 update_time: 1783409386

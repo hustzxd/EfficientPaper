@@ -1,6 +1,540 @@
 {
   "papers": [
     {
+      "id": "CoSA",
+      "title": "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention",
+      "abbr": "CoSA",
+      "url": "http://arxiv.org/abs/2607.25291v1",
+      "authors": [
+        "Yufei Xue",
+        "Lin Niu",
+        "Hong Liu",
+        "Siran Liu",
+        "Hanyong Shao",
+        "Wei Liu",
+        "Guanghua Yu",
+        "Jianchen Zhu",
+        "Jun Zhang"
+      ],
+      "institutions": [
+        "Tencent"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/CoSA/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/CoSA/note/",
+      "prototxt_path": "meta/2026/CoSA.prototxt",
+      "update_time": 1785482144,
+      "rating": 0
+    },
+    {
+      "id": "CounterCausal",
+      "title": "Back from the Future: Key-Value Cache Management by Counter-Causal Surprise",
+      "abbr": "CounterCausal",
+      "url": "http://arxiv.org/abs/2607.27600v1",
+      "authors": [
+        "Stephen Gould",
+        "Anton van den Hengel"
+      ],
+      "institutions": [
+        "Metacognition AI",
+        "Australian National University",
+        "Adelaide University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/CounterCausal/cover.jpg",
+      "keywords": [
+        "20-Sparse/Eviction (KV Cache)"
+      ],
+      "code_url": "https://github.com/metacognitionai/counter_causal",
+      "note_url": "notes/2026/CounterCausal/note/",
+      "prototxt_path": "meta/2026/CounterCausal.prototxt",
+      "update_time": 1785468644,
+      "rating": 0
+    },
+    {
+      "id": "Prox",
+      "title": "Prox: Training-Free FFN Activation Sparsity via Approximate Intermediate-Channel Salience in LLMs",
+      "abbr": "Prox",
+      "url": "http://arxiv.org/abs/2607.27591v1",
+      "authors": [
+        "Jinyi Liu",
+        "Wei Chen",
+        "Pengyu Chen",
+        "Xinyi Yuan",
+        "Minghe Bai",
+        "Guoquan Wu",
+        "Jun Wei"
+      ],
+      "institutions": [
+        "Institute of Software, Chinese Academy of Sciences",
+        "University of Chinese Academy of Sciences",
+        "Nanjing University of Posts and Telecommunications"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Prox/cover.jpg",
+      "keywords": [
+        "03-Sparsity (Activation)",
+        "05-Sparsity (Structured)"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/Prox/note/",
+      "prototxt_path": "meta/2026/Prox.prototxt",
+      "update_time": 1785468202,
+      "rating": 0
+    },
+    {
+      "id": "SmartGen",
+      "title": "SmartGen: Seamless Disaggregated LLM Inference with Selective KV Cache Transfer",
+      "abbr": "SmartGen",
+      "url": "http://arxiv.org/abs/2607.28150v1",
+      "authors": [
+        "Xuchuan Luo",
+        "Jiacheng Shen",
+        "Xin Wang",
+        "Yangfan Zhou"
+      ],
+      "institutions": [
+        "Fudan University",
+        "Duke Kunshan University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SmartGen/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SmartGen/note/",
+      "prototxt_path": "meta/2026/SmartGen.prototxt",
+      "update_time": 1785466008,
+      "rating": 0
+    },
+    {
+      "id": "PhotonicCXL",
+      "title": "A Photonic-CXL Memory Appliance for Scalable KV Cache Management in LLM Inference",
+      "abbr": "PhotonicCXL",
+      "url": "http://arxiv.org/abs/2607.27187v1",
+      "authors": [
+        "Jing Ding",
+        "Yash Nishant",
+        "Chandrish Ambati",
+        "Jyothsna Kamati",
+        "Trung Diep"
+      ],
+      "institutions": [
+        "Marvell Technology"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment",
+        "39-Performance Modeling"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/PhotonicCXL/note/",
+      "prototxt_path": "meta/2026/PhotonicCXL.prototxt",
+      "update_time": 1785464955,
+      "rating": 0
+    },
+    {
+      "id": "Hypic",
+      "title": "HYPIC: Accelerating Hybrid-Attention LLM Serving with Position-Independent Caching",
+      "abbr": "Hypic",
+      "url": "http://arxiv.org/abs/2607.01299v2",
+      "authors": [
+        "Yifei Liu",
+        "Juntong Wu",
+        "Yang Liu",
+        "Junhao Hu",
+        "Minghao Li",
+        "Xiaoxu Chen",
+        "Weihang Chen"
+      ],
+      "institutions": [
+        "Xiaohongshu Inc.",
+        "Peking University",
+        "Shanghai Jiao Tong University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/Hypic/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/Hypic/note/",
+      "prototxt_path": "meta/2026/Hypic.prototxt",
+      "update_time": 1785407057,
+      "rating": 0
+    },
+    {
+      "id": "SPC",
+      "title": "Sparse Prefix Caching for Hybrid and Recurrent LLM Serving",
+      "abbr": "SPC",
+      "url": "http://arxiv.org/abs/2605.05219v1",
+      "authors": [
+        "Mikhail Shirokikh",
+        "Sergey Nikolenko"
+      ],
+      "institutions": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/SPC/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SPC/note/",
+      "prototxt_path": "meta/2026/SPC.prototxt",
+      "update_time": 1785405290,
+      "rating": 0
+    },
+    {
+      "id": "KVBuffer",
+      "title": "KVBuffer: IO-aware Serving for Linear Attention",
+      "abbr": "KVBuffer",
+      "url": "https://arxiv.org/abs/2605.19049v1",
+      "authors": [
+        "Longwei Zou",
+        "Lin Zhong"
+      ],
+      "institutions": [
+        "Yale University"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/KVBuffer/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "30-Speculative Decoding",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/sgl-project/sglang/pull/29737",
+      "note_url": "notes/2026/KVBuffer/note/",
+      "prototxt_path": "meta/2026/KVBuffer.prototxt",
+      "update_time": 1785404534,
+      "rating": 0
+    },
+    {
+      "id": "KimiK3",
+      "title": "Kimi K3: Open Frontier Intelligence",
+      "abbr": "KimiK3",
+      "url": "https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf",
+      "authors": [
+        "Kimi Team"
+      ],
+      "institutions": [
+        "Moonshot AI"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": "notes/2026/KimiK3/cover.jpg",
+      "keywords": [
+        "42-Network Structure Design"
+      ],
+      "code_url": "https://github.com/MoonshotAI/Kimi-K3",
+      "note_url": "notes/2026/KimiK3/note/",
+      "prototxt_path": "meta/2026/KimiK3.prototxt",
+      "update_time": 1785403710,
+      "rating": 0
+    },
+    {
+      "id": "Marconi",
+      "title": "Marconi: Prefix Caching for the Era of Hybrid LLMs",
+      "abbr": "Marconi",
+      "url": "http://arxiv.org/abs/2411.19379v3",
+      "authors": [
+        "Rui Pan",
+        "Zhuang Wang",
+        "Zhen Jia",
+        "Can Karakus",
+        "Luca Zancato",
+        "Tri Dao",
+        "Yida Wang",
+        "Ravi Netravali"
+      ],
+      "institutions": [
+        "Princeton University",
+        "AWS"
+      ],
+      "year": 2025,
+      "venue": "MLSys",
+      "cover": "notes/2025/Marconi/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/Marconi/note/",
+      "prototxt_path": "meta/2025/Marconi.prototxt",
+      "update_time": 1785402743,
+      "rating": 0
+    },
+    {
+      "id": "Cake",
+      "title": "Compute Or Load KV Cache? Why Not Both?",
+      "abbr": "Cake",
+      "url": "http://arxiv.org/abs/2410.03065v2",
+      "authors": [
+        "Shuowei Jin",
+        "Xueshen Liu",
+        "Qingzhao Zhang",
+        "Z. Morley Mao"
+      ],
+      "institutions": [
+        "University of Michigan"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": "notes/2024/Cake/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/Cake/note/",
+      "prototxt_path": "meta/2024/Cake.prototxt",
+      "update_time": 1784686653,
+      "rating": 0
+    },
+    {
+      "id": "PDD",
+      "title": "PDD: Unleashing Economical and Flexible Heterogeneous LLM Inference via Cross-Datacenter Prefill-Decode Disaggregation",
+      "abbr": "PDD",
+      "url": "https://github.com/infinigence/pdd",
+      "authors": [
+        "Yida Wang",
+        "Xiuhong Li",
+        "Jianping Ma",
+        "Gan Sun",
+        "Yunshen Xu",
+        "Buhe Han",
+        "Jingxu Ng",
+        "Yuhao Luo",
+        "Ke Hong",
+        "Guohao Dai",
+        "Boxun Li",
+        "Yu Wang"
+      ],
+      "institutions": [
+        "Infinigence-AI",
+        "Tsinghua University",
+        "Shanghai Jiao Tong University",
+        "Peking University"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": "notes/2026/PDD/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap",
+        "39-Performance Modeling",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/infinigence/pdd",
+      "note_url": "notes/2026/PDD/note/",
+      "prototxt_path": "meta/2026/PDD.prototxt",
+      "update_time": 1784601562,
+      "rating": 0
+    },
+    {
+      "id": "LMetric",
+      "title": "Simple Is Better: Multiplication May Be All You Need for LLM Request Scheduling",
+      "abbr": "LMetric",
+      "url": "https://arxiv.org/abs/2603.15202",
+      "authors": [
+        "Dingyan Zhang",
+        "Jinbo Han",
+        "Kaixi Zhang",
+        "Xingda Wei",
+        "Sijie Shen",
+        "Chenguang Fang",
+        "Wenyuan Yu",
+        "Jingren Zhou",
+        "Rong Chen"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Alibaba Group"
+      ],
+      "year": 2026,
+      "venue": "OSDI",
+      "cover": "notes/2026/LMetric/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "39-Performance Modeling",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/blitz-serving/blitz-router",
+      "note_url": "notes/2026/LMetric/note/",
+      "prototxt_path": "meta/2026/LMetric.prototxt",
+      "update_time": 1784279289,
+      "rating": 0
+    },
+    {
+      "id": "DirectKV",
+      "title": "No Buffer, No Bottleneck: Efficient Zero-Copy KV Cache Offloading for Long-Context LLMs",
+      "abbr": "DirectKV",
+      "url": "https://www.usenix.org/conference/osdi26/presentation/luo",
+      "authors": [
+        "Shutian Luo",
+        "Haiying Shen"
+      ],
+      "institutions": [
+        "University of Virginia"
+      ],
+      "year": 2026,
+      "venue": "OSDI",
+      "cover": "notes/2026/DirectKV/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap",
+        "40-LLM Deployment",
+        "49-Kernel Generation"
+      ],
+      "code_url": "https://github.com/shutianluo/DirectKV",
+      "note_url": "notes/2026/DirectKV/note/",
+      "prototxt_path": "meta/2026/DirectKV.prototxt",
+      "update_time": 1784197774,
+      "rating": 0
+    },
+    {
+      "id": "ECHO",
+      "title": "ECHO: Efficient KV Cache Offloading with Lossless Prefetching for Serving Native Sparse Attention LLMs",
+      "abbr": "ECHO",
+      "url": "https://www.usenix.org/conference/osdi26/presentation/liu-guangda",
+      "authors": [
+        "Guangda Liu",
+        "Wenhao Chen",
+        "Chengwei Li",
+        "Zhenyu Ning",
+        "Jing Lin",
+        "Yiwu Yao",
+        "Quan Chen",
+        "Shixuan Sun",
+        "Jieru Zhao",
+        "Minyi Guo"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Huawei",
+        "Guizhou University"
+      ],
+      "year": 2026,
+      "venue": "OSDI",
+      "cover": "notes/2026/ECHO/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/sjtu-zhao-lab/ECHO",
+      "note_url": "notes/2026/ECHO/note/",
+      "prototxt_path": "meta/2026/ECHO.prototxt",
+      "update_time": 1784196977,
+      "rating": 0
+    },
+    {
+      "id": "PrismBalloon",
+      "title": "Prism: Cost-Efficient Multi-LLM Serving via GPU Memory Ballooning",
+      "abbr": "PrismBalloon",
+      "url": "https://arxiv.org/abs/2505.04021",
+      "authors": [
+        "Shan Yu",
+        "Yifan Qiao",
+        "Mingyuan Ma",
+        "Yangmin Li",
+        "Shuo Yang",
+        "Xinyuan Tong",
+        "Yang Wang",
+        "Zhiqiang Xie",
+        "Yuwei An",
+        "Shiyi Cao",
+        "Ke Bao",
+        "Deepak Vij",
+        "Xiaoning Ding",
+        "Yichen Wang",
+        "Qingda Lu",
+        "Zhong Wang",
+        "Gao Gao",
+        "Harry Xu",
+        "Junyi Shu",
+        "Jiarong Xing",
+        "Ying Sheng"
+      ],
+      "institutions": [
+        "University of California, Los Angeles",
+        "University of California, Berkeley",
+        "Harvard University",
+        "Carnegie Mellon University",
+        "University of Edinburgh",
+        "Intel",
+        "Stanford University",
+        "LMSYS",
+        "ByteDance",
+        "Alibaba Cloud",
+        "Tsinghua University",
+        "Novita AI",
+        "Rice University"
+      ],
+      "year": 2026,
+      "venue": "OSDI",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/ovg-project/kvcached",
+      "note_url": "notes/2026/PrismBalloon/note/",
+      "prototxt_path": "meta/2026/PrismBalloon.prototxt",
+      "update_time": 1784181453,
+      "rating": 0
+    },
+    {
+      "id": "MC-SF",
+      "title": "Online Scheduling for LLM Inference with KV Cache Constraints",
+      "abbr": "MC-SF",
+      "url": "http://arxiv.org/abs/2502.07115v5",
+      "authors": [
+        "Patrick Jaillet",
+        "Jiashuo Jiang",
+        "Konstantina Mellou",
+        "Marco Molinaro",
+        "Chara Podimata",
+        "Zijie Zhou"
+      ],
+      "institutions": [
+        "Massachusetts Institute of Technology",
+        "Hong Kong University of Science and Technology",
+        "Microsoft Research"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "39-Performance Modeling",
+        "40-LLM Deployment",
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/MC-SF/note/",
+      "prototxt_path": "meta/2025/MC-SF.prototxt",
+      "update_time": 1784101998,
+      "rating": 0
+    },
+    {
       "id": "DCut",
       "title": "D-Cut: Adaptive Verification Depth Pruning for Speculative Decoding",
       "abbr": "D-Cut",
@@ -1220,32 +1754,6 @@
       "rating": 0
     },
     {
-      "id": "KVBuffer",
-      "title": "KVBuffer: IO-aware Serving for Linear Attention",
-      "abbr": "KVBuffer",
-      "url": "https://arxiv.org/abs/2605.19049v1",
-      "authors": [
-        "Longwei Zou",
-        "Lin Zhong"
-      ],
-      "institutions": [
-        "Yale University"
-      ],
-      "year": 2026,
-      "venue": "arXiv",
-      "cover": "notes/2026/KVBuffer/cover.jpg",
-      "keywords": [
-        "21-KV Cache Management",
-        "30-Speculative Decoding",
-        "40-LLM Deployment"
-      ],
-      "code_url": null,
-      "note_url": "notes/2026/KVBuffer/note/",
-      "prototxt_path": "meta/2026/KVBuffer.prototxt",
-      "update_time": 1780278938,
-      "rating": 0
-    },
-    {
       "id": "ThriftAttention",
       "title": "ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention",
       "abbr": "ThriftAttention",
@@ -1345,16 +1853,16 @@
         "Carnegie Mellon University",
         "University of Michigan"
       ],
-      "year": 2025,
-      "venue": "arXiv",
-      "cover": "notes/2025/Strata/cover.jpg",
+      "year": 2026,
+      "venue": "OSDI",
+      "cover": "notes/2026/Strata/cover.jpg",
       "keywords": [
         "21-KV Cache Management",
         "40-LLM Deployment"
       ],
       "code_url": "https://github.com/sgl-project/sglang",
-      "note_url": "notes/2025/Strata/note/",
-      "prototxt_path": "meta/2025/Strata.prototxt",
+      "note_url": "notes/2026/Strata/note/",
+      "prototxt_path": "meta/2026/Strata.prototxt",
       "update_time": 1779932350,
       "rating": 0
     },
@@ -1982,34 +2490,6 @@
       "note_url": "notes/2026/CacheFlow/note/",
       "prototxt_path": "meta/2026/CacheFlow.prototxt",
       "update_time": 1778225173,
-      "rating": 0
-    },
-    {
-      "id": "Cake",
-      "title": "Compute Or Load KV Cache? Why Not Both?",
-      "abbr": "Cake",
-      "url": "http://arxiv.org/abs/2410.03065v2",
-      "authors": [
-        "Shuowei Jin",
-        "Xueshen Liu",
-        "Qingzhao Zhang",
-        "Z. Morley Mao"
-      ],
-      "institutions": [
-        "inst1",
-        "inst2"
-      ],
-      "year": 2024,
-      "venue": "arXiv",
-      "cover": "notes/2024/Cake/cover.jpg",
-      "keywords": [
-        "21-KV Cache Management",
-        "40-LLM Deployment"
-      ],
-      "code_url": null,
-      "note_url": "notes/2024/Cake/note/",
-      "prototxt_path": "meta/2024/Cake.prototxt",
-      "update_time": 1778225031,
       "rating": 0
     },
     {
@@ -12247,37 +12727,6 @@
       "rating": 0
     },
     {
-      "id": "Marconi",
-      "title": "Marconi: Prefix Caching for the Era of Hybrid LLMs",
-      "abbr": "Marconi",
-      "url": "http://arxiv.org/abs/2411.19379v3",
-      "authors": [
-        "Rui Pan",
-        "Zhuang Wang",
-        "Zhen Jia",
-        "Can Karakus",
-        "Luca Zancato",
-        "Tri Dao",
-        "Yida Wang",
-        "Ravi Netravali"
-      ],
-      "institutions": [
-        "Princeton University",
-        "AWS"
-      ],
-      "year": 2025,
-      "venue": "MLSys",
-      "cover": null,
-      "keywords": [
-        "40-LLM Deployment"
-      ],
-      "code_url": null,
-      "note_url": "notes/2025/Marconi/note/",
-      "prototxt_path": "meta/2025/Marconi.prototxt",
-      "update_time": 0,
-      "rating": 0
-    },
-    {
       "id": "MaskLLM",
       "title": "MaskLLM: Learnable Semi-Structured Sparsity for Large Language Models",
       "abbr": "MaskLLM",
@@ -16416,5 +16865,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 496
+  "total": 510
 }

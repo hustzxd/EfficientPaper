@@ -33,7 +33,7 @@ The graph page links baseline methods and derived work, and can jump back to the
 
 ### 3. Local paper metadata editor
 
-`docs/edit.html` provides a standalone editor for `.prototxt` metadata, including title, abbreviation, venue, authors, institutions, keywords, code URL, rating, and update time.
+The Home page `Edit` action opens an embedded editor modal backed by `docs/edit.html`. The editor supports `.prototxt` metadata including title, abbreviation, venue, authors, institutions, keywords, code URL, rating, and update time. `docs/edit.html` remains available as a standalone editor for local use.
 
 <p align="center">
   <img src="<root>docs/images/edit1.png" width="1000" title="Edit Paper Metadata">
@@ -111,7 +111,7 @@ You can also open the Home page and use `Add from arXiv` when the local server i
 ### Edit metadata and notes in browser
 
 - Visit `http://localhost:8000`
-- Use the paper card `Edit` action to open `docs/edit.html`
+- Use the paper card `Edit` action to open the metadata editor in a modal
 - Open the paper note page to edit `notes/<year>/<paper>/note.md` in browser
 
 ### Refresh generated assets

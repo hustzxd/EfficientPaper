@@ -1,0 +1,35 @@
+paper {
+  title: "Prox: Training-Free FFN Activation Sparsity via Approximate Intermediate-Channel Salience in LLMs"
+  abbr: "Prox"
+  url: "http://arxiv.org/abs/2607.27591v1"
+  authors: "Jinyi Liu"
+  authors: "Wei Chen"
+  authors: "Pengyu Chen"
+  authors: "Xinyi Yuan"
+  authors: "Minghe Bai"
+  authors: "Guoquan Wu"
+  authors: "Jun Wei"
+  institutions: "Institute of Software, Chinese Academy of Sciences"
+  institutions: "University of Chinese Academy of Sciences"
+  institutions: "Nanjing University of Posts and Telecommunications"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: activation_sparsity
+  words: structured_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/CATS"
+  methods: "2025/TEAL"
+}
+update_time: 1785468202

@@ -2,7 +2,7 @@
 
 > Rui Pan, Zhuang Wang, Zhen Jia, Can Karakus, Luca Zancato, Tri Dao, Yida Wang, Ravi Netravali
 
-![111](../../blank.jpg)
+![cover](cover.jpg)
 
 ---
 

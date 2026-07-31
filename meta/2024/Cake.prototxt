@@ -6,8 +6,7 @@ paper {
   authors: "Xueshen Liu"
   authors: "Qingzhao Zhang"
   authors: "Z. Morley Mao"
-  institutions: "inst1"
-  institutions: "inst2"
+  institutions: "University of Michigan"
 }
 pub {
   where: "arXiv"
@@ -27,4 +26,4 @@ cover {
 baseline {
   methods: "None"
 }
-update_time: 1778225031
+update_time: 1784686653

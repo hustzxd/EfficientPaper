@@ -32,6 +32,6 @@ cover {
   url: "cover.jpg"
 }
 baseline {
-  methods: "2025/KVServe"
+  methods: "2026/KVServe"
 }
 update_time: 1783410598

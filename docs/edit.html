@@ -460,7 +460,7 @@
       <!-- Buttons -->
       <div class="button-group">
         <button type="button" class="btn-danger" onclick="deletePaper()">Delete Paper</button>
-        <button type="button" class="btn-secondary" onclick="window.location.href='/search/'">Cancel</button>
+        <button type="button" class="btn-secondary" onclick="cancelEditor()">Cancel</button>
         <button type="submit" class="btn-primary">Save Changes</button>
       </div>
     </form>
@@ -469,12 +469,30 @@
   <script>
     // API configuration
     const API_BASE_URL = 'http://localhost:8001';
+    const isEmbeddedEditor = window.parent !== window;
 
     let currentPath = '';
     let paperData = null;
     let availableBaselineMethods = [];
     let availableInstitutions = [];
     let KEYWORDS = [];  // Will be loaded from API
+
+    function notifyParent(type, extra = {}) {
+      if (!isEmbeddedEditor) return;
+      window.parent.postMessage({
+        source: 'efficient-paper-editor',
+        type,
+        ...extra,
+      }, '*');
+    }
+
+    function cancelEditor() {
+      if (isEmbeddedEditor) {
+        notifyParent('paper-cancelled', { path: currentPath });
+      } else {
+        window.location.href = '/search/';
+      }
+    }
 
     // Get path from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
@@ -968,6 +986,7 @@
           await loadBaselineMethods();
 
           showMessage('✓ Saved successfully! Auto-reload is running. Refresh your browser in a few seconds to see changes.', 'success');
+          notifyParent('paper-saved', { path: currentPath });
           // Don't redirect, stay on current page
         } else {
           throw new Error(result.error || 'Failed to save');
@@ -1125,9 +1144,13 @@
 
         if (response.ok) {
           showMessage('Paper deleted successfully! Closing tab...', 'success');
-          setTimeout(() => {
-            window.close();
-          }, 1500);
+          if (isEmbeddedEditor) {
+            notifyParent('paper-deleted', { path: currentPath });
+          } else {
+            setTimeout(() => {
+              window.close();
+            }, 1500);
+          }
         } else {
           throw new Error(result.error || 'Failed to delete paper');
         }

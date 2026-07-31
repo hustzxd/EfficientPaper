@@ -18,12 +18,15 @@ paper {
   institutions: "University of Michigan"
 }
 pub {
-  where: "arXiv"
-  year: 2025
+  where: "OSDI"
+  year: 2026
 }
 code {
   type: "Pytorch"
   url: "https://github.com/sgl-project/sglang"
+}
+note {
+  url: "note.md"
 }
 keyword {
   words: kv_cache_management

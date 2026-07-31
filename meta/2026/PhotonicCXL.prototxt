@@ -1,0 +1,36 @@
+paper {
+  title: "A Photonic-CXL Memory Appliance for Scalable KV Cache Management in LLM Inference"
+  abbr: "PhotonicCXL"
+  url: "http://arxiv.org/abs/2607.27187v1"
+  authors: "Jing Ding"
+  authors: "Yash Nishant"
+  authors: "Chandrish Ambati"
+  authors: "Jyothsna Kamati"
+  authors: "Trung Diep"
+  institutions: "Marvell Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "C/C++"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+  words: performance_modeling
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/Mooncake"
+  methods: "2025/Beluga"
+  methods: "2026/SAC"
+}
+update_time: 1785464955

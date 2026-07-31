@@ -4,9 +4,9 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/hustzxd/EfficientPaper?style=social)](https://github.com/hustzxd/EfficientPaper)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/hustzxd/EfficientPaper)](https://github.com/hustzxd/EfficientPaper)
-[![Papers](https://img.shields.io/badge/papers-496-blue)](https://github.com/hustzxd/EfficientPaper)
+[![Papers](https://img.shields.io/badge/papers-510-blue)](https://github.com/hustzxd/EfficientPaper)
 
-EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **496** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
+EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **510** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
 
 The main experience is the Home page at `docs/index.md`: a searchable paper workspace with local editing, graph navigation, arXiv import, PDF lookup, and GitHub sync.
 
@@ -35,7 +35,7 @@ The graph page links baseline methods and derived work, and can jump back to the
 
 ### 3. Local paper metadata editor
 
-`docs/edit.html` provides a standalone editor for `.prototxt` metadata, including title, abbreviation, venue, authors, institutions, keywords, code URL, rating, and update time.
+The Home page `Edit` action opens an embedded editor modal backed by `docs/edit.html`. The editor supports `.prototxt` metadata including title, abbreviation, venue, authors, institutions, keywords, code URL, rating, and update time. `docs/edit.html` remains available as a standalone editor for local use.
 
 <p align="center">
   <img src="/images/edit1.png" width="1000" title="Edit Paper Metadata">
@@ -113,7 +113,7 @@ You can also open the Home page and use `Add from arXiv` when the local server i
 ### Edit metadata and notes in browser
 
 - Visit `http://localhost:8000`
-- Use the paper card `Edit` action to open `docs/edit.html`
+- Use the paper card `Edit` action to open the metadata editor in a modal
 - Open the paper note page to edit `notes/<year>/<paper>/note.md` in browser
 
 ### Refresh generated assets
