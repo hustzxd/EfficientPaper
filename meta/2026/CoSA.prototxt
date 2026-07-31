@@ -1,0 +1,35 @@
+paper {
+  title: "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention"
+  abbr: "CoSA"
+  url: "http://arxiv.org/abs/2607.25291v1"
+  authors: "Yufei Xue"
+  authors: "Lin Niu"
+  authors: "Hong Liu"
+  authors: "Siran Liu"
+  authors: "Hanyong Shao"
+  authors: "Wei Liu"
+  authors: "Guanghua Yu"
+  authors: "Jianchen Zhu"
+  authors: "Jun Zhang"
+  institutions: "Tencent"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "CUDA"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/MInference"
+  methods: "2025/FlexPrefill"
+  methods: "2025/XAttention"
+}
+update_time: 1785482144

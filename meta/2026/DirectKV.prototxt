@@ -1,0 +1,30 @@
+paper {
+  title: "No Buffer, No Bottleneck: Efficient Zero-Copy KV Cache Offloading for Long-Context LLMs"
+  abbr: "DirectKV"
+  url: "https://www.usenix.org/conference/osdi26/presentation/luo"
+  authors: "Shutian Luo"
+  authors: "Haiying Shen"
+  institutions: "University of Virginia"
+}
+pub {
+  where: "OSDI"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/shutianluo/DirectKV"
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+  words: deployment
+  words: kernel_generation
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+  methods: "2023/FlexGen"
+}
+update_time: 1784197774

@@ -56,13 +56,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-06-12/">2026-06-12</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-06-26/">2026-06-26</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-07-08/">2026-07-08</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-07-10/">2026-07-10</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="weekly_paper/2026-07-31/">2026-07-31</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
@@ -133,6 +131,10 @@
                 <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-05-29/">2026-05-29</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="weekly_paper/legacy/2026-06-26/">2026-06-26</a>
                 </li>
     </ul>
                   </li>
@@ -445,6 +447,19 @@
       <div class="arxiv-modal-footer">
         <button id="delete-paper-submit-btn" class="btn-danger">Delete</button>
         <button id="delete-paper-cancel-btn" class="btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Paper Modal -->
+  <div id="edit-paper-modal" class="arxiv-modal edit-paper-modal" style="display: none;">
+    <div class="arxiv-modal-content">
+      <div class="arxiv-modal-header">
+        <h2 id="edit-paper-modal-title">Edit Paper</h2>
+        <button id="close-edit-paper" class="close-arxiv" title="Close editor">✕</button>
+      </div>
+      <div class="arxiv-modal-body">
+        <iframe id="edit-paper-frame" title="Edit paper metadata"></iframe>
       </div>
     </div>
   </div>
@@ -1500,6 +1515,37 @@ a.server-disabled {
   word-break: break-all;
 }
 
+/* Embedded paper editor */
+.edit-paper-modal .arxiv-modal-content {
+  width: min(1100px, 96vw);
+  max-width: 1100px;
+  height: min(900px, 92vh);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.edit-paper-modal .arxiv-modal-header {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+}
+
+.edit-paper-modal .arxiv-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+#edit-paper-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* Note Preview Tooltip */
 .note-preview {
   position: absolute;
@@ -2046,6 +2092,22 @@ a.server-disabled {
   .paper-cover {
     width: 100%;
     height: 150px;
+  }
+
+  .edit-paper-modal {
+    align-items: stretch;
+  }
+
+  .edit-paper-modal .arxiv-modal-content {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .edit-paper-modal .arxiv-modal-header {
+    padding: 12px 16px;
   }
 }
 
@@ -2674,7 +2736,7 @@ function closeLightbox() {
     document.querySelectorAll('.edit-link').forEach(link => {
       link.classList.toggle('server-disabled', !isLocalServerAvailable);
       if (!isLocalServerAvailable) {
-        link.dataset.href = link.href;
+        if (link.href) link.dataset.href = link.href;
         link.removeAttribute('href');
         link.title = 'Clone the repo and start local server to enable';
         link.onclick = (e) => { e.preventDefault(); };
@@ -3407,7 +3469,7 @@ function closeLightbox() {
               ${codeLink}
               ${paper.note_url ? `<a href="${paper.note_url}" target="_blank">Note</a>` : ''}
               <button class="pdf-btn" data-abbr="${paper.abbr || ''}" data-year="${paper.year || ''}" data-url="${paper.url || ''}" data-title="${paper.title.replace(/'/g, "\\'")}" onclick="openLocalPdf('${paper.abbr || 'paper'}', '${paper.title.replace(/'/g, "\\'")}', '${paper.year || ''}', '${paper.url || ''}')" title="Open local PDF or download (requires local server)">📄 PDF</button>
-              ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" target="_blank" title="Requires local server" class="edit-link">Edit 🔧</a>` : ''}
+              ${paper.prototxt_path ? `<a href="../edit.html?path=${encodeURIComponent(paper.prototxt_path)}" data-path="${escapeHtmlAttr(paper.prototxt_path)}" title="Requires local server" class="edit-link">Edit 🔧</a>` : ''}
               ${paperGraphMap[paper.id] ? `<a href="baseline_methods_graph_interactive/?node=${encodeURIComponent(`${paper.year}/${paper.id}`)}" target="_blank" class="graph-link" title="View in relationship graph">Graph 🔗</a>` : ''}
             </div>
           </div>
@@ -4122,6 +4184,81 @@ function closeLightbox() {
     document.getElementById('delete-paper-submit-btn').disabled = false;
     document.getElementById('delete-paper-status').textContent = '';
     document.getElementById('delete-paper-status').className = 'arxiv-status';
+  }
+
+  function openEditPaperModal(prototxtPath, paperTitle = '') {
+    if (!prototxtPath || !isLocalServerAvailable) return;
+
+    const modal = document.getElementById('edit-paper-modal');
+    const frame = document.getElementById('edit-paper-frame');
+    const titleEl = document.getElementById('edit-paper-modal-title');
+
+    titleEl.textContent = paperTitle ? `Edit: ${paperTitle}` : 'Edit Paper';
+    frame.src = `${basePath}/edit.html?path=${encodeURIComponent(prototxtPath)}&embedded=1`;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => frame.focus(), 10);
+  }
+
+  function closeEditPaperModal() {
+    const modal = document.getElementById('edit-paper-modal');
+    const frame = document.getElementById('edit-paper-frame');
+
+    modal.style.display = 'none';
+    frame.src = 'about:blank';
+    document.body.style.overflow = '';
+  }
+
+  function refreshPapersAfterEdit() {
+    const filterState = {
+      search: document.getElementById('search-input').value,
+      year: document.getElementById('year-filter').value,
+      venue: document.getElementById('venue-filter').value,
+      keyword: document.getElementById('keyword-filter').value,
+      rating: document.getElementById('rating-filter').value,
+      sort: document.getElementById('sort-filter').value,
+      page: currentPage,
+    };
+
+    loadPapers().then(() => {
+      document.getElementById('search-input').value = filterState.search;
+      document.getElementById('year-filter').value = filterState.year;
+      document.getElementById('venue-filter').value = filterState.venue;
+      document.getElementById('keyword-filter').value = filterState.keyword;
+      document.getElementById('rating-filter').value = filterState.rating;
+      document.getElementById('sort-filter').value = filterState.sort;
+      filterPapers();
+
+      if (filterState.page > 1) {
+        const totalPages = Math.max(1, Math.ceil(filteredPapers.length / itemsPerPage));
+        goToPage(Math.min(filterState.page, totalPages));
+      }
+    }).catch(error => {
+      console.error('Failed to refresh papers after editing:', error);
+    });
+  }
+
+  function handleEditorMessage(event) {
+    const frame = document.getElementById('edit-paper-frame');
+    const message = event.data;
+
+    if (!frame || event.source !== frame.contentWindow || !message ||
+        message.source !== 'efficient-paper-editor') {
+      return;
+    }
+
+    if (message.type === 'paper-saved') {
+      closeEditPaperModal();
+      // Give the local watcher time to regenerate papers.json before reloading it.
+      setTimeout(refreshPapersAfterEdit, 1800);
+    } else if (message.type === 'paper-deleted') {
+      if (message.path) {
+        removeDeletedPaperFromState(message.path);
+      }
+      closeEditPaperModal();
+    } else if (message.type === 'paper-cancelled') {
+      closeEditPaperModal();
+    }
   }
 
   async function confirmDeletePaper() {
@@ -4954,6 +5091,25 @@ function closeLightbox() {
       showDeletePaperModal(deleteBtn.dataset.path);
     });
 
+    document.getElementById('paper-list').addEventListener('click', (e) => {
+      const editLink = e.target.closest('.edit-link');
+      if (!editLink || editLink.classList.contains('server-disabled')) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+      const paper = papers.find(item => item.prototxt_path === editLink.dataset.path);
+      openEditPaperModal(editLink.dataset.path, paper?.title || '');
+    });
+
+    // Embedded editor modal
+    document.getElementById('close-edit-paper').addEventListener('click', closeEditPaperModal);
+    document.getElementById('edit-paper-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'edit-paper-modal') {
+        closeEditPaperModal();
+      }
+    });
+    window.addEventListener('message', handleEditorMessage);
+
     // Statistics panel
     document.getElementById('stats-btn').addEventListener('click', showStatistics);
     document.getElementById('close-stats').addEventListener('click', closeStatistics);
@@ -5057,6 +5213,12 @@ function closeLightbox() {
         const detailPanel = document.getElementById('detail-panel');
         if (detailPanel.classList.contains('active')) {
           closeDetailPanel();
+          return;
+        }
+        // Close embedded paper editor modal if open
+        const editPaperModal = document.getElementById('edit-paper-modal');
+        if (editPaperModal.style.display === 'flex') {
+          closeEditPaperModal();
           return;
         }
         // Close delete paper modal if open
@@ -5304,5 +5466,5 @@ function closeLightbox() {
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-07-13 01:53:32.575629+00:00
+Build Date UTC : 2026-07-31 10:09:15.559759+00:00
 -->

@@ -1,0 +1,40 @@
+paper {
+  title: "ECHO: Efficient KV Cache Offloading with Lossless Prefetching for Serving Native Sparse Attention LLMs"
+  abbr: "ECHO"
+  url: "https://www.usenix.org/conference/osdi26/presentation/liu-guangda"
+  authors: "Guangda Liu"
+  authors: "Wenhao Chen"
+  authors: "Chengwei Li"
+  authors: "Zhenyu Ning"
+  authors: "Jing Lin"
+  authors: "Yiwu Yao"
+  authors: "Quan Chen"
+  authors: "Shixuan Sun"
+  authors: "Jieru Zhao"
+  authors: "Minyi Guo"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Huawei"
+  institutions: "Guizhou University"
+}
+pub {
+  where: "OSDI"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sjtu-zhao-lab/ECHO"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_management
+  words: overlap
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+  methods: "2025/DSA"
+}
+update_time: 1784196977

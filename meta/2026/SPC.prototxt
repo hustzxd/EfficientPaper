@@ -1,0 +1,25 @@
+paper {
+  title: "Sparse Prefix Caching for Hybrid and Recurrent LLM Serving"
+  abbr: "SPC"
+  url: "http://arxiv.org/abs/2605.05219v1"
+  authors: "Mikhail Shirokikh"
+  authors: "Sergey Nikolenko"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/Marconi"
+}
+update_time: 1785405290

@@ -1,0 +1,30 @@
+paper {
+  title: "SmartGen: Seamless Disaggregated LLM Inference with Selective KV Cache Transfer"
+  abbr: "SmartGen"
+  url: "http://arxiv.org/abs/2607.28150v1"
+  authors: "Xuchuan Luo"
+  authors: "Jiacheng Shen"
+  authors: "Xin Wang"
+  authors: "Yangfan Zhou"
+  institutions: "Fudan University"
+  institutions: "Duke Kunshan University"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2025/HATA"
+}
+update_time: 1785466008

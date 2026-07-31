@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>HYPIC: Accelerating Hybrid-Attention LLM Serving with Position-Independent Caching - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "HYPIC: Accelerating Hybrid-Attention LLM Serving with Position-Independent Caching";
+        var mkdocs_page_input_path = "notes/2026/Hypic/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-07-08/">2026-07-08</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-07-10/">2026-07-10</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-07-31/">2026-07-31</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">HYPIC: Accelerating Hybrid-Attention LLM Serving with Position-Independent Caching</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="hypic-accelerating-hybrid-attention-llm-serving-with-position-independent-caching">HYPIC: Accelerating Hybrid-Attention LLM Serving with Position-Independent Caching</h1>
+<blockquote>
+<p>Yifei Liu, Juntong Wu, Yang Liu, Junhao Hu, Minghao Li, Xiaoxu Chen, Weihang Chen</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.jpg" /></a></p>
+<p>**RAG 多个 segment 可以通过去掉 RePE 进行有损的复用，对于softmax attention来说，每个token都有kv cache，这个有损的复用kv cache 片段的过程比较直接；但是对于Linear Attention来说，recurrent state 是循环更新的，那么如果想用segment 1 + segment 2的 recurrent state，需要一些不同的设计，才能保持与实际linear attention的计算的近似 **</p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>RAG 和 agentic LLM serving 会把多个独立片段拼成长上下文，使 prefill 成为主要成本。Position-independent caching（PIC）可以复用不同请求中位置不固定的 segment，但现有 PIC 依赖 full-attention 的 per-token KV；hybrid-attention 模型的 linear-attention 层只保留 per-request recurrent state，因此二者无法直接结合。Hypic 提出面向 hybrid-attention LLM 的 PIC 系统：为每个 segment 缓存 segment-cumulative transition operator 和 zero-start end-state，使独立 segment 的 recurrent state 可以近似精确、常数时间组合；在少数 full-attention 层用 segment 开头的 seam window 修复跨 segment 误差；对 cold segment 使用 segment parallelism 跨实例并行 prefill。论文在 4 个 hybrid 模型、4 个公开数据集和 1 条生产 RAG trace 上评估。</p>
+<h2 id="_1">一句话总结</h2>
+<p>Hypic 把 PIC 从纯 Transformer 扩展到 hybrid-attention LLM，用“transition operator + zero-start state”实现 linear state 组合，用 seam window 修复 full-attention 边界，并用跨实例 segment parallelism 加速冷启动 prefill。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>缓存可组合的 linear-attention segment tuple。</strong> 对 segment <script type="math/tex">C</script> 同时缓存 zero-start end-state <script type="math/tex">S_{C|0}</script> 和 segment-cumulative transition operator <script type="math/tex">T_C=\prod_{t\in C}T_t</script>。对于任意前缀状态 <script type="math/tex">S</script>，segment 组合遵循 <script type="math/tex">S' = T_C S + S_{C|0}</script>；多个 segment 可以递推组合，复用代价与 segment 长度解耦。它补上了 naive state addition 遗漏的历史状态变换项。</li>
+<li><strong>用 seam window 适配 hybrid stack 的 full-attention 层。</strong> 由于 linear 层不保留每个 token 的中间 hidden state，现有 PIC 的任意 token correction 无法迁移。Hypic 观察到 splice 与 full recompute 的误差集中在每个内部 segment 的开头，只缓存其余 KV，在复用时重算固定宽度的开头窗口并通过 linear 层逐层传播 seam token；默认窗口宽度 <script type="math/tex">w=8</script>。</li>
+<li><strong>提出 segment parallelism 加速 cache-miss prefill。</strong> PIC segment 的 prefill 只依赖自身 token，因此 cold segment 可被 Router 分发到多个 scatter worker 并行计算，再由 combine worker 组合 state、修复 seam 并接入后续 decode。Hypic 用 LPT 按 segment 长度做负载均衡，并以 non-blocking GPUDirect RDMA transfer 与计算流水重叠。</li>
+<li><strong>构建面向 PIC 的双池 cache 管理。</strong> public pool 保存可跨请求/实例共享的 segment-level state、transition 和 local KV；private pool 保存已经按当前全局位置组装好的 per-request running state。Position-dependent prefix cache 与 position-independent segment cache 可以并存，LRU 分别管理两类对象。</li>
+<li><strong>覆盖多种 linear-attention transition family。</strong> scalar、diagonal 和 dense transition 分别对应不同的存储与计算代价：scalar 只需一个标量，diagonal 只需 <script type="math/tex">d_k</script> 维向量，dense family 缓存 <script type="math/tex">d_k\times d_k</script> 矩阵；同时处理 causal convolution warm-up 和 state RoPE re-rotation。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li>在 4 个 hybrid 模型、4 个公开数据集和 1 条生产 RAG trace 上，Hypic 相比 Full Recompute 平均降低 TTFT <strong>3.25×</strong>，相比 Prefix Cache 的优势约为 <strong>2.77×</strong>；在相同 1 秒 TTFT SLO 下，论文摘要报告 sustainable QPS 平均提升 <strong>1.66×</strong>。</li>
+<li>在 Prod-RAG trace 上，Hypic 相比 Prefix Cache 的 sustainable QPS 提升为 <strong>1.49–1.85×</strong>（不同模型），peak per-GPU token throughput 提升 <strong>1.30–1.50×</strong>；相较 Full Recompute，提升分别达到 <strong>1.98–3.65×</strong> 和 <strong>1.86–1.89×</strong>。</li>
+<li>线性 attention state composition 的复用开销与 segment 长度基本解耦：固定 4 个 segment 时，总 token 约 4K 增加到 16K，Hypic 时间仅从 0.103 s 增至 0.127 s；固定每段 1K token、segment 数从 4 增至 16 时，每增加一个 segment 约增加 2.3 ms，而 Full Recompute 约增加 40.7 ms。</li>
+<li>transition/state construction 只给首次 segment prefill 增加约 <strong>5.2%–6.7%</strong> 开销，并可在后续复用中摊销；在 Qwen3.5-35B-A3B 上，8-token seam window 在 MultiNews/GovReport 上达到较好的质量-延迟折中，增大窗口没有带来相称收益。</li>
+<li>冷请求的 segment parallelism 在 8 个 prefill worker 上将 32K-token prompt 的 TTFT 从单 worker 的 2.83 s 降至 0.49 s，即 <strong>5.7×</strong> 加速；不均匀 segment 下，4 worker 的 LPT 比 round-robin 将 TTFT 从 1.26 s 降到 0.84 s。</li>
+<li>相比 Full Recompute，平均任务质量差距为 <strong>1.71 points</strong>；naive state addition 的 Full Recompute 得分损失达到 <strong>66.9%</strong>，说明 transition operator 是消除 hybrid PIC 结构性误差的关键。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li>论文的“near-exact”不等于所有深层 hidden state 都数学上等于完整 prefill：transition composition 在输入 hidden state 相同的前提下是 layer-exact，但独立 prefill segment 与完整上下文之间仍存在跨 segment hidden-state drift。作者测得最深 linear layer 的相对 <script type="math/tex">L_2</script> drift 约 8.69%–8.92%，最终任务质量通过 seam window 控制在可接受范围。</li>
+<li>系统实现于 SGLang，约 14K 行 Python/Triton 代码；硬件为 8× NVIDIA H20、NVLink、RDMA NIC。实验中的 Full Recompute、Prefix Cache、Naive Addition 是对照策略；EfficientPaper 中可直接关联的 PIC baseline 是 CacheBlend。</li>
+<li>适用前提是应用能明确划分语义独立的 segment，并允许使用 <code>PIC_SEPARATOR</code>；segment 边界选择、cache duplication、公共/私有池容量以及 RDMA 传输成本会影响实际收益。与 SPC 不同，Hypic 解决的是非连续 segment 的 position-independent reuse，而不是单一前缀内 recurrent checkpoint placement。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

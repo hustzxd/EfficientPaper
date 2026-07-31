@@ -31,7 +31,7 @@ cover {
 }
 baseline {
   methods: "2025/LMCache"
-  methods: "2025/Strata"
+  methods: "2026/Strata"
 }
 update_time: 1778220869
 rating: 3

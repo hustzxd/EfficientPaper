@@ -1,0 +1,36 @@
+paper {
+  title: "Simple Is Better: Multiplication May Be All You Need for LLM Request Scheduling"
+  abbr: "LMetric"
+  url: "https://arxiv.org/abs/2603.15202"
+  authors: "Dingyan Zhang"
+  authors: "Jinbo Han"
+  authors: "Kaixi Zhang"
+  authors: "Xingda Wei"
+  authors: "Sijie Shen"
+  authors: "Chenguang Fang"
+  authors: "Wenyuan Yu"
+  authors: "Jingren Zhou"
+  authors: "Rong Chen"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Alibaba Group"
+}
+pub {
+  where: "OSDI"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/blitz-serving/blitz-router"
+}
+keyword {
+  words: kv_cache_management
+  words: performance_modeling
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+}
+update_time: 1784279289
