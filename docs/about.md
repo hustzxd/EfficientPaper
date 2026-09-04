@@ -4,9 +4,9 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/hustzxd/EfficientPaper?style=social)](https://github.com/hustzxd/EfficientPaper)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/hustzxd/EfficientPaper)](https://github.com/hustzxd/EfficientPaper)
-[![Papers](https://img.shields.io/badge/papers-510-blue)](https://github.com/hustzxd/EfficientPaper)
+[![Papers](https://img.shields.io/badge/papers-513-blue)](https://github.com/hustzxd/EfficientPaper)
 
-EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **510** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
+EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes **513** papers on **Pruning**, **Quantization**, **KV Cache**, **Speculative Decoding**, **Efficient Inference/Training**, and related system optimization topics.
 
 The main experience is the Home page at `docs/index.md`: a searchable paper workspace with local editing, graph navigation, arXiv import, PDF lookup, and GitHub sync.
 

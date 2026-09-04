@@ -27,6 +27,9 @@ code {
   type: "Pytorch"
   url: "https://github.com/infinigence/pdd"
 }
+note {
+  url: "note.md"
+}
 keyword {
   words: kv_cache_management
   words: overlap
@@ -41,4 +44,4 @@ baseline {
   methods: "2024/SGLang"
   methods: "2024/Mooncake"
 }
-update_time: 1784601562
+update_time: 1786431133

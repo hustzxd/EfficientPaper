@@ -1,0 +1,30 @@
+paper {
+  title: "Nested Learning: The Illusion of Deep Learning Architectures"
+  abbr: "NestedLearning"
+  url: "http://arxiv.org/abs/2512.24695v1"
+  authors: "Ali Behrouz"
+  authors: "Meisam Razaviyayn"
+  authors: "Peilin Zhong"
+  authors: "Vahab Mirrokni"
+  institutions: "Google Research"
+  institutions: "Columbia University"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+  words: efficient_training
+}
+cover {
+  url: ""
+}
+update_time: 1786000800

@@ -1,0 +1,37 @@
+paper {
+  title: "DFlare: Scaling Up Draft Capacity for Block Diffusion Speculative Decoding"
+  abbr: "DFlare"
+  url: "http://arxiv.org/abs/2606.02091v2"
+  authors: "Jiebin Zhang"
+  authors: "Zhenghan Yu"
+  authors: "Song Liu"
+  authors: "Eugene J. Yu"
+  authors: "Zheng Li"
+  authors: "Dawei Zhu"
+  authors: "Jiangshan Duo"
+  authors: "Weimin Xiong"
+  authors: "Yifan Song"
+  authors: "Guanghua Yu"
+  authors: "Jianchen Zhu"
+  authors: "Sujian Li"
+  institutions: "Peking University"
+  institutions: "Tencent"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/Tencent/AngelSlim"
+}
+keyword {
+  words: speculative_decoding
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/DFlash"
+}
+update_time: 1785923230
