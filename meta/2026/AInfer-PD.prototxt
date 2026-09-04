@@ -1,0 +1,38 @@
+paper {
+  title: "AInfer-PD: Communication-Safe In-Place Prefill-Decode Multiplexing for Distributed MoE Rollouts"
+  abbr: "AInfer-PD"
+  url: "https://arxiv.org/abs/2609.00993v1"
+  authors: "Guowei Wang"
+  authors: "Chaokun Yang"
+  authors: "Zhenxuan Pan"
+  authors: "Yuhong Guo"
+  authors: "Minghua Zhu"
+  authors: "Zhechuan Zhang"
+  authors: "Shuo Wan"
+  authors: "Xiaowei Zhu"
+  institutions: "Ant Group"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+  words: overlap
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/POD-Attention"
+  methods: "2025/DeepEP"
+  methods: "2024/SGLang"
+}
+update_time: 1788489814

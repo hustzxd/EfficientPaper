@@ -1,0 +1,4 @@
+interface:
+  display_name: "EfficientPaper Research"
+  short_description: "Search efficient-AI papers and trace their relationships"
+  default_prompt: "Search the EfficientPaper collection of pruning, quantization, KV cache, speculative decoding, and related efficient-AI papers; explain relevant nodes and baseline relationships."

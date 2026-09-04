@@ -1,6 +1,37 @@
 {
   "papers": [
     {
+      "id": "AInfer-PD",
+      "title": "AInfer-PD: Communication-Safe In-Place Prefill-Decode Multiplexing for Distributed MoE Rollouts",
+      "abbr": "AInfer-PD",
+      "url": "https://arxiv.org/abs/2609.00993v1",
+      "authors": [
+        "Guowei Wang",
+        "Chaokun Yang",
+        "Zhenxuan Pan",
+        "Yuhong Guo",
+        "Minghua Zhu",
+        "Zhechuan Zhang",
+        "Shuo Wan",
+        "Xiaowei Zhu"
+      ],
+      "institutions": [
+        "Ant Group"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "40-LLM Deployment",
+        "29-Comm-Comp Overlap"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/AInfer-PD/note/",
+      "prototxt_path": "meta/2026/AInfer-PD.prototxt",
+      "update_time": 1788489814,
+      "rating": 0
+    },
+    {
       "id": "PDD",
       "title": "PDD: Unleashing Economical and Flexible Heterogeneous LLM Inference via Cross-Datacenter Prefill-Decode Disaggregation",
       "abbr": "PDD",
@@ -16954,5 +16985,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 513
+  "total": 514
 }
