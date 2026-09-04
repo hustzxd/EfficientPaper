@@ -2763,8 +2763,8 @@
       ]
     },
     {
-      "title": "Async-TP",
-      "anchor": "async-tp-family",
+      "title": "FLUX",
+      "anchor": "flux-family",
       "node_count": 6,
       "edge_count": 6,
       "width": 816,
@@ -2975,8 +2975,8 @@
       ]
     },
     {
-      "title": "FlashAttention-2",
-      "anchor": "flashattention-2-family",
+      "title": "flashattention",
+      "anchor": "flashattention-family",
       "node_count": 4,
       "edge_count": 3,
       "width": 1092,
@@ -3047,8 +3047,8 @@
       ]
     },
     {
-      "title": "CATS",
-      "anchor": "cats-family",
+      "title": "TEAL",
+      "anchor": "teal-family",
       "node_count": 4,
       "edge_count": 4,
       "width": 540,
@@ -3123,8 +3123,8 @@
       ]
     },
     {
-      "title": "mHC",
-      "anchor": "mhc-family",
+      "title": "DHC",
+      "anchor": "dhc-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 816,

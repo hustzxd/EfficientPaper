@@ -6,11 +6,10 @@ EfficientPaper is a curated collection for efficient AI research rather than a g
 
 ## Sources
 
-- `docs/js/papers.json`: generated paper metadata used by the Home search UI.
-- `docs/js/baseline_methods_graph_data.json`: generated graph components, nodes, and edges.
-- `docs/js/paper_graph_map.json`: paper ID to graph-family anchor mapping.
-- `meta/<year>/<id>.prototxt`: editable source metadata, including explicit `baseline.methods`.
-- `notes/<year>/<id>/note.md`: optional local research note; it may contain AI-generated claims and should not override the paper URL or indexed metadata.
+- `https://hustzxd.github.io/EfficientPaper/js/papers.json`: published paper metadata.
+- `https://hustzxd.github.io/EfficientPaper/js/baseline_methods_graph_data.json`: published graph components, nodes, and edges.
+- `https://hustzxd.github.io/EfficientPaper/js/paper_graph_map.json`: published paper ID to graph-family mapping.
+- Paper note paths in the metadata are site-relative links and should be opened from the published site when available.
 
 ## Identifiers
 

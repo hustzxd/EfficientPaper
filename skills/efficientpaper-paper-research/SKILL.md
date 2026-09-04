@@ -11,13 +11,15 @@ If a request is clearly outside these themes, say that EfficientPaper does not c
 
 ## Query workflow
 
-1. Prepare the fixed local data directory with `python skills/efficientpaper-paper-research/scripts/sync_repo.py --target ~/.codex/data/EfficientPaper`, then use the printed path as `--root`. It clones on first use and fast-forwards with `git pull --ff-only` on later uses. When the repository is already checked out locally, `--root .` can be used without syncing. This syncs the paper data, not the installed skill code.
-2. Run `python skills/efficientpaper-paper-research/scripts/query.py --root <repo-root> search "<query>"` for keyword, title, author, venue, institution, or ID searches. Search supports quoted phrases, `AND`, `OR`, and negative terms prefixed with `-`.
+1. Use only the published static dataset at `https://hustzxd.github.io/EfficientPaper/`. This mode is read-only and never clones, pulls, or writes a local repository. Do not request or use a local path for this skill.
+2. Run `python skills/efficientpaper-paper-research/scripts/query.py search "<query>"` for keyword, title, author, venue, institution, or ID searches. The script reads the public `papers.json`, graph data, and graph map from the site. Search supports quoted phrases, `AND`, `OR`, and negative terms prefixed with `-`.
 3. Resolve a paper or graph node with `node "<name-or-year/name>"`. Prefer the canonical `year/id` node ID when available.
 4. Use `related "<node>"` for direct baseline neighbors. Use `--direction upstream` for papers used as baselines, `--direction downstream` for papers that use the node, or `both` for both sides.
 5. Use `path "<from-node>" "<to-node>"` to explain the shortest known baseline chain. An absent path means only that no path exists in the generated graph.
 
 Always inspect the returned metadata before summarizing a paper. Include the paper's title, year, venue, URL, keywords, note path, and graph node ID when relevant. For relationship answers, state the edge direction and list the evidence node IDs. The graph is a curated baseline-method graph, not a complete citation graph; its generated data is transitively reduced and only retains baseline links whose endpoints share an explicit keyword.
+
+State the provenance of results. Site-mode results come from the public EfficientPaper static dataset and its generated graph, not from a general web search or a complete citation index. Do not silently replace a failed site query with external papers; report the access failure and ask whether the user wants a separate web search.
 
 ## Output behavior
 
@@ -30,11 +32,11 @@ Answer in the user's language. Keep search results compact and rank exact ID/tit
 
 For an out-of-scope request, briefly state the supported themes and recommend a general academic search tool instead of inventing coverage.
 
-Read [references/data-contract.md](references/data-contract.md) when interpreting IDs, graph semantics, or stale generated data. Regenerate the search and graph JSON with the repository's existing scripts only when the user asks for a refresh or the generated files are demonstrably stale.
+Read [references/data-contract.md](references/data-contract.md) when interpreting IDs or graph semantics. The public site data is maintained by the EfficientPaper deployment; do not regenerate or synchronize it locally. If site access fails, report the failure and do not fall back to local files or external paper search without explicit user approval.
 
 ## Updates
 
-The data repository is intentionally synchronized explicitly before querying so a read-only question does not unexpectedly access the network. To update the installed skill code and instructions, rerun the repository installer with `--upgrade`:
+To update the installed skill code and instructions, rerun the repository installer with `--upgrade`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/hustzxd/EfficientPaper/main/install_skill.sh \

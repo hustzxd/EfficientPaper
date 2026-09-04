@@ -63,6 +63,31 @@ The site can trigger the local refresh and upload flow from the browser. This is
 
 ## Quick Start
 
+### Install the EfficientPaper Codex skill
+
+The repository also provides `efficientpaper-paper-research`, a Codex skill for searching this focused collection of efficient AI papers and tracing baseline-method relationships. It covers pruning and sparsity, quantization, KV Cache, speculative decoding, efficient inference/training, LLM deployment, and related system optimization topics. It is not a general-purpose academic paper search skill.
+
+Install it directly with:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/hustzxd/EfficientPaper/main/install_skill.sh | bash
+```
+
+The skill is installed to `~/.codex/skills/efficientpaper-paper-research`. To update the installed skill later:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/hustzxd/EfficientPaper/main/install_skill.sh | bash -s -- --upgrade
+```
+
+The skill reads the latest published EfficientPaper static dataset directly from the website. It does not clone, pull, or require a local EfficientPaper repository. The skill can search papers, resolve paper nodes, list upstream/downstream baseline relationships, and find paths between related papers:
+
+```bash
+python ~/.codex/skills/efficientpaper-paper-research/scripts/query.py \
+  --site-url https://hustzxd.github.io/EfficientPaper/ search "KV Cache"
+```
+
+Start a new Codex task after installing or upgrading the skill.
+
 ### 1. Clone and install dependencies
 
 ```bash

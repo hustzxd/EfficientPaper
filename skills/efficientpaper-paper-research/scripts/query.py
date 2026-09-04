@@ -5,15 +5,23 @@ import argparse
 import json
 import re
 import sys
+import urllib.request
 from collections import defaultdict, deque
-from pathlib import Path
 
 
-def load(root):
-    docs_js = root / "docs" / "js"
-    papers = json.loads((docs_js / "papers.json").read_text(encoding="utf-8"))["papers"]
-    graph = json.loads((docs_js / "baseline_methods_graph_data.json").read_text(encoding="utf-8"))
-    families = json.loads((docs_js / "paper_graph_map.json").read_text(encoding="utf-8"))
+DEFAULT_SITE = "https://hustzxd.github.io/EfficientPaper/"
+
+
+def load_site(site_url):
+    base = site_url.rstrip("/")
+
+    def read_json(name):
+        with urllib.request.urlopen(f"{base}/js/{name}", timeout=20) as response:
+            return json.load(response)
+
+    papers = read_json("papers.json")["papers"]
+    graph = read_json("baseline_methods_graph_data.json")
+    families = read_json("paper_graph_map.json")
     by_node = {f"{p['year']}/{p['id']}".lower(): p for p in papers}
     nodes, edges, family_by_node = {}, [], {}
     for component in graph.get("components", []):
@@ -93,7 +101,7 @@ def resolve(value, by_node, nodes):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--site-url", default=DEFAULT_SITE, help=f"Published EfficientPaper site (default: {DEFAULT_SITE})")
     sub = parser.add_subparsers(dest="command", required=True)
     search = sub.add_parser("search")
     search.add_argument("query")
@@ -108,7 +116,7 @@ def main():
     path.add_argument("target")
     args = parser.parse_args()
     try:
-        papers, by_node, nodes, edges, families = load(args.root.resolve())
+        papers, by_node, nodes, edges, families = load_site(args.site_url)
         if args.command == "search":
             matches = do_search(args.query, papers, args.limit)
             result = {"query": args.query, "count": len(matches), "papers": matches}
