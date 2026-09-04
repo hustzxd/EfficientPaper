@@ -2581,10 +2581,10 @@
     {
       "title": "DFlash",
       "anchor": "dflash-family",
-      "node_count": 7,
-      "edge_count": 6,
+      "node_count": 8,
+      "edge_count": 7,
       "width": 1092,
-      "height": 374,
+      "height": 454,
       "nodes": [
         {
           "id": "2024/Eagle",
@@ -2596,7 +2596,7 @@
           "level": 0,
           "row": 0,
           "x": 132.0,
-          "y": 187.0
+          "y": 227.0
         },
         {
           "id": "2026/DFlash",
@@ -2608,7 +2608,7 @@
           "level": 1,
           "row": 0,
           "x": 408.0,
-          "y": 187.0
+          "y": 227.0
         },
         {
           "id": "2026/DCut",
@@ -2635,6 +2635,18 @@
           "y": 147.0
         },
         {
+          "id": "2026/DFlare",
+          "label": "DFlare[2026]",
+          "display_name": "DFlare",
+          "year_label": "2026",
+          "search_name": "DFlare",
+          "type": "leaf",
+          "level": 2,
+          "row": 2,
+          "x": 684.0,
+          "y": 227.0
+        },
+        {
           "id": "2026/Domino",
           "label": "Domino[2026]",
           "display_name": "Domino",
@@ -2642,9 +2654,9 @@
           "search_name": "Domino",
           "type": "default",
           "level": 2,
-          "row": 2,
+          "row": 3,
           "x": 684.0,
-          "y": 227.0
+          "y": 307.0
         },
         {
           "id": "2026/HyperDFlash",
@@ -2654,9 +2666,9 @@
           "search_name": "HyperDFlash",
           "type": "leaf",
           "level": 2,
-          "row": 3,
+          "row": 4,
           "x": 684.0,
-          "y": 307.0
+          "y": 387.0
         },
         {
           "id": "2026/DSpark",
@@ -2668,7 +2680,7 @@
           "level": 3,
           "row": 0,
           "x": 960.0,
-          "y": 187.0
+          "y": 227.0
         }
       ],
       "edges": [
@@ -2683,6 +2695,10 @@
         {
           "source": "2026/DFlash",
           "target": "2026/DDTree"
+        },
+        {
+          "source": "2026/DFlash",
+          "target": "2026/DFlare"
         },
         {
           "source": "2026/DFlash",
@@ -3059,8 +3075,8 @@
       ]
     },
     {
-      "title": "DHC",
-      "anchor": "dhc-family",
+      "title": "mHC",
+      "anchor": "mhc-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 816,

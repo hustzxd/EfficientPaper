@@ -1,6 +1,135 @@
 {
   "papers": [
     {
+      "id": "PDD",
+      "title": "PDD: Unleashing Economical and Flexible Heterogeneous LLM Inference via Cross-Datacenter Prefill-Decode Disaggregation",
+      "abbr": "PDD",
+      "url": "https://github.com/infinigence/pdd",
+      "authors": [
+        "Yida Wang",
+        "Xiuhong Li",
+        "Jianping Ma",
+        "Gan Sun",
+        "Yunshen Xu",
+        "Buhe Han",
+        "Jingxu Ng",
+        "Yuhao Luo",
+        "Ke Hong",
+        "Guohao Dai",
+        "Boxun Li",
+        "Yu Wang"
+      ],
+      "institutions": [
+        "Infinigence-AI",
+        "Tsinghua University",
+        "Shanghai Jiao Tong University",
+        "Peking University"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": "notes/2026/PDD/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap",
+        "39-Performance Modeling",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/infinigence/pdd",
+      "note_url": "notes/2026/PDD/note/",
+      "prototxt_path": "meta/2026/PDD.prototxt",
+      "update_time": 1786431133,
+      "rating": 0
+    },
+    {
+      "id": "Titans",
+      "title": "Titans: Learning to Memorize at Test Time",
+      "abbr": "Titans",
+      "url": "http://arxiv.org/abs/2501.00663v1",
+      "authors": [
+        "Ali Behrouz",
+        "Peilin Zhong",
+        "Vahab Mirrokni"
+      ],
+      "institutions": [
+        "Google Research"
+      ],
+      "year": 2024,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "42-Network Structure Design",
+        "45-Efficient Training"
+      ],
+      "code_url": null,
+      "note_url": "notes/2024/Titans/note/",
+      "prototxt_path": "meta/2024/Titans.prototxt",
+      "update_time": 1786002241,
+      "rating": 0
+    },
+    {
+      "id": "NestedLearning",
+      "title": "Nested Learning: The Illusion of Deep Learning Architectures",
+      "abbr": "NestedLearning",
+      "url": "http://arxiv.org/abs/2512.24695v1",
+      "authors": [
+        "Ali Behrouz",
+        "Meisam Razaviyayn",
+        "Peilin Zhong",
+        "Vahab Mirrokni"
+      ],
+      "institutions": [
+        "Google Research",
+        "Columbia University"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "42-Network Structure Design",
+        "45-Efficient Training"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/NestedLearning/note/",
+      "prototxt_path": "meta/2025/NestedLearning.prototxt",
+      "update_time": 1786000800,
+      "rating": 0
+    },
+    {
+      "id": "DFlare",
+      "title": "DFlare: Scaling Up Draft Capacity for Block Diffusion Speculative Decoding",
+      "abbr": "DFlare",
+      "url": "http://arxiv.org/abs/2606.02091v2",
+      "authors": [
+        "Jiebin Zhang",
+        "Zhenghan Yu",
+        "Song Liu",
+        "Eugene J. Yu",
+        "Zheng Li",
+        "Dawei Zhu",
+        "Jiangshan Duo",
+        "Weimin Xiong",
+        "Yifan Song",
+        "Guanghua Yu",
+        "Jianchen Zhu",
+        "Sujian Li"
+      ],
+      "institutions": [
+        "Peking University",
+        "Tencent"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/DFlare/cover.jpg",
+      "keywords": [
+        "30-Speculative Decoding"
+      ],
+      "code_url": "https://github.com/Tencent/AngelSlim",
+      "note_url": "notes/2026/DFlare/note/",
+      "prototxt_path": "meta/2026/DFlare.prototxt",
+      "update_time": 1785923230,
+      "rating": 0
+    },
+    {
       "id": "CoSA",
       "title": "CoSA: Accelerating Long-Context Inference via Proxy-Kernel Co-Designed Sparse Attention",
       "abbr": "CoSA",
@@ -306,46 +435,6 @@
       "note_url": "notes/2024/Cake/note/",
       "prototxt_path": "meta/2024/Cake.prototxt",
       "update_time": 1784686653,
-      "rating": 0
-    },
-    {
-      "id": "PDD",
-      "title": "PDD: Unleashing Economical and Flexible Heterogeneous LLM Inference via Cross-Datacenter Prefill-Decode Disaggregation",
-      "abbr": "PDD",
-      "url": "https://github.com/infinigence/pdd",
-      "authors": [
-        "Yida Wang",
-        "Xiuhong Li",
-        "Jianping Ma",
-        "Gan Sun",
-        "Yunshen Xu",
-        "Buhe Han",
-        "Jingxu Ng",
-        "Yuhao Luo",
-        "Ke Hong",
-        "Guohao Dai",
-        "Boxun Li",
-        "Yu Wang"
-      ],
-      "institutions": [
-        "Infinigence-AI",
-        "Tsinghua University",
-        "Shanghai Jiao Tong University",
-        "Peking University"
-      ],
-      "year": 2026,
-      "venue": "Technical Report",
-      "cover": "notes/2026/PDD/cover.jpg",
-      "keywords": [
-        "21-KV Cache Management",
-        "29-Comm-Comp Overlap",
-        "39-Performance Modeling",
-        "40-LLM Deployment"
-      ],
-      "code_url": "https://github.com/infinigence/pdd",
-      "note_url": "notes/2026/PDD/note/",
-      "prototxt_path": "meta/2026/PDD.prototxt",
-      "update_time": 1784601562,
       "rating": 0
     },
     {
@@ -16865,5 +16954,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 510
+  "total": 513
 }

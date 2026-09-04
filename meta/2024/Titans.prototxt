@@ -1,0 +1,28 @@
+paper {
+  title: "Titans: Learning to Memorize at Test Time"
+  abbr: "Titans"
+  url: "http://arxiv.org/abs/2501.00663v1"
+  authors: "Ali Behrouz"
+  authors: "Peilin Zhong"
+  authors: "Vahab Mirrokni"
+  institutions: "Google Research"
+}
+pub {
+  where: "arXiv"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: structure_design
+  words: efficient_training
+}
+cover {
+  url: ""
+}
+update_time: 1786002241
