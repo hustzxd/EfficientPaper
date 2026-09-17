@@ -1,6 +1,94 @@
 {
   "papers": [
     {
+      "id": "YOCO",
+      "title": "You Only Cache Once: Decoder-Decoder Architectures for Language Models",
+      "abbr": "YOCO",
+      "url": "https://arxiv.org/abs/2405.05254",
+      "authors": [
+        "Yutao Sun",
+        "Li Dong",
+        "Yi Zhu",
+        "Shaohan Huang",
+        "Wenhui Wang",
+        "Shuming Ma",
+        "Quanlu Zhang",
+        "Jianyong Wang",
+        "Furu Wei"
+      ],
+      "institutions": [
+        "Microsoft Research",
+        "Tsinghua University"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS",
+      "cover": "notes/2024/YOCO/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "42-Network Structure Design"
+      ],
+      "code_url": "https://github.com/microsoft/unilm/tree/master/yoco",
+      "note_url": "notes/2024/YOCO/note/",
+      "prototxt_path": "meta/2024/YOCO.prototxt",
+      "update_time": 1789615596,
+      "rating": 0
+    },
+    {
+      "id": "DeepSeek-V4.1-Flash",
+      "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+      "abbr": "DeepSeek-V4.1-Flash",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/DeepSeek_V41_Tech_Report.pdf",
+      "authors": [
+        "DeepSeek-AI"
+      ],
+      "institutions": [
+        "DeepSeek-AI"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": "notes/2026/DeepSeek-V4.1-Flash/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "19-Quantization (KV Cache)",
+        "21-KV Cache Management",
+        "30-Speculative Decoding",
+        "42-Network Structure Design"
+      ],
+      "code_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "note_url": "notes/2026/DeepSeek-V4.1-Flash/note/",
+      "prototxt_path": "meta/2026/DeepSeek-V4.1-Flash.prototxt",
+      "update_time": 1789539130,
+      "rating": 0
+    },
+    {
+      "id": "TraCT",
+      "title": "TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale",
+      "abbr": "TraCT",
+      "url": "https://arxiv.org/abs/2512.18194",
+      "authors": [
+        "Dongha Yoon",
+        "Younghoon Min",
+        "Hoshik Kim",
+        "Sam H. Noh",
+        "Jongryool Kim"
+      ],
+      "institutions": [
+        "Virginia Tech",
+        "SK Hynix America"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/TraCT/note/",
+      "prototxt_path": "meta/2025/TraCT.prototxt",
+      "update_time": 1789450766,
+      "rating": 0
+    },
+    {
       "id": "AInfer-PD",
       "title": "AInfer-PD: Communication-Safe In-Place Prefill-Decode Multiplexing for Distributed MoE Rollouts",
       "abbr": "AInfer-PD",
@@ -16985,5 +17073,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 514
+  "total": 517
 }

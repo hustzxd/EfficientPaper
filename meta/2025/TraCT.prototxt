@@ -1,0 +1,33 @@
+paper {
+  title: "TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale"
+  abbr: "TraCT"
+  url: "https://arxiv.org/abs/2512.18194"
+  authors: "Dongha Yoon"
+  authors: "Younghoon Min"
+  authors: "Hoshik Kim"
+  authors: "Sam H. Noh"
+  authors: "Jongryool Kim"
+  institutions: "Virginia Tech"
+  institutions: "SK Hynix America"
+}
+pub {
+  where: "arXiv"
+  year: 2025
+}
+code {
+  type: "C++"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/LMCache"
+}
+update_time: 1789450766
