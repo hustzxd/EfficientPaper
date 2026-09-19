@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale";
+        var mkdocs_page_input_path = "notes/2025/TraCT/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-08-21/">2026-08-21</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-08-28/">2026-08-28</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-02/">2026-09-02</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-11/">2026-09-11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-18/">2026-09-18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="tract-disaggregated-llm-serving-with-cxl-shared-memory-kv-cache-at-rack-scale">TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale</h1>
+<blockquote>
+<p>Dongha Yoon (Virginia Tech), Younghoon Min, Hoshik Kim, Jongryool Kim (SK Hynix America), Sam H. Noh (Virginia Tech)</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Disaggregated LLM serving 通过将计算密集的 prefill 与延迟关键的 decode 分离来提升资源效率，但引入了一个根本瓶颈：prefill 产生的 KV 张量必须传输给 decode worker，现有系统依赖 RDMA 网络路径完成这一交换。本文提出 TraCT，一个 rack 规模 LLM 服务系统，将 CXL 共享内存同时用作 (1) 无网络 KV 传输底座和 (2) rack 级 prefix 感知 KV cache：GPU 通过 CXL load/store 与 DMA 直接读写 KV block，彻底消除 NIC hop。为在无跨节点原子操作、无全设备一致性的非一致性 CXL Type-3 内存上实现该设计，TraCT 提出两层节点间锁、软件管理的数据可见性、共享分配器与对象store等软件方案。基于 Dynamo 框架的实现表明：相比 RDMA 与 DRAM 缓存基线，平均 TTFT 降低至多 9.8×，P99 延迟降低至多 6.2×，峰值吞吐提升至多 1.6×。</p>
+<h2 id="_1">一句话总结</h2>
+<p>TraCT 用 CXL Type-3 共享内存同时替代 RDMA KV 传输路径与 rack 级 prefix cache，GPU 经 GPU–CXL DMA 直接读写 KV block，在真实 CXL 硬件上把解耦式 LLM 服务的 KV 交换从网络栈搬到内存语义通路。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>KV Transfer 与 prefix Caching 紧耦合（TraCT 命名由来）</strong>：同一 CXL 共享内存区域既当传输底座又当 rack 级 KV cache——cache-hit 的 KV block 无需任何传输（decode worker 直接 CXL→GPU DMA 读取），cache-miss 由 prefill worker GPU→CXL DMA 写入并发布，消除了 LMCache 等方案"命中也要走网络传一遍"的冗余路径。</li>
+<li><strong>两层节点间锁（two-tier inter-node lock）</strong>：CXL Type-3 无跨节点原子操作、无全局一致性。TraCT 用每节点 DRAM 内 local lock（pthread_mutex 数组）收敛节点内竞争，使每个全局锁最多只有"每节点一个"竞争者；全局锁阵列驻留 CXL 共享内存，由专用 lock manager 线程扫描 slot（I/W/L 三态）授权。无需硬件原子指令、无需集中式 metadata server。</li>
+<li><strong>非一致性共享内存上的可见性纪律</strong>：metadata（prefix 索引、引用计数、分配器状态）放紧凑的 cacheline 对齐控制区，细粒度 <code>clflush</code>（而非异步的 <code>clflushopt</code>——后者 flush 可能滞留 store buffer，mfence 也无法保证到达设备，会导致他节点读到旧值）；大块 KV payload 只经 GPU-CXL DMA、从不进 CPU cache，因此"metadata READY 发布"即可作为全局可见性边界，免去 flush 数十 MB payload。</li>
+<li><strong>无共享指针的共享数据结构</strong>：跨节点虚拟地址不同，所有共享结构用 64-bit 偏移寻址（ptr = base + off）；全局 chunk 分配器（CXL 内 bitmap）+ 每节点 local heap（DRAM free-list）两层分配，把分配元数据竞争从节点间收缩到节点内；对象 store 只发布少量根对象（如 prefix 哈希表），内部结构用偏移链接，优于 cMPI Arena 逐元素注册的 flat key-value 设计。</li>
+<li><strong>静态 prefix 索引规避结构更新</strong>：放弃 prefix tree（插入/分裂/合并都会触发锁+flush），改用固定大小线性探测哈希表 + vLLM 的迭代式 block hash（<script type="math/tex">h_i = \text{hash}(h_{i-1}, T_i)</script>，天然保持前缀关系），LRU 逐出仅触碰紧凑元数据字段。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>纯传输路径（禁用缓存）即胜过 RDMA</strong>：对比 Dynamo NIXL/UCX，1500–6000 token 输入的 TTFT CDF 全面左移，长 prompt（6000 token）优势最大、尾部更短；吞吐持平——证明 CXL DMA 绕过 NIC 队列、host DRAM 拷贝与传输层开销，CXL 是可行的 KV 传输底座。</li>
+<li><strong>启用缓存后</strong>：峰值吞吐较 LMCache（DRAM 缓存基线，48GB）提升至多 1.6×（QPS=3.0），平均 TTFT 降低至多 9.83×，P99 TTFT 降低至多 6.2×——且 TraCT 的 prefix 命中率与 LMCache 相当甚至更低，增益来自"命中零传输"而非更高命中率。</li>
+<li><strong>延迟更稳定</strong>：TTFT CDF 更陡峭，消除网络队列带来的方差，突发/高并发下延迟可预测性显著提升。</li>
+<li><strong>资源与能效</strong>：prefill/decode 的 GPU SM 占用下降（命中跳过重算、decode 不再等 host-host 传输），decode 侧 GPU RX 有效带宽更高，GPU 功耗降低，指向更低 TCO。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li>实验规模有限：2 台服务器（各 1× A6000 48GB + 512GB DRAM），CXL 设备为 Niagara 2.0（640ns 延迟 / 10.1 GB/s，配 64GB 共享区），模型为 DeepSeek-R1-Distill-Llama-8B；CXL 带宽成为潜在规模瓶颈，仅适用于 rack 内场景。</li>
+<li>与 Beluga（集中式 metadata server 方案）、cMPI（O(N²) 队列）的同步设计形成对比：TraCT 强调去中心化、纯 load/store 的节点间协调；作者称是首个在真实非一致性 CXL Type-3 硬件上支撑 rack 级 KV 缓存+传输的系统。</li>
+<li>代码约 5K 行 C/C++（共享内存库 + KV connector）+ 少量 Python 包装，"计划发表后开源"，当前无公开仓库。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

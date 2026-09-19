@@ -1,0 +1,29 @@
+paper {
+  title: "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression"
+  abbr: "DeepSeek-V4.1-Flash"
+  url: "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/DeepSeek_V41_Tech_Report.pdf"
+  authors: "DeepSeek-AI"
+  institutions: "DeepSeek-AI"
+}
+pub {
+  where: "Technical Report"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_quant
+  words: kv_cache_management
+  words: speculative_decoding
+  words: structure_design
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/DeepSeek-V4"
+}
+update_time: 1789539130

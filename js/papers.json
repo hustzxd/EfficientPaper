@@ -1,6 +1,191 @@
 {
   "papers": [
     {
+      "id": "LastAI",
+      "title": "The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement",
+      "abbr": "LastAI",
+      "url": "https://arxiv.org/abs/2609.11873",
+      "authors": [
+        "Yi Duan",
+        "Ying Liu",
+        "Zirui Tang",
+        "Haodong Chen",
+        "Jun Zhou",
+        "Yumou Liu",
+        "Bangrui Xu",
+        "Yukai Wu",
+        "Sidi Chen",
+        "Yuhan Zhou",
+        "Haoyu Wang",
+        "Xiaoyou Yu",
+        "Shaokun Han",
+        "Xuzhou Zhu",
+        "Le Zhou",
+        "Bolin Lu",
+        "Wei Zhou",
+        "Jiachen Liu",
+        "Nuozhou Fang",
+        "Jiaxin Tian",
+        "Ruoyu Chen",
+        "Yuxuan Li",
+        "Kai Zuo",
+        "Kaiyan Zhang",
+        "Qianyu Yang",
+        "Zijie Wang",
+        "Jiantao Qiu",
+        "Conghui He",
+        "Guoliang Li",
+        "Bowen Zhou",
+        "Zhiyuan Liu",
+        "Zhoufutu Wen",
+        "Jihua Kang",
+        "Xuanhe Zhou",
+        "Fan Wu"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Theseus Labs",
+        "Tsinghua University",
+        "ByteDance",
+        "ModelBest",
+        "Xiaohongshu Inc.",
+        "Shanghai AI Lab",
+        "Humanlaya",
+        "Agent-Native Research Lab",
+        "Frontis.AI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "41-Survey"
+      ],
+      "code_url": "https://github.com/theseus-labs-rsi/awesome-rsi",
+      "note_url": "notes/2026/LastAI/note/",
+      "prototxt_path": "meta/2026/LastAI.prototxt",
+      "update_time": 1789641702,
+      "rating": 0
+    },
+    {
+      "id": "YOCO",
+      "title": "You Only Cache Once: Decoder-Decoder Architectures for Language Models",
+      "abbr": "YOCO",
+      "url": "https://arxiv.org/abs/2405.05254",
+      "authors": [
+        "Yutao Sun",
+        "Li Dong",
+        "Yi Zhu",
+        "Shaohan Huang",
+        "Wenhui Wang",
+        "Shuming Ma",
+        "Quanlu Zhang",
+        "Jianyong Wang",
+        "Furu Wei"
+      ],
+      "institutions": [
+        "Microsoft Research",
+        "Tsinghua University"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS",
+      "cover": "notes/2024/YOCO/cover.jpg",
+      "keywords": [
+        "21-KV Cache Management",
+        "42-Network Structure Design"
+      ],
+      "code_url": "https://github.com/microsoft/unilm/tree/master/yoco",
+      "note_url": "notes/2024/YOCO/note/",
+      "prototxt_path": "meta/2024/YOCO.prototxt",
+      "update_time": 1789615596,
+      "rating": 0
+    },
+    {
+      "id": "DeepSeek-V4.1-Flash",
+      "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+      "abbr": "DeepSeek-V4.1-Flash",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/DeepSeek_V41_Tech_Report.pdf",
+      "authors": [
+        "DeepSeek-AI"
+      ],
+      "institutions": [
+        "DeepSeek-AI"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": "notes/2026/DeepSeek-V4.1-Flash/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "19-Quantization (KV Cache)",
+        "21-KV Cache Management",
+        "30-Speculative Decoding",
+        "42-Network Structure Design"
+      ],
+      "code_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "note_url": "notes/2026/DeepSeek-V4.1-Flash/note/",
+      "prototxt_path": "meta/2026/DeepSeek-V4.1-Flash.prototxt",
+      "update_time": 1789539130,
+      "rating": 0
+    },
+    {
+      "id": "TraCT",
+      "title": "TraCT: Disaggregated LLM Serving with CXL Shared Memory KV Cache at Rack-Scale",
+      "abbr": "TraCT",
+      "url": "https://arxiv.org/abs/2512.18194",
+      "authors": [
+        "Dongha Yoon",
+        "Younghoon Min",
+        "Hoshik Kim",
+        "Sam H. Noh",
+        "Jongryool Kim"
+      ],
+      "institutions": [
+        "Virginia Tech",
+        "SK Hynix America"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management"
+      ],
+      "code_url": null,
+      "note_url": "notes/2025/TraCT/note/",
+      "prototxt_path": "meta/2025/TraCT.prototxt",
+      "update_time": 1789450766,
+      "rating": 0
+    },
+    {
+      "id": "AInfer-PD",
+      "title": "AInfer-PD: Communication-Safe In-Place Prefill-Decode Multiplexing for Distributed MoE Rollouts",
+      "abbr": "AInfer-PD",
+      "url": "https://arxiv.org/abs/2609.00993v1",
+      "authors": [
+        "Guowei Wang",
+        "Chaokun Yang",
+        "Zhenxuan Pan",
+        "Yuhong Guo",
+        "Minghua Zhu",
+        "Zhechuan Zhang",
+        "Shuo Wan",
+        "Xiaowei Zhu"
+      ],
+      "institutions": [
+        "Ant Group"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "40-LLM Deployment",
+        "29-Comm-Comp Overlap"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/AInfer-PD/note/",
+      "prototxt_path": "meta/2026/AInfer-PD.prototxt",
+      "update_time": 1788489814,
+      "rating": 0
+    },
+    {
       "id": "PDD",
       "title": "PDD: Unleashing Economical and Flexible Heterogeneous LLM Inference via Cross-Datacenter Prefill-Decode Disaggregation",
       "abbr": "PDD",
@@ -16954,5 +17139,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 513
+  "total": 518
 }

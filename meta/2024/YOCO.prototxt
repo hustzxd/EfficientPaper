@@ -1,0 +1,35 @@
+paper {
+  title: "You Only Cache Once: Decoder-Decoder Architectures for Language Models"
+  abbr: "YOCO"
+  url: "https://arxiv.org/abs/2405.05254"
+  authors: "Yutao Sun"
+  authors: "Li Dong"
+  authors: "Yi Zhu"
+  authors: "Shaohan Huang"
+  authors: "Wenhui Wang"
+  authors: "Shuming Ma"
+  authors: "Quanlu Zhang"
+  authors: "Jianyong Wang"
+  authors: "Furu Wei"
+  institutions: "Microsoft Research"
+  institutions: "Tsinghua University"
+}
+pub {
+  where: "NeurIPS"
+  year: 2024
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/microsoft/unilm/tree/master/yoco"
+}
+keyword {
+  words: kv_cache_management
+  words: structure_design
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1789615596
