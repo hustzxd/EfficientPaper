@@ -1,0 +1,68 @@
+paper {
+  title: "The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement"
+  abbr: "LastAI"
+  url: "https://arxiv.org/abs/2609.11873"
+  authors: "Yi Duan"
+  authors: "Ying Liu"
+  authors: "Zirui Tang"
+  authors: "Haodong Chen"
+  authors: "Jun Zhou"
+  authors: "Yumou Liu"
+  authors: "Bangrui Xu"
+  authors: "Yukai Wu"
+  authors: "Sidi Chen"
+  authors: "Yuhan Zhou"
+  authors: "Haoyu Wang"
+  authors: "Xiaoyou Yu"
+  authors: "Shaokun Han"
+  authors: "Xuzhou Zhu"
+  authors: "Le Zhou"
+  authors: "Bolin Lu"
+  authors: "Wei Zhou"
+  authors: "Jiachen Liu"
+  authors: "Nuozhou Fang"
+  authors: "Jiaxin Tian"
+  authors: "Ruoyu Chen"
+  authors: "Yuxuan Li"
+  authors: "Kai Zuo"
+  authors: "Kaiyan Zhang"
+  authors: "Qianyu Yang"
+  authors: "Zijie Wang"
+  authors: "Jiantao Qiu"
+  authors: "Conghui He"
+  authors: "Guoliang Li"
+  authors: "Bowen Zhou"
+  authors: "Zhiyuan Liu"
+  authors: "Zhoufutu Wen"
+  authors: "Jihua Kang"
+  authors: "Xuanhe Zhou"
+  authors: "Fan Wu"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Theseus Labs"
+  institutions: "Tsinghua University"
+  institutions: "ByteDance"
+  institutions: "ModelBest"
+  institutions: "Xiaohongshu Inc."
+  institutions: "Shanghai AI Lab"
+  institutions: "Humanlaya"
+  institutions: "Agent-Native Research Lab"
+  institutions: "Frontis.AI"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Github"
+  url: "https://github.com/theseus-labs-rsi/awesome-rsi"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: survey
+}
+cover {
+  url: ""
+}
+update_time: 1789641702

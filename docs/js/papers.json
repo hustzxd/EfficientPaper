@@ -1,6 +1,72 @@
 {
   "papers": [
     {
+      "id": "LastAI",
+      "title": "The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement",
+      "abbr": "LastAI",
+      "url": "https://arxiv.org/abs/2609.11873",
+      "authors": [
+        "Yi Duan",
+        "Ying Liu",
+        "Zirui Tang",
+        "Haodong Chen",
+        "Jun Zhou",
+        "Yumou Liu",
+        "Bangrui Xu",
+        "Yukai Wu",
+        "Sidi Chen",
+        "Yuhan Zhou",
+        "Haoyu Wang",
+        "Xiaoyou Yu",
+        "Shaokun Han",
+        "Xuzhou Zhu",
+        "Le Zhou",
+        "Bolin Lu",
+        "Wei Zhou",
+        "Jiachen Liu",
+        "Nuozhou Fang",
+        "Jiaxin Tian",
+        "Ruoyu Chen",
+        "Yuxuan Li",
+        "Kai Zuo",
+        "Kaiyan Zhang",
+        "Qianyu Yang",
+        "Zijie Wang",
+        "Jiantao Qiu",
+        "Conghui He",
+        "Guoliang Li",
+        "Bowen Zhou",
+        "Zhiyuan Liu",
+        "Zhoufutu Wen",
+        "Jihua Kang",
+        "Xuanhe Zhou",
+        "Fan Wu"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Theseus Labs",
+        "Tsinghua University",
+        "ByteDance",
+        "ModelBest",
+        "Xiaohongshu Inc.",
+        "Shanghai AI Lab",
+        "Humanlaya",
+        "Agent-Native Research Lab",
+        "Frontis.AI"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "41-Survey"
+      ],
+      "code_url": "https://github.com/theseus-labs-rsi/awesome-rsi",
+      "note_url": "notes/2026/LastAI/note/",
+      "prototxt_path": "meta/2026/LastAI.prototxt",
+      "update_time": 1789641702,
+      "rating": 0
+    },
+    {
       "id": "YOCO",
       "title": "You Only Cache Once: Decoder-Decoder Architectures for Language Models",
       "abbr": "YOCO",
@@ -17073,5 +17139,5 @@
       "49-Kernel Generation"
     ]
   },
-  "total": 517
+  "total": 518
 }
