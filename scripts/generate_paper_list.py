@@ -94,7 +94,8 @@ word_pb2str = {
     eppb.Keyword.Word.performance_modeling: "Performance Modeling",
     eppb.Keyword.Word.benchmark: "Benchmark",
 
-    eppb.Keyword.Word.kernel_generation: "Kernel Generation"
+    eppb.Keyword.Word.kernel_generation: "Kernel Generation",
+    eppb.Keyword.Word.recursive_self_improvement: "Recursive Self-Improvement"
 }
 
 for k, v in word_pb2str.items():

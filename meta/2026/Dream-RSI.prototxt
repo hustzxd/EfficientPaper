@@ -1,0 +1,45 @@
+paper {
+  title: "Dream-RSI: Recursive Self-Improvement through Evolving Worlds"
+  abbr: "Dream-RSI"
+  url: "https://dream-rsi.com/assets/dream-rsi.pdf"
+  authors: "Tong Zheng"
+  authors: "Xidong Wu"
+  authors: "Zheng Zhang"
+  authors: "Zhankui He"
+  authors: "Chaoyi Zhang"
+  authors: "Benjamin Coleman"
+  authors: "Ruoqiao Wei"
+  authors: "Di Bai"
+  authors: "Haolin Liu"
+  authors: "Rui Liu"
+  authors: "Xue Wang"
+  authors: "Yue Zhuan"
+  authors: "Wang-Cheng Kang"
+  authors: "Renkai Xiang"
+  authors: "Heng Huang"
+  authors: "Xinwu Cheng"
+  authors: "Yunsong Guo"
+  institutions: "Google"
+  institutions: "Google DeepMind"
+  institutions: "University of Maryland, College Park"
+  institutions: "University of Virginia"
+}
+pub {
+  where: "Technical Report"
+  year: 2026
+}
+code {
+  type: "Github"
+  url: "https://github.com/zhengkid/Dream-RSI"
+}
+keyword {
+  words: recursive_self_improvement
+  words: tool
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "None"
+}
+update_time: 1789982483

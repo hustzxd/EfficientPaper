@@ -74,6 +74,9 @@ message Keyword {
         benchmark = 48;
 
         kernel_generation = 50;
+
+        recursive_self_improvement = 51;
+
         // TODO: please add your key words here.
     }
 }

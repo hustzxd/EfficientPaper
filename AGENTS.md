@@ -243,6 +243,11 @@ Important files tied to the current interface:
   - mapping from paper IDs to graph anchors
 - `docs/js/baseline_methods_graph_data.json`
   - graph data backing the interactive graph page
+- `proto/efficient_paper.proto`
+  - protobuf schema for paper metadata, including the `Keyword.Word` taxonomy
+  - after editing it, regenerate the Python bindings with `protoc -I=proto --python_out=proto proto/efficient_paper.proto`
+  - keyword display labels live in `word_pb2str` in `scripts/generate_paper_list.py`; keep `KEYWORD_MAP` in `scripts/add_paper.py` in sync
+  - new keyword enums must take a fresh number and must not renumber existing values
 - `meta/<year>/*.prototxt`
   - structured paper metadata source
 - `notes/<year>/<paper>/note.md`

@@ -1,6 +1,49 @@
 {
   "papers": [
     {
+      "id": "Dream-RSI",
+      "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
+      "abbr": "Dream-RSI",
+      "url": "https://dream-rsi.com/assets/dream-rsi.pdf",
+      "authors": [
+        "Tong Zheng",
+        "Xidong Wu",
+        "Zheng Zhang",
+        "Zhankui He",
+        "Chaoyi Zhang",
+        "Benjamin Coleman",
+        "Ruoqiao Wei",
+        "Di Bai",
+        "Haolin Liu",
+        "Rui Liu",
+        "Xue Wang",
+        "Yue Zhuan",
+        "Wang-Cheng Kang",
+        "Renkai Xiang",
+        "Heng Huang",
+        "Xinwu Cheng",
+        "Yunsong Guo"
+      ],
+      "institutions": [
+        "Google",
+        "Google DeepMind",
+        "University of Maryland, College Park",
+        "University of Virginia"
+      ],
+      "year": 2026,
+      "venue": "Technical Report",
+      "cover": "notes/2026/Dream-RSI/cover.jpg",
+      "keywords": [
+        "50-Recursive Self-Improvement",
+        "46-Tool"
+      ],
+      "code_url": "https://github.com/zhengkid/Dream-RSI",
+      "note_url": "notes/2026/Dream-RSI/note/",
+      "prototxt_path": "meta/2026/Dream-RSI.prototxt",
+      "update_time": 1789982483,
+      "rating": 0
+    },
+    {
       "id": "LastAI",
       "title": "The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement",
       "abbr": "LastAI",
@@ -58,6 +101,7 @@
       "venue": "arXiv",
       "cover": null,
       "keywords": [
+        "50-Recursive Self-Improvement",
         "41-Survey"
       ],
       "code_url": "https://github.com/theseus-labs-rsi/awesome-rsi",
@@ -17136,8 +17180,9 @@
       "45-Efficient Training",
       "46-Tool",
       "47-Benchmark",
-      "49-Kernel Generation"
+      "49-Kernel Generation",
+      "50-Recursive Self-Improvement"
     ]
   },
-  "total": 518
+  "total": 519
 }

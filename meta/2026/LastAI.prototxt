@@ -60,6 +60,7 @@ note {
   url: "note.md"
 }
 keyword {
+  words: recursive_self_improvement
   words: survey
 }
 cover {

@@ -51,6 +51,7 @@ KEYWORD_MAP = {
     "Tool": "tool",
     "Benchmark": "benchmark",
     "Kernel Generation": "kernel_generation",
+    "Recursive Self-Improvement": "recursive_self_improvement",
 }
 
 KEYWORD_CATEGORIES = list(KEYWORD_MAP.keys())

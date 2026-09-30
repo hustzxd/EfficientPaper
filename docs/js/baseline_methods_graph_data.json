@@ -2779,8 +2779,8 @@
       ]
     },
     {
-      "title": "DeepSeek-V4",
-      "anchor": "deepseek-v4-family",
+      "title": "DeepSeek-V3",
+      "anchor": "deepseek-v3-family",
       "node_count": 7,
       "edge_count": 6,
       "width": 816,
@@ -3007,8 +3007,8 @@
       ]
     },
     {
-      "title": "flashattention",
-      "anchor": "flashattention-family",
+      "title": "FlashAttention-3",
+      "anchor": "flashattention-3-family",
       "node_count": 4,
       "edge_count": 3,
       "width": 1092,
@@ -3079,8 +3079,8 @@
       ]
     },
     {
-      "title": "TEAL",
-      "anchor": "teal-family",
+      "title": "CATS",
+      "anchor": "cats-family",
       "node_count": 4,
       "edge_count": 4,
       "width": 540,
@@ -3155,8 +3155,8 @@
       ]
     },
     {
-      "title": "mHC",
-      "anchor": "mhc-family",
+      "title": "DHC",
+      "anchor": "dhc-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 816,
