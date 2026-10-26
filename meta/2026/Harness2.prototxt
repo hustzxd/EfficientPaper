@@ -1,0 +1,36 @@
+paper {
+  title: "Harness^2: Recursive Agent Harnessing for an Open World"
+  abbr: "Harness2"
+  url: "https://arxiv.org/abs/2610.14224v1"
+  authors: "Ruiyao Xu"
+  authors: "Yanfei Chen"
+  authors: "Zhongying CuiZhu"
+  authors: "Bhavana Dalvi Mishra"
+  authors: "Yifei Ming"
+  authors: "Han Yu"
+  authors: "Rujun Han"
+  authors: "Chen-Yu Lee"
+  authors: "Tomas Pfister"
+  institutions: "Northwestern University"
+  institutions: "Google Cloud AI Research"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Python"
+  url: "https://github.com/google-research/harness2"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: recursive_self_improvement
+}
+cover {
+  url: ""
+}
+baseline {
+}
+update_time: 1792745183

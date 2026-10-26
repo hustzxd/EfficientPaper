@@ -5,10 +5,10 @@
     {
       "title": "SGLang",
       "anchor": "sglang-family",
-      "node_count": 120,
-      "edge_count": 146,
+      "node_count": 124,
+      "edge_count": 149,
       "width": 1368,
-      "height": 4374,
+      "height": 4534,
       "nodes": [
         {
           "id": "2022/44KWQAWO",
@@ -20,7 +20,7 @@
           "level": 0,
           "row": 0,
           "x": 132.0,
-          "y": 867.0
+          "y": 947.0
         },
         {
           "id": "2023/CacheGen",
@@ -32,7 +32,7 @@
           "level": 0,
           "row": 1,
           "x": 132.0,
-          "y": 947.0
+          "y": 1027.0
         },
         {
           "id": "2023/FlexGen",
@@ -44,7 +44,7 @@
           "level": 0,
           "row": 2,
           "x": 132.0,
-          "y": 1027.0
+          "y": 1107.0
         },
         {
           "id": "2023/H2O",
@@ -56,7 +56,7 @@
           "level": 0,
           "row": 3,
           "x": 132.0,
-          "y": 1107.0
+          "y": 1187.0
         },
         {
           "id": "2023/PagedAttention",
@@ -68,7 +68,7 @@
           "level": 0,
           "row": 4,
           "x": 132.0,
-          "y": 1187.0
+          "y": 1267.0
         },
         {
           "id": "2024/AdaKV",
@@ -80,7 +80,7 @@
           "level": 0,
           "row": 5,
           "x": 132.0,
-          "y": 1267.0
+          "y": 1347.0
         },
         {
           "id": "2024/CachedAttention",
@@ -92,7 +92,7 @@
           "level": 0,
           "row": 6,
           "x": 132.0,
-          "y": 1347.0
+          "y": 1427.0
         },
         {
           "id": "2024/Cake",
@@ -104,7 +104,7 @@
           "level": 0,
           "row": 7,
           "x": 132.0,
-          "y": 1427.0
+          "y": 1507.0
         },
         {
           "id": "2024/ChunkAttention",
@@ -116,7 +116,7 @@
           "level": 0,
           "row": 8,
           "x": 132.0,
-          "y": 1507.0
+          "y": 1587.0
         },
         {
           "id": "2024/DoubleSparsity",
@@ -128,7 +128,7 @@
           "level": 0,
           "row": 9,
           "x": 132.0,
-          "y": 1587.0
+          "y": 1667.0
         },
         {
           "id": "2024/DuoAttention",
@@ -140,7 +140,7 @@
           "level": 0,
           "row": 10,
           "x": 132.0,
-          "y": 1667.0
+          "y": 1747.0
         },
         {
           "id": "2024/LazyLLM",
@@ -152,7 +152,7 @@
           "level": 0,
           "row": 11,
           "x": 132.0,
-          "y": 1747.0
+          "y": 1827.0
         },
         {
           "id": "2024/Mooncake",
@@ -164,7 +164,7 @@
           "level": 0,
           "row": 12,
           "x": 132.0,
-          "y": 1827.0
+          "y": 1907.0
         },
         {
           "id": "2024/Quest",
@@ -176,7 +176,7 @@
           "level": 0,
           "row": 13,
           "x": 132.0,
-          "y": 1907.0
+          "y": 1987.0
         },
         {
           "id": "2024/SageAttention",
@@ -188,7 +188,7 @@
           "level": 0,
           "row": 14,
           "x": 132.0,
-          "y": 1987.0
+          "y": 2067.0
         },
         {
           "id": "2024/SeerAttention",
@@ -200,7 +200,7 @@
           "level": 0,
           "row": 15,
           "x": 132.0,
-          "y": 2067.0
+          "y": 2147.0
         },
         {
           "id": "2024/SGLang",
@@ -212,7 +212,7 @@
           "level": 0,
           "row": 16,
           "x": 132.0,
-          "y": 2147.0
+          "y": 2227.0
         },
         {
           "id": "2024/SnapKV",
@@ -224,7 +224,7 @@
           "level": 0,
           "row": 17,
           "x": 132.0,
-          "y": 2227.0
+          "y": 2307.0
         },
         {
           "id": "2024/Splitwise",
@@ -236,7 +236,7 @@
           "level": 0,
           "row": 18,
           "x": 132.0,
-          "y": 2307.0
+          "y": 2387.0
         },
         {
           "id": "2024/streaming-llm",
@@ -248,7 +248,7 @@
           "level": 0,
           "row": 19,
           "x": 132.0,
-          "y": 2387.0
+          "y": 2467.0
         },
         {
           "id": "2024/TOVA",
@@ -260,7 +260,7 @@
           "level": 0,
           "row": 20,
           "x": 132.0,
-          "y": 2467.0
+          "y": 2547.0
         },
         {
           "id": "2024/vTensor",
@@ -272,7 +272,7 @@
           "level": 0,
           "row": 21,
           "x": 132.0,
-          "y": 2547.0
+          "y": 2627.0
         },
         {
           "id": "2025/Beluga",
@@ -284,7 +284,7 @@
           "level": 0,
           "row": 22,
           "x": 132.0,
-          "y": 2627.0
+          "y": 2707.0
         },
         {
           "id": "2025/DeepEP",
@@ -296,7 +296,7 @@
           "level": 0,
           "row": 23,
           "x": 132.0,
-          "y": 2707.0
+          "y": 2787.0
         },
         {
           "id": "2025/DSA",
@@ -308,7 +308,7 @@
           "level": 0,
           "row": 24,
           "x": 132.0,
-          "y": 2787.0
+          "y": 2867.0
         },
         {
           "id": "2025/FlashInfer",
@@ -320,7 +320,7 @@
           "level": 0,
           "row": 25,
           "x": 132.0,
-          "y": 2867.0
+          "y": 2947.0
         },
         {
           "id": "2025/LMCache",
@@ -332,7 +332,7 @@
           "level": 0,
           "row": 26,
           "x": 132.0,
-          "y": 2947.0
+          "y": 3027.0
         },
         {
           "id": "2025/MoBA",
@@ -344,7 +344,7 @@
           "level": 0,
           "row": 27,
           "x": 132.0,
-          "y": 3027.0
+          "y": 3107.0
         },
         {
           "id": "2025/NSA",
@@ -356,7 +356,7 @@
           "level": 0,
           "row": 28,
           "x": 132.0,
-          "y": 3107.0
+          "y": 3187.0
         },
         {
           "id": "2025/POD-Attention",
@@ -368,7 +368,7 @@
           "level": 0,
           "row": 29,
           "x": 132.0,
-          "y": 3187.0
+          "y": 3267.0
         },
         {
           "id": "2025/R-KV",
@@ -380,7 +380,7 @@
           "level": 0,
           "row": 30,
           "x": 132.0,
-          "y": 3267.0
+          "y": 3347.0
         },
         {
           "id": "2025/RadialAttention",
@@ -392,7 +392,7 @@
           "level": 0,
           "row": 31,
           "x": 132.0,
-          "y": 3347.0
+          "y": 3427.0
         },
         {
           "id": "2025/SVG",
@@ -404,7 +404,7 @@
           "level": 0,
           "row": 32,
           "x": 132.0,
-          "y": 3427.0
+          "y": 3507.0
         },
         {
           "id": "2026/PrfaaS",
@@ -416,7 +416,7 @@
           "level": 0,
           "row": 33,
           "x": 132.0,
-          "y": 3507.0
+          "y": 3587.0
         },
         {
           "id": "2024/InfLLM",
@@ -424,7 +424,7 @@
           "display_name": "InfLLM",
           "year_label": "2024",
           "search_name": "InfLLM",
-          "type": "leaf",
+          "type": "default",
           "level": 1,
           "row": 0,
           "x": 408.0,
@@ -827,6 +827,18 @@
           "y": 2707.0
         },
         {
+          "id": "2026/AITURBO",
+          "label": "AITURBO[2026]",
+          "display_name": "AITURBO",
+          "year_label": "2026",
+          "search_name": "AITURBO",
+          "type": "leaf",
+          "level": 1,
+          "row": 34,
+          "x": 408.0,
+          "y": 2787.0
+        },
+        {
           "id": "2026/Bidaw",
           "label": "Bidaw[2026]",
           "display_name": "Bidaw",
@@ -834,9 +846,9 @@
           "search_name": "Bidaw",
           "type": "leaf",
           "level": 1,
-          "row": 34,
+          "row": 35,
           "x": 408.0,
-          "y": 2787.0
+          "y": 2867.0
         },
         {
           "id": "2026/CacheFlow",
@@ -846,9 +858,21 @@
           "search_name": "CacheFlow",
           "type": "default",
           "level": 1,
-          "row": 35,
+          "row": 36,
           "x": 408.0,
-          "y": 2867.0
+          "y": 2947.0
+        },
+        {
+          "id": "2026/CacheWise",
+          "label": "CacheWise[2026]",
+          "display_name": "CacheWise",
+          "year_label": "2026",
+          "search_name": "CacheWise",
+          "type": "leaf",
+          "level": 1,
+          "row": 37,
+          "x": 408.0,
+          "y": 3027.0
         },
         {
           "id": "2026/ContiguousKV",
@@ -858,9 +882,9 @@
           "search_name": "ContiguousKV",
           "type": "leaf",
           "level": 1,
-          "row": 36,
+          "row": 38,
           "x": 408.0,
-          "y": 2947.0
+          "y": 3107.0
         },
         {
           "id": "2026/DirectKV",
@@ -870,9 +894,9 @@
           "search_name": "DirectKV",
           "type": "leaf",
           "level": 1,
-          "row": 37,
+          "row": 39,
           "x": 408.0,
-          "y": 3027.0
+          "y": 3187.0
         },
         {
           "id": "2026/Double-P",
@@ -882,9 +906,9 @@
           "search_name": "Double-P",
           "type": "leaf",
           "level": 1,
-          "row": 38,
+          "row": 40,
           "x": 408.0,
-          "y": 3107.0
+          "y": 3267.0
         },
         {
           "id": "2026/ECHO",
@@ -894,9 +918,9 @@
           "search_name": "ECHO",
           "type": "leaf",
           "level": 1,
-          "row": 39,
+          "row": 41,
           "x": 408.0,
-          "y": 3187.0
+          "y": 3347.0
         },
         {
           "id": "2026/FlashCache",
@@ -906,9 +930,9 @@
           "search_name": "FlashCache",
           "type": "leaf",
           "level": 1,
-          "row": 40,
+          "row": 42,
           "x": 408.0,
-          "y": 3267.0
+          "y": 3427.0
         },
         {
           "id": "2026/GLM-5",
@@ -918,9 +942,9 @@
           "search_name": "GLM-5",
           "type": "default",
           "level": 1,
-          "row": 41,
+          "row": 43,
           "x": 408.0,
-          "y": 3347.0
+          "y": 3507.0
         },
         {
           "id": "2026/HexAGenT",
@@ -930,9 +954,9 @@
           "search_name": "HexAGenT",
           "type": "leaf",
           "level": 1,
-          "row": 42,
+          "row": 44,
           "x": 408.0,
-          "y": 3427.0
+          "y": 3587.0
         },
         {
           "id": "2026/HISA",
@@ -942,9 +966,9 @@
           "search_name": "HISA",
           "type": "default",
           "level": 1,
-          "row": 43,
+          "row": 45,
           "x": 408.0,
-          "y": 3507.0
+          "y": 3667.0
         },
         {
           "id": "2026/KunServe",
@@ -954,9 +978,9 @@
           "search_name": "KunServe",
           "type": "leaf",
           "level": 1,
-          "row": 44,
+          "row": 46,
           "x": 408.0,
-          "y": 3587.0
+          "y": 3747.0
         },
         {
           "id": "2026/KVpop",
@@ -966,9 +990,9 @@
           "search_name": "KVpop",
           "type": "leaf",
           "level": 1,
-          "row": 45,
+          "row": 47,
           "x": 408.0,
-          "y": 3667.0
+          "y": 3827.0
         },
         {
           "id": "2026/KVServe",
@@ -978,9 +1002,9 @@
           "search_name": "KVServe",
           "type": "default",
           "level": 1,
-          "row": 46,
+          "row": 48,
           "x": 408.0,
-          "y": 3747.0
+          "y": 3907.0
         },
         {
           "id": "2026/LMetric",
@@ -990,9 +1014,9 @@
           "search_name": "LMetric",
           "type": "leaf",
           "level": 1,
-          "row": 47,
+          "row": 49,
           "x": 408.0,
-          "y": 3827.0
+          "y": 3987.0
         },
         {
           "id": "2026/ObjectCache",
@@ -1002,9 +1026,9 @@
           "search_name": "ObjectCache",
           "type": "leaf",
           "level": 1,
-          "row": 48,
+          "row": 50,
           "x": 408.0,
-          "y": 3907.0
+          "y": 4067.0
         },
         {
           "id": "2026/PDD",
@@ -1014,9 +1038,9 @@
           "search_name": "PDD",
           "type": "leaf",
           "level": 1,
-          "row": 49,
+          "row": 51,
           "x": 408.0,
-          "y": 3987.0
+          "y": 4147.0
         },
         {
           "id": "2026/Prism",
@@ -1026,9 +1050,9 @@
           "search_name": "Prism",
           "type": "leaf",
           "level": 1,
-          "row": 50,
+          "row": 52,
           "x": 408.0,
-          "y": 4067.0
+          "y": 4227.0
         },
         {
           "id": "2026/RTP-LLM",
@@ -1038,9 +1062,9 @@
           "search_name": "RTP-LLM",
           "type": "leaf",
           "level": 1,
-          "row": 51,
+          "row": 53,
           "x": 408.0,
-          "y": 4147.0
+          "y": 4307.0
         },
         {
           "id": "2026/Strata",
@@ -1050,9 +1074,9 @@
           "search_name": "Strata",
           "type": "default",
           "level": 1,
-          "row": 52,
+          "row": 54,
           "x": 408.0,
-          "y": 4227.0
+          "y": 4387.0
         },
         {
           "id": "2026/SwiftCache",
@@ -1062,9 +1086,9 @@
           "search_name": "SwiftCache",
           "type": "leaf",
           "level": 1,
-          "row": 53,
+          "row": 55,
           "x": 408.0,
-          "y": 4307.0
+          "y": 4467.0
         },
         {
           "id": "2025/EvolKV",
@@ -1127,6 +1151,18 @@
           "y": 1787.0
         },
         {
+          "id": "2026/CacheSlide",
+          "label": "CacheSlide[2026]",
+          "display_name": "CacheSlide",
+          "year_label": "2026",
+          "search_name": "CacheSlide",
+          "type": "leaf",
+          "level": 2,
+          "row": 5,
+          "x": 684.0,
+          "y": 1867.0
+        },
+        {
           "id": "2026/CounterCausal",
           "label": "CounterCausal[2026]",
           "display_name": "CounterCausal",
@@ -1134,9 +1170,9 @@
           "search_name": "CounterCausal",
           "type": "leaf",
           "level": 2,
-          "row": 5,
+          "row": 6,
           "x": 684.0,
-          "y": 1867.0
+          "y": 1947.0
         },
         {
           "id": "2026/FastKVzip",
@@ -1146,9 +1182,9 @@
           "search_name": "FastKVzip",
           "type": "leaf",
           "level": 2,
-          "row": 6,
+          "row": 7,
           "x": 684.0,
-          "y": 1947.0
+          "y": 2027.0
         },
         {
           "id": "2026/Hypic",
@@ -1158,9 +1194,9 @@
           "search_name": "Hypic",
           "type": "leaf",
           "level": 2,
-          "row": 7,
+          "row": 8,
           "x": 684.0,
-          "y": 2027.0
+          "y": 2107.0
         },
         {
           "id": "2026/IndexCache",
@@ -1170,9 +1206,9 @@
           "search_name": "IndexCache",
           "type": "default",
           "level": 2,
-          "row": 8,
+          "row": 9,
           "x": 684.0,
-          "y": 2107.0
+          "y": 2187.0
         },
         {
           "id": "2026/KVzap",
@@ -1182,9 +1218,9 @@
           "search_name": "KVzap",
           "type": "leaf",
           "level": 2,
-          "row": 9,
+          "row": 10,
           "x": 684.0,
-          "y": 2187.0
+          "y": 2267.0
         },
         {
           "id": "2026/MiniMaxSparseAttention",
@@ -1194,9 +1230,9 @@
           "search_name": "MiniMaxSparseAttention",
           "type": "leaf",
           "level": 2,
-          "row": 10,
+          "row": 11,
           "x": 684.0,
-          "y": 2267.0
+          "y": 2347.0
         },
         {
           "id": "2026/Moment-KV",
@@ -1206,9 +1242,9 @@
           "search_name": "Moment-KV",
           "type": "leaf",
           "level": 2,
-          "row": 11,
+          "row": 12,
           "x": 684.0,
-          "y": 2347.0
+          "y": 2427.0
         },
         {
           "id": "2026/PrismBalloon",
@@ -1218,9 +1254,9 @@
           "search_name": "PrismBalloon",
           "type": "leaf",
           "level": 2,
-          "row": 12,
+          "row": 13,
           "x": 684.0,
-          "y": 2427.0
+          "y": 2507.0
         },
         {
           "id": "2026/ReasonAlloc",
@@ -1230,9 +1266,9 @@
           "search_name": "ReasonAlloc",
           "type": "leaf",
           "level": 2,
-          "row": 13,
+          "row": 14,
           "x": 684.0,
-          "y": 2507.0
+          "y": 2587.0
         },
         {
           "id": "2026/SAC",
@@ -1242,9 +1278,21 @@
           "search_name": "SAC",
           "type": "default",
           "level": 2,
-          "row": 14,
+          "row": 15,
           "x": 684.0,
-          "y": 2587.0
+          "y": 2667.0
+        },
+        {
+          "id": "2026/SolidAttention",
+          "label": "SolidAttention[2026]",
+          "display_name": "SolidAttention",
+          "year_label": "2026",
+          "search_name": "SolidAttention",
+          "type": "leaf",
+          "level": 2,
+          "row": 16,
+          "x": 684.0,
+          "y": 2747.0
         },
         {
           "id": "2026/SplitZip",
@@ -1254,9 +1302,9 @@
           "search_name": "SplitZip",
           "type": "leaf",
           "level": 2,
-          "row": 15,
+          "row": 17,
           "x": 684.0,
-          "y": 2667.0
+          "y": 2827.0
         },
         {
           "id": "2026/TriAttention",
@@ -1266,9 +1314,9 @@
           "search_name": "TriAttention",
           "type": "leaf",
           "level": 2,
-          "row": 16,
+          "row": 18,
           "x": 684.0,
-          "y": 2747.0
+          "y": 2907.0
         },
         {
           "id": "2026/Tutti",
@@ -1278,9 +1326,9 @@
           "search_name": "Tutti",
           "type": "default",
           "level": 2,
-          "row": 17,
+          "row": 19,
           "x": 684.0,
-          "y": 2827.0
+          "y": 2987.0
         },
         {
           "id": "2026/VECTOR",
@@ -1290,9 +1338,9 @@
           "search_name": "VECTOR",
           "type": "leaf",
           "level": 2,
-          "row": 18,
+          "row": 20,
           "x": 684.0,
-          "y": 2907.0
+          "y": 3067.0
         },
         {
           "id": "2025/SharePrefill",
@@ -1304,7 +1352,7 @@
           "level": 3,
           "row": 0,
           "x": 960.0,
-          "y": 1907.0
+          "y": 1987.0
         },
         {
           "id": "2025/SlimInfer",
@@ -1316,7 +1364,7 @@
           "level": 3,
           "row": 1,
           "x": 960.0,
-          "y": 1987.0
+          "y": 2067.0
         },
         {
           "id": "2025/XAttention",
@@ -1328,7 +1376,7 @@
           "level": 3,
           "row": 2,
           "x": 960.0,
-          "y": 2067.0
+          "y": 2147.0
         },
         {
           "id": "2026/FlashPrefill",
@@ -1340,7 +1388,7 @@
           "level": 3,
           "row": 3,
           "x": 960.0,
-          "y": 2147.0
+          "y": 2227.0
         },
         {
           "id": "2026/PhotonicCXL",
@@ -1352,7 +1400,7 @@
           "level": 3,
           "row": 4,
           "x": 960.0,
-          "y": 2227.0
+          "y": 2307.0
         },
         {
           "id": "2026/PredictKV",
@@ -1364,7 +1412,7 @@
           "level": 3,
           "row": 5,
           "x": 960.0,
-          "y": 2307.0
+          "y": 2387.0
         },
         {
           "id": "2026/RTPurbo",
@@ -1376,7 +1424,7 @@
           "level": 3,
           "row": 6,
           "x": 960.0,
-          "y": 2387.0
+          "y": 2467.0
         },
         {
           "id": "2026/SparDA",
@@ -1388,7 +1436,7 @@
           "level": 3,
           "row": 7,
           "x": 960.0,
-          "y": 2467.0
+          "y": 2547.0
         },
         {
           "id": "2025/BLASST",
@@ -1400,7 +1448,7 @@
           "level": 4,
           "row": 0,
           "x": 1236.0,
-          "y": 2027.0
+          "y": 2107.0
         },
         {
           "id": "2025/TCA-Attention",
@@ -1412,7 +1460,7 @@
           "level": 4,
           "row": 1,
           "x": 1236.0,
-          "y": 2107.0
+          "y": 2187.0
         },
         {
           "id": "2026/CompactAttention",
@@ -1424,7 +1472,7 @@
           "level": 4,
           "row": 2,
           "x": 1236.0,
-          "y": 2187.0
+          "y": 2267.0
         },
         {
           "id": "2026/CoSA",
@@ -1436,7 +1484,7 @@
           "level": 4,
           "row": 3,
           "x": 1236.0,
-          "y": 2267.0
+          "y": 2347.0
         },
         {
           "id": "2026/UniPrefill",
@@ -1448,7 +1496,7 @@
           "level": 4,
           "row": 4,
           "x": 1236.0,
-          "y": 2347.0
+          "y": 2427.0
         }
       ],
       "edges": [
@@ -1467,6 +1515,10 @@
         {
           "source": "2023/FlexGen",
           "target": "2026/DirectKV"
+        },
+        {
+          "source": "2023/FlexGen",
+          "target": "2026/SolidAttention"
         },
         {
           "source": "2023/H2O",
@@ -1530,6 +1582,10 @@
         },
         {
           "source": "2023/PagedAttention",
+          "target": "2026/CacheWise"
+        },
+        {
+          "source": "2023/PagedAttention",
           "target": "2026/HexAGenT"
         },
         {
@@ -1585,6 +1641,10 @@
           "target": "2026/KVServe"
         },
         {
+          "source": "2024/InfLLM",
+          "target": "2026/SolidAttention"
+        },
+        {
           "source": "2024/LazyLLM",
           "target": "2025/SlimInfer"
         },
@@ -1598,7 +1658,7 @@
         },
         {
           "source": "2024/Mooncake",
-          "target": "2026/Bidaw"
+          "target": "2026/AITURBO"
         },
         {
           "source": "2024/Mooncake",
@@ -1814,6 +1874,10 @@
         },
         {
           "source": "2025/CacheBlend",
+          "target": "2026/CacheSlide"
+        },
+        {
+          "source": "2025/CacheBlend",
           "target": "2026/Hypic"
         },
         {
@@ -1891,10 +1955,6 @@
         {
           "source": "2025/LMCache",
           "target": "2025/TraCT"
-        },
-        {
-          "source": "2025/LMCache",
-          "target": "2026/Bidaw"
         },
         {
           "source": "2025/LMCache",
@@ -3155,8 +3215,8 @@
       ]
     },
     {
-      "title": "DHC",
-      "anchor": "dhc-family",
+      "title": "mHC",
+      "anchor": "mhc-family",
       "node_count": 3,
       "edge_count": 2,
       "width": 816,
@@ -3263,6 +3323,62 @@
         {
           "source": "2025/Marconi",
           "target": "2026/SPC"
+        }
+      ]
+    },
+    {
+      "title": "SWA",
+      "anchor": "swa-family",
+      "node_count": 3,
+      "edge_count": 2,
+      "width": 816,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "2025/SWA",
+          "label": "SWA[2025]",
+          "display_name": "SWA",
+          "year_label": "2025",
+          "search_name": "SWA",
+          "type": "root",
+          "level": 0,
+          "row": 0,
+          "x": 132.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/HySparse",
+          "label": "HySparse[2026]",
+          "display_name": "HySparse",
+          "year_label": "2026",
+          "search_name": "HySparse",
+          "type": "default",
+          "level": 1,
+          "row": 0,
+          "x": 408.0,
+          "y": 130.0
+        },
+        {
+          "id": "2026/HySparse2",
+          "label": "HySparse2[2026]",
+          "display_name": "HySparse2",
+          "year_label": "2026",
+          "search_name": "HySparse2",
+          "type": "leaf",
+          "level": 2,
+          "row": 0,
+          "x": 684.0,
+          "y": 130.0
+        }
+      ],
+      "edges": [
+        {
+          "source": "2025/SWA",
+          "target": "2026/HySparse"
+        },
+        {
+          "source": "2026/HySparse",
+          "target": "2026/HySparse2"
         }
       ]
     },
@@ -3463,46 +3579,6 @@
         {
           "source": "2025/MXFP4Train",
           "target": "2026/nGPT-NVFP4"
-        }
-      ]
-    },
-    {
-      "title": "SWA",
-      "anchor": "swa-family",
-      "node_count": 2,
-      "edge_count": 1,
-      "width": 540,
-      "height": 260,
-      "nodes": [
-        {
-          "id": "2025/SWA",
-          "label": "SWA[2025]",
-          "display_name": "SWA",
-          "year_label": "2025",
-          "search_name": "SWA",
-          "type": "root",
-          "level": 0,
-          "row": 0,
-          "x": 132.0,
-          "y": 130.0
-        },
-        {
-          "id": "2026/HySparse",
-          "label": "HySparse[2026]",
-          "display_name": "HySparse",
-          "year_label": "2026",
-          "search_name": "HySparse",
-          "type": "leaf",
-          "level": 1,
-          "row": 0,
-          "x": 408.0,
-          "y": 130.0
-        }
-      ],
-      "edges": [
-        {
-          "source": "2025/SWA",
-          "target": "2026/HySparse"
         }
       ]
     },

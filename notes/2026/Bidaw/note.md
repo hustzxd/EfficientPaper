@@ -4,11 +4,34 @@
 
 ![111](cover.jpg)
 
+> 注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。
+
 ## Abstract
 
 In interactive LLM serving, historical key-value tensors of multi-round conversations are often cached in a two-tier storage system consisting of host memory and SSDs. However, loading KVs from two-tier storage in existing approaches increases serving latency by up to 3.8x and decreases throughput by up to 2.0x compared to an ideal large-memory setting. Bidaw improves KV caching with bidirectional awareness between compute and storage: the compute engine schedules requests with KV-loading latency awareness, while the storage system uses LLM-generated response length to predict user access patterns during eviction. Bidaw further balances storage footprint and computational savings by selectively caching storage-efficient history tensors. Experiments show up to 3.58x response-latency reduction and up to 1.83x throughput improvement over state-of-the-art approaches.
 
 ---
+
+## 一句话总结
+
+让计算侧感知 KV 所在层级与加载大小，让存储侧感知用户再访问模式，通过两级缓存和请求调度协同减少交互式服务的 I/O 阻塞。
+
+## 创新点
+
+1. 将请求分为 ready/preparing 两队列；SSD 读采用 disk-HRRN，综合等待时间与 KV 大小，加载完成后按原始到达时间进入 ready 队列。
+2. 使用上一轮回复长度预测 weighted reuse distance 的下界，结合 ghost cache 估计命中潜力，指导 host-memory 淘汰。
+3. 按单位存储带来的重计算节省选择历史张量；该优化属于推理服务，不是训练缓存。
+
+## 带来什么提升
+
+1. 交互式负载上相对已有缓存系统，响应延迟最多缩短 3.58 倍，吞吐最多提升 1.83 倍；不同模型、到达率的最大值不能视为同一配置的联合收益。
+2. 请求平均排队时间由 5.76 秒降至 2.45 秒；通过先执行已准备好的请求减少 GPU 空等。
+3. ShareGPT 上相近延迟下支持约 1.40 倍于 FlashGen 的用户到达率，但模拟时间戳使回复长度淘汰策略不再降低 miss rate；收益来自其他机制，不能声称预测器在该负载仍有效。
+
+## 备注
+
+- 这是 host DRAM + SSD 的历史上下文复用方案；预测依赖可归因的会话与真实用户停顿，不能直接推广到自动化 Agent 或离线批处理。
+- 原文：[FAST '26 PDF](https://www.usenix.org/system/files/fast26-hu-shipeng.pdf)。下方保留已有详细笔记。
 
 ## 论文详细总结
 

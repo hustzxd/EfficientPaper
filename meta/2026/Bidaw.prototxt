@@ -20,6 +20,9 @@ code {
   type: "Pytorch"
   url: ""
 }
+note {
+  url: "note.md"
+}
 keyword {
   words: kv_cache_management
   words: deployment
@@ -30,7 +33,5 @@ cover {
 baseline {
   methods: "2023/PagedAttention"
   methods: "2024/CachedAttention"
-  methods: "2024/Mooncake"
-  methods: "2025/LMCache"
 }
 update_time: 1779073442

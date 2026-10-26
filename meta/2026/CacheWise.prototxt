@@ -1,0 +1,35 @@
+paper {
+  title: "CacheWise: Understanding Workloads and Optimizing KVCache Management for Efficiently Serving LLM Coding Agents"
+  abbr: "CacheWise"
+  url: "https://arxiv.org/abs/2606.16824v1"
+  authors: "Shubham Tiwari"
+  authors: "Tapan Chugh"
+  authors: "Nash Rickert"
+  authors: "Simon Peter"
+  authors: "Ratul Mahajan"
+  authors: "Haiying Shen"
+  institutions: "University of Washington"
+  institutions: "University of Virginia"
+}
+pub {
+  where: "MLSys YPS"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/cachewise-project/cachewise-coding-traces"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/PagedAttention"
+}
+update_time: 1792642621

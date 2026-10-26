@@ -1,0 +1,36 @@
+paper {
+  title: "Accelerating Model Loading in LLM Inference by Programmable Page Cache"
+  abbr: "PPC"
+  url: "https://www.usenix.org/system/files/fast26-liu-yubo.pdf"
+  authors: "Yubo Liu"
+  authors: "Hongbo Li"
+  authors: "Xiaojia Huang"
+  authors: "Yongfeng Wang"
+  authors: "Hanjun Guo"
+  authors: "Hui Chen"
+  authors: "Yuxin Ren"
+  authors: "Ning Jia"
+  institutions: "Huawei Technologies Co., Ltd."
+}
+pub {
+  where: "FAST"
+  year: 2026
+}
+code {
+  type: "C"
+  url: "https://gitee.com/openeuler/kernel/tree/OLK-6.6/fs/mfs"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+  words: overlap
+  words: tool
+}
+cover {
+  url: ""
+}
+baseline {
+}
+update_time: 1791771649
