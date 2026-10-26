@@ -1,6 +1,241 @@
 {
   "papers": [
     {
+      "id": "HySparse2",
+      "title": "HySparse2: Hybrid Sparse Attention with Two-Level KV Sharing",
+      "abbr": "HySparse2",
+      "url": "https://arxiv.org/abs/2609.26368v1",
+      "authors": [
+        "Jianyu Wei",
+        "Yizhao Gao",
+        "Qihao Zhang",
+        "Shimao Chen",
+        "Zhengju Tang",
+        "Yu Cheng",
+        "Shengjie Zhou",
+        "Zihan Jiang",
+        "Yifan Song",
+        "Hailin Zhang",
+        "Liang Zhao",
+        "Bo Yang",
+        "Gang Wang",
+        "Shijie Cao",
+        "Fuli Luo"
+      ],
+      "institutions": [
+        "LLM-Core, Xiaomi"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": "notes/2026/HySparse2/cover.jpg",
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "21-KV Cache Management",
+        "42-Network Structure Design"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/HySparse2/note/",
+      "prototxt_path": "meta/2026/HySparse2.prototxt",
+      "update_time": 1792997414,
+      "rating": 0
+    },
+    {
+      "id": "Harness2",
+      "title": "Harness^2: Recursive Agent Harnessing for an Open World",
+      "abbr": "Harness2",
+      "url": "https://arxiv.org/abs/2610.14224v1",
+      "authors": [
+        "Ruiyao Xu",
+        "Yanfei Chen",
+        "Zhongying CuiZhu",
+        "Bhavana Dalvi Mishra",
+        "Yifei Ming",
+        "Han Yu",
+        "Rujun Han",
+        "Chen-Yu Lee",
+        "Tomas Pfister"
+      ],
+      "institutions": [
+        "Northwestern University",
+        "Google Cloud AI Research"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "cover": null,
+      "keywords": [
+        "50-Recursive Self-Improvement"
+      ],
+      "code_url": "https://github.com/google-research/harness2",
+      "note_url": "notes/2026/Harness2/note/",
+      "prototxt_path": "meta/2026/Harness2.prototxt",
+      "update_time": 1792745183,
+      "rating": 0
+    },
+    {
+      "id": "CacheWise",
+      "title": "CacheWise: Understanding Workloads and Optimizing KVCache Management for Efficiently Serving LLM Coding Agents",
+      "abbr": "CacheWise",
+      "url": "https://arxiv.org/abs/2606.16824v1",
+      "authors": [
+        "Shubham Tiwari",
+        "Tapan Chugh",
+        "Nash Rickert",
+        "Simon Peter",
+        "Ratul Mahajan",
+        "Haiying Shen"
+      ],
+      "institutions": [
+        "University of Washington",
+        "University of Virginia"
+      ],
+      "year": 2026,
+      "venue": "MLSys YPS",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management",
+        "40-LLM Deployment"
+      ],
+      "code_url": "https://github.com/cachewise-project/cachewise-coding-traces",
+      "note_url": "notes/2026/CacheWise/note/",
+      "prototxt_path": "meta/2026/CacheWise.prototxt",
+      "update_time": 1792642621,
+      "rating": 0
+    },
+    {
+      "id": "PPC",
+      "title": "Accelerating Model Loading in LLM Inference by Programmable Page Cache",
+      "abbr": "PPC",
+      "url": "https://www.usenix.org/system/files/fast26-liu-yubo.pdf",
+      "authors": [
+        "Yubo Liu",
+        "Hongbo Li",
+        "Xiaojia Huang",
+        "Yongfeng Wang",
+        "Hanjun Guo",
+        "Hui Chen",
+        "Yuxin Ren",
+        "Ning Jia"
+      ],
+      "institutions": [
+        "Huawei Technologies Co., Ltd."
+      ],
+      "year": 2026,
+      "venue": "FAST",
+      "cover": null,
+      "keywords": [
+        "40-LLM Deployment",
+        "29-Comm-Comp Overlap",
+        "46-Tool"
+      ],
+      "code_url": "https://gitee.com/openeuler/kernel/tree/OLK-6.6/fs/mfs",
+      "note_url": "notes/2026/PPC/note/",
+      "prototxt_path": "meta/2026/PPC.prototxt",
+      "update_time": 1791771649,
+      "rating": 0
+    },
+    {
+      "id": "AITURBO",
+      "title": "Fast Cloud Storage for AI Jobs via Grouped I/O API with Transparent Read/Write Optimizations",
+      "abbr": "AITURBO",
+      "url": "https://www.usenix.org/system/files/fast26-hao.pdf",
+      "authors": [
+        "Yingyi Hao",
+        "Ting Yao",
+        "Xingda Wei",
+        "Dingyan Zhang",
+        "Tianle Sun",
+        "Yiwen Zhang",
+        "Zhiyong Fu",
+        "Huatao Wu",
+        "Rong Chen"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Huawei Cloud"
+      ],
+      "year": 2026,
+      "venue": "FAST",
+      "cover": null,
+      "keywords": [
+        "40-LLM Deployment",
+        "29-Comm-Comp Overlap",
+        "21-KV Cache Management",
+        "45-Efficient Training"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/AITURBO/note/",
+      "prototxt_path": "meta/2026/AITURBO.prototxt",
+      "update_time": 1791771649,
+      "rating": 0
+    },
+    {
+      "id": "SolidAttention",
+      "title": "SolidAttention: Low-Latency SSD-based Serving on Memory-Constrained PCs",
+      "abbr": "SolidAttention",
+      "url": "https://www.usenix.org/system/files/fast26-zheng.pdf",
+      "authors": [
+        "Xinrui Zheng",
+        "Dongliang Wei",
+        "Jianxiang Gao",
+        "Yixin Song",
+        "Zeyu Mi",
+        "Haibo Chen"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University"
+      ],
+      "year": 2026,
+      "venue": "FAST",
+      "cover": null,
+      "keywords": [
+        "02-Sparsity (Attention)",
+        "20-Sparse/Eviction (KV Cache)",
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap",
+        "40-LLM Deployment"
+      ],
+      "code_url": null,
+      "note_url": "notes/2026/SolidAttention/note/",
+      "prototxt_path": "meta/2026/SolidAttention.prototxt",
+      "update_time": 1791771439,
+      "rating": 0
+    },
+    {
+      "id": "CacheSlide",
+      "title": "CacheSlide: Unlocking Cross Position-Aware KV Cache Reuse for Accelerating LLM Serving",
+      "abbr": "CacheSlide",
+      "url": "https://www.usenix.org/system/files/fast26-liu-yang.pdf",
+      "authors": [
+        "Yang Liu",
+        "Yunfei Gu",
+        "Liqiang Zhang",
+        "Chentao Wu",
+        "Guangtao Xue",
+        "Jie Li",
+        "Minyi Guo",
+        "Junhao Hu",
+        "Jie Meng"
+      ],
+      "institutions": [
+        "Shanghai Jiao Tong University",
+        "Jinan Inspur Data Technology Co., Ltd",
+        "Peking University",
+        "Huawei Cloud"
+      ],
+      "year": 2026,
+      "venue": "FAST",
+      "cover": null,
+      "keywords": [
+        "21-KV Cache Management",
+        "29-Comm-Comp Overlap"
+      ],
+      "code_url": "https://github.com/SJTU-Storage-Lab/CacheSlide",
+      "note_url": "notes/2026/CacheSlide/note/",
+      "prototxt_path": "meta/2026/CacheSlide.prototxt",
+      "update_time": 1791771239,
+      "rating": 0
+    },
+    {
       "id": "Dream-RSI",
       "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
       "abbr": "Dream-RSI",
@@ -17138,6 +17373,7 @@
       "KDD Workshop",
       "MICRO",
       "MLSys",
+      "MLSys YPS",
       "NCE",
       "NeurIPS",
       "OSDI",
@@ -17184,5 +17420,5 @@
       "50-Recursive Self-Improvement"
     ]
   },
-  "total": 519
+  "total": 526
 }

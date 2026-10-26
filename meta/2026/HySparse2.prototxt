@@ -1,0 +1,41 @@
+paper {
+  title: "HySparse2: Hybrid Sparse Attention with Two-Level KV Sharing"
+  abbr: "HySparse2"
+  url: "https://arxiv.org/abs/2609.26368v1"
+  authors: "Jianyu Wei"
+  authors: "Yizhao Gao"
+  authors: "Qihao Zhang"
+  authors: "Shimao Chen"
+  authors: "Zhengju Tang"
+  authors: "Yu Cheng"
+  authors: "Shengjie Zhou"
+  authors: "Zihan Jiang"
+  authors: "Yifan Song"
+  authors: "Hailin Zhang"
+  authors: "Liang Zhao"
+  authors: "Bo Yang"
+  authors: "Gang Wang"
+  authors: "Shijie Cao"
+  authors: "Fuli Luo"
+  institutions: "LLM-Core, Xiaomi"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: ""
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_management
+  words: structure_design
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2026/HySparse"
+}
+update_time: 1792997414

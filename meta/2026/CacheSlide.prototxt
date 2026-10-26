@@ -1,0 +1,40 @@
+paper {
+  title: "CacheSlide: Unlocking Cross Position-Aware KV Cache Reuse for Accelerating LLM Serving"
+  abbr: "CacheSlide"
+  url: "https://www.usenix.org/system/files/fast26-liu-yang.pdf"
+  authors: "Yang Liu"
+  authors: "Yunfei Gu"
+  authors: "Liqiang Zhang"
+  authors: "Chentao Wu"
+  authors: "Guangtao Xue"
+  authors: "Jie Li"
+  authors: "Minyi Guo"
+  authors: "Junhao Hu"
+  authors: "Jie Meng"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Jinan Inspur Data Technology Co., Ltd"
+  institutions: "Peking University"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "FAST"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/SJTU-Storage-Lab/CacheSlide"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/CacheBlend"
+}
+update_time: 1791771239

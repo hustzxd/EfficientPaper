@@ -1,0 +1,40 @@
+paper {
+  title: "Fast Cloud Storage for AI Jobs via Grouped I/O API with Transparent Read/Write Optimizations"
+  abbr: "AITURBO"
+  url: "https://www.usenix.org/system/files/fast26-hao.pdf"
+  authors: "Yingyi Hao"
+  authors: "Ting Yao"
+  authors: "Xingda Wei"
+  authors: "Dingyan Zhang"
+  authors: "Tianle Sun"
+  authors: "Yiwen Zhang"
+  authors: "Zhiyong Fu"
+  authors: "Huatao Wu"
+  authors: "Rong Chen"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Huawei Cloud"
+}
+pub {
+  where: "FAST"
+  year: 2026
+}
+code {
+  type: ""
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: deployment
+  words: overlap
+  words: kv_cache_management
+  words: efficient_training
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2024/Mooncake"
+}
+update_time: 1791771649

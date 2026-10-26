@@ -1,0 +1,38 @@
+paper {
+  title: "SolidAttention: Low-Latency SSD-based Serving on Memory-Constrained PCs"
+  abbr: "SolidAttention"
+  url: "https://www.usenix.org/system/files/fast26-zheng.pdf"
+  authors: "Xinrui Zheng"
+  authors: "Dongliang Wei"
+  authors: "Jianxiang Gao"
+  authors: "Yixin Song"
+  authors: "Zeyu Mi"
+  authors: "Haibo Chen"
+  institutions: "Shanghai Jiao Tong University"
+}
+pub {
+  where: "FAST"
+  year: 2026
+}
+code {
+  type: "C++/CUDA/SYCL"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: attention_sparsity
+  words: kv_cache_sparse
+  words: kv_cache_management
+  words: overlap
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2023/FlexGen"
+  methods: "2024/InfLLM"
+}
+update_time: 1791771439

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>CacheWise: Understanding Workloads and Optimizing KVCache Management for Efficiently Serving LLM Coding Agents - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CacheWise: Understanding Workloads and Optimizing KVCache Management for Efficiently Serving LLM Coding Agents";
+        var mkdocs_page_input_path = "notes/2026/CacheWise/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-11/">2026-09-11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-18/">2026-09-18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-29/">2026-09-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-10-09/">2026-10-09</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CacheWise: Understanding Workloads and Optimizing KVCache Management for Efficiently Serving LLM Coding Agents</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="cachewise-understanding-workloads-and-optimizing-kvcache-management-for-efficiently-serving-llm-coding-agents">CacheWise: Understanding Workloads and Optimizing KVCache Management for Efficiently Serving LLM Coding Agents</h1>
+<blockquote>
+<p>Shubham Tiwari, Tapan Chugh, Nash Rickert, Simon Peter, Ratul Mahajan, Haiying Shen</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+<p>版本与会议信息：本文依据 <a href="https://arxiv.org/abs/2606.16824v1">arXiv:2606.16824v1</a>（2026-06-15，14 页）。<a href="https://mlsys.org/virtual/2026/poster/10200">MLSys 2026 官方条目</a> 使用 <strong>ForeCache</strong> 名称，副标题和六位作者均相同；官方数据将其列入 <strong>YPS Poster Session &amp; YPS Reception</strong>，不是已核实的主会 proceedings 论文。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Coding agents are a fast-growing LLM application, executing as long-running closed-loop sessions in which LLM generations alternate with external tool calls. Yet, unlike chat workloads, their serving behavior has not been studied extensively. We address this gap by collecting a dataset of real-world coding assistant traces. Our analysis shows that coding agent sessions repeatedly reuse large prefixes and create sustained KVCache pressure that conventional LLM serving policies handle poorly.
+  Based on our analysis, we present CacheWise, a KVCache management layer that improves KVCache reuse for coding agent workloads. CacheWise combines prefix-aware scheduling with reuse-aware eviction guided by lightweight predictions from tool call metadata. Implemented in vLLM and evaluated on the collected traces, CacheWise reduces KVCache evictions by up to 2-2.6x and improves total agent session completion time by up to 3.5x.</p>
+<h2 id="_1">一句话总结</h2>
+<p>CacheWise 在 vLLM 中联合使用“优先调度新增 KV 块最少的请求”和“根据工具名称、参数及已执行时间预测最晚复用的会话并淘汰其闲置 KV”，减少真实 coding-agent 长会话的缓存颠簸，目标是会话推进效率而不只是单次请求延迟。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>用真实 trace 明确 coding-agent serving 的差异。</strong> CATraces 来自实验室内知情同意用户的 Claude Code 使用记录，约 10M tokens。相对 chatbot，prefill/decode token 比约高 21 倍，工具触发请求与用户触发请求之比的中位数约为 20；会话时长中位数约 36 分钟。长前缀不断增长且在工具执行后复用，使 FCFS + LRU 容易反复驱逐、重算同一会话状态。</li>
+<li><strong>Prefix-aware admission 抑制 working-set 扩张。</strong> 对请求 <script type="math/tex">i</script>，令所需 KV 块为 <script type="math/tex">d_i</script>、已驻留块为 <script type="math/tex">k_i(t)</script>，优先调度新增块数 <script type="math/tex">a_i(t)=d_i-k_i(t)</script> 最小者。准确规则是最小化新增块数，不只是最大化命中比例。该思路并非首次提出；本文的价值是量化它在 coding-agent 闭环会话中的作用，并与预测淘汰联用。</li>
+<li><strong>预测复用排序，而非追求精确工具耗时。</strong> 从服务端可解析的 <code>tool_name</code>、<code>tool_args</code>、工具启动时间提取信号。工具参数用 TF-IDF（最多 5000 维词表）与 KMeans 聚类，维护组内历史耗时分布；已执行 <script type="math/tex">e</script> 时间后，以 <script type="math/tex">\mathbb{E}[D-e\mid D>e,m]</script> 表示给定元数据 <script type="math/tex">m</script> 的条件剩余时间，优先淘汰预计最晚复用的会话。只看工具名或会话内移动均值，难以区分 <code>bash ls</code> 与 <code>bash pytest</code>。</li>
+<li><strong>不修改 agent 的运行时集成。</strong> 在 vLLM 中增加约 2500 行 Python；仅把引用计数为零的块放入淘汰堆，同会话块共享预测。每 3 个 engine iterations 更新预测并重建堆，平衡估计陈旧和 CPU 开销。本文主要管理单个 inference node 的跨轮次 KV，而非提出新的跨节点路由或多层存储系统。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>重算场景的整体收益。</strong> 在 2×H200、TP=2、Qwen2.5-Coder-32B-Instruct、512-token chunked prefill 的确定性 replay 中，80% 会话用于训练、其余用于测试。并发会话数 <script type="math/tex">N>10</script> 时，相对 FCFS 的 vLLM/InferCept，token goodput 约提升 <strong>1.64-2×</strong>，请求吞吐约提升 <strong>1.5-2×</strong>，KV 块淘汰次数降至约 <strong>1/2-1/2.6</strong>，会话指标耗时降至约 <strong>1/2.7-1/3.5</strong>；低负载下差异较小。</li>
+<li><strong>预测淘汰在相同调度下仍有增益。</strong> 与已加入 prefix-aware scheduling 的 vLLM/InferCept 比较，goodput 进一步提升约 <strong>1.2-1.6×</strong>，会话指标耗时降至约 <strong>1/1.7-1/2</strong>。这比仅与 FCFS + LRU 比较更能隔离预测器的价值；论文未直接运行完整 SGLang 基线。</li>
+<li><strong>真实 offload 收益明显更小。</strong> Figure 17 的 TB 数据量由淘汰次数乘块大小折算，并非全部为实测传输。Figure 18 才实际执行 GPU↔CPU DRAM swap；在 <script type="math/tex">N=30</script> 时，累计 offload latency 改善约 <strong>1.40×</strong>，会话指标耗时改善约 <strong>1.19×</strong>。不能把最高 3.5× 重算收益直接套到 LMCache/DRAM/SSD 层次化缓存。</li>
+<li><strong>收益伴随公平性和控制开销代价。</strong> P50 请求耗时约降低 13-14 倍，但新请求缺少驻留前缀，会被推迟，<strong>P99 请求延迟反而变差</strong>。CPU 调度开销约为 vLLM 的 2.4-3 倍；论文在 <script type="math/tex">N=40</script> 下报告 0.33→0.99 秒，而 GPU 执行时间从 16.6→11.2 秒，净收益来自减少重算，并非预测决策没有开销。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li><strong>指标口径：</strong> Section 6.1 的 session completion time 是同一会话内 LLM 请求延迟之和，<strong>不含工具执行耗时</strong>；replay 还把人类空闲期当作会话边界。它不是包含工具与用户等待的真实任务墙钟完成时间，不能由此推导真实开发任务也快 3.5 倍。</li>
+<li><strong>泛化边界：</strong> 单一实验室真实用户 trace、一个 32B 模型和单节点双 GPU；按会话随机划分 80/20，不等于跨用户、跨项目或跨时间泛化已验证。分布漂移、冷启动预测、混合交互式请求和饥饿保护仍需额外实验。ground-truth 工具时长版本也不是联合调度、淘汰和分层选择的全局最优 oracle。</li>
+<li><strong>公式阅读提醒：</strong> Section 4 的 <script type="math/tex">W(t)</script> 先按完整需求 <script type="math/tex">\sum_i d_i</script> 定义，Figure 10 则按实际驻留量 <script type="math/tex">\sum_i k_i(t)</script> 表示，符号不一致。实现容量检查应使用实际已用容量与空闲块数，驱逐量为新增需求超出可用空间的部分，不能直接照抄“容量不足就驱逐 <script type="math/tex">a_i</script> 块”。</li>
+<li><strong>对 cost-aware KV lifecycle 的启发：</strong> 工具条件剩余时间可以作为 reuse signal，但策略还需比较恢复/重算代价、tier 带宽和排队状态，并约束新会话等待与 session tail latency。最小消融应固定 prefix-aware 调度，只替换淘汰策略；再分别测试 recompute 与真实 DRAM/SSD offload。</li>
+<li><strong>公开材料：</strong> <a href="https://github.com/cachewise-project/cachewise-coding-traces">作者仓库</a> 的 README 提供脱敏 trace、事件提取、workload 分析和工具时长预测命令；本次未确认其中包含完整 vLLM serving 改动。实际比较的 InferCept 尚未在本库收录，因此未写入 baseline 图引用。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

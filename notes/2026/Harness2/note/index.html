@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Harness^2: Recursive Agent Harnessing for an Open World - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Harness^2: Recursive Agent Harnessing for an Open World";
+        var mkdocs_page_input_path = "notes/2026/Harness2/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-11/">2026-09-11</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-18/">2026-09-18</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-09-29/">2026-09-29</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-10-09/">2026-10-09</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Harness^2: Recursive Agent Harnessing for an Open World</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="harness2-recursive-agent-harnessing-for-an-open-world">Harness^2: Recursive Agent Harnessing for an Open World</h1>
+<blockquote>
+<p>Ruiyao Xu, Yanfei Chen, Zhongying CuiZhu, Bhavana Dalvi Mishra, Yifei Ming, Han Yu, Rujun Han, Chen-Yu Lee, Tomas Pfister</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+<p>来源：<a href="https://arxiv.org/abs/2610.14224v1">arXiv:2610.14224v1</a>，2026-10-09 提交，37 页；<a href="https://github.com/google-research/harness2">官方代码</a> / <a href="https://harness2.github.io">项目页</a>。另核对了官方仓库的实验说明。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>LLM agents' capabilities depend not only on their underlying models but also on their execution harnesses. Recursive self-improvement (RSI) offers a promising approach to automatically evolve these harnesses. However, deploying RSI in open-world settings still faces two critical challenges. First, open-world tasks are typically unseen during the harness design phase and novel at test time, leaving no ground-truth verifiers to reliably guide online harness edits. Second, the RSI process remains highly task-specific and fails to generalize to novel scenarios. We introduce Harness^2, a plug-and-play, recursive agent harnessing framework that addresses these challenges through two connected levels of recursion. Task-level recursion refines the current task's harness using a contrastive Propose-Probe-Compose step that reliably guides edits without ground-truth verifiers, and can be scaled further via parallel or sequential recursion. Harnessing-level recursion then extracts experience from these edits to update a continual improvement harness, enabling the agent to better adapt to future tasks. Across three professional benchmarks and four model-harness configurations, a single step consistently improves GLM-5 and Gemini 3.5 Flash over their base harnesses, yielding gains of up to 11.5 points on WorkBuddy-Bench, 4.5 points on JobBench, and 11.8 percentage points on LAB, with further gains as the task-level recursion budget increases.</p>
+<h2 id="_1">一句话总结</h2>
+<p>Harness² 在冻结模型权重的前提下，先用同任务执行对照完成 Propose–Probe–Compose 的 harness 修订，再将被采用的可执行组件及修订经验存入库，改善未来任务的修订过程，把“优化当前执行配置”和“积累如何优化配置的经验”连接起来。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>区分 execution harness 与 improvement harness。</strong> 前者有八类可编辑文件：system prompt、guardrails、memory、tool guidance、subagents、skills、scripts、plugin。后者通过索引库保存已采用的完整 harness 和 <code>EXPERIENCE.md</code>，记录适用情境、修订原因和证据。每个新任务从公共初始配置 <script type="math/tex">H_0</script> 开始，选择性复用历史组件；不直接继承上一任务的全部专用配置。模型权重、阶段指令和决策规则固定，跨任务改变的是改进库。</li>
+<li><strong>无标准答案的 Propose–Probe–Compose。</strong> 先运行参考配置；两个 editor 分别定位跨领域的执行问题和当前领域问题，提出 invariant/domain 候选；在相同任务、模型及环境配置下 probe；composer 根据轨迹、交付物和文件差异合并、修订或拒绝更改。执行对照用于判断行为变化，不能充当正确性 verifier；没有足够证据时可保留原配置或不新增经验。</li>
+<li><strong>同时扩展宽度与深度。</strong> Parallel 在预算 <script type="math/tex">k</script> 下使用 <script type="math/tex">k</script> 次参考执行、<script type="math/tex">k</script> 个 invariant 候选、<script type="math/tex">k</script> 个 domain 候选和 <script type="math/tex">k</script> 个 composition；实现是一次 population update，<script type="math/tex">k</script> 控制宽度。Sequential 连续执行 <script type="math/tex">k</script> 个修订步骤并携带历史。<script type="math/tex">k>1</script> 时由看不到配置来源的 selector 比较匿名交付物，选择已有输出；selector 不生成新内容，也不接触评分。<script type="math/tex">k=1</script> 不走最终选择。</li>
+<li><strong>保留“可执行组件 + 为什么有用”。</strong> 经验库不是只检索一段反思文本，还可复制和适配 skill/script 等组件；但旧任务事实必须在新任务重新验证。论文以去掉经验库、去掉编辑分工、去掉 composition 的消融及跨 benchmark 迁移，检验跨任务积累的作用。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>单步收益跨配置成立。</strong> 在 Gemini 3.5 Flash、GLM-5 × OpenCode、Codex 四种组合及三个 benchmark 上，<script type="math/tex">k=1</script> 均优于各自初始配置。WorkBuddy 三领域平均分最高提升 <strong>11.5 分</strong>（GLM-5/OpenCode：64.2→75.7）；JobBench 最高 <strong>4.5 分</strong>（Gemini/OpenCode：31.5→36.0）；LAB criterion-level Partial pass rate 最高 <strong>11.8 个百分点</strong>（GLM-5/OpenCode：59.6%→71.4%）。这些是绝对分差，不是相对百分比，也不是所有任务全部通过的比例。</li>
+<li><strong>增加递归预算继续提高质量。</strong> 从单步到 parallel <script type="math/tex">k=5</script>，WorkBuddy 平均分进一步增加 <strong>2.9-3.9 分</strong>，JobBench 增加 <strong>3.0-4.2 分</strong>，LAB Partial 增加 <strong>2.6-6.7 个百分点</strong>。Gemini/OpenCode 的 WorkBuddy 平均分为 72.4→77.5→80.8。Figure 6 统计最终交付前执行和改进的总 tokens，在所比较配置内处于经验 Pareto frontier；它不证明墙钟时间、美元费用或任意更大预算都更优。</li>
+<li><strong>经验库、分工和合成各有独立贡献。</strong> Gemini/OpenCode、<script type="math/tex">k=1</script> 下，去掉库使 WorkBuddy/JobBench 分别下降 <strong>3.1/1.8 分</strong>，去掉 scope 分工下降 <strong>2.9/3.7 分</strong>，去掉 composition 下降 <strong>1.6/1.9 分</strong>。JobBench 经验库迁移到 WorkBuddy 后，Code/Web/Office 进一步增加 <strong>0.6/0.5/2.9 分</strong>，支持有限范围的跨任务迁移。</li>
+<li><strong>收益不只依赖更强 editor。</strong> 主实验 editor/selector 使用 Claude Opus 4.8；另在 OpenCode、<script type="math/tex">k=2</script> 下让同一模型兼任 executor/editor，五个模型均在三个 benchmark 上改善。工具错误率也下降，例如 JobBench <strong>14.4%→9.1%</strong>，但工具调用数 <strong>27.4→32.8</strong>；更可靠不意味着调用更少。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li><strong>评测范围：</strong> WorkBuddy 测试任务为 Code/Web/Office 各 40/35/25 个，JobBench 34 个，LAB 100 个；主表是三次随机任务顺序运行的均值和标准差。库在每个 benchmark stream 开始为空，按领域维护；同一任务可多次执行，但在线流程不重跑已完成任务。<code>#Steps</code> 只统计 executor session 的模型轮数，不能代表全部 probe/editor/selector 成本。</li>
+<li><strong>无标签不等于正确性保证。</strong> 论文披露 selector 可能选中 55 分输出而舍弃 95 分输出，也可能让错误前提在多个候选间传播。Leave-one-out 重跑能读到后续任务经验，是离线复用分析；其 WorkBuddy +1.9、JobBench +1.7 分不能当作在线收益。双层循环是有限预算实验，不证明无限递归自我改进或持续增长。</li>
+<li><strong>官方代码的评测隔离风险：</strong> <a href="https://github.com/google-research/harness2/blob/main/docs/EXPERIMENTS.md#web-access">EXPERIMENTS.md 的 Web access 节</a> 说明 release 默认不限制联网，并记录一次验证运行中 Codex 自行下载了 JobBench 的 <code>RUBRICS.json</code>；建议在 setup 后于网络层阻断 benchmark 数据/评分来源。论文描述了工作目录评分隔离，但这与网络隔离不同。该记录是公开实现的复现风险，尚不能据此判定原论文实验已经发生泄漏。</li>
+<li><strong>后续研究空间：</strong> 经验库当前是简单索引，缺少系统化合并、过时经验修订和检索治理；递归形式及预算预先指定。可研究基于证据不确定性与迁移价值的停止策略，在总 token、时延和费用预算下分配 probe，并用独立评估检验经验入库后的真实增益。ReasoningBank、Meta-Harness、Harness Scaling 三个实际比较基线目前未在本库收录，暂不建立不存在的图引用。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>
