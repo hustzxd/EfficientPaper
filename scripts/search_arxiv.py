@@ -129,7 +129,7 @@ def filter_papers_with_llm(titles):
     titles_text = "\n".join(f"[{i}] {t}" for i, t in enumerate(titles))
 
     resp = client.chat.completions.create(
-        model="mimo-v2.5",
+        model="mimo-v2.6-flash",
         messages=[
             {"role": "system", "content": RELEVANCE_PROMPT},
             {"role": "user", "content": titles_text},
@@ -165,7 +165,7 @@ def summarize_papers_with_llm(papers):
     )
 
     resp = client.chat.completions.create(
-        model="mimo-v2.5",
+        model="mimo-v2.6-flash",
         messages=[
             {"role": "system", "content": SUMMARY_PROMPT},
             {"role": "user", "content": papers_text},

@@ -1,0 +1,40 @@
+paper {
+  title: "KVStream: Adaptive Parallel Storage Management for KV Caching in Large-Scale LLM Serving"
+  abbr: "KVStream"
+  url: "https://arxiv.org/abs/2610.31827v1"
+  authors: "Avinash Maurya"
+  authors: "Jaiaid Mobin"
+  authors: "Jie Ye"
+  authors: "M. Mustafa Rafique"
+  authors: "Franck Cappello"
+  authors: "Bogdan Nicolae"
+  institutions: "Argonne National Laboratory"
+  institutions: "Rochester Institute of Technology"
+  institutions: "Illinois Institute of Technology"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "C++"
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: overlap
+  words: deployment
+  words: performance_modeling
+}
+cover {
+  url: ""
+}
+baseline {
+  methods: "2025/LMCache"
+  methods: "2024/Mooncake"
+  methods: "2024/SGLang"
+}
+update_time: 1793764936

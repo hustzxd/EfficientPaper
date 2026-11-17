@@ -1,0 +1,29 @@
+paper {
+  title: "AutoTuneBench: Trustworthy Measurement for Agent Auto-Tuning of LLM Serving Engines"
+  abbr: "AutoTuneBench"
+  url: "https://arxiv.org/abs/2609.18123v1"
+  authors: "Li Chen"
+  institutions: "harnets.ai"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Python"
+  url: "https://github.com/li-ch/autotunebench"
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: benchmark
+  words: tool
+  words: deployment
+}
+cover {
+  url: ""
+}
+baseline {
+}
+update_time: 1793181658

@@ -1,0 +1,29 @@
+paper {
+  title: "XM-Sparse: Pushing the Throughput Frontier of Sparse Attention with Netpreme X-Mem"
+  abbr: "XM-Sparse"
+  url: "https://netpreme.com/blog/xm-sparse-sglang-hisparse-netpreme-xmem"
+  authors: "Netpreme Team"
+  institutions: "Netpreme"
+}
+pub {
+  where: "Blog"
+  year: 2026
+}
+code {
+  type: ""
+  url: ""
+}
+note {
+  url: "note.md"
+}
+keyword {
+  words: kv_cache_management
+  words: attention_sparsity
+  words: deployment
+}
+cover {
+  url: "cover.png"
+}
+baseline {
+}
+update_time: 1793263931

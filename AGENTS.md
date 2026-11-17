@@ -265,7 +265,13 @@ Important files tied to the current interface:
 - `scripts/add_paper.py`
   - CLI that creates metadata from an arXiv ID
 - `start_editor.sh`
-  - starts MkDocs, the editor server, and the auto-refresh watcher
+  - starts `scripts/editor_supervisor.py`, which owns MkDocs, the editor API, and source monitoring
+  - polls `meta/`, `notes/`, and `docs/weekly_paper/` every 0.5 seconds; coalesces changes after 2 seconds of quiet, including atomic saves and directory moves
+  - paper/note changes regenerate derived assets before restarting MkDocs; weekly changes restart MkDocs directly
+  - waits for the owned MkDocs child to exit and verifies HTTP readiness before publishing its PID; never kills a process based on a stale PID file
+  - appends generation output to `/tmp/refresh.log`, MkDocs output to `/tmp/mkdocs.log`, and API output to `/tmp/paper_editor_api.log`
+  - failed regeneration keeps the current MkDocs process and retries after 30 seconds; startup/child failures stop the supervisor with an error
+  - run isolated regressions with `python scripts/test_editor_supervisor.py -v`
 - `refresh_and_upload.sh`
   - regenerates derived assets, including README/about pages, and optionally commits/pushes/deploys
 
