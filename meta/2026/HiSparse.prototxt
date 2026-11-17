@@ -1,0 +1,38 @@
+paper {
+  title: "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management"
+  abbr: "HiSparse"
+  url: "https://arxiv.org/abs/2608.07009v1"
+  authors: "Zhiqiang Xie"
+  authors: "Zhangheng Huang"
+  authors: "Tingwei Huang"
+  authors: "Ziyi Xu"
+  authors: "Ruiyang Ma"
+  authors: "Christos Kozyrakis"
+  institutions: "Stanford University & Meta"
+  institutions: "Alibaba Group"
+  institutions: "Ant Group"
+  institutions: "Shanghai Jiao Tong University"
+  institutions: "Peking University"
+  institutions: "Stanford University & NVIDIA Research"
+}
+pub {
+  where: "arXiv"
+  year: 2026
+}
+code {
+  type: "Pytorch"
+  url: "https://github.com/sgl-project/sglang"
+}
+keyword {
+  words: kv_cache_sparse
+  words: kv_cache_management
+  words: overlap
+  words: deployment
+}
+cover {
+  url: "cover.jpg"
+}
+baseline {
+  methods: "2024/SGLang"
+}
+update_time: 1794291544

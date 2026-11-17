@@ -54,26 +54,14 @@
               </ul>
               <p class="caption"><span class="caption-text">Weekly Paper</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-09-11/">2026-09-11</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-10-30/">2026-10-30</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-09-18/">2026-09-18</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-11-06/">2026-11-06</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-09-29/">2026-09-29</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-10-09/">2026-10-09</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../weekly_paper/2026-11-13/">2026-11-13</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >Legacy</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-09/">2025-10-09</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-17/">2025-10-17</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-24/">2025-10-24</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-10-31/">2025-10-31</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-11-07/">2025-11-07</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
@@ -151,6 +139,14 @@
                 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-09-11/">2026-09-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-09-18/">2026-09-18</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-09-29/">2026-09-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../weekly_paper/legacy/2026-10-09/">2026-10-09</a>
                 </li>
     </ul>
                   </li>
@@ -242,8 +238,8 @@
 <h1 id="efficientpaper">EfficientPaper</h1>
 <p><a href="https://github.com/hustzxd/EfficientPaper"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/hustzxd/EfficientPaper?style=social" /></a>
 <a href="https://github.com/hustzxd/EfficientPaper"><img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/hustzxd/EfficientPaper" /></a>
-<a href="https://github.com/hustzxd/EfficientPaper"><img alt="Papers" src="https://img.shields.io/badge/papers-526-blue" /></a></p>
-<p>EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes <strong>526</strong> papers on <strong>Pruning</strong>, <strong>Quantization</strong>, <strong>KV Cache</strong>, <strong>Speculative Decoding</strong>, <strong>Efficient Inference/Training</strong>, and related system optimization topics.</p>
+<a href="https://github.com/hustzxd/EfficientPaper"><img alt="Papers" src="https://img.shields.io/badge/papers-533-blue" /></a></p>
+<p>EfficientPaper is a MkDocs-based paper collection site for efficient AI research. It currently indexes <strong>533</strong> papers on <strong>Pruning</strong>, <strong>Quantization</strong>, <strong>KV Cache</strong>, <strong>Speculative Decoding</strong>, <strong>Efficient Inference/Training</strong>, and related system optimization topics.</p>
 <p>The main experience is the Home page at <code>docs/index.md</code>: a searchable paper workspace with local editing, graph navigation, arXiv import, PDF lookup, and GitHub sync.</p>
 <p align="center">
   <a class="glightbox" href="/images/efficient_paper.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/images/efficient_paper.png" width="1000" title="EfficientPaper Home"></a>
@@ -307,7 +303,9 @@ pip install protobuf==5.27.2 pandas arxiv openai mkdocs mkdocs-glightbox mkdocs-
 <li>regenerate derived data with <code>refresh_and_upload.sh</code></li>
 <li>start MkDocs at <code>http://localhost:8000</code></li>
 <li>start the editor API at <code>http://localhost:8001</code></li>
-<li>watch <code>meta/</code> and <code>notes/</code> for changes and auto-refresh generated data</li>
+<li>watch <code>meta/</code>, <code>notes/</code>, and <code>docs/weekly_paper/</code> for changes, including atomic saves and file moves</li>
+<li>wait for two seconds of quiet before refreshing paper data and restarting MkDocs; weekly updates restart MkDocs directly</li>
+<li>verify MkDocs is ready before reporting success; save refresh errors to <code>/tmp/refresh.log</code> and retry failed generation after 30 seconds</li>
 </ul>
 <h2 id="typical-workflow">Typical Workflow</h2>
 <h3 id="add-from-arxiv-id-or-ui">Add from arXiv ID or UI</h3>
@@ -429,7 +427,7 @@ scripts/generate_search_data.py      # Search dataset generator
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../weekly_paper/legacy/2026-09-02/" class="btn btn-neutral float-left" title="2026-09-02"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../weekly_paper/legacy/2026-10-09/" class="btn btn-neutral float-left" title="2026-10-09"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../contributors/" class="btn btn-neutral float-right" title="Contributors">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -453,7 +451,7 @@ scripts/generate_search_data.py      # Search dataset generator
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../weekly_paper/legacy/2026-09-02/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../weekly_paper/legacy/2026-10-09/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../contributors/" style="color: #fcfcfc">Next &raquo;</a></span>

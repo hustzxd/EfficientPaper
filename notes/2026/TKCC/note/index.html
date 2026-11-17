@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Together Compiler: Continual Compilation for AI Inference - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Together Compiler: Continual Compilation for AI Inference";
+        var mkdocs_page_input_path = "notes/2026/TKCC/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-10-30/">2026-10-30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-06/">2026-11-06</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-13/">2026-11-13</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-11/">2026-09-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-18/">2026-09-18</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-29/">2026-09-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-10-09/">2026-10-09</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Together Compiler: Continual Compilation for AI Inference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="together-compiler-continual-compilation-for-ai-inference">Together Compiler: Continual Compilation for AI Inference</h1>
+<blockquote>
+<p>Reyna Abhyankar, Dylan Lim, Drew Wadsworth, Venkata Hasith Vattikuti, YuTong Julia Zhang, Jung Hwan Heo, Taeksang Kim, Kesavan Ramakrishnan, Evangelene Stanley, Xinyu Fang, Daniel Y. Fu, Simran Arora</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+<p>Together AI Research，2026-11-04。<a href="https://www.together.ai/together-compiler-paper">完整技术报告</a> · <a href="https://www.together.ai/blog/together-compiler-continual-compilation-for-ai-inference">官方发布文章</a>。已阅读 38 页正文与附录；当前未检索到对应 arXiv 条目或独立公开实现，未复现性能实验。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Today's AI workloads are rapidly changing: new models are released more often, model architectures are increasingly diverse, and traffic distributions change frequently. Together Compiler (TKCC) continually optimizes inference forward passes with parallel coding agents. A Tiered Persistent Engine separates model loading from candidate execution and balances fast experimentation with high-fidelity measurements; a parallelism cost model selects promising initial configurations before agent optimization. The report also studies agent communication, expert-curated context, and source-level optimization. It reports up to 1.7x higher TPS than hand-written megakernels on Llama 1B, up to 2.6x higher TPS than selected InferenceX baselines, and acceleration beyond LLM inference. These results are author-reported under the protocols described below.</p>
+<h2 id="_1">一句话总结</h2>
+<p>TKCC 用可热加载 forward pass 的两档持久推理引擎和并行 Agent，提高“提出优化—测量—校验”的试验速度，再通过结合实际流量的并行配置成本模型，为随模型、硬件和请求分布变化的推理部署持续寻找优化。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>分层持久引擎：用真实权重/流量快速试候选。</strong>引擎只初始化一次，Agent 提交新 forward 源码后，各 rank 替换函数指针、重新 capture CUDA/HIP graph，测完恢复 baseline 并卸载候选模块。快档只加载少数层，过滤慢、错误或挂起候选；慢档加载更多层检查真实数据分布下收益。报告表 1 示例分别为 12/60 层，job 中位耗时 28/64 秒，热加载 17/45 秒。固定请求的 prefix cache 和 kernel binary 也可复用。拆开 prefill/decode 测量使连续运行变异从 6.6% 降到 2.7%。</li>
+<li><strong>并行 Agent 共享测量服务，缩短 GPU 空闲。</strong>多个 Agent 思考和写代码的同时，其他 Agent 可占用 GPU 测候选；Agent 看到测量队列深度和完成时间，并通过 message board 交流，减少重复工作。对比反复重启整个服务的 RSI-Inference Bench，作者报告实验吞吐 252x、每 Agent 空闲时间降低 11x；两档测量相对单慢档测试 1,354 vs. 168 个候选，并找到快 7.2% 的方案。这些是优化过程的效率，不能当作推理 TPS 提升。</li>
+<li><strong>先选并行布局，再优化实现。</strong>成本模型枚举 attention TP/DP/CP、MoE TP/EP 等布局，以权重容量、维度整除和 TTFT/TPS SLA 剪枝；逐层计算 compute/memory 较大者加 collective 时间，再由 HBM 与速度约束得到可行并发和 chip-seconds/request。硬件规格、实测 microbench 和完整 forward 作为不同精度的信息源；实际流量中的专家不均衡、MTP 接受长度和请求长度分布决定 straggler，避免把尚未优化的软件布局误判为硬件无潜力。附录独立建模 sparse KV 的存储容量与每步读取量，二者不能混为一谈。</li>
+<li><strong>直接改源代码，少限定搜索策略。</strong>允许 Agent 修改 forward、kernel 和 host-side metadata；相比自定义 IR、专家知识图和固定策略分工，较简单提示在部分实验中得到更高收益。有效改动包括 collective 与 residual/norm/quantization 融合、去除多余 copy/memset、消除 attention padding、调整供应商 kernel 参数；完整 megakernel 在 GPU 上常无收益，在 Trainium2 上却有效，说明实现策略随硬件变化。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>小模型单请求：</strong>Llama-3.2-1B-Instruct、batch 1、ISL 32、H100/B200、OSL 256–65,536 下，相对手工 megakernel 等基线最高 <strong>1.7x TPS</strong>；B200 短输出点达到约 <strong>2,118 output tokens/s</strong>。PDL、CUDA graph、L2 prefetch 等普通 driver/runtime 原语可恢复部分原先依靠 persistent kernel 获取的收益（图 6）。</li>
+<li><strong>前沿模型/公开引擎：</strong>每设置优化不超过 24 小时、使用两档引擎（优化资源为 serving replica 的 2 倍），对比截至 2026-10-27 的最佳 InferenceX 配置，报告最高 <strong>2.6x TPS</strong>。NVIDIA/AMD 使用 AgentX 393 条 coding-agent trace；图 7 固定 baseline 并行布局以隔离代码优化。图 8 则允许成本模型改变布局，batch 1 的 MiniMax M3.1-Flash/B200 达 <strong>1,111</strong>、DeepSeek v4.1-Flash/GB300 达 <strong>1,205</strong>，这里是 <script type="math/tex">1/\mathrm{P90\ intertoken\ latency}</script> 的 per-user TPS，不能与总吞吐混用。</li>
+<li><strong>超出 LLM 的 forward 优化：</strong>8 个天气、生物、时间序列、PDE workload 相对各自指定 baseline 为 <strong>1.5–6.4x</strong>；Aurora 3.7x、Chronos-2 2.6x、Poseidon-T 6.4x。表 5 在列出的输入范围内验证 bit-exact 输出，随机模型还对齐 RNG 状态。相同墙钟预算下增加天气 ensemble samples 可改善 RMSE/CRPS，属于更快 forward 支持更多采样的间接收益（表 2、3、5）。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li><strong>数据分布会改变 kernel 排名。</strong>随机数据使活跃 experts 多 13%–38%；一个随机输入下约 20µs 的 histogram top-k 在真实 ReLU score 大量零值时触发平方复杂度，70K context 达 62ms，并使引擎端到端慢 1.3x。候选必须在真实 activation、routing、KV cache 和端到端流程中复测，不能只信独立随机 microbench。</li>
+<li><strong>比较口径：</strong>AgentX 的 throughput/GPU 把 cached input tokens 全额计入，与 output TPS 不同。Trainium2 用独立 synthetic multi-turn 流量（65,792-token context、约 95% cache hit、OSL 700），不是同一 AgentX workload。跨领域 Claude Code 基线虽给了评测要求，却没有 TKCC 的持久引擎、adapter 和 correctness tests，比较包含基础设施准备成本。静态/共享请求的测量不能直接证明任何流量漂移下都有持续收益；Kimi K3 的一项优化在 concurrency 22–78 好 2.8%–5%，在 concurrency 8 却慢 6.6%。</li>
+<li><strong>消融与正确性边界：</strong>专家知识库/固定策略有时降低搜索效果，是特定模型、预算与知识库组织下的结果，不能推广为知识或结构化记录普遍无用。报告也保留 agent 自己写 Markdown 记录及频繁交流；反对的是限制优化表达和高开销的人工规定图结构。Bit-exact 验证只覆盖指定测试，不能等同形式化证明；作者记录过非法访问导致 GPU reset、两台机器移出集群。生产 trillions-of-tokens 是作者部署陈述，未做本地独立验证。</li>
+<li><strong>系统启发：</strong>“持续”主要是固定预算内反复搜索并随流量变化重新编译，可按 batch 条件选用不同优化。仍有超过 50% Agent 时间在等测量 gate/排队。成本模型假设层内 compute 与 memory 完全重叠、collective 顺序相加，需按真实 engine 校准。对 KV/serving 研究，可借鉴持久服务与分档测量减少 policy 试验成本，但必须隔离候选的 KV/RNG/graph 状态，冻结独立评估器，并将编译时间、额外 GPU、上下文命中和真实请求分布纳入收益核算。报告的 Mirage 基线实际引用 2026 MPK，库中 <code>2025/MPK-Mirage</code> 的标题却是另一篇 Mirage superoptimizer；本次不将二者强行关联。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

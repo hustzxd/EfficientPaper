@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>2026-11-13 - Efficient Paper</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2026-11-13";
+        var mkdocs_page_input_path = "weekly_paper/2026-11-13.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../images/logo.svg">
+
+ <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-10-30/">2026-10-30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../2026-11-06/">2026-11-06</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">2026-11-13</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#edge-native-multimodal-rag-hardware-aware-quantization-and-architectural-optimization-for-consumer-gpus">Edge-Native Multimodal RAG: Hardware-Aware Quantization and Architectural Optimization for Consumer GPUs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#subgpu-pipelining-intra-gpu-fine-grained-spatial-parallelism-for-llm-inference">SubGPU Pipelining: Intra-GPU Fine-Grained Spatial Parallelism for LLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slipstream-enabling-hbf-for-gpu-systems-by-mitigating-the-latency-and-sram-overheads">SlipStream: Enabling HBF for GPU Systems by Mitigating the Latency and SRAM Overheads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unipipe-unified-inference-serving-and-fine-tuning-for-deadline-constrained-dnn-surrogate-workflows">UniPipe: Unified Inference Serving and Fine-Tuning for Deadline-Constrained DNN Surrogate Workflows</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#together-compiler-continual-compilation-for-ai-inference">Together Compiler: Continual Compilation for AI Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bits-or-permutations-spending-a-fixed-inference-budget-on-weight-precision-or-on-option-order-averaging-in-small-local-language-models">Bits or permutations? Spending a fixed inference budget on weight precision or on option-order averaging in small local language models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#real-loss-optimizing-real-expected-acceptance-length-for-speculative-decoding">REAL Loss: Optimizing Real Expected Acceptance Length for Speculative Decoding</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sinkstate-on-the-fly-svd-of-recurrent-states-for-efficient-hybrid-llm-serving">SinkState: On-the-Fly SVD of Recurrent States for Efficient Hybrid LLM Serving</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#joint-quantization-and-dynamic-partitioning-for-context-aware-edge-vision-transformers">Joint Quantization and Dynamic Partitioning for Context-Aware Edge Vision Transformers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sable-a-small-field-sumcheck-argument-for-bit-exact-inference-of-large-language-models">Sable: A Small-Field Sumcheck Argument for Bit-Exact Inference of Large Language Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#can-kv-cache-be-reused-across-model-updates-a-deepseek-v4-flash-case-study">Can KV Cache Be Reused Across Model Updates? A DeepSeek-V4-Flash Case Study</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tapco-g-llm-guided-design-adaptive-timing-and-power-co-optimization-with-graph-based-physical-priors">TAPCO-G: LLM-Guided Design-Adaptive Timing and Power Co-Optimization with Graph-Based Physical Priors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#beyond-passive-imitation-on-policy-mid-training-distillation-for-language-models">Beyond Passive Imitation: On-Policy Mid-Training Distillation for Language Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multi-objective-scheduling-of-llm-based-multi-agent-workflows-in-cloud-computing">Multi-Objective Scheduling of LLM-Based Multi-Agent Workflows in Cloud Computing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deterministic-reproducible-inference-in-exact-integer-arithmetic-and-verifiable-distributed-inference-as-its-consequence">Deterministic, Reproducible Inference in Exact Integer Arithmetic, and Verifiable Distributed Inference as Its Consequence</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bootstrapped-on-policy-distillation">Bootstrapped On-Policy Distillation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#opticalrag-pixel-space-compression-for-token-efficient-retrieval-augmented-generation">OpticalRAG: Pixel-Space Compression for Token-Efficient Retrieval-Augmented Generation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tri-stack-pim-a-heterogeneous-multi-die-3d-integrated-processing-in-memory-architecture-for-efficient-llm-inference">Tri-Stack-PIM: A Heterogeneous Multi-Die 3D-Integrated Processing-in-Memory Architecture for Efficient LLM Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moai-module-optimizing-architecture-for-non-interactive-secure-transformer-inference">MOAI: Module-Optimizing Architecture for non-interactive secure transformer Inference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#one-byte-one-token-byteifying-a-27b-hybrid-attention-llm-with-self-generated-data">One Byte, One Token: Byteifying a 27B Hybrid-Attention LLM with Self-Generated Data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#poem-output-relative-block-sparse-attention-for-long-context-prefilling">POEM: Output-Relative Block-Sparse Attention for Long-Context Prefilling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#closing-the-bf16-fp16-convergence-speed-gap-in-rl-post-training-with-stochastic-rounding">Closing the BF16-FP16 Convergence Speed Gap in RL Post-Training with Stochastic Rounding</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mobile-ai-factory-building-specialized-language-models-for-your-mobile-device">Mobile AI Factory: Building Specialized Language Models for Your Mobile Device</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#forespark-joint-draft-and-verification-budget-scheduling-for-parallel-speculative-decoding">ForeSpark: Joint Draft and Verification Budget Scheduling for Parallel Speculative Decoding</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#placing-llm-lookup-tables-by-per-layer-prefetch-deadlines">Placing LLM Lookup Tables by Per-Layer Prefetch Deadlines</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-09-02/">2026-09-02</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-09-11/">2026-09-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-09-18/">2026-09-18</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-09-29/">2026-09-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../legacy/2026-10-09/">2026-10-09</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Weekly Paper</li>
+      <li class="breadcrumb-item active">2026-11-13</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="2026-11-13">2026-11-13</h1>
+<hr />
+<h2 id="edge-native-multimodal-rag-hardware-aware-quantization-and-architectural-optimization-for-consumer-gpus">Edge-Native Multimodal RAG: Hardware-Aware Quantization and Architectural Optimization for Consumer GPUs</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pruning-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pruning-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a></p>
+<blockquote>
+<p>针对边缘GPU部署RAG的内存限制，提出NF4量化与Florence-2解耦视觉集成方案，实现8.37GB显存占用并恢复92%数学准确率</p>
+</blockquote>
+<p><strong>Authors:</strong> Zahraa Selim, Menna Hamed, Wesam Ahmed, Sohyla Said, Sara Basheer, Rami Zewail | <strong>Date:</strong> 2026-11-11</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14924v1">http://arxiv.org/abs/2611.14924v1</a></p>
+<details><summary>Abstract</summary>
+
+Deployment of retrieval-augmented generation (RAG) for Edge-AI is constrained by memory and bandwidth limitations. A standard 7B parameter model consumes 14 GB Video Random Access Memory (VRAM) in half-precision (FP16), precluding co-location of vector indices and Key-Value (KV) caches. This paper presents an engineering integration and empirical evaluation of a multimodal RAG framework optimized for consumer-grade Turing hardware (e.g., NVIDIA Tesla T4). Our system-level analysis identifies a critical trade-off: while generative pre-trained transformer quantization (GPTQ) offers superior throughput (51.6 tok/s), it exhibits significant context instability at 2048+ tokens on Turing architectures. Conversely, NormalFloat 4-bit (NF4) maintains robust long-context performance with viable latency (81 ms/tok). By coupling NF4 with a decoupled Florence-2 vision integration, we achieve visual reasoning with only 430 MB VRAM overhead. Furthermore, empirical observations of prompt-induced search space pruning show that structured prompting reduces latency by 47% without altering computational intensity (1.88 GFLOPs/token). The integrated architecture maintains an 8.37 GB footprint, establishing a viable RAG pipeline for 12-16 GB GPUs. Finally, structured few-shot prompting effectively compensates for quantization-induced reasoning loss, restoring mathematical accuracy from 35.0% to 92.0% across 200 trials.
+
+</details>
+
+<hr />
+<h2 id="subgpu-pipelining-intra-gpu-fine-grained-spatial-parallelism-for-llm-inference">SubGPU Pipelining: Intra-GPU Fine-Grained Spatial Parallelism for LLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/overlap-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM解码内存瓶颈，提出SubGPU空间流水线将算子图切分至SM池并行执行，每用户吞吐提升2.2倍，迭代时间降低10.33%</p>
+</blockquote>
+<p><strong>Authors:</strong> Muralidhar Andoorveedu, Marius Juston, Tingkai Liu, Sanjay Patel | <strong>Date:</strong> 2026-11-11</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14904v1">http://arxiv.org/abs/2611.14904v1</a></p>
+<details><summary>Abstract</summary>
+
+Large language model (LLM) decode is dominated by short, predominantly memory-bound kernels that make bursty use of on-chip execution resources and memory bandwidth. This paper introduces SubGPU Pipelining, a fine-grained, intra-GPU spatial execution model that cuts an operator graph into ordered contiguous segments, binds those segments to spatial stages backed by disjoint streaming-multiprocessor (SM) pools, and streams microbatches through the resulting schedule. Selecting the graph cuts, segment-to-stage binding, per-stage SM allocation, and microbatch size is a coupled optimization problem: each choice changes the overlap pattern, shared-resource contention, cache state, and execution times of the others.
+  We evaluate SubGPU Pipelining through both simulation and silicon experiment using the GPT-OSS 120B workload with 32-GPU B200 deployment settings. The analytical shared-resource simulator searches across SubGPU pipeline structures and batch sizes to map the per-user/per-GPU throughput Pareto frontier. At matched per-GPU throughput, the modeled SubGPU frontier provides up to 2.2x higher per-user throughput than temporal execution, and at matched per-user throughput it provides up to 1.9x higher per-GPU throughput. To test physical feasibility and further validate the simulation results, silicon experiments are performed, using one B200 GPU to emulate a 32-GPU B200 deployment. The experiment evaluates one selected two-stage pipeline configuration at global batch 2,048 using CUDA Green Contexts and TensorRT-LLM kernels. Results show that SubGPU Pipelining improves mean DRAM read-plus-write throughput from 71.8% to 83.6% of peak, and reduces the 36-layer decoder iteration time by 10.33%.
+
+</details>
+
+<hr />
+<h2 id="slipstream-enabling-hbf-for-gpu-systems-by-mitigating-the-latency-and-sram-overheads">SlipStream: Enabling HBF for GPU Systems by Mitigating the Latency and SRAM Overheads</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对HBF高延迟拖慢推理问题，提出需求驱动的软硬协同预取器SlipStream，以40MB缓冲达理想HBF性能92.4%，缓冲缩小20倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Anish Saxena, Hritvik Taneja, Christos Kozyrakis, Aamer Jaleel | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14776v1">http://arxiv.org/abs/2611.14776v1</a></p>
+<details><summary>Abstract</summary>
+
+Large language model (LLM) inference demands ever more memory capacity for larger models and batch sizes. High-Bandwidth Flash (HBF) replaces the DRAM dies of HBM with NAND flash and provides up to 16x the capacity at comparable read bandwidth. However, HBF can incur a read latency of nearly 20$μ$s, 20x that of HBM, so on-demand HBF accesses slow inference by up to 12.8x. Conventional cache-line prefetchers require 20x more in-flight tracking state to cover this latency. Tensor-streaming designs, such as H3, follow virtual-address order as opposed to kernel-demand order, and therefore need hundreds of megabytes of buffering.
+  We propose SlipStream, a software-hardware co-designed prefetcher that turns prefetching into a demand-paced producer-consumer pipeline. In software, SlipStream profiles the repeatable weight-page demand order of data-independent LLM kernels and inserts a staging warp that replays this order with non-blocking STAGE instructions. In hardware, the staging warp acts as the producer and the work warps as consumers. Our key insight is to retire each STAGE tracking entry only when demand first accesses the page, as opposed to when the page returns from HBF. Demand thus paces staging and bounds how far staging leads consumption. SlipStream tracks 4 KB pages instead of cache lines and allocates buffer slots only when pages return, which decouples the buffer size from outstanding traffic. Across seven dense models spanning 16-800 GB, SlipStream with a 40 MB staging buffer achieves 92.4% of the performance of an ideal HBF with HBM-like latency. H3 achieves only 43.1%, even with a 320 MB buffer. The buffer sizing of SlipStream is independent of HBF latency and workload. SlipStream with 16 MB buffer, 20x smaller than that of H3, performs within 4% of SlipStream-40MB. SlipStream also supports Mixture-of-Experts models and reaches 91.2% of ideal performance (40 MB buffer).
+
+</details>
+
+<hr />
+<h2 id="unipipe-unified-inference-serving-and-fine-tuning-for-deadline-constrained-dnn-surrogate-workflows">UniPipe: Unified Inference Serving and Fine-Tuning for Deadline-Constrained DNN Surrogate Workflows</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对多上下文并发导致推理延迟抖动，提出单上下文统一推理与微调系统UniPipe，MSE降低50%，截止期限错过率降低13%-22%</p>
+</blockquote>
+<p><strong>Authors:</strong> Jaiaid Mobin, Avinash Maurya, M. Mustafa Rafique, Bogdan Nicolae | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14748v1">http://arxiv.org/abs/2611.14748v1</a></p>
+<details><summary>Abstract</summary>
+
+DNN surrogates are increasingly used to accelerate scientific workflows that must process high-rate sensor streams in near real time, exemplified by Ptychographic imaging at next-generation X-ray light sources. Such surrogates deliver 100-1000x higher throughput than iterative solvers, enabling faster steering of experiments. To preserve surrogate accuracy during an experiment, as the input distribution evolves, state-of-the-art deployments freeze the pretrained surrogate or run a separate CUDA context that fine-tunes concurrently with serving. However, multi-context concurrency causes significant contention on the GPU, inflating both the mean and the variance of inference latency, triggering deadline misses in workflows where sensor data has to be processed within a hard per-unit deadline. To address this challenge, we propose UniPipe, a single-context system that unifies inference serving and fine-tuning of a DNN surrogate on a single edge GPU. UniPipe is driven by three key insights: both serving and fine-tuning require a forward pass and can be fused into one; the per-sample latency of modern GPUs is non-linear in batch size; and the workload is repetitive across intervals, enabling offline scheduling. Specifically, UniPipe fuses training and inference data in a single forward pass with a selective backward pass on the training subset, and uses a polynomial-time scheduler that exploits the latency curve to compute the batch composition. We evaluate UniPipe on a real-world Ptychographic reconstruction workflow with sensor rates up to 5000 patterns/sec.; UniPipe lowers reconstruction MSE by up to 30% and inference MSE by up to 50% over a pretrained baseline, and reduces the deadline-miss rate by 13%-22% over a multi-context baseline. UniPipe's unified deployment reduces the latency spread from 106% to 57% of the mean, and increases total throughput compared to multi-context baseline.
+
+</details>
+
+<hr />
+<h2 id="together-compiler-continual-compilation-for-ai-inference">Together Compiler: Continual Compilation for AI Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/parallelism-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/parallelism-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对AI推理工作负载持续变化的编译优化问题，提出持续编译代理系统TKCC，TPS较最优开源引擎提升2.6倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Reyna Abhyankar, Dylan Lim, Drew Wadsworth, Venkata Hasith Vattikuti, YuTong Julia Zhang, Jung Hwan Heo, Taeksang Kim, Kesavan Ramakrishnan, Evangelene Stanley, Xinyu Fang, Daniel Y. Fu, Simran Arora | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14681v1">http://arxiv.org/abs/2611.14681v1</a></p>
+<details><summary>Abstract</summary>
+
+Today's AI workloads are rapidly changing: new models are released more often, model architectures are increasingly diverse, and traffic distributions change frequently. The challenge we face at Together AI is continual optimization for these changing workloads. Compiling a deployment into an optimized forward pass is a challenge that is well-suited for agent hill-climbing. Existing systems struggle with continual compilation due to a tradeoff between measurement throughput and fidelity. Many systems use agents to optimize individual kernels from the inference forward pass using offline benchmarks, but timings are low-fidelity because of data-dependent behavior in primitives like mixture-of-experts (MoE). On the other hand, systems use agents to directly optimize end-to-end engines but suffer from slow engine launch times. To address these challenges, we build Together Compiler (TKCC), the first truly continual agent loop designed for AI inference optimization. To address the throughput-fidelity tradeoff, we propose: (1) a Tiered Persistent Engine that decouples engine launch overheads from forward pass computation; (2) a cost model to select the parallelism configurations that seed the optimization process. We also conduct extensive ablations on agent context management and present our insights on deploying TKCC in production. TKCC outperforms highly-optimized hand-written Megakernels on the Llama 1B workhorse workload by up to 1.7x and the best open source engines on the latest frontier models (Kimi K3, GLM 5.3, MiniMax M3.1 Flash, DeepSeek v4.1 Flash) across hardware platforms by up to 2.6x higher TPS on the InferenceX benchmark. TKCC also sets the state-of-the-art performance at batch size 1, with 1111 TPS on M3.1 Flash and 1205 TPS on DeepSeek v4.1 Flash. Finally, TKCC generalizes beyond frontier language model inference. TKCC serves trillions of tokens across our production fleet.
+
+</details>
+
+<hr />
+<h2 id="bits-or-permutations-spending-a-fixed-inference-budget-on-weight-precision-or-on-option-order-averaging-in-small-local-language-models">Bits or permutations? Spending a fixed inference budget on weight precision or on option-order averaging in small local language models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>研究小模型固定推理预算下权重精度与选项顺序平均的权衡，发现6位权重加四顺序平均为最优配置</p>
+</blockquote>
+<p><strong>Authors:</strong> Mohammed Nayeem Khan, Logesh L, Aliyas Ahmad Misri | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14413v1">http://arxiv.org/abs/2611.14413v1</a></p>
+<details><summary>Abstract</summary>
+
+Local language models can save memory by storing weights in fewer bits, and they can reduce sensitivity to the order of answer options by averaging a few reorderings. We ask whether the first makes the second worse, and which is the cheaper way to spend a fixed budget. On Qwen3-0.6B and Qwen3-1.7B with simulated round-to-nearest weight quantization (8, 6, 4 and 3 bits, fp16 reference), read from the logits of the letters A to D on ARC-Easy, ARC-Challenge, MMLU and HellaSwag (300 items each), 6 bits lose no accuracy against fp16 (they score +1.8 (+1.0 to +2.5) and +0.9 (+0.3 to +1.5) points higher, which we do not explain), and 8 bits change it by -0.7 (-1.1 to -0.3) and -0.4 (-0.7 to -0.2) points. At 4 bits the answer-slot skew rises from 0.15 to 0.53 (0.6B) and from 0.07 to 0.12 (1.7B); Gaussian noise at the same weight SNR gives 0.15 and 0.37 (two draws) and 0.19 (one draw), so the control is inconclusive on whether rounding adds slot skew beyond equal-power noise. Flip rates rise but stay below an accuracy-matched baseline of independent uniform errors. Averaging four cyclic orders recovers +12.6 points at 4 bits for 0.6B (+5.3 at fp16). We price bits and passes in one machine-independent unit, weight bytes read times passes. In cost-matched pairs, extra orders beat extra bits only when the weights have 6 or more bits, and the decision table reduces to: use 6-bit weights and spend the rest of the budget on up to four orders, one pass each. Everything is simulated on two small models with the simplest quantizer; a title-level search found no earlier study of quantization together with option order.
+
+</details>
+
+<hr />
+<h2 id="real-loss-optimizing-real-expected-acceptance-length-for-speculative-decoding">REAL Loss: Optimizing Real Expected Acceptance Length for Speculative Decoding</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/overlap-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/speculative-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/speculative-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对投机解码训练目标非EAL精确形式的问题，提出REAL损失函数，通过路径权重无偏估计提升接受长度，无需改动模型架构</p>
+</blockquote>
+<p><strong>Authors:</strong> Yu Tian | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14399v1">http://arxiv.org/abs/2611.14399v1</a></p>
+<details><summary>Abstract</summary>
+
+Speculative decoding accelerates LLM inference by having a draft model propose multiple tokens for the target model to verify in one pass. The speedup is governed by the expected acceptance length (EAL), yet standard training objectives such as cross-entropy, KL divergence, and total variation focus only on distribution matching or single-step overlap. Recent studies instead propose block-level training objectives, aiming to optimize EAL directly. However, these objectives remain surrogates rather than exact formulations of EAL. For example, some average later acceptance over target-distributed continuations rather than the verification branches selected by accepted tokens, introducing a covariance gap that can reverse the gradient direction. We analyze this gap and derive REAL, a real EAL training loss that uses path weights for unbiased estimation and Rao-Blackwellization for variance reduction. In a controlled loss-level comparison with a Qwen3.6-35B-A3B target and a Domino drafter, REAL outperforms WTV, VSD, DBLast, and the static LK baseline on probabilistic serving acceptance length across 9 task subsets and 5 evaluation seeds. These gains require only a change to the training loss, with no modification to the drafter architecture or inference procedure, demonstrating the practicality of real EAL training. A reference implementation of the REAL loss is available at https://github.com/King-ty/speculators/tree/real-loss.
+
+</details>
+
+<hr />
+<h2 id="sinkstate-on-the-fly-svd-of-recurrent-states-for-efficient-hybrid-llm-serving">SinkState: On-the-Fly SVD of Recurrent States for Efficient Hybrid LLM Serving</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/low-rank-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/low-rank-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对混合模型线性注意力冗余状态开销，提出SinkState在线SVD低秩存储方案，峰值内存降低2.6倍，解码加速1.58倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Haolin Jiang, Weihang Li, Zhongzhu Zhou, Jinwen Pan, Santosh Pandey, Hang Liu | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14246v1">http://arxiv.org/abs/2611.14246v1</a></p>
+<details><summary>Abstract</summary>
+
+Hybrid models combine softmax attention with linear attention, which compresses history into fixed-size recurrent states to balance model quality and inference efficiency. However, linear attention has not pushed this compression to its limit: we find that the queries, keys, and values of linear layers concentrate in a stable, low-dimensional subspace, a phenomenon we call the linear attention sink, so each state is effectively low-rank, with a rank that varies across states. Yet existing serving systems keep these redundant states dense, reading and rewriting them in full at every decoding step, so their memory traffic grows with the batch size and dominates the decoding cost. Thus SinkState stores each recurrent state in an adaptive low-rank form throughout inference with buffered updates and a local SVD restricted to the top subspace. SinkState further consolidates the remaining components asynchronously on the CPU. On four hybrid models with Mamba-2 and Gated DeltaNet (GDN) layers, from 4B to 120B parameters, SinkState reduces the peak memory of recurrent states by up to 2.6x (1.9x on average) and speeds up decoding by up to 1.58x (1.25x on average) over Mamba-SSM and FLA, while maintaining accuracy.
+
+</details>
+
+<hr />
+<h2 id="joint-quantization-and-dynamic-partitioning-for-context-aware-edge-vision-transformers">Joint Quantization and Dynamic Partitioning for Context-Aware Edge Vision Transformers</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/communication-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a></p>
+<blockquote>
+<p>针对车载ViT静态切分不适应时变链路问题，提出分区与混合精度联合优化MILP框架，通信能耗降低33-36%，延迟降低34%</p>
+</blockquote>
+<p><strong>Authors:</strong> Zhu Jiaqi, Jain Prakriti, Katare Dewant, Kumar Saurabh | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14196v1">http://arxiv.org/abs/2611.14196v1</a></p>
+<details><summary>Abstract</summary>
+
+Deploying vision transformer models across connected and automated vehicles (CAVs) requires joint management of computation and Vehicle-to-Vehicle (V2V) communication. Static split-inference methods use fixed partition points and cannot adapt to time-varying link bandwidth, processing load, and concurrent multi-stream traffic. This paper proposes an edge orchestration framework that jointly selects model partition points, per-layer quantization bitwidths, and execution placement across heterogeneous vehicular compute nodes. The joint partitioning and mixed-precision allocation problem is formulated as a Mixed-Integer Linear Program (MILP) that minimizes compute and communication energy subject to end-to-end latency and task-quality constraints. The framework is evaluated on Jetson Orin Nano (8~GB), Jetson Orin NX (16~GB), and Jetson AGX Orin (32~GB) nodes using OPV2V-driven multi-stream workloads with $K \in \{2,4,6,8\}$. Across the evaluated configurations, the proposed formulation reduces V2V communication energy by $33.3$--$36.0\%$ relative to a Uniform INT8 split. At $K=8$, end-to-end task completion latency is reduced by $34.0\%$ on the Orin Nano and $33.1\%$ on the Orin NX relative to the same baseline, while limiting the reduction in 3D detection accuracy to $3.1$--$4.1$ percentage points in $\mathrm{mAP}_{50}$ relative to FP16 execution.
+
+</details>
+
+<hr />
+<h2 id="sable-a-small-field-sumcheck-argument-for-bit-exact-inference-of-large-language-models">Sable: A Small-Field Sumcheck Argument for Bit-Exact Inference of Large Language Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a></p>
+<blockquote>
+<p>针对大模型推理可验证性问题，提出小域Sumcheck证明系统Sable，实现整数量化LLM逐比特可验证推理，证明速度较zkLLM提升40-64倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Tomer Solberg | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14083v1">http://arxiv.org/abs/2611.14083v1</a></p>
+<details><summary>Abstract</summary>
+
+We present Sable, an argument system and single-GPU prover for the statement that a committed, integer-quantized transformer produced a given token sequence from a given prompt, bit for bit. Sable fixes an integer function F_O with no floating-point step, in which every rounding, normalization, softmax and sampling decision is determined by its inputs, and proves it with a constraint system whose relations provably never wrap modulo the 31-bit KoalaBear prime. The proof batches zerochecks and LogUp-GKR lookups into one sumcheck per domain, and commits to every witness tensor and weight in one multilinear commitment built from Reed-Solomon codes, BLAKE3 Merkle trees and a mixed-length BaseFold opening. The prover streams the model layer by layer on one GPU. On one NVIDIA RTX PRO 6000 Blackwell GPU, Sable proves all 64 layers of Qwen2.5-32B in 92.5 s for 4,096 tokens and 398 s for 16,384 tokens, and covers Qwen3-32B and the mixture-of-experts Qwen3-30B-A3B (4,096 tokens in 121.8 and 84.7 s). A proof costs 41 to 50 times the serving time, or 6.4 cents per 4,096-token request at public GPU prices, and 40 to 64 times less time per parameter and token than zkLLM. On WikiText-2, F_O's greedy token matches the BF16 model's at 86.3% of positions; on Qwen3, F_O is within 1.6 points of BF16 on MMLU and 1.7 points on GSM8K. A verifier with a compiled core checks a proof on one CPU core in 19 to 56 s. In the random-oracle model, the interactive proof has round-by-round soundness error 2^-103. The proof is not zero-knowledge, so the system targets open-weight models. Code: https://github.com/moonmath-ai/Sable
+
+</details>
+
+<hr />
+<h2 id="can-kv-cache-be-reused-across-model-updates-a-deepseek-v4-flash-case-study">Can KV Cache Be Reused Across Model Updates? A DeepSeek-V4-Flash Case Study</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>研究模型更新后KV cache跨版本复用可行性，提出功能缓存分歧度量，复用可实现2.1-5.1倍首token加速但保真度因任务而异</p>
+</blockquote>
+<p><strong>Authors:</strong> Zhikun Tao, Fangyong Jin, Junping Zhao | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.14051v1">http://arxiv.org/abs/2611.14051v1</a></p>
+<details><summary>Abstract</summary>
+
+Reusing key--value (KV) caches across language model updates could avoid repeated computation of shared context, but changes in model weights raise a fundamental question about what these caches preserve. We investigate direct cache reuse across four model updates, with a detailed study of DeepSeek-V4-Flash to Flash-0731. Our central finding is that caches can retain useful task information without faithfully reproducing the updated model's behavior. Retrieval accuracy varies substantially across updates, ranging from near-native performance to large losses. With source caches already available, reuse achieves median time-to-first-token speedups of $2.10$--$5.08\times$ on three longer-prefix QA benchmarks. To characterize the behavioral differences behind these outcomes, we introduce Functional Cache Divergence, which compares next-token distributions under reused and native caches. Direct KV cache reuse better preserves native model behavior in natural-text continuation, whereas compatibility degrades with increasing prefix length in single-token retrieval tasks. Answer-margin analyses help explain how correct retrieval decisions survive substantial internal state changes. Yet even agreement on the first generated token does not ensure agreement in answer content or stopping behavior. These findings establish task utility and fidelity to native inference as distinct criteria for evaluating cross-version KV cache reuse.
+
+</details>
+
+<hr />
+<h2 id="tapco-g-llm-guided-design-adaptive-timing-and-power-co-optimization-with-graph-based-physical-priors">TAPCO-G: LLM-Guided Design-Adaptive Timing and Power Co-Optimization with Graph-Based Physical Priors</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对时序功耗协同优化固定规则局限问题，提出LLM引导与图物理先验结合的优化框架，8个基准上平均质量分提升5.5分</p>
+</blockquote>
+<p><strong>Authors:</strong> Wuqian Tang, Zixiao Wang, Che-Chien Lin, Fong-Hua Fu, Laura Angélica Shion-Korsak, Xinyun Zhang, Bei Yu, Chun-Yao Wang | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13931v1">http://arxiv.org/abs/2611.13931v1</a></p>
+<details><summary>Abstract</summary>
+
+Post-placement timing and power co-optimization is critical to meeting setup timing targets and reducing power within placement constraints. A cell replacement can improve timing along one path while increasing power or reducing slack on others. Conventional optimizers follow fixed rules for scheduling and accepting repairs, limiting their ability to address design-specific bottlenecks. A large language model (LLM) can propose changes to these rules, but on its own it cannot reliably estimate how a cell replacement affects endpoint slack and power. TAPCO-G combines LLM-guided optimizer adaptation with graph-based physical priors to evaluate candidate cell replacements. The outer loop tunes tool settings using physical-design feedback and revises executable repair policies when tuning stalls. The inner loop anchors delay estimates to static timing analysis snapshots, accounts for upstream driver-load changes, and propagates delay shifts to timing endpoints. It combines these estimates with coarse-to-fine power screening to prioritize candidates for physical trials. TAPCO-G produced placement-legal, logic-equivalent implementations and outscored CERBERUS on all eight ASAP7 benchmarks from the MLCAD 2026 Contest, with a mean quality score gain of 5.516 points, and scored 21.648 points higher than TAPCO on average. These results demonstrate the effectiveness of the proposed co-optimization framework.
+
+</details>
+
+<hr />
+<h2 id="beyond-passive-imitation-on-policy-mid-training-distillation-for-language-models">Beyond Passive Imitation: On-Policy Mid-Training Distillation for Language Models</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/distillation-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/distillation-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/pipeline-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/pipeline-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对NTP训练对不同模型效果不一致问题，提出在策略中期蒸馏OPMD，用教师反向KL奖励替代被动模仿，数学基准性能显著提升</p>
+</blockquote>
+<p><strong>Authors:</strong> Ruize Zheng, Xuyang Liu, Siyu Ren, Xiaobing Tu, Yinggui Wang, Jinkui Ren, Xiantao Zhang, Linfeng Zhang | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13855v1">http://arxiv.org/abs/2611.13855v1</a></p>
+<details><summary>Abstract</summary>
+
+Continual pre-training (CPT) adapts large language models (LLMs) to specialized domains, yet its standard next-token prediction (NTP) objective treats every corpus token as a fixed target, regardless of its utility to the current model. In a controlled study on the same 1B-token mathematical corpus, we observe sharply different outcomes across base models: NTP improves Llama-3.2-3B's performance on mathematical benchmarks but substantially degrades Qwen3-1.7B-Base's performance, indicating that, under a fixed training recipe, the same training sequences can have model-dependent effects. To address this problem, we introduce On-Policy Mid-Training Distillation (OPMD), which reformulates mid-training from offline text imitation into active, query-driven knowledge acquisition. At selected anchor positions, OPMD samples trajectories from the evolving student policy and applies dense token-level reverse-KL rewards from a frozen teacher, training the model on states it actually visits rather than only on ground-truth prefixes. This on-policy objective reduces the training-generation mismatch of teacher-forced NTP. On MATH-500 and Minerva, OPMD improves the Qwen student over its base performance and outperforms the evaluated NTP baseline, which degrades on both benchmarks. OPMD integrates into CPT pipelines without added inference-time overhead and offers a model-aware alternative to passive domain adaptation.
+
+</details>
+
+<hr />
+<h2 id="multi-objective-scheduling-of-llm-based-multi-agent-workflows-in-cloud-computing">Multi-Objective Scheduling of LLM-Based Multi-Agent Workflows in Cloud Computing</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/scheduling-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/scheduling-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM多智能体工作流云调度缺乏研究问题，提出多目标优化调度框架MO-SAIC，联合优化完工时间、成本与资源利用率</p>
+</blockquote>
+<p><strong>Authors:</strong> Goshgar Can Ismayilov | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13740v1">http://arxiv.org/abs/2611.13740v1</a></p>
+<details><summary>Abstract</summary>
+
+Large language models (LLMs) have been increasingly composed into multi-agent workflows to accomplish complex and multi-step tasks. As the open-weight models continue to close the performance gap with the proprietary ones, model parameters are becoming a less significant source of competitive advantage in the artificial intelligence market. Yet how these models are efficiently scheduled onto distributed infrastructure such as the cloud, with respect to overall latency, monetary cost and resource utilization, remains largely unaddressed in the literature despite being an increasingly critical problem. Existing agentic workflow frameworks mostly focus on output quality and task success rates over popular benchmarks, rarely accounting for execution dynamics of LLM-based agents such as inference latency, computation power of heterogeneous resources, cloud-specific billing period and resource provisioning overheads. Therefore, this paper formulates multi-agent scheduling in cloud computing as a multi-objective optimization problem that jointly minimizes makespan and cost while maximizing resource utilization. Building on this formulation, we propose MO-SAIC (Multi-Objective Scheduling of Multi-Agent Workflows in Cloud Computing), a scheduling framework comprising four multi-objective schedulers with Non-Dominated Sorting Genetic Algorithm II (NSGA-II), Weighted-Sum Genetic Algorithm (W-GA), a multi-objective adaptation of Heterogeneous Earliest Finish Time (MO-HEFT) and a random baseline (RAND). We evaluate the schedulers from the workflow scheduling, multi-objective optimization and system perspectives to measure their overall performance, quality of their Pareto-optimal fronts and impacts of workflow topology, cloud resource composition and scalability parameters. We report the experimental results with their statistical significance via the Wilcoxon test.
+
+</details>
+
+<hr />
+<h2 id="deterministic-reproducible-inference-in-exact-integer-arithmetic-and-verifiable-distributed-inference-as-its-consequence">Deterministic, Reproducible Inference in Exact Integer Arithmetic, and Verifiable Distributed Inference as Its Consequence</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对浮点推理跨环境不可复现问题，提出整数精确推理运行时tritify，实现跨硬件逐比特一致输出及可验证分布式推理</p>
+</blockquote>
+<p><strong>Authors:</strong> Sayed Amir Karim | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13730v1">http://arxiv.org/abs/2611.13730v1</a></p>
+<details><summary>Abstract</summary>
+
+Optimized floating-point inference is not reproducible across environments: the same model on different hardware, compilers or thread counts can produce different bits. We present tritify, an open-source runtime that executes the forward pass of real models -- decoder-only language models, Mixture-of-Experts decoders, and the Segment Anything 2.1 image/video stack -- with the entire run-time path in exact integer arithmetic; floating point is confined to offline quantization and the float reference used for verification. We make three separate claims and verify each. (1) Cross-hardware reproducibility: the integer path produces bit-identical output run to run, across CPU instruction-set architectures, and across CPU/GPU, carried by a reproducing SHA-256 of the output. (2) Decision fidelity: the integer path reproduces the float reference's decision on the models and inputs tested, with the numeric exceptions measured; per-layer fidelity through sixteen layers of OLMoE-1B-7B and of a 106-billion-parameter MoE shows no fidelity cliff. (3) Location independence: a model's computation can be split across instruction sets, CPU and GPU, and networked machines with zero effect on the output bits. GLM-4.5-Air (106,852,251,264 parameters, 427 GB of integer codes) generated its answer across three machines, none of which can hold its integer codes in RAM, bit-identically to a single-host reference. The consequence is verifiable distributed inference: an untrusted server or a fleet of devices runs the model while an open scalar oracle re-derives the exact bytes; a guarantee against a dishonest server is future work. We do not claim a per-device speed-up, bit-equality of floating-valued intermediates, or confidentiality. Code: https://github.com/pelloran-inc/tritify
+
+</details>
+
+<hr />
+<h2 id="bootstrapped-on-policy-distillation">Bootstrapped On-Policy Distillation</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/distillation-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/distillation-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对自蒸馏OPD持续训练退化问题，提出两阶段引导式在策略蒸馏BOPD，先内化特权监督再蒸馏至新模型，数学与代码能力提升</p>
+</blockquote>
+<p><strong>Authors:</strong> Yue Wu, Xueyu Zhou, Yangrong Hu, Jian Huang | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13680v1">http://arxiv.org/abs/2611.13680v1</a></p>
+<details><summary>Abstract</summary>
+
+On-policy distillation (OPD) improves language models by distilling teacher predictions on student-generated trajectories, while on-policy self-distillation (OPSD) removes the need for an external teacher by using a reference-conditioned copy of the model as the teacher. Despite its great early improvements, we find that OPSD does not remain consistently effective under continued training and can eventually suffer substantial performance degradation. We study this training behavior and link the degradation to a growing mismatch between the evolving reference-free student and the frozen privileged teacher. In the early stage of OPSD, the privileged teacher remains closely aligned with the student and provides useful guidance for improving the student's generation trajectories. However, as training progresses, the growing distributional mismatch between the privileged teacher and reference-free student can cause the teacher to provide misleading supervision, ultimately degrading student performance. This phenomenon motivates us to first leverage privileged reference supervision to acquire useful knowledge and then transfer it to a fresh student. We introduce Bootstrapped On-Policy Distillation (BOPD), a two-stage framework that first uses OPSD to internalize task-relevant information from reference-conditioned supervision into an intermediate model, and then distills this reference-free intermediate model into a fresh copy of the initial model. Experiments across models show that BOPD improves mathematical reasoning and code generation beyond both the initial models and the constructed OPSD teachers. These results suggest that privileged reference supervision can be more effectively exploited by first transferring its task-relevant signal into a task-adapted model and then distilling from that model without reference conditioning.
+
+</details>
+
+<hr />
+<h2 id="opticalrag-pixel-space-compression-for-token-efficient-retrieval-augmented-generation">OpticalRAG: Pixel-Space Compression for Token-Efficient Retrieval-Augmented Generation</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/distillation-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/distillation-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/compression-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/compression-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对RAG长文档token开销大问题，提出像素空间压缩框架，仅注入16个token，LongBench-v2提升5.17分</p>
+</blockquote>
+<p><strong>Authors:</strong> Senhao Liu, Yuheng Zhang, Chunyu Wei, Yueguo Chen, Xinran Zhang | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13675v1">http://arxiv.org/abs/2611.13675v1</a></p>
+<details><summary>Abstract</summary>
+
+Retrieval-augmented generation (RAG) is bottlenecked by the token budget of large language models: feeding long documents into the context window is expensive, while aggressive textual compression discards fine-grained information that is irreversibly lost in a one-dimensional token sequence. We argue that this bottleneck is not fundamental to information density but to the choice of compression \emph{modality}. Modern visual encoders can pack the contents of a rendered text page into roughly a hundred visual tokens with little semantic loss, opening a new compression-fidelity tradeoff that purely textual methods cannot reach. We present \textbf{OpticalRAG}, a framework that renders documents as page images, encodes them with a frozen vision encoder, and distills the retrieved visual tokens into as few as $16$ injected tokens before passing them to the LLM. Two ingredients make this work without expensive cross-modal training: (i) \emph{Encoder-Bridged Retrieval}, which projects text-query states into the visual feature space of the frozen encoder, through a projection shared with the compressor, to retrieve visual tokens from a text query, with no contrastive training; and (ii) \emph{Query-Driven Distillation}, a lightweight cross-attention compressor that condenses the retrieved visual tokens into a small set of query-conditioned prefix tokens. On LongBench-v2, BAMBOO, and LooGLE-v2, OpticalRAG achieves the best compression-aware accuracy (CAP) on all three benchmarks while injecting only $16$ tokens, and improves the closed-book Qwen2.5-7B-Instruct backbone by $5.17$ points on LongBench-v2.Code is available at https://github.com/brighterr/OpticalRAG.
+
+</details>
+
+<hr />
+<h2 id="tri-stack-pim-a-heterogeneous-multi-die-3d-integrated-processing-in-memory-architecture-for-efficient-llm-inference">Tri-Stack-PIM: A Heterogeneous Multi-Die 3D-Integrated Processing-in-Memory Architecture for Efficient LLM Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/communication-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/communication-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM推理带宽瓶颈，提出三die异步PIM架构与乱序调度器，较GPU基线加速4.95倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Shuao Jia, Zichao Ling, Chen Bai, Kang Zhao, Jianwang Zhai | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13644v1">http://arxiv.org/abs/2611.13644v1</a></p>
+<details><summary>Abstract</summary>
+
+Large language model (LLM) inference during autoregressive decoding is fundamentally memory-bandwidth-bound. Existing three-dimensional (3D) stacked processing-in-memory (PIM) architectures alleviate the off-chip bandwidth wall, yet remain constrained by several limitations: physical layer (PHY), controllers, and direct memory access (DMA) engines compete with arithmetic units for advanced-node base-die area; hybrid-bonding keep-out zones fragment the base-die floorplan and impede physical design; compute tiles built in a dynamic random access memory (DRAM) process are restricted to low logic density, capping achievable throughput; and nonlinear operations offloaded to the host reintroduce a communication bottleneck. We present Tri-Stack-PIM, a heterogeneous three-die architecture that resolves these tensions by dedicating a top DRAM die to storage, a middle buffer die on a mature process node to PHYs, DMA engines, and near-memory compute units, and a bottom base die on an advanced node exclusively to single-instruction-multiple-data (SIMD) multiply-accumulate (MAC) arrays. We further introduce a Unified Buffer-Aware Ready-based (UBAR) hardware out-of-order micro-operation scheduler that enforces cross-die dependency correctness at runtime while maximizing issue-slot utilization through a multi-term priority function, recovering up to 90% of the cycles that an in-order policy would forfeit. A joint architecture-dataflow co-exploration identifies Pareto-optimal configurations that reduce the energy-delay product (EDP) by 33-66x over naive parameter selection. Evaluated across multi-head, grouped-query, and multi-query attention (MHA, GQA, MQA) mechanisms with batch sizes 1-32, Tri-Stack-PIM achieves geometric-mean speedups of 4.95x, 2.57x, and 1.68x across all three attention mechanisms and batch sizes over a graphics processing unit (GPU) baseline, AttAcc, and H2-LLM, respectively.
+
+</details>
+
+<hr />
+<h2 id="moai-module-optimizing-architecture-for-non-interactive-secure-transformer-inference">MOAI: Module-Optimizing Architecture for non-interactive secure transformer Inference</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/batching-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/batching-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/transformer-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/transformer-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对同态加密安全推理开销大问题，提出列对角打包与免旋转算法，评估时间减少52.8%</p>
+</blockquote>
+<p><strong>Authors:</strong> Linru Zhang, Xiangning Wang, Jun Jie Sim, Zhicong Huang, Jiahao Zhong, Huaxiong Wang, Pu Duan, Kwok-Yan Lam | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13641v1">http://arxiv.org/abs/2611.13641v1</a></p>
+<details><summary>Abstract</summary>
+
+Privacy concerns have been raised in Large Language Models (LLM) inference when models are deployed in Cloud Service Providers (CSP). Homomorphic encryption (HE) offers a promising solution by enabling secure inference directly over encrypted inputs. However, the high computational overhead of HE remains a major bottleneck. To address this challenge, we propose MOAI, an efficient HE-based, non-interactive framework for secure transformer inference. MOAI gains significant efficiency improvement from: (1) a novel evaluation flow that combines column and diagonal packing with consistent strategies across all layers, eliminating expensive format conversions. (2) rotation-free algorithms for Softmax and LayerNorm that significantly reduce the number of costly HE rotations, removing 2,448 HE rotations in BERT-base inference. (3) Column packing removes rotations in plaintext-ciphertext matrix multiplications and interleaved batching further reduces the rotations in ciphertext-ciphertext matrix multiplications. MOAI uses at least 1.7x fewer HE rotations compared to the state-of-the-art works across all matrix multiplications of BERT-base. As a result, we achieve a $52.8 \%$ reduction in evaluation time compared to the state-of-the-art HE-based non-interactive secure transformer inference, THOR (Moon et al., CCS 25). We then apply MOAI on the Powerformer's framework and achieve a $55.7 \%$ reduction in evaluation time compared to Powerformer (Park et al., ACL 25), which approximates Softmax and LayerNorm with simpler functions in transformer and proposes HE-based non-interactive transformer inference. We report an amortized time of 2.36 minutes per input on a single GPU environment. We show the extendibility by applying MOAI in LLaMA-3-8B. Our implementation is publicly available as open source.
+
+</details>
+
+<hr />
+<h2 id="one-byte-one-token-byteifying-a-27b-hybrid-attention-llm-with-self-generated-data">One Byte, One Token: Byteifying a 27B Hybrid-Attention LLM with Self-Generated Data</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a></p>
+<blockquote>
+<p>将27B子词模型转为纯字节级模型，两阶段自生成数据训练，字符级任务显著提升但吞吐下降</p>
+</blockquote>
+<p><strong>Authors:</strong> Liwei Zhang, ZhiMing Tong | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13607v1">http://arxiv.org/abs/2611.13607v1</a></p>
+<details><summary>Abstract</summary>
+
+Byte-level BPE fragments Chinese text (for Qwen3.8 on Chinese Wikipedia, 3.84 bytes per token on average; 64% of tokens are single characters) and hides spelling from the model. We ask whether an already-trained 27B subword model can be converted directly into a pure byte-level model (one byte, one token), without a patching structure or a local encoder, while keeping most of its ability. Starting from Qwen3.8-27B (48 Gated DeltaNet layers + 16 full-attention layers), we shrink the vocabulary from 248,320 to 384 entries (the 256 byte symbols already in the BPE vocabulary plus special ids), leave every other weight untouched, and continue training in a two-stage curriculum (encoding first, then reading) on 4.77 GB of supervised bytes: all dialogue/behavioral supervision is generated on-policy by the original model itself (character dictionary, word dictionary, general dialogue, coding sessions), and knowledge reading uses encyclopedia text (54% of supervised bytes). Training takes 178.6 h on 8xH200. On the same GPU and serving stack, the byte model's gap to the original falls within the paired bootstrap interval on MATH-500, HumanEval+, MMLU-Pro and non-thinking GSM8K, and it loses 4-6 points on C-Eval, thinking-mode GSM8K and non-thinking IFEval. Without thinking it leads on every character-level task (CUTE 75.2 -> 84.0, EXECUTE-zho 81.6 -> 93.9, our Chinese character suite 54.4 -> 64.0), but lookup knowledge about Chinese characters such as pronunciation and stroke count drops, and thinking does not recover it. The cost is throughput: per-step speed is identical, but each step yields 3-5x less output; Chinese characters per second is about 1/4 of the original, and prefill at 64K bytes is 6.5x slower. We also document four byte-model failure modes (greedy runaway, sampling breaking UTF-8, ineffective penalty terms on a small vocabulary, repetition) and their fixes.
+
+</details>
+
+<hr />
+<h2 id="poem-output-relative-block-sparse-attention-for-long-context-prefilling">POEM: Output-Relative Block-Sparse Attention for Long-Context Prefilling</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/attention-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/attention-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/prefill-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/prefill-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLMs-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLMs-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对越狱攻击防御问题，提出无目标熵引导残差调制方法，提升鲁棒性且保持低过度拒绝</p>
+</blockquote>
+<p><strong>Authors:</strong> Haoyi Wu, Yunkai Dang, Wanyu Zhang, Lei Wang, Wenbin Li | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13578v1">http://arxiv.org/abs/2611.13578v1</a></p>
+<details><summary>Abstract</summary>
+
+Large language models (LLMs) have shown strong capabilities across diverse applications, making both safety and utility essential for reliable deployment. Jailbreak attacks use diverse forms of adversarial prompting to bypass alignment safeguards and induce LLMs to generate harmful responses. Some representation-based defenses regulate internal activations using predefined steering directions or learned safety regions. However, adapting intervention to each input without a predefined representational target while limiting over-refusal remains a challenge. In this paper, we propose Target-free Entropy-guided Residual Modulation (TERM), an inference-time defense that uses prompt-calibrated attention entropy deviations to guide adaptive modulation of the model's own residual updates. Attention patterns vary across prompts and decoding steps, making raw entropy values difficult to interpret as a consistent signal for intervention. We therefore calibrate attention entropy against each prompt's own prefill baseline to establish an input-specific reference for reducing unnecessary intervention on benign requests. Adaptive scale normalization and temporal accumulation then account for differences in deviation scale and persistence to determine intervention strength. The resulting signal controls bounded scaling of the model's own residual updates, without relying on a predefined safety direction. We compare our method with seven defenses on seven jailbreak attacks and two over-refusal benchmarks across Llama, Qwen, and Gemma models, including Qwen3 models from 0.6B to 32B. Results show our method improves jailbreak robustness while maintaining low over-refusal on benign safety-sensitive requests with modest inference overhead.
+
+</details>
+
+<hr />
+<h2 id="closing-the-bf16-fp16-convergence-speed-gap-in-rl-post-training-with-stochastic-rounding">Closing the BF16-FP16 Convergence Speed Gap in RL Post-Training with Stochastic Rounding</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>针对RL后训练中BF16收敛慢问题，提出随机舍入量化，匹配FP16收敛速度并降低KL散度</p>
+</blockquote>
+<p><strong>Authors:</strong> Mahdi Nazemi, Oleg Rybakov, Tijmen Blankevoort, Asit Mishra, Carlo del Mundo | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13545v1">http://arxiv.org/abs/2611.13545v1</a></p>
+<details><summary>Abstract</summary>
+
+BF16 is widely used to pretrain large language models because it has the same dynamic range as FP32 and converges similarly to FP32 training. However, in reinforcement learning with verifiable rewards, where learning rates are typically low, we find that standard mixed-precision BF16 training converges more slowly than FP16 training at the same learning rate. We attribute this gap to weight sticking: when FP32 shadow weights are quantized to BF16 using round-to-nearest, small updates often leave the BF16 weights used for rollout generation and training unchanged. Consequently, several optimizer steps may be needed before updates to the shadow weights are reflected in the BF16 weights. Raising the BF16 learning rate reduces weight sticking and matches FP16's convergence speed, but it also increases the KL divergence from the reference model. We instead apply stochastic rounding when quantizing the FP32 shadow weights to BF16. This approach matches FP16's convergence speed across different models and datasets while reducing the KL divergence relative to BF16 training with a larger learning rate. Unlike FP16, it keeps BF16's wider dynamic range and needs no loss scaling.
+
+</details>
+
+<hr />
+<h2 id="mobile-ai-factory-building-specialized-language-models-for-your-mobile-device">Mobile AI Factory: Building Specialized Language Models for Your Mobile Device</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/quantization-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantization-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/quantize-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/quantize-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/inference-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/inference-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/language model-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/language model-FF8C00" /></a></p>
+<blockquote>
+<p>提出智能体系统自动为移动设备构建微调量化小模型，性能媲美前沿模型且GPU时间省19倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Evan Li, Krishna Deshpande, Wen Cheng, Shyamnath Gollakota | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13509v1">http://arxiv.org/abs/2611.13509v1</a></p>
+<details><summary>Abstract</summary>
+
+Small language models (SLMs) running on mobile devices can keep user data private and work without connectivity. But they perform well only when fine-tuned for the target task and sized for the target device, a process that today requires repeated expert tuning. We present {\it Mobile AI Factory}, an agentic system that builds a fine-tuned, quantized SLM for a given task and phone. Given a task specification and a target phone, an orchestrator LLM chooses whether to tune hyperparameters, mine real data, or generate synthetic examples, while fixed rules roll back changes that hurt accuracy. The factory searches from small to large models across base models and quantizations, adapts its accuracy goal as it searches, and uses real measurements of the target phone across inference engines and backends. We evaluate Mobile AI Factory on ten tasks and four Android phones. On an unseen testset, its on-device models outperform two five-shot frontier models on five tasks, by up to 0.34, and match them on three more. Its search comes within 0.03 of exhaustively training all 27 model variants on an entity extraction task, while using 19$\times$ less GPU time. Phone measurements also matter: the best configuration changes across phones. Without phone measurements, Claude Opus 5.5, given the full hardware and model specifications, misses the app's requirements in 25\% of easy and moderate cases and in 60\% of hard ones. Code is available at: https://github.com/evanly-gh/SLM_Factory.
+
+</details>
+
+<hr />
+<h2 id="forespark-joint-draft-and-verification-budget-scheduling-for-parallel-speculative-decoding">ForeSpark: Joint Draft and Verification Budget Scheduling for Parallel Speculative Decoding</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/decoding-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/decoding-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/LLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/LLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/vLLM-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/vLLM-FF8C00" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a></p>
+<blockquote>
+<p>针对并行投机解码草稿浪费问题，提出草稿与验证预算联合调度，吞吐提升至1.77倍</p>
+</blockquote>
+<p><strong>Authors:</strong> Jaeyong Song, Daniel Wang, Pratyush Patel, Jonny Kong, Preyas Shah, Shobhit Kanaujia | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13442v1">http://arxiv.org/abs/2611.13442v1</a></p>
+<details><summary>Abstract</summary>
+
+Parallel drafters accelerate LLM decoding by proposing a whole block of draft tokens in a single forward pass, making them attractive for LLM serving. Recent systems optimize goodput (i.e., accepted tokens per second) because rejected drafts steal compute from other requests. However, these systems control only how many tokens are verified, so every request still drafts a full block. At high serving load, we find that drafting consumes up to 40% of step time, of which a majority is discarded because it is never verified. Yet, draft-length control from autoregressive drafters does not carry over, because a parallel drafter commits to its length before its single pass. Moreover, draft and verification lengths are coupled across the batch, so they must be selected jointly for every request while keeping the decision computationally cheap at every step. In this paper, we propose work-conserving speculation (WCS), a design that jointly allocates draft and verification budgets per request in LLM serving, and present ForeSpark as its prototype. ForeSpark realizes WCS with (i) a context-aware pre-draft estimator that predicts acceptance for every candidate length from the target model's context features, (ii) a lightweight joint draft-verify scheduler that selects both lengths through a global sort, and (iii) a post-draft budget distribution that spends verification on the most promising tokens. Implemented on vLLM, ForeSpark improves throughput by up to 1.77x over the state-of-the-art DSpark and by 2.49x over autoregressive decoding at a matched per-request generation rate, without changing the output distribution. It also tolerates higher load, sustaining up to 1.51x the request rate of DSpark under latency service level objectives (SLOs).
+
+</details>
+
+<hr />
+<h2 id="placing-llm-lookup-tables-by-per-layer-prefetch-deadlines">Placing LLM Lookup Tables by Per-Layer Prefetch Deadlines</h2>
+<p><a class="glightbox" href="https://img.shields.io/badge/KV cache-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/KV cache-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/overlap-F08080" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/overlap-F08080" /></a> <a class="glightbox" href="https://img.shields.io/badge/serving-FF8C00" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="https://img.shields.io/badge/serving-FF8C00" /></a></p>
+<blockquote>
+<p>针对LLM查找表占用大量主机内存问题，提出按层预取截止期的表分层放置方法，主机内存从212降至34GiB且吞吐提升36%</p>
+</blockquote>
+<p><strong>Authors:</strong> Wen Huang, Jack Liu | <strong>Date:</strong> 2026-11-10</p>
+<p><strong>Link:</strong> <a href="http://arxiv.org/abs/2611.13413v1">http://arxiv.org/abs/2611.13413v1</a></p>
+<details><summary>Abstract</summary>
+
+DeepSeek-V4.1's 203 GB of Engram n-gram tables sit in host DRAM today, taking 190 of the 223 GiB a 4-GPU serving process uses. Row indices depend only on input tokens, so reads can start with each step and overlap earlier layers. V4.1's two Engram layers have windows that differ by 30x (0.3 vs. 9.3 ms). We show that this deadline, together with session reuse and contention on a shared device, decides which tier each table can use and which layers need cache, and we give a model that predicts the resulting slowdown from measured read times. Agent and chat traffic reuse rows within sessions, and static hot sets transfer poorly. We build SlackTier, a table tier for SGLang that issues all lookups at step start. It reads the short-window layer first and splits a small GPU row cache across layers. The path runs inside the decode CUDA graph and is bit-exact with the original gather. Layer 14's table can go to NVMe uncached with no measurable decode cost. With both tables on four NVMe disks, mean time per output token on agent and chat replays rises at most 1.4% over unmodified SGLang, and host memory falls from 212 to 34 GiB. Both tables need no cache when read over RDMA (remote direct memory access) from another node's memory; one copy serves two instances. On a KV-constrained agent workload, using the freed memory as host KV cache at the same memory budget raises median throughput by 36% and cuts median p90 time to first token from 38 to 24 s.
+
+</details>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../2026-11-06/" class="btn btn-neutral float-left" title="2026-11-06"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../legacy/2025-11-14/" class="btn btn-neutral float-right" title="2025-11-14">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../2026-11-06/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../legacy/2025-11-14/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../js/prism-prototxt.js"></script>
+      <script src="../../js/preview.js"></script>
+      <script src="../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../js/note-editor.js"></script>
+      <script src="../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

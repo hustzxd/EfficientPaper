@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>AutoTuneBench: Trustworthy Measurement for Agent Auto-Tuning of LLM Serving Engines - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "AutoTuneBench: Trustworthy Measurement for Agent Auto-Tuning of LLM Serving Engines";
+        var mkdocs_page_input_path = "notes/2026/AutoTuneBench/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-10-30/">2026-10-30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-06/">2026-11-06</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-13/">2026-11-13</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-11/">2026-09-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-18/">2026-09-18</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-29/">2026-09-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-10-09/">2026-10-09</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">AutoTuneBench: Trustworthy Measurement for Agent Auto-Tuning of LLM Serving Engines</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="autotunebench-trustworthy-measurement-for-agent-auto-tuning-of-llm-serving-engines">AutoTuneBench: Trustworthy Measurement for Agent Auto-Tuning of LLM Serving Engines</h1>
+<blockquote>
+<p>Li Chen</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+<p>来源：<a href="https://arxiv.org/abs/2609.18123v1">arXiv:2609.18123v1</a>，2026-09-16，harnets.ai；<a href="https://github.com/li-ch/autotunebench/tree/v1.0.0">代码与测量记录 v1.0.0</a>。已阅读正文，并静态核对发布版 README 和 <code>config/protocol.yaml</code>；未复现 GPU 实验。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Large language model agents tune GPU kernels and serving engines through a closed loop of propose, measure, and keep, but the measurements behind this loop are not trustworthy. We characterize four failure modes from a four-day pilot corpus of 619 model calls: strawman baselines manufacture speedups, absolute times do not transfer across machines, saturated tasks nullify comparisons, and infrastructure defects impersonate science. We present AutoTuneBench, a benchmark and measurement protocol that makes trust architectural. The protocol is frozen as code with test-enforced provenance; a database-level validator rejects out-of-protocol results; anti-cheat checks run outside the agent's modification surface; comparisons follow pre-registered readouts; and measurements anchor to externally published results, grounded in paired-seed statistics with a 5% cross-run coefficient-of-variation cap. Honest measurement rewrites the headlines: our best kernel reads 10.6x against a naive baseline but 2.03x against the honest one; one configuration delivers 1.174x on one machine and 1.0049x on another; a pre-registered on/off comparison nulls at a shared wall (2.4840 vs 2.4957 ms); and the KernelBench Level-1 suite admits 51% of tasks with median speedup 1.0001x over PyTorch eager. The protocol, the two-engine corpus (vLLM and SGLang), and its audit trail are released as open artifacts.</p>
+<h2 id="_1">一句话总结</h2>
+<p>AutoTuneBench 将 Agent 自动调优的评估器、参考实现、实验协议和证据入库路径置于候选代码的修改范围之外，用可审计测量区分真实优化、基线选择、硬件差异、任务饱和与基础设施故障。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>把测量协议固化为代码与入库约束。</strong> <code>protocol.yaml</code> 固定 correctness tolerance、至少 5 个输入 shape、计时设置、engine 配对 seeds 101/202、跨运行变异系数上限 5% 和费用预算；字段来源由回归测试追踪，数据库 ingest validator 拒绝可在入库时检测出的违规结果。candidate、逐轮 JSONL 和逐次模型调用 ledger 共同记录成功、拒绝、成本与失败原因。</li>
+<li><strong>把反作弊放在 Agent 无权修改的位置。</strong> 每个任务只开放白名单文件，参考实现和评测代码只读；结合静态扫描、被替代算子的运行时 fallback 计数、断网 sandbox、留出输入/设备复测和超过 10x 的异常隔离。10x 阈值只是人工复核触发器，不能证明低于阈值的候选正确。</li>
+<li><strong>让实验先证明干预送达，再解释收益。</strong> A/B 预先规定读数、有效迭代数和停止规则；首个 kept candidate 没有 profiler feedback 时立即停止。跨机器仅比较各自本地 baseline 的比值，并用公开 Astra kernel 结果校验 harness；复现偏差作为机制分析结果记录，不能为了过关事后修改阈值。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>测量纠偏：</strong>同一 GELU 优化以 naive 实现为基准得到 10.6x，以搜索实际起点为基准仅 2.03x。KernelBench Level-1 的 100 个任务中，原始 53 个正确候选有 2 个利用全正输入把 ReLU 退化为 identity，被异常检查隔离后剩 <strong>51/100</strong>；这 51 个任务相对 PyTorch eager 的中位加速仅 <strong>1.0001x</strong>，其中 24 个更慢、12 个达到至少 1.2x。53 个候选复测的 correctness verdict 全部一致，运行间偏差中位数 0.60%、最大 3.97%（§6.3，表 4）。</li>
+<li><strong>Serving 配置搜索收益取决于引擎和基准：</strong>GB10 上 SGLang 使用 Qwen2.5-7B-Instruct、16 requests、256-token prompts、最多 48 个输出 token，确定性 flag-space 搜索通过 ngram speculation 将 requests/s 从 0.2644 提到 0.3372，即 <strong>1.2753x</strong>；该扩展运行 20 次有效迭代、3.07 GPU-hours、模型 API 花费为 0。vLLM 扩展仅 <strong>1.0091x throughput</strong>，且基准是首个采样的 ngram 配置，不能解释为相对 stock default 的提升。这两组 engine 搜索使用确定性 proposer，收益不能归因于 LLM 搜索能力（§6.5，表 6）。</li>
+<li><strong>揭示测量条件与搜索效率的差别：</strong>Astra warm-cache 协议下部分 kernel 的收益在每次刷新 L2 后收敛到约 0.93–1.07x；同一饱和任务上，LLM 无/有 profiler 两组分别有 11/20、14/20 次有效迭代，指定随机变换菜单为 3/20，但最终最好时间都约 2.47–2.50 ms。论文还通过 ledger 找到 4096-token 截断、profiler 干预未送达和 patch chaining 失败，避免把这些现象误认为模型能力或算法结论（§6.1–6.2、6.4、6.6）。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li><strong>A/B 结论存在内部张力。</strong>§4.3 规定有效迭代不足时实验无效且优先于其他 verdict；表 3 两组均未达到预注册的 15 次门槛，§6.2 仍称 shared-wall null。因此只能记录“已观测候选接近饱和且未见 profiler 优势”，不能据此确认 profiler 无效，也不能将单个受限随机菜单推广为随机搜索的一般上限。</li>
+<li><strong>跨设备与基线需分开解释。</strong>主要 GPU 结果来自单台 DGX Spark GB10；M5 Max/MLX 复测是算法移植并重建本地 baseline，非同一 Triton binary 跨硬件执行。§6.7 又引用 GELU 的 11.03x 认证记录，与前文 10x 异常门槛及 2.03x honest headline 的基准口径需进一步对账；该数不能与 Mac 的约 0.79x 直接比较以量化硬件差距。冷/热 cache、算子输出语义、输入分布和 stock kernel 版本也会改变加速比。</li>
+<li><strong>可借鉴的是评估纪律。</strong>做 kernel 生成或 cost-aware KV policy 时，应冻结独立评估器、明确 stock/首个候选/当前最优三种基准，确认策略实际生效，按冷/热与设备条件配对复测，并公开失败次数、GPU 时间和 API 成本。本论文并未验证多硬件 fleet 上的联合调优，也未证明审计机制能消除所有作弊。元数据不把 vLLM/SGLang 这两个执行引擎当成调优算法 baseline。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

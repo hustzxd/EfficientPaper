@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>KVStream: Adaptive Parallel Storage Management for KV Caching in Large-Scale LLM Serving - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "KVStream: Adaptive Parallel Storage Management for KV Caching in Large-Scale LLM Serving";
+        var mkdocs_page_input_path = "notes/2026/KVStream/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-10-30/">2026-10-30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-06/">2026-11-06</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-13/">2026-11-13</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-11/">2026-09-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-18/">2026-09-18</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-29/">2026-09-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-10-09/">2026-10-09</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">KVStream: Adaptive Parallel Storage Management for KV Caching in Large-Scale LLM Serving</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="kvstream-adaptive-parallel-storage-management-for-kv-caching-in-large-scale-llm-serving">KVStream: Adaptive Parallel Storage Management for KV Caching in Large-Scale LLM Serving</h1>
+<blockquote>
+<p>Avinash Maurya, Jaiaid Mobin, Jie Ye, M. Mustafa Rafique, Franck Cappello, Bogdan Nicolae</p>
+</blockquote>
+<p><a class="glightbox" href="../../../blank.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../../../blank.jpg" /></a></p>
+<blockquote>
+<p>注：以下论文笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原论文为准。</p>
+<p>来源：<a href="https://arxiv.org/abs/2610.31827v1">arXiv:2610.31827v1</a>，2026-10-22。已阅读 17 页全文及附录；实验为作者报告，未在本地复现。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>Long-context LLM serving for agentic, coding, and document workloads reuses prefixes whose key-value (KV) cache outgrows GPU and host memory, putting storage I/O on the critical path of the inference step for retrieving prefixes. A single node-local NVMe absorbs all retrievals, while the parallel file system or cloud file store that nodes already mount carries almost no inference traffic. We cast prefix retrieval as aggregate-bandwidth scheduling across these tiers and present KVStream, a KV cache engine that batches a step's reads, defers writes behind the forward pass, replicates each chunk on every tier, and lets each tier adaptively claim the next unread chunks once it is free. Our performance model shows this routing attains the aggregate-bandwidth bound without prediction or tuning, whereas any static split misses it by a margin that grows as per-tier bandwidths drift or fluctuate. It also predicts that the time-to-first-token (TTFT) gain grows with load, as faster retrieval drains the queue, and disappears when host memory or arrival order keeps reuse in cache. Plugged into LMCache and evaluated on four models, six datasets, and up to 128 GPUs, KVStream retrieves within 5% of the bound, delivers up to 1.49<script type="math/tex">\times</script> higher offline throughput than LMCache, and lowers mean TTFT by up to 6.1<script type="math/tex">\times</script> under bursty arrivals.</p>
+<h2 id="_1">一句话总结</h2>
+<p>KVStream 将一步推理中所有未命中的 prefix KV 读取合并为一个 I/O 池，把每个 chunk 同时放在本地 NVMe 和并行文件系统上，并让先完成读取的 tier 继续领取下一批，从而在无需预测带宽的情况下动态利用两层存储的聚合带宽。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>将 prefix 回读从逐请求串行改为 step 级并行。</strong>LMCache 依次读一个请求的全部 chunk、再拷贝到 GPU，之后才处理下一个请求，既让 NVMe 队列长期过浅，也让磁盘到主机与主机到 GPU 两条链路轮流空闲。KVStream 一次匹配整个 batch 的 KV chunk，把所有 storage-resident chunk 放进同一完成队列，任一 chunk 到达即可开始 H2D，并与其他读取重叠。缓冲区也按批分配，避免逐请求小块管理。</li>
+<li><strong>写延后到下一次 forward pass。</strong>新生成的 KV 先暂存在主机内存，读取阶段不提交写；等所有读取发完、forward 开始后，再让写与计算重叠，减少读写干扰。写并未消失：若 forward 太短或写缓冲回压，写仍会侵入下一 step 的读取和 H2D。</li>
+<li><strong>全 tier 复制，并用“完成驱动”的 meet-in-the-middle 路由。</strong>每个 chunk 在 NVMe 和 PFS 各有一份，因此任一层都能读取任意 chunk。NVMe 从需求列表前端读，PFS 从后端读，每次领取 <script type="math/tex">m</script> 个 chunk；某层完成一批就立即领取下一批，直到两侧相遇。若略微跨界，少量 chunk 会被重复读取，但先到者已可使该 chunk 就绪。实现是独立 C++ <code>io_uring</code> 引擎，读写使用不同 ring；论文声称该路由自然逼近聚合带宽上界，无需在线测速或调静态比例。</li>
+<li><strong>给出需求、带宽上界、静态分配损失和端到端收益模型。</strong>核心关系包括 <script type="math/tex">D=V\cdot\Pr[d>M]</script>、<script type="math/tex">T^{ret}_i\ge D_i/(b_0(i)+b_1(i))</script>，以及静态比例为 <script type="math/tex">g</script> 时的损失 <script type="math/tex">\max(g/\phi(i),(1-g)/(1-\phi(i)))</script>；其中 <script type="math/tex">d</script> 是 reuse distance，<script type="math/tex">M</script> 是 GPU+host 容量，<script type="math/tex">\phi(i)=b_0(i)/(b_0(i)+b_1(i))</script> 随 step 波动。只有回读仍占 step 时间时，降低 <script type="math/tex">T^{ret}</script> 才能通过吞吐或排队队列放大成 TTFT 收益。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>离线吞吐：</strong>在单节点 4×H100、LooGLE、TP=4 下，14B/32B/70B/110B 分别为 LMCache 的 <strong>1.17×/1.37×/1.48×/1.49×</strong>，为 CPU-only 的 1.15×–3.22×；x32B 上 LooGLE/NarrativeQA/CUAD 分别为 1.37×/1.21×/1.05×。CUAD 请求更短、回读占比更小，收益也最小。读卷与 LMCache 相近，提升主要来自并行读取两层存储，而非少传 KV。</li>
+<li><strong>在线 TTFT 随负载放大：</strong>32B 的 Qwen-Coder 在低/中/高到达率下，KVStream 平均 TTFT 相对 LMCache 提升 <strong>1.07×/1.61×/3.12×</strong>；Chutes 为 1.23×/1.71×/2.01×。单请求回读时间只低 15%–22%，但更快排空队列使在途请求差距扩大，因此高负载带来更大的端到端收益。SWE-bench agentic trace 中，到达 CV=4 时平均 TTFT 加速 <strong>6.07×</strong>，即摘要中约 6.1×。</li>
+<li><strong>SLO 与扩展性：</strong>SWE-bench、32B、Testbed-2、1 秒 TTFT SLO 下，KVStream 达标率 <strong>84%</strong>，LMCache 70%、Mooncake Store 55%、CPU-only 37.7%、SGLang HiCache 的磁盘后端 34%。在 16–128 GPU 上，吞吐相对 LMCache 保持 1.23–1.36×；32 节点时 p90 step time 约 2.7s，LMCache 在 4 节点已约 4.0s。每节点独立按完成事件调度，无需跨节点协调。</li>
+<li><strong>机制消融：</strong>离线 M1 批读与 M2 延后写各自不到 1%，因单 NVMe 仍封顶；加入 PFS 和固定 70:30 分配（M3）达到 1.24×，完成驱动路由（M4）达到 <strong>1.48×</strong>。固定比例在 1TB/0.5TB 读写竞争或 PFS 外部负载变化时出现 8.0%–67.7% 的 bound gap，KVStream 在各次测量中约在 4.3% 以内。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li><strong>复制写不是免费：</strong>KVStream 将每个 chunk 同时写到两层，写开销近似 doubles；论文测到每 rank 每层约 0.19GB/s 的固定写流。收益取决于“回读量 / 复制写量”。Qwen-Coder 随到达顺序从 cache-friendly 到 round-robin 变化，该比值 0.27→1.54，TTFT 加速 1.05×→3.12×；Chutes 在 80GB/rank 时大部分复用已落入内存，速度反而约 0.98×。</li>
+<li><strong>有清晰失效区：</strong>SWE-bench 合成降低 prefix 复用率至 4% 时，KVStream 比 LMCache 慢到 0.81×。当工作集已在 host memory、复用距离短或回读很少时，第二层复制既不做有用功还增加写压力。M3 静态按 prefix 位置放置在新 suffix 上的在线实验将平均 TTFT 推到 122.1s（LMCache 31.1s），说明“复制”与“读取路由”必须成对使用，单独复制并不等于 KVStream。</li>
+<li><strong>实验边界：</strong>测的是 H100/A100 + 本地 NVMe RAID-0 + VAST/Lustre PFS 的 HPC 环境；云对象存储、CXL、远端 NVMe 仅作外推，未实测其尾延迟和写入能力。主结果把约 320GB host memory 留给 KV；不同 host 容量、PFS 竞争和 arrival trace 会改变收益。<code>within 5%</code> 指 retrieval time 相对聚合带宽 bound，不是端到端吞吐只差 5%。SGLang HiCache 集成写是同步且不与回读重叠，明显弱于其 vLLM+LMCache 主路径。</li>
+<li><strong>与现有 KV 工作的关系：</strong>相比 LMCache/Mooncake 的层次缓存，KVStream 改变的是命中 storage 之后的数据路径；相比 Tutti 的 GPU-centric SSD、XM-Sparse 的专用内存节点，它要求已有且独立可达的第二存储 tier，优势来自把原本闲置的 PFS 一并纳入带宽池。它与 prefix 调度、KV 压缩、P/D 解耦正交；未来工作仍需降低复制写、加入对象存储，并研究跨节点共享同一 PFS 副本的容量与写成本。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>

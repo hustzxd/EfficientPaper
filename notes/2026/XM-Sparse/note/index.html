@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>XM-Sparse: Pushing the Throughput Frontier of Sparse Attention with Netpreme X-Mem - Efficient Paper</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" rel="stylesheet" />
+        <link href="../../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "XM-Sparse: Pushing the Throughput Frontier of Sparse Attention with Netpreme X-Mem";
+        var mkdocs_page_input_path = "notes/2026/XM-Sparse/note.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/svg+xml" href="../../../../images/logo.svg">
+
+ <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> Efficient Paper
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../baseline_methods_graph_interactive/">Graph Interactive</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Weekly Paper</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-10-30/">2026-10-30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-06/">2026-11-06</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../weekly_paper/2026-11-13/">2026-11-13</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Legacy</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-14/">2025-11-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-21/">2025-11-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-11-28/">2025-11-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-05/">2025-12-05</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-12/">2025-12-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-19/">2025-12-19</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-26/">2025-12-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2025-12-31/">2025-12-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-09/">2026-01-09</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-16/">2026-01-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-23/">2026-01-23</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-01-30/">2026-01-30</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-06/">2026-02-06</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-24/">2026-02-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-02-27/">2026-02-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-16/">2026-03-16</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-17/">2026-03-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-20/">2026-03-20</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-03-27/">2026-03-27</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-08/">2026-04-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-10/">2026-04-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-17/">2026-04-17</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-04-24/">2026-04-24</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-01/">2026-05-01</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-08/">2026-05-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-15/">2026-05-15</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-25/">2026-05-25</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-05-29/">2026-05-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-08/">2026-06-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-12/">2026-06-12</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-06-26/">2026-06-26</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-08/">2026-07-08</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-10/">2026-07-10</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-07-31/">2026-07-31</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-11/">2026-08-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-14/">2026-08-14</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-21/">2026-08-21</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-08-28/">2026-08-28</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-02/">2026-09-02</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-11/">2026-09-11</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-18/">2026-09-18</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-09-29/">2026-09-29</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../weekly_paper/legacy/2026-10-09/">2026-10-09</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../about/">Readme</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../contributors/">Contributors</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">Efficient Paper</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">XM-Sparse: Pushing the Throughput Frontier of Sparse Attention with Netpreme X-Mem</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+  
+                <h1 id="xm-sparse-pushing-the-throughput-frontier-of-sparse-attention-with-netpreme-x-mem">XM-Sparse: Pushing the Throughput Frontier of Sparse Attention with Netpreme X-Mem</h1>
+<blockquote>
+<p>Netpreme Team · 2026-10-19 · 官方工程博客，当前未找到独立 arXiv 论文。</p>
+</blockquote>
+<p><a class="glightbox" href="../cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="cover" src="../cover.png" /></a></p>
+<blockquote>
+<p>注：以下技术笔记由 AI Agent 自动生成，可能存在理解偏差或遗漏，请以原文为准。</p>
+<p><a href="https://netpreme.com/blog/xm-sparse-sglang-hisparse-netpreme-xmem">官方原文</a> · <a href="https://mp.weixin.qq.com/s/1-RMbaar72dJh-JaIRKxlA">用户提供的中文解读</a>。已阅读官方全文并核对图 6；微信正文受环境验证限制，以下以官方文章为依据。封面为官方图 6，仅用于说明原文实验结果。</p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>XM-Sparse 将 Netpreme X-Mem 外部内存层接入 SGLang HiSparse：GPU HBM 保留热 KV buffer 和 indexer key cache，完整 KV 历史保存在外部内存，decode 只回读被选中且未命中的 KV。文章以高带宽访问改善相同 batch 的 decode 延迟，并以更大容量提高长上下文的可行并发量。实验使用 X-Mem Pilot VM，通过额外 GPU 的 HBM 模拟未来内存节点，尚非量产 X-Mem 芯片测量。</p>
+<h2 id="_1">一句话总结</h2>
+<p>XM-Sparse 保留 HiSparse 的稀疏选择和热缓存机制，将完整 KV 的外部存储从主机 DRAM/PCIe 路径换成 scale-up fabric 上的 GPU 可寻址内存节点，联合缓解 miss 回读带宽与完整历史容量瓶颈。</p>
+<h2 id="_2">创新点</h2>
+<ol>
+<li><strong>稀疏读取与完整存储分离。</strong>动态 top-k 每步可能变化，因此不能只保存当前被选中的 KV。设计目标是在 HBM 中保留 4,096-token/layer 热 buffer 和 K-index，将完整历史放入独立内存节点；文中建模每步选择 2,048 个 KV entries/layer，只为 hot buffer 未命中的部分支付外部访问成本。</li>
+<li><strong>接入独立扩展的 X-Mem 节点。</strong>官方架构描述为每节点 4 个 MPU、最多 24 TB DDR5、约 4 TB/s 聚合带宽，供机架 GPU 共享；GPU 通过兼容 CUDA/PyTorch 的地址/API 访问。集成保留 HiSparse 的选择、缓存管理和预取机制，并支持 decode 与 selected-KV fetch 的 CUDA Graph capture/replay。文中 900 GB/s 是分析模型的每 GPU 带宽假设，不等同于已交付芯片上的实测 KV 吞吐。</li>
+<li><strong>按请求生命周期管理共享历史。</strong>prefill GPU 直接发布 prompt KV；decode 从热 buffer 或 X-Mem 取选中 KV，每个成功 decode step 后将新增 KV 写回历史。公共 prefix 可共享，owner 创建内存区域，各 GPU 进程通过 descriptor attach；所有进程 detach 后才释放物理区域，请求结束也须等待未完成访问后回收。</li>
+</ol>
+<h2 id="_3">带来什么提升</h2>
+<ol>
+<li><strong>相同 batch 的 TPOT：</strong>GLM-5.3、4 张 B300 decode GPU、attention DP4 + MoE EP4、16K context、batch 192/GPU、关闭预取时，20% top-k miss 下平均 TPOT 从 <strong>167.48 ms 降到 84.99 ms，降低 49.25%</strong>；40% miss 下从 <strong>255.69 ms 降到 93.13 ms，降低 63.58%</strong>。这里 miss 指已选中的 KV 未在 GPU 热 buffer 命中的比例，不能解释为全上下文稀疏率。小 batch 收益很小，也可能略慢（官方图 5）。</li>
+<li><strong>各自最佳测试 batch 的峰值吞吐：</strong>固定 20% miss、关闭预取，16K/32K/64K/128K/512K/1M 上下文相对 host DRAM 分别为 <strong>2.09x/2.24x/2.34x/2.84x/3.04x/2.50x</strong>。指标是每 GPU output tokens/s；16K 两者均为 batch 241/GPU，主要体现访问路径收益；更长上下文还包含更大容量允许更大 batch 的收益，不是等并发、等容量比较（官方图 6）。</li>
+<li><strong>模型区分带宽与容量：</strong>4-GPU instance 的 host DRAM 预算为 1 TB，expanded memory 为 24 TB。128K 下 1 TB 配置最多 batch 36/GPU，24 TB 配置到 109/GPU；在后者 batch 上，900 GB/s 模型相对 64 GB/s 的吞吐为 1.39x。1M 下仅将容量从 1 TB 扩到 24 TB、带宽同为 64 GB/s，就使可行 batch 从 4 到 20/GPU，并得到 2.34x 的建模吞吐。这些是测得 compute time 加估算 I/O 的模型结果，与 Pilot VM 图 6 的测量口径不同。</li>
+</ol>
+<h2 id="_4">备注</h2>
+<ul>
+<li><strong>实验平台边界：</strong>4 张 B300 执行 decode，额外 4 张 B300 的 HBM 充当 memory banks，走未来芯片将暴露的访问路径；24 TB 是容量预算，batch 上限按容量模型确定，不能认为物理 bank GPU 实装了 24 TB DDR5。官方明确 X-Mem silicon 后续才会提供；未报告生产芯片的功耗、成本或总 GPU 成本归一化收益。</li>
+<li><strong>工作负载边界：</strong>使用 synthetic KV prefixes、固定 20%/40% miss，评测关闭预取；因此未证明真实 Agent trace 下的动态 miss、prefetch/compute overlap、多 GPU 共享 fabric 竞争、尾 TPOT/SLO 或完整任务墙钟收益。理论模型假设每 GPU 持续获得标称带宽，且 compute 与 I/O 不重叠，小 batch 和共享带宽下降时结论可能改变。</li>
+<li><strong>对 KV cost model 的启发：</strong>分别测同 batch 的带宽收益与放宽容量后的并发收益，用实际 selected-miss bytes、有效共享带宽、队列/同步、write-back 和 compute-overlap 估计恢复成本；把公共 prefix 的生命周期、映射引用和未完成访问纳入回收约束。当前材料为官方博客，已按用户要求创建 <code>meta/2026/XM-Sparse.prototxt</code>，以 <code>Blog</code> 标记来源并接入站内索引。</li>
+</ul>
+              
+  <!-- Giscus 评论系统 - 只在 notes 文件夹下显示 -->
+<script>
+  // 使用 JavaScript 来判断 URL 路径
+  if (window.location.pathname.includes('/notes/')) {
+    document.write(`
+      <div id="giscus-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e1e4e8;">
+        <script src="https://giscus.app/client.js"
+                data-repo="hustzxd/EfficientPaper"
+                data-repo-id="R_kgDOKVYtOg"
+                data-category="General"
+                data-category-id="DIC_kwDOKVYtOs4CukCv"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        <\/script>
+      </div>
+    `);
+  }
+</script>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+      <script src="../../../../js/prism-prototxt.js"></script>
+      <script src="../../../../js/preview.js"></script>
+      <script src="../../../../js/back-to-top.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+      <script src="../../../../js/note-editor.js"></script>
+      <script src="../../../../js/auto-reload.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body>
+</html>
